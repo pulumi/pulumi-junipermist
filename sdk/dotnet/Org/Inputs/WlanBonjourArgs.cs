@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+        /// Whether to enable bonjour for this WLAN. Once enabled, LimitBcast is assumed true, AllowMdns is assumed false
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

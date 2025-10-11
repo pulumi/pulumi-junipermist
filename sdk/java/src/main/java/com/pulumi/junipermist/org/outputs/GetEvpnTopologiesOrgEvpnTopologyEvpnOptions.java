@@ -26,17 +26,17 @@ public final class GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
      */
     private String autoLoopbackSubnet6;
     /**
-     * @return Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * @return Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
      * 
      */
     private String autoRouterIdSubnet;
     /**
-     * @return Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * @return Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
      * 
      */
     private String autoRouterIdSubnet6;
     /**
-     * @return Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
+     * @return Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
      * 
      */
     private Boolean coreAsBorder;
@@ -79,21 +79,21 @@ public final class GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
         return this.autoLoopbackSubnet6;
     }
     /**
-     * @return Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * @return Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
      * 
      */
     public String autoRouterIdSubnet() {
         return this.autoRouterIdSubnet;
     }
     /**
-     * @return Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+     * @return Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
      * 
      */
     public String autoRouterIdSubnet6() {
         return this.autoRouterIdSubnet6;
     }
     /**
-     * @return Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
+     * @return Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
      * 
      */
     public Boolean coreAsBorder() {

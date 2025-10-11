@@ -36,12 +36,12 @@ public final class ApPortConfigRadiusConfig {
     private @Nullable Boolean coaEnabled;
     private @Nullable Integer coaPort;
     /**
-     * @return use `network`or `source_ip`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return use `network`or `sourceIp`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     private @Nullable String network;
     /**
-     * @return use `network`or `source_ip`
+     * @return use `network`or `sourceIp`
      * 
      */
     private @Nullable String sourceIp;
@@ -81,14 +81,14 @@ public final class ApPortConfigRadiusConfig {
         return Optional.ofNullable(this.coaPort);
     }
     /**
-     * @return use `network`or `source_ip`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return use `network`or `sourceIp`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return use `network`or `source_ip`
+     * @return use `network`or `sourceIp`
      * 
      */
     public Optional<String> sourceIp() {

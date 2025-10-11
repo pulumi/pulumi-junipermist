@@ -69,7 +69,7 @@ public final class SwitchDhcpdConfigConfig {
      */
     private @Nullable Map<String,SwitchDhcpdConfigConfigOptions> options;
     /**
-     * @return `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
+     * @return `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
      * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
      * 
      */
@@ -174,7 +174,7 @@ public final class SwitchDhcpdConfigConfig {
         return this.options == null ? Map.of() : this.options;
     }
     /**
-     * @return `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
+     * @return `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
      * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
      * 
      */

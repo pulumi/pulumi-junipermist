@@ -139,14 +139,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `multi_psk_only`==`true`, whether private wlan is enabled
+     * When `multiPskOnly`==`true`, whether private wlan is enabled
      * 
      */
     @Import(name="privateWlan")
     private @Nullable Output<Boolean> privateWlan;
 
     /**
-     * @return When `multi_psk_only`==`true`, whether private wlan is enabled
+     * @return When `multiPskOnly`==`true`, whether private wlan is enabled
      * 
      */
     public Optional<Output<Boolean>> privateWlan() {
@@ -422,7 +422,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateWlan When `multi_psk_only`==`true`, whether private wlan is enabled
+         * @param privateWlan When `multiPskOnly`==`true`, whether private wlan is enabled
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateWlan When `multi_psk_only`==`true`, whether private wlan is enabled
+         * @param privateWlan When `multiPskOnly`==`true`, whether private wlan is enabled
          * 
          * @return builder
          * 

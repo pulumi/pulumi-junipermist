@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateServicePolicySslProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `medium`, `strong`, `weak`
+        /// enum: `Medium`, `Strong`, `Weak`
         /// </summary>
         [Input("ciphersCategory")]
         public Input<string>? CiphersCategory { get; set; }

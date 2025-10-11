@@ -64,7 +64,7 @@ public final class GetServicepoliciesOrgServicepolicy {
     private String name;
     private String orgId;
     /**
-     * @return By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      * 
      */
     private String pathPreference;
@@ -146,7 +146,7 @@ public final class GetServicepoliciesOrgServicepolicy {
         return this.orgId;
     }
     /**
-     * @return By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      * 
      */
     public String pathPreference() {

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplateSnmpConfigV3ConfigTargetParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `v1`, `v2c`, `v3`
+        /// enum: `V1`, `V2c`, `V3`
         /// </summary>
         [Input("messageProcessingModel", required: true)]
         public Input<string> MessageProcessingModel { get; set; } = null!;
@@ -28,19 +28,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? NotifyFilter { get; set; }
 
         /// <summary>
-        /// enum: `authentication`, `none`, `privacy`
+        /// enum: `Authentication`, `None`, `Privacy`
         /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
         /// <summary>
-        /// enum: `usm`, `v1`, `v2c`
+        /// enum: `Usm`, `V1`, `V2c`
         /// </summary>
         [Input("securityModel")]
         public Input<string>? SecurityModel { get; set; }
 
         /// <summary>
-        /// Refer to security_name in usm
+        /// Refer to SecurityName in usm
         /// </summary>
         [Input("securityName")]
         public Input<string>? SecurityName { get; set; }

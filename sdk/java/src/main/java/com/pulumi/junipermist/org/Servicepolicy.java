@@ -25,11 +25,13 @@ import javax.annotation.Nullable;
 /**
  * This resource manages WAN Assurance Service Policies (Application Policies).
  * 
- * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+ * The Service Policies can be used in the `servicePolicies` object by referencing the Service Policy ID as the `servicepolicyId` in:
  * * the Gateway configuration (`mist_device_gateway.service_policies`)
  * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
  * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
  *   They can be used to manage common policies between multiples configurations
+ * 
+ * ## Example Usage
  * 
  * ## Import
  * 
@@ -139,14 +141,14 @@ public class Servicepolicy extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
+     * By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      * 
      */
     @Export(name="pathPreference", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pathPreference;
 
     /**
-     * @return By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      * 
      */
     public Output<Optional<String>> pathPreference() {

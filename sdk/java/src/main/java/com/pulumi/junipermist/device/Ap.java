@@ -167,14 +167,14 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.eslConfig);
     }
     /**
-     * For some AP models, flow_control can be enabled to address some switch compatibility issue
+     * For some AP models, flowControl can be enabled to address some switch compatibility issue
      * 
      */
     @Export(name="flowControl", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> flowControl;
 
     /**
-     * @return For some AP models, flow_control can be enabled to address some switch compatibility issue
+     * @return For some AP models, flowControl can be enabled to address some switch compatibility issue
      * 
      */
     public Output<Boolean> flowControl() {
@@ -377,14 +377,14 @@ public class Ap extends com.pulumi.resources.CustomResource {
         return this.poePassthrough;
     }
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      * 
      */
     @Export(name="portConfig", refs={Map.class,String.class,ApPortConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,ApPortConfig>> portConfig;
 
     /**
-     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
+     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      * 
      */
     public Output<Optional<Map<String,ApPortConfig>>> portConfig() {

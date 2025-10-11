@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Outputs
     {
         public readonly int? Progress;
         /// <summary>
-        /// enum: `inprogress`, `failed`, `upgraded`
+        /// enum: `Inprogress`, `Failed`, `Upgraded`
         /// </summary>
         public readonly string? Status;
         public readonly int? StatusId;

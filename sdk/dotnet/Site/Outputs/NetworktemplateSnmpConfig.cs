@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool? Enabled;
         public readonly string? EngineId;
         /// <summary>
-        /// enum: `local`, `use_mac_address`
+        /// enum: `Local`, `UseMacAddress`
         /// </summary>
         public readonly string? EngineIdType;
         public readonly string? Location;

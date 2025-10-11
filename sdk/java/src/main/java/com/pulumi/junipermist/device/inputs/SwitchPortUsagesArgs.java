@@ -36,14 +36,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+     * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
      * 
      */
     @Import(name="allowDhcpd")
     private @Nullable Output<Boolean> allowDhcpd;
 
     /**
-     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
      * 
      */
     public Optional<Output<Boolean>> allowDhcpd() {
@@ -66,14 +66,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
      * 
      */
     @Import(name="bypassAuthWhenServerDown")
     private @Nullable Output<Boolean> bypassAuthWhenServerDown;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
      * 
      */
     public Optional<Output<Boolean>> bypassAuthWhenServerDown() {
@@ -81,14 +81,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+     * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
     @Import(name="bypassAuthWhenServerDownForUnknownClient")
     private @Nullable Output<Boolean> bypassAuthWhenServerDownForUnknownClient;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+     * @return Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
     public Optional<Output<Boolean>> bypassAuthWhenServerDownForUnknownClient() {
@@ -171,14 +171,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
      * 
      */
     @Import(name="dynamicVlanNetworks")
     private @Nullable Output<List<String>> dynamicVlanNetworks;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
      * 
      */
     public Optional<Output<List<String>>> dynamicVlanNetworks() {
@@ -186,14 +186,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `port_auth`==`dot1x` whether to enable MAC Auth
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
      * 
      */
     @Import(name="enableMacAuth")
     private @Nullable Output<Boolean> enableMacAuth;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` whether to enable MAC Auth
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
      * 
      */
     public Optional<Output<Boolean>> enableMacAuth() {
@@ -216,14 +216,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
      * 
      */
     @Import(name="guestNetwork")
     private @Nullable Output<String> guestNetwork;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
      * 
      */
     public Optional<Output<String>> guestNetwork() {
@@ -231,14 +231,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+     * `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     @Import(name="interIsolationNetworkLink")
     private @Nullable Output<Boolean> interIsolationNetworkLink;
 
     /**
-     * @return `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+     * @return `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     public Optional<Output<Boolean>> interIsolationNetworkLink() {
@@ -246,14 +246,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+     * Only if `mode`!=`dynamic` interSwitchLink is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     @Import(name="interSwitchLink")
     private @Nullable Output<Boolean> interSwitchLink;
 
     /**
-     * @return Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic` interSwitchLink is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     public Optional<Output<Boolean>> interSwitchLink() {
@@ -261,14 +261,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
+     * Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
      * 
      */
     @Import(name="macAuthOnly")
     private @Nullable Output<Boolean> macAuthOnly;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
+     * @return Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
      * 
      */
     public Optional<Output<Boolean>> macAuthOnly() {
@@ -276,14 +276,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+     * Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
      * 
      */
     @Import(name="macAuthPreferred")
     private @Nullable Output<Boolean> macAuthPreferred;
 
     /**
-     * @return Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+     * @return Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
      * 
      */
     public Optional<Output<Boolean>> macAuthPreferred() {
@@ -291,14 +291,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+     * Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
      * 
      */
     @Import(name="macAuthProtocol")
     private @Nullable Output<String> macAuthProtocol;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
      * 
      */
     public Optional<Output<String>> macAuthProtocol() {
@@ -366,14 +366,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+     * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
      * 
      */
     @Import(name="persistMac")
     private @Nullable Output<Boolean> persistMac;
 
     /**
-     * @return Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+     * @return Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
      * 
      */
     public Optional<Output<Boolean>> persistMac() {
@@ -426,14 +426,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+     * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
     @Import(name="reauthInterval")
     private @Nullable Output<String> reauthInterval;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+     * @return Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
     public Optional<Output<String>> reauthInterval() {
@@ -441,14 +441,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
+     * Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
      * 
      */
     @Import(name="resetDefaultWhen")
     private @Nullable Output<String> resetDefaultWhen;
 
     /**
-     * @return Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
+     * @return Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
      * 
      */
     public Optional<Output<String>> resetDefaultWhen() {
@@ -471,14 +471,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
      * 
      */
     @Import(name="serverFailNetwork")
     private @Nullable Output<String> serverFailNetwork;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
      * 
      */
     public Optional<Output<String>> serverFailNetwork() {
@@ -486,14 +486,14 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
      * 
      */
     @Import(name="serverRejectNetwork")
     private @Nullable Output<String> serverRejectNetwork;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
      * 
      */
     public Optional<Output<String>> serverRejectNetwork() {
@@ -673,7 +673,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
          * 
          * @return builder
          * 
@@ -684,7 +684,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
          * 
          * @return builder
          * 
@@ -715,7 +715,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bypassAuthWhenServerDown Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDown Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
          * 
          * @return builder
          * 
@@ -726,7 +726,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bypassAuthWhenServerDown Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDown Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
          * 
          * @return builder
          * 
@@ -736,7 +736,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bypassAuthWhenServerDownForUnknownClient Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDownForUnknownClient Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          * 
          * @return builder
          * 
@@ -747,7 +747,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bypassAuthWhenServerDownForUnknownClient Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDownForUnknownClient Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          * 
          * @return builder
          * 
@@ -862,7 +862,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dynamicVlanNetworks Only if `mode`!=`dynamic` and `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+         * @param dynamicVlanNetworks Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
          * 
          * @return builder
          * 
@@ -873,7 +873,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dynamicVlanNetworks Only if `mode`!=`dynamic` and `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+         * @param dynamicVlanNetworks Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
          * 
          * @return builder
          * 
@@ -883,7 +883,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dynamicVlanNetworks Only if `mode`!=`dynamic` and `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+         * @param dynamicVlanNetworks Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
          * 
          * @return builder
          * 
@@ -893,7 +893,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableMacAuth Only if `mode`!=`dynamic` and `port_auth`==`dot1x` whether to enable MAC Auth
+         * @param enableMacAuth Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
          * 
          * @return builder
          * 
@@ -904,7 +904,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableMacAuth Only if `mode`!=`dynamic` and `port_auth`==`dot1x` whether to enable MAC Auth
+         * @param enableMacAuth Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
          * 
          * @return builder
          * 
@@ -935,7 +935,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param guestNetwork Only if `mode`!=`dynamic` and `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+         * @param guestNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          * 
          * @return builder
          * 
@@ -946,7 +946,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param guestNetwork Only if `mode`!=`dynamic` and `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+         * @param guestNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          * 
          * @return builder
          * 
@@ -956,7 +956,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param interIsolationNetworkLink `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+         * @param interIsolationNetworkLink `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -967,7 +967,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param interIsolationNetworkLink `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+         * @param interIsolationNetworkLink `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -977,7 +977,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param interSwitchLink Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+         * @param interSwitchLink Only if `mode`!=`dynamic` interSwitchLink is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -988,7 +988,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param interSwitchLink Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+         * @param interSwitchLink Only if `mode`!=`dynamic` interSwitchLink is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -998,7 +998,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param macAuthOnly Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
+         * @param macAuthOnly Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
          * 
          * @return builder
          * 
@@ -1009,7 +1009,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param macAuthOnly Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
+         * @param macAuthOnly Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
          * 
          * @return builder
          * 
@@ -1019,7 +1019,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param macAuthPreferred Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+         * @param macAuthPreferred Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
          * 
          * @return builder
          * 
@@ -1030,7 +1030,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param macAuthPreferred Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+         * @param macAuthPreferred Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
          * 
          * @return builder
          * 
@@ -1040,7 +1040,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param macAuthProtocol Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+         * @param macAuthProtocol Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
          * 
          * @return builder
          * 
@@ -1051,7 +1051,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param macAuthProtocol Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+         * @param macAuthProtocol Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
          * 
          * @return builder
          * 
@@ -1155,7 +1155,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param persistMac Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+         * @param persistMac Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
          * 
          * @return builder
          * 
@@ -1166,7 +1166,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param persistMac Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+         * @param persistMac Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
          * 
          * @return builder
          * 
@@ -1239,7 +1239,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param reauthInterval Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+         * @param reauthInterval Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
          * 
          * @return builder
          * 
@@ -1250,7 +1250,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param reauthInterval Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+         * @param reauthInterval Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
          * 
          * @return builder
          * 
@@ -1260,7 +1260,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resetDefaultWhen Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
+         * @param resetDefaultWhen Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
          * 
          * @return builder
          * 
@@ -1271,7 +1271,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resetDefaultWhen Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
+         * @param resetDefaultWhen Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
          * 
          * @return builder
          * 
@@ -1312,7 +1312,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serverFailNetwork Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+         * @param serverFailNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
          * 
          * @return builder
          * 
@@ -1323,7 +1323,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serverFailNetwork Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+         * @param serverFailNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
          * 
          * @return builder
          * 
@@ -1333,7 +1333,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
          * 
          * @return builder
          * 
@@ -1344,7 +1344,7 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
          * 
          * @return builder
          * 

@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<int> Pods;
         /// <summary>
-        /// use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+        /// use `Role`==`None` to remove a switch from the topology. enum: `Access`, `collapsed-core`, `Core`, `Distribution`, `esilag-access`, `None`
         /// </summary>
         public readonly string Role;
         public readonly string? RouterId;

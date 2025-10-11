@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NacruleNotMatching
     {
         /// <summary>
-        /// enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
+        /// enum: `Cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `Idp`, `Mab`, `eap-peap`
         /// </summary>
         public readonly string? AuthType;
         /// <summary>
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly ImmutableArray<string> Models;
         public readonly ImmutableArray<string> Nactags;
         /// <summary>
-        /// List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+        /// List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed OsType values
         /// </summary>
         public readonly ImmutableArray<string> OsTypes;
         public readonly ImmutableArray<string> PortTypes;

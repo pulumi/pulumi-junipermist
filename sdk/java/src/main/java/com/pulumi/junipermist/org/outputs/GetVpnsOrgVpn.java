@@ -32,17 +32,17 @@ public final class GetVpnsOrgVpn {
     private String name;
     private String orgId;
     /**
-     * @return Only if `type`==`hub_spoke`
+     * @return Only if `type`==`hubSpoke`
      * 
      */
     private GetVpnsOrgVpnPathSelection pathSelection;
     /**
-     * @return For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * @return For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
      * 
      */
     private Map<String,GetVpnsOrgVpnPaths> paths;
     /**
-     * @return enum: `hub_spoke`, `mesh`
+     * @return enum: `hubSpoke`, `mesh`
      * 
      */
     private String type;
@@ -76,21 +76,21 @@ public final class GetVpnsOrgVpn {
         return this.orgId;
     }
     /**
-     * @return Only if `type`==`hub_spoke`
+     * @return Only if `type`==`hubSpoke`
      * 
      */
     public GetVpnsOrgVpnPathSelection pathSelection() {
         return this.pathSelection;
     }
     /**
-     * @return For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * @return For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
      * 
      */
     public Map<String,GetVpnsOrgVpnPaths> paths() {
         return this.paths;
     }
     /**
-     * @return enum: `hub_spoke`, `mesh`
+     * @return enum: `hubSpoke`, `mesh`
      * 
      */
     public String type() {

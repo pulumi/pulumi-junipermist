@@ -24,7 +24,7 @@ public final class SwitchRemoteSyslog {
     private @Nullable Boolean enabled;
     private @Nullable List<SwitchRemoteSyslogFile> files;
     /**
-     * @return If source_address is configured, will use the vlan firstly otherwise use source_ip
+     * @return If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
      * 
      */
     private @Nullable String network;
@@ -54,7 +54,7 @@ public final class SwitchRemoteSyslog {
         return this.files == null ? List.of() : this.files;
     }
     /**
-     * @return If source_address is configured, will use the vlan firstly otherwise use source_ip
+     * @return If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
      * 
      */
     public Optional<String> network() {

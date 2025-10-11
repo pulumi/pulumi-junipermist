@@ -45,7 +45,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
     private GetGatewayStatsDeviceGatewayStatApRedundancy apRedundancy;
     private GetGatewayStatsDeviceGatewayStatArpTableStats arpTableStats;
     /**
-     * @return Only present when `bgp_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
+     * @return Only present when `bgpPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
      * 
      */
     private List<GetGatewayStatsDeviceGatewayStatBgpPeer> bgpPeers;
@@ -182,7 +182,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
     private Double uptime;
     private String version;
     /**
-     * @return Only present when `vpn_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
+     * @return Only present when `vpnPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
      * 
      */
     private List<GetGatewayStatsDeviceGatewayStatVpnPeer> vpnPeers;
@@ -195,7 +195,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
         return this.arpTableStats;
     }
     /**
-     * @return Only present when `bgp_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
+     * @return Only present when `bgpPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
      * 
      */
     public List<GetGatewayStatsDeviceGatewayStatBgpPeer> bgpPeers() {
@@ -430,7 +430,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
         return this.version;
     }
     /**
-     * @return Only present when `vpn_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
+     * @return Only present when `vpnPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
      * 
      */
     public List<GetGatewayStatsDeviceGatewayStatVpnPeer> vpnPeers() {

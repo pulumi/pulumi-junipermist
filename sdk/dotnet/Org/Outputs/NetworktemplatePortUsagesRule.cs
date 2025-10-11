@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         public readonly string? Equals;
         /// <summary>
-        /// Use `equals_any` to match any item in a list
+        /// Use `EqualsAny` to match any item in a list
         /// </summary>
         public readonly ImmutableArray<string> EqualsAnies;
         /// <summary>
@@ -25,11 +25,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Expression;
         /// <summary>
-        /// enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+        /// enum: `LinkPeermac`, `LldpChassisId`, `LldpHardwareRevision`, `LldpManufacturerName`, `LldpOui`, `LldpSerialNumber`, `LldpSystemName`, `RadiusDynamicfilter`, `RadiusUsermac`, `RadiusUsername`
         /// </summary>
         public readonly string Src;
         /// <summary>
-        /// `port_usage` name
+        /// `PortUsage` name
         /// </summary>
         public readonly string? Usage;
 

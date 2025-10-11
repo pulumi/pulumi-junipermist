@@ -15,12 +15,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
     {
         /// <summary>
         /// When enabled:
-        ///   * `auth_servers` is ignored
-        ///   * `acct_servers` is ignored
+        ///   * `AuthServers` is ignored
+        ///   * `AcctServers` is ignored
         ///   * `auth_servers_*` are ignored
-        ///   * `coa_servers` is ignored
-        ///   * `radsec` is ignored
-        ///   * `coa_enabled` is assumed
+        ///   * `CoaServers` is ignored
+        ///   * `Radsec` is ignored
+        ///   * `CoaEnabled` is assumed
         /// </summary>
         public readonly bool Enabled;
 

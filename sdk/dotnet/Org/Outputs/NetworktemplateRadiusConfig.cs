@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly int? AcctInterimInterval;
         public readonly ImmutableArray<Outputs.NetworktemplateRadiusConfigAcctServer> AcctServers;
         /// <summary>
-        /// enum: `ordered`, `unordered`
+        /// enum: `Ordered`, `Unordered`
         /// </summary>
         public readonly string? AuthServerSelection;
         public readonly ImmutableArray<Outputs.NetworktemplateRadiusConfigAuthServer> AuthServers;
@@ -36,11 +36,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? CoaPort;
         public readonly bool? FastDot1xTimers;
         /// <summary>
-        /// Use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        /// Use `Network`or `SourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// Use `network`or `source_ip`
+        /// Use `Network`or `SourceIp`
         /// </summary>
         public readonly string? SourceIp;
 

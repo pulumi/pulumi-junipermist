@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string Mac;
         public readonly int MemberId;
         /// <summary>
-        /// Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+        /// Both VcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `Backup`, `Linecard`, `Master`
         /// </summary>
         public readonly string VcRole;
 

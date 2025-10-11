@@ -47,14 +47,14 @@ public final class GetSwitchStatsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+     * If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      * 
      */
     @Import(name="evpnUnused")
     private @Nullable String evpnUnused;
 
     /**
-     * @return If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+     * @return If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      * 
      */
     public Optional<String> evpnUnused() {
@@ -182,7 +182,7 @@ public final class GetSwitchStatsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param evpnUnused If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+         * @param evpnUnused If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
          * 
          * @return builder
          * 

@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? PortRange { get; set; }
 
         /// <summary>
-        /// `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254, default is `any` `protocol_number` is between 1-254
+        /// `Tcp` / `Udp` / `Icmp` / `Icmp6` / `Gre` / `Any` / `:protocol_number`, `ProtocolNumber` is between 1-254, default is `Any` `ProtocolNumber` is between 1-254
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

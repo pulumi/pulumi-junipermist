@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchAclPolicyAction
     {
         /// <summary>
-        /// enum: `allow`, `deny`
+        /// enum: `Allow`, `Deny`
         /// </summary>
         public readonly string? Action;
         public readonly string DstTag;

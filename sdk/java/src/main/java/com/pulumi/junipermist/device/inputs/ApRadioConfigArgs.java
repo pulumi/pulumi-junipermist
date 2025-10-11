@@ -164,14 +164,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+     * Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
      * 
      */
     @Import(name="fullAutomaticRrm")
     private @Nullable Output<Boolean> fullAutomaticRrm;
 
     /**
-     * @return Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+     * @return Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
      * 
      */
     public Optional<Output<Boolean>> fullAutomaticRrm() {
@@ -443,7 +443,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fullAutomaticRrm Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+         * @param fullAutomaticRrm Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fullAutomaticRrm Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+         * @param fullAutomaticRrm Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
          * 
          * @return builder
          * 

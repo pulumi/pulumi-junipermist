@@ -14,21 +14,21 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplateBgpConfig
     {
         /// <summary>
-        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
+        /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`
         /// </summary>
         public readonly string? AuthKey;
         /// <summary>
-        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
-        ///   * 1000 if `type`==`external`
-        ///   * 350 `type`==`internal`
+        /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`, when BfdMultiplier is configured alone. Default:
+        ///   * 1000 if `Type`==`External`
+        ///   * 350 `Type`==`Internal`
         /// </summary>
         public readonly int? BfdMinimumInterval;
         /// <summary>
-        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
+        /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`, when BfdMinimumIntervalIsConfigured alone
         /// </summary>
         public readonly int? BfdMultiplier;
         /// <summary>
-        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BFD provides faster path failure detection and is enabled by default
+        /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. BFD provides faster path failure detection and is enabled by default
         /// </summary>
         public readonly bool? DisableBfd;
         public readonly string? Export;
@@ -37,64 +37,64 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? ExportPolicy;
         /// <summary>
-        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         /// </summary>
         public readonly bool? ExtendedV4Nexthop;
         /// <summary>
-        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. `0` means disable
+        /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. `0` means disable
         /// </summary>
         public readonly int? GracefulRestartTime;
         /// <summary>
-        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default is 90.
+        /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. Default is 90.
         /// </summary>
         public readonly int? HoldTime;
         public readonly string? Import;
         /// <summary>
-        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
+        /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. Default import policies if no per-neighbor policies defined
         /// </summary>
         public readonly string? ImportPolicy;
         /// <summary>
-        /// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        /// Required if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. BGPLocal AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         /// </summary>
         public readonly string? LocalAs;
         /// <summary>
-        /// Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+        /// Neighbor AS. If `Type`==`Internal`, must be equal to `LocalAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         /// </summary>
         public readonly string? NeighborAs;
         /// <summary>
-        /// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
+        /// Required if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. If per-neighbor as is desired. Property key is the neighbor address
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewaytemplateBgpConfigNeighbors>? Neighbors;
         /// <summary>
-        /// Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+        /// Optional if `Via`==`Lan`. List of networks where we expect BGP neighbor to connect to/from
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
+        /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. If true, we will not advertise private ASNs (AS 64512-65534) to this neighbor
         /// </summary>
         public readonly bool? NoPrivateAs;
         /// <summary>
-        /// Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. By default, we'll re-advertise all learned BGP routers toward overlay
+        /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. By default, we'll re-advertise all learned BGP routers toward overlay
         /// </summary>
         public readonly bool? NoReadvertiseToOverlay;
         /// <summary>
-        /// Optional if `via`==`tunnel`
+        /// Optional if `Via`==`Tunnel`
         /// </summary>
         public readonly string? TunnelName;
         /// <summary>
-        /// Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
+        /// Required if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. enum: `External`, `Internal`
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `lan`, `tunnel`, `vpn`, `wan`
+        /// enum: `Lan`, `Tunnel`, `Vpn`, `Wan`
         /// </summary>
         public readonly string Via;
         /// <summary>
-        /// Optional if `via`==`vpn`
+        /// Optional if `Via`==`Vpn`
         /// </summary>
         public readonly string? VpnName;
         /// <summary>
-        /// Optional if `via`==`wan`
+        /// Optional if `Via`==`Wan`
         /// </summary>
         public readonly string? WanName;
 

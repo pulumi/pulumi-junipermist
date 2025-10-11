@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class SwitchSnmpConfigV2cConfig {
     private @Nullable String authorization;
     /**
-     * @return Client_list_name here should refer to client_list above
+     * @return Client_list_name here should refer to clientList above
      * 
      */
     private @Nullable String clientListName;
@@ -29,7 +29,7 @@ public final class SwitchSnmpConfigV2cConfig {
         return Optional.ofNullable(this.authorization);
     }
     /**
-     * @return Client_list_name here should refer to client_list above
+     * @return Client_list_name here should refer to clientList above
      * 
      */
     public Optional<String> clientListName() {

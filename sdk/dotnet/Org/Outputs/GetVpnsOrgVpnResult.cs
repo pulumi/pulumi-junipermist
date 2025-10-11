@@ -28,15 +28,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string Name;
         public readonly string OrgId;
         /// <summary>
-        /// Only if `type`==`hub_spoke`
+        /// Only if `Type`==`HubSpoke`
         /// </summary>
         public readonly Outputs.GetVpnsOrgVpnPathSelectionResult PathSelection;
         /// <summary>
-        /// For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+        /// For `Type`==`HubSpoke`, Property key is the VPN name. For `Type`==`Mesh`, Property key is the Interface name
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetVpnsOrgVpnPathsResult> Paths;
         /// <summary>
-        /// enum: `hub_spoke`, `mesh`
+        /// enum: `HubSpoke`, `Mesh`
         /// </summary>
         public readonly string Type;
 

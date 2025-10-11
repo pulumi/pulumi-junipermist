@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist
         /// <summary>
         /// This data source provides the of ConstTrafficTypes.
         /// 
-        /// The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
+        /// The Traffic Type values can be used to define the `TrafficType` attribute in the `junipermist.org.Service` resource.
         /// 
         /// 
         /// ## Example Usage
@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist
         /// <summary>
         /// This data source provides the of ConstTrafficTypes.
         /// 
-        /// The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
+        /// The Traffic Type values can be used to define the `TrafficType` attribute in the `junipermist.org.Service` resource.
         /// 
         /// 
         /// ## Example Usage
@@ -62,7 +62,7 @@ namespace Pulumi.JuniperMist
         /// <summary>
         /// This data source provides the of ConstTrafficTypes.
         /// 
-        /// The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
+        /// The Traffic Type values can be used to define the `TrafficType` attribute in the `junipermist.org.Service` resource.
         /// 
         /// 
         /// ## Example Usage

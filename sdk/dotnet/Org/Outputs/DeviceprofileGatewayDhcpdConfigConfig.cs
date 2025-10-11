@@ -14,35 +14,35 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayDhcpdConfigConfig
     {
         /// <summary>
-        /// If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        /// If `Type`==`Local` or `Type6`==`Local` - optional, if not defined, system one will be used
         /// </summary>
         public readonly ImmutableArray<string> DnsServers;
         /// <summary>
-        /// If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        /// If `Type`==`Local` or `Type6`==`Local` - optional, if not defined, system one will be used
         /// </summary>
         public readonly ImmutableArray<string> DnsSuffixes;
         /// <summary>
-        /// If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
+        /// If `Type`==`Local` or `Type6`==`Local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayDhcpdConfigConfigFixedBindings>? FixedBindings;
         /// <summary>
-        /// If `type`==`local` - optional, `ip` will be used if not provided
+        /// If `Type`==`Local` - optional, `Ip` will be used if not provided
         /// </summary>
         public readonly string? Gateway;
         /// <summary>
-        /// If `type6`==`local`
+        /// If `Type6`==`Local`
         /// </summary>
         public readonly string? Ip6End;
         /// <summary>
-        /// If `type6`==`local`
+        /// If `Type6`==`Local`
         /// </summary>
         public readonly string? Ip6Start;
         /// <summary>
-        /// If `type`==`local`
+        /// If `Type`==`Local`
         /// </summary>
         public readonly string? IpEnd;
         /// <summary>
-        /// If `type`==`local`
+        /// If `Type`==`Local`
         /// </summary>
         public readonly string? IpStart;
         /// <summary>
@@ -50,32 +50,32 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? LeaseTime;
         /// <summary>
-        /// If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+        /// If `Type`==`Local` or `Type6`==`Local`. Property key is the DHCP option number
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayDhcpdConfigConfigOptions>? Options;
         /// <summary>
-        /// `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        /// `ServerIdOverride`==`True` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
         /// should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         /// </summary>
         public readonly bool? ServerIdOverride;
         /// <summary>
-        /// If `type`==`relay`
+        /// If `Type`==`Relay`
         /// </summary>
         public readonly ImmutableArray<string> Servers;
         /// <summary>
-        /// If `type6`==`relay`
+        /// If `Type6`==`Relay`
         /// </summary>
         public readonly ImmutableArray<string> Serversv6s;
         /// <summary>
-        /// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+        /// enum: `Local` (DHCP Server), `None`, `Relay` (DHCP Relay)
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+        /// enum: `Local` (DHCP Server), `None`, `Relay` (DHCP Relay)
         /// </summary>
         public readonly string? Type6;
         /// <summary>
-        /// If `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+        /// If `Type`==`Local` or `Type6`==`Local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
         ///   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
         ///   * sub option code: 1-255, sub-option code
         /// </summary>

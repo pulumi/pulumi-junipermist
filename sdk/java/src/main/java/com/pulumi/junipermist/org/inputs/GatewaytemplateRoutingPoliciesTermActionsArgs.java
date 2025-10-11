@@ -99,14 +99,14 @@ public final class GatewaytemplateRoutingPoliciesTermActionsArgs extends com.pul
     }
 
     /**
-     * Optional, for an import policy, local_preference can be changed
+     * Optional, for an import policy, localPreference can be changed
      * 
      */
     @Import(name="localPreference")
     private @Nullable Output<String> localPreference;
 
     /**
-     * @return Optional, for an import policy, local_preference can be changed
+     * @return Optional, for an import policy, localPreference can be changed
      * 
      */
     public Optional<Output<String>> localPreference() {
@@ -320,7 +320,7 @@ public final class GatewaytemplateRoutingPoliciesTermActionsArgs extends com.pul
         }
 
         /**
-         * @param localPreference Optional, for an import policy, local_preference can be changed
+         * @param localPreference Optional, for an import policy, localPreference can be changed
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class GatewaytemplateRoutingPoliciesTermActionsArgs extends com.pul
         }
 
         /**
-         * @param localPreference Optional, for an import policy, local_preference can be changed
+         * @param localPreference Optional, for an import policy, localPreference can be changed
          * 
          * @return builder
          * 

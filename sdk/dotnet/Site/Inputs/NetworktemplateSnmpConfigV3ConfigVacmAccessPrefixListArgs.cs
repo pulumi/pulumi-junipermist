@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Only required if `type`==`context_prefix`
+        /// Only required if `Type`==`ContextPrefix`
         /// </summary>
         [Input("contextPrefix")]
         public Input<string>? ContextPrefix { get; set; }
@@ -31,19 +31,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? ReadView { get; set; }
 
         /// <summary>
-        /// enum: `authentication`, `none`, `privacy`
+        /// enum: `Authentication`, `None`, `Privacy`
         /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
         /// <summary>
-        /// enum: `any`, `usm`, `v1`, `v2c`
+        /// enum: `Any`, `Usm`, `V1`, `V2c`
         /// </summary>
         [Input("securityModel")]
         public Input<string>? SecurityModel { get; set; }
 
         /// <summary>
-        /// enum: `context_prefix`, `default_context_prefix`
+        /// enum: `ContextPrefix`, `DefaultContextPrefix`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

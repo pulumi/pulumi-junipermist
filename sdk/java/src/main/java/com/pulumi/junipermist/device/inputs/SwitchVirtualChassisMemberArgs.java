@@ -38,14 +38,14 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+     * Both vcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
      * 
      */
     @Import(name="vcRole", required=true)
     private Output<String> vcRole;
 
     /**
-     * @return Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+     * @return Both vcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
      * 
      */
     public Output<String> vcRole() {
@@ -109,7 +109,7 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vcRole Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+         * @param vcRole Both vcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vcRole Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+         * @param vcRole Both vcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
          * 
          * @return builder
          * 

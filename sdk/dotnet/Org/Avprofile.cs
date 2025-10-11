@@ -71,7 +71,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Avprofile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// enum: `block`, `log-and-permit`, `permit`
+        /// enum: `Block`, `log-and-permit`, `Permit`
         /// </summary>
         [Output("fallbackAction")]
         public Output<string?> FallbackAction { get; private set; } = null!;
@@ -92,7 +92,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+        /// List of protocols to monitor. enum: `Ftp`, `Http`, `Imap`, `Pop3`, `Smtp`
         /// </summary>
         [Output("protocols")]
         public Output<ImmutableArray<string>> Protocols { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class AvprofileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `block`, `log-and-permit`, `permit`
+        /// enum: `Block`, `log-and-permit`, `Permit`
         /// </summary>
         [Input("fallbackAction")]
         public Input<string>? FallbackAction { get; set; }
@@ -177,7 +177,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _protocols;
 
         /// <summary>
-        /// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+        /// List of protocols to monitor. enum: `Ftp`, `Http`, `Imap`, `Pop3`, `Smtp`
         /// </summary>
         public InputList<string> Protocols
         {
@@ -202,7 +202,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class AvprofileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `block`, `log-and-permit`, `permit`
+        /// enum: `Block`, `log-and-permit`, `Permit`
         /// </summary>
         [Input("fallbackAction")]
         public Input<string>? FallbackAction { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _protocols;
 
         /// <summary>
-        /// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+        /// List of protocols to monitor. enum: `Ftp`, `Http`, `Imap`, `Pop3`, `Smtp`
         /// </summary>
         public InputList<string> Protocols
         {

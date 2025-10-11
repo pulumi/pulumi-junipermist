@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class SwitchPortUsagesRule {
     private @Nullable String equals;
     /**
-     * @return Use `equals_any` to match any item in a list
+     * @return Use `equalsAny` to match any item in a list
      * 
      */
     private @Nullable List<String> equalsAnies;
@@ -27,12 +27,12 @@ public final class SwitchPortUsagesRule {
      */
     private @Nullable String expression;
     /**
-     * @return enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+     * @return enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
      * 
      */
     private String src;
     /**
-     * @return `port_usage` name
+     * @return `portUsage` name
      * 
      */
     private @Nullable String usage;
@@ -42,7 +42,7 @@ public final class SwitchPortUsagesRule {
         return Optional.ofNullable(this.equals);
     }
     /**
-     * @return Use `equals_any` to match any item in a list
+     * @return Use `equalsAny` to match any item in a list
      * 
      */
     public List<String> equalsAnies() {
@@ -58,14 +58,14 @@ public final class SwitchPortUsagesRule {
         return Optional.ofNullable(this.expression);
     }
     /**
-     * @return enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+     * @return enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
      * 
      */
     public String src() {
         return this.src;
     }
     /**
-     * @return `port_usage` name
+     * @return `portUsage` name
      * 
      */
     public Optional<String> usage() {

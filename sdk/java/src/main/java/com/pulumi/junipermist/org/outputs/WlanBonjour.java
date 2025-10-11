@@ -21,7 +21,7 @@ public final class WlanBonjour {
      */
     private @Nullable List<String> additionalVlanIds;
     /**
-     * @return Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+     * @return Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
      * 
      */
     private @Nullable Boolean enabled;
@@ -41,7 +41,7 @@ public final class WlanBonjour {
         return this.additionalVlanIds == null ? List.of() : this.additionalVlanIds;
     }
     /**
-     * @return Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+     * @return Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
      * 
      */
     public Optional<Boolean> enabled() {

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileGatewayNetworkVpnAccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+        /// If `Routed`==`True`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
         /// </summary>
         [Input("advertisedSubnet")]
         public Input<string>? AdvertisedSubnet { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.DeviceprofileGatewayNetworkVpnAccessDestinationNatGetArgs>? _destinationNat;
 
         /// <summary>
-        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
+        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `InternalIp` or `Port` must be defined
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayNetworkVpnAccessDestinationNatGetArgs> DestinationNat
         {
@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+        /// If `Routed`==`False` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
         /// </summary>
         [Input("natPool")]
         public Input<string>? NatPool { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Routed { get; set; }
 
         /// <summary>
-        /// If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+        /// If `Routed`==`False` (usually at Spoke), but some hosts needs to be reachable from Hub
         /// </summary>
         [Input("sourceNat")]
         public Input<Inputs.DeviceprofileGatewayNetworkVpnAccessSourceNatGetArgs>? SourceNat { get; set; }

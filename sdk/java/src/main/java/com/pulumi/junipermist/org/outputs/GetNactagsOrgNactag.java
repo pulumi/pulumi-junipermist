@@ -25,7 +25,7 @@ public final class GetNactagsOrgNactag {
      */
     private Double createdTime;
     /**
-     * @return If `type`==`egress_vlan_names`, list of egress vlans to return
+     * @return If `type`==`egressVlanNames`, list of egress vlans to return
      * 
      */
     private List<String> egressVlanNames;
@@ -36,7 +36,7 @@ public final class GetNactagsOrgNactag {
      */
     private String id;
     /**
-     * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+     * @return if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      * 
      */
     private String match;
@@ -45,7 +45,7 @@ public final class GetNactagsOrgNactag {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      * 
-     * Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
      * 
      */
     private Boolean matchAll;
@@ -57,21 +57,21 @@ public final class GetNactagsOrgNactag {
     private String name;
     private String orgId;
     /**
-     * @return If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
+     * @return If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field &#34;radiusAttrs&#34;.
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radius_attrs in the result of a given rule.
+     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
      * 
      */
     private List<String> radiusAttrs;
     /**
-     * @return If `type`==`radius_group`
+     * @return If `type`==`radiusGroup`
      * 
      */
     private String radiusGroup;
     /**
-     * @return If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
+     * @return If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radiusVendorAttrs&#34;.
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
      * 
      */
     private List<String> radiusVendorAttrs;
@@ -81,7 +81,7 @@ public final class GetNactagsOrgNactag {
      */
     private Integer sessionTimeout;
     /**
-     * @return enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`, `username_attr`, `vlan`
+     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
      * 
      */
     private String type;
@@ -117,7 +117,7 @@ public final class GetNactagsOrgNactag {
         return this.createdTime;
     }
     /**
-     * @return If `type`==`egress_vlan_names`, list of egress vlans to return
+     * @return If `type`==`egressVlanNames`, list of egress vlans to return
      * 
      */
     public List<String> egressVlanNames() {
@@ -134,7 +134,7 @@ public final class GetNactagsOrgNactag {
         return this.id;
     }
     /**
-     * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+     * @return if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      * 
      */
     public String match() {
@@ -145,7 +145,7 @@ public final class GetNactagsOrgNactag {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      * 
-     * Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
      * 
      */
     public Boolean matchAll() {
@@ -165,25 +165,25 @@ public final class GetNactagsOrgNactag {
         return this.orgId;
     }
     /**
-     * @return If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
+     * @return If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field &#34;radiusAttrs&#34;.
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radius_attrs in the result of a given rule.
+     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
      * 
      */
     public List<String> radiusAttrs() {
         return this.radiusAttrs;
     }
     /**
-     * @return If `type`==`radius_group`
+     * @return If `type`==`radiusGroup`
      * 
      */
     public String radiusGroup() {
         return this.radiusGroup;
     }
     /**
-     * @return If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
+     * @return If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radiusVendorAttrs&#34;.
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
      * 
      */
     public List<String> radiusVendorAttrs() {
@@ -197,7 +197,7 @@ public final class GetNactagsOrgNactag {
         return this.sessionTimeout;
     }
     /**
-     * @return enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`, `username_attr`, `vlan`
+     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
      * 
      */
     public String type() {

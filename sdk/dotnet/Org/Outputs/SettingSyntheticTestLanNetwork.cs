@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// app name comes from `custom_probes` above or /const/synthetic_test_probes
+        /// app name comes from `CustomProbes` above or /const/synthetic_test_probes
         /// </summary>
         public readonly ImmutableArray<string> Probes;
 

@@ -43,19 +43,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// If `speed` and `duplex` are specified, whether to disable autonegotiation
+        /// If `Speed` and `Duplex` are specified, whether to disable autonegotiation
         /// </summary>
         [Input("disableAutoneg")]
         public Input<bool>? DisableAutoneg { get; set; }
 
         /// <summary>
-        /// enum: `auto`, `full`, `half`
+        /// enum: `Auto`, `Full`, `Half`
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
 
         /// <summary>
-        /// Enable dynamic usage for this port. Set to `dynamic` to enable.
+        /// Enable dynamic usage for this port. Set to `Dynamic` to enable.
         /// </summary>
         [Input("dynamicUsage")]
         public Input<string>? DynamicUsage { get; set; }
@@ -79,19 +79,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? PoeDisabled { get; set; }
 
         /// <summary>
-        /// Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
+        /// Required if `Usage`==`VlanTunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
         /// </summary>
         [Input("portNetwork")]
         public Input<string>? PortNetwork { get; set; }
 
         /// <summary>
-        /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`Auto`
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }
 
         /// <summary>
-        /// Port usage name. For Q-in-Q, use `vlan_tunnel`. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        /// Port usage name. For Q-in-Q, use `VlanTunnel`. If EVPN is used, use `EvpnUplink`or `EvpnDownlink`
         /// </summary>
         [Input("usage", required: true)]
         public Input<string> Usage { get; set; } = null!;

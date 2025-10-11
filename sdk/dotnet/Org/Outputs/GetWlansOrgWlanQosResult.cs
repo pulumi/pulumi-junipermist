@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetWlansOrgWlanQosResult
     {
         /// <summary>
-        /// enum: `background`, `best_effort`, `video`, `voice`
+        /// enum: `Background`, `BestEffort`, `Video`, `Voice`
         /// </summary>
         public readonly string Class;
         /// <summary>

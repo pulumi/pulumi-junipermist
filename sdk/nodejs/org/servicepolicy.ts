@@ -15,6 +15,8 @@ import * as utilities from "../utilities";
  * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
  *   They can be used to manage common policies between multiples configurations
  *
+ * ## Example Usage
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_servicepolicy` with:

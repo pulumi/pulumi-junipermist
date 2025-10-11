@@ -16,14 +16,14 @@ public final class SwitchSnmpConfigV3ConfigVacmSecurityToGroupContentArgs extend
     public static final SwitchSnmpConfigV3ConfigVacmSecurityToGroupContentArgs Empty = new SwitchSnmpConfigV3ConfigVacmSecurityToGroupContentArgs();
 
     /**
-     * Refer to group_name under access
+     * Refer to groupName under access
      * 
      */
     @Import(name="group")
     private @Nullable Output<String> group;
 
     /**
-     * @return Refer to group_name under access
+     * @return Refer to groupName under access
      * 
      */
     public Optional<Output<String>> group() {
@@ -63,7 +63,7 @@ public final class SwitchSnmpConfigV3ConfigVacmSecurityToGroupContentArgs extend
         }
 
         /**
-         * @param group Refer to group_name under access
+         * @param group Refer to groupName under access
          * 
          * @return builder
          * 
@@ -74,7 +74,7 @@ public final class SwitchSnmpConfigV3ConfigVacmSecurityToGroupContentArgs extend
         }
 
         /**
-         * @param group Refer to group_name under access
+         * @param group Refer to groupName under access
          * 
          * @return builder
          * 

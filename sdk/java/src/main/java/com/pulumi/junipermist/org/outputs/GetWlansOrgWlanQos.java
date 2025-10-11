@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWlansOrgWlanQos {
     /**
-     * @return enum: `background`, `best_effort`, `video`, `voice`
+     * @return enum: `background`, `bestEffort`, `video`, `voice`
      * 
      */
     private String class_;
@@ -24,7 +24,7 @@ public final class GetWlansOrgWlanQos {
 
     private GetWlansOrgWlanQos() {}
     /**
-     * @return enum: `background`, `best_effort`, `video`, `voice`
+     * @return enum: `background`, `bestEffort`, `video`, `voice`
      * 
      */
     public String class_() {

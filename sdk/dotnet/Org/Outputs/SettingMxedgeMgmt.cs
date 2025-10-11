@@ -17,11 +17,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly bool? FipsEnabled;
         public readonly string? MistPassword;
         /// <summary>
-        /// enum: `dhcp`, `disabled`, `static`
+        /// enum: `Dhcp`, `Disabled`, `Static`
         /// </summary>
         public readonly string? OobIpType;
         /// <summary>
-        /// enum: `autoconf`, `dhcp`, `disabled`, `static`
+        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
         /// </summary>
         public readonly string? OobIpType6;
         public readonly string? RootPassword;

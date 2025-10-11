@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? GroupName;
         public readonly ImmutableArray<string> Targets;
         /// <summary>
-        /// enum: `all`, `v1`, `v2`
+        /// enum: `All`, `V1`, `V2`
         /// </summary>
         public readonly string? Version;
 

@@ -14,19 +14,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class ApitokenPrivilege
     {
         /// <summary>
-        /// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+        /// access permissions. enum: `Admin`, `Helpdesk`, `Installer`, `Read`, `Write`
         /// </summary>
         public readonly string Role;
         /// <summary>
-        /// enum: `org`, `site`, `sitegroup`
+        /// enum: `Org`, `Site`, `Sitegroup`
         /// </summary>
         public readonly string Scope;
         /// <summary>
-        /// Required if `scope`==`site`
+        /// Required if `Scope`==`Site`
         /// </summary>
         public readonly string? SiteId;
         /// <summary>
-        /// Required if `scope`==`sitegroup`
+        /// Required if `Scope`==`Sitegroup`
         /// </summary>
         public readonly string? SitegroupId;
 

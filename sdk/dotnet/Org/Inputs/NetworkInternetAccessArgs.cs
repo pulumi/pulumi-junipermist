@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.NetworkInternetAccessDestinationNatArgs>? _destinationNat;
 
         /// <summary>
-        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
+        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `InternalIp` or `Port` must be defined
         /// </summary>
         public InputMap<Inputs.NetworkInternetAccessDestinationNatArgs> DestinationNat
         {
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+        /// By default, all access is allowed, to only allow certain traffic, make `Restricted`=`True` and define service_policies
         /// </summary>
         [Input("restricted")]
         public Input<bool>? Restricted { get; set; }

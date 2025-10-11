@@ -15,6 +15,8 @@ namespace Pulumi.JuniperMist.Org
     /// An Org API token is a unique identifier used by an application to authenticate and access the Mist APIs. These tokens are used to authenticate requests made to the API server and ensure secure access to the API. They are not bound to any specific user and provide access to the organization as a whole.
     /// Organization tokens support different privileges and can only be used for the specific organization they are generated for.
     /// Rate limiting is done on an individual token basis, so if one token reaches its rate limit, it does not impact other tokens.
+    /// 
+    /// ## Example Usage
     /// </summary>
     [JuniperMistResourceType("junipermist:org/apitoken:Apitoken")]
     public partial class Apitoken : global::Pulumi.CustomResource

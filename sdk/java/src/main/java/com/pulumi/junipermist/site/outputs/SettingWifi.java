@@ -20,7 +20,7 @@ public final class SettingWifi {
     private @Nullable Boolean disable11k;
     private @Nullable Boolean disableRadiosWhenPowerConstrained;
     /**
-     * @return When proxy_arp is enabled, check for arp spoofing.
+     * @return When proxyArp is enabled, check for arp spoofing.
      * 
      */
     private @Nullable Boolean enableArpSpoofCheck;
@@ -86,7 +86,7 @@ public final class SettingWifi {
         return Optional.ofNullable(this.disableRadiosWhenPowerConstrained);
     }
     /**
-     * @return When proxy_arp is enabled, check for arp spoofing.
+     * @return When proxyArp is enabled, check for arp spoofing.
      * 
      */
     public Optional<Boolean> enableArpSpoofCheck() {

@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string Email;
         /// <summary>
-        /// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
+        /// Expire time for this PSK key (epoch time in seconds). Default `Null` (as no expiration)
         /// </summary>
         public readonly int ExpireTime;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `Usage`==`Single`, the mac that this PSK ties to, empty if `auto-binding`
         /// </summary>
         public readonly string Mac;
         /// <summary>
@@ -71,7 +71,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string Ssid;
         /// <summary>
-        /// enum: `macs`, `multi`, `single`
+        /// enum: `Macs`, `Multi`, `Single`
         /// </summary>
         public readonly string Usage;
         public readonly string VlanId;

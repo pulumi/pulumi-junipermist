@@ -24,7 +24,7 @@ public final class DeviceprofileApEslConfig {
      */
     private @Nullable Integer channel;
     /**
-     * @return usb_config is ignored if esl_config enabled
+     * @return usb_config is ignored if eslConfig enabled
      * 
      */
     private @Nullable Boolean enabled;
@@ -39,7 +39,7 @@ public final class DeviceprofileApEslConfig {
      */
     private @Nullable Integer port;
     /**
-     * @return note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+     * @return note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
      * 
      */
     private @Nullable String type;
@@ -70,7 +70,7 @@ public final class DeviceprofileApEslConfig {
         return Optional.ofNullable(this.channel);
     }
     /**
-     * @return usb_config is ignored if esl_config enabled
+     * @return usb_config is ignored if eslConfig enabled
      * 
      */
     public Optional<Boolean> enabled() {
@@ -91,7 +91,7 @@ public final class DeviceprofileApEslConfig {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return note: ble_config will be ignored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+     * @return note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
      * 
      */
     public Optional<String> type() {

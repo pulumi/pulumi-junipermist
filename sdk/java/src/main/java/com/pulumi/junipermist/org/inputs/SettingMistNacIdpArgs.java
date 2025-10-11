@@ -18,14 +18,14 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
     public static final SettingMistNacIdpArgs Empty = new SettingMistNacIdpArgs();
 
     /**
-     * When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+     * When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
      * 
      */
     @Import(name="excludeRealms")
     private @Nullable Output<List<String>> excludeRealms;
 
     /**
-     * @return When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+     * @return When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
      * 
      */
     public Optional<Output<List<String>>> excludeRealms() {
@@ -33,14 +33,14 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * ID of the `mist_nacidp`
+     * ID of the `mistNacidp`
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return ID of the `mist_nacidp`
+     * @return ID of the `mistNacidp`
      * 
      */
     public Output<String> id() {
@@ -93,7 +93,7 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param excludeRealms When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+         * @param excludeRealms When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param excludeRealms When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+         * @param excludeRealms When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param excludeRealms When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+         * @param excludeRealms When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param id ID of the `mist_nacidp`
+         * @param id ID of the `mistNacidp`
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param id ID of the `mist_nacidp`
+         * @param id ID of the `mistNacidp`
          * 
          * @return builder
          * 

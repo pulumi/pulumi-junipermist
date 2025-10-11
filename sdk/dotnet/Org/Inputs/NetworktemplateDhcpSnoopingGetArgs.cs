@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// If `all_networks`==`false`, list of network with DHCP snooping enabled
+        /// If `AllNetworks`==`False`, list of network with DHCP snooping enabled
         /// </summary>
         public InputList<string> Networks
         {

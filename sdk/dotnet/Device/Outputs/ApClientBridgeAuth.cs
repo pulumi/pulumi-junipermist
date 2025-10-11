@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly string? Psk;
         /// <summary>
-        /// wpa2-AES/CCMPp is assumed when `type`==`psk`. enum: `open`, `psk`
+        /// wpa2-AES/CCMPp is assumed when `Type`==`Psk`. enum: `Open`, `Psk`
         /// </summary>
         public readonly string? Type;
 

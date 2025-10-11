@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool? Disable11k;
         public readonly bool? DisableRadiosWhenPowerConstrained;
         /// <summary>
-        /// When proxy_arp is enabled, check for arp spoofing.
+        /// When ProxyArp is enabled, check for arp spoofing.
         /// </summary>
         public readonly bool? EnableArpSpoofCheck;
         public readonly bool? EnableSharedRadioScanning;
@@ -57,7 +57,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? MeshSsid;
         /// <summary>
-        /// enum: `default`, `disabled`, `enabled`
+        /// enum: `Default`, `Disabled`, `Enabled`
         /// </summary>
         public readonly string? ProxyArp;
 

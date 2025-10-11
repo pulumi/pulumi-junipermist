@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSwitchMgmt {
     /**
-     * @return AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * @return AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
      * 
      */
     private @Nullable Integer apAffinityThreshold;
@@ -81,7 +81,7 @@ public final class NetworktemplateSwitchMgmt {
 
     private NetworktemplateSwitchMgmt() {}
     /**
-     * @return AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * @return AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
      * 
      */
     public Optional<Integer> apAffinityThreshold() {

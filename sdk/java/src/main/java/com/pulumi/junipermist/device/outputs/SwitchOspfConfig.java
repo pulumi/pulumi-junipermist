@@ -25,12 +25,12 @@ public final class SwitchOspfConfig {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * @return optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
      * 
      */
     private @Nullable String exportPolicy;
     /**
-     * @return optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * @return optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
      * 
      */
     private @Nullable String importPolicy;
@@ -52,14 +52,14 @@ public final class SwitchOspfConfig {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * @return optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
      * 
      */
     public Optional<String> exportPolicy() {
         return Optional.ofNullable(this.exportPolicy);
     }
     /**
-     * @return optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+     * @return optional, for basic scenario, `importPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
      * 
      */
     public Optional<String> importPolicy() {

@@ -14,19 +14,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplatePortConfigVpnPaths
     {
         /// <summary>
-        /// Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`
+        /// Only if the VPN `Type`==`HubSpoke`. enum: `Broadband`, `Lte`
         /// </summary>
         public readonly string? BfdProfile;
         /// <summary>
-        /// Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only
+        /// Only if the VPN `Type`==`HubSpoke`. Whether to use tunnel mode. SSR only
         /// </summary>
         public readonly bool? BfdUseTunnelMode;
         /// <summary>
-        /// Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+        /// Only if the VPN `Type`==`HubSpoke`. For a given VPN, when `path_selection.strategy`==`Simple`, the preference for a path (lower is preferred)
         /// </summary>
         public readonly int? Preference;
         /// <summary>
-        /// If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+        /// If the VPN `Type`==`HubSpoke`, enum: `Hub`, `Spoke`. If the VPN `Type`==`Mesh`, enum: `Mesh`
         /// </summary>
         public readonly string? Role;
         public readonly Outputs.GatewaytemplatePortConfigVpnPathsTrafficShaping? TrafficShaping;

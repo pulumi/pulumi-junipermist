@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string Name;
         public readonly string Tag;
         /// <summary>
-        /// enum: `inform`, `trap`
+        /// enum: `Inform`, `Trap`
         /// </summary>
         public readonly string Type;
 

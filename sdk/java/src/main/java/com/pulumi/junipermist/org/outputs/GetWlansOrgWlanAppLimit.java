@@ -21,7 +21,7 @@ public final class GetWlansOrgWlanAppLimit {
     private Map<String,Integer> apps;
     private Boolean enabled;
     /**
-     * @return Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
+     * @return Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
      * 
      */
     private Map<String,Integer> wxtagIds;
@@ -39,7 +39,7 @@ public final class GetWlansOrgWlanAppLimit {
         return this.enabled;
     }
     /**
-     * @return Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
+     * @return Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
      * 
      */
     public Map<String,Integer> wxtagIds() {

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchSnmpConfigV3ConfigVacmSecurityToGroupContent {
     /**
-     * @return Refer to group_name under access
+     * @return Refer to groupName under access
      * 
      */
     private @Nullable String group;
@@ -20,7 +20,7 @@ public final class SwitchSnmpConfigV3ConfigVacmSecurityToGroupContent {
 
     private SwitchSnmpConfigV3ConfigVacmSecurityToGroupContent() {}
     /**
-     * @return Refer to group_name under access
+     * @return Refer to groupName under access
      * 
      */
     public Optional<String> group() {

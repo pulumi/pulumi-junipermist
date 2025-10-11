@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string PortId;
         public readonly string RouterName;
         /// <summary>
-        /// `ipsec`for SRX, `svr` for 128T
+        /// `Ipsec`for SRX, `Svr` for 128T
         /// </summary>
         public readonly string Type;
         public readonly bool Up;

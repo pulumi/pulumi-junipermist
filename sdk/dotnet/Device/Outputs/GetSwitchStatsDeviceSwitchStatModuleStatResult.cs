@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string CpldVersion;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult CpuStat;
         /// <summary>
-        /// Used to report all error states the device node is running into. An error should always have `type` and `since` fields, and could have some other fields specific to that type.
+        /// Used to report all error states the device node is running into. An error should always have `Type` and `Since` fields, and could have some other fields specific to that type.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatModuleStatErrorResult> Errors;
         public readonly ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatModuleStatFanResult> Fans;
@@ -50,7 +50,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatModuleStatVcLinkResult> VcLinks;
         public readonly string VcMode;
         /// <summary>
-        /// enum: `master`, `backup`, `linecard`
+        /// enum: `Master`, `Backup`, `Linecard`
         /// </summary>
         public readonly string VcRole;
         public readonly string VcState;

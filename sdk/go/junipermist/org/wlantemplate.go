@@ -18,6 +18,8 @@ import (
 // WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
 // They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
 //
+// ## Example Usage
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_wlantemplate` with:

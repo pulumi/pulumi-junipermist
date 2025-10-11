@@ -14,19 +14,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetServicesOrgServiceResult
     {
         /// <summary>
-        /// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+        /// If `Type`==`Custom`, ip subnets (e.g. 10.0.0.0/8)
         /// </summary>
         public readonly ImmutableArray<string> Addresses;
         /// <summary>
-        /// When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+        /// When `Type`==`AppCategories`, list of application categories are available through List App Category Definitions
         /// </summary>
         public readonly ImmutableArray<string> AppCategories;
         /// <summary>
-        /// When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+        /// When `Type`==`AppCategories`, list of application categories are available through List App Sub Category Definitions
         /// </summary>
         public readonly ImmutableArray<string> AppSubcategories;
         /// <summary>
-        /// When `type`==`apps`, list of applications are available through:
+        /// When `Type`==`Apps`, list of applications are available through:
         ///   * List Applications
         ///   * List Gateway Applications
         ///   * /insight/top_app_by-bytes?wired=true
@@ -47,11 +47,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string Description;
         public readonly string Dscp;
         /// <summary>
-        /// enum: `non_revertable`, `none`, `revertable`
+        /// enum: `NonRevertable`, `None`, `Revertable`
         /// </summary>
         public readonly string FailoverPolicy;
         /// <summary>
-        /// If `type`==`custom`, web filtering
+        /// If `Type`==`Custom`, web filtering
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         /// <summary>
@@ -80,12 +80,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool SleEnabled;
         /// <summary>
-        /// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        /// When `Type`==`Custom`, optional, if it doesn't exist, http and https is assumed
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServicesOrgServiceSpecResult> Specs;
         public readonly bool SsrRelaxedTcpStateEnforcement;
         /// <summary>
-        /// when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
+        /// when `TrafficType`==`Custom`. enum: `BestEffort`, `High`, `Low`, `Medium`
         /// </summary>
         public readonly string TrafficClass;
         /// <summary>
@@ -93,11 +93,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string TrafficType;
         /// <summary>
-        /// enum: `app_categories`, `apps`, `custom`, `urls`
+        /// enum: `AppCategories`, `Apps`, `Custom`, `Urls`
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// When `type`==`urls`, no need for spec as URL can encode the ports being used
+        /// When `Type`==`Urls`, no need for spec as URL can encode the ports being used
         /// </summary>
         public readonly ImmutableArray<string> Urls;
 

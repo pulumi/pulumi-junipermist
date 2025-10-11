@@ -18,7 +18,7 @@ public final class DeviceprofileGatewayPortConfigWanSourceNat {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return If alternative nat_pool is desired
+     * @return If alternative natPool is desired
      * 
      */
     private @Nullable String natPool;
@@ -32,7 +32,7 @@ public final class DeviceprofileGatewayPortConfigWanSourceNat {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return If alternative nat_pool is desired
+     * @return If alternative natPool is desired
      * 
      */
     public Optional<String> natPool() {

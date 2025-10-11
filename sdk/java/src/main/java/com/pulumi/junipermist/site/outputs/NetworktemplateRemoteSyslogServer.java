@@ -41,7 +41,7 @@ public final class NetworktemplateRemoteSyslogServer {
      */
     private @Nullable String severity;
     /**
-     * @return If source_address is configured, will use the vlan firstly otherwise use source_ip
+     * @return If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
      * 
      */
     private @Nullable String sourceAddress;
@@ -96,7 +96,7 @@ public final class NetworktemplateRemoteSyslogServer {
         return Optional.ofNullable(this.severity);
     }
     /**
-     * @return If source_address is configured, will use the vlan firstly otherwise use source_ip
+     * @return If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
      * 
      */
     public Optional<String> sourceAddress() {

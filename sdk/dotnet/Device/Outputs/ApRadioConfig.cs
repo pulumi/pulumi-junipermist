@@ -27,7 +27,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? AntGain6;
         /// <summary>
-        /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+        /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
         /// </summary>
         public readonly string? AntennaMode;
         /// <summary>
@@ -35,7 +35,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly Outputs.ApRadioConfigBand24? Band24;
         /// <summary>
-        /// enum: `24`, `5`, `6`, `auto`
+        /// enum: `24`, `5`, `6`, `Auto`
         /// </summary>
         public readonly string? Band24Usage;
         /// <summary>
@@ -51,7 +51,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly Outputs.ApRadioConfigBand6? Band6;
         /// <summary>
-        /// Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+        /// Let RRM control everything, only the `Channels` and `AntGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
         /// </summary>
         public readonly bool? FullAutomaticRrm;
         /// <summary>

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        /// If `Type`==`Local` or `Type6`==`Local` - optional, if not defined, system one will be used
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -28,9 +28,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        /// If `Type`==`Local` or `Type6`==`Local` - optional, if not defined, system one will be used
         /// </summary>
-        [Obsolete(@"Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead")]
+        [Obsolete(@"Configuring `DnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `Options` instead")]
         public InputList<string> DnsSuffixes
         {
             get => _dnsSuffixes ?? (_dnsSuffixes = new InputList<string>());
@@ -41,7 +41,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayDhcpdConfigConfigFixedBindingsArgs>? _fixedBindings;
 
         /// <summary>
-        /// If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
+        /// If `Type`==`Local` or `Type6`==`Local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         /// </summary>
         public InputMap<Inputs.GatewayDhcpdConfigConfigFixedBindingsArgs> FixedBindings
         {
@@ -50,31 +50,31 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// If `type`==`local` - optional, `ip` will be used if not provided
+        /// If `Type`==`Local` - optional, `Ip` will be used if not provided
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// If `type6`==`local`
+        /// If `Type6`==`Local`
         /// </summary>
         [Input("ip6End")]
         public Input<string>? Ip6End { get; set; }
 
         /// <summary>
-        /// If `type6`==`local`
+        /// If `Type6`==`Local`
         /// </summary>
         [Input("ip6Start")]
         public Input<string>? Ip6Start { get; set; }
 
         /// <summary>
-        /// If `type`==`local`
+        /// If `Type`==`Local`
         /// </summary>
         [Input("ipEnd")]
         public Input<string>? IpEnd { get; set; }
 
         /// <summary>
-        /// If `type`==`local`
+        /// If `Type`==`Local`
         /// </summary>
         [Input("ipStart")]
         public Input<string>? IpStart { get; set; }
@@ -89,7 +89,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayDhcpdConfigConfigOptionsArgs>? _options;
 
         /// <summary>
-        /// If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+        /// If `Type`==`Local` or `Type6`==`Local`. Property key is the DHCP option number
         /// </summary>
         public InputMap<Inputs.GatewayDhcpdConfigConfigOptionsArgs> Options
         {
@@ -98,7 +98,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        /// `ServerIdOverride`==`True` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
         /// should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         /// </summary>
         [Input("serverIdOverride")]
@@ -108,7 +108,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _servers;
 
         /// <summary>
-        /// If `type`==`relay`
+        /// If `Type`==`Relay`
         /// </summary>
         public InputList<string> Servers
         {
@@ -120,7 +120,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _serversv6s;
 
         /// <summary>
-        /// If `type6`==`relay`
+        /// If `Type6`==`Relay`
         /// </summary>
         public InputList<string> Serversv6s
         {
@@ -129,13 +129,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+        /// enum: `Local` (DHCP Server), `None`, `Relay` (DHCP Relay)
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+        /// enum: `Local` (DHCP Server), `None`, `Relay` (DHCP Relay)
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayDhcpdConfigConfigVendorEncapsulatedArgs>? _vendorEncapsulated;
 
         /// <summary>
-        /// If `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+        /// If `Type`==`Local` or `Type6`==`Local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
         ///   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
         ///   * sub option code: 1-255, sub-option code
         /// </summary>

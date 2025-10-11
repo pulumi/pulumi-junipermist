@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
 /**
  * This resource manages the Org VPN.
  * 
+ * ## Example Usage
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_vpn` with:
@@ -46,42 +48,42 @@ public class Vpn extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.orgId);
     }
     /**
-     * Only if `type`==`hub_spoke`
+     * Only if `type`==`hubSpoke`
      * 
      */
     @Export(name="pathSelection", refs={VpnPathSelection.class}, tree="[0]")
     private Output</* @Nullable */ VpnPathSelection> pathSelection;
 
     /**
-     * @return Only if `type`==`hub_spoke`
+     * @return Only if `type`==`hubSpoke`
      * 
      */
     public Output<Optional<VpnPathSelection>> pathSelection() {
         return Codegen.optional(this.pathSelection);
     }
     /**
-     * For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
      * 
      */
     @Export(name="paths", refs={Map.class,String.class,VpnPaths.class}, tree="[0,1,2]")
     private Output<Map<String,VpnPaths>> paths;
 
     /**
-     * @return For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * @return For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
      * 
      */
     public Output<Map<String,VpnPaths>> paths() {
         return this.paths;
     }
     /**
-     * enum: `hub_spoke`, `mesh`
+     * enum: `hubSpoke`, `mesh`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return enum: `hub_spoke`, `mesh`
+     * @return enum: `hubSpoke`, `mesh`
      * 
      */
     public Output<Optional<String>> type() {

@@ -19,7 +19,7 @@ public final class GetApStatsDeviceApStatL2tpStat {
      */
     private List<GetApStatsDeviceApStatL2tpStatSession> sessions;
     /**
-     * @return enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+     * @return enum: `established`, `establishedWithSession`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
      * 
      */
     private String state;
@@ -43,7 +43,7 @@ public final class GetApStatsDeviceApStatL2tpStat {
         return this.sessions;
     }
     /**
-     * @return enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+     * @return enum: `established`, `establishedWithSession`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
      * 
      */
     public String state() {

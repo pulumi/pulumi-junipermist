@@ -22,7 +22,7 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean allNetworks;
     /**
-     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
      * 
      */
     private @Nullable Boolean allowDhcpd;
@@ -32,12 +32,12 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean allowMultipleSupplicants;
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
      * 
      */
     private @Nullable Boolean bypassAuthWhenServerDown;
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+     * @return Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
     private @Nullable Boolean bypassAuthWhenServerDownForUnknownClient;
@@ -67,12 +67,12 @@ public final class SwitchPortUsages {
      */
     private @Nullable String duplex;
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
      * 
      */
     private @Nullable List<String> dynamicVlanNetworks;
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` whether to enable MAC Auth
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
      * 
      */
     private @Nullable Boolean enableMacAuth;
@@ -82,32 +82,32 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean enableQos;
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
      * 
      */
     private @Nullable String guestNetwork;
     /**
-     * @return `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+     * @return `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     private @Nullable Boolean interIsolationNetworkLink;
     /**
-     * @return Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic` interSwitchLink is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     private @Nullable Boolean interSwitchLink;
     /**
-     * @return Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
+     * @return Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
      * 
      */
     private @Nullable Boolean macAuthOnly;
     /**
-     * @return Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+     * @return Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
      * 
      */
     private @Nullable Boolean macAuthPreferred;
     /**
-     * @return Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
      * 
      */
     private @Nullable String macAuthProtocol;
@@ -132,7 +132,7 @@ public final class SwitchPortUsages {
      */
     private @Nullable List<String> networks;
     /**
-     * @return Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+     * @return Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
      * 
      */
     private @Nullable Boolean persistMac;
@@ -152,12 +152,12 @@ public final class SwitchPortUsages {
      */
     private @Nullable String portNetwork;
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+     * @return Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
     private @Nullable String reauthInterval;
     /**
-     * @return Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
+     * @return Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
      * 
      */
     private @Nullable String resetDefaultWhen;
@@ -167,12 +167,12 @@ public final class SwitchPortUsages {
      */
     private @Nullable List<SwitchPortUsagesRule> rules;
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
      * 
      */
     private @Nullable String serverFailNetwork;
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
      * 
      */
     private @Nullable String serverRejectNetwork;
@@ -213,7 +213,7 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.allNetworks);
     }
     /**
-     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
      * 
      */
     public Optional<Boolean> allowDhcpd() {
@@ -227,14 +227,14 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.allowMultipleSupplicants);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
      * 
      */
     public Optional<Boolean> bypassAuthWhenServerDown() {
         return Optional.ofNullable(this.bypassAuthWhenServerDown);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+     * @return Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
     public Optional<Boolean> bypassAuthWhenServerDownForUnknownClient() {
@@ -276,14 +276,14 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.duplex);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
      * 
      */
     public List<String> dynamicVlanNetworks() {
         return this.dynamicVlanNetworks == null ? List.of() : this.dynamicVlanNetworks;
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` whether to enable MAC Auth
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
      * 
      */
     public Optional<Boolean> enableMacAuth() {
@@ -297,42 +297,42 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.enableQos);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
      * 
      */
     public Optional<String> guestNetwork() {
         return Optional.ofNullable(this.guestNetwork);
     }
     /**
-     * @return `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+     * @return `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     public Optional<Boolean> interIsolationNetworkLink() {
         return Optional.ofNullable(this.interIsolationNetworkLink);
     }
     /**
-     * @return Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic` interSwitchLink is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     public Optional<Boolean> interSwitchLink() {
         return Optional.ofNullable(this.interSwitchLink);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
+     * @return Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
      * 
      */
     public Optional<Boolean> macAuthOnly() {
         return Optional.ofNullable(this.macAuthOnly);
     }
     /**
-     * @return Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+     * @return Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
      * 
      */
     public Optional<Boolean> macAuthPreferred() {
         return Optional.ofNullable(this.macAuthPreferred);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
      * 
      */
     public Optional<String> macAuthProtocol() {
@@ -367,7 +367,7 @@ public final class SwitchPortUsages {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+     * @return Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
      * 
      */
     public Optional<Boolean> persistMac() {
@@ -395,14 +395,14 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.portNetwork);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
+     * @return Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
      * 
      */
     public Optional<String> reauthInterval() {
         return Optional.ofNullable(this.reauthInterval);
     }
     /**
-     * @return Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
+     * @return Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
      * 
      */
     public Optional<String> resetDefaultWhen() {
@@ -416,14 +416,14 @@ public final class SwitchPortUsages {
         return this.rules == null ? List.of() : this.rules;
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
      * 
      */
     public Optional<String> serverFailNetwork() {
         return Optional.ofNullable(this.serverFailNetwork);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
      * 
      */
     public Optional<String> serverRejectNetwork() {

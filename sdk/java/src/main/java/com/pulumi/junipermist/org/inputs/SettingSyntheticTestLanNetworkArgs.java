@@ -32,14 +32,14 @@ public final class SettingSyntheticTestLanNetworkArgs extends com.pulumi.resourc
     }
 
     /**
-     * app name comes from `custom_probes` above or /const/synthetic_test_probes
+     * app name comes from `customProbes` above or /const/synthetic_test_probes
      * 
      */
     @Import(name="probes")
     private @Nullable Output<List<String>> probes;
 
     /**
-     * @return app name comes from `custom_probes` above or /const/synthetic_test_probes
+     * @return app name comes from `customProbes` above or /const/synthetic_test_probes
      * 
      */
     public Optional<Output<List<String>>> probes() {
@@ -103,7 +103,7 @@ public final class SettingSyntheticTestLanNetworkArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param probes app name comes from `custom_probes` above or /const/synthetic_test_probes
+         * @param probes app name comes from `customProbes` above or /const/synthetic_test_probes
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class SettingSyntheticTestLanNetworkArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param probes app name comes from `custom_probes` above or /const/synthetic_test_probes
+         * @param probes app name comes from `customProbes` above or /const/synthetic_test_probes
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class SettingSyntheticTestLanNetworkArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param probes app name comes from `custom_probes` above or /const/synthetic_test_probes
+         * @param probes app name comes from `customProbes` above or /const/synthetic_test_probes
          * 
          * @return builder
          * 

@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string> Tag { get; set; } = null!;
 
         /// <summary>
-        /// enum: `inform`, `trap`
+        /// enum: `Inform`, `Trap`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

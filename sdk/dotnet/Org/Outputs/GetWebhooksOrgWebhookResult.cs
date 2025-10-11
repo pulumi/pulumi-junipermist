@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+        /// If `Type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         /// </summary>
         public readonly ImmutableDictionary<string, string> Headers;
         /// <summary>
@@ -38,44 +38,44 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`
         /// </summary>
         public readonly string Oauth2ClientId;
         /// <summary>
-        /// Required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`
         /// </summary>
         public readonly string Oauth2ClientSecret;
         /// <summary>
-        /// required when `type`==`oauth2`. enum: `client_credentials`, `password`
+        /// required when `Type`==`Oauth2`. enum: `ClientCredentials`, `Password`
         /// </summary>
         public readonly string Oauth2GrantType;
         /// <summary>
-        /// Required when `oauth2_grant_type`==`password`
+        /// Required when `Oauth2GrantType`==`Password`
         /// </summary>
         public readonly string Oauth2Password;
         /// <summary>
-        /// Required when `type`==`oauth2`, if provided, will be used in the token request
+        /// Required when `Type`==`Oauth2`, if provided, will be used in the token request
         /// </summary>
         public readonly ImmutableArray<string> Oauth2Scopes;
         /// <summary>
-        /// Required when `type`==`oauth2`
+        /// Required when `Type`==`Oauth2`
         /// </summary>
         public readonly string Oauth2TokenUrl;
         /// <summary>
-        /// Required when `oauth2_grant_type`==`password`
+        /// Required when `Oauth2GrantType`==`Password`
         /// </summary>
         public readonly string Oauth2Username;
         public readonly string OrgId;
         /// <summary>
-        /// Only if `type`=`http-post`
+        /// Only if `Type`=`http-post`
         /// </summary>
         public readonly string Secret;
         /// <summary>
-        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `True`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         /// </summary>
         public readonly bool SingleEventPerMessage;
         /// <summary>
-        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
+        /// Required if `Type`=`Splunk`. If SplunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         /// </summary>
         public readonly string SplunkToken;
         /// <summary>
@@ -83,7 +83,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Topics;
         /// <summary>
-        /// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        /// enum: `aws-sns`, `google-pubsub`, `http-post`, `Oauth2`, `Splunk`
         /// </summary>
         public readonly string Type;
         public readonly string Url;

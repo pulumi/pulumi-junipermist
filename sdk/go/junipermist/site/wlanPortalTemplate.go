@@ -20,6 +20,8 @@ import (
 //
 // **Notes:**
 // * There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template
+//
+// ## Example Usage
 type WlanPortalTemplate struct {
 	pulumi.CustomResourceState
 

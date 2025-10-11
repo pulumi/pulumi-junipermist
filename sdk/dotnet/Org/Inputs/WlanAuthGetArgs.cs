@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? EnableMacAuth { get; set; }
 
         /// <summary>
-        /// When `type`==`wep`
+        /// When `Type`==`Wep`
         /// </summary>
         [Input("keyIdx")]
         public Input<int>? KeyIdx { get; set; }
@@ -49,13 +49,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// When `type`==`psk`, whether to only use multi_psk
+        /// When `Type`==`Psk`, whether to only use multi_psk
         /// </summary>
         [Input("multiPskOnly")]
         public Input<bool>? MultiPskOnly { get; set; }
 
         /// <summary>
-        /// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+        /// if `Type`==`Open`. enum: `Disabled`, `Enabled` (means transition mode), `Required`
         /// </summary>
         [Input("owe")]
         public Input<string>? Owe { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _pairwises;
 
         /// <summary>
-        /// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+        /// When `Type`=`Psk` or `Type`=`Eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `Wpa3`
         /// </summary>
         public InputList<string> Pairwises
         {
@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// When `multi_psk_only`==`true`, whether private wlan is enabled
+        /// When `MultiPskOnly`==`True`, whether private wlan is enabled
         /// </summary>
         [Input("privateWlan")]
         public Input<bool>? PrivateWlan { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _psk;
 
         /// <summary>
-        /// When `type`==`psk`, 8-64 characters, or 64 hex characters
+        /// When `Type`==`Psk`, 8-64 characters, or 64 hex characters
         /// </summary>
         public Input<string>? Psk
         {
@@ -95,7 +95,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+        /// enum: `Eap`, `Eap192`, `Open`, `Psk`, `psk-tkip`, `psk-wpa2-tkip`, `Wep`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

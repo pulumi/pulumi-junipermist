@@ -13,25 +13,25 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayPortConfigVpnPathsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`
+        /// Only if the VPN `Type`==`HubSpoke`. enum: `Broadband`, `Lte`
         /// </summary>
         [Input("bfdProfile")]
         public Input<string>? BfdProfile { get; set; }
 
         /// <summary>
-        /// Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only
+        /// Only if the VPN `Type`==`HubSpoke`. Whether to use tunnel mode. SSR only
         /// </summary>
         [Input("bfdUseTunnelMode")]
         public Input<bool>? BfdUseTunnelMode { get; set; }
 
         /// <summary>
-        /// Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+        /// Only if the VPN `Type`==`HubSpoke`. For a given VPN, when `path_selection.strategy`==`Simple`, the preference for a path (lower is preferred)
         /// </summary>
         [Input("preference")]
         public Input<int>? Preference { get; set; }
 
         /// <summary>
-        /// If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+        /// If the VPN `Type`==`HubSpoke`, enum: `Hub`, `Spoke`. If the VPN `Type`==`Mesh`, enum: `Mesh`
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

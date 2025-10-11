@@ -34,7 +34,7 @@ public final class NacruleNotMatching {
     private @Nullable List<String> models;
     private @Nullable List<String> nactags;
     /**
-     * @return List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+     * @return List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
      * 
      */
     private @Nullable List<String> osTypes;
@@ -88,7 +88,7 @@ public final class NacruleNotMatching {
         return this.nactags == null ? List.of() : this.nactags;
     }
     /**
-     * @return List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+     * @return List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
      * 
      */
     public List<String> osTypes() {

@@ -20,7 +20,7 @@ public final class GetWlansSiteWlanBonjour {
      */
     private List<String> additionalVlanIds;
     /**
-     * @return Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+     * @return Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
      * 
      */
     private Boolean enabled;
@@ -40,7 +40,7 @@ public final class GetWlansSiteWlanBonjour {
         return this.additionalVlanIds;
     }
     /**
-     * @return Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+     * @return Whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
      * 
      */
     public Boolean enabled() {

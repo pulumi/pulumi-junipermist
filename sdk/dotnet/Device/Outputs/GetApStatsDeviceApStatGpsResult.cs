@@ -31,8 +31,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly double Longitude;
         /// <summary>
         /// The origin of the GPS data. enum:
-        ///   * `gps`: from this device’s GPS estimates
-        ///   * `other_ap` from neighboring device GPS estimates
+        ///   * `Gps`: from this device’s GPS estimates
+        ///   * `OtherAp` from neighboring device GPS estimates
         /// </summary>
         public readonly string Src;
         /// <summary>

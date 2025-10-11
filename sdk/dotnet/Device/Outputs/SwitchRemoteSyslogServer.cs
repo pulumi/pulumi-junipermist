@@ -16,14 +16,14 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableArray<Outputs.SwitchRemoteSyslogServerContent> Contents;
         public readonly bool? ExplicitPriority;
         /// <summary>
-        /// enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+        /// enum: `Any`, `Authorization`, `change-log`, `Config`, `conflict-log`, `Daemon`, `Dfc`, `External`, `Firewall`, `Ftp`, `interactive-commands`, `Kernel`, `Ntp`, `Pfe`, `Security`, `User`
         /// </summary>
         public readonly string? Facility;
         public readonly string? Host;
         public readonly string? Match;
         public readonly string? Port;
         /// <summary>
-        /// enum: `tcp`, `udp`
+        /// enum: `Tcp`, `Udp`
         /// </summary>
         public readonly string? Protocol;
         public readonly string? RoutingInstance;
@@ -32,11 +32,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ServerName;
         /// <summary>
-        /// enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+        /// enum: `Alert`, `Any`, `Critical`, `Emergency`, `Error`, `Info`, `Notice`, `Warning`
         /// </summary>
         public readonly string? Severity;
         /// <summary>
-        /// If source_address is configured, will use the vlan firstly otherwise use source_ip
+        /// If SourceAddress is configured, will use the vlan firstly otherwise use source_ip
         /// </summary>
         public readonly string? SourceAddress;
         public readonly bool? StructuredData;

@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> RadiusGroups;
         /// <summary>
-        /// how bonjour services should be discovered for the same WLAN. enum: `same_ap`, `same_map`, `same_site`
+        /// how bonjour services should be discovered for the same WLAN. enum: `SameAp`, `SameMap`, `SameSite`
         /// </summary>
         public readonly string? Scope;
 

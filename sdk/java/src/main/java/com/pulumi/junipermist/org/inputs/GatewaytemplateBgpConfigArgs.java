@@ -37,7 +37,7 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
+     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
      *   * 1000 if `type`==`external`
      *   * 350 `type`==`internal`
      * 
@@ -46,7 +46,7 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
     private @Nullable Output<Integer> bfdMinimumInterval;
 
     /**
-     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
      *   * 1000 if `type`==`external`
      *   * 350 `type`==`internal`
      * 
@@ -56,14 +56,14 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
+     * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
      * 
      */
     @Import(name="bfdMultiplier")
     private @Nullable Output<Integer> bfdMultiplier;
 
     /**
-     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
+     * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
      * 
      */
     public Optional<Output<Integer>> bfdMultiplier() {
@@ -190,14 +190,14 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
     @Import(name="neighborAs")
     private @Nullable Output<String> neighborAs;
 
     /**
-     * @return Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+     * @return Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
      * 
      */
     public Optional<Output<String>> neighborAs() {
@@ -406,7 +406,7 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param bfdMinimumInterval Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
+         * @param bfdMinimumInterval Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
          *   * 1000 if `type`==`external`
          *   * 350 `type`==`internal`
          * 
@@ -419,7 +419,7 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param bfdMinimumInterval Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_multiplier is configured alone. Default:
+         * @param bfdMinimumInterval Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMultiplier is configured alone. Default:
          *   * 1000 if `type`==`external`
          *   * 350 `type`==`internal`
          * 
@@ -431,7 +431,7 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param bfdMultiplier Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
+         * @param bfdMultiplier Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param bfdMultiplier Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfd_minimum_interval_is_configured alone
+         * @param bfdMultiplier Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`, when bfdMinimumIntervalIsConfigured alone
          * 
          * @return builder
          * 
@@ -617,7 +617,7 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param neighborAs Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * @param neighborAs Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param neighborAs Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
+         * @param neighborAs Neighbor AS. If `type`==`internal`, must be equal to `localAs`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          * 
          * @return builder
          * 

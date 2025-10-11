@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+        /// If `Type`==`Server` or `Type6`==`Server` - optional, if not defined, system one will be used
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+        /// If `Type`==`Server` or `Type6`==`Server` - optional, if not defined, system one will be used
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchDhcpdConfigConfigFixedBindingsArgs>? _fixedBindings;
 
         /// <summary>
-        /// If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
+        /// If `Type`==`Server` or `Type6`==`Server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
         /// </summary>
         public InputMap<Inputs.SwitchDhcpdConfigConfigFixedBindingsArgs> FixedBindings
         {
@@ -49,31 +49,31 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// If `type`==`server`  - optional, `ip` will be used if not provided
+        /// If `Type`==`Server`  - optional, `Ip` will be used if not provided
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// If `type`==`server`
+        /// If `Type`==`Server`
         /// </summary>
         [Input("ipEnd")]
         public Input<string>? IpEnd { get; set; }
 
         /// <summary>
-        /// If `type6`==`server`
+        /// If `Type6`==`Server`
         /// </summary>
         [Input("ipEnd6")]
         public Input<string>? IpEnd6 { get; set; }
 
         /// <summary>
-        /// If `type`==`server`
+        /// If `Type`==`Server`
         /// </summary>
         [Input("ipStart")]
         public Input<string>? IpStart { get; set; }
 
         /// <summary>
-        /// If `type6`==`server`
+        /// If `Type6`==`Server`
         /// </summary>
         [Input("ipStart6")]
         public Input<string>? IpStart6 { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchDhcpdConfigConfigOptionsArgs>? _options;
 
         /// <summary>
-        /// If `type`==`server` or `type6`==`server`. Property key is the DHCP option number
+        /// If `Type`==`Server` or `Type6`==`Server`. Property key is the DHCP option number
         /// </summary>
         public InputMap<Inputs.SwitchDhcpdConfigConfigOptionsArgs> Options
         {
@@ -97,7 +97,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
+        /// `ServerIdOverride`==`True` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
         /// should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         /// </summary>
         [Input("serverIdOverride")]
@@ -107,7 +107,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _servers;
 
         /// <summary>
-        /// If `type`==`relay`
+        /// If `Type`==`Relay`
         /// </summary>
         public InputList<string> Servers
         {
@@ -119,7 +119,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _servers6s;
 
         /// <summary>
-        /// If `type6`==`relay`
+        /// If `Type6`==`Relay`
         /// </summary>
         public InputList<string> Servers6s
         {
@@ -128,13 +128,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+        /// enum: `None`, `Relay` (DHCP Relay), `Server` (DHCP Server)
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+        /// enum: `None`, `Relay` (DHCP Relay), `Server` (DHCP Server)
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }
@@ -143,7 +143,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchDhcpdConfigConfigVendorEncapsulatedArgs>? _vendorEncapsulated;
 
         /// <summary>
-        /// If `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+        /// If `Type`==`Server` or `Type6`==`Server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
         ///   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
         ///   * sub option code: 1-255, sub-option code'
         /// </summary>

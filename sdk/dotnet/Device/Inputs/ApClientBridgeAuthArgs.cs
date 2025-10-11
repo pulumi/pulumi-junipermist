@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// wpa2-AES/CCMPp is assumed when `type`==`psk`. enum: `open`, `psk`
+        /// wpa2-AES/CCMPp is assumed when `Type`==`Psk`. enum: `Open`, `Psk`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

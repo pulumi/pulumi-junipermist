@@ -13,19 +13,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class WlanPortalGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+        /// Optional if `AmazonEnabled`==`True`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable RandomMac for seamless roaming)
         /// </summary>
         [Input("allowWlanIdRoam")]
         public Input<bool>? AllowWlanIdRoam { get; set; }
 
         /// <summary>
-        /// Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+        /// Optional if `AmazonEnabled`==`True`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
         /// </summary>
         [Input("amazonClientId")]
         public Input<string>? AmazonClientId { get; set; }
 
         /// <summary>
-        /// Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
+        /// Optional if `AmazonEnabled`==`True`. Amazon OAuth2 client secret. If AmazonClientId was provided, provide a corresponding value. Else leave blank.
         /// </summary>
         [Input("amazonClientSecret")]
         public Input<string>? AmazonClientSecret { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _amazonEmailDomains;
 
         /// <summary>
-        /// Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `AmazonEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         /// </summary>
         public InputList<string> AmazonEmailDomains
         {
@@ -49,25 +49,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? AmazonEnabled { get; set; }
 
         /// <summary>
-        /// Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+        /// Optional if `AmazonEnabled`==`True`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
         /// </summary>
         [Input("amazonExpire")]
         public Input<int>? AmazonExpire { get; set; }
 
         /// <summary>
-        /// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sms`, `sponsor`, `sso`
+        /// authentication scheme. enum: `Amazon`, `Azure`, `Email`, `External`, `Facebook`, `Google`, `Microsoft`, `Multi`, `None`, `Password`, `Sms`, `Sponsor`, `Sso`
         /// </summary>
         [Input("auth")]
         public Input<string>? Auth { get; set; }
 
         /// <summary>
-        /// Required if `azure_enabled`==`true`. Azure active directory app client id
+        /// Required if `AzureEnabled`==`True`. Azure active directory app client id
         /// </summary>
         [Input("azureClientId")]
         public Input<string>? AzureClientId { get; set; }
 
         /// <summary>
-        /// Required if `azure_enabled`==`true`. Azure active directory app client secret
+        /// Required if `AzureEnabled`==`True`. Azure active directory app client secret
         /// </summary>
         [Input("azureClientSecret")]
         public Input<string>? AzureClientSecret { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? AzureExpire { get; set; }
 
         /// <summary>
-        /// Required if `azure_enabled`==`true`. Azure active directory tenant id.
+        /// Required if `AzureEnabled`==`True`. Azure active directory tenant id.
         /// </summary>
         [Input("azureTenantId")]
         public Input<string>? AzureTenantId { get; set; }
@@ -94,7 +94,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _broadnetPassword;
 
         /// <summary>
-        /// Required if `sms_provider`==`broadnet`
+        /// Required if `SmsProvider`==`Broadnet`
         /// </summary>
         public Input<string>? BroadnetPassword
         {
@@ -107,13 +107,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Required if `sms_provider`==`broadnet`
+        /// Required if `SmsProvider`==`Broadnet`
         /// </summary>
         [Input("broadnetSid")]
         public Input<string>? BroadnetSid { get; set; }
 
         /// <summary>
-        /// Required if `sms_provider`==`broadnet`
+        /// Required if `SmsProvider`==`Broadnet`
         /// </summary>
         [Input("broadnetUserId")]
         public Input<string>? BroadnetUserId { get; set; }
@@ -125,13 +125,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? BypassWhenCloudDown { get; set; }
 
         /// <summary>
-        /// Required if `sms_provider`==`clickatell`
+        /// Required if `SmsProvider`==`Clickatell`
         /// </summary>
         [Input("clickatellApiKey")]
         public Input<string>? ClickatellApiKey { get; set; }
 
         /// <summary>
-        /// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+        /// Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable RandomMac for seamless roaming)
         /// </summary>
         [Input("crossSite")]
         public Input<bool>? CrossSite { get; set; }
@@ -155,19 +155,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? Expire { get; set; }
 
         /// <summary>
-        /// Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+        /// Required if `WlanPortalAuth`==`External`. External portal URL (e.g. https://host/url) where we can append our query parameters to
         /// </summary>
         [Input("externalPortalUrl")]
         public Input<string>? ExternalPortalUrl { get; set; }
 
         /// <summary>
-        /// Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+        /// Required if `FacebookEnabled`==`True`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
         /// </summary>
         [Input("facebookClientId")]
         public Input<string>? FacebookClientId { get; set; }
 
         /// <summary>
-        /// Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
+        /// Required if `FacebookEnabled`==`True`. Facebook OAuth2 app secret. If FacebookClientId was provided, provide a corresponding value. Else leave blank.
         /// </summary>
         [Input("facebookClientSecret")]
         public Input<string>? FacebookClientSecret { get; set; }
@@ -176,7 +176,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _facebookEmailDomains;
 
         /// <summary>
-        /// Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `FacebookEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         /// </summary>
         public InputList<string> FacebookEmailDomains
         {
@@ -191,7 +191,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? FacebookEnabled { get; set; }
 
         /// <summary>
-        /// Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+        /// Optional if `FacebookEnabled`==`True`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
         /// </summary>
         [Input("facebookExpire")]
         public Input<int>? FacebookExpire { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? GoogleClientId { get; set; }
 
         /// <summary>
-        /// Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
+        /// Optional if `GoogleEnabled`==`True`. Google OAuth2 app secret. If GoogleClientId was provided, provide a corresponding value. Else leave blank.
         /// </summary>
         [Input("googleClientSecret")]
         public Input<string>? GoogleClientSecret { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _googleEmailDomains;
 
         /// <summary>
-        /// Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `GoogleEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         /// </summary>
         public InputList<string> GoogleEmailDomains
         {
@@ -239,7 +239,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? GoogleEnabled { get; set; }
 
         /// <summary>
-        /// Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
+        /// Optional if `GoogleEnabled`==`True`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
         /// </summary>
         [Input("googleExpire")]
         public Input<int>? GoogleExpire { get; set; }
@@ -248,7 +248,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _gupshupPassword;
 
         /// <summary>
-        /// Required if `sms_provider`==`gupshup`
+        /// Required if `SmsProvider`==`Gupshup`
         /// </summary>
         public Input<string>? GupshupPassword
         {
@@ -261,19 +261,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Required if `sms_provider`==`gupshup`
+        /// Required if `SmsProvider`==`Gupshup`
         /// </summary>
         [Input("gupshupUserid")]
         public Input<string>? GupshupUserid { get; set; }
 
         /// <summary>
-        /// Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+        /// Optional if `MicrosoftEnabled`==`True`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
         /// </summary>
         [Input("microsoftClientId")]
         public Input<string>? MicrosoftClientId { get; set; }
 
         /// <summary>
-        /// Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
+        /// Optional if `MicrosoftEnabled`==`True`. Microsoft 365 OAuth2 client secret. If MicrosoftClientId was provided, provide a corresponding value. Else leave blank.
         /// </summary>
         [Input("microsoftClientSecret")]
         public Input<string>? MicrosoftClientSecret { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _microsoftEmailDomains;
 
         /// <summary>
-        /// Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `MicrosoftEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         /// </summary>
         public InputList<string> MicrosoftEmailDomains
         {
@@ -297,7 +297,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? MicrosoftEnabled { get; set; }
 
         /// <summary>
-        /// Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+        /// Optional if `MicrosoftEnabled`==`True`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
         /// </summary>
         [Input("microsoftExpire")]
         public Input<int>? MicrosoftExpire { get; set; }
@@ -309,7 +309,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? PassphraseEnabled { get; set; }
 
         /// <summary>
-        /// Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+        /// Optional if `PassphraseEnabled`==`True`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `Expire`
         /// </summary>
         [Input("passphraseExpire")]
         public Input<int>? PassphraseExpire { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// Required if `passphrase_enabled`==`true`.
+        /// Required if `PassphraseEnabled`==`True`.
         /// </summary>
         public Input<string>? Password
         {
@@ -331,7 +331,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
+        /// Whether to show list of sponsor emails mentioned in `Sponsors` object as a dropdown. If both `SponsorNotifyAll` and `PredefinedSponsorsEnabled` are false, behavior is acc to `SponsorEmailDomains`
         /// </summary>
         [Input("predefinedSponsorsEnabled")]
         public Input<bool>? PredefinedSponsorsEnabled { get; set; }
@@ -349,7 +349,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _puzzelPassword;
 
         /// <summary>
-        /// Required if `sms_provider`==`puzzel`
+        /// Required if `SmsProvider`==`Puzzel`
         /// </summary>
         public Input<string>? PuzzelPassword
         {
@@ -362,13 +362,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Required if `sms_provider`==`puzzel`
+        /// Required if `SmsProvider`==`Puzzel`
         /// </summary>
         [Input("puzzelServiceId")]
         public Input<string>? PuzzelServiceId { get; set; }
 
         /// <summary>
-        /// Required if `sms_provider`==`puzzel`
+        /// Required if `SmsProvider`==`Puzzel`
         /// </summary>
         [Input("puzzelUsername")]
         public Input<string>? PuzzelUsername { get; set; }
@@ -380,37 +380,37 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? SmsEnabled { get; set; }
 
         /// <summary>
-        /// Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+        /// Optional if `SmsEnabled`==`True`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
         /// </summary>
         [Input("smsExpire")]
         public Input<int>? SmsExpire { get; set; }
 
         /// <summary>
-        /// Optional if `sms_enabled`==`true`. SMS Message format
+        /// Optional if `SmsEnabled`==`True`. SMS Message format
         /// </summary>
         [Input("smsMessageFormat")]
         public Input<string>? SmsMessageFormat { get; set; }
 
         /// <summary>
-        /// Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+        /// Optional if `SmsEnabled`==`True`. enum: `Broadnet`, `Clickatell`, `Gupshup`, `Manual`, `Puzzel`, `Smsglobal`, `Telstra`, `Twilio`
         /// </summary>
         [Input("smsProvider")]
         public Input<string>? SmsProvider { get; set; }
 
         /// <summary>
-        /// Required if `sms_provider`==`smsglobal`, Client API Key
+        /// Required if `SmsProvider`==`Smsglobal`, Client API Key
         /// </summary>
         [Input("smsglobalApiKey")]
         public Input<string>? SmsglobalApiKey { get; set; }
 
         /// <summary>
-        /// Required if `sms_provider`==`smsglobal`, Client secret
+        /// Required if `SmsProvider`==`Smsglobal`, Client secret
         /// </summary>
         [Input("smsglobalApiSecret")]
         public Input<string>? SmsglobalApiSecret { get; set; }
 
         /// <summary>
-        /// Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
+        /// Optional if `SponsorEnabled`==`True`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs PredefinedSponsorsEnabled enabled and SponsorNotifyAll disabled
         /// </summary>
         [Input("sponsorAutoApprove")]
         public Input<bool>? SponsorAutoApprove { get; set; }
@@ -419,7 +419,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _sponsorEmailDomains;
 
         /// <summary>
-        /// List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+        /// List of domain allowed for sponsor email. Required if `SponsorEnabled` is `True` and `Sponsors` is empty.
         /// </summary>
         public InputList<string> SponsorEmailDomains
         {
@@ -434,25 +434,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? SponsorEnabled { get; set; }
 
         /// <summary>
-        /// Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+        /// Optional if `SponsorEnabled`==`True`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
         /// </summary>
         [Input("sponsorExpire")]
         public Input<int>? SponsorExpire { get; set; }
 
         /// <summary>
-        /// Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
+        /// Optional if `SponsorEnabled`==`True`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
         /// </summary>
         [Input("sponsorLinkValidityDuration")]
         public Input<string>? SponsorLinkValidityDuration { get; set; }
 
         /// <summary>
-        /// Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+        /// Optional if `SponsorEnabled`==`True`. whether to notify all sponsors that are mentioned in `Sponsors` object. Both `SponsorNotifyAll` and `PredefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
         /// </summary>
         [Input("sponsorNotifyAll")]
         public Input<bool>? SponsorNotifyAll { get; set; }
 
         /// <summary>
-        /// Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
+        /// Optional if `SponsorEnabled`==`True`. If enabled, guest will get email about sponsor's action (approve/deny)
         /// </summary>
         [Input("sponsorStatusNotify")]
         public Input<bool>? SponsorStatusNotify { get; set; }
@@ -461,8 +461,8 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<string>? _sponsors;
 
         /// <summary>
-        /// object of allowed sponsors email with name. Required if `sponsor_enabled`
-        ///             is `true` and `sponsor_email_domains` is empty.
+        /// object of allowed sponsors email with name. Required if `SponsorEnabled`
+        ///             is `True` and `SponsorEmailDomains` is empty.
         /// 
         ///             Property key is the sponsor email, Property value is the sponsor name
         /// </summary>
@@ -473,73 +473,73 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+        /// Optional if `WlanPortalAuth`==`Sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         /// </summary>
         [Input("ssoDefaultRole")]
         public Input<string>? SsoDefaultRole { get; set; }
 
         /// <summary>
-        /// Optional if `wlan_portal_auth`==`sso`
+        /// Optional if `WlanPortalAuth`==`Sso`
         /// </summary>
         [Input("ssoForcedRole")]
         public Input<string>? SsoForcedRole { get; set; }
 
         /// <summary>
-        /// Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
+        /// Required if `WlanPortalAuth`==`Sso`. IDP Cert (used to verify the signed response)
         /// </summary>
         [Input("ssoIdpCert")]
         public Input<string>? SsoIdpCert { get; set; }
 
         /// <summary>
-        /// Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+        /// Optional if `WlanPortalAuth`==`Sso`, Signing algorithm for SAML Assertion. enum: `Sha1`, `Sha256`, `Sha384`, `Sha512`
         /// </summary>
         [Input("ssoIdpSignAlgo")]
         public Input<string>? SsoIdpSignAlgo { get; set; }
 
         /// <summary>
-        /// Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
+        /// Required if `WlanPortalAuth`==`Sso`, IDP Single-Sign-On URL
         /// </summary>
         [Input("ssoIdpSsoUrl")]
         public Input<string>? SsoIdpSsoUrl { get; set; }
 
         /// <summary>
-        /// Required if `wlan_portal_auth`==`sso`, IDP issuer URL
+        /// Required if `WlanPortalAuth`==`Sso`, IDP issuer URL
         /// </summary>
         [Input("ssoIssuer")]
         public Input<string>? SsoIssuer { get; set; }
 
         /// <summary>
-        /// Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+        /// Optional if `WlanPortalAuth`==`Sso`. enum: `Email`, `Unspecified`
         /// </summary>
         [Input("ssoNameidFormat")]
         public Input<string>? SsoNameidFormat { get; set; }
 
         /// <summary>
-        /// Required if `sms_provider`==`telstra`, Client ID provided by Telstra
+        /// Required if `SmsProvider`==`Telstra`, Client ID provided by Telstra
         /// </summary>
         [Input("telstraClientId")]
         public Input<string>? TelstraClientId { get; set; }
 
         /// <summary>
-        /// Required if `sms_provider`==`telstra`, Client secret provided by Telstra
+        /// Required if `SmsProvider`==`Telstra`, Client secret provided by Telstra
         /// </summary>
         [Input("telstraClientSecret")]
         public Input<string>? TelstraClientSecret { get; set; }
 
         /// <summary>
-        /// Required if `sms_provider`==`twilio`, Auth token account with twilio account
+        /// Required if `SmsProvider`==`Twilio`, Auth token account with twilio account
         /// </summary>
         [Input("twilioAuthToken")]
         public Input<string>? TwilioAuthToken { get; set; }
 
         /// <summary>
-        /// Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+        /// Required if `SmsProvider`==`Twilio`, Twilio phone number associated with the account. See example for accepted format.
         /// </summary>
         [Input("twilioPhoneNumber")]
         public Input<string>? TwilioPhoneNumber { get; set; }
 
         /// <summary>
-        /// Required if `sms_provider`==`twilio`, Account SID provided by Twilio
+        /// Required if `SmsProvider`==`Twilio`, Account SID provided by Twilio
         /// </summary>
         [Input("twilioSid")]
         public Input<string>? TwilioSid { get; set; }

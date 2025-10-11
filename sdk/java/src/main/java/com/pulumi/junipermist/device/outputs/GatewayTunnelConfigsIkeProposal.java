@@ -32,7 +32,7 @@ public final class GatewayTunnelConfigsIkeProposal {
      */
     private @Nullable String dhGroup;
     /**
-     * @return enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`
+     * @return enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
      * 
      */
     private @Nullable String encAlgo;
@@ -63,7 +63,7 @@ public final class GatewayTunnelConfigsIkeProposal {
         return Optional.ofNullable(this.dhGroup);
     }
     /**
-     * @return enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`
+     * @return enum: `3des`, `aes128`, `aes256`, `aesGcm128`, `aesGcm256`
      * 
      */
     public Optional<String> encAlgo() {

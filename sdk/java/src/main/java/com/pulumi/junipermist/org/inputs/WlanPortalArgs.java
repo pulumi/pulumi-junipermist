@@ -20,14 +20,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     public static final WlanPortalArgs Empty = new WlanPortalArgs();
 
     /**
-     * Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+     * Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
      * 
      */
     @Import(name="allowWlanIdRoam")
     private @Nullable Output<Boolean> allowWlanIdRoam;
 
     /**
-     * @return Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+     * @return Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
      * 
      */
     public Optional<Output<Boolean>> allowWlanIdRoam() {
@@ -35,14 +35,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+     * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
     @Import(name="amazonClientId")
     private @Nullable Output<String> amazonClientId;
 
     /**
-     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+     * @return Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
     public Optional<Output<String>> amazonClientId() {
@@ -50,14 +50,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
+     * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     @Import(name="amazonClientSecret")
     private @Nullable Output<String> amazonClientSecret;
 
     /**
-     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
+     * @return Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public Optional<Output<String>> amazonClientSecret() {
@@ -65,14 +65,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     @Import(name="amazonEmailDomains")
     private @Nullable Output<List<String>> amazonEmailDomains;
 
     /**
-     * @return Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     public Optional<Output<List<String>>> amazonEmailDomains() {
@@ -95,14 +95,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+     * Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
      * 
      */
     @Import(name="amazonExpire")
     private @Nullable Output<Integer> amazonExpire;
 
     /**
-     * @return Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+     * @return Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
      * 
      */
     public Optional<Output<Integer>> amazonExpire() {
@@ -125,14 +125,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `azure_enabled`==`true`. Azure active directory app client id
+     * Required if `azureEnabled`==`true`. Azure active directory app client id
      * 
      */
     @Import(name="azureClientId")
     private @Nullable Output<String> azureClientId;
 
     /**
-     * @return Required if `azure_enabled`==`true`. Azure active directory app client id
+     * @return Required if `azureEnabled`==`true`. Azure active directory app client id
      * 
      */
     public Optional<Output<String>> azureClientId() {
@@ -140,14 +140,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `azure_enabled`==`true`. Azure active directory app client secret
+     * Required if `azureEnabled`==`true`. Azure active directory app client secret
      * 
      */
     @Import(name="azureClientSecret")
     private @Nullable Output<String> azureClientSecret;
 
     /**
-     * @return Required if `azure_enabled`==`true`. Azure active directory app client secret
+     * @return Required if `azureEnabled`==`true`. Azure active directory app client secret
      * 
      */
     public Optional<Output<String>> azureClientSecret() {
@@ -185,14 +185,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `azure_enabled`==`true`. Azure active directory tenant id.
+     * Required if `azureEnabled`==`true`. Azure active directory tenant id.
      * 
      */
     @Import(name="azureTenantId")
     private @Nullable Output<String> azureTenantId;
 
     /**
-     * @return Required if `azure_enabled`==`true`. Azure active directory tenant id.
+     * @return Required if `azureEnabled`==`true`. Azure active directory tenant id.
      * 
      */
     public Optional<Output<String>> azureTenantId() {
@@ -200,14 +200,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`broadnet`
+     * Required if `smsProvider`==`broadnet`
      * 
      */
     @Import(name="broadnetPassword")
     private @Nullable Output<String> broadnetPassword;
 
     /**
-     * @return Required if `sms_provider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`
      * 
      */
     public Optional<Output<String>> broadnetPassword() {
@@ -215,14 +215,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`broadnet`
+     * Required if `smsProvider`==`broadnet`
      * 
      */
     @Import(name="broadnetSid")
     private @Nullable Output<String> broadnetSid;
 
     /**
-     * @return Required if `sms_provider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`
      * 
      */
     public Optional<Output<String>> broadnetSid() {
@@ -230,14 +230,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`broadnet`
+     * Required if `smsProvider`==`broadnet`
      * 
      */
     @Import(name="broadnetUserId")
     private @Nullable Output<String> broadnetUserId;
 
     /**
-     * @return Required if `sms_provider`==`broadnet`
+     * @return Required if `smsProvider`==`broadnet`
      * 
      */
     public Optional<Output<String>> broadnetUserId() {
@@ -260,14 +260,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`clickatell`
+     * Required if `smsProvider`==`clickatell`
      * 
      */
     @Import(name="clickatellApiKey")
     private @Nullable Output<String> clickatellApiKey;
 
     /**
-     * @return Required if `sms_provider`==`clickatell`
+     * @return Required if `smsProvider`==`clickatell`
      * 
      */
     public Optional<Output<String>> clickatellApiKey() {
@@ -275,14 +275,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+     * Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
      * 
      */
     @Import(name="crossSite")
     private @Nullable Output<Boolean> crossSite;
 
     /**
-     * @return Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+     * @return Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
      * 
      */
     public Optional<Output<Boolean>> crossSite() {
@@ -335,14 +335,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+     * Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
      * 
      */
     @Import(name="externalPortalUrl")
     private @Nullable Output<String> externalPortalUrl;
 
     /**
-     * @return Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+     * @return Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
      * 
      */
     public Optional<Output<String>> externalPortalUrl() {
@@ -350,14 +350,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+     * Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
      * 
      */
     @Import(name="facebookClientId")
     private @Nullable Output<String> facebookClientId;
 
     /**
-     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+     * @return Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
      * 
      */
     public Optional<Output<String>> facebookClientId() {
@@ -365,14 +365,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
+     * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     @Import(name="facebookClientSecret")
     private @Nullable Output<String> facebookClientSecret;
 
     /**
-     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
+     * @return Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public Optional<Output<String>> facebookClientSecret() {
@@ -380,14 +380,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     @Import(name="facebookEmailDomains")
     private @Nullable Output<List<String>> facebookEmailDomains;
 
     /**
-     * @return Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     public Optional<Output<List<String>>> facebookEmailDomains() {
@@ -410,14 +410,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+     * Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
      * 
      */
     @Import(name="facebookExpire")
     private @Nullable Output<Integer> facebookExpire;
 
     /**
-     * @return Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+     * @return Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
      * 
      */
     public Optional<Output<Integer>> facebookExpire() {
@@ -470,14 +470,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
+     * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     @Import(name="googleClientSecret")
     private @Nullable Output<String> googleClientSecret;
 
     /**
-     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
+     * @return Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public Optional<Output<String>> googleClientSecret() {
@@ -485,14 +485,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     @Import(name="googleEmailDomains")
     private @Nullable Output<List<String>> googleEmailDomains;
 
     /**
-     * @return Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     public Optional<Output<List<String>>> googleEmailDomains() {
@@ -515,14 +515,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
+     * Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
      * 
      */
     @Import(name="googleExpire")
     private @Nullable Output<Integer> googleExpire;
 
     /**
-     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
+     * @return Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
      * 
      */
     public Optional<Output<Integer>> googleExpire() {
@@ -530,14 +530,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`gupshup`
+     * Required if `smsProvider`==`gupshup`
      * 
      */
     @Import(name="gupshupPassword")
     private @Nullable Output<String> gupshupPassword;
 
     /**
-     * @return Required if `sms_provider`==`gupshup`
+     * @return Required if `smsProvider`==`gupshup`
      * 
      */
     public Optional<Output<String>> gupshupPassword() {
@@ -545,14 +545,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`gupshup`
+     * Required if `smsProvider`==`gupshup`
      * 
      */
     @Import(name="gupshupUserid")
     private @Nullable Output<String> gupshupUserid;
 
     /**
-     * @return Required if `sms_provider`==`gupshup`
+     * @return Required if `smsProvider`==`gupshup`
      * 
      */
     public Optional<Output<String>> gupshupUserid() {
@@ -560,14 +560,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+     * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
     @Import(name="microsoftClientId")
     private @Nullable Output<String> microsoftClientId;
 
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+     * @return Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
     public Optional<Output<String>> microsoftClientId() {
@@ -575,14 +575,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
+     * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     @Import(name="microsoftClientSecret")
     private @Nullable Output<String> microsoftClientSecret;
 
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
+     * @return Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a corresponding value. Else leave blank.
      * 
      */
     public Optional<Output<String>> microsoftClientSecret() {
@@ -590,14 +590,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     @Import(name="microsoftEmailDomains")
     private @Nullable Output<List<String>> microsoftEmailDomains;
 
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     public Optional<Output<List<String>>> microsoftEmailDomains() {
@@ -620,14 +620,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+     * Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
      * 
      */
     @Import(name="microsoftExpire")
     private @Nullable Output<Integer> microsoftExpire;
 
     /**
-     * @return Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+     * @return Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
      * 
      */
     public Optional<Output<Integer>> microsoftExpire() {
@@ -650,14 +650,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+     * Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
      * 
      */
     @Import(name="passphraseExpire")
     private @Nullable Output<Integer> passphraseExpire;
 
     /**
-     * @return Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+     * @return Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
      * 
      */
     public Optional<Output<Integer>> passphraseExpire() {
@@ -665,14 +665,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `passphrase_enabled`==`true`.
+     * Required if `passphraseEnabled`==`true`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Required if `passphrase_enabled`==`true`.
+     * @return Required if `passphraseEnabled`==`true`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -680,14 +680,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
+     * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
      * 
      */
     @Import(name="predefinedSponsorsEnabled")
     private @Nullable Output<Boolean> predefinedSponsorsEnabled;
 
     /**
-     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
      * 
      */
     public Optional<Output<Boolean>> predefinedSponsorsEnabled() {
@@ -717,14 +717,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`puzzel`
+     * Required if `smsProvider`==`puzzel`
      * 
      */
     @Import(name="puzzelPassword")
     private @Nullable Output<String> puzzelPassword;
 
     /**
-     * @return Required if `sms_provider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`
      * 
      */
     public Optional<Output<String>> puzzelPassword() {
@@ -732,14 +732,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`puzzel`
+     * Required if `smsProvider`==`puzzel`
      * 
      */
     @Import(name="puzzelServiceId")
     private @Nullable Output<String> puzzelServiceId;
 
     /**
-     * @return Required if `sms_provider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`
      * 
      */
     public Optional<Output<String>> puzzelServiceId() {
@@ -747,14 +747,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`puzzel`
+     * Required if `smsProvider`==`puzzel`
      * 
      */
     @Import(name="puzzelUsername")
     private @Nullable Output<String> puzzelUsername;
 
     /**
-     * @return Required if `sms_provider`==`puzzel`
+     * @return Required if `smsProvider`==`puzzel`
      * 
      */
     public Optional<Output<String>> puzzelUsername() {
@@ -777,14 +777,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+     * Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
      * 
      */
     @Import(name="smsExpire")
     private @Nullable Output<Integer> smsExpire;
 
     /**
-     * @return Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+     * @return Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
      * 
      */
     public Optional<Output<Integer>> smsExpire() {
@@ -792,14 +792,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `sms_enabled`==`true`. SMS Message format
+     * Optional if `smsEnabled`==`true`. SMS Message format
      * 
      */
     @Import(name="smsMessageFormat")
     private @Nullable Output<String> smsMessageFormat;
 
     /**
-     * @return Optional if `sms_enabled`==`true`. SMS Message format
+     * @return Optional if `smsEnabled`==`true`. SMS Message format
      * 
      */
     public Optional<Output<String>> smsMessageFormat() {
@@ -807,14 +807,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+     * Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     @Import(name="smsProvider")
     private @Nullable Output<String> smsProvider;
 
     /**
-     * @return Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+     * @return Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     public Optional<Output<String>> smsProvider() {
@@ -822,14 +822,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`smsglobal`, Client API Key
+     * Required if `smsProvider`==`smsglobal`, Client API Key
      * 
      */
     @Import(name="smsglobalApiKey")
     private @Nullable Output<String> smsglobalApiKey;
 
     /**
-     * @return Required if `sms_provider`==`smsglobal`, Client API Key
+     * @return Required if `smsProvider`==`smsglobal`, Client API Key
      * 
      */
     public Optional<Output<String>> smsglobalApiKey() {
@@ -837,14 +837,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`smsglobal`, Client secret
+     * Required if `smsProvider`==`smsglobal`, Client secret
      * 
      */
     @Import(name="smsglobalApiSecret")
     private @Nullable Output<String> smsglobalApiSecret;
 
     /**
-     * @return Required if `sms_provider`==`smsglobal`, Client secret
+     * @return Required if `smsProvider`==`smsglobal`, Client secret
      * 
      */
     public Optional<Output<String>> smsglobalApiSecret() {
@@ -852,14 +852,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
+     * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
      * 
      */
     @Import(name="sponsorAutoApprove")
     private @Nullable Output<Boolean> sponsorAutoApprove;
 
     /**
-     * @return Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
+     * @return Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
      * 
      */
     public Optional<Output<Boolean>> sponsorAutoApprove() {
@@ -867,14 +867,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+     * List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
      * 
      */
     @Import(name="sponsorEmailDomains")
     private @Nullable Output<List<String>> sponsorEmailDomains;
 
     /**
-     * @return List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+     * @return List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
      * 
      */
     public Optional<Output<List<String>>> sponsorEmailDomains() {
@@ -897,14 +897,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+     * Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
      * 
      */
     @Import(name="sponsorExpire")
     private @Nullable Output<Integer> sponsorExpire;
 
     /**
-     * @return Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+     * @return Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
      * 
      */
     public Optional<Output<Integer>> sponsorExpire() {
@@ -912,14 +912,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
+     * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
      * 
      */
     @Import(name="sponsorLinkValidityDuration")
     private @Nullable Output<String> sponsorLinkValidityDuration;
 
     /**
-     * @return Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
+     * @return Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
      * 
      */
     public Optional<Output<String>> sponsorLinkValidityDuration() {
@@ -927,14 +927,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+     * Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
      * 
      */
     @Import(name="sponsorNotifyAll")
     private @Nullable Output<Boolean> sponsorNotifyAll;
 
     /**
-     * @return Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+     * @return Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
      * 
      */
     public Optional<Output<Boolean>> sponsorNotifyAll() {
@@ -942,14 +942,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
+     * Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
      * 
      */
     @Import(name="sponsorStatusNotify")
     private @Nullable Output<Boolean> sponsorStatusNotify;
 
     /**
-     * @return Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
+     * @return Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
      * 
      */
     public Optional<Output<Boolean>> sponsorStatusNotify() {
@@ -957,8 +957,8 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * object of allowed sponsors email with name. Required if `sponsor_enabled`
-     *             is `true` and `sponsor_email_domains` is empty.
+     * object of allowed sponsors email with name. Required if `sponsorEnabled`
+     *             is `true` and `sponsorEmailDomains` is empty.
      * 
      *             Property key is the sponsor email, Property value is the sponsor name
      * 
@@ -967,8 +967,8 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> sponsors;
 
     /**
-     * @return object of allowed sponsors email with name. Required if `sponsor_enabled`
-     *             is `true` and `sponsor_email_domains` is empty.
+     * @return object of allowed sponsors email with name. Required if `sponsorEnabled`
+     *             is `true` and `sponsorEmailDomains` is empty.
      * 
      *             Property key is the sponsor email, Property value is the sponsor name
      * 
@@ -978,14 +978,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * Optional if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     @Import(name="ssoDefaultRole")
     private @Nullable Output<String> ssoDefaultRole;
 
     /**
-     * @return Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * @return Optional if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     public Optional<Output<String>> ssoDefaultRole() {
@@ -993,14 +993,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `wlan_portal_auth`==`sso`
+     * Optional if `wlanPortalAuth`==`sso`
      * 
      */
     @Import(name="ssoForcedRole")
     private @Nullable Output<String> ssoForcedRole;
 
     /**
-     * @return Optional if `wlan_portal_auth`==`sso`
+     * @return Optional if `wlanPortalAuth`==`sso`
      * 
      */
     public Optional<Output<String>> ssoForcedRole() {
@@ -1008,14 +1008,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
+     * Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
      * 
      */
     @Import(name="ssoIdpCert")
     private @Nullable Output<String> ssoIdpCert;
 
     /**
-     * @return Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
+     * @return Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
      * 
      */
     public Optional<Output<String>> ssoIdpCert() {
@@ -1023,14 +1023,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     @Import(name="ssoIdpSignAlgo")
     private @Nullable Output<String> ssoIdpSignAlgo;
 
     /**
-     * @return Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     public Optional<Output<String>> ssoIdpSignAlgo() {
@@ -1038,14 +1038,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
+     * Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
      * 
      */
     @Import(name="ssoIdpSsoUrl")
     private @Nullable Output<String> ssoIdpSsoUrl;
 
     /**
-     * @return Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
+     * @return Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
      * 
      */
     public Optional<Output<String>> ssoIdpSsoUrl() {
@@ -1053,14 +1053,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `wlan_portal_auth`==`sso`, IDP issuer URL
+     * Required if `wlanPortalAuth`==`sso`, IDP issuer URL
      * 
      */
     @Import(name="ssoIssuer")
     private @Nullable Output<String> ssoIssuer;
 
     /**
-     * @return Required if `wlan_portal_auth`==`sso`, IDP issuer URL
+     * @return Required if `wlanPortalAuth`==`sso`, IDP issuer URL
      * 
      */
     public Optional<Output<String>> ssoIssuer() {
@@ -1068,14 +1068,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+     * Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
      * 
      */
     @Import(name="ssoNameidFormat")
     private @Nullable Output<String> ssoNameidFormat;
 
     /**
-     * @return Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+     * @return Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
      * 
      */
     public Optional<Output<String>> ssoNameidFormat() {
@@ -1083,14 +1083,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`telstra`, Client ID provided by Telstra
+     * Required if `smsProvider`==`telstra`, Client ID provided by Telstra
      * 
      */
     @Import(name="telstraClientId")
     private @Nullable Output<String> telstraClientId;
 
     /**
-     * @return Required if `sms_provider`==`telstra`, Client ID provided by Telstra
+     * @return Required if `smsProvider`==`telstra`, Client ID provided by Telstra
      * 
      */
     public Optional<Output<String>> telstraClientId() {
@@ -1098,14 +1098,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`telstra`, Client secret provided by Telstra
+     * Required if `smsProvider`==`telstra`, Client secret provided by Telstra
      * 
      */
     @Import(name="telstraClientSecret")
     private @Nullable Output<String> telstraClientSecret;
 
     /**
-     * @return Required if `sms_provider`==`telstra`, Client secret provided by Telstra
+     * @return Required if `smsProvider`==`telstra`, Client secret provided by Telstra
      * 
      */
     public Optional<Output<String>> telstraClientSecret() {
@@ -1113,14 +1113,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`twilio`, Auth token account with twilio account
+     * Required if `smsProvider`==`twilio`, Auth token account with twilio account
      * 
      */
     @Import(name="twilioAuthToken")
     private @Nullable Output<String> twilioAuthToken;
 
     /**
-     * @return Required if `sms_provider`==`twilio`, Auth token account with twilio account
+     * @return Required if `smsProvider`==`twilio`, Auth token account with twilio account
      * 
      */
     public Optional<Output<String>> twilioAuthToken() {
@@ -1128,14 +1128,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+     * Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
      * 
      */
     @Import(name="twilioPhoneNumber")
     private @Nullable Output<String> twilioPhoneNumber;
 
     /**
-     * @return Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+     * @return Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
      * 
      */
     public Optional<Output<String>> twilioPhoneNumber() {
@@ -1143,14 +1143,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `sms_provider`==`twilio`, Account SID provided by Twilio
+     * Required if `smsProvider`==`twilio`, Account SID provided by Twilio
      * 
      */
     @Import(name="twilioSid")
     private @Nullable Output<String> twilioSid;
 
     /**
-     * @return Required if `sms_provider`==`twilio`, Account SID provided by Twilio
+     * @return Required if `smsProvider`==`twilio`, Account SID provided by Twilio
      * 
      */
     public Optional<Output<String>> twilioSid() {
@@ -1257,7 +1257,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowWlanIdRoam Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+         * @param allowWlanIdRoam Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
          * 
          * @return builder
          * 
@@ -1268,7 +1268,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowWlanIdRoam Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+         * @param allowWlanIdRoam Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
          * 
          * @return builder
          * 
@@ -1278,7 +1278,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amazonClientId Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+         * @param amazonClientId Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
          * 
          * @return builder
          * 
@@ -1289,7 +1289,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amazonClientId Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+         * @param amazonClientId Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
          * 
          * @return builder
          * 
@@ -1299,7 +1299,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amazonClientSecret Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
+         * @param amazonClientSecret Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a corresponding value. Else leave blank.
          * 
          * @return builder
          * 
@@ -1310,7 +1310,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amazonClientSecret Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a corresponding value. Else leave blank.
+         * @param amazonClientSecret Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a corresponding value. Else leave blank.
          * 
          * @return builder
          * 
@@ -1320,7 +1320,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amazonEmailDomains Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * @param amazonEmailDomains Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          * 
          * @return builder
          * 
@@ -1331,7 +1331,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amazonEmailDomains Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * @param amazonEmailDomains Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          * 
          * @return builder
          * 
@@ -1341,7 +1341,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amazonEmailDomains Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * @param amazonEmailDomains Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          * 
          * @return builder
          * 
@@ -1372,7 +1372,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amazonExpire Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+         * @param amazonExpire Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
          * 
          * @return builder
          * 
@@ -1383,7 +1383,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amazonExpire Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+         * @param amazonExpire Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
          * 
          * @return builder
          * 
@@ -1414,7 +1414,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param azureClientId Required if `azure_enabled`==`true`. Azure active directory app client id
+         * @param azureClientId Required if `azureEnabled`==`true`. Azure active directory app client id
          * 
          * @return builder
          * 
@@ -1425,7 +1425,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param azureClientId Required if `azure_enabled`==`true`. Azure active directory app client id
+         * @param azureClientId Required if `azureEnabled`==`true`. Azure active directory app client id
          * 
          * @return builder
          * 
@@ -1435,7 +1435,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param azureClientSecret Required if `azure_enabled`==`true`. Azure active directory app client secret
+         * @param azureClientSecret Required if `azureEnabled`==`true`. Azure active directory app client secret
          * 
          * @return builder
          * 
@@ -1446,7 +1446,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param azureClientSecret Required if `azure_enabled`==`true`. Azure active directory app client secret
+         * @param azureClientSecret Required if `azureEnabled`==`true`. Azure active directory app client secret
          * 
          * @return builder
          * 
@@ -1498,7 +1498,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param azureTenantId Required if `azure_enabled`==`true`. Azure active directory tenant id.
+         * @param azureTenantId Required if `azureEnabled`==`true`. Azure active directory tenant id.
          * 
          * @return builder
          * 
@@ -1509,7 +1509,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param azureTenantId Required if `azure_enabled`==`true`. Azure active directory tenant id.
+         * @param azureTenantId Required if `azureEnabled`==`true`. Azure active directory tenant id.
          * 
          * @return builder
          * 
@@ -1519,7 +1519,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param broadnetPassword Required if `sms_provider`==`broadnet`
+         * @param broadnetPassword Required if `smsProvider`==`broadnet`
          * 
          * @return builder
          * 
@@ -1530,7 +1530,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param broadnetPassword Required if `sms_provider`==`broadnet`
+         * @param broadnetPassword Required if `smsProvider`==`broadnet`
          * 
          * @return builder
          * 
@@ -1540,7 +1540,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param broadnetSid Required if `sms_provider`==`broadnet`
+         * @param broadnetSid Required if `smsProvider`==`broadnet`
          * 
          * @return builder
          * 
@@ -1551,7 +1551,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param broadnetSid Required if `sms_provider`==`broadnet`
+         * @param broadnetSid Required if `smsProvider`==`broadnet`
          * 
          * @return builder
          * 
@@ -1561,7 +1561,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param broadnetUserId Required if `sms_provider`==`broadnet`
+         * @param broadnetUserId Required if `smsProvider`==`broadnet`
          * 
          * @return builder
          * 
@@ -1572,7 +1572,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param broadnetUserId Required if `sms_provider`==`broadnet`
+         * @param broadnetUserId Required if `smsProvider`==`broadnet`
          * 
          * @return builder
          * 
@@ -1603,7 +1603,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clickatellApiKey Required if `sms_provider`==`clickatell`
+         * @param clickatellApiKey Required if `smsProvider`==`clickatell`
          * 
          * @return builder
          * 
@@ -1614,7 +1614,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clickatellApiKey Required if `sms_provider`==`clickatell`
+         * @param clickatellApiKey Required if `smsProvider`==`clickatell`
          * 
          * @return builder
          * 
@@ -1624,7 +1624,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossSite Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+         * @param crossSite Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
          * 
          * @return builder
          * 
@@ -1635,7 +1635,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param crossSite Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+         * @param crossSite Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
          * 
          * @return builder
          * 
@@ -1708,7 +1708,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalPortalUrl Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+         * @param externalPortalUrl Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
          * 
          * @return builder
          * 
@@ -1719,7 +1719,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalPortalUrl Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+         * @param externalPortalUrl Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
          * 
          * @return builder
          * 
@@ -1729,7 +1729,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facebookClientId Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+         * @param facebookClientId Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
          * 
          * @return builder
          * 
@@ -1740,7 +1740,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facebookClientId Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+         * @param facebookClientId Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
          * 
          * @return builder
          * 
@@ -1750,7 +1750,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facebookClientSecret Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
+         * @param facebookClientSecret Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a corresponding value. Else leave blank.
          * 
          * @return builder
          * 
@@ -1761,7 +1761,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facebookClientSecret Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a corresponding value. Else leave blank.
+         * @param facebookClientSecret Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a corresponding value. Else leave blank.
          * 
          * @return builder
          * 
@@ -1771,7 +1771,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facebookEmailDomains Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * @param facebookEmailDomains Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          * 
          * @return builder
          * 
@@ -1782,7 +1782,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facebookEmailDomains Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * @param facebookEmailDomains Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          * 
          * @return builder
          * 
@@ -1792,7 +1792,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facebookEmailDomains Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * @param facebookEmailDomains Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          * 
          * @return builder
          * 
@@ -1823,7 +1823,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facebookExpire Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+         * @param facebookExpire Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
          * 
          * @return builder
          * 
@@ -1834,7 +1834,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param facebookExpire Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+         * @param facebookExpire Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
          * 
          * @return builder
          * 
@@ -1907,7 +1907,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param googleClientSecret Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
+         * @param googleClientSecret Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a corresponding value. Else leave blank.
          * 
          * @return builder
          * 
@@ -1918,7 +1918,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param googleClientSecret Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a corresponding value. Else leave blank.
+         * @param googleClientSecret Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a corresponding value. Else leave blank.
          * 
          * @return builder
          * 
@@ -1928,7 +1928,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param googleEmailDomains Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * @param googleEmailDomains Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          * 
          * @return builder
          * 
@@ -1939,7 +1939,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param googleEmailDomains Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * @param googleEmailDomains Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          * 
          * @return builder
          * 
@@ -1949,7 +1949,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param googleEmailDomains Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * @param googleEmailDomains Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          * 
          * @return builder
          * 
@@ -1980,7 +1980,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param googleExpire Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
+         * @param googleExpire Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
          * 
          * @return builder
          * 
@@ -1991,7 +1991,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param googleExpire Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
+         * @param googleExpire Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
          * 
          * @return builder
          * 
@@ -2001,7 +2001,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gupshupPassword Required if `sms_provider`==`gupshup`
+         * @param gupshupPassword Required if `smsProvider`==`gupshup`
          * 
          * @return builder
          * 
@@ -2012,7 +2012,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gupshupPassword Required if `sms_provider`==`gupshup`
+         * @param gupshupPassword Required if `smsProvider`==`gupshup`
          * 
          * @return builder
          * 
@@ -2022,7 +2022,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gupshupUserid Required if `sms_provider`==`gupshup`
+         * @param gupshupUserid Required if `smsProvider`==`gupshup`
          * 
          * @return builder
          * 
@@ -2033,7 +2033,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gupshupUserid Required if `sms_provider`==`gupshup`
+         * @param gupshupUserid Required if `smsProvider`==`gupshup`
          * 
          * @return builder
          * 
@@ -2043,7 +2043,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param microsoftClientId Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+         * @param microsoftClientId Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
          * 
          * @return builder
          * 
@@ -2054,7 +2054,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param microsoftClientId Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+         * @param microsoftClientId Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
          * 
          * @return builder
          * 
@@ -2064,7 +2064,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param microsoftClientSecret Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
+         * @param microsoftClientSecret Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a corresponding value. Else leave blank.
          * 
          * @return builder
          * 
@@ -2075,7 +2075,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param microsoftClientSecret Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a corresponding value. Else leave blank.
+         * @param microsoftClientSecret Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a corresponding value. Else leave blank.
          * 
          * @return builder
          * 
@@ -2085,7 +2085,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param microsoftEmailDomains Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * @param microsoftEmailDomains Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          * 
          * @return builder
          * 
@@ -2096,7 +2096,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param microsoftEmailDomains Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * @param microsoftEmailDomains Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          * 
          * @return builder
          * 
@@ -2106,7 +2106,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param microsoftEmailDomains Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * @param microsoftEmailDomains Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          * 
          * @return builder
          * 
@@ -2137,7 +2137,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param microsoftExpire Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+         * @param microsoftExpire Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
          * 
          * @return builder
          * 
@@ -2148,7 +2148,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param microsoftExpire Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+         * @param microsoftExpire Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
          * 
          * @return builder
          * 
@@ -2179,7 +2179,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passphraseExpire Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+         * @param passphraseExpire Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
          * 
          * @return builder
          * 
@@ -2190,7 +2190,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passphraseExpire Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+         * @param passphraseExpire Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
          * 
          * @return builder
          * 
@@ -2200,7 +2200,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Required if `passphrase_enabled`==`true`.
+         * @param password Required if `passphraseEnabled`==`true`.
          * 
          * @return builder
          * 
@@ -2211,7 +2211,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Required if `passphrase_enabled`==`true`.
+         * @param password Required if `passphraseEnabled`==`true`.
          * 
          * @return builder
          * 
@@ -2221,7 +2221,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param predefinedSponsorsEnabled Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
+         * @param predefinedSponsorsEnabled Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
          * 
          * @return builder
          * 
@@ -2232,7 +2232,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param predefinedSponsorsEnabled Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behavior is acc to `sponsor_email_domains`
+         * @param predefinedSponsorsEnabled Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
          * 
          * @return builder
          * 
@@ -2272,7 +2272,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param puzzelPassword Required if `sms_provider`==`puzzel`
+         * @param puzzelPassword Required if `smsProvider`==`puzzel`
          * 
          * @return builder
          * 
@@ -2283,7 +2283,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param puzzelPassword Required if `sms_provider`==`puzzel`
+         * @param puzzelPassword Required if `smsProvider`==`puzzel`
          * 
          * @return builder
          * 
@@ -2293,7 +2293,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param puzzelServiceId Required if `sms_provider`==`puzzel`
+         * @param puzzelServiceId Required if `smsProvider`==`puzzel`
          * 
          * @return builder
          * 
@@ -2304,7 +2304,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param puzzelServiceId Required if `sms_provider`==`puzzel`
+         * @param puzzelServiceId Required if `smsProvider`==`puzzel`
          * 
          * @return builder
          * 
@@ -2314,7 +2314,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param puzzelUsername Required if `sms_provider`==`puzzel`
+         * @param puzzelUsername Required if `smsProvider`==`puzzel`
          * 
          * @return builder
          * 
@@ -2325,7 +2325,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param puzzelUsername Required if `sms_provider`==`puzzel`
+         * @param puzzelUsername Required if `smsProvider`==`puzzel`
          * 
          * @return builder
          * 
@@ -2356,7 +2356,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsExpire Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+         * @param smsExpire Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
          * 
          * @return builder
          * 
@@ -2367,7 +2367,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsExpire Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+         * @param smsExpire Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
          * 
          * @return builder
          * 
@@ -2377,7 +2377,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsMessageFormat Optional if `sms_enabled`==`true`. SMS Message format
+         * @param smsMessageFormat Optional if `smsEnabled`==`true`. SMS Message format
          * 
          * @return builder
          * 
@@ -2388,7 +2388,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsMessageFormat Optional if `sms_enabled`==`true`. SMS Message format
+         * @param smsMessageFormat Optional if `smsEnabled`==`true`. SMS Message format
          * 
          * @return builder
          * 
@@ -2398,7 +2398,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsProvider Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+         * @param smsProvider Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          * 
          * @return builder
          * 
@@ -2409,7 +2409,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsProvider Optional if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
+         * @param smsProvider Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          * 
          * @return builder
          * 
@@ -2419,7 +2419,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsglobalApiKey Required if `sms_provider`==`smsglobal`, Client API Key
+         * @param smsglobalApiKey Required if `smsProvider`==`smsglobal`, Client API Key
          * 
          * @return builder
          * 
@@ -2430,7 +2430,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsglobalApiKey Required if `sms_provider`==`smsglobal`, Client API Key
+         * @param smsglobalApiKey Required if `smsProvider`==`smsglobal`, Client API Key
          * 
          * @return builder
          * 
@@ -2440,7 +2440,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsglobalApiSecret Required if `sms_provider`==`smsglobal`, Client secret
+         * @param smsglobalApiSecret Required if `smsProvider`==`smsglobal`, Client secret
          * 
          * @return builder
          * 
@@ -2451,7 +2451,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smsglobalApiSecret Required if `sms_provider`==`smsglobal`, Client secret
+         * @param smsglobalApiSecret Required if `smsProvider`==`smsglobal`, Client secret
          * 
          * @return builder
          * 
@@ -2461,7 +2461,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorAutoApprove Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
+         * @param sponsorAutoApprove Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
          * 
          * @return builder
          * 
@@ -2472,7 +2472,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorAutoApprove Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
+         * @param sponsorAutoApprove Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
          * 
          * @return builder
          * 
@@ -2482,7 +2482,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorEmailDomains List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+         * @param sponsorEmailDomains List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
          * 
          * @return builder
          * 
@@ -2493,7 +2493,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorEmailDomains List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+         * @param sponsorEmailDomains List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
          * 
          * @return builder
          * 
@@ -2503,7 +2503,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorEmailDomains List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+         * @param sponsorEmailDomains List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
          * 
          * @return builder
          * 
@@ -2534,7 +2534,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorExpire Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+         * @param sponsorExpire Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
          * 
          * @return builder
          * 
@@ -2545,7 +2545,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorExpire Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+         * @param sponsorExpire Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
          * 
          * @return builder
          * 
@@ -2555,7 +2555,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorLinkValidityDuration Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
+         * @param sponsorLinkValidityDuration Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
          * 
          * @return builder
          * 
@@ -2566,7 +2566,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorLinkValidityDuration Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
+         * @param sponsorLinkValidityDuration Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes. Default is 60 minutes.
          * 
          * @return builder
          * 
@@ -2576,7 +2576,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorNotifyAll Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+         * @param sponsorNotifyAll Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
          * 
          * @return builder
          * 
@@ -2587,7 +2587,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorNotifyAll Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+         * @param sponsorNotifyAll Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
          * 
          * @return builder
          * 
@@ -2597,7 +2597,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorStatusNotify Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
+         * @param sponsorStatusNotify Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
          * 
          * @return builder
          * 
@@ -2608,7 +2608,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsorStatusNotify Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
+         * @param sponsorStatusNotify Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
          * 
          * @return builder
          * 
@@ -2618,8 +2618,8 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsors object of allowed sponsors email with name. Required if `sponsor_enabled`
-         *             is `true` and `sponsor_email_domains` is empty.
+         * @param sponsors object of allowed sponsors email with name. Required if `sponsorEnabled`
+         *             is `true` and `sponsorEmailDomains` is empty.
          * 
          *             Property key is the sponsor email, Property value is the sponsor name
          * 
@@ -2632,8 +2632,8 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsors object of allowed sponsors email with name. Required if `sponsor_enabled`
-         *             is `true` and `sponsor_email_domains` is empty.
+         * @param sponsors object of allowed sponsors email with name. Required if `sponsorEnabled`
+         *             is `true` and `sponsorEmailDomains` is empty.
          * 
          *             Property key is the sponsor email, Property value is the sponsor name
          * 
@@ -2645,7 +2645,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoDefaultRole Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * @param ssoDefaultRole Optional if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          * 
          * @return builder
          * 
@@ -2656,7 +2656,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoDefaultRole Optional if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * @param ssoDefaultRole Optional if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          * 
          * @return builder
          * 
@@ -2666,7 +2666,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoForcedRole Optional if `wlan_portal_auth`==`sso`
+         * @param ssoForcedRole Optional if `wlanPortalAuth`==`sso`
          * 
          * @return builder
          * 
@@ -2677,7 +2677,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoForcedRole Optional if `wlan_portal_auth`==`sso`
+         * @param ssoForcedRole Optional if `wlanPortalAuth`==`sso`
          * 
          * @return builder
          * 
@@ -2687,7 +2687,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpCert Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
+         * @param ssoIdpCert Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
          * 
          * @return builder
          * 
@@ -2698,7 +2698,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpCert Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
+         * @param ssoIdpCert Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
          * 
          * @return builder
          * 
@@ -2708,7 +2708,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSignAlgo Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * @param ssoIdpSignAlgo Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          * 
          * @return builder
          * 
@@ -2719,7 +2719,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSignAlgo Optional if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * @param ssoIdpSignAlgo Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          * 
          * @return builder
          * 
@@ -2729,7 +2729,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSsoUrl Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
+         * @param ssoIdpSsoUrl Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
          * 
          * @return builder
          * 
@@ -2740,7 +2740,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSsoUrl Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
+         * @param ssoIdpSsoUrl Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
          * 
          * @return builder
          * 
@@ -2750,7 +2750,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIssuer Required if `wlan_portal_auth`==`sso`, IDP issuer URL
+         * @param ssoIssuer Required if `wlanPortalAuth`==`sso`, IDP issuer URL
          * 
          * @return builder
          * 
@@ -2761,7 +2761,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIssuer Required if `wlan_portal_auth`==`sso`, IDP issuer URL
+         * @param ssoIssuer Required if `wlanPortalAuth`==`sso`, IDP issuer URL
          * 
          * @return builder
          * 
@@ -2771,7 +2771,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoNameidFormat Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+         * @param ssoNameidFormat Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
          * 
          * @return builder
          * 
@@ -2782,7 +2782,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoNameidFormat Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+         * @param ssoNameidFormat Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
          * 
          * @return builder
          * 
@@ -2792,7 +2792,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param telstraClientId Required if `sms_provider`==`telstra`, Client ID provided by Telstra
+         * @param telstraClientId Required if `smsProvider`==`telstra`, Client ID provided by Telstra
          * 
          * @return builder
          * 
@@ -2803,7 +2803,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param telstraClientId Required if `sms_provider`==`telstra`, Client ID provided by Telstra
+         * @param telstraClientId Required if `smsProvider`==`telstra`, Client ID provided by Telstra
          * 
          * @return builder
          * 
@@ -2813,7 +2813,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param telstraClientSecret Required if `sms_provider`==`telstra`, Client secret provided by Telstra
+         * @param telstraClientSecret Required if `smsProvider`==`telstra`, Client secret provided by Telstra
          * 
          * @return builder
          * 
@@ -2824,7 +2824,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param telstraClientSecret Required if `sms_provider`==`telstra`, Client secret provided by Telstra
+         * @param telstraClientSecret Required if `smsProvider`==`telstra`, Client secret provided by Telstra
          * 
          * @return builder
          * 
@@ -2834,7 +2834,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param twilioAuthToken Required if `sms_provider`==`twilio`, Auth token account with twilio account
+         * @param twilioAuthToken Required if `smsProvider`==`twilio`, Auth token account with twilio account
          * 
          * @return builder
          * 
@@ -2845,7 +2845,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param twilioAuthToken Required if `sms_provider`==`twilio`, Auth token account with twilio account
+         * @param twilioAuthToken Required if `smsProvider`==`twilio`, Auth token account with twilio account
          * 
          * @return builder
          * 
@@ -2855,7 +2855,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param twilioPhoneNumber Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+         * @param twilioPhoneNumber Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
          * 
          * @return builder
          * 
@@ -2866,7 +2866,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param twilioPhoneNumber Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+         * @param twilioPhoneNumber Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
          * 
          * @return builder
          * 
@@ -2876,7 +2876,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param twilioSid Required if `sms_provider`==`twilio`, Account SID provided by Twilio
+         * @param twilioSid Required if `smsProvider`==`twilio`, Account SID provided by Twilio
          * 
          * @return builder
          * 
@@ -2887,7 +2887,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param twilioSid Required if `sms_provider`==`twilio`, Account SID provided by Twilio
+         * @param twilioSid Required if `smsProvider`==`twilio`, Account SID provided by Twilio
          * 
          * @return builder
          * 

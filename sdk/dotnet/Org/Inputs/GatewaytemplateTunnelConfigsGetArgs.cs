@@ -13,19 +13,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateTunnelConfigsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
+        /// Auto Provisioning configuration for the tunne. This takes precedence over the `Primary` and `Secondary` nodes.
         /// </summary>
         [Input("autoProvision")]
         public Input<Inputs.GatewaytemplateTunnelConfigsAutoProvisionGetArgs>? AutoProvision { get; set; }
 
         /// <summary>
-        /// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
+        /// Only if `Provider`==`custom-ipsec`. Must be between 180 and 86400
         /// </summary>
         [Input("ikeLifetime")]
         public Input<int>? IkeLifetime { get; set; }
 
         /// <summary>
-        /// Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
+        /// Only if `Provider`==`custom-ipsec`. enum: `Aggressive`, `Main`
         /// </summary>
         [Input("ikeMode")]
         public Input<string>? IkeMode { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.GatewaytemplateTunnelConfigsIkeProposalGetArgs>? _ikeProposals;
 
         /// <summary>
-        /// If `provider`==`custom-ipsec`
+        /// If `Provider`==`custom-ipsec`
         /// </summary>
         public InputList<Inputs.GatewaytemplateTunnelConfigsIkeProposalGetArgs> IkeProposals
         {
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
+        /// Only if `Provider`==`custom-ipsec`. Must be between 180 and 86400
         /// </summary>
         [Input("ipsecLifetime")]
         public Input<int>? IpsecLifetime { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.GatewaytemplateTunnelConfigsIpsecProposalGetArgs>? _ipsecProposals;
 
         /// <summary>
-        /// Only if  `provider`==`custom-ipsec`
+        /// Only if  `Provider`==`custom-ipsec`
         /// </summary>
         public InputList<Inputs.GatewaytemplateTunnelConfigsIpsecProposalGetArgs> IpsecProposals
         {
@@ -61,7 +61,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// Required if `Provider`==`zscaler-ipsec`, `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
         /// </summary>
         [Input("localId")]
         public Input<string>? LocalId { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
+        /// Required if `Provider`==`zscaler-gre`, `Provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
+        /// If `Provider`==`custom-ipsec` or `Provider`==`prisma-ipsec`, networks reachable via this tunnel
         /// </summary>
         public InputList<string> Networks
         {
@@ -97,25 +97,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// Only if `Provider`==`zscaler-ipsec`, `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
         /// </summary>
         [Input("primary")]
         public Input<Inputs.GatewaytemplateTunnelConfigsPrimaryGetArgs>? Primary { get; set; }
 
         /// <summary>
-        /// Only if `provider`==`custom-ipsec`
+        /// Only if `Provider`==`custom-ipsec`
         /// </summary>
         [Input("probe")]
         public Input<Inputs.GatewaytemplateTunnelConfigsProbeGetArgs>? Probe { get; set; }
 
         /// <summary>
-        /// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
+        /// Only if `Provider`==`custom-ipsec`. enum: `Gre`, `Ipsec`
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        /// Only if `auto_provision.enabled`==`False`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
@@ -124,7 +124,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _psk;
 
         /// <summary>
-        /// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// Required if `Provider`==`zscaler-ipsec`, `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
         /// </summary>
         public Input<string>? Psk
         {
@@ -149,13 +149,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// Only if `Provider`==`zscaler-ipsec`, `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
         /// </summary>
         [Input("secondary")]
         public Input<Inputs.GatewaytemplateTunnelConfigsSecondaryGetArgs>? Secondary { get; set; }
 
         /// <summary>
-        /// Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
+        /// Only if `Provider`==`custom-gre` or `Provider`==`custom-ipsec`. enum: `1`, `2`
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

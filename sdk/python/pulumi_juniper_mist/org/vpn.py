@@ -192,6 +192,8 @@ class Vpn(pulumi.CustomResource):
         """
         This resource manages the Org VPN.
 
+        ## Example Usage
+
         ## Import
 
         Using `pulumi import`, import `mist_org_vpn` with:
@@ -216,6 +218,8 @@ class Vpn(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Org VPN.
+
+        ## Example Usage
 
         ## Import
 

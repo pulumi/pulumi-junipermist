@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.GetServicepoliciesOrgServicepolicyAamwResult Aamw;
         /// <summary>
-        /// enum: `allow`, `deny`
+        /// enum: `Allow`, `Deny`
         /// </summary>
         public readonly string Action;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string Name;
         public readonly string OrgId;
         /// <summary>
-        /// By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
+        /// By default, we derive all paths available and use them, optionally, you can customize by using `PathPreference`
         /// </summary>
         public readonly string PathPreference;
         public readonly ImmutableArray<string> Services;

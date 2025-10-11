@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device
     /// 
     /// It can be used to define specific configuration at the device level or to override Org Gateway template settings.
     /// 
-    /// &gt; **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway
+    /// &gt; **WARNING** For **adopted** devices, make sure to set `Managed`=`True` to allow Mist to manage the gateway
     /// 
     /// ## Example Usage
     /// 
@@ -82,13 +82,13 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.GatewayDhcpdConfig?> DhcpdConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.GatewayTunnelProviderOptions?> TunnelProviderOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Device Type. enum: `gateway`
+        /// Device Type. enum: `Gateway`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -335,7 +335,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -347,7 +347,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -603,7 +603,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -615,7 +615,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -825,7 +825,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.GatewayTunnelProviderOptionsGetArgs>? TunnelProviderOptions { get; set; }
 
         /// <summary>
-        /// Device Type. enum: `gateway`
+        /// Device Type. enum: `Gateway`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

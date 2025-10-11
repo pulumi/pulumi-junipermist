@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool AllowMdns;
         /// <summary>
-        /// Only applicable when `limit_bcast`==`true`, which allows SSDP
+        /// Only applicable when `LimitBcast`==`True`, which allows SSDP
         /// </summary>
         public readonly bool AllowSsdp;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly Outputs.GetWlansSiteWlanAppQosResult AppQos;
         /// <summary>
-        /// enum: `aps`, `site`, `wxtags`
+        /// enum: `Aps`, `Site`, `Wxtags`
         /// </summary>
         public readonly string ApplyTo;
         /// <summary>
@@ -66,11 +66,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly Outputs.GetWlansSiteWlanAuthResult Auth;
         /// <summary>
-        /// When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+        /// When ordered, AP will prefer and go back to the first server if possible. enum: `Ordered`, `Unordered`
         /// </summary>
         public readonly string AuthServerSelection;
         /// <summary>
-        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+        /// List of RADIUS authentication servers, at least one is needed if `auth type`==`Eap`, order matters where the first one is treated as primary
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWlansSiteWlanAuthServerResult> AuthServers;
         /// <summary>
@@ -82,11 +82,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string AuthServersNasIp;
         /// <summary>
-        /// Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+        /// Radius auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
         /// </summary>
         public readonly int AuthServersRetries;
         /// <summary>
-        /// Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
+        /// Radius auth session timeout. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting AuthServersTimeout and is set to default value of 10.
         /// </summary>
         public readonly int AuthServersTimeout;
         /// <summary>
@@ -94,7 +94,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool BandSteer;
         /// <summary>
-        /// Force dual_band capable client to connect to 5G
+        /// Force DualBand capable client to connect to 5G
         /// </summary>
         public readonly bool BandSteerForceBand5;
         /// <summary>
@@ -173,15 +173,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly Outputs.GetWlansSiteWlanDnsServerRewriteResult DnsServerRewrite;
         public readonly int Dtim;
         /// <summary>
-        /// For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+        /// For dynamic PSK where we get PerUser PSK from Radius. DynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
         ///   * PSK will come from RADIUS server
-        ///   * AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed)
+        ///   * AP sends client MAC as username and password (i.e. `EnableMacAuth` is assumed)
         ///   * AP sends BSSID:SSID as Caller-Station-ID
-        ///   * `auth_servers` is required
-        ///   * PSK will come from cloud WLC if source is cloud_psks
-        ///   * default_psk will be used if cloud WLC is not available
-        ///   * `multi_psk_only` and `psk` is ignored
-        ///   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+        ///   * `AuthServers` is required
+        ///   * PSK will come from cloud WLC if source is CloudPsks
+        ///   * DefaultPsk will be used if cloud WLC is not available
+        ///   * `MultiPskOnly` and `Psk` is ignored
+        ///   * `Pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
         /// </summary>
         public readonly Outputs.GetWlansSiteWlanDynamicPskResult DynamicPsk;
         /// <summary>
@@ -193,11 +193,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool EnableLocalKeycaching;
         /// <summary>
-        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wireless_bridging can be enabled
+        /// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), WirelessBridging can be enabled
         /// </summary>
         public readonly bool EnableWirelessBridging;
         /// <summary>
-        /// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response packets to be forwarded to wireless
+        /// If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable DhcpTracking will cut down DHCP response packets to be forwarded to wireless
         /// </summary>
         public readonly bool EnableWirelessBridgingDhcpTracking;
         /// <summary>
@@ -226,7 +226,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string Id;
         public readonly Outputs.GetWlansSiteWlanInjectDhcpOption82Result InjectDhcpOption82;
         /// <summary>
-        /// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `site_mxedge`, `wxtunnel`
+        /// where this WLAN will be connected to. enum: `All`, `Eth0`, `Eth1`, `Eth2`, `Eth3`, `Mxtunnel`, `SiteMxedge`, `Wxtunnel`
         /// </summary>
         public readonly string Interface;
         /// <summary>
@@ -264,11 +264,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly double ModifiedTime;
         public readonly string MspId;
         /// <summary>
-        /// When `interface`=`mxtunnel`, id of the Mist Tunnel
+        /// When `Interface`=`Mxtunnel`, id of the Mist Tunnel
         /// </summary>
         public readonly ImmutableArray<string> MxtunnelIds;
         /// <summary>
-        /// When `interface`=`site_mxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+        /// When `Interface`=`SiteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
         /// </summary>
         public readonly ImmutableArray<string> MxtunnelNames;
         /// <summary>
@@ -336,7 +336,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string Ssid;
         /// <summary>
-        /// If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
+        /// If `auth.type`==`Eap` or `auth.type`==`Psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
         /// </summary>
         public readonly bool UseEapolV1;
         /// <summary>
@@ -345,11 +345,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool VlanEnabled;
         public readonly string VlanId;
         /// <summary>
-        /// if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+        /// if `VlanEnabled`==`True` and `VlanPooling`==`True`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
         /// </summary>
         public readonly ImmutableArray<string> VlanIds;
         /// <summary>
-        /// Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+        /// Requires `VlanEnabled`==`True` to be set to `True`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
         /// </summary>
         public readonly bool VlanPooling;
         public readonly string WlanLimitDown;
@@ -367,11 +367,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableArray<string> WxtagIds;
         /// <summary>
-        /// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
+        /// When `Interface`=`Wxtunnel`, id of the WXLAN Tunnel
         /// </summary>
         public readonly string WxtunnelId;
         /// <summary>
-        /// When `interface`=`wxtunnel`, remote tunnel identifier
+        /// When `Interface`=`Wxtunnel`, remote tunnel identifier
         /// </summary>
         public readonly string WxtunnelRemoteId;
 

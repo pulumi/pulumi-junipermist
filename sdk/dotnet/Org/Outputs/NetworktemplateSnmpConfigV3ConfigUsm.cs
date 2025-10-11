@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplateSnmpConfigV3ConfigUsm
     {
         /// <summary>
-        /// enum: `local_engine`, `remote_engine`
+        /// enum: `LocalEngine`, `RemoteEngine`
         /// </summary>
         public readonly string EngineType;
         /// <summary>
-        /// Required only if `engine_type`==`remote_engine`
+        /// Required only if `EngineType`==`RemoteEngine`
         /// </summary>
         public readonly string? RemoteEngineId;
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigUsmUser> Users;

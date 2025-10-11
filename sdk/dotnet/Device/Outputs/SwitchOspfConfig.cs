@@ -22,11 +22,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+        /// optional, for basic scenario, `ImportPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
         /// </summary>
         public readonly string? ExportPolicy;
         /// <summary>
-        /// optional, for basic scenario, `import_policy` can be specified and can be applied to all networks in all areas if not explicitly specified
+        /// optional, for basic scenario, `ImportPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
         /// </summary>
         public readonly string? ImportPolicy;
         public readonly string? ReferenceBandwidth;

@@ -25,14 +25,14 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
     }
 
     /**
-     * Use `equals_any` to match any item in a list
+     * Use `equalsAny` to match any item in a list
      * 
      */
     @Import(name="equalsAnies")
     private @Nullable Output<List<String>> equalsAnies;
 
     /**
-     * @return Use `equals_any` to match any item in a list
+     * @return Use `equalsAny` to match any item in a list
      * 
      */
     public Optional<Output<List<String>>> equalsAnies() {
@@ -59,14 +59,14 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
     }
 
     /**
-     * enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+     * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
      * 
      */
     @Import(name="src", required=true)
     private Output<String> src;
 
     /**
-     * @return enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+     * @return enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
      * 
      */
     public Output<String> src() {
@@ -74,14 +74,14 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
     }
 
     /**
-     * `port_usage` name
+     * `portUsage` name
      * 
      */
     @Import(name="usage")
     private @Nullable Output<String> usage;
 
     /**
-     * @return `port_usage` name
+     * @return `portUsage` name
      * 
      */
     public Optional<Output<String>> usage() {
@@ -126,7 +126,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param equalsAnies Use `equals_any` to match any item in a list
+         * @param equalsAnies Use `equalsAny` to match any item in a list
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param equalsAnies Use `equals_any` to match any item in a list
+         * @param equalsAnies Use `equalsAny` to match any item in a list
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param equalsAnies Use `equals_any` to match any item in a list
+         * @param equalsAnies Use `equalsAny` to match any item in a list
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param src enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+         * @param src enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param src enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+         * @param src enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param usage `port_usage` name
+         * @param usage `portUsage` name
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param usage `port_usage` name
+         * @param usage `portUsage` name
          * 
          * @return builder
          * 

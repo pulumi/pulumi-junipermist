@@ -47,15 +47,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? SiteId;
         /// <summary>
-        /// enum: `ap`, `gateway`, `switch`
+        /// enum: `Ap`, `Gateway`, `Switch`
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+        /// Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `False`
         /// </summary>
         public readonly bool? UnclaimWhenDestroyed;
         /// <summary>
-        /// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
+        /// if `Type`==`Switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `Type`==`Gateway` and device part of a Cluster, MAC Address of the Cluster
         /// </summary>
         public readonly string? VcMac;
 

@@ -33,14 +33,14 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Only if `type`==`hub_spoke`
+     * Only if `type`==`hubSpoke`
      * 
      */
     @Import(name="pathSelection")
     private @Nullable Output<VpnPathSelectionArgs> pathSelection;
 
     /**
-     * @return Only if `type`==`hub_spoke`
+     * @return Only if `type`==`hubSpoke`
      * 
      */
     public Optional<Output<VpnPathSelectionArgs>> pathSelection() {
@@ -48,14 +48,14 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
      * 
      */
     @Import(name="paths")
     private @Nullable Output<Map<String,VpnPathsArgs>> paths;
 
     /**
-     * @return For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * @return For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
      * 
      */
     public Optional<Output<Map<String,VpnPathsArgs>>> paths() {
@@ -63,14 +63,14 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `hub_spoke`, `mesh`
+     * enum: `hubSpoke`, `mesh`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `hub_spoke`, `mesh`
+     * @return enum: `hubSpoke`, `mesh`
      * 
      */
     public Optional<Output<String>> type() {
@@ -124,7 +124,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathSelection Only if `type`==`hub_spoke`
+         * @param pathSelection Only if `type`==`hubSpoke`
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathSelection Only if `type`==`hub_spoke`
+         * @param pathSelection Only if `type`==`hubSpoke`
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paths For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+         * @param paths For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paths For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+         * @param paths For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `hub_spoke`, `mesh`
+         * @param type enum: `hubSpoke`, `mesh`
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class VpnState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `hub_spoke`, `mesh`
+         * @param type enum: `hubSpoke`, `mesh`
          * 
          * @return builder
          * 

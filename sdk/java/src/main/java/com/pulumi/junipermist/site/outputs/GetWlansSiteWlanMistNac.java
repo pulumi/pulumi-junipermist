@@ -12,12 +12,12 @@ import java.util.Objects;
 public final class GetWlansSiteWlanMistNac {
     /**
      * @return When enabled:
-     *   * `auth_servers` is ignored
-     *   * `acct_servers` is ignored
+     *   * `authServers` is ignored
+     *   * `acctServers` is ignored
      *   * `auth_servers_*` are ignored
-     *   * `coa_servers` is ignored
+     *   * `coaServers` is ignored
      *   * `radsec` is ignored
-     *   * `coa_enabled` is assumed
+     *   * `coaEnabled` is assumed
      * 
      */
     private Boolean enabled;
@@ -25,12 +25,12 @@ public final class GetWlansSiteWlanMistNac {
     private GetWlansSiteWlanMistNac() {}
     /**
      * @return When enabled:
-     *   * `auth_servers` is ignored
-     *   * `acct_servers` is ignored
+     *   * `authServers` is ignored
+     *   * `acctServers` is ignored
      *   * `auth_servers_*` are ignored
-     *   * `coa_servers` is ignored
+     *   * `coaServers` is ignored
      *   * `radsec` is ignored
-     *   * `coa_enabled` is assumed
+     *   * `coaEnabled` is assumed
      * 
      */
     public Boolean enabled() {

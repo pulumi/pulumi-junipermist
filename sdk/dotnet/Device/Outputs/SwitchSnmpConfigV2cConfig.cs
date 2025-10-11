@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly string? Authorization;
         /// <summary>
-        /// Client_list_name here should refer to client_list above
+        /// Client_list_name here should refer to ClientList above
         /// </summary>
         public readonly string? ClientListName;
         public readonly string? CommunityName;

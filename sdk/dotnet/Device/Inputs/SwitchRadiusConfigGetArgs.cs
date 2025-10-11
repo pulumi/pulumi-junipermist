@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `ordered`, `unordered`
+        /// enum: `Ordered`, `Unordered`
         /// </summary>
         [Input("authServerSelection")]
         public Input<string>? AuthServerSelection { get; set; }
@@ -65,13 +65,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? FastDot1xTimers { get; set; }
 
         /// <summary>
-        /// Use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        /// Use `Network`or `SourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Use `network`or `source_ip`
+        /// Use `Network`or `SourceIp`
         /// </summary>
         [Input("sourceIp")]
         public Input<string>? SourceIp { get; set; }

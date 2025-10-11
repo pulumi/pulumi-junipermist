@@ -33,7 +33,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExportCommunities;
         /// <summary>
-        /// Optional, for an import policy, local_preference can be changed
+        /// Optional, for an import policy, LocalPreference can be changed
         /// </summary>
         public readonly string? LocalPreference;
         /// <summary>

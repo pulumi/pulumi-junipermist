@@ -139,7 +139,7 @@ namespace Pulumi.JuniperMist.Org
         public string? SiteId { get; set; }
 
         /// <summary>
-        /// enum: `ap`, `gateway`, `switch`
+        /// enum: `Ap`, `Gateway`, `Switch`
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -198,7 +198,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// enum: `ap`, `gateway`, `switch`
+        /// enum: `Ap`, `Gateway`, `Switch`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -254,7 +254,7 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public readonly string? SiteId;
         /// <summary>
-        /// enum: `ap`, `gateway`, `switch`
+        /// enum: `Ap`, `Gateway`, `Switch`
         /// </summary>
         public readonly string? Type;
         /// <summary>

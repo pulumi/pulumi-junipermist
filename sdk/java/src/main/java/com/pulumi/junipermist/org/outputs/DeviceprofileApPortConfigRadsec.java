@@ -23,7 +23,7 @@ public final class DeviceprofileApPortConfigRadsec {
      */
     private @Nullable List<String> mxclusterIds;
     /**
-     * @return Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+     * @return Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
      * 
      */
     private @Nullable List<String> proxyHosts;
@@ -66,7 +66,7 @@ public final class DeviceprofileApPortConfigRadsec {
         return this.mxclusterIds == null ? List.of() : this.mxclusterIds;
     }
     /**
-     * @return Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+     * @return Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
      * 
      */
     public List<String> proxyHosts() {

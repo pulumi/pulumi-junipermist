@@ -130,6 +130,8 @@ class WlanPortalImage(pulumi.CustomResource):
         """
         This resource is used to upload a WLAN Captive Web Portal background image.
 
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] file: path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
@@ -143,6 +145,8 @@ class WlanPortalImage(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource is used to upload a WLAN Captive Web Portal background image.
+
+        ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param WlanPortalImageArgs args: The arguments to use to populate this resource's properties.

@@ -6,6 +6,8 @@ import * as utilities from "../utilities";
 
 /**
  * This resource is used to upload a WLAN Captive Web Portal background image.
+ *
+ * ## Example Usage
  */
 export class WlanPortalImage extends pulumi.CustomResource {
     /**

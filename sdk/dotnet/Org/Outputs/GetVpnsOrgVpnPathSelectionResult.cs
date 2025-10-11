@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetVpnsOrgVpnPathSelectionResult
     {
         /// <summary>
-        /// enum: `disabled`, `simple`, `manual`
+        /// enum: `Disabled`, `Simple`, `Manual`
         /// </summary>
         public readonly string Strategy;
 

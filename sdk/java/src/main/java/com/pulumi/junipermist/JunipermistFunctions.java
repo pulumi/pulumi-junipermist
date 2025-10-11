@@ -300,7 +300,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppCategories.
      * 
-     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This information can be used as `appCategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -339,7 +339,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppCategories.
      * 
-     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This information can be used as `appCategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -378,7 +378,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppCategories.
      * 
-     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This information can be used as `appCategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -417,7 +417,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppCategories.
      * 
-     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This information can be used as `appCategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -456,7 +456,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppCategories.
      * 
-     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This information can be used as `appCategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -495,7 +495,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppCategories.
      * 
-     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This information can be used as `appCategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -534,7 +534,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppCategories.
      * 
-     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This information can be used as `appCategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -573,7 +573,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppSubCategories.
      * 
-     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This information can be used as `appSubcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -612,7 +612,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppSubCategories.
      * 
-     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This information can be used as `appSubcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -651,7 +651,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppSubCategories.
      * 
-     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This information can be used as `appSubcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -690,7 +690,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppSubCategories.
      * 
-     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This information can be used as `appSubcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -729,7 +729,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppSubCategories.
      * 
-     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This information can be used as `appSubcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -768,7 +768,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppSubCategories.
      * 
-     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This information can be used as `appSubcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -807,7 +807,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstAppSubCategories.
      * 
-     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This information can be used as `appSubcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -1413,7 +1413,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of list of supported Fingerprints.
      * 
-     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * The Fingerprint information can be used within `matching` and `notMatching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
      * 
      * There are four different types of fingerprints available:* Family
      * * Model
@@ -1457,7 +1457,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of list of supported Fingerprints.
      * 
-     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * The Fingerprint information can be used within `matching` and `notMatching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
      * 
      * There are four different types of fingerprints available:* Family
      * * Model
@@ -1501,7 +1501,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of list of supported Fingerprints.
      * 
-     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * The Fingerprint information can be used within `matching` and `notMatching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
      * 
      * There are four different types of fingerprints available:* Family
      * * Model
@@ -1545,7 +1545,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of list of supported Fingerprints.
      * 
-     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * The Fingerprint information can be used within `matching` and `notMatching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
      * 
      * There are four different types of fingerprints available:* Family
      * * Model
@@ -1589,7 +1589,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of list of supported Fingerprints.
      * 
-     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * The Fingerprint information can be used within `matching` and `notMatching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
      * 
      * There are four different types of fingerprints available:* Family
      * * Model
@@ -1633,7 +1633,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of list of supported Fingerprints.
      * 
-     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * The Fingerprint information can be used within `matching` and `notMatching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
      * 
      * There are four different types of fingerprints available:* Family
      * * Model
@@ -1677,7 +1677,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of list of supported Fingerprints.
      * 
-     * The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+     * The Fingerprint information can be used within `matching` and `notMatching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
      * 
      * There are four different types of fingerprints available:* Family
      * * Model
@@ -1721,7 +1721,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstTrafficTypes.
      * 
-     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
+     * The Traffic Type values can be used to define the `trafficType` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1760,7 +1760,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstTrafficTypes.
      * 
-     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
+     * The Traffic Type values can be used to define the `trafficType` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1799,7 +1799,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstTrafficTypes.
      * 
-     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
+     * The Traffic Type values can be used to define the `trafficType` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1838,7 +1838,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstTrafficTypes.
      * 
-     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
+     * The Traffic Type values can be used to define the `trafficType` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1877,7 +1877,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstTrafficTypes.
      * 
-     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
+     * The Traffic Type values can be used to define the `trafficType` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1916,7 +1916,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstTrafficTypes.
      * 
-     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
+     * The Traffic Type values can be used to define the `trafficType` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1955,7 +1955,7 @@ public final class JunipermistFunctions {
     /**
      * This data source provides the of ConstTrafficTypes.
      * 
-     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
+     * The Traffic Type values can be used to define the `trafficType` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1996,7 +1996,7 @@ public final class JunipermistFunctions {
      * 
      * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
-     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * &gt; Only the Webhook topics with `forOrg`==`  true ` are supported at the Org level.
      * 
      * ## Example Usage
      * 
@@ -2037,7 +2037,7 @@ public final class JunipermistFunctions {
      * 
      * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
-     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * &gt; Only the Webhook topics with `forOrg`==`  true ` are supported at the Org level.
      * 
      * ## Example Usage
      * 
@@ -2078,7 +2078,7 @@ public final class JunipermistFunctions {
      * 
      * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
-     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * &gt; Only the Webhook topics with `forOrg`==`  true ` are supported at the Org level.
      * 
      * ## Example Usage
      * 
@@ -2119,7 +2119,7 @@ public final class JunipermistFunctions {
      * 
      * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
-     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * &gt; Only the Webhook topics with `forOrg`==`  true ` are supported at the Org level.
      * 
      * ## Example Usage
      * 
@@ -2160,7 +2160,7 @@ public final class JunipermistFunctions {
      * 
      * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
-     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * &gt; Only the Webhook topics with `forOrg`==`  true ` are supported at the Org level.
      * 
      * ## Example Usage
      * 
@@ -2201,7 +2201,7 @@ public final class JunipermistFunctions {
      * 
      * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
-     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * &gt; Only the Webhook topics with `forOrg`==`  true ` are supported at the Org level.
      * 
      * ## Example Usage
      * 
@@ -2242,7 +2242,7 @@ public final class JunipermistFunctions {
      * 
      * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
-     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * &gt; Only the Webhook topics with `forOrg`==`  true ` are supported at the Org level.
      * 
      * ## Example Usage
      * 

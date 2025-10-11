@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingSecurityGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+        /// Whether to disable local SSH (by default, local SSH is enabled with AllowMist in Org is enabled
         /// </summary>
         [Input("disableLocalSsh")]
         public Input<bool>? DisableLocalSsh { get; set; }

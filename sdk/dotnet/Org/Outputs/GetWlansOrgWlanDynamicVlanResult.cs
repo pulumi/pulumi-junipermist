@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DefaultVlanIds;
         /// <summary>
-        /// Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+        /// Requires `VlanEnabled`==`True` to be set to `True`. Whether to enable dynamic vlan
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
@@ -26,12 +26,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LocalVlanIds;
         /// <summary>
-        /// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+        /// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `Standard`
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Map between vlan_id (as string) to airespace interface names (comma-separated) or null for standard mapping
-        ///   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
+        /// Map between VlanId (as string) to airespace interface names (comma-separated) or null for standard mapping
+        ///   * if `dynamic_vlan.type`==`Standard`, property key is the Vlan ID and property value is \"\"
         ///   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
         /// </summary>
         public readonly ImmutableDictionary<string, string> Vlans;

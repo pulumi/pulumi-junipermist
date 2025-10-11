@@ -21,7 +21,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// enum: `usm`, `v1`, `v2c`
+        /// enum: `Usm`, `V1`, `V2c`
         /// </summary>
         [Input("securityModel")]
         public Input<string>? SecurityModel { get; set; }

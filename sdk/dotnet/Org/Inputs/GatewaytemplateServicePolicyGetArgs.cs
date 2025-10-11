@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateServicePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
+        /// Required when `ServicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `Allow`, `Deny`
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -48,13 +48,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? LocalRouting { get; set; }
 
         /// <summary>
-        /// Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+        /// Required when `ServicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+        /// By default, we derive all paths available and use them. Optionally, you can customize by using `PathPreference`
         /// </summary>
         [Input("pathPreference")]
         public Input<string>? PathPreference { get; set; }
@@ -69,7 +69,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _services;
 
         /// <summary>
-        /// Required when `servicepolicy_id` is not defined. List of Applications / Destinations
+        /// Required when `ServicepolicyId` is not defined. List of Applications / Destinations
         /// </summary>
         public InputList<string> Services
         {
@@ -87,7 +87,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _tenants;
 
         /// <summary>
-        /// Required when `servicepolicy_id` is not defined. List of Networks / Users
+        /// Required when `ServicepolicyId` is not defined. List of Networks / Users
         /// </summary>
         public InputList<string> Tenants
         {

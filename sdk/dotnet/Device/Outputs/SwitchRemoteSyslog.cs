@@ -19,13 +19,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool? Enabled;
         public readonly ImmutableArray<Outputs.SwitchRemoteSyslogFile> Files;
         /// <summary>
-        /// If source_address is configured, will use the vlan firstly otherwise use source_ip
+        /// If SourceAddress is configured, will use the vlan firstly otherwise use source_ip
         /// </summary>
         public readonly string? Network;
         public readonly bool? SendToAllServers;
         public readonly ImmutableArray<Outputs.SwitchRemoteSyslogServer> Servers;
         /// <summary>
-        /// enum: `millisecond`, `year`, `year millisecond`
+        /// enum: `Millisecond`, `Year`, `year millisecond`
         /// </summary>
         public readonly string? TimeFormat;
         public readonly ImmutableArray<Outputs.SwitchRemoteSyslogUser> Users;

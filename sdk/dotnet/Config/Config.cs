@@ -85,7 +85,7 @@ namespace Pulumi.JuniperMist
         private static readonly __Value<string?> _proxy = new __Value<string?>(() => __config.Get("proxy"));
         /// <summary>
         /// Requests use the configured proxy to reach the Mist Cloud.
-        /// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+        /// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `Http` scheme is assumed. The schemes `Http`, `Https`, and `Socks5` are supported.
         /// </summary>
         public static string? Proxy
         {

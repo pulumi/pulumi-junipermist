@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// enum: `broadband`, `lte`
+        /// enum: `Broadband`, `Lte`
         /// </summary>
         [Input("probeProfile")]
         public Input<string>? ProbeProfile { get; set; }

@@ -20,6 +20,8 @@ import (
 // * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
 // * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
 //
+// ## Example Usage
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_service` with:

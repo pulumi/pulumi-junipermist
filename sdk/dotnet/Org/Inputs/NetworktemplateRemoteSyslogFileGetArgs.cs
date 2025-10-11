@@ -24,7 +24,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Only if `protocol`==`tcp`
+        /// Only if `Protocol`==`Tcp`
         /// </summary>
         [Input("enableTls")]
         public Input<bool>? EnableTls { get; set; }

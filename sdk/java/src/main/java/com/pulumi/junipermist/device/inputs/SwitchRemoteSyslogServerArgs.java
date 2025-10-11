@@ -121,14 +121,14 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * If source_address is configured, will use the vlan firstly otherwise use source_ip
+     * If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
      * 
      */
     @Import(name="sourceAddress")
     private @Nullable Output<String> sourceAddress;
 
     /**
-     * @return If source_address is configured, will use the vlan firstly otherwise use source_ip
+     * @return If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
      * 
      */
     public Optional<Output<String>> sourceAddress() {
@@ -328,7 +328,7 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sourceAddress If source_address is configured, will use the vlan firstly otherwise use source_ip
+         * @param sourceAddress If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sourceAddress If source_address is configured, will use the vlan firstly otherwise use source_ip
+         * @param sourceAddress If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
          * 
          * @return builder
          * 

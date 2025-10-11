@@ -18,6 +18,8 @@ namespace Pulumi.JuniperMist.Site
     /// 
     /// !&gt; Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
     /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_site_networktemplate` with:
@@ -50,7 +52,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool> AutoUpgradeLinecard { get; private set; } = null!;
 
         /// <summary>
-        /// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
         /// </summary>
         [Output("defaultPortUsage")]
         public Output<string?> DefaultPortUsage { get; private set; } = null!;
@@ -65,13 +67,13 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableArray<string>> DisabledSystemDefinedPortUsages { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
@@ -89,7 +91,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
 
         /// <summary>
-        /// Enable mist_nac to use RadSec
+        /// Enable MistNac to use RadSec
         /// </summary>
         [Output("mistNac")]
         public Output<Outputs.NetworktemplateMistNac?> MistNac { get; private set; } = null!;
@@ -113,7 +115,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateOspfAreas>?> OspfAreas { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortMirroring>?> PortMirroring { get; private set; } = null!;
@@ -246,7 +248,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? AutoUpgradeLinecard { get; set; }
 
         /// <summary>
-        /// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
         /// </summary>
         [Input("defaultPortUsage")]
         public Input<string>? DefaultPortUsage { get; set; }
@@ -270,7 +272,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -282,7 +284,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -315,7 +317,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Enable mist_nac to use RadSec
+        /// Enable MistNac to use RadSec
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacArgs>? MistNac { get; set; }
@@ -360,7 +362,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplatePortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringArgs> PortMirroring
         {
@@ -469,7 +471,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? AutoUpgradeLinecard { get; set; }
 
         /// <summary>
-        /// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
         /// </summary>
         [Input("defaultPortUsage")]
         public Input<string>? DefaultPortUsage { get; set; }
@@ -493,7 +495,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -505,7 +507,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -538,7 +540,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Enable mist_nac to use RadSec
+        /// Enable MistNac to use RadSec
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacGetArgs>? MistNac { get; set; }
@@ -583,7 +585,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplatePortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringGetArgs> PortMirroring
         {

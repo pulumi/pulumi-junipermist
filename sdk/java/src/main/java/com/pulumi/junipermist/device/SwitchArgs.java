@@ -121,14 +121,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     @Import(name="dnsServers")
     private @Nullable Output<List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     public Optional<Output<List<String>>> dnsServers() {
@@ -136,14 +136,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -196,14 +196,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
      * 
      */
     @Import(name="localPortConfig")
     private @Nullable Output<Map<String,SwitchLocalPortConfigArgs>> localPortConfig;
 
     /**
-     * @return Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * @return Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
      * 
      */
     public Optional<Output<Map<String,SwitchLocalPortConfigArgs>>> localPortConfig() {
@@ -241,14 +241,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable mist_nac to use RadSec
+     * Enable mistNac to use RadSec
      * 
      */
     @Import(name="mistNac")
     private @Nullable Output<SwitchMistNacArgs> mistNac;
 
     /**
-     * @return Enable mist_nac to use RadSec
+     * @return Enable mistNac to use RadSec
      * 
      */
     public Optional<Output<SwitchMistNacArgs>> mistNac() {
@@ -371,14 +371,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the portUsage without having to create a new port_usage.
      * 
      */
     @Import(name="portConfigOverwrite")
     private @Nullable Output<Map<String,SwitchPortConfigOverwriteArgs>> portConfigOverwrite;
 
     /**
-     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the portUsage without having to create a new port_usage.
      * 
      */
     public Optional<Output<Map<String,SwitchPortConfigOverwriteArgs>>> portConfigOverwrite() {
@@ -386,14 +386,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     @Import(name="portMirroring")
     private @Nullable Output<Map<String,SwitchPortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      * 
      */
     public Optional<Output<Map<String,SwitchPortMirroringArgs>>> portMirroring() {
@@ -788,7 +788,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
          * 
          * @return builder
          * 
@@ -799,7 +799,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
          * 
          * @return builder
          * 
@@ -809,7 +809,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
          * 
          * @return builder
          * 
@@ -819,7 +819,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
          * 
          * @return builder
          * 
@@ -830,7 +830,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
          * 
          * @return builder
          * 
@@ -840,7 +840,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
          * 
          * @return builder
          * 
@@ -913,7 +913,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localPortConfig Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+         * @param localPortConfig Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
          * 
          * @return builder
          * 
@@ -924,7 +924,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localPortConfig Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+         * @param localPortConfig Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
          * 
          * @return builder
          * 
@@ -976,7 +976,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mistNac Enable mist_nac to use RadSec
+         * @param mistNac Enable mistNac to use RadSec
          * 
          * @return builder
          * 
@@ -987,7 +987,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mistNac Enable mist_nac to use RadSec
+         * @param mistNac Enable mistNac to use RadSec
          * 
          * @return builder
          * 
@@ -1164,7 +1164,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfigOverwrite Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+         * @param portConfigOverwrite Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the portUsage without having to create a new port_usage.
          * 
          * @return builder
          * 
@@ -1175,7 +1175,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfigOverwrite Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the port_usage without having to create a new port_usage.
+         * @param portConfigOverwrite Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the portUsage without having to create a new port_usage.
          * 
          * @return builder
          * 
@@ -1185,7 +1185,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+         * @param portMirroring Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          * 
          * @return builder
          * 
@@ -1196,7 +1196,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+         * @param portMirroring Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          * 
          * @return builder
          * 

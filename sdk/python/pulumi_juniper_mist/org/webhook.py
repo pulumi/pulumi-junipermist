@@ -621,6 +621,8 @@ class Webhook(pulumi.CustomResource):
         It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\\
         The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
 
+        ## Example Usage
+
         ## Import
 
         Using `pulumi import`, import `mist_org_webhook` with:
@@ -662,6 +664,8 @@ class Webhook(pulumi.CustomResource):
         A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\\
         It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\\
         The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+
+        ## Example Usage
 
         ## Import
 

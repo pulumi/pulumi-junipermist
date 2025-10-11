@@ -19,14 +19,14 @@ public final class SwitchSnmpConfigV3ConfigUsmArgs extends com.pulumi.resources.
     public static final SwitchSnmpConfigV3ConfigUsmArgs Empty = new SwitchSnmpConfigV3ConfigUsmArgs();
 
     /**
-     * enum: `local_engine`, `remote_engine`
+     * enum: `localEngine`, `remoteEngine`
      * 
      */
     @Import(name="engineType", required=true)
     private Output<String> engineType;
 
     /**
-     * @return enum: `local_engine`, `remote_engine`
+     * @return enum: `localEngine`, `remoteEngine`
      * 
      */
     public Output<String> engineType() {
@@ -34,14 +34,14 @@ public final class SwitchSnmpConfigV3ConfigUsmArgs extends com.pulumi.resources.
     }
 
     /**
-     * Required only if `engine_type`==`remote_engine`
+     * Required only if `engineType`==`remoteEngine`
      * 
      */
     @Import(name="remoteEngineId")
     private @Nullable Output<String> remoteEngineId;
 
     /**
-     * @return Required only if `engine_type`==`remote_engine`
+     * @return Required only if `engineType`==`remoteEngine`
      * 
      */
     public Optional<Output<String>> remoteEngineId() {
@@ -82,7 +82,7 @@ public final class SwitchSnmpConfigV3ConfigUsmArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param engineType enum: `local_engine`, `remote_engine`
+         * @param engineType enum: `localEngine`, `remoteEngine`
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class SwitchSnmpConfigV3ConfigUsmArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param engineType enum: `local_engine`, `remote_engine`
+         * @param engineType enum: `localEngine`, `remoteEngine`
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class SwitchSnmpConfigV3ConfigUsmArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param remoteEngineId Required only if `engine_type`==`remote_engine`
+         * @param remoteEngineId Required only if `engineType`==`remoteEngine`
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class SwitchSnmpConfigV3ConfigUsmArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param remoteEngineId Required only if `engine_type`==`remote_engine`
+         * @param remoteEngineId Required only if `engineType`==`remoteEngine`
          * 
          * @return builder
          * 

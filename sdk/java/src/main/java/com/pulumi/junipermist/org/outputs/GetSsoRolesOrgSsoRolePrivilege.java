@@ -40,12 +40,12 @@ public final class GetSsoRolesOrgSsoRolePrivilege {
      *   | --- | --- | --- |
      *   | `reporting` | `read` | full access to all analytics tools |
      *   | `marketing` | `read` | can view analytics and location maps |
-     *   | `super_observer` | `read` | can view all the organization except the subscription page |
+     *   | `superObserver` | `read` | can view all the organization except the subscription page |
      *   | `location` | `write` | can view and manage location maps, can view analytics |
      *   | `security` | `write` | can view and manage site labels, policies and security |
-     *   | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
-     *   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
-     *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
+     *   | `switchAdmin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+     *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
+     *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
      * 
      */
     private List<String> views;
@@ -88,12 +88,12 @@ public final class GetSsoRolesOrgSsoRolePrivilege {
      *   | --- | --- | --- |
      *   | `reporting` | `read` | full access to all analytics tools |
      *   | `marketing` | `read` | can view analytics and location maps |
-     *   | `super_observer` | `read` | can view all the organization except the subscription page |
+     *   | `superObserver` | `read` | can view all the organization except the subscription page |
      *   | `location` | `write` | can view and manage location maps, can view analytics |
      *   | `security` | `write` | can view and manage site labels, policies and security |
-     *   | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
-     *   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
-     *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
+     *   | `switchAdmin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+     *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
+     *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
      * 
      */
     public List<String> views() {

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatApRedundancyResult ApRedundancy;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatArpTableStatsResult ArpTableStats;
         /// <summary>
-        /// Only present when `bgp_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
+        /// Only present when `BgpPeers` in `Fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatBgpPeerResult> BgpPeers;
         public readonly int CertExpiry;
@@ -105,7 +105,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string NodeName;
         public readonly string OrgId;
         /// <summary>
-        /// Only present when `ports` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/ports/search` result object, except that org*id, site*id, mac, model are removed
+        /// Only present when `Ports` in `Fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/ports/search` result object, except that org*id, site*id, mac, model are removed
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatPortResult> Ports;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatRouteSummaryStatsResult RouteSummaryStats;
@@ -125,13 +125,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatSpuStatResult> SpuStats;
         public readonly string Status;
         /// <summary>
-        /// Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
+        /// Only present when `Tunnels` in `Fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatTunnelResult> Tunnels;
         public readonly double Uptime;
         public readonly string Version;
         /// <summary>
-        /// Only present when `vpn_peers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
+        /// Only present when `VpnPeers` in `Fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/vpn_peers/search` result object, except that org*id, site*id, mac, model are removed
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatVpnPeerResult> VpnPeers;
 

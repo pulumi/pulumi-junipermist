@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayTunnelConfigsIkeProposal
     {
         /// <summary>
-        /// enum: `md5`, `sha1`, `sha2`
+        /// enum: `Md5`, `Sha1`, `Sha2`
         /// </summary>
         public readonly string? AuthAlgo;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? DhGroup;
         /// <summary>
-        /// enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`
+        /// enum: `3des`, `Aes128`, `Aes256`, `AesGcm128`, `AesGcm256`
         /// </summary>
         public readonly string? EncAlgo;
 

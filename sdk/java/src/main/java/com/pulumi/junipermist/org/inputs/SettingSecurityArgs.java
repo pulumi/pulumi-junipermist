@@ -17,14 +17,14 @@ public final class SettingSecurityArgs extends com.pulumi.resources.ResourceArgs
     public static final SettingSecurityArgs Empty = new SettingSecurityArgs();
 
     /**
-     * Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+     * Whether to disable local SSH (by default, local SSH is enabled with allowMist in Org is enabled
      * 
      */
     @Import(name="disableLocalSsh")
     private @Nullable Output<Boolean> disableLocalSsh;
 
     /**
-     * @return Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+     * @return Whether to disable local SSH (by default, local SSH is enabled with allowMist in Org is enabled
      * 
      */
     public Optional<Output<Boolean>> disableLocalSsh() {
@@ -88,7 +88,7 @@ public final class SettingSecurityArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param disableLocalSsh Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+         * @param disableLocalSsh Whether to disable local SSH (by default, local SSH is enabled with allowMist in Org is enabled
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class SettingSecurityArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param disableLocalSsh Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+         * @param disableLocalSsh Whether to disable local SSH (by default, local SSH is enabled with allowMist in Org is enabled
          * 
          * @return builder
          * 

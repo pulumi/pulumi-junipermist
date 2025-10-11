@@ -43,14 +43,14 @@ public final class WlanAppLimitArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
+     * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
      * 
      */
     @Import(name="wxtagIds")
     private @Nullable Output<Map<String,Integer>> wxtagIds;
 
     /**
-     * @return Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
+     * @return Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
      * 
      */
     public Optional<Output<Map<String,Integer>>> wxtagIds() {
@@ -116,7 +116,7 @@ public final class WlanAppLimitArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wxtagIds Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
+         * @param wxtagIds Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class WlanAppLimitArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wxtagIds Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
+         * @param wxtagIds Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
          * 
          * @return builder
          * 

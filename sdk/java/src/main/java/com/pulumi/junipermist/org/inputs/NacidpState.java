@@ -18,14 +18,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     public static final NacidpState Empty = new NacidpState();
 
     /**
-     * Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
+     * Required if `ldapType`==`custom`, LDAP filter that will identify the type of group
      * 
      */
     @Import(name="groupFilter")
     private @Nullable Output<String> groupFilter;
 
     /**
-     * @return Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
+     * @return Required if `ldapType`==`custom`, LDAP filter that will identify the type of group
      * 
      */
     public Optional<Output<String>> groupFilter() {
@@ -33,14 +33,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `ldap`, `mxedge_proxy`, `oauth`
+     * enum: `ldap`, `mxedgeProxy`, `oauth`
      * 
      */
     @Import(name="idpType")
     private @Nullable Output<String> idpType;
 
     /**
-     * @return enum: `ldap`, `mxedge_proxy`, `oauth`
+     * @return enum: `ldap`, `mxedgeProxy`, `oauth`
      * 
      */
     public Optional<Output<String>> idpType() {
@@ -48,14 +48,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
+     * Required if `idpType`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
      * 
      */
     @Import(name="ldapBaseDn")
     private @Nullable Output<String> ldapBaseDn;
 
     /**
-     * @return Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
+     * @return Required if `idpType`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
      * 
      */
     public Optional<Output<String>> ldapBaseDn() {
@@ -63,14 +63,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
+     * Required if `idpType`==`ldap`, the account used to authenticate against the LDAP
      * 
      */
     @Import(name="ldapBindDn")
     private @Nullable Output<String> ldapBindDn;
 
     /**
-     * @return Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
+     * @return Required if `idpType`==`ldap`, the account used to authenticate against the LDAP
      * 
      */
     public Optional<Output<String>> ldapBindDn() {
@@ -78,14 +78,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
+     * Required if `idpType`==`ldap`, the password used to authenticate against the LDAP
      * 
      */
     @Import(name="ldapBindPassword")
     private @Nullable Output<String> ldapBindPassword;
 
     /**
-     * @return Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
+     * @return Required if `idpType`==`ldap`, the password used to authenticate against the LDAP
      * 
      */
     public Optional<Output<String>> ldapBindPassword() {
@@ -93,14 +93,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+     * Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
      * 
      */
     @Import(name="ldapCacerts")
     private @Nullable Output<List<String>> ldapCacerts;
 
     /**
-     * @return Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+     * @return Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
      * 
      */
     public Optional<Output<List<String>>> ldapCacerts() {
@@ -108,14 +108,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `idp_type`==`ldap`, LDAPS Client certificate
+     * If `idpType`==`ldap`, LDAPS Client certificate
      * 
      */
     @Import(name="ldapClientCert")
     private @Nullable Output<String> ldapClientCert;
 
     /**
-     * @return If `idp_type`==`ldap`, LDAPS Client certificate
+     * @return If `idpType`==`ldap`, LDAPS Client certificate
      * 
      */
     public Optional<Output<String>> ldapClientCert() {
@@ -123,14 +123,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `idp_type`==`ldap`, Key for the `ldap_client_cert`
+     * If `idpType`==`ldap`, Key for the `ldapClientCert`
      * 
      */
     @Import(name="ldapClientKey")
     private @Nullable Output<String> ldapClientKey;
 
     /**
-     * @return If `idp_type`==`ldap`, Key for the `ldap_client_cert`
+     * @return If `idpType`==`ldap`, Key for the `ldapClientCert`
      * 
      */
     public Optional<Output<String>> ldapClientKey() {
@@ -138,14 +138,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `ldap_type`==`custom`
+     * If `ldapType`==`custom`
      * 
      */
     @Import(name="ldapGroupAttr")
     private @Nullable Output<String> ldapGroupAttr;
 
     /**
-     * @return If `ldap_type`==`custom`
+     * @return If `ldapType`==`custom`
      * 
      */
     public Optional<Output<String>> ldapGroupAttr() {
@@ -153,14 +153,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `ldap_type`==`custom`
+     * If `ldapType`==`custom`
      * 
      */
     @Import(name="ldapGroupDn")
     private @Nullable Output<String> ldapGroupDn;
 
     /**
-     * @return If `ldap_type`==`custom`
+     * @return If `ldapType`==`custom`
      * 
      */
     public Optional<Output<String>> ldapGroupDn() {
@@ -168,14 +168,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+     * If `idpType`==`ldap`, whether to recursively resolve LDAP groups
      * 
      */
     @Import(name="ldapResolveGroups")
     private @Nullable Output<Boolean> ldapResolveGroups;
 
     /**
-     * @return If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+     * @return If `idpType`==`ldap`, whether to recursively resolve LDAP groups
      * 
      */
     public Optional<Output<Boolean>> ldapResolveGroups() {
@@ -183,14 +183,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+     * If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
      * 
      */
     @Import(name="ldapServerHosts")
     private @Nullable Output<List<String>> ldapServerHosts;
 
     /**
-     * @return If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+     * @return If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
      * 
      */
     public Optional<Output<List<String>>> ldapServerHosts() {
@@ -198,14 +198,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+     * if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
      * 
      */
     @Import(name="ldapType")
     private @Nullable Output<String> ldapType;
 
     /**
-     * @return if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+     * @return if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
      * 
      */
     public Optional<Output<String>> ldapType() {
@@ -213,14 +213,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
+     * Required if `ldapType`==`custom`, LDAP filter that will identify the type of user
      * 
      */
     @Import(name="ldapUserFilter")
     private @Nullable Output<String> ldapUserFilter;
 
     /**
-     * @return Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
+     * @return Required if `ldapType`==`custom`, LDAP filter that will identify the type of user
      * 
      */
     public Optional<Output<String>> ldapUserFilter() {
@@ -228,14 +228,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
+     * Required if `ldapType`==`custom`,LDAP filter that will identify the type of member
      * 
      */
     @Import(name="memberFilter")
     private @Nullable Output<String> memberFilter;
 
     /**
-     * @return Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
+     * @return Required if `ldapType`==`custom`,LDAP filter that will identify the type of member
      * 
      */
     public Optional<Output<String>> memberFilter() {
@@ -258,14 +258,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `idp_type`==`oauth`, Client Credentials
+     * Required if `idpType`==`oauth`, Client Credentials
      * 
      */
     @Import(name="oauthCcClientId")
     private @Nullable Output<String> oauthCcClientId;
 
     /**
-     * @return Required if `idp_type`==`oauth`, Client Credentials
+     * @return Required if `idpType`==`oauth`, Client Credentials
      * 
      */
     public Optional<Output<String>> oauthCcClientId() {
@@ -273,14 +273,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form &#34;-----BEGIN RSA PRIVATE KEY--....&#34;
+     * Required if `idpType`==`oauth`, oauth*cc*client_secret is RSA private key, of the form &#34;-----BEGIN RSA PRIVATE KEY--....&#34;
      * 
      */
     @Import(name="oauthCcClientSecret")
     private @Nullable Output<String> oauthCcClientSecret;
 
     /**
-     * @return Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form &#34;-----BEGIN RSA PRIVATE KEY--....&#34;
+     * @return Required if `idpType`==`oauth`, oauth*cc*client_secret is RSA private key, of the form &#34;-----BEGIN RSA PRIVATE KEY--....&#34;
      * 
      */
     public Optional<Output<String>> oauthCcClientSecret() {
@@ -288,14 +288,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `idp_type`==`oauth`
+     * If `idpType`==`oauth`
      * 
      */
     @Import(name="oauthDiscoveryUrl")
     private @Nullable Output<String> oauthDiscoveryUrl;
 
     /**
-     * @return If `idp_type`==`oauth`
+     * @return If `idpType`==`oauth`
      * 
      */
     public Optional<Output<String>> oauthDiscoveryUrl() {
@@ -318,14 +318,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+     * If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      * 
      */
     @Import(name="oauthRopcClientId")
     private @Nullable Output<String> oauthRopcClientId;
 
     /**
-     * @return If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+     * @return If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      * 
      */
     public Optional<Output<String>> oauthRopcClientId() {
@@ -333,14 +333,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+     * If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
      * 
      */
     @Import(name="oauthRopcClientSecret")
     private @Nullable Output<String> oauthRopcClientSecret;
 
     /**
-     * @return If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+     * @return If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
      * 
      */
     public Optional<Output<String>> oauthRopcClientSecret() {
@@ -348,14 +348,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `idp_type`==`oauth`, oauth*tenant*id
+     * Required if `idpType`==`oauth`, oauth*tenant*id
      * 
      */
     @Import(name="oauthTenantId")
     private @Nullable Output<String> oauthTenantId;
 
     /**
-     * @return Required if `idp_type`==`oauth`, oauth*tenant*id
+     * @return Required if `idpType`==`oauth`, oauth*tenant*id
      * 
      */
     public Optional<Output<String>> oauthTenantId() {
@@ -363,14 +363,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+     * if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
      * 
      */
     @Import(name="oauthType")
     private @Nullable Output<String> oauthType;
 
     /**
-     * @return if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+     * @return if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
      * 
      */
     public Optional<Output<String>> oauthType() {
@@ -385,14 +385,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     * If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
      * 
      */
     @Import(name="scimEnabled")
     private @Nullable Output<Boolean> scimEnabled;
 
     /**
-     * @return If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     * @return If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
      * 
      */
     public Optional<Output<Boolean>> scimEnabled() {
@@ -400,14 +400,14 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     * If `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
      * 
      */
     @Import(name="scimSecretToken")
     private @Nullable Output<String> scimSecretToken;
 
     /**
-     * @return If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     * @return If `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
      * 
      */
     public Optional<Output<String>> scimSecretToken() {
@@ -465,7 +465,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupFilter Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
+         * @param groupFilter Required if `ldapType`==`custom`, LDAP filter that will identify the type of group
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupFilter Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
+         * @param groupFilter Required if `ldapType`==`custom`, LDAP filter that will identify the type of group
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idpType enum: `ldap`, `mxedge_proxy`, `oauth`
+         * @param idpType enum: `ldap`, `mxedgeProxy`, `oauth`
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idpType enum: `ldap`, `mxedge_proxy`, `oauth`
+         * @param idpType enum: `ldap`, `mxedgeProxy`, `oauth`
          * 
          * @return builder
          * 
@@ -507,7 +507,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapBaseDn Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
+         * @param ldapBaseDn Required if `idpType`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
          * 
          * @return builder
          * 
@@ -518,7 +518,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapBaseDn Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
+         * @param ldapBaseDn Required if `idpType`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
          * 
          * @return builder
          * 
@@ -528,7 +528,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapBindDn Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
+         * @param ldapBindDn Required if `idpType`==`ldap`, the account used to authenticate against the LDAP
          * 
          * @return builder
          * 
@@ -539,7 +539,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapBindDn Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
+         * @param ldapBindDn Required if `idpType`==`ldap`, the account used to authenticate against the LDAP
          * 
          * @return builder
          * 
@@ -549,7 +549,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapBindPassword Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
+         * @param ldapBindPassword Required if `idpType`==`ldap`, the password used to authenticate against the LDAP
          * 
          * @return builder
          * 
@@ -560,7 +560,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapBindPassword Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
+         * @param ldapBindPassword Required if `idpType`==`ldap`, the password used to authenticate against the LDAP
          * 
          * @return builder
          * 
@@ -570,7 +570,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapCacerts Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+         * @param ldapCacerts Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
          * 
          * @return builder
          * 
@@ -581,7 +581,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapCacerts Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+         * @param ldapCacerts Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
          * 
          * @return builder
          * 
@@ -591,7 +591,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapCacerts Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
+         * @param ldapCacerts Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapClientCert If `idp_type`==`ldap`, LDAPS Client certificate
+         * @param ldapClientCert If `idpType`==`ldap`, LDAPS Client certificate
          * 
          * @return builder
          * 
@@ -612,7 +612,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapClientCert If `idp_type`==`ldap`, LDAPS Client certificate
+         * @param ldapClientCert If `idpType`==`ldap`, LDAPS Client certificate
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapClientKey If `idp_type`==`ldap`, Key for the `ldap_client_cert`
+         * @param ldapClientKey If `idpType`==`ldap`, Key for the `ldapClientCert`
          * 
          * @return builder
          * 
@@ -633,7 +633,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapClientKey If `idp_type`==`ldap`, Key for the `ldap_client_cert`
+         * @param ldapClientKey If `idpType`==`ldap`, Key for the `ldapClientCert`
          * 
          * @return builder
          * 
@@ -643,7 +643,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapGroupAttr If `ldap_type`==`custom`
+         * @param ldapGroupAttr If `ldapType`==`custom`
          * 
          * @return builder
          * 
@@ -654,7 +654,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapGroupAttr If `ldap_type`==`custom`
+         * @param ldapGroupAttr If `ldapType`==`custom`
          * 
          * @return builder
          * 
@@ -664,7 +664,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapGroupDn If `ldap_type`==`custom`
+         * @param ldapGroupDn If `ldapType`==`custom`
          * 
          * @return builder
          * 
@@ -675,7 +675,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapGroupDn If `ldap_type`==`custom`
+         * @param ldapGroupDn If `ldapType`==`custom`
          * 
          * @return builder
          * 
@@ -685,7 +685,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapResolveGroups If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+         * @param ldapResolveGroups If `idpType`==`ldap`, whether to recursively resolve LDAP groups
          * 
          * @return builder
          * 
@@ -696,7 +696,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapResolveGroups If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
+         * @param ldapResolveGroups If `idpType`==`ldap`, whether to recursively resolve LDAP groups
          * 
          * @return builder
          * 
@@ -706,7 +706,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapServerHosts If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+         * @param ldapServerHosts If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
          * 
          * @return builder
          * 
@@ -717,7 +717,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapServerHosts If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+         * @param ldapServerHosts If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
          * 
          * @return builder
          * 
@@ -727,7 +727,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapServerHosts If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+         * @param ldapServerHosts If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
          * 
          * @return builder
          * 
@@ -737,7 +737,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapType if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+         * @param ldapType if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
          * 
          * @return builder
          * 
@@ -748,7 +748,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapType if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
+         * @param ldapType if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
          * 
          * @return builder
          * 
@@ -758,7 +758,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapUserFilter Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
+         * @param ldapUserFilter Required if `ldapType`==`custom`, LDAP filter that will identify the type of user
          * 
          * @return builder
          * 
@@ -769,7 +769,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapUserFilter Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
+         * @param ldapUserFilter Required if `ldapType`==`custom`, LDAP filter that will identify the type of user
          * 
          * @return builder
          * 
@@ -779,7 +779,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberFilter Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
+         * @param memberFilter Required if `ldapType`==`custom`,LDAP filter that will identify the type of member
          * 
          * @return builder
          * 
@@ -790,7 +790,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param memberFilter Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
+         * @param memberFilter Required if `ldapType`==`custom`,LDAP filter that will identify the type of member
          * 
          * @return builder
          * 
@@ -821,7 +821,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthCcClientId Required if `idp_type`==`oauth`, Client Credentials
+         * @param oauthCcClientId Required if `idpType`==`oauth`, Client Credentials
          * 
          * @return builder
          * 
@@ -832,7 +832,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthCcClientId Required if `idp_type`==`oauth`, Client Credentials
+         * @param oauthCcClientId Required if `idpType`==`oauth`, Client Credentials
          * 
          * @return builder
          * 
@@ -842,7 +842,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthCcClientSecret Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form &#34;-----BEGIN RSA PRIVATE KEY--....&#34;
+         * @param oauthCcClientSecret Required if `idpType`==`oauth`, oauth*cc*client_secret is RSA private key, of the form &#34;-----BEGIN RSA PRIVATE KEY--....&#34;
          * 
          * @return builder
          * 
@@ -853,7 +853,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthCcClientSecret Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form &#34;-----BEGIN RSA PRIVATE KEY--....&#34;
+         * @param oauthCcClientSecret Required if `idpType`==`oauth`, oauth*cc*client_secret is RSA private key, of the form &#34;-----BEGIN RSA PRIVATE KEY--....&#34;
          * 
          * @return builder
          * 
@@ -863,7 +863,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthDiscoveryUrl If `idp_type`==`oauth`
+         * @param oauthDiscoveryUrl If `idpType`==`oauth`
          * 
          * @return builder
          * 
@@ -874,7 +874,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthDiscoveryUrl If `idp_type`==`oauth`
+         * @param oauthDiscoveryUrl If `idpType`==`oauth`
          * 
          * @return builder
          * 
@@ -905,7 +905,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthRopcClientId If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+         * @param oauthRopcClientId If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
          * 
          * @return builder
          * 
@@ -916,7 +916,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthRopcClientId If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
+         * @param oauthRopcClientId If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
          * 
          * @return builder
          * 
@@ -926,7 +926,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthRopcClientSecret If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+         * @param oauthRopcClientSecret If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
          * 
          * @return builder
          * 
@@ -937,7 +937,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthRopcClientSecret If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
+         * @param oauthRopcClientSecret If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
          * 
          * @return builder
          * 
@@ -947,7 +947,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthTenantId Required if `idp_type`==`oauth`, oauth*tenant*id
+         * @param oauthTenantId Required if `idpType`==`oauth`, oauth*tenant*id
          * 
          * @return builder
          * 
@@ -958,7 +958,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthTenantId Required if `idp_type`==`oauth`, oauth*tenant*id
+         * @param oauthTenantId Required if `idpType`==`oauth`, oauth*tenant*id
          * 
          * @return builder
          * 
@@ -968,7 +968,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthType if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+         * @param oauthType if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
          * 
          * @return builder
          * 
@@ -979,7 +979,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthType if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+         * @param oauthType if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
          * 
          * @return builder
          * 
@@ -998,7 +998,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scimEnabled If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+         * @param scimEnabled If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
          * 
          * @return builder
          * 
@@ -1009,7 +1009,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scimEnabled If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+         * @param scimEnabled If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
          * 
          * @return builder
          * 
@@ -1019,7 +1019,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scimSecretToken If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+         * @param scimSecretToken If `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
          * 
          * @return builder
          * 
@@ -1030,7 +1030,7 @@ public final class NacidpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scimSecretToken If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+         * @param scimSecretToken If `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
          * 
          * @return builder
          * 

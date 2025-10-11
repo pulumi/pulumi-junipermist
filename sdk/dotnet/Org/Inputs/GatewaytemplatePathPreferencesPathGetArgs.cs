@@ -16,27 +16,27 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? Cost { get; set; }
 
         /// <summary>
-        /// For SSR Only. `true`, if this specific path is undesired
+        /// For SSR Only. `True`, if this specific path is undesired
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Only if `type`==`local`, if a different gateway is desired
+        /// Only if `Type`==`Local`, if a different gateway is desired
         /// </summary>
         [Input("gatewayIp")]
         public Input<string>? GatewayIp { get; set; }
 
         /// <summary>
-        /// Only if `type`==`vpn`, if this vpn path can be used for internet
+        /// Only if `Type`==`Vpn`, if this vpn path can be used for internet
         /// </summary>
         [Input("internetAccess")]
         public Input<bool>? InternetAccess { get; set; }
 
         /// <summary>
         /// Required when 
-        ///   * `type`==`vpn`: the name of the VPN Path to use 
-        ///   * `type`==`wan`: the name of the WAN interface to use
+        ///   * `Type`==`Vpn`: the name of the VPN Path to use 
+        ///   * `Type`==`Wan`: the name of the WAN interface to use
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -45,7 +45,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// Required when `type`==`local`
+        /// Required when `Type`==`Local`
         /// </summary>
         public InputList<string> Networks
         {
@@ -57,7 +57,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _targetIps;
 
         /// <summary>
-        /// If `type`==`local`, if destination IP is to be replaced
+        /// If `Type`==`Local`, if destination IP is to be replaced
         /// </summary>
         public InputList<string> TargetIps
         {
@@ -66,13 +66,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// enum: `local`, `tunnel`, `vpn`, `wan`
+        /// enum: `Local`, `Tunnel`, `Vpn`, `Wan`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// Optional if `type`==`vpn`
+        /// Optional if `Type`==`Vpn`
         /// </summary>
         [Input("wanName")]
         public Input<string>? WanName { get; set; }

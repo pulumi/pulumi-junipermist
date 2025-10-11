@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  *
  * The Gateway Device Profile can be assigned to a gateway with the `junipermist.org.DeviceprofileAssign` resource.
  *
+ * ## Example Usage
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_deviceprofile_gateway` with:

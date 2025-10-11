@@ -132,14 +132,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
+     * if `wanType`==`dsl`. enum: `adsl`, `vdsl`
      * 
      */
     @Import(name="dslType")
     private @Nullable Output<String> dslType;
 
     /**
-     * @return if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
+     * @return if `wanType`==`dsl`. enum: `adsl`, `vdsl`
      * 
      */
     public Optional<Output<String>> dslType() {
@@ -147,14 +147,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * If `wan_type`==`dsl`, 16 bit int
+     * If `wanType`==`dsl`, 16 bit int
      * 
      */
     @Import(name="dslVci")
     private @Nullable Output<Integer> dslVci;
 
     /**
-     * @return If `wan_type`==`dsl`, 16 bit int
+     * @return If `wanType`==`dsl`, 16 bit int
      * 
      */
     public Optional<Output<Integer>> dslVci() {
@@ -162,14 +162,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * If `wan_type`==`dsl`, 8 bit int
+     * If `wanType`==`dsl`, 8 bit int
      * 
      */
     @Import(name="dslVpi")
     private @Nullable Output<Integer> dslVpi;
 
     /**
-     * @return If `wan_type`==`dsl`, 8 bit int
+     * @return If `wanType`==`dsl`, 8 bit int
      * 
      */
     public Optional<Output<Integer>> dslVpi() {
@@ -207,14 +207,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * If `wan_type`==`lte`
+     * If `wanType`==`lte`
      * 
      */
     @Import(name="lteApn")
     private @Nullable Output<String> lteApn;
 
     /**
-     * @return If `wan_type`==`lte`
+     * @return If `wanType`==`lte`
      * 
      */
     public Optional<Output<String>> lteApn() {
@@ -222,14 +222,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * if `wan_type`==`lte`. enum: `chap`, `none`, `pap`
+     * if `wanType`==`lte`. enum: `chap`, `none`, `pap`
      * 
      */
     @Import(name="lteAuth")
     private @Nullable Output<String> lteAuth;
 
     /**
-     * @return if `wan_type`==`lte`. enum: `chap`, `none`, `pap`
+     * @return if `wanType`==`lte`. enum: `chap`, `none`, `pap`
      * 
      */
     public Optional<Output<String>> lteAuth() {
@@ -244,14 +244,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * If `wan_type`==`lte`
+     * If `wanType`==`lte`
      * 
      */
     @Import(name="ltePassword")
     private @Nullable Output<String> ltePassword;
 
     /**
-     * @return If `wan_type`==`lte`
+     * @return If `wanType`==`lte`
      * 
      */
     public Optional<Output<String>> ltePassword() {
@@ -259,14 +259,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * If `wan_type`==`lte`
+     * If `wanType`==`lte`
      * 
      */
     @Import(name="lteUsername")
     private @Nullable Output<String> lteUsername;
 
     /**
-     * @return If `wan_type`==`lte`
+     * @return If `wanType`==`lte`
      * 
      */
     public Optional<Output<String>> lteUsername() {
@@ -482,14 +482,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
+     * port usage name. enum: `haControl`, `haData`, `lan`, `wan`
      * 
      */
     @Import(name="usage", required=true)
     private Output<String> usage;
 
     /**
-     * @return port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
+     * @return port usage name. enum: `haControl`, `haData`, `lan`, `wan`
      * 
      */
     public Output<String> usage() {
@@ -519,14 +519,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+     * Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
      * 
      */
     @Import(name="wanArpPolicer")
     private @Nullable Output<String> wanArpPolicer;
 
     /**
-     * @return Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+     * @return Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
      * 
      */
     public Optional<Output<String>> wanArpPolicer() {
@@ -534,14 +534,14 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * If `wan_type`==`wan`, disable speedtest
+     * If `wanType`==`wan`, disable speedtest
      * 
      */
     @Import(name="wanDisableSpeedtest")
     private @Nullable Output<Boolean> wanDisableSpeedtest;
 
     /**
-     * @return If `wan_type`==`wan`, disable speedtest
+     * @return If `wanType`==`wan`, disable speedtest
      * 
      */
     public Optional<Output<Boolean>> wanDisableSpeedtest() {
@@ -867,7 +867,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param dslType if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
+         * @param dslType if `wanType`==`dsl`. enum: `adsl`, `vdsl`
          * 
          * @return builder
          * 
@@ -878,7 +878,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param dslType if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
+         * @param dslType if `wanType`==`dsl`. enum: `adsl`, `vdsl`
          * 
          * @return builder
          * 
@@ -888,7 +888,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param dslVci If `wan_type`==`dsl`, 16 bit int
+         * @param dslVci If `wanType`==`dsl`, 16 bit int
          * 
          * @return builder
          * 
@@ -899,7 +899,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param dslVci If `wan_type`==`dsl`, 16 bit int
+         * @param dslVci If `wanType`==`dsl`, 16 bit int
          * 
          * @return builder
          * 
@@ -909,7 +909,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param dslVpi If `wan_type`==`dsl`, 8 bit int
+         * @param dslVpi If `wanType`==`dsl`, 8 bit int
          * 
          * @return builder
          * 
@@ -920,7 +920,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param dslVpi If `wan_type`==`dsl`, 8 bit int
+         * @param dslVpi If `wanType`==`dsl`, 8 bit int
          * 
          * @return builder
          * 
@@ -972,7 +972,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param lteApn If `wan_type`==`lte`
+         * @param lteApn If `wanType`==`lte`
          * 
          * @return builder
          * 
@@ -983,7 +983,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param lteApn If `wan_type`==`lte`
+         * @param lteApn If `wanType`==`lte`
          * 
          * @return builder
          * 
@@ -993,7 +993,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param lteAuth if `wan_type`==`lte`. enum: `chap`, `none`, `pap`
+         * @param lteAuth if `wanType`==`lte`. enum: `chap`, `none`, `pap`
          * 
          * @return builder
          * 
@@ -1004,7 +1004,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param lteAuth if `wan_type`==`lte`. enum: `chap`, `none`, `pap`
+         * @param lteAuth if `wanType`==`lte`. enum: `chap`, `none`, `pap`
          * 
          * @return builder
          * 
@@ -1023,7 +1023,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ltePassword If `wan_type`==`lte`
+         * @param ltePassword If `wanType`==`lte`
          * 
          * @return builder
          * 
@@ -1034,7 +1034,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ltePassword If `wan_type`==`lte`
+         * @param ltePassword If `wanType`==`lte`
          * 
          * @return builder
          * 
@@ -1044,7 +1044,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param lteUsername If `wan_type`==`lte`
+         * @param lteUsername If `wanType`==`lte`
          * 
          * @return builder
          * 
@@ -1055,7 +1055,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param lteUsername If `wan_type`==`lte`
+         * @param lteUsername If `wanType`==`lte`
          * 
          * @return builder
          * 
@@ -1373,7 +1373,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param usage port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
+         * @param usage port usage name. enum: `haControl`, `haData`, `lan`, `wan`
          * 
          * @return builder
          * 
@@ -1384,7 +1384,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param usage port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
+         * @param usage port usage name. enum: `haControl`, `haData`, `lan`, `wan`
          * 
          * @return builder
          * 
@@ -1424,7 +1424,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param wanArpPolicer Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+         * @param wanArpPolicer Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
          * 
          * @return builder
          * 
@@ -1435,7 +1435,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param wanArpPolicer Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+         * @param wanArpPolicer Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
          * 
          * @return builder
          * 
@@ -1445,7 +1445,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param wanDisableSpeedtest If `wan_type`==`wan`, disable speedtest
+         * @param wanDisableSpeedtest If `wanType`==`wan`, disable speedtest
          * 
          * @return builder
          * 
@@ -1456,7 +1456,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param wanDisableSpeedtest If `wan_type`==`wan`, disable speedtest
+         * @param wanDisableSpeedtest If `wanType`==`wan`, disable speedtest
          * 
          * @return builder
          * 

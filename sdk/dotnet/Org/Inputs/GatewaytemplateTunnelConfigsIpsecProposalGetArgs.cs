@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateTunnelConfigsIpsecProposalGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `md5`, `sha1`, `sha2`
+        /// enum: `Md5`, `Sha1`, `Sha2`
         /// </summary>
         [Input("authAlgo")]
         public Input<string>? AuthAlgo { get; set; }
 
         /// <summary>
-        /// Only if `provider`==`custom-ipsec`. enum:
+        /// Only if `Provider`==`custom-ipsec`. enum:
         ///   * 1
         ///   * 2 (1024-bit)
         ///   * 5
@@ -35,7 +35,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? DhGroup { get; set; }
 
         /// <summary>
-        /// enum: `3des`, `aes128`, `aes256`, `aes_gcm128`, `aes_gcm256`
+        /// enum: `3des`, `Aes128`, `Aes256`, `AesGcm128`, `AesGcm256`
         /// </summary>
         [Input("encAlgo")]
         public Input<string>? EncAlgo { get; set; }

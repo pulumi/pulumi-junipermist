@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? PortRange;
         /// <summary>
-        /// `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254
+        /// `Https`/ `Tcp` / `Udp` / `Icmp` / `Gre` / `Any` / `:protocol_number`, `ProtocolNumber` is between 1-254
         /// </summary>
         public readonly string? Protocol;
 

@@ -18,14 +18,14 @@ public final class NetworktemplateSwitchMgmtProtectReCustomArgs extends com.pulu
     public static final NetworktemplateSwitchMgmtProtectReCustomArgs Empty = new NetworktemplateSwitchMgmtProtectReCustomArgs();
 
     /**
-     * matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+     * matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
      * 
      */
     @Import(name="portRange")
     private @Nullable Output<String> portRange;
 
     /**
-     * @return matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+     * @return matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -33,14 +33,14 @@ public final class NetworktemplateSwitchMgmtProtectReCustomArgs extends com.pulu
     }
 
     /**
-     * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+     * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+     * @return enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -81,7 +81,7 @@ public final class NetworktemplateSwitchMgmtProtectReCustomArgs extends com.pulu
         }
 
         /**
-         * @param portRange matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+         * @param portRange matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class NetworktemplateSwitchMgmtProtectReCustomArgs extends com.pulu
         }
 
         /**
-         * @param portRange matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+         * @param portRange matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class NetworktemplateSwitchMgmtProtectReCustomArgs extends com.pulu
         }
 
         /**
-         * @param protocol enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+         * @param protocol enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class NetworktemplateSwitchMgmtProtectReCustomArgs extends com.pulu
         }
 
         /**
-         * @param protocol enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+         * @param protocol enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          * 
          * @return builder
          * 

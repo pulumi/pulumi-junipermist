@@ -127,7 +127,7 @@ namespace Pulumi.JuniperMist.Device
         public int? End { get; set; }
 
         /// <summary>
-        /// If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+        /// If `EvpnUnused`==`True`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
         /// </summary>
         [Input("evpnUnused")]
         public string? EvpnUnused { get; set; }
@@ -154,7 +154,7 @@ namespace Pulumi.JuniperMist.Device
         public int? Start { get; set; }
 
         /// <summary>
-        /// enum: `all`, `connected`, `disconnected`
+        /// enum: `All`, `Connected`, `Disconnected`
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<int>? End { get; set; }
 
         /// <summary>
-        /// If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+        /// If `EvpnUnused`==`True`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
         /// </summary>
         [Input("evpnUnused")]
         public Input<string>? EvpnUnused { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<int>? Start { get; set; }
 
         /// <summary>
-        /// enum: `all`, `connected`, `disconnected`
+        /// enum: `All`, `Connected`, `Disconnected`
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         public readonly int? End;
         /// <summary>
-        /// If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+        /// If `EvpnUnused`==`True`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
         /// </summary>
         public readonly string? EvpnUnused;
         /// <summary>
@@ -251,7 +251,7 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         public readonly int? Start;
         /// <summary>
-        /// enum: `all`, `connected`, `disconnected`
+        /// enum: `All`, `Connected`, `Disconnected`
         /// </summary>
         public readonly string? Status;
 

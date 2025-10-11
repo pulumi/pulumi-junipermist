@@ -81,7 +81,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> IdpCert { get; private set; } = null!;
 
         /// <summary>
-        /// Signing algorithm for SAML Assertion. enum `sha1`, `sha256`, `sha384`, `sha512`
+        /// Signing algorithm for SAML Assertion. enum `Sha1`, `Sha256`, `Sha384`, `Sha512`
         /// </summary>
         [Output("idpSignAlgo")]
         public Output<string> IdpSignAlgo { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `email`, `unspecified`
+        /// enum: `Email`, `Unspecified`
         /// </summary>
         [Output("nameidFormat")]
         public Output<string> NameidFormat { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+        /// custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`Cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
         /// </summary>
         [Output("roleAttrExtraction")]
         public Output<string?> RoleAttrExtraction { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> IdpCert { get; set; } = null!;
 
         /// <summary>
-        /// Signing algorithm for SAML Assertion. enum `sha1`, `sha256`, `sha384`, `sha512`
+        /// Signing algorithm for SAML Assertion. enum `Sha1`, `Sha256`, `Sha384`, `Sha512`
         /// </summary>
         [Input("idpSignAlgo", required: true)]
         public Input<string> IdpSignAlgo { get; set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// enum: `email`, `unspecified`
+        /// enum: `Email`, `Unspecified`
         /// </summary>
         [Input("nameidFormat")]
         public Input<string>? NameidFormat { get; set; }
@@ -236,7 +236,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+        /// custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`Cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
         /// </summary>
         [Input("roleAttrExtraction")]
         public Input<string>? RoleAttrExtraction { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? IdpCert { get; set; }
 
         /// <summary>
-        /// Signing algorithm for SAML Assertion. enum `sha1`, `sha256`, `sha384`, `sha512`
+        /// Signing algorithm for SAML Assertion. enum `Sha1`, `Sha256`, `Sha384`, `Sha512`
         /// </summary>
         [Input("idpSignAlgo")]
         public Input<string>? IdpSignAlgo { get; set; }
@@ -312,7 +312,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// enum: `email`, `unspecified`
+        /// enum: `Email`, `Unspecified`
         /// </summary>
         [Input("nameidFormat")]
         public Input<string>? NameidFormat { get; set; }
@@ -321,7 +321,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+        /// custom role attribute parsing scheme. Supported Role Parsing Schemes &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`Cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
         /// </summary>
         [Input("roleAttrExtraction")]
         public Input<string>? RoleAttrExtraction { get; set; }

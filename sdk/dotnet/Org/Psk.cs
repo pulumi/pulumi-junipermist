@@ -64,7 +64,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
+        /// Expire time for this PSK key (epoch time in seconds). Default `Null` (as no expiration)
         /// </summary>
         [Output("expireTime")]
         public Output<int> ExpireTime { get; private set; } = null!;
@@ -76,13 +76,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<int?> ExpiryNotificationTime { get; private set; } = null!;
 
         /// <summary>
-        /// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `Usage`==`Single`, the mac that this PSK ties to, empty if `auto-binding`
         /// </summary>
         [Output("mac")]
         public Output<string?> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        /// If `Usage`==`Macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         /// </summary>
         [Output("macs")]
         public Output<ImmutableArray<string>> Macs { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Ssid { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `macs`, `multi`, `single`
+        /// enum: `Macs`, `Multi`, `Single`
         /// </summary>
         [Output("usage")]
         public Output<string> Usage { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
+        /// Expire time for this PSK key (epoch time in seconds). Default `Null` (as no expiration)
         /// </summary>
         [Input("expireTime")]
         public Input<int>? ExpireTime { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? ExpiryNotificationTime { get; set; }
 
         /// <summary>
-        /// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `Usage`==`Single`, the mac that this PSK ties to, empty if `auto-binding`
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _macs;
 
         /// <summary>
-        /// If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        /// If `Usage`==`Macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         /// </summary>
         public InputList<string> Macs
         {
@@ -301,7 +301,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> Ssid { get; set; } = null!;
 
         /// <summary>
-        /// enum: `macs`, `multi`, `single`
+        /// enum: `Macs`, `Multi`, `Single`
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }
@@ -324,7 +324,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
+        /// Expire time for this PSK key (epoch time in seconds). Default `Null` (as no expiration)
         /// </summary>
         [Input("expireTime")]
         public Input<int>? ExpireTime { get; set; }
@@ -336,7 +336,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? ExpiryNotificationTime { get; set; }
 
         /// <summary>
-        /// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        /// If `Usage`==`Single`, the mac that this PSK ties to, empty if `auto-binding`
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -345,7 +345,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _macs;
 
         /// <summary>
-        /// If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+        /// If `Usage`==`Macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         /// </summary>
         public InputList<string> Macs
         {
@@ -422,7 +422,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Ssid { get; set; }
 
         /// <summary>
-        /// enum: `macs`, `multi`, `single`
+        /// enum: `Macs`, `Multi`, `Single`
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }

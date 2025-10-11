@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dns;
 
         /// <summary>
-        /// If `type`==`static`
+        /// If `Type`==`Static`
         /// </summary>
         public InputList<string> Dns
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Required if `type`==`static`
+        /// Required if `Type`==`Static`
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Required if `type`==`static`
+        /// Required if `Type`==`Static`
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Gateway6 { get; set; }
 
         /// <summary>
-        /// Required if `type`==`static`
+        /// Required if `Type`==`Static`
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// Required if `type`==`static`
+        /// Required if `Type`==`Static`
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
@@ -67,13 +67,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Netmask6 { get; set; }
 
         /// <summary>
-        /// enum: `dhcp`, `static`
+        /// enum: `Dhcp`, `Static`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `autoconf`, `dhcp`, `disabled`, `static`
+        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileApUsbConfig
     {
         /// <summary>
-        /// Only if `type`==`imagotag`
+        /// Only if `Type`==`Imagotag`
         /// </summary>
         public readonly string? Cacert;
         /// <summary>
-        /// Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
+        /// Only if `Type`==`Imagotag`, channel selection, not needed by default, required for manual channel override only
         /// </summary>
         public readonly int? Channel;
         /// <summary>
@@ -26,23 +26,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Only if `type`==`imagotag`
+        /// Only if `Type`==`Imagotag`
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// Only if `type`==`imagotag`
+        /// Only if `Type`==`Imagotag`
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// usb config type. enum: `hanshow`, `imagotag`, `solum`
+        /// usb config type. enum: `Hanshow`, `Imagotag`, `Solum`
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Only if `type`==`imagotag`, whether to turn on SSL verification
+        /// Only if `Type`==`Imagotag`, whether to turn on SSL verification
         /// </summary>
         public readonly bool? VerifyCert;
         /// <summary>
-        /// Only if `type`==`solum` or `type`==`hanshow`
+        /// Only if `Type`==`Solum` or `Type`==`Hanshow`
         /// </summary>
         public readonly int? VlanId;
 

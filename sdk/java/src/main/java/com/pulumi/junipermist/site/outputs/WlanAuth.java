@@ -55,7 +55,7 @@ public final class WlanAuth {
      */
     private @Nullable List<String> pairwises;
     /**
-     * @return When `multi_psk_only`==`true`, whether private wlan is enabled
+     * @return When `multiPskOnly`==`true`, whether private wlan is enabled
      * 
      */
     private @Nullable Boolean privateWlan;
@@ -133,7 +133,7 @@ public final class WlanAuth {
         return this.pairwises == null ? List.of() : this.pairwises;
     }
     /**
-     * @return When `multi_psk_only`==`true`, whether private wlan is enabled
+     * @return When `multiPskOnly`==`true`, whether private wlan is enabled
      * 
      */
     public Optional<Boolean> privateWlan() {

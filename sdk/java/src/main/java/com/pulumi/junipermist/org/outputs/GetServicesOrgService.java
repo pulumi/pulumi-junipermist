@@ -21,12 +21,12 @@ public final class GetServicesOrgService {
      */
     private List<String> addresses;
     /**
-     * @return When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+     * @return When `type`==`appCategories`, list of application categories are available through List App Category Definitions
      * 
      */
     private List<String> appCategories;
     /**
-     * @return When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+     * @return When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
      * 
      */
     private List<String> appSubcategories;
@@ -56,7 +56,7 @@ public final class GetServicesOrgService {
     private String description;
     private String dscp;
     /**
-     * @return enum: `non_revertable`, `none`, `revertable`
+     * @return enum: `nonRevertable`, `none`, `revertable`
      * 
      */
     private String failoverPolicy;
@@ -102,7 +102,7 @@ public final class GetServicesOrgService {
     private List<GetServicesOrgServiceSpec> specs;
     private Boolean ssrRelaxedTcpStateEnforcement;
     /**
-     * @return when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
+     * @return when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
      * 
      */
     private String trafficClass;
@@ -112,7 +112,7 @@ public final class GetServicesOrgService {
      */
     private String trafficType;
     /**
-     * @return enum: `app_categories`, `apps`, `custom`, `urls`
+     * @return enum: `appCategories`, `apps`, `custom`, `urls`
      * 
      */
     private String type;
@@ -131,14 +131,14 @@ public final class GetServicesOrgService {
         return this.addresses;
     }
     /**
-     * @return When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+     * @return When `type`==`appCategories`, list of application categories are available through List App Category Definitions
      * 
      */
     public List<String> appCategories() {
         return this.appCategories;
     }
     /**
-     * @return When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+     * @return When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
      * 
      */
     public List<String> appSubcategories() {
@@ -182,7 +182,7 @@ public final class GetServicesOrgService {
         return this.dscp;
     }
     /**
-     * @return enum: `non_revertable`, `none`, `revertable`
+     * @return enum: `nonRevertable`, `none`, `revertable`
      * 
      */
     public String failoverPolicy() {
@@ -256,7 +256,7 @@ public final class GetServicesOrgService {
         return this.ssrRelaxedTcpStateEnforcement;
     }
     /**
-     * @return when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
+     * @return when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
      * 
      */
     public String trafficClass() {
@@ -270,7 +270,7 @@ public final class GetServicesOrgService {
         return this.trafficType;
     }
     /**
-     * @return enum: `app_categories`, `apps`, `custom`, `urls`
+     * @return enum: `appCategories`, `apps`, `custom`, `urls`
      * 
      */
     public String type() {

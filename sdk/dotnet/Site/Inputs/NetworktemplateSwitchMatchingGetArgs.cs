@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<Inputs.NetworktemplateSwitchMatchingRuleGetArgs>? _rules;
 
         /// <summary>
-        /// list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
+        /// list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `MatchModel`, `MatchName` or `MatchRole` must be defined
         /// </summary>
         public InputList<Inputs.NetworktemplateSwitchMatchingRuleGetArgs> Rules
         {

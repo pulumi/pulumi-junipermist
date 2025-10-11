@@ -54,7 +54,7 @@ public final class GetWlansSiteWlanAuth {
      */
     private List<String> pairwises;
     /**
-     * @return When `multi_psk_only`==`true`, whether private wlan is enabled
+     * @return When `multiPskOnly`==`true`, whether private wlan is enabled
      * 
      */
     private Boolean privateWlan;
@@ -132,7 +132,7 @@ public final class GetWlansSiteWlanAuth {
         return this.pairwises;
     }
     /**
-     * @return When `multi_psk_only`==`true`, whether private wlan is enabled
+     * @return When `multiPskOnly`==`true`, whether private wlan is enabled
      * 
      */
     public Boolean privateWlan() {

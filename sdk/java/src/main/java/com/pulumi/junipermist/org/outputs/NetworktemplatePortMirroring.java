@@ -13,74 +13,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplatePortMirroring {
     /**
-     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
      * 
      */
     private @Nullable List<String> inputNetworksIngresses;
     /**
-     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
      * 
      */
     private @Nullable List<String> inputPortIdsEgresses;
     /**
-     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
      * 
      */
     private @Nullable List<String> inputPortIdsIngresses;
     /**
-     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
      * 
      */
     private @Nullable String outputIpAddress;
     /**
-     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
      * 
      */
     private @Nullable String outputNetwork;
     /**
-     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
      * 
      */
     private @Nullable String outputPortId;
 
     private NetworktemplatePortMirroring() {}
     /**
-     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
      * 
      */
     public List<String> inputNetworksIngresses() {
         return this.inputNetworksIngresses == null ? List.of() : this.inputNetworksIngresses;
     }
     /**
-     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
      * 
      */
     public List<String> inputPortIdsEgresses() {
         return this.inputPortIdsEgresses == null ? List.of() : this.inputPortIdsEgresses;
     }
     /**
-     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
      * 
      */
     public List<String> inputPortIdsIngresses() {
         return this.inputPortIdsIngresses == null ? List.of() : this.inputPortIdsIngresses;
     }
     /**
-     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
      * 
      */
     public Optional<String> outputIpAddress() {
         return Optional.ofNullable(this.outputIpAddress);
     }
     /**
-     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
      * 
      */
     public Optional<String> outputNetwork() {
         return Optional.ofNullable(this.outputNetwork);
     }
     /**
-     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
      * 
      */
     public Optional<String> outputPortId() {

@@ -66,7 +66,7 @@ namespace Pulumi.JuniperMist.Site
     public partial class Webhook : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+        /// Only if `Type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
         /// </summary>
         [Output("assetfilterIds")]
         public Output<ImmutableArray<string>> AssetfilterIds { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+        /// If `Type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         /// </summary>
         [Output("headers")]
         public Output<ImmutableDictionary<string, string>?> Headers { get; private set; } = null!;
@@ -90,43 +90,43 @@ namespace Pulumi.JuniperMist.Site
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`
         /// </summary>
         [Output("oauth2ClientId")]
         public Output<string?> Oauth2ClientId { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`
         /// </summary>
         [Output("oauth2ClientSecret")]
         public Output<string?> Oauth2ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// required when `type`==`oauth2`. enum: `client_credentials`, `password`
+        /// required when `Type`==`Oauth2`. enum: `ClientCredentials`, `Password`
         /// </summary>
         [Output("oauth2GrantType")]
         public Output<string?> Oauth2GrantType { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `oauth2_grant_type`==`password`
+        /// Required when `Oauth2GrantType`==`Password`
         /// </summary>
         [Output("oauth2Password")]
         public Output<string?> Oauth2Password { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `type`==`oauth2`, if provided, will be used in the token request
+        /// Required when `Type`==`Oauth2`, if provided, will be used in the token request
         /// </summary>
         [Output("oauth2Scopes")]
         public Output<ImmutableArray<string>> Oauth2Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `type`==`oauth2`
+        /// Required when `Type`==`Oauth2`
         /// </summary>
         [Output("oauth2TokenUrl")]
         public Output<string?> Oauth2TokenUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `oauth2_grant_type`==`password`
+        /// Required when `Oauth2GrantType`==`Password`
         /// </summary>
         [Output("oauth2Username")]
         public Output<string?> Oauth2Username { get; private set; } = null!;
@@ -135,13 +135,13 @@ namespace Pulumi.JuniperMist.Site
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Only if `type`=`http-post`
+        /// Only if `Type`=`http-post`
         /// </summary>
         [Output("secret")]
         public Output<string?> Secret { get; private set; } = null!;
 
         /// <summary>
-        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `True`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         /// </summary>
         [Output("singleEventPerMessage")]
         public Output<bool?> SingleEventPerMessage { get; private set; } = null!;
@@ -150,19 +150,19 @@ namespace Pulumi.JuniperMist.Site
         public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
+        /// Required if `Type`=`Splunk`. If SplunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         /// </summary>
         [Output("splunkToken")]
         public Output<string?> SplunkToken { get; private set; } = null!;
 
         /// <summary>
-        /// enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        /// enum:  `Alarms`, `asset-raw`, `asset-raw-rssi`, `Audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `Location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `Rssizone`, `sdkclient-scan-data`, `Vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `Zone`
         /// </summary>
         [Output("topics")]
         public Output<ImmutableArray<string>> Topics { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        /// enum: `aws-sns`, `google-pubsub`, `http-post`, `Oauth2`, `Splunk`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _assetfilterIds;
 
         /// <summary>
-        /// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+        /// Only if `Type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
         /// </summary>
         public InputList<string> AssetfilterIds
         {
@@ -252,7 +252,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<string>? _headers;
 
         /// <summary>
-        /// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+        /// If `Type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         /// </summary>
         public InputMap<string> Headers
         {
@@ -267,7 +267,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`
         /// </summary>
         [Input("oauth2ClientId")]
         public Input<string>? Oauth2ClientId { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.JuniperMist.Site
         private Input<string>? _oauth2ClientSecret;
 
         /// <summary>
-        /// Required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`
         /// </summary>
         public Input<string>? Oauth2ClientSecret
         {
@@ -289,7 +289,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// required when `type`==`oauth2`. enum: `client_credentials`, `password`
+        /// required when `Type`==`Oauth2`. enum: `ClientCredentials`, `Password`
         /// </summary>
         [Input("oauth2GrantType")]
         public Input<string>? Oauth2GrantType { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.JuniperMist.Site
         private Input<string>? _oauth2Password;
 
         /// <summary>
-        /// Required when `oauth2_grant_type`==`password`
+        /// Required when `Oauth2GrantType`==`Password`
         /// </summary>
         public Input<string>? Oauth2Password
         {
@@ -314,7 +314,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _oauth2Scopes;
 
         /// <summary>
-        /// Required when `type`==`oauth2`, if provided, will be used in the token request
+        /// Required when `Type`==`Oauth2`, if provided, will be used in the token request
         /// </summary>
         public InputList<string> Oauth2Scopes
         {
@@ -323,13 +323,13 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Required when `type`==`oauth2`
+        /// Required when `Type`==`Oauth2`
         /// </summary>
         [Input("oauth2TokenUrl")]
         public Input<string>? Oauth2TokenUrl { get; set; }
 
         /// <summary>
-        /// Required when `oauth2_grant_type`==`password`
+        /// Required when `Oauth2GrantType`==`Password`
         /// </summary>
         [Input("oauth2Username")]
         public Input<string>? Oauth2Username { get; set; }
@@ -338,7 +338,7 @@ namespace Pulumi.JuniperMist.Site
         private Input<string>? _secret;
 
         /// <summary>
-        /// Only if `type`=`http-post`
+        /// Only if `Type`=`http-post`
         /// </summary>
         public Input<string>? Secret
         {
@@ -351,7 +351,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `True`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         /// </summary>
         [Input("singleEventPerMessage")]
         public Input<bool>? SingleEventPerMessage { get; set; }
@@ -363,7 +363,7 @@ namespace Pulumi.JuniperMist.Site
         private Input<string>? _splunkToken;
 
         /// <summary>
-        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
+        /// Required if `Type`=`Splunk`. If SplunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         /// </summary>
         public Input<string>? SplunkToken
         {
@@ -379,7 +379,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _topics;
 
         /// <summary>
-        /// enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        /// enum:  `Alarms`, `asset-raw`, `asset-raw-rssi`, `Audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `Location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `Rssizone`, `sdkclient-scan-data`, `Vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `Zone`
         /// </summary>
         public InputList<string> Topics
         {
@@ -388,7 +388,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        /// enum: `aws-sns`, `google-pubsub`, `http-post`, `Oauth2`, `Splunk`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -414,7 +414,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _assetfilterIds;
 
         /// <summary>
-        /// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+        /// Only if `Type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
         /// </summary>
         public InputList<string> AssetfilterIds
         {
@@ -432,7 +432,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<string>? _headers;
 
         /// <summary>
-        /// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+        /// If `Type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         /// </summary>
         public InputMap<string> Headers
         {
@@ -447,7 +447,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`
         /// </summary>
         [Input("oauth2ClientId")]
         public Input<string>? Oauth2ClientId { get; set; }
@@ -456,7 +456,7 @@ namespace Pulumi.JuniperMist.Site
         private Input<string>? _oauth2ClientSecret;
 
         /// <summary>
-        /// Required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`
         /// </summary>
         public Input<string>? Oauth2ClientSecret
         {
@@ -469,7 +469,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// required when `type`==`oauth2`. enum: `client_credentials`, `password`
+        /// required when `Type`==`Oauth2`. enum: `ClientCredentials`, `Password`
         /// </summary>
         [Input("oauth2GrantType")]
         public Input<string>? Oauth2GrantType { get; set; }
@@ -478,7 +478,7 @@ namespace Pulumi.JuniperMist.Site
         private Input<string>? _oauth2Password;
 
         /// <summary>
-        /// Required when `oauth2_grant_type`==`password`
+        /// Required when `Oauth2GrantType`==`Password`
         /// </summary>
         public Input<string>? Oauth2Password
         {
@@ -494,7 +494,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _oauth2Scopes;
 
         /// <summary>
-        /// Required when `type`==`oauth2`, if provided, will be used in the token request
+        /// Required when `Type`==`Oauth2`, if provided, will be used in the token request
         /// </summary>
         public InputList<string> Oauth2Scopes
         {
@@ -503,13 +503,13 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Required when `type`==`oauth2`
+        /// Required when `Type`==`Oauth2`
         /// </summary>
         [Input("oauth2TokenUrl")]
         public Input<string>? Oauth2TokenUrl { get; set; }
 
         /// <summary>
-        /// Required when `oauth2_grant_type`==`password`
+        /// Required when `Oauth2GrantType`==`Password`
         /// </summary>
         [Input("oauth2Username")]
         public Input<string>? Oauth2Username { get; set; }
@@ -521,7 +521,7 @@ namespace Pulumi.JuniperMist.Site
         private Input<string>? _secret;
 
         /// <summary>
-        /// Only if `type`=`http-post`
+        /// Only if `Type`=`http-post`
         /// </summary>
         public Input<string>? Secret
         {
@@ -534,7 +534,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
+        /// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `True`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         /// </summary>
         [Input("singleEventPerMessage")]
         public Input<bool>? SingleEventPerMessage { get; set; }
@@ -546,7 +546,7 @@ namespace Pulumi.JuniperMist.Site
         private Input<string>? _splunkToken;
 
         /// <summary>
-        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
+        /// Required if `Type`=`Splunk`. If SplunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         /// </summary>
         public Input<string>? SplunkToken
         {
@@ -562,7 +562,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _topics;
 
         /// <summary>
-        /// enum:  `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
+        /// enum:  `Alarms`, `asset-raw`, `asset-raw-rssi`, `Audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `Location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `Rssizone`, `sdkclient-scan-data`, `Vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `Zone`
         /// </summary>
         public InputList<string> Topics
         {
@@ -571,7 +571,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        /// enum: `aws-sns`, `google-pubsub`, `http-post`, `Oauth2`, `Splunk`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

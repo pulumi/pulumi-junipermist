@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class VpnPathsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `broadband`, `lte`
+        /// enum: `Broadband`, `Lte`
         /// </summary>
         [Input("bfdProfile")]
         public Input<string>? BfdProfile { get; set; }
 
         /// <summary>
-        /// If `type`==`mesh` and for SSR only, whether to use tunnel mode
+        /// If `Type`==`Mesh` and for SSR only, whether to use tunnel mode
         /// </summary>
         [Input("bfdUseTunnelMode")]
         public Input<bool>? BfdUseTunnelMode { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.VpnPathsPeerPathsGetArgs>? _peerPaths;
 
         /// <summary>
-        /// If `type`==`mesh`, Property key is the Peer Interface name
+        /// If `Type`==`Mesh`, Property key is the Peer Interface name
         /// </summary>
         public InputMap<Inputs.VpnPathsPeerPathsGetArgs> PeerPaths
         {

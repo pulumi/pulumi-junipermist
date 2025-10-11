@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class GetWlansSiteWlanInjectDhcpOption82Result
     {
         /// <summary>
-        /// Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+        /// Information to set in the `CircuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
         ///   * {{AP_MAC}}
         ///   * {{AP_MAC_DASHED}}
         ///   * {{AP_MODEL}}

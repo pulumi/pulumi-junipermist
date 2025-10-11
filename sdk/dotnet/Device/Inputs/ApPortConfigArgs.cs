@@ -26,23 +26,23 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         /// <summary>
         /// enum: 
-        ///   * `all`: local breakout, All VLANs
-        ///   * `limited`: local breakout, only the VLANs configured in `port_vlan_id` and `vlan_ids`
-        ///   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnel_id`)
-        ///   * `site_mxedge`: central breakout to a Site Mist Edge (requires `mxtunnel_name`)
-        ///   * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnel_id`)
+        ///   * `All`: local breakout, All VLANs
+        ///   * `Limited`: local breakout, only the VLANs configured in `PortVlanId` and `VlanIds`
+        ///   * `Mxtunnel`: central breakout to an Org Mist Edge (requires `MxtunnelId`)
+        ///   * `SiteMxedge`: central breakout to a Site Mist Edge (requires `MxtunnelName`)
+        ///   * `Wxtunnel`': central breakout to an Org WxTunnel (requires `WxtunnelId`)
         /// </summary>
         [Input("forwarding")]
         public Input<string>? Forwarding { get; set; }
 
         /// <summary>
-        /// When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+        /// When `True`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
         /// </summary>
         [Input("macAuthPreferred")]
         public Input<bool>? MacAuthPreferred { get; set; }
 
         /// <summary>
-        /// if `enable_mac_auth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+        /// if `EnableMacAuth`==`True`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `Pap`
         /// </summary>
         [Input("macAuthProtocol")]
         public Input<string>? MacAuthProtocol { get; set; }
@@ -51,25 +51,25 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<Inputs.ApPortConfigMistNacArgs>? MistNac { get; set; }
 
         /// <summary>
-        /// If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel
+        /// If `Forwarding`==`Mxtunnel`, VlanIds comes from mxtunnel
         /// </summary>
         [Input("mxTunnelId")]
         public Input<string>? MxTunnelId { get; set; }
 
         /// <summary>
-        /// If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+        /// If `Forwarding`==`SiteMxedge`, VlanIds comes from SiteMxedge (`Mxtunnels` under site setting)
         /// </summary>
         [Input("mxtunnelName")]
         public Input<string>? MxtunnelName { get; set; }
 
         /// <summary>
-        /// When doing port auth. enum: `dot1x`, `none`
+        /// When doing port auth. enum: `Dot1x`, `None`
         /// </summary>
         [Input("portAuth")]
         public Input<string>? PortAuth { get; set; }
 
         /// <summary>
-        /// If `forwarding`==`limited`
+        /// If `Forwarding`==`Limited`
         /// </summary>
         [Input("portVlanId")]
         public Input<int>? PortVlanId { get; set; }
@@ -87,9 +87,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<Inputs.ApPortConfigRadsecArgs>? Radsec { get; set; }
 
         /// <summary>
-        /// Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
-        ///   * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-        ///   * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+        /// Optional to specify the vlan id for a tunnel if forwarding is for `Wxtunnel`, `Mxtunnel` or `SiteMxedge`.
+        ///   * if VlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+        ///   * if forwarding == site_mxedge, VlanIds comes from SiteMxedge (`Mxtunnels` under site setting)
         /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }
@@ -98,7 +98,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<int>? _vlanIds;
 
         /// <summary>
-        /// If `forwarding`==`limited`
+        /// If `Forwarding`==`Limited`
         /// </summary>
         public InputList<int> VlanIds
         {
@@ -107,13 +107,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+        /// If `Forwarding`==`Wxtunnel`, the port is bridged to the vlan of the session
         /// </summary>
         [Input("wxtunnelId")]
         public Input<string>? WxtunnelId { get; set; }
 
         /// <summary>
-        /// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+        /// If `Forwarding`==`Wxtunnel`, the port is bridged to the vlan of the session
         /// </summary>
         [Input("wxtunnelRemoteId")]
         public Input<string>? WxtunnelRemoteId { get; set; }

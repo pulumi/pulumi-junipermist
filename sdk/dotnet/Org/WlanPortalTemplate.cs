@@ -15,10 +15,12 @@ namespace Pulumi.JuniperMist.Org
     /// The WLAN Portal Template can be used to define:
     /// * Guest Authentication methods and parameters (access duration, ...)
     /// * Default values of the text fields and labels on the portal
-    /// * Values of the text fields and labels based on the User Agent (`locales` property)
+    /// * Values of the text fields and labels based on the User Agent (`Locales` property)
     /// 
     /// **Notes:**
     /// * There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template
+    /// 
+    /// ## Example Usage
     /// </summary>
     [JuniperMistResourceType("junipermist:org/wlanPortalTemplate:WlanPortalTemplate")]
     public partial class WlanPortalTemplate : global::Pulumi.CustomResource

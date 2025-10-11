@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// If source_address is configured, will use the vlan firstly otherwise use source_ip
+        /// If SourceAddress is configured, will use the vlan firstly otherwise use source_ip
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// enum: `millisecond`, `year`, `year millisecond`
+        /// enum: `Millisecond`, `Year`, `year millisecond`
         /// </summary>
         [Input("timeFormat")]
         public Input<string>? TimeFormat { get; set; }

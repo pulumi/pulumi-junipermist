@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileGatewayOobIpConfigNode1GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `type`==`static`
+        /// If `Type`==`Static`
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
@@ -22,13 +22,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// Used only if `subnet` is not specified in `networks`
+        /// Used only if `Subnet` is not specified in `Networks`
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// enum: `dhcp`, `static`
+        /// enum: `Dhcp`, `Static`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? UseMgmtVrf { get; set; }
 
         /// <summary>
-        /// Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        /// Whether to use `MgmtJunos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         /// </summary>
         [Input("useMgmtVrfForHostOut")]
         public Input<bool>? UseMgmtVrfForHostOut { get; set; }

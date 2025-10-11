@@ -18,7 +18,7 @@ public final class WxtagSpec {
      */
     private @Nullable String portRange;
     /**
-     * @return tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocol_number` is between 1-254
+     * @return tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocolNumber` is between 1-254
      * 
      */
     private @Nullable String protocol;
@@ -37,7 +37,7 @@ public final class WxtagSpec {
         return Optional.ofNullable(this.portRange);
     }
     /**
-     * @return tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocol_number` is between 1-254
+     * @return tcp / udp / icmp / gre / any / &#34;:protocol_number&#34;, `protocolNumber` is between 1-254
      * 
      */
     public Optional<String> protocol() {

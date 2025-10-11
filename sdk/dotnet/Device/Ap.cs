@@ -79,7 +79,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.ApEslConfig?> EslConfig { get; private set; } = null!;
 
         /// <summary>
-        /// For some AP models, flow_control can be enabled to address some switch compatibility issue
+        /// For some AP models, FlowControl can be enabled to address some switch compatibility issue
         /// </summary>
         [Output("flowControl")]
         public Output<bool> FlowControl { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<bool> PoePassthrough { get; private set; } = null!;
 
         /// <summary>
-        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `Eth1` or `eth1,eth2`). If spcified, this takes predecence over SwitchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
         /// </summary>
         [Output("portConfig")]
         public Output<ImmutableDictionary<string, Outputs.ApPortConfig>?> PortConfig { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Device Type. enum: `ap`
+        /// Device Type. enum: `Ap`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -335,7 +335,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.ApEslConfigArgs>? EslConfig { get; set; }
 
         /// <summary>
-        /// For some AP models, flow_control can be enabled to address some switch compatibility issue
+        /// For some AP models, FlowControl can be enabled to address some switch compatibility issue
         /// </summary>
         [Input("flowControl")]
         public Input<bool>? FlowControl { get; set; }
@@ -412,7 +412,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.ApPortConfigArgs>? _portConfig;
 
         /// <summary>
-        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `Eth1` or `eth1,eth2`). If spcified, this takes predecence over SwitchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
         /// </summary>
         public InputMap<Inputs.ApPortConfigArgs> PortConfig
         {
@@ -533,7 +533,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.ApEslConfigGetArgs>? EslConfig { get; set; }
 
         /// <summary>
-        /// For some AP models, flow_control can be enabled to address some switch compatibility issue
+        /// For some AP models, FlowControl can be enabled to address some switch compatibility issue
         /// </summary>
         [Input("flowControl")]
         public Input<bool>? FlowControl { get; set; }
@@ -634,7 +634,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.ApPortConfigGetArgs>? _portConfig;
 
         /// <summary>
-        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `Eth1` or `eth1,eth2`). If spcified, this takes predecence over SwitchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
         /// </summary>
         public InputMap<Inputs.ApPortConfigGetArgs> PortConfig
         {
@@ -664,7 +664,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// Device Type. enum: `ap`
+        /// Device Type. enum: `Ap`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

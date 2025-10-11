@@ -132,7 +132,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> PoePassthrough { get; private set; } = null!;
 
         /// <summary>
-        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `Eth1` or `eth1,eth2`). If specified, this takes precedence over SwitchConfig (deprecated)
         /// </summary>
         [Output("portConfig")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileApPortConfig>?> PortConfig { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Device Type. enum: `ap`
+        /// Device Type. enum: `Ap`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -312,7 +312,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileApPortConfigArgs>? _portConfig;
 
         /// <summary>
-        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `Eth1` or `eth1,eth2`). If specified, this takes precedence over SwitchConfig (deprecated)
         /// </summary>
         public InputMap<Inputs.DeviceprofileApPortConfigArgs> PortConfig
         {
@@ -456,7 +456,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileApPortConfigGetArgs>? _portConfig;
 
         /// <summary>
-        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If specified, this takes precedence over switch_config (deprecated)
+        /// eth0 is not allowed here. Property key is the interface(s) name (e.g. `Eth1` or `eth1,eth2`). If specified, this takes precedence over SwitchConfig (deprecated)
         /// </summary>
         public InputMap<Inputs.DeviceprofileApPortConfigGetArgs> PortConfig
         {
@@ -480,7 +480,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// Device Type. enum: `ap`
+        /// Device Type. enum: `Ap`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

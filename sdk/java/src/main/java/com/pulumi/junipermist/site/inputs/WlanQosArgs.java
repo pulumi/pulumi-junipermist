@@ -17,14 +17,14 @@ public final class WlanQosArgs extends com.pulumi.resources.ResourceArgs {
     public static final WlanQosArgs Empty = new WlanQosArgs();
 
     /**
-     * enum: `background`, `best_effort`, `video`, `voice`
+     * enum: `background`, `bestEffort`, `video`, `voice`
      * 
      */
     @Import(name="class")
     private @Nullable Output<String> class_;
 
     /**
-     * @return enum: `background`, `best_effort`, `video`, `voice`
+     * @return enum: `background`, `bestEffort`, `video`, `voice`
      * 
      */
     public Optional<Output<String>> class_() {
@@ -72,7 +72,7 @@ public final class WlanQosArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param class_ enum: `background`, `best_effort`, `video`, `voice`
+         * @param class_ enum: `background`, `bestEffort`, `video`, `voice`
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class WlanQosArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param class_ enum: `background`, `best_effort`, `video`, `voice`
+         * @param class_ enum: `background`, `bestEffort`, `video`, `voice`
          * 
          * @return builder
          * 

@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int> MemberId { get; set; } = null!;
 
         /// <summary>
-        /// Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+        /// Both VcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `Backup`, `Linecard`, `Master`
         /// </summary>
         [Input("vcRole", required: true)]
         public Input<string> VcRole { get; set; } = null!;

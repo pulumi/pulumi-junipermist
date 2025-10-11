@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device
     /// 
     /// A Gateway Cluster can be formed with two Gateways assigned to the same site. Once the Cluster is formed, it can be configured just like a Gateway with the `junipermist.device.Gateway` resource:
     /// 1. Claim the gateways and assign them to the same site with the `junipermist.org.Inventory` resource
-    /// 2. Form the Cluster with the `junipermist.device.GatewayCluster` resource by providing the `site_id` and the MAC Addresses of two nodes (the first in the list will be the node0)
+    /// 2. Form the Cluster with the `junipermist.device.GatewayCluster` resource by providing the `SiteId` and the MAC Addresses of two nodes (the first in the list will be the node0)
     /// 3. Configure the Cluster with the `junipermist.device.Gateway` resource
     /// 
     /// Please check the [SRX Juniper Documentation](https://www.juniper.net/documentation/us/en/software/mist/mist-wan/topics/topic-map/srx-high-availability-configuration.html)or the [SSR Juniper Documentation](https://www.juniper.net/documentation/us/en/software/mist/mist-wan/topics/topic-map/ssr-high-availability-configuration.html) first to validate the cabling between the Gateways

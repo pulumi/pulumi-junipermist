@@ -15,37 +15,37 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         public readonly int? Cost;
         /// <summary>
-        /// For SSR Only. `true`, if this specific path is undesired
+        /// For SSR Only. `True`, if this specific path is undesired
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Only if `type`==`local`, if a different gateway is desired
+        /// Only if `Type`==`Local`, if a different gateway is desired
         /// </summary>
         public readonly string? GatewayIp;
         /// <summary>
-        /// Only if `type`==`vpn`, if this vpn path can be used for internet
+        /// Only if `Type`==`Vpn`, if this vpn path can be used for internet
         /// </summary>
         public readonly bool? InternetAccess;
         /// <summary>
         /// Required when 
-        ///   * `type`==`vpn`: the name of the VPN Path to use 
-        ///   * `type`==`wan`: the name of the WAN interface to use
+        ///   * `Type`==`Vpn`: the name of the VPN Path to use 
+        ///   * `Type`==`Wan`: the name of the WAN interface to use
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Required when `type`==`local`
+        /// Required when `Type`==`Local`
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// If `type`==`local`, if destination IP is to be replaced
+        /// If `Type`==`Local`, if destination IP is to be replaced
         /// </summary>
         public readonly ImmutableArray<string> TargetIps;
         /// <summary>
-        /// enum: `local`, `tunnel`, `vpn`, `wan`
+        /// enum: `Local`, `Tunnel`, `Vpn`, `Wan`
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Optional if `type`==`vpn`
+        /// Optional if `Type`==`Vpn`
         /// </summary>
         public readonly string? WanName;
 

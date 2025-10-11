@@ -33,13 +33,13 @@ public final class GatewayRoutingPoliciesTermMatching {
     private @Nullable List<String> protocols;
     private @Nullable GatewayRoutingPoliciesTermMatchingRouteExists routeExists;
     /**
-     * @return overlay-facing criteria (used for bgp_config where via=vpn)
+     * @return overlay-facing criteria (used for bgpConfig where via=vpn)
      * 
      */
     private @Nullable List<String> vpnNeighborMacs;
     private @Nullable GatewayRoutingPoliciesTermMatchingVpnPathSla vpnPathSla;
     /**
-     * @return overlay-facing criteria (used for bgp_config where via=vpn). ordered-
+     * @return overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
      * 
      */
     private @Nullable List<String> vpnPaths;
@@ -76,7 +76,7 @@ public final class GatewayRoutingPoliciesTermMatching {
         return Optional.ofNullable(this.routeExists);
     }
     /**
-     * @return overlay-facing criteria (used for bgp_config where via=vpn)
+     * @return overlay-facing criteria (used for bgpConfig where via=vpn)
      * 
      */
     public List<String> vpnNeighborMacs() {
@@ -86,7 +86,7 @@ public final class GatewayRoutingPoliciesTermMatching {
         return Optional.ofNullable(this.vpnPathSla);
     }
     /**
-     * @return overlay-facing criteria (used for bgp_config where via=vpn). ordered-
+     * @return overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
      * 
      */
     public List<String> vpnPaths() {

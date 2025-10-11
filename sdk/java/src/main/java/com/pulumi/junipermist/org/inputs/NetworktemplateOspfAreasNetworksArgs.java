@@ -19,14 +19,14 @@ public final class NetworktemplateOspfAreasNetworksArgs extends com.pulumi.resou
     public static final NetworktemplateOspfAreasNetworksArgs Empty = new NetworktemplateOspfAreasNetworksArgs();
 
     /**
-     * Required if `auth_type`==`md5`. Property key is the key number
+     * Required if `authType`==`md5`. Property key is the key number
      * 
      */
     @Import(name="authKeys")
     private @Nullable Output<Map<String,String>> authKeys;
 
     /**
-     * @return Required if `auth_type`==`md5`. Property key is the key number
+     * @return Required if `authType`==`md5`. Property key is the key number
      * 
      */
     public Optional<Output<Map<String,String>>> authKeys() {
@@ -34,14 +34,14 @@ public final class NetworktemplateOspfAreasNetworksArgs extends com.pulumi.resou
     }
 
     /**
-     * Required if `auth_type`==`password`, the password, max length is 8
+     * Required if `authType`==`password`, the password, max length is 8
      * 
      */
     @Import(name="authPassword")
     private @Nullable Output<String> authPassword;
 
     /**
-     * @return Required if `auth_type`==`password`, the password, max length is 8
+     * @return Required if `authType`==`password`, the password, max length is 8
      * 
      */
     public Optional<Output<String>> authPassword() {
@@ -186,7 +186,7 @@ public final class NetworktemplateOspfAreasNetworksArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authKeys Required if `auth_type`==`md5`. Property key is the key number
+         * @param authKeys Required if `authType`==`md5`. Property key is the key number
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class NetworktemplateOspfAreasNetworksArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authKeys Required if `auth_type`==`md5`. Property key is the key number
+         * @param authKeys Required if `authType`==`md5`. Property key is the key number
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class NetworktemplateOspfAreasNetworksArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authPassword Required if `auth_type`==`password`, the password, max length is 8
+         * @param authPassword Required if `authType`==`password`, the password, max length is 8
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class NetworktemplateOspfAreasNetworksArgs extends com.pulumi.resou
         }
 
         /**
-         * @param authPassword Required if `auth_type`==`password`, the password, max length is 8
+         * @param authPassword Required if `authType`==`password`, the password, max length is 8
          * 
          * @return builder
          * 

@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Link connection mode. enum: `auto`, `full`, `half`
+        /// Link connection mode. enum: `Auto`, `Full`, `Half`
         /// </summary>
         public readonly string? Duplex;
         public readonly string? MacLimit;
@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
-        /// Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        /// Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`Auto`
         /// </summary>
         public readonly string? Speed;
 

@@ -97,7 +97,7 @@ namespace Pulumi.JuniperMist.Device
     public sealed class GetVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Fetch version for device model, use/combine with `type` as needed (for switch and gateway devices)
+        /// Fetch version for device model, use/combine with `Type` as needed (for switch and gateway devices)
         /// </summary>
         [Input("model", required: true)]
         public string Model { get; set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.JuniperMist.Device
         public string OrgId { get; set; } = null!;
 
         /// <summary>
-        /// enum: `ap`, `gateway`, `switch`
+        /// enum: `Ap`, `Gateway`, `Switch`
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.JuniperMist.Device
     public sealed class GetVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Fetch version for device model, use/combine with `type` as needed (for switch and gateway devices)
+        /// Fetch version for device model, use/combine with `Type` as needed (for switch and gateway devices)
         /// </summary>
         [Input("model", required: true)]
         public Input<string> Model { get; set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// enum: `ap`, `gateway`, `switch`
+        /// enum: `Ap`, `Gateway`, `Switch`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -150,12 +150,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Fetch version for device model, use/combine with `type` as needed (for switch and gateway devices)
+        /// Fetch version for device model, use/combine with `Type` as needed (for switch and gateway devices)
         /// </summary>
         public readonly string Model;
         public readonly string OrgId;
         /// <summary>
-        /// enum: `ap`, `gateway`, `switch`
+        /// enum: `Ap`, `Gateway`, `Switch`
         /// </summary>
         public readonly string Type;
 

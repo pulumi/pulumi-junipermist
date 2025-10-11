@@ -36,7 +36,7 @@ namespace Pulumi.JuniperMist.Site
     public partial class WlanPortalImage : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
+        /// path to the background image file. File must be a `Jpeg`, `Jpg` or `Png` image`
         /// </summary>
         [Output("file")]
         public Output<string> File { get; private set; } = null!;
@@ -98,7 +98,7 @@ namespace Pulumi.JuniperMist.Site
     public sealed class WlanPortalImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
+        /// path to the background image file. File must be a `Jpeg`, `Jpg` or `Png` image`
         /// </summary>
         [Input("file", required: true)]
         public Input<string> File { get; set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.JuniperMist.Site
     public sealed class WlanPortalImageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
+        /// path to the background image file. File must be a `Jpeg`, `Jpg` or `Png` image`
         /// </summary>
         [Input("file")]
         public Input<string>? File { get; set; }

@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string Host;
         public readonly bool KeywrapEnabled;
         /// <summary>
-        /// enum: `ascii`, `hex`
+        /// enum: `Ascii`, `Hex`
         /// </summary>
         public readonly string KeywrapFormat;
         public readonly string KeywrapKek;

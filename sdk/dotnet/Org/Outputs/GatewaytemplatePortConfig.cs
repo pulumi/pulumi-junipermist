@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplatePortConfig
     {
         /// <summary>
-        /// If `aggregated`==`true`. To disable LCP support for the AE interface
+        /// If `Aggregated`==`True`. To disable LCP support for the AE interface
         /// </summary>
         public readonly bool? AeDisableLacp;
         /// <summary>
-        /// If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        /// If `Aggregated`==`True`. Users could force to use the designated AE name (must be an integer between 0 and 127)
         /// </summary>
         public readonly string? AeIdx;
         /// <summary>
-        /// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+        /// For SRX Only, if `Aggregated`==`True`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
         /// </summary>
         public readonly bool? AeLacpForceUp;
         public readonly bool? Aggregated;
@@ -40,19 +40,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
+        /// if `WanType`==`Dsl`. enum: `Adsl`, `Vdsl`
         /// </summary>
         public readonly string? DslType;
         /// <summary>
-        /// If `wan_type`==`dsl`, 16 bit int
+        /// If `WanType`==`Dsl`, 16 bit int
         /// </summary>
         public readonly int? DslVci;
         /// <summary>
-        /// If `wan_type`==`dsl`, 8 bit int
+        /// If `WanType`==`Dsl`, 8 bit int
         /// </summary>
         public readonly int? DslVpi;
         /// <summary>
-        /// enum: `auto`, `full`, `half`
+        /// enum: `Auto`, `Full`, `Half`
         /// </summary>
         public readonly string? Duplex;
         /// <summary>
@@ -60,20 +60,20 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.GatewaytemplatePortConfigIpConfig? IpConfig;
         /// <summary>
-        /// If `wan_type`==`lte`
+        /// If `WanType`==`Lte`
         /// </summary>
         public readonly string? LteApn;
         /// <summary>
-        /// if `wan_type`==`lte`. enum: `chap`, `none`, `pap`
+        /// if `WanType`==`Lte`. enum: `Chap`, `None`, `Pap`
         /// </summary>
         public readonly string? LteAuth;
         public readonly bool? LteBackup;
         /// <summary>
-        /// If `wan_type`==`lte`
+        /// If `WanType`==`Lte`
         /// </summary>
         public readonly string? LtePassword;
         /// <summary>
-        /// If `wan_type`==`lte`
+        /// If `WanType`==`Lte`
         /// </summary>
         public readonly string? LteUsername;
         public readonly int? Mtu;
@@ -82,7 +82,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// if `usage`==`lan`, name of the `junipermist.org.Network` resource
+        /// if `Usage`==`Lan`, name of the `junipermist.org.Network` resource
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
@@ -91,7 +91,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly int? OuterVlanId;
         public readonly bool? PoeDisabled;
         /// <summary>
-        /// Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
+        /// Only for SRX and if `Usage`==`Lan`, the name of the Network to be used as the Untagged VLAN
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
@@ -115,7 +115,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? RethNode;
         /// <summary>
-        /// SSR only - supporting vlan-based redundancy (matching the size of `networks`)
+        /// SSR only - supporting vlan-based redundancy (matching the size of `Networks`)
         /// </summary>
         public readonly ImmutableArray<string> RethNodes;
         public readonly string? Speed;
@@ -129,7 +129,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? SvrPortRange;
         public readonly Outputs.GatewaytemplatePortConfigTrafficShaping? TrafficShaping;
         /// <summary>
-        /// port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
+        /// port usage name. enum: `HaControl`, `HaData`, `Lan`, `Wan`
         /// </summary>
         public readonly string Usage;
         public readonly string? VlanId;
@@ -138,39 +138,39 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewaytemplatePortConfigVpnPaths>? VpnPaths;
         /// <summary>
-        /// Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+        /// Only when `WanType`==`Broadband`. enum: `Default`, `Max`, `Recommended`
         /// </summary>
         public readonly string? WanArpPolicer;
         /// <summary>
-        /// If `wan_type`==`wan`, disable speedtest
+        /// If `WanType`==`Wan`, disable speedtest
         /// </summary>
         public readonly bool? WanDisableSpeedtest;
         /// <summary>
-        /// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
+        /// Only if `Usage`==`Wan`, optional. If spoke should reach this port by a different IP
         /// </summary>
         public readonly string? WanExtIp;
         /// <summary>
-        /// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
+        /// Only if `Usage`==`Wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewaytemplatePortConfigWanExtraRoutes>? WanExtraRoutes;
         /// <summary>
-        /// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Only if `Usage`==`Wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewaytemplatePortConfigWanExtraRoutes6>? WanExtraRoutes6;
         /// <summary>
-        /// Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+        /// Only if `Usage`==`Wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
         /// </summary>
         public readonly ImmutableArray<string> WanNetworks;
         /// <summary>
-        /// Only if `usage`==`wan`
+        /// Only if `Usage`==`Wan`
         /// </summary>
         public readonly Outputs.GatewaytemplatePortConfigWanProbeOverride? WanProbeOverride;
         /// <summary>
-        /// Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+        /// Only if `Usage`==`Wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
         /// </summary>
         public readonly Outputs.GatewaytemplatePortConfigWanSourceNat? WanSourceNat;
         /// <summary>
-        /// Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+        /// Only if `Usage`==`Wan`. enum: `Broadband`, `Dsl`, `Lte`
         /// </summary>
         public readonly string? WanType;
 

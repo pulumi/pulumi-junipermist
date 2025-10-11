@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchAclPolicyActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `allow`, `deny`
+        /// enum: `Allow`, `Deny`
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

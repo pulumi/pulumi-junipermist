@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// Used only if `subnet` is not specified in `networks`
+        /// Used only if `Subnet` is not specified in `Networks`
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// enum: `dhcp`, `static`
+        /// enum: `Dhcp`, `Static`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

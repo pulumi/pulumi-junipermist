@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? Group;
         /// <summary>
-        /// enum: `base`, `remote`
+        /// enum: `Base`, `Remote`
         /// </summary>
         public readonly string? Role;
 

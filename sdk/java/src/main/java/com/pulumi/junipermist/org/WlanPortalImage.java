@@ -16,6 +16,8 @@ import javax.annotation.Nullable;
 /**
  * This resource is used to upload a WLAN Captive Web Portal background image.
  * 
+ * ## Example Usage
+ * 
  */
 @ResourceType(type="junipermist:org/wlanPortalImage:WlanPortalImage")
 public class WlanPortalImage extends com.pulumi.resources.CustomResource {

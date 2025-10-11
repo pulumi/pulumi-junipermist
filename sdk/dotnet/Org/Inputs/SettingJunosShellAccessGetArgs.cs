@@ -13,25 +13,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingJunosShellAccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `admin`, `viewer`, `none`
+        /// enum: `Admin`, `Viewer`, `None`
         /// </summary>
         [Input("admin")]
         public Input<string>? Admin { get; set; }
 
         /// <summary>
-        /// enum: `admin`, `viewer`, `none`
+        /// enum: `Admin`, `Viewer`, `None`
         /// </summary>
         [Input("helpdesk")]
         public Input<string>? Helpdesk { get; set; }
 
         /// <summary>
-        /// enum: `admin`, `viewer`, `none`
+        /// enum: `Admin`, `Viewer`, `None`
         /// </summary>
         [Input("read")]
         public Input<string>? Read { get; set; }
 
         /// <summary>
-        /// enum: `admin`, `viewer`, `none`
+        /// enum: `Admin`, `Viewer`, `None`
         /// </summary>
         [Input("write")]
         public Input<string>? Write { get; set; }

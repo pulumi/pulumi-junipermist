@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? KeywrapEnabled { get; set; }
 
         /// <summary>
-        /// enum: `ascii`, `hex`
+        /// enum: `Ascii`, `Hex`
         /// </summary>
         [Input("keywrapFormat")]
         public Input<string>? KeywrapFormat { get; set; }

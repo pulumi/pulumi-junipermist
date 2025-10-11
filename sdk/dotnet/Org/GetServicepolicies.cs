@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of WAN Assurance Service Policies (Application Policies).
         /// 
-        /// The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+        /// The Service Policies can be used in the `ServicePolicies` object by referencing the Service Policy ID as the `ServicepolicyId` in:
         /// * the Gateway configuration (`mist_device_gateway.service_policies`)
         /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
         /// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
@@ -45,7 +45,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of WAN Assurance Service Policies (Application Policies).
         /// 
-        /// The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+        /// The Service Policies can be used in the `ServicePolicies` object by referencing the Service Policy ID as the `ServicepolicyId` in:
         /// * the Gateway configuration (`mist_device_gateway.service_policies`)
         /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
         /// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
@@ -76,7 +76,7 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of WAN Assurance Service Policies (Application Policies).
         /// 
-        /// The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+        /// The Service Policies can be used in the `ServicePolicies` object by referencing the Service Policy ID as the `ServicepolicyId` in:
         /// * the Gateway configuration (`mist_device_gateway.service_policies`)
         /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
         /// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)

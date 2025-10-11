@@ -35,14 +35,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+     * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
      * 
      */
     @Import(name="appCategories")
     private @Nullable Output<List<String>> appCategories;
 
     /**
-     * @return When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+     * @return When `type`==`appCategories`, list of application categories are available through List App Category Definitions
      * 
      */
     public Optional<Output<List<String>>> appCategories() {
@@ -50,14 +50,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+     * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
      * 
      */
     @Import(name="appSubcategories")
     private @Nullable Output<List<String>> appSubcategories;
 
     /**
-     * @return When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+     * @return When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
      * 
      */
     public Optional<Output<List<String>>> appSubcategories() {
@@ -130,14 +130,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `non_revertible`, `none`, `revertible`
+     * enum: `nonRevertible`, `none`, `revertible`
      * 
      */
     @Import(name="failoverPolicy")
     private @Nullable Output<String> failoverPolicy;
 
     /**
-     * @return enum: `non_revertible`, `none`, `revertible`
+     * @return enum: `nonRevertible`, `none`, `revertible`
      * 
      */
     public Optional<Output<String>> failoverPolicy() {
@@ -262,14 +262,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
+     * when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
      * 
      */
     @Import(name="trafficClass")
     private @Nullable Output<String> trafficClass;
 
     /**
-     * @return when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
+     * @return when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
      * 
      */
     public Optional<Output<String>> trafficClass() {
@@ -292,14 +292,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `app_categories`, `apps`, `custom`, `urls`
+     * enum: `appCategories`, `apps`, `custom`, `urls`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `app_categories`, `apps`, `custom`, `urls`
+     * @return enum: `appCategories`, `apps`, `custom`, `urls`
      * 
      */
     public Optional<Output<String>> type() {
@@ -400,7 +400,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appCategories When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+         * @param appCategories When `type`==`appCategories`, list of application categories are available through List App Category Definitions
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appCategories When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+         * @param appCategories When `type`==`appCategories`, list of application categories are available through List App Category Definitions
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appCategories When `type`==`app_categories`, list of application categories are available through List App Category Definitions
+         * @param appCategories When `type`==`appCategories`, list of application categories are available through List App Category Definitions
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appSubcategories When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+         * @param appSubcategories When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appSubcategories When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+         * @param appSubcategories When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appSubcategories When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
+         * @param appSubcategories When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param failoverPolicy enum: `non_revertible`, `none`, `revertible`
+         * @param failoverPolicy enum: `nonRevertible`, `none`, `revertible`
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param failoverPolicy enum: `non_revertible`, `none`, `revertible`
+         * @param failoverPolicy enum: `nonRevertible`, `none`, `revertible`
          * 
          * @return builder
          * 
@@ -762,7 +762,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficClass when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
+         * @param trafficClass when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
          * 
          * @return builder
          * 
@@ -773,7 +773,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficClass when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
+         * @param trafficClass when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
          * 
          * @return builder
          * 
@@ -804,7 +804,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `app_categories`, `apps`, `custom`, `urls`
+         * @param type enum: `appCategories`, `apps`, `custom`, `urls`
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `app_categories`, `apps`, `custom`, `urls`
+         * @param type enum: `appCategories`, `apps`, `custom`, `urls`
          * 
          * @return builder
          * 

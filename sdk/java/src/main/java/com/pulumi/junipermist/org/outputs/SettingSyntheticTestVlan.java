@@ -26,7 +26,7 @@ public final class SettingSyntheticTestVlan {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return app name comes from `custom_probes` above or /const/synthetic_test_probes
+     * @return app name comes from `customProbes` above or /const/synthetic_test_probes
      * 
      */
     private @Nullable List<String> probes;
@@ -50,7 +50,7 @@ public final class SettingSyntheticTestVlan {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return app name comes from `custom_probes` above or /const/synthetic_test_probes
+     * @return app name comes from `customProbes` above or /const/synthetic_test_probes
      * 
      */
     public List<String> probes() {

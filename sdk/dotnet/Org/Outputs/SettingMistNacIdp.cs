@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingMistNacIdp
     {
         /// <summary>
-        /// When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+        /// When the IDP of MxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
         /// </summary>
         public readonly ImmutableArray<string> ExcludeRealms;
         /// <summary>
-        /// ID of the `mist_nacidp`
+        /// ID of the `MistNacidp`
         /// </summary>
         public readonly string Id;
         /// <summary>

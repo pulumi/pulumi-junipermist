@@ -162,14 +162,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For some AP models, flow_control can be enabled to address some switch compatibility issue
+     * For some AP models, flowControl can be enabled to address some switch compatibility issue
      * 
      */
     @Import(name="flowControl")
     private @Nullable Output<Boolean> flowControl;
 
     /**
-     * @return For some AP models, flow_control can be enabled to address some switch compatibility issue
+     * @return For some AP models, flowControl can be enabled to address some switch compatibility issue
      * 
      */
     public Optional<Output<Boolean>> flowControl() {
@@ -333,14 +333,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
+     * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      * 
      */
     @Import(name="portConfig")
     private @Nullable Output<Map<String,ApPortConfigArgs>> portConfig;
 
     /**
-     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
+     * @return eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      * 
      */
     public Optional<Output<Map<String,ApPortConfigArgs>>> portConfig() {
@@ -691,7 +691,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flowControl For some AP models, flow_control can be enabled to address some switch compatibility issue
+         * @param flowControl For some AP models, flowControl can be enabled to address some switch compatibility issue
          * 
          * @return builder
          * 
@@ -702,7 +702,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flowControl For some AP models, flow_control can be enabled to address some switch compatibility issue
+         * @param flowControl For some AP models, flowControl can be enabled to address some switch compatibility issue
          * 
          * @return builder
          * 
@@ -932,7 +932,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
+         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
          * 
          * @return builder
          * 
@@ -943,7 +943,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
+         * @param portConfig eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
          * 
          * @return builder
          * 

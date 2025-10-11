@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? AupBlockInternetUntilAccepted { get; set; }
 
         /// <summary>
-        /// Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
+        /// Can only be `True` when `AuthRequired`==`False`, display Acceptable Use Policy (AUP)
         /// </summary>
         [Input("aupEnabled")]
         public Input<bool>? AupEnabled { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? AupForceSslInspection { get; set; }
 
         /// <summary>
-        /// Required if `aup_enabled`==`true`. Days before AUP is requested again
+        /// Required if `AupEnabled`==`True`. Days before AUP is requested again
         /// </summary>
         [Input("aupTimeoutInDays")]
         public Input<int>? AupTimeoutInDays { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? AuthRequired { get; set; }
 
         /// <summary>
-        /// Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
+        /// Can only be `True` when `AuthRequired`==`False`, display caution notification for non-authenticated users
         /// </summary>
         [Input("cautionEnabled")]
         public Input<bool>? CautionEnabled { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<double>? DnBandwidth { get; set; }
 
         /// <summary>
-        /// Required if `surrogate_IP`==`true`, idle Time to Disassociation
+        /// Required if `surrogate_IP`==`True`, idle Time to Disassociation
         /// </summary>
         [Input("idleTimeInMinutes")]
         public Input<int>? IdleTimeInMinutes { get; set; }
@@ -64,25 +64,25 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// If `true`, enable the firewall control option
+        /// If `True`, enable the firewall control option
         /// </summary>
         [Input("ofwEnabled")]
         public Input<bool>? OfwEnabled { get; set; }
 
         /// <summary>
-        /// Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+        /// Can only be `True` when `AuthRequired`==`True`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
         /// </summary>
         [Input("surrogateIp")]
         public Input<bool>? SurrogateIp { get; set; }
 
         /// <summary>
-        /// Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+        /// Can only be `True` when `surrogate_IP`==`True`, enforce surrogate IP for known browsers
         /// </summary>
         [Input("surrogateIpEnforcedForKnownBrowsers")]
         public Input<bool>? SurrogateIpEnforcedForKnownBrowsers { get; set; }
 
         /// <summary>
-        /// Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+        /// Required if `surrogate_IP_enforced_for_known_browsers`==`True`, must be lower or equal than `IdleTimeInMinutes`, refresh Time for re-validation of Surrogacy
         /// </summary>
         [Input("surrogateRefreshTimeInMinutes")]
         public Input<int>? SurrogateRefreshTimeInMinutes { get; set; }

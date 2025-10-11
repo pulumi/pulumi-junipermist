@@ -22,14 +22,14 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
     public static final SwitchSwitchMgmtArgs Empty = new SwitchSwitchMgmtArgs();
 
     /**
-     * AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
      * 
      */
     @Import(name="apAffinityThreshold")
     private @Nullable Output<Integer> apAffinityThreshold;
 
     /**
-     * @return AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * @return AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
      * 
      */
     public Optional<Output<Integer>> apAffinityThreshold() {
@@ -257,7 +257,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param apAffinityThreshold AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         * @param apAffinityThreshold AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param apAffinityThreshold AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         * @param apAffinityThreshold AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
          * 
          * @return builder
          * 

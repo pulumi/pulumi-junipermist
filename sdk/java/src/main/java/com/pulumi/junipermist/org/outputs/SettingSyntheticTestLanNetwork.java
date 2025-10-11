@@ -17,7 +17,7 @@ public final class SettingSyntheticTestLanNetwork {
      */
     private @Nullable List<String> networks;
     /**
-     * @return app name comes from `custom_probes` above or /const/synthetic_test_probes
+     * @return app name comes from `customProbes` above or /const/synthetic_test_probes
      * 
      */
     private @Nullable List<String> probes;
@@ -31,7 +31,7 @@ public final class SettingSyntheticTestLanNetwork {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return app name comes from `custom_probes` above or /const/synthetic_test_probes
+     * @return app name comes from `customProbes` above or /const/synthetic_test_probes
      * 
      */
     public List<String> probes() {

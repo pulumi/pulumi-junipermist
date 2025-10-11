@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayServicePolicy
     {
         /// <summary>
-        /// Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
+        /// Required when `ServicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `Allow`, `Deny`
         /// </summary>
         public readonly string? Action;
         /// <summary>
@@ -32,11 +32,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? LocalRouting;
         /// <summary>
-        /// Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+        /// Required when `ServicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+        /// By default, we derive all paths available and use them. Optionally, you can customize by using `PathPreference`
         /// </summary>
         public readonly string? PathPreference;
         /// <summary>
@@ -44,7 +44,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ServicepolicyId;
         /// <summary>
-        /// Required when `servicepolicy_id` is not defined. List of Applications / Destinations
+        /// Required when `ServicepolicyId` is not defined. List of Applications / Destinations
         /// </summary>
         public readonly ImmutableArray<string> Services;
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly Outputs.GatewayServicePolicySslProxy? SslProxy;
         /// <summary>
-        /// Required when `servicepolicy_id` is not defined. List of Networks / Users
+        /// Required when `ServicepolicyId` is not defined. List of Networks / Users
         /// </summary>
         public readonly ImmutableArray<string> Tenants;
 

@@ -25,7 +25,7 @@ public final class WlanDynamicPsk {
      */
     private @Nullable Boolean forceLookup;
     /**
-     * @return enum: `cloud_psks`, `radius`
+     * @return enum: `cloudPsks`, `radius`
      * 
      */
     private @Nullable String source;
@@ -52,7 +52,7 @@ public final class WlanDynamicPsk {
         return Optional.ofNullable(this.forceLookup);
     }
     /**
-     * @return enum: `cloud_psks`, `radius`
+     * @return enum: `cloudPsks`, `radius`
      * 
      */
     public Optional<String> source() {

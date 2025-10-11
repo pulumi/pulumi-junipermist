@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomVersions;
         /// <summary>
-        /// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        /// enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`
         /// </summary>
         public readonly string? DayOfWeek;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+        /// `Any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
         /// </summary>
         public readonly string? TimeOfDay;
         /// <summary>
-        /// desired version. enum: `beta`, `custom`, `stable`
+        /// desired version. enum: `Beta`, `Custom`, `Stable`
         /// </summary>
         public readonly string? Version;
 

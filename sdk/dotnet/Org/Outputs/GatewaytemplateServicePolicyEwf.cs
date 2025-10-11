@@ -17,7 +17,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? BlockMessage;
         public readonly bool? Enabled;
         /// <summary>
-        /// enum: `critical`, `standard`, `strict`
+        /// enum: `Critical`, `Standard`, `Strict`
         /// </summary>
         public readonly string? Profile;
 

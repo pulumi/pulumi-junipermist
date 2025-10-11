@@ -16,7 +16,7 @@ public final class GetServicesOrgServiceSpec {
      */
     private String portRange;
     /**
-     * @return `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254
+     * @return `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254
      * 
      */
     private String protocol;
@@ -30,7 +30,7 @@ public final class GetServicesOrgServiceSpec {
         return this.portRange;
     }
     /**
-     * @return `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254
+     * @return `https`/ `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254
      * 
      */
     public String protocol() {

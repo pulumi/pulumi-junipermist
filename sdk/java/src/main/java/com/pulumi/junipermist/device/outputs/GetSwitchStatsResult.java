@@ -27,7 +27,7 @@ public final class GetSwitchStatsResult {
      */
     private @Nullable Integer end;
     /**
-     * @return If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+     * @return If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      * 
      */
     private @Nullable String evpnUnused;
@@ -74,7 +74,7 @@ public final class GetSwitchStatsResult {
         return Optional.ofNullable(this.end);
     }
     /**
-     * @return If `evpn_unused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
+     * @return If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      * 
      */
     public Optional<String> evpnUnused() {

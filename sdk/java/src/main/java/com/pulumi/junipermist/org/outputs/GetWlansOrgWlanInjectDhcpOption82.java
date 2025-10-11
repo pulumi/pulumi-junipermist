@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWlansOrgWlanInjectDhcpOption82 {
     /**
-     * @return Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+     * @return Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
      *   * {{AP_MAC}}
      *   * {{AP_MAC_DASHED}}
      *   * {{AP_MODEL}}
@@ -30,7 +30,7 @@ public final class GetWlansOrgWlanInjectDhcpOption82 {
 
     private GetWlansOrgWlanInjectDhcpOption82() {}
     /**
-     * @return Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+     * @return Information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
      *   * {{AP_MAC}}
      *   * {{AP_MAC_DASHED}}
      *   * {{AP_MODEL}}

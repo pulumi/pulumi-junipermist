@@ -34,7 +34,7 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetParameter {
      */
     private @Nullable String securityModel;
     /**
-     * @return Refer to security_name in usm
+     * @return Refer to securityName in usm
      * 
      */
     private @Nullable String securityName;
@@ -72,7 +72,7 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetParameter {
         return Optional.ofNullable(this.securityModel);
     }
     /**
-     * @return Refer to security_name in usm
+     * @return Refer to securityName in usm
      * 
      */
     public Optional<String> securityName() {

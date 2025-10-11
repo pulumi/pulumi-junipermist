@@ -14,6 +14,8 @@ import (
 
 // This resource manages the Org VPN.
 //
+// ## Example Usage
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_vpn` with:

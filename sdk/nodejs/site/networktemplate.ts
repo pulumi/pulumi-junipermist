@@ -15,6 +15,8 @@ import * as utilities from "../utilities";
  *
  * !> Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
  *
+ * ## Example Usage
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_site_networktemplate` with:

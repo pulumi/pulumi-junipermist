@@ -14,19 +14,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingJunosShellAccess
     {
         /// <summary>
-        /// enum: `admin`, `viewer`, `none`
+        /// enum: `Admin`, `Viewer`, `None`
         /// </summary>
         public readonly string? Admin;
         /// <summary>
-        /// enum: `admin`, `viewer`, `none`
+        /// enum: `Admin`, `Viewer`, `None`
         /// </summary>
         public readonly string? Helpdesk;
         /// <summary>
-        /// enum: `admin`, `viewer`, `none`
+        /// enum: `Admin`, `Viewer`, `None`
         /// </summary>
         public readonly string? Read;
         /// <summary>
-        /// enum: `admin`, `viewer`, `none`
+        /// enum: `Admin`, `Viewer`, `None`
         /// </summary>
         public readonly string? Write;
 

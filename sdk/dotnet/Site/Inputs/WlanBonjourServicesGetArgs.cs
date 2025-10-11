@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// how bonjour services should be discovered for the same WLAN. enum: `same_ap`, `same_map`, `same_site`
+        /// how bonjour services should be discovered for the same WLAN. enum: `SameAp`, `SameMap`, `SameSite`
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

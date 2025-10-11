@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchVrrpConfigGroupsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `true`, allow preemption (a backup router can preempt a primary router)
+        /// If `True`, allow preemption (a backup router can preempt a primary router)
         /// </summary>
         [Input("preempt")]
         public Input<bool>? Preempt { get; set; }

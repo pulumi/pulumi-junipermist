@@ -21,36 +21,36 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool? EnableMacAuth;
         /// <summary>
         /// enum: 
-        ///   * `all`: local breakout, All VLANs
-        ///   * `limited`: local breakout, only the VLANs configured in `port_vlan_id` and `vlan_ids`
-        ///   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnel_id`)
-        ///   * `site_mxedge`: central breakout to a Site Mist Edge (requires `mxtunnel_name`)
-        ///   * `wxtunnel`': central breakout to an Org WxTunnel (requires `wxtunnel_id`)
+        ///   * `All`: local breakout, All VLANs
+        ///   * `Limited`: local breakout, only the VLANs configured in `PortVlanId` and `VlanIds`
+        ///   * `Mxtunnel`: central breakout to an Org Mist Edge (requires `MxtunnelId`)
+        ///   * `SiteMxedge`: central breakout to a Site Mist Edge (requires `MxtunnelName`)
+        ///   * `Wxtunnel`': central breakout to an Org WxTunnel (requires `WxtunnelId`)
         /// </summary>
         public readonly string? Forwarding;
         /// <summary>
-        /// When `true`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
+        /// When `True`, we'll do dot1x then mac_auth. enable this to prefer mac_auth
         /// </summary>
         public readonly bool? MacAuthPreferred;
         /// <summary>
-        /// if `enable_mac_auth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+        /// if `EnableMacAuth`==`True`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `Pap`
         /// </summary>
         public readonly string? MacAuthProtocol;
         public readonly Outputs.ApPortConfigMistNac? MistNac;
         /// <summary>
-        /// If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel
+        /// If `Forwarding`==`Mxtunnel`, VlanIds comes from mxtunnel
         /// </summary>
         public readonly string? MxTunnelId;
         /// <summary>
-        /// If `forwarding`==`site_mxedge`, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+        /// If `Forwarding`==`SiteMxedge`, VlanIds comes from SiteMxedge (`Mxtunnels` under site setting)
         /// </summary>
         public readonly string? MxtunnelName;
         /// <summary>
-        /// When doing port auth. enum: `dot1x`, `none`
+        /// When doing port auth. enum: `Dot1x`, `None`
         /// </summary>
         public readonly string? PortAuth;
         /// <summary>
-        /// If `forwarding`==`limited`
+        /// If `Forwarding`==`Limited`
         /// </summary>
         public readonly int? PortVlanId;
         /// <summary>
@@ -62,21 +62,21 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly Outputs.ApPortConfigRadsec? Radsec;
         /// <summary>
-        /// Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
-        ///   * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
-        ///   * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
+        /// Optional to specify the vlan id for a tunnel if forwarding is for `Wxtunnel`, `Mxtunnel` or `SiteMxedge`.
+        ///   * if VlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
+        ///   * if forwarding == site_mxedge, VlanIds comes from SiteMxedge (`Mxtunnels` under site setting)
         /// </summary>
         public readonly int? VlanId;
         /// <summary>
-        /// If `forwarding`==`limited`
+        /// If `Forwarding`==`Limited`
         /// </summary>
         public readonly ImmutableArray<int> VlanIds;
         /// <summary>
-        /// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+        /// If `Forwarding`==`Wxtunnel`, the port is bridged to the vlan of the session
         /// </summary>
         public readonly string? WxtunnelId;
         /// <summary>
-        /// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
+        /// If `Forwarding`==`Wxtunnel`, the port is bridged to the vlan of the session
         /// </summary>
         public readonly string? WxtunnelRemoteId;
 

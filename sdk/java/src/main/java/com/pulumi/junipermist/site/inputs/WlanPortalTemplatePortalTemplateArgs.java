@@ -1379,14 +1379,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     /**
      * HTML template to replace/override default sponsor email template
      * Sponsor Email Template supports following template variables:
-     *   * `approve_url`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
-     *   * `deny_url`: Renders URL to reject the request
-     *   * `guest_email`: Renders Email ID of the guest
-     *   * `guest_name`: Renders Name of the guest
+     *   * `approveUrl`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+     *   * `denyUrl`: Renders URL to reject the request
+     *   * `guestEmail`: Renders Email ID of the guest
+     *   * `guestName`: Renders Name of the guest
      *   * `field1`: Renders value of the Custom Field 1
      *   * `field2`: Renders value of the Custom Field 2
-     *   * `sponsor_link_validity_duration`: Renders validity time of the request (i.e. Approve/Deny URL)
-     *   * `auth_expire_minutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+     *   * `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+     *   * `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
      * 
      */
     @Import(name="sponsorEmailTemplate")
@@ -1395,14 +1395,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     /**
      * @return HTML template to replace/override default sponsor email template
      * Sponsor Email Template supports following template variables:
-     *   * `approve_url`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
-     *   * `deny_url`: Renders URL to reject the request
-     *   * `guest_email`: Renders Email ID of the guest
-     *   * `guest_name`: Renders Name of the guest
+     *   * `approveUrl`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+     *   * `denyUrl`: Renders URL to reject the request
+     *   * `guestEmail`: Renders Email ID of the guest
+     *   * `guestName`: Renders Name of the guest
      *   * `field1`: Renders value of the Custom Field 1
      *   * `field2`: Renders value of the Custom Field 2
-     *   * `sponsor_link_validity_duration`: Renders validity time of the request (i.e. Approve/Deny URL)
-     *   * `auth_expire_minutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+     *   * `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+     *   * `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
      * 
      */
     public Optional<Output<String>> sponsorEmailTemplate() {
@@ -3638,14 +3638,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         /**
          * @param sponsorEmailTemplate HTML template to replace/override default sponsor email template
          * Sponsor Email Template supports following template variables:
-         *   * `approve_url`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
-         *   * `deny_url`: Renders URL to reject the request
-         *   * `guest_email`: Renders Email ID of the guest
-         *   * `guest_name`: Renders Name of the guest
+         *   * `approveUrl`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+         *   * `denyUrl`: Renders URL to reject the request
+         *   * `guestEmail`: Renders Email ID of the guest
+         *   * `guestName`: Renders Name of the guest
          *   * `field1`: Renders value of the Custom Field 1
          *   * `field2`: Renders value of the Custom Field 2
-         *   * `sponsor_link_validity_duration`: Renders validity time of the request (i.e. Approve/Deny URL)
-         *   * `auth_expire_minutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+         *   * `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+         *   * `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
          * 
          * @return builder
          * 
@@ -3658,14 +3658,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         /**
          * @param sponsorEmailTemplate HTML template to replace/override default sponsor email template
          * Sponsor Email Template supports following template variables:
-         *   * `approve_url`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
-         *   * `deny_url`: Renders URL to reject the request
-         *   * `guest_email`: Renders Email ID of the guest
-         *   * `guest_name`: Renders Name of the guest
+         *   * `approveUrl`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+         *   * `denyUrl`: Renders URL to reject the request
+         *   * `guestEmail`: Renders Email ID of the guest
+         *   * `guestName`: Renders Name of the guest
          *   * `field1`: Renders value of the Custom Field 1
          *   * `field2`: Renders value of the Custom Field 2
-         *   * `sponsor_link_validity_duration`: Renders validity time of the request (i.e. Approve/Deny URL)
-         *   * `auth_expire_minutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+         *   * `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+         *   * `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
          * 
          * @return builder
          * 

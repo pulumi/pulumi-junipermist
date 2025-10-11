@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? DisableRadiosWhenPowerConstrained { get; set; }
 
         /// <summary>
-        /// When proxy_arp is enabled, check for arp spoofing.
+        /// When ProxyArp is enabled, check for arp spoofing.
         /// </summary>
         [Input("enableArpSpoofCheck")]
         public Input<bool>? EnableArpSpoofCheck { get; set; }
@@ -92,7 +92,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? MeshSsid { get; set; }
 
         /// <summary>
-        /// enum: `default`, `disabled`, `enabled`
+        /// enum: `Default`, `Disabled`, `Enabled`
         /// </summary>
         [Input("proxyArp")]
         public Input<string>? ProxyArp { get; set; }

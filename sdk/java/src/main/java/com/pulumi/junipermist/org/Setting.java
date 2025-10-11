@@ -49,6 +49,8 @@ import javax.annotation.Nullable;
  * 
  * The Org Settings can be used to customize the Org configuration
  * 
+ * ## Example Usage
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_setting` with:
@@ -63,14 +65,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/setting:Setting")
 public class Setting extends com.pulumi.resources.CustomResource {
     /**
-     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     @Export(name="apUpdownThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> apUpdownThreshold;
 
     /**
-     * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+     * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     public Output<Optional<Integer>> apUpdownThreshold() {
@@ -175,14 +177,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disableRemoteShell);
     }
     /**
-     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     @Export(name="gatewayUpdownThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> gatewayUpdownThreshold;
 
     /**
-     * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+     * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     public Output<Optional<Integer>> gatewayUpdownThreshold() {
@@ -222,8 +224,8 @@ public class Setting extends com.pulumi.resources.CustomResource {
     }
     /**
      * junos_shell_access: Manages role-based web-shell access.\
-     * When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-     * When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
+     * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
+     * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
      * 
      */
     @Export(name="junosShellAccess", refs={SettingJunosShellAccess.class}, tree="[0]")
@@ -231,8 +233,8 @@ public class Setting extends com.pulumi.resources.CustomResource {
 
     /**
      * @return junos_shell_access: Manages role-based web-shell access.\
-     * When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-     * When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
+     * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
+     * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to &#34;none&#34;, disables web-shell access for that specific role.
      * 
      */
     public Output<Optional<SettingJunosShellAccess>> junosShellAccess() {
@@ -335,14 +337,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.switchMgmt);
     }
     /**
-     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     @Export(name="switchUpdownThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> switchUpdownThreshold;
 
     /**
-     * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+     * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
     public Output<Optional<Integer>> switchUpdownThreshold() {

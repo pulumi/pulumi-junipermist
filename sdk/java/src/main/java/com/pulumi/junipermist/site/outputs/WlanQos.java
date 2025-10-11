@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanQos {
     /**
-     * @return enum: `background`, `best_effort`, `video`, `voice`
+     * @return enum: `background`, `bestEffort`, `video`, `voice`
      * 
      */
     private @Nullable String class_;
@@ -25,7 +25,7 @@ public final class WlanQos {
 
     private WlanQos() {}
     /**
-     * @return enum: `background`, `best_effort`, `video`, `voice`
+     * @return enum: `background`, `bestEffort`, `video`, `voice`
      * 
      */
     public Optional<String> class_() {

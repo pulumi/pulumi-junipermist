@@ -30,11 +30,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool? CoaEnabled;
         public readonly int? CoaPort;
         /// <summary>
-        /// use `network`or `source_ip`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        /// use `Network`or `SourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// use `network`or `source_ip`
+        /// use `Network`or `SourceIp`
         /// </summary>
         public readonly string? SourceIp;
 

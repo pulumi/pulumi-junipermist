@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateSnmpConfigV3ConfigUsmUser
     {
         /// <summary>
-        /// Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+        /// Not required if `AuthenticationType`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
         /// </summary>
         public readonly string? AuthenticationPassword;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? AuthenticationType;
         /// <summary>
-        /// Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
+        /// Not required if `EncryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
         /// </summary>
         public readonly string? EncryptionPassword;
         /// <summary>

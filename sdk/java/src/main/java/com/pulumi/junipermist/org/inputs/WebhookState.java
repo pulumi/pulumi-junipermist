@@ -64,14 +64,14 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required when `oauth2_grant_type`==`client_credentials`
+     * Required when `oauth2GrantType`==`clientCredentials`
      * 
      */
     @Import(name="oauth2ClientId")
     private @Nullable Output<String> oauth2ClientId;
 
     /**
-     * @return Required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2GrantType`==`clientCredentials`
      * 
      */
     public Optional<Output<String>> oauth2ClientId() {
@@ -79,14 +79,14 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required when `oauth2_grant_type`==`client_credentials`
+     * Required when `oauth2GrantType`==`clientCredentials`
      * 
      */
     @Import(name="oauth2ClientSecret")
     private @Nullable Output<String> oauth2ClientSecret;
 
     /**
-     * @return Required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2GrantType`==`clientCredentials`
      * 
      */
     public Optional<Output<String>> oauth2ClientSecret() {
@@ -94,14 +94,14 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required when `type`==`oauth2`. enum: `client_credentials`, `password`
+     * required when `type`==`oauth2`. enum: `clientCredentials`, `password`
      * 
      */
     @Import(name="oauth2GrantType")
     private @Nullable Output<String> oauth2GrantType;
 
     /**
-     * @return required when `type`==`oauth2`. enum: `client_credentials`, `password`
+     * @return required when `type`==`oauth2`. enum: `clientCredentials`, `password`
      * 
      */
     public Optional<Output<String>> oauth2GrantType() {
@@ -109,14 +109,14 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required when `oauth2_grant_type`==`password`
+     * Required when `oauth2GrantType`==`password`
      * 
      */
     @Import(name="oauth2Password")
     private @Nullable Output<String> oauth2Password;
 
     /**
-     * @return Required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2GrantType`==`password`
      * 
      */
     public Optional<Output<String>> oauth2Password() {
@@ -154,14 +154,14 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required when `oauth2_grant_type`==`password`
+     * Required when `oauth2GrantType`==`password`
      * 
      */
     @Import(name="oauth2Username")
     private @Nullable Output<String> oauth2Username;
 
     /**
-     * @return Required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2GrantType`==`password`
      * 
      */
     public Optional<Output<String>> oauth2Username() {
@@ -206,14 +206,14 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
+     * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      * 
      */
     @Import(name="splunkToken")
     private @Nullable Output<String> splunkToken;
 
     /**
-     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
+     * @return Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      * 
      */
     public Optional<Output<String>> splunkToken() {
@@ -377,7 +377,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2ClientId Required when `oauth2_grant_type`==`client_credentials`
+         * @param oauth2ClientId Required when `oauth2GrantType`==`clientCredentials`
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2ClientId Required when `oauth2_grant_type`==`client_credentials`
+         * @param oauth2ClientId Required when `oauth2GrantType`==`clientCredentials`
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2ClientSecret Required when `oauth2_grant_type`==`client_credentials`
+         * @param oauth2ClientSecret Required when `oauth2GrantType`==`clientCredentials`
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2ClientSecret Required when `oauth2_grant_type`==`client_credentials`
+         * @param oauth2ClientSecret Required when `oauth2GrantType`==`clientCredentials`
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2GrantType required when `type`==`oauth2`. enum: `client_credentials`, `password`
+         * @param oauth2GrantType required when `type`==`oauth2`. enum: `clientCredentials`, `password`
          * 
          * @return builder
          * 
@@ -430,7 +430,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2GrantType required when `type`==`oauth2`. enum: `client_credentials`, `password`
+         * @param oauth2GrantType required when `type`==`oauth2`. enum: `clientCredentials`, `password`
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Password Required when `oauth2_grant_type`==`password`
+         * @param oauth2Password Required when `oauth2GrantType`==`password`
          * 
          * @return builder
          * 
@@ -451,7 +451,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Password Required when `oauth2_grant_type`==`password`
+         * @param oauth2Password Required when `oauth2GrantType`==`password`
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Username Required when `oauth2_grant_type`==`password`
+         * @param oauth2Username Required when `oauth2GrantType`==`password`
          * 
          * @return builder
          * 
@@ -524,7 +524,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Username Required when `oauth2_grant_type`==`password`
+         * @param oauth2Username Required when `oauth2GrantType`==`password`
          * 
          * @return builder
          * 
@@ -585,7 +585,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param splunkToken Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
+         * @param splunkToken Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
          * 
          * @return builder
          * 
@@ -596,7 +596,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param splunkToken Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
+         * @param splunkToken Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
          * 
          * @return builder
          * 

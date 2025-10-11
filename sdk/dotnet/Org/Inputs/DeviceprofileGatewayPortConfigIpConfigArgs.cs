@@ -61,13 +61,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Ip6 { get; set; }
 
         /// <summary>
-        /// Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
+        /// Used only if `Subnet` is not specified in `Networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// Used only if `subnet` is not specified in `networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
+        /// Used only if `Subnet` is not specified in `Networks`. Interface IPv6 Netmask (i.e. "/64") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         [Input("netmask6")]
         public Input<string>? Netmask6 { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _poserPassword;
 
         /// <summary>
-        /// If `type`==`pppoe`
+        /// If `Type`==`Pppoe`
         /// </summary>
         public Input<string>? PoserPassword
         {
@@ -95,25 +95,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// if `type`==`pppoe`. enum: `chap`, `none`, `pap`
+        /// if `Type`==`Pppoe`. enum: `Chap`, `None`, `Pap`
         /// </summary>
         [Input("pppoeAuth")]
         public Input<string>? PppoeAuth { get; set; }
 
         /// <summary>
-        /// If `type`==`pppoe`
+        /// If `Type`==`Pppoe`
         /// </summary>
         [Input("pppoeUsername")]
         public Input<string>? PppoeUsername { get; set; }
 
         /// <summary>
-        /// enum: `dhcp`, `pppoe`, `static`
+        /// enum: `Dhcp`, `Pppoe`, `Static`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `autoconf`, `dhcp`, `static`
+        /// enum: `Autoconf`, `Dhcp`, `Static`
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

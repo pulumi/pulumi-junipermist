@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class GatewaytemplateTunnelProviderOptionsZscaler {
     private @Nullable Boolean aupBlockInternetUntilAccepted;
     /**
-     * @return Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
+     * @return Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
      * 
      */
     private @Nullable Boolean aupEnabled;
@@ -27,7 +27,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscaler {
      */
     private @Nullable Boolean aupForceSslInspection;
     /**
-     * @return Required if `aup_enabled`==`true`. Days before AUP is requested again
+     * @return Required if `aupEnabled`==`true`. Days before AUP is requested again
      * 
      */
     private @Nullable Integer aupTimeoutInDays;
@@ -37,7 +37,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscaler {
      */
     private @Nullable Boolean authRequired;
     /**
-     * @return Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
+     * @return Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
      * 
      */
     private @Nullable Boolean cautionEnabled;
@@ -62,7 +62,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscaler {
      */
     private @Nullable List<GatewaytemplateTunnelProviderOptionsZscalerSubLocation> subLocations;
     /**
-     * @return Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
+     * @return Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
      * 
      */
     private @Nullable Boolean surrogateIp;
@@ -72,7 +72,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscaler {
      */
     private @Nullable Boolean surrogateIpEnforcedForKnownBrowsers;
     /**
-     * @return Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+     * @return Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
      * 
      */
     private @Nullable Integer surrogateRefreshTimeInMinutes;
@@ -92,7 +92,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscaler {
         return Optional.ofNullable(this.aupBlockInternetUntilAccepted);
     }
     /**
-     * @return Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
+     * @return Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
      * 
      */
     public Optional<Boolean> aupEnabled() {
@@ -106,7 +106,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscaler {
         return Optional.ofNullable(this.aupForceSslInspection);
     }
     /**
-     * @return Required if `aup_enabled`==`true`. Days before AUP is requested again
+     * @return Required if `aupEnabled`==`true`. Days before AUP is requested again
      * 
      */
     public Optional<Integer> aupTimeoutInDays() {
@@ -120,7 +120,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscaler {
         return Optional.ofNullable(this.authRequired);
     }
     /**
-     * @return Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
+     * @return Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
      * 
      */
     public Optional<Boolean> cautionEnabled() {
@@ -155,7 +155,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscaler {
         return this.subLocations == null ? List.of() : this.subLocations;
     }
     /**
-     * @return Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
+     * @return Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
      * 
      */
     public Optional<Boolean> surrogateIp() {
@@ -169,7 +169,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscaler {
         return Optional.ofNullable(this.surrogateIpEnforcedForKnownBrowsers);
     }
     /**
-     * @return Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+     * @return Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
      * 
      */
     public Optional<Integer> surrogateRefreshTimeInMinutes() {

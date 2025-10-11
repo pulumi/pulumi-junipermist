@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputMap<int>? _wxtagIds;
 
         /// <summary>
-        /// Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
+        /// Map from WxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `WxtagId`
         /// </summary>
         public InputMap<int> WxtagIds
         {

@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchSnmpConfigV3ConfigVacmAccessPrefixList
     {
         /// <summary>
-        /// Only required if `type`==`context_prefix`
+        /// Only required if `Type`==`ContextPrefix`
         /// </summary>
         public readonly string? ContextPrefix;
         /// <summary>
@@ -26,15 +26,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ReadView;
         /// <summary>
-        /// enum: `authentication`, `none`, `privacy`
+        /// enum: `Authentication`, `None`, `Privacy`
         /// </summary>
         public readonly string? SecurityLevel;
         /// <summary>
-        /// enum: `any`, `usm`, `v1`, `v2c`
+        /// enum: `Any`, `Usm`, `V1`, `V2c`
         /// </summary>
         public readonly string? SecurityModel;
         /// <summary>
-        /// enum: `context_prefix`, `default_context_prefix`
+        /// enum: `ContextPrefix`, `DefaultContextPrefix`
         /// </summary>
         public readonly string? Type;
         /// <summary>

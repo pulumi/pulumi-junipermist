@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingGatewayMgmtProtectRe
     {
         /// <summary>
-        /// optionally, services we'll allow. enum: `icmp`, `ssh`
+        /// optionally, services we'll allow. enum: `Icmp`, `Ssh`
         /// </summary>
         public readonly ImmutableArray<string> AllowedServices;
         public readonly ImmutableArray<Outputs.SettingGatewayMgmtProtectReCustom> Customs;

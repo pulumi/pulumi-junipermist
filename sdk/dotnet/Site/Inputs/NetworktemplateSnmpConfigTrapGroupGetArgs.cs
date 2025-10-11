@@ -35,7 +35,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// enum: `all`, `v1`, `v2`
+        /// enum: `All`, `V1`, `V2`
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

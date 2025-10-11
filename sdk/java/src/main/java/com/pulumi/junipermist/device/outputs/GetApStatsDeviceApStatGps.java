@@ -34,7 +34,7 @@ public final class GetApStatsDeviceApStatGps {
     /**
      * @return The origin of the GPS data. enum:
      *   * `gps`: from this device’s GPS estimates
-     *   * `other_ap` from neighboring device GPS estimates
+     *   * `otherAp` from neighboring device GPS estimates
      * 
      */
     private String src;
@@ -76,7 +76,7 @@ public final class GetApStatsDeviceApStatGps {
     /**
      * @return The origin of the GPS data. enum:
      *   * `gps`: from this device’s GPS estimates
-     *   * `other_ap` from neighboring device GPS estimates
+     *   * `otherAp` from neighboring device GPS estimates
      * 
      */
     public String src() {
