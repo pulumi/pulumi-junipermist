@@ -826,6 +826,8 @@ class Networktemplate(pulumi.CustomResource):
 
         !> Only ONE `site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
 
+        ## Example Usage
+
         ## Import
 
         Using `pulumi import`, import `mist_site_networktemplate` with:
@@ -872,6 +874,8 @@ class Networktemplate(pulumi.CustomResource):
         > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `site.Networktemplate` resource has been created to centralize all the site level switches related settings.
 
         !> Only ONE `site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
+
+        ## Example Usage
 
         ## Import
 

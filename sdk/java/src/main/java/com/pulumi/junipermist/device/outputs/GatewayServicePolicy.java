@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayServicePolicy {
     /**
-     * @return Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
+     * @return Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
      * 
      */
     private @Nullable String action;
@@ -41,12 +41,12 @@ public final class GatewayServicePolicy {
      */
     private @Nullable Boolean localRouting;
     /**
-     * @return Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+     * @return Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
      * 
      */
     private @Nullable String name;
     /**
-     * @return By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
      * 
      */
     private @Nullable String pathPreference;
@@ -56,7 +56,7 @@ public final class GatewayServicePolicy {
      */
     private @Nullable String servicepolicyId;
     /**
-     * @return Required when `servicepolicy_id` is not defined. List of Applications / Destinations
+     * @return Required when `servicepolicyId` is not defined. List of Applications / Destinations
      * 
      */
     private @Nullable List<String> services;
@@ -66,14 +66,14 @@ public final class GatewayServicePolicy {
      */
     private @Nullable GatewayServicePolicySslProxy sslProxy;
     /**
-     * @return Required when `servicepolicy_id` is not defined. List of Networks / Users
+     * @return Required when `servicepolicyId` is not defined. List of Networks / Users
      * 
      */
     private @Nullable List<String> tenants;
 
     private GatewayServicePolicy() {}
     /**
-     * @return Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
+     * @return Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
      * 
      */
     public Optional<String> action() {
@@ -107,14 +107,14 @@ public final class GatewayServicePolicy {
         return Optional.ofNullable(this.localRouting);
     }
     /**
-     * @return Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+     * @return Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
      * 
      */
     public Optional<String> pathPreference() {
@@ -128,7 +128,7 @@ public final class GatewayServicePolicy {
         return Optional.ofNullable(this.servicepolicyId);
     }
     /**
-     * @return Required when `servicepolicy_id` is not defined. List of Applications / Destinations
+     * @return Required when `servicepolicyId` is not defined. List of Applications / Destinations
      * 
      */
     public List<String> services() {
@@ -142,7 +142,7 @@ public final class GatewayServicePolicy {
         return Optional.ofNullable(this.sslProxy);
     }
     /**
-     * @return Required when `servicepolicy_id` is not defined. List of Networks / Users
+     * @return Required when `servicepolicyId` is not defined. List of Networks / Users
      * 
      */
     public List<String> tenants() {

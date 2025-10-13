@@ -50,11 +50,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string PeerIp;
         /// <summary>
-        /// enum: `primary`, `secondary`
+        /// enum: `Primary`, `Secondary`
         /// </summary>
         public readonly string Priority;
         /// <summary>
-        /// enum: `gre`, `ipsec`
+        /// enum: `Gre`, `Ipsec`
         /// </summary>
         public readonly string Protocol;
         /// <summary>

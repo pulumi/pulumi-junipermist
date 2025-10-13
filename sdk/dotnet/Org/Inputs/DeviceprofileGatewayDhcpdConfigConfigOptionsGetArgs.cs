@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileGatewayDhcpdConfigConfigOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+        /// enum: `Boolean`, `Hex`, `Int16`, `Int32`, `Ip`, `String`, `Uint16`, `Uint32`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

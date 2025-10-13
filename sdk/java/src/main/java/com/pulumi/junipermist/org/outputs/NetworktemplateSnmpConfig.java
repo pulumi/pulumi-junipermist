@@ -24,7 +24,7 @@ public final class NetworktemplateSnmpConfig {
     private @Nullable Boolean enabled;
     private @Nullable String engineId;
     /**
-     * @return enum: `local`, `use_mac_address`
+     * @return enum: `local`, `useMacAddress`
      * 
      */
     private @Nullable String engineIdType;
@@ -53,7 +53,7 @@ public final class NetworktemplateSnmpConfig {
         return Optional.ofNullable(this.engineId);
     }
     /**
-     * @return enum: `local`, `use_mac_address`
+     * @return enum: `local`, `useMacAddress`
      * 
      */
     public Optional<String> engineIdType() {

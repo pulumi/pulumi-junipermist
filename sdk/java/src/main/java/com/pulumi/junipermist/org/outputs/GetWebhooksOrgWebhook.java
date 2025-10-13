@@ -45,22 +45,22 @@ public final class GetWebhooksOrgWebhook {
      */
     private String name;
     /**
-     * @return Required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2GrantType`==`clientCredentials`
      * 
      */
     private String oauth2ClientId;
     /**
-     * @return Required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2GrantType`==`clientCredentials`
      * 
      */
     private String oauth2ClientSecret;
     /**
-     * @return required when `type`==`oauth2`. enum: `client_credentials`, `password`
+     * @return required when `type`==`oauth2`. enum: `clientCredentials`, `password`
      * 
      */
     private String oauth2GrantType;
     /**
-     * @return Required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2GrantType`==`password`
      * 
      */
     private String oauth2Password;
@@ -75,7 +75,7 @@ public final class GetWebhooksOrgWebhook {
      */
     private String oauth2TokenUrl;
     /**
-     * @return Required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2GrantType`==`password`
      * 
      */
     private String oauth2Username;
@@ -91,7 +91,7 @@ public final class GetWebhooksOrgWebhook {
      */
     private Boolean singleEventPerMessage;
     /**
-     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
+     * @return Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      * 
      */
     private String splunkToken;
@@ -156,28 +156,28 @@ public final class GetWebhooksOrgWebhook {
         return this.name;
     }
     /**
-     * @return Required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2GrantType`==`clientCredentials`
      * 
      */
     public String oauth2ClientId() {
         return this.oauth2ClientId;
     }
     /**
-     * @return Required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2GrantType`==`clientCredentials`
      * 
      */
     public String oauth2ClientSecret() {
         return this.oauth2ClientSecret;
     }
     /**
-     * @return required when `type`==`oauth2`. enum: `client_credentials`, `password`
+     * @return required when `type`==`oauth2`. enum: `clientCredentials`, `password`
      * 
      */
     public String oauth2GrantType() {
         return this.oauth2GrantType;
     }
     /**
-     * @return Required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2GrantType`==`password`
      * 
      */
     public String oauth2Password() {
@@ -198,7 +198,7 @@ public final class GetWebhooksOrgWebhook {
         return this.oauth2TokenUrl;
     }
     /**
-     * @return Required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2GrantType`==`password`
      * 
      */
     public String oauth2Username() {
@@ -222,7 +222,7 @@ public final class GetWebhooksOrgWebhook {
         return this.singleEventPerMessage;
     }
     /**
-     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
+     * @return Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      * 
      */
     public String splunkToken() {

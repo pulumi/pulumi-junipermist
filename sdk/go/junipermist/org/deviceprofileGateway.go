@@ -18,6 +18,8 @@ import (
 //
 // The Gateway Device Profile can be assigned to a gateway with the `org.DeviceprofileAssign` resource.
 //
+// ## Example Usage
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_deviceprofile_gateway` with:

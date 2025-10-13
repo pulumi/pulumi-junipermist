@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int RemoteSid;
         /// <summary>
-        /// enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+        /// enum: `Established`, `EstablishedWithSession`, `Idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
         /// </summary>
         public readonly string State;
 

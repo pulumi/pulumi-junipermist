@@ -35,13 +35,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+        /// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `False` means auto
         /// </summary>
         [Input("forceLookup")]
         public Input<bool>? ForceLookup { get; set; }
 
         /// <summary>
-        /// enum: `cloud_psks`, `radius`
+        /// enum: `CloudPsks`, `Radius`
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

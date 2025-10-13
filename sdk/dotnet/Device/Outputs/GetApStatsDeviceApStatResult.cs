@@ -103,7 +103,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly int NumWlans;
         public readonly string OrgId;
         /// <summary>
-        /// Property key is the port name (e.g. `eth0`)
+        /// Property key is the port name (e.g. `Eth0`)
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetApStatsDeviceApStatPortStatResult> PortStat;
         /// <summary>

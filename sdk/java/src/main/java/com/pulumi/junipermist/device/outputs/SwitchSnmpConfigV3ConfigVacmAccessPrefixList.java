@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchSnmpConfigV3ConfigVacmAccessPrefixList {
     /**
-     * @return Only required if `type`==`context_prefix`
+     * @return Only required if `type`==`contextPrefix`
      * 
      */
     private @Nullable String contextPrefix;
@@ -37,7 +37,7 @@ public final class SwitchSnmpConfigV3ConfigVacmAccessPrefixList {
      */
     private @Nullable String securityModel;
     /**
-     * @return enum: `context_prefix`, `default_context_prefix`
+     * @return enum: `contextPrefix`, `defaultContextPrefix`
      * 
      */
     private @Nullable String type;
@@ -49,7 +49,7 @@ public final class SwitchSnmpConfigV3ConfigVacmAccessPrefixList {
 
     private SwitchSnmpConfigV3ConfigVacmAccessPrefixList() {}
     /**
-     * @return Only required if `type`==`context_prefix`
+     * @return Only required if `type`==`contextPrefix`
      * 
      */
     public Optional<String> contextPrefix() {
@@ -84,7 +84,7 @@ public final class SwitchSnmpConfigV3ConfigVacmAccessPrefixList {
         return Optional.ofNullable(this.securityModel);
     }
     /**
-     * @return enum: `context_prefix`, `default_context_prefix`
+     * @return enum: `contextPrefix`, `defaultContextPrefix`
      * 
      */
     public Optional<String> type() {

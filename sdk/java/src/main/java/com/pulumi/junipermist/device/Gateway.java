@@ -135,28 +135,28 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dhcpdConfig);
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     public Output<Optional<List<String>>> dnsServers() {
         return Codegen.optional(this.dnsServers);
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     @Export(name="dnsSuffixes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      * 
      */
     public Output<Optional<List<String>>> dnsSuffixes() {

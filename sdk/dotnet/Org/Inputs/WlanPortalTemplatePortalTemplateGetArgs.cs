@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? AccessCodeAlternateEmail { get; set; }
 
         /// <summary>
-        /// defines alignment on portal. enum: `center`, `left`, `right`
+        /// defines alignment on portal. enum: `Center`, `Left`, `Right`
         /// </summary>
         [Input("alignment")]
         public Input<string>? Alignment { get; set; }
@@ -281,7 +281,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         /// <summary>
         /// Can be used to localize the portal based on the User Agent. Allowed property key values are:
-        ///   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
+        ///   `Ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
         ///   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
         ///   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
         ///   `zh-Hans`, `zh-Hant`
@@ -293,7 +293,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+        /// path to the background image file. File must be a `Png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
         /// </summary>
         [Input("logo")]
         public Input<string>? Logo { get; set; }
@@ -571,14 +571,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// <summary>
         /// HTML template to replace/override default sponsor email template 
         /// Sponsor Email Template supports following template variables:
-        ///   * `approve_url`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
-        ///   * `deny_url`: Renders URL to reject the request
-        ///   * `guest_email`: Renders Email ID of the guest
-        ///   * `guest_name`: Renders Name of the guest
-        ///   * `field1`: Renders value of the Custom Field 1
-        ///   * `field2`: Renders value of the Custom Field 2
-        ///   * `sponsor_link_validity_duration`: Renders validity time of the request (i.e. Approve/Deny URL)
-        ///   * `auth_expire_minutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+        ///   * `ApproveUrl`: Renders URL to approve the request; optionally &amp;minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+        ///   * `DenyUrl`: Renders URL to reject the request
+        ///   * `GuestEmail`: Renders Email ID of the guest
+        ///   * `GuestName`: Renders Name of the guest
+        ///   * `Field1`: Renders value of the Custom Field 1
+        ///   * `Field2`: Renders value of the Custom Field 2
+        ///   * `SponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+        ///   * `AuthExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
         /// </summary>
         [Input("sponsorEmailTemplate")]
         public Input<string>? SponsorEmailTemplate { get; set; }

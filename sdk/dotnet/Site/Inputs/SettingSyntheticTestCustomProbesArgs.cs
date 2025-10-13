@@ -13,19 +13,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingSyntheticTestCustomProbesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `auto`, `high`, `low`
+        /// enum: `Auto`, `High`, `Low`
         /// </summary>
         [Input("aggressiveness")]
         public Input<string>? Aggressiveness { get; set; }
 
         /// <summary>
-        /// If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+        /// If `Type`==`Icmp` or `Type`==`Tcp`, Host to be used for the custom probe
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// If `type`==`tcp`, Port to be used for the custom probe
+        /// If `Type`==`Tcp`, Port to be used for the custom probe
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -37,13 +37,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? Threshold { get; set; }
 
         /// <summary>
-        /// enum: `curl`, `icmp`, `tcp`
+        /// enum: `Curl`, `Icmp`, `Tcp`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// If `type`==`curl`, URL to be used for the custom probe, can be url or IP
+        /// If `Type`==`Curl`, URL to be used for the custom probe, can be url or IP
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

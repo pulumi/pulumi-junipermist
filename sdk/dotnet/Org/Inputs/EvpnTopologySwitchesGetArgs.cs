@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+        /// use `Role`==`None` to remove a switch from the topology. enum: `Access`, `collapsed-core`, `Core`, `Distribution`, `esilag-access`, `None`
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;

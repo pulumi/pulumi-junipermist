@@ -46,14 +46,14 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When proxy_arp is enabled, check for arp spoofing.
+     * When proxyArp is enabled, check for arp spoofing.
      * 
      */
     @Import(name="enableArpSpoofCheck")
     private @Nullable Output<Boolean> enableArpSpoofCheck;
 
     /**
-     * @return When proxy_arp is enabled, check for arp spoofing.
+     * @return When proxyArp is enabled, check for arp spoofing.
      * 
      */
     public Optional<Output<Boolean>> enableArpSpoofCheck() {
@@ -279,7 +279,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableArpSpoofCheck When proxy_arp is enabled, check for arp spoofing.
+         * @param enableArpSpoofCheck When proxyArp is enabled, check for arp spoofing.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class SettingWifiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableArpSpoofCheck When proxy_arp is enabled, check for arp spoofing.
+         * @param enableArpSpoofCheck When proxyArp is enabled, check for arp spoofing.
          * 
          * @return builder
          * 

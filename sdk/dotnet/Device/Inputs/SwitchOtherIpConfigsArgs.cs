@@ -19,37 +19,37 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? EvpnAnycast { get; set; }
 
         /// <summary>
-        /// Required if `type`==`static`
+        /// Required if `Type`==`Static`
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// Required if `type6`==`static`
+        /// Required if `Type6`==`Static`
         /// </summary>
         [Input("ip6")]
         public Input<string>? Ip6 { get; set; }
 
         /// <summary>
-        /// Optional, `subnet` from `network` definition will be used if defined
+        /// Optional, `Subnet` from `Network` definition will be used if defined
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// Optional, `subnet` from `network` definition will be used if defined
+        /// Optional, `Subnet` from `Network` definition will be used if defined
         /// </summary>
         [Input("netmask6")]
         public Input<string>? Netmask6 { get; set; }
 
         /// <summary>
-        /// enum: `dhcp`, `static`
+        /// enum: `Dhcp`, `Static`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `autoconf`, `dhcp`, `disabled`, `static`
+        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

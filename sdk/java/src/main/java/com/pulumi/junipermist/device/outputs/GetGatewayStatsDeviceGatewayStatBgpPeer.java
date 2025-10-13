@@ -47,7 +47,7 @@ public final class GetGatewayStatsDeviceGatewayStatBgpPeer {
      */
     private Integer rxRoutes;
     /**
-     * @return enum: `active`, `connect`, `established`, `idle`, `open_config`, `open_sent`
+     * @return enum: `active`, `connect`, `established`, `idle`, `openConfig`, `openSent`
      * 
      */
     private String state;
@@ -119,7 +119,7 @@ public final class GetGatewayStatsDeviceGatewayStatBgpPeer {
         return this.rxRoutes;
     }
     /**
-     * @return enum: `active`, `connect`, `established`, `idle`, `open_config`, `open_sent`
+     * @return enum: `active`, `connect`, `established`, `idle`, `openConfig`, `openSent`
      * 
      */
     public String state() {

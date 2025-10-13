@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _allowedServices;
 
         /// <summary>
-        /// optionally, services we'll allow. enum: `icmp`, `ssh`
+        /// optionally, services we'll allow. enum: `Icmp`, `Ssh`
         /// </summary>
         public InputList<string> AllowedServices
         {

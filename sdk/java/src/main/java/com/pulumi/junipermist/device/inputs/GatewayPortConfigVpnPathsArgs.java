@@ -19,14 +19,14 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
     public static final GatewayPortConfigVpnPathsArgs Empty = new GatewayPortConfigVpnPathsArgs();
 
     /**
-     * Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`
+     * Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
      * 
      */
     @Import(name="bfdProfile")
     private @Nullable Output<String> bfdProfile;
 
     /**
-     * @return Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`
+     * @return Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
      * 
      */
     public Optional<Output<String>> bfdProfile() {
@@ -34,14 +34,14 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only
+     * Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
      * 
      */
     @Import(name="bfdUseTunnelMode")
     private @Nullable Output<Boolean> bfdUseTunnelMode;
 
     /**
-     * @return Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only
+     * @return Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
      * 
      */
     public Optional<Output<Boolean>> bfdUseTunnelMode() {
@@ -49,14 +49,14 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+     * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
      * 
      */
     @Import(name="preference")
     private @Nullable Output<Integer> preference;
 
     /**
-     * @return Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+     * @return Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
      * 
      */
     public Optional<Output<Integer>> preference() {
@@ -64,14 +64,14 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+     * If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+     * @return If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
      * 
      */
     public Optional<Output<String>> role() {
@@ -114,7 +114,7 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bfdProfile Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`
+         * @param bfdProfile Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bfdProfile Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`
+         * @param bfdProfile Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bfdUseTunnelMode Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only
+         * @param bfdUseTunnelMode Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bfdUseTunnelMode Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only
+         * @param bfdUseTunnelMode Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param preference Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+         * @param preference Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param preference Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+         * @param preference Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param role If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+         * @param role If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param role If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+         * @param role If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
          * 
          * @return builder
          * 

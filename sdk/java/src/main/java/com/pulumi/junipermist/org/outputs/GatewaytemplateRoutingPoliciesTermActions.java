@@ -37,7 +37,7 @@ public final class GatewaytemplateRoutingPoliciesTermActions {
      */
     private @Nullable List<String> exportCommunities;
     /**
-     * @return Optional, for an import policy, local_preference can be changed
+     * @return Optional, for an import policy, localPreference can be changed
      * 
      */
     private @Nullable String localPreference;
@@ -86,7 +86,7 @@ public final class GatewaytemplateRoutingPoliciesTermActions {
         return this.exportCommunities == null ? List.of() : this.exportCommunities;
     }
     /**
-     * @return Optional, for an import policy, local_preference can be changed
+     * @return Optional, for an import policy, localPreference can be changed
      * 
      */
     public Optional<String> localPreference() {

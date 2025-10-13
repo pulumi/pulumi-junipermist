@@ -23,8 +23,8 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         /// <summary>
         /// Only 1 entry is allowed:
-        ///     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
-        ///     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
+        ///     * if `Protocol`==`Http`: URL (e.g. `http://test.com` or `https://test.com`)
+        ///     * if `Protocol`==`Icmp`: IP Address (e.g. `1.2.3.4`)
         /// </summary>
         public InputList<string> Hostnames
         {
@@ -42,13 +42,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// If `protocol`==`icmp`
+        /// If `Protocol`==`Icmp`
         /// </summary>
         [Input("packetSize")]
         public Input<int>? PacketSize { get; set; }
 
         /// <summary>
-        /// enum: `http`, `icmp`
+        /// enum: `Http`, `Icmp`
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;

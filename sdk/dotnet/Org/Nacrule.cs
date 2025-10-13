@@ -14,6 +14,8 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
     /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_nacrule` with:
@@ -28,7 +30,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Nacrule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// enum: `allow`, `block`
+        /// enum: `Allow`, `Block`
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -46,7 +48,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Guest portal authorization state. enum: `authorized`, `unknown`
+        /// Guest portal authorization state. enum: `Authorized`, `Unknown`
         /// </summary>
         [Output("guestAuthState")]
         public Output<string?> GuestAuthState { get; private set; } = null!;
@@ -117,7 +119,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacruleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `allow`, `block`
+        /// enum: `Allow`, `Block`
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -141,7 +143,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Guest portal authorization state. enum: `authorized`, `unknown`
+        /// Guest portal authorization state. enum: `Authorized`, `Unknown`
         /// </summary>
         [Input("guestAuthState")]
         public Input<string>? GuestAuthState { get; set; }
@@ -173,7 +175,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacruleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `allow`, `block`
+        /// enum: `Allow`, `Block`
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -197,7 +199,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Guest portal authorization state. enum: `authorized`, `unknown`
+        /// Guest portal authorization state. enum: `Authorized`, `Unknown`
         /// </summary>
         [Input("guestAuthState")]
         public Input<string>? GuestAuthState { get; set; }

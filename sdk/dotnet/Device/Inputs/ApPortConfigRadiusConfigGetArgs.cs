@@ -53,13 +53,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? CoaPort { get; set; }
 
         /// <summary>
-        /// use `network`or `source_ip`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        /// use `Network`or `SourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// use `network`or `source_ip`
+        /// use `Network`or `SourceIp`
         /// </summary>
         [Input("sourceIp")]
         public Input<string>? SourceIp { get; set; }

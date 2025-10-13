@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSecurity {
     /**
-     * @return Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+     * @return Whether to disable local SSH (by default, local SSH is enabled with allowMist in Org is enabled
      * 
      */
     private @Nullable Boolean disableLocalSsh;
@@ -30,7 +30,7 @@ public final class SettingSecurity {
 
     private SettingSecurity() {}
     /**
-     * @return Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+     * @return Whether to disable local SSH (by default, local SSH is enabled with allowMist in Org is enabled
      * 
      */
     public Optional<Boolean> disableLocalSsh() {

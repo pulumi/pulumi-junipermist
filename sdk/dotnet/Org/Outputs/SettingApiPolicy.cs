@@ -15,8 +15,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         /// <summary>
         /// By default, API hides password/secrets when the user doesn't have write access
-        ///   * `true`: API will hide passwords/secrets for all users
-        ///   * `false`: API will hide passwords/secrets for read-only users
+        ///   * `True`: API will hide passwords/secrets for all users
+        ///   * `False`: API will hide passwords/secrets for read-only users
         /// </summary>
         public readonly bool? NoReveal;
 

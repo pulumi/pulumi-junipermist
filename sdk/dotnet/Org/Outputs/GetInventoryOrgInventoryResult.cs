@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetInventoryOrgInventoryResult
     {
         /// <summary>
-        /// Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
+        /// Only if `Type`==`Switch` or `Type`==`Gateway`, whether the switch/gateway is adopted
         /// </summary>
         public readonly bool Adopted;
         /// <summary>
@@ -68,11 +68,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string Sku;
         /// <summary>
-        /// enum: `ap`, `gateway`, `switch`
+        /// enum: `Ap`, `Gateway`, `Switch`
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// If `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
+        /// If `Type`==`Switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `Type`==`Gateway` and device part of a Cluster, MAC Address of the Cluster
         /// </summary>
         public readonly string VcMac;
 

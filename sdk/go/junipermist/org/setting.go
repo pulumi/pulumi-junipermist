@@ -16,6 +16,8 @@ import (
 //
 // # The Org Settings can be used to customize the Org configuration
 //
+// ## Example Usage
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_setting` with:

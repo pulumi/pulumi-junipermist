@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateAclPolicyAction
     {
         /// <summary>
-        /// enum: `allow`, `deny`
+        /// enum: `Allow`, `Deny`
         /// </summary>
         public readonly string? Action;
         public readonly string DstTag;

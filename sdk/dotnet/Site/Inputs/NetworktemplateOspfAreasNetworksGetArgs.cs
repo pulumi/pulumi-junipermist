@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputMap<string>? _authKeys;
 
         /// <summary>
-        /// Required if `auth_type`==`md5`. Property key is the key number
+        /// Required if `AuthType`==`Md5`. Property key is the key number
         /// </summary>
         public InputMap<string> AuthKeys
         {
@@ -25,13 +25,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Required if `auth_type`==`password`, the password, max length is 8
+        /// Required if `AuthType`==`Password`, the password, max length is 8
         /// </summary>
         [Input("authPassword")]
         public Input<string>? AuthPassword { get; set; }
 
         /// <summary>
-        /// auth type. enum: `md5`, `none`, `password`
+        /// auth type. enum: `Md5`, `None`, `Password`
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? ImportPolicy { get; set; }
 
         /// <summary>
-        /// interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+        /// interface type (nbma = non-broadcast multi-access). enum: `Broadcast`, `Nbma`, `P2mp`, `P2p`
         /// </summary>
         [Input("interfaceType")]
         public Input<string>? InterfaceType { get; set; }

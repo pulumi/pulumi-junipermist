@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * 
  * The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
  * 
+ * ## Example Usage
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_rftemplate` with:

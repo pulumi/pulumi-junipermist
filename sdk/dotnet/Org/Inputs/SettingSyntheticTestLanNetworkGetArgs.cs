@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _probes;
 
         /// <summary>
-        /// app name comes from `custom_probes` above or /const/synthetic_test_probes
+        /// app name comes from `CustomProbes` above or /const/synthetic_test_probes
         /// </summary>
         public InputList<string> Probes
         {

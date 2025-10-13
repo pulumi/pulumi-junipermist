@@ -21,7 +21,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// enum: `admin`, `helpdesk`, `none`, `read`
+        /// enum: `Admin`, `Helpdesk`, `None`, `Read`
         /// </summary>
         [Input("defaultRole")]
         public Input<string>? DefaultRole { get; set; }
