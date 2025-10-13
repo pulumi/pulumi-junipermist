@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly ImmutableArray<Outputs.GatewayPathPreferencesPath> Paths;
         /// <summary>
-        /// enum: `ecmp`, `ordered`, `weighted`
+        /// enum: `Ecmp`, `Ordered`, `Weighted`
         /// </summary>
         public readonly string? Strategy;
 

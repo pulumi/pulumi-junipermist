@@ -42,7 +42,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModule2StatVcLinkResult> VcLinks;
         public readonly string VcMode;
         /// <summary>
-        /// enum: `master`, `backup`, `linecard`
+        /// enum: `Master`, `Backup`, `Linecard`
         /// </summary>
         public readonly string VcRole;
         public readonly string VcState;

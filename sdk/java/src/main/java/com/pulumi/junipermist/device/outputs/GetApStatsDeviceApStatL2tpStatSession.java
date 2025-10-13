@@ -27,7 +27,7 @@ public final class GetApStatsDeviceApStatL2tpStatSession {
      */
     private Integer remoteSid;
     /**
-     * @return enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+     * @return enum: `established`, `establishedWithSession`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
      * 
      */
     private String state;
@@ -55,7 +55,7 @@ public final class GetApStatsDeviceApStatL2tpStatSession {
         return this.remoteSid;
     }
     /**
-     * @return enum: `established`, `established_with_session`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
+     * @return enum: `established`, `establishedWithSession`, `idle`, `wait-ctrl-conn`, `wait-ctrl-reply`
      * 
      */
     public String state() {

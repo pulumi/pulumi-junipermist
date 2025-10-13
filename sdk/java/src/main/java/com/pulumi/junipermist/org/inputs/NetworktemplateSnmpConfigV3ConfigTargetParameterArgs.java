@@ -84,14 +84,14 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetParameterArgs extends 
     }
 
     /**
-     * Refer to security_name in usm
+     * Refer to securityName in usm
      * 
      */
     @Import(name="securityName")
     private @Nullable Output<String> securityName;
 
     /**
-     * @return Refer to security_name in usm
+     * @return Refer to securityName in usm
      * 
      */
     public Optional<Output<String>> securityName() {
@@ -221,7 +221,7 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetParameterArgs extends 
         }
 
         /**
-         * @param securityName Refer to security_name in usm
+         * @param securityName Refer to securityName in usm
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetParameterArgs extends 
         }
 
         /**
-         * @param securityName Refer to security_name in usm
+         * @param securityName Refer to securityName in usm
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
     public static final NetworktemplateSwitchMatchingRulePortMirroringArgs Empty = new NetworktemplateSwitchMatchingRulePortMirroringArgs();
 
     /**
-     * At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
      * 
      */
     @Import(name="inputNetworksIngresses")
     private @Nullable Output<List<String>> inputNetworksIngresses;
 
     /**
-     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
      * 
      */
     public Optional<Output<List<String>>> inputNetworksIngresses() {
@@ -32,14 +32,14 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
     }
 
     /**
-     * At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
      * 
      */
     @Import(name="inputPortIdsEgresses")
     private @Nullable Output<List<String>> inputPortIdsEgresses;
 
     /**
-     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
      * 
      */
     public Optional<Output<List<String>>> inputPortIdsEgresses() {
@@ -47,14 +47,14 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
     }
 
     /**
-     * At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
      * 
      */
     @Import(name="inputPortIdsIngresses")
     private @Nullable Output<List<String>> inputPortIdsIngresses;
 
     /**
-     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
      * 
      */
     public Optional<Output<List<String>>> inputPortIdsIngresses() {
@@ -62,14 +62,14 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
     }
 
     /**
-     * Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
      * 
      */
     @Import(name="outputIpAddress")
     private @Nullable Output<String> outputIpAddress;
 
     /**
-     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
      * 
      */
     public Optional<Output<String>> outputIpAddress() {
@@ -77,14 +77,14 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
     }
 
     /**
-     * Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
      * 
      */
     @Import(name="outputNetwork")
     private @Nullable Output<String> outputNetwork;
 
     /**
-     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
      * 
      */
     public Optional<Output<String>> outputNetwork() {
@@ -92,14 +92,14 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
     }
 
     /**
-     * Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
      * 
      */
     @Import(name="outputPortId")
     private @Nullable Output<String> outputPortId;
 
     /**
-     * @return Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+     * @return Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
      * 
      */
     public Optional<Output<String>> outputPortId() {
@@ -136,7 +136,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param inputNetworksIngresses At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+         * @param inputNetworksIngresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param inputNetworksIngresses At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+         * @param inputNetworksIngresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param inputNetworksIngresses At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+         * @param inputNetworksIngresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param inputPortIdsEgresses At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+         * @param inputPortIdsEgresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param inputPortIdsEgresses At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+         * @param inputPortIdsEgresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param inputPortIdsEgresses At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+         * @param inputPortIdsEgresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param inputPortIdsIngresses At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+         * @param inputPortIdsIngresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param inputPortIdsIngresses At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+         * @param inputPortIdsIngresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param inputPortIdsIngresses At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+         * @param inputPortIdsIngresses At least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or ` inputNetworksIngress  ` should be specified
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param outputIpAddress Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+         * @param outputIpAddress Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param outputIpAddress Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+         * @param outputIpAddress Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param outputNetwork Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+         * @param outputNetwork Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param outputNetwork Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+         * @param outputNetwork Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param outputPortId Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+         * @param outputPortId Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class NetworktemplateSwitchMatchingRulePortMirroringArgs extends co
         }
 
         /**
-         * @param outputPortId Exactly one of the `output_ip_address`, `output_port_id` or `output_network` should be provided
+         * @param outputPortId Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          * 
          * @return builder
          * 

@@ -84,14 +84,14 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+     * List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
      * 
      */
     @Import(name="osTypes")
     private @Nullable Output<List<String>> osTypes;
 
     /**
-     * @return List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+     * @return List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
      * 
      */
     public Optional<Output<List<String>>> osTypes() {
@@ -311,7 +311,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param osTypes List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+         * @param osTypes List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param osTypes List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+         * @param osTypes List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class NacruleNotMatchingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param osTypes List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed os_type values
+         * @param osTypes List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
          * 
          * @return builder
          * 

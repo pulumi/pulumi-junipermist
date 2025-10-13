@@ -18,6 +18,8 @@ import (
 //
 // The profile includes rules and policies that determine which types of traffic or attacks should be monitored, what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
 //
+// ## Example Usage
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_idpprofile` with:

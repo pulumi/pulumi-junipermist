@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 /**
  * This resource manages the WAN Assurance Networks.
  * 
- * The Networks are used in the `service_policies` from the Gateway configuration, Gateway templates or HUB Profiles
+ * The Networks are used in the `servicePolicies` from the Gateway configuration, Gateway templates or HUB Profiles
  * 
  * ## Example Usage
  * 

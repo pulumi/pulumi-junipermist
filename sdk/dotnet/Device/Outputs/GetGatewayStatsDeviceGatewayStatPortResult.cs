@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool Active;
         /// <summary>
-        /// if `up`==`true` and has Authenticator role. enum: `authenticated`, `authenticating`, `held`, `init`
+        /// if `Up`==`True` and has Authenticator role. enum: `Authenticated`, `Authenticating`, `Held`, `Init`
         /// </summary>
         public readonly string AuthState;
         /// <summary>
@@ -92,7 +92,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string PortMac;
         /// <summary>
-        /// gateway port usage. enum: `lan`
+        /// gateway port usage. enum: `Lan`
         /// </summary>
         public readonly string PortUsage;
         /// <summary>
@@ -128,11 +128,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int Speed;
         /// <summary>
-        /// if `up`==`true`. enum: `alternate`, `backup`, `designated`, `root`, `root-prevented`
+        /// if `Up`==`True`. enum: `Alternate`, `Backup`, `Designated`, `Root`, `root-prevented`
         /// </summary>
         public readonly string StpRole;
         /// <summary>
-        /// if `up`==`true`. enum: `blocking`, `disabled`, `forwarding`, `learning`, `listening`
+        /// if `Up`==`True`. enum: `Blocking`, `Disabled`, `Forwarding`, `Learning`, `Listening`
         /// </summary>
         public readonly string StpState;
         /// <summary>
@@ -160,7 +160,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int TxPkts;
         /// <summary>
-        /// device type. enum: `ap`, `ble`, `gateway`, `mxedge`, `nac`, `switch`
+        /// device type. enum: `Ap`, `Ble`, `Gateway`, `Mxedge`, `Nac`, `Switch`
         /// </summary>
         public readonly string Type;
         /// <summary>

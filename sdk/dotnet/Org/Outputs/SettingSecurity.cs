@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingSecurity
     {
         /// <summary>
-        /// Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+        /// Whether to disable local SSH (by default, local SSH is enabled with AllowMist in Org is enabled
         /// </summary>
         public readonly bool? DisableLocalSsh;
         /// <summary>

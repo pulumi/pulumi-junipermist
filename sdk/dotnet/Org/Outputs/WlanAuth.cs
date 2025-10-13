@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? EnableMacAuth;
         /// <summary>
-        /// When `type`==`wep`
+        /// When `Type`==`Wep`
         /// </summary>
         public readonly int? KeyIdx;
         /// <summary>
@@ -34,27 +34,27 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Keys;
         /// <summary>
-        /// When `type`==`psk`, whether to only use multi_psk
+        /// When `Type`==`Psk`, whether to only use multi_psk
         /// </summary>
         public readonly bool? MultiPskOnly;
         /// <summary>
-        /// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+        /// if `Type`==`Open`. enum: `Disabled`, `Enabled` (means transition mode), `Required`
         /// </summary>
         public readonly string? Owe;
         /// <summary>
-        /// When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+        /// When `Type`=`Psk` or `Type`=`Eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `Wpa3`
         /// </summary>
         public readonly ImmutableArray<string> Pairwises;
         /// <summary>
-        /// When `multi_psk_only`==`true`, whether private wlan is enabled
+        /// When `MultiPskOnly`==`True`, whether private wlan is enabled
         /// </summary>
         public readonly bool? PrivateWlan;
         /// <summary>
-        /// When `type`==`psk`, 8-64 characters, or 64 hex characters
+        /// When `Type`==`Psk`, 8-64 characters, or 64 hex characters
         /// </summary>
         public readonly string? Psk;
         /// <summary>
-        /// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+        /// enum: `Eap`, `Eap192`, `Open`, `Psk`, `psk-tkip`, `psk-wpa2-tkip`, `Wep`
         /// </summary>
         public readonly string? Type;
         /// <summary>

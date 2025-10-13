@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist
         /// <summary>
         /// This data source provides the of list of supported Fingerprints.
         /// 
-        /// The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+        /// The Fingerprint information can be used within `Matching` and `NotMatching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
         /// 
         /// There are four different types of fingerprints available:* Family
         /// * Model
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist
         /// <summary>
         /// This data source provides the of list of supported Fingerprints.
         /// 
-        /// The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+        /// The Fingerprint information can be used within `Matching` and `NotMatching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
         /// 
         /// There are four different types of fingerprints available:* Family
         /// * Model
@@ -72,7 +72,7 @@ namespace Pulumi.JuniperMist
         /// <summary>
         /// This data source provides the of list of supported Fingerprints.
         /// 
-        /// The Fingerprint information can be used within `matching` and `not_matching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
+        /// The Fingerprint information can be used within `Matching` and `NotMatching` attributes of the NAC Rule resource (`junipermist.org.Nacrule`)
         /// 
         /// There are four different types of fingerprints available:* Family
         /// * Model

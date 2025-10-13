@@ -308,6 +308,8 @@ class Nacrule(pulumi.CustomResource):
 
         A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
 
+        ## Example Usage
+
         ## Import
 
         Using `pulumi import`, import `mist_org_nacrule` with:
@@ -336,6 +338,8 @@ class Nacrule(pulumi.CustomResource):
         This resource manages the NAC Rules (Auth Policies).
 
         A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+
+        ## Example Usage
 
         ## Import
 

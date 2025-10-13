@@ -15,22 +15,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplatePortConfigVpnPaths {
     /**
-     * @return Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`
+     * @return Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
      * 
      */
     private @Nullable String bfdProfile;
     /**
-     * @return Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only
+     * @return Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
      * 
      */
     private @Nullable Boolean bfdUseTunnelMode;
     /**
-     * @return Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+     * @return Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
      * 
      */
     private @Nullable Integer preference;
     /**
-     * @return If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+     * @return If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
      * 
      */
     private @Nullable String role;
@@ -38,28 +38,28 @@ public final class GatewaytemplatePortConfigVpnPaths {
 
     private GatewaytemplatePortConfigVpnPaths() {}
     /**
-     * @return Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`
+     * @return Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
      * 
      */
     public Optional<String> bfdProfile() {
         return Optional.ofNullable(this.bfdProfile);
     }
     /**
-     * @return Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only
+     * @return Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
      * 
      */
     public Optional<Boolean> bfdUseTunnelMode() {
         return Optional.ofNullable(this.bfdUseTunnelMode);
     }
     /**
-     * @return Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+     * @return Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
      * 
      */
     public Optional<Integer> preference() {
         return Optional.ofNullable(this.preference);
     }
     /**
-     * @return If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+     * @return If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
      * 
      */
     public Optional<String> role() {

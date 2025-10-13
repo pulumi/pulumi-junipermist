@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly double CreatedTime;
         /// <summary>
-        /// enum: `block`, `permit`
+        /// enum: `Block`, `Permit`
         /// </summary>
         public readonly string FallbackAction;
         /// <summary>
@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string Name;
         public readonly string OrgId;
         /// <summary>
-        /// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+        /// List of protocols to monitor. enum: `Ftp`, `Http`, `Imap`, `Pop3`, `Smtp`
         /// </summary>
         public readonly ImmutableArray<string> Protocols;
         public readonly ImmutableArray<string> UrlWhitelists;

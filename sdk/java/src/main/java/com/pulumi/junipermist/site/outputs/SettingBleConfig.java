@@ -20,7 +20,7 @@ public final class SettingBleConfig {
      */
     private @Nullable Boolean beaconEnabled;
     /**
-     * @return Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+     * @return Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
      * 
      */
     private @Nullable Integer beaconRate;
@@ -35,7 +35,7 @@ public final class SettingBleConfig {
      */
     private @Nullable List<Integer> beamDisableds;
     /**
-     * @return Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+     * @return Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
      * 
      */
     private @Nullable Boolean customBlePacketEnabled;
@@ -56,7 +56,7 @@ public final class SettingBleConfig {
     private @Nullable Integer eddystoneUidAdvPower;
     private @Nullable String eddystoneUidBeams;
     /**
-     * @return Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+     * @return Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
      * 
      */
     private @Nullable Boolean eddystoneUidEnabled;
@@ -82,7 +82,7 @@ public final class SettingBleConfig {
     private @Nullable Integer eddystoneUrlAdvPower;
     private @Nullable String eddystoneUrlBeams;
     /**
-     * @return Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+     * @return Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
      * 
      */
     private @Nullable Boolean eddystoneUrlEnabled;
@@ -103,7 +103,7 @@ public final class SettingBleConfig {
     private @Nullable Integer ibeaconAdvPower;
     private @Nullable String ibeaconBeams;
     /**
-     * @return Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+     * @return Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
      * 
      */
     private @Nullable Boolean ibeaconEnabled;
@@ -128,7 +128,7 @@ public final class SettingBleConfig {
      */
     private @Nullable String ibeaconUuid;
     /**
-     * @return Required if `power_mode`==`custom`; else use `power_mode` as default
+     * @return Required if `powerMode`==`custom`; else use `powerMode` as default
      * 
      */
     private @Nullable Integer power;
@@ -147,7 +147,7 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.beaconEnabled);
     }
     /**
-     * @return Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+     * @return Required if `beaconRateMode`==`custom`, 1-10, in number-beacons-per-second
      * 
      */
     public Optional<Integer> beaconRate() {
@@ -168,7 +168,7 @@ public final class SettingBleConfig {
         return this.beamDisableds == null ? List.of() : this.beamDisableds;
     }
     /**
-     * @return Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+     * @return Can be enabled if `beaconEnabled`==`true`, whether to send custom packet
      * 
      */
     public Optional<Boolean> customBlePacketEnabled() {
@@ -199,7 +199,7 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.eddystoneUidBeams);
     }
     /**
-     * @return Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+     * @return Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
      * 
      */
     public Optional<Boolean> eddystoneUidEnabled() {
@@ -237,7 +237,7 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.eddystoneUrlBeams);
     }
     /**
-     * @return Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+     * @return Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
      * 
      */
     public Optional<Boolean> eddystoneUrlEnabled() {
@@ -268,7 +268,7 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.ibeaconBeams);
     }
     /**
-     * @return Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+     * @return Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
      * 
      */
     public Optional<Boolean> ibeaconEnabled() {
@@ -303,7 +303,7 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.ibeaconUuid);
     }
     /**
-     * @return Required if `power_mode`==`custom`; else use `power_mode` as default
+     * @return Required if `powerMode`==`custom`; else use `powerMode` as default
      * 
      */
     public Optional<Integer> power() {

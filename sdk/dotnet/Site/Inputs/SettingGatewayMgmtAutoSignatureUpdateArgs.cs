@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingGatewayMgmtAutoSignatureUpdateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+        /// enum: `Any`, `Fri`, `Mon`, `Sat`, `Sun`, `Thu`, `Tue`, `Wed`
         /// </summary>
         [Input("dayOfWeek")]
         public Input<string>? DayOfWeek { get; set; }

@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// app name comes from `custom_probes` above or /const/synthetic_test_probes
+        /// app name comes from `CustomProbes` above or /const/synthetic_test_probes
         /// </summary>
         public readonly ImmutableArray<string> Probes;
         public readonly ImmutableArray<string> VlanIds;

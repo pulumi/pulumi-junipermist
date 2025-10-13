@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     {
         public readonly string? Password;
         /// <summary>
-        /// enum: `admin`, `helpdesk`, `none`, `read`
+        /// enum: `Admin`, `Helpdesk`, `None`, `Read`
         /// </summary>
         public readonly string? Role;
 

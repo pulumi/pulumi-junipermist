@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchOspfAreasNetworks {
     /**
-     * @return Required if `auth_type`==`md5`. Property key is the key number
+     * @return Required if `authType`==`md5`. Property key is the key number
      * 
      */
     private @Nullable Map<String,String> authKeys;
     /**
-     * @return Required if `auth_type`==`password`, the password, max length is 8
+     * @return Required if `authType`==`password`, the password, max length is 8
      * 
      */
     private @Nullable String authPassword;
@@ -53,14 +53,14 @@ public final class SwitchOspfAreasNetworks {
 
     private SwitchOspfAreasNetworks() {}
     /**
-     * @return Required if `auth_type`==`md5`. Property key is the key number
+     * @return Required if `authType`==`md5`. Property key is the key number
      * 
      */
     public Map<String,String> authKeys() {
         return this.authKeys == null ? Map.of() : this.authKeys;
     }
     /**
-     * @return Required if `auth_type`==`password`, the password, max length is 8
+     * @return Required if `authType`==`password`, the password, max length is 8
      * 
      */
     public Optional<String> authPassword() {

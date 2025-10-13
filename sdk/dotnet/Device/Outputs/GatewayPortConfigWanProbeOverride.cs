@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableArray<string> Ip6s;
         public readonly ImmutableArray<string> Ips;
         /// <summary>
-        /// enum: `broadband`, `lte`
+        /// enum: `Broadband`, `Lte`
         /// </summary>
         public readonly string? ProbeProfile;
 

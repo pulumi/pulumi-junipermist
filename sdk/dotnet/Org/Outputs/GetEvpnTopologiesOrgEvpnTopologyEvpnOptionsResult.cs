@@ -22,28 +22,28 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string AutoLoopbackSubnet6;
         /// <summary>
-        /// Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+        /// Optional, this generates RouterId automatically, if specified, `RouterIdPrefix` is ignored
         /// </summary>
         public readonly string AutoRouterIdSubnet;
         /// <summary>
-        /// Optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored
+        /// Optional, this generates RouterId automatically, if specified, `RouterIdPrefix` is ignored
         /// </summary>
         public readonly string AutoRouterIdSubnet6;
         /// <summary>
-        /// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routed_at` != `core`, whether to do virtual-gateway at core as well
+        /// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `RoutedAt` != `Core`, whether to do virtual-gateway at core as well
         /// </summary>
         public readonly bool CoreAsBorder;
         public readonly Outputs.GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayResult Overlay;
         /// <summary>
-        /// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+        /// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`Core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
         /// </summary>
         public readonly bool PerVlanVgaV4Mac;
         /// <summary>
-        /// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
+        /// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`Core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
         /// </summary>
         public readonly bool PerVlanVgaV6Mac;
         /// <summary>
-        /// optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+        /// optional, where virtual-gateway should reside. enum: `Core`, `Distribution`, `Edge`
         /// </summary>
         public readonly string RoutedAt;
         public readonly Outputs.GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlayResult Underlay;

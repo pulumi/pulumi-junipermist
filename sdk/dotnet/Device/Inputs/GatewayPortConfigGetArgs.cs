@@ -13,19 +13,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayPortConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `aggregated`==`true`. To disable LCP support for the AE interface
+        /// If `Aggregated`==`True`. To disable LCP support for the AE interface
         /// </summary>
         [Input("aeDisableLacp")]
         public Input<bool>? AeDisableLacp { get; set; }
 
         /// <summary>
-        /// If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        /// If `Aggregated`==`True`. Users could force to use the designated AE name (must be an integer between 0 and 127)
         /// </summary>
         [Input("aeIdx")]
         public Input<string>? AeIdx { get; set; }
 
         /// <summary>
-        /// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+        /// For SRX Only, if `Aggregated`==`True`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
         /// </summary>
         [Input("aeLacpForceUp")]
         public Input<bool>? AeLacpForceUp { get; set; }
@@ -55,25 +55,25 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
+        /// if `WanType`==`Dsl`. enum: `Adsl`, `Vdsl`
         /// </summary>
         [Input("dslType")]
         public Input<string>? DslType { get; set; }
 
         /// <summary>
-        /// If `wan_type`==`dsl`, 16 bit int
+        /// If `WanType`==`Dsl`, 16 bit int
         /// </summary>
         [Input("dslVci")]
         public Input<int>? DslVci { get; set; }
 
         /// <summary>
-        /// If `wan_type`==`dsl`, 8 bit int
+        /// If `WanType`==`Dsl`, 8 bit int
         /// </summary>
         [Input("dslVpi")]
         public Input<int>? DslVpi { get; set; }
 
         /// <summary>
-        /// enum: `auto`, `full`, `half`
+        /// enum: `Auto`, `Full`, `Half`
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -85,13 +85,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<Inputs.GatewayPortConfigIpConfigGetArgs>? IpConfig { get; set; }
 
         /// <summary>
-        /// If `wan_type`==`lte`
+        /// If `WanType`==`Lte`
         /// </summary>
         [Input("lteApn")]
         public Input<string>? LteApn { get; set; }
 
         /// <summary>
-        /// if `wan_type`==`lte`. enum: `chap`, `none`, `pap`
+        /// if `WanType`==`Lte`. enum: `Chap`, `None`, `Pap`
         /// </summary>
         [Input("lteAuth")]
         public Input<string>? LteAuth { get; set; }
@@ -103,7 +103,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private Input<string>? _ltePassword;
 
         /// <summary>
-        /// If `wan_type`==`lte`
+        /// If `WanType`==`Lte`
         /// </summary>
         public Input<string>? LtePassword
         {
@@ -116,7 +116,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// If `wan_type`==`lte`
+        /// If `WanType`==`Lte`
         /// </summary>
         [Input("lteUsername")]
         public Input<string>? LteUsername { get; set; }
@@ -134,7 +134,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// if `usage`==`lan`, name of the `junipermist.org.Network` resource
+        /// if `Usage`==`Lan`, name of the `junipermist.org.Network` resource
         /// </summary>
         public InputList<string> Networks
         {
@@ -152,7 +152,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? PoeDisabled { get; set; }
 
         /// <summary>
-        /// Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
+        /// Only for SRX and if `Usage`==`Lan`, the name of the Network to be used as the Untagged VLAN
         /// </summary>
         [Input("portNetwork")]
         public Input<string>? PortNetwork { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _rethNodes;
 
         /// <summary>
-        /// SSR only - supporting vlan-based redundancy (matching the size of `networks`)
+        /// SSR only - supporting vlan-based redundancy (matching the size of `Networks`)
         /// </summary>
         public InputList<string> RethNodes
         {
@@ -218,7 +218,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<Inputs.GatewayPortConfigTrafficShapingGetArgs>? TrafficShaping { get; set; }
 
         /// <summary>
-        /// port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
+        /// port usage name. enum: `HaControl`, `HaData`, `Lan`, `Wan`
         /// </summary>
         [Input("usage", required: true)]
         public Input<string> Usage { get; set; } = null!;
@@ -239,19 +239,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+        /// Only when `WanType`==`Broadband`. enum: `Default`, `Max`, `Recommended`
         /// </summary>
         [Input("wanArpPolicer")]
         public Input<string>? WanArpPolicer { get; set; }
 
         /// <summary>
-        /// If `wan_type`==`wan`, disable speedtest
+        /// If `WanType`==`Wan`, disable speedtest
         /// </summary>
         [Input("wanDisableSpeedtest")]
         public Input<bool>? WanDisableSpeedtest { get; set; }
 
         /// <summary>
-        /// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
+        /// Only if `Usage`==`Wan`, optional. If spoke should reach this port by a different IP
         /// </summary>
         [Input("wanExtIp")]
         public Input<string>? WanExtIp { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayPortConfigWanExtraRoutesGetArgs>? _wanExtraRoutes;
 
         /// <summary>
-        /// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
+        /// Only if `Usage`==`Wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
         /// </summary>
         public InputMap<Inputs.GatewayPortConfigWanExtraRoutesGetArgs> WanExtraRoutes
         {
@@ -272,7 +272,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayPortConfigWanExtraRoutes6GetArgs>? _wanExtraRoutes6;
 
         /// <summary>
-        /// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Only if `Usage`==`Wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         /// </summary>
         public InputMap<Inputs.GatewayPortConfigWanExtraRoutes6GetArgs> WanExtraRoutes6
         {
@@ -284,7 +284,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _wanNetworks;
 
         /// <summary>
-        /// Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+        /// Only if `Usage`==`Wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
         /// </summary>
         public InputList<string> WanNetworks
         {
@@ -293,19 +293,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Only if `usage`==`wan`
+        /// Only if `Usage`==`Wan`
         /// </summary>
         [Input("wanProbeOverride")]
         public Input<Inputs.GatewayPortConfigWanProbeOverrideGetArgs>? WanProbeOverride { get; set; }
 
         /// <summary>
-        /// Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+        /// Only if `Usage`==`Wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
         /// </summary>
         [Input("wanSourceNat")]
         public Input<Inputs.GatewayPortConfigWanSourceNatGetArgs>? WanSourceNat { get; set; }
 
         /// <summary>
-        /// Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+        /// Only if `Usage`==`Wan`. enum: `Broadband`, `Dsl`, `Lte`
         /// </summary>
         [Input("wanType")]
         public Input<string>? WanType { get; set; }

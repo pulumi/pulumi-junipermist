@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly ImmutableArray<Outputs.SwitchSwitchMgmtTacacsAcctServer> AcctServers;
         /// <summary>
-        /// enum: `admin`, `helpdesk`, `none`, `read`
+        /// enum: `Admin`, `Helpdesk`, `None`, `Read`
         /// </summary>
         public readonly string? DefaultRole;
         public readonly bool? Enabled;

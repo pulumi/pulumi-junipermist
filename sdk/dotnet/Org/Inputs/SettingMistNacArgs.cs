@@ -43,19 +43,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? EapSslSecurityLevel { get; set; }
 
         /// <summary>
-        /// By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
+        /// By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have MistNac enabled
         /// </summary>
         [Input("euOnly")]
         public Input<bool>? EuOnly { get; set; }
 
         /// <summary>
-        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
+        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `Automatic`, `Cn`, `Dns`
         /// </summary>
         [Input("idpMachineCertLookupField")]
         public Input<string>? IdpMachineCertLookupField { get; set; }
 
         /// <summary>
-        /// allow customer to choose the EAP-TLS client certificate's field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+        /// allow customer to choose the EAP-TLS client certificate's field. To use for IDP User Groups lookup. enum: `Automatic`, `Cn`, `Email`, `Upn`
         /// </summary>
         [Input("idpUserCertLookupField")]
         public Input<string>? IdpUserCertLookupField { get; set; }
@@ -75,13 +75,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.SettingMistNacServerCertArgs>? ServerCert { get; set; }
 
         /// <summary>
-        /// by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+        /// by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `V4`, `V6`
         /// </summary>
         [Input("useIpVersion")]
         public Input<string>? UseIpVersion { get; set; }
 
         /// <summary>
-        /// By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
+        /// By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `UseSslPort`==`True` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and MxedgeClusters that have mist-nac enabled
         /// </summary>
         [Input("useSslPort")]
         public Input<bool>? UseSslPort { get; set; }

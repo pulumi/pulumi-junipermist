@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly double CreatedTime;
         /// <summary>
-        /// If `type`==`egress_vlan_names`, list of egress vlans to return
+        /// If `Type`==`EgressVlanNames`, list of egress vlans to return
         /// </summary>
         public readonly ImmutableArray<string> EgressVlanNames;
         public readonly string GbpTag;
@@ -31,16 +31,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        /// if `Type`==`Match`. enum: `CertCn`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
         /// </summary>
         public readonly string Match;
         /// <summary>
-        /// This field is applicable only when `type`==`match`
-        ///   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
-        ///   * `true`: means all values should be matched (i.e., match-all behavior)
+        /// This field is applicable only when `Type`==`Match`
+        ///   * `False`: means it is sufficient to match any of the values (i.e., match-any behavior)
+        ///   * `True`: means all values should be matched (i.e., match-all behavior)
         /// 
         /// 
-        /// Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+        /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole` or `Match`==`UsermacLabel`
         /// </summary>
         public readonly bool MatchAll;
         /// <summary>
@@ -50,39 +50,39 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string Name;
         public readonly string OrgId;
         /// <summary>
-        /// If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
+        /// If `Type`==`RadiusAttrs`, user can specify a list of one or more standard attributes in the field "RadiusAttrs". 
         /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-        /// Note that it is allowed to have more than one radius_attrs in the result of a given rule.
+        /// Note that it is allowed to have more than one RadiusAttrs in the result of a given rule.
         /// </summary>
         public readonly ImmutableArray<string> RadiusAttrs;
         /// <summary>
-        /// If `type`==`radius_group`
+        /// If `Type`==`RadiusGroup`
         /// </summary>
         public readonly string RadiusGroup;
         /// <summary>
-        /// If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
+        /// If `Type`==`RadiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "RadiusVendorAttrs". 
         /// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-        /// Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+        /// Note that it is allowed to have more than one RadiusVendorAttrs in the result of a given rule.
         /// </summary>
         public readonly ImmutableArray<string> RadiusVendorAttrs;
         /// <summary>
-        /// If `type`==`session_timeout, in seconds
+        /// If `Type`==`session_timeout, in seconds
         /// </summary>
         public readonly int SessionTimeout;
         /// <summary>
-        /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`, `username_attr`, `vlan`
+        /// enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `SessionTimeout`, `UsernameAttr`, `Vlan`
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// enum: `automatic`, `cn`, `dns`, `email`, `upn`
+        /// enum: `Automatic`, `Cn`, `Dns`, `Email`, `Upn`
         /// </summary>
         public readonly string UsernameAttr;
         /// <summary>
-        /// If `type`==`match`
+        /// If `Type`==`Match`
         /// </summary>
         public readonly ImmutableArray<string> Values;
         /// <summary>
-        /// If `type`==`vlan`
+        /// If `Type`==`Vlan`
         /// </summary>
         public readonly string Vlan;
 

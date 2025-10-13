@@ -87,14 +87,14 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowUsermacOverride);
     }
     /**
-     * If `type`==`egress_vlan_names`, list of egress vlans to return
+     * If `type`==`egressVlanNames`, list of egress vlans to return
      * 
      */
     @Export(name="egressVlanNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> egressVlanNames;
 
     /**
-     * @return If `type`==`egress_vlan_names`, list of egress vlans to return
+     * @return If `type`==`egressVlanNames`, list of egress vlans to return
      * 
      */
     public Output<Optional<List<String>>> egressVlanNames() {
@@ -107,14 +107,14 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gbpTag);
     }
     /**
-     * if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+     * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      * 
      */
     @Export(name="match", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> match;
 
     /**
-     * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+     * @return if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      * 
      */
     public Output<Optional<String>> match() {
@@ -125,7 +125,7 @@ public class Nactag extends com.pulumi.resources.CustomResource {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      * 
-     * Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
      * 
      */
     @Export(name="matchAll", refs={Boolean.class}, tree="[0]")
@@ -136,21 +136,21 @@ public class Nactag extends com.pulumi.resources.CustomResource {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      * 
-     * Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
      * 
      */
     public Output<Optional<Boolean>> matchAll() {
         return Codegen.optional(this.matchAll);
     }
     /**
-     * If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+     * If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
      * 
      */
     @Export(name="nacportalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nacportalId;
 
     /**
-     * @return If `type`==`redirect_guest_portal`, the ID of the guest portal to redirect to
+     * @return If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
      * 
      */
     public Output<Optional<String>> nacportalId() {
@@ -169,50 +169,50 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
+     * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field &#34;radiusAttrs&#34;.
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radius_attrs in the result of a given rule.
+     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
      * 
      */
     @Export(name="radiusAttrs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> radiusAttrs;
 
     /**
-     * @return If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field &#34;radius_attrs&#34;.
+     * @return If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field &#34;radiusAttrs&#34;.
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radius_attrs in the result of a given rule.
+     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
      * 
      */
     public Output<Optional<List<String>>> radiusAttrs() {
         return Codegen.optional(this.radiusAttrs);
     }
     /**
-     * If `type`==`radius_group`
+     * If `type`==`radiusGroup`
      * 
      */
     @Export(name="radiusGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> radiusGroup;
 
     /**
-     * @return If `type`==`radius_group`
+     * @return If `type`==`radiusGroup`
      * 
      */
     public Output<Optional<String>> radiusGroup() {
         return Codegen.optional(this.radiusGroup);
     }
     /**
-     * If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
+     * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radiusVendorAttrs&#34;.
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
      * 
      */
     @Export(name="radiusVendorAttrs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> radiusVendorAttrs;
 
     /**
-     * @return If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radius_vendor_attrs&#34;.
+     * @return If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radiusVendorAttrs&#34;.
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radius_vendor_attrs in the result of a given rule.
+     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
      * 
      */
     public Output<Optional<List<String>>> radiusVendorAttrs() {
@@ -233,14 +233,14 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sessionTimeout);
     }
     /**
-     * enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_guest_portal`, `session_timeout`, `username_attr`, `vlan`
+     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
      * 
      */
     public Output<String> type() {

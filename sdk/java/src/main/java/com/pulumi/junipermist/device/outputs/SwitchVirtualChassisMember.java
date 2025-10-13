@@ -18,7 +18,7 @@ public final class SwitchVirtualChassisMember {
     private String mac;
     private Integer memberId;
     /**
-     * @return Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+     * @return Both vcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
      * 
      */
     private String vcRole;
@@ -35,7 +35,7 @@ public final class SwitchVirtualChassisMember {
         return this.memberId;
     }
     /**
-     * @return Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+     * @return Both vcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
      * 
      */
     public String vcRole() {

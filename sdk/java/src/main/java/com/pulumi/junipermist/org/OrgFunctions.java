@@ -2068,7 +2068,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the NAC IDP Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+     * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -2111,7 +2111,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the NAC IDP Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+     * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -2154,7 +2154,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the NAC IDP Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+     * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -2197,7 +2197,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the NAC IDP Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+     * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -2240,7 +2240,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the NAC IDP Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+     * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -2713,7 +2713,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Networks.
      * 
-     * The Networks are used in the `service_policies` from the Gateway configuration, Gateway templates or HUB Profiles
+     * The Networks are used in the `servicePolicies` from the Gateway configuration, Gateway templates or HUB Profiles
      * 
      * ## Example Usage
      * 
@@ -2755,7 +2755,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Networks.
      * 
-     * The Networks are used in the `service_policies` from the Gateway configuration, Gateway templates or HUB Profiles
+     * The Networks are used in the `servicePolicies` from the Gateway configuration, Gateway templates or HUB Profiles
      * 
      * ## Example Usage
      * 
@@ -2797,7 +2797,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Networks.
      * 
-     * The Networks are used in the `service_policies` from the Gateway configuration, Gateway templates or HUB Profiles
+     * The Networks are used in the `servicePolicies` from the Gateway configuration, Gateway templates or HUB Profiles
      * 
      * ## Example Usage
      * 
@@ -2839,7 +2839,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Networks.
      * 
-     * The Networks are used in the `service_policies` from the Gateway configuration, Gateway templates or HUB Profiles
+     * The Networks are used in the `servicePolicies` from the Gateway configuration, Gateway templates or HUB Profiles
      * 
      * ## Example Usage
      * 
@@ -2881,7 +2881,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Networks.
      * 
-     * The Networks are used in the `service_policies` from the Gateway configuration, Gateway templates or HUB Profiles
+     * The Networks are used in the `servicePolicies` from the Gateway configuration, Gateway templates or HUB Profiles
      * 
      * ## Example Usage
      * 
@@ -3588,7 +3588,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Service Policies (Application Policies).
      * 
-     * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+     * The Service Policies can be used in the `servicePolicies` object by referencing the Service Policy ID as the `servicepolicyId` in:
      * * the Gateway configuration (`mist_device_gateway.service_policies`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
      * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
@@ -3634,7 +3634,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Service Policies (Application Policies).
      * 
-     * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+     * The Service Policies can be used in the `servicePolicies` object by referencing the Service Policy ID as the `servicepolicyId` in:
      * * the Gateway configuration (`mist_device_gateway.service_policies`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
      * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
@@ -3680,7 +3680,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Service Policies (Application Policies).
      * 
-     * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+     * The Service Policies can be used in the `servicePolicies` object by referencing the Service Policy ID as the `servicepolicyId` in:
      * * the Gateway configuration (`mist_device_gateway.service_policies`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
      * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
@@ -3726,7 +3726,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Service Policies (Application Policies).
      * 
-     * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+     * The Service Policies can be used in the `servicePolicies` object by referencing the Service Policy ID as the `servicepolicyId` in:
      * * the Gateway configuration (`mist_device_gateway.service_policies`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
      * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
@@ -3772,7 +3772,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Service Policies (Application Policies).
      * 
-     * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+     * The Service Policies can be used in the `servicePolicies` object by referencing the Service Policy ID as the `servicepolicyId` in:
      * * the Gateway configuration (`mist_device_gateway.service_policies`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
      * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
@@ -3818,7 +3818,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Services (Applications).
      * 
-     * A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+     * A Service is used to define a Custom Application that can be used in the `servicePolicies`. These Services can be referenced by their name in
      * * the Service Policies (`mist_org_servicepolicy.services`)
      * * the Gateway configuration (`mist_device_gateway.service_policies.services`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
@@ -3864,7 +3864,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Services (Applications).
      * 
-     * A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+     * A Service is used to define a Custom Application that can be used in the `servicePolicies`. These Services can be referenced by their name in
      * * the Service Policies (`mist_org_servicepolicy.services`)
      * * the Gateway configuration (`mist_device_gateway.service_policies.services`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
@@ -3910,7 +3910,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Services (Applications).
      * 
-     * A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+     * A Service is used to define a Custom Application that can be used in the `servicePolicies`. These Services can be referenced by their name in
      * * the Service Policies (`mist_org_servicepolicy.services`)
      * * the Gateway configuration (`mist_device_gateway.service_policies.services`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
@@ -3956,7 +3956,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Services (Applications).
      * 
-     * A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+     * A Service is used to define a Custom Application that can be used in the `servicePolicies`. These Services can be referenced by their name in
      * * the Service Policies (`mist_org_servicepolicy.services`)
      * * the Gateway configuration (`mist_device_gateway.service_policies.services`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
@@ -4002,7 +4002,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of WAN Assurance Services (Applications).
      * 
-     * A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+     * A Service is used to define a Custom Application that can be used in the `servicePolicies`. These Services can be referenced by their name in
      * * the Service Policies (`mist_org_servicepolicy.services`)
      * * the Gateway configuration (`mist_device_gateway.service_policies.services`)
      * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
@@ -4263,7 +4263,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the SSO Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+     * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -4306,7 +4306,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the SSO Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+     * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -4349,7 +4349,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the SSO Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+     * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -4392,7 +4392,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the SSO Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+     * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 
@@ -4435,7 +4435,7 @@ public final class OrgFunctions {
     /**
      * This data source provides the SSO Metadata information.
      * 
-     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the information required to configure the IDP
+     * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the information required to configure the IDP
      * 
      * ## Example Usage
      * 

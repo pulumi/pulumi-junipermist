@@ -32,14 +32,14 @@ public final class GatewaytemplatePortConfigWanSourceNatArgs extends com.pulumi.
     }
 
     /**
-     * If alternative nat_pool is desired
+     * If alternative natPool is desired
      * 
      */
     @Import(name="natPool")
     private @Nullable Output<String> natPool;
 
     /**
-     * @return If alternative nat_pool is desired
+     * @return If alternative natPool is desired
      * 
      */
     public Optional<Output<String>> natPool() {
@@ -93,7 +93,7 @@ public final class GatewaytemplatePortConfigWanSourceNatArgs extends com.pulumi.
         }
 
         /**
-         * @param natPool If alternative nat_pool is desired
+         * @param natPool If alternative natPool is desired
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GatewaytemplatePortConfigWanSourceNatArgs extends com.pulumi.
         }
 
         /**
-         * @param natPool If alternative nat_pool is desired
+         * @param natPool If alternative natPool is desired
          * 
          * @return builder
          * 

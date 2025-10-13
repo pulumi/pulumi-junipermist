@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileApUsbConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Only if `type`==`imagotag`
+        /// Only if `Type`==`Imagotag`
         /// </summary>
         [Input("cacert")]
         public Input<string>? Cacert { get; set; }
 
         /// <summary>
-        /// Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
+        /// Only if `Type`==`Imagotag`, channel selection, not needed by default, required for manual channel override only
         /// </summary>
         [Input("channel")]
         public Input<int>? Channel { get; set; }
@@ -31,31 +31,31 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Only if `type`==`imagotag`
+        /// Only if `Type`==`Imagotag`
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Only if `type`==`imagotag`
+        /// Only if `Type`==`Imagotag`
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// usb config type. enum: `hanshow`, `imagotag`, `solum`
+        /// usb config type. enum: `Hanshow`, `Imagotag`, `Solum`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Only if `type`==`imagotag`, whether to turn on SSL verification
+        /// Only if `Type`==`Imagotag`, whether to turn on SSL verification
         /// </summary>
         [Input("verifyCert")]
         public Input<bool>? VerifyCert { get; set; }
 
         /// <summary>
-        /// Only if `type`==`solum` or `type`==`hanshow`
+        /// Only if `Type`==`Solum` or `Type`==`Hanshow`
         /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }

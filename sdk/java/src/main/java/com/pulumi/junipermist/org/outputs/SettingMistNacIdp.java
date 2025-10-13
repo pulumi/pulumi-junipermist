@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingMistNacIdp {
     /**
-     * @return When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+     * @return When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
      * 
      */
     private @Nullable List<String> excludeRealms;
     /**
-     * @return ID of the `mist_nacidp`
+     * @return ID of the `mistNacidp`
      * 
      */
     private String id;
@@ -32,14 +32,14 @@ public final class SettingMistNacIdp {
 
     private SettingMistNacIdp() {}
     /**
-     * @return When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+     * @return When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
      * 
      */
     public List<String> excludeRealms() {
         return this.excludeRealms == null ? List.of() : this.excludeRealms;
     }
     /**
-     * @return ID of the `mist_nacidp`
+     * @return ID of the `mistNacidp`
      * 
      */
     public String id() {

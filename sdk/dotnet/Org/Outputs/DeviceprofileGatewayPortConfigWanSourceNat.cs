@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// If alternative nat_pool is desired
+        /// If alternative NatPool is desired
         /// </summary>
         public readonly string? NatPool;
 

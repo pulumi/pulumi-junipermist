@@ -64,7 +64,7 @@ public final class ApRadioConfig {
      */
     private @Nullable ApRadioConfigBand6 band6;
     /**
-     * @return Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+     * @return Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
      * 
      */
     private @Nullable Boolean fullAutomaticRrm;
@@ -147,7 +147,7 @@ public final class ApRadioConfig {
         return Optional.ofNullable(this.band6);
     }
     /**
-     * @return Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
+     * @return Let RRM control everything, only the `channels` and `antGain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
      * 
      */
     public Optional<Boolean> fullAutomaticRrm() {

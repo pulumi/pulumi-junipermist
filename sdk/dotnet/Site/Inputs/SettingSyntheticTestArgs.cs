@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingSyntheticTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `auto`, `high`, `low`
+        /// enum: `Auto`, `High`, `Low`
         /// </summary>
         [Input("aggressiveness")]
         public Input<string>? Aggressiveness { get; set; }

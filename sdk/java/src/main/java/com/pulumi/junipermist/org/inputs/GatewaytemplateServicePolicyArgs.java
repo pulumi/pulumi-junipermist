@@ -23,14 +23,14 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
     public static final GatewaytemplateServicePolicyArgs Empty = new GatewaytemplateServicePolicyArgs();
 
     /**
-     * Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
+     * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
+     * @return Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
      * 
      */
     public Optional<Output<String>> action() {
@@ -97,14 +97,14 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+     * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+     * @return Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
      * 
      */
     public Optional<Output<String>> name() {
@@ -112,14 +112,14 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+     * By default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
      * 
      */
     @Import(name="pathPreference")
     private @Nullable Output<String> pathPreference;
 
     /**
-     * @return By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
      * 
      */
     public Optional<Output<String>> pathPreference() {
@@ -142,14 +142,14 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * Required when `servicepolicy_id` is not defined. List of Applications / Destinations
+     * Required when `servicepolicyId` is not defined. List of Applications / Destinations
      * 
      */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
     /**
-     * @return Required when `servicepolicy_id` is not defined. List of Applications / Destinations
+     * @return Required when `servicepolicyId` is not defined. List of Applications / Destinations
      * 
      */
     public Optional<Output<List<String>>> services() {
@@ -172,14 +172,14 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * Required when `servicepolicy_id` is not defined. List of Networks / Users
+     * Required when `servicepolicyId` is not defined. List of Networks / Users
      * 
      */
     @Import(name="tenants")
     private @Nullable Output<List<String>> tenants;
 
     /**
-     * @return Required when `servicepolicy_id` is not defined. List of Networks / Users
+     * @return Required when `servicepolicyId` is not defined. List of Networks / Users
      * 
      */
     public Optional<Output<List<String>>> tenants() {
@@ -222,7 +222,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param action Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
+         * @param action Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param action Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
+         * @param action Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+         * @param name Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+         * @param name Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param pathPreference By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+         * @param pathPreference By default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param pathPreference By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+         * @param pathPreference By default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param services Required when `servicepolicy_id` is not defined. List of Applications / Destinations
+         * @param services Required when `servicepolicyId` is not defined. List of Applications / Destinations
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param services Required when `servicepolicy_id` is not defined. List of Applications / Destinations
+         * @param services Required when `servicepolicyId` is not defined. List of Applications / Destinations
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param services Required when `servicepolicy_id` is not defined. List of Applications / Destinations
+         * @param services Required when `servicepolicyId` is not defined. List of Applications / Destinations
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tenants Required when `servicepolicy_id` is not defined. List of Networks / Users
+         * @param tenants Required when `servicepolicyId` is not defined. List of Networks / Users
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tenants Required when `servicepolicy_id` is not defined. List of Networks / Users
+         * @param tenants Required when `servicepolicyId` is not defined. List of Networks / Users
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tenants Required when `servicepolicy_id` is not defined. List of Networks / Users
+         * @param tenants Required when `servicepolicyId` is not defined. List of Networks / Users
          * 
          * @return builder
          * 

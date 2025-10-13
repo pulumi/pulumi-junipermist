@@ -95,14 +95,14 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
     }
 
     /**
-     * if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we&#39;ll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+     * if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we&#39;ll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
      * 
      */
     @Import(name="serviceConnection")
     private @Nullable Output<String> serviceConnection;
 
     /**
-     * @return if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we&#39;ll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+     * @return if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we&#39;ll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
      * 
      */
     public Optional<Output<String>> serviceConnection() {
@@ -242,7 +242,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         }
 
         /**
-         * @param serviceConnection if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we&#39;ll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+         * @param serviceConnection if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we&#39;ll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         }
 
         /**
-         * @param serviceConnection if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we&#39;ll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
+         * @param serviceConnection if `provider`==`prisma-ipsec`. By default, we&#39;ll use the location of the site to determine the optimal Remote Network location, optionally, serviceConnection can be considered, then we&#39;ll also consider this along with the site location. Define serviceConnection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup &gt; Service Connections.
          * 
          * @return builder
          * 

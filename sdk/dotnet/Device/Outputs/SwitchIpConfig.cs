@@ -14,14 +14,14 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchIpConfig
     {
         /// <summary>
-        /// Required when `type`==`static`
+        /// Required when `Type`==`Static`
         /// </summary>
         public readonly ImmutableArray<string> Dns;
         public readonly ImmutableArray<string> DnsSuffixes;
         public readonly string? Gateway;
         public readonly string? Ip;
         /// <summary>
-        /// Used only if `subnet` is not specified in `networks`
+        /// Used only if `Subnet` is not specified in `Networks`
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// enum: `dhcp`, `static`
+        /// enum: `Dhcp`, `Static`
         /// </summary>
         public readonly string? Type;
 

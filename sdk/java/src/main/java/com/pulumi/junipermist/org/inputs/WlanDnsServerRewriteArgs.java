@@ -25,14 +25,14 @@ public final class WlanDnsServerRewriteArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+     * Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
      * 
      */
     @Import(name="radiusGroups")
     private @Nullable Output<Map<String,String>> radiusGroups;
 
     /**
-     * @return Map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+     * @return Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
      * 
      */
     public Optional<Output<Map<String,String>>> radiusGroups() {
@@ -74,7 +74,7 @@ public final class WlanDnsServerRewriteArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param radiusGroups Map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+         * @param radiusGroups Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class WlanDnsServerRewriteArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param radiusGroups Map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+         * @param radiusGroups Map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
          * 
          * @return builder
          * 

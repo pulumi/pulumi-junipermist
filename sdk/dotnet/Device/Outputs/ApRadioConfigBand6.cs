@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool? AllowRrmDisable;
         public readonly int? AntGain;
         /// <summary>
-        /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+        /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
         /// </summary>
         public readonly string? AntennaMode;
         /// <summary>
@@ -48,7 +48,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? PowerMin;
         /// <summary>
-        /// enum: `auto`, `long`, `short`
+        /// enum: `Auto`, `Long`, `Short`
         /// </summary>
         public readonly string? Preamble;
         /// <summary>

@@ -80,7 +80,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Optional, for an import policy, local_preference can be changed
+        /// Optional, for an import policy, LocalPreference can be changed
         /// </summary>
         [Input("localPreference")]
         public Input<string>? LocalPreference { get; set; }

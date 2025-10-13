@@ -41,10 +41,10 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
      * If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      * @deprecated
-     * Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+     * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
      * 
      */
-    @Deprecated /* Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+    @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
@@ -52,10 +52,10 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
      * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      * @deprecated
-     * Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+     * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
      * 
      */
-    @Deprecated /* Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+    @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
     public Optional<Output<List<String>>> dnsSuffixes() {
         return Optional.ofNullable(this.dnsSuffixes);
     }
@@ -181,7 +181,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     }
 
     /**
-     * `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
+     * `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
      * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
      * 
      */
@@ -189,7 +189,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
     private @Nullable Output<Boolean> serverIdOverride;
 
     /**
-     * @return `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
+     * @return `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
      * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
      * 
      */
@@ -352,10 +352,10 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
          * @return builder
          * 
          * @deprecated
-         * Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+         * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
          * 
          */
-        @Deprecated /* Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+        @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
         public Builder dnsSuffixes(@Nullable Output<List<String>> dnsSuffixes) {
             $.dnsSuffixes = dnsSuffixes;
             return this;
@@ -367,10 +367,10 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
          * @return builder
          * 
          * @deprecated
-         * Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+         * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
          * 
          */
-        @Deprecated /* Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+        @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
         public Builder dnsSuffixes(List<String> dnsSuffixes) {
             return dnsSuffixes(Output.of(dnsSuffixes));
         }
@@ -381,10 +381,10 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
          * @return builder
          * 
          * @deprecated
-         * Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
+         * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
          * 
          */
-        @Deprecated /* Configuring `dns_suffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
+        @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
         public Builder dnsSuffixes(String... dnsSuffixes) {
             return dnsSuffixes(List.of(dnsSuffixes));
         }
@@ -558,7 +558,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param serverIdOverride `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
+         * @param serverIdOverride `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          * 
          * @return builder
@@ -570,7 +570,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param serverIdOverride `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
+         * @param serverIdOverride `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
          * should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
          * 
          * @return builder
