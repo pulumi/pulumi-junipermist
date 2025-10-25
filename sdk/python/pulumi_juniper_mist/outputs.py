@@ -57,7 +57,7 @@ class UpgradeDeviceFwupdate(dict):
                  timestamp: Optional[_builtins.float] = None,
                  will_retry: Optional[_builtins.bool] = None):
         """
-        :param _builtins.str status: enum: `inprogress`, `failed`, `upgraded`
+        :param _builtins.str status: enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         :param _builtins.float timestamp: Epoch (seconds)
         """
         if progress is not None:
@@ -80,7 +80,7 @@ class UpgradeDeviceFwupdate(dict):
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        enum: `inprogress`, `failed`, `upgraded`
+        enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         """
         return pulumi.get(self, "status")
 

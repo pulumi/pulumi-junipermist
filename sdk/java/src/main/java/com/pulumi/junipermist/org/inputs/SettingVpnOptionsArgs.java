@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -21,6 +22,13 @@ public final class SettingVpnOptionsArgs extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<Integer>> asBase() {
         return Optional.ofNullable(this.asBase);
+    }
+
+    @Import(name="enableIpv6")
+    private @Nullable Output<Boolean> enableIpv6;
+
+    public Optional<Output<Boolean>> enableIpv6() {
+        return Optional.ofNullable(this.enableIpv6);
     }
 
     /**
@@ -42,6 +50,7 @@ public final class SettingVpnOptionsArgs extends com.pulumi.resources.ResourceAr
 
     private SettingVpnOptionsArgs(SettingVpnOptionsArgs $) {
         this.asBase = $.asBase;
+        this.enableIpv6 = $.enableIpv6;
         this.stSubnet = $.stSubnet;
     }
 
@@ -70,6 +79,15 @@ public final class SettingVpnOptionsArgs extends com.pulumi.resources.ResourceAr
 
         public Builder asBase(Integer asBase) {
             return asBase(Output.of(asBase));
+        }
+
+        public Builder enableIpv6(@Nullable Output<Boolean> enableIpv6) {
+            $.enableIpv6 = enableIpv6;
+            return this;
+        }
+
+        public Builder enableIpv6(Boolean enableIpv6) {
+            return enableIpv6(Output.of(enableIpv6));
         }
 
         /**

@@ -45,6 +45,7 @@ class DeviceprofileGatewayArgs:
                  ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsArgs']] = None,
+                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  vrf_config: Optional[pulumi.Input['DeviceprofileGatewayVrfConfigArgs']] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]]] = None):
         """
@@ -64,6 +65,7 @@ class DeviceprofileGatewayArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
+        :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -113,6 +115,8 @@ class DeviceprofileGatewayArgs:
             pulumi.set(__self__, "tunnel_configs", tunnel_configs)
         if tunnel_provider_options is not None:
             pulumi.set(__self__, "tunnel_provider_options", tunnel_provider_options)
+        if url_filtering_deny_msg is not None:
+            pulumi.set(__self__, "url_filtering_deny_msg", url_filtering_deny_msg)
         if vrf_config is not None:
             pulumi.set(__self__, "vrf_config", vrf_config)
         if vrf_instances is not None:
@@ -380,6 +384,18 @@ class DeviceprofileGatewayArgs:
         pulumi.set(self, "tunnel_provider_options", value)
 
     @_builtins.property
+    @pulumi.getter(name="urlFilteringDenyMsg")
+    def url_filtering_deny_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        When a service policy denies a app_category, what message to show in user's browser
+        """
+        return pulumi.get(self, "url_filtering_deny_msg")
+
+    @url_filtering_deny_msg.setter
+    def url_filtering_deny_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url_filtering_deny_msg", value)
+
+    @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> Optional[pulumi.Input['DeviceprofileGatewayVrfConfigArgs']]:
         return pulumi.get(self, "vrf_config")
@@ -429,6 +445,7 @@ class _DeviceprofileGatewayState:
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
+                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  vrf_config: Optional[pulumi.Input['DeviceprofileGatewayVrfConfigArgs']] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]]] = None):
         """
@@ -449,6 +466,7 @@ class _DeviceprofileGatewayState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: Device Type. enum: `gateway`
+        :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
         """
         if additional_config_cmds is not None:
@@ -501,6 +519,8 @@ class _DeviceprofileGatewayState:
             pulumi.set(__self__, "tunnel_provider_options", tunnel_provider_options)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if url_filtering_deny_msg is not None:
+            pulumi.set(__self__, "url_filtering_deny_msg", url_filtering_deny_msg)
         if vrf_config is not None:
             pulumi.set(__self__, "vrf_config", vrf_config)
         if vrf_instances is not None:
@@ -780,6 +800,18 @@ class _DeviceprofileGatewayState:
         pulumi.set(self, "type", value)
 
     @_builtins.property
+    @pulumi.getter(name="urlFilteringDenyMsg")
+    def url_filtering_deny_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        When a service policy denies a app_category, what message to show in user's browser
+        """
+        return pulumi.get(self, "url_filtering_deny_msg")
+
+    @url_filtering_deny_msg.setter
+    def url_filtering_deny_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url_filtering_deny_msg", value)
+
+    @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> Optional[pulumi.Input['DeviceprofileGatewayVrfConfigArgs']]:
         return pulumi.get(self, "vrf_config")
@@ -831,6 +863,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
                  ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input[Union['DeviceprofileGatewayTunnelProviderOptionsArgs', 'DeviceprofileGatewayTunnelProviderOptionsArgsDict']]] = None,
+                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  vrf_config: Optional[pulumi.Input[Union['DeviceprofileGatewayVrfConfigArgs', 'DeviceprofileGatewayVrfConfigArgsDict']]] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]]] = None,
                  __props__=None):
@@ -870,6 +903,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
+        :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
         ...
@@ -936,6 +970,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
                  ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input[Union['DeviceprofileGatewayTunnelProviderOptionsArgs', 'DeviceprofileGatewayTunnelProviderOptionsArgsDict']]] = None,
+                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  vrf_config: Optional[pulumi.Input[Union['DeviceprofileGatewayVrfConfigArgs', 'DeviceprofileGatewayVrfConfigArgsDict']]] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]]] = None,
                  __props__=None):
@@ -973,6 +1008,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
             __props__.__dict__["ssr_additional_config_cmds"] = ssr_additional_config_cmds
             __props__.__dict__["tunnel_configs"] = tunnel_configs
             __props__.__dict__["tunnel_provider_options"] = tunnel_provider_options
+            __props__.__dict__["url_filtering_deny_msg"] = url_filtering_deny_msg
             __props__.__dict__["vrf_config"] = vrf_config
             __props__.__dict__["vrf_instances"] = vrf_instances
             __props__.__dict__["type"] = None
@@ -1011,6 +1047,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
             tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]]] = None,
             tunnel_provider_options: Optional[pulumi.Input[Union['DeviceprofileGatewayTunnelProviderOptionsArgs', 'DeviceprofileGatewayTunnelProviderOptionsArgsDict']]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
+            url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
             vrf_config: Optional[pulumi.Input[Union['DeviceprofileGatewayVrfConfigArgs', 'DeviceprofileGatewayVrfConfigArgsDict']]] = None,
             vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]]] = None) -> 'DeviceprofileGateway':
         """
@@ -1036,6 +1073,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: Device Type. enum: `gateway`
+        :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1067,6 +1105,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
         __props__.__dict__["tunnel_configs"] = tunnel_configs
         __props__.__dict__["tunnel_provider_options"] = tunnel_provider_options
         __props__.__dict__["type"] = type
+        __props__.__dict__["url_filtering_deny_msg"] = url_filtering_deny_msg
         __props__.__dict__["vrf_config"] = vrf_config
         __props__.__dict__["vrf_instances"] = vrf_instances
         return DeviceprofileGateway(resource_name, opts=opts, __props__=__props__)
@@ -1243,6 +1282,14 @@ class DeviceprofileGateway(pulumi.CustomResource):
         Device Type. enum: `gateway`
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="urlFilteringDenyMsg")
+    def url_filtering_deny_msg(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        When a service policy denies a app_category, what message to show in user's browser
+        """
+        return pulumi.get(self, "url_filtering_deny_msg")
 
     @_builtins.property
     @pulumi.getter(name="vrfConfig")

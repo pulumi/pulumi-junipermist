@@ -70,7 +70,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable String guestNetwork;
     /**
-     * @return inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+     * @return inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
      * 
      */
     private @Nullable Boolean interSwitchLink;
@@ -263,7 +263,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.guestNetwork);
     }
     /**
-     * @return inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+     * @return inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
      * 
      */
     public Optional<Boolean> interSwitchLink() {

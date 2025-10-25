@@ -48,14 +48,14 @@ public final class ApRadioConfigBand24Args extends com.pulumi.resources.Resource
     }
 
     /**
-     * channel width for the 2.4GHz band. enum: `20`, `40`
+     * channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return channel width for the 2.4GHz band. enum: `20`, `40`
+     * @return channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -241,7 +241,7 @@ public final class ApRadioConfigBand24Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bandwidth channel width for the 2.4GHz band. enum: `20`, `40`
+         * @param bandwidth channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ApRadioConfigBand24Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bandwidth channel width for the 2.4GHz band. enum: `20`, `40`
+         * @param bandwidth channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
          * 
          * @return builder
          * 

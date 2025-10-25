@@ -343,7 +343,7 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly portalAllowedSubnets: pulumi.Output<string[]>;
     /**
-     * APi secret (auto-generated) that can be used to sign guest authorization requests
+     * API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
      */
     declare public /*out*/ readonly portalApiSecret: pulumi.Output<string>;
     /**
@@ -354,6 +354,9 @@ export class Wlan extends pulumi.CustomResource {
      * Url of portal background image
      */
     declare public /*out*/ readonly portalImage: pulumi.Output<string>;
+    /**
+     * URL used in the SSO process, auto-generated when auth is set to `sso`
+     */
     declare public /*out*/ readonly portalSsoUrl: pulumi.Output<string>;
     declare public readonly qos: pulumi.Output<outputs.site.WlanQos>;
     /**
@@ -914,7 +917,7 @@ export interface WlanState {
      */
     portalAllowedSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * APi secret (auto-generated) that can be used to sign guest authorization requests
+     * API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
      */
     portalApiSecret?: pulumi.Input<string>;
     /**
@@ -925,6 +928,9 @@ export interface WlanState {
      * Url of portal background image
      */
     portalImage?: pulumi.Input<string>;
+    /**
+     * URL used in the SSO process, auto-generated when auth is set to `sso`
+     */
     portalSsoUrl?: pulumi.Input<string>;
     qos?: pulumi.Input<inputs.site.WlanQos>;
     /**

@@ -68,7 +68,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> GbpTag { get; private set; } = null!;
 
         /// <summary>
-        /// if `Type`==`Match`. enum: `CertCn`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
+        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrHealth`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
         /// </summary>
         [Output("match")]
         public Output<string?> Match { get; private set; } = null!;
@@ -79,13 +79,13 @@ namespace Pulumi.JuniperMist.Org
         ///   * `True`: means all values should be matched (i.e., match-all behavior)
         /// 
         /// 
-        /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole` or `Match`==`UsermacLabel`
+        /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole`, `Match`==`UsermacLabel` and `EdrStatus`
         /// </summary>
         [Output("matchAll")]
         public Output<bool?> MatchAll { get; private set; } = null!;
 
         /// <summary>
-        /// If `Type`==`RedirectGuestPortal`, the ID of the guest portal to redirect to
+        /// If `Type`==`RedirectNacportalId`, the ID of the NAC portal to redirect to
         /// </summary>
         [Output("nacportalId")]
         public Output<string?> NacportalId { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<int?> SessionTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectGuestPortal`, `SessionTimeout`, `UsernameAttr`, `Vlan`
+        /// enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectNacportalId`, `SessionTimeout`, `UsernameAttr`, `Vlan`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? GbpTag { get; set; }
 
         /// <summary>
-        /// if `Type`==`Match`. enum: `CertCn`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
+        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrHealth`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -228,13 +228,13 @@ namespace Pulumi.JuniperMist.Org
         ///   * `True`: means all values should be matched (i.e., match-all behavior)
         /// 
         /// 
-        /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole` or `Match`==`UsermacLabel`
+        /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole`, `Match`==`UsermacLabel` and `EdrStatus`
         /// </summary>
         [Input("matchAll")]
         public Input<bool>? MatchAll { get; set; }
 
         /// <summary>
-        /// If `Type`==`RedirectGuestPortal`, the ID of the guest portal to redirect to
+        /// If `Type`==`RedirectNacportalId`, the ID of the NAC portal to redirect to
         /// </summary>
         [Input("nacportalId")]
         public Input<string>? NacportalId { get; set; }
@@ -286,7 +286,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? SessionTimeout { get; set; }
 
         /// <summary>
-        /// enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectGuestPortal`, `SessionTimeout`, `UsernameAttr`, `Vlan`
+        /// enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectNacportalId`, `SessionTimeout`, `UsernameAttr`, `Vlan`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -345,7 +345,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? GbpTag { get; set; }
 
         /// <summary>
-        /// if `Type`==`Match`. enum: `CertCn`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
+        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrHealth`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -356,13 +356,13 @@ namespace Pulumi.JuniperMist.Org
         ///   * `True`: means all values should be matched (i.e., match-all behavior)
         /// 
         /// 
-        /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole` or `Match`==`UsermacLabel`
+        /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole`, `Match`==`UsermacLabel` and `EdrStatus`
         /// </summary>
         [Input("matchAll")]
         public Input<bool>? MatchAll { get; set; }
 
         /// <summary>
-        /// If `Type`==`RedirectGuestPortal`, the ID of the guest portal to redirect to
+        /// If `Type`==`RedirectNacportalId`, the ID of the NAC portal to redirect to
         /// </summary>
         [Input("nacportalId")]
         public Input<string>? NacportalId { get; set; }
@@ -414,7 +414,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? SessionTimeout { get; set; }
 
         /// <summary>
-        /// enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectGuestPortal`, `SessionTimeout`, `UsernameAttr`, `Vlan`
+        /// enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectNacportalId`, `SessionTimeout`, `UsernameAttr`, `Vlan`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

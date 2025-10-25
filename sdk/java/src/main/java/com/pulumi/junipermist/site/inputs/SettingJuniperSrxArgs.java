@@ -5,6 +5,7 @@ package com.pulumi.junipermist.site.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.site.inputs.SettingJuniperSrxAutoUpgradeArgs;
 import com.pulumi.junipermist.site.inputs.SettingJuniperSrxGatewayArgs;
 import java.lang.Boolean;
 import java.util.List;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingJuniperSrxArgs Empty = new SettingJuniperSrxArgs();
+
+    /**
+     * auto_upgrade device first time it is onboarded
+     * 
+     */
+    @Import(name="autoUpgrade")
+    private @Nullable Output<SettingJuniperSrxAutoUpgradeArgs> autoUpgrade;
+
+    /**
+     * @return auto_upgrade device first time it is onboarded
+     * 
+     */
+    public Optional<Output<SettingJuniperSrxAutoUpgradeArgs>> autoUpgrade() {
+        return Optional.ofNullable(this.autoUpgrade);
+    }
 
     @Import(name="gateways")
     private @Nullable Output<List<SettingJuniperSrxGatewayArgs>> gateways;
@@ -34,6 +50,7 @@ public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceAr
     private SettingJuniperSrxArgs() {}
 
     private SettingJuniperSrxArgs(SettingJuniperSrxArgs $) {
+        this.autoUpgrade = $.autoUpgrade;
         this.gateways = $.gateways;
         this.sendMistNacUserInfo = $.sendMistNacUserInfo;
     }
@@ -54,6 +71,27 @@ public final class SettingJuniperSrxArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(SettingJuniperSrxArgs defaults) {
             $ = new SettingJuniperSrxArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoUpgrade auto_upgrade device first time it is onboarded
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgrade(@Nullable Output<SettingJuniperSrxAutoUpgradeArgs> autoUpgrade) {
+            $.autoUpgrade = autoUpgrade;
+            return this;
+        }
+
+        /**
+         * @param autoUpgrade auto_upgrade device first time it is onboarded
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgrade(SettingJuniperSrxAutoUpgradeArgs autoUpgrade) {
+            return autoUpgrade(Output.of(autoUpgrade));
         }
 
         public Builder gateways(@Nullable Output<List<SettingJuniperSrxGatewayArgs>> gateways) {

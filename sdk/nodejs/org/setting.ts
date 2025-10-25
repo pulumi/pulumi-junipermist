@@ -92,6 +92,7 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly jcloudRa: pulumi.Output<outputs.org.SettingJcloudRa | undefined>;
     declare public /*out*/ readonly juniper: pulumi.Output<outputs.org.SettingJuniper>;
+    declare public readonly juniperSrx: pulumi.Output<outputs.org.SettingJuniperSrx | undefined>;
     /**
      * junos_shell_access: Manages role-based web-shell access.  
      * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
@@ -128,6 +129,7 @@ export class Setting extends pulumi.CustomResource {
      * Automatically logout the user when UI session is inactive. `0` means disabled
      */
     declare public readonly uiIdleTimeout: pulumi.Output<number>;
+    declare public readonly uiNoTracking: pulumi.Output<boolean | undefined>;
     declare public readonly vpnOptions: pulumi.Output<outputs.org.SettingVpnOptions | undefined>;
     declare public readonly wanPma: pulumi.Output<outputs.org.SettingWanPma | undefined>;
     declare public readonly wiredPma: pulumi.Output<outputs.org.SettingWiredPma | undefined>;
@@ -161,6 +163,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["jcloud"] = state?.jcloud;
             resourceInputs["jcloudRa"] = state?.jcloudRa;
             resourceInputs["juniper"] = state?.juniper;
+            resourceInputs["juniperSrx"] = state?.juniperSrx;
             resourceInputs["junosShellAccess"] = state?.junosShellAccess;
             resourceInputs["marvis"] = state?.marvis;
             resourceInputs["mgmt"] = state?.mgmt;
@@ -177,6 +180,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["switchUpdownThreshold"] = state?.switchUpdownThreshold;
             resourceInputs["syntheticTest"] = state?.syntheticTest;
             resourceInputs["uiIdleTimeout"] = state?.uiIdleTimeout;
+            resourceInputs["uiNoTracking"] = state?.uiNoTracking;
             resourceInputs["vpnOptions"] = state?.vpnOptions;
             resourceInputs["wanPma"] = state?.wanPma;
             resourceInputs["wiredPma"] = state?.wiredPma;
@@ -199,6 +203,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["installer"] = args?.installer;
             resourceInputs["jcloud"] = args?.jcloud;
             resourceInputs["jcloudRa"] = args?.jcloudRa;
+            resourceInputs["juniperSrx"] = args?.juniperSrx;
             resourceInputs["junosShellAccess"] = args?.junosShellAccess;
             resourceInputs["marvis"] = args?.marvis;
             resourceInputs["mgmt"] = args?.mgmt;
@@ -215,6 +220,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["switchUpdownThreshold"] = args?.switchUpdownThreshold;
             resourceInputs["syntheticTest"] = args?.syntheticTest;
             resourceInputs["uiIdleTimeout"] = args?.uiIdleTimeout;
+            resourceInputs["uiNoTracking"] = args?.uiNoTracking;
             resourceInputs["vpnOptions"] = args?.vpnOptions;
             resourceInputs["wanPma"] = args?.wanPma;
             resourceInputs["wiredPma"] = args?.wiredPma;
@@ -272,6 +278,7 @@ export interface SettingState {
      */
     jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
     juniper?: pulumi.Input<inputs.org.SettingJuniper>;
+    juniperSrx?: pulumi.Input<inputs.org.SettingJuniperSrx>;
     /**
      * junos_shell_access: Manages role-based web-shell access.  
      * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
@@ -308,6 +315,7 @@ export interface SettingState {
      * Automatically logout the user when UI session is inactive. `0` means disabled
      */
     uiIdleTimeout?: pulumi.Input<number>;
+    uiNoTracking?: pulumi.Input<boolean>;
     vpnOptions?: pulumi.Input<inputs.org.SettingVpnOptions>;
     wanPma?: pulumi.Input<inputs.org.SettingWanPma>;
     wiredPma?: pulumi.Input<inputs.org.SettingWiredPma>;
@@ -357,6 +365,7 @@ export interface SettingArgs {
      * JCloud Routing Assurance connexion
      */
     jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
+    juniperSrx?: pulumi.Input<inputs.org.SettingJuniperSrx>;
     /**
      * junos_shell_access: Manages role-based web-shell access.  
      * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
@@ -393,6 +402,7 @@ export interface SettingArgs {
      * Automatically logout the user when UI session is inactive. `0` means disabled
      */
     uiIdleTimeout?: pulumi.Input<number>;
+    uiNoTracking?: pulumi.Input<boolean>;
     vpnOptions?: pulumi.Input<inputs.org.SettingVpnOptions>;
     wanPma?: pulumi.Input<inputs.org.SettingWanPma>;
     wiredPma?: pulumi.Input<inputs.org.SettingWiredPma>;

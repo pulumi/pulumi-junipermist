@@ -21,6 +21,11 @@ public final class GatewayPortConfigWanSourceNat {
      * @return If alternative natPool is desired
      * 
      */
+    private @Nullable String nat6Pool;
+    /**
+     * @return If alternative natPool is desired
+     * 
+     */
     private @Nullable String natPool;
 
     private GatewayPortConfigWanSourceNat() {}
@@ -30,6 +35,13 @@ public final class GatewayPortConfigWanSourceNat {
      */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
+    }
+    /**
+     * @return If alternative natPool is desired
+     * 
+     */
+    public Optional<String> nat6Pool() {
+        return Optional.ofNullable(this.nat6Pool);
     }
     /**
      * @return If alternative natPool is desired
@@ -49,11 +61,13 @@ public final class GatewayPortConfigWanSourceNat {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean disabled;
+        private @Nullable String nat6Pool;
         private @Nullable String natPool;
         public Builder() {}
         public Builder(GatewayPortConfigWanSourceNat defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
+    	      this.nat6Pool = defaults.nat6Pool;
     	      this.natPool = defaults.natPool;
         }
 
@@ -61,6 +75,12 @@ public final class GatewayPortConfigWanSourceNat {
         public Builder disabled(@Nullable Boolean disabled) {
 
             this.disabled = disabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nat6Pool(@Nullable String nat6Pool) {
+
+            this.nat6Pool = nat6Pool;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +92,7 @@ public final class GatewayPortConfigWanSourceNat {
         public GatewayPortConfigWanSourceNat build() {
             final var _resultValue = new GatewayPortConfigWanSourceNat();
             _resultValue.disabled = disabled;
+            _resultValue.nat6Pool = nat6Pool;
             _resultValue.natPool = natPool;
             return _resultValue;
         }

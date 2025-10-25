@@ -21,6 +21,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// <summary>
         /// If alternative NatPool is desired
         /// </summary>
+        [Input("nat6Pool")]
+        public Input<string>? Nat6Pool { get; set; }
+
+        /// <summary>
+        /// If alternative NatPool is desired
+        /// </summary>
         [Input("natPool")]
         public Input<string>? NatPool { get; set; }
 

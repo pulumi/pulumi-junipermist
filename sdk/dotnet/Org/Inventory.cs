@@ -19,6 +19,42 @@ namespace Pulumi.JuniperMist.Org
     /// !&gt; The `Devices` attribute (List) is deprecated and is replaced by the `Inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happens, it is required to force a refresh of the state to synchronise the new list.\
     /// The `Devices` attribute will generate inconsistent result after apply when a device other than the last one is removed from the list or when a device is added somewhere other than the end of the list
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var inventory = new JuniperMist.Org.Inventory("inventory", new()
+    ///     {
+    ///         OrgId = terraformTest.Id,
+    ///         InventoryDetails = 
+    ///         {
+    ///             { "CPKL2EXXXXXXXXX", null },
+    ///             { "G87JHBFXXXXXXXX", new JuniperMist.Org.Inputs.InventoryInventoryArgs
+    ///             {
+    ///                 SiteId = terraformSite.Id,
+    ///                 UnclaimWhenDestroyed = true,
+    ///             } },
+    ///             { "2c2131000000", new JuniperMist.Org.Inputs.InventoryInventoryArgs
+    ///             {
+    ///                 SiteId = terraformSite.Id,
+    ///                 UnclaimWhenDestroyed = true,
+    ///             } },
+    ///             { "2c2131000001", new JuniperMist.Org.Inputs.InventoryInventoryArgs
+    ///             {
+    ///                 UnclaimWhenDestroyed = false,
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_inventory` with:

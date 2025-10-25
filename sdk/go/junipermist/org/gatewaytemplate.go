@@ -70,8 +70,10 @@ type Gatewaytemplate struct {
 	TunnelConfigs         GatewaytemplateTunnelConfigsMapOutput         `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions GatewaytemplateTunnelProviderOptionsPtrOutput `pulumi:"tunnelProviderOptions"`
 	// enum: `spoke`, `standalone`
-	Type      pulumi.StringOutput               `pulumi:"type"`
-	VrfConfig GatewaytemplateVrfConfigPtrOutput `pulumi:"vrfConfig"`
+	Type pulumi.StringOutput `pulumi:"type"`
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg pulumi.StringPtrOutput            `pulumi:"urlFilteringDenyMsg"`
+	VrfConfig           GatewaytemplateVrfConfigPtrOutput `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances GatewaytemplateVrfInstancesMapOutput `pulumi:"vrfInstances"`
 }
@@ -149,8 +151,10 @@ type gatewaytemplateState struct {
 	TunnelConfigs         map[string]GatewaytemplateTunnelConfigs `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions *GatewaytemplateTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
 	// enum: `spoke`, `standalone`
-	Type      *string                   `pulumi:"type"`
-	VrfConfig *GatewaytemplateVrfConfig `pulumi:"vrfConfig"`
+	Type *string `pulumi:"type"`
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg *string                   `pulumi:"urlFilteringDenyMsg"`
+	VrfConfig           *GatewaytemplateVrfConfig `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances map[string]GatewaytemplateVrfInstances `pulumi:"vrfInstances"`
 }
@@ -196,8 +200,10 @@ type GatewaytemplateState struct {
 	TunnelConfigs         GatewaytemplateTunnelConfigsMapInput
 	TunnelProviderOptions GatewaytemplateTunnelProviderOptionsPtrInput
 	// enum: `spoke`, `standalone`
-	Type      pulumi.StringPtrInput
-	VrfConfig GatewaytemplateVrfConfigPtrInput
+	Type pulumi.StringPtrInput
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg pulumi.StringPtrInput
+	VrfConfig           GatewaytemplateVrfConfigPtrInput
 	// Property key is the network name
 	VrfInstances GatewaytemplateVrfInstancesMapInput
 }
@@ -247,8 +253,10 @@ type gatewaytemplateArgs struct {
 	TunnelConfigs         map[string]GatewaytemplateTunnelConfigs `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions *GatewaytemplateTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
 	// enum: `spoke`, `standalone`
-	Type      *string                   `pulumi:"type"`
-	VrfConfig *GatewaytemplateVrfConfig `pulumi:"vrfConfig"`
+	Type *string `pulumi:"type"`
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg *string                   `pulumi:"urlFilteringDenyMsg"`
+	VrfConfig           *GatewaytemplateVrfConfig `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances map[string]GatewaytemplateVrfInstances `pulumi:"vrfInstances"`
 }
@@ -295,8 +303,10 @@ type GatewaytemplateArgs struct {
 	TunnelConfigs         GatewaytemplateTunnelConfigsMapInput
 	TunnelProviderOptions GatewaytemplateTunnelProviderOptionsPtrInput
 	// enum: `spoke`, `standalone`
-	Type      pulumi.StringPtrInput
-	VrfConfig GatewaytemplateVrfConfigPtrInput
+	Type pulumi.StringPtrInput
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg pulumi.StringPtrInput
+	VrfConfig           GatewaytemplateVrfConfigPtrInput
 	// Property key is the network name
 	VrfInstances GatewaytemplateVrfInstancesMapInput
 }
@@ -502,6 +512,11 @@ func (o GatewaytemplateOutput) TunnelProviderOptions() GatewaytemplateTunnelProv
 // enum: `spoke`, `standalone`
 func (o GatewaytemplateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// When a service policy denies a app_category, what message to show in user's browser
+func (o GatewaytemplateOutput) UrlFilteringDenyMsg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringPtrOutput { return v.UrlFilteringDenyMsg }).(pulumi.StringPtrOutput)
 }
 
 func (o GatewaytemplateOutput) VrfConfig() GatewaytemplateVrfConfigPtrOutput {

@@ -19,32 +19,31 @@ namespace Pulumi.JuniperMist
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// For API Token authentication, the Mist API Token.
+        /// Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
         /// </summary>
         [Output("apitoken")]
         public Output<string?> Apitoken { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the Mist Cloud, e.g. `api.mist.com`.
+        /// URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
         /// </summary>
         [Output("host")]
         public Output<string?> Host { get; private set; } = null!;
 
         /// <summary>
-        /// For username/password authentication, the Mist Account password.
+        /// Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `Username` to be set.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Requests use the configured proxy to reach the Mist Cloud.
-        /// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `Http` scheme is assumed. The schemes `Http`, `Https`, and `Socks5` are supported.
+        /// Proxy configuration for API requests. The value may be either a complete URL or `[username:password@]host[:port]` format. Supported schemes: `Http`, `Https`, and `Socks5`. If no scheme is provided, `Http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
         /// </summary>
         [Output("proxy")]
         public Output<string?> Proxy { get; private set; } = null!;
 
         /// <summary>
-        /// For username/password authentication, the Mist Account username.
+        /// Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `Password` to be set and 2FA to be disabled.
         /// </summary>
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
@@ -90,13 +89,13 @@ namespace Pulumi.JuniperMist
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flag to enable debugging API calls. Default is false.
+        /// Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `False`.
         /// </summary>
         [Input("apiDebug", json: true)]
         public Input<bool>? ApiDebug { get; set; }
 
         /// <summary>
-        /// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
+        /// Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
         /// </summary>
         [Input("apiTimeout", json: true)]
         public Input<double>? ApiTimeout { get; set; }
@@ -105,7 +104,7 @@ namespace Pulumi.JuniperMist
         private Input<string>? _apitoken;
 
         /// <summary>
-        /// For API Token authentication, the Mist API Token.
+        /// Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
         /// </summary>
         public Input<string>? Apitoken
         {
@@ -118,7 +117,7 @@ namespace Pulumi.JuniperMist
         }
 
         /// <summary>
-        /// URL of the Mist Cloud, e.g. `api.mist.com`.
+        /// URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -127,7 +126,7 @@ namespace Pulumi.JuniperMist
         private Input<string>? _password;
 
         /// <summary>
-        /// For username/password authentication, the Mist Account password.
+        /// Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `Username` to be set.
         /// </summary>
         public Input<string>? Password
         {
@@ -140,14 +139,13 @@ namespace Pulumi.JuniperMist
         }
 
         /// <summary>
-        /// Requests use the configured proxy to reach the Mist Cloud.
-        /// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `Http` scheme is assumed. The schemes `Http`, `Https`, and `Socks5` are supported.
+        /// Proxy configuration for API requests. The value may be either a complete URL or `[username:password@]host[:port]` format. Supported schemes: `Http`, `Https`, and `Socks5`. If no scheme is provided, `Http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
         /// </summary>
         [Input("proxy")]
         public Input<string>? Proxy { get; set; }
 
         /// <summary>
-        /// For username/password authentication, the Mist Account username.
+        /// Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `Password` to be set and 2FA to be disabled.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

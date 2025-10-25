@@ -34,6 +34,11 @@ public final class ApRadioConfig {
      */
     private @Nullable Integer antGain6;
     /**
+     * @return Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+     * 
+     */
+    private @Nullable String antMode;
+    /**
      * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
      * 
      */
@@ -103,6 +108,13 @@ public final class ApRadioConfig {
      */
     public Optional<Integer> antGain6() {
         return Optional.ofNullable(this.antGain6);
+    }
+    /**
+     * @return Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+     * 
+     */
+    public Optional<String> antMode() {
+        return Optional.ofNullable(this.antMode);
     }
     /**
      * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
@@ -181,6 +193,7 @@ public final class ApRadioConfig {
         private @Nullable Integer antGain24;
         private @Nullable Integer antGain5;
         private @Nullable Integer antGain6;
+        private @Nullable String antMode;
         private @Nullable String antennaMode;
         private @Nullable ApRadioConfigBand24 band24;
         private @Nullable String band24Usage;
@@ -197,6 +210,7 @@ public final class ApRadioConfig {
     	      this.antGain24 = defaults.antGain24;
     	      this.antGain5 = defaults.antGain5;
     	      this.antGain6 = defaults.antGain6;
+    	      this.antMode = defaults.antMode;
     	      this.antennaMode = defaults.antennaMode;
     	      this.band24 = defaults.band24;
     	      this.band24Usage = defaults.band24Usage;
@@ -230,6 +244,12 @@ public final class ApRadioConfig {
         public Builder antGain6(@Nullable Integer antGain6) {
 
             this.antGain6 = antGain6;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder antMode(@Nullable String antMode) {
+
+            this.antMode = antMode;
             return this;
         }
         @CustomType.Setter
@@ -292,6 +312,7 @@ public final class ApRadioConfig {
             _resultValue.antGain24 = antGain24;
             _resultValue.antGain5 = antGain5;
             _resultValue.antGain6 = antGain6;
+            _resultValue.antMode = antMode;
             _resultValue.antennaMode = antennaMode;
             _resultValue.band24 = band24;
             _resultValue.band24Usage = band24Usage;

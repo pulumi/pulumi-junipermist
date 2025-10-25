@@ -25,6 +25,54 @@ import javax.annotation.Nullable;
  * !&gt; The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate &#34;inconsistent result after apply&#34; errors. If this happens, it is required to force a refresh of the state to synchronise the new list.\
  * The `devices` attribute will generate inconsistent result after apply when a device other than the last one is removed from the list or when a device is added somewhere other than the end of the list
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Inventory;
+ * import com.pulumi.junipermist.org.InventoryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var inventory = new Inventory("inventory", InventoryArgs.builder()
+ *             .orgId(terraformTest.id())
+ *             .inventory(Map.ofEntries(
+ *                 Map.entry("CPKL2EXXXXXXXXX", InventoryInventoryArgs.builder()
+ *                     .build()),
+ *                 Map.entry("G87JHBFXXXXXXXX", InventoryInventoryArgs.builder()
+ *                     .siteId(terraformSite.id())
+ *                     .unclaimWhenDestroyed(true)
+ *                     .build()),
+ *                 Map.entry("2c2131000000", InventoryInventoryArgs.builder()
+ *                     .siteId(terraformSite.id())
+ *                     .unclaimWhenDestroyed(true)
+ *                     .build()),
+ *                 Map.entry("2c2131000001", InventoryInventoryArgs.builder()
+ *                     .unclaimWhenDestroyed(false)
+ *                     .build())
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_inventory` with:

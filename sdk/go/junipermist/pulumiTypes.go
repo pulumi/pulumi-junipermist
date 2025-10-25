@@ -15,7 +15,7 @@ var _ = internal.GetEnvOrDefault
 
 type UpgradeDeviceFwupdate struct {
 	Progress *int `pulumi:"progress"`
-	// enum: `inprogress`, `failed`, `upgraded`
+	// enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
 	Status   *string `pulumi:"status"`
 	StatusId *int    `pulumi:"statusId"`
 	// Epoch (seconds)
@@ -36,7 +36,7 @@ type UpgradeDeviceFwupdateInput interface {
 
 type UpgradeDeviceFwupdateArgs struct {
 	Progress pulumi.IntPtrInput `pulumi:"progress"`
-	// enum: `inprogress`, `failed`, `upgraded`
+	// enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
 	Status   pulumi.StringPtrInput `pulumi:"status"`
 	StatusId pulumi.IntPtrInput    `pulumi:"statusId"`
 	// Epoch (seconds)
@@ -125,7 +125,7 @@ func (o UpgradeDeviceFwupdateOutput) Progress() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceFwupdate) *int { return v.Progress }).(pulumi.IntPtrOutput)
 }
 
-// enum: `inprogress`, `failed`, `upgraded`
+// enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
 func (o UpgradeDeviceFwupdateOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UpgradeDeviceFwupdate) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -176,7 +176,7 @@ func (o UpgradeDeviceFwupdatePtrOutput) Progress() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// enum: `inprogress`, `failed`, `upgraded`
+// enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
 func (o UpgradeDeviceFwupdatePtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *string {
 		if v == nil {

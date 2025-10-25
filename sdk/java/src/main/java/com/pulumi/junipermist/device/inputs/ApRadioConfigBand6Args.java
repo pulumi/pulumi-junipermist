@@ -48,14 +48,14 @@ public final class ApRadioConfigBand6Args extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+     * channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+     * @return channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -257,7 +257,7 @@ public final class ApRadioConfigBand6Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param bandwidth channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+         * @param bandwidth channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class ApRadioConfigBand6Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param bandwidth channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+         * @param bandwidth channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
          * 
          * @return builder
          * 

@@ -35,6 +35,21 @@ public final class GatewayPortConfigWanSourceNatArgs extends com.pulumi.resource
      * If alternative natPool is desired
      * 
      */
+    @Import(name="nat6Pool")
+    private @Nullable Output<String> nat6Pool;
+
+    /**
+     * @return If alternative natPool is desired
+     * 
+     */
+    public Optional<Output<String>> nat6Pool() {
+        return Optional.ofNullable(this.nat6Pool);
+    }
+
+    /**
+     * If alternative natPool is desired
+     * 
+     */
     @Import(name="natPool")
     private @Nullable Output<String> natPool;
 
@@ -50,6 +65,7 @@ public final class GatewayPortConfigWanSourceNatArgs extends com.pulumi.resource
 
     private GatewayPortConfigWanSourceNatArgs(GatewayPortConfigWanSourceNatArgs $) {
         this.disabled = $.disabled;
+        this.nat6Pool = $.nat6Pool;
         this.natPool = $.natPool;
     }
 
@@ -90,6 +106,27 @@ public final class GatewayPortConfigWanSourceNatArgs extends com.pulumi.resource
          */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
+        }
+
+        /**
+         * @param nat6Pool If alternative natPool is desired
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nat6Pool(@Nullable Output<String> nat6Pool) {
+            $.nat6Pool = nat6Pool;
+            return this;
+        }
+
+        /**
+         * @param nat6Pool If alternative natPool is desired
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nat6Pool(String nat6Pool) {
+            return nat6Pool(Output.of(nat6Pool));
         }
 
         /**

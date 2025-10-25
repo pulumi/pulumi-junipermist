@@ -13,15 +13,22 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingJuniperSrx
     {
+        /// <summary>
+        /// auto_upgrade device first time it is onboarded
+        /// </summary>
+        public readonly Outputs.SettingJuniperSrxAutoUpgrade? AutoUpgrade;
         public readonly ImmutableArray<Outputs.SettingJuniperSrxGateway> Gateways;
         public readonly bool? SendMistNacUserInfo;
 
         [OutputConstructor]
         private SettingJuniperSrx(
+            Outputs.SettingJuniperSrxAutoUpgrade? autoUpgrade,
+
             ImmutableArray<Outputs.SettingJuniperSrxGateway> gateways,
 
             bool? sendMistNacUserInfo)
         {
+            AutoUpgrade = autoUpgrade;
             Gateways = gateways;
             SendMistNacUserInfo = sendMistNacUserInfo;
         }

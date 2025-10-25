@@ -90,6 +90,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _portMirroring = value;
         }
 
+        [Input("stpConfig")]
+        public Input<Inputs.NetworktemplateSwitchMatchingRuleStpConfigGetArgs>? StpConfig { get; set; }
+
         public NetworktemplateSwitchMatchingRuleGetArgs()
         {
         }

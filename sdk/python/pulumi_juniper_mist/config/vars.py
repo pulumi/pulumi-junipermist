@@ -23,50 +23,49 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def api_debug(self) -> Optional[bool]:
         """
-        Flag to enable debugging API calls. Default is false.
+        Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `false`.
         """
         return __config__.get_bool('apiDebug')
 
     @_builtins.property
     def api_timeout(self) -> Optional[float]:
         """
-        Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
+        Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
         """
         return __config__.get_float('apiTimeout')
 
     @_builtins.property
     def apitoken(self) -> Optional[str]:
         """
-        For API Token authentication, the Mist API Token.
+        Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
         """
         return __config__.get('apitoken')
 
     @_builtins.property
     def host(self) -> Optional[str]:
         """
-        URL of the Mist Cloud, e.g. `api.mist.com`.
+        URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
         """
         return __config__.get('host')
 
     @_builtins.property
     def password(self) -> Optional[str]:
         """
-        For username/password authentication, the Mist Account password.
+        Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
         """
         return __config__.get('password')
 
     @_builtins.property
     def proxy(self) -> Optional[str]:
         """
-        Requests use the configured proxy to reach the Mist Cloud.
-        The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+        Proxy configuration for API requests. The value may be either a complete URL or `[username:password@]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
         """
         return __config__.get('proxy')
 
     @_builtins.property
     def username(self) -> Optional[str]:
         """
-        For username/password authentication, the Mist Account username.
+        Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
         """
         return __config__.get('username')
 

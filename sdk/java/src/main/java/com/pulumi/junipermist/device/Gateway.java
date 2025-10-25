@@ -14,6 +14,7 @@ import com.pulumi.junipermist.device.outputs.GatewayBgpConfig;
 import com.pulumi.junipermist.device.outputs.GatewayDhcpdConfig;
 import com.pulumi.junipermist.device.outputs.GatewayExtraRoutes6;
 import com.pulumi.junipermist.device.outputs.GatewayExtraRoutes;
+import com.pulumi.junipermist.device.outputs.GatewayGatewayMgmt;
 import com.pulumi.junipermist.device.outputs.GatewayIdpProfiles;
 import com.pulumi.junipermist.device.outputs.GatewayIpConfigs;
 import com.pulumi.junipermist.device.outputs.GatewayNetwork;
@@ -189,6 +190,20 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,GatewayExtraRoutes6>>> extraRoutes6() {
         return Codegen.optional(this.extraRoutes6);
+    }
+    /**
+     * Gateway settings
+     * 
+     */
+    @Export(name="gatewayMgmt", refs={GatewayGatewayMgmt.class}, tree="[0]")
+    private Output</* @Nullable */ GatewayGatewayMgmt> gatewayMgmt;
+
+    /**
+     * @return Gateway settings
+     * 
+     */
+    public Output<Optional<GatewayGatewayMgmt>> gatewayMgmt() {
+        return Codegen.optional(this.gatewayMgmt);
     }
     /**
      * Property key is the profile name
@@ -469,6 +484,20 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<String> type() {
         return this.type;
+    }
+    /**
+     * When a service policy denies a app_category, what message to show in user&#39;s browser
+     * 
+     */
+    @Export(name="urlFilteringDenyMsg", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> urlFilteringDenyMsg;
+
+    /**
+     * @return When a service policy denies a app_category, what message to show in user&#39;s browser
+     * 
+     */
+    public Output<Optional<String>> urlFilteringDenyMsg() {
+        return Codegen.optional(this.urlFilteringDenyMsg);
     }
     /**
      * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars

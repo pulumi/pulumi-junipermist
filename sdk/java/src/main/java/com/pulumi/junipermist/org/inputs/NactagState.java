@@ -56,14 +56,14 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      * 
      */
     @Import(name="match")
     private @Nullable Output<String> match;
 
     /**
-     * @return if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * @return if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      * 
      */
     public Optional<Output<String>> match() {
@@ -75,7 +75,7 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      * 
-     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      * 
      */
     @Import(name="matchAll")
@@ -86,7 +86,7 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      * 
-     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      * 
      */
     public Optional<Output<Boolean>> matchAll() {
@@ -94,14 +94,14 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+     * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
      * 
      */
     @Import(name="nacportalId")
     private @Nullable Output<String> nacportalId;
 
     /**
-     * @return If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+     * @return If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
      * 
      */
     public Optional<Output<String>> nacportalId() {
@@ -191,14 +191,14 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
      * 
      */
     public Optional<Output<String>> type() {
@@ -351,7 +351,7 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+         * @param match if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+         * @param match if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
          *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
          *   * `true`: means all values should be matched (i.e., match-all behavior)
          * 
-         * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+         * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
          *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
          *   * `true`: means all values should be matched (i.e., match-all behavior)
          * 
-         * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+         * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nacportalId If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+         * @param nacportalId If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nacportalId If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+         * @param nacportalId If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
          * 
          * @return builder
          * 
@@ -556,7 +556,7 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
+         * @param type enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class NactagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
+         * @param type enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
          * 
          * @return builder
          * 

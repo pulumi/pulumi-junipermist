@@ -1626,9 +1626,10 @@ class _WlanState:
         :param pulumi.Input['WlanPortalArgs'] portal: Portal wlan settings
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] portal_allowed_hostnames: List of hostnames without http(s):// (matched by substring)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] portal_allowed_subnets: List of CIDRs
-        :param pulumi.Input[_builtins.str] portal_api_secret: APi secret (auto-generated) that can be used to sign guest authorization requests
+        :param pulumi.Input[_builtins.str] portal_api_secret: API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] portal_denied_hostnames: List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         :param pulumi.Input[_builtins.str] portal_image: Url of portal background image
+        :param pulumi.Input[_builtins.str] portal_sso_url: URL used in the SSO process, auto-generated when auth is set to `sso`
         :param pulumi.Input['WlanRadsecArgs'] radsec: RadSec settings
         :param pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
         :param pulumi.Input[_builtins.bool] reconnect_clients_when_roaming_mxcluster: When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
@@ -2668,7 +2669,7 @@ class _WlanState:
     @pulumi.getter(name="portalApiSecret")
     def portal_api_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        APi secret (auto-generated) that can be used to sign guest authorization requests
+        API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
         """
         return pulumi.get(self, "portal_api_secret")
 
@@ -2703,6 +2704,9 @@ class _WlanState:
     @_builtins.property
     @pulumi.getter(name="portalSsoUrl")
     def portal_sso_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL used in the SSO process, auto-generated when auth is set to `sso`
+        """
         return pulumi.get(self, "portal_sso_url")
 
     @portal_sso_url.setter
@@ -3629,9 +3633,10 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Union['WlanPortalArgs', 'WlanPortalArgsDict']] portal: Portal wlan settings
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] portal_allowed_hostnames: List of hostnames without http(s):// (matched by substring)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] portal_allowed_subnets: List of CIDRs
-        :param pulumi.Input[_builtins.str] portal_api_secret: APi secret (auto-generated) that can be used to sign guest authorization requests
+        :param pulumi.Input[_builtins.str] portal_api_secret: API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] portal_denied_hostnames: List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         :param pulumi.Input[_builtins.str] portal_image: Url of portal background image
+        :param pulumi.Input[_builtins.str] portal_sso_url: URL used in the SSO process, auto-generated when auth is set to `sso`
         :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: RadSec settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
         :param pulumi.Input[_builtins.bool] reconnect_clients_when_roaming_mxcluster: When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
@@ -4301,7 +4306,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="portalApiSecret")
     def portal_api_secret(self) -> pulumi.Output[_builtins.str]:
         """
-        APi secret (auto-generated) that can be used to sign guest authorization requests
+        API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
         """
         return pulumi.get(self, "portal_api_secret")
 
@@ -4324,6 +4329,9 @@ class Wlan(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="portalSsoUrl")
     def portal_sso_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        URL used in the SSO process, auto-generated when auth is set to `sso`
+        """
         return pulumi.get(self, "portal_sso_url")
 
     @_builtins.property

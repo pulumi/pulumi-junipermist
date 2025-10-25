@@ -126,6 +126,10 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
      * Device Type. enum: `gateway`
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
+    /**
+     * When a service policy denies a app_category, what message to show in user's browser
+     */
+    declare public readonly urlFilteringDenyMsg: pulumi.Output<string | undefined>;
     declare public readonly vrfConfig: pulumi.Output<outputs.org.DeviceprofileGatewayVrfConfig | undefined>;
     /**
      * Property key is the network name
@@ -170,6 +174,7 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
             resourceInputs["tunnelConfigs"] = state?.tunnelConfigs;
             resourceInputs["tunnelProviderOptions"] = state?.tunnelProviderOptions;
             resourceInputs["type"] = state?.type;
+            resourceInputs["urlFilteringDenyMsg"] = state?.urlFilteringDenyMsg;
             resourceInputs["vrfConfig"] = state?.vrfConfig;
             resourceInputs["vrfInstances"] = state?.vrfInstances;
         } else {
@@ -201,6 +206,7 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
             resourceInputs["ssrAdditionalConfigCmds"] = args?.ssrAdditionalConfigCmds;
             resourceInputs["tunnelConfigs"] = args?.tunnelConfigs;
             resourceInputs["tunnelProviderOptions"] = args?.tunnelProviderOptions;
+            resourceInputs["urlFilteringDenyMsg"] = args?.urlFilteringDenyMsg;
             resourceInputs["vrfConfig"] = args?.vrfConfig;
             resourceInputs["vrfInstances"] = args?.vrfInstances;
             resourceInputs["type"] = undefined /*out*/;
@@ -287,6 +293,10 @@ export interface DeviceprofileGatewayState {
      * Device Type. enum: `gateway`
      */
     type?: pulumi.Input<string>;
+    /**
+     * When a service policy denies a app_category, what message to show in user's browser
+     */
+    urlFilteringDenyMsg?: pulumi.Input<string>;
     vrfConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayVrfConfig>;
     /**
      * Property key is the network name
@@ -367,6 +377,10 @@ export interface DeviceprofileGatewayArgs {
      */
     tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigs>}>;
     tunnelProviderOptions?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelProviderOptions>;
+    /**
+     * When a service policy denies a app_category, what message to show in user's browser
+     */
+    urlFilteringDenyMsg?: pulumi.Input<string>;
     vrfConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayVrfConfig>;
     /**
      * Property key is the network name

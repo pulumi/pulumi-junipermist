@@ -150,6 +150,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? WanExtIp;
         /// <summary>
+        /// Only if `Usage`==`Wan`, optional. If spoke should reach this port by a different IPv6
+        /// </summary>
+        public readonly string? WanExtIp6;
+        /// <summary>
         /// Only if `Usage`==`Wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigWanExtraRoutes>? WanExtraRoutes;
@@ -256,6 +260,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? wanExtIp,
 
+            string? wanExtIp6,
+
             ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigWanExtraRoutes>? wanExtraRoutes,
 
             ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigWanExtraRoutes6>? wanExtraRoutes6,
@@ -308,6 +314,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             WanArpPolicer = wanArpPolicer;
             WanDisableSpeedtest = wanDisableSpeedtest;
             WanExtIp = wanExtIp;
+            WanExtIp6 = wanExtIp6;
             WanExtraRoutes = wanExtraRoutes;
             WanExtraRoutes6 = wanExtraRoutes6;
             WanNetworks = wanNetworks;

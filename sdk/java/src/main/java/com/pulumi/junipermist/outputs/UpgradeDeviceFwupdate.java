@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 public final class UpgradeDeviceFwupdate {
     private @Nullable Integer progress;
     /**
-     * @return enum: `inprogress`, `failed`, `upgraded`
+     * @return enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
      * 
      */
     private @Nullable String status;
@@ -33,7 +33,7 @@ public final class UpgradeDeviceFwupdate {
         return Optional.ofNullable(this.progress);
     }
     /**
-     * @return enum: `inprogress`, `failed`, `upgraded`
+     * @return enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
      * 
      */
     public Optional<String> status() {

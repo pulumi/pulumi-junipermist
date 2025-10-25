@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? AntennaMode;
         /// <summary>
-        /// channel width for the 5GHz band. enum: `20`, `40`, `80`
+        /// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
         /// </summary>
         public readonly int? Bandwidth;
         /// <summary>

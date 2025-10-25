@@ -5,7 +5,6 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,11 +15,18 @@ public final class SwitchDhcpdConfigConfigFixedBindingsArgs extends com.pulumi.r
 
     public static final SwitchDhcpdConfigConfigFixedBindingsArgs Empty = new SwitchDhcpdConfigConfigFixedBindingsArgs();
 
-    @Import(name="ip", required=true)
-    private Output<String> ip;
+    @Import(name="ip")
+    private @Nullable Output<String> ip;
 
-    public Output<String> ip() {
-        return this.ip;
+    public Optional<Output<String>> ip() {
+        return Optional.ofNullable(this.ip);
+    }
+
+    @Import(name="ip6")
+    private @Nullable Output<String> ip6;
+
+    public Optional<Output<String>> ip6() {
+        return Optional.ofNullable(this.ip6);
     }
 
     @Import(name="name")
@@ -34,6 +40,7 @@ public final class SwitchDhcpdConfigConfigFixedBindingsArgs extends com.pulumi.r
 
     private SwitchDhcpdConfigConfigFixedBindingsArgs(SwitchDhcpdConfigConfigFixedBindingsArgs $) {
         this.ip = $.ip;
+        this.ip6 = $.ip6;
         this.name = $.name;
     }
 
@@ -55,13 +62,22 @@ public final class SwitchDhcpdConfigConfigFixedBindingsArgs extends com.pulumi.r
             $ = new SwitchDhcpdConfigConfigFixedBindingsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder ip(Output<String> ip) {
+        public Builder ip(@Nullable Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
         public Builder ip(String ip) {
             return ip(Output.of(ip));
+        }
+
+        public Builder ip6(@Nullable Output<String> ip6) {
+            $.ip6 = ip6;
+            return this;
+        }
+
+        public Builder ip6(String ip6) {
+            return ip6(Output.of(ip6));
         }
 
         public Builder name(@Nullable Output<String> name) {
@@ -74,9 +90,6 @@ public final class SwitchDhcpdConfigConfigFixedBindingsArgs extends com.pulumi.r
         }
 
         public SwitchDhcpdConfigConfigFixedBindingsArgs build() {
-            if ($.ip == null) {
-                throw new MissingRequiredPropertyException("SwitchDhcpdConfigConfigFixedBindingsArgs", "ip");
-            }
             return $;
         }
     }

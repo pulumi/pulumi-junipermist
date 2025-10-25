@@ -323,6 +323,21 @@ public final class DeviceprofileGatewayArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.tunnelProviderOptions);
     }
 
+    /**
+     * When a service policy denies a app_category, what message to show in user&#39;s browser
+     * 
+     */
+    @Import(name="urlFilteringDenyMsg")
+    private @Nullable Output<String> urlFilteringDenyMsg;
+
+    /**
+     * @return When a service policy denies a app_category, what message to show in user&#39;s browser
+     * 
+     */
+    public Optional<Output<String>> urlFilteringDenyMsg() {
+        return Optional.ofNullable(this.urlFilteringDenyMsg);
+    }
+
     @Import(name="vrfConfig")
     private @Nullable Output<DeviceprofileGatewayVrfConfigArgs> vrfConfig;
 
@@ -372,6 +387,7 @@ public final class DeviceprofileGatewayArgs extends com.pulumi.resources.Resourc
         this.ssrAdditionalConfigCmds = $.ssrAdditionalConfigCmds;
         this.tunnelConfigs = $.tunnelConfigs;
         this.tunnelProviderOptions = $.tunnelProviderOptions;
+        this.urlFilteringDenyMsg = $.urlFilteringDenyMsg;
         this.vrfConfig = $.vrfConfig;
         this.vrfInstances = $.vrfInstances;
     }
@@ -846,6 +862,27 @@ public final class DeviceprofileGatewayArgs extends com.pulumi.resources.Resourc
 
         public Builder tunnelProviderOptions(DeviceprofileGatewayTunnelProviderOptionsArgs tunnelProviderOptions) {
             return tunnelProviderOptions(Output.of(tunnelProviderOptions));
+        }
+
+        /**
+         * @param urlFilteringDenyMsg When a service policy denies a app_category, what message to show in user&#39;s browser
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlFilteringDenyMsg(@Nullable Output<String> urlFilteringDenyMsg) {
+            $.urlFilteringDenyMsg = urlFilteringDenyMsg;
+            return this;
+        }
+
+        /**
+         * @param urlFilteringDenyMsg When a service policy denies a app_category, what message to show in user&#39;s browser
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlFilteringDenyMsg(String urlFilteringDenyMsg) {
+            return urlFilteringDenyMsg(Output.of(urlFilteringDenyMsg));
         }
 
         public Builder vrfConfig(@Nullable Output<DeviceprofileGatewayVrfConfigArgs> vrfConfig) {

@@ -124,6 +124,30 @@ class Inventory(pulumi.CustomResource):
         !> The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happens, it is required to force a refresh of the state to synchronise the new list.\\
         The `devices` attribute will generate inconsistent result after apply when a device other than the last one is removed from the list or when a device is added somewhere other than the end of the list
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        inventory = junipermist.org.Inventory("inventory",
+            org_id=terraform_test["id"],
+            inventory={
+                "CPKL2EXXXXXXXXX": {},
+                "G87JHBFXXXXXXXX": {
+                    "site_id": terraform_site["id"],
+                    "unclaim_when_destroyed": True,
+                },
+                "2c2131000000": {
+                    "site_id": terraform_site["id"],
+                    "unclaim_when_destroyed": True,
+                },
+                "2c2131000001": {
+                    "unclaim_when_destroyed": False,
+                },
+            })
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_org_inventory` with:
@@ -157,6 +181,30 @@ class Inventory(pulumi.CustomResource):
 
         !> The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happens, it is required to force a refresh of the state to synchronise the new list.\\
         The `devices` attribute will generate inconsistent result after apply when a device other than the last one is removed from the list or when a device is added somewhere other than the end of the list
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        inventory = junipermist.org.Inventory("inventory",
+            org_id=terraform_test["id"],
+            inventory={
+                "CPKL2EXXXXXXXXX": {},
+                "G87JHBFXXXXXXXX": {
+                    "site_id": terraform_site["id"],
+                    "unclaim_when_destroyed": True,
+                },
+                "2c2131000000": {
+                    "site_id": terraform_site["id"],
+                    "unclaim_when_destroyed": True,
+                },
+                "2c2131000001": {
+                    "unclaim_when_destroyed": False,
+                },
+            })
+        ```
 
         ## Import
 
