@@ -9,6 +9,7 @@ import com.pulumi.junipermist.device.inputs.GatewayBgpConfigArgs;
 import com.pulumi.junipermist.device.inputs.GatewayDhcpdConfigArgs;
 import com.pulumi.junipermist.device.inputs.GatewayExtraRoutes6Args;
 import com.pulumi.junipermist.device.inputs.GatewayExtraRoutesArgs;
+import com.pulumi.junipermist.device.inputs.GatewayGatewayMgmtArgs;
 import com.pulumi.junipermist.device.inputs.GatewayIdpProfilesArgs;
 import com.pulumi.junipermist.device.inputs.GatewayIpConfigsArgs;
 import com.pulumi.junipermist.device.inputs.GatewayNetworkArgs;
@@ -130,6 +131,21 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,GatewayExtraRoutes6Args>>> extraRoutes6() {
         return Optional.ofNullable(this.extraRoutes6);
+    }
+
+    /**
+     * Gateway settings
+     * 
+     */
+    @Import(name="gatewayMgmt")
+    private @Nullable Output<GatewayGatewayMgmtArgs> gatewayMgmt;
+
+    /**
+     * @return Gateway settings
+     * 
+     */
+    public Optional<Output<GatewayGatewayMgmtArgs>> gatewayMgmt() {
+        return Optional.ofNullable(this.gatewayMgmt);
     }
 
     /**
@@ -441,6 +457,21 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * When a service policy denies a app_category, what message to show in user&#39;s browser
+     * 
+     */
+    @Import(name="urlFilteringDenyMsg")
+    private @Nullable Output<String> urlFilteringDenyMsg;
+
+    /**
+     * @return When a service policy denies a app_category, what message to show in user&#39;s browser
+     * 
+     */
+    public Optional<Output<String>> urlFilteringDenyMsg() {
+        return Optional.ofNullable(this.urlFilteringDenyMsg);
+    }
+
+    /**
      * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
@@ -518,6 +549,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         this.dnsSuffixes = $.dnsSuffixes;
         this.extraRoutes = $.extraRoutes;
         this.extraRoutes6 = $.extraRoutes6;
+        this.gatewayMgmt = $.gatewayMgmt;
         this.idpProfiles = $.idpProfiles;
         this.image1Url = $.image1Url;
         this.image2Url = $.image2Url;
@@ -546,6 +578,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         this.tunnelConfigs = $.tunnelConfigs;
         this.tunnelProviderOptions = $.tunnelProviderOptions;
         this.type = $.type;
+        this.urlFilteringDenyMsg = $.urlFilteringDenyMsg;
         this.vars = $.vars;
         this.vrfConfig = $.vrfConfig;
         this.vrfInstances = $.vrfInstances;
@@ -731,6 +764,27 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder extraRoutes6(Map<String,GatewayExtraRoutes6Args> extraRoutes6) {
             return extraRoutes6(Output.of(extraRoutes6));
+        }
+
+        /**
+         * @param gatewayMgmt Gateway settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayMgmt(@Nullable Output<GatewayGatewayMgmtArgs> gatewayMgmt) {
+            $.gatewayMgmt = gatewayMgmt;
+            return this;
+        }
+
+        /**
+         * @param gatewayMgmt Gateway settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayMgmt(GatewayGatewayMgmtArgs gatewayMgmt) {
+            return gatewayMgmt(Output.of(gatewayMgmt));
         }
 
         /**
@@ -1173,6 +1227,27 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param urlFilteringDenyMsg When a service policy denies a app_category, what message to show in user&#39;s browser
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlFilteringDenyMsg(@Nullable Output<String> urlFilteringDenyMsg) {
+            $.urlFilteringDenyMsg = urlFilteringDenyMsg;
+            return this;
+        }
+
+        /**
+         * @param urlFilteringDenyMsg When a service policy denies a app_category, what message to show in user&#39;s browser
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlFilteringDenyMsg(String urlFilteringDenyMsg) {
+            return urlFilteringDenyMsg(Output.of(urlFilteringDenyMsg));
         }
 
         /**

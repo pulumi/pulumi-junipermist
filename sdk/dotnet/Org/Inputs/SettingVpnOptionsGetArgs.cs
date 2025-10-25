@@ -15,6 +15,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("asBase")]
         public Input<int>? AsBase { get; set; }
 
+        [Input("enableIpv6")]
+        public Input<bool>? EnableIpv6 { get; set; }
+
         /// <summary>
         /// requiring /12 or bigger to support 16 private IPs for 65535 gateways
         /// </summary>

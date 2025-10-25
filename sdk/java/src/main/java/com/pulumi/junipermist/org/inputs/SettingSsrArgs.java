@@ -5,6 +5,8 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.org.inputs.SettingSsrAutoUpgradeArgs;
+import com.pulumi.junipermist.org.inputs.SettingSsrProxyArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +18,21 @@ import javax.annotation.Nullable;
 public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingSsrArgs Empty = new SettingSsrArgs();
+
+    /**
+     * auto_upgrade device first time it is onboarded
+     * 
+     */
+    @Import(name="autoUpgrade")
+    private @Nullable Output<SettingSsrAutoUpgradeArgs> autoUpgrade;
+
+    /**
+     * @return auto_upgrade device first time it is onboarded
+     * 
+     */
+    public Optional<Output<SettingSsrAutoUpgradeArgs>> autoUpgrade() {
+        return Optional.ofNullable(this.autoUpgrade);
+    }
 
     /**
      * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
@@ -62,12 +79,29 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.disableStats);
     }
 
+    /**
+     * Proxy Configuration to talk to Mist
+     * 
+     */
+    @Import(name="proxy")
+    private @Nullable Output<SettingSsrProxyArgs> proxy;
+
+    /**
+     * @return Proxy Configuration to talk to Mist
+     * 
+     */
+    public Optional<Output<SettingSsrProxyArgs>> proxy() {
+        return Optional.ofNullable(this.proxy);
+    }
+
     private SettingSsrArgs() {}
 
     private SettingSsrArgs(SettingSsrArgs $) {
+        this.autoUpgrade = $.autoUpgrade;
         this.conductorHosts = $.conductorHosts;
         this.conductorToken = $.conductorToken;
         this.disableStats = $.disableStats;
+        this.proxy = $.proxy;
     }
 
     public static Builder builder() {
@@ -86,6 +120,27 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SettingSsrArgs defaults) {
             $ = new SettingSsrArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoUpgrade auto_upgrade device first time it is onboarded
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgrade(@Nullable Output<SettingSsrAutoUpgradeArgs> autoUpgrade) {
+            $.autoUpgrade = autoUpgrade;
+            return this;
+        }
+
+        /**
+         * @param autoUpgrade auto_upgrade device first time it is onboarded
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgrade(SettingSsrAutoUpgradeArgs autoUpgrade) {
+            return autoUpgrade(Output.of(autoUpgrade));
         }
 
         /**
@@ -159,6 +214,27 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disableStats(Boolean disableStats) {
             return disableStats(Output.of(disableStats));
+        }
+
+        /**
+         * @param proxy Proxy Configuration to talk to Mist
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxy(@Nullable Output<SettingSsrProxyArgs> proxy) {
+            $.proxy = proxy;
+            return this;
+        }
+
+        /**
+         * @param proxy Proxy Configuration to talk to Mist
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxy(SettingSsrProxyArgs proxy) {
+            return proxy(Output.of(proxy));
         }
 
         public SettingSsrArgs build() {

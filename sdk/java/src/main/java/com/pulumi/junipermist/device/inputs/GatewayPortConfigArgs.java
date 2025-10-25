@@ -564,6 +564,21 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+     * 
+     */
+    @Import(name="wanExtIp6")
+    private @Nullable Output<String> wanExtIp6;
+
+    /**
+     * @return Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+     * 
+     */
+    public Optional<Output<String>> wanExtIp6() {
+        return Optional.ofNullable(this.wanExtIp6);
+    }
+
+    /**
      * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
      * 
      */
@@ -696,6 +711,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         this.wanArpPolicer = $.wanArpPolicer;
         this.wanDisableSpeedtest = $.wanDisableSpeedtest;
         this.wanExtIp = $.wanExtIp;
+        this.wanExtIp6 = $.wanExtIp6;
         this.wanExtraRoutes = $.wanExtraRoutes;
         this.wanExtraRoutes6 = $.wanExtraRoutes6;
         this.wanNetworks = $.wanNetworks;
@@ -1484,6 +1500,27 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder wanExtIp(String wanExtIp) {
             return wanExtIp(Output.of(wanExtIp));
+        }
+
+        /**
+         * @param wanExtIp6 Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanExtIp6(@Nullable Output<String> wanExtIp6) {
+            $.wanExtIp6 = wanExtIp6;
+            return this;
+        }
+
+        /**
+         * @param wanExtIp6 Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanExtIp6(String wanExtIp6) {
+            return wanExtIp6(Output.of(wanExtIp6));
         }
 
         /**

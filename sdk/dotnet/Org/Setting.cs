@@ -100,6 +100,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("juniper")]
         public Output<Outputs.SettingJuniper> Juniper { get; private set; } = null!;
 
+        [Output("juniperSrx")]
+        public Output<Outputs.SettingJuniperSrx?> JuniperSrx { get; private set; } = null!;
+
         /// <summary>
         /// junos_shell_access: Manages role-based web-shell access.  
         /// When JunosShell access is not defined (Default) - No additional users are configured and web-shell uses default `Mist` user to login.  
@@ -167,6 +170,9 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Output("uiIdleTimeout")]
         public Output<int> UiIdleTimeout { get; private set; } = null!;
+
+        [Output("uiNoTracking")]
+        public Output<bool?> UiNoTracking { get; private set; } = null!;
 
         [Output("vpnOptions")]
         public Output<Outputs.SettingVpnOptions?> VpnOptions { get; private set; } = null!;
@@ -298,6 +304,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("jcloudRa")]
         public Input<Inputs.SettingJcloudRaArgs>? JcloudRa { get; set; }
 
+        [Input("juniperSrx")]
+        public Input<Inputs.SettingJuniperSrxArgs>? JuniperSrx { get; set; }
+
         /// <summary>
         /// junos_shell_access: Manages role-based web-shell access.  
         /// When JunosShell access is not defined (Default) - No additional users are configured and web-shell uses default `Mist` user to login.  
@@ -371,6 +380,9 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("uiIdleTimeout")]
         public Input<int>? UiIdleTimeout { get; set; }
+
+        [Input("uiNoTracking")]
+        public Input<bool>? UiNoTracking { get; set; }
 
         [Input("vpnOptions")]
         public Input<Inputs.SettingVpnOptionsArgs>? VpnOptions { get; set; }
@@ -469,6 +481,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("juniper")]
         public Input<Inputs.SettingJuniperGetArgs>? Juniper { get; set; }
 
+        [Input("juniperSrx")]
+        public Input<Inputs.SettingJuniperSrxGetArgs>? JuniperSrx { get; set; }
+
         /// <summary>
         /// junos_shell_access: Manages role-based web-shell access.  
         /// When JunosShell access is not defined (Default) - No additional users are configured and web-shell uses default `Mist` user to login.  
@@ -542,6 +557,9 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("uiIdleTimeout")]
         public Input<int>? UiIdleTimeout { get; set; }
+
+        [Input("uiNoTracking")]
+        public Input<bool>? UiNoTracking { get; set; }
 
         [Input("vpnOptions")]
         public Input<Inputs.SettingVpnOptionsGetArgs>? VpnOptions { get; set; }

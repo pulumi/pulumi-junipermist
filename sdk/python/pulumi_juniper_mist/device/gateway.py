@@ -30,6 +30,7 @@ class GatewayArgs:
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]]] = None,
                  extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]]] = None,
+                 gateway_mgmt: Optional[pulumi.Input['GatewayGatewayMgmtArgs']] = None,
                  idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]]] = None,
                  ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]]] = None,
                  managed: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -49,6 +50,7 @@ class GatewayArgs:
                  ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input['GatewayTunnelProviderOptionsArgs']] = None,
+                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vrf_config: Optional[pulumi.Input['GatewayVrfConfigArgs']] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]]] = None,
@@ -61,6 +63,7 @@ class GatewayArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        :param pulumi.Input['GatewayGatewayMgmtArgs'] gateway_mgmt: Gateway settings
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
@@ -71,6 +74,7 @@ class GatewayArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
+        :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
         :param pulumi.Input[_builtins.float] x: X in pixel
@@ -92,6 +96,8 @@ class GatewayArgs:
             pulumi.set(__self__, "extra_routes", extra_routes)
         if extra_routes6 is not None:
             pulumi.set(__self__, "extra_routes6", extra_routes6)
+        if gateway_mgmt is not None:
+            pulumi.set(__self__, "gateway_mgmt", gateway_mgmt)
         if idp_profiles is not None:
             pulumi.set(__self__, "idp_profiles", idp_profiles)
         if ip_configs is not None:
@@ -130,6 +136,8 @@ class GatewayArgs:
             pulumi.set(__self__, "tunnel_configs", tunnel_configs)
         if tunnel_provider_options is not None:
             pulumi.set(__self__, "tunnel_provider_options", tunnel_provider_options)
+        if url_filtering_deny_msg is not None:
+            pulumi.set(__self__, "url_filtering_deny_msg", url_filtering_deny_msg)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
         if vrf_config is not None:
@@ -236,6 +244,18 @@ class GatewayArgs:
     @extra_routes6.setter
     def extra_routes6(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]]]):
         pulumi.set(self, "extra_routes6", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayMgmt")
+    def gateway_mgmt(self) -> Optional[pulumi.Input['GatewayGatewayMgmtArgs']]:
+        """
+        Gateway settings
+        """
+        return pulumi.get(self, "gateway_mgmt")
+
+    @gateway_mgmt.setter
+    def gateway_mgmt(self, value: Optional[pulumi.Input['GatewayGatewayMgmtArgs']]):
+        pulumi.set(self, "gateway_mgmt", value)
 
     @_builtins.property
     @pulumi.getter(name="idpProfiles")
@@ -439,6 +459,18 @@ class GatewayArgs:
         pulumi.set(self, "tunnel_provider_options", value)
 
     @_builtins.property
+    @pulumi.getter(name="urlFilteringDenyMsg")
+    def url_filtering_deny_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        When a service policy denies a app_category, what message to show in user's browser
+        """
+        return pulumi.get(self, "url_filtering_deny_msg")
+
+    @url_filtering_deny_msg.setter
+    def url_filtering_deny_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url_filtering_deny_msg", value)
+
+    @_builtins.property
     @pulumi.getter
     def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -507,6 +539,7 @@ class _GatewayState:
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]]] = None,
                  extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]]] = None,
+                 gateway_mgmt: Optional[pulumi.Input['GatewayGatewayMgmtArgs']] = None,
                  idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]]] = None,
                  image1_url: Optional[pulumi.Input[_builtins.str]] = None,
                  image2_url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -535,6 +568,7 @@ class _GatewayState:
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input['GatewayTunnelProviderOptionsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
+                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vrf_config: Optional[pulumi.Input['GatewayVrfConfigArgs']] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]]] = None,
@@ -547,6 +581,7 @@ class _GatewayState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        :param pulumi.Input['GatewayGatewayMgmtArgs'] gateway_mgmt: Gateway settings
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.str] mac: Device MAC address
@@ -561,6 +596,7 @@ class _GatewayState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: Device Type. enum: `gateway`
+        :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
         :param pulumi.Input[_builtins.float] x: X in pixel
@@ -582,6 +618,8 @@ class _GatewayState:
             pulumi.set(__self__, "extra_routes", extra_routes)
         if extra_routes6 is not None:
             pulumi.set(__self__, "extra_routes6", extra_routes6)
+        if gateway_mgmt is not None:
+            pulumi.set(__self__, "gateway_mgmt", gateway_mgmt)
         if idp_profiles is not None:
             pulumi.set(__self__, "idp_profiles", idp_profiles)
         if image1_url is not None:
@@ -638,6 +676,8 @@ class _GatewayState:
             pulumi.set(__self__, "tunnel_provider_options", tunnel_provider_options)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if url_filtering_deny_msg is not None:
+            pulumi.set(__self__, "url_filtering_deny_msg", url_filtering_deny_msg)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
         if vrf_config is not None:
@@ -735,6 +775,18 @@ class _GatewayState:
     @extra_routes6.setter
     def extra_routes6(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]]]):
         pulumi.set(self, "extra_routes6", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayMgmt")
+    def gateway_mgmt(self) -> Optional[pulumi.Input['GatewayGatewayMgmtArgs']]:
+        """
+        Gateway settings
+        """
+        return pulumi.get(self, "gateway_mgmt")
+
+    @gateway_mgmt.setter
+    def gateway_mgmt(self, value: Optional[pulumi.Input['GatewayGatewayMgmtArgs']]):
+        pulumi.set(self, "gateway_mgmt", value)
 
     @_builtins.property
     @pulumi.getter(name="idpProfiles")
@@ -1031,6 +1083,18 @@ class _GatewayState:
         pulumi.set(self, "type", value)
 
     @_builtins.property
+    @pulumi.getter(name="urlFilteringDenyMsg")
+    def url_filtering_deny_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        When a service policy denies a app_category, what message to show in user's browser
+        """
+        return pulumi.get(self, "url_filtering_deny_msg")
+
+    @url_filtering_deny_msg.setter
+    def url_filtering_deny_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url_filtering_deny_msg", value)
+
+    @_builtins.property
     @pulumi.getter
     def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -1102,6 +1166,7 @@ class Gateway(pulumi.CustomResource):
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]]] = None,
                  extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]]] = None,
+                 gateway_mgmt: Optional[pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']]] = None,
                  idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]]] = None,
                  ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]]] = None,
                  managed: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1122,6 +1187,7 @@ class Gateway(pulumi.CustomResource):
                  ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input[Union['GatewayTunnelProviderOptionsArgs', 'GatewayTunnelProviderOptionsArgsDict']]] = None,
+                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vrf_config: Optional[pulumi.Input[Union['GatewayVrfConfigArgs', 'GatewayVrfConfigArgsDict']]] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayVrfInstancesArgs', 'GatewayVrfInstancesArgsDict']]]]] = None,
@@ -1176,6 +1242,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        :param pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']] gateway_mgmt: Gateway settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
@@ -1186,6 +1253,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayRoutingPoliciesArgs', 'GatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
+        :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayVrfInstancesArgs', 'GatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         :param pulumi.Input[_builtins.float] x: X in pixel
@@ -1261,6 +1329,7 @@ class Gateway(pulumi.CustomResource):
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]]] = None,
                  extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]]] = None,
+                 gateway_mgmt: Optional[pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']]] = None,
                  idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]]] = None,
                  ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]]] = None,
                  managed: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1281,6 +1350,7 @@ class Gateway(pulumi.CustomResource):
                  ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input[Union['GatewayTunnelProviderOptionsArgs', 'GatewayTunnelProviderOptionsArgsDict']]] = None,
+                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vrf_config: Optional[pulumi.Input[Union['GatewayVrfConfigArgs', 'GatewayVrfConfigArgsDict']]] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayVrfInstancesArgs', 'GatewayVrfInstancesArgsDict']]]]] = None,
@@ -1305,6 +1375,7 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["dns_suffixes"] = dns_suffixes
             __props__.__dict__["extra_routes"] = extra_routes
             __props__.__dict__["extra_routes6"] = extra_routes6
+            __props__.__dict__["gateway_mgmt"] = gateway_mgmt
             __props__.__dict__["idp_profiles"] = idp_profiles
             __props__.__dict__["ip_configs"] = ip_configs
             __props__.__dict__["managed"] = managed
@@ -1327,6 +1398,7 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["ssr_additional_config_cmds"] = ssr_additional_config_cmds
             __props__.__dict__["tunnel_configs"] = tunnel_configs
             __props__.__dict__["tunnel_provider_options"] = tunnel_provider_options
+            __props__.__dict__["url_filtering_deny_msg"] = url_filtering_deny_msg
             __props__.__dict__["vars"] = vars
             __props__.__dict__["vrf_config"] = vrf_config
             __props__.__dict__["vrf_instances"] = vrf_instances
@@ -1358,6 +1430,7 @@ class Gateway(pulumi.CustomResource):
             dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]]] = None,
             extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]]] = None,
+            gateway_mgmt: Optional[pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']]] = None,
             idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]]] = None,
             image1_url: Optional[pulumi.Input[_builtins.str]] = None,
             image2_url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1386,6 +1459,7 @@ class Gateway(pulumi.CustomResource):
             tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]]] = None,
             tunnel_provider_options: Optional[pulumi.Input[Union['GatewayTunnelProviderOptionsArgs', 'GatewayTunnelProviderOptionsArgsDict']]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
+            url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
             vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vrf_config: Optional[pulumi.Input[Union['GatewayVrfConfigArgs', 'GatewayVrfConfigArgsDict']]] = None,
             vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayVrfInstancesArgs', 'GatewayVrfInstancesArgsDict']]]]] = None,
@@ -1403,6 +1477,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        :param pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']] gateway_mgmt: Gateway settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.str] mac: Device MAC address
@@ -1417,6 +1492,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: Device Type. enum: `gateway`
+        :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayVrfInstancesArgs', 'GatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         :param pulumi.Input[_builtins.float] x: X in pixel
@@ -1434,6 +1510,7 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["dns_suffixes"] = dns_suffixes
         __props__.__dict__["extra_routes"] = extra_routes
         __props__.__dict__["extra_routes6"] = extra_routes6
+        __props__.__dict__["gateway_mgmt"] = gateway_mgmt
         __props__.__dict__["idp_profiles"] = idp_profiles
         __props__.__dict__["image1_url"] = image1_url
         __props__.__dict__["image2_url"] = image2_url
@@ -1462,6 +1539,7 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["tunnel_configs"] = tunnel_configs
         __props__.__dict__["tunnel_provider_options"] = tunnel_provider_options
         __props__.__dict__["type"] = type
+        __props__.__dict__["url_filtering_deny_msg"] = url_filtering_deny_msg
         __props__.__dict__["vars"] = vars
         __props__.__dict__["vrf_config"] = vrf_config
         __props__.__dict__["vrf_instances"] = vrf_instances
@@ -1523,6 +1601,14 @@ class Gateway(pulumi.CustomResource):
         Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         """
         return pulumi.get(self, "extra_routes6")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayMgmt")
+    def gateway_mgmt(self) -> pulumi.Output[Optional['outputs.GatewayGatewayMgmt']]:
+        """
+        Gateway settings
+        """
+        return pulumi.get(self, "gateway_mgmt")
 
     @_builtins.property
     @pulumi.getter(name="idpProfiles")
@@ -1705,6 +1791,14 @@ class Gateway(pulumi.CustomResource):
         Device Type. enum: `gateway`
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="urlFilteringDenyMsg")
+    def url_filtering_deny_msg(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        When a service policy denies a app_category, what message to show in user's browser
+        """
+        return pulumi.get(self, "url_filtering_deny_msg")
 
     @_builtins.property
     @pulumi.getter

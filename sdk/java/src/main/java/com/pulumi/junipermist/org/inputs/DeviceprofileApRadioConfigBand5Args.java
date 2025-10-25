@@ -48,14 +48,14 @@ public final class DeviceprofileApRadioConfigBand5Args extends com.pulumi.resour
     }
 
     /**
-     * channel width for the 5GHz band. enum: `20`, `40`, `80`
+     * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return channel width for the 5GHz band. enum: `20`, `40`, `80`
+     * @return channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -241,7 +241,7 @@ public final class DeviceprofileApRadioConfigBand5Args extends com.pulumi.resour
         }
 
         /**
-         * @param bandwidth channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * @param bandwidth channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class DeviceprofileApRadioConfigBand5Args extends com.pulumi.resour
         }
 
         /**
-         * @param bandwidth channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * @param bandwidth channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          * 
          * @return builder
          * 

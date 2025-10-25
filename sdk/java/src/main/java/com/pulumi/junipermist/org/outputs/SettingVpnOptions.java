@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -13,6 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingVpnOptions {
     private @Nullable Integer asBase;
+    private @Nullable Boolean enableIpv6;
     /**
      * @return requiring /12 or bigger to support 16 private IPs for 65535 gateways
      * 
@@ -22,6 +24,9 @@ public final class SettingVpnOptions {
     private SettingVpnOptions() {}
     public Optional<Integer> asBase() {
         return Optional.ofNullable(this.asBase);
+    }
+    public Optional<Boolean> enableIpv6() {
+        return Optional.ofNullable(this.enableIpv6);
     }
     /**
      * @return requiring /12 or bigger to support 16 private IPs for 65535 gateways
@@ -41,11 +46,13 @@ public final class SettingVpnOptions {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer asBase;
+        private @Nullable Boolean enableIpv6;
         private @Nullable String stSubnet;
         public Builder() {}
         public Builder(SettingVpnOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.asBase = defaults.asBase;
+    	      this.enableIpv6 = defaults.enableIpv6;
     	      this.stSubnet = defaults.stSubnet;
         }
 
@@ -53,6 +60,12 @@ public final class SettingVpnOptions {
         public Builder asBase(@Nullable Integer asBase) {
 
             this.asBase = asBase;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableIpv6(@Nullable Boolean enableIpv6) {
+
+            this.enableIpv6 = enableIpv6;
             return this;
         }
         @CustomType.Setter
@@ -64,6 +77,7 @@ public final class SettingVpnOptions {
         public SettingVpnOptions build() {
             final var _resultValue = new SettingVpnOptions();
             _resultValue.asBase = asBase;
+            _resultValue.enableIpv6 = enableIpv6;
             _resultValue.stSubnet = stSubnet;
             return _resultValue;
         }

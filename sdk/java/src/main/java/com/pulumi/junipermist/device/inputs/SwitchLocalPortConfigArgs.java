@@ -192,14 +192,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+     * inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
      * 
      */
     @Import(name="interSwitchLink")
     private @Nullable Output<Boolean> interSwitchLink;
 
     /**
-     * @return inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+     * @return inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
      * 
      */
     public Optional<Output<Boolean>> interSwitchLink() {
@@ -843,7 +843,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param interSwitchLink inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * @param interSwitchLink inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -854,7 +854,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param interSwitchLink inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * @param interSwitchLink inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
          * 
          * @return builder
          * 

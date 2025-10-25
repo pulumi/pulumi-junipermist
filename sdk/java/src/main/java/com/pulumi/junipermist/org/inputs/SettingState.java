@@ -14,6 +14,7 @@ import com.pulumi.junipermist.org.inputs.SettingInstallerArgs;
 import com.pulumi.junipermist.org.inputs.SettingJcloudArgs;
 import com.pulumi.junipermist.org.inputs.SettingJcloudRaArgs;
 import com.pulumi.junipermist.org.inputs.SettingJuniperArgs;
+import com.pulumi.junipermist.org.inputs.SettingJuniperSrxArgs;
 import com.pulumi.junipermist.org.inputs.SettingJunosShellAccessArgs;
 import com.pulumi.junipermist.org.inputs.SettingMarvisArgs;
 import com.pulumi.junipermist.org.inputs.SettingMgmtArgs;
@@ -218,6 +219,13 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.juniper);
     }
 
+    @Import(name="juniperSrx")
+    private @Nullable Output<SettingJuniperSrxArgs> juniperSrx;
+
+    public Optional<Output<SettingJuniperSrxArgs>> juniperSrx() {
+        return Optional.ofNullable(this.juniperSrx);
+    }
+
     /**
      * junos_shell_access: Manages role-based web-shell access.\
      * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
@@ -382,6 +390,13 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.uiIdleTimeout);
     }
 
+    @Import(name="uiNoTracking")
+    private @Nullable Output<Boolean> uiNoTracking;
+
+    public Optional<Output<Boolean>> uiNoTracking() {
+        return Optional.ofNullable(this.uiNoTracking);
+    }
+
     @Import(name="vpnOptions")
     private @Nullable Output<SettingVpnOptionsArgs> vpnOptions;
 
@@ -428,6 +443,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.jcloud = $.jcloud;
         this.jcloudRa = $.jcloudRa;
         this.juniper = $.juniper;
+        this.juniperSrx = $.juniperSrx;
         this.junosShellAccess = $.junosShellAccess;
         this.marvis = $.marvis;
         this.mgmt = $.mgmt;
@@ -444,6 +460,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.switchUpdownThreshold = $.switchUpdownThreshold;
         this.syntheticTest = $.syntheticTest;
         this.uiIdleTimeout = $.uiIdleTimeout;
+        this.uiNoTracking = $.uiNoTracking;
         this.vpnOptions = $.vpnOptions;
         this.wanPma = $.wanPma;
         this.wiredPma = $.wiredPma;
@@ -713,6 +730,15 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return juniper(Output.of(juniper));
         }
 
+        public Builder juniperSrx(@Nullable Output<SettingJuniperSrxArgs> juniperSrx) {
+            $.juniperSrx = juniperSrx;
+            return this;
+        }
+
+        public Builder juniperSrx(SettingJuniperSrxArgs juniperSrx) {
+            return juniperSrx(Output.of(juniperSrx));
+        }
+
         /**
          * @param junosShellAccess junos_shell_access: Manages role-based web-shell access.\
          * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
@@ -931,6 +957,15 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uiIdleTimeout(Integer uiIdleTimeout) {
             return uiIdleTimeout(Output.of(uiIdleTimeout));
+        }
+
+        public Builder uiNoTracking(@Nullable Output<Boolean> uiNoTracking) {
+            $.uiNoTracking = uiNoTracking;
+            return this;
+        }
+
+        public Builder uiNoTracking(Boolean uiNoTracking) {
+            return uiNoTracking(Output.of(uiNoTracking));
         }
 
         public Builder vpnOptions(@Nullable Output<SettingVpnOptionsArgs> vpnOptions) {

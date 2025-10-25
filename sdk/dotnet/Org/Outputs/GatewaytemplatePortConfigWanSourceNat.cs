@@ -20,15 +20,22 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// <summary>
         /// If alternative NatPool is desired
         /// </summary>
+        public readonly string? Nat6Pool;
+        /// <summary>
+        /// If alternative NatPool is desired
+        /// </summary>
         public readonly string? NatPool;
 
         [OutputConstructor]
         private GatewaytemplatePortConfigWanSourceNat(
             bool? disabled,
 
+            string? nat6Pool,
+
             string? natPool)
         {
             Disabled = disabled;
+            Nat6Pool = nat6Pool;
             NatPool = natPool;
         }
     }

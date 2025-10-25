@@ -14,6 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingVpnOptions
     {
         public readonly int? AsBase;
+        public readonly bool? EnableIpv6;
         /// <summary>
         /// requiring /12 or bigger to support 16 private IPs for 65535 gateways
         /// </summary>
@@ -23,9 +24,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
         private SettingVpnOptions(
             int? asBase,
 
+            bool? enableIpv6,
+
             string? stSubnet)
         {
             AsBase = asBase;
+            EnableIpv6 = enableIpv6;
             StSubnet = stSubnet;
         }
     }

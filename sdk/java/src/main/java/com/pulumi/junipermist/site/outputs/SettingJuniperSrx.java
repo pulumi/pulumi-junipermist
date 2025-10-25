@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.junipermist.site.outputs.SettingJuniperSrxAutoUpgrade;
 import com.pulumi.junipermist.site.outputs.SettingJuniperSrxGateway;
 import java.lang.Boolean;
 import java.util.List;
@@ -13,10 +14,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingJuniperSrx {
+    /**
+     * @return auto_upgrade device first time it is onboarded
+     * 
+     */
+    private @Nullable SettingJuniperSrxAutoUpgrade autoUpgrade;
     private @Nullable List<SettingJuniperSrxGateway> gateways;
     private @Nullable Boolean sendMistNacUserInfo;
 
     private SettingJuniperSrx() {}
+    /**
+     * @return auto_upgrade device first time it is onboarded
+     * 
+     */
+    public Optional<SettingJuniperSrxAutoUpgrade> autoUpgrade() {
+        return Optional.ofNullable(this.autoUpgrade);
+    }
     public List<SettingJuniperSrxGateway> gateways() {
         return this.gateways == null ? List.of() : this.gateways;
     }
@@ -33,15 +46,23 @@ public final class SettingJuniperSrx {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable SettingJuniperSrxAutoUpgrade autoUpgrade;
         private @Nullable List<SettingJuniperSrxGateway> gateways;
         private @Nullable Boolean sendMistNacUserInfo;
         public Builder() {}
         public Builder(SettingJuniperSrx defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoUpgrade = defaults.autoUpgrade;
     	      this.gateways = defaults.gateways;
     	      this.sendMistNacUserInfo = defaults.sendMistNacUserInfo;
         }
 
+        @CustomType.Setter
+        public Builder autoUpgrade(@Nullable SettingJuniperSrxAutoUpgrade autoUpgrade) {
+
+            this.autoUpgrade = autoUpgrade;
+            return this;
+        }
         @CustomType.Setter
         public Builder gateways(@Nullable List<SettingJuniperSrxGateway> gateways) {
 
@@ -59,6 +80,7 @@ public final class SettingJuniperSrx {
         }
         public SettingJuniperSrx build() {
             final var _resultValue = new SettingJuniperSrx();
+            _resultValue.autoUpgrade = autoUpgrade;
             _resultValue.gateways = gateways;
             _resultValue.sendMistNacUserInfo = sendMistNacUserInfo;
             return _resultValue;

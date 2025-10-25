@@ -27,6 +27,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? AntGain6;
         /// <summary>
+        /// Antenna Mode for AP which supports selectable antennas. enum: `External`, `Internal`
+        /// </summary>
+        public readonly string? AntMode;
+        /// <summary>
         /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
         /// </summary>
         public readonly string? AntennaMode;
@@ -73,6 +77,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             int? antGain6,
 
+            string? antMode,
+
             string? antennaMode,
 
             Outputs.DeviceprofileApRadioConfigBand24? band24,
@@ -95,6 +101,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             AntGain24 = antGain24;
             AntGain5 = antGain5;
             AntGain6 = antGain6;
+            AntMode = antMode;
             AntennaMode = antennaMode;
             Band24 = band24;
             Band24Usage = band24Usage;

@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist
 
         private static readonly __Value<bool?> _apiDebug = new __Value<bool?>(() => __config.GetBoolean("apiDebug"));
         /// <summary>
-        /// Flag to enable debugging API calls. Default is false.
+        /// Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `False`.
         /// </summary>
         public static bool? ApiDebug
         {
@@ -44,7 +44,7 @@ namespace Pulumi.JuniperMist
 
         private static readonly __Value<double?> _apiTimeout = new __Value<double?>(() => __config.GetDouble("apiTimeout"));
         /// <summary>
-        /// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
+        /// Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
         /// </summary>
         public static double? ApiTimeout
         {
@@ -54,7 +54,7 @@ namespace Pulumi.JuniperMist
 
         private static readonly __Value<string?> _apitoken = new __Value<string?>(() => __config.Get("apitoken"));
         /// <summary>
-        /// For API Token authentication, the Mist API Token.
+        /// Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
         /// </summary>
         public static string? Apitoken
         {
@@ -64,7 +64,7 @@ namespace Pulumi.JuniperMist
 
         private static readonly __Value<string?> _host = new __Value<string?>(() => __config.Get("host"));
         /// <summary>
-        /// URL of the Mist Cloud, e.g. `api.mist.com`.
+        /// URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
         /// </summary>
         public static string? Host
         {
@@ -74,7 +74,7 @@ namespace Pulumi.JuniperMist
 
         private static readonly __Value<string?> _password = new __Value<string?>(() => __config.Get("password"));
         /// <summary>
-        /// For username/password authentication, the Mist Account password.
+        /// Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `Username` to be set.
         /// </summary>
         public static string? Password
         {
@@ -84,8 +84,7 @@ namespace Pulumi.JuniperMist
 
         private static readonly __Value<string?> _proxy = new __Value<string?>(() => __config.Get("proxy"));
         /// <summary>
-        /// Requests use the configured proxy to reach the Mist Cloud.
-        /// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `Http` scheme is assumed. The schemes `Http`, `Https`, and `Socks5` are supported.
+        /// Proxy configuration for API requests. The value may be either a complete URL or `[username:password@]host[:port]` format. Supported schemes: `Http`, `Https`, and `Socks5`. If no scheme is provided, `Http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
         /// </summary>
         public static string? Proxy
         {
@@ -95,7 +94,7 @@ namespace Pulumi.JuniperMist
 
         private static readonly __Value<string?> _username = new __Value<string?>(() => __config.Get("username"));
         /// <summary>
-        /// For username/password authentication, the Mist Account username.
+        /// Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `Password` to be set and 2FA to be disabled.
         /// </summary>
         public static string? Username
         {

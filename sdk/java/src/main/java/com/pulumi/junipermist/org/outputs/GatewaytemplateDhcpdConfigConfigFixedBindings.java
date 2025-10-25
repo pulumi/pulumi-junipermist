@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +11,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateDhcpdConfigConfigFixedBindings {
-    private String ip;
+    private @Nullable String ip;
+    private @Nullable String ip6;
     private @Nullable String name;
 
     private GatewaytemplateDhcpdConfigConfigFixedBindings() {}
-    public String ip() {
-        return this.ip;
+    public Optional<String> ip() {
+        return Optional.ofNullable(this.ip);
+    }
+    public Optional<String> ip6() {
+        return Optional.ofNullable(this.ip6);
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
@@ -32,21 +35,27 @@ public final class GatewaytemplateDhcpdConfigConfigFixedBindings {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String ip;
+        private @Nullable String ip;
+        private @Nullable String ip6;
         private @Nullable String name;
         public Builder() {}
         public Builder(GatewaytemplateDhcpdConfigConfigFixedBindings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ip = defaults.ip;
+    	      this.ip6 = defaults.ip6;
     	      this.name = defaults.name;
         }
 
         @CustomType.Setter
-        public Builder ip(String ip) {
-            if (ip == null) {
-              throw new MissingRequiredPropertyException("GatewaytemplateDhcpdConfigConfigFixedBindings", "ip");
-            }
+        public Builder ip(@Nullable String ip) {
+
             this.ip = ip;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ip6(@Nullable String ip6) {
+
+            this.ip6 = ip6;
             return this;
         }
         @CustomType.Setter
@@ -58,6 +67,7 @@ public final class GatewaytemplateDhcpdConfigConfigFixedBindings {
         public GatewaytemplateDhcpdConfigConfigFixedBindings build() {
             final var _resultValue = new GatewaytemplateDhcpdConfigConfigFixedBindings();
             _resultValue.ip = ip;
+            _resultValue.ip6 = ip6;
             _resultValue.name = name;
             return _resultValue;
         }

@@ -13,16 +13,20 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchDhcpdConfigConfigFixedBindings
     {
-        public readonly string Ip;
+        public readonly string? Ip;
+        public readonly string? Ip6;
         public readonly string? Name;
 
         [OutputConstructor]
         private SwitchDhcpdConfigConfigFixedBindings(
-            string ip,
+            string? ip,
+
+            string? ip6,
 
             string? name)
         {
             Ip = ip;
+            Ip6 = ip6;
             Name = name;
         }
     }
