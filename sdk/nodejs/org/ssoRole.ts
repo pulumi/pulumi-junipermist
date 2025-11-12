@@ -15,6 +15,21 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const ssoRoleOne = new junipermist.org.SsoRole("sso_role_one", {
+ *     orgId: terraformTest.id,
+ *     name: "admin_sso",
+ *     privileges: [{
+ *         scope: "site",
+ *         role: "read",
+ *         siteId: terraformSite.id,
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_sso_role` with:

@@ -29,6 +29,61 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Alarmtemplate;
+ * import com.pulumi.junipermist.org.AlarmtemplateArgs;
+ * import com.pulumi.junipermist.org.inputs.AlarmtemplateDeliveryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var alarmtemplateOne = new Alarmtemplate("alarmtemplateOne", AlarmtemplateArgs.builder()
+ *             .orgId(terraformTest.id())
+ *             .name("alarmtemplate_one")
+ *             .delivery(AlarmtemplateDeliveryArgs.builder()
+ *                 .enabled(true)
+ *                 .toOrgAdmins(true)
+ *                 .additionalEmails("admin}{@literal @}{@code mycorp.net")
+ *                 .build())
+ *             .rules(Map.ofEntries(
+ *                 Map.entry("health_check_failed", AlarmtemplateRulesArgs.builder()
+ *                     .enabled(true)
+ *                     .build()),
+ *                 Map.entry("insufficient_capacity", AlarmtemplateRulesArgs.builder()
+ *                     .enabled(true)
+ *                     .build()),
+ *                 Map.entry("insufficient_coverage", AlarmtemplateRulesArgs.builder()
+ *                     .enabled(true)
+ *                     .build()),
+ *                 Map.entry("infra_arp_failure", AlarmtemplateRulesArgs.builder()
+ *                     .enabled(true)
+ *                     .build()),
+ *                 Map.entry("arp_failure", AlarmtemplateRulesArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *             ))
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_alarmtemplate` with:

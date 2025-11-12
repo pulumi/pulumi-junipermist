@@ -51,6 +51,86 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Setting;
+ * import com.pulumi.junipermist.org.SettingArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingMxedgeMgmtArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingSecurityArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var terraformTest = new Setting("terraformTest", SettingArgs.builder()
+ *             .orgId(terraformTestMistOrg.id())
+ *             .apUpdownThreshold(10)
+ *             .cradlepoint(Map.ofEntries(
+ *                 Map.entry("cpApiId", "cp_api_id_test"),
+ *                 Map.entry("cpApiKey", "secret"),
+ *                 Map.entry("ecmApiId", "ecm_api_id_test"),
+ *                 Map.entry("ecmApiKey", "secret")
+ *             ))
+ *             .deviceUpdownThreshold(10)
+ *             .disablePcap(false)
+ *             .disableRemoteShell(true)
+ *             .gatewayUpdownThreshold(10)
+ *             .mxedgeMgmt(SettingMxedgeMgmtArgs.builder()
+ *                 .mistPassword("root_secret_password")
+ *                 .rootPassword("root_secret_password")
+ *                 .oobIpType("dhcp")
+ *                 .oobIpType6("disabled")
+ *                 .build())
+ *             .passwordPolicy(SettingPasswordPolicyArgs.builder()
+ *                 .enabled(true)
+ *                 .freshness(180)
+ *                 .minLength(12)
+ *                 .requiresSpecialChar(true)
+ *                 .requiresTwoFactorAuth(false)
+ *                 .build())
+ *             .security(SettingSecurityArgs.builder()
+ *                 .disableLocalSsh(true)
+ *                 .build())
+ *             .switchUpdownThreshold(10)
+ *             .syntheticTest(SettingSyntheticTestArgs.builder()
+ *                 .disabled(false)
+ *                 .vlans(                
+ *                     SettingSyntheticTestVlanArgs.builder()
+ *                         .vlanIds(                        
+ *                             "10",
+ *                             "30")
+ *                         .customTestUrls(                        
+ *                             "http://www.abc.com/",
+ *                             "https://10.3.5.1:8080/about")
+ *                         .build(),
+ *                     SettingSyntheticTestVlanArgs.builder()
+ *                         .vlanIds("20")
+ *                         .disabled(true)
+ *                         .build())
+ *                 .build())
+ *             .uiIdleTimeout(120)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_setting` with:

@@ -20,6 +20,109 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewDeviceprofileGateway(ctx, "deviceprofile_gw_one", &org.DeviceprofileGatewayArgs{
+//				Name:  pulumi.String("deviceprofile_gw_one"),
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				PortConfig: org.DeviceprofileGatewayPortConfigMap{
+//					"ge-0/0/3": &org.DeviceprofileGatewayPortConfigArgs{
+//						Name:       pulumi.String("FTTH"),
+//						Usage:      pulumi.String("wan"),
+//						Aggregated: pulumi.Bool(false),
+//						Redundant:  pulumi.Bool(false),
+//						Critical:   pulumi.Bool(false),
+//						WanType:    pulumi.String("broadband"),
+//						IpConfig: &org.DeviceprofileGatewayPortConfigIpConfigArgs{
+//							Type:    pulumi.String("static"),
+//							Ip:      pulumi.String("192.168.1.8"),
+//							Netmask: pulumi.String("/24"),
+//							Gateway: pulumi.String("192.168.1.1"),
+//						},
+//						DisableAutoneg: pulumi.Bool(false),
+//						Speed:          pulumi.String("auto"),
+//						Duplex:         pulumi.String("auto"),
+//						WanSourceNat: &org.DeviceprofileGatewayPortConfigWanSourceNatArgs{
+//							Disabled: pulumi.Bool(false),
+//						},
+//						VpnPaths: org.DeviceprofileGatewayPortConfigVpnPathsMap{
+//							"SSR_HUB_DC-MPLS.OrgOverlay": &org.DeviceprofileGatewayPortConfigVpnPathsArgs{
+//								Key:        0,
+//								Role:       pulumi.String("spoke"),
+//								BfdProfile: pulumi.String("broadband"),
+//							},
+//						},
+//					},
+//					"ge-0/0/5": &org.DeviceprofileGatewayPortConfigArgs{
+//						Usage:         pulumi.String("lan"),
+//						Critical:      pulumi.Bool(false),
+//						Aggregated:    pulumi.Bool(true),
+//						AeDisableLacp: pulumi.Bool(false),
+//						AeLacpForceUp: pulumi.Bool(true),
+//						AeIdx:         pulumi.String("0"),
+//						Redundant:     pulumi.Bool(false),
+//						Networks: pulumi.StringArray{
+//							pulumi.String("PRD-Core"),
+//							pulumi.String("PRD-Mgmt"),
+//							pulumi.String("PRD-Lab"),
+//						},
+//					},
+//				},
+//				IpConfigs: org.DeviceprofileGatewayIpConfigsMap{
+//					"PRD-Core": &org.DeviceprofileGatewayIpConfigsArgs{
+//						Type:    pulumi.String("static"),
+//						Ip:      pulumi.String("10.3.100.9"),
+//						Netmask: pulumi.String("/24"),
+//					},
+//					"PRD-Mgmt": &org.DeviceprofileGatewayIpConfigsArgs{
+//						Type:    pulumi.String("static"),
+//						Ip:      pulumi.String("10.3.172.1"),
+//						Netmask: pulumi.String("/24"),
+//					},
+//					"PRD-Lab": &org.DeviceprofileGatewayIpConfigsArgs{
+//						Type:    pulumi.String("static"),
+//						Ip:      pulumi.String("10.3.171.1"),
+//						Netmask: pulumi.String("/24"),
+//					},
+//				},
+//				ServicePolicies: org.DeviceprofileGatewayServicePolicyArray{
+//					&org.DeviceprofileGatewayServicePolicyArgs{
+//						Name: pulumi.String("Policy-14"),
+//						Tenants: pulumi.StringArray{
+//							pulumi.String("PRD-Core"),
+//						},
+//						Services: pulumi.StringArray{
+//							pulumi.String("any"),
+//						},
+//						Action:         pulumi.String("allow"),
+//						PathPreference: pulumi.String("HUB"),
+//						Idp: &org.DeviceprofileGatewayServicePolicyIdpArgs{
+//							Enabled:   pulumi.Bool(true),
+//							Profile:   pulumi.String("critical"),
+//							AlertOnly: pulumi.Bool(false),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_deviceprofile_gateway` with:

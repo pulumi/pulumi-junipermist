@@ -13,6 +13,63 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const terraformTest = new junipermist.org.Setting("terraform_test", {
+ *     orgId: terraformTestMistOrg.id,
+ *     apUpdownThreshold: 10,
+ *     cradlepoint: {
+ *         cpApiId: "cp_api_id_test",
+ *         cpApiKey: "secret",
+ *         ecmApiId: "ecm_api_id_test",
+ *         ecmApiKey: "secret",
+ *     },
+ *     deviceUpdownThreshold: 10,
+ *     disablePcap: false,
+ *     disableRemoteShell: true,
+ *     gatewayUpdownThreshold: 10,
+ *     mxedgeMgmt: {
+ *         mistPassword: "root_secret_password",
+ *         rootPassword: "root_secret_password",
+ *         oobIpType: "dhcp",
+ *         oobIpType6: "disabled",
+ *     },
+ *     passwordPolicy: {
+ *         enabled: true,
+ *         freshness: 180,
+ *         minLength: 12,
+ *         requiresSpecialChar: true,
+ *         requiresTwoFactorAuth: false,
+ *     },
+ *     security: {
+ *         disableLocalSsh: true,
+ *     },
+ *     switchUpdownThreshold: 10,
+ *     syntheticTest: {
+ *         disabled: false,
+ *         vlans: [
+ *             {
+ *                 vlanIds: [
+ *                     "10",
+ *                     "30",
+ *                 ],
+ *                 customTestUrls: [
+ *                     "http://www.abc.com/",
+ *                     "https://10.3.5.1:8080/about",
+ *                 ],
+ *             },
+ *             {
+ *                 vlanIds: ["20"],
+ *                 disabled: true,
+ *             },
+ *         ],
+ *     },
+ *     uiIdleTimeout: 120,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_setting` with:

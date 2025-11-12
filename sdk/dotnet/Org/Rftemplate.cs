@@ -16,6 +16,53 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rftemplateOne = new JuniperMist.Org.Rftemplate("rftemplate_one", new()
+    ///     {
+    ///         Name = "rftemplate_one",
+    ///         OrgId = terraformTest.Id,
+    ///         Band24Usage = "auto",
+    ///         Band5 = new JuniperMist.Org.Inputs.RftemplateBand5Args
+    ///         {
+    ///             AntGain = 2,
+    ///             Power = 8,
+    ///             Channels = new[]
+    ///             {
+    ///                 60,
+    ///                 104,
+    ///                 132,
+    ///             },
+    ///             Bandwidth = 20,
+    ///         },
+    ///         Band6 = new JuniperMist.Org.Inputs.RftemplateBand6Args
+    ///         {
+    ///             AntGain = 2,
+    ///             Power = 8,
+    ///         },
+    ///         Band24 = new JuniperMist.Org.Inputs.RftemplateBand24Args
+    ///         {
+    ///             AntGain = 1,
+    ///             AllowRrmDisable = true,
+    ///             PowerMin = 18,
+    ///             PowerMax = 18,
+    ///             Bandwidth = 20,
+    ///         },
+    ///         AntGain5 = 2,
+    ///         AntGain6 = 2,
+    ///         AntGain24 = 1,
+    ///         CountryCode = "FR",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_rftemplate` with:

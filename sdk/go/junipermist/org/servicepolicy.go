@@ -22,6 +22,43 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewServicepolicy(ctx, "servicepolicy_one", &org.ServicepolicyArgs{
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				Tenants: pulumi.StringArray{
+//					pulumi.String("guest"),
+//				},
+//				Services: pulumi.StringArray{
+//					pulumi.String("guest-internet"),
+//				},
+//				Action: pulumi.String("allow"),
+//				Idp: &org.ServicepolicyIdpArgs{
+//					Enabled:   pulumi.Bool(true),
+//					Profile:   pulumi.String("standard"),
+//					AlertOnly: pulumi.Bool(true),
+//				},
+//				Name: pulumi.String("Guest-IDP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_servicepolicy` with:

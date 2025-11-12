@@ -20,6 +20,36 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewWlantemplate(ctx, "wlantemplate_one", &org.WlantemplateArgs{
+//				Name:  pulumi.String("wlantemplate_one"),
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				Applies: &org.WlantemplateAppliesArgs{
+//					SiteIds: pulumi.StringArray{
+//						terraformSite.Id,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_wlantemplate` with:

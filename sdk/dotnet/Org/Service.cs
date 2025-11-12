@@ -20,6 +20,37 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serviceOne = new JuniperMist.Org.Service("service_one", new()
+    ///     {
+    ///         OrgId = terraformTest.Id,
+    ///         Name = "service_one",
+    ///         Addresses = new[]
+    ///         {
+    ///             "10.3.0.0/24",
+    ///             "10.4.0.0/24",
+    ///         },
+    ///         Type = "custom",
+    ///         Specs = new[]
+    ///         {
+    ///             new JuniperMist.Org.Inputs.ServiceSpecArgs
+    ///             {
+    ///                 Protocol = "tcp",
+    ///                 PortRange = "443",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_service` with:

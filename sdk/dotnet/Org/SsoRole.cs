@@ -18,6 +18,32 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ssoRoleOne = new JuniperMist.Org.SsoRole("sso_role_one", new()
+    ///     {
+    ///         OrgId = terraformTest.Id,
+    ///         Name = "admin_sso",
+    ///         Privileges = new[]
+    ///         {
+    ///             new JuniperMist.Org.Inputs.SsoRolePrivilegeArgs
+    ///             {
+    ///                 Scope = "site",
+    ///                 Role = "read",
+    ///                 SiteId = terraformSite.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_sso_role` with:

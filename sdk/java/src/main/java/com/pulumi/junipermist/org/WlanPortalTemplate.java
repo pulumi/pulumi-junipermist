@@ -27,6 +27,47 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.WlanPortalTemplate;
+ * import com.pulumi.junipermist.org.WlanPortalTemplateArgs;
+ * import com.pulumi.junipermist.org.inputs.WlanPortalTemplatePortalTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var wlanOne = new WlanPortalTemplate("wlanOne", WlanPortalTemplateArgs.builder()
+ *             .orgId(terraformTest.id())
+ *             .wlanId(wlanOneMistOrg.id())
+ *             .portalTemplate(WlanPortalTemplatePortalTemplateArgs.builder()
+ *                 .smsMessageFormat("Code {{code}} expires in {{duration}} minutes.")
+ *                 .smsValidityDuration(10)
+ *                 .pageTitle("Welcome To My Demo Portal")
+ *                 .locales(Map.of("fr-FR", WlanPortalTemplatePortalTemplateLocalesArgs.builder()
+ *                     .pageTitle("Bienvenue sur mon portail de démo")
+ *                     .build()))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="junipermist:org/wlanPortalTemplate:WlanPortalTemplate")
 public class WlanPortalTemplate extends com.pulumi.resources.CustomResource {

@@ -14,6 +14,53 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var terraformTest = new JuniperMist.Org.Setting("terraform_test", new()
+    ///     {
+    ///         OrgId = terraformTestMistOrg.Id,
+    ///         PasswordPolicy = new JuniperMist.Org.Inputs.SettingPasswordPolicyArgs
+    ///         {
+    ///             Enabled = true,
+    ///             MinLength = 8,
+    ///             RequiresSpecialChar = true,
+    ///             RequiresTwoFactorAuth = true,
+    ///         },
+    ///         MistNac = new JuniperMist.Org.Inputs.SettingMistNacArgs
+    ///         {
+    ///             EuOnly = true,
+    ///         },
+    ///         SyntheticTest = new JuniperMist.Org.Inputs.SettingSyntheticTestArgs
+    ///         {
+    ///             Disabled = false,
+    ///             Vlans = new[]
+    ///             {
+    ///                 new JuniperMist.Org.Inputs.SettingSyntheticTestVlanArgs
+    ///                 {
+    ///                     VlanIds = new[]
+    ///                     {
+    ///                         "8",
+    ///                         "999",
+    ///                     },
+    ///                     Disabled = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ApiPolicy = new JuniperMist.Org.Inputs.SettingApiPolicyArgs
+    ///         {
+    ///             NoReveal = false,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_vpn` with:

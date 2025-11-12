@@ -18,6 +18,30 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var wlantemplateOne = new JuniperMist.Org.Wlantemplate("wlantemplate_one", new()
+    ///     {
+    ///         Name = "wlantemplate_one",
+    ///         OrgId = terraformTest.Id,
+    ///         Applies = new JuniperMist.Org.Inputs.WlantemplateAppliesArgs
+    ///         {
+    ///             SiteIds = new[]
+    ///             {
+    ///                 terraformSite.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_wlantemplate` with:

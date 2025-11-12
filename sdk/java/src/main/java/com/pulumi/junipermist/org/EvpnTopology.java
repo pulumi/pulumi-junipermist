@@ -26,6 +26,82 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.EvpnTopology;
+ * import com.pulumi.junipermist.org.EvpnTopologyArgs;
+ * import com.pulumi.junipermist.org.inputs.EvpnTopologyEvpnOptionsArgs;
+ * import com.pulumi.junipermist.org.inputs.EvpnTopologyEvpnOptionsOverlayArgs;
+ * import com.pulumi.junipermist.org.inputs.EvpnTopologyEvpnOptionsUnderlayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var evpnOne = new EvpnTopology("evpnOne", EvpnTopologyArgs.builder()
+ *             .orgId(terraformTest.id())
+ *             .name("evpn_one")
+ *             .evpnOptions(EvpnTopologyEvpnOptionsArgs.builder()
+ *                 .routedAt("core")
+ *                 .overlay(EvpnTopologyEvpnOptionsOverlayArgs.builder()
+ *                     .as(65000)
+ *                     .build())
+ *                 .coreAsBorder(true)
+ *                 .autoLoopbackSubnet("172.16.192.0/24")
+ *                 .autoLoopbackSubnet6("fd33:ab00:2::/64")
+ *                 .perVlanVgaV4Mac(false)
+ *                 .underlay(EvpnTopologyEvpnOptionsUnderlayArgs.builder()
+ *                     .asBase(65001)
+ *                     .useIpv6(false)
+ *                     .subnet("10.255.240.0/20")
+ *                     .build())
+ *                 .autoRouterIdSubnet("172.16.254.0/23")
+ *                 .build())
+ *             .switches(            
+ *                 EvpnTopologySwitchesArgs.builder()
+ *                     .mac("020004000001")
+ *                     .role("core")
+ *                     .build(),
+ *                 EvpnTopologySwitchesArgs.builder()
+ *                     .mac("02000400002")
+ *                     .role("core")
+ *                     .build(),
+ *                 EvpnTopologySwitchesArgs.builder()
+ *                     .mac("02000400003")
+ *                     .role("distribution")
+ *                     .build(),
+ *                 EvpnTopologySwitchesArgs.builder()
+ *                     .mac("02000400004")
+ *                     .role("distribution")
+ *                     .build(),
+ *                 EvpnTopologySwitchesArgs.builder()
+ *                     .mac("02000400005")
+ *                     .role("access")
+ *                     .build(),
+ *                 EvpnTopologySwitchesArgs.builder()
+ *                     .mac("02000400006")
+ *                     .role("access")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_evpn_topology` with:

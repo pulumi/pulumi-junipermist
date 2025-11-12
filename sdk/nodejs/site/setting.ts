@@ -17,6 +17,33 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const siteOne = new junipermist.site.Setting("site_one", {
+ *     siteId: terraformSite.id,
+ *     apUpdownThreshold: 5,
+ *     deviceUpdownThreshold: 5,
+ *     autoUpgrade: {
+ *         enabled: true,
+ *         dayOfWeek: "tue",
+ *         timeOfDay: "02:00",
+ *         version: "beta",
+ *     },
+ *     configAutoRevert: true,
+ *     persistConfigOnDevice: true,
+ *     proxy: {
+ *         url: "http://myproxy:3128",
+ *     },
+ *     rogue: {
+ *         enabled: true,
+ *         honeypotEnabled: true,
+ *         minDuration: 5,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_site_setting` with:

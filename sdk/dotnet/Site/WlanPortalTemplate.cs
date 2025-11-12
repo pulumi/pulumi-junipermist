@@ -20,6 +20,36 @@ namespace Pulumi.JuniperMist.Site
     /// * There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var wlanOne = new JuniperMist.Site.WlanPortalTemplate("wlan_one", new()
+    ///     {
+    ///         SiteId = terraformTest.Id,
+    ///         WlanId = wlanOneMistSiteWlan.Id,
+    ///         PortalTemplate = new JuniperMist.Site.Inputs.WlanPortalTemplatePortalTemplateArgs
+    ///         {
+    ///             SmsMessageFormat = "Code {{code}} expires in {{duration}} minutes.",
+    ///             SmsValidityDuration = 10,
+    ///             PageTitle = "Welcome To My Demo Portal",
+    ///             Locales = 
+    ///             {
+    ///                 { "fr-FR", new JuniperMist.Site.Inputs.WlanPortalTemplatePortalTemplateLocalesArgs
+    ///                 {
+    ///                     PageTitle = "Bienvenue sur mon portail de démo",
+    ///                 } },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [JuniperMistResourceType("junipermist:site/wlanPortalTemplate:WlanPortalTemplate")]
     public partial class WlanPortalTemplate : global::Pulumi.CustomResource

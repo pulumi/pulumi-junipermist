@@ -200,6 +200,28 @@ class Apitoken(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        apitoken_one = junipermist.org.Apitoken("apitoken_one",
+            org_id=terraform_test["id"],
+            name="apitoken_one",
+            privileges=[
+                {
+                    "scope": "site",
+                    "role": "admin",
+                    "site_id": "d7c8364e-xxxx-xxxx-xxxx-37eff0475b03",
+                },
+                {
+                    "scope": "site",
+                    "role": "read",
+                    "site_id": "08f8851b-xxxx-xxxx-xxxx-9ebb5aa62de4",
+                },
+            ],
+            src_ips=["1.2.3.4/32"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the token
@@ -220,6 +242,28 @@ class Apitoken(pulumi.CustomResource):
         Rate limiting is done on an individual token basis, so if one token reaches its rate limit, it does not impact other tokens.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        apitoken_one = junipermist.org.Apitoken("apitoken_one",
+            org_id=terraform_test["id"],
+            name="apitoken_one",
+            privileges=[
+                {
+                    "scope": "site",
+                    "role": "admin",
+                    "site_id": "d7c8364e-xxxx-xxxx-xxxx-37eff0475b03",
+                },
+                {
+                    "scope": "site",
+                    "role": "read",
+                    "site_id": "08f8851b-xxxx-xxxx-xxxx-9ebb5aa62de4",
+                },
+            ],
+            src_ips=["1.2.3.4/32"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param ApitokenArgs args: The arguments to use to populate this resource's properties.
