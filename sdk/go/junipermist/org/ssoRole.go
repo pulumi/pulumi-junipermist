@@ -20,6 +20,38 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewSsoRole(ctx, "sso_role_one", &org.SsoRoleArgs{
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				Name:  pulumi.String("admin_sso"),
+//				Privileges: org.SsoRolePrivilegeArray{
+//					&org.SsoRolePrivilegeArgs{
+//						Scope:  pulumi.String("site"),
+//						Role:   pulumi.String("read"),
+//						SiteId: pulumi.Any(terraformSite.Id),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_sso_role` with:

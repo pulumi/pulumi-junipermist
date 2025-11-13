@@ -22,6 +22,55 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var alarmtemplateOne = new JuniperMist.Org.Alarmtemplate("alarmtemplate_one", new()
+    ///     {
+    ///         OrgId = terraformTest.Id,
+    ///         Name = "alarmtemplate_one",
+    ///         Delivery = new JuniperMist.Org.Inputs.AlarmtemplateDeliveryArgs
+    ///         {
+    ///             Enabled = true,
+    ///             ToOrgAdmins = true,
+    ///             AdditionalEmails = new[]
+    ///             {
+    ///                 "admin@mycorp.net",
+    ///             },
+    ///         },
+    ///         Rules = 
+    ///         {
+    ///             { "health_check_failed", new JuniperMist.Org.Inputs.AlarmtemplateRulesArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             } },
+    ///             { "insufficient_capacity", new JuniperMist.Org.Inputs.AlarmtemplateRulesArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             } },
+    ///             { "insufficient_coverage", new JuniperMist.Org.Inputs.AlarmtemplateRulesArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             } },
+    ///             { "infra_arp_failure", new JuniperMist.Org.Inputs.AlarmtemplateRulesArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             } },
+    ///             { "arp_failure", new JuniperMist.Org.Inputs.AlarmtemplateRulesArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_alarmtemplate` with:

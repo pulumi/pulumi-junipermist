@@ -13,6 +13,32 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const webhookOne = new junipermist.org.Webhook("webhook_one", {
+ *     siteId: terraformTest.id,
+ *     name: "webhook_one",
+ *     type: "http-post",
+ *     url: "https://myserver.com:4321/",
+ *     verifyCert: false,
+ *     enabled: true,
+ *     topics: [
+ *         "device-events",
+ *         "alarms",
+ *         "audits",
+ *         "client-join",
+ *         "client-info",
+ *         "client-sessions",
+ *         "device-updowns",
+ *         "mxedge-events",
+ *         "nac-events",
+ *         "nac-accounting",
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_webhook` with:

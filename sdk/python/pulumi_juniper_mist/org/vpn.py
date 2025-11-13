@@ -194,6 +194,36 @@ class Vpn(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        terraform_test = junipermist.org.Setting("terraform_test",
+            org_id=terraform_test_mist_org["id"],
+            password_policy={
+                "enabled": True,
+                "min_length": 8,
+                "requires_special_char": True,
+                "requires_two_factor_auth": True,
+            },
+            mist_nac={
+                "eu_only": True,
+            },
+            synthetic_test={
+                "disabled": False,
+                "vlans": [{
+                    "vlan_ids": [
+                        "8",
+                        "999",
+                    ],
+                    "disabled": True,
+                }],
+            },
+            api_policy={
+                "no_reveal": False,
+            })
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_org_vpn` with:
@@ -220,6 +250,36 @@ class Vpn(pulumi.CustomResource):
         This resource manages the Org VPN.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        terraform_test = junipermist.org.Setting("terraform_test",
+            org_id=terraform_test_mist_org["id"],
+            password_policy={
+                "enabled": True,
+                "min_length": 8,
+                "requires_special_char": True,
+                "requires_two_factor_auth": True,
+            },
+            mist_nac={
+                "eu_only": True,
+            },
+            synthetic_test={
+                "disabled": False,
+                "vlans": [{
+                    "vlan_ids": [
+                        "8",
+                        "999",
+                    ],
+                    "disabled": True,
+                }],
+            },
+            api_policy={
+                "no_reveal": False,
+            })
+        ```
 
         ## Import
 

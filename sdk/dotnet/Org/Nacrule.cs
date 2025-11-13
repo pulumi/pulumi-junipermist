@@ -16,6 +16,43 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var nacruleOne = new JuniperMist.Org.Nacrule("nacrule_one", new()
+    ///     {
+    ///         Name = "rule_one",
+    ///         Action = "allow",
+    ///         OrgId = terraformTest.Id,
+    ///         Matching = new JuniperMist.Org.Inputs.NacruleMatchingArgs
+    ///         {
+    ///             PortTypes = new[]
+    ///             {
+    ///                 "wired",
+    ///             },
+    ///             AuthType = "mab",
+    ///             Nactags = new[]
+    ///             {
+    ///                 "c055c60b-351a-4311-8ee5-9b7be5e5f902",
+    ///             },
+    ///         },
+    ///         ApplyTags = new[]
+    ///         {
+    ///             "61c11327-5e1b-40ed-bbbf-5e95642c4f59",
+    ///             "3f292454-ac5f-4a36-9aff-d0518d90b47a",
+    ///         },
+    ///         Enabled = true,
+    ///         Order = 9,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_nacrule` with:

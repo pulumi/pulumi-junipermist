@@ -20,6 +20,43 @@ namespace Pulumi.JuniperMist.Site
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var siteOne = new JuniperMist.Site.Setting("site_one", new()
+    ///     {
+    ///         SiteId = terraformSite.Id,
+    ///         ApUpdownThreshold = 5,
+    ///         DeviceUpdownThreshold = 5,
+    ///         AutoUpgrade = new JuniperMist.Site.Inputs.SettingAutoUpgradeArgs
+    ///         {
+    ///             Enabled = true,
+    ///             DayOfWeek = "tue",
+    ///             TimeOfDay = "02:00",
+    ///             Version = "beta",
+    ///         },
+    ///         ConfigAutoRevert = true,
+    ///         PersistConfigOnDevice = true,
+    ///         Proxy = new JuniperMist.Site.Inputs.SettingProxyArgs
+    ///         {
+    ///             Url = "http://myproxy:3128",
+    ///         },
+    ///         Rogue = new JuniperMist.Site.Inputs.SettingRogueArgs
+    ///         {
+    ///             Enabled = true,
+    ///             HoneypotEnabled = true,
+    ///             MinDuration = 5,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_site_setting` with:

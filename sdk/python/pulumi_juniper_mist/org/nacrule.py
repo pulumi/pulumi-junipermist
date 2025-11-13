@@ -310,6 +310,27 @@ class Nacrule(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        nacrule_one = junipermist.org.Nacrule("nacrule_one",
+            name="rule_one",
+            action="allow",
+            org_id=terraform_test["id"],
+            matching={
+                "port_types": ["wired"],
+                "auth_type": "mab",
+                "nactags": ["c055c60b-351a-4311-8ee5-9b7be5e5f902"],
+            },
+            apply_tags=[
+                "61c11327-5e1b-40ed-bbbf-5e95642c4f59",
+                "3f292454-ac5f-4a36-9aff-d0518d90b47a",
+            ],
+            enabled=True,
+            order=9)
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_org_nacrule` with:
@@ -340,6 +361,27 @@ class Nacrule(pulumi.CustomResource):
         A NAC Rule defines a list of criteria (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        nacrule_one = junipermist.org.Nacrule("nacrule_one",
+            name="rule_one",
+            action="allow",
+            org_id=terraform_test["id"],
+            matching={
+                "port_types": ["wired"],
+                "auth_type": "mab",
+                "nactags": ["c055c60b-351a-4311-8ee5-9b7be5e5f902"],
+            },
+            apply_tags=[
+                "61c11327-5e1b-40ed-bbbf-5e95642c4f59",
+                "3f292454-ac5f-4a36-9aff-d0518d90b47a",
+            ],
+            enabled=True,
+            order=9)
+        ```
 
         ## Import
 

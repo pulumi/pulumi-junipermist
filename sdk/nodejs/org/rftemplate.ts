@@ -13,6 +13,42 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const rftemplateOne = new junipermist.org.Rftemplate("rftemplate_one", {
+ *     name: "rftemplate_one",
+ *     orgId: terraformTest.id,
+ *     band24Usage: "auto",
+ *     band5: {
+ *         antGain: 2,
+ *         power: 8,
+ *         channels: [
+ *             60,
+ *             104,
+ *             132,
+ *         ],
+ *         bandwidth: 20,
+ *     },
+ *     band6: {
+ *         antGain: 2,
+ *         power: 8,
+ *     },
+ *     band24: {
+ *         antGain: 1,
+ *         allowRrmDisable: true,
+ *         powerMin: 18,
+ *         powerMax: 18,
+ *         bandwidth: 20,
+ *     },
+ *     antGain5: 2,
+ *     antGain6: 2,
+ *     antGain24: 1,
+ *     countryCode: "FR",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_rftemplate` with:

@@ -17,6 +17,26 @@ import * as utilities from "../utilities";
  * * There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const wlanOne = new junipermist.site.WlanPortalTemplate("wlan_one", {
+ *     siteId: terraformTest.id,
+ *     wlanId: wlanOneMistSiteWlan.id,
+ *     portalTemplate: {
+ *         smsMessageFormat: "Code {{code}} expires in {{duration}} minutes.",
+ *         smsValidityDuration: 10,
+ *         pageTitle: "Welcome To My Demo Portal",
+ *         locales: {
+ *             "fr-FR": {
+ *                 pageTitle: "Bienvenue sur mon portail de démo",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class WlanPortalTemplate extends pulumi.CustomResource {
     /**

@@ -22,6 +22,48 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/site"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := site.NewSetting(ctx, "site_one", &site.SettingArgs{
+//				SiteId:                pulumi.Any(terraformSite.Id),
+//				ApUpdownThreshold:     pulumi.Int(5),
+//				DeviceUpdownThreshold: pulumi.Int(5),
+//				AutoUpgrade: &site.SettingAutoUpgradeArgs{
+//					Enabled:   pulumi.Bool(true),
+//					DayOfWeek: pulumi.String("tue"),
+//					TimeOfDay: pulumi.String("02:00"),
+//					Version:   pulumi.String("beta"),
+//				},
+//				ConfigAutoRevert:      pulumi.Bool(true),
+//				PersistConfigOnDevice: pulumi.Bool(true),
+//				Proxy: &site.SettingProxyArgs{
+//					Url: pulumi.String("http://myproxy:3128"),
+//				},
+//				Rogue: &site.SettingRogueArgs{
+//					Enabled:         pulumi.Bool(true),
+//					HoneypotEnabled: pulumi.Bool(true),
+//					MinDuration:     pulumi.Int(5),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_site_setting` with:

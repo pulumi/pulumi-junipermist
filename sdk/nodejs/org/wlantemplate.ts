@@ -15,6 +15,19 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const wlantemplateOne = new junipermist.org.Wlantemplate("wlantemplate_one", {
+ *     name: "wlantemplate_one",
+ *     orgId: terraformTest.id,
+ *     applies: {
+ *         siteIds: [terraformSite.id],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_wlantemplate` with:

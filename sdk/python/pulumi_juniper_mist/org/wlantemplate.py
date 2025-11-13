@@ -231,6 +231,18 @@ class Wlantemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        wlantemplate_one = junipermist.org.Wlantemplate("wlantemplate_one",
+            name="wlantemplate_one",
+            org_id=terraform_test["id"],
+            applies={
+                "site_ids": [terraform_site["id"]],
+            })
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_org_wlantemplate` with:
@@ -262,6 +274,18 @@ class Wlantemplate(pulumi.CustomResource):
         They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        wlantemplate_one = junipermist.org.Wlantemplate("wlantemplate_one",
+            name="wlantemplate_one",
+            org_id=terraform_test["id"],
+            applies={
+                "site_ids": [terraform_site["id"]],
+            })
+        ```
 
         ## Import
 

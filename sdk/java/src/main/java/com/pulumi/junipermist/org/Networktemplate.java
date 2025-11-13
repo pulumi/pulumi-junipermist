@@ -42,6 +42,87 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Networktemplate;
+ * import com.pulumi.junipermist.org.NetworktemplateArgs;
+ * import com.pulumi.junipermist.org.inputs.NetworktemplateRadiusConfigArgs;
+ * import com.pulumi.junipermist.org.inputs.NetworktemplateSwitchMatchingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var networktemplateOne = new Networktemplate("networktemplateOne", NetworktemplateArgs.builder()
+ *             .name("networktemplate_one")
+ *             .orgId(terraformTest.id())
+ *             .dnsServers(            
+ *                 "8.8.8.8",
+ *                 "1.1.1.1")
+ *             .dnsSuffixes("mycorp.com")
+ *             .ntpServers("pool.ntp.org")
+ *             .additionalConfigCmds(            
+ *                 "set system hostname test",
+ *                 "set system services ssh root-login allow")
+ *             .networks(Map.ofEntries(
+ *                 Map.entry("network_one", NetworktemplateNetworksArgs.builder()
+ *                     .vlanId("10")
+ *                     .build()),
+ *                 Map.entry("network_two", NetworktemplateNetworksArgs.builder()
+ *                     .vlanId("11")
+ *                     .build())
+ *             ))
+ *             .portUsages(Map.of("trunk", NetworktemplatePortUsagesArgs.builder()
+ *                 .allNetworks(true)
+ *                 .enableQos(true)
+ *                 .mode("port_usage_one")
+ *                 .portNetwork("network_one")
+ *                 .build()))
+ *             .radiusConfig(NetworktemplateRadiusConfigArgs.builder()
+ *                 .acctInterimInterval(60)
+ *                 .coaEnabled(true)
+ *                 .network("network_one")
+ *                 .acctServers(NetworktemplateRadiusConfigAcctServerArgs.builder()
+ *                     .host("1.2.3.4")
+ *                     .secret("secret")
+ *                     .build())
+ *                 .authServers(NetworktemplateRadiusConfigAuthServerArgs.builder()
+ *                     .host("1.2.3.4")
+ *                     .secret("secret")
+ *                     .build())
+ *                 .build())
+ *             .switchMatching(NetworktemplateSwitchMatchingArgs.builder()
+ *                 .enable(true)
+ *                 .rules(NetworktemplateSwitchMatchingRuleArgs.builder()
+ *                     .name("switch_rule_one")
+ *                     .matchName("corp")
+ *                     .matchNameOffset(3)
+ *                     .matchRole("core")
+ *                     .portConfig(Map.of("ge-0/0/0-10", NetworktemplateSwitchMatchingRulePortConfigArgs.builder()
+ *                         .usage("port_usage_one")
+ *                         .build()))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_networktemplate` with:

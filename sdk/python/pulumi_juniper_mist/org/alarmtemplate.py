@@ -175,6 +175,37 @@ class Alarmtemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        alarmtemplate_one = junipermist.org.Alarmtemplate("alarmtemplate_one",
+            org_id=terraform_test["id"],
+            name="alarmtemplate_one",
+            delivery={
+                "enabled": True,
+                "to_org_admins": True,
+                "additional_emails": ["admin@mycorp.net"],
+            },
+            rules={
+                "health_check_failed": {
+                    "enabled": True,
+                },
+                "insufficient_capacity": {
+                    "enabled": True,
+                },
+                "insufficient_coverage": {
+                    "enabled": True,
+                },
+                "infra_arp_failure": {
+                    "enabled": True,
+                },
+                "arp_failure": {
+                    "enabled": True,
+                },
+            })
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_org_alarmtemplate` with:
@@ -209,6 +240,37 @@ class Alarmtemplate(pulumi.CustomResource):
         It is possible to use the `get_const_alarms` data source to get a list of the available alarms
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        alarmtemplate_one = junipermist.org.Alarmtemplate("alarmtemplate_one",
+            org_id=terraform_test["id"],
+            name="alarmtemplate_one",
+            delivery={
+                "enabled": True,
+                "to_org_admins": True,
+                "additional_emails": ["admin@mycorp.net"],
+            },
+            rules={
+                "health_check_failed": {
+                    "enabled": True,
+                },
+                "insufficient_capacity": {
+                    "enabled": True,
+                },
+                "insufficient_coverage": {
+                    "enabled": True,
+                },
+                "infra_arp_failure": {
+                    "enabled": True,
+                },
+                "arp_failure": {
+                    "enabled": True,
+                },
+            })
+        ```
 
         ## Import
 

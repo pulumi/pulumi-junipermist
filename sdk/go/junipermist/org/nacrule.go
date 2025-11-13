@@ -18,6 +18,47 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewNacrule(ctx, "nacrule_one", &org.NacruleArgs{
+//				Name:   pulumi.String("rule_one"),
+//				Action: pulumi.String("allow"),
+//				OrgId:  pulumi.Any(terraformTest.Id),
+//				Matching: &org.NacruleMatchingArgs{
+//					PortTypes: pulumi.StringArray{
+//						pulumi.String("wired"),
+//					},
+//					AuthType: pulumi.String("mab"),
+//					Nactags: pulumi.StringArray{
+//						pulumi.String("c055c60b-351a-4311-8ee5-9b7be5e5f902"),
+//					},
+//				},
+//				ApplyTags: pulumi.StringArray{
+//					pulumi.String("61c11327-5e1b-40ed-bbbf-5e95642c4f59"),
+//					pulumi.String("3f292454-ac5f-4a36-9aff-d0518d90b47a"),
+//				},
+//				Enabled: pulumi.Bool(true),
+//				Order:   pulumi.Int(9),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_nacrule` with:

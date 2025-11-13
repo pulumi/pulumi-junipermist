@@ -33,6 +33,47 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Servicepolicy;
+ * import com.pulumi.junipermist.org.ServicepolicyArgs;
+ * import com.pulumi.junipermist.org.inputs.ServicepolicyIdpArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var servicepolicyOne = new Servicepolicy("servicepolicyOne", ServicepolicyArgs.builder()
+ *             .orgId(terraformTest.id())
+ *             .tenants("guest")
+ *             .services("guest-internet")
+ *             .action("allow")
+ *             .idp(ServicepolicyIdpArgs.builder()
+ *                 .enabled(true)
+ *                 .profile("standard")
+ *                 .alertOnly(true)
+ *                 .build())
+ *             .name("Guest-IDP")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_servicepolicy` with:

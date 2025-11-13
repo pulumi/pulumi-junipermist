@@ -13,6 +13,24 @@ namespace Pulumi.JuniperMist.Org
     /// This resource is used to upload a WLAN Captive Web Portal background image.
     /// 
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var wlanOne = new JuniperMist.Org.WlanPortalImage("wlan_one", new()
+    ///     {
+    ///         SiteId = terraformTest.Id,
+    ///         WlanId = wlanOneMistOrg.Id,
+    ///         File = "/Users/johndoe/Documents/image.jpg",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [JuniperMistResourceType("junipermist:org/wlanPortalImage:WlanPortalImage")]
     public partial class WlanPortalImage : global::Pulumi.CustomResource

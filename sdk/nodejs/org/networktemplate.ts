@@ -14,6 +14,69 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const networktemplateOne = new junipermist.org.Networktemplate("networktemplate_one", {
+ *     name: "networktemplate_one",
+ *     orgId: terraformTest.id,
+ *     dnsServers: [
+ *         "8.8.8.8",
+ *         "1.1.1.1",
+ *     ],
+ *     dnsSuffixes: ["mycorp.com"],
+ *     ntpServers: ["pool.ntp.org"],
+ *     additionalConfigCmds: [
+ *         "set system hostname test",
+ *         "set system services ssh root-login allow",
+ *     ],
+ *     networks: {
+ *         network_one: {
+ *             vlanId: "10",
+ *         },
+ *         network_two: {
+ *             vlanId: "11",
+ *         },
+ *     },
+ *     portUsages: {
+ *         trunk: {
+ *             allNetworks: true,
+ *             enableQos: true,
+ *             mode: "port_usage_one",
+ *             portNetwork: "network_one",
+ *         },
+ *     },
+ *     radiusConfig: {
+ *         acctInterimInterval: 60,
+ *         coaEnabled: true,
+ *         network: "network_one",
+ *         acctServers: [{
+ *             host: "1.2.3.4",
+ *             secret: "secret",
+ *         }],
+ *         authServers: [{
+ *             host: "1.2.3.4",
+ *             secret: "secret",
+ *         }],
+ *     },
+ *     switchMatching: {
+ *         enable: true,
+ *         rules: [{
+ *             name: "switch_rule_one",
+ *             matchName: "corp",
+ *             matchNameOffset: 3,
+ *             matchRole: "core",
+ *             portConfig: {
+ *                 "ge-0/0/0-10": {
+ *                     usage: "port_usage_one",
+ *                 },
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_networktemplate` with:

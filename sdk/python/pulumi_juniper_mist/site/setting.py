@@ -1501,6 +1501,32 @@ class Setting(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        site_one = junipermist.site.Setting("site_one",
+            site_id=terraform_site["id"],
+            ap_updown_threshold=5,
+            device_updown_threshold=5,
+            auto_upgrade={
+                "enabled": True,
+                "day_of_week": "tue",
+                "time_of_day": "02:00",
+                "version": "beta",
+            },
+            config_auto_revert=True,
+            persist_config_on_device=True,
+            proxy={
+                "url": "http://myproxy:3128",
+            },
+            rogue={
+                "enabled": True,
+                "honeypot_enabled": True,
+                "min_duration": 5,
+            })
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_site_setting` with:
@@ -1563,6 +1589,32 @@ class Setting(pulumi.CustomResource):
         !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        site_one = junipermist.site.Setting("site_one",
+            site_id=terraform_site["id"],
+            ap_updown_threshold=5,
+            device_updown_threshold=5,
+            auto_upgrade={
+                "enabled": True,
+                "day_of_week": "tue",
+                "time_of_day": "02:00",
+                "version": "beta",
+            },
+            config_auto_revert=True,
+            persist_config_on_device=True,
+            proxy={
+                "url": "http://myproxy:3128",
+            },
+            rogue={
+                "enabled": True,
+                "honeypot_enabled": True,
+                "min_duration": 5,
+            })
+        ```
 
         ## Import
 

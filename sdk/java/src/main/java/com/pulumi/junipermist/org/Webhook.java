@@ -26,6 +26,53 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Webhook;
+ * import com.pulumi.junipermist.org.WebhookArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var webhookOne = new Webhook("webhookOne", WebhookArgs.builder()
+ *             .siteId(terraformTest.id())
+ *             .name("webhook_one")
+ *             .type("http-post")
+ *             .url("https://myserver.com:4321/")
+ *             .verifyCert(false)
+ *             .enabled(true)
+ *             .topics(            
+ *                 "device-events",
+ *                 "alarms",
+ *                 "audits",
+ *                 "client-join",
+ *                 "client-info",
+ *                 "client-sessions",
+ *                 "device-updowns",
+ *                 "mxedge-events",
+ *                 "nac-events",
+ *                 "nac-accounting")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_webhook` with:

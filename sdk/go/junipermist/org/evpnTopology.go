@@ -20,6 +20,73 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewEvpnTopology(ctx, "evpn_one", &org.EvpnTopologyArgs{
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				Name:  pulumi.String("evpn_one"),
+//				EvpnOptions: &org.EvpnTopologyEvpnOptionsArgs{
+//					RoutedAt: pulumi.String("core"),
+//					Overlay: &org.EvpnTopologyEvpnOptionsOverlayArgs{
+//						As: pulumi.Int(65000),
+//					},
+//					CoreAsBorder:        pulumi.Bool(true),
+//					AutoLoopbackSubnet:  pulumi.String("172.16.192.0/24"),
+//					AutoLoopbackSubnet6: pulumi.String("fd33:ab00:2::/64"),
+//					PerVlanVgaV4Mac:     pulumi.Bool(false),
+//					Underlay: &org.EvpnTopologyEvpnOptionsUnderlayArgs{
+//						AsBase:  pulumi.Int(65001),
+//						UseIpv6: pulumi.Bool(false),
+//						Subnet:  pulumi.String("10.255.240.0/20"),
+//					},
+//					AutoRouterIdSubnet: pulumi.String("172.16.254.0/23"),
+//				},
+//				Switches: org.EvpnTopologySwitchesMap{
+//					&org.EvpnTopologySwitchesArgs{
+//						Mac:  pulumi.String("020004000001"),
+//						Role: pulumi.String("core"),
+//					},
+//					&org.EvpnTopologySwitchesArgs{
+//						Mac:  pulumi.String("02000400002"),
+//						Role: pulumi.String("core"),
+//					},
+//					&org.EvpnTopologySwitchesArgs{
+//						Mac:  pulumi.String("02000400003"),
+//						Role: pulumi.String("distribution"),
+//					},
+//					&org.EvpnTopologySwitchesArgs{
+//						Mac:  pulumi.String("02000400004"),
+//						Role: pulumi.String("distribution"),
+//					},
+//					&org.EvpnTopologySwitchesArgs{
+//						Mac:  pulumi.String("02000400005"),
+//						Role: pulumi.String("access"),
+//					},
+//					&org.EvpnTopologySwitchesArgs{
+//						Mac:  pulumi.String("02000400006"),
+//						Role: pulumi.String("access"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_evpn_topology` with:

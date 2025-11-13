@@ -623,6 +623,31 @@ class Webhook(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        webhook_one = junipermist.org.Webhook("webhook_one",
+            site_id=terraform_test["id"],
+            name="webhook_one",
+            type="http-post",
+            url="https://myserver.com:4321/",
+            verify_cert=False,
+            enabled=True,
+            topics=[
+                "device-events",
+                "alarms",
+                "audits",
+                "client-join",
+                "client-info",
+                "client-sessions",
+                "device-updowns",
+                "mxedge-events",
+                "nac-events",
+                "nac-accounting",
+            ])
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_org_webhook` with:
@@ -666,6 +691,31 @@ class Webhook(pulumi.CustomResource):
         The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        webhook_one = junipermist.org.Webhook("webhook_one",
+            site_id=terraform_test["id"],
+            name="webhook_one",
+            type="http-post",
+            url="https://myserver.com:4321/",
+            verify_cert=False,
+            enabled=True,
+            topics=[
+                "device-events",
+                "alarms",
+                "audits",
+                "client-join",
+                "client-info",
+                "client-sessions",
+                "device-updowns",
+                "mxedge-events",
+                "nac-events",
+                "nac-accounting",
+            ])
+        ```
 
         ## Import
 

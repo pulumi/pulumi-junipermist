@@ -29,6 +29,66 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Rftemplate;
+ * import com.pulumi.junipermist.org.RftemplateArgs;
+ * import com.pulumi.junipermist.org.inputs.RftemplateBand5Args;
+ * import com.pulumi.junipermist.org.inputs.RftemplateBand6Args;
+ * import com.pulumi.junipermist.org.inputs.RftemplateBand24Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var rftemplateOne = new Rftemplate("rftemplateOne", RftemplateArgs.builder()
+ *             .name("rftemplate_one")
+ *             .orgId(terraformTest.id())
+ *             .band24Usage("auto")
+ *             .band5(RftemplateBand5Args.builder()
+ *                 .antGain(2)
+ *                 .power(8)
+ *                 .channels(                
+ *                     60,
+ *                     104,
+ *                     132)
+ *                 .bandwidth(20)
+ *                 .build())
+ *             .band6(RftemplateBand6Args.builder()
+ *                 .antGain(2)
+ *                 .power(8)
+ *                 .build())
+ *             .band24(RftemplateBand24Args.builder()
+ *                 .antGain(1)
+ *                 .allowRrmDisable(true)
+ *                 .powerMin(18)
+ *                 .powerMax(18)
+ *                 .bandwidth(20)
+ *                 .build())
+ *             .antGain5(2)
+ *             .antGain6(2)
+ *             .antGain24(1)
+ *             .countryCode("FR")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_rftemplate` with:
