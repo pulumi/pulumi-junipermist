@@ -18,6 +18,80 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewSetting(ctx, "terraform_test", &org.SettingArgs{
+//				OrgId:             pulumi.Any(terraformTestMistOrg.Id),
+//				ApUpdownThreshold: pulumi.Int(10),
+//				Cradlepoint: map[string]interface{}{
+//					"cpApiId":   "cp_api_id_test",
+//					"cpApiKey":  "secret",
+//					"ecmApiId":  "ecm_api_id_test",
+//					"ecmApiKey": "secret",
+//				},
+//				DeviceUpdownThreshold:  pulumi.Int(10),
+//				DisablePcap:            pulumi.Bool(false),
+//				DisableRemoteShell:     pulumi.Bool(true),
+//				GatewayUpdownThreshold: pulumi.Int(10),
+//				MxedgeMgmt: &org.SettingMxedgeMgmtArgs{
+//					MistPassword: pulumi.String("root_secret_password"),
+//					RootPassword: pulumi.String("root_secret_password"),
+//					OobIpType:    pulumi.String("dhcp"),
+//					OobIpType6:   pulumi.String("disabled"),
+//				},
+//				PasswordPolicy: &org.SettingPasswordPolicyArgs{
+//					Enabled:               pulumi.Bool(true),
+//					Freshness:             180,
+//					MinLength:             pulumi.Int(12),
+//					RequiresSpecialChar:   pulumi.Bool(true),
+//					RequiresTwoFactorAuth: pulumi.Bool(false),
+//				},
+//				Security: &org.SettingSecurityArgs{
+//					DisableLocalSsh: pulumi.Bool(true),
+//				},
+//				SwitchUpdownThreshold: pulumi.Int(10),
+//				SyntheticTest: &org.SettingSyntheticTestArgs{
+//					Disabled: pulumi.Bool(false),
+//					Vlans: org.SettingSyntheticTestVlanArray{
+//						&org.SettingSyntheticTestVlanArgs{
+//							VlanIds: pulumi.StringArray{
+//								pulumi.String("10"),
+//								pulumi.String("30"),
+//							},
+//							CustomTestUrls: pulumi.StringArray{
+//								pulumi.String("http://www.abc.com/"),
+//								pulumi.String("https://10.3.5.1:8080/about"),
+//							},
+//						},
+//						&org.SettingSyntheticTestVlanArgs{
+//							VlanIds: pulumi.StringArray{
+//								pulumi.String("20"),
+//							},
+//							Disabled: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//				UiIdleTimeout: pulumi.Int(120),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_setting` with:

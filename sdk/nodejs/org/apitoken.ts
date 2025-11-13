@@ -14,6 +14,29 @@ import * as utilities from "../utilities";
  * Rate limiting is done on an individual token basis, so if one token reaches its rate limit, it does not impact other tokens.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const apitokenOne = new junipermist.org.Apitoken("apitoken_one", {
+ *     orgId: terraformTest.id,
+ *     name: "apitoken_one",
+ *     privileges: [
+ *         {
+ *             scope: "site",
+ *             role: "admin",
+ *             siteId: "d7c8364e-xxxx-xxxx-xxxx-37eff0475b03",
+ *         },
+ *         {
+ *             scope: "site",
+ *             role: "read",
+ *             siteId: "08f8851b-xxxx-xxxx-xxxx-9ebb5aa62de4",
+ *         },
+ *     ],
+ *     srcIps: ["1.2.3.4/32"],
+ * });
+ * ```
  */
 export class Apitoken extends pulumi.CustomResource {
     /**

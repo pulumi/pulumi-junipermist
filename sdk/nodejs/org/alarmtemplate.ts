@@ -19,6 +19,38 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const alarmtemplateOne = new junipermist.org.Alarmtemplate("alarmtemplate_one", {
+ *     orgId: terraformTest.id,
+ *     name: "alarmtemplate_one",
+ *     delivery: {
+ *         enabled: true,
+ *         toOrgAdmins: true,
+ *         additionalEmails: ["admin@mycorp.net"],
+ *     },
+ *     rules: {
+ *         health_check_failed: {
+ *             enabled: true,
+ *         },
+ *         insufficient_capacity: {
+ *             enabled: true,
+ *         },
+ *         insufficient_coverage: {
+ *             enabled: true,
+ *         },
+ *         infra_arp_failure: {
+ *             enabled: true,
+ *         },
+ *         arp_failure: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_alarmtemplate` with:

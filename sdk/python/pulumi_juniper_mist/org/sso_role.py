@@ -123,6 +123,20 @@ class SsoRole(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        sso_role_one = junipermist.org.SsoRole("sso_role_one",
+            org_id=terraform_test["id"],
+            name="admin_sso",
+            privileges=[{
+                "scope": "site",
+                "role": "read",
+                "site_id": terraform_site["id"],
+            }])
+        ```
+
         ## Import
 
         Using `pulumi import`, import `mist_org_sso_role` with:
@@ -150,6 +164,20 @@ class SsoRole(pulumi.CustomResource):
         Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        sso_role_one = junipermist.org.SsoRole("sso_role_one",
+            org_id=terraform_test["id"],
+            name="admin_sso",
+            privileges=[{
+                "scope": "site",
+                "role": "read",
+                "site_id": terraform_site["id"],
+            }])
+        ```
 
         ## Import
 

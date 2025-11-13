@@ -22,6 +22,93 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/site"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := site.NewNetworktemplate(ctx, "networktemplate_one", &site.NetworktemplateArgs{
+//				SiteId: pulumi.Any(terraformTest.Id),
+//				DnsServers: pulumi.StringArray{
+//					pulumi.String("8.8.8.8"),
+//					pulumi.String("1.1.1.1"),
+//				},
+//				DnsSuffixes: pulumi.StringArray{
+//					pulumi.String("mycorp.com"),
+//				},
+//				NtpServers: pulumi.StringArray{
+//					pulumi.String("pool.ntp.org"),
+//				},
+//				AdditionalConfigCmds: pulumi.StringArray{
+//					pulumi.String("set system hostname test"),
+//					pulumi.String("set system services ssh root-login allow"),
+//				},
+//				Networks: site.NetworktemplateNetworksMap{
+//					"network_one": &site.NetworktemplateNetworksArgs{
+//						VlanId: pulumi.String("10"),
+//					},
+//					"network_two": &site.NetworktemplateNetworksArgs{
+//						VlanId: pulumi.String("11"),
+//					},
+//				},
+//				PortUsages: site.NetworktemplatePortUsagesMap{
+//					"trunk": &site.NetworktemplatePortUsagesArgs{
+//						AllNetworks: pulumi.Bool(true),
+//						EnableQos:   pulumi.Bool(true),
+//						Mode:        pulumi.String("port_usage_one"),
+//						PortNetwork: pulumi.String("network_one"),
+//					},
+//				},
+//				RadiusConfig: &site.NetworktemplateRadiusConfigArgs{
+//					AcctInterimInterval: pulumi.Int(60),
+//					CoaEnabled:          pulumi.Bool(true),
+//					Network:             pulumi.String("network_one"),
+//					AcctServers: site.NetworktemplateRadiusConfigAcctServerArray{
+//						&site.NetworktemplateRadiusConfigAcctServerArgs{
+//							Host:   pulumi.String("1.2.3.4"),
+//							Secret: pulumi.String("secret"),
+//						},
+//					},
+//					AuthServers: site.NetworktemplateRadiusConfigAuthServerArray{
+//						&site.NetworktemplateRadiusConfigAuthServerArgs{
+//							Host:   pulumi.String("1.2.3.4"),
+//							Secret: pulumi.String("secret"),
+//						},
+//					},
+//				},
+//				SwitchMatching: &site.NetworktemplateSwitchMatchingArgs{
+//					Enable: pulumi.Bool(true),
+//					Rules: site.NetworktemplateSwitchMatchingRuleArray{
+//						&site.NetworktemplateSwitchMatchingRuleArgs{
+//							Name:            pulumi.String("switch_rule_one"),
+//							MatchName:       pulumi.String("corp"),
+//							MatchNameOffset: pulumi.Int(3),
+//							MatchRole:       pulumi.String("core"),
+//							PortConfig: site.NetworktemplateSwitchMatchingRulePortConfigMap{
+//								"ge-0/0/0-10": &site.NetworktemplateSwitchMatchingRulePortConfigArgs{
+//									Usage: pulumi.String("port_usage_one"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_site_networktemplate` with:

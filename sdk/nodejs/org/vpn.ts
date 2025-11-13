@@ -11,6 +11,37 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const terraformTest = new junipermist.org.Setting("terraform_test", {
+ *     orgId: terraformTestMistOrg.id,
+ *     passwordPolicy: {
+ *         enabled: true,
+ *         minLength: 8,
+ *         requiresSpecialChar: true,
+ *         requiresTwoFactorAuth: true,
+ *     },
+ *     mistNac: {
+ *         euOnly: true,
+ *     },
+ *     syntheticTest: {
+ *         disabled: false,
+ *         vlans: [{
+ *             vlanIds: [
+ *                 "8",
+ *                 "999",
+ *             ],
+ *             disabled: true,
+ *         }],
+ *     },
+ *     apiPolicy: {
+ *         noReveal: false,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_vpn` with:

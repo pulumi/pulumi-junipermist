@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
  * This resource is used to upload a WLAN Captive Web Portal background image.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const wlanOne = new junipermist.org.WlanPortalImage("wlan_one", {
+ *     siteId: terraformTest.id,
+ *     wlanId: wlanOneMistOrg.id,
+ *     file: "/Users/johndoe/Documents/image.jpg",
+ * });
+ * ```
  */
 export class WlanPortalImage extends pulumi.CustomResource {
     /**

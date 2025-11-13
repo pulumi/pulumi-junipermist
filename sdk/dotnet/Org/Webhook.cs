@@ -18,6 +18,40 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var webhookOne = new JuniperMist.Org.Webhook("webhook_one", new()
+    ///     {
+    ///         SiteId = terraformTest.Id,
+    ///         Name = "webhook_one",
+    ///         Type = "http-post",
+    ///         Url = "https://myserver.com:4321/",
+    ///         VerifyCert = false,
+    ///         Enabled = true,
+    ///         Topics = new[]
+    ///         {
+    ///             "device-events",
+    ///             "alarms",
+    ///             "audits",
+    ///             "client-join",
+    ///             "client-info",
+    ///             "client-sessions",
+    ///             "device-updowns",
+    ///             "mxedge-events",
+    ///             "nac-events",
+    ///             "nac-accounting",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_webhook` with:

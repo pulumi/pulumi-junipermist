@@ -19,6 +19,46 @@ import (
 // Rate limiting is done on an individual token basis, so if one token reaches its rate limit, it does not impact other tokens.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewApitoken(ctx, "apitoken_one", &org.ApitokenArgs{
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				Name:  pulumi.String("apitoken_one"),
+//				Privileges: org.ApitokenPrivilegeArray{
+//					&org.ApitokenPrivilegeArgs{
+//						Scope:  pulumi.String("site"),
+//						Role:   pulumi.String("admin"),
+//						SiteId: pulumi.String("d7c8364e-xxxx-xxxx-xxxx-37eff0475b03"),
+//					},
+//					&org.ApitokenPrivilegeArgs{
+//						Scope:  pulumi.String("site"),
+//						Role:   pulumi.String("read"),
+//						SiteId: pulumi.String("08f8851b-xxxx-xxxx-xxxx-9ebb5aa62de4"),
+//					},
+//				},
+//				SrcIps: pulumi.StringArray{
+//					pulumi.String("1.2.3.4/32"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Apitoken struct {
 	pulumi.CustomResourceState
 

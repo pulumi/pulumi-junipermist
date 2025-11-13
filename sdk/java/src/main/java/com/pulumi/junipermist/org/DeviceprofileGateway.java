@@ -42,6 +42,109 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.DeviceprofileGateway;
+ * import com.pulumi.junipermist.org.DeviceprofileGatewayArgs;
+ * import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicyArgs;
+ * import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicyIdpArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var deviceprofileGwOne = new DeviceprofileGateway("deviceprofileGwOne", DeviceprofileGatewayArgs.builder()
+ *             .name("deviceprofile_gw_one")
+ *             .orgId(terraformTest.id())
+ *             .portConfig(Map.ofEntries(
+ *                 Map.entry("ge-0/0/3", DeviceprofileGatewayPortConfigArgs.builder()
+ *                     .name("FTTH")
+ *                     .usage("wan")
+ *                     .aggregated(false)
+ *                     .redundant(false)
+ *                     .critical(false)
+ *                     .wanType("broadband")
+ *                     .ipConfig(DeviceprofileGatewayPortConfigIpConfigArgs.builder()
+ *                         .type("static")
+ *                         .ip("192.168.1.8")
+ *                         .netmask("/24")
+ *                         .gateway("192.168.1.1")
+ *                         .build())
+ *                     .disableAutoneg(false)
+ *                     .speed("auto")
+ *                     .duplex("auto")
+ *                     .wanSourceNat(DeviceprofileGatewayPortConfigWanSourceNatArgs.builder()
+ *                         .disabled(false)
+ *                         .build())
+ *                     .vpnPaths(Map.of("SSR_HUB_DC-MPLS.OrgOverlay", DeviceprofileGatewayPortConfigVpnPathsArgs.builder()
+ *                         .key(0)
+ *                         .role("spoke")
+ *                         .bfdProfile("broadband")
+ *                         .build()))
+ *                     .build()),
+ *                 Map.entry("ge-0/0/5", DeviceprofileGatewayPortConfigArgs.builder()
+ *                     .usage("lan")
+ *                     .critical(false)
+ *                     .aggregated(true)
+ *                     .aeDisableLacp(false)
+ *                     .aeLacpForceUp(true)
+ *                     .aeIdx("0")
+ *                     .redundant(false)
+ *                     .networks(                    
+ *                         "PRD-Core",
+ *                         "PRD-Mgmt",
+ *                         "PRD-Lab")
+ *                     .build())
+ *             ))
+ *             .ipConfigs(Map.ofEntries(
+ *                 Map.entry("PRD-Core", DeviceprofileGatewayIpConfigsArgs.builder()
+ *                     .type("static")
+ *                     .ip("10.3.100.9")
+ *                     .netmask("/24")
+ *                     .build()),
+ *                 Map.entry("PRD-Mgmt", DeviceprofileGatewayIpConfigsArgs.builder()
+ *                     .type("static")
+ *                     .ip("10.3.172.1")
+ *                     .netmask("/24")
+ *                     .build()),
+ *                 Map.entry("PRD-Lab", DeviceprofileGatewayIpConfigsArgs.builder()
+ *                     .type("static")
+ *                     .ip("10.3.171.1")
+ *                     .netmask("/24")
+ *                     .build())
+ *             ))
+ *             .servicePolicies(DeviceprofileGatewayServicePolicyArgs.builder()
+ *                 .name("Policy-14")
+ *                 .tenants("PRD-Core")
+ *                 .services("any")
+ *                 .action("allow")
+ *                 .pathPreference("HUB")
+ *                 .idp(DeviceprofileGatewayServicePolicyIdpArgs.builder()
+ *                     .enabled(true)
+ *                     .profile("critical")
+ *                     .alertOnly(false)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_deviceprofile_gateway` with:

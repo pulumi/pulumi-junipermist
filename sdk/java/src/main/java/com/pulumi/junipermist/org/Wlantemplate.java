@@ -26,6 +26,42 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.org.Wlantemplate;
+ * import com.pulumi.junipermist.org.WlantemplateArgs;
+ * import com.pulumi.junipermist.org.inputs.WlantemplateAppliesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var wlantemplateOne = new Wlantemplate("wlantemplateOne", WlantemplateArgs.builder()
+ *             .name("wlantemplate_one")
+ *             .orgId(terraformTest.id())
+ *             .applies(WlantemplateAppliesArgs.builder()
+ *                 .siteIds(terraformSite.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_org_wlantemplate` with:

@@ -16,6 +16,119 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gatewaytemplateOne = new JuniperMist.Org.Gatewaytemplate("gatewaytemplate_one", new()
+    ///     {
+    ///         Type = "spoke",
+    ///         Name = "gatewaytemplate_one",
+    ///         OrgId = terraformTest.Id,
+    ///         PortConfig = 
+    ///         {
+    ///             { "ge-0/0/3", new JuniperMist.Org.Inputs.GatewaytemplatePortConfigArgs
+    ///             {
+    ///                 Name = "FTTH",
+    ///                 Usage = "wan",
+    ///                 Aggregated = false,
+    ///                 Redundant = false,
+    ///                 Critical = false,
+    ///                 WanType = "broadband",
+    ///                 IpConfig = new JuniperMist.Org.Inputs.GatewaytemplatePortConfigIpConfigArgs
+    ///                 {
+    ///                     Type = "static",
+    ///                     Ip = "192.168.1.8",
+    ///                     Netmask = "/24",
+    ///                     Gateway = "192.168.1.1",
+    ///                 },
+    ///                 DisableAutoneg = false,
+    ///                 Speed = "auto",
+    ///                 Duplex = "auto",
+    ///                 WanSourceNat = new JuniperMist.Org.Inputs.GatewaytemplatePortConfigWanSourceNatArgs
+    ///                 {
+    ///                     Disabled = false,
+    ///                 },
+    ///                 VpnPaths = 
+    ///                 {
+    ///                     { "SSR_HUB_DC-MPLS.OrgOverlay", new JuniperMist.Org.Inputs.GatewaytemplatePortConfigVpnPathsArgs
+    ///                     {
+    ///                         Key = 0,
+    ///                         Role = "spoke",
+    ///                         BfdProfile = "broadband",
+    ///                     } },
+    ///                 },
+    ///             } },
+    ///             { "ge-0/0/5", new JuniperMist.Org.Inputs.GatewaytemplatePortConfigArgs
+    ///             {
+    ///                 Usage = "lan",
+    ///                 Critical = false,
+    ///                 Aggregated = true,
+    ///                 AeDisableLacp = false,
+    ///                 AeLacpForceUp = true,
+    ///                 AeIdx = "0",
+    ///                 Redundant = false,
+    ///                 Networks = new[]
+    ///                 {
+    ///                     "PRD-Core",
+    ///                     "PRD-Mgmt",
+    ///                     "PRD-Lab",
+    ///                 },
+    ///             } },
+    ///         },
+    ///         IpConfigs = 
+    ///         {
+    ///             { "PRD-Core", new JuniperMist.Org.Inputs.GatewaytemplateIpConfigsArgs
+    ///             {
+    ///                 Type = "static",
+    ///                 Ip = "10.3.100.9",
+    ///                 Netmask = "/24",
+    ///             } },
+    ///             { "PRD-Mgmt", new JuniperMist.Org.Inputs.GatewaytemplateIpConfigsArgs
+    ///             {
+    ///                 Type = "static",
+    ///                 Ip = "10.3.172.1",
+    ///                 Netmask = "/24",
+    ///             } },
+    ///             { "PRD-Lab", new JuniperMist.Org.Inputs.GatewaytemplateIpConfigsArgs
+    ///             {
+    ///                 Type = "static",
+    ///                 Ip = "10.3.171.1",
+    ///                 Netmask = "/24",
+    ///             } },
+    ///         },
+    ///         ServicePolicies = new[]
+    ///         {
+    ///             new JuniperMist.Org.Inputs.GatewaytemplateServicePolicyArgs
+    ///             {
+    ///                 Name = "Policy-14",
+    ///                 Tenants = new[]
+    ///                 {
+    ///                     "PRD-Core",
+    ///                 },
+    ///                 Services = new[]
+    ///                 {
+    ///                     "any",
+    ///                 },
+    ///                 Action = "allow",
+    ///                 PathPreference = "HUB",
+    ///                 Idp = new JuniperMist.Org.Inputs.GatewaytemplateServicePolicyIdpArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     Profile = "critical",
+    ///                     AlertOnly = false,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_gatewaytemplate` with:

@@ -17,6 +17,25 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const serviceOne = new junipermist.org.Service("service_one", {
+ *     orgId: terraformTest.id,
+ *     name: "service_one",
+ *     addresses: [
+ *         "10.3.0.0/24",
+ *         "10.4.0.0/24",
+ *     ],
+ *     type: "custom",
+ *     specs: [{
+ *         protocol: "tcp",
+ *         portRange: "443",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_service` with:

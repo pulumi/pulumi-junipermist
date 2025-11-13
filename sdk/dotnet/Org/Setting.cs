@@ -16,6 +16,83 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var terraformTest = new JuniperMist.Org.Setting("terraform_test", new()
+    ///     {
+    ///         OrgId = terraformTestMistOrg.Id,
+    ///         ApUpdownThreshold = 10,
+    ///         Cradlepoint = new JuniperMist.Org.Inputs.SettingCradlepointArgs
+    ///         {
+    ///             CpApiId = "cp_api_id_test",
+    ///             CpApiKey = "secret",
+    ///             EcmApiId = "ecm_api_id_test",
+    ///             EcmApiKey = "secret",
+    ///         },
+    ///         DeviceUpdownThreshold = 10,
+    ///         DisablePcap = false,
+    ///         DisableRemoteShell = true,
+    ///         GatewayUpdownThreshold = 10,
+    ///         MxedgeMgmt = new JuniperMist.Org.Inputs.SettingMxedgeMgmtArgs
+    ///         {
+    ///             MistPassword = "root_secret_password",
+    ///             RootPassword = "root_secret_password",
+    ///             OobIpType = "dhcp",
+    ///             OobIpType6 = "disabled",
+    ///         },
+    ///         PasswordPolicy = new JuniperMist.Org.Inputs.SettingPasswordPolicyArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Freshness = 180,
+    ///             MinLength = 12,
+    ///             RequiresSpecialChar = true,
+    ///             RequiresTwoFactorAuth = false,
+    ///         },
+    ///         Security = new JuniperMist.Org.Inputs.SettingSecurityArgs
+    ///         {
+    ///             DisableLocalSsh = true,
+    ///         },
+    ///         SwitchUpdownThreshold = 10,
+    ///         SyntheticTest = new JuniperMist.Org.Inputs.SettingSyntheticTestArgs
+    ///         {
+    ///             Disabled = false,
+    ///             Vlans = new[]
+    ///             {
+    ///                 new JuniperMist.Org.Inputs.SettingSyntheticTestVlanArgs
+    ///                 {
+    ///                     VlanIds = new[]
+    ///                     {
+    ///                         "10",
+    ///                         "30",
+    ///                     },
+    ///                     CustomTestUrls = new[]
+    ///                     {
+    ///                         "http://www.abc.com/",
+    ///                         "https://10.3.5.1:8080/about",
+    ///                     },
+    ///                 },
+    ///                 new JuniperMist.Org.Inputs.SettingSyntheticTestVlanArgs
+    ///                 {
+    ///                     VlanIds = new[]
+    ///                     {
+    ///                         "20",
+    ///                     },
+    ///                     Disabled = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///         UiIdleTimeout = 120,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_setting` with:

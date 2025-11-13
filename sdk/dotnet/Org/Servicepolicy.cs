@@ -20,6 +20,38 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var servicepolicyOne = new JuniperMist.Org.Servicepolicy("servicepolicy_one", new()
+    ///     {
+    ///         OrgId = terraformTest.Id,
+    ///         Tenants = new[]
+    ///         {
+    ///             "guest",
+    ///         },
+    ///         Services = new[]
+    ///         {
+    ///             "guest-internet",
+    ///         },
+    ///         Action = "allow",
+    ///         Idp = new JuniperMist.Org.Inputs.ServicepolicyIdpArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Profile = "standard",
+    ///             AlertOnly = true,
+    ///         },
+    ///         Name = "Guest-IDP",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_servicepolicy` with:

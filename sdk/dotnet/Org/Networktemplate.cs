@@ -17,6 +17,105 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var networktemplateOne = new JuniperMist.Org.Networktemplate("networktemplate_one", new()
+    ///     {
+    ///         Name = "networktemplate_one",
+    ///         OrgId = terraformTest.Id,
+    ///         DnsServers = new[]
+    ///         {
+    ///             "8.8.8.8",
+    ///             "1.1.1.1",
+    ///         },
+    ///         DnsSuffixes = new[]
+    ///         {
+    ///             "mycorp.com",
+    ///         },
+    ///         NtpServers = new[]
+    ///         {
+    ///             "pool.ntp.org",
+    ///         },
+    ///         AdditionalConfigCmds = new[]
+    ///         {
+    ///             "set system hostname test",
+    ///             "set system services ssh root-login allow",
+    ///         },
+    ///         Networks = 
+    ///         {
+    ///             { "network_one", new JuniperMist.Org.Inputs.NetworktemplateNetworksArgs
+    ///             {
+    ///                 VlanId = "10",
+    ///             } },
+    ///             { "network_two", new JuniperMist.Org.Inputs.NetworktemplateNetworksArgs
+    ///             {
+    ///                 VlanId = "11",
+    ///             } },
+    ///         },
+    ///         PortUsages = 
+    ///         {
+    ///             { "trunk", new JuniperMist.Org.Inputs.NetworktemplatePortUsagesArgs
+    ///             {
+    ///                 AllNetworks = true,
+    ///                 EnableQos = true,
+    ///                 Mode = "port_usage_one",
+    ///                 PortNetwork = "network_one",
+    ///             } },
+    ///         },
+    ///         RadiusConfig = new JuniperMist.Org.Inputs.NetworktemplateRadiusConfigArgs
+    ///         {
+    ///             AcctInterimInterval = 60,
+    ///             CoaEnabled = true,
+    ///             Network = "network_one",
+    ///             AcctServers = new[]
+    ///             {
+    ///                 new JuniperMist.Org.Inputs.NetworktemplateRadiusConfigAcctServerArgs
+    ///                 {
+    ///                     Host = "1.2.3.4",
+    ///                     Secret = "secret",
+    ///                 },
+    ///             },
+    ///             AuthServers = new[]
+    ///             {
+    ///                 new JuniperMist.Org.Inputs.NetworktemplateRadiusConfigAuthServerArgs
+    ///                 {
+    ///                     Host = "1.2.3.4",
+    ///                     Secret = "secret",
+    ///                 },
+    ///             },
+    ///         },
+    ///         SwitchMatching = new JuniperMist.Org.Inputs.NetworktemplateSwitchMatchingArgs
+    ///         {
+    ///             Enable = true,
+    ///             Rules = new[]
+    ///             {
+    ///                 new JuniperMist.Org.Inputs.NetworktemplateSwitchMatchingRuleArgs
+    ///                 {
+    ///                     Name = "switch_rule_one",
+    ///                     MatchName = "corp",
+    ///                     MatchNameOffset = 3,
+    ///                     MatchRole = "core",
+    ///                     PortConfig = 
+    ///                     {
+    ///                         { "ge-0/0/0-10", new JuniperMist.Org.Inputs.NetworktemplateSwitchMatchingRulePortConfigArgs
+    ///                         {
+    ///                             Usage = "port_usage_one",
+    ///                         } },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_networktemplate` with:

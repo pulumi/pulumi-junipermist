@@ -18,6 +18,56 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using JuniperMist = Pulumi.JuniperMist;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var idpprofileOne = new JuniperMist.Org.Idpprofile("idpprofile_one", new()
+    ///     {
+    ///         OrgId = terraformTest.Id,
+    ///         BaseProfile = "standard",
+    ///         Overwrites = new[]
+    ///         {
+    ///             new JuniperMist.Org.Inputs.IdpprofileOverwriteArgs
+    ///             {
+    ///                 Name = "server_bypass",
+    ///                 Matching = new JuniperMist.Org.Inputs.IdpprofileOverwriteMatchingArgs
+    ///                 {
+    ///                     Severity = new() { },
+    ///                     DstSubnet = new() { },
+    ///                     AttackName = new[]
+    ///                     {
+    ///                         "SSL:OVERFLOW:KEY-ARG-NO-ENTROPY",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new JuniperMist.Org.Inputs.IdpprofileOverwriteArgs
+    ///             {
+    ///                 Name = "guest-bypass",
+    ///                 Matching = new JuniperMist.Org.Inputs.IdpprofileOverwriteMatchingArgs
+    ///                 {
+    ///                     Severity = new() { },
+    ///                     DstSubnet = new[]
+    ///                     {
+    ///                         "8.8.8.8/32",
+    ///                     },
+    ///                     AttackName = new[]
+    ///                     {
+    ///                         "UDP:ZERO-DATA",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Name = "idpprofile_one",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_org_idpprofile` with:
