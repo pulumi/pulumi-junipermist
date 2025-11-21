@@ -175,8 +175,10 @@ type DeviceprofileGateway struct {
 	TunnelConfigs         DeviceprofileGatewayTunnelConfigsMapOutput         `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions DeviceprofileGatewayTunnelProviderOptionsPtrOutput `pulumi:"tunnelProviderOptions"`
 	// Device Type. enum: `gateway`
-	Type      pulumi.StringOutput                    `pulumi:"type"`
-	VrfConfig DeviceprofileGatewayVrfConfigPtrOutput `pulumi:"vrfConfig"`
+	Type pulumi.StringOutput `pulumi:"type"`
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg pulumi.StringPtrOutput                 `pulumi:"urlFilteringDenyMsg"`
+	VrfConfig           DeviceprofileGatewayVrfConfigPtrOutput `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances DeviceprofileGatewayVrfInstancesMapOutput `pulumi:"vrfInstances"`
 }
@@ -254,8 +256,10 @@ type deviceprofileGatewayState struct {
 	TunnelConfigs         map[string]DeviceprofileGatewayTunnelConfigs `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions *DeviceprofileGatewayTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
 	// Device Type. enum: `gateway`
-	Type      *string                        `pulumi:"type"`
-	VrfConfig *DeviceprofileGatewayVrfConfig `pulumi:"vrfConfig"`
+	Type *string `pulumi:"type"`
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg *string                        `pulumi:"urlFilteringDenyMsg"`
+	VrfConfig           *DeviceprofileGatewayVrfConfig `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances map[string]DeviceprofileGatewayVrfInstances `pulumi:"vrfInstances"`
 }
@@ -301,8 +305,10 @@ type DeviceprofileGatewayState struct {
 	TunnelConfigs         DeviceprofileGatewayTunnelConfigsMapInput
 	TunnelProviderOptions DeviceprofileGatewayTunnelProviderOptionsPtrInput
 	// Device Type. enum: `gateway`
-	Type      pulumi.StringPtrInput
-	VrfConfig DeviceprofileGatewayVrfConfigPtrInput
+	Type pulumi.StringPtrInput
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg pulumi.StringPtrInput
+	VrfConfig           DeviceprofileGatewayVrfConfigPtrInput
 	// Property key is the network name
 	VrfInstances DeviceprofileGatewayVrfInstancesMapInput
 }
@@ -351,7 +357,9 @@ type deviceprofileGatewayArgs struct {
 	// Property key is the tunnel name
 	TunnelConfigs         map[string]DeviceprofileGatewayTunnelConfigs `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions *DeviceprofileGatewayTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
-	VrfConfig             *DeviceprofileGatewayVrfConfig               `pulumi:"vrfConfig"`
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg *string                        `pulumi:"urlFilteringDenyMsg"`
+	VrfConfig           *DeviceprofileGatewayVrfConfig `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances map[string]DeviceprofileGatewayVrfInstances `pulumi:"vrfInstances"`
 }
@@ -397,7 +405,9 @@ type DeviceprofileGatewayArgs struct {
 	// Property key is the tunnel name
 	TunnelConfigs         DeviceprofileGatewayTunnelConfigsMapInput
 	TunnelProviderOptions DeviceprofileGatewayTunnelProviderOptionsPtrInput
-	VrfConfig             DeviceprofileGatewayVrfConfigPtrInput
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg pulumi.StringPtrInput
+	VrfConfig           DeviceprofileGatewayVrfConfigPtrInput
 	// Property key is the network name
 	VrfInstances DeviceprofileGatewayVrfInstancesMapInput
 }
@@ -605,6 +615,11 @@ func (o DeviceprofileGatewayOutput) TunnelProviderOptions() DeviceprofileGateway
 // Device Type. enum: `gateway`
 func (o DeviceprofileGatewayOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// When a service policy denies a app_category, what message to show in user's browser
+func (o DeviceprofileGatewayOutput) UrlFilteringDenyMsg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringPtrOutput { return v.UrlFilteringDenyMsg }).(pulumi.StringPtrOutput)
 }
 
 func (o DeviceprofileGatewayOutput) VrfConfig() DeviceprofileGatewayVrfConfigPtrOutput {

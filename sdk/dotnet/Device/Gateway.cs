@@ -106,6 +106,12 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.GatewayExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
 
         /// <summary>
+        /// Gateway settings
+        /// </summary>
+        [Output("gatewayMgmt")]
+        public Output<Outputs.GatewayGatewayMgmt?> GatewayMgmt { get; private set; } = null!;
+
+        /// <summary>
         /// Property key is the profile name
         /// </summary>
         [Output("idpProfiles")]
@@ -230,6 +236,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// When a service policy denies a app_category, what message to show in user's browser
+        /// </summary>
+        [Output("urlFilteringDenyMsg")]
+        public Output<string?> UrlFilteringDenyMsg { get; private set; } = null!;
 
         /// <summary>
         /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
@@ -379,6 +391,12 @@ namespace Pulumi.JuniperMist.Device
             set => _extraRoutes6 = value;
         }
 
+        /// <summary>
+        /// Gateway settings
+        /// </summary>
+        [Input("gatewayMgmt")]
+        public Input<Inputs.GatewayGatewayMgmtArgs>? GatewayMgmt { get; set; }
+
         [Input("idpProfiles")]
         private InputMap<Inputs.GatewayIdpProfilesArgs>? _idpProfiles;
 
@@ -526,6 +544,12 @@ namespace Pulumi.JuniperMist.Device
         [Input("tunnelProviderOptions")]
         public Input<Inputs.GatewayTunnelProviderOptionsArgs>? TunnelProviderOptions { get; set; }
 
+        /// <summary>
+        /// When a service policy denies a app_category, what message to show in user's browser
+        /// </summary>
+        [Input("urlFilteringDenyMsg")]
+        public Input<string>? UrlFilteringDenyMsg { get; set; }
+
         [Input("vars")]
         private InputMap<string>? _vars;
 
@@ -646,6 +670,12 @@ namespace Pulumi.JuniperMist.Device
             get => _extraRoutes6 ?? (_extraRoutes6 = new InputMap<Inputs.GatewayExtraRoutes6GetArgs>());
             set => _extraRoutes6 = value;
         }
+
+        /// <summary>
+        /// Gateway settings
+        /// </summary>
+        [Input("gatewayMgmt")]
+        public Input<Inputs.GatewayGatewayMgmtGetArgs>? GatewayMgmt { get; set; }
 
         [Input("idpProfiles")]
         private InputMap<Inputs.GatewayIdpProfilesGetArgs>? _idpProfiles;
@@ -829,6 +859,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// When a service policy denies a app_category, what message to show in user's browser
+        /// </summary>
+        [Input("urlFilteringDenyMsg")]
+        public Input<string>? UrlFilteringDenyMsg { get; set; }
 
         [Input("vars")]
         private InputMap<string>? _vars;

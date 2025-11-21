@@ -26,14 +26,14 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * enum: `inprogress`, `failed`, `upgraded`
+     * enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return enum: `inprogress`, `failed`, `upgraded`
+     * @return enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
      * 
      */
     public Optional<Output<String>> status() {
@@ -107,7 +107,7 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status enum: `inprogress`, `failed`, `upgraded`
+         * @param status enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status enum: `inprogress`, `failed`, `upgraded`
+         * @param status enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
          * 
          * @return builder
          * 

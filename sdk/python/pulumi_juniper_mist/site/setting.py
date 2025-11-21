@@ -2133,7 +2133,7 @@ class Setting(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def ssr(self) -> pulumi.Output['outputs.SettingSsr']:
+    def ssr(self) -> pulumi.Output[Optional['outputs.SettingSsr']]:
         return pulumi.get(self, "ssr")
 
     @_builtins.property

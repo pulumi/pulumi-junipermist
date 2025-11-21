@@ -53,6 +53,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortMirroring>? PortMirroring;
+        public readonly Outputs.NetworktemplateSwitchMatchingRuleStpConfig? StpConfig;
 
         [OutputConstructor]
         private NetworktemplateSwitchMatchingRule(
@@ -74,7 +75,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortConfig>? portConfig,
 
-            ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortMirroring>? portMirroring)
+            ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortMirroring>? portMirroring,
+
+            Outputs.NetworktemplateSwitchMatchingRuleStpConfig? stpConfig)
         {
             AdditionalConfigCmds = additionalConfigCmds;
             IpConfig = ipConfig;
@@ -86,6 +89,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             OobIpConfig = oobIpConfig;
             PortConfig = portConfig;
             PortMirroring = portMirroring;
+            StpConfig = stpConfig;
         }
     }
 }

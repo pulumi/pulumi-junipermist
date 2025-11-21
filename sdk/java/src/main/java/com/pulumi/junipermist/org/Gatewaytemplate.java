@@ -435,6 +435,20 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
     public Output<String> type() {
         return this.type;
     }
+    /**
+     * When a service policy denies a app_category, what message to show in user&#39;s browser
+     * 
+     */
+    @Export(name="urlFilteringDenyMsg", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> urlFilteringDenyMsg;
+
+    /**
+     * @return When a service policy denies a app_category, what message to show in user&#39;s browser
+     * 
+     */
+    public Output<Optional<String>> urlFilteringDenyMsg() {
+        return Codegen.optional(this.urlFilteringDenyMsg);
+    }
     @Export(name="vrfConfig", refs={GatewaytemplateVrfConfig.class}, tree="[0]")
     private Output</* @Nullable */ GatewaytemplateVrfConfig> vrfConfig;
 

@@ -236,7 +236,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableArray<string>> SshKeys { get; private set; } = null!;
 
         [Output("ssr")]
-        public Output<Outputs.SettingSsr> Ssr { get; private set; } = null!;
+        public Output<Outputs.SettingSsr?> Ssr { get; private set; } = null!;
 
         /// <summary>
         /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `DeviceUpdownThreshold` is ignored.

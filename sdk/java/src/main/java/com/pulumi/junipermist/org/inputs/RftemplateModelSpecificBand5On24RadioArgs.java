@@ -48,14 +48,14 @@ public final class RftemplateModelSpecificBand5On24RadioArgs extends com.pulumi.
     }
 
     /**
-     * channel width for the 5GHz band. enum: `20`, `40`, `80`
+     * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return channel width for the 5GHz band. enum: `20`, `40`, `80`
+     * @return channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -225,7 +225,7 @@ public final class RftemplateModelSpecificBand5On24RadioArgs extends com.pulumi.
         }
 
         /**
-         * @param bandwidth channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * @param bandwidth channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class RftemplateModelSpecificBand5On24RadioArgs extends com.pulumi.
         }
 
         /**
-         * @param bandwidth channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * @param bandwidth channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          * 
          * @return builder
          * 

@@ -12,8 +12,11 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayDhcpdConfigConfigFixedBindingsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("ip", required: true)]
-        public Input<string> Ip { get; set; } = null!;
+        [Input("ip")]
+        public Input<string>? Ip { get; set; }
+
+        [Input("ip6")]
+        public Input<string>? Ip6 { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

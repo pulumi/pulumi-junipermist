@@ -21,14 +21,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     public static final NetworktemplatePortUsagesArgs Empty = new NetworktemplatePortUsagesArgs();
 
     /**
-     * Only if `mode`==`trunk` whether to trunk all network/vlans
+     * Only if `mode`==`trunk`. Whether to trunk all network/vlans
      * 
      */
     @Import(name="allNetworks")
     private @Nullable Output<Boolean> allNetworks;
 
     /**
-     * @return Only if `mode`==`trunk` whether to trunk all network/vlans
+     * @return Only if `mode`==`trunk`. Whether to trunk all network/vlans
      * 
      */
     public Optional<Output<Boolean>> allNetworks() {
@@ -66,14 +66,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
      * 
      */
     @Import(name="bypassAuthWhenServerDown")
     private @Nullable Output<Boolean> bypassAuthWhenServerDown;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
      * 
      */
     public Optional<Output<Boolean>> bypassAuthWhenServerDown() {
@@ -81,14 +81,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+     * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
     @Import(name="bypassAuthWhenServerDownForUnknownClient")
     private @Nullable Output<Boolean> bypassAuthWhenServerDownForUnknownClient;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+     * @return Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
     public Optional<Output<Boolean>> bypassAuthWhenServerDownForUnknownClient() {
@@ -126,14 +126,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+     * Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
      * 
      */
     @Import(name="disableAutoneg")
     private @Nullable Output<Boolean> disableAutoneg;
 
     /**
-     * @return Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+     * @return Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
      * 
      */
     public Optional<Output<Boolean>> disableAutoneg() {
@@ -141,14 +141,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` whether the port is disabled
+     * Only if `mode`!=`dynamic`. Whether the port is disabled
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Only if `mode`!=`dynamic` whether the port is disabled
+     * @return Only if `mode`!=`dynamic`. Whether the port is disabled
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -156,14 +156,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+     * Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
      * 
      */
     @Import(name="duplex")
     private @Nullable Output<String> duplex;
 
     /**
-     * @return Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+     * @return Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
      * 
      */
     public Optional<Output<String>> duplex() {
@@ -186,14 +186,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
      * 
      */
     @Import(name="enableMacAuth")
     private @Nullable Output<Boolean> enableMacAuth;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
      * 
      */
     public Optional<Output<Boolean>> enableMacAuth() {
@@ -216,14 +216,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
      * 
      */
     @Import(name="guestNetwork")
     private @Nullable Output<String> guestNetwork;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
      * 
      */
     public Optional<Output<String>> guestNetwork() {
@@ -231,14 +231,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+     * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     @Import(name="interIsolationNetworkLink")
     private @Nullable Output<Boolean> interIsolationNetworkLink;
 
     /**
-     * @return `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     public Optional<Output<Boolean>> interIsolationNetworkLink() {
@@ -246,14 +246,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` interSwitchLink is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+     * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     @Import(name="interSwitchLink")
     private @Nullable Output<Boolean> interSwitchLink;
 
     /**
-     * @return Only if `mode`!=`dynamic` interSwitchLink is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     public Optional<Output<Boolean>> interSwitchLink() {
@@ -366,14 +366,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+     * Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
      * 
      */
     @Import(name="persistMac")
     private @Nullable Output<Boolean> persistMac;
 
     /**
-     * @return Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+     * @return Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
      * 
      */
     public Optional<Output<Boolean>> persistMac() {
@@ -381,14 +381,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+     * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
      * 
      */
     @Import(name="poeDisabled")
     private @Nullable Output<Boolean> poeDisabled;
 
     /**
-     * @return Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+     * @return Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
      * 
      */
     public Optional<Output<Boolean>> poeDisabled() {
@@ -396,14 +396,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+     * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
      * 
      */
     @Import(name="portAuth")
     private @Nullable Output<String> portAuth;
 
     /**
-     * @return Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+     * @return Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
      * 
      */
     public Optional<Output<String>> portAuth() {
@@ -411,14 +411,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+     * Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
      * 
      */
     @Import(name="portNetwork")
     private @Nullable Output<String> portNetwork;
 
     /**
-     * @return Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+     * @return Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
      * 
      */
     public Optional<Output<String>> portNetwork() {
@@ -471,14 +471,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
      * 
      */
     @Import(name="serverFailNetwork")
     private @Nullable Output<String> serverFailNetwork;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
      * 
      */
     public Optional<Output<String>> serverFailNetwork() {
@@ -486,14 +486,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
      * 
      */
     @Import(name="serverRejectNetwork")
     private @Nullable Output<String> serverRejectNetwork;
 
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
      * 
      */
     public Optional<Output<String>> serverRejectNetwork() {
@@ -531,32 +531,78 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+     * Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+     * 
+     */
+    @Import(name="stpDisable")
+    private @Nullable Output<Boolean> stpDisable;
+
+    /**
+     * @return Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+     * 
+     */
+    public Optional<Output<Boolean>> stpDisable() {
+        return Optional.ofNullable(this.stpDisable);
+    }
+
+    /**
+     * Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
      * 
      */
     @Import(name="stpEdge")
     private @Nullable Output<Boolean> stpEdge;
 
     /**
-     * @return Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+     * @return Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
      * 
      */
     public Optional<Output<Boolean>> stpEdge() {
         return Optional.ofNullable(this.stpEdge);
     }
 
+    /**
+     * Only if `mode`!=`dynamic`
+     * 
+     */
     @Import(name="stpNoRootPort")
     private @Nullable Output<Boolean> stpNoRootPort;
 
+    /**
+     * @return Only if `mode`!=`dynamic`
+     * 
+     */
     public Optional<Output<Boolean>> stpNoRootPort() {
         return Optional.ofNullable(this.stpNoRootPort);
     }
 
+    /**
+     * Only if `mode`!=`dynamic`
+     * 
+     */
     @Import(name="stpP2p")
     private @Nullable Output<Boolean> stpP2p;
 
+    /**
+     * @return Only if `mode`!=`dynamic`
+     * 
+     */
     public Optional<Output<Boolean>> stpP2p() {
         return Optional.ofNullable(this.stpP2p);
+    }
+
+    /**
+     * Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+     * 
+     */
+    @Import(name="stpRequired")
+    private @Nullable Output<Boolean> stpRequired;
+
+    /**
+     * @return Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+     * 
+     */
+    public Optional<Output<Boolean>> stpRequired() {
+        return Optional.ofNullable(this.stpRequired);
     }
 
     /**
@@ -590,14 +636,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+     * Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
      */
     @Import(name="voipNetwork")
     private @Nullable Output<String> voipNetwork;
 
     /**
-     * @return Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+     * @return Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
      */
     public Optional<Output<String>> voipNetwork() {
@@ -641,9 +687,11 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         this.serverRejectNetwork = $.serverRejectNetwork;
         this.speed = $.speed;
         this.stormControl = $.stormControl;
+        this.stpDisable = $.stpDisable;
         this.stpEdge = $.stpEdge;
         this.stpNoRootPort = $.stpNoRootPort;
         this.stpP2p = $.stpP2p;
+        this.stpRequired = $.stpRequired;
         this.uiEvpntopoId = $.uiEvpntopoId;
         this.useVstp = $.useVstp;
         this.voipNetwork = $.voipNetwork;
@@ -668,7 +716,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allNetworks Only if `mode`==`trunk` whether to trunk all network/vlans
+         * @param allNetworks Only if `mode`==`trunk`. Whether to trunk all network/vlans
          * 
          * @return builder
          * 
@@ -679,7 +727,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allNetworks Only if `mode`==`trunk` whether to trunk all network/vlans
+         * @param allNetworks Only if `mode`==`trunk`. Whether to trunk all network/vlans
          * 
          * @return builder
          * 
@@ -731,7 +779,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bypassAuthWhenServerDown Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDown Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
          * 
          * @return builder
          * 
@@ -742,7 +790,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bypassAuthWhenServerDown Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDown Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
          * 
          * @return builder
          * 
@@ -752,7 +800,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bypassAuthWhenServerDownForUnknownClient Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDownForUnknownClient Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          * 
          * @return builder
          * 
@@ -763,7 +811,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bypassAuthWhenServerDownForUnknownClient Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDownForUnknownClient Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          * 
          * @return builder
          * 
@@ -815,7 +863,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param disableAutoneg Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+         * @param disableAutoneg Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
          * 
          * @return builder
          * 
@@ -826,7 +874,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param disableAutoneg Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+         * @param disableAutoneg Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
          * 
          * @return builder
          * 
@@ -836,7 +884,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param disabled Only if `mode`!=`dynamic` whether the port is disabled
+         * @param disabled Only if `mode`!=`dynamic`. Whether the port is disabled
          * 
          * @return builder
          * 
@@ -847,7 +895,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param disabled Only if `mode`!=`dynamic` whether the port is disabled
+         * @param disabled Only if `mode`!=`dynamic`. Whether the port is disabled
          * 
          * @return builder
          * 
@@ -857,7 +905,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param duplex Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+         * @param duplex Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
          * 
          * @return builder
          * 
@@ -868,7 +916,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param duplex Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+         * @param duplex Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
          * 
          * @return builder
          * 
@@ -909,7 +957,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enableMacAuth Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+         * @param enableMacAuth Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
          * 
          * @return builder
          * 
@@ -920,7 +968,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enableMacAuth Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+         * @param enableMacAuth Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
          * 
          * @return builder
          * 
@@ -951,7 +999,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param guestNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+         * @param guestNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          * 
          * @return builder
          * 
@@ -962,7 +1010,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param guestNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+         * @param guestNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          * 
          * @return builder
          * 
@@ -972,7 +1020,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interIsolationNetworkLink `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * @param interIsolationNetworkLink Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -983,7 +1031,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interIsolationNetworkLink `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * @param interIsolationNetworkLink Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -993,7 +1041,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interSwitchLink Only if `mode`!=`dynamic` interSwitchLink is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * @param interSwitchLink Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -1004,7 +1052,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interSwitchLink Only if `mode`!=`dynamic` interSwitchLink is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * @param interSwitchLink Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -1171,7 +1219,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param persistMac Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+         * @param persistMac Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
          * 
          * @return builder
          * 
@@ -1182,7 +1230,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param persistMac Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+         * @param persistMac Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
          * 
          * @return builder
          * 
@@ -1192,7 +1240,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param poeDisabled Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+         * @param poeDisabled Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          * 
          * @return builder
          * 
@@ -1203,7 +1251,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param poeDisabled Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+         * @param poeDisabled Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          * 
          * @return builder
          * 
@@ -1213,7 +1261,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param portAuth Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+         * @param portAuth Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          * 
          * @return builder
          * 
@@ -1224,7 +1272,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param portAuth Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+         * @param portAuth Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          * 
          * @return builder
          * 
@@ -1234,7 +1282,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param portNetwork Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+         * @param portNetwork Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
          * 
          * @return builder
          * 
@@ -1245,7 +1293,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param portNetwork Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+         * @param portNetwork Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
          * 
          * @return builder
          * 
@@ -1328,7 +1376,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param serverFailNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+         * @param serverFailNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
          * 
          * @return builder
          * 
@@ -1339,7 +1387,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param serverFailNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+         * @param serverFailNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
          * 
          * @return builder
          * 
@@ -1349,7 +1397,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
          * 
          * @return builder
          * 
@@ -1360,7 +1408,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
          * 
          * @return builder
          * 
@@ -1412,7 +1460,28 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param stpEdge Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+         * @param stpDisable Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stpDisable(@Nullable Output<Boolean> stpDisable) {
+            $.stpDisable = stpDisable;
+            return this;
+        }
+
+        /**
+         * @param stpDisable Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stpDisable(Boolean stpDisable) {
+            return stpDisable(Output.of(stpDisable));
+        }
+
+        /**
+         * @param stpEdge Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
          * 
          * @return builder
          * 
@@ -1423,7 +1492,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param stpEdge Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+         * @param stpEdge Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
          * 
          * @return builder
          * 
@@ -1432,22 +1501,67 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
             return stpEdge(Output.of(stpEdge));
         }
 
+        /**
+         * @param stpNoRootPort Only if `mode`!=`dynamic`
+         * 
+         * @return builder
+         * 
+         */
         public Builder stpNoRootPort(@Nullable Output<Boolean> stpNoRootPort) {
             $.stpNoRootPort = stpNoRootPort;
             return this;
         }
 
+        /**
+         * @param stpNoRootPort Only if `mode`!=`dynamic`
+         * 
+         * @return builder
+         * 
+         */
         public Builder stpNoRootPort(Boolean stpNoRootPort) {
             return stpNoRootPort(Output.of(stpNoRootPort));
         }
 
+        /**
+         * @param stpP2p Only if `mode`!=`dynamic`
+         * 
+         * @return builder
+         * 
+         */
         public Builder stpP2p(@Nullable Output<Boolean> stpP2p) {
             $.stpP2p = stpP2p;
             return this;
         }
 
+        /**
+         * @param stpP2p Only if `mode`!=`dynamic`
+         * 
+         * @return builder
+         * 
+         */
         public Builder stpP2p(Boolean stpP2p) {
             return stpP2p(Output.of(stpP2p));
+        }
+
+        /**
+         * @param stpRequired Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stpRequired(@Nullable Output<Boolean> stpRequired) {
+            $.stpRequired = stpRequired;
+            return this;
+        }
+
+        /**
+         * @param stpRequired Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stpRequired(Boolean stpRequired) {
+            return stpRequired(Output.of(stpRequired));
         }
 
         /**
@@ -1493,7 +1607,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param voipNetwork Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+         * @param voipNetwork Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          * 
          * @return builder
          * 
@@ -1504,7 +1618,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param voipNetwork Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+         * @param voipNetwork Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          * 
          * @return builder
          * 

@@ -18,16 +18,15 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// For API Token authentication, the Mist API Token.
+	// Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
 	Apitoken pulumi.StringPtrOutput `pulumi:"apitoken"`
-	// URL of the Mist Cloud, e.g. `api.mist.com`.
+	// URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
 	Host pulumi.StringPtrOutput `pulumi:"host"`
-	// For username/password authentication, the Mist Account password.
+	// Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// Requests use the configured proxy to reach the Mist Cloud.
-	// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+	// Proxy configuration for API requests. The value may be either a complete URL or `[username:password@]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
 	Proxy pulumi.StringPtrOutput `pulumi:"proxy"`
-	// For username/password authentication, the Mist Account username.
+	// Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
 
@@ -59,39 +58,37 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// Flag to enable debugging API calls. Default is false.
+	// Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `false`.
 	ApiDebug *bool `pulumi:"apiDebug"`
-	// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
+	// Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
 	ApiTimeout *float64 `pulumi:"apiTimeout"`
-	// For API Token authentication, the Mist API Token.
+	// Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
 	Apitoken *string `pulumi:"apitoken"`
-	// URL of the Mist Cloud, e.g. `api.mist.com`.
+	// URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
 	Host *string `pulumi:"host"`
-	// For username/password authentication, the Mist Account password.
+	// Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
 	Password *string `pulumi:"password"`
-	// Requests use the configured proxy to reach the Mist Cloud.
-	// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+	// Proxy configuration for API requests. The value may be either a complete URL or `[username:password@]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
 	Proxy *string `pulumi:"proxy"`
-	// For username/password authentication, the Mist Account username.
+	// Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
 	Username *string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// Flag to enable debugging API calls. Default is false.
+	// Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `false`.
 	ApiDebug pulumi.BoolPtrInput
-	// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
+	// Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
 	ApiTimeout pulumi.Float64PtrInput
-	// For API Token authentication, the Mist API Token.
+	// Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
 	Apitoken pulumi.StringPtrInput
-	// URL of the Mist Cloud, e.g. `api.mist.com`.
+	// URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
 	Host pulumi.StringPtrInput
-	// For username/password authentication, the Mist Account password.
+	// Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
 	Password pulumi.StringPtrInput
-	// Requests use the configured proxy to reach the Mist Cloud.
-	// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+	// Proxy configuration for API requests. The value may be either a complete URL or `[username:password@]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
 	Proxy pulumi.StringPtrInput
-	// For username/password authentication, the Mist Account username.
+	// Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
 	Username pulumi.StringPtrInput
 }
 
@@ -155,28 +152,27 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// For API Token authentication, the Mist API Token.
+// Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
 func (o ProviderOutput) Apitoken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Apitoken }).(pulumi.StringPtrOutput)
 }
 
-// URL of the Mist Cloud, e.g. `api.mist.com`.
+// URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
 func (o ProviderOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// For username/password authentication, the Mist Account password.
+// Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
 func (o ProviderOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Requests use the configured proxy to reach the Mist Cloud.
-// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+// Proxy configuration for API requests. The value may be either a complete URL or `[username:password@]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
 func (o ProviderOutput) Proxy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Proxy }).(pulumi.StringPtrOutput)
 }
 
-// For username/password authentication, the Mist Account username.
+// Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
 func (o ProviderOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }

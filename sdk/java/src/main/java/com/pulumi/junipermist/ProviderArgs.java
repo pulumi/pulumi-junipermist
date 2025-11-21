@@ -18,14 +18,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * Flag to enable debugging API calls. Default is false.
+     * Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `false`.
      * 
      */
     @Import(name="apiDebug", json=true)
     private @Nullable Output<Boolean> apiDebug;
 
     /**
-     * @return Flag to enable debugging API calls. Default is false.
+     * @return Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> apiDebug() {
@@ -33,14 +33,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
+     * Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
      * 
      */
     @Import(name="apiTimeout", json=true)
     private @Nullable Output<Double> apiTimeout;
 
     /**
-     * @return Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
+     * @return Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
      * 
      */
     public Optional<Output<Double>> apiTimeout() {
@@ -48,14 +48,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For API Token authentication, the Mist API Token.
+     * Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
      * 
      */
     @Import(name="apitoken")
     private @Nullable Output<String> apitoken;
 
     /**
-     * @return For API Token authentication, the Mist API Token.
+     * @return Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
      * 
      */
     public Optional<Output<String>> apitoken() {
@@ -63,14 +63,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URL of the Mist Cloud, e.g. `api.mist.com`.
+     * URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return URL of the Mist Cloud, e.g. `api.mist.com`.
+     * @return URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
      * 
      */
     public Optional<Output<String>> host() {
@@ -78,14 +78,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For username/password authentication, the Mist Account password.
+     * Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return For username/password authentication, the Mist Account password.
+     * @return Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
      * 
      */
     public Optional<Output<String>> password() {
@@ -93,16 +93,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Requests use the configured proxy to reach the Mist Cloud.
-     * The value may be either a complete URL or a `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+     * Proxy configuration for API requests. The value may be either a complete URL or `[username:password{@literal @}]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
      * 
      */
     @Import(name="proxy")
     private @Nullable Output<String> proxy;
 
     /**
-     * @return Requests use the configured proxy to reach the Mist Cloud.
-     * The value may be either a complete URL or a `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+     * @return Proxy configuration for API requests. The value may be either a complete URL or `[username:password{@literal @}]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
      * 
      */
     public Optional<Output<String>> proxy() {
@@ -110,14 +108,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For username/password authentication, the Mist Account username.
+     * Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return For username/password authentication, the Mist Account username.
+     * @return Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
      * 
      */
     public Optional<Output<String>> username() {
@@ -155,7 +153,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiDebug Flag to enable debugging API calls. Default is false.
+         * @param apiDebug Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `false`.
          * 
          * @return builder
          * 
@@ -166,7 +164,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiDebug Flag to enable debugging API calls. Default is false.
+         * @param apiDebug Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `false`.
          * 
          * @return builder
          * 
@@ -176,7 +174,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiTimeout Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
+         * @param apiTimeout Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
          * 
          * @return builder
          * 
@@ -187,7 +185,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiTimeout Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
+         * @param apiTimeout Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
          * 
          * @return builder
          * 
@@ -197,7 +195,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apitoken For API Token authentication, the Mist API Token.
+         * @param apitoken Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
          * 
          * @return builder
          * 
@@ -208,7 +206,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apitoken For API Token authentication, the Mist API Token.
+         * @param apitoken Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
          * 
          * @return builder
          * 
@@ -218,7 +216,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param host URL of the Mist Cloud, e.g. `api.mist.com`.
+         * @param host URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
          * 
          * @return builder
          * 
@@ -229,7 +227,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param host URL of the Mist Cloud, e.g. `api.mist.com`.
+         * @param host URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
          * 
          * @return builder
          * 
@@ -239,7 +237,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password For username/password authentication, the Mist Account password.
+         * @param password Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
          * 
          * @return builder
          * 
@@ -250,7 +248,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password For username/password authentication, the Mist Account password.
+         * @param password Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
          * 
          * @return builder
          * 
@@ -260,8 +258,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxy Requests use the configured proxy to reach the Mist Cloud.
-         * The value may be either a complete URL or a `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+         * @param proxy Proxy configuration for API requests. The value may be either a complete URL or `[username:password{@literal @}]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
          * 
          * @return builder
          * 
@@ -272,8 +269,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxy Requests use the configured proxy to reach the Mist Cloud.
-         * The value may be either a complete URL or a `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+         * @param proxy Proxy configuration for API requests. The value may be either a complete URL or `[username:password{@literal @}]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
          * 
          * @return builder
          * 
@@ -283,7 +279,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username For username/password authentication, the Mist Account username.
+         * @param username Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
          * 
          * @return builder
          * 
@@ -294,7 +290,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username For username/password authentication, the Mist Account username.
+         * @param username Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
          * 
          * @return builder
          * 

@@ -22,7 +22,7 @@ public final class RftemplateModelSpecificBand6 {
      */
     private @Nullable String antennaMode;
     /**
-     * @return channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+     * @return channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
      * 
      */
     private @Nullable Integer bandwidth;
@@ -77,7 +77,7 @@ public final class RftemplateModelSpecificBand6 {
         return Optional.ofNullable(this.antennaMode);
     }
     /**
-     * @return channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+     * @return channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
      * 
      */
     public Optional<Integer> bandwidth() {

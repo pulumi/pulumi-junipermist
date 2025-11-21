@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingSsr
     {
         /// <summary>
+        /// auto_upgrade device first time it is onboarded
+        /// </summary>
+        public readonly Outputs.SettingSsrAutoUpgrade? AutoUpgrade;
+        /// <summary>
         /// List of Conductor IP Addresses or Hosts to be used by the SSR Devices
         /// </summary>
         public readonly ImmutableArray<string> ConductorHosts;
@@ -25,18 +29,28 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Disable stats collection on SSR devices
         /// </summary>
         public readonly bool? DisableStats;
+        /// <summary>
+        /// Proxy Configuration to talk to Mist
+        /// </summary>
+        public readonly Outputs.SettingSsrProxy? Proxy;
 
         [OutputConstructor]
         private SettingSsr(
+            Outputs.SettingSsrAutoUpgrade? autoUpgrade,
+
             ImmutableArray<string> conductorHosts,
 
             string? conductorToken,
 
-            bool? disableStats)
+            bool? disableStats,
+
+            Outputs.SettingSsrProxy? proxy)
         {
+            AutoUpgrade = autoUpgrade;
             ConductorHosts = conductorHosts;
             ConductorToken = conductorToken;
             DisableStats = disableStats;
+            Proxy = proxy;
         }
     }
 }

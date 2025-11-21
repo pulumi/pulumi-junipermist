@@ -8,7 +8,7 @@ declare var exports: any;
 const __config = new pulumi.Config("junipermist");
 
 /**
- * Flag to enable debugging API calls. Default is false.
+ * Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `false`.
  */
 export declare const apiDebug: boolean | undefined;
 Object.defineProperty(exports, "apiDebug", {
@@ -19,7 +19,7 @@ Object.defineProperty(exports, "apiDebug", {
 });
 
 /**
- * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
+ * Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
  */
 export declare const apiTimeout: number | undefined;
 Object.defineProperty(exports, "apiTimeout", {
@@ -30,7 +30,7 @@ Object.defineProperty(exports, "apiTimeout", {
 });
 
 /**
- * For API Token authentication, the Mist API Token.
+ * Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
  */
 export declare const apitoken: string | undefined;
 Object.defineProperty(exports, "apitoken", {
@@ -41,7 +41,7 @@ Object.defineProperty(exports, "apitoken", {
 });
 
 /**
- * URL of the Mist Cloud, e.g. `api.mist.com`.
+ * URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
  */
 export declare const host: string | undefined;
 Object.defineProperty(exports, "host", {
@@ -52,7 +52,7 @@ Object.defineProperty(exports, "host", {
 });
 
 /**
- * For username/password authentication, the Mist Account password.
+ * Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
  */
 export declare const password: string | undefined;
 Object.defineProperty(exports, "password", {
@@ -63,8 +63,7 @@ Object.defineProperty(exports, "password", {
 });
 
 /**
- * Requests use the configured proxy to reach the Mist Cloud.
- * The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+ * Proxy configuration for API requests. The value may be either a complete URL or `[username:password@]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
  */
 export declare const proxy: string | undefined;
 Object.defineProperty(exports, "proxy", {
@@ -75,7 +74,7 @@ Object.defineProperty(exports, "proxy", {
 });
 
 /**
- * For username/password authentication, the Mist Account username.
+ * Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
  */
 export declare const username: string | undefined;
 Object.defineProperty(exports, "username", {

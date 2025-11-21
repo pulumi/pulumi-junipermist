@@ -12,6 +12,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingJuniperSrxGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// auto_upgrade device first time it is onboarded
+        /// </summary>
+        [Input("autoUpgrade")]
+        public Input<Inputs.SettingJuniperSrxAutoUpgradeGetArgs>? AutoUpgrade { get; set; }
+
         [Input("gateways")]
         private InputList<Inputs.SettingJuniperSrxGatewayGetArgs>? _gateways;
         public InputList<Inputs.SettingJuniperSrxGatewayGetArgs> Gateways

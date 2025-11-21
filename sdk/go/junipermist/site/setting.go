@@ -131,7 +131,7 @@ type Setting struct {
 	SrxApp        SettingSrxAppPtrOutput        `pulumi:"srxApp"`
 	// When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
 	SshKeys pulumi.StringArrayOutput `pulumi:"sshKeys"`
-	Ssr     SettingSsrOutput         `pulumi:"ssr"`
+	Ssr     SettingSsrPtrOutput      `pulumi:"ssr"`
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntPtrOutput        `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         SettingSyntheticTestOutput `pulumi:"syntheticTest"`
@@ -769,8 +769,8 @@ func (o SettingOutput) SshKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Setting) pulumi.StringArrayOutput { return v.SshKeys }).(pulumi.StringArrayOutput)
 }
 
-func (o SettingOutput) Ssr() SettingSsrOutput {
-	return o.ApplyT(func(v *Setting) SettingSsrOutput { return v.Ssr }).(SettingSsrOutput)
+func (o SettingOutput) Ssr() SettingSsrPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingSsrPtrOutput { return v.Ssr }).(SettingSsrPtrOutput)
 }
 
 // Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.

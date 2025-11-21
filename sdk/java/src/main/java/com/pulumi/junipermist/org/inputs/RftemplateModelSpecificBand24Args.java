@@ -48,14 +48,14 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
     }
 
     /**
-     * channel width for the 2.4GHz band. enum: `20`, `40`
+     * channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return channel width for the 2.4GHz band. enum: `20`, `40`
+     * @return channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -225,7 +225,7 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
         }
 
         /**
-         * @param bandwidth channel width for the 2.4GHz band. enum: `20`, `40`
+         * @param bandwidth channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class RftemplateModelSpecificBand24Args extends com.pulumi.resource
         }
 
         /**
-         * @param bandwidth channel width for the 2.4GHz band. enum: `20`, `40`
+         * @param bandwidth channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
          * 
          * @return builder
          * 

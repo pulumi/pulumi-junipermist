@@ -11,38 +11,37 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// Flag to enable debugging API calls. Default is false.
+// Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `false`.
 func GetApiDebug(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "junipermist:apiDebug")
 }
 
-// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
+// Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
 func GetApiTimeout(ctx *pulumi.Context) float64 {
 	return config.GetFloat64(ctx, "junipermist:apiTimeout")
 }
 
-// For API Token authentication, the Mist API Token.
+// Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
 func GetApitoken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "junipermist:apitoken")
 }
 
-// URL of the Mist Cloud, e.g. `api.mist.com`.
+// URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
 func GetHost(ctx *pulumi.Context) string {
 	return config.Get(ctx, "junipermist:host")
 }
 
-// For username/password authentication, the Mist Account password.
+// Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
 func GetPassword(ctx *pulumi.Context) string {
 	return config.Get(ctx, "junipermist:password")
 }
 
-// Requests use the configured proxy to reach the Mist Cloud.
-// The value may be either a complete URL or a `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+// Proxy configuration for API requests. The value may be either a complete URL or `[username:password@]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
 func GetProxy(ctx *pulumi.Context) string {
 	return config.Get(ctx, "junipermist:proxy")
 }
 
-// For username/password authentication, the Mist Account username.
+// Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
 func GetUsername(ctx *pulumi.Context) string {
 	return config.Get(ctx, "junipermist:username")
 }

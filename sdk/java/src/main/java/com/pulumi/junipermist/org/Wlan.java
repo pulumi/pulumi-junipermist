@@ -1045,14 +1045,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.portalAllowedSubnets;
     }
     /**
-     * APi secret (auto-generated) that can be used to sign guest authorization requests
+     * API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
      * 
      */
     @Export(name="portalApiSecret", refs={String.class}, tree="[0]")
     private Output<String> portalApiSecret;
 
     /**
-     * @return APi secret (auto-generated) that can be used to sign guest authorization requests
+     * @return API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
      * 
      */
     public Output<String> portalApiSecret() {
@@ -1086,9 +1086,17 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<String> portalImage() {
         return this.portalImage;
     }
+    /**
+     * URL used in the SSO process, auto-generated when auth is set to `sso`
+     * 
+     */
     @Export(name="portalSsoUrl", refs={String.class}, tree="[0]")
     private Output<String> portalSsoUrl;
 
+    /**
+     * @return URL used in the SSO process, auto-generated when auth is set to `sso`
+     * 
+     */
     public Output<String> portalSsoUrl() {
         return this.portalSsoUrl;
     }

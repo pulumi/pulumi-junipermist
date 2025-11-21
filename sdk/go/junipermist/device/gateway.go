@@ -85,6 +85,8 @@ type Gateway struct {
 	ExtraRoutes GatewayExtraRoutesMapOutput `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 GatewayExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
+	// Gateway settings
+	GatewayMgmt GatewayGatewayMgmtPtrOutput `pulumi:"gatewayMgmt"`
 	// Property key is the profile name
 	IdpProfiles GatewayIdpProfilesMapOutput `pulumi:"idpProfiles"`
 	Image1Url   pulumi.StringOutput         `pulumi:"image1Url"`
@@ -127,6 +129,8 @@ type Gateway struct {
 	TunnelProviderOptions GatewayTunnelProviderOptionsPtrOutput `pulumi:"tunnelProviderOptions"`
 	// Device Type. enum: `gateway`
 	Type pulumi.StringOutput `pulumi:"type"`
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg pulumi.StringPtrOutput `pulumi:"urlFilteringDenyMsg"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars      pulumi.StringMapOutput    `pulumi:"vars"`
 	VrfConfig GatewayVrfConfigPtrOutput `pulumi:"vrfConfig"`
@@ -187,6 +191,8 @@ type gatewayState struct {
 	ExtraRoutes map[string]GatewayExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 map[string]GatewayExtraRoutes6 `pulumi:"extraRoutes6"`
+	// Gateway settings
+	GatewayMgmt *GatewayGatewayMgmt `pulumi:"gatewayMgmt"`
 	// Property key is the profile name
 	IdpProfiles map[string]GatewayIdpProfiles `pulumi:"idpProfiles"`
 	Image1Url   *string                       `pulumi:"image1Url"`
@@ -229,6 +235,8 @@ type gatewayState struct {
 	TunnelProviderOptions *GatewayTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
 	// Device Type. enum: `gateway`
 	Type *string `pulumi:"type"`
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg *string `pulumi:"urlFilteringDenyMsg"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars      map[string]string `pulumi:"vars"`
 	VrfConfig *GatewayVrfConfig `pulumi:"vrfConfig"`
@@ -254,6 +262,8 @@ type GatewayState struct {
 	ExtraRoutes GatewayExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 GatewayExtraRoutes6MapInput
+	// Gateway settings
+	GatewayMgmt GatewayGatewayMgmtPtrInput
 	// Property key is the profile name
 	IdpProfiles GatewayIdpProfilesMapInput
 	Image1Url   pulumi.StringPtrInput
@@ -296,6 +306,8 @@ type GatewayState struct {
 	TunnelProviderOptions GatewayTunnelProviderOptionsPtrInput
 	// Device Type. enum: `gateway`
 	Type pulumi.StringPtrInput
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg pulumi.StringPtrInput
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars      pulumi.StringMapInput
 	VrfConfig GatewayVrfConfigPtrInput
@@ -325,6 +337,8 @@ type gatewayArgs struct {
 	ExtraRoutes map[string]GatewayExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 map[string]GatewayExtraRoutes6 `pulumi:"extraRoutes6"`
+	// Gateway settings
+	GatewayMgmt *GatewayGatewayMgmt `pulumi:"gatewayMgmt"`
 	// Property key is the profile name
 	IdpProfiles map[string]GatewayIdpProfiles `pulumi:"idpProfiles"`
 	// Property key is the network name
@@ -355,6 +369,8 @@ type gatewayArgs struct {
 	// Property key is the tunnel name
 	TunnelConfigs         map[string]GatewayTunnelConfigs `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions *GatewayTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg *string `pulumi:"urlFilteringDenyMsg"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars      map[string]string `pulumi:"vars"`
 	VrfConfig *GatewayVrfConfig `pulumi:"vrfConfig"`
@@ -381,6 +397,8 @@ type GatewayArgs struct {
 	ExtraRoutes GatewayExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 GatewayExtraRoutes6MapInput
+	// Gateway settings
+	GatewayMgmt GatewayGatewayMgmtPtrInput
 	// Property key is the profile name
 	IdpProfiles GatewayIdpProfilesMapInput
 	// Property key is the network name
@@ -411,6 +429,8 @@ type GatewayArgs struct {
 	// Property key is the tunnel name
 	TunnelConfigs         GatewayTunnelConfigsMapInput
 	TunnelProviderOptions GatewayTunnelProviderOptionsPtrInput
+	// When a service policy denies a app_category, what message to show in user's browser
+	UrlFilteringDenyMsg pulumi.StringPtrInput
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars      pulumi.StringMapInput
 	VrfConfig GatewayVrfConfigPtrInput
@@ -546,6 +566,11 @@ func (o GatewayOutput) ExtraRoutes6() GatewayExtraRoutes6MapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayExtraRoutes6MapOutput { return v.ExtraRoutes6 }).(GatewayExtraRoutes6MapOutput)
 }
 
+// Gateway settings
+func (o GatewayOutput) GatewayMgmt() GatewayGatewayMgmtPtrOutput {
+	return o.ApplyT(func(v *Gateway) GatewayGatewayMgmtPtrOutput { return v.GatewayMgmt }).(GatewayGatewayMgmtPtrOutput)
+}
+
 // Property key is the profile name
 func (o GatewayOutput) IdpProfiles() GatewayIdpProfilesMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayIdpProfilesMapOutput { return v.IdpProfiles }).(GatewayIdpProfilesMapOutput)
@@ -670,6 +695,11 @@ func (o GatewayOutput) TunnelProviderOptions() GatewayTunnelProviderOptionsPtrOu
 // Device Type. enum: `gateway`
 func (o GatewayOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// When a service policy denies a app_category, what message to show in user's browser
+func (o GatewayOutput) UrlFilteringDenyMsg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.UrlFilteringDenyMsg }).(pulumi.StringPtrOutput)
 }
 
 // Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars

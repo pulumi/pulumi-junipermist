@@ -9,6 +9,7 @@ import com.pulumi.junipermist.org.inputs.NetworktemplateSwitchMatchingRuleIpConf
 import com.pulumi.junipermist.org.inputs.NetworktemplateSwitchMatchingRuleOobIpConfigArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateSwitchMatchingRulePortConfigArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateSwitchMatchingRulePortMirroringArgs;
+import com.pulumi.junipermist.org.inputs.NetworktemplateSwitchMatchingRuleStpConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -172,6 +173,13 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         return Optional.ofNullable(this.portMirroring);
     }
 
+    @Import(name="stpConfig")
+    private @Nullable Output<NetworktemplateSwitchMatchingRuleStpConfigArgs> stpConfig;
+
+    public Optional<Output<NetworktemplateSwitchMatchingRuleStpConfigArgs>> stpConfig() {
+        return Optional.ofNullable(this.stpConfig);
+    }
+
     private NetworktemplateSwitchMatchingRuleArgs() {}
 
     private NetworktemplateSwitchMatchingRuleArgs(NetworktemplateSwitchMatchingRuleArgs $) {
@@ -185,6 +193,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         this.oobIpConfig = $.oobIpConfig;
         this.portConfig = $.portConfig;
         this.portMirroring = $.portMirroring;
+        this.stpConfig = $.stpConfig;
     }
 
     public static Builder builder() {
@@ -423,6 +432,15 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
          */
         public Builder portMirroring(Map<String,NetworktemplateSwitchMatchingRulePortMirroringArgs> portMirroring) {
             return portMirroring(Output.of(portMirroring));
+        }
+
+        public Builder stpConfig(@Nullable Output<NetworktemplateSwitchMatchingRuleStpConfigArgs> stpConfig) {
+            $.stpConfig = stpConfig;
+            return this;
+        }
+
+        public Builder stpConfig(NetworktemplateSwitchMatchingRuleStpConfigArgs stpConfig) {
+            return stpConfig(Output.of(stpConfig));
         }
 
         public NetworktemplateSwitchMatchingRuleArgs build() {

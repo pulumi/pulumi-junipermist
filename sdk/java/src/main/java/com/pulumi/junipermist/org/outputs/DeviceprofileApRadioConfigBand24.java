@@ -22,7 +22,7 @@ public final class DeviceprofileApRadioConfigBand24 {
      */
     private @Nullable String antennaMode;
     /**
-     * @return channel width for the 2.4GHz band. enum: `20`, `40`
+     * @return channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
      * 
      */
     private @Nullable Integer bandwidth;
@@ -77,7 +77,7 @@ public final class DeviceprofileApRadioConfigBand24 {
         return Optional.ofNullable(this.antennaMode);
     }
     /**
-     * @return channel width for the 2.4GHz band. enum: `20`, `40`
+     * @return channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
      * 
      */
     public Optional<Integer> bandwidth() {

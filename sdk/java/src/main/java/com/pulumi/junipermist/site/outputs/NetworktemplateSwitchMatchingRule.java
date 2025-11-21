@@ -8,6 +8,7 @@ import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMatchingRuleIpCo
 import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMatchingRuleOobIpConfig;
 import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMatchingRulePortConfig;
 import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMatchingRulePortMirroring;
+import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMatchingRuleStpConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -68,6 +69,7 @@ public final class NetworktemplateSwitchMatchingRule {
      * 
      */
     private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortMirroring> portMirroring;
+    private @Nullable NetworktemplateSwitchMatchingRuleStpConfig stpConfig;
 
     private NetworktemplateSwitchMatchingRule() {}
     /**
@@ -140,6 +142,9 @@ public final class NetworktemplateSwitchMatchingRule {
     public Map<String,NetworktemplateSwitchMatchingRulePortMirroring> portMirroring() {
         return this.portMirroring == null ? Map.of() : this.portMirroring;
     }
+    public Optional<NetworktemplateSwitchMatchingRuleStpConfig> stpConfig() {
+        return Optional.ofNullable(this.stpConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -160,6 +165,7 @@ public final class NetworktemplateSwitchMatchingRule {
         private @Nullable NetworktemplateSwitchMatchingRuleOobIpConfig oobIpConfig;
         private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortConfig> portConfig;
         private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortMirroring> portMirroring;
+        private @Nullable NetworktemplateSwitchMatchingRuleStpConfig stpConfig;
         public Builder() {}
         public Builder(NetworktemplateSwitchMatchingRule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -173,6 +179,7 @@ public final class NetworktemplateSwitchMatchingRule {
     	      this.oobIpConfig = defaults.oobIpConfig;
     	      this.portConfig = defaults.portConfig;
     	      this.portMirroring = defaults.portMirroring;
+    	      this.stpConfig = defaults.stpConfig;
         }
 
         @CustomType.Setter
@@ -238,6 +245,12 @@ public final class NetworktemplateSwitchMatchingRule {
             this.portMirroring = portMirroring;
             return this;
         }
+        @CustomType.Setter
+        public Builder stpConfig(@Nullable NetworktemplateSwitchMatchingRuleStpConfig stpConfig) {
+
+            this.stpConfig = stpConfig;
+            return this;
+        }
         public NetworktemplateSwitchMatchingRule build() {
             final var _resultValue = new NetworktemplateSwitchMatchingRule();
             _resultValue.additionalConfigCmds = additionalConfigCmds;
@@ -250,6 +263,7 @@ public final class NetworktemplateSwitchMatchingRule {
             _resultValue.oobIpConfig = oobIpConfig;
             _resultValue.portConfig = portConfig;
             _resultValue.portMirroring = portMirroring;
+            _resultValue.stpConfig = stpConfig;
             return _resultValue;
         }
     }

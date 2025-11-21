@@ -74,9 +74,21 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.lanNetworks);
     }
 
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="vlans")
     private @Nullable Output<List<SettingSyntheticTestVlanArgs>> vlans;
 
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<List<SettingSyntheticTestVlanArgs>>> vlans() {
         return Optional.ofNullable(this.vlans);
     }
@@ -199,15 +211,39 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
             return lanNetworks(List.of(lanNetworks));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder vlans(@Nullable Output<List<SettingSyntheticTestVlanArgs>> vlans) {
             $.vlans = vlans;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder vlans(List<SettingSyntheticTestVlanArgs> vlans) {
             return vlans(Output.of(vlans));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder vlans(SettingSyntheticTestVlanArgs... vlans) {
             return vlans(List.of(vlans));
         }

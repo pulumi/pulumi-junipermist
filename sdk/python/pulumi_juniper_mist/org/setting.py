@@ -35,6 +35,7 @@ class SettingArgs:
                  installer: Optional[pulumi.Input['SettingInstallerArgs']] = None,
                  jcloud: Optional[pulumi.Input['SettingJcloudArgs']] = None,
                  jcloud_ra: Optional[pulumi.Input['SettingJcloudRaArgs']] = None,
+                 juniper_srx: Optional[pulumi.Input['SettingJuniperSrxArgs']] = None,
                  junos_shell_access: Optional[pulumi.Input['SettingJunosShellAccessArgs']] = None,
                  marvis: Optional[pulumi.Input['SettingMarvisArgs']] = None,
                  mgmt: Optional[pulumi.Input['SettingMgmtArgs']] = None,
@@ -50,6 +51,7 @@ class SettingArgs:
                  switch_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  synthetic_test: Optional[pulumi.Input['SettingSyntheticTestArgs']] = None,
                  ui_idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 ui_no_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
                  vpn_options: Optional[pulumi.Input['SettingVpnOptionsArgs']] = None,
                  wan_pma: Optional[pulumi.Input['SettingWanPmaArgs']] = None,
                  wired_pma: Optional[pulumi.Input['SettingWiredPmaArgs']] = None,
@@ -102,6 +104,8 @@ class SettingArgs:
             pulumi.set(__self__, "jcloud", jcloud)
         if jcloud_ra is not None:
             pulumi.set(__self__, "jcloud_ra", jcloud_ra)
+        if juniper_srx is not None:
+            pulumi.set(__self__, "juniper_srx", juniper_srx)
         if junos_shell_access is not None:
             pulumi.set(__self__, "junos_shell_access", junos_shell_access)
         if marvis is not None:
@@ -132,6 +136,8 @@ class SettingArgs:
             pulumi.set(__self__, "synthetic_test", synthetic_test)
         if ui_idle_timeout is not None:
             pulumi.set(__self__, "ui_idle_timeout", ui_idle_timeout)
+        if ui_no_tracking is not None:
+            pulumi.set(__self__, "ui_no_tracking", ui_no_tracking)
         if vpn_options is not None:
             pulumi.set(__self__, "vpn_options", vpn_options)
         if wan_pma is not None:
@@ -294,6 +300,15 @@ class SettingArgs:
         pulumi.set(self, "jcloud_ra", value)
 
     @_builtins.property
+    @pulumi.getter(name="juniperSrx")
+    def juniper_srx(self) -> Optional[pulumi.Input['SettingJuniperSrxArgs']]:
+        return pulumi.get(self, "juniper_srx")
+
+    @juniper_srx.setter
+    def juniper_srx(self, value: Optional[pulumi.Input['SettingJuniperSrxArgs']]):
+        pulumi.set(self, "juniper_srx", value)
+
+    @_builtins.property
     @pulumi.getter(name="junosShellAccess")
     def junos_shell_access(self) -> Optional[pulumi.Input['SettingJunosShellAccessArgs']]:
         """
@@ -449,6 +464,15 @@ class SettingArgs:
         pulumi.set(self, "ui_idle_timeout", value)
 
     @_builtins.property
+    @pulumi.getter(name="uiNoTracking")
+    def ui_no_tracking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "ui_no_tracking")
+
+    @ui_no_tracking.setter
+    def ui_no_tracking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ui_no_tracking", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpnOptions")
     def vpn_options(self) -> Optional[pulumi.Input['SettingVpnOptionsArgs']]:
         return pulumi.get(self, "vpn_options")
@@ -503,6 +527,7 @@ class _SettingState:
                  jcloud: Optional[pulumi.Input['SettingJcloudArgs']] = None,
                  jcloud_ra: Optional[pulumi.Input['SettingJcloudRaArgs']] = None,
                  juniper: Optional[pulumi.Input['SettingJuniperArgs']] = None,
+                 juniper_srx: Optional[pulumi.Input['SettingJuniperSrxArgs']] = None,
                  junos_shell_access: Optional[pulumi.Input['SettingJunosShellAccessArgs']] = None,
                  marvis: Optional[pulumi.Input['SettingMarvisArgs']] = None,
                  mgmt: Optional[pulumi.Input['SettingMgmtArgs']] = None,
@@ -519,6 +544,7 @@ class _SettingState:
                  switch_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  synthetic_test: Optional[pulumi.Input['SettingSyntheticTestArgs']] = None,
                  ui_idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 ui_no_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
                  vpn_options: Optional[pulumi.Input['SettingVpnOptionsArgs']] = None,
                  wan_pma: Optional[pulumi.Input['SettingWanPmaArgs']] = None,
                  wired_pma: Optional[pulumi.Input['SettingWiredPmaArgs']] = None,
@@ -574,6 +600,8 @@ class _SettingState:
             pulumi.set(__self__, "jcloud_ra", jcloud_ra)
         if juniper is not None:
             pulumi.set(__self__, "juniper", juniper)
+        if juniper_srx is not None:
+            pulumi.set(__self__, "juniper_srx", juniper_srx)
         if junos_shell_access is not None:
             pulumi.set(__self__, "junos_shell_access", junos_shell_access)
         if marvis is not None:
@@ -606,6 +634,8 @@ class _SettingState:
             pulumi.set(__self__, "synthetic_test", synthetic_test)
         if ui_idle_timeout is not None:
             pulumi.set(__self__, "ui_idle_timeout", ui_idle_timeout)
+        if ui_no_tracking is not None:
+            pulumi.set(__self__, "ui_no_tracking", ui_no_tracking)
         if vpn_options is not None:
             pulumi.set(__self__, "vpn_options", vpn_options)
         if wan_pma is not None:
@@ -777,6 +807,15 @@ class _SettingState:
         pulumi.set(self, "juniper", value)
 
     @_builtins.property
+    @pulumi.getter(name="juniperSrx")
+    def juniper_srx(self) -> Optional[pulumi.Input['SettingJuniperSrxArgs']]:
+        return pulumi.get(self, "juniper_srx")
+
+    @juniper_srx.setter
+    def juniper_srx(self, value: Optional[pulumi.Input['SettingJuniperSrxArgs']]):
+        pulumi.set(self, "juniper_srx", value)
+
+    @_builtins.property
     @pulumi.getter(name="junosShellAccess")
     def junos_shell_access(self) -> Optional[pulumi.Input['SettingJunosShellAccessArgs']]:
         """
@@ -941,6 +980,15 @@ class _SettingState:
         pulumi.set(self, "ui_idle_timeout", value)
 
     @_builtins.property
+    @pulumi.getter(name="uiNoTracking")
+    def ui_no_tracking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "ui_no_tracking")
+
+    @ui_no_tracking.setter
+    def ui_no_tracking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ui_no_tracking", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpnOptions")
     def vpn_options(self) -> Optional[pulumi.Input['SettingVpnOptionsArgs']]:
         return pulumi.get(self, "vpn_options")
@@ -996,6 +1044,7 @@ class Setting(pulumi.CustomResource):
                  installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
                  jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
                  jcloud_ra: Optional[pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']]] = None,
+                 juniper_srx: Optional[pulumi.Input[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']]] = None,
                  junos_shell_access: Optional[pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']]] = None,
                  marvis: Optional[pulumi.Input[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
                  mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
@@ -1012,6 +1061,7 @@ class Setting(pulumi.CustomResource):
                  switch_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  ui_idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 ui_no_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
                  vpn_options: Optional[pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']]] = None,
                  wan_pma: Optional[pulumi.Input[Union['SettingWanPmaArgs', 'SettingWanPmaArgsDict']]] = None,
                  wired_pma: Optional[pulumi.Input[Union['SettingWiredPmaArgs', 'SettingWiredPmaArgsDict']]] = None,
@@ -1218,6 +1268,7 @@ class Setting(pulumi.CustomResource):
                  installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
                  jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
                  jcloud_ra: Optional[pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']]] = None,
+                 juniper_srx: Optional[pulumi.Input[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']]] = None,
                  junos_shell_access: Optional[pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']]] = None,
                  marvis: Optional[pulumi.Input[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
                  mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
@@ -1234,6 +1285,7 @@ class Setting(pulumi.CustomResource):
                  switch_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  ui_idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 ui_no_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
                  vpn_options: Optional[pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']]] = None,
                  wan_pma: Optional[pulumi.Input[Union['SettingWanPmaArgs', 'SettingWanPmaArgsDict']]] = None,
                  wired_pma: Optional[pulumi.Input[Union['SettingWiredPmaArgs', 'SettingWiredPmaArgsDict']]] = None,
@@ -1260,6 +1312,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["installer"] = installer
             __props__.__dict__["jcloud"] = jcloud
             __props__.__dict__["jcloud_ra"] = jcloud_ra
+            __props__.__dict__["juniper_srx"] = juniper_srx
             __props__.__dict__["junos_shell_access"] = junos_shell_access
             __props__.__dict__["marvis"] = marvis
             __props__.__dict__["mgmt"] = mgmt
@@ -1278,6 +1331,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["switch_updown_threshold"] = switch_updown_threshold
             __props__.__dict__["synthetic_test"] = synthetic_test
             __props__.__dict__["ui_idle_timeout"] = ui_idle_timeout
+            __props__.__dict__["ui_no_tracking"] = ui_no_tracking
             __props__.__dict__["vpn_options"] = vpn_options
             __props__.__dict__["wan_pma"] = wan_pma
             __props__.__dict__["wired_pma"] = wired_pma
@@ -1309,6 +1363,7 @@ class Setting(pulumi.CustomResource):
             jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
             jcloud_ra: Optional[pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']]] = None,
             juniper: Optional[pulumi.Input[Union['SettingJuniperArgs', 'SettingJuniperArgsDict']]] = None,
+            juniper_srx: Optional[pulumi.Input[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']]] = None,
             junos_shell_access: Optional[pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']]] = None,
             marvis: Optional[pulumi.Input[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
             mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
@@ -1325,6 +1380,7 @@ class Setting(pulumi.CustomResource):
             switch_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
             synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
             ui_idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+            ui_no_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
             vpn_options: Optional[pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']]] = None,
             wan_pma: Optional[pulumi.Input[Union['SettingWanPmaArgs', 'SettingWanPmaArgsDict']]] = None,
             wired_pma: Optional[pulumi.Input[Union['SettingWiredPmaArgs', 'SettingWiredPmaArgsDict']]] = None,
@@ -1374,6 +1430,7 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["jcloud"] = jcloud
         __props__.__dict__["jcloud_ra"] = jcloud_ra
         __props__.__dict__["juniper"] = juniper
+        __props__.__dict__["juniper_srx"] = juniper_srx
         __props__.__dict__["junos_shell_access"] = junos_shell_access
         __props__.__dict__["marvis"] = marvis
         __props__.__dict__["mgmt"] = mgmt
@@ -1390,6 +1447,7 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["switch_updown_threshold"] = switch_updown_threshold
         __props__.__dict__["synthetic_test"] = synthetic_test
         __props__.__dict__["ui_idle_timeout"] = ui_idle_timeout
+        __props__.__dict__["ui_no_tracking"] = ui_no_tracking
         __props__.__dict__["vpn_options"] = vpn_options
         __props__.__dict__["wan_pma"] = wan_pma
         __props__.__dict__["wired_pma"] = wired_pma
@@ -1498,6 +1556,11 @@ class Setting(pulumi.CustomResource):
         return pulumi.get(self, "juniper")
 
     @_builtins.property
+    @pulumi.getter(name="juniperSrx")
+    def juniper_srx(self) -> pulumi.Output[Optional['outputs.SettingJuniperSrx']]:
+        return pulumi.get(self, "juniper_srx")
+
+    @_builtins.property
     @pulumi.getter(name="junosShellAccess")
     def junos_shell_access(self) -> pulumi.Output[Optional['outputs.SettingJunosShellAccess']]:
         """
@@ -1596,6 +1659,11 @@ class Setting(pulumi.CustomResource):
         Automatically logout the user when UI session is inactive. `0` means disabled
         """
         return pulumi.get(self, "ui_idle_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="uiNoTracking")
+    def ui_no_tracking(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        return pulumi.get(self, "ui_no_tracking")
 
     @_builtins.property
     @pulumi.getter(name="vpnOptions")

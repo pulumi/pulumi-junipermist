@@ -21,6 +21,46 @@ import (
 // !> The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happens, it is required to force a refresh of the state to synchronise the new list.\
 // The `devices` attribute will generate inconsistent result after apply when a device other than the last one is removed from the list or when a device is added somewhere other than the end of the list
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewInventory(ctx, "inventory", &org.InventoryArgs{
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				Inventory: org.InventoryInventoryMap{
+//					"CPKL2EXXXXXXXXX": &org.InventoryInventoryArgs{},
+//					"G87JHBFXXXXXXXX": &org.InventoryInventoryArgs{
+//						SiteId:               pulumi.Any(terraformSite.Id),
+//						UnclaimWhenDestroyed: pulumi.Bool(true),
+//					},
+//					"2c2131000000": &org.InventoryInventoryArgs{
+//						SiteId:               pulumi.Any(terraformSite.Id),
+//						UnclaimWhenDestroyed: pulumi.Bool(true),
+//					},
+//					"2c2131000001": &org.InventoryInventoryArgs{
+//						UnclaimWhenDestroyed: pulumi.Bool(false),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_inventory` with:

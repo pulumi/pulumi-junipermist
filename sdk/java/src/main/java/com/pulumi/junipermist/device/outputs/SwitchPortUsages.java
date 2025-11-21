@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchPortUsages {
     /**
-     * @return Only if `mode`==`trunk` whether to trunk all network/vlans
+     * @return Only if `mode`==`trunk`. Whether to trunk all network/vlans
      * 
      */
     private @Nullable Boolean allNetworks;
@@ -32,12 +32,12 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean allowMultipleSupplicants;
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
      * 
      */
     private @Nullable Boolean bypassAuthWhenServerDown;
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+     * @return Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
     private @Nullable Boolean bypassAuthWhenServerDownForUnknownClient;
@@ -52,17 +52,17 @@ public final class SwitchPortUsages {
      */
     private @Nullable String description;
     /**
-     * @return Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+     * @return Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
      * 
      */
     private @Nullable Boolean disableAutoneg;
     /**
-     * @return Only if `mode`!=`dynamic` whether the port is disabled
+     * @return Only if `mode`!=`dynamic`. Whether the port is disabled
      * 
      */
     private @Nullable Boolean disabled;
     /**
-     * @return Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+     * @return Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
      * 
      */
     private @Nullable String duplex;
@@ -72,7 +72,7 @@ public final class SwitchPortUsages {
      */
     private @Nullable List<String> dynamicVlanNetworks;
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
      * 
      */
     private @Nullable Boolean enableMacAuth;
@@ -82,17 +82,17 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean enableQos;
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
      * 
      */
     private @Nullable String guestNetwork;
     /**
-     * @return `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
      * 
      */
     private @Nullable Boolean interIsolationNetworkLink;
     /**
-     * @return Only if `mode`!=`dynamic` interSwitchLink is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
      * 
      */
     private @Nullable Boolean interSwitchLink;
@@ -132,22 +132,22 @@ public final class SwitchPortUsages {
      */
     private @Nullable List<String> networks;
     /**
-     * @return Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+     * @return Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
      * 
      */
     private @Nullable Boolean persistMac;
     /**
-     * @return Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+     * @return Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
      * 
      */
     private @Nullable Boolean poeDisabled;
     /**
-     * @return Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+     * @return Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
      * 
      */
     private @Nullable String portAuth;
     /**
-     * @return Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+     * @return Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
      * 
      */
     private @Nullable String portNetwork;
@@ -167,12 +167,12 @@ public final class SwitchPortUsages {
      */
     private @Nullable List<SwitchPortUsagesRule> rules;
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
      * 
      */
     private @Nullable String serverFailNetwork;
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
      * 
      */
     private @Nullable String serverRejectNetwork;
@@ -187,26 +187,44 @@ public final class SwitchPortUsages {
      */
     private @Nullable SwitchPortUsagesStormControl stormControl;
     /**
-     * @return Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+     * @return Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+     * 
+     */
+    private @Nullable Boolean stpDisable;
+    /**
+     * @return Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
      * 
      */
     private @Nullable Boolean stpEdge;
+    /**
+     * @return Only if `mode`!=`dynamic`
+     * 
+     */
     private @Nullable Boolean stpNoRootPort;
+    /**
+     * @return Only if `mode`!=`dynamic`
+     * 
+     */
     private @Nullable Boolean stpP2p;
+    /**
+     * @return Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+     * 
+     */
+    private @Nullable Boolean stpRequired;
     /**
      * @return If this is connected to a vstp network
      * 
      */
     private @Nullable Boolean useVstp;
     /**
-     * @return Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+     * @return Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
      */
     private @Nullable String voipNetwork;
 
     private SwitchPortUsages() {}
     /**
-     * @return Only if `mode`==`trunk` whether to trunk all network/vlans
+     * @return Only if `mode`==`trunk`. Whether to trunk all network/vlans
      * 
      */
     public Optional<Boolean> allNetworks() {
@@ -227,14 +245,14 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.allowMultipleSupplicants);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
      * 
      */
     public Optional<Boolean> bypassAuthWhenServerDown() {
         return Optional.ofNullable(this.bypassAuthWhenServerDown);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+     * @return Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
     public Optional<Boolean> bypassAuthWhenServerDownForUnknownClient() {
@@ -255,21 +273,21 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+     * @return Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
      * 
      */
     public Optional<Boolean> disableAutoneg() {
         return Optional.ofNullable(this.disableAutoneg);
     }
     /**
-     * @return Only if `mode`!=`dynamic` whether the port is disabled
+     * @return Only if `mode`!=`dynamic`. Whether the port is disabled
      * 
      */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+     * @return Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
      * 
      */
     public Optional<String> duplex() {
@@ -283,7 +301,7 @@ public final class SwitchPortUsages {
         return this.dynamicVlanNetworks == null ? List.of() : this.dynamicVlanNetworks;
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
      * 
      */
     public Optional<Boolean> enableMacAuth() {
@@ -297,21 +315,21 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.enableQos);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
      * 
      */
     public Optional<String> guestNetwork() {
         return Optional.ofNullable(this.guestNetwork);
     }
     /**
-     * @return `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
      * 
      */
     public Optional<Boolean> interIsolationNetworkLink() {
         return Optional.ofNullable(this.interIsolationNetworkLink);
     }
     /**
-     * @return Only if `mode`!=`dynamic` interSwitchLink is used together with &#34;isolation&#34; under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
      * 
      */
     public Optional<Boolean> interSwitchLink() {
@@ -367,28 +385,28 @@ public final class SwitchPortUsages {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+     * @return Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
      * 
      */
     public Optional<Boolean> persistMac() {
         return Optional.ofNullable(this.persistMac);
     }
     /**
-     * @return Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+     * @return Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
      * 
      */
     public Optional<Boolean> poeDisabled() {
         return Optional.ofNullable(this.poeDisabled);
     }
     /**
-     * @return Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+     * @return Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
      * 
      */
     public Optional<String> portAuth() {
         return Optional.ofNullable(this.portAuth);
     }
     /**
-     * @return Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+     * @return Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
      * 
      */
     public Optional<String> portNetwork() {
@@ -416,14 +434,14 @@ public final class SwitchPortUsages {
         return this.rules == null ? List.of() : this.rules;
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
      * 
      */
     public Optional<String> serverFailNetwork() {
         return Optional.ofNullable(this.serverFailNetwork);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
      * 
      */
     public Optional<String> serverRejectNetwork() {
@@ -444,17 +462,39 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.stormControl);
     }
     /**
-     * @return Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+     * @return Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+     * 
+     */
+    public Optional<Boolean> stpDisable() {
+        return Optional.ofNullable(this.stpDisable);
+    }
+    /**
+     * @return Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
      * 
      */
     public Optional<Boolean> stpEdge() {
         return Optional.ofNullable(this.stpEdge);
     }
+    /**
+     * @return Only if `mode`!=`dynamic`
+     * 
+     */
     public Optional<Boolean> stpNoRootPort() {
         return Optional.ofNullable(this.stpNoRootPort);
     }
+    /**
+     * @return Only if `mode`!=`dynamic`
+     * 
+     */
     public Optional<Boolean> stpP2p() {
         return Optional.ofNullable(this.stpP2p);
+    }
+    /**
+     * @return Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+     * 
+     */
+    public Optional<Boolean> stpRequired() {
+        return Optional.ofNullable(this.stpRequired);
     }
     /**
      * @return If this is connected to a vstp network
@@ -464,7 +504,7 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.useVstp);
     }
     /**
-     * @return Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+     * @return Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
      */
     public Optional<String> voipNetwork() {
@@ -514,9 +554,11 @@ public final class SwitchPortUsages {
         private @Nullable String serverRejectNetwork;
         private @Nullable String speed;
         private @Nullable SwitchPortUsagesStormControl stormControl;
+        private @Nullable Boolean stpDisable;
         private @Nullable Boolean stpEdge;
         private @Nullable Boolean stpNoRootPort;
         private @Nullable Boolean stpP2p;
+        private @Nullable Boolean stpRequired;
         private @Nullable Boolean useVstp;
         private @Nullable String voipNetwork;
         public Builder() {}
@@ -556,9 +598,11 @@ public final class SwitchPortUsages {
     	      this.serverRejectNetwork = defaults.serverRejectNetwork;
     	      this.speed = defaults.speed;
     	      this.stormControl = defaults.stormControl;
+    	      this.stpDisable = defaults.stpDisable;
     	      this.stpEdge = defaults.stpEdge;
     	      this.stpNoRootPort = defaults.stpNoRootPort;
     	      this.stpP2p = defaults.stpP2p;
+    	      this.stpRequired = defaults.stpRequired;
     	      this.useVstp = defaults.useVstp;
     	      this.voipNetwork = defaults.voipNetwork;
         }
@@ -777,6 +821,12 @@ public final class SwitchPortUsages {
             return this;
         }
         @CustomType.Setter
+        public Builder stpDisable(@Nullable Boolean stpDisable) {
+
+            this.stpDisable = stpDisable;
+            return this;
+        }
+        @CustomType.Setter
         public Builder stpEdge(@Nullable Boolean stpEdge) {
 
             this.stpEdge = stpEdge;
@@ -792,6 +842,12 @@ public final class SwitchPortUsages {
         public Builder stpP2p(@Nullable Boolean stpP2p) {
 
             this.stpP2p = stpP2p;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder stpRequired(@Nullable Boolean stpRequired) {
+
+            this.stpRequired = stpRequired;
             return this;
         }
         @CustomType.Setter
@@ -842,9 +898,11 @@ public final class SwitchPortUsages {
             _resultValue.serverRejectNetwork = serverRejectNetwork;
             _resultValue.speed = speed;
             _resultValue.stormControl = stormControl;
+            _resultValue.stpDisable = stpDisable;
             _resultValue.stpEdge = stpEdge;
             _resultValue.stpNoRootPort = stpNoRootPort;
             _resultValue.stpP2p = stpP2p;
+            _resultValue.stpRequired = stpRequired;
             _resultValue.useVstp = useVstp;
             _resultValue.voipNetwork = voipNetwork;
             return _resultValue;
