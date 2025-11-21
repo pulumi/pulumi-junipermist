@@ -127,8 +127,9 @@ type Setting struct {
 	Installer              SettingInstallerPtrOutput `pulumi:"installer"`
 	Jcloud                 SettingJcloudPtrOutput    `pulumi:"jcloud"`
 	// JCloud Routing Assurance connexion
-	JcloudRa SettingJcloudRaPtrOutput `pulumi:"jcloudRa"`
-	Juniper  SettingJuniperOutput     `pulumi:"juniper"`
+	JcloudRa   SettingJcloudRaPtrOutput   `pulumi:"jcloudRa"`
+	Juniper    SettingJuniperOutput       `pulumi:"juniper"`
+	JuniperSrx SettingJuniperSrxPtrOutput `pulumi:"juniperSrx"`
 	// junos_shell_access: Manages role-based web-shell access.\
 	// When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
 	// When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
@@ -153,6 +154,7 @@ type Setting struct {
 	SyntheticTest         SettingSyntheticTestPtrOutput `pulumi:"syntheticTest"`
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntOutput            `pulumi:"uiIdleTimeout"`
+	UiNoTracking  pulumi.BoolPtrOutput        `pulumi:"uiNoTracking"`
 	VpnOptions    SettingVpnOptionsPtrOutput  `pulumi:"vpnOptions"`
 	WanPma        SettingWanPmaPtrOutput      `pulumi:"wanPma"`
 	WiredPma      SettingWiredPmaPtrOutput    `pulumi:"wiredPma"`
@@ -215,8 +217,9 @@ type settingState struct {
 	Installer              *SettingInstaller `pulumi:"installer"`
 	Jcloud                 *SettingJcloud    `pulumi:"jcloud"`
 	// JCloud Routing Assurance connexion
-	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
-	Juniper  *SettingJuniper  `pulumi:"juniper"`
+	JcloudRa   *SettingJcloudRa   `pulumi:"jcloudRa"`
+	Juniper    *SettingJuniper    `pulumi:"juniper"`
+	JuniperSrx *SettingJuniperSrx `pulumi:"juniperSrx"`
 	// junos_shell_access: Manages role-based web-shell access.\
 	// When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
 	// When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
@@ -241,6 +244,7 @@ type settingState struct {
 	SyntheticTest         *SettingSyntheticTest `pulumi:"syntheticTest"`
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout *int                `pulumi:"uiIdleTimeout"`
+	UiNoTracking  *bool               `pulumi:"uiNoTracking"`
 	VpnOptions    *SettingVpnOptions  `pulumi:"vpnOptions"`
 	WanPma        *SettingWanPma      `pulumi:"wanPma"`
 	WiredPma      *SettingWiredPma    `pulumi:"wiredPma"`
@@ -271,8 +275,9 @@ type SettingState struct {
 	Installer              SettingInstallerPtrInput
 	Jcloud                 SettingJcloudPtrInput
 	// JCloud Routing Assurance connexion
-	JcloudRa SettingJcloudRaPtrInput
-	Juniper  SettingJuniperPtrInput
+	JcloudRa   SettingJcloudRaPtrInput
+	Juniper    SettingJuniperPtrInput
+	JuniperSrx SettingJuniperSrxPtrInput
 	// junos_shell_access: Manages role-based web-shell access.\
 	// When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
 	// When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
@@ -297,6 +302,7 @@ type SettingState struct {
 	SyntheticTest         SettingSyntheticTestPtrInput
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntPtrInput
+	UiNoTracking  pulumi.BoolPtrInput
 	VpnOptions    SettingVpnOptionsPtrInput
 	WanPma        SettingWanPmaPtrInput
 	WiredPma      SettingWiredPmaPtrInput
@@ -330,7 +336,8 @@ type settingArgs struct {
 	Installer              *SettingInstaller `pulumi:"installer"`
 	Jcloud                 *SettingJcloud    `pulumi:"jcloud"`
 	// JCloud Routing Assurance connexion
-	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
+	JcloudRa   *SettingJcloudRa   `pulumi:"jcloudRa"`
+	JuniperSrx *SettingJuniperSrx `pulumi:"juniperSrx"`
 	// junos_shell_access: Manages role-based web-shell access.\
 	// When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
 	// When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
@@ -355,6 +362,7 @@ type settingArgs struct {
 	SyntheticTest         *SettingSyntheticTest `pulumi:"syntheticTest"`
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout *int                `pulumi:"uiIdleTimeout"`
+	UiNoTracking  *bool               `pulumi:"uiNoTracking"`
 	VpnOptions    *SettingVpnOptions  `pulumi:"vpnOptions"`
 	WanPma        *SettingWanPma      `pulumi:"wanPma"`
 	WiredPma      *SettingWiredPma    `pulumi:"wiredPma"`
@@ -385,7 +393,8 @@ type SettingArgs struct {
 	Installer              SettingInstallerPtrInput
 	Jcloud                 SettingJcloudPtrInput
 	// JCloud Routing Assurance connexion
-	JcloudRa SettingJcloudRaPtrInput
+	JcloudRa   SettingJcloudRaPtrInput
+	JuniperSrx SettingJuniperSrxPtrInput
 	// junos_shell_access: Manages role-based web-shell access.\
 	// When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
 	// When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
@@ -410,6 +419,7 @@ type SettingArgs struct {
 	SyntheticTest         SettingSyntheticTestPtrInput
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntPtrInput
+	UiNoTracking  pulumi.BoolPtrInput
 	VpnOptions    SettingVpnOptionsPtrInput
 	WanPma        SettingWanPmaPtrInput
 	WiredPma      SettingWiredPmaPtrInput
@@ -573,6 +583,10 @@ func (o SettingOutput) Juniper() SettingJuniperOutput {
 	return o.ApplyT(func(v *Setting) SettingJuniperOutput { return v.Juniper }).(SettingJuniperOutput)
 }
 
+func (o SettingOutput) JuniperSrx() SettingJuniperSrxPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingJuniperSrxPtrOutput { return v.JuniperSrx }).(SettingJuniperSrxPtrOutput)
+}
+
 // junos_shell_access: Manages role-based web-shell access.\
 // When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
 // When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
@@ -643,6 +657,10 @@ func (o SettingOutput) SyntheticTest() SettingSyntheticTestPtrOutput {
 // Automatically logout the user when UI session is inactive. `0` means disabled
 func (o SettingOutput) UiIdleTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.UiIdleTimeout }).(pulumi.IntOutput)
+}
+
+func (o SettingOutput) UiNoTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.BoolPtrOutput { return v.UiNoTracking }).(pulumi.BoolPtrOutput)
 }
 
 func (o SettingOutput) VpnOptions() SettingVpnOptionsPtrOutput {

@@ -34,6 +34,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? AntGain6 { get; set; }
 
         /// <summary>
+        /// Antenna Mode for AP which supports selectable antennas. enum: `External`, `Internal`
+        /// </summary>
+        [Input("antMode")]
+        public Input<string>? AntMode { get; set; }
+
+        /// <summary>
         /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
         /// </summary>
         [Input("antennaMode")]

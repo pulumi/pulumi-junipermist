@@ -4373,6 +4373,8 @@ type ApRadioConfig struct {
 	AntGain5 *int `pulumi:"antGain5"`
 	// Antenna gain for 6G - for models with external antenna only
 	AntGain6 *int `pulumi:"antGain6"`
+	// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+	AntMode *string `pulumi:"antMode"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode *string `pulumi:"antennaMode"`
 	// Radio Band AP settings
@@ -4412,6 +4414,8 @@ type ApRadioConfigArgs struct {
 	AntGain5 pulumi.IntPtrInput `pulumi:"antGain5"`
 	// Antenna gain for 6G - for models with external antenna only
 	AntGain6 pulumi.IntPtrInput `pulumi:"antGain6"`
+	// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+	AntMode pulumi.StringPtrInput `pulumi:"antMode"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode pulumi.StringPtrInput `pulumi:"antennaMode"`
 	// Radio Band AP settings
@@ -4528,6 +4532,11 @@ func (o ApRadioConfigOutput) AntGain6() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApRadioConfig) *int { return v.AntGain6 }).(pulumi.IntPtrOutput)
 }
 
+// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+func (o ApRadioConfigOutput) AntMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApRadioConfig) *string { return v.AntMode }).(pulumi.StringPtrOutput)
+}
+
 // enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 func (o ApRadioConfigOutput) AntennaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApRadioConfig) *string { return v.AntennaMode }).(pulumi.StringPtrOutput)
@@ -4636,6 +4645,16 @@ func (o ApRadioConfigPtrOutput) AntGain6() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+func (o ApRadioConfigPtrOutput) AntMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApRadioConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AntMode
+	}).(pulumi.StringPtrOutput)
+}
+
 // enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 func (o ApRadioConfigPtrOutput) AntennaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApRadioConfig) *string {
@@ -4731,7 +4750,7 @@ type ApRadioConfigBand24 struct {
 	AntGain         *int  `pulumi:"antGain"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode *string `pulumi:"antennaMode"`
-	// channel width for the 2.4GHz band. enum: `20`, `40`
+	// channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
 	Bandwidth *int `pulumi:"bandwidth"`
 	// For Device. (primary) channel for the band, 0 means using the Site Setting
 	Channel *int `pulumi:"channel"`
@@ -4765,7 +4784,7 @@ type ApRadioConfigBand24Args struct {
 	AntGain         pulumi.IntPtrInput  `pulumi:"antGain"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode pulumi.StringPtrInput `pulumi:"antennaMode"`
-	// channel width for the 2.4GHz band. enum: `20`, `40`
+	// channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
 	Bandwidth pulumi.IntPtrInput `pulumi:"bandwidth"`
 	// For Device. (primary) channel for the band, 0 means using the Site Setting
 	Channel pulumi.IntPtrInput `pulumi:"channel"`
@@ -4873,7 +4892,7 @@ func (o ApRadioConfigBand24Output) AntennaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApRadioConfigBand24) *string { return v.AntennaMode }).(pulumi.StringPtrOutput)
 }
 
-// channel width for the 2.4GHz band. enum: `20`, `40`
+// channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
 func (o ApRadioConfigBand24Output) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApRadioConfigBand24) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
 }
@@ -4965,7 +4984,7 @@ func (o ApRadioConfigBand24PtrOutput) AntennaMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// channel width for the 2.4GHz band. enum: `20`, `40`
+// channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
 func (o ApRadioConfigBand24PtrOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApRadioConfigBand24) *int {
 		if v == nil {
@@ -5050,7 +5069,7 @@ type ApRadioConfigBand5 struct {
 	AntGain         *int  `pulumi:"antGain"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode *string `pulumi:"antennaMode"`
-	// channel width for the 5GHz band. enum: `20`, `40`, `80`
+	// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
 	Bandwidth *int `pulumi:"bandwidth"`
 	// For Device. (primary) channel for the band, 0 means using the Site Setting
 	Channel *int `pulumi:"channel"`
@@ -5084,7 +5103,7 @@ type ApRadioConfigBand5Args struct {
 	AntGain         pulumi.IntPtrInput  `pulumi:"antGain"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode pulumi.StringPtrInput `pulumi:"antennaMode"`
-	// channel width for the 5GHz band. enum: `20`, `40`, `80`
+	// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
 	Bandwidth pulumi.IntPtrInput `pulumi:"bandwidth"`
 	// For Device. (primary) channel for the band, 0 means using the Site Setting
 	Channel pulumi.IntPtrInput `pulumi:"channel"`
@@ -5192,7 +5211,7 @@ func (o ApRadioConfigBand5Output) AntennaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApRadioConfigBand5) *string { return v.AntennaMode }).(pulumi.StringPtrOutput)
 }
 
-// channel width for the 5GHz band. enum: `20`, `40`, `80`
+// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
 func (o ApRadioConfigBand5Output) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApRadioConfigBand5) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
 }
@@ -5284,7 +5303,7 @@ func (o ApRadioConfigBand5PtrOutput) AntennaMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// channel width for the 5GHz band. enum: `20`, `40`, `80`
+// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
 func (o ApRadioConfigBand5PtrOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApRadioConfigBand5) *int {
 		if v == nil {
@@ -5369,7 +5388,7 @@ type ApRadioConfigBand5On24Radio struct {
 	AntGain         *int  `pulumi:"antGain"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode *string `pulumi:"antennaMode"`
-	// channel width for the 5GHz band. enum: `20`, `40`, `80`
+	// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
 	Bandwidth *int `pulumi:"bandwidth"`
 	// For Device. (primary) channel for the band, 0 means using the Site Setting
 	Channel *int `pulumi:"channel"`
@@ -5403,7 +5422,7 @@ type ApRadioConfigBand5On24RadioArgs struct {
 	AntGain         pulumi.IntPtrInput  `pulumi:"antGain"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode pulumi.StringPtrInput `pulumi:"antennaMode"`
-	// channel width for the 5GHz band. enum: `20`, `40`, `80`
+	// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
 	Bandwidth pulumi.IntPtrInput `pulumi:"bandwidth"`
 	// For Device. (primary) channel for the band, 0 means using the Site Setting
 	Channel pulumi.IntPtrInput `pulumi:"channel"`
@@ -5511,7 +5530,7 @@ func (o ApRadioConfigBand5On24RadioOutput) AntennaMode() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ApRadioConfigBand5On24Radio) *string { return v.AntennaMode }).(pulumi.StringPtrOutput)
 }
 
-// channel width for the 5GHz band. enum: `20`, `40`, `80`
+// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
 func (o ApRadioConfigBand5On24RadioOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApRadioConfigBand5On24Radio) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
 }
@@ -5603,7 +5622,7 @@ func (o ApRadioConfigBand5On24RadioPtrOutput) AntennaMode() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// channel width for the 5GHz band. enum: `20`, `40`, `80`
+// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
 func (o ApRadioConfigBand5On24RadioPtrOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApRadioConfigBand5On24Radio) *int {
 		if v == nil {
@@ -5688,7 +5707,7 @@ type ApRadioConfigBand6 struct {
 	AntGain         *int  `pulumi:"antGain"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode *string `pulumi:"antennaMode"`
-	// channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+	// channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
 	Bandwidth *int `pulumi:"bandwidth"`
 	// For Device. (primary) channel for the band, 0 means using the Site Setting
 	Channel *int `pulumi:"channel"`
@@ -5724,7 +5743,7 @@ type ApRadioConfigBand6Args struct {
 	AntGain         pulumi.IntPtrInput  `pulumi:"antGain"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode pulumi.StringPtrInput `pulumi:"antennaMode"`
-	// channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+	// channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
 	Bandwidth pulumi.IntPtrInput `pulumi:"bandwidth"`
 	// For Device. (primary) channel for the band, 0 means using the Site Setting
 	Channel pulumi.IntPtrInput `pulumi:"channel"`
@@ -5834,7 +5853,7 @@ func (o ApRadioConfigBand6Output) AntennaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApRadioConfigBand6) *string { return v.AntennaMode }).(pulumi.StringPtrOutput)
 }
 
-// channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+// channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
 func (o ApRadioConfigBand6Output) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApRadioConfigBand6) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
 }
@@ -5931,7 +5950,7 @@ func (o ApRadioConfigBand6PtrOutput) AntennaMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+// channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
 func (o ApRadioConfigBand6PtrOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApRadioConfigBand6) *int {
 		if v == nil {
@@ -7371,7 +7390,8 @@ func (o GatewayDhcpdConfigConfigMapOutput) MapIndex(k pulumi.StringInput) Gatewa
 }
 
 type GatewayDhcpdConfigConfigFixedBindings struct {
-	Ip   string  `pulumi:"ip"`
+	Ip   *string `pulumi:"ip"`
+	Ip6  *string `pulumi:"ip6"`
 	Name *string `pulumi:"name"`
 }
 
@@ -7387,7 +7407,8 @@ type GatewayDhcpdConfigConfigFixedBindingsInput interface {
 }
 
 type GatewayDhcpdConfigConfigFixedBindingsArgs struct {
-	Ip   pulumi.StringInput    `pulumi:"ip"`
+	Ip   pulumi.StringPtrInput `pulumi:"ip"`
+	Ip6  pulumi.StringPtrInput `pulumi:"ip6"`
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -7442,8 +7463,12 @@ func (o GatewayDhcpdConfigConfigFixedBindingsOutput) ToGatewayDhcpdConfigConfigF
 	return o
 }
 
-func (o GatewayDhcpdConfigConfigFixedBindingsOutput) Ip() pulumi.StringOutput {
-	return o.ApplyT(func(v GatewayDhcpdConfigConfigFixedBindings) string { return v.Ip }).(pulumi.StringOutput)
+func (o GatewayDhcpdConfigConfigFixedBindingsOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayDhcpdConfigConfigFixedBindings) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayDhcpdConfigConfigFixedBindingsOutput) Ip6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayDhcpdConfigConfigFixedBindings) *string { return v.Ip6 }).(pulumi.StringPtrOutput)
 }
 
 func (o GatewayDhcpdConfigConfigFixedBindingsOutput) Name() pulumi.StringPtrOutput {
@@ -7862,6 +7887,143 @@ func (o GatewayExtraRoutesMapOutput) MapIndex(k pulumi.StringInput) GatewayExtra
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewayExtraRoutes {
 		return vs[0].(map[string]GatewayExtraRoutes)[vs[1].(string)]
 	}).(GatewayExtraRoutesOutput)
+}
+
+type GatewayGatewayMgmt struct {
+	// Rollback timer for commit confirmed
+	ConfigRevertTimer *int `pulumi:"configRevertTimer"`
+}
+
+// GatewayGatewayMgmtInput is an input type that accepts GatewayGatewayMgmtArgs and GatewayGatewayMgmtOutput values.
+// You can construct a concrete instance of `GatewayGatewayMgmtInput` via:
+//
+//	GatewayGatewayMgmtArgs{...}
+type GatewayGatewayMgmtInput interface {
+	pulumi.Input
+
+	ToGatewayGatewayMgmtOutput() GatewayGatewayMgmtOutput
+	ToGatewayGatewayMgmtOutputWithContext(context.Context) GatewayGatewayMgmtOutput
+}
+
+type GatewayGatewayMgmtArgs struct {
+	// Rollback timer for commit confirmed
+	ConfigRevertTimer pulumi.IntPtrInput `pulumi:"configRevertTimer"`
+}
+
+func (GatewayGatewayMgmtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayGatewayMgmt)(nil)).Elem()
+}
+
+func (i GatewayGatewayMgmtArgs) ToGatewayGatewayMgmtOutput() GatewayGatewayMgmtOutput {
+	return i.ToGatewayGatewayMgmtOutputWithContext(context.Background())
+}
+
+func (i GatewayGatewayMgmtArgs) ToGatewayGatewayMgmtOutputWithContext(ctx context.Context) GatewayGatewayMgmtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayGatewayMgmtOutput)
+}
+
+func (i GatewayGatewayMgmtArgs) ToGatewayGatewayMgmtPtrOutput() GatewayGatewayMgmtPtrOutput {
+	return i.ToGatewayGatewayMgmtPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayGatewayMgmtArgs) ToGatewayGatewayMgmtPtrOutputWithContext(ctx context.Context) GatewayGatewayMgmtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayGatewayMgmtOutput).ToGatewayGatewayMgmtPtrOutputWithContext(ctx)
+}
+
+// GatewayGatewayMgmtPtrInput is an input type that accepts GatewayGatewayMgmtArgs, GatewayGatewayMgmtPtr and GatewayGatewayMgmtPtrOutput values.
+// You can construct a concrete instance of `GatewayGatewayMgmtPtrInput` via:
+//
+//	        GatewayGatewayMgmtArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayGatewayMgmtPtrInput interface {
+	pulumi.Input
+
+	ToGatewayGatewayMgmtPtrOutput() GatewayGatewayMgmtPtrOutput
+	ToGatewayGatewayMgmtPtrOutputWithContext(context.Context) GatewayGatewayMgmtPtrOutput
+}
+
+type gatewayGatewayMgmtPtrType GatewayGatewayMgmtArgs
+
+func GatewayGatewayMgmtPtr(v *GatewayGatewayMgmtArgs) GatewayGatewayMgmtPtrInput {
+	return (*gatewayGatewayMgmtPtrType)(v)
+}
+
+func (*gatewayGatewayMgmtPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayGatewayMgmt)(nil)).Elem()
+}
+
+func (i *gatewayGatewayMgmtPtrType) ToGatewayGatewayMgmtPtrOutput() GatewayGatewayMgmtPtrOutput {
+	return i.ToGatewayGatewayMgmtPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayGatewayMgmtPtrType) ToGatewayGatewayMgmtPtrOutputWithContext(ctx context.Context) GatewayGatewayMgmtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayGatewayMgmtPtrOutput)
+}
+
+type GatewayGatewayMgmtOutput struct{ *pulumi.OutputState }
+
+func (GatewayGatewayMgmtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayGatewayMgmt)(nil)).Elem()
+}
+
+func (o GatewayGatewayMgmtOutput) ToGatewayGatewayMgmtOutput() GatewayGatewayMgmtOutput {
+	return o
+}
+
+func (o GatewayGatewayMgmtOutput) ToGatewayGatewayMgmtOutputWithContext(ctx context.Context) GatewayGatewayMgmtOutput {
+	return o
+}
+
+func (o GatewayGatewayMgmtOutput) ToGatewayGatewayMgmtPtrOutput() GatewayGatewayMgmtPtrOutput {
+	return o.ToGatewayGatewayMgmtPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayGatewayMgmtOutput) ToGatewayGatewayMgmtPtrOutputWithContext(ctx context.Context) GatewayGatewayMgmtPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayGatewayMgmt) *GatewayGatewayMgmt {
+		return &v
+	}).(GatewayGatewayMgmtPtrOutput)
+}
+
+// Rollback timer for commit confirmed
+func (o GatewayGatewayMgmtOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayGatewayMgmt) *int { return v.ConfigRevertTimer }).(pulumi.IntPtrOutput)
+}
+
+type GatewayGatewayMgmtPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayGatewayMgmtPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayGatewayMgmt)(nil)).Elem()
+}
+
+func (o GatewayGatewayMgmtPtrOutput) ToGatewayGatewayMgmtPtrOutput() GatewayGatewayMgmtPtrOutput {
+	return o
+}
+
+func (o GatewayGatewayMgmtPtrOutput) ToGatewayGatewayMgmtPtrOutputWithContext(ctx context.Context) GatewayGatewayMgmtPtrOutput {
+	return o
+}
+
+func (o GatewayGatewayMgmtPtrOutput) Elem() GatewayGatewayMgmtOutput {
+	return o.ApplyT(func(v *GatewayGatewayMgmt) GatewayGatewayMgmt {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayGatewayMgmt
+		return ret
+	}).(GatewayGatewayMgmtOutput)
+}
+
+// Rollback timer for commit confirmed
+func (o GatewayGatewayMgmtPtrOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GatewayGatewayMgmt) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigRevertTimer
+	}).(pulumi.IntPtrOutput)
 }
 
 type GatewayIdpProfiles struct {
@@ -10956,6 +11118,8 @@ type GatewayPortConfig struct {
 	WanDisableSpeedtest *bool `pulumi:"wanDisableSpeedtest"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp *string `pulumi:"wanExtIp"`
+	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+	WanExtIp6 *string `pulumi:"wanExtIp6"`
 	// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
 	WanExtraRoutes map[string]GatewayPortConfigWanExtraRoutes `pulumi:"wanExtraRoutes"`
 	// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -11054,6 +11218,8 @@ type GatewayPortConfigArgs struct {
 	WanDisableSpeedtest pulumi.BoolPtrInput `pulumi:"wanDisableSpeedtest"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp pulumi.StringPtrInput `pulumi:"wanExtIp"`
+	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+	WanExtIp6 pulumi.StringPtrInput `pulumi:"wanExtIp6"`
 	// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
 	WanExtraRoutes GatewayPortConfigWanExtraRoutesMapInput `pulumi:"wanExtraRoutes"`
 	// Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -11309,6 +11475,11 @@ func (o GatewayPortConfigOutput) WanDisableSpeedtest() pulumi.BoolPtrOutput {
 // Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 func (o GatewayPortConfigOutput) WanExtIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.WanExtIp }).(pulumi.StringPtrOutput)
+}
+
+// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+func (o GatewayPortConfigOutput) WanExtIp6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfig) *string { return v.WanExtIp6 }).(pulumi.StringPtrOutput)
 }
 
 // Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
@@ -12576,6 +12747,8 @@ type GatewayPortConfigWanSourceNat struct {
 	// Or to disable the source-nat
 	Disabled *bool `pulumi:"disabled"`
 	// If alternative natPool is desired
+	Nat6Pool *string `pulumi:"nat6Pool"`
+	// If alternative natPool is desired
 	NatPool *string `pulumi:"natPool"`
 }
 
@@ -12593,6 +12766,8 @@ type GatewayPortConfigWanSourceNatInput interface {
 type GatewayPortConfigWanSourceNatArgs struct {
 	// Or to disable the source-nat
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// If alternative natPool is desired
+	Nat6Pool pulumi.StringPtrInput `pulumi:"nat6Pool"`
 	// If alternative natPool is desired
 	NatPool pulumi.StringPtrInput `pulumi:"natPool"`
 }
@@ -12680,6 +12855,11 @@ func (o GatewayPortConfigWanSourceNatOutput) Disabled() pulumi.BoolPtrOutput {
 }
 
 // If alternative natPool is desired
+func (o GatewayPortConfigWanSourceNatOutput) Nat6Pool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfigWanSourceNat) *string { return v.Nat6Pool }).(pulumi.StringPtrOutput)
+}
+
+// If alternative natPool is desired
 func (o GatewayPortConfigWanSourceNatOutput) NatPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfigWanSourceNat) *string { return v.NatPool }).(pulumi.StringPtrOutput)
 }
@@ -12716,6 +12896,16 @@ func (o GatewayPortConfigWanSourceNatPtrOutput) Disabled() pulumi.BoolPtrOutput 
 		}
 		return v.Disabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// If alternative natPool is desired
+func (o GatewayPortConfigWanSourceNatPtrOutput) Nat6Pool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayPortConfigWanSourceNat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Nat6Pool
+	}).(pulumi.StringPtrOutput)
 }
 
 // If alternative natPool is desired
@@ -19398,7 +19588,8 @@ func (o SwitchDhcpdConfigConfigMapOutput) MapIndex(k pulumi.StringInput) SwitchD
 }
 
 type SwitchDhcpdConfigConfigFixedBindings struct {
-	Ip   string  `pulumi:"ip"`
+	Ip   *string `pulumi:"ip"`
+	Ip6  *string `pulumi:"ip6"`
 	Name *string `pulumi:"name"`
 }
 
@@ -19414,7 +19605,8 @@ type SwitchDhcpdConfigConfigFixedBindingsInput interface {
 }
 
 type SwitchDhcpdConfigConfigFixedBindingsArgs struct {
-	Ip   pulumi.StringInput    `pulumi:"ip"`
+	Ip   pulumi.StringPtrInput `pulumi:"ip"`
+	Ip6  pulumi.StringPtrInput `pulumi:"ip6"`
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -19469,8 +19661,12 @@ func (o SwitchDhcpdConfigConfigFixedBindingsOutput) ToSwitchDhcpdConfigConfigFix
 	return o
 }
 
-func (o SwitchDhcpdConfigConfigFixedBindingsOutput) Ip() pulumi.StringOutput {
-	return o.ApplyT(func(v SwitchDhcpdConfigConfigFixedBindings) string { return v.Ip }).(pulumi.StringOutput)
+func (o SwitchDhcpdConfigConfigFixedBindingsOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchDhcpdConfigConfigFixedBindings) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+func (o SwitchDhcpdConfigConfigFixedBindingsOutput) Ip6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchDhcpdConfigConfigFixedBindings) *string { return v.Ip6 }).(pulumi.StringPtrOutput)
 }
 
 func (o SwitchDhcpdConfigConfigFixedBindingsOutput) Name() pulumi.StringPtrOutput {
@@ -20426,7 +20622,7 @@ type SwitchLocalPortConfig struct {
 	EnableQos     *bool `pulumi:"enableQos"`
 	// Only if `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork *string `pulumi:"guestNetwork"`
-	// inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
 	InterSwitchLink *bool `pulumi:"interSwitchLink"`
 	// Only if `enableMacAuth`==`true`
 	MacAuthOnly *bool `pulumi:"macAuthOnly"`
@@ -20509,7 +20705,7 @@ type SwitchLocalPortConfigArgs struct {
 	EnableQos     pulumi.BoolPtrInput `pulumi:"enableQos"`
 	// Only if `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork pulumi.StringPtrInput `pulumi:"guestNetwork"`
-	// inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
 	InterSwitchLink pulumi.BoolPtrInput `pulumi:"interSwitchLink"`
 	// Only if `enableMacAuth`==`true`
 	MacAuthOnly pulumi.BoolPtrInput `pulumi:"macAuthOnly"`
@@ -20670,7 +20866,7 @@ func (o SwitchLocalPortConfigOutput) GuestNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.GuestNetwork }).(pulumi.StringPtrOutput)
 }
 
-// inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+// inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
 func (o SwitchLocalPortConfigOutput) InterSwitchLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.InterSwitchLink }).(pulumi.BoolPtrOutput)
 }
@@ -22828,37 +23024,37 @@ func (o SwitchPortMirroringMapOutput) MapIndex(k pulumi.StringInput) SwitchPortM
 }
 
 type SwitchPortUsages struct {
-	// Only if `mode`==`trunk` whether to trunk all network/vlans
+	// Only if `mode`==`trunk`. Whether to trunk all network/vlans
 	AllNetworks *bool `pulumi:"allNetworks"`
 	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
 	AllowDhcpd *bool `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants *bool `pulumi:"allowMultipleSupplicants"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
 	BypassAuthWhenServerDown *bool `pulumi:"bypassAuthWhenServerDown"`
-	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
 	BypassAuthWhenServerDownForUnknownClient *bool `pulumi:"bypassAuthWhenServerDownForUnknownClient"`
 	// Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
 	CommunityVlanId *int `pulumi:"communityVlanId"`
 	// Only if `mode`!=`dynamic`
 	Description *string `pulumi:"description"`
-	// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+	// Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
 	DisableAutoneg *bool `pulumi:"disableAutoneg"`
-	// Only if `mode`!=`dynamic` whether the port is disabled
+	// Only if `mode`!=`dynamic`. Whether the port is disabled
 	Disabled *bool `pulumi:"disabled"`
-	// Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+	// Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
 	Duplex *string `pulumi:"duplex"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
 	DynamicVlanNetworks []string `pulumi:"dynamicVlanNetworks"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
 	EnableMacAuth *bool `pulumi:"enableMacAuth"`
 	// Only if `mode`!=`dynamic`
 	EnableQos *bool `pulumi:"enableQos"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork *string `pulumi:"guestNetwork"`
-	// `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
 	InterIsolationNetworkLink *bool `pulumi:"interIsolationNetworkLink"`
-	// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
 	InterSwitchLink *bool `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly *bool `pulumi:"macAuthOnly"`
@@ -22874,13 +23070,13 @@ type SwitchPortUsages struct {
 	Mtu *string `pulumi:"mtu"`
 	// Only if `mode`==`trunk`, the list of network/vlans
 	Networks []string `pulumi:"networks"`
-	// Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+	// Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
 	PersistMac *bool `pulumi:"persistMac"`
-	// Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+	// Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
 	PoeDisabled *bool `pulumi:"poeDisabled"`
-	// Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+	// Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
 	PortAuth *string `pulumi:"portAuth"`
-	// Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+	// Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
 	PortNetwork *string `pulumi:"portNetwork"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
 	ReauthInterval *string `pulumi:"reauthInterval"`
@@ -22888,21 +23084,27 @@ type SwitchPortUsages struct {
 	ResetDefaultWhen *string `pulumi:"resetDefaultWhen"`
 	// Only if `mode`==`dynamic`
 	Rules []SwitchPortUsagesRule `pulumi:"rules"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
 	ServerFailNetwork *string `pulumi:"serverFailNetwork"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
 	ServerRejectNetwork *string `pulumi:"serverRejectNetwork"`
 	// Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed *string `pulumi:"speed"`
 	// Switch storm control. Only if `mode`!=`dynamic`
 	StormControl *SwitchPortUsagesStormControl `pulumi:"stormControl"`
-	// Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
-	StpEdge       *bool `pulumi:"stpEdge"`
+	// Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+	StpDisable *bool `pulumi:"stpDisable"`
+	// Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
+	StpEdge *bool `pulumi:"stpEdge"`
+	// Only if `mode`!=`dynamic`
 	StpNoRootPort *bool `pulumi:"stpNoRootPort"`
-	StpP2p        *bool `pulumi:"stpP2p"`
+	// Only if `mode`!=`dynamic`
+	StpP2p *bool `pulumi:"stpP2p"`
+	// Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+	StpRequired *bool `pulumi:"stpRequired"`
 	// If this is connected to a vstp network
 	UseVstp *bool `pulumi:"useVstp"`
-	// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+	// Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 	VoipNetwork *string `pulumi:"voipNetwork"`
 }
 
@@ -22918,37 +23120,37 @@ type SwitchPortUsagesInput interface {
 }
 
 type SwitchPortUsagesArgs struct {
-	// Only if `mode`==`trunk` whether to trunk all network/vlans
+	// Only if `mode`==`trunk`. Whether to trunk all network/vlans
 	AllNetworks pulumi.BoolPtrInput `pulumi:"allNetworks"`
 	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
 	AllowDhcpd pulumi.BoolPtrInput `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants pulumi.BoolPtrInput `pulumi:"allowMultipleSupplicants"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
 	BypassAuthWhenServerDown pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDown"`
-	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
 	BypassAuthWhenServerDownForUnknownClient pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDownForUnknownClient"`
 	// Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
 	CommunityVlanId pulumi.IntPtrInput `pulumi:"communityVlanId"`
 	// Only if `mode`!=`dynamic`
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+	// Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
 	DisableAutoneg pulumi.BoolPtrInput `pulumi:"disableAutoneg"`
-	// Only if `mode`!=`dynamic` whether the port is disabled
+	// Only if `mode`!=`dynamic`. Whether the port is disabled
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+	// Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
 	Duplex pulumi.StringPtrInput `pulumi:"duplex"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
 	DynamicVlanNetworks pulumi.StringArrayInput `pulumi:"dynamicVlanNetworks"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
 	EnableMacAuth pulumi.BoolPtrInput `pulumi:"enableMacAuth"`
 	// Only if `mode`!=`dynamic`
 	EnableQos pulumi.BoolPtrInput `pulumi:"enableQos"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork pulumi.StringPtrInput `pulumi:"guestNetwork"`
-	// `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
 	InterIsolationNetworkLink pulumi.BoolPtrInput `pulumi:"interIsolationNetworkLink"`
-	// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
 	InterSwitchLink pulumi.BoolPtrInput `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly pulumi.BoolPtrInput `pulumi:"macAuthOnly"`
@@ -22964,13 +23166,13 @@ type SwitchPortUsagesArgs struct {
 	Mtu pulumi.StringPtrInput `pulumi:"mtu"`
 	// Only if `mode`==`trunk`, the list of network/vlans
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
-	// Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+	// Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
 	PersistMac pulumi.BoolPtrInput `pulumi:"persistMac"`
-	// Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+	// Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
 	PoeDisabled pulumi.BoolPtrInput `pulumi:"poeDisabled"`
-	// Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+	// Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
 	PortAuth pulumi.StringPtrInput `pulumi:"portAuth"`
-	// Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+	// Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
 	PortNetwork pulumi.StringPtrInput `pulumi:"portNetwork"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
 	ReauthInterval pulumi.StringPtrInput `pulumi:"reauthInterval"`
@@ -22978,21 +23180,27 @@ type SwitchPortUsagesArgs struct {
 	ResetDefaultWhen pulumi.StringPtrInput `pulumi:"resetDefaultWhen"`
 	// Only if `mode`==`dynamic`
 	Rules SwitchPortUsagesRuleArrayInput `pulumi:"rules"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
 	ServerFailNetwork pulumi.StringPtrInput `pulumi:"serverFailNetwork"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
 	ServerRejectNetwork pulumi.StringPtrInput `pulumi:"serverRejectNetwork"`
 	// Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
 	// Switch storm control. Only if `mode`!=`dynamic`
 	StormControl SwitchPortUsagesStormControlPtrInput `pulumi:"stormControl"`
-	// Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
-	StpEdge       pulumi.BoolPtrInput `pulumi:"stpEdge"`
+	// Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+	StpDisable pulumi.BoolPtrInput `pulumi:"stpDisable"`
+	// Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
+	StpEdge pulumi.BoolPtrInput `pulumi:"stpEdge"`
+	// Only if `mode`!=`dynamic`
 	StpNoRootPort pulumi.BoolPtrInput `pulumi:"stpNoRootPort"`
-	StpP2p        pulumi.BoolPtrInput `pulumi:"stpP2p"`
+	// Only if `mode`!=`dynamic`
+	StpP2p pulumi.BoolPtrInput `pulumi:"stpP2p"`
+	// Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+	StpRequired pulumi.BoolPtrInput `pulumi:"stpRequired"`
 	// If this is connected to a vstp network
 	UseVstp pulumi.BoolPtrInput `pulumi:"useVstp"`
-	// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+	// Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 	VoipNetwork pulumi.StringPtrInput `pulumi:"voipNetwork"`
 }
 
@@ -23047,7 +23255,7 @@ func (o SwitchPortUsagesOutput) ToSwitchPortUsagesOutputWithContext(ctx context.
 	return o
 }
 
-// Only if `mode`==`trunk` whether to trunk all network/vlans
+// Only if `mode`==`trunk`. Whether to trunk all network/vlans
 func (o SwitchPortUsagesOutput) AllNetworks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.AllNetworks }).(pulumi.BoolPtrOutput)
 }
@@ -23062,12 +23270,12 @@ func (o SwitchPortUsagesOutput) AllowMultipleSupplicants() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.AllowMultipleSupplicants }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
 func (o SwitchPortUsagesOutput) BypassAuthWhenServerDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.BypassAuthWhenServerDown }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+// Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
 func (o SwitchPortUsagesOutput) BypassAuthWhenServerDownForUnknownClient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.BypassAuthWhenServerDownForUnknownClient }).(pulumi.BoolPtrOutput)
 }
@@ -23082,17 +23290,17 @@ func (o SwitchPortUsagesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+// Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
 func (o SwitchPortUsagesOutput) DisableAutoneg() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.DisableAutoneg }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` whether the port is disabled
+// Only if `mode`!=`dynamic`. Whether the port is disabled
 func (o SwitchPortUsagesOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+// Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
 func (o SwitchPortUsagesOutput) Duplex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.Duplex }).(pulumi.StringPtrOutput)
 }
@@ -23102,7 +23310,7 @@ func (o SwitchPortUsagesOutput) DynamicVlanNetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SwitchPortUsages) []string { return v.DynamicVlanNetworks }).(pulumi.StringArrayOutput)
 }
 
-// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
 func (o SwitchPortUsagesOutput) EnableMacAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.EnableMacAuth }).(pulumi.BoolPtrOutput)
 }
@@ -23112,17 +23320,17 @@ func (o SwitchPortUsagesOutput) EnableQos() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.EnableQos }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 func (o SwitchPortUsagesOutput) GuestNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.GuestNetwork }).(pulumi.StringPtrOutput)
 }
 
-// `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+// Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
 func (o SwitchPortUsagesOutput) InterIsolationNetworkLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.InterIsolationNetworkLink }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
 func (o SwitchPortUsagesOutput) InterSwitchLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.InterSwitchLink }).(pulumi.BoolPtrOutput)
 }
@@ -23162,22 +23370,22 @@ func (o SwitchPortUsagesOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SwitchPortUsages) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
-// Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+// Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
 func (o SwitchPortUsagesOutput) PersistMac() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.PersistMac }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+// Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
 func (o SwitchPortUsagesOutput) PoeDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.PoeDisabled }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+// Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
 func (o SwitchPortUsagesOutput) PortAuth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.PortAuth }).(pulumi.StringPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+// Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
 func (o SwitchPortUsagesOutput) PortNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.PortNetwork }).(pulumi.StringPtrOutput)
 }
@@ -23197,12 +23405,12 @@ func (o SwitchPortUsagesOutput) Rules() SwitchPortUsagesRuleArrayOutput {
 	return o.ApplyT(func(v SwitchPortUsages) []SwitchPortUsagesRule { return v.Rules }).(SwitchPortUsagesRuleArrayOutput)
 }
 
-// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
 func (o SwitchPortUsagesOutput) ServerFailNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.ServerFailNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
 func (o SwitchPortUsagesOutput) ServerRejectNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.ServerRejectNetwork }).(pulumi.StringPtrOutput)
 }
@@ -23217,17 +23425,29 @@ func (o SwitchPortUsagesOutput) StormControl() SwitchPortUsagesStormControlPtrOu
 	return o.ApplyT(func(v SwitchPortUsages) *SwitchPortUsagesStormControl { return v.StormControl }).(SwitchPortUsagesStormControlPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+// Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+func (o SwitchPortUsagesOutput) StpDisable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.StpDisable }).(pulumi.BoolPtrOutput)
+}
+
+// Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
 func (o SwitchPortUsagesOutput) StpEdge() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.StpEdge }).(pulumi.BoolPtrOutput)
 }
 
+// Only if `mode`!=`dynamic`
 func (o SwitchPortUsagesOutput) StpNoRootPort() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.StpNoRootPort }).(pulumi.BoolPtrOutput)
 }
 
+// Only if `mode`!=`dynamic`
 func (o SwitchPortUsagesOutput) StpP2p() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.StpP2p }).(pulumi.BoolPtrOutput)
+}
+
+// Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+func (o SwitchPortUsagesOutput) StpRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.StpRequired }).(pulumi.BoolPtrOutput)
 }
 
 // If this is connected to a vstp network
@@ -23235,7 +23455,7 @@ func (o SwitchPortUsagesOutput) UseVstp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.UseVstp }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+// Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 func (o SwitchPortUsagesOutput) VoipNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.VoipNetwork }).(pulumi.StringPtrOutput)
 }
@@ -44110,6 +44330,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExtraRoutes6MapInput)(nil)).Elem(), GatewayExtraRoutes6Map{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExtraRoutesInput)(nil)).Elem(), GatewayExtraRoutesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExtraRoutesMapInput)(nil)).Elem(), GatewayExtraRoutesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayGatewayMgmtInput)(nil)).Elem(), GatewayGatewayMgmtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayGatewayMgmtPtrInput)(nil)).Elem(), GatewayGatewayMgmtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayIdpProfilesInput)(nil)).Elem(), GatewayIdpProfilesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayIdpProfilesMapInput)(nil)).Elem(), GatewayIdpProfilesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayIdpProfilesOverwriteInput)(nil)).Elem(), GatewayIdpProfilesOverwriteArgs{})
@@ -44615,6 +44837,8 @@ func init() {
 	pulumi.RegisterOutputType(GatewayExtraRoutes6MapOutput{})
 	pulumi.RegisterOutputType(GatewayExtraRoutesOutput{})
 	pulumi.RegisterOutputType(GatewayExtraRoutesMapOutput{})
+	pulumi.RegisterOutputType(GatewayGatewayMgmtOutput{})
+	pulumi.RegisterOutputType(GatewayGatewayMgmtPtrOutput{})
 	pulumi.RegisterOutputType(GatewayIdpProfilesOutput{})
 	pulumi.RegisterOutputType(GatewayIdpProfilesMapOutput{})
 	pulumi.RegisterOutputType(GatewayIdpProfilesOverwriteOutput{})

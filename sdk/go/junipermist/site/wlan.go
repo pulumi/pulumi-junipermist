@@ -212,12 +212,13 @@ type Wlan struct {
 	PortalAllowedHostnames pulumi.StringArrayOutput `pulumi:"portalAllowedHostnames"`
 	// List of CIDRs
 	PortalAllowedSubnets pulumi.StringArrayOutput `pulumi:"portalAllowedSubnets"`
-	// APi secret (auto-generated) that can be used to sign guest authorization requests
+	// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
 	PortalApiSecret pulumi.StringOutput `pulumi:"portalApiSecret"`
 	// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
 	PortalDeniedHostnames pulumi.StringArrayOutput `pulumi:"portalDeniedHostnames"`
 	// Url of portal background image
-	PortalImage  pulumi.StringOutput `pulumi:"portalImage"`
+	PortalImage pulumi.StringOutput `pulumi:"portalImage"`
+	// URL used in the SSO process, auto-generated when auth is set to `sso`
 	PortalSsoUrl pulumi.StringOutput `pulumi:"portalSsoUrl"`
 	Qos          WlanQosOutput       `pulumi:"qos"`
 	// RadSec settings
@@ -437,12 +438,13 @@ type wlanState struct {
 	PortalAllowedHostnames []string `pulumi:"portalAllowedHostnames"`
 	// List of CIDRs
 	PortalAllowedSubnets []string `pulumi:"portalAllowedSubnets"`
-	// APi secret (auto-generated) that can be used to sign guest authorization requests
+	// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
 	PortalApiSecret *string `pulumi:"portalApiSecret"`
 	// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
 	PortalDeniedHostnames []string `pulumi:"portalDeniedHostnames"`
 	// Url of portal background image
-	PortalImage  *string  `pulumi:"portalImage"`
+	PortalImage *string `pulumi:"portalImage"`
+	// URL used in the SSO process, auto-generated when auth is set to `sso`
 	PortalSsoUrl *string  `pulumi:"portalSsoUrl"`
 	Qos          *WlanQos `pulumi:"qos"`
 	// RadSec settings
@@ -627,12 +629,13 @@ type WlanState struct {
 	PortalAllowedHostnames pulumi.StringArrayInput
 	// List of CIDRs
 	PortalAllowedSubnets pulumi.StringArrayInput
-	// APi secret (auto-generated) that can be used to sign guest authorization requests
+	// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
 	PortalApiSecret pulumi.StringPtrInput
 	// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
 	PortalDeniedHostnames pulumi.StringArrayInput
 	// Url of portal background image
-	PortalImage  pulumi.StringPtrInput
+	PortalImage pulumi.StringPtrInput
+	// URL used in the SSO process, auto-generated when auth is set to `sso`
 	PortalSsoUrl pulumi.StringPtrInput
 	Qos          WlanQosPtrInput
 	// RadSec settings
@@ -1484,7 +1487,7 @@ func (o WlanOutput) PortalAllowedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.PortalAllowedSubnets }).(pulumi.StringArrayOutput)
 }
 
-// APi secret (auto-generated) that can be used to sign guest authorization requests
+// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
 func (o WlanOutput) PortalApiSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.PortalApiSecret }).(pulumi.StringOutput)
 }
@@ -1499,6 +1502,7 @@ func (o WlanOutput) PortalImage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.PortalImage }).(pulumi.StringOutput)
 }
 
+// URL used in the SSO process, auto-generated when auth is set to `sso`
 func (o WlanOutput) PortalSsoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.PortalSsoUrl }).(pulumi.StringOutput)
 }

@@ -47,6 +47,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("vlans")]
         private InputList<Inputs.SettingSyntheticTestVlanArgs>? _vlans;
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.SettingSyntheticTestVlanArgs> Vlans
         {
             get => _vlans ?? (_vlans = new InputList<Inputs.SettingSyntheticTestVlanArgs>());

@@ -72,7 +72,7 @@ export class Nactag extends pulumi.CustomResource {
     declare public readonly egressVlanNames: pulumi.Output<string[] | undefined>;
     declare public readonly gbpTag: pulumi.Output<string | undefined>;
     /**
-     * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      */
     declare public readonly match: pulumi.Output<string | undefined>;
     /**
@@ -81,11 +81,11 @@ export class Nactag extends pulumi.CustomResource {
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      *
      *
-     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      */
     declare public readonly matchAll: pulumi.Output<boolean | undefined>;
     /**
-     * If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+     * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
      */
     declare public readonly nacportalId: pulumi.Output<string | undefined>;
     declare public readonly name: pulumi.Output<string>;
@@ -111,7 +111,7 @@ export class Nactag extends pulumi.CustomResource {
      */
     declare public readonly sessionTimeout: pulumi.Output<number | undefined>;
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -200,7 +200,7 @@ export interface NactagState {
     egressVlanNames?: pulumi.Input<pulumi.Input<string>[]>;
     gbpTag?: pulumi.Input<string>;
     /**
-     * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      */
     match?: pulumi.Input<string>;
     /**
@@ -209,11 +209,11 @@ export interface NactagState {
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      *
      *
-     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      */
     matchAll?: pulumi.Input<boolean>;
     /**
-     * If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+     * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
      */
     nacportalId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -239,7 +239,7 @@ export interface NactagState {
      */
     sessionTimeout?: pulumi.Input<number>;
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
      */
     type?: pulumi.Input<string>;
     /**
@@ -270,7 +270,7 @@ export interface NactagArgs {
     egressVlanNames?: pulumi.Input<pulumi.Input<string>[]>;
     gbpTag?: pulumi.Input<string>;
     /**
-     * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      */
     match?: pulumi.Input<string>;
     /**
@@ -279,11 +279,11 @@ export interface NactagArgs {
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      *
      *
-     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      */
     matchAll?: pulumi.Input<boolean>;
     /**
-     * If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+     * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
      */
     nacportalId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -309,7 +309,7 @@ export interface NactagArgs {
      */
     sessionTimeout?: pulumi.Input<number>;
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
      */
     type: pulumi.Input<string>;
     /**

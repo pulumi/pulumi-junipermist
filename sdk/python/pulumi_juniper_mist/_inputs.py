@@ -26,7 +26,7 @@ if not MYPY:
         progress: NotRequired[pulumi.Input[_builtins.int]]
         status: NotRequired[pulumi.Input[_builtins.str]]
         """
-        enum: `inprogress`, `failed`, `upgraded`
+        enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         """
         status_id: NotRequired[pulumi.Input[_builtins.int]]
         timestamp: NotRequired[pulumi.Input[_builtins.float]]
@@ -46,7 +46,7 @@ class UpgradeDeviceFwupdateArgs:
                  timestamp: Optional[pulumi.Input[_builtins.float]] = None,
                  will_retry: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        :param pulumi.Input[_builtins.str] status: enum: `inprogress`, `failed`, `upgraded`
+        :param pulumi.Input[_builtins.str] status: enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         :param pulumi.Input[_builtins.float] timestamp: Epoch (seconds)
         """
         if progress is not None:
@@ -73,7 +73,7 @@ class UpgradeDeviceFwupdateArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        enum: `inprogress`, `failed`, `upgraded`
+        enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         """
         return pulumi.get(self, "status")
 

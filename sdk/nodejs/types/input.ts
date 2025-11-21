@@ -8,7 +8,7 @@ import * as outputs from "../types/output";
 export interface UpgradeDeviceFwupdate {
     progress?: pulumi.Input<number>;
     /**
-     * enum: `inprogress`, `failed`, `upgraded`
+     * enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
      */
     status?: pulumi.Input<string>;
     statusId?: pulumi.Input<number>;
@@ -525,6 +525,10 @@ export namespace device {
          */
         antGain6?: pulumi.Input<number>;
         /**
+         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         */
+        antMode?: pulumi.Input<string>;
+        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode?: pulumi.Input<string>;
@@ -570,7 +574,7 @@ export namespace device {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 2.4GHz band. enum: `20`, `40`
+         * channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -611,7 +615,7 @@ export namespace device {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -652,7 +656,7 @@ export namespace device {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -693,7 +697,7 @@ export namespace device {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+         * channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -977,7 +981,8 @@ export namespace device {
     }
 
     export interface GatewayDhcpdConfigConfigFixedBindings {
-        ip: pulumi.Input<string>;
+        ip?: pulumi.Input<string>;
+        ip6?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
     }
 
@@ -1003,6 +1008,13 @@ export namespace device {
 
     export interface GatewayExtraRoutes6 {
         via: pulumi.Input<string>;
+    }
+
+    export interface GatewayGatewayMgmt {
+        /**
+         * Rollback timer for commit confirmed
+         */
+        configRevertTimer?: pulumi.Input<number>;
     }
 
     export interface GatewayIdpProfiles {
@@ -1487,6 +1499,10 @@ export namespace device {
          */
         wanExtIp?: pulumi.Input<string>;
         /**
+         * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+         */
+        wanExtIp6?: pulumi.Input<string>;
+        /**
          * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
         wanExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfigWanExtraRoutes>}>;
@@ -1637,6 +1653,10 @@ export namespace device {
          * Or to disable the source-nat
          */
         disabled?: pulumi.Input<boolean>;
+        /**
+         * If alternative natPool is desired
+         */
+        nat6Pool?: pulumi.Input<string>;
         /**
          * If alternative natPool is desired
          */
@@ -2407,7 +2427,8 @@ export namespace device {
     }
 
     export interface SwitchDhcpdConfigConfigFixedBindings {
-        ip: pulumi.Input<string>;
+        ip?: pulumi.Input<string>;
+        ip6?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
     }
 
@@ -2534,7 +2555,7 @@ export namespace device {
          */
         guestNetwork?: pulumi.Input<string>;
         /**
-         * inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
          */
         interSwitchLink?: pulumi.Input<boolean>;
         /**
@@ -2916,7 +2937,7 @@ export namespace device {
 
     export interface SwitchPortUsages {
         /**
-         * Only if `mode`==`trunk` whether to trunk all network/vlans
+         * Only if `mode`==`trunk`. Whether to trunk all network/vlans
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
@@ -2928,11 +2949,11 @@ export namespace device {
          */
         allowMultipleSupplicants?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDown?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: pulumi.Input<boolean>;
         /**
@@ -2944,15 +2965,15 @@ export namespace device {
          */
         description?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+         * Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
          */
         disableAutoneg?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` whether the port is disabled
+         * Only if `mode`!=`dynamic`. Whether the port is disabled
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
          */
         duplex?: pulumi.Input<string>;
         /**
@@ -2960,7 +2981,7 @@ export namespace device {
          */
         dynamicVlanNetworks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
          */
         enableMacAuth?: pulumi.Input<boolean>;
         /**
@@ -2968,15 +2989,15 @@ export namespace device {
          */
         enableQos?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          */
         guestNetwork?: pulumi.Input<string>;
         /**
-         * `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
          */
         interIsolationNetworkLink?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
          */
         interSwitchLink?: pulumi.Input<boolean>;
         /**
@@ -3008,19 +3029,19 @@ export namespace device {
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+         * Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
          */
         persistMac?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+         * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+         * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          */
         portAuth?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+         * Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
          */
         portNetwork?: pulumi.Input<string>;
         /**
@@ -3036,11 +3057,11 @@ export namespace device {
          */
         rules?: pulumi.Input<pulumi.Input<inputs.device.SwitchPortUsagesRule>[]>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
          */
         serverFailNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
          */
         serverRejectNetwork?: pulumi.Input<string>;
         /**
@@ -3052,17 +3073,31 @@ export namespace device {
          */
         stormControl?: pulumi.Input<inputs.device.SwitchPortUsagesStormControl>;
         /**
-         * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+         * Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+         */
+        stpDisable?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
          */
         stpEdge?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`
+         */
         stpNoRootPort?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`
+         */
         stpP2p?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+         */
+        stpRequired?: pulumi.Input<boolean>;
         /**
          * If this is connected to a vstp network
          */
         useVstp?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+         * Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
         voipNetwork?: pulumi.Input<string>;
     }
@@ -4287,6 +4322,10 @@ export namespace org {
          */
         antGain6?: pulumi.Input<number>;
         /**
+         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         */
+        antMode?: pulumi.Input<string>;
+        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode?: pulumi.Input<string>;
@@ -4332,7 +4371,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 2.4GHz band. enum: `20`, `40`
+         * channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -4373,7 +4412,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -4414,7 +4453,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -4455,7 +4494,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+         * channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -4727,7 +4766,8 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayDhcpdConfigConfigFixedBindings {
-        ip: pulumi.Input<string>;
+        ip?: pulumi.Input<string>;
+        ip6?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
     }
 
@@ -5233,6 +5273,10 @@ export namespace org {
          */
         wanExtIp?: pulumi.Input<string>;
         /**
+         * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+         */
+        wanExtIp6?: pulumi.Input<string>;
+        /**
          * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
         wanExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes>}>;
@@ -5383,6 +5427,10 @@ export namespace org {
          * Or to disable the source-nat
          */
         disabled?: pulumi.Input<boolean>;
+        /**
+         * If alternative natPool is desired
+         */
+        nat6Pool?: pulumi.Input<string>;
         /**
          * If alternative natPool is desired
          */
@@ -6227,7 +6275,8 @@ export namespace org {
     }
 
     export interface GatewaytemplateDhcpdConfigConfigFixedBindings {
-        ip: pulumi.Input<string>;
+        ip?: pulumi.Input<string>;
+        ip6?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
     }
 
@@ -6733,6 +6782,10 @@ export namespace org {
          */
         wanExtIp?: pulumi.Input<string>;
         /**
+         * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+         */
+        wanExtIp6?: pulumi.Input<string>;
+        /**
          * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
         wanExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplatePortConfigWanExtraRoutes>}>;
@@ -6883,6 +6936,10 @@ export namespace org {
          * Or to disable the source-nat
          */
         disabled?: pulumi.Input<boolean>;
+        /**
+         * If alternative natPool is desired
+         */
+        nat6Pool?: pulumi.Input<string>;
         /**
          * If alternative natPool is desired
          */
@@ -7992,7 +8049,7 @@ export namespace org {
 
     export interface NetworktemplatePortUsages {
         /**
-         * Only if `mode`==`trunk` whether to trunk all network/vlans
+         * Only if `mode`==`trunk`. Whether to trunk all network/vlans
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
@@ -8004,11 +8061,11 @@ export namespace org {
          */
         allowMultipleSupplicants?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDown?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: pulumi.Input<boolean>;
         /**
@@ -8020,15 +8077,15 @@ export namespace org {
          */
         description?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+         * Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
          */
         disableAutoneg?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` whether the port is disabled
+         * Only if `mode`!=`dynamic`. Whether the port is disabled
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
          */
         duplex?: pulumi.Input<string>;
         /**
@@ -8036,7 +8093,7 @@ export namespace org {
          */
         dynamicVlanNetworks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
          */
         enableMacAuth?: pulumi.Input<boolean>;
         /**
@@ -8044,15 +8101,15 @@ export namespace org {
          */
         enableQos?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          */
         guestNetwork?: pulumi.Input<string>;
         /**
-         * `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
          */
         interIsolationNetworkLink?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
         interSwitchLink?: pulumi.Input<boolean>;
         /**
@@ -8084,19 +8141,19 @@ export namespace org {
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+         * Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
          */
         persistMac?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+         * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+         * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          */
         portAuth?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+         * Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
          */
         portNetwork?: pulumi.Input<string>;
         /**
@@ -8112,11 +8169,11 @@ export namespace org {
          */
         rules?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplatePortUsagesRule>[]>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
          */
         serverFailNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
          */
         serverRejectNetwork?: pulumi.Input<string>;
         /**
@@ -8128,11 +8185,25 @@ export namespace org {
          */
         stormControl?: pulumi.Input<inputs.org.NetworktemplatePortUsagesStormControl>;
         /**
-         * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+         * Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+         */
+        stpDisable?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
          */
         stpEdge?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`
+         */
         stpNoRootPort?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`
+         */
         stpP2p?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+         */
+        stpRequired?: pulumi.Input<boolean>;
         /**
          * Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
          */
@@ -8142,7 +8213,7 @@ export namespace org {
          */
         useVstp?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+         * Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
         voipNetwork?: pulumi.Input<string>;
     }
@@ -8662,6 +8733,7 @@ export namespace org {
          * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          */
         portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRulePortMirroring>}>;
+        stpConfig?: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRuleStpConfig>;
     }
 
     export interface NetworktemplateSwitchMatchingRuleIpConfig {
@@ -8770,6 +8842,13 @@ export namespace org {
          * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: pulumi.Input<string>;
+    }
+
+    export interface NetworktemplateSwitchMatchingRuleStpConfig {
+        /**
+         * Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
+         */
+        bridgePriority?: pulumi.Input<string>;
     }
 
     export interface NetworktemplateSwitchMgmt {
@@ -8938,7 +9017,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 2.4GHz band. enum: `20`, `40`
+         * channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -8975,7 +9054,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -9012,7 +9091,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -9049,7 +9128,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+         * channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -9116,7 +9195,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 2.4GHz band. enum: `20`, `40`
+         * channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -9153,7 +9232,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -9190,7 +9269,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -9227,7 +9306,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+         * channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
          */
         bandwidth?: pulumi.Input<number>;
         /**
@@ -9409,6 +9488,22 @@ export namespace org {
     export interface SettingJuniperAccount {
         linkedBy?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
+    }
+
+    export interface SettingJuniperSrx {
+        /**
+         * auto_upgrade device first time it is onboarded
+         */
+        autoUpgrade?: pulumi.Input<inputs.org.SettingJuniperSrxAutoUpgrade>;
+    }
+
+    export interface SettingJuniperSrxAutoUpgrade {
+        /**
+         * Property key is the SRX Hardware model (e.g. "SRX4600")
+         */
+        customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        enabled?: pulumi.Input<boolean>;
+        snapshot?: pulumi.Input<boolean>;
     }
 
     export interface SettingJunosShellAccess {
@@ -9599,6 +9694,10 @@ export namespace org {
 
     export interface SettingSsr {
         /**
+         * auto_upgrade device first time it is onboarded
+         */
+        autoUpgrade?: pulumi.Input<inputs.org.SettingSsrAutoUpgrade>;
+        /**
          * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
          */
         conductorHosts?: pulumi.Input<pulumi.Input<string>[]>;
@@ -9610,6 +9709,26 @@ export namespace org {
          * Disable stats collection on SSR devices
          */
         disableStats?: pulumi.Input<boolean>;
+        /**
+         * Proxy Configuration to talk to Mist
+         */
+        proxy?: pulumi.Input<inputs.org.SettingSsrProxy>;
+    }
+
+    export interface SettingSsrAutoUpgrade {
+        /**
+         * upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+         */
+        channel?: pulumi.Input<string>;
+        /**
+         * Property key is the SSR model (e.g. "SSR130").
+         */
+        customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface SettingSsrProxy {
+        url?: pulumi.Input<string>;
     }
 
     export interface SettingSwitch {
@@ -9652,6 +9771,9 @@ export namespace org {
          * List of networks to be used for synthetic tests
          */
         lanNetworks?: pulumi.Input<pulumi.Input<inputs.org.SettingSyntheticTestLanNetwork>[]>;
+        /**
+         * @deprecated This attribute is deprecated.
+         */
         vlans?: pulumi.Input<pulumi.Input<inputs.org.SettingSyntheticTestVlan>[]>;
         wanSpeedtest?: pulumi.Input<inputs.org.SettingSyntheticTestWanSpeedtest>;
     }
@@ -9720,6 +9842,7 @@ export namespace org {
 
     export interface SettingVpnOptions {
         asBase?: pulumi.Input<number>;
+        enableIpv6?: pulumi.Input<boolean>;
         /**
          * requiring /12 or bigger to support 16 private IPs for 65535 gateways
          */
@@ -11681,7 +11804,7 @@ export namespace site {
 
     export interface NetworktemplatePortUsages {
         /**
-         * Only if `mode`==`trunk` whether to trunk all network/vlans
+         * Only if `mode`==`trunk`. Whether to trunk all network/vlans
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
@@ -11693,11 +11816,11 @@ export namespace site {
          */
         allowMultipleSupplicants?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDown?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: pulumi.Input<boolean>;
         /**
@@ -11709,15 +11832,15 @@ export namespace site {
          */
         description?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+         * Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
          */
         disableAutoneg?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` whether the port is disabled
+         * Only if `mode`!=`dynamic`. Whether the port is disabled
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
          */
         duplex?: pulumi.Input<string>;
         /**
@@ -11725,7 +11848,7 @@ export namespace site {
          */
         dynamicVlanNetworks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
          */
         enableMacAuth?: pulumi.Input<boolean>;
         /**
@@ -11733,15 +11856,15 @@ export namespace site {
          */
         enableQos?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          */
         guestNetwork?: pulumi.Input<string>;
         /**
-         * `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
          */
         interIsolationNetworkLink?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
         interSwitchLink?: pulumi.Input<boolean>;
         /**
@@ -11773,19 +11896,19 @@ export namespace site {
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+         * Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
          */
         persistMac?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+         * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+         * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          */
         portAuth?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+         * Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
          */
         portNetwork?: pulumi.Input<string>;
         /**
@@ -11801,11 +11924,11 @@ export namespace site {
          */
         rules?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplatePortUsagesRule>[]>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
          */
         serverFailNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
          */
         serverRejectNetwork?: pulumi.Input<string>;
         /**
@@ -11817,11 +11940,25 @@ export namespace site {
          */
         stormControl?: pulumi.Input<inputs.site.NetworktemplatePortUsagesStormControl>;
         /**
-         * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+         * Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+         */
+        stpDisable?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
          */
         stpEdge?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`
+         */
         stpNoRootPort?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`
+         */
         stpP2p?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+         */
+        stpRequired?: pulumi.Input<boolean>;
         /**
          * Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
          */
@@ -11831,7 +11968,7 @@ export namespace site {
          */
         useVstp?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+         * Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
         voipNetwork?: pulumi.Input<string>;
     }
@@ -12351,6 +12488,7 @@ export namespace site {
          * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          */
         portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateSwitchMatchingRulePortMirroring>}>;
+        stpConfig?: pulumi.Input<inputs.site.NetworktemplateSwitchMatchingRuleStpConfig>;
     }
 
     export interface NetworktemplateSwitchMatchingRuleIpConfig {
@@ -12459,6 +12597,13 @@ export namespace site {
          * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: pulumi.Input<string>;
+    }
+
+    export interface NetworktemplateSwitchMatchingRuleStpConfig {
+        /**
+         * Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
+         */
+        bridgePriority?: pulumi.Input<string>;
     }
 
     export interface NetworktemplateSwitchMgmt {
@@ -13051,8 +13196,21 @@ export namespace site {
     }
 
     export interface SettingJuniperSrx {
+        /**
+         * auto_upgrade device first time it is onboarded
+         */
+        autoUpgrade?: pulumi.Input<inputs.site.SettingJuniperSrxAutoUpgrade>;
         gateways?: pulumi.Input<pulumi.Input<inputs.site.SettingJuniperSrxGateway>[]>;
         sendMistNacUserInfo?: pulumi.Input<boolean>;
+    }
+
+    export interface SettingJuniperSrxAutoUpgrade {
+        /**
+         * Property key is the SRX Hardware model (e.g. "SRX4600")
+         */
+        customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        enabled?: pulumi.Input<boolean>;
+        snapshot?: pulumi.Input<boolean>;
     }
 
     export interface SettingJuniperSrxGateway {
@@ -13219,6 +13377,10 @@ export namespace site {
 
     export interface SettingSsr {
         /**
+         * auto_upgrade device first time it is onboarded
+         */
+        autoUpgrade?: pulumi.Input<inputs.site.SettingSsrAutoUpgrade>;
+        /**
          * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
          */
         conductorHosts?: pulumi.Input<pulumi.Input<string>[]>;
@@ -13230,6 +13392,26 @@ export namespace site {
          * Disable stats collection on SSR devices
          */
         disableStats?: pulumi.Input<boolean>;
+        /**
+         * Proxy Configuration to talk to Mist
+         */
+        proxy?: pulumi.Input<inputs.site.SettingSsrProxy>;
+    }
+
+    export interface SettingSsrAutoUpgrade {
+        /**
+         * upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+         */
+        channel?: pulumi.Input<string>;
+        /**
+         * Property key is the SSR model (e.g. "SSR130").
+         */
+        customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface SettingSsrProxy {
+        url?: pulumi.Input<string>;
     }
 
     export interface SettingSyntheticTest {
@@ -13246,6 +13428,9 @@ export namespace site {
          * List of networks to be used for synthetic tests
          */
         lanNetworks?: pulumi.Input<pulumi.Input<inputs.site.SettingSyntheticTestLanNetwork>[]>;
+        /**
+         * @deprecated This attribute is deprecated.
+         */
         vlans?: pulumi.Input<pulumi.Input<inputs.site.SettingSyntheticTestVlan>[]>;
         wanSpeedtest?: pulumi.Input<inputs.site.SettingSyntheticTestWanSpeedtest>;
     }

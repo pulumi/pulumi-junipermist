@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? AntennaMode { get; set; }
 
         /// <summary>
-        /// channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+        /// channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }

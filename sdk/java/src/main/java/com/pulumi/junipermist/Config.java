@@ -13,50 +13,49 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("junipermist");
 /**
- * Flag to enable debugging API calls. Default is false.
+ * Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `false`.
  * 
  */
     public Optional<Boolean> apiDebug() {
         return Codegen.booleanProp("apiDebug").config(config).get();
     }
 /**
- * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0 results in infinite timeout.
+ * Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
  * 
  */
     public Optional<Double> apiTimeout() {
         return Codegen.doubleProp("apiTimeout").config(config).get();
     }
 /**
- * For API Token authentication, the Mist API Token.
+ * Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
  * 
  */
     public Optional<String> apitoken() {
         return Codegen.stringProp("apitoken").config(config).get();
     }
 /**
- * URL of the Mist Cloud, e.g. `api.mist.com`.
+ * URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
  * 
  */
     public Optional<String> host() {
         return Codegen.stringProp("host").config(config).get();
     }
 /**
- * For username/password authentication, the Mist Account password.
+ * Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
  * 
  */
     public Optional<String> password() {
         return Codegen.stringProp("password").config(config).get();
     }
 /**
- * Requests use the configured proxy to reach the Mist Cloud.
- * The value may be either a complete URL or a `[username:password{@literal @}]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5` are supported.
+ * Proxy configuration for API requests. The value may be either a complete URL or `[username:password{@literal @}]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
  * 
  */
     public Optional<String> proxy() {
         return Codegen.stringProp("proxy").config(config).get();
     }
 /**
- * For username/password authentication, the Mist Account username.
+ * Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
  * 
  */
     public Optional<String> username() {

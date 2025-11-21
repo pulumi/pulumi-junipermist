@@ -192,6 +192,11 @@ public final class GatewayPortConfig {
      */
     private @Nullable String wanExtIp;
     /**
+     * @return Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+     * 
+     */
+    private @Nullable String wanExtIp6;
+    /**
      * @return Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
      * 
      */
@@ -472,6 +477,13 @@ public final class GatewayPortConfig {
         return Optional.ofNullable(this.wanExtIp);
     }
     /**
+     * @return Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+     * 
+     */
+    public Optional<String> wanExtIp6() {
+        return Optional.ofNullable(this.wanExtIp6);
+    }
+    /**
      * @return Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. &#34;100.100.100.0/24&#34;)
      * 
      */
@@ -563,6 +575,7 @@ public final class GatewayPortConfig {
         private @Nullable String wanArpPolicer;
         private @Nullable Boolean wanDisableSpeedtest;
         private @Nullable String wanExtIp;
+        private @Nullable String wanExtIp6;
         private @Nullable Map<String,GatewayPortConfigWanExtraRoutes> wanExtraRoutes;
         private @Nullable Map<String,GatewayPortConfigWanExtraRoutes6> wanExtraRoutes6;
         private @Nullable List<String> wanNetworks;
@@ -612,6 +625,7 @@ public final class GatewayPortConfig {
     	      this.wanArpPolicer = defaults.wanArpPolicer;
     	      this.wanDisableSpeedtest = defaults.wanDisableSpeedtest;
     	      this.wanExtIp = defaults.wanExtIp;
+    	      this.wanExtIp6 = defaults.wanExtIp6;
     	      this.wanExtraRoutes = defaults.wanExtraRoutes;
     	      this.wanExtraRoutes6 = defaults.wanExtraRoutes6;
     	      this.wanNetworks = defaults.wanNetworks;
@@ -869,6 +883,12 @@ public final class GatewayPortConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder wanExtIp6(@Nullable String wanExtIp6) {
+
+            this.wanExtIp6 = wanExtIp6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder wanExtraRoutes(@Nullable Map<String,GatewayPortConfigWanExtraRoutes> wanExtraRoutes) {
 
             this.wanExtraRoutes = wanExtraRoutes;
@@ -949,6 +969,7 @@ public final class GatewayPortConfig {
             _resultValue.wanArpPolicer = wanArpPolicer;
             _resultValue.wanDisableSpeedtest = wanDisableSpeedtest;
             _resultValue.wanExtIp = wanExtIp;
+            _resultValue.wanExtIp6 = wanExtIp6;
             _resultValue.wanExtraRoutes = wanExtraRoutes;
             _resultValue.wanExtraRoutes6 = wanExtraRoutes6;
             _resultValue.wanNetworks = wanNetworks;

@@ -13,16 +13,20 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileGatewayDhcpdConfigConfigFixedBindings
     {
-        public readonly string Ip;
+        public readonly string? Ip;
+        public readonly string? Ip6;
         public readonly string? Name;
 
         [OutputConstructor]
         private DeviceprofileGatewayDhcpdConfigConfigFixedBindings(
-            string ip,
+            string? ip,
+
+            string? ip6,
 
             string? name)
         {
             Ip = ip;
+            Ip6 = ip6;
             Name = name;
         }
     }

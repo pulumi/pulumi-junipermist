@@ -500,10 +500,10 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.sshKeys;
     }
     @Export(name="ssr", refs={SettingSsr.class}, tree="[0]")
-    private Output<SettingSsr> ssr;
+    private Output</* @Nullable */ SettingSsr> ssr;
 
-    public Output<SettingSsr> ssr() {
-        return this.ssr;
+    public Output<Optional<SettingSsr>> ssr() {
+        return Codegen.optional(this.ssr);
     }
     /**
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.

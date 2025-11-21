@@ -470,7 +470,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableArray<string>> PortalAllowedSubnets { get; private set; } = null!;
 
         /// <summary>
-        /// APi secret (auto-generated) that can be used to sign guest authorization requests
+        /// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `External`
         /// </summary>
         [Output("portalApiSecret")]
         public Output<string> PortalApiSecret { get; private set; } = null!;
@@ -487,6 +487,9 @@ namespace Pulumi.JuniperMist.Site
         [Output("portalImage")]
         public Output<string> PortalImage { get; private set; } = null!;
 
+        /// <summary>
+        /// URL used in the SSO process, auto-generated when auth is set to `Sso`
+        /// </summary>
         [Output("portalSsoUrl")]
         public Output<string> PortalSsoUrl { get; private set; } = null!;
 
@@ -1714,7 +1717,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// APi secret (auto-generated) that can be used to sign guest authorization requests
+        /// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `External`
         /// </summary>
         [Input("portalApiSecret")]
         public Input<string>? PortalApiSecret { get; set; }
@@ -1737,6 +1740,9 @@ namespace Pulumi.JuniperMist.Site
         [Input("portalImage")]
         public Input<string>? PortalImage { get; set; }
 
+        /// <summary>
+        /// URL used in the SSO process, auto-generated when auth is set to `Sso`
+        /// </summary>
         [Input("portalSsoUrl")]
         public Input<string>? PortalSsoUrl { get; set; }
 

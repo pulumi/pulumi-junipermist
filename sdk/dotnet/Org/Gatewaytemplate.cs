@@ -265,6 +265,12 @@ namespace Pulumi.JuniperMist.Org
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// When a service policy denies a app_category, what message to show in user's browser
+        /// </summary>
+        [Output("urlFilteringDenyMsg")]
+        public Output<string?> UrlFilteringDenyMsg { get; private set; } = null!;
+
         [Output("vrfConfig")]
         public Output<Outputs.GatewaytemplateVrfConfig?> VrfConfig { get; private set; } = null!;
 
@@ -537,6 +543,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// When a service policy denies a app_category, what message to show in user's browser
+        /// </summary>
+        [Input("urlFilteringDenyMsg")]
+        public Input<string>? UrlFilteringDenyMsg { get; set; }
+
         [Input("vrfConfig")]
         public Input<Inputs.GatewaytemplateVrfConfigArgs>? VrfConfig { get; set; }
 
@@ -775,6 +787,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// When a service policy denies a app_category, what message to show in user's browser
+        /// </summary>
+        [Input("urlFilteringDenyMsg")]
+        public Input<string>? UrlFilteringDenyMsg { get; set; }
 
         [Input("vrfConfig")]
         public Input<Inputs.GatewaytemplateVrfConfigGetArgs>? VrfConfig { get; set; }

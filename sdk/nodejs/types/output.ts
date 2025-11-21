@@ -184,7 +184,7 @@ export interface GetSitesSiteLatlng {
 export interface UpgradeDeviceFwupdate {
     progress: number;
     /**
-     * enum: `inprogress`, `failed`, `upgraded`
+     * enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
      */
     status: string;
     statusId: number;
@@ -702,6 +702,10 @@ export namespace device {
          */
         antGain6?: number;
         /**
+         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         */
+        antMode?: string;
+        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode?: string;
@@ -747,7 +751,7 @@ export namespace device {
          */
         antennaMode: string;
         /**
-         * channel width for the 2.4GHz band. enum: `20`, `40`
+         * channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
          */
         bandwidth: number;
         /**
@@ -788,7 +792,7 @@ export namespace device {
          */
         antennaMode: string;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth: number;
         /**
@@ -829,7 +833,7 @@ export namespace device {
          */
         antennaMode: string;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth: number;
         /**
@@ -870,7 +874,7 @@ export namespace device {
          */
         antennaMode: string;
         /**
-         * channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+         * channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
          */
         bandwidth: number;
         /**
@@ -1154,7 +1158,8 @@ export namespace device {
     }
 
     export interface GatewayDhcpdConfigConfigFixedBindings {
-        ip: string;
+        ip?: string;
+        ip6?: string;
         name?: string;
     }
 
@@ -1180,6 +1185,13 @@ export namespace device {
 
     export interface GatewayExtraRoutes6 {
         via: string;
+    }
+
+    export interface GatewayGatewayMgmt {
+        /**
+         * Rollback timer for commit confirmed
+         */
+        configRevertTimer?: number;
     }
 
     export interface GatewayIdpProfiles {
@@ -1664,6 +1676,10 @@ export namespace device {
          */
         wanExtIp?: string;
         /**
+         * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+         */
+        wanExtIp6?: string;
+        /**
          * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
         wanExtraRoutes?: {[key: string]: outputs.device.GatewayPortConfigWanExtraRoutes};
@@ -1814,6 +1830,10 @@ export namespace device {
          * Or to disable the source-nat
          */
         disabled?: boolean;
+        /**
+         * If alternative natPool is desired
+         */
+        nat6Pool?: string;
         /**
          * If alternative natPool is desired
          */
@@ -4907,7 +4927,8 @@ export namespace device {
     }
 
     export interface SwitchDhcpdConfigConfigFixedBindings {
-        ip: string;
+        ip?: string;
+        ip6?: string;
         name?: string;
     }
 
@@ -5034,7 +5055,7 @@ export namespace device {
          */
         guestNetwork?: string;
         /**
-         * inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
          */
         interSwitchLink?: boolean;
         /**
@@ -5416,7 +5437,7 @@ export namespace device {
 
     export interface SwitchPortUsages {
         /**
-         * Only if `mode`==`trunk` whether to trunk all network/vlans
+         * Only if `mode`==`trunk`. Whether to trunk all network/vlans
          */
         allNetworks?: boolean;
         /**
@@ -5428,11 +5449,11 @@ export namespace device {
          */
         allowMultipleSupplicants?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDown?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: boolean;
         /**
@@ -5444,15 +5465,15 @@ export namespace device {
          */
         description: string;
         /**
-         * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+         * Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
          */
         disableAutoneg?: boolean;
         /**
-         * Only if `mode`!=`dynamic` whether the port is disabled
+         * Only if `mode`!=`dynamic`. Whether the port is disabled
          */
         disabled?: boolean;
         /**
-         * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
          */
         duplex?: string;
         /**
@@ -5460,7 +5481,7 @@ export namespace device {
          */
         dynamicVlanNetworks?: string[];
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
          */
         enableMacAuth?: boolean;
         /**
@@ -5468,15 +5489,15 @@ export namespace device {
          */
         enableQos?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          */
         guestNetwork?: string;
         /**
-         * `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
          */
         interIsolationNetworkLink?: boolean;
         /**
-         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
          */
         interSwitchLink?: boolean;
         /**
@@ -5508,19 +5529,19 @@ export namespace device {
          */
         networks: string[];
         /**
-         * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+         * Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
          */
         persistMac?: boolean;
         /**
-         * Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+         * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: boolean;
         /**
-         * Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+         * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          */
         portAuth?: string;
         /**
-         * Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+         * Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
          */
         portNetwork?: string;
         /**
@@ -5536,11 +5557,11 @@ export namespace device {
          */
         rules?: outputs.device.SwitchPortUsagesRule[];
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
          */
         serverFailNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
          */
         serverRejectNetwork?: string;
         /**
@@ -5552,17 +5573,31 @@ export namespace device {
          */
         stormControl?: outputs.device.SwitchPortUsagesStormControl;
         /**
-         * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+         * Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+         */
+        stpDisable?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
          */
         stpEdge?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`
+         */
         stpNoRootPort?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`
+         */
         stpP2p?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+         */
+        stpRequired?: boolean;
         /**
          * If this is connected to a vstp network
          */
         useVstp?: boolean;
         /**
-         * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+         * Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
         voipNetwork?: string;
     }
@@ -6788,6 +6823,10 @@ export namespace org {
          */
         antGain6?: number;
         /**
+         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         */
+        antMode?: string;
+        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode?: string;
@@ -6833,7 +6872,7 @@ export namespace org {
          */
         antennaMode: string;
         /**
-         * channel width for the 2.4GHz band. enum: `20`, `40`
+         * channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
          */
         bandwidth: number;
         /**
@@ -6874,7 +6913,7 @@ export namespace org {
          */
         antennaMode: string;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth: number;
         /**
@@ -6915,7 +6954,7 @@ export namespace org {
          */
         antennaMode: string;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth: number;
         /**
@@ -6956,7 +6995,7 @@ export namespace org {
          */
         antennaMode: string;
         /**
-         * channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+         * channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
          */
         bandwidth: number;
         /**
@@ -7228,7 +7267,8 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayDhcpdConfigConfigFixedBindings {
-        ip: string;
+        ip?: string;
+        ip6?: string;
         name?: string;
     }
 
@@ -7734,6 +7774,10 @@ export namespace org {
          */
         wanExtIp?: string;
         /**
+         * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+         */
+        wanExtIp6?: string;
+        /**
          * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
         wanExtraRoutes?: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes};
@@ -7884,6 +7928,10 @@ export namespace org {
          * Or to disable the source-nat
          */
         disabled?: boolean;
+        /**
+         * If alternative natPool is desired
+         */
+        nat6Pool?: string;
         /**
          * If alternative natPool is desired
          */
@@ -8728,7 +8776,8 @@ export namespace org {
     }
 
     export interface GatewaytemplateDhcpdConfigConfigFixedBindings {
-        ip: string;
+        ip?: string;
+        ip6?: string;
         name?: string;
     }
 
@@ -9234,6 +9283,10 @@ export namespace org {
          */
         wanExtIp?: string;
         /**
+         * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
+         */
+        wanExtIp6?: string;
+        /**
          * Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
          */
         wanExtraRoutes?: {[key: string]: outputs.org.GatewaytemplatePortConfigWanExtraRoutes};
@@ -9384,6 +9437,10 @@ export namespace org {
          * Or to disable the source-nat
          */
         disabled?: boolean;
+        /**
+         * If alternative natPool is desired
+         */
+        nat6Pool?: string;
         /**
          * If alternative natPool is desired
          */
@@ -12873,7 +12930,7 @@ export namespace org {
 
     export interface NetworktemplatePortUsages {
         /**
-         * Only if `mode`==`trunk` whether to trunk all network/vlans
+         * Only if `mode`==`trunk`. Whether to trunk all network/vlans
          */
         allNetworks?: boolean;
         /**
@@ -12885,11 +12942,11 @@ export namespace org {
          */
         allowMultipleSupplicants?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDown?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: boolean;
         /**
@@ -12901,15 +12958,15 @@ export namespace org {
          */
         description: string;
         /**
-         * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+         * Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
          */
         disableAutoneg?: boolean;
         /**
-         * Only if `mode`!=`dynamic` whether the port is disabled
+         * Only if `mode`!=`dynamic`. Whether the port is disabled
          */
         disabled?: boolean;
         /**
-         * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
          */
         duplex?: string;
         /**
@@ -12917,7 +12974,7 @@ export namespace org {
          */
         dynamicVlanNetworks?: string[];
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
          */
         enableMacAuth?: boolean;
         /**
@@ -12925,15 +12982,15 @@ export namespace org {
          */
         enableQos?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          */
         guestNetwork?: string;
         /**
-         * `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
          */
         interIsolationNetworkLink?: boolean;
         /**
-         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
         interSwitchLink?: boolean;
         /**
@@ -12965,19 +13022,19 @@ export namespace org {
          */
         networks: string[];
         /**
-         * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+         * Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
          */
         persistMac?: boolean;
         /**
-         * Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+         * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: boolean;
         /**
-         * Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+         * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          */
         portAuth?: string;
         /**
-         * Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+         * Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
          */
         portNetwork?: string;
         /**
@@ -12993,11 +13050,11 @@ export namespace org {
          */
         rules?: outputs.org.NetworktemplatePortUsagesRule[];
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
          */
         serverFailNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
          */
         serverRejectNetwork?: string;
         /**
@@ -13009,11 +13066,25 @@ export namespace org {
          */
         stormControl?: outputs.org.NetworktemplatePortUsagesStormControl;
         /**
-         * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+         * Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+         */
+        stpDisable?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
          */
         stpEdge?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`
+         */
         stpNoRootPort?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`
+         */
         stpP2p?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+         */
+        stpRequired?: boolean;
         /**
          * Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
          */
@@ -13023,7 +13094,7 @@ export namespace org {
          */
         useVstp?: boolean;
         /**
-         * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+         * Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
         voipNetwork?: string;
     }
@@ -13543,6 +13614,7 @@ export namespace org {
          * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          */
         portMirroring?: {[key: string]: outputs.org.NetworktemplateSwitchMatchingRulePortMirroring};
+        stpConfig?: outputs.org.NetworktemplateSwitchMatchingRuleStpConfig;
     }
 
     export interface NetworktemplateSwitchMatchingRuleIpConfig {
@@ -13651,6 +13723,13 @@ export namespace org {
          * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: string;
+    }
+
+    export interface NetworktemplateSwitchMatchingRuleStpConfig {
+        /**
+         * Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
+         */
+        bridgePriority: string;
     }
 
     export interface NetworktemplateSwitchMgmt {
@@ -13819,7 +13898,7 @@ export namespace org {
          */
         antennaMode?: string;
         /**
-         * channel width for the 2.4GHz band. enum: `20`, `40`
+         * channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
          */
         bandwidth: number;
         /**
@@ -13856,7 +13935,7 @@ export namespace org {
          */
         antennaMode?: string;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth: number;
         /**
@@ -13893,7 +13972,7 @@ export namespace org {
          */
         antennaMode: string;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth: number;
         /**
@@ -13930,7 +14009,7 @@ export namespace org {
          */
         antennaMode?: string;
         /**
-         * channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+         * channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
          */
         bandwidth: number;
         /**
@@ -13997,7 +14076,7 @@ export namespace org {
          */
         antennaMode?: string;
         /**
-         * channel width for the 2.4GHz band. enum: `20`, `40`
+         * channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
          */
         bandwidth?: number;
         /**
@@ -14034,7 +14113,7 @@ export namespace org {
          */
         antennaMode?: string;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth?: number;
         /**
@@ -14071,7 +14150,7 @@ export namespace org {
          */
         antennaMode: string;
         /**
-         * channel width for the 5GHz band. enum: `20`, `40`, `80`
+         * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
          */
         bandwidth: number;
         /**
@@ -14108,7 +14187,7 @@ export namespace org {
          */
         antennaMode?: string;
         /**
-         * channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
+         * channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
          */
         bandwidth?: number;
         /**
@@ -14249,7 +14328,7 @@ export namespace org {
     export interface SettingInstaller {
         allowAllDevices?: boolean;
         allowAllSites?: boolean;
-        extraSiteIds: string[];
+        extraSiteIds?: string[];
         gracePeriod?: number;
     }
 
@@ -14292,6 +14371,22 @@ export namespace org {
         name: string;
     }
 
+    export interface SettingJuniperSrx {
+        /**
+         * auto_upgrade device first time it is onboarded
+         */
+        autoUpgrade?: outputs.org.SettingJuniperSrxAutoUpgrade;
+    }
+
+    export interface SettingJuniperSrxAutoUpgrade {
+        /**
+         * Property key is the SRX Hardware model (e.g. "SRX4600")
+         */
+        customVersions?: {[key: string]: string};
+        enabled?: boolean;
+        snapshot?: boolean;
+    }
+
     export interface SettingJunosShellAccess {
         /**
          * enum: `admin`, `viewer`, `none`
@@ -14325,7 +14420,7 @@ export namespace org {
         /**
          * List of Mist Tunnels
          */
-        mxtunnelIds: string[];
+        mxtunnelIds?: string[];
         /**
          * Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
          */
@@ -14384,7 +14479,7 @@ export namespace org {
         /**
          * When the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
          */
-        excludeRealms: string[];
+        excludeRealms?: string[];
         /**
          * ID of the `mistNacidp`
          */
@@ -14480,6 +14575,10 @@ export namespace org {
 
     export interface SettingSsr {
         /**
+         * auto_upgrade device first time it is onboarded
+         */
+        autoUpgrade?: outputs.org.SettingSsrAutoUpgrade;
+        /**
          * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
          */
         conductorHosts?: string[];
@@ -14491,6 +14590,26 @@ export namespace org {
          * Disable stats collection on SSR devices
          */
         disableStats?: boolean;
+        /**
+         * Proxy Configuration to talk to Mist
+         */
+        proxy?: outputs.org.SettingSsrProxy;
+    }
+
+    export interface SettingSsrAutoUpgrade {
+        /**
+         * upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+         */
+        channel?: string;
+        /**
+         * Property key is the SSR model (e.g. "SSR130").
+         */
+        customVersions?: {[key: string]: string};
+        enabled?: boolean;
+    }
+
+    export interface SettingSsrProxy {
+        url?: string;
     }
 
     export interface SettingSwitch {
@@ -14533,6 +14652,9 @@ export namespace org {
          * List of networks to be used for synthetic tests
          */
         lanNetworks?: outputs.org.SettingSyntheticTestLanNetwork[];
+        /**
+         * @deprecated This attribute is deprecated.
+         */
         vlans?: outputs.org.SettingSyntheticTestVlan[];
         wanSpeedtest?: outputs.org.SettingSyntheticTestWanSpeedtest;
     }
@@ -14601,6 +14723,7 @@ export namespace org {
 
     export interface SettingVpnOptions {
         asBase?: number;
+        enableIpv6: boolean;
         /**
          * requiring /12 or bigger to support 16 private IPs for 65535 gateways
          */
@@ -17892,7 +18015,7 @@ export namespace site {
 
     export interface NetworktemplatePortUsages {
         /**
-         * Only if `mode`==`trunk` whether to trunk all network/vlans
+         * Only if `mode`==`trunk`. Whether to trunk all network/vlans
          */
         allNetworks?: boolean;
         /**
@@ -17904,11 +18027,11 @@ export namespace site {
          */
         allowMultipleSupplicants?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDown?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: boolean;
         /**
@@ -17920,15 +18043,15 @@ export namespace site {
          */
         description: string;
         /**
-         * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+         * Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
          */
         disableAutoneg?: boolean;
         /**
-         * Only if `mode`!=`dynamic` whether the port is disabled
+         * Only if `mode`!=`dynamic`. Whether the port is disabled
          */
         disabled?: boolean;
         /**
-         * Only if `mode`!=`dynamic`, link connection mode. enum: `auto`, `full`, `half`
+         * Only if `mode`!=`dynamic`. Link connection mode. enum: `auto`, `full`, `half`
          */
         duplex?: string;
         /**
@@ -17936,7 +18059,7 @@ export namespace site {
          */
         dynamicVlanNetworks?: string[];
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` whether to enable MAC Auth
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Whether to enable MAC Auth
          */
         enableMacAuth?: boolean;
         /**
@@ -17944,15 +18067,15 @@ export namespace site {
          */
         enableQos?: boolean;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
          */
         guestNetwork?: string;
         /**
-         * `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
          */
         interIsolationNetworkLink?: boolean;
         /**
-         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
         interSwitchLink?: boolean;
         /**
@@ -17984,19 +18107,19 @@ export namespace site {
          */
         networks: string[];
         /**
-         * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+         * Only if `mode`==`access` and `portAuth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
          */
         persistMac?: boolean;
         /**
-         * Only if `mode`!=`dynamic` whether PoE capabilities are disabled for a port
+         * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: boolean;
         /**
-         * Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
+         * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          */
         portAuth?: string;
         /**
-         * Only if `mode`!=`dynamic` native network/vlan for untagged traffic
+         * Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
          */
         portNetwork?: string;
         /**
@@ -18012,11 +18135,11 @@ export namespace site {
          */
         rules?: outputs.site.NetworktemplatePortUsagesRule[];
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Sets server fail fallback vlan
          */
         serverFailNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. When radius server reject / fails
          */
         serverRejectNetwork?: string;
         /**
@@ -18028,11 +18151,25 @@ export namespace site {
          */
         stormControl?: outputs.site.NetworktemplatePortUsagesStormControl;
         /**
-         * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+         * Only if `mode`!=`dynamic` and `stpRequired`==`false`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+         */
+        stpDisable?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`. When enabled, the port is not expected to receive BPDU frames
          */
         stpEdge?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`
+         */
         stpNoRootPort?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`
+         */
         stpP2p?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`. Whether to remain in block state if no BPDU is received
+         */
+        stpRequired?: boolean;
         /**
          * Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
          */
@@ -18042,7 +18179,7 @@ export namespace site {
          */
         useVstp?: boolean;
         /**
-         * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+         * Only if `mode`!=`dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
         voipNetwork?: string;
     }
@@ -18562,6 +18699,7 @@ export namespace site {
          * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
          */
         portMirroring?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortMirroring};
+        stpConfig?: outputs.site.NetworktemplateSwitchMatchingRuleStpConfig;
     }
 
     export interface NetworktemplateSwitchMatchingRuleIpConfig {
@@ -18670,6 +18808,13 @@ export namespace site {
          * Exactly one of the `outputIpAddress`, `outputPortId` or `outputNetwork` should be provided
          */
         outputPortId?: string;
+    }
+
+    export interface NetworktemplateSwitchMatchingRuleStpConfig {
+        /**
+         * Switch STP priority. Range [0, 4k, 8k.. 60k] in steps of 4k. Bridge priority applies to both VSTP and RSTP.
+         */
+        bridgePriority: string;
     }
 
     export interface NetworktemplateSwitchMgmt {
@@ -19262,8 +19407,21 @@ export namespace site {
     }
 
     export interface SettingJuniperSrx {
+        /**
+         * auto_upgrade device first time it is onboarded
+         */
+        autoUpgrade?: outputs.site.SettingJuniperSrxAutoUpgrade;
         gateways?: outputs.site.SettingJuniperSrxGateway[];
         sendMistNacUserInfo?: boolean;
+    }
+
+    export interface SettingJuniperSrxAutoUpgrade {
+        /**
+         * Property key is the SRX Hardware model (e.g. "SRX4600")
+         */
+        customVersions?: {[key: string]: string};
+        enabled?: boolean;
+        snapshot?: boolean;
     }
 
     export interface SettingJuniperSrxGateway {
@@ -19430,6 +19588,10 @@ export namespace site {
 
     export interface SettingSsr {
         /**
+         * auto_upgrade device first time it is onboarded
+         */
+        autoUpgrade?: outputs.site.SettingSsrAutoUpgrade;
+        /**
          * List of Conductor IP Addresses or Hosts to be used by the SSR Devices
          */
         conductorHosts?: string[];
@@ -19441,6 +19603,26 @@ export namespace site {
          * Disable stats collection on SSR devices
          */
         disableStats?: boolean;
+        /**
+         * Proxy Configuration to talk to Mist
+         */
+        proxy?: outputs.site.SettingSsrProxy;
+    }
+
+    export interface SettingSsrAutoUpgrade {
+        /**
+         * upgrade channel to follow. enum: `alpha`, `beta`, `stable`
+         */
+        channel?: string;
+        /**
+         * Property key is the SSR model (e.g. "SSR130").
+         */
+        customVersions?: {[key: string]: string};
+        enabled?: boolean;
+    }
+
+    export interface SettingSsrProxy {
+        url?: string;
     }
 
     export interface SettingSyntheticTest {
@@ -19457,6 +19639,9 @@ export namespace site {
          * List of networks to be used for synthetic tests
          */
         lanNetworks?: outputs.site.SettingSyntheticTestLanNetwork[];
+        /**
+         * @deprecated This attribute is deprecated.
+         */
         vlans?: outputs.site.SettingSyntheticTestVlan[];
         wanSpeedtest?: outputs.site.SettingSyntheticTestWanSpeedtest;
     }

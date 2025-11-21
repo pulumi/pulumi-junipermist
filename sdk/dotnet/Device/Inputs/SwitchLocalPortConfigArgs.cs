@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? GuestNetwork { get; set; }
 
         /// <summary>
-        /// inter_switch_link is used together with "isolation" under networks. NOTE: InterSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+        /// inter_switch_link is used together with "isolation" under networks. NOTE: InterSwitchLink works only between Juniper devices. This has to be applied to both ports connected together
         /// </summary>
         [Input("interSwitchLink")]
         public Input<bool>? InterSwitchLink { get; set; }

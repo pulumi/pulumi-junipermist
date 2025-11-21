@@ -100,6 +100,10 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public readonly extraRoutes6: pulumi.Output<{[key: string]: outputs.device.GatewayExtraRoutes6} | undefined>;
     /**
+     * Gateway settings
+     */
+    declare public readonly gatewayMgmt: pulumi.Output<outputs.device.GatewayGatewayMgmt | undefined>;
+    /**
      * Property key is the profile name
      */
     declare public readonly idpProfiles: pulumi.Output<{[key: string]: outputs.device.GatewayIdpProfiles} | undefined>;
@@ -170,6 +174,10 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
+     * When a service policy denies a app_category, what message to show in user's browser
+     */
+    declare public readonly urlFilteringDenyMsg: pulumi.Output<string | undefined>;
+    /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
@@ -208,6 +216,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["dnsSuffixes"] = state?.dnsSuffixes;
             resourceInputs["extraRoutes"] = state?.extraRoutes;
             resourceInputs["extraRoutes6"] = state?.extraRoutes6;
+            resourceInputs["gatewayMgmt"] = state?.gatewayMgmt;
             resourceInputs["idpProfiles"] = state?.idpProfiles;
             resourceInputs["image1Url"] = state?.image1Url;
             resourceInputs["image2Url"] = state?.image2Url;
@@ -236,6 +245,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["tunnelConfigs"] = state?.tunnelConfigs;
             resourceInputs["tunnelProviderOptions"] = state?.tunnelProviderOptions;
             resourceInputs["type"] = state?.type;
+            resourceInputs["urlFilteringDenyMsg"] = state?.urlFilteringDenyMsg;
             resourceInputs["vars"] = state?.vars;
             resourceInputs["vrfConfig"] = state?.vrfConfig;
             resourceInputs["vrfInstances"] = state?.vrfInstances;
@@ -257,6 +267,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["dnsSuffixes"] = args?.dnsSuffixes;
             resourceInputs["extraRoutes"] = args?.extraRoutes;
             resourceInputs["extraRoutes6"] = args?.extraRoutes6;
+            resourceInputs["gatewayMgmt"] = args?.gatewayMgmt;
             resourceInputs["idpProfiles"] = args?.idpProfiles;
             resourceInputs["ipConfigs"] = args?.ipConfigs;
             resourceInputs["managed"] = args?.managed;
@@ -277,6 +288,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["ssrAdditionalConfigCmds"] = args?.ssrAdditionalConfigCmds;
             resourceInputs["tunnelConfigs"] = args?.tunnelConfigs;
             resourceInputs["tunnelProviderOptions"] = args?.tunnelProviderOptions;
+            resourceInputs["urlFilteringDenyMsg"] = args?.urlFilteringDenyMsg;
             resourceInputs["vars"] = args?.vars;
             resourceInputs["vrfConfig"] = args?.vrfConfig;
             resourceInputs["vrfInstances"] = args?.vrfInstances;
@@ -323,6 +335,10 @@ export interface GatewayState {
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes6>}>;
+    /**
+     * Gateway settings
+     */
+    gatewayMgmt?: pulumi.Input<inputs.device.GatewayGatewayMgmt>;
     /**
      * Property key is the profile name
      */
@@ -394,6 +410,10 @@ export interface GatewayState {
      */
     type?: pulumi.Input<string>;
     /**
+     * When a service policy denies a app_category, what message to show in user's browser
+     */
+    urlFilteringDenyMsg?: pulumi.Input<string>;
+    /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -439,6 +459,10 @@ export interface GatewayArgs {
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes6>}>;
+    /**
+     * Gateway settings
+     */
+    gatewayMgmt?: pulumi.Input<inputs.device.GatewayGatewayMgmt>;
     /**
      * Property key is the profile name
      */
@@ -489,6 +513,10 @@ export interface GatewayArgs {
      */
     tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayTunnelConfigs>}>;
     tunnelProviderOptions?: pulumi.Input<inputs.device.GatewayTunnelProviderOptions>;
+    /**
+     * When a service policy denies a app_category, what message to show in user's browser
+     */
+    urlFilteringDenyMsg?: pulumi.Input<string>;
     /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */

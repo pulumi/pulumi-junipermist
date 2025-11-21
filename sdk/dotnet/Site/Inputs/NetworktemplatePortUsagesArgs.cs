@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class NetworktemplatePortUsagesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Only if `Mode`==`Trunk` whether to trunk all network/vlans
+        /// Only if `Mode`==`Trunk`. Whether to trunk all network/vlans
         /// </summary>
         [Input("allNetworks")]
         public Input<bool>? AllNetworks { get; set; }
@@ -31,13 +31,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? AllowMultipleSupplicants { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x` bypass auth for known clients if set to true when RADIUS server is down
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
         /// </summary>
         [Input("bypassAuthWhenServerDown")]
         public Input<bool>? BypassAuthWhenServerDown { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `PortAuth`=`Dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`=`Dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         /// </summary>
         [Input("bypassAuthWhenServerDownForUnknownClient")]
         public Input<bool>? BypassAuthWhenServerDownForUnknownClient { get; set; }
@@ -55,19 +55,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` if speed and duplex are specified, whether to disable autonegotiation
+        /// Only if `Mode`!=`Dynamic`. If speed and duplex are specified, whether to disable autonegotiation
         /// </summary>
         [Input("disableAutoneg")]
         public Input<bool>? DisableAutoneg { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` whether the port is disabled
+        /// Only if `Mode`!=`Dynamic`. Whether the port is disabled
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`, link connection mode. enum: `Auto`, `Full`, `Half`
+        /// Only if `Mode`!=`Dynamic`. Link connection mode. enum: `Auto`, `Full`, `Half`
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x` whether to enable MAC Auth
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. Whether to enable MAC Auth
         /// </summary>
         [Input("enableMacAuth")]
         public Input<bool>? EnableMacAuth { get; set; }
@@ -97,19 +97,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? EnableQos { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
         /// </summary>
         [Input("guestNetwork")]
         public Input<string>? GuestNetwork { get; set; }
 
         /// <summary>
-        /// `InterSwitchLink` is used together with `Isolation` under networks. NOTE: `InterSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+        /// Only if `Mode`!=`Dynamic`. `InterSwitchLink` is used together with `Isolation` under networks. NOTE: `InterSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
         /// </summary>
         [Input("interIsolationNetworkLink")]
         public Input<bool>? InterIsolationNetworkLink { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` InterSwitchLink is used together with "isolation" under networks. NOTE: InterSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+        /// Only if `Mode`!=`Dynamic`. `InterSwitchLink` is used together with `Isolation` under networks. NOTE: InterSwitchLink works only between Juniper device. This has to be applied to both ports connected together
         /// </summary>
         [Input("interSwitchLink")]
         public Input<bool>? InterSwitchLink { get; set; }
@@ -163,25 +163,25 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Only if `Mode`==`Access` and `PortAuth`!=`Dot1x` whether the port should retain dynamically learned MAC addresses
+        /// Only if `Mode`==`Access` and `PortAuth`!=`Dot1x`. Whether the port should retain dynamically learned MAC addresses
         /// </summary>
         [Input("persistMac")]
         public Input<bool>? PersistMac { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` whether PoE capabilities are disabled for a port
+        /// Only if `Mode`!=`Dynamic`. Whether PoE capabilities are disabled for a port
         /// </summary>
         [Input("poeDisabled")]
         public Input<bool>? PoeDisabled { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` if dot1x is desired, set to dot1x. enum: `Dot1x`
+        /// Only if `Mode`!=`Dynamic`. If dot1x is desired, set to dot1x. enum: `Dot1x`
         /// </summary>
         [Input("portAuth")]
         public Input<string>? PortAuth { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` native network/vlan for untagged traffic
+        /// Only if `Mode`!=`Dynamic`. Native network/vlan for untagged traffic
         /// </summary>
         [Input("portNetwork")]
         public Input<string>? PortNetwork { get; set; }
@@ -211,13 +211,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x` sets server fail fallback vlan
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. Sets server fail fallback vlan
         /// </summary>
         [Input("serverFailNetwork")]
         public Input<string>? ServerFailNetwork { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x` when radius server reject / fails
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. When radius server reject / fails
         /// </summary>
         [Input("serverRejectNetwork")]
         public Input<string>? ServerRejectNetwork { get; set; }
@@ -235,16 +235,34 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<Inputs.NetworktemplatePortUsagesStormControlArgs>? StormControl { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` when enabled, the port is not expected to receive BPDU frames
+        /// Only if `Mode`!=`Dynamic` and `StpRequired`==`False`. Drop bridge protocol data units (BPDUs ) that enter any interface or a specified interface
+        /// </summary>
+        [Input("stpDisable")]
+        public Input<bool>? StpDisable { get; set; }
+
+        /// <summary>
+        /// Only if `Mode`!=`Dynamic`. When enabled, the port is not expected to receive BPDU frames
         /// </summary>
         [Input("stpEdge")]
         public Input<bool>? StpEdge { get; set; }
 
+        /// <summary>
+        /// Only if `Mode`!=`Dynamic`
+        /// </summary>
         [Input("stpNoRootPort")]
         public Input<bool>? StpNoRootPort { get; set; }
 
+        /// <summary>
+        /// Only if `Mode`!=`Dynamic`
+        /// </summary>
         [Input("stpP2p")]
         public Input<bool>? StpP2p { get; set; }
+
+        /// <summary>
+        /// Only if `Mode`!=`Dynamic`. Whether to remain in block state if no BPDU is received
+        /// </summary>
+        [Input("stpRequired")]
+        public Input<bool>? StpRequired { get; set; }
 
         /// <summary>
         /// Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
@@ -259,7 +277,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? UseVstp { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+        /// Only if `Mode`!=`Dynamic`. Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
         /// </summary>
         [Input("voipNetwork")]
         public Input<string>? VoipNetwork { get; set; }

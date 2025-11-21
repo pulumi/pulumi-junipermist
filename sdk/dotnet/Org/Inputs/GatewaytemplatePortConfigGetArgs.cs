@@ -256,6 +256,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("wanExtIp")]
         public Input<string>? WanExtIp { get; set; }
 
+        /// <summary>
+        /// Only if `Usage`==`Wan`, optional. If spoke should reach this port by a different IPv6
+        /// </summary>
+        [Input("wanExtIp6")]
+        public Input<string>? WanExtIp6 { get; set; }
+
         [Input("wanExtraRoutes")]
         private InputMap<Inputs.GatewaytemplatePortConfigWanExtraRoutesGetArgs>? _wanExtraRoutes;
 

@@ -46,6 +46,7 @@ class GatewaytemplateArgs:
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
+                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  vrf_config: Optional[pulumi.Input['GatewaytemplateVrfConfigArgs']] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]] = None):
         """
@@ -66,6 +67,7 @@ class GatewaytemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: enum: `spoke`, `standalone`
+        :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -117,6 +119,8 @@ class GatewaytemplateArgs:
             pulumi.set(__self__, "tunnel_provider_options", tunnel_provider_options)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if url_filtering_deny_msg is not None:
+            pulumi.set(__self__, "url_filtering_deny_msg", url_filtering_deny_msg)
         if vrf_config is not None:
             pulumi.set(__self__, "vrf_config", vrf_config)
         if vrf_instances is not None:
@@ -396,6 +400,18 @@ class GatewaytemplateArgs:
         pulumi.set(self, "type", value)
 
     @_builtins.property
+    @pulumi.getter(name="urlFilteringDenyMsg")
+    def url_filtering_deny_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        When a service policy denies a app_category, what message to show in user's browser
+        """
+        return pulumi.get(self, "url_filtering_deny_msg")
+
+    @url_filtering_deny_msg.setter
+    def url_filtering_deny_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url_filtering_deny_msg", value)
+
+    @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> Optional[pulumi.Input['GatewaytemplateVrfConfigArgs']]:
         return pulumi.get(self, "vrf_config")
@@ -445,6 +461,7 @@ class _GatewaytemplateState:
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
+                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  vrf_config: Optional[pulumi.Input['GatewaytemplateVrfConfigArgs']] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]] = None):
         """
@@ -465,6 +482,7 @@ class _GatewaytemplateState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: enum: `spoke`, `standalone`
+        :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
         """
         if additional_config_cmds is not None:
@@ -517,6 +535,8 @@ class _GatewaytemplateState:
             pulumi.set(__self__, "tunnel_provider_options", tunnel_provider_options)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if url_filtering_deny_msg is not None:
+            pulumi.set(__self__, "url_filtering_deny_msg", url_filtering_deny_msg)
         if vrf_config is not None:
             pulumi.set(__self__, "vrf_config", vrf_config)
         if vrf_instances is not None:
@@ -796,6 +816,18 @@ class _GatewaytemplateState:
         pulumi.set(self, "type", value)
 
     @_builtins.property
+    @pulumi.getter(name="urlFilteringDenyMsg")
+    def url_filtering_deny_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        When a service policy denies a app_category, what message to show in user's browser
+        """
+        return pulumi.get(self, "url_filtering_deny_msg")
+
+    @url_filtering_deny_msg.setter
+    def url_filtering_deny_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url_filtering_deny_msg", value)
+
+    @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> Optional[pulumi.Input['GatewaytemplateVrfConfigArgs']]:
         return pulumi.get(self, "vrf_config")
@@ -848,6 +880,7 @@ class Gatewaytemplate(pulumi.CustomResource):
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
+                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  vrf_config: Optional[pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']]] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]]] = None,
                  __props__=None):
@@ -968,6 +1001,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: enum: `spoke`, `standalone`
+        :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
         ...
@@ -1115,6 +1149,7 @@ class Gatewaytemplate(pulumi.CustomResource):
                  tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
                  tunnel_provider_options: Optional[pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
+                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  vrf_config: Optional[pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']]] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]]] = None,
                  __props__=None):
@@ -1153,6 +1188,7 @@ class Gatewaytemplate(pulumi.CustomResource):
             __props__.__dict__["tunnel_configs"] = tunnel_configs
             __props__.__dict__["tunnel_provider_options"] = tunnel_provider_options
             __props__.__dict__["type"] = type
+            __props__.__dict__["url_filtering_deny_msg"] = url_filtering_deny_msg
             __props__.__dict__["vrf_config"] = vrf_config
             __props__.__dict__["vrf_instances"] = vrf_instances
         super(Gatewaytemplate, __self__).__init__(
@@ -1190,6 +1226,7 @@ class Gatewaytemplate(pulumi.CustomResource):
             tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
             tunnel_provider_options: Optional[pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
+            url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
             vrf_config: Optional[pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']]] = None,
             vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]]] = None) -> 'Gatewaytemplate':
         """
@@ -1215,6 +1252,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[_builtins.str] type: enum: `spoke`, `standalone`
+        :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1246,6 +1284,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         __props__.__dict__["tunnel_configs"] = tunnel_configs
         __props__.__dict__["tunnel_provider_options"] = tunnel_provider_options
         __props__.__dict__["type"] = type
+        __props__.__dict__["url_filtering_deny_msg"] = url_filtering_deny_msg
         __props__.__dict__["vrf_config"] = vrf_config
         __props__.__dict__["vrf_instances"] = vrf_instances
         return Gatewaytemplate(resource_name, opts=opts, __props__=__props__)
@@ -1422,6 +1461,14 @@ class Gatewaytemplate(pulumi.CustomResource):
         enum: `spoke`, `standalone`
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="urlFilteringDenyMsg")
+    def url_filtering_deny_msg(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        When a service policy denies a app_category, what message to show in user's browser
+        """
+        return pulumi.get(self, "url_filtering_deny_msg")
 
     @_builtins.property
     @pulumi.getter(name="vrfConfig")

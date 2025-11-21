@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? AntennaMode;
         /// <summary>
-        /// channel width for the 2.4GHz band. enum: `20`, `40`
+        /// channel width for the 2.4GHz band. enum: `0`(disabled, response only), `20`, `40`
         /// </summary>
         public readonly int? Bandwidth;
         /// <summary>

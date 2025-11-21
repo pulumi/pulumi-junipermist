@@ -1048,14 +1048,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * APi secret (auto-generated) that can be used to sign guest authorization requests
+     * API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
      * 
      */
     @Import(name="portalApiSecret")
     private @Nullable Output<String> portalApiSecret;
 
     /**
-     * @return APi secret (auto-generated) that can be used to sign guest authorization requests
+     * @return API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
      * 
      */
     public Optional<Output<String>> portalApiSecret() {
@@ -1092,9 +1092,17 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.portalImage);
     }
 
+    /**
+     * URL used in the SSO process, auto-generated when auth is set to `sso`
+     * 
+     */
     @Import(name="portalSsoUrl")
     private @Nullable Output<String> portalSsoUrl;
 
+    /**
+     * @return URL used in the SSO process, auto-generated when auth is set to `sso`
+     * 
+     */
     public Optional<Output<String>> portalSsoUrl() {
         return Optional.ofNullable(this.portalSsoUrl);
     }
@@ -2979,7 +2987,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portalApiSecret APi secret (auto-generated) that can be used to sign guest authorization requests
+         * @param portalApiSecret API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
          * 
          * @return builder
          * 
@@ -2990,7 +2998,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portalApiSecret APi secret (auto-generated) that can be used to sign guest authorization requests
+         * @param portalApiSecret API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
          * 
          * @return builder
          * 
@@ -3051,11 +3059,23 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return portalImage(Output.of(portalImage));
         }
 
+        /**
+         * @param portalSsoUrl URL used in the SSO process, auto-generated when auth is set to `sso`
+         * 
+         * @return builder
+         * 
+         */
         public Builder portalSsoUrl(@Nullable Output<String> portalSsoUrl) {
             $.portalSsoUrl = portalSsoUrl;
             return this;
         }
 
+        /**
+         * @param portalSsoUrl URL used in the SSO process, auto-generated when auth is set to `sso`
+         * 
+         * @return builder
+         * 
+         */
         public Builder portalSsoUrl(String portalSsoUrl) {
             return portalSsoUrl(Output.of(portalSsoUrl));
         }

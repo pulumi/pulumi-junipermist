@@ -183,7 +183,7 @@ export class Setting extends pulumi.CustomResource {
      * When limitSshAccess = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see Org:Setting)
      */
     declare public readonly sshKeys: pulumi.Output<string[]>;
-    declare public readonly ssr: pulumi.Output<outputs.site.SettingSsr>;
+    declare public readonly ssr: pulumi.Output<outputs.site.SettingSsr | undefined>;
     /**
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      */

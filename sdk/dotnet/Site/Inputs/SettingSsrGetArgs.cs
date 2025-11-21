@@ -12,6 +12,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingSsrGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// auto_upgrade device first time it is onboarded
+        /// </summary>
+        [Input("autoUpgrade")]
+        public Input<Inputs.SettingSsrAutoUpgradeGetArgs>? AutoUpgrade { get; set; }
+
         [Input("conductorHosts")]
         private InputList<string>? _conductorHosts;
 
@@ -45,6 +51,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         /// </summary>
         [Input("disableStats")]
         public Input<bool>? DisableStats { get; set; }
+
+        /// <summary>
+        /// Proxy Configuration to talk to Mist
+        /// </summary>
+        [Input("proxy")]
+        public Input<Inputs.SettingSsrProxyGetArgs>? Proxy { get; set; }
 
         public SettingSsrGetArgs()
         {

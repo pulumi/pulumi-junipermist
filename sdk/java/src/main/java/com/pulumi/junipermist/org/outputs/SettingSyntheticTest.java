@@ -34,6 +34,12 @@ public final class SettingSyntheticTest {
      * 
      */
     private @Nullable List<SettingSyntheticTestLanNetwork> lanNetworks;
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     private @Nullable List<SettingSyntheticTestVlan> vlans;
     private @Nullable SettingSyntheticTestWanSpeedtest wanSpeedtest;
 
@@ -62,6 +68,12 @@ public final class SettingSyntheticTest {
     public List<SettingSyntheticTestLanNetwork> lanNetworks() {
         return this.lanNetworks == null ? List.of() : this.lanNetworks;
     }
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public List<SettingSyntheticTestVlan> vlans() {
         return this.vlans == null ? List.of() : this.vlans;
     }

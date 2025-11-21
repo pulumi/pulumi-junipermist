@@ -19,6 +19,7 @@ import com.pulumi.junipermist.org.outputs.SettingInstaller;
 import com.pulumi.junipermist.org.outputs.SettingJcloud;
 import com.pulumi.junipermist.org.outputs.SettingJcloudRa;
 import com.pulumi.junipermist.org.outputs.SettingJuniper;
+import com.pulumi.junipermist.org.outputs.SettingJuniperSrx;
 import com.pulumi.junipermist.org.outputs.SettingJunosShellAccess;
 import com.pulumi.junipermist.org.outputs.SettingMarvis;
 import com.pulumi.junipermist.org.outputs.SettingMgmt;
@@ -302,6 +303,12 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<SettingJuniper> juniper() {
         return this.juniper;
     }
+    @Export(name="juniperSrx", refs={SettingJuniperSrx.class}, tree="[0]")
+    private Output</* @Nullable */ SettingJuniperSrx> juniperSrx;
+
+    public Output<Optional<SettingJuniperSrx>> juniperSrx() {
+        return Codegen.optional(this.juniperSrx);
+    }
     /**
      * junos_shell_access: Manages role-based web-shell access.\
      * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
@@ -449,6 +456,12 @@ public class Setting extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> uiIdleTimeout() {
         return this.uiIdleTimeout;
+    }
+    @Export(name="uiNoTracking", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> uiNoTracking;
+
+    public Output<Optional<Boolean>> uiNoTracking() {
+        return Codegen.optional(this.uiNoTracking);
     }
     @Export(name="vpnOptions", refs={SettingVpnOptions.class}, tree="[0]")
     private Output</* @Nullable */ SettingVpnOptions> vpnOptions;

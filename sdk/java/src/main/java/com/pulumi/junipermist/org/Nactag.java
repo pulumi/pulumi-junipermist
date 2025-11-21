@@ -107,14 +107,14 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gbpTag);
     }
     /**
-     * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      * 
      */
     @Export(name="match", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> match;
 
     /**
-     * @return if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * @return if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      * 
      */
     public Output<Optional<String>> match() {
@@ -125,7 +125,7 @@ public class Nactag extends com.pulumi.resources.CustomResource {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      * 
-     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      * 
      */
     @Export(name="matchAll", refs={Boolean.class}, tree="[0]")
@@ -136,21 +136,21 @@ public class Nactag extends com.pulumi.resources.CustomResource {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      * 
-     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      * 
      */
     public Output<Optional<Boolean>> matchAll() {
         return Codegen.optional(this.matchAll);
     }
     /**
-     * If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+     * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
      * 
      */
     @Export(name="nacportalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nacportalId;
 
     /**
-     * @return If `type`==`redirectGuestPortal`, the ID of the guest portal to redirect to
+     * @return If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
      * 
      */
     public Output<Optional<String>> nacportalId() {
@@ -233,14 +233,14 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sessionTimeout);
     }
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectGuestPortal`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
      * 
      */
     public Output<String> type() {
