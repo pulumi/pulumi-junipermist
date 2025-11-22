@@ -36,6 +36,7 @@ jobs:
         with:
           module-path: provider
           ignore-modules: >-
+            github.com/gotestyourself/gotest.tools,
             github.com/aead/chacha20,
             github.com/apache/arrow/go/v12,
             github.com/apache/thrift/lib/go/thrift,
@@ -52,5 +53,4 @@ jobs:
             github.com/pjbgf/sha1cd,
             github.com/pulumi,
             github.com/segmentio/asm,
-            golang.org,
-            gotest.tools
+            golang.org
