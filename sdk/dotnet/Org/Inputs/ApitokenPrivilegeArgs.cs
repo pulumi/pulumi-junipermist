@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// enum: `Org`, `Site`, `Sitegroup`
+        /// enum: `Org`, `Site`, `Sitegroup`, `Orgsites`
         /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;

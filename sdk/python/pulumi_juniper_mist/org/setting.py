@@ -43,7 +43,6 @@ class SettingArgs:
                  mxedge_mgmt: Optional[pulumi.Input['SettingMxedgeMgmtArgs']] = None,
                  optic_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]]] = None,
                  password_policy: Optional[pulumi.Input['SettingPasswordPolicyArgs']] = None,
-                 pcap: Optional[pulumi.Input['SettingPcapArgs']] = None,
                  security: Optional[pulumi.Input['SettingSecurityArgs']] = None,
                  ssr: Optional[pulumi.Input['SettingSsrArgs']] = None,
                  switch: Optional[pulumi.Input['SettingSwitchArgs']] = None,
@@ -120,8 +119,6 @@ class SettingArgs:
             pulumi.set(__self__, "optic_port_config", optic_port_config)
         if password_policy is not None:
             pulumi.set(__self__, "password_policy", password_policy)
-        if pcap is not None:
-            pulumi.set(__self__, "pcap", pcap)
         if security is not None:
             pulumi.set(__self__, "security", security)
         if ssr is not None:
@@ -384,15 +381,6 @@ class SettingArgs:
     @password_policy.setter
     def password_policy(self, value: Optional[pulumi.Input['SettingPasswordPolicyArgs']]):
         pulumi.set(self, "password_policy", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def pcap(self) -> Optional[pulumi.Input['SettingPcapArgs']]:
-        return pulumi.get(self, "pcap")
-
-    @pcap.setter
-    def pcap(self, value: Optional[pulumi.Input['SettingPcapArgs']]):
-        pulumi.set(self, "pcap", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1053,7 +1041,6 @@ class Setting(pulumi.CustomResource):
                  optic_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
-                 pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
                  security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
                  ssr: Optional[pulumi.Input[Union['SettingSsrArgs', 'SettingSsrArgsDict']]] = None,
                  switch: Optional[pulumi.Input[Union['SettingSwitchArgs', 'SettingSwitchArgsDict']]] = None,
@@ -1277,7 +1264,6 @@ class Setting(pulumi.CustomResource):
                  optic_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
-                 pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
                  security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
                  ssr: Optional[pulumi.Input[Union['SettingSsrArgs', 'SettingSsrArgsDict']]] = None,
                  switch: Optional[pulumi.Input[Union['SettingSwitchArgs', 'SettingSwitchArgsDict']]] = None,
@@ -1323,7 +1309,6 @@ class Setting(pulumi.CustomResource):
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["password_policy"] = password_policy
-            __props__.__dict__["pcap"] = pcap
             __props__.__dict__["security"] = security
             __props__.__dict__["ssr"] = ssr
             __props__.__dict__["switch"] = switch
@@ -1338,6 +1323,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["wireless_pma"] = wireless_pma
             __props__.__dict__["cradlepoint"] = None
             __props__.__dict__["juniper"] = None
+            __props__.__dict__["pcap"] = None
         super(Setting, __self__).__init__(
             'junipermist:org/setting:Setting',
             resource_name,
@@ -1616,7 +1602,7 @@ class Setting(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def pcap(self) -> pulumi.Output[Optional['outputs.SettingPcap']]:
+    def pcap(self) -> pulumi.Output['outputs.SettingPcap']:
         return pulumi.get(self, "pcap")
 
     @_builtins.property

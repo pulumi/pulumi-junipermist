@@ -36,10 +36,10 @@ class ServicepolicyArgs:
                  tenants: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Servicepolicy resource.
-        :param pulumi.Input['ServicepolicyAamwArgs'] aamw: For SRX Only
+        :param pulumi.Input['ServicepolicyAamwArgs'] aamw: SRX only
         :param pulumi.Input[_builtins.str] action: enum: `allow`, `deny`
         :param pulumi.Input['ServicepolicyAntivirusArgs'] antivirus: For SRX-only
-        :param pulumi.Input['ServicepolicyAppqoeArgs'] appqoe: For SRX Only
+        :param pulumi.Input['ServicepolicyAppqoeArgs'] appqoe: SRX only
         :param pulumi.Input[_builtins.bool] local_routing: access within the same VRF
         :param pulumi.Input[_builtins.str] path_preference: By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         :param pulumi.Input['ServicepolicySslProxyArgs'] ssl_proxy: For SRX-only
@@ -83,7 +83,7 @@ class ServicepolicyArgs:
     @pulumi.getter
     def aamw(self) -> Optional[pulumi.Input['ServicepolicyAamwArgs']]:
         """
-        For SRX Only
+        SRX only
         """
         return pulumi.get(self, "aamw")
 
@@ -119,7 +119,7 @@ class ServicepolicyArgs:
     @pulumi.getter
     def appqoe(self) -> Optional[pulumi.Input['ServicepolicyAppqoeArgs']]:
         """
-        For SRX Only
+        SRX only
         """
         return pulumi.get(self, "appqoe")
 
@@ -227,10 +227,10 @@ class _ServicepolicyState:
                  tenants: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Servicepolicy resources.
-        :param pulumi.Input['ServicepolicyAamwArgs'] aamw: For SRX Only
+        :param pulumi.Input['ServicepolicyAamwArgs'] aamw: SRX only
         :param pulumi.Input[_builtins.str] action: enum: `allow`, `deny`
         :param pulumi.Input['ServicepolicyAntivirusArgs'] antivirus: For SRX-only
-        :param pulumi.Input['ServicepolicyAppqoeArgs'] appqoe: For SRX Only
+        :param pulumi.Input['ServicepolicyAppqoeArgs'] appqoe: SRX only
         :param pulumi.Input[_builtins.bool] local_routing: access within the same VRF
         :param pulumi.Input[_builtins.str] path_preference: By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         :param pulumi.Input['ServicepolicySslProxyArgs'] ssl_proxy: For SRX-only
@@ -266,7 +266,7 @@ class _ServicepolicyState:
     @pulumi.getter
     def aamw(self) -> Optional[pulumi.Input['ServicepolicyAamwArgs']]:
         """
-        For SRX Only
+        SRX only
         """
         return pulumi.get(self, "aamw")
 
@@ -302,7 +302,7 @@ class _ServicepolicyState:
     @pulumi.getter
     def appqoe(self) -> Optional[pulumi.Input['ServicepolicyAppqoeArgs']]:
         """
-        For SRX Only
+        SRX only
         """
         return pulumi.get(self, "appqoe")
 
@@ -461,10 +461,10 @@ class Servicepolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: For SRX Only
+        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: SRX only
         :param pulumi.Input[_builtins.str] action: enum: `allow`, `deny`
         :param pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']] antivirus: For SRX-only
-        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: For SRX Only
+        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: SRX only
         :param pulumi.Input[_builtins.bool] local_routing: access within the same VRF
         :param pulumi.Input[_builtins.str] path_preference: By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         :param pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']] ssl_proxy: For SRX-only
@@ -595,10 +595,10 @@ class Servicepolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: For SRX Only
+        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: SRX only
         :param pulumi.Input[_builtins.str] action: enum: `allow`, `deny`
         :param pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']] antivirus: For SRX-only
-        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: For SRX Only
+        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: SRX only
         :param pulumi.Input[_builtins.bool] local_routing: access within the same VRF
         :param pulumi.Input[_builtins.str] path_preference: By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         :param pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']] ssl_proxy: For SRX-only
@@ -626,7 +626,7 @@ class Servicepolicy(pulumi.CustomResource):
     @pulumi.getter
     def aamw(self) -> pulumi.Output[Optional['outputs.ServicepolicyAamw']]:
         """
-        For SRX Only
+        SRX only
         """
         return pulumi.get(self, "aamw")
 
@@ -650,7 +650,7 @@ class Servicepolicy(pulumi.CustomResource):
     @pulumi.getter
     def appqoe(self) -> pulumi.Output[Optional['outputs.ServicepolicyAppqoe']]:
         """
-        For SRX Only
+        SRX only
         """
         return pulumi.get(self, "appqoe")
 

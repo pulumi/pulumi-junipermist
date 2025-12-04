@@ -36,7 +36,7 @@ public final class SettingSsr {
      */
     private @Nullable Boolean disableStats;
     /**
-     * @return Proxy Configuration to talk to Mist
+     * @return SSR proxy configuration to talk to Mist
      * 
      */
     private @Nullable SettingSsrProxy proxy;
@@ -71,7 +71,7 @@ public final class SettingSsr {
         return Optional.ofNullable(this.disableStats);
     }
     /**
-     * @return Proxy Configuration to talk to Mist
+     * @return SSR proxy configuration to talk to Mist
      * 
      */
     public Optional<SettingSsrProxy> proxy() {

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateAclTags {
     /**
-     * @return Can only be used under dst tags.
+     * @return ARP / IPv6. Default is `any`
      * 
      */
     private @Nullable List<String> etherTypes;
@@ -89,7 +89,7 @@ public final class NetworktemplateAclTags {
 
     private NetworktemplateAclTags() {}
     /**
-     * @return Can only be used under dst tags.
+     * @return ARP / IPv6. Default is `any`
      * 
      */
     public List<String> etherTypes() {

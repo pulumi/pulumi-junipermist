@@ -20,14 +20,14 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     public static final NetworktemplateAclTagsArgs Empty = new NetworktemplateAclTagsArgs();
 
     /**
-     * Can only be used under dst tags.
+     * ARP / IPv6. Default is `any`
      * 
      */
     @Import(name="etherTypes")
     private @Nullable Output<List<String>> etherTypes;
 
     /**
-     * @return Can only be used under dst tags.
+     * @return ARP / IPv6. Default is `any`
      * 
      */
     public Optional<Output<List<String>>> etherTypes() {
@@ -239,7 +239,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param etherTypes Can only be used under dst tags.
+         * @param etherTypes ARP / IPv6. Default is `any`
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param etherTypes Can only be used under dst tags.
+         * @param etherTypes ARP / IPv6. Default is `any`
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param etherTypes Can only be used under dst tags.
+         * @param etherTypes ARP / IPv6. Default is `any`
          * 
          * @return builder
          * 

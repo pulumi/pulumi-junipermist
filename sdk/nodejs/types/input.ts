@@ -525,13 +525,13 @@ export namespace device {
          */
         antGain6?: pulumi.Input<number>;
         /**
-         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-         */
-        antMode?: pulumi.Input<string>;
-        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode?: pulumi.Input<string>;
+        /**
+         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         */
+        antennaSelect?: pulumi.Input<string>;
         /**
          * Radio Band AP settings
          */
@@ -560,6 +560,10 @@ export namespace device {
          * To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
          */
         indoorUse?: pulumi.Input<boolean>;
+        /**
+         * Enable RRM to manage all radio settings (ignores all bandXxx configs)
+         */
+        rrmManaged?: pulumi.Input<boolean>;
         /**
          * Whether scanning radio is enabled
          */
@@ -611,6 +615,10 @@ export namespace device {
         allowRrmDisable?: pulumi.Input<boolean>;
         antGain?: pulumi.Input<number>;
         /**
+         * enum: `narrow`, `medium`, `wide`
+         */
+        antennaBeamPattern?: pulumi.Input<string>;
+        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode?: pulumi.Input<string>;
@@ -652,6 +660,10 @@ export namespace device {
         allowRrmDisable?: pulumi.Input<boolean>;
         antGain?: pulumi.Input<number>;
         /**
+         * enum: `narrow`, `medium`, `wide`
+         */
+        antennaBeamPattern?: pulumi.Input<string>;
+        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode?: pulumi.Input<string>;
@@ -692,6 +704,10 @@ export namespace device {
     export interface ApRadioConfigBand6 {
         allowRrmDisable?: pulumi.Input<boolean>;
         antGain?: pulumi.Input<number>;
+        /**
+         * enum: `narrow`, `medium`, `wide`
+         */
+        antennaBeamPattern?: pulumi.Input<string>;
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
@@ -1371,7 +1387,7 @@ export namespace device {
          */
         aeIdx?: pulumi.Input<string>;
         /**
-         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         * For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
         aeLacpForceUp?: pulumi.Input<boolean>;
         aggregated?: pulumi.Input<boolean>;
@@ -1774,7 +1790,7 @@ export namespace device {
          */
         antivirus?: pulumi.Input<inputs.device.GatewayServicePolicyAntivirus>;
         /**
-         * For SRX Only
+         * SRX only
          */
         appqoe?: pulumi.Input<inputs.device.GatewayServicePolicyAppqoe>;
         ewfs?: pulumi.Input<pulumi.Input<inputs.device.GatewayServicePolicyEwf>[]>;
@@ -1800,9 +1816,17 @@ export namespace device {
          */
         services?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * SRX only
+         */
+        skyatp?: pulumi.Input<inputs.device.GatewayServicePolicySkyatp>;
+        /**
          * For SRX-only
          */
         sslProxy?: pulumi.Input<inputs.device.GatewayServicePolicySslProxy>;
+        /**
+         * Required for syslog logging
+         */
+        syslog?: pulumi.Input<inputs.device.GatewayServicePolicySyslog>;
         /**
          * Required when `servicepolicyId` is not defined. List of Networks / Users
          */
@@ -1848,12 +1872,36 @@ export namespace device {
         profile?: pulumi.Input<string>;
     }
 
+    export interface GatewayServicePolicySkyatp {
+        /**
+         * enum: `disabled`, `default`, `standard`, `strict`
+         */
+        dnsDgaDetection?: pulumi.Input<string>;
+        /**
+         * enum: `disabled`, `default`, `standard`, `strict`
+         */
+        dnsTunnelDetection?: pulumi.Input<string>;
+        /**
+         * enum: `disabled`, `standard`
+         */
+        httpInspection?: pulumi.Input<string>;
+        /**
+         * enum: `disabled`, `enabled`
+         */
+        iotDevicePolicy?: pulumi.Input<string>;
+    }
+
     export interface GatewayServicePolicySslProxy {
         /**
          * enum: `medium`, `strong`, `weak`
          */
         ciphersCategory?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface GatewayServicePolicySyslog {
+        enabled?: pulumi.Input<boolean>;
+        serverNames?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GatewayTunnelConfigs {
@@ -2254,7 +2302,7 @@ export namespace device {
 
     export interface SwitchAclTags {
         /**
-         * Can only be used under dst tags.
+         * ARP / IPv6. Default is `any`
          */
         etherTypes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -2516,7 +2564,7 @@ export namespace device {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+         * Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: pulumi.Input<boolean>;
         allowMultipleSupplicants?: pulumi.Input<boolean>;
@@ -2941,7 +2989,7 @@ export namespace device {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: pulumi.Input<boolean>;
         /**
@@ -2956,6 +3004,10 @@ export namespace device {
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+         */
+        bypassAuthWhenServerDownForVoip?: pulumi.Input<boolean>;
         /**
          * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
          */
@@ -3037,6 +3089,10 @@ export namespace device {
          */
         poeDisabled?: pulumi.Input<boolean>;
         /**
+         * PoE priority. enum: `low`, `high`
+         */
+        poePriority?: pulumi.Input<string>;
+        /**
          * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          */
         portAuth?: pulumi.Input<string>;
@@ -3115,7 +3171,7 @@ export namespace device {
          */
         expression?: pulumi.Input<string>;
         /**
-         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
          */
         src: pulumi.Input<string>;
         /**
@@ -3826,7 +3882,7 @@ export namespace org {
          */
         role: pulumi.Input<string>;
         /**
-         * enum: `org`, `site`, `sitegroup`
+         * enum: `org`, `site`, `sitegroup`, `orgsites`
          */
         scope: pulumi.Input<string>;
         /**
@@ -4322,13 +4378,13 @@ export namespace org {
          */
         antGain6?: pulumi.Input<number>;
         /**
-         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-         */
-        antMode?: pulumi.Input<string>;
-        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode?: pulumi.Input<string>;
+        /**
+         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         */
+        antennaSelect?: pulumi.Input<string>;
         /**
          * Radio Band AP settings
          */
@@ -4357,6 +4413,10 @@ export namespace org {
          * To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
          */
         indoorUse?: pulumi.Input<boolean>;
+        /**
+         * Enable RRM to manage all radio settings (ignores all bandXxx configs)
+         */
+        rrmManaged?: pulumi.Input<boolean>;
         /**
          * Whether scanning radio is enabled
          */
@@ -4408,6 +4468,10 @@ export namespace org {
         allowRrmDisable?: pulumi.Input<boolean>;
         antGain?: pulumi.Input<number>;
         /**
+         * enum: `narrow`, `medium`, `wide`
+         */
+        antennaBeamPattern?: pulumi.Input<string>;
+        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode?: pulumi.Input<string>;
@@ -4449,6 +4513,10 @@ export namespace org {
         allowRrmDisable?: pulumi.Input<boolean>;
         antGain?: pulumi.Input<number>;
         /**
+         * enum: `narrow`, `medium`, `wide`
+         */
+        antennaBeamPattern?: pulumi.Input<string>;
+        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode?: pulumi.Input<string>;
@@ -4489,6 +4557,10 @@ export namespace org {
     export interface DeviceprofileApRadioConfigBand6 {
         allowRrmDisable?: pulumi.Input<boolean>;
         antGain?: pulumi.Input<number>;
+        /**
+         * enum: `narrow`, `medium`, `wide`
+         */
+        antennaBeamPattern?: pulumi.Input<string>;
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
@@ -5145,7 +5217,7 @@ export namespace org {
          */
         aeIdx?: pulumi.Input<string>;
         /**
-         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         * For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
         aeLacpForceUp?: pulumi.Input<boolean>;
         aggregated?: pulumi.Input<boolean>;
@@ -5536,7 +5608,7 @@ export namespace org {
          */
         antivirus?: pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicyAntivirus>;
         /**
-         * For SRX Only
+         * SRX only
          */
         appqoe?: pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicyAppqoe>;
         ewfs?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicyEwf>[]>;
@@ -5562,9 +5634,17 @@ export namespace org {
          */
         services?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * SRX only
+         */
+        skyatp?: pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicySkyatp>;
+        /**
          * For SRX-only
          */
         sslProxy?: pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicySslProxy>;
+        /**
+         * Required for syslog logging
+         */
+        syslog?: pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicySyslog>;
         /**
          * Required when `servicepolicyId` is not defined. List of Networks / Users
          */
@@ -5610,12 +5690,36 @@ export namespace org {
         profile?: pulumi.Input<string>;
     }
 
+    export interface DeviceprofileGatewayServicePolicySkyatp {
+        /**
+         * enum: `disabled`, `default`, `standard`, `strict`
+         */
+        dnsDgaDetection?: pulumi.Input<string>;
+        /**
+         * enum: `disabled`, `default`, `standard`, `strict`
+         */
+        dnsTunnelDetection?: pulumi.Input<string>;
+        /**
+         * enum: `disabled`, `standard`
+         */
+        httpInspection?: pulumi.Input<string>;
+        /**
+         * enum: `disabled`, `enabled`
+         */
+        iotDevicePolicy?: pulumi.Input<string>;
+    }
+
     export interface DeviceprofileGatewayServicePolicySslProxy {
         /**
          * enum: `medium`, `strong`, `weak`
          */
         ciphersCategory?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface DeviceprofileGatewayServicePolicySyslog {
+        enabled?: pulumi.Input<boolean>;
+        serverNames?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface DeviceprofileGatewayTunnelConfigs {
@@ -6654,7 +6758,7 @@ export namespace org {
          */
         aeIdx?: pulumi.Input<string>;
         /**
-         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         * For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
         aeLacpForceUp?: pulumi.Input<boolean>;
         aggregated?: pulumi.Input<boolean>;
@@ -7045,7 +7149,7 @@ export namespace org {
          */
         antivirus?: pulumi.Input<inputs.org.GatewaytemplateServicePolicyAntivirus>;
         /**
-         * For SRX Only
+         * SRX only
          */
         appqoe?: pulumi.Input<inputs.org.GatewaytemplateServicePolicyAppqoe>;
         ewfs?: pulumi.Input<pulumi.Input<inputs.org.GatewaytemplateServicePolicyEwf>[]>;
@@ -7071,9 +7175,17 @@ export namespace org {
          */
         services?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * SRX only
+         */
+        skyatp?: pulumi.Input<inputs.org.GatewaytemplateServicePolicySkyatp>;
+        /**
          * For SRX-only
          */
         sslProxy?: pulumi.Input<inputs.org.GatewaytemplateServicePolicySslProxy>;
+        /**
+         * Required for syslog logging
+         */
+        syslog?: pulumi.Input<inputs.org.GatewaytemplateServicePolicySyslog>;
         /**
          * Required when `servicepolicyId` is not defined. List of Networks / Users
          */
@@ -7119,12 +7231,36 @@ export namespace org {
         profile?: pulumi.Input<string>;
     }
 
+    export interface GatewaytemplateServicePolicySkyatp {
+        /**
+         * enum: `disabled`, `default`, `standard`, `strict`
+         */
+        dnsDgaDetection?: pulumi.Input<string>;
+        /**
+         * enum: `disabled`, `default`, `standard`, `strict`
+         */
+        dnsTunnelDetection?: pulumi.Input<string>;
+        /**
+         * enum: `disabled`, `standard`
+         */
+        httpInspection?: pulumi.Input<string>;
+        /**
+         * enum: `disabled`, `enabled`
+         */
+        iotDevicePolicy?: pulumi.Input<string>;
+    }
+
     export interface GatewaytemplateServicePolicySslProxy {
         /**
          * enum: `medium`, `strong`, `weak`
          */
         ciphersCategory?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface GatewaytemplateServicePolicySyslog {
+        enabled?: pulumi.Input<boolean>;
+        serverNames?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GatewaytemplateTunnelConfigs {
@@ -7817,7 +7953,7 @@ export namespace org {
 
     export interface NetworktemplateAclTags {
         /**
-         * Can only be used under dst tags.
+         * ARP / IPv6. Default is `any`
          */
         etherTypes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -8053,7 +8189,7 @@ export namespace org {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: pulumi.Input<boolean>;
         /**
@@ -8068,6 +8204,10 @@ export namespace org {
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+         */
+        bypassAuthWhenServerDownForVoip?: pulumi.Input<boolean>;
         /**
          * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
          */
@@ -8105,11 +8245,11 @@ export namespace org {
          */
         guestNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
          */
         interIsolationNetworkLink?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
          */
         interSwitchLink?: pulumi.Input<boolean>;
         /**
@@ -8148,6 +8288,10 @@ export namespace org {
          * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: pulumi.Input<boolean>;
+        /**
+         * PoE priority. enum: `low`, `high`
+         */
+        poePriority?: pulumi.Input<string>;
         /**
          * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          */
@@ -8231,7 +8375,7 @@ export namespace org {
          */
         expression?: pulumi.Input<string>;
         /**
-         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
          */
         src: pulumi.Input<string>;
         /**
@@ -9530,9 +9674,15 @@ export namespace org {
     }
 
     export interface SettingMarvisAutoOperations {
+        apInsufficientCapacity?: pulumi.Input<boolean>;
+        apLoop?: pulumi.Input<boolean>;
+        apNonCompliant?: pulumi.Input<boolean>;
         bouncePortForAbnormalPoeClient?: pulumi.Input<boolean>;
         disablePortWhenDdosProtocolViolation?: pulumi.Input<boolean>;
         disablePortWhenRogueDhcpServerDetected?: pulumi.Input<boolean>;
+        gatewayNonCompliant?: pulumi.Input<boolean>;
+        switchMisconfiguredPort?: pulumi.Input<boolean>;
+        switchPortStuck?: pulumi.Input<boolean>;
     }
 
     export interface SettingMgmt {
@@ -9710,7 +9860,7 @@ export namespace org {
          */
         disableStats?: pulumi.Input<boolean>;
         /**
-         * Proxy Configuration to talk to Mist
+         * SSR proxy configuration to talk to Mist
          */
         proxy?: pulumi.Input<inputs.org.SettingSsrProxy>;
     }
@@ -9728,6 +9878,7 @@ export namespace org {
     }
 
     export interface SettingSsrProxy {
+        disabled?: pulumi.Input<boolean>;
         url?: pulumi.Input<string>;
     }
 
@@ -9867,7 +10018,7 @@ export namespace org {
          */
         role: pulumi.Input<string>;
         /**
-         * enum: `org`, `site`, `sitegroup`
+         * enum: `org`, `site`, `sitegroup`, `orgsites`
          */
         scope: pulumi.Input<string>;
         /**
@@ -11572,7 +11723,7 @@ export namespace site {
 
     export interface NetworktemplateAclTags {
         /**
-         * Can only be used under dst tags.
+         * ARP / IPv6. Default is `any`
          */
         etherTypes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -11808,7 +11959,7 @@ export namespace site {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: pulumi.Input<boolean>;
         /**
@@ -11823,6 +11974,10 @@ export namespace site {
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: pulumi.Input<boolean>;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+         */
+        bypassAuthWhenServerDownForVoip?: pulumi.Input<boolean>;
         /**
          * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
          */
@@ -11860,11 +12015,11 @@ export namespace site {
          */
         guestNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
          */
         interIsolationNetworkLink?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
          */
         interSwitchLink?: pulumi.Input<boolean>;
         /**
@@ -11903,6 +12058,10 @@ export namespace site {
          * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: pulumi.Input<boolean>;
+        /**
+         * PoE priority. enum: `low`, `high`
+         */
+        poePriority?: pulumi.Input<string>;
         /**
          * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          */
@@ -11986,7 +12145,7 @@ export namespace site {
          */
         expression?: pulumi.Input<string>;
         /**
-         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
          */
         src: pulumi.Input<string>;
         /**
@@ -13109,7 +13268,7 @@ export namespace site {
          */
         protectRe?: pulumi.Input<inputs.site.SettingGatewayMgmtProtectRe>;
         /**
-         * For SRX only
+         * SRX only
          */
         rootPassword?: pulumi.Input<string>;
         securityLogSourceAddress?: pulumi.Input<string>;
@@ -13229,9 +13388,15 @@ export namespace site {
     }
 
     export interface SettingMarvisAutoOperations {
+        apInsufficientCapacity?: pulumi.Input<boolean>;
+        apLoop?: pulumi.Input<boolean>;
+        apNonCompliant?: pulumi.Input<boolean>;
         bouncePortForAbnormalPoeClient?: pulumi.Input<boolean>;
         disablePortWhenDdosProtocolViolation?: pulumi.Input<boolean>;
         disablePortWhenRogueDhcpServerDetected?: pulumi.Input<boolean>;
+        gatewayNonCompliant?: pulumi.Input<boolean>;
+        switchMisconfiguredPort?: pulumi.Input<boolean>;
+        switchPortStuck?: pulumi.Input<boolean>;
     }
 
     export interface SettingOccupancy {
@@ -13258,6 +13423,7 @@ export namespace site {
     }
 
     export interface SettingProxy {
+        disabled?: pulumi.Input<boolean>;
         url?: pulumi.Input<string>;
     }
 
@@ -13393,7 +13559,7 @@ export namespace site {
          */
         disableStats?: pulumi.Input<boolean>;
         /**
-         * Proxy Configuration to talk to Mist
+         * SSR proxy configuration to talk to Mist
          */
         proxy?: pulumi.Input<inputs.site.SettingSsrProxy>;
     }
@@ -13411,6 +13577,7 @@ export namespace site {
     }
 
     export interface SettingSsrProxy {
+        disabled?: pulumi.Input<boolean>;
         url?: pulumi.Input<string>;
     }
 

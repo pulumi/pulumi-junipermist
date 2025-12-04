@@ -34,15 +34,15 @@ public final class DeviceprofileApRadioConfig {
      */
     private @Nullable Integer antGain6;
     /**
-     * @return Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-     * 
-     */
-    private @Nullable String antMode;
-    /**
      * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
      * 
      */
     private @Nullable String antennaMode;
+    /**
+     * @return Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+     * 
+     */
+    private @Nullable String antennaSelect;
     /**
      * @return Radio Band AP settings
      * 
@@ -79,6 +79,11 @@ public final class DeviceprofileApRadioConfig {
      */
     private @Nullable Boolean indoorUse;
     /**
+     * @return Enable RRM to manage all radio settings (ignores all bandXxx configs)
+     * 
+     */
+    private @Nullable Boolean rrmManaged;
+    /**
      * @return Whether scanning radio is enabled
      * 
      */
@@ -110,18 +115,18 @@ public final class DeviceprofileApRadioConfig {
         return Optional.ofNullable(this.antGain6);
     }
     /**
-     * @return Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-     * 
-     */
-    public Optional<String> antMode() {
-        return Optional.ofNullable(this.antMode);
-    }
-    /**
      * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
      * 
      */
     public Optional<String> antennaMode() {
         return Optional.ofNullable(this.antennaMode);
+    }
+    /**
+     * @return Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+     * 
+     */
+    public Optional<String> antennaSelect() {
+        return Optional.ofNullable(this.antennaSelect);
     }
     /**
      * @return Radio Band AP settings
@@ -173,6 +178,13 @@ public final class DeviceprofileApRadioConfig {
         return Optional.ofNullable(this.indoorUse);
     }
     /**
+     * @return Enable RRM to manage all radio settings (ignores all bandXxx configs)
+     * 
+     */
+    public Optional<Boolean> rrmManaged() {
+        return Optional.ofNullable(this.rrmManaged);
+    }
+    /**
      * @return Whether scanning radio is enabled
      * 
      */
@@ -193,8 +205,8 @@ public final class DeviceprofileApRadioConfig {
         private @Nullable Integer antGain24;
         private @Nullable Integer antGain5;
         private @Nullable Integer antGain6;
-        private @Nullable String antMode;
         private @Nullable String antennaMode;
+        private @Nullable String antennaSelect;
         private @Nullable DeviceprofileApRadioConfigBand24 band24;
         private @Nullable String band24Usage;
         private @Nullable DeviceprofileApRadioConfigBand5 band5;
@@ -202,6 +214,7 @@ public final class DeviceprofileApRadioConfig {
         private @Nullable DeviceprofileApRadioConfigBand6 band6;
         private @Nullable Boolean fullAutomaticRrm;
         private @Nullable Boolean indoorUse;
+        private @Nullable Boolean rrmManaged;
         private @Nullable Boolean scanningEnabled;
         public Builder() {}
         public Builder(DeviceprofileApRadioConfig defaults) {
@@ -210,8 +223,8 @@ public final class DeviceprofileApRadioConfig {
     	      this.antGain24 = defaults.antGain24;
     	      this.antGain5 = defaults.antGain5;
     	      this.antGain6 = defaults.antGain6;
-    	      this.antMode = defaults.antMode;
     	      this.antennaMode = defaults.antennaMode;
+    	      this.antennaSelect = defaults.antennaSelect;
     	      this.band24 = defaults.band24;
     	      this.band24Usage = defaults.band24Usage;
     	      this.band5 = defaults.band5;
@@ -219,6 +232,7 @@ public final class DeviceprofileApRadioConfig {
     	      this.band6 = defaults.band6;
     	      this.fullAutomaticRrm = defaults.fullAutomaticRrm;
     	      this.indoorUse = defaults.indoorUse;
+    	      this.rrmManaged = defaults.rrmManaged;
     	      this.scanningEnabled = defaults.scanningEnabled;
         }
 
@@ -247,15 +261,15 @@ public final class DeviceprofileApRadioConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder antMode(@Nullable String antMode) {
-
-            this.antMode = antMode;
-            return this;
-        }
-        @CustomType.Setter
         public Builder antennaMode(@Nullable String antennaMode) {
 
             this.antennaMode = antennaMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder antennaSelect(@Nullable String antennaSelect) {
+
+            this.antennaSelect = antennaSelect;
             return this;
         }
         @CustomType.Setter
@@ -301,6 +315,12 @@ public final class DeviceprofileApRadioConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder rrmManaged(@Nullable Boolean rrmManaged) {
+
+            this.rrmManaged = rrmManaged;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scanningEnabled(@Nullable Boolean scanningEnabled) {
 
             this.scanningEnabled = scanningEnabled;
@@ -312,8 +332,8 @@ public final class DeviceprofileApRadioConfig {
             _resultValue.antGain24 = antGain24;
             _resultValue.antGain5 = antGain5;
             _resultValue.antGain6 = antGain6;
-            _resultValue.antMode = antMode;
             _resultValue.antennaMode = antennaMode;
+            _resultValue.antennaSelect = antennaSelect;
             _resultValue.band24 = band24;
             _resultValue.band24Usage = band24Usage;
             _resultValue.band5 = band5;
@@ -321,6 +341,7 @@ public final class DeviceprofileApRadioConfig {
             _resultValue.band6 = band6;
             _resultValue.fullAutomaticRrm = fullAutomaticRrm;
             _resultValue.indoorUse = indoorUse;
+            _resultValue.rrmManaged = rrmManaged;
             _resultValue.scanningEnabled = scanningEnabled;
             return _resultValue;
         }

@@ -13,21 +13,45 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingMarvisAutoOperations
     {
+        public readonly bool? ApInsufficientCapacity;
+        public readonly bool? ApLoop;
+        public readonly bool? ApNonCompliant;
         public readonly bool? BouncePortForAbnormalPoeClient;
         public readonly bool? DisablePortWhenDdosProtocolViolation;
         public readonly bool? DisablePortWhenRogueDhcpServerDetected;
+        public readonly bool? GatewayNonCompliant;
+        public readonly bool? SwitchMisconfiguredPort;
+        public readonly bool? SwitchPortStuck;
 
         [OutputConstructor]
         private SettingMarvisAutoOperations(
+            bool? apInsufficientCapacity,
+
+            bool? apLoop,
+
+            bool? apNonCompliant,
+
             bool? bouncePortForAbnormalPoeClient,
 
             bool? disablePortWhenDdosProtocolViolation,
 
-            bool? disablePortWhenRogueDhcpServerDetected)
+            bool? disablePortWhenRogueDhcpServerDetected,
+
+            bool? gatewayNonCompliant,
+
+            bool? switchMisconfiguredPort,
+
+            bool? switchPortStuck)
         {
+            ApInsufficientCapacity = apInsufficientCapacity;
+            ApLoop = apLoop;
+            ApNonCompliant = apNonCompliant;
             BouncePortForAbnormalPoeClient = bouncePortForAbnormalPoeClient;
             DisablePortWhenDdosProtocolViolation = disablePortWhenDdosProtocolViolation;
             DisablePortWhenRogueDhcpServerDetected = disablePortWhenRogueDhcpServerDetected;
+            GatewayNonCompliant = gatewayNonCompliant;
+            SwitchMisconfiguredPort = switchMisconfiguredPort;
+            SwitchPortStuck = switchPortStuck;
         }
     }
 }

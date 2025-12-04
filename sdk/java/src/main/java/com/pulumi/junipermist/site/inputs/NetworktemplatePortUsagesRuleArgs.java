@@ -59,14 +59,14 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
     }
 
     /**
-     * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+     * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
      * 
      */
     @Import(name="src", required=true)
     private Output<String> src;
 
     /**
-     * @return enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+     * @return enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
      * 
      */
     public Output<String> src() {
@@ -182,7 +182,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param src enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+         * @param src enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param src enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+         * @param src enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
          * 
          * @return builder
          * 

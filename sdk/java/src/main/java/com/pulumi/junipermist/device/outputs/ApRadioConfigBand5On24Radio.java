@@ -17,6 +17,11 @@ public final class ApRadioConfigBand5On24Radio {
     private @Nullable Boolean allowRrmDisable;
     private @Nullable Integer antGain;
     /**
+     * @return enum: `narrow`, `medium`, `wide`
+     * 
+     */
+    private @Nullable String antennaBeamPattern;
+    /**
      * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
      * 
      */
@@ -68,6 +73,13 @@ public final class ApRadioConfigBand5On24Radio {
     }
     public Optional<Integer> antGain() {
         return Optional.ofNullable(this.antGain);
+    }
+    /**
+     * @return enum: `narrow`, `medium`, `wide`
+     * 
+     */
+    public Optional<String> antennaBeamPattern() {
+        return Optional.ofNullable(this.antennaBeamPattern);
     }
     /**
      * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
@@ -144,6 +156,7 @@ public final class ApRadioConfigBand5On24Radio {
     public static final class Builder {
         private @Nullable Boolean allowRrmDisable;
         private @Nullable Integer antGain;
+        private @Nullable String antennaBeamPattern;
         private @Nullable String antennaMode;
         private @Nullable Integer bandwidth;
         private @Nullable Integer channel;
@@ -158,6 +171,7 @@ public final class ApRadioConfigBand5On24Radio {
     	      Objects.requireNonNull(defaults);
     	      this.allowRrmDisable = defaults.allowRrmDisable;
     	      this.antGain = defaults.antGain;
+    	      this.antennaBeamPattern = defaults.antennaBeamPattern;
     	      this.antennaMode = defaults.antennaMode;
     	      this.bandwidth = defaults.bandwidth;
     	      this.channel = defaults.channel;
@@ -179,6 +193,12 @@ public final class ApRadioConfigBand5On24Radio {
         public Builder antGain(@Nullable Integer antGain) {
 
             this.antGain = antGain;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder antennaBeamPattern(@Nullable String antennaBeamPattern) {
+
+            this.antennaBeamPattern = antennaBeamPattern;
             return this;
         }
         @CustomType.Setter
@@ -242,6 +262,7 @@ public final class ApRadioConfigBand5On24Radio {
             final var _resultValue = new ApRadioConfigBand5On24Radio();
             _resultValue.allowRrmDisable = allowRrmDisable;
             _resultValue.antGain = antGain;
+            _resultValue.antennaBeamPattern = antennaBeamPattern;
             _resultValue.antennaMode = antennaMode;
             _resultValue.bandwidth = bandwidth;
             _resultValue.channel = channel;

@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,9 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSsrProxy {
+    private @Nullable Boolean disabled;
     private @Nullable String url;
 
     private SettingSsrProxy() {}
+    public Optional<Boolean> disabled() {
+        return Optional.ofNullable(this.disabled);
+    }
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }
@@ -27,13 +32,21 @@ public final class SettingSsrProxy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean disabled;
         private @Nullable String url;
         public Builder() {}
         public Builder(SettingSsrProxy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.disabled = defaults.disabled;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
+        public Builder disabled(@Nullable Boolean disabled) {
+
+            this.disabled = disabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder url(@Nullable String url) {
 
@@ -42,6 +55,7 @@ public final class SettingSsrProxy {
         }
         public SettingSsrProxy build() {
             final var _resultValue = new SettingSsrProxy();
+            _resultValue.disabled = disabled;
             _resultValue.url = url;
             return _resultValue;
         }

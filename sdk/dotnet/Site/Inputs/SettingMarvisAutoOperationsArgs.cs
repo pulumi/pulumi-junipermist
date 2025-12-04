@@ -12,6 +12,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingMarvisAutoOperationsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("apInsufficientCapacity")]
+        public Input<bool>? ApInsufficientCapacity { get; set; }
+
+        [Input("apLoop")]
+        public Input<bool>? ApLoop { get; set; }
+
+        [Input("apNonCompliant")]
+        public Input<bool>? ApNonCompliant { get; set; }
+
         [Input("bouncePortForAbnormalPoeClient")]
         public Input<bool>? BouncePortForAbnormalPoeClient { get; set; }
 
@@ -20,6 +29,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("disablePortWhenRogueDhcpServerDetected")]
         public Input<bool>? DisablePortWhenRogueDhcpServerDetected { get; set; }
+
+        [Input("gatewayNonCompliant")]
+        public Input<bool>? GatewayNonCompliant { get; set; }
+
+        [Input("switchMisconfiguredPort")]
+        public Input<bool>? SwitchMisconfiguredPort { get; set; }
+
+        [Input("switchPortStuck")]
+        public Input<bool>? SwitchPortStuck { get; set; }
 
         public SettingMarvisAutoOperationsArgs()
         {

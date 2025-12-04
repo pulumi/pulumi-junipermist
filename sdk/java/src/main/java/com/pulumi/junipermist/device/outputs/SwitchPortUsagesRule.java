@@ -27,7 +27,7 @@ public final class SwitchPortUsagesRule {
      */
     private @Nullable String expression;
     /**
-     * @return enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+     * @return enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
      * 
      */
     private String src;
@@ -58,7 +58,7 @@ public final class SwitchPortUsagesRule {
         return Optional.ofNullable(this.expression);
     }
     /**
-     * @return enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+     * @return enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
      * 
      */
     public String src() {

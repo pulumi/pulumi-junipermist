@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? AllNetworks;
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that AllowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+        /// Only applies when `Mode`!=`Dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         /// </summary>
         public readonly bool? AllowDhcpd;
         /// <summary>
@@ -33,6 +33,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// Only if `Mode`!=`Dynamic` and `PortAuth`=`Dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         /// </summary>
         public readonly bool? BypassAuthWhenServerDownForUnknownClient;
+        /// <summary>
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+        /// </summary>
+        public readonly bool? BypassAuthWhenServerDownForVoip;
         /// <summary>
         /// Only if `Mode`!=`Dynamic`. To be used together with `Isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
         /// </summary>
@@ -114,6 +118,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? PoeDisabled;
         /// <summary>
+        /// PoE priority. enum: `Low`, `High`
+        /// </summary>
+        public readonly string? PoePriority;
+        /// <summary>
         /// Only if `Mode`!=`Dynamic`. If dot1x is desired, set to dot1x. enum: `Dot1x`
         /// </summary>
         public readonly string? PortAuth;
@@ -190,6 +198,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? bypassAuthWhenServerDownForUnknownClient,
 
+            bool? bypassAuthWhenServerDownForVoip,
+
             int? communityVlanId,
 
             string? description,
@@ -230,6 +240,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? poeDisabled,
 
+            string? poePriority,
+
             string? portAuth,
 
             string? portNetwork,
@@ -267,6 +279,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             AllowMultipleSupplicants = allowMultipleSupplicants;
             BypassAuthWhenServerDown = bypassAuthWhenServerDown;
             BypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
+            BypassAuthWhenServerDownForVoip = bypassAuthWhenServerDownForVoip;
             CommunityVlanId = communityVlanId;
             Description = description;
             DisableAutoneg = disableAutoneg;
@@ -287,6 +300,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Networks = networks;
             PersistMac = persistMac;
             PoeDisabled = poeDisabled;
+            PoePriority = poePriority;
             PortAuth = portAuth;
             PortNetwork = portNetwork;
             ReauthInterval = reauthInterval;

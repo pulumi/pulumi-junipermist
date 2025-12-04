@@ -36,14 +36,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+     * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
      * 
      */
     @Import(name="allowDhcpd")
     private @Nullable Output<Boolean> allowDhcpd;
 
     /**
-     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+     * @return Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
      * 
      */
     public Optional<Output<Boolean>> allowDhcpd() {
@@ -93,6 +93,21 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<Boolean>> bypassAuthWhenServerDownForUnknownClient() {
         return Optional.ofNullable(this.bypassAuthWhenServerDownForUnknownClient);
+    }
+
+    /**
+     * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+     * 
+     */
+    @Import(name="bypassAuthWhenServerDownForVoip")
+    private @Nullable Output<Boolean> bypassAuthWhenServerDownForVoip;
+
+    /**
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+     * 
+     */
+    public Optional<Output<Boolean>> bypassAuthWhenServerDownForVoip() {
+        return Optional.ofNullable(this.bypassAuthWhenServerDownForVoip);
     }
 
     /**
@@ -231,14 +246,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+     * Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
      * 
      */
     @Import(name="interIsolationNetworkLink")
     private @Nullable Output<Boolean> interIsolationNetworkLink;
 
     /**
-     * @return Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
      * 
      */
     public Optional<Output<Boolean>> interIsolationNetworkLink() {
@@ -246,14 +261,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+     * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
      * 
      */
     @Import(name="interSwitchLink")
     private @Nullable Output<Boolean> interSwitchLink;
 
     /**
-     * @return Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
      * 
      */
     public Optional<Output<Boolean>> interSwitchLink() {
@@ -393,6 +408,21 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<Boolean>> poeDisabled() {
         return Optional.ofNullable(this.poeDisabled);
+    }
+
+    /**
+     * PoE priority. enum: `low`, `high`
+     * 
+     */
+    @Import(name="poePriority")
+    private @Nullable Output<String> poePriority;
+
+    /**
+     * @return PoE priority. enum: `low`, `high`
+     * 
+     */
+    public Optional<Output<String>> poePriority() {
+        return Optional.ofNullable(this.poePriority);
     }
 
     /**
@@ -658,6 +688,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         this.allowMultipleSupplicants = $.allowMultipleSupplicants;
         this.bypassAuthWhenServerDown = $.bypassAuthWhenServerDown;
         this.bypassAuthWhenServerDownForUnknownClient = $.bypassAuthWhenServerDownForUnknownClient;
+        this.bypassAuthWhenServerDownForVoip = $.bypassAuthWhenServerDownForVoip;
         this.communityVlanId = $.communityVlanId;
         this.description = $.description;
         this.disableAutoneg = $.disableAutoneg;
@@ -678,6 +709,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         this.networks = $.networks;
         this.persistMac = $.persistMac;
         this.poeDisabled = $.poeDisabled;
+        this.poePriority = $.poePriority;
         this.portAuth = $.portAuth;
         this.portNetwork = $.portNetwork;
         this.reauthInterval = $.reauthInterval;
@@ -737,7 +769,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+         * @param allowDhcpd Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          * 
          * @return builder
          * 
@@ -748,7 +780,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+         * @param allowDhcpd Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          * 
          * @return builder
          * 
@@ -818,6 +850,27 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
          */
         public Builder bypassAuthWhenServerDownForUnknownClient(Boolean bypassAuthWhenServerDownForUnknownClient) {
             return bypassAuthWhenServerDownForUnknownClient(Output.of(bypassAuthWhenServerDownForUnknownClient));
+        }
+
+        /**
+         * @param bypassAuthWhenServerDownForVoip Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bypassAuthWhenServerDownForVoip(@Nullable Output<Boolean> bypassAuthWhenServerDownForVoip) {
+            $.bypassAuthWhenServerDownForVoip = bypassAuthWhenServerDownForVoip;
+            return this;
+        }
+
+        /**
+         * @param bypassAuthWhenServerDownForVoip Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bypassAuthWhenServerDownForVoip(Boolean bypassAuthWhenServerDownForVoip) {
+            return bypassAuthWhenServerDownForVoip(Output.of(bypassAuthWhenServerDownForVoip));
         }
 
         /**
@@ -1020,7 +1073,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interIsolationNetworkLink Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * @param interIsolationNetworkLink Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
          * 
          * @return builder
          * 
@@ -1031,7 +1084,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interIsolationNetworkLink Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * @param interIsolationNetworkLink Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
          * 
          * @return builder
          * 
@@ -1041,7 +1094,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interSwitchLink Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * @param interSwitchLink Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -1052,7 +1105,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interSwitchLink Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * @param interSwitchLink Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -1258,6 +1311,27 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
          */
         public Builder poeDisabled(Boolean poeDisabled) {
             return poeDisabled(Output.of(poeDisabled));
+        }
+
+        /**
+         * @param poePriority PoE priority. enum: `low`, `high`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poePriority(@Nullable Output<String> poePriority) {
+            $.poePriority = poePriority;
+            return this;
+        }
+
+        /**
+         * @param poePriority PoE priority. enum: `low`, `high`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poePriority(String poePriority) {
+            return poePriority(Output.of(poePriority));
         }
 
         /**

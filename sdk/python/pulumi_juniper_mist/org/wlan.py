@@ -119,8 +119,8 @@ class WlanArgs:
         :param pulumi.Input[_builtins.int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         :param pulumi.Input[Sequence[pulumi.Input['WlanAcctServerArgs']]] acct_servers: List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
         :param pulumi.Input['WlanAirwatchArgs'] airwatch: Airwatch wlan settings
-        :param pulumi.Input[_builtins.bool] allow_ipv6_ndp: Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
-        :param pulumi.Input[_builtins.bool] allow_mdns: Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        :param pulumi.Input[_builtins.bool] allow_ipv6_ndp: Only applicable when `limit_bcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        :param pulumi.Input[_builtins.bool] allow_mdns: Only applicable when `limit_bcast`==`true`, which allows mDNS / Bonjour packets to go through
         :param pulumi.Input[_builtins.bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: List of device ids
         :param pulumi.Input['WlanAppLimitArgs'] app_limit: Bandwidth limiting for apps (applies to up/down)
@@ -467,7 +467,7 @@ class WlanArgs:
     @pulumi.getter(name="allowIpv6Ndp")
     def allow_ipv6_ndp(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        Only applicable when `limit_bcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
         """
         return pulumi.get(self, "allow_ipv6_ndp")
 
@@ -479,7 +479,7 @@ class WlanArgs:
     @pulumi.getter(name="allowMdns")
     def allow_mdns(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        Only applicable when `limit_bcast`==`true`, which allows mDNS / Bonjour packets to go through
         """
         return pulumi.get(self, "allow_mdns")
 
@@ -1557,8 +1557,8 @@ class _WlanState:
         :param pulumi.Input[_builtins.int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         :param pulumi.Input[Sequence[pulumi.Input['WlanAcctServerArgs']]] acct_servers: List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
         :param pulumi.Input['WlanAirwatchArgs'] airwatch: Airwatch wlan settings
-        :param pulumi.Input[_builtins.bool] allow_ipv6_ndp: Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
-        :param pulumi.Input[_builtins.bool] allow_mdns: Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        :param pulumi.Input[_builtins.bool] allow_ipv6_ndp: Only applicable when `limit_bcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        :param pulumi.Input[_builtins.bool] allow_mdns: Only applicable when `limit_bcast`==`true`, which allows mDNS / Bonjour packets to go through
         :param pulumi.Input[_builtins.bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: List of device ids
         :param pulumi.Input['WlanAppLimitArgs'] app_limit: Bandwidth limiting for apps (applies to up/down)
@@ -1890,7 +1890,7 @@ class _WlanState:
     @pulumi.getter(name="allowIpv6Ndp")
     def allow_ipv6_ndp(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        Only applicable when `limit_bcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
         """
         return pulumi.get(self, "allow_ipv6_ndp")
 
@@ -1902,7 +1902,7 @@ class _WlanState:
     @pulumi.getter(name="allowMdns")
     def allow_mdns(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        Only applicable when `limit_bcast`==`true`, which allows mDNS / Bonjour packets to go through
         """
         return pulumi.get(self, "allow_mdns")
 
@@ -3097,8 +3097,8 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict']]]] acct_servers: List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
         :param pulumi.Input[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']] airwatch: Airwatch wlan settings
-        :param pulumi.Input[_builtins.bool] allow_ipv6_ndp: Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
-        :param pulumi.Input[_builtins.bool] allow_mdns: Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        :param pulumi.Input[_builtins.bool] allow_ipv6_ndp: Only applicable when `limit_bcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        :param pulumi.Input[_builtins.bool] allow_mdns: Only applicable when `limit_bcast`==`true`, which allows mDNS / Bonjour packets to go through
         :param pulumi.Input[_builtins.bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: List of device ids
         :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: Bandwidth limiting for apps (applies to up/down)
@@ -3564,8 +3564,8 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAcctServerArgs', 'WlanAcctServerArgsDict']]]] acct_servers: List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
         :param pulumi.Input[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']] airwatch: Airwatch wlan settings
-        :param pulumi.Input[_builtins.bool] allow_ipv6_ndp: Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
-        :param pulumi.Input[_builtins.bool] allow_mdns: Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        :param pulumi.Input[_builtins.bool] allow_ipv6_ndp: Only applicable when `limit_bcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        :param pulumi.Input[_builtins.bool] allow_mdns: Only applicable when `limit_bcast`==`true`, which allows mDNS / Bonjour packets to go through
         :param pulumi.Input[_builtins.bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: List of device ids
         :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: Bandwidth limiting for apps (applies to up/down)
@@ -3791,7 +3791,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="allowIpv6Ndp")
     def allow_ipv6_ndp(self) -> pulumi.Output[_builtins.bool]:
         """
-        Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        Only applicable when `limit_bcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
         """
         return pulumi.get(self, "allow_ipv6_ndp")
 
@@ -3799,7 +3799,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="allowMdns")
     def allow_mdns(self) -> pulumi.Output[_builtins.bool]:
         """
-        Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        Only applicable when `limit_bcast`==`true`, which allows mDNS / Bonjour packets to go through
         """
         return pulumi.get(self, "allow_mdns")
 

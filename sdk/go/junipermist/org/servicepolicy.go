@@ -71,13 +71,13 @@ import (
 type Servicepolicy struct {
 	pulumi.CustomResourceState
 
-	// For SRX Only
+	// SRX only
 	Aamw ServicepolicyAamwPtrOutput `pulumi:"aamw"`
 	// enum: `allow`, `deny`
 	Action pulumi.StringOutput `pulumi:"action"`
 	// For SRX-only
 	Antivirus ServicepolicyAntivirusPtrOutput `pulumi:"antivirus"`
-	// For SRX Only
+	// SRX only
 	Appqoe ServicepolicyAppqoePtrOutput `pulumi:"appqoe"`
 	Ewfs   ServicepolicyEwfArrayOutput  `pulumi:"ewfs"`
 	Idp    ServicepolicyIdpPtrOutput    `pulumi:"idp"`
@@ -126,13 +126,13 @@ func GetServicepolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Servicepolicy resources.
 type servicepolicyState struct {
-	// For SRX Only
+	// SRX only
 	Aamw *ServicepolicyAamw `pulumi:"aamw"`
 	// enum: `allow`, `deny`
 	Action *string `pulumi:"action"`
 	// For SRX-only
 	Antivirus *ServicepolicyAntivirus `pulumi:"antivirus"`
-	// For SRX Only
+	// SRX only
 	Appqoe *ServicepolicyAppqoe `pulumi:"appqoe"`
 	Ewfs   []ServicepolicyEwf   `pulumi:"ewfs"`
 	Idp    *ServicepolicyIdp    `pulumi:"idp"`
@@ -149,13 +149,13 @@ type servicepolicyState struct {
 }
 
 type ServicepolicyState struct {
-	// For SRX Only
+	// SRX only
 	Aamw ServicepolicyAamwPtrInput
 	// enum: `allow`, `deny`
 	Action pulumi.StringPtrInput
 	// For SRX-only
 	Antivirus ServicepolicyAntivirusPtrInput
-	// For SRX Only
+	// SRX only
 	Appqoe ServicepolicyAppqoePtrInput
 	Ewfs   ServicepolicyEwfArrayInput
 	Idp    ServicepolicyIdpPtrInput
@@ -176,13 +176,13 @@ func (ServicepolicyState) ElementType() reflect.Type {
 }
 
 type servicepolicyArgs struct {
-	// For SRX Only
+	// SRX only
 	Aamw *ServicepolicyAamw `pulumi:"aamw"`
 	// enum: `allow`, `deny`
 	Action *string `pulumi:"action"`
 	// For SRX-only
 	Antivirus *ServicepolicyAntivirus `pulumi:"antivirus"`
-	// For SRX Only
+	// SRX only
 	Appqoe *ServicepolicyAppqoe `pulumi:"appqoe"`
 	Ewfs   []ServicepolicyEwf   `pulumi:"ewfs"`
 	Idp    *ServicepolicyIdp    `pulumi:"idp"`
@@ -200,13 +200,13 @@ type servicepolicyArgs struct {
 
 // The set of arguments for constructing a Servicepolicy resource.
 type ServicepolicyArgs struct {
-	// For SRX Only
+	// SRX only
 	Aamw ServicepolicyAamwPtrInput
 	// enum: `allow`, `deny`
 	Action pulumi.StringPtrInput
 	// For SRX-only
 	Antivirus ServicepolicyAntivirusPtrInput
-	// For SRX Only
+	// SRX only
 	Appqoe ServicepolicyAppqoePtrInput
 	Ewfs   ServicepolicyEwfArrayInput
 	Idp    ServicepolicyIdpPtrInput
@@ -309,7 +309,7 @@ func (o ServicepolicyOutput) ToServicepolicyOutputWithContext(ctx context.Contex
 	return o
 }
 
-// For SRX Only
+// SRX only
 func (o ServicepolicyOutput) Aamw() ServicepolicyAamwPtrOutput {
 	return o.ApplyT(func(v *Servicepolicy) ServicepolicyAamwPtrOutput { return v.Aamw }).(ServicepolicyAamwPtrOutput)
 }
@@ -324,7 +324,7 @@ func (o ServicepolicyOutput) Antivirus() ServicepolicyAntivirusPtrOutput {
 	return o.ApplyT(func(v *Servicepolicy) ServicepolicyAntivirusPtrOutput { return v.Antivirus }).(ServicepolicyAntivirusPtrOutput)
 }
 
-// For SRX Only
+// SRX only
 func (o ServicepolicyOutput) Appqoe() ServicepolicyAppqoePtrOutput {
 	return o.ApplyT(func(v *Servicepolicy) ServicepolicyAppqoePtrOutput { return v.Appqoe }).(ServicepolicyAppqoePtrOutput)
 }

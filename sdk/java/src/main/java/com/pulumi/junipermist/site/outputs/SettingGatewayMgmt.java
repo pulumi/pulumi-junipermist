@@ -60,7 +60,7 @@ public final class SettingGatewayMgmt {
      */
     private @Nullable SettingGatewayMgmtProtectRe protectRe;
     /**
-     * @return For SRX only
+     * @return SRX only
      * 
      */
     private @Nullable String rootPassword;
@@ -135,7 +135,7 @@ public final class SettingGatewayMgmt {
         return Optional.ofNullable(this.protectRe);
     }
     /**
-     * @return For SRX only
+     * @return SRX only
      * 
      */
     public Optional<String> rootPassword() {

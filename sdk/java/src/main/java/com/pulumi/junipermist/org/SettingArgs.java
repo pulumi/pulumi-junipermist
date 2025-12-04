@@ -21,7 +21,6 @@ import com.pulumi.junipermist.org.inputs.SettingMistNacArgs;
 import com.pulumi.junipermist.org.inputs.SettingMxedgeMgmtArgs;
 import com.pulumi.junipermist.org.inputs.SettingOpticPortConfigArgs;
 import com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;
-import com.pulumi.junipermist.org.inputs.SettingPcapArgs;
 import com.pulumi.junipermist.org.inputs.SettingSecurityArgs;
 import com.pulumi.junipermist.org.inputs.SettingSsrArgs;
 import com.pulumi.junipermist.org.inputs.SettingSwitchArgs;
@@ -303,13 +302,6 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.passwordPolicy);
     }
 
-    @Import(name="pcap")
-    private @Nullable Output<SettingPcapArgs> pcap;
-
-    public Optional<Output<SettingPcapArgs>> pcap() {
-        return Optional.ofNullable(this.pcap);
-    }
-
     @Import(name="security")
     private @Nullable Output<SettingSecurityArgs> security;
 
@@ -435,7 +427,6 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.opticPortConfig = $.opticPortConfig;
         this.orgId = $.orgId;
         this.passwordPolicy = $.passwordPolicy;
-        this.pcap = $.pcap;
         this.security = $.security;
         this.ssr = $.ssr;
         this.switch_ = $.switch_;
@@ -826,15 +817,6 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder passwordPolicy(SettingPasswordPolicyArgs passwordPolicy) {
             return passwordPolicy(Output.of(passwordPolicy));
-        }
-
-        public Builder pcap(@Nullable Output<SettingPcapArgs> pcap) {
-            $.pcap = pcap;
-            return this;
-        }
-
-        public Builder pcap(SettingPcapArgs pcap) {
-            return pcap(Output.of(pcap));
         }
 
         public Builder security(@Nullable Output<SettingSecurityArgs> security) {

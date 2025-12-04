@@ -88,14 +88,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/servicepolicy:Servicepolicy")
 public class Servicepolicy extends com.pulumi.resources.CustomResource {
     /**
-     * For SRX Only
+     * SRX only
      * 
      */
     @Export(name="aamw", refs={ServicepolicyAamw.class}, tree="[0]")
     private Output</* @Nullable */ ServicepolicyAamw> aamw;
 
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     public Output<Optional<ServicepolicyAamw>> aamw() {
@@ -130,14 +130,14 @@ public class Servicepolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.antivirus);
     }
     /**
-     * For SRX Only
+     * SRX only
      * 
      */
     @Export(name="appqoe", refs={ServicepolicyAppqoe.class}, tree="[0]")
     private Output</* @Nullable */ ServicepolicyAppqoe> appqoe;
 
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     public Output<Optional<ServicepolicyAppqoe>> appqoe() {

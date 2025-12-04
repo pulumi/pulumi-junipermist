@@ -8,7 +8,9 @@ import com.pulumi.junipermist.org.outputs.GatewaytemplateServicePolicyAntivirus;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateServicePolicyAppqoe;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateServicePolicyEwf;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateServicePolicyIdp;
+import com.pulumi.junipermist.org.outputs.GatewaytemplateServicePolicySkyatp;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateServicePolicySslProxy;
+import com.pulumi.junipermist.org.outputs.GatewaytemplateServicePolicySyslog;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -29,7 +31,7 @@ public final class GatewaytemplateServicePolicy {
      */
     private @Nullable GatewaytemplateServicePolicyAntivirus antivirus;
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     private @Nullable GatewaytemplateServicePolicyAppqoe appqoe;
@@ -61,10 +63,20 @@ public final class GatewaytemplateServicePolicy {
      */
     private @Nullable List<String> services;
     /**
+     * @return SRX only
+     * 
+     */
+    private @Nullable GatewaytemplateServicePolicySkyatp skyatp;
+    /**
      * @return For SRX-only
      * 
      */
     private @Nullable GatewaytemplateServicePolicySslProxy sslProxy;
+    /**
+     * @return Required for syslog logging
+     * 
+     */
+    private @Nullable GatewaytemplateServicePolicySyslog syslog;
     /**
      * @return Required when `servicepolicyId` is not defined. List of Networks / Users
      * 
@@ -87,7 +99,7 @@ public final class GatewaytemplateServicePolicy {
         return Optional.ofNullable(this.antivirus);
     }
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     public Optional<GatewaytemplateServicePolicyAppqoe> appqoe() {
@@ -135,11 +147,25 @@ public final class GatewaytemplateServicePolicy {
         return this.services == null ? List.of() : this.services;
     }
     /**
+     * @return SRX only
+     * 
+     */
+    public Optional<GatewaytemplateServicePolicySkyatp> skyatp() {
+        return Optional.ofNullable(this.skyatp);
+    }
+    /**
      * @return For SRX-only
      * 
      */
     public Optional<GatewaytemplateServicePolicySslProxy> sslProxy() {
         return Optional.ofNullable(this.sslProxy);
+    }
+    /**
+     * @return Required for syslog logging
+     * 
+     */
+    public Optional<GatewaytemplateServicePolicySyslog> syslog() {
+        return Optional.ofNullable(this.syslog);
     }
     /**
      * @return Required when `servicepolicyId` is not defined. List of Networks / Users
@@ -168,7 +194,9 @@ public final class GatewaytemplateServicePolicy {
         private @Nullable String pathPreference;
         private @Nullable String servicepolicyId;
         private @Nullable List<String> services;
+        private @Nullable GatewaytemplateServicePolicySkyatp skyatp;
         private @Nullable GatewaytemplateServicePolicySslProxy sslProxy;
+        private @Nullable GatewaytemplateServicePolicySyslog syslog;
         private @Nullable List<String> tenants;
         public Builder() {}
         public Builder(GatewaytemplateServicePolicy defaults) {
@@ -183,7 +211,9 @@ public final class GatewaytemplateServicePolicy {
     	      this.pathPreference = defaults.pathPreference;
     	      this.servicepolicyId = defaults.servicepolicyId;
     	      this.services = defaults.services;
+    	      this.skyatp = defaults.skyatp;
     	      this.sslProxy = defaults.sslProxy;
+    	      this.syslog = defaults.syslog;
     	      this.tenants = defaults.tenants;
         }
 
@@ -254,9 +284,21 @@ public final class GatewaytemplateServicePolicy {
             return services(List.of(services));
         }
         @CustomType.Setter
+        public Builder skyatp(@Nullable GatewaytemplateServicePolicySkyatp skyatp) {
+
+            this.skyatp = skyatp;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sslProxy(@Nullable GatewaytemplateServicePolicySslProxy sslProxy) {
 
             this.sslProxy = sslProxy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder syslog(@Nullable GatewaytemplateServicePolicySyslog syslog) {
+
+            this.syslog = syslog;
             return this;
         }
         @CustomType.Setter
@@ -280,7 +322,9 @@ public final class GatewaytemplateServicePolicy {
             _resultValue.pathPreference = pathPreference;
             _resultValue.servicepolicyId = servicepolicyId;
             _resultValue.services = services;
+            _resultValue.skyatp = skyatp;
             _resultValue.sslProxy = sslProxy;
+            _resultValue.syslog = syslog;
             _resultValue.tenants = tenants;
             return _resultValue;
         }

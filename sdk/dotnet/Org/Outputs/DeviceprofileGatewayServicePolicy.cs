@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayServicePolicyAntivirus? Antivirus;
         /// <summary>
-        /// For SRX Only
+        /// SRX only
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayServicePolicyAppqoe? Appqoe;
         public readonly ImmutableArray<Outputs.DeviceprofileGatewayServicePolicyEwf> Ewfs;
@@ -48,9 +48,17 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Services;
         /// <summary>
+        /// SRX only
+        /// </summary>
+        public readonly Outputs.DeviceprofileGatewayServicePolicySkyatp? Skyatp;
+        /// <summary>
         /// For SRX-only
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayServicePolicySslProxy? SslProxy;
+        /// <summary>
+        /// Required for syslog logging
+        /// </summary>
+        public readonly Outputs.DeviceprofileGatewayServicePolicySyslog? Syslog;
         /// <summary>
         /// Required when `ServicepolicyId` is not defined. List of Networks / Users
         /// </summary>
@@ -78,7 +86,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             ImmutableArray<string> services,
 
+            Outputs.DeviceprofileGatewayServicePolicySkyatp? skyatp,
+
             Outputs.DeviceprofileGatewayServicePolicySslProxy? sslProxy,
+
+            Outputs.DeviceprofileGatewayServicePolicySyslog? syslog,
 
             ImmutableArray<string> tenants)
         {
@@ -92,7 +104,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
             PathPreference = pathPreference;
             ServicepolicyId = servicepolicyId;
             Services = services;
+            Skyatp = skyatp;
             SslProxy = sslProxy;
+            Syslog = syslog;
             Tenants = tenants;
         }
     }

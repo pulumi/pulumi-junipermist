@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Expression;
         /// <summary>
-        /// enum: `LinkPeermac`, `LldpChassisId`, `LldpHardwareRevision`, `LldpManufacturerName`, `LldpOui`, `LldpSerialNumber`, `LldpSystemName`, `RadiusDynamicfilter`, `RadiusUsermac`, `RadiusUsername`
+        /// enum: `LinkPeermac`, `LldpChassisId`, `LldpHardwareRevision`, `LldpManufacturerName`, `LldpOui`, `LldpSerialNumber`, `LldpSystemDescription`, `LldpSystemName`, `RadiusDynamicfilter`, `RadiusUsermac`, `RadiusUsername`
         /// </summary>
         public readonly string Src;
         /// <summary>

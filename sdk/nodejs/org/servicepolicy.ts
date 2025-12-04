@@ -74,7 +74,7 @@ export class Servicepolicy extends pulumi.CustomResource {
     }
 
     /**
-     * For SRX Only
+     * SRX only
      */
     declare public readonly aamw: pulumi.Output<outputs.org.ServicepolicyAamw | undefined>;
     /**
@@ -86,7 +86,7 @@ export class Servicepolicy extends pulumi.CustomResource {
      */
     declare public readonly antivirus: pulumi.Output<outputs.org.ServicepolicyAntivirus | undefined>;
     /**
-     * For SRX Only
+     * SRX only
      */
     declare public readonly appqoe: pulumi.Output<outputs.org.ServicepolicyAppqoe | undefined>;
     declare public readonly ewfs: pulumi.Output<outputs.org.ServicepolicyEwf[] | undefined>;
@@ -163,7 +163,7 @@ export class Servicepolicy extends pulumi.CustomResource {
  */
 export interface ServicepolicyState {
     /**
-     * For SRX Only
+     * SRX only
      */
     aamw?: pulumi.Input<inputs.org.ServicepolicyAamw>;
     /**
@@ -175,7 +175,7 @@ export interface ServicepolicyState {
      */
     antivirus?: pulumi.Input<inputs.org.ServicepolicyAntivirus>;
     /**
-     * For SRX Only
+     * SRX only
      */
     appqoe?: pulumi.Input<inputs.org.ServicepolicyAppqoe>;
     ewfs?: pulumi.Input<pulumi.Input<inputs.org.ServicepolicyEwf>[]>;
@@ -203,7 +203,7 @@ export interface ServicepolicyState {
  */
 export interface ServicepolicyArgs {
     /**
-     * For SRX Only
+     * SRX only
      */
     aamw?: pulumi.Input<inputs.org.ServicepolicyAamw>;
     /**
@@ -215,7 +215,7 @@ export interface ServicepolicyArgs {
      */
     antivirus?: pulumi.Input<inputs.org.ServicepolicyAntivirus>;
     /**
-     * For SRX Only
+     * SRX only
      */
     appqoe?: pulumi.Input<inputs.org.ServicepolicyAppqoe>;
     ewfs?: pulumi.Input<pulumi.Input<inputs.org.ServicepolicyEwf>[]>;

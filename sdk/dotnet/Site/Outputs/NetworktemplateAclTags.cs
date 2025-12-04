@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateAclTags
     {
         /// <summary>
-        /// Can only be used under dst tags.
+        /// ARP / IPv6. Default is `Any`
         /// </summary>
         public readonly ImmutableArray<string> EtherTypes;
         /// <summary>

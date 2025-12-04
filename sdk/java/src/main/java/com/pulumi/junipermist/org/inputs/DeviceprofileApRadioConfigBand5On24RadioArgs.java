@@ -33,6 +33,21 @@ public final class DeviceprofileApRadioConfigBand5On24RadioArgs extends com.pulu
     }
 
     /**
+     * enum: `narrow`, `medium`, `wide`
+     * 
+     */
+    @Import(name="antennaBeamPattern")
+    private @Nullable Output<String> antennaBeamPattern;
+
+    /**
+     * @return enum: `narrow`, `medium`, `wide`
+     * 
+     */
+    public Optional<Output<String>> antennaBeamPattern() {
+        return Optional.ofNullable(this.antennaBeamPattern);
+    }
+
+    /**
      * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
      * 
      */
@@ -172,6 +187,7 @@ public final class DeviceprofileApRadioConfigBand5On24RadioArgs extends com.pulu
     private DeviceprofileApRadioConfigBand5On24RadioArgs(DeviceprofileApRadioConfigBand5On24RadioArgs $) {
         this.allowRrmDisable = $.allowRrmDisable;
         this.antGain = $.antGain;
+        this.antennaBeamPattern = $.antennaBeamPattern;
         this.antennaMode = $.antennaMode;
         this.bandwidth = $.bandwidth;
         this.channel = $.channel;
@@ -217,6 +233,27 @@ public final class DeviceprofileApRadioConfigBand5On24RadioArgs extends com.pulu
 
         public Builder antGain(Integer antGain) {
             return antGain(Output.of(antGain));
+        }
+
+        /**
+         * @param antennaBeamPattern enum: `narrow`, `medium`, `wide`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antennaBeamPattern(@Nullable Output<String> antennaBeamPattern) {
+            $.antennaBeamPattern = antennaBeamPattern;
+            return this;
+        }
+
+        /**
+         * @param antennaBeamPattern enum: `narrow`, `medium`, `wide`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antennaBeamPattern(String antennaBeamPattern) {
+            return antennaBeamPattern(Output.of(antennaBeamPattern));
         }
 
         /**

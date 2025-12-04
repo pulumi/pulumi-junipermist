@@ -80,14 +80,14 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Proxy Configuration to talk to Mist
+     * SSR proxy configuration to talk to Mist
      * 
      */
     @Import(name="proxy")
     private @Nullable Output<SettingSsrProxyArgs> proxy;
 
     /**
-     * @return Proxy Configuration to talk to Mist
+     * @return SSR proxy configuration to talk to Mist
      * 
      */
     public Optional<Output<SettingSsrProxyArgs>> proxy() {
@@ -217,7 +217,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxy Proxy Configuration to talk to Mist
+         * @param proxy SSR proxy configuration to talk to Mist
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class SettingSsrArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxy Proxy Configuration to talk to Mist
+         * @param proxy SSR proxy configuration to talk to Mist
          * 
          * @return builder
          * 

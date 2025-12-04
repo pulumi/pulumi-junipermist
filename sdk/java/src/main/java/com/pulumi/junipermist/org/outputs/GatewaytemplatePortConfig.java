@@ -34,7 +34,7 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable String aeIdx;
     /**
-     * @return For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+     * @return For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
      * 
      */
     private @Nullable Boolean aeLacpForceUp;
@@ -243,7 +243,7 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.aeIdx);
     }
     /**
-     * @return For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+     * @return For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
      * 
      */
     public Optional<Boolean> aeLacpForceUp() {

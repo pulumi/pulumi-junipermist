@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? AllNetworks { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that AllowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+        /// Only applies when `Mode`!=`Dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         /// </summary>
         [Input("allowDhcpd")]
         public Input<bool>? AllowDhcpd { get; set; }
@@ -41,6 +41,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         /// </summary>
         [Input("bypassAuthWhenServerDownForUnknownClient")]
         public Input<bool>? BypassAuthWhenServerDownForUnknownClient { get; set; }
+
+        /// <summary>
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+        /// </summary>
+        [Input("bypassAuthWhenServerDownForVoip")]
+        public Input<bool>? BypassAuthWhenServerDownForVoip { get; set; }
 
         /// <summary>
         /// Only if `Mode`!=`Dynamic`. To be used together with `Isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
@@ -103,13 +109,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? GuestNetwork { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. `InterSwitchLink` is used together with `Isolation` under networks. NOTE: `InterSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+        /// Only if `Mode`!=`Dynamic`. `InterIsolationNetworkLink` is used together with `Isolation` under networks, signaling that this port connects to isolated networks
         /// </summary>
         [Input("interIsolationNetworkLink")]
         public Input<bool>? InterIsolationNetworkLink { get; set; }
 
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. `InterSwitchLink` is used together with `Isolation` under networks. NOTE: InterSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+        /// Only if `Mode`!=`Dynamic`. `InterSwitchLink` is used together with `Isolation` under networks. NOTE: `InterSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
         /// </summary>
         [Input("interSwitchLink")]
         public Input<bool>? InterSwitchLink { get; set; }
@@ -173,6 +179,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         /// </summary>
         [Input("poeDisabled")]
         public Input<bool>? PoeDisabled { get; set; }
+
+        /// <summary>
+        /// PoE priority. enum: `Low`, `High`
+        /// </summary>
+        [Input("poePriority")]
+        public Input<string>? PoePriority { get; set; }
 
         /// <summary>
         /// Only if `Mode`!=`Dynamic`. If dot1x is desired, set to dot1x. enum: `Dot1x`

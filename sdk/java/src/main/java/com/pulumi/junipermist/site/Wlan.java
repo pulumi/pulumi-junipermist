@@ -161,28 +161,28 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.airwatch;
     }
     /**
-     * Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+     * Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
      * 
      */
     @Export(name="allowIpv6Ndp", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowIpv6Ndp;
 
     /**
-     * @return Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+     * @return Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
      * 
      */
     public Output<Boolean> allowIpv6Ndp() {
         return this.allowIpv6Ndp;
     }
     /**
-     * Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+     * Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
      * 
      */
     @Export(name="allowMdns", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowMdns;
 
     /**
-     * @return Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+     * @return Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
      * 
      */
     public Output<Boolean> allowMdns() {

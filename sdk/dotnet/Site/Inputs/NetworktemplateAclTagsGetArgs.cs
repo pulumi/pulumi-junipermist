@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _etherTypes;
 
         /// <summary>
-        /// Can only be used under dst tags.
+        /// ARP / IPv6. Default is `Any`
         /// </summary>
         public InputList<string> EtherTypes
         {

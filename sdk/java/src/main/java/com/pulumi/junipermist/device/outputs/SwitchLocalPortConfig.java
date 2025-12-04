@@ -22,7 +22,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Boolean allNetworks;
     /**
-     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+     * @return Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
      * 
      */
     private @Nullable Boolean allowDhcpd;
@@ -191,7 +191,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.allNetworks);
     }
     /**
-     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+     * @return Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
      * 
      */
     public Optional<Boolean> allowDhcpd() {

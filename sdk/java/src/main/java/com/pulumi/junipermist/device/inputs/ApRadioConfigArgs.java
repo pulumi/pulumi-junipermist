@@ -74,21 +74,6 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-     * 
-     */
-    @Import(name="antMode")
-    private @Nullable Output<String> antMode;
-
-    /**
-     * @return Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-     * 
-     */
-    public Optional<Output<String>> antMode() {
-        return Optional.ofNullable(this.antMode);
-    }
-
-    /**
      * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
      * 
      */
@@ -101,6 +86,21 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> antennaMode() {
         return Optional.ofNullable(this.antennaMode);
+    }
+
+    /**
+     * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+     * 
+     */
+    @Import(name="antennaSelect")
+    private @Nullable Output<String> antennaSelect;
+
+    /**
+     * @return Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+     * 
+     */
+    public Optional<Output<String>> antennaSelect() {
+        return Optional.ofNullable(this.antennaSelect);
     }
 
     /**
@@ -209,6 +209,21 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable RRM to manage all radio settings (ignores all bandXxx configs)
+     * 
+     */
+    @Import(name="rrmManaged")
+    private @Nullable Output<Boolean> rrmManaged;
+
+    /**
+     * @return Enable RRM to manage all radio settings (ignores all bandXxx configs)
+     * 
+     */
+    public Optional<Output<Boolean>> rrmManaged() {
+        return Optional.ofNullable(this.rrmManaged);
+    }
+
+    /**
      * Whether scanning radio is enabled
      * 
      */
@@ -230,8 +245,8 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         this.antGain24 = $.antGain24;
         this.antGain5 = $.antGain5;
         this.antGain6 = $.antGain6;
-        this.antMode = $.antMode;
         this.antennaMode = $.antennaMode;
+        this.antennaSelect = $.antennaSelect;
         this.band24 = $.band24;
         this.band24Usage = $.band24Usage;
         this.band5 = $.band5;
@@ -239,6 +254,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         this.band6 = $.band6;
         this.fullAutomaticRrm = $.fullAutomaticRrm;
         this.indoorUse = $.indoorUse;
+        this.rrmManaged = $.rrmManaged;
         this.scanningEnabled = $.scanningEnabled;
     }
 
@@ -333,27 +349,6 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antMode Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder antMode(@Nullable Output<String> antMode) {
-            $.antMode = antMode;
-            return this;
-        }
-
-        /**
-         * @param antMode Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder antMode(String antMode) {
-            return antMode(Output.of(antMode));
-        }
-
-        /**
          * @param antennaMode enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          * 
          * @return builder
@@ -372,6 +367,27 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder antennaMode(String antennaMode) {
             return antennaMode(Output.of(antennaMode));
+        }
+
+        /**
+         * @param antennaSelect Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antennaSelect(@Nullable Output<String> antennaSelect) {
+            $.antennaSelect = antennaSelect;
+            return this;
+        }
+
+        /**
+         * @param antennaSelect Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder antennaSelect(String antennaSelect) {
+            return antennaSelect(Output.of(antennaSelect));
         }
 
         /**
@@ -519,6 +535,27 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder indoorUse(Boolean indoorUse) {
             return indoorUse(Output.of(indoorUse));
+        }
+
+        /**
+         * @param rrmManaged Enable RRM to manage all radio settings (ignores all bandXxx configs)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rrmManaged(@Nullable Output<Boolean> rrmManaged) {
+            $.rrmManaged = rrmManaged;
+            return this;
+        }
+
+        /**
+         * @param rrmManaged Enable RRM to manage all radio settings (ignores all bandXxx configs)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rrmManaged(Boolean rrmManaged) {
+            return rrmManaged(Output.of(rrmManaged));
         }
 
         /**

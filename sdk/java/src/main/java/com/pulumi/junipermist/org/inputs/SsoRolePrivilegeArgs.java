@@ -33,14 +33,14 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * enum: `org`, `site`, `sitegroup`
+     * enum: `org`, `site`, `sitegroup`, `orgsites`
      * 
      */
     @Import(name="scope", required=true)
     private Output<String> scope;
 
     /**
-     * @return enum: `org`, `site`, `sitegroup`
+     * @return enum: `org`, `site`, `sitegroup`, `orgsites`
      * 
      */
     public Output<String> scope() {
@@ -168,7 +168,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param scope enum: `org`, `site`, `sitegroup`
+         * @param scope enum: `org`, `site`, `sitegroup`, `orgsites`
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param scope enum: `org`, `site`, `sitegroup`
+         * @param scope enum: `org`, `site`, `sitegroup`, `orgsites`
          * 
          * @return builder
          * 

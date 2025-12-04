@@ -144,7 +144,7 @@ type Setting struct {
 	OrgId           pulumi.StringOutput             `pulumi:"orgId"`
 	// password policy
 	PasswordPolicy SettingPasswordPolicyPtrOutput `pulumi:"passwordPolicy"`
-	Pcap           SettingPcapPtrOutput           `pulumi:"pcap"`
+	Pcap           SettingPcapOutput              `pulumi:"pcap"`
 	Security       SettingSecurityPtrOutput       `pulumi:"security"`
 	Ssr            SettingSsrPtrOutput            `pulumi:"ssr"`
 	Switch         SettingSwitchPtrOutput         `pulumi:"switch"`
@@ -352,7 +352,6 @@ type settingArgs struct {
 	OrgId           string                            `pulumi:"orgId"`
 	// password policy
 	PasswordPolicy *SettingPasswordPolicy `pulumi:"passwordPolicy"`
-	Pcap           *SettingPcap           `pulumi:"pcap"`
 	Security       *SettingSecurity       `pulumi:"security"`
 	Ssr            *SettingSsr            `pulumi:"ssr"`
 	Switch         *SettingSwitch         `pulumi:"switch"`
@@ -409,7 +408,6 @@ type SettingArgs struct {
 	OrgId           pulumi.StringInput
 	// password policy
 	PasswordPolicy SettingPasswordPolicyPtrInput
-	Pcap           SettingPcapPtrInput
 	Security       SettingSecurityPtrInput
 	Ssr            SettingSsrPtrInput
 	Switch         SettingSwitchPtrInput
@@ -625,8 +623,8 @@ func (o SettingOutput) PasswordPolicy() SettingPasswordPolicyPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingPasswordPolicyPtrOutput { return v.PasswordPolicy }).(SettingPasswordPolicyPtrOutput)
 }
 
-func (o SettingOutput) Pcap() SettingPcapPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingPcapPtrOutput { return v.Pcap }).(SettingPcapPtrOutput)
+func (o SettingOutput) Pcap() SettingPcapOutput {
+	return o.ApplyT(func(v *Setting) SettingPcapOutput { return v.Pcap }).(SettingPcapOutput)
 }
 
 func (o SettingOutput) Security() SettingSecurityPtrOutput {

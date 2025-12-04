@@ -9,7 +9,9 @@ import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicyAntivi
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicyAppqoeArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicyEwfArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicyIdpArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicySkyatpArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicySslProxyArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicySyslogArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -53,14 +55,14 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
     }
 
     /**
-     * For SRX Only
+     * SRX only
      * 
      */
     @Import(name="appqoe")
     private @Nullable Output<DeviceprofileGatewayServicePolicyAppqoeArgs> appqoe;
 
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     public Optional<Output<DeviceprofileGatewayServicePolicyAppqoeArgs>> appqoe() {
@@ -157,6 +159,21 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
     }
 
     /**
+     * SRX only
+     * 
+     */
+    @Import(name="skyatp")
+    private @Nullable Output<DeviceprofileGatewayServicePolicySkyatpArgs> skyatp;
+
+    /**
+     * @return SRX only
+     * 
+     */
+    public Optional<Output<DeviceprofileGatewayServicePolicySkyatpArgs>> skyatp() {
+        return Optional.ofNullable(this.skyatp);
+    }
+
+    /**
      * For SRX-only
      * 
      */
@@ -169,6 +186,21 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
      */
     public Optional<Output<DeviceprofileGatewayServicePolicySslProxyArgs>> sslProxy() {
         return Optional.ofNullable(this.sslProxy);
+    }
+
+    /**
+     * Required for syslog logging
+     * 
+     */
+    @Import(name="syslog")
+    private @Nullable Output<DeviceprofileGatewayServicePolicySyslogArgs> syslog;
+
+    /**
+     * @return Required for syslog logging
+     * 
+     */
+    public Optional<Output<DeviceprofileGatewayServicePolicySyslogArgs>> syslog() {
+        return Optional.ofNullable(this.syslog);
     }
 
     /**
@@ -199,7 +231,9 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
         this.pathPreference = $.pathPreference;
         this.servicepolicyId = $.servicepolicyId;
         this.services = $.services;
+        this.skyatp = $.skyatp;
         this.sslProxy = $.sslProxy;
+        this.syslog = $.syslog;
         this.tenants = $.tenants;
     }
 
@@ -264,7 +298,7 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param appqoe For SRX Only
+         * @param appqoe SRX only
          * 
          * @return builder
          * 
@@ -275,7 +309,7 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param appqoe For SRX Only
+         * @param appqoe SRX only
          * 
          * @return builder
          * 
@@ -422,6 +456,27 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
         }
 
         /**
+         * @param skyatp SRX only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skyatp(@Nullable Output<DeviceprofileGatewayServicePolicySkyatpArgs> skyatp) {
+            $.skyatp = skyatp;
+            return this;
+        }
+
+        /**
+         * @param skyatp SRX only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skyatp(DeviceprofileGatewayServicePolicySkyatpArgs skyatp) {
+            return skyatp(Output.of(skyatp));
+        }
+
+        /**
          * @param sslProxy For SRX-only
          * 
          * @return builder
@@ -440,6 +495,27 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
          */
         public Builder sslProxy(DeviceprofileGatewayServicePolicySslProxyArgs sslProxy) {
             return sslProxy(Output.of(sslProxy));
+        }
+
+        /**
+         * @param syslog Required for syslog logging
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syslog(@Nullable Output<DeviceprofileGatewayServicePolicySyslogArgs> syslog) {
+            $.syslog = syslog;
+            return this;
+        }
+
+        /**
+         * @param syslog Required for syslog logging
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syslog(DeviceprofileGatewayServicePolicySyslogArgs syslog) {
+            return syslog(Output.of(syslog));
         }
 
         /**

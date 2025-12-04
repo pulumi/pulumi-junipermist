@@ -1160,7 +1160,7 @@ func (o NetworktemplateAclPolicyActionArrayOutput) Index(i pulumi.IntInput) Netw
 }
 
 type NetworktemplateAclTags struct {
-	// Can only be used under dst tags.
+	// ARP / IPv6. Default is `any`
 	EtherTypes []string `pulumi:"etherTypes"`
 	// Required if
 	//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
@@ -1218,7 +1218,7 @@ type NetworktemplateAclTagsInput interface {
 }
 
 type NetworktemplateAclTagsArgs struct {
-	// Can only be used under dst tags.
+	// ARP / IPv6. Default is `any`
 	EtherTypes pulumi.StringArrayInput `pulumi:"etherTypes"`
 	// Required if
 	//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
@@ -1315,7 +1315,7 @@ func (o NetworktemplateAclTagsOutput) ToNetworktemplateAclTagsOutputWithContext(
 	return o
 }
 
-// Can only be used under dst tags.
+// ARP / IPv6. Default is `any`
 func (o NetworktemplateAclTagsOutput) EtherTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) []string { return v.EtherTypes }).(pulumi.StringArrayOutput)
 }
@@ -2906,7 +2906,7 @@ func (o NetworktemplatePortMirroringMapOutput) MapIndex(k pulumi.StringInput) Ne
 type NetworktemplatePortUsages struct {
 	// Only if `mode`==`trunk`. Whether to trunk all network/vlans
 	AllNetworks *bool `pulumi:"allNetworks"`
-	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+	// Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
 	AllowDhcpd *bool `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants *bool `pulumi:"allowMultipleSupplicants"`
@@ -2914,6 +2914,8 @@ type NetworktemplatePortUsages struct {
 	BypassAuthWhenServerDown *bool `pulumi:"bypassAuthWhenServerDown"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
 	BypassAuthWhenServerDownForUnknownClient *bool `pulumi:"bypassAuthWhenServerDownForUnknownClient"`
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+	BypassAuthWhenServerDownForVoip *bool `pulumi:"bypassAuthWhenServerDownForVoip"`
 	// Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
 	CommunityVlanId *int `pulumi:"communityVlanId"`
 	// Only if `mode`!=`dynamic`
@@ -2932,9 +2934,9 @@ type NetworktemplatePortUsages struct {
 	EnableQos *bool `pulumi:"enableQos"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork *string `pulumi:"guestNetwork"`
-	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
 	InterIsolationNetworkLink *bool `pulumi:"interIsolationNetworkLink"`
-	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
 	InterSwitchLink *bool `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly *bool `pulumi:"macAuthOnly"`
@@ -2954,6 +2956,8 @@ type NetworktemplatePortUsages struct {
 	PersistMac *bool `pulumi:"persistMac"`
 	// Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
 	PoeDisabled *bool `pulumi:"poeDisabled"`
+	// PoE priority. enum: `low`, `high`
+	PoePriority *string `pulumi:"poePriority"`
 	// Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
 	PortAuth *string `pulumi:"portAuth"`
 	// Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
@@ -3004,7 +3008,7 @@ type NetworktemplatePortUsagesInput interface {
 type NetworktemplatePortUsagesArgs struct {
 	// Only if `mode`==`trunk`. Whether to trunk all network/vlans
 	AllNetworks pulumi.BoolPtrInput `pulumi:"allNetworks"`
-	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+	// Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
 	AllowDhcpd pulumi.BoolPtrInput `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants pulumi.BoolPtrInput `pulumi:"allowMultipleSupplicants"`
@@ -3012,6 +3016,8 @@ type NetworktemplatePortUsagesArgs struct {
 	BypassAuthWhenServerDown pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDown"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
 	BypassAuthWhenServerDownForUnknownClient pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDownForUnknownClient"`
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+	BypassAuthWhenServerDownForVoip pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDownForVoip"`
 	// Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
 	CommunityVlanId pulumi.IntPtrInput `pulumi:"communityVlanId"`
 	// Only if `mode`!=`dynamic`
@@ -3030,9 +3036,9 @@ type NetworktemplatePortUsagesArgs struct {
 	EnableQos pulumi.BoolPtrInput `pulumi:"enableQos"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork pulumi.StringPtrInput `pulumi:"guestNetwork"`
-	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
 	InterIsolationNetworkLink pulumi.BoolPtrInput `pulumi:"interIsolationNetworkLink"`
-	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
 	InterSwitchLink pulumi.BoolPtrInput `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly pulumi.BoolPtrInput `pulumi:"macAuthOnly"`
@@ -3052,6 +3058,8 @@ type NetworktemplatePortUsagesArgs struct {
 	PersistMac pulumi.BoolPtrInput `pulumi:"persistMac"`
 	// Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
 	PoeDisabled pulumi.BoolPtrInput `pulumi:"poeDisabled"`
+	// PoE priority. enum: `low`, `high`
+	PoePriority pulumi.StringPtrInput `pulumi:"poePriority"`
 	// Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
 	PortAuth pulumi.StringPtrInput `pulumi:"portAuth"`
 	// Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
@@ -3144,7 +3152,7 @@ func (o NetworktemplatePortUsagesOutput) AllNetworks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.AllNetworks }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+// Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
 func (o NetworktemplatePortUsagesOutput) AllowDhcpd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.AllowDhcpd }).(pulumi.BoolPtrOutput)
 }
@@ -3162,6 +3170,11 @@ func (o NetworktemplatePortUsagesOutput) BypassAuthWhenServerDown() pulumi.BoolP
 // Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
 func (o NetworktemplatePortUsagesOutput) BypassAuthWhenServerDownForUnknownClient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.BypassAuthWhenServerDownForUnknownClient }).(pulumi.BoolPtrOutput)
+}
+
+// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+func (o NetworktemplatePortUsagesOutput) BypassAuthWhenServerDownForVoip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.BypassAuthWhenServerDownForVoip }).(pulumi.BoolPtrOutput)
 }
 
 // Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
@@ -3209,12 +3222,12 @@ func (o NetworktemplatePortUsagesOutput) GuestNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.GuestNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+// Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
 func (o NetworktemplatePortUsagesOutput) InterIsolationNetworkLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.InterIsolationNetworkLink }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
 func (o NetworktemplatePortUsagesOutput) InterSwitchLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.InterSwitchLink }).(pulumi.BoolPtrOutput)
 }
@@ -3262,6 +3275,11 @@ func (o NetworktemplatePortUsagesOutput) PersistMac() pulumi.BoolPtrOutput {
 // Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
 func (o NetworktemplatePortUsagesOutput) PoeDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.PoeDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// PoE priority. enum: `low`, `high`
+func (o NetworktemplatePortUsagesOutput) PoePriority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.PoePriority }).(pulumi.StringPtrOutput)
 }
 
 // Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
@@ -3377,7 +3395,7 @@ type NetworktemplatePortUsagesRule struct {
 	// "split(.)[1]": "a.b.c" > "b"
 	// "split(-)[1][0:3]: "a1234-b5678-c90" > "b56"
 	Expression *string `pulumi:"expression"`
-	// enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+	// enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
 	Src string `pulumi:"src"`
 	// `portUsage` name
 	Usage *string `pulumi:"usage"`
@@ -3402,7 +3420,7 @@ type NetworktemplatePortUsagesRuleArgs struct {
 	// "split(.)[1]": "a.b.c" > "b"
 	// "split(-)[1][0:3]: "a1234-b5678-c90" > "b56"
 	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	// enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+	// enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
 	Src pulumi.StringInput `pulumi:"src"`
 	// `portUsage` name
 	Usage pulumi.StringPtrInput `pulumi:"usage"`
@@ -3475,7 +3493,7 @@ func (o NetworktemplatePortUsagesRuleOutput) Expression() pulumi.StringPtrOutput
 	return o.ApplyT(func(v NetworktemplatePortUsagesRule) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
-// enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+// enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
 func (o NetworktemplatePortUsagesRuleOutput) Src() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsagesRule) string { return v.Src }).(pulumi.StringOutput)
 }
@@ -14136,7 +14154,7 @@ type SettingGatewayMgmt struct {
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 	ProtectRe *SettingGatewayMgmtProtectRe `pulumi:"protectRe"`
-	// For SRX only
+	// SRX only
 	RootPassword               *string `pulumi:"rootPassword"`
 	SecurityLogSourceAddress   *string `pulumi:"securityLogSourceAddress"`
 	SecurityLogSourceInterface *string `pulumi:"securityLogSourceInterface"`
@@ -14175,7 +14193,7 @@ type SettingGatewayMgmtArgs struct {
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 	ProtectRe SettingGatewayMgmtProtectRePtrInput `pulumi:"protectRe"`
-	// For SRX only
+	// SRX only
 	RootPassword               pulumi.StringPtrInput `pulumi:"rootPassword"`
 	SecurityLogSourceAddress   pulumi.StringPtrInput `pulumi:"securityLogSourceAddress"`
 	SecurityLogSourceInterface pulumi.StringPtrInput `pulumi:"securityLogSourceInterface"`
@@ -14315,7 +14333,7 @@ func (o SettingGatewayMgmtOutput) ProtectRe() SettingGatewayMgmtProtectRePtrOutp
 	return o.ApplyT(func(v SettingGatewayMgmt) *SettingGatewayMgmtProtectRe { return v.ProtectRe }).(SettingGatewayMgmtProtectRePtrOutput)
 }
 
-// For SRX only
+// SRX only
 func (o SettingGatewayMgmtOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *string { return v.RootPassword }).(pulumi.StringPtrOutput)
 }
@@ -14469,7 +14487,7 @@ func (o SettingGatewayMgmtPtrOutput) ProtectRe() SettingGatewayMgmtProtectRePtrO
 	}).(SettingGatewayMgmtProtectRePtrOutput)
 }
 
-// For SRX only
+// SRX only
 func (o SettingGatewayMgmtPtrOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingGatewayMgmt) *string {
 		if v == nil {
@@ -16051,9 +16069,15 @@ func (o SettingMarvisPtrOutput) AutoOperations() SettingMarvisAutoOperationsPtrO
 }
 
 type SettingMarvisAutoOperations struct {
+	ApInsufficientCapacity                 *bool `pulumi:"apInsufficientCapacity"`
+	ApLoop                                 *bool `pulumi:"apLoop"`
+	ApNonCompliant                         *bool `pulumi:"apNonCompliant"`
 	BouncePortForAbnormalPoeClient         *bool `pulumi:"bouncePortForAbnormalPoeClient"`
 	DisablePortWhenDdosProtocolViolation   *bool `pulumi:"disablePortWhenDdosProtocolViolation"`
 	DisablePortWhenRogueDhcpServerDetected *bool `pulumi:"disablePortWhenRogueDhcpServerDetected"`
+	GatewayNonCompliant                    *bool `pulumi:"gatewayNonCompliant"`
+	SwitchMisconfiguredPort                *bool `pulumi:"switchMisconfiguredPort"`
+	SwitchPortStuck                        *bool `pulumi:"switchPortStuck"`
 }
 
 // SettingMarvisAutoOperationsInput is an input type that accepts SettingMarvisAutoOperationsArgs and SettingMarvisAutoOperationsOutput values.
@@ -16068,9 +16092,15 @@ type SettingMarvisAutoOperationsInput interface {
 }
 
 type SettingMarvisAutoOperationsArgs struct {
+	ApInsufficientCapacity                 pulumi.BoolPtrInput `pulumi:"apInsufficientCapacity"`
+	ApLoop                                 pulumi.BoolPtrInput `pulumi:"apLoop"`
+	ApNonCompliant                         pulumi.BoolPtrInput `pulumi:"apNonCompliant"`
 	BouncePortForAbnormalPoeClient         pulumi.BoolPtrInput `pulumi:"bouncePortForAbnormalPoeClient"`
 	DisablePortWhenDdosProtocolViolation   pulumi.BoolPtrInput `pulumi:"disablePortWhenDdosProtocolViolation"`
 	DisablePortWhenRogueDhcpServerDetected pulumi.BoolPtrInput `pulumi:"disablePortWhenRogueDhcpServerDetected"`
+	GatewayNonCompliant                    pulumi.BoolPtrInput `pulumi:"gatewayNonCompliant"`
+	SwitchMisconfiguredPort                pulumi.BoolPtrInput `pulumi:"switchMisconfiguredPort"`
+	SwitchPortStuck                        pulumi.BoolPtrInput `pulumi:"switchPortStuck"`
 }
 
 func (SettingMarvisAutoOperationsArgs) ElementType() reflect.Type {
@@ -16150,6 +16180,18 @@ func (o SettingMarvisAutoOperationsOutput) ToSettingMarvisAutoOperationsPtrOutpu
 	}).(SettingMarvisAutoOperationsPtrOutput)
 }
 
+func (o SettingMarvisAutoOperationsOutput) ApInsufficientCapacity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.ApInsufficientCapacity }).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsOutput) ApLoop() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.ApLoop }).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsOutput) ApNonCompliant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.ApNonCompliant }).(pulumi.BoolPtrOutput)
+}
+
 func (o SettingMarvisAutoOperationsOutput) BouncePortForAbnormalPoeClient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.BouncePortForAbnormalPoeClient }).(pulumi.BoolPtrOutput)
 }
@@ -16160,6 +16202,18 @@ func (o SettingMarvisAutoOperationsOutput) DisablePortWhenDdosProtocolViolation(
 
 func (o SettingMarvisAutoOperationsOutput) DisablePortWhenRogueDhcpServerDetected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.DisablePortWhenRogueDhcpServerDetected }).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsOutput) GatewayNonCompliant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.GatewayNonCompliant }).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsOutput) SwitchMisconfiguredPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.SwitchMisconfiguredPort }).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsOutput) SwitchPortStuck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.SwitchPortStuck }).(pulumi.BoolPtrOutput)
 }
 
 type SettingMarvisAutoOperationsPtrOutput struct{ *pulumi.OutputState }
@@ -16186,6 +16240,33 @@ func (o SettingMarvisAutoOperationsPtrOutput) Elem() SettingMarvisAutoOperations
 	}).(SettingMarvisAutoOperationsOutput)
 }
 
+func (o SettingMarvisAutoOperationsPtrOutput) ApInsufficientCapacity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApInsufficientCapacity
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsPtrOutput) ApLoop() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApLoop
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsPtrOutput) ApNonCompliant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApNonCompliant
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o SettingMarvisAutoOperationsPtrOutput) BouncePortForAbnormalPoeClient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
 		if v == nil {
@@ -16210,6 +16291,33 @@ func (o SettingMarvisAutoOperationsPtrOutput) DisablePortWhenRogueDhcpServerDete
 			return nil
 		}
 		return v.DisablePortWhenRogueDhcpServerDetected
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsPtrOutput) GatewayNonCompliant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayNonCompliant
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsPtrOutput) SwitchMisconfiguredPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SwitchMisconfiguredPort
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsPtrOutput) SwitchPortStuck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SwitchPortStuck
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -16427,7 +16535,8 @@ func (o SettingOccupancyPtrOutput) UnconnectedClientsEnabled() pulumi.BoolPtrOut
 }
 
 type SettingProxy struct {
-	Url *string `pulumi:"url"`
+	Disabled *bool   `pulumi:"disabled"`
+	Url      *string `pulumi:"url"`
 }
 
 // SettingProxyInput is an input type that accepts SettingProxyArgs and SettingProxyOutput values.
@@ -16442,7 +16551,8 @@ type SettingProxyInput interface {
 }
 
 type SettingProxyArgs struct {
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
+	Url      pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (SettingProxyArgs) ElementType() reflect.Type {
@@ -16522,6 +16632,10 @@ func (o SettingProxyOutput) ToSettingProxyPtrOutputWithContext(ctx context.Conte
 	}).(SettingProxyPtrOutput)
 }
 
+func (o SettingProxyOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingProxy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
 func (o SettingProxyOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingProxy) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -16548,6 +16662,15 @@ func (o SettingProxyPtrOutput) Elem() SettingProxyOutput {
 		var ret SettingProxy
 		return ret
 	}).(SettingProxyOutput)
+}
+
+func (o SettingProxyPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingProxy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o SettingProxyPtrOutput) Url() pulumi.StringPtrOutput {
@@ -18197,7 +18320,7 @@ type SettingSsr struct {
 	ConductorToken *string `pulumi:"conductorToken"`
 	// Disable stats collection on SSR devices
 	DisableStats *bool `pulumi:"disableStats"`
-	// Proxy Configuration to talk to Mist
+	// SSR proxy configuration to talk to Mist
 	Proxy *SettingSsrProxy `pulumi:"proxy"`
 }
 
@@ -18221,7 +18344,7 @@ type SettingSsrArgs struct {
 	ConductorToken pulumi.StringPtrInput `pulumi:"conductorToken"`
 	// Disable stats collection on SSR devices
 	DisableStats pulumi.BoolPtrInput `pulumi:"disableStats"`
-	// Proxy Configuration to talk to Mist
+	// SSR proxy configuration to talk to Mist
 	Proxy SettingSsrProxyPtrInput `pulumi:"proxy"`
 }
 
@@ -18322,7 +18445,7 @@ func (o SettingSsrOutput) DisableStats() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSsr) *bool { return v.DisableStats }).(pulumi.BoolPtrOutput)
 }
 
-// Proxy Configuration to talk to Mist
+// SSR proxy configuration to talk to Mist
 func (o SettingSsrOutput) Proxy() SettingSsrProxyPtrOutput {
 	return o.ApplyT(func(v SettingSsr) *SettingSsrProxy { return v.Proxy }).(SettingSsrProxyPtrOutput)
 }
@@ -18391,7 +18514,7 @@ func (o SettingSsrPtrOutput) DisableStats() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Proxy Configuration to talk to Mist
+// SSR proxy configuration to talk to Mist
 func (o SettingSsrPtrOutput) Proxy() SettingSsrProxyPtrOutput {
 	return o.ApplyT(func(v *SettingSsr) *SettingSsrProxy {
 		if v == nil {
@@ -18573,7 +18696,8 @@ func (o SettingSsrAutoUpgradePtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingSsrProxy struct {
-	Url *string `pulumi:"url"`
+	Disabled *bool   `pulumi:"disabled"`
+	Url      *string `pulumi:"url"`
 }
 
 // SettingSsrProxyInput is an input type that accepts SettingSsrProxyArgs and SettingSsrProxyOutput values.
@@ -18588,7 +18712,8 @@ type SettingSsrProxyInput interface {
 }
 
 type SettingSsrProxyArgs struct {
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
+	Url      pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (SettingSsrProxyArgs) ElementType() reflect.Type {
@@ -18668,6 +18793,10 @@ func (o SettingSsrProxyOutput) ToSettingSsrProxyPtrOutputWithContext(ctx context
 	}).(SettingSsrProxyPtrOutput)
 }
 
+func (o SettingSsrProxyOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingSsrProxy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
 func (o SettingSsrProxyOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingSsrProxy) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -18694,6 +18823,15 @@ func (o SettingSsrProxyPtrOutput) Elem() SettingSsrProxyOutput {
 		var ret SettingSsrProxy
 		return ret
 	}).(SettingSsrProxyOutput)
+}
+
+func (o SettingSsrProxyPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingSsrProxy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o SettingSsrProxyPtrOutput) Url() pulumi.StringPtrOutput {
