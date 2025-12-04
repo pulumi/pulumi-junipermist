@@ -22,7 +22,7 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean allNetworks;
     /**
-     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+     * @return Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
      * 
      */
     private @Nullable Boolean allowDhcpd;
@@ -41,6 +41,11 @@ public final class SwitchPortUsages {
      * 
      */
     private @Nullable Boolean bypassAuthWhenServerDownForUnknownClient;
+    /**
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+     * 
+     */
+    private @Nullable Boolean bypassAuthWhenServerDownForVoip;
     /**
      * @return Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
      * 
@@ -142,6 +147,11 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean poeDisabled;
     /**
+     * @return PoE priority. enum: `low`, `high`
+     * 
+     */
+    private @Nullable String poePriority;
+    /**
      * @return Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
      * 
      */
@@ -231,7 +241,7 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.allNetworks);
     }
     /**
-     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
+     * @return Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
      * 
      */
     public Optional<Boolean> allowDhcpd() {
@@ -257,6 +267,13 @@ public final class SwitchPortUsages {
      */
     public Optional<Boolean> bypassAuthWhenServerDownForUnknownClient() {
         return Optional.ofNullable(this.bypassAuthWhenServerDownForUnknownClient);
+    }
+    /**
+     * @return Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+     * 
+     */
+    public Optional<Boolean> bypassAuthWhenServerDownForVoip() {
+        return Optional.ofNullable(this.bypassAuthWhenServerDownForVoip);
     }
     /**
      * @return Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
@@ -399,6 +416,13 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.poeDisabled);
     }
     /**
+     * @return PoE priority. enum: `low`, `high`
+     * 
+     */
+    public Optional<String> poePriority() {
+        return Optional.ofNullable(this.poePriority);
+    }
+    /**
      * @return Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
      * 
      */
@@ -525,6 +549,7 @@ public final class SwitchPortUsages {
         private @Nullable Boolean allowMultipleSupplicants;
         private @Nullable Boolean bypassAuthWhenServerDown;
         private @Nullable Boolean bypassAuthWhenServerDownForUnknownClient;
+        private @Nullable Boolean bypassAuthWhenServerDownForVoip;
         private @Nullable Integer communityVlanId;
         private @Nullable String description;
         private @Nullable Boolean disableAutoneg;
@@ -545,6 +570,7 @@ public final class SwitchPortUsages {
         private @Nullable List<String> networks;
         private @Nullable Boolean persistMac;
         private @Nullable Boolean poeDisabled;
+        private @Nullable String poePriority;
         private @Nullable String portAuth;
         private @Nullable String portNetwork;
         private @Nullable String reauthInterval;
@@ -569,6 +595,7 @@ public final class SwitchPortUsages {
     	      this.allowMultipleSupplicants = defaults.allowMultipleSupplicants;
     	      this.bypassAuthWhenServerDown = defaults.bypassAuthWhenServerDown;
     	      this.bypassAuthWhenServerDownForUnknownClient = defaults.bypassAuthWhenServerDownForUnknownClient;
+    	      this.bypassAuthWhenServerDownForVoip = defaults.bypassAuthWhenServerDownForVoip;
     	      this.communityVlanId = defaults.communityVlanId;
     	      this.description = defaults.description;
     	      this.disableAutoneg = defaults.disableAutoneg;
@@ -589,6 +616,7 @@ public final class SwitchPortUsages {
     	      this.networks = defaults.networks;
     	      this.persistMac = defaults.persistMac;
     	      this.poeDisabled = defaults.poeDisabled;
+    	      this.poePriority = defaults.poePriority;
     	      this.portAuth = defaults.portAuth;
     	      this.portNetwork = defaults.portNetwork;
     	      this.reauthInterval = defaults.reauthInterval;
@@ -635,6 +663,12 @@ public final class SwitchPortUsages {
         public Builder bypassAuthWhenServerDownForUnknownClient(@Nullable Boolean bypassAuthWhenServerDownForUnknownClient) {
 
             this.bypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bypassAuthWhenServerDownForVoip(@Nullable Boolean bypassAuthWhenServerDownForVoip) {
+
+            this.bypassAuthWhenServerDownForVoip = bypassAuthWhenServerDownForVoip;
             return this;
         }
         @CustomType.Setter
@@ -764,6 +798,12 @@ public final class SwitchPortUsages {
             return this;
         }
         @CustomType.Setter
+        public Builder poePriority(@Nullable String poePriority) {
+
+            this.poePriority = poePriority;
+            return this;
+        }
+        @CustomType.Setter
         public Builder portAuth(@Nullable String portAuth) {
 
             this.portAuth = portAuth;
@@ -869,6 +909,7 @@ public final class SwitchPortUsages {
             _resultValue.allowMultipleSupplicants = allowMultipleSupplicants;
             _resultValue.bypassAuthWhenServerDown = bypassAuthWhenServerDown;
             _resultValue.bypassAuthWhenServerDownForUnknownClient = bypassAuthWhenServerDownForUnknownClient;
+            _resultValue.bypassAuthWhenServerDownForVoip = bypassAuthWhenServerDownForVoip;
             _resultValue.communityVlanId = communityVlanId;
             _resultValue.description = description;
             _resultValue.disableAutoneg = disableAutoneg;
@@ -889,6 +930,7 @@ public final class SwitchPortUsages {
             _resultValue.networks = networks;
             _resultValue.persistMac = persistMac;
             _resultValue.poeDisabled = poeDisabled;
+            _resultValue.poePriority = poePriority;
             _resultValue.portAuth = portAuth;
             _resultValue.portNetwork = portNetwork;
             _resultValue.reauthInterval = reauthInterval;

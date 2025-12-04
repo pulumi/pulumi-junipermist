@@ -91,7 +91,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _rootPassword;
 
         /// <summary>
-        /// For SRX only
+        /// SRX only
         /// </summary>
         public Input<string>? RootPassword
         {

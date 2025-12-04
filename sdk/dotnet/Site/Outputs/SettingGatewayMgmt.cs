@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly Outputs.SettingGatewayMgmtProtectRe? ProtectRe;
         /// <summary>
-        /// For SRX only
+        /// SRX only
         /// </summary>
         public readonly string? RootPassword;
         public readonly string? SecurityLogSourceAddress;

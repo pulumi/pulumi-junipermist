@@ -8,7 +8,9 @@ import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayServicePolicyAntiv
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayServicePolicyAppqoe;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayServicePolicyEwf;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayServicePolicyIdp;
+import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayServicePolicySkyatp;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayServicePolicySslProxy;
+import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayServicePolicySyslog;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -29,7 +31,7 @@ public final class DeviceprofileGatewayServicePolicy {
      */
     private @Nullable DeviceprofileGatewayServicePolicyAntivirus antivirus;
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     private @Nullable DeviceprofileGatewayServicePolicyAppqoe appqoe;
@@ -61,10 +63,20 @@ public final class DeviceprofileGatewayServicePolicy {
      */
     private @Nullable List<String> services;
     /**
+     * @return SRX only
+     * 
+     */
+    private @Nullable DeviceprofileGatewayServicePolicySkyatp skyatp;
+    /**
      * @return For SRX-only
      * 
      */
     private @Nullable DeviceprofileGatewayServicePolicySslProxy sslProxy;
+    /**
+     * @return Required for syslog logging
+     * 
+     */
+    private @Nullable DeviceprofileGatewayServicePolicySyslog syslog;
     /**
      * @return Required when `servicepolicyId` is not defined. List of Networks / Users
      * 
@@ -87,7 +99,7 @@ public final class DeviceprofileGatewayServicePolicy {
         return Optional.ofNullable(this.antivirus);
     }
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     public Optional<DeviceprofileGatewayServicePolicyAppqoe> appqoe() {
@@ -135,11 +147,25 @@ public final class DeviceprofileGatewayServicePolicy {
         return this.services == null ? List.of() : this.services;
     }
     /**
+     * @return SRX only
+     * 
+     */
+    public Optional<DeviceprofileGatewayServicePolicySkyatp> skyatp() {
+        return Optional.ofNullable(this.skyatp);
+    }
+    /**
      * @return For SRX-only
      * 
      */
     public Optional<DeviceprofileGatewayServicePolicySslProxy> sslProxy() {
         return Optional.ofNullable(this.sslProxy);
+    }
+    /**
+     * @return Required for syslog logging
+     * 
+     */
+    public Optional<DeviceprofileGatewayServicePolicySyslog> syslog() {
+        return Optional.ofNullable(this.syslog);
     }
     /**
      * @return Required when `servicepolicyId` is not defined. List of Networks / Users
@@ -168,7 +194,9 @@ public final class DeviceprofileGatewayServicePolicy {
         private @Nullable String pathPreference;
         private @Nullable String servicepolicyId;
         private @Nullable List<String> services;
+        private @Nullable DeviceprofileGatewayServicePolicySkyatp skyatp;
         private @Nullable DeviceprofileGatewayServicePolicySslProxy sslProxy;
+        private @Nullable DeviceprofileGatewayServicePolicySyslog syslog;
         private @Nullable List<String> tenants;
         public Builder() {}
         public Builder(DeviceprofileGatewayServicePolicy defaults) {
@@ -183,7 +211,9 @@ public final class DeviceprofileGatewayServicePolicy {
     	      this.pathPreference = defaults.pathPreference;
     	      this.servicepolicyId = defaults.servicepolicyId;
     	      this.services = defaults.services;
+    	      this.skyatp = defaults.skyatp;
     	      this.sslProxy = defaults.sslProxy;
+    	      this.syslog = defaults.syslog;
     	      this.tenants = defaults.tenants;
         }
 
@@ -254,9 +284,21 @@ public final class DeviceprofileGatewayServicePolicy {
             return services(List.of(services));
         }
         @CustomType.Setter
+        public Builder skyatp(@Nullable DeviceprofileGatewayServicePolicySkyatp skyatp) {
+
+            this.skyatp = skyatp;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sslProxy(@Nullable DeviceprofileGatewayServicePolicySslProxy sslProxy) {
 
             this.sslProxy = sslProxy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder syslog(@Nullable DeviceprofileGatewayServicePolicySyslog syslog) {
+
+            this.syslog = syslog;
             return this;
         }
         @CustomType.Setter
@@ -280,7 +322,9 @@ public final class DeviceprofileGatewayServicePolicy {
             _resultValue.pathPreference = pathPreference;
             _resultValue.servicepolicyId = servicepolicyId;
             _resultValue.services = services;
+            _resultValue.skyatp = skyatp;
             _resultValue.sslProxy = sslProxy;
+            _resultValue.syslog = syslog;
             _resultValue.tenants = tenants;
             return _resultValue;
         }

@@ -364,6 +364,13 @@
                                 "services": {
                                     "maxItemsOne": false
                                 },
+                                "syslog": {
+                                    "fields": {
+                                        "server_names": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
                                 "tenants": {
                                     "maxItemsOne": false
                                 }
@@ -1234,6 +1241,13 @@
                                 "services": {
                                     "maxItemsOne": false
                                 },
+                                "syslog": {
+                                    "fields": {
+                                        "server_names": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
                                 "tenants": {
                                     "maxItemsOne": false
                                 }
@@ -1630,6 +1644,13 @@
                                 },
                                 "services": {
                                     "maxItemsOne": false
+                                },
+                                "syslog": {
+                                    "fields": {
+                                        "server_names": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
                                 },
                                 "tenants": {
                                     "maxItemsOne": false

@@ -11,11 +11,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingMarvisAutoOperations {
+    private @Nullable Boolean apInsufficientCapacity;
+    private @Nullable Boolean apLoop;
+    private @Nullable Boolean apNonCompliant;
     private @Nullable Boolean bouncePortForAbnormalPoeClient;
     private @Nullable Boolean disablePortWhenDdosProtocolViolation;
     private @Nullable Boolean disablePortWhenRogueDhcpServerDetected;
+    private @Nullable Boolean gatewayNonCompliant;
+    private @Nullable Boolean switchMisconfiguredPort;
+    private @Nullable Boolean switchPortStuck;
 
     private SettingMarvisAutoOperations() {}
+    public Optional<Boolean> apInsufficientCapacity() {
+        return Optional.ofNullable(this.apInsufficientCapacity);
+    }
+    public Optional<Boolean> apLoop() {
+        return Optional.ofNullable(this.apLoop);
+    }
+    public Optional<Boolean> apNonCompliant() {
+        return Optional.ofNullable(this.apNonCompliant);
+    }
     public Optional<Boolean> bouncePortForAbnormalPoeClient() {
         return Optional.ofNullable(this.bouncePortForAbnormalPoeClient);
     }
@@ -24,6 +39,15 @@ public final class SettingMarvisAutoOperations {
     }
     public Optional<Boolean> disablePortWhenRogueDhcpServerDetected() {
         return Optional.ofNullable(this.disablePortWhenRogueDhcpServerDetected);
+    }
+    public Optional<Boolean> gatewayNonCompliant() {
+        return Optional.ofNullable(this.gatewayNonCompliant);
+    }
+    public Optional<Boolean> switchMisconfiguredPort() {
+        return Optional.ofNullable(this.switchMisconfiguredPort);
+    }
+    public Optional<Boolean> switchPortStuck() {
+        return Optional.ofNullable(this.switchPortStuck);
     }
 
     public static Builder builder() {
@@ -35,17 +59,47 @@ public final class SettingMarvisAutoOperations {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean apInsufficientCapacity;
+        private @Nullable Boolean apLoop;
+        private @Nullable Boolean apNonCompliant;
         private @Nullable Boolean bouncePortForAbnormalPoeClient;
         private @Nullable Boolean disablePortWhenDdosProtocolViolation;
         private @Nullable Boolean disablePortWhenRogueDhcpServerDetected;
+        private @Nullable Boolean gatewayNonCompliant;
+        private @Nullable Boolean switchMisconfiguredPort;
+        private @Nullable Boolean switchPortStuck;
         public Builder() {}
         public Builder(SettingMarvisAutoOperations defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.apInsufficientCapacity = defaults.apInsufficientCapacity;
+    	      this.apLoop = defaults.apLoop;
+    	      this.apNonCompliant = defaults.apNonCompliant;
     	      this.bouncePortForAbnormalPoeClient = defaults.bouncePortForAbnormalPoeClient;
     	      this.disablePortWhenDdosProtocolViolation = defaults.disablePortWhenDdosProtocolViolation;
     	      this.disablePortWhenRogueDhcpServerDetected = defaults.disablePortWhenRogueDhcpServerDetected;
+    	      this.gatewayNonCompliant = defaults.gatewayNonCompliant;
+    	      this.switchMisconfiguredPort = defaults.switchMisconfiguredPort;
+    	      this.switchPortStuck = defaults.switchPortStuck;
         }
 
+        @CustomType.Setter
+        public Builder apInsufficientCapacity(@Nullable Boolean apInsufficientCapacity) {
+
+            this.apInsufficientCapacity = apInsufficientCapacity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder apLoop(@Nullable Boolean apLoop) {
+
+            this.apLoop = apLoop;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder apNonCompliant(@Nullable Boolean apNonCompliant) {
+
+            this.apNonCompliant = apNonCompliant;
+            return this;
+        }
         @CustomType.Setter
         public Builder bouncePortForAbnormalPoeClient(@Nullable Boolean bouncePortForAbnormalPoeClient) {
 
@@ -64,11 +118,35 @@ public final class SettingMarvisAutoOperations {
             this.disablePortWhenRogueDhcpServerDetected = disablePortWhenRogueDhcpServerDetected;
             return this;
         }
+        @CustomType.Setter
+        public Builder gatewayNonCompliant(@Nullable Boolean gatewayNonCompliant) {
+
+            this.gatewayNonCompliant = gatewayNonCompliant;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder switchMisconfiguredPort(@Nullable Boolean switchMisconfiguredPort) {
+
+            this.switchMisconfiguredPort = switchMisconfiguredPort;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder switchPortStuck(@Nullable Boolean switchPortStuck) {
+
+            this.switchPortStuck = switchPortStuck;
+            return this;
+        }
         public SettingMarvisAutoOperations build() {
             final var _resultValue = new SettingMarvisAutoOperations();
+            _resultValue.apInsufficientCapacity = apInsufficientCapacity;
+            _resultValue.apLoop = apLoop;
+            _resultValue.apNonCompliant = apNonCompliant;
             _resultValue.bouncePortForAbnormalPoeClient = bouncePortForAbnormalPoeClient;
             _resultValue.disablePortWhenDdosProtocolViolation = disablePortWhenDdosProtocolViolation;
             _resultValue.disablePortWhenRogueDhcpServerDetected = disablePortWhenRogueDhcpServerDetected;
+            _resultValue.gatewayNonCompliant = gatewayNonCompliant;
+            _resultValue.switchMisconfiguredPort = switchMisconfiguredPort;
+            _resultValue.switchPortStuck = switchPortStuck;
             return _resultValue;
         }
     }

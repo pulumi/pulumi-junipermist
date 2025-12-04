@@ -77,9 +77,9 @@ type Wlan struct {
 	AcctServers WlanAcctServerArrayOutput `pulumi:"acctServers"`
 	// Airwatch wlan settings
 	Airwatch WlanAirwatchOutput `pulumi:"airwatch"`
-	// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp pulumi.BoolOutput `pulumi:"allowIpv6Ndp"`
-	// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
 	AllowMdns pulumi.BoolOutput `pulumi:"allowMdns"`
 	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp pulumi.BoolOutput `pulumi:"allowSsdp"`
@@ -303,9 +303,9 @@ type wlanState struct {
 	AcctServers []WlanAcctServer `pulumi:"acctServers"`
 	// Airwatch wlan settings
 	Airwatch *WlanAirwatch `pulumi:"airwatch"`
-	// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp *bool `pulumi:"allowIpv6Ndp"`
-	// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
 	AllowMdns *bool `pulumi:"allowMdns"`
 	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp *bool `pulumi:"allowSsdp"`
@@ -494,9 +494,9 @@ type WlanState struct {
 	AcctServers WlanAcctServerArrayInput
 	// Airwatch wlan settings
 	Airwatch WlanAirwatchPtrInput
-	// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp pulumi.BoolPtrInput
-	// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
 	AllowMdns pulumi.BoolPtrInput
 	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp pulumi.BoolPtrInput
@@ -689,9 +689,9 @@ type wlanArgs struct {
 	AcctServers []WlanAcctServer `pulumi:"acctServers"`
 	// Airwatch wlan settings
 	Airwatch *WlanAirwatch `pulumi:"airwatch"`
-	// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp *bool `pulumi:"allowIpv6Ndp"`
-	// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
 	AllowMdns *bool `pulumi:"allowMdns"`
 	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp *bool `pulumi:"allowSsdp"`
@@ -873,9 +873,9 @@ type WlanArgs struct {
 	AcctServers WlanAcctServerArrayInput
 	// Airwatch wlan settings
 	Airwatch WlanAirwatchPtrInput
-	// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp pulumi.BoolPtrInput
-	// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
 	AllowMdns pulumi.BoolPtrInput
 	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp pulumi.BoolPtrInput
@@ -1154,12 +1154,12 @@ func (o WlanOutput) Airwatch() WlanAirwatchOutput {
 	return o.ApplyT(func(v *Wlan) WlanAirwatchOutput { return v.Airwatch }).(WlanAirwatchOutput)
 }
 
-// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 func (o WlanOutput) AllowIpv6Ndp() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.AllowIpv6Ndp }).(pulumi.BoolOutput)
 }
 
-// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+// Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
 func (o WlanOutput) AllowMdns() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.AllowMdns }).(pulumi.BoolOutput)
 }

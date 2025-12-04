@@ -36,7 +36,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// enum: `LinkPeermac`, `LldpChassisId`, `LldpHardwareRevision`, `LldpManufacturerName`, `LldpOui`, `LldpSerialNumber`, `LldpSystemName`, `RadiusDynamicfilter`, `RadiusUsermac`, `RadiusUsername`
+        /// enum: `LinkPeermac`, `LldpChassisId`, `LldpHardwareRevision`, `LldpManufacturerName`, `LldpOui`, `LldpSerialNumber`, `LldpSystemDescription`, `LldpSystemName`, `RadiusDynamicfilter`, `RadiusUsermac`, `RadiusUsername`
         /// </summary>
         [Input("src", required: true)]
         public Input<string> Src { get; set; } = null!;

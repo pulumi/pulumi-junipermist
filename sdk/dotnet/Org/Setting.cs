@@ -219,7 +219,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.SettingPasswordPolicy?> PasswordPolicy { get; private set; } = null!;
 
         [Output("pcap")]
-        public Output<Outputs.SettingPcap?> Pcap { get; private set; } = null!;
+        public Output<Outputs.SettingPcap> Pcap { get; private set; } = null!;
 
         [Output("security")]
         public Output<Outputs.SettingSecurity?> Security { get; private set; } = null!;
@@ -427,9 +427,6 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("passwordPolicy")]
         public Input<Inputs.SettingPasswordPolicyArgs>? PasswordPolicy { get; set; }
-
-        [Input("pcap")]
-        public Input<Inputs.SettingPcapArgs>? Pcap { get; set; }
 
         [Input("security")]
         public Input<Inputs.SettingSecurityArgs>? Security { get; set; }

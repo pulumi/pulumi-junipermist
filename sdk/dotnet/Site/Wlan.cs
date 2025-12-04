@@ -87,13 +87,13 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.WlanAirwatch> Airwatch { get; private set; } = null!;
 
         /// <summary>
-        /// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        /// Only applicable when `LimitBcast`==`True`, which allows or disallows ipv6 Neighbor Discovery packets to go through
         /// </summary>
         [Output("allowIpv6Ndp")]
         public Output<bool> AllowIpv6Ndp { get; private set; } = null!;
 
         /// <summary>
-        /// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        /// Only applicable when `LimitBcast`==`True`, which allows mDNS / Bonjour packets to go through
         /// </summary>
         [Output("allowMdns")]
         public Output<bool> AllowMdns { get; private set; } = null!;
@@ -682,13 +682,13 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanAirwatchArgs>? Airwatch { get; set; }
 
         /// <summary>
-        /// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        /// Only applicable when `LimitBcast`==`True`, which allows or disallows ipv6 Neighbor Discovery packets to go through
         /// </summary>
         [Input("allowIpv6Ndp")]
         public Input<bool>? AllowIpv6Ndp { get; set; }
 
         /// <summary>
-        /// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        /// Only applicable when `LimitBcast`==`True`, which allows mDNS / Bonjour packets to go through
         /// </summary>
         [Input("allowMdns")]
         public Input<bool>? AllowMdns { get; set; }
@@ -1286,13 +1286,13 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanAirwatchGetArgs>? Airwatch { get; set; }
 
         /// <summary>
-        /// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        /// Only applicable when `LimitBcast`==`True`, which allows or disallows ipv6 Neighbor Discovery packets to go through
         /// </summary>
         [Input("allowIpv6Ndp")]
         public Input<bool>? AllowIpv6Ndp { get; set; }
 
         /// <summary>
-        /// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        /// Only applicable when `LimitBcast`==`True`, which allows mDNS / Bonjour packets to go through
         /// </summary>
         [Input("allowMdns")]
         public Input<bool>? AllowMdns { get; set; }

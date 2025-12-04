@@ -101,14 +101,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+     * Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
      * 
      */
     @Import(name="allowIpv6Ndp")
     private @Nullable Output<Boolean> allowIpv6Ndp;
 
     /**
-     * @return Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+     * @return Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
      * 
      */
     public Optional<Output<Boolean>> allowIpv6Ndp() {
@@ -116,14 +116,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+     * Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
      * 
      */
     @Import(name="allowMdns")
     private @Nullable Output<Boolean> allowMdns;
 
     /**
-     * @return Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+     * @return Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
      * 
      */
     public Optional<Output<Boolean>> allowMdns() {
@@ -1532,7 +1532,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowIpv6Ndp Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+         * @param allowIpv6Ndp Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
          * 
          * @return builder
          * 
@@ -1543,7 +1543,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowIpv6Ndp Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+         * @param allowIpv6Ndp Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
          * 
          * @return builder
          * 
@@ -1553,7 +1553,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowMdns Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+         * @param allowMdns Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
          * 
          * @return builder
          * 
@@ -1564,7 +1564,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowMdns Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+         * @param allowMdns Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
          * 
          * @return builder
          * 

@@ -92,11 +92,11 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly airwatch: pulumi.Output<outputs.site.WlanAirwatch>;
     /**
-     * Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+     * Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
      */
     declare public readonly allowIpv6Ndp: pulumi.Output<boolean>;
     /**
-     * Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+     * Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
      */
     declare public readonly allowMdns: pulumi.Output<boolean>;
     /**
@@ -666,11 +666,11 @@ export interface WlanState {
      */
     airwatch?: pulumi.Input<inputs.site.WlanAirwatch>;
     /**
-     * Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+     * Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
      */
     allowIpv6Ndp?: pulumi.Input<boolean>;
     /**
-     * Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+     * Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
      */
     allowMdns?: pulumi.Input<boolean>;
     /**
@@ -1024,11 +1024,11 @@ export interface WlanArgs {
      */
     airwatch?: pulumi.Input<inputs.site.WlanAirwatch>;
     /**
-     * Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+     * Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
      */
     allowIpv6Ndp?: pulumi.Input<boolean>;
     /**
-     * Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+     * Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
      */
     allowMdns?: pulumi.Input<boolean>;
     /**

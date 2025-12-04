@@ -172,7 +172,7 @@ export class Setting extends pulumi.CustomResource {
      * password policy
      */
     declare public readonly passwordPolicy: pulumi.Output<outputs.org.SettingPasswordPolicy | undefined>;
-    declare public readonly pcap: pulumi.Output<outputs.org.SettingPcap | undefined>;
+    declare public /*out*/ readonly pcap: pulumi.Output<outputs.org.SettingPcap>;
     declare public readonly security: pulumi.Output<outputs.org.SettingSecurity | undefined>;
     declare public readonly ssr: pulumi.Output<outputs.org.SettingSsr | undefined>;
     declare public readonly switch: pulumi.Output<outputs.org.SettingSwitch | undefined>;
@@ -269,7 +269,6 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["opticPortConfig"] = args?.opticPortConfig;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["passwordPolicy"] = args?.passwordPolicy;
-            resourceInputs["pcap"] = args?.pcap;
             resourceInputs["security"] = args?.security;
             resourceInputs["ssr"] = args?.ssr;
             resourceInputs["switch"] = args?.switch;
@@ -284,6 +283,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["wirelessPma"] = args?.wirelessPma;
             resourceInputs["cradlepoint"] = undefined /*out*/;
             resourceInputs["juniper"] = undefined /*out*/;
+            resourceInputs["pcap"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Setting.__pulumiType, name, resourceInputs, opts);
@@ -445,7 +445,6 @@ export interface SettingArgs {
      * password policy
      */
     passwordPolicy?: pulumi.Input<inputs.org.SettingPasswordPolicy>;
-    pcap?: pulumi.Input<inputs.org.SettingPcap>;
     security?: pulumi.Input<inputs.org.SettingSecurity>;
     ssr?: pulumi.Input<inputs.org.SettingSsr>;
     switch?: pulumi.Input<inputs.org.SettingSwitch>;

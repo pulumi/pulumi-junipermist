@@ -507,7 +507,7 @@ func (o AlarmtemplateRulesDeliveryPtrOutput) ToSiteAdmins() pulumi.BoolPtrOutput
 type ApitokenPrivilege struct {
 	// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
 	Role string `pulumi:"role"`
-	// enum: `org`, `site`, `sitegroup`
+	// enum: `org`, `site`, `sitegroup`, `orgsites`
 	Scope string `pulumi:"scope"`
 	// Required if `scope`==`site`
 	SiteId *string `pulumi:"siteId"`
@@ -529,7 +529,7 @@ type ApitokenPrivilegeInput interface {
 type ApitokenPrivilegeArgs struct {
 	// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
 	Role pulumi.StringInput `pulumi:"role"`
-	// enum: `org`, `site`, `sitegroup`
+	// enum: `org`, `site`, `sitegroup`, `orgsites`
 	Scope pulumi.StringInput `pulumi:"scope"`
 	// Required if `scope`==`site`
 	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
@@ -593,7 +593,7 @@ func (o ApitokenPrivilegeOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v ApitokenPrivilege) string { return v.Role }).(pulumi.StringOutput)
 }
 
-// enum: `org`, `site`, `sitegroup`
+// enum: `org`, `site`, `sitegroup`, `orgsites`
 func (o ApitokenPrivilegeOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v ApitokenPrivilege) string { return v.Scope }).(pulumi.StringOutput)
 }
@@ -4532,10 +4532,10 @@ type DeviceprofileApRadioConfig struct {
 	AntGain5 *int `pulumi:"antGain5"`
 	// Antenna gain for 6G - for models with external antenna only
 	AntGain6 *int `pulumi:"antGain6"`
-	// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-	AntMode *string `pulumi:"antMode"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode *string `pulumi:"antennaMode"`
+	// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+	AntennaSelect *string `pulumi:"antennaSelect"`
 	// Radio Band AP settings
 	Band24 *DeviceprofileApRadioConfigBand24 `pulumi:"band24"`
 	// enum: `24`, `5`, `6`, `auto`
@@ -4550,6 +4550,8 @@ type DeviceprofileApRadioConfig struct {
 	FullAutomaticRrm *bool `pulumi:"fullAutomaticRrm"`
 	// To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
 	IndoorUse *bool `pulumi:"indoorUse"`
+	// Enable RRM to manage all radio settings (ignores all bandXxx configs)
+	RrmManaged *bool `pulumi:"rrmManaged"`
 	// Whether scanning radio is enabled
 	ScanningEnabled *bool `pulumi:"scanningEnabled"`
 }
@@ -4573,10 +4575,10 @@ type DeviceprofileApRadioConfigArgs struct {
 	AntGain5 pulumi.IntPtrInput `pulumi:"antGain5"`
 	// Antenna gain for 6G - for models with external antenna only
 	AntGain6 pulumi.IntPtrInput `pulumi:"antGain6"`
-	// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-	AntMode pulumi.StringPtrInput `pulumi:"antMode"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode pulumi.StringPtrInput `pulumi:"antennaMode"`
+	// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+	AntennaSelect pulumi.StringPtrInput `pulumi:"antennaSelect"`
 	// Radio Band AP settings
 	Band24 DeviceprofileApRadioConfigBand24PtrInput `pulumi:"band24"`
 	// enum: `24`, `5`, `6`, `auto`
@@ -4591,6 +4593,8 @@ type DeviceprofileApRadioConfigArgs struct {
 	FullAutomaticRrm pulumi.BoolPtrInput `pulumi:"fullAutomaticRrm"`
 	// To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
 	IndoorUse pulumi.BoolPtrInput `pulumi:"indoorUse"`
+	// Enable RRM to manage all radio settings (ignores all bandXxx configs)
+	RrmManaged pulumi.BoolPtrInput `pulumi:"rrmManaged"`
 	// Whether scanning radio is enabled
 	ScanningEnabled pulumi.BoolPtrInput `pulumi:"scanningEnabled"`
 }
@@ -4691,14 +4695,14 @@ func (o DeviceprofileApRadioConfigOutput) AntGain6() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApRadioConfig) *int { return v.AntGain6 }).(pulumi.IntPtrOutput)
 }
 
-// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-func (o DeviceprofileApRadioConfigOutput) AntMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceprofileApRadioConfig) *string { return v.AntMode }).(pulumi.StringPtrOutput)
-}
-
 // enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 func (o DeviceprofileApRadioConfigOutput) AntennaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApRadioConfig) *string { return v.AntennaMode }).(pulumi.StringPtrOutput)
+}
+
+// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+func (o DeviceprofileApRadioConfigOutput) AntennaSelect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApRadioConfig) *string { return v.AntennaSelect }).(pulumi.StringPtrOutput)
 }
 
 // Radio Band AP settings
@@ -4734,6 +4738,11 @@ func (o DeviceprofileApRadioConfigOutput) FullAutomaticRrm() pulumi.BoolPtrOutpu
 // To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
 func (o DeviceprofileApRadioConfigOutput) IndoorUse() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApRadioConfig) *bool { return v.IndoorUse }).(pulumi.BoolPtrOutput)
+}
+
+// Enable RRM to manage all radio settings (ignores all bandXxx configs)
+func (o DeviceprofileApRadioConfigOutput) RrmManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApRadioConfig) *bool { return v.RrmManaged }).(pulumi.BoolPtrOutput)
 }
 
 // Whether scanning radio is enabled
@@ -4804,16 +4813,6 @@ func (o DeviceprofileApRadioConfigPtrOutput) AntGain6() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-func (o DeviceprofileApRadioConfigPtrOutput) AntMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceprofileApRadioConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AntMode
-	}).(pulumi.StringPtrOutput)
-}
-
 // enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 func (o DeviceprofileApRadioConfigPtrOutput) AntennaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileApRadioConfig) *string {
@@ -4821,6 +4820,16 @@ func (o DeviceprofileApRadioConfigPtrOutput) AntennaMode() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.AntennaMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+func (o DeviceprofileApRadioConfigPtrOutput) AntennaSelect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApRadioConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AntennaSelect
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4891,6 +4900,16 @@ func (o DeviceprofileApRadioConfigPtrOutput) IndoorUse() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.IndoorUse
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable RRM to manage all radio settings (ignores all bandXxx configs)
+func (o DeviceprofileApRadioConfigPtrOutput) RrmManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApRadioConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RrmManaged
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -5226,6 +5245,8 @@ func (o DeviceprofileApRadioConfigBand24PtrOutput) Preamble() pulumi.StringPtrOu
 type DeviceprofileApRadioConfigBand5 struct {
 	AllowRrmDisable *bool `pulumi:"allowRrmDisable"`
 	AntGain         *int  `pulumi:"antGain"`
+	// enum: `narrow`, `medium`, `wide`
+	AntennaBeamPattern *string `pulumi:"antennaBeamPattern"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode *string `pulumi:"antennaMode"`
 	// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
@@ -5260,6 +5281,8 @@ type DeviceprofileApRadioConfigBand5Input interface {
 type DeviceprofileApRadioConfigBand5Args struct {
 	AllowRrmDisable pulumi.BoolPtrInput `pulumi:"allowRrmDisable"`
 	AntGain         pulumi.IntPtrInput  `pulumi:"antGain"`
+	// enum: `narrow`, `medium`, `wide`
+	AntennaBeamPattern pulumi.StringPtrInput `pulumi:"antennaBeamPattern"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode pulumi.StringPtrInput `pulumi:"antennaMode"`
 	// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
@@ -5365,6 +5388,11 @@ func (o DeviceprofileApRadioConfigBand5Output) AntGain() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApRadioConfigBand5) *int { return v.AntGain }).(pulumi.IntPtrOutput)
 }
 
+// enum: `narrow`, `medium`, `wide`
+func (o DeviceprofileApRadioConfigBand5Output) AntennaBeamPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApRadioConfigBand5) *string { return v.AntennaBeamPattern }).(pulumi.StringPtrOutput)
+}
+
 // enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 func (o DeviceprofileApRadioConfigBand5Output) AntennaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApRadioConfigBand5) *string { return v.AntennaMode }).(pulumi.StringPtrOutput)
@@ -5450,6 +5478,16 @@ func (o DeviceprofileApRadioConfigBand5PtrOutput) AntGain() pulumi.IntPtrOutput 
 		}
 		return v.AntGain
 	}).(pulumi.IntPtrOutput)
+}
+
+// enum: `narrow`, `medium`, `wide`
+func (o DeviceprofileApRadioConfigBand5PtrOutput) AntennaBeamPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApRadioConfigBand5) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AntennaBeamPattern
+	}).(pulumi.StringPtrOutput)
 }
 
 // enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
@@ -5545,6 +5583,8 @@ func (o DeviceprofileApRadioConfigBand5PtrOutput) Preamble() pulumi.StringPtrOut
 type DeviceprofileApRadioConfigBand5On24Radio struct {
 	AllowRrmDisable *bool `pulumi:"allowRrmDisable"`
 	AntGain         *int  `pulumi:"antGain"`
+	// enum: `narrow`, `medium`, `wide`
+	AntennaBeamPattern *string `pulumi:"antennaBeamPattern"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode *string `pulumi:"antennaMode"`
 	// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
@@ -5579,6 +5619,8 @@ type DeviceprofileApRadioConfigBand5On24RadioInput interface {
 type DeviceprofileApRadioConfigBand5On24RadioArgs struct {
 	AllowRrmDisable pulumi.BoolPtrInput `pulumi:"allowRrmDisable"`
 	AntGain         pulumi.IntPtrInput  `pulumi:"antGain"`
+	// enum: `narrow`, `medium`, `wide`
+	AntennaBeamPattern pulumi.StringPtrInput `pulumi:"antennaBeamPattern"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode pulumi.StringPtrInput `pulumi:"antennaMode"`
 	// channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
@@ -5684,6 +5726,11 @@ func (o DeviceprofileApRadioConfigBand5On24RadioOutput) AntGain() pulumi.IntPtrO
 	return o.ApplyT(func(v DeviceprofileApRadioConfigBand5On24Radio) *int { return v.AntGain }).(pulumi.IntPtrOutput)
 }
 
+// enum: `narrow`, `medium`, `wide`
+func (o DeviceprofileApRadioConfigBand5On24RadioOutput) AntennaBeamPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApRadioConfigBand5On24Radio) *string { return v.AntennaBeamPattern }).(pulumi.StringPtrOutput)
+}
+
 // enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 func (o DeviceprofileApRadioConfigBand5On24RadioOutput) AntennaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApRadioConfigBand5On24Radio) *string { return v.AntennaMode }).(pulumi.StringPtrOutput)
@@ -5769,6 +5816,16 @@ func (o DeviceprofileApRadioConfigBand5On24RadioPtrOutput) AntGain() pulumi.IntP
 		}
 		return v.AntGain
 	}).(pulumi.IntPtrOutput)
+}
+
+// enum: `narrow`, `medium`, `wide`
+func (o DeviceprofileApRadioConfigBand5On24RadioPtrOutput) AntennaBeamPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApRadioConfigBand5On24Radio) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AntennaBeamPattern
+	}).(pulumi.StringPtrOutput)
 }
 
 // enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
@@ -5864,6 +5921,8 @@ func (o DeviceprofileApRadioConfigBand5On24RadioPtrOutput) Preamble() pulumi.Str
 type DeviceprofileApRadioConfigBand6 struct {
 	AllowRrmDisable *bool `pulumi:"allowRrmDisable"`
 	AntGain         *int  `pulumi:"antGain"`
+	// enum: `narrow`, `medium`, `wide`
+	AntennaBeamPattern *string `pulumi:"antennaBeamPattern"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode *string `pulumi:"antennaMode"`
 	// channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
@@ -5900,6 +5959,8 @@ type DeviceprofileApRadioConfigBand6Input interface {
 type DeviceprofileApRadioConfigBand6Args struct {
 	AllowRrmDisable pulumi.BoolPtrInput `pulumi:"allowRrmDisable"`
 	AntGain         pulumi.IntPtrInput  `pulumi:"antGain"`
+	// enum: `narrow`, `medium`, `wide`
+	AntennaBeamPattern pulumi.StringPtrInput `pulumi:"antennaBeamPattern"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode pulumi.StringPtrInput `pulumi:"antennaMode"`
 	// channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
@@ -6007,6 +6068,11 @@ func (o DeviceprofileApRadioConfigBand6Output) AntGain() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApRadioConfigBand6) *int { return v.AntGain }).(pulumi.IntPtrOutput)
 }
 
+// enum: `narrow`, `medium`, `wide`
+func (o DeviceprofileApRadioConfigBand6Output) AntennaBeamPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApRadioConfigBand6) *string { return v.AntennaBeamPattern }).(pulumi.StringPtrOutput)
+}
+
 // enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 func (o DeviceprofileApRadioConfigBand6Output) AntennaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApRadioConfigBand6) *string { return v.AntennaMode }).(pulumi.StringPtrOutput)
@@ -6097,6 +6163,16 @@ func (o DeviceprofileApRadioConfigBand6PtrOutput) AntGain() pulumi.IntPtrOutput 
 		}
 		return v.AntGain
 	}).(pulumi.IntPtrOutput)
+}
+
+// enum: `narrow`, `medium`, `wide`
+func (o DeviceprofileApRadioConfigBand6PtrOutput) AntennaBeamPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileApRadioConfigBand6) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AntennaBeamPattern
+	}).(pulumi.StringPtrOutput)
 }
 
 // enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
@@ -10988,7 +11064,7 @@ type DeviceprofileGatewayPortConfig struct {
 	AeDisableLacp *bool `pulumi:"aeDisableLacp"`
 	// If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
 	AeIdx *string `pulumi:"aeIdx"`
-	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+	// For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
 	AeLacpForceUp *bool `pulumi:"aeLacpForceUp"`
 	Aggregated    *bool `pulumi:"aggregated"`
 	// To generate port up/down alarm, set it to true
@@ -11088,7 +11164,7 @@ type DeviceprofileGatewayPortConfigArgs struct {
 	AeDisableLacp pulumi.BoolPtrInput `pulumi:"aeDisableLacp"`
 	// If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
 	AeIdx pulumi.StringPtrInput `pulumi:"aeIdx"`
-	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+	// For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
 	AeLacpForceUp pulumi.BoolPtrInput `pulumi:"aeLacpForceUp"`
 	Aggregated    pulumi.BoolPtrInput `pulumi:"aggregated"`
 	// To generate port up/down alarm, set it to true
@@ -11233,7 +11309,7 @@ func (o DeviceprofileGatewayPortConfigOutput) AeIdx() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *string { return v.AeIdx }).(pulumi.StringPtrOutput)
 }
 
-// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+// For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
 func (o DeviceprofileGatewayPortConfigOutput) AeLacpForceUp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *bool { return v.AeLacpForceUp }).(pulumi.BoolPtrOutput)
 }
@@ -13951,7 +14027,7 @@ type DeviceprofileGatewayServicePolicy struct {
 	Action *string `pulumi:"action"`
 	// For SRX-only
 	Antivirus *DeviceprofileGatewayServicePolicyAntivirus `pulumi:"antivirus"`
-	// For SRX Only
+	// SRX only
 	Appqoe *DeviceprofileGatewayServicePolicyAppqoe `pulumi:"appqoe"`
 	Ewfs   []DeviceprofileGatewayServicePolicyEwf   `pulumi:"ewfs"`
 	Idp    *DeviceprofileGatewayServicePolicyIdp    `pulumi:"idp"`
@@ -13965,8 +14041,12 @@ type DeviceprofileGatewayServicePolicy struct {
 	ServicepolicyId *string `pulumi:"servicepolicyId"`
 	// Required when `servicepolicyId` is not defined. List of Applications / Destinations
 	Services []string `pulumi:"services"`
+	// SRX only
+	Skyatp *DeviceprofileGatewayServicePolicySkyatp `pulumi:"skyatp"`
 	// For SRX-only
 	SslProxy *DeviceprofileGatewayServicePolicySslProxy `pulumi:"sslProxy"`
+	// Required for syslog logging
+	Syslog *DeviceprofileGatewayServicePolicySyslog `pulumi:"syslog"`
 	// Required when `servicepolicyId` is not defined. List of Networks / Users
 	Tenants []string `pulumi:"tenants"`
 }
@@ -13987,7 +14067,7 @@ type DeviceprofileGatewayServicePolicyArgs struct {
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// For SRX-only
 	Antivirus DeviceprofileGatewayServicePolicyAntivirusPtrInput `pulumi:"antivirus"`
-	// For SRX Only
+	// SRX only
 	Appqoe DeviceprofileGatewayServicePolicyAppqoePtrInput `pulumi:"appqoe"`
 	Ewfs   DeviceprofileGatewayServicePolicyEwfArrayInput  `pulumi:"ewfs"`
 	Idp    DeviceprofileGatewayServicePolicyIdpPtrInput    `pulumi:"idp"`
@@ -14001,8 +14081,12 @@ type DeviceprofileGatewayServicePolicyArgs struct {
 	ServicepolicyId pulumi.StringPtrInput `pulumi:"servicepolicyId"`
 	// Required when `servicepolicyId` is not defined. List of Applications / Destinations
 	Services pulumi.StringArrayInput `pulumi:"services"`
+	// SRX only
+	Skyatp DeviceprofileGatewayServicePolicySkyatpPtrInput `pulumi:"skyatp"`
 	// For SRX-only
 	SslProxy DeviceprofileGatewayServicePolicySslProxyPtrInput `pulumi:"sslProxy"`
+	// Required for syslog logging
+	Syslog DeviceprofileGatewayServicePolicySyslogPtrInput `pulumi:"syslog"`
 	// Required when `servicepolicyId` is not defined. List of Networks / Users
 	Tenants pulumi.StringArrayInput `pulumi:"tenants"`
 }
@@ -14070,7 +14154,7 @@ func (o DeviceprofileGatewayServicePolicyOutput) Antivirus() DeviceprofileGatewa
 	}).(DeviceprofileGatewayServicePolicyAntivirusPtrOutput)
 }
 
-// For SRX Only
+// SRX only
 func (o DeviceprofileGatewayServicePolicyOutput) Appqoe() DeviceprofileGatewayServicePolicyAppqoePtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayServicePolicy) *DeviceprofileGatewayServicePolicyAppqoe { return v.Appqoe }).(DeviceprofileGatewayServicePolicyAppqoePtrOutput)
 }
@@ -14108,11 +14192,21 @@ func (o DeviceprofileGatewayServicePolicyOutput) Services() pulumi.StringArrayOu
 	return o.ApplyT(func(v DeviceprofileGatewayServicePolicy) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
 
+// SRX only
+func (o DeviceprofileGatewayServicePolicyOutput) Skyatp() DeviceprofileGatewayServicePolicySkyatpPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicy) *DeviceprofileGatewayServicePolicySkyatp { return v.Skyatp }).(DeviceprofileGatewayServicePolicySkyatpPtrOutput)
+}
+
 // For SRX-only
 func (o DeviceprofileGatewayServicePolicyOutput) SslProxy() DeviceprofileGatewayServicePolicySslProxyPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayServicePolicy) *DeviceprofileGatewayServicePolicySslProxy {
 		return v.SslProxy
 	}).(DeviceprofileGatewayServicePolicySslProxyPtrOutput)
+}
+
+// Required for syslog logging
+func (o DeviceprofileGatewayServicePolicyOutput) Syslog() DeviceprofileGatewayServicePolicySyslogPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicy) *DeviceprofileGatewayServicePolicySyslog { return v.Syslog }).(DeviceprofileGatewayServicePolicySyslogPtrOutput)
 }
 
 // Required when `servicepolicyId` is not defined. List of Networks / Users
@@ -14745,6 +14839,200 @@ func (o DeviceprofileGatewayServicePolicyIdpPtrOutput) Profile() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type DeviceprofileGatewayServicePolicySkyatp struct {
+	// enum: `disabled`, `default`, `standard`, `strict`
+	DnsDgaDetection *string `pulumi:"dnsDgaDetection"`
+	// enum: `disabled`, `default`, `standard`, `strict`
+	DnsTunnelDetection *string `pulumi:"dnsTunnelDetection"`
+	// enum: `disabled`, `standard`
+	HttpInspection *string `pulumi:"httpInspection"`
+	// enum: `disabled`, `enabled`
+	IotDevicePolicy *string `pulumi:"iotDevicePolicy"`
+}
+
+// DeviceprofileGatewayServicePolicySkyatpInput is an input type that accepts DeviceprofileGatewayServicePolicySkyatpArgs and DeviceprofileGatewayServicePolicySkyatpOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayServicePolicySkyatpInput` via:
+//
+//	DeviceprofileGatewayServicePolicySkyatpArgs{...}
+type DeviceprofileGatewayServicePolicySkyatpInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayServicePolicySkyatpOutput() DeviceprofileGatewayServicePolicySkyatpOutput
+	ToDeviceprofileGatewayServicePolicySkyatpOutputWithContext(context.Context) DeviceprofileGatewayServicePolicySkyatpOutput
+}
+
+type DeviceprofileGatewayServicePolicySkyatpArgs struct {
+	// enum: `disabled`, `default`, `standard`, `strict`
+	DnsDgaDetection pulumi.StringPtrInput `pulumi:"dnsDgaDetection"`
+	// enum: `disabled`, `default`, `standard`, `strict`
+	DnsTunnelDetection pulumi.StringPtrInput `pulumi:"dnsTunnelDetection"`
+	// enum: `disabled`, `standard`
+	HttpInspection pulumi.StringPtrInput `pulumi:"httpInspection"`
+	// enum: `disabled`, `enabled`
+	IotDevicePolicy pulumi.StringPtrInput `pulumi:"iotDevicePolicy"`
+}
+
+func (DeviceprofileGatewayServicePolicySkyatpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatp)(nil)).Elem()
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpArgs) ToDeviceprofileGatewayServicePolicySkyatpOutput() DeviceprofileGatewayServicePolicySkyatpOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpArgs) ToDeviceprofileGatewayServicePolicySkyatpOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpOutput)
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpArgs) ToDeviceprofileGatewayServicePolicySkyatpPtrOutput() DeviceprofileGatewayServicePolicySkyatpPtrOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpArgs) ToDeviceprofileGatewayServicePolicySkyatpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpOutput).ToDeviceprofileGatewayServicePolicySkyatpPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileGatewayServicePolicySkyatpPtrInput is an input type that accepts DeviceprofileGatewayServicePolicySkyatpArgs, DeviceprofileGatewayServicePolicySkyatpPtr and DeviceprofileGatewayServicePolicySkyatpPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayServicePolicySkyatpPtrInput` via:
+//
+//	        DeviceprofileGatewayServicePolicySkyatpArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileGatewayServicePolicySkyatpPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayServicePolicySkyatpPtrOutput() DeviceprofileGatewayServicePolicySkyatpPtrOutput
+	ToDeviceprofileGatewayServicePolicySkyatpPtrOutputWithContext(context.Context) DeviceprofileGatewayServicePolicySkyatpPtrOutput
+}
+
+type deviceprofileGatewayServicePolicySkyatpPtrType DeviceprofileGatewayServicePolicySkyatpArgs
+
+func DeviceprofileGatewayServicePolicySkyatpPtr(v *DeviceprofileGatewayServicePolicySkyatpArgs) DeviceprofileGatewayServicePolicySkyatpPtrInput {
+	return (*deviceprofileGatewayServicePolicySkyatpPtrType)(v)
+}
+
+func (*deviceprofileGatewayServicePolicySkyatpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayServicePolicySkyatp)(nil)).Elem()
+}
+
+func (i *deviceprofileGatewayServicePolicySkyatpPtrType) ToDeviceprofileGatewayServicePolicySkyatpPtrOutput() DeviceprofileGatewayServicePolicySkyatpPtrOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileGatewayServicePolicySkyatpPtrType) ToDeviceprofileGatewayServicePolicySkyatpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayServicePolicySkyatpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatp)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpOutput) ToDeviceprofileGatewayServicePolicySkyatpOutput() DeviceprofileGatewayServicePolicySkyatpOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpOutput) ToDeviceprofileGatewayServicePolicySkyatpOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpOutput) ToDeviceprofileGatewayServicePolicySkyatpPtrOutput() DeviceprofileGatewayServicePolicySkyatpPtrOutput {
+	return o.ToDeviceprofileGatewayServicePolicySkyatpPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpOutput) ToDeviceprofileGatewayServicePolicySkyatpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileGatewayServicePolicySkyatp) *DeviceprofileGatewayServicePolicySkyatp {
+		return &v
+	}).(DeviceprofileGatewayServicePolicySkyatpPtrOutput)
+}
+
+// enum: `disabled`, `default`, `standard`, `strict`
+func (o DeviceprofileGatewayServicePolicySkyatpOutput) DnsDgaDetection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatp) *string { return v.DnsDgaDetection }).(pulumi.StringPtrOutput)
+}
+
+// enum: `disabled`, `default`, `standard`, `strict`
+func (o DeviceprofileGatewayServicePolicySkyatpOutput) DnsTunnelDetection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatp) *string { return v.DnsTunnelDetection }).(pulumi.StringPtrOutput)
+}
+
+// enum: `disabled`, `standard`
+func (o DeviceprofileGatewayServicePolicySkyatpOutput) HttpInspection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatp) *string { return v.HttpInspection }).(pulumi.StringPtrOutput)
+}
+
+// enum: `disabled`, `enabled`
+func (o DeviceprofileGatewayServicePolicySkyatpOutput) IotDevicePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatp) *string { return v.IotDevicePolicy }).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayServicePolicySkyatpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayServicePolicySkyatp)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) ToDeviceprofileGatewayServicePolicySkyatpPtrOutput() DeviceprofileGatewayServicePolicySkyatpPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) ToDeviceprofileGatewayServicePolicySkyatpPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) Elem() DeviceprofileGatewayServicePolicySkyatpOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) DeviceprofileGatewayServicePolicySkyatp {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileGatewayServicePolicySkyatp
+		return ret
+	}).(DeviceprofileGatewayServicePolicySkyatpOutput)
+}
+
+// enum: `disabled`, `default`, `standard`, `strict`
+func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) DnsDgaDetection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsDgaDetection
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `disabled`, `default`, `standard`, `strict`
+func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) DnsTunnelDetection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsTunnelDetection
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `disabled`, `standard`
+func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) HttpInspection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpInspection
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `disabled`, `enabled`
+func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) IotDevicePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IotDevicePolicy
+	}).(pulumi.StringPtrOutput)
+}
+
 type DeviceprofileGatewayServicePolicySslProxy struct {
 	// enum: `medium`, `strong`, `weak`
 	CiphersCategory *string `pulumi:"ciphersCategory"`
@@ -14895,6 +15183,154 @@ func (o DeviceprofileGatewayServicePolicySslProxyPtrOutput) Enabled() pulumi.Boo
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySyslog struct {
+	Enabled     *bool    `pulumi:"enabled"`
+	ServerNames []string `pulumi:"serverNames"`
+}
+
+// DeviceprofileGatewayServicePolicySyslogInput is an input type that accepts DeviceprofileGatewayServicePolicySyslogArgs and DeviceprofileGatewayServicePolicySyslogOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayServicePolicySyslogInput` via:
+//
+//	DeviceprofileGatewayServicePolicySyslogArgs{...}
+type DeviceprofileGatewayServicePolicySyslogInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayServicePolicySyslogOutput() DeviceprofileGatewayServicePolicySyslogOutput
+	ToDeviceprofileGatewayServicePolicySyslogOutputWithContext(context.Context) DeviceprofileGatewayServicePolicySyslogOutput
+}
+
+type DeviceprofileGatewayServicePolicySyslogArgs struct {
+	Enabled     pulumi.BoolPtrInput     `pulumi:"enabled"`
+	ServerNames pulumi.StringArrayInput `pulumi:"serverNames"`
+}
+
+func (DeviceprofileGatewayServicePolicySyslogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayServicePolicySyslog)(nil)).Elem()
+}
+
+func (i DeviceprofileGatewayServicePolicySyslogArgs) ToDeviceprofileGatewayServicePolicySyslogOutput() DeviceprofileGatewayServicePolicySyslogOutput {
+	return i.ToDeviceprofileGatewayServicePolicySyslogOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayServicePolicySyslogArgs) ToDeviceprofileGatewayServicePolicySyslogOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySyslogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySyslogOutput)
+}
+
+func (i DeviceprofileGatewayServicePolicySyslogArgs) ToDeviceprofileGatewayServicePolicySyslogPtrOutput() DeviceprofileGatewayServicePolicySyslogPtrOutput {
+	return i.ToDeviceprofileGatewayServicePolicySyslogPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayServicePolicySyslogArgs) ToDeviceprofileGatewayServicePolicySyslogPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySyslogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySyslogOutput).ToDeviceprofileGatewayServicePolicySyslogPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileGatewayServicePolicySyslogPtrInput is an input type that accepts DeviceprofileGatewayServicePolicySyslogArgs, DeviceprofileGatewayServicePolicySyslogPtr and DeviceprofileGatewayServicePolicySyslogPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayServicePolicySyslogPtrInput` via:
+//
+//	        DeviceprofileGatewayServicePolicySyslogArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileGatewayServicePolicySyslogPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayServicePolicySyslogPtrOutput() DeviceprofileGatewayServicePolicySyslogPtrOutput
+	ToDeviceprofileGatewayServicePolicySyslogPtrOutputWithContext(context.Context) DeviceprofileGatewayServicePolicySyslogPtrOutput
+}
+
+type deviceprofileGatewayServicePolicySyslogPtrType DeviceprofileGatewayServicePolicySyslogArgs
+
+func DeviceprofileGatewayServicePolicySyslogPtr(v *DeviceprofileGatewayServicePolicySyslogArgs) DeviceprofileGatewayServicePolicySyslogPtrInput {
+	return (*deviceprofileGatewayServicePolicySyslogPtrType)(v)
+}
+
+func (*deviceprofileGatewayServicePolicySyslogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayServicePolicySyslog)(nil)).Elem()
+}
+
+func (i *deviceprofileGatewayServicePolicySyslogPtrType) ToDeviceprofileGatewayServicePolicySyslogPtrOutput() DeviceprofileGatewayServicePolicySyslogPtrOutput {
+	return i.ToDeviceprofileGatewayServicePolicySyslogPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileGatewayServicePolicySyslogPtrType) ToDeviceprofileGatewayServicePolicySyslogPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySyslogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySyslogPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySyslogOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayServicePolicySyslogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayServicePolicySyslog)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayServicePolicySyslogOutput) ToDeviceprofileGatewayServicePolicySyslogOutput() DeviceprofileGatewayServicePolicySyslogOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySyslogOutput) ToDeviceprofileGatewayServicePolicySyslogOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySyslogOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySyslogOutput) ToDeviceprofileGatewayServicePolicySyslogPtrOutput() DeviceprofileGatewayServicePolicySyslogPtrOutput {
+	return o.ToDeviceprofileGatewayServicePolicySyslogPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileGatewayServicePolicySyslogOutput) ToDeviceprofileGatewayServicePolicySyslogPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySyslogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileGatewayServicePolicySyslog) *DeviceprofileGatewayServicePolicySyslog {
+		return &v
+	}).(DeviceprofileGatewayServicePolicySyslogPtrOutput)
+}
+
+func (o DeviceprofileGatewayServicePolicySyslogOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySyslog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o DeviceprofileGatewayServicePolicySyslogOutput) ServerNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySyslog) []string { return v.ServerNames }).(pulumi.StringArrayOutput)
+}
+
+type DeviceprofileGatewayServicePolicySyslogPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayServicePolicySyslogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayServicePolicySyslog)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayServicePolicySyslogPtrOutput) ToDeviceprofileGatewayServicePolicySyslogPtrOutput() DeviceprofileGatewayServicePolicySyslogPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySyslogPtrOutput) ToDeviceprofileGatewayServicePolicySyslogPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySyslogPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySyslogPtrOutput) Elem() DeviceprofileGatewayServicePolicySyslogOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySyslog) DeviceprofileGatewayServicePolicySyslog {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileGatewayServicePolicySyslog
+		return ret
+	}).(DeviceprofileGatewayServicePolicySyslogOutput)
+}
+
+func (o DeviceprofileGatewayServicePolicySyslogPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySyslog) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o DeviceprofileGatewayServicePolicySyslogPtrOutput) ServerNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySyslog) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerNames
+	}).(pulumi.StringArrayOutput)
 }
 
 type DeviceprofileGatewayTunnelConfigs struct {
@@ -23329,7 +23765,7 @@ type GatewaytemplatePortConfig struct {
 	AeDisableLacp *bool `pulumi:"aeDisableLacp"`
 	// If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
 	AeIdx *string `pulumi:"aeIdx"`
-	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+	// For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
 	AeLacpForceUp *bool `pulumi:"aeLacpForceUp"`
 	Aggregated    *bool `pulumi:"aggregated"`
 	// To generate port up/down alarm, set it to true
@@ -23429,7 +23865,7 @@ type GatewaytemplatePortConfigArgs struct {
 	AeDisableLacp pulumi.BoolPtrInput `pulumi:"aeDisableLacp"`
 	// If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
 	AeIdx pulumi.StringPtrInput `pulumi:"aeIdx"`
-	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+	// For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
 	AeLacpForceUp pulumi.BoolPtrInput `pulumi:"aeLacpForceUp"`
 	Aggregated    pulumi.BoolPtrInput `pulumi:"aggregated"`
 	// To generate port up/down alarm, set it to true
@@ -23574,7 +24010,7 @@ func (o GatewaytemplatePortConfigOutput) AeIdx() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewaytemplatePortConfig) *string { return v.AeIdx }).(pulumi.StringPtrOutput)
 }
 
-// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+// For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
 func (o GatewaytemplatePortConfigOutput) AeLacpForceUp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewaytemplatePortConfig) *bool { return v.AeLacpForceUp }).(pulumi.BoolPtrOutput)
 }
@@ -26286,7 +26722,7 @@ type GatewaytemplateServicePolicy struct {
 	Action *string `pulumi:"action"`
 	// For SRX-only
 	Antivirus *GatewaytemplateServicePolicyAntivirus `pulumi:"antivirus"`
-	// For SRX Only
+	// SRX only
 	Appqoe *GatewaytemplateServicePolicyAppqoe `pulumi:"appqoe"`
 	Ewfs   []GatewaytemplateServicePolicyEwf   `pulumi:"ewfs"`
 	Idp    *GatewaytemplateServicePolicyIdp    `pulumi:"idp"`
@@ -26300,8 +26736,12 @@ type GatewaytemplateServicePolicy struct {
 	ServicepolicyId *string `pulumi:"servicepolicyId"`
 	// Required when `servicepolicyId` is not defined. List of Applications / Destinations
 	Services []string `pulumi:"services"`
+	// SRX only
+	Skyatp *GatewaytemplateServicePolicySkyatp `pulumi:"skyatp"`
 	// For SRX-only
 	SslProxy *GatewaytemplateServicePolicySslProxy `pulumi:"sslProxy"`
+	// Required for syslog logging
+	Syslog *GatewaytemplateServicePolicySyslog `pulumi:"syslog"`
 	// Required when `servicepolicyId` is not defined. List of Networks / Users
 	Tenants []string `pulumi:"tenants"`
 }
@@ -26322,7 +26762,7 @@ type GatewaytemplateServicePolicyArgs struct {
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// For SRX-only
 	Antivirus GatewaytemplateServicePolicyAntivirusPtrInput `pulumi:"antivirus"`
-	// For SRX Only
+	// SRX only
 	Appqoe GatewaytemplateServicePolicyAppqoePtrInput `pulumi:"appqoe"`
 	Ewfs   GatewaytemplateServicePolicyEwfArrayInput  `pulumi:"ewfs"`
 	Idp    GatewaytemplateServicePolicyIdpPtrInput    `pulumi:"idp"`
@@ -26336,8 +26776,12 @@ type GatewaytemplateServicePolicyArgs struct {
 	ServicepolicyId pulumi.StringPtrInput `pulumi:"servicepolicyId"`
 	// Required when `servicepolicyId` is not defined. List of Applications / Destinations
 	Services pulumi.StringArrayInput `pulumi:"services"`
+	// SRX only
+	Skyatp GatewaytemplateServicePolicySkyatpPtrInput `pulumi:"skyatp"`
 	// For SRX-only
 	SslProxy GatewaytemplateServicePolicySslProxyPtrInput `pulumi:"sslProxy"`
+	// Required for syslog logging
+	Syslog GatewaytemplateServicePolicySyslogPtrInput `pulumi:"syslog"`
 	// Required when `servicepolicyId` is not defined. List of Networks / Users
 	Tenants pulumi.StringArrayInput `pulumi:"tenants"`
 }
@@ -26403,7 +26847,7 @@ func (o GatewaytemplateServicePolicyOutput) Antivirus() GatewaytemplateServicePo
 	return o.ApplyT(func(v GatewaytemplateServicePolicy) *GatewaytemplateServicePolicyAntivirus { return v.Antivirus }).(GatewaytemplateServicePolicyAntivirusPtrOutput)
 }
 
-// For SRX Only
+// SRX only
 func (o GatewaytemplateServicePolicyOutput) Appqoe() GatewaytemplateServicePolicyAppqoePtrOutput {
 	return o.ApplyT(func(v GatewaytemplateServicePolicy) *GatewaytemplateServicePolicyAppqoe { return v.Appqoe }).(GatewaytemplateServicePolicyAppqoePtrOutput)
 }
@@ -26441,9 +26885,19 @@ func (o GatewaytemplateServicePolicyOutput) Services() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v GatewaytemplateServicePolicy) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
 
+// SRX only
+func (o GatewaytemplateServicePolicyOutput) Skyatp() GatewaytemplateServicePolicySkyatpPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicy) *GatewaytemplateServicePolicySkyatp { return v.Skyatp }).(GatewaytemplateServicePolicySkyatpPtrOutput)
+}
+
 // For SRX-only
 func (o GatewaytemplateServicePolicyOutput) SslProxy() GatewaytemplateServicePolicySslProxyPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateServicePolicy) *GatewaytemplateServicePolicySslProxy { return v.SslProxy }).(GatewaytemplateServicePolicySslProxyPtrOutput)
+}
+
+// Required for syslog logging
+func (o GatewaytemplateServicePolicyOutput) Syslog() GatewaytemplateServicePolicySyslogPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicy) *GatewaytemplateServicePolicySyslog { return v.Syslog }).(GatewaytemplateServicePolicySyslogPtrOutput)
 }
 
 // Required when `servicepolicyId` is not defined. List of Networks / Users
@@ -27076,6 +27530,200 @@ func (o GatewaytemplateServicePolicyIdpPtrOutput) Profile() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type GatewaytemplateServicePolicySkyatp struct {
+	// enum: `disabled`, `default`, `standard`, `strict`
+	DnsDgaDetection *string `pulumi:"dnsDgaDetection"`
+	// enum: `disabled`, `default`, `standard`, `strict`
+	DnsTunnelDetection *string `pulumi:"dnsTunnelDetection"`
+	// enum: `disabled`, `standard`
+	HttpInspection *string `pulumi:"httpInspection"`
+	// enum: `disabled`, `enabled`
+	IotDevicePolicy *string `pulumi:"iotDevicePolicy"`
+}
+
+// GatewaytemplateServicePolicySkyatpInput is an input type that accepts GatewaytemplateServicePolicySkyatpArgs and GatewaytemplateServicePolicySkyatpOutput values.
+// You can construct a concrete instance of `GatewaytemplateServicePolicySkyatpInput` via:
+//
+//	GatewaytemplateServicePolicySkyatpArgs{...}
+type GatewaytemplateServicePolicySkyatpInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateServicePolicySkyatpOutput() GatewaytemplateServicePolicySkyatpOutput
+	ToGatewaytemplateServicePolicySkyatpOutputWithContext(context.Context) GatewaytemplateServicePolicySkyatpOutput
+}
+
+type GatewaytemplateServicePolicySkyatpArgs struct {
+	// enum: `disabled`, `default`, `standard`, `strict`
+	DnsDgaDetection pulumi.StringPtrInput `pulumi:"dnsDgaDetection"`
+	// enum: `disabled`, `default`, `standard`, `strict`
+	DnsTunnelDetection pulumi.StringPtrInput `pulumi:"dnsTunnelDetection"`
+	// enum: `disabled`, `standard`
+	HttpInspection pulumi.StringPtrInput `pulumi:"httpInspection"`
+	// enum: `disabled`, `enabled`
+	IotDevicePolicy pulumi.StringPtrInput `pulumi:"iotDevicePolicy"`
+}
+
+func (GatewaytemplateServicePolicySkyatpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateServicePolicySkyatp)(nil)).Elem()
+}
+
+func (i GatewaytemplateServicePolicySkyatpArgs) ToGatewaytemplateServicePolicySkyatpOutput() GatewaytemplateServicePolicySkyatpOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateServicePolicySkyatpArgs) ToGatewaytemplateServicePolicySkyatpOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpOutput)
+}
+
+func (i GatewaytemplateServicePolicySkyatpArgs) ToGatewaytemplateServicePolicySkyatpPtrOutput() GatewaytemplateServicePolicySkyatpPtrOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpPtrOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateServicePolicySkyatpArgs) ToGatewaytemplateServicePolicySkyatpPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpOutput).ToGatewaytemplateServicePolicySkyatpPtrOutputWithContext(ctx)
+}
+
+// GatewaytemplateServicePolicySkyatpPtrInput is an input type that accepts GatewaytemplateServicePolicySkyatpArgs, GatewaytemplateServicePolicySkyatpPtr and GatewaytemplateServicePolicySkyatpPtrOutput values.
+// You can construct a concrete instance of `GatewaytemplateServicePolicySkyatpPtrInput` via:
+//
+//	        GatewaytemplateServicePolicySkyatpArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewaytemplateServicePolicySkyatpPtrInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateServicePolicySkyatpPtrOutput() GatewaytemplateServicePolicySkyatpPtrOutput
+	ToGatewaytemplateServicePolicySkyatpPtrOutputWithContext(context.Context) GatewaytemplateServicePolicySkyatpPtrOutput
+}
+
+type gatewaytemplateServicePolicySkyatpPtrType GatewaytemplateServicePolicySkyatpArgs
+
+func GatewaytemplateServicePolicySkyatpPtr(v *GatewaytemplateServicePolicySkyatpArgs) GatewaytemplateServicePolicySkyatpPtrInput {
+	return (*gatewaytemplateServicePolicySkyatpPtrType)(v)
+}
+
+func (*gatewaytemplateServicePolicySkyatpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateServicePolicySkyatp)(nil)).Elem()
+}
+
+func (i *gatewaytemplateServicePolicySkyatpPtrType) ToGatewaytemplateServicePolicySkyatpPtrOutput() GatewaytemplateServicePolicySkyatpPtrOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewaytemplateServicePolicySkyatpPtrType) ToGatewaytemplateServicePolicySkyatpPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateServicePolicySkyatpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateServicePolicySkyatp)(nil)).Elem()
+}
+
+func (o GatewaytemplateServicePolicySkyatpOutput) ToGatewaytemplateServicePolicySkyatpOutput() GatewaytemplateServicePolicySkyatpOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpOutput) ToGatewaytemplateServicePolicySkyatpOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpOutput) ToGatewaytemplateServicePolicySkyatpPtrOutput() GatewaytemplateServicePolicySkyatpPtrOutput {
+	return o.ToGatewaytemplateServicePolicySkyatpPtrOutputWithContext(context.Background())
+}
+
+func (o GatewaytemplateServicePolicySkyatpOutput) ToGatewaytemplateServicePolicySkyatpPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewaytemplateServicePolicySkyatp) *GatewaytemplateServicePolicySkyatp {
+		return &v
+	}).(GatewaytemplateServicePolicySkyatpPtrOutput)
+}
+
+// enum: `disabled`, `default`, `standard`, `strict`
+func (o GatewaytemplateServicePolicySkyatpOutput) DnsDgaDetection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatp) *string { return v.DnsDgaDetection }).(pulumi.StringPtrOutput)
+}
+
+// enum: `disabled`, `default`, `standard`, `strict`
+func (o GatewaytemplateServicePolicySkyatpOutput) DnsTunnelDetection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatp) *string { return v.DnsTunnelDetection }).(pulumi.StringPtrOutput)
+}
+
+// enum: `disabled`, `standard`
+func (o GatewaytemplateServicePolicySkyatpOutput) HttpInspection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatp) *string { return v.HttpInspection }).(pulumi.StringPtrOutput)
+}
+
+// enum: `disabled`, `enabled`
+func (o GatewaytemplateServicePolicySkyatpOutput) IotDevicePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatp) *string { return v.IotDevicePolicy }).(pulumi.StringPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateServicePolicySkyatpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateServicePolicySkyatp)(nil)).Elem()
+}
+
+func (o GatewaytemplateServicePolicySkyatpPtrOutput) ToGatewaytemplateServicePolicySkyatpPtrOutput() GatewaytemplateServicePolicySkyatpPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpPtrOutput) ToGatewaytemplateServicePolicySkyatpPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpPtrOutput) Elem() GatewaytemplateServicePolicySkyatpOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) GatewaytemplateServicePolicySkyatp {
+		if v != nil {
+			return *v
+		}
+		var ret GatewaytemplateServicePolicySkyatp
+		return ret
+	}).(GatewaytemplateServicePolicySkyatpOutput)
+}
+
+// enum: `disabled`, `default`, `standard`, `strict`
+func (o GatewaytemplateServicePolicySkyatpPtrOutput) DnsDgaDetection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsDgaDetection
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `disabled`, `default`, `standard`, `strict`
+func (o GatewaytemplateServicePolicySkyatpPtrOutput) DnsTunnelDetection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsTunnelDetection
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `disabled`, `standard`
+func (o GatewaytemplateServicePolicySkyatpPtrOutput) HttpInspection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpInspection
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `disabled`, `enabled`
+func (o GatewaytemplateServicePolicySkyatpPtrOutput) IotDevicePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IotDevicePolicy
+	}).(pulumi.StringPtrOutput)
+}
+
 type GatewaytemplateServicePolicySslProxy struct {
 	// enum: `medium`, `strong`, `weak`
 	CiphersCategory *string `pulumi:"ciphersCategory"`
@@ -27226,6 +27874,154 @@ func (o GatewaytemplateServicePolicySslProxyPtrOutput) Enabled() pulumi.BoolPtrO
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type GatewaytemplateServicePolicySyslog struct {
+	Enabled     *bool    `pulumi:"enabled"`
+	ServerNames []string `pulumi:"serverNames"`
+}
+
+// GatewaytemplateServicePolicySyslogInput is an input type that accepts GatewaytemplateServicePolicySyslogArgs and GatewaytemplateServicePolicySyslogOutput values.
+// You can construct a concrete instance of `GatewaytemplateServicePolicySyslogInput` via:
+//
+//	GatewaytemplateServicePolicySyslogArgs{...}
+type GatewaytemplateServicePolicySyslogInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateServicePolicySyslogOutput() GatewaytemplateServicePolicySyslogOutput
+	ToGatewaytemplateServicePolicySyslogOutputWithContext(context.Context) GatewaytemplateServicePolicySyslogOutput
+}
+
+type GatewaytemplateServicePolicySyslogArgs struct {
+	Enabled     pulumi.BoolPtrInput     `pulumi:"enabled"`
+	ServerNames pulumi.StringArrayInput `pulumi:"serverNames"`
+}
+
+func (GatewaytemplateServicePolicySyslogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateServicePolicySyslog)(nil)).Elem()
+}
+
+func (i GatewaytemplateServicePolicySyslogArgs) ToGatewaytemplateServicePolicySyslogOutput() GatewaytemplateServicePolicySyslogOutput {
+	return i.ToGatewaytemplateServicePolicySyslogOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateServicePolicySyslogArgs) ToGatewaytemplateServicePolicySyslogOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySyslogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySyslogOutput)
+}
+
+func (i GatewaytemplateServicePolicySyslogArgs) ToGatewaytemplateServicePolicySyslogPtrOutput() GatewaytemplateServicePolicySyslogPtrOutput {
+	return i.ToGatewaytemplateServicePolicySyslogPtrOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateServicePolicySyslogArgs) ToGatewaytemplateServicePolicySyslogPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySyslogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySyslogOutput).ToGatewaytemplateServicePolicySyslogPtrOutputWithContext(ctx)
+}
+
+// GatewaytemplateServicePolicySyslogPtrInput is an input type that accepts GatewaytemplateServicePolicySyslogArgs, GatewaytemplateServicePolicySyslogPtr and GatewaytemplateServicePolicySyslogPtrOutput values.
+// You can construct a concrete instance of `GatewaytemplateServicePolicySyslogPtrInput` via:
+//
+//	        GatewaytemplateServicePolicySyslogArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewaytemplateServicePolicySyslogPtrInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateServicePolicySyslogPtrOutput() GatewaytemplateServicePolicySyslogPtrOutput
+	ToGatewaytemplateServicePolicySyslogPtrOutputWithContext(context.Context) GatewaytemplateServicePolicySyslogPtrOutput
+}
+
+type gatewaytemplateServicePolicySyslogPtrType GatewaytemplateServicePolicySyslogArgs
+
+func GatewaytemplateServicePolicySyslogPtr(v *GatewaytemplateServicePolicySyslogArgs) GatewaytemplateServicePolicySyslogPtrInput {
+	return (*gatewaytemplateServicePolicySyslogPtrType)(v)
+}
+
+func (*gatewaytemplateServicePolicySyslogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateServicePolicySyslog)(nil)).Elem()
+}
+
+func (i *gatewaytemplateServicePolicySyslogPtrType) ToGatewaytemplateServicePolicySyslogPtrOutput() GatewaytemplateServicePolicySyslogPtrOutput {
+	return i.ToGatewaytemplateServicePolicySyslogPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewaytemplateServicePolicySyslogPtrType) ToGatewaytemplateServicePolicySyslogPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySyslogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySyslogPtrOutput)
+}
+
+type GatewaytemplateServicePolicySyslogOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateServicePolicySyslogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateServicePolicySyslog)(nil)).Elem()
+}
+
+func (o GatewaytemplateServicePolicySyslogOutput) ToGatewaytemplateServicePolicySyslogOutput() GatewaytemplateServicePolicySyslogOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySyslogOutput) ToGatewaytemplateServicePolicySyslogOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySyslogOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySyslogOutput) ToGatewaytemplateServicePolicySyslogPtrOutput() GatewaytemplateServicePolicySyslogPtrOutput {
+	return o.ToGatewaytemplateServicePolicySyslogPtrOutputWithContext(context.Background())
+}
+
+func (o GatewaytemplateServicePolicySyslogOutput) ToGatewaytemplateServicePolicySyslogPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySyslogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewaytemplateServicePolicySyslog) *GatewaytemplateServicePolicySyslog {
+		return &v
+	}).(GatewaytemplateServicePolicySyslogPtrOutput)
+}
+
+func (o GatewaytemplateServicePolicySyslogOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySyslog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GatewaytemplateServicePolicySyslogOutput) ServerNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySyslog) []string { return v.ServerNames }).(pulumi.StringArrayOutput)
+}
+
+type GatewaytemplateServicePolicySyslogPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateServicePolicySyslogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateServicePolicySyslog)(nil)).Elem()
+}
+
+func (o GatewaytemplateServicePolicySyslogPtrOutput) ToGatewaytemplateServicePolicySyslogPtrOutput() GatewaytemplateServicePolicySyslogPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySyslogPtrOutput) ToGatewaytemplateServicePolicySyslogPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySyslogPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySyslogPtrOutput) Elem() GatewaytemplateServicePolicySyslogOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySyslog) GatewaytemplateServicePolicySyslog {
+		if v != nil {
+			return *v
+		}
+		var ret GatewaytemplateServicePolicySyslog
+		return ret
+	}).(GatewaytemplateServicePolicySyslogOutput)
+}
+
+func (o GatewaytemplateServicePolicySyslogPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySyslog) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GatewaytemplateServicePolicySyslogPtrOutput) ServerNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySyslog) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerNames
+	}).(pulumi.StringArrayOutput)
 }
 
 type GatewaytemplateTunnelConfigs struct {
@@ -33178,7 +33974,7 @@ func (o NetworktemplateAclPolicyActionArrayOutput) Index(i pulumi.IntInput) Netw
 }
 
 type NetworktemplateAclTags struct {
-	// Can only be used under dst tags.
+	// ARP / IPv6. Default is `any`
 	EtherTypes []string `pulumi:"etherTypes"`
 	// Required if
 	//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
@@ -33236,7 +34032,7 @@ type NetworktemplateAclTagsInput interface {
 }
 
 type NetworktemplateAclTagsArgs struct {
-	// Can only be used under dst tags.
+	// ARP / IPv6. Default is `any`
 	EtherTypes pulumi.StringArrayInput `pulumi:"etherTypes"`
 	// Required if
 	//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
@@ -33333,7 +34129,7 @@ func (o NetworktemplateAclTagsOutput) ToNetworktemplateAclTagsOutputWithContext(
 	return o
 }
 
-// Can only be used under dst tags.
+// ARP / IPv6. Default is `any`
 func (o NetworktemplateAclTagsOutput) EtherTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) []string { return v.EtherTypes }).(pulumi.StringArrayOutput)
 }
@@ -34924,7 +35720,7 @@ func (o NetworktemplatePortMirroringMapOutput) MapIndex(k pulumi.StringInput) Ne
 type NetworktemplatePortUsages struct {
 	// Only if `mode`==`trunk`. Whether to trunk all network/vlans
 	AllNetworks *bool `pulumi:"allNetworks"`
-	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+	// Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
 	AllowDhcpd *bool `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants *bool `pulumi:"allowMultipleSupplicants"`
@@ -34932,6 +35728,8 @@ type NetworktemplatePortUsages struct {
 	BypassAuthWhenServerDown *bool `pulumi:"bypassAuthWhenServerDown"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
 	BypassAuthWhenServerDownForUnknownClient *bool `pulumi:"bypassAuthWhenServerDownForUnknownClient"`
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+	BypassAuthWhenServerDownForVoip *bool `pulumi:"bypassAuthWhenServerDownForVoip"`
 	// Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
 	CommunityVlanId *int `pulumi:"communityVlanId"`
 	// Only if `mode`!=`dynamic`
@@ -34950,9 +35748,9 @@ type NetworktemplatePortUsages struct {
 	EnableQos *bool `pulumi:"enableQos"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork *string `pulumi:"guestNetwork"`
-	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
 	InterIsolationNetworkLink *bool `pulumi:"interIsolationNetworkLink"`
-	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
 	InterSwitchLink *bool `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly *bool `pulumi:"macAuthOnly"`
@@ -34972,6 +35770,8 @@ type NetworktemplatePortUsages struct {
 	PersistMac *bool `pulumi:"persistMac"`
 	// Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
 	PoeDisabled *bool `pulumi:"poeDisabled"`
+	// PoE priority. enum: `low`, `high`
+	PoePriority *string `pulumi:"poePriority"`
 	// Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
 	PortAuth *string `pulumi:"portAuth"`
 	// Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
@@ -35022,7 +35822,7 @@ type NetworktemplatePortUsagesInput interface {
 type NetworktemplatePortUsagesArgs struct {
 	// Only if `mode`==`trunk`. Whether to trunk all network/vlans
 	AllNetworks pulumi.BoolPtrInput `pulumi:"allNetworks"`
-	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+	// Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
 	AllowDhcpd pulumi.BoolPtrInput `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants pulumi.BoolPtrInput `pulumi:"allowMultipleSupplicants"`
@@ -35030,6 +35830,8 @@ type NetworktemplatePortUsagesArgs struct {
 	BypassAuthWhenServerDown pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDown"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
 	BypassAuthWhenServerDownForUnknownClient pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDownForUnknownClient"`
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+	BypassAuthWhenServerDownForVoip pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDownForVoip"`
 	// Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
 	CommunityVlanId pulumi.IntPtrInput `pulumi:"communityVlanId"`
 	// Only if `mode`!=`dynamic`
@@ -35048,9 +35850,9 @@ type NetworktemplatePortUsagesArgs struct {
 	EnableQos pulumi.BoolPtrInput `pulumi:"enableQos"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork pulumi.StringPtrInput `pulumi:"guestNetwork"`
-	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
 	InterIsolationNetworkLink pulumi.BoolPtrInput `pulumi:"interIsolationNetworkLink"`
-	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
 	InterSwitchLink pulumi.BoolPtrInput `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly pulumi.BoolPtrInput `pulumi:"macAuthOnly"`
@@ -35070,6 +35872,8 @@ type NetworktemplatePortUsagesArgs struct {
 	PersistMac pulumi.BoolPtrInput `pulumi:"persistMac"`
 	// Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
 	PoeDisabled pulumi.BoolPtrInput `pulumi:"poeDisabled"`
+	// PoE priority. enum: `low`, `high`
+	PoePriority pulumi.StringPtrInput `pulumi:"poePriority"`
 	// Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
 	PortAuth pulumi.StringPtrInput `pulumi:"portAuth"`
 	// Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
@@ -35162,7 +35966,7 @@ func (o NetworktemplatePortUsagesOutput) AllNetworks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.AllNetworks }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+// Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
 func (o NetworktemplatePortUsagesOutput) AllowDhcpd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.AllowDhcpd }).(pulumi.BoolPtrOutput)
 }
@@ -35180,6 +35984,11 @@ func (o NetworktemplatePortUsagesOutput) BypassAuthWhenServerDown() pulumi.BoolP
 // Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
 func (o NetworktemplatePortUsagesOutput) BypassAuthWhenServerDownForUnknownClient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.BypassAuthWhenServerDownForUnknownClient }).(pulumi.BoolPtrOutput)
+}
+
+// Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+func (o NetworktemplatePortUsagesOutput) BypassAuthWhenServerDownForVoip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.BypassAuthWhenServerDownForVoip }).(pulumi.BoolPtrOutput)
 }
 
 // Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
@@ -35227,12 +36036,12 @@ func (o NetworktemplatePortUsagesOutput) GuestNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.GuestNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+// Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
 func (o NetworktemplatePortUsagesOutput) InterIsolationNetworkLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.InterIsolationNetworkLink }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+// Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
 func (o NetworktemplatePortUsagesOutput) InterSwitchLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.InterSwitchLink }).(pulumi.BoolPtrOutput)
 }
@@ -35280,6 +36089,11 @@ func (o NetworktemplatePortUsagesOutput) PersistMac() pulumi.BoolPtrOutput {
 // Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
 func (o NetworktemplatePortUsagesOutput) PoeDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.PoeDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// PoE priority. enum: `low`, `high`
+func (o NetworktemplatePortUsagesOutput) PoePriority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.PoePriority }).(pulumi.StringPtrOutput)
 }
 
 // Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
@@ -35395,7 +36209,7 @@ type NetworktemplatePortUsagesRule struct {
 	// "split(.)[1]": "a.b.c" > "b"
 	// "split(-)[1][0:3]: "a1234-b5678-c90" > "b56"
 	Expression *string `pulumi:"expression"`
-	// enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+	// enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
 	Src string `pulumi:"src"`
 	// `portUsage` name
 	Usage *string `pulumi:"usage"`
@@ -35420,7 +36234,7 @@ type NetworktemplatePortUsagesRuleArgs struct {
 	// "split(.)[1]": "a.b.c" > "b"
 	// "split(-)[1][0:3]: "a1234-b5678-c90" > "b56"
 	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	// enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+	// enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
 	Src pulumi.StringInput `pulumi:"src"`
 	// `portUsage` name
 	Usage pulumi.StringPtrInput `pulumi:"usage"`
@@ -35493,7 +36307,7 @@ func (o NetworktemplatePortUsagesRuleOutput) Expression() pulumi.StringPtrOutput
 	return o.ApplyT(func(v NetworktemplatePortUsagesRule) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
-// enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+// enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
 func (o NetworktemplatePortUsagesRuleOutput) Src() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsagesRule) string { return v.Src }).(pulumi.StringOutput)
 }
@@ -49078,9 +49892,15 @@ func (o SettingMarvisPtrOutput) AutoOperations() SettingMarvisAutoOperationsPtrO
 }
 
 type SettingMarvisAutoOperations struct {
+	ApInsufficientCapacity                 *bool `pulumi:"apInsufficientCapacity"`
+	ApLoop                                 *bool `pulumi:"apLoop"`
+	ApNonCompliant                         *bool `pulumi:"apNonCompliant"`
 	BouncePortForAbnormalPoeClient         *bool `pulumi:"bouncePortForAbnormalPoeClient"`
 	DisablePortWhenDdosProtocolViolation   *bool `pulumi:"disablePortWhenDdosProtocolViolation"`
 	DisablePortWhenRogueDhcpServerDetected *bool `pulumi:"disablePortWhenRogueDhcpServerDetected"`
+	GatewayNonCompliant                    *bool `pulumi:"gatewayNonCompliant"`
+	SwitchMisconfiguredPort                *bool `pulumi:"switchMisconfiguredPort"`
+	SwitchPortStuck                        *bool `pulumi:"switchPortStuck"`
 }
 
 // SettingMarvisAutoOperationsInput is an input type that accepts SettingMarvisAutoOperationsArgs and SettingMarvisAutoOperationsOutput values.
@@ -49095,9 +49915,15 @@ type SettingMarvisAutoOperationsInput interface {
 }
 
 type SettingMarvisAutoOperationsArgs struct {
+	ApInsufficientCapacity                 pulumi.BoolPtrInput `pulumi:"apInsufficientCapacity"`
+	ApLoop                                 pulumi.BoolPtrInput `pulumi:"apLoop"`
+	ApNonCompliant                         pulumi.BoolPtrInput `pulumi:"apNonCompliant"`
 	BouncePortForAbnormalPoeClient         pulumi.BoolPtrInput `pulumi:"bouncePortForAbnormalPoeClient"`
 	DisablePortWhenDdosProtocolViolation   pulumi.BoolPtrInput `pulumi:"disablePortWhenDdosProtocolViolation"`
 	DisablePortWhenRogueDhcpServerDetected pulumi.BoolPtrInput `pulumi:"disablePortWhenRogueDhcpServerDetected"`
+	GatewayNonCompliant                    pulumi.BoolPtrInput `pulumi:"gatewayNonCompliant"`
+	SwitchMisconfiguredPort                pulumi.BoolPtrInput `pulumi:"switchMisconfiguredPort"`
+	SwitchPortStuck                        pulumi.BoolPtrInput `pulumi:"switchPortStuck"`
 }
 
 func (SettingMarvisAutoOperationsArgs) ElementType() reflect.Type {
@@ -49177,6 +50003,18 @@ func (o SettingMarvisAutoOperationsOutput) ToSettingMarvisAutoOperationsPtrOutpu
 	}).(SettingMarvisAutoOperationsPtrOutput)
 }
 
+func (o SettingMarvisAutoOperationsOutput) ApInsufficientCapacity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.ApInsufficientCapacity }).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsOutput) ApLoop() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.ApLoop }).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsOutput) ApNonCompliant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.ApNonCompliant }).(pulumi.BoolPtrOutput)
+}
+
 func (o SettingMarvisAutoOperationsOutput) BouncePortForAbnormalPoeClient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.BouncePortForAbnormalPoeClient }).(pulumi.BoolPtrOutput)
 }
@@ -49187,6 +50025,18 @@ func (o SettingMarvisAutoOperationsOutput) DisablePortWhenDdosProtocolViolation(
 
 func (o SettingMarvisAutoOperationsOutput) DisablePortWhenRogueDhcpServerDetected() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.DisablePortWhenRogueDhcpServerDetected }).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsOutput) GatewayNonCompliant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.GatewayNonCompliant }).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsOutput) SwitchMisconfiguredPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.SwitchMisconfiguredPort }).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsOutput) SwitchPortStuck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMarvisAutoOperations) *bool { return v.SwitchPortStuck }).(pulumi.BoolPtrOutput)
 }
 
 type SettingMarvisAutoOperationsPtrOutput struct{ *pulumi.OutputState }
@@ -49213,6 +50063,33 @@ func (o SettingMarvisAutoOperationsPtrOutput) Elem() SettingMarvisAutoOperations
 	}).(SettingMarvisAutoOperationsOutput)
 }
 
+func (o SettingMarvisAutoOperationsPtrOutput) ApInsufficientCapacity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApInsufficientCapacity
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsPtrOutput) ApLoop() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApLoop
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsPtrOutput) ApNonCompliant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApNonCompliant
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o SettingMarvisAutoOperationsPtrOutput) BouncePortForAbnormalPoeClient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
 		if v == nil {
@@ -49237,6 +50114,33 @@ func (o SettingMarvisAutoOperationsPtrOutput) DisablePortWhenRogueDhcpServerDete
 			return nil
 		}
 		return v.DisablePortWhenRogueDhcpServerDetected
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsPtrOutput) GatewayNonCompliant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayNonCompliant
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsPtrOutput) SwitchMisconfiguredPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SwitchMisconfiguredPort
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SettingMarvisAutoOperationsPtrOutput) SwitchPortStuck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMarvisAutoOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SwitchPortStuck
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -50897,7 +51801,7 @@ type SettingSsr struct {
 	ConductorToken *string `pulumi:"conductorToken"`
 	// Disable stats collection on SSR devices
 	DisableStats *bool `pulumi:"disableStats"`
-	// Proxy Configuration to talk to Mist
+	// SSR proxy configuration to talk to Mist
 	Proxy *SettingSsrProxy `pulumi:"proxy"`
 }
 
@@ -50921,7 +51825,7 @@ type SettingSsrArgs struct {
 	ConductorToken pulumi.StringPtrInput `pulumi:"conductorToken"`
 	// Disable stats collection on SSR devices
 	DisableStats pulumi.BoolPtrInput `pulumi:"disableStats"`
-	// Proxy Configuration to talk to Mist
+	// SSR proxy configuration to talk to Mist
 	Proxy SettingSsrProxyPtrInput `pulumi:"proxy"`
 }
 
@@ -51022,7 +51926,7 @@ func (o SettingSsrOutput) DisableStats() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSsr) *bool { return v.DisableStats }).(pulumi.BoolPtrOutput)
 }
 
-// Proxy Configuration to talk to Mist
+// SSR proxy configuration to talk to Mist
 func (o SettingSsrOutput) Proxy() SettingSsrProxyPtrOutput {
 	return o.ApplyT(func(v SettingSsr) *SettingSsrProxy { return v.Proxy }).(SettingSsrProxyPtrOutput)
 }
@@ -51091,7 +51995,7 @@ func (o SettingSsrPtrOutput) DisableStats() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Proxy Configuration to talk to Mist
+// SSR proxy configuration to talk to Mist
 func (o SettingSsrPtrOutput) Proxy() SettingSsrProxyPtrOutput {
 	return o.ApplyT(func(v *SettingSsr) *SettingSsrProxy {
 		if v == nil {
@@ -51273,7 +52177,8 @@ func (o SettingSsrAutoUpgradePtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingSsrProxy struct {
-	Url *string `pulumi:"url"`
+	Disabled *bool   `pulumi:"disabled"`
+	Url      *string `pulumi:"url"`
 }
 
 // SettingSsrProxyInput is an input type that accepts SettingSsrProxyArgs and SettingSsrProxyOutput values.
@@ -51288,7 +52193,8 @@ type SettingSsrProxyInput interface {
 }
 
 type SettingSsrProxyArgs struct {
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
+	Url      pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (SettingSsrProxyArgs) ElementType() reflect.Type {
@@ -51368,6 +52274,10 @@ func (o SettingSsrProxyOutput) ToSettingSsrProxyPtrOutputWithContext(ctx context
 	}).(SettingSsrProxyPtrOutput)
 }
 
+func (o SettingSsrProxyOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingSsrProxy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
 func (o SettingSsrProxyOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingSsrProxy) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -51394,6 +52304,15 @@ func (o SettingSsrProxyPtrOutput) Elem() SettingSsrProxyOutput {
 		var ret SettingSsrProxy
 		return ret
 	}).(SettingSsrProxyOutput)
+}
+
+func (o SettingSsrProxyPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingSsrProxy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o SettingSsrProxyPtrOutput) Url() pulumi.StringPtrOutput {
@@ -53164,7 +54083,7 @@ func (o SettingWirelessPmaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 type SsoRolePrivilege struct {
 	// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
 	Role string `pulumi:"role"`
-	// enum: `org`, `site`, `sitegroup`
+	// enum: `org`, `site`, `sitegroup`, `orgsites`
 	Scope string `pulumi:"scope"`
 	// Required if `scope`==`site`
 	SiteId *string `pulumi:"siteId"`
@@ -53201,7 +54120,7 @@ type SsoRolePrivilegeInput interface {
 type SsoRolePrivilegeArgs struct {
 	// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
 	Role pulumi.StringInput `pulumi:"role"`
-	// enum: `org`, `site`, `sitegroup`
+	// enum: `org`, `site`, `sitegroup`, `orgsites`
 	Scope pulumi.StringInput `pulumi:"scope"`
 	// Required if `scope`==`site`
 	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
@@ -53280,7 +54199,7 @@ func (o SsoRolePrivilegeOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v SsoRolePrivilege) string { return v.Role }).(pulumi.StringOutput)
 }
 
-// enum: `org`, `site`, `sitegroup`
+// enum: `org`, `site`, `sitegroup`, `orgsites`
 func (o SsoRolePrivilegeOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v SsoRolePrivilege) string { return v.Scope }).(pulumi.StringOutput)
 }
@@ -74949,8 +75868,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicyEwfArrayInput)(nil)).Elem(), DeviceprofileGatewayServicePolicyEwfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicyIdpInput)(nil)).Elem(), DeviceprofileGatewayServicePolicyIdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicyIdpPtrInput)(nil)).Elem(), DeviceprofileGatewayServicePolicyIdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySkyatpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpPtrInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySkyatpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySslProxyInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySslProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySslProxyPtrInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySslProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySyslogInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySyslogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySyslogPtrInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySyslogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsMapInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayTunnelConfigsAutoProvisionInput)(nil)).Elem(), DeviceprofileGatewayTunnelConfigsAutoProvisionArgs{})
@@ -75093,8 +76016,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicyEwfArrayInput)(nil)).Elem(), GatewaytemplateServicePolicyEwfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicyIdpInput)(nil)).Elem(), GatewaytemplateServicePolicyIdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicyIdpPtrInput)(nil)).Elem(), GatewaytemplateServicePolicyIdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySkyatpInput)(nil)).Elem(), GatewaytemplateServicePolicySkyatpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySkyatpPtrInput)(nil)).Elem(), GatewaytemplateServicePolicySkyatpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySslProxyInput)(nil)).Elem(), GatewaytemplateServicePolicySslProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySslProxyPtrInput)(nil)).Elem(), GatewaytemplateServicePolicySslProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySyslogInput)(nil)).Elem(), GatewaytemplateServicePolicySyslogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySyslogPtrInput)(nil)).Elem(), GatewaytemplateServicePolicySyslogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsInput)(nil)).Elem(), GatewaytemplateTunnelConfigsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsMapInput)(nil)).Elem(), GatewaytemplateTunnelConfigsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateTunnelConfigsAutoProvisionInput)(nil)).Elem(), GatewaytemplateTunnelConfigsAutoProvisionArgs{})
@@ -75759,8 +76686,12 @@ func init() {
 	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicyEwfArrayOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicyIdpOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicyIdpPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySkyatpOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySkyatpPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySslProxyOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySslProxyPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySyslogOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySyslogPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsMapOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayTunnelConfigsAutoProvisionOutput{})
@@ -75903,8 +76834,12 @@ func init() {
 	pulumi.RegisterOutputType(GatewaytemplateServicePolicyEwfArrayOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateServicePolicyIdpOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateServicePolicyIdpPtrOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateServicePolicySkyatpOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateServicePolicySkyatpPtrOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateServicePolicySslProxyOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateServicePolicySslProxyPtrOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateServicePolicySyslogOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateServicePolicySyslogPtrOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsMapOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateTunnelConfigsAutoProvisionOutput{})

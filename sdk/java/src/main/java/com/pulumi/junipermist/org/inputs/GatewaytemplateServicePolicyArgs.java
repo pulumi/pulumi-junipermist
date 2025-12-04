@@ -9,7 +9,9 @@ import com.pulumi.junipermist.org.inputs.GatewaytemplateServicePolicyAntivirusAr
 import com.pulumi.junipermist.org.inputs.GatewaytemplateServicePolicyAppqoeArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateServicePolicyEwfArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateServicePolicyIdpArgs;
+import com.pulumi.junipermist.org.inputs.GatewaytemplateServicePolicySkyatpArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateServicePolicySslProxyArgs;
+import com.pulumi.junipermist.org.inputs.GatewaytemplateServicePolicySyslogArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -53,14 +55,14 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * For SRX Only
+     * SRX only
      * 
      */
     @Import(name="appqoe")
     private @Nullable Output<GatewaytemplateServicePolicyAppqoeArgs> appqoe;
 
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     public Optional<Output<GatewaytemplateServicePolicyAppqoeArgs>> appqoe() {
@@ -157,6 +159,21 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
     }
 
     /**
+     * SRX only
+     * 
+     */
+    @Import(name="skyatp")
+    private @Nullable Output<GatewaytemplateServicePolicySkyatpArgs> skyatp;
+
+    /**
+     * @return SRX only
+     * 
+     */
+    public Optional<Output<GatewaytemplateServicePolicySkyatpArgs>> skyatp() {
+        return Optional.ofNullable(this.skyatp);
+    }
+
+    /**
      * For SRX-only
      * 
      */
@@ -169,6 +186,21 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
      */
     public Optional<Output<GatewaytemplateServicePolicySslProxyArgs>> sslProxy() {
         return Optional.ofNullable(this.sslProxy);
+    }
+
+    /**
+     * Required for syslog logging
+     * 
+     */
+    @Import(name="syslog")
+    private @Nullable Output<GatewaytemplateServicePolicySyslogArgs> syslog;
+
+    /**
+     * @return Required for syslog logging
+     * 
+     */
+    public Optional<Output<GatewaytemplateServicePolicySyslogArgs>> syslog() {
+        return Optional.ofNullable(this.syslog);
     }
 
     /**
@@ -199,7 +231,9 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         this.pathPreference = $.pathPreference;
         this.servicepolicyId = $.servicepolicyId;
         this.services = $.services;
+        this.skyatp = $.skyatp;
         this.sslProxy = $.sslProxy;
+        this.syslog = $.syslog;
         this.tenants = $.tenants;
     }
 
@@ -264,7 +298,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param appqoe For SRX Only
+         * @param appqoe SRX only
          * 
          * @return builder
          * 
@@ -275,7 +309,7 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param appqoe For SRX Only
+         * @param appqoe SRX only
          * 
          * @return builder
          * 
@@ -422,6 +456,27 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
         }
 
         /**
+         * @param skyatp SRX only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skyatp(@Nullable Output<GatewaytemplateServicePolicySkyatpArgs> skyatp) {
+            $.skyatp = skyatp;
+            return this;
+        }
+
+        /**
+         * @param skyatp SRX only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skyatp(GatewaytemplateServicePolicySkyatpArgs skyatp) {
+            return skyatp(Output.of(skyatp));
+        }
+
+        /**
          * @param sslProxy For SRX-only
          * 
          * @return builder
@@ -440,6 +495,27 @@ public final class GatewaytemplateServicePolicyArgs extends com.pulumi.resources
          */
         public Builder sslProxy(GatewaytemplateServicePolicySslProxyArgs sslProxy) {
             return sslProxy(Output.of(sslProxy));
+        }
+
+        /**
+         * @param syslog Required for syslog logging
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syslog(@Nullable Output<GatewaytemplateServicePolicySyslogArgs> syslog) {
+            $.syslog = syslog;
+            return this;
+        }
+
+        /**
+         * @param syslog Required for syslog logging
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syslog(GatewaytemplateServicePolicySyslogArgs syslog) {
+            return syslog(Output.of(syslog));
         }
 
         /**

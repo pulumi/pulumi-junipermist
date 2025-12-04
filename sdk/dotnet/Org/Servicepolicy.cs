@@ -66,7 +66,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Servicepolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// For SRX Only
+        /// SRX only
         /// </summary>
         [Output("aamw")]
         public Output<Outputs.ServicepolicyAamw?> Aamw { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.ServicepolicyAntivirus?> Antivirus { get; private set; } = null!;
 
         /// <summary>
-        /// For SRX Only
+        /// SRX only
         /// </summary>
         [Output("appqoe")]
         public Output<Outputs.ServicepolicyAppqoe?> Appqoe { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class ServicepolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For SRX Only
+        /// SRX only
         /// </summary>
         [Input("aamw")]
         public Input<Inputs.ServicepolicyAamwArgs>? Aamw { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.ServicepolicyAntivirusArgs>? Antivirus { get; set; }
 
         /// <summary>
-        /// For SRX Only
+        /// SRX only
         /// </summary>
         [Input("appqoe")]
         public Input<Inputs.ServicepolicyAppqoeArgs>? Appqoe { get; set; }
@@ -256,7 +256,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class ServicepolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For SRX Only
+        /// SRX only
         /// </summary>
         [Input("aamw")]
         public Input<Inputs.ServicepolicyAamwGetArgs>? Aamw { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.ServicepolicyAntivirusGetArgs>? Antivirus { get; set; }
 
         /// <summary>
-        /// For SRX Only
+        /// SRX only
         /// </summary>
         [Input("appqoe")]
         public Input<Inputs.ServicepolicyAppqoeGetArgs>? Appqoe { get; set; }

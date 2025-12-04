@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? DisableStats;
         /// <summary>
-        /// Proxy Configuration to talk to Mist
+        /// SSR proxy configuration to talk to Mist
         /// </summary>
         public readonly Outputs.SettingSsrProxy? Proxy;
 

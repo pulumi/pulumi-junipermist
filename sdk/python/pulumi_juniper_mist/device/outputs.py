@@ -96,7 +96,9 @@ __all__ = [
     'GatewayServicePolicyAppqoe',
     'GatewayServicePolicyEwf',
     'GatewayServicePolicyIdp',
+    'GatewayServicePolicySkyatp',
     'GatewayServicePolicySslProxy',
+    'GatewayServicePolicySyslog',
     'GatewayTunnelConfigs',
     'GatewayTunnelConfigsAutoProvision',
     'GatewayTunnelConfigsAutoProvisionLatlng',
@@ -2252,10 +2254,10 @@ class ApRadioConfig(dict):
             suggest = "ant_gain5"
         elif key == "antGain6":
             suggest = "ant_gain6"
-        elif key == "antMode":
-            suggest = "ant_mode"
         elif key == "antennaMode":
             suggest = "antenna_mode"
+        elif key == "antennaSelect":
+            suggest = "antenna_select"
         elif key == "band24Usage":
             suggest = "band24_usage"
         elif key == "band5On24Radio":
@@ -2264,6 +2266,8 @@ class ApRadioConfig(dict):
             suggest = "full_automatic_rrm"
         elif key == "indoorUse":
             suggest = "indoor_use"
+        elif key == "rrmManaged":
+            suggest = "rrm_managed"
         elif key == "scanningEnabled":
             suggest = "scanning_enabled"
 
@@ -2283,8 +2287,8 @@ class ApRadioConfig(dict):
                  ant_gain24: Optional[_builtins.int] = None,
                  ant_gain5: Optional[_builtins.int] = None,
                  ant_gain6: Optional[_builtins.int] = None,
-                 ant_mode: Optional[_builtins.str] = None,
                  antenna_mode: Optional[_builtins.str] = None,
+                 antenna_select: Optional[_builtins.str] = None,
                  band24: Optional['outputs.ApRadioConfigBand24'] = None,
                  band24_usage: Optional[_builtins.str] = None,
                  band5: Optional['outputs.ApRadioConfigBand5'] = None,
@@ -2292,13 +2296,14 @@ class ApRadioConfig(dict):
                  band6: Optional['outputs.ApRadioConfigBand6'] = None,
                  full_automatic_rrm: Optional[_builtins.bool] = None,
                  indoor_use: Optional[_builtins.bool] = None,
+                 rrm_managed: Optional[_builtins.bool] = None,
                  scanning_enabled: Optional[_builtins.bool] = None):
         """
         :param _builtins.int ant_gain24: Antenna gain for 2.4G - for models with external antenna only
         :param _builtins.int ant_gain5: Antenna gain for 5G - for models with external antenna only
         :param _builtins.int ant_gain6: Antenna gain for 6G - for models with external antenna only
-        :param _builtins.str ant_mode: Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
         :param _builtins.str antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+        :param _builtins.str antenna_select: Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
         :param 'ApRadioConfigBand24Args' band24: Radio Band AP settings
         :param _builtins.str band24_usage: enum: `24`, `5`, `6`, `auto`
         :param 'ApRadioConfigBand5Args' band5: Radio Band AP settings
@@ -2306,6 +2311,7 @@ class ApRadioConfig(dict):
         :param 'ApRadioConfigBand6Args' band6: Radio Band AP settings
         :param _builtins.bool full_automatic_rrm: Let RRM control everything, only the `channels` and `ant_gain` will be honored (i.e. disabled/bandwidth/power/band_24_usage are all controlled by RRM)
         :param _builtins.bool indoor_use: To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
+        :param _builtins.bool rrm_managed: Enable RRM to manage all radio settings (ignores all band_xxx configs)
         :param _builtins.bool scanning_enabled: Whether scanning radio is enabled
         """
         if allow_rrm_disable is not None:
@@ -2316,10 +2322,10 @@ class ApRadioConfig(dict):
             pulumi.set(__self__, "ant_gain5", ant_gain5)
         if ant_gain6 is not None:
             pulumi.set(__self__, "ant_gain6", ant_gain6)
-        if ant_mode is not None:
-            pulumi.set(__self__, "ant_mode", ant_mode)
         if antenna_mode is not None:
             pulumi.set(__self__, "antenna_mode", antenna_mode)
+        if antenna_select is not None:
+            pulumi.set(__self__, "antenna_select", antenna_select)
         if band24 is not None:
             pulumi.set(__self__, "band24", band24)
         if band24_usage is not None:
@@ -2334,6 +2340,8 @@ class ApRadioConfig(dict):
             pulumi.set(__self__, "full_automatic_rrm", full_automatic_rrm)
         if indoor_use is not None:
             pulumi.set(__self__, "indoor_use", indoor_use)
+        if rrm_managed is not None:
+            pulumi.set(__self__, "rrm_managed", rrm_managed)
         if scanning_enabled is not None:
             pulumi.set(__self__, "scanning_enabled", scanning_enabled)
 
@@ -2367,20 +2375,20 @@ class ApRadioConfig(dict):
         return pulumi.get(self, "ant_gain6")
 
     @_builtins.property
-    @pulumi.getter(name="antMode")
-    def ant_mode(self) -> Optional[_builtins.str]:
-        """
-        Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-        """
-        return pulumi.get(self, "ant_mode")
-
-    @_builtins.property
     @pulumi.getter(name="antennaMode")
     def antenna_mode(self) -> Optional[_builtins.str]:
         """
         enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         """
         return pulumi.get(self, "antenna_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="antennaSelect")
+    def antenna_select(self) -> Optional[_builtins.str]:
+        """
+        Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+        """
+        return pulumi.get(self, "antenna_select")
 
     @_builtins.property
     @pulumi.getter
@@ -2437,6 +2445,14 @@ class ApRadioConfig(dict):
         To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
         """
         return pulumi.get(self, "indoor_use")
+
+    @_builtins.property
+    @pulumi.getter(name="rrmManaged")
+    def rrm_managed(self) -> Optional[_builtins.bool]:
+        """
+        Enable RRM to manage all radio settings (ignores all band_xxx configs)
+        """
+        return pulumi.get(self, "rrm_managed")
 
     @_builtins.property
     @pulumi.getter(name="scanningEnabled")
@@ -2612,6 +2628,8 @@ class ApRadioConfigBand5(dict):
             suggest = "allow_rrm_disable"
         elif key == "antGain":
             suggest = "ant_gain"
+        elif key == "antennaBeamPattern":
+            suggest = "antenna_beam_pattern"
         elif key == "antennaMode":
             suggest = "antenna_mode"
         elif key == "powerMax":
@@ -2633,6 +2651,7 @@ class ApRadioConfigBand5(dict):
     def __init__(__self__, *,
                  allow_rrm_disable: Optional[_builtins.bool] = None,
                  ant_gain: Optional[_builtins.int] = None,
+                 antenna_beam_pattern: Optional[_builtins.str] = None,
                  antenna_mode: Optional[_builtins.str] = None,
                  bandwidth: Optional[_builtins.int] = None,
                  channel: Optional[_builtins.int] = None,
@@ -2643,6 +2662,7 @@ class ApRadioConfigBand5(dict):
                  power_min: Optional[_builtins.int] = None,
                  preamble: Optional[_builtins.str] = None):
         """
+        :param _builtins.str antenna_beam_pattern: enum: `narrow`, `medium`, `wide`
         :param _builtins.str antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         :param _builtins.int bandwidth: channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
         :param _builtins.int channel: For Device. (primary) channel for the band, 0 means using the Site Setting
@@ -2657,6 +2677,8 @@ class ApRadioConfigBand5(dict):
             pulumi.set(__self__, "allow_rrm_disable", allow_rrm_disable)
         if ant_gain is not None:
             pulumi.set(__self__, "ant_gain", ant_gain)
+        if antenna_beam_pattern is not None:
+            pulumi.set(__self__, "antenna_beam_pattern", antenna_beam_pattern)
         if antenna_mode is not None:
             pulumi.set(__self__, "antenna_mode", antenna_mode)
         if bandwidth is not None:
@@ -2685,6 +2707,14 @@ class ApRadioConfigBand5(dict):
     @pulumi.getter(name="antGain")
     def ant_gain(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "ant_gain")
+
+    @_builtins.property
+    @pulumi.getter(name="antennaBeamPattern")
+    def antenna_beam_pattern(self) -> Optional[_builtins.str]:
+        """
+        enum: `narrow`, `medium`, `wide`
+        """
+        return pulumi.get(self, "antenna_beam_pattern")
 
     @_builtins.property
     @pulumi.getter(name="antennaMode")
@@ -2768,6 +2798,8 @@ class ApRadioConfigBand5On24Radio(dict):
             suggest = "allow_rrm_disable"
         elif key == "antGain":
             suggest = "ant_gain"
+        elif key == "antennaBeamPattern":
+            suggest = "antenna_beam_pattern"
         elif key == "antennaMode":
             suggest = "antenna_mode"
         elif key == "powerMax":
@@ -2789,6 +2821,7 @@ class ApRadioConfigBand5On24Radio(dict):
     def __init__(__self__, *,
                  allow_rrm_disable: Optional[_builtins.bool] = None,
                  ant_gain: Optional[_builtins.int] = None,
+                 antenna_beam_pattern: Optional[_builtins.str] = None,
                  antenna_mode: Optional[_builtins.str] = None,
                  bandwidth: Optional[_builtins.int] = None,
                  channel: Optional[_builtins.int] = None,
@@ -2799,6 +2832,7 @@ class ApRadioConfigBand5On24Radio(dict):
                  power_min: Optional[_builtins.int] = None,
                  preamble: Optional[_builtins.str] = None):
         """
+        :param _builtins.str antenna_beam_pattern: enum: `narrow`, `medium`, `wide`
         :param _builtins.str antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         :param _builtins.int bandwidth: channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
         :param _builtins.int channel: For Device. (primary) channel for the band, 0 means using the Site Setting
@@ -2813,6 +2847,8 @@ class ApRadioConfigBand5On24Radio(dict):
             pulumi.set(__self__, "allow_rrm_disable", allow_rrm_disable)
         if ant_gain is not None:
             pulumi.set(__self__, "ant_gain", ant_gain)
+        if antenna_beam_pattern is not None:
+            pulumi.set(__self__, "antenna_beam_pattern", antenna_beam_pattern)
         if antenna_mode is not None:
             pulumi.set(__self__, "antenna_mode", antenna_mode)
         if bandwidth is not None:
@@ -2841,6 +2877,14 @@ class ApRadioConfigBand5On24Radio(dict):
     @pulumi.getter(name="antGain")
     def ant_gain(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "ant_gain")
+
+    @_builtins.property
+    @pulumi.getter(name="antennaBeamPattern")
+    def antenna_beam_pattern(self) -> Optional[_builtins.str]:
+        """
+        enum: `narrow`, `medium`, `wide`
+        """
+        return pulumi.get(self, "antenna_beam_pattern")
 
     @_builtins.property
     @pulumi.getter(name="antennaMode")
@@ -2924,6 +2968,8 @@ class ApRadioConfigBand6(dict):
             suggest = "allow_rrm_disable"
         elif key == "antGain":
             suggest = "ant_gain"
+        elif key == "antennaBeamPattern":
+            suggest = "antenna_beam_pattern"
         elif key == "antennaMode":
             suggest = "antenna_mode"
         elif key == "powerMax":
@@ -2947,6 +2993,7 @@ class ApRadioConfigBand6(dict):
     def __init__(__self__, *,
                  allow_rrm_disable: Optional[_builtins.bool] = None,
                  ant_gain: Optional[_builtins.int] = None,
+                 antenna_beam_pattern: Optional[_builtins.str] = None,
                  antenna_mode: Optional[_builtins.str] = None,
                  bandwidth: Optional[_builtins.int] = None,
                  channel: Optional[_builtins.int] = None,
@@ -2958,6 +3005,7 @@ class ApRadioConfigBand6(dict):
                  preamble: Optional[_builtins.str] = None,
                  standard_power: Optional[_builtins.bool] = None):
         """
+        :param _builtins.str antenna_beam_pattern: enum: `narrow`, `medium`, `wide`
         :param _builtins.str antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         :param _builtins.int bandwidth: channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
         :param _builtins.int channel: For Device. (primary) channel for the band, 0 means using the Site Setting
@@ -2973,6 +3021,8 @@ class ApRadioConfigBand6(dict):
             pulumi.set(__self__, "allow_rrm_disable", allow_rrm_disable)
         if ant_gain is not None:
             pulumi.set(__self__, "ant_gain", ant_gain)
+        if antenna_beam_pattern is not None:
+            pulumi.set(__self__, "antenna_beam_pattern", antenna_beam_pattern)
         if antenna_mode is not None:
             pulumi.set(__self__, "antenna_mode", antenna_mode)
         if bandwidth is not None:
@@ -3003,6 +3053,14 @@ class ApRadioConfigBand6(dict):
     @pulumi.getter(name="antGain")
     def ant_gain(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "ant_gain")
+
+    @_builtins.property
+    @pulumi.getter(name="antennaBeamPattern")
+    def antenna_beam_pattern(self) -> Optional[_builtins.str]:
+        """
+        enum: `narrow`, `medium`, `wide`
+        """
+        return pulumi.get(self, "antenna_beam_pattern")
 
     @_builtins.property
     @pulumi.getter(name="antennaMode")
@@ -5714,7 +5772,7 @@ class GatewayPortConfig(dict):
         :param _builtins.str usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
         :param _builtins.bool ae_disable_lacp: If `aggregated`==`true`. To disable LCP support for the AE interface
         :param _builtins.str ae_idx: If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
-        :param _builtins.bool ae_lacp_force_up: For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+        :param _builtins.bool ae_lacp_force_up: For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
         :param _builtins.bool critical: To generate port up/down alarm, set it to true
         :param _builtins.str description: Interface Description. Can be a variable (i.e. "{{myvar}}")
         :param _builtins.bool disabled: Port admin up (true) / down (false)
@@ -5873,7 +5931,7 @@ class GatewayPortConfig(dict):
     @pulumi.getter(name="aeLacpForceUp")
     def ae_lacp_force_up(self) -> Optional[_builtins.bool]:
         """
-        For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+        For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
         """
         return pulumi.get(self, "ae_lacp_force_up")
 
@@ -7270,18 +7328,22 @@ class GatewayServicePolicy(dict):
                  path_preference: Optional[_builtins.str] = None,
                  servicepolicy_id: Optional[_builtins.str] = None,
                  services: Optional[Sequence[_builtins.str]] = None,
+                 skyatp: Optional['outputs.GatewayServicePolicySkyatp'] = None,
                  ssl_proxy: Optional['outputs.GatewayServicePolicySslProxy'] = None,
+                 syslog: Optional['outputs.GatewayServicePolicySyslog'] = None,
                  tenants: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str action: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
         :param 'GatewayServicePolicyAntivirusArgs' antivirus: For SRX-only
-        :param 'GatewayServicePolicyAppqoeArgs' appqoe: For SRX Only
+        :param 'GatewayServicePolicyAppqoeArgs' appqoe: SRX only
         :param _builtins.bool local_routing: access within the same VRF
         :param _builtins.str name: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
         :param _builtins.str path_preference: By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
         :param _builtins.str servicepolicy_id: Used to link servicepolicy defined at org level and overwrite some attributes
         :param Sequence[_builtins.str] services: Required when `servicepolicy_id` is not defined. List of Applications / Destinations
+        :param 'GatewayServicePolicySkyatpArgs' skyatp: SRX only
         :param 'GatewayServicePolicySslProxyArgs' ssl_proxy: For SRX-only
+        :param 'GatewayServicePolicySyslogArgs' syslog: Required for syslog logging
         :param Sequence[_builtins.str] tenants: Required when `servicepolicy_id` is not defined. List of Networks / Users
         """
         if action is not None:
@@ -7304,8 +7366,12 @@ class GatewayServicePolicy(dict):
             pulumi.set(__self__, "servicepolicy_id", servicepolicy_id)
         if services is not None:
             pulumi.set(__self__, "services", services)
+        if skyatp is not None:
+            pulumi.set(__self__, "skyatp", skyatp)
         if ssl_proxy is not None:
             pulumi.set(__self__, "ssl_proxy", ssl_proxy)
+        if syslog is not None:
+            pulumi.set(__self__, "syslog", syslog)
         if tenants is not None:
             pulumi.set(__self__, "tenants", tenants)
 
@@ -7329,7 +7395,7 @@ class GatewayServicePolicy(dict):
     @pulumi.getter
     def appqoe(self) -> Optional['outputs.GatewayServicePolicyAppqoe']:
         """
-        For SRX Only
+        SRX only
         """
         return pulumi.get(self, "appqoe")
 
@@ -7384,12 +7450,28 @@ class GatewayServicePolicy(dict):
         return pulumi.get(self, "services")
 
     @_builtins.property
+    @pulumi.getter
+    def skyatp(self) -> Optional['outputs.GatewayServicePolicySkyatp']:
+        """
+        SRX only
+        """
+        return pulumi.get(self, "skyatp")
+
+    @_builtins.property
     @pulumi.getter(name="sslProxy")
     def ssl_proxy(self) -> Optional['outputs.GatewayServicePolicySslProxy']:
         """
         For SRX-only
         """
         return pulumi.get(self, "ssl_proxy")
+
+    @_builtins.property
+    @pulumi.getter
+    def syslog(self) -> Optional['outputs.GatewayServicePolicySyslog']:
+        """
+        Required for syslog logging
+        """
+        return pulumi.get(self, "syslog")
 
     @_builtins.property
     @pulumi.getter
@@ -7598,6 +7680,84 @@ class GatewayServicePolicyIdp(dict):
 
 
 @pulumi.output_type
+class GatewayServicePolicySkyatp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsDgaDetection":
+            suggest = "dns_dga_detection"
+        elif key == "dnsTunnelDetection":
+            suggest = "dns_tunnel_detection"
+        elif key == "httpInspection":
+            suggest = "http_inspection"
+        elif key == "iotDevicePolicy":
+            suggest = "iot_device_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayServicePolicySkyatp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayServicePolicySkyatp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayServicePolicySkyatp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dns_dga_detection: Optional[_builtins.str] = None,
+                 dns_tunnel_detection: Optional[_builtins.str] = None,
+                 http_inspection: Optional[_builtins.str] = None,
+                 iot_device_policy: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str dns_dga_detection: enum: `disabled`, `default`, `standard`, `strict`
+        :param _builtins.str dns_tunnel_detection: enum: `disabled`, `default`, `standard`, `strict`
+        :param _builtins.str http_inspection: enum: `disabled`, `standard`
+        :param _builtins.str iot_device_policy: enum: `disabled`, `enabled`
+        """
+        if dns_dga_detection is not None:
+            pulumi.set(__self__, "dns_dga_detection", dns_dga_detection)
+        if dns_tunnel_detection is not None:
+            pulumi.set(__self__, "dns_tunnel_detection", dns_tunnel_detection)
+        if http_inspection is not None:
+            pulumi.set(__self__, "http_inspection", http_inspection)
+        if iot_device_policy is not None:
+            pulumi.set(__self__, "iot_device_policy", iot_device_policy)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsDgaDetection")
+    def dns_dga_detection(self) -> Optional[_builtins.str]:
+        """
+        enum: `disabled`, `default`, `standard`, `strict`
+        """
+        return pulumi.get(self, "dns_dga_detection")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsTunnelDetection")
+    def dns_tunnel_detection(self) -> Optional[_builtins.str]:
+        """
+        enum: `disabled`, `default`, `standard`, `strict`
+        """
+        return pulumi.get(self, "dns_tunnel_detection")
+
+    @_builtins.property
+    @pulumi.getter(name="httpInspection")
+    def http_inspection(self) -> Optional[_builtins.str]:
+        """
+        enum: `disabled`, `standard`
+        """
+        return pulumi.get(self, "http_inspection")
+
+    @_builtins.property
+    @pulumi.getter(name="iotDevicePolicy")
+    def iot_device_policy(self) -> Optional[_builtins.str]:
+        """
+        enum: `disabled`, `enabled`
+        """
+        return pulumi.get(self, "iot_device_policy")
+
+
+@pulumi.output_type
 class GatewayServicePolicySslProxy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7639,6 +7799,44 @@ class GatewayServicePolicySslProxy(dict):
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GatewayServicePolicySyslog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverNames":
+            suggest = "server_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayServicePolicySyslog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayServicePolicySyslog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayServicePolicySyslog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 server_names: Optional[Sequence[_builtins.str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if server_names is not None:
+            pulumi.set(__self__, "server_names", server_names)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="serverNames")
+    def server_names(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "server_names")
 
 
 @pulumi.output_type
@@ -9229,7 +9427,7 @@ class SwitchAclTags(dict):
                  * `resource`: can only be used in `dst_tags`
                  * `static_gbp`: applying gbp tag against matching conditions
                  * `subnet`'
-        :param Sequence[_builtins.str] ether_types: Can only be used under dst tags.
+        :param Sequence[_builtins.str] ether_types: ARP / IPv6. Default is `any`
         :param _builtins.int gbp_tag: Required if
                  - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
                  - `type`==`gbp_resource`
@@ -9294,7 +9492,7 @@ class SwitchAclTags(dict):
     @pulumi.getter(name="etherTypes")
     def ether_types(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Can only be used under dst tags.
+        ARP / IPv6. Default is `any`
         """
         return pulumi.get(self, "ether_types")
 
@@ -10267,7 +10465,7 @@ class SwitchLocalPortConfig(dict):
         """
         :param _builtins.str usage: Port usage name.
         :param _builtins.bool all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
-        :param _builtins.bool allow_dhcpd: If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+        :param _builtins.bool allow_dhcpd: Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         :param _builtins.bool bypass_auth_when_server_down: Only if `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
         :param _builtins.bool bypass_auth_when_server_down_for_unknown_client: Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         :param _builtins.bool disable_autoneg: Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -10392,7 +10590,7 @@ class SwitchLocalPortConfig(dict):
     @pulumi.getter(name="allowDhcpd")
     def allow_dhcpd(self) -> Optional[_builtins.bool]:
         """
-        If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+        Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         """
         return pulumi.get(self, "allow_dhcpd")
 
@@ -11861,6 +12059,8 @@ class SwitchPortUsages(dict):
             suggest = "bypass_auth_when_server_down"
         elif key == "bypassAuthWhenServerDownForUnknownClient":
             suggest = "bypass_auth_when_server_down_for_unknown_client"
+        elif key == "bypassAuthWhenServerDownForVoip":
+            suggest = "bypass_auth_when_server_down_for_voip"
         elif key == "communityVlanId":
             suggest = "community_vlan_id"
         elif key == "disableAutoneg":
@@ -11889,6 +12089,8 @@ class SwitchPortUsages(dict):
             suggest = "persist_mac"
         elif key == "poeDisabled":
             suggest = "poe_disabled"
+        elif key == "poePriority":
+            suggest = "poe_priority"
         elif key == "portAuth":
             suggest = "port_auth"
         elif key == "portNetwork":
@@ -11935,6 +12137,7 @@ class SwitchPortUsages(dict):
                  allow_multiple_supplicants: Optional[_builtins.bool] = None,
                  bypass_auth_when_server_down: Optional[_builtins.bool] = None,
                  bypass_auth_when_server_down_for_unknown_client: Optional[_builtins.bool] = None,
+                 bypass_auth_when_server_down_for_voip: Optional[_builtins.bool] = None,
                  community_vlan_id: Optional[_builtins.int] = None,
                  description: Optional[_builtins.str] = None,
                  disable_autoneg: Optional[_builtins.bool] = None,
@@ -11955,6 +12158,7 @@ class SwitchPortUsages(dict):
                  networks: Optional[Sequence[_builtins.str]] = None,
                  persist_mac: Optional[_builtins.bool] = None,
                  poe_disabled: Optional[_builtins.bool] = None,
+                 poe_priority: Optional[_builtins.str] = None,
                  port_auth: Optional[_builtins.str] = None,
                  port_network: Optional[_builtins.str] = None,
                  reauth_interval: Optional[_builtins.str] = None,
@@ -11973,10 +12177,11 @@ class SwitchPortUsages(dict):
                  voip_network: Optional[_builtins.str] = None):
         """
         :param _builtins.bool all_networks: Only if `mode`==`trunk`. Whether to trunk all network/vlans
-        :param _builtins.bool allow_dhcpd: Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+        :param _builtins.bool allow_dhcpd: Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         :param _builtins.bool allow_multiple_supplicants: Only if `mode`!=`dynamic`
         :param _builtins.bool bypass_auth_when_server_down: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
         :param _builtins.bool bypass_auth_when_server_down_for_unknown_client: Only if `mode`!=`dynamic` and `port_auth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+        :param _builtins.bool bypass_auth_when_server_down_for_voip: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
         :param _builtins.int community_vlan_id: Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
         :param _builtins.str description: Only if `mode`!=`dynamic`
         :param _builtins.bool disable_autoneg: Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
@@ -11997,6 +12202,7 @@ class SwitchPortUsages(dict):
         :param Sequence[_builtins.str] networks: Only if `mode`==`trunk`, the list of network/vlans
         :param _builtins.bool persist_mac: Only if `mode`==`access` and `port_auth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
         :param _builtins.bool poe_disabled: Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
+        :param _builtins.str poe_priority: PoE priority. enum: `low`, `high`
         :param _builtins.str port_auth: Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
         :param _builtins.str port_network: Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
         :param _builtins.str reauth_interval: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
@@ -12024,6 +12230,8 @@ class SwitchPortUsages(dict):
             pulumi.set(__self__, "bypass_auth_when_server_down", bypass_auth_when_server_down)
         if bypass_auth_when_server_down_for_unknown_client is not None:
             pulumi.set(__self__, "bypass_auth_when_server_down_for_unknown_client", bypass_auth_when_server_down_for_unknown_client)
+        if bypass_auth_when_server_down_for_voip is not None:
+            pulumi.set(__self__, "bypass_auth_when_server_down_for_voip", bypass_auth_when_server_down_for_voip)
         if community_vlan_id is not None:
             pulumi.set(__self__, "community_vlan_id", community_vlan_id)
         if description is not None:
@@ -12064,6 +12272,8 @@ class SwitchPortUsages(dict):
             pulumi.set(__self__, "persist_mac", persist_mac)
         if poe_disabled is not None:
             pulumi.set(__self__, "poe_disabled", poe_disabled)
+        if poe_priority is not None:
+            pulumi.set(__self__, "poe_priority", poe_priority)
         if port_auth is not None:
             pulumi.set(__self__, "port_auth", port_auth)
         if port_network is not None:
@@ -12109,7 +12319,7 @@ class SwitchPortUsages(dict):
     @pulumi.getter(name="allowDhcpd")
     def allow_dhcpd(self) -> Optional[_builtins.bool]:
         """
-        Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+        Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         """
         return pulumi.get(self, "allow_dhcpd")
 
@@ -12136,6 +12346,14 @@ class SwitchPortUsages(dict):
         Only if `mode`!=`dynamic` and `port_auth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         """
         return pulumi.get(self, "bypass_auth_when_server_down_for_unknown_client")
+
+    @_builtins.property
+    @pulumi.getter(name="bypassAuthWhenServerDownForVoip")
+    def bypass_auth_when_server_down_for_voip(self) -> Optional[_builtins.bool]:
+        """
+        Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+        """
+        return pulumi.get(self, "bypass_auth_when_server_down_for_voip")
 
     @_builtins.property
     @pulumi.getter(name="communityVlanId")
@@ -12298,6 +12516,14 @@ class SwitchPortUsages(dict):
         return pulumi.get(self, "poe_disabled")
 
     @_builtins.property
+    @pulumi.getter(name="poePriority")
+    def poe_priority(self) -> Optional[_builtins.str]:
+        """
+        PoE priority. enum: `low`, `high`
+        """
+        return pulumi.get(self, "poe_priority")
+
+    @_builtins.property
     @pulumi.getter(name="portAuth")
     def port_auth(self) -> Optional[_builtins.str]:
         """
@@ -12452,7 +12678,7 @@ class SwitchPortUsagesRule(dict):
                  expression: Optional[_builtins.str] = None,
                  usage: Optional[_builtins.str] = None):
         """
-        :param _builtins.str src: enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+        :param _builtins.str src: enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_description`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
         :param Sequence[_builtins.str] equals_anies: Use `equals_any` to match any item in a list
         :param _builtins.str expression: "[0:3]":"abcdef" > "abc"
                "split(.)[1]": "a.b.c" > "b"
@@ -12473,7 +12699,7 @@ class SwitchPortUsagesRule(dict):
     @pulumi.getter
     def src(self) -> _builtins.str:
         """
-        enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+        enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_description`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
         """
         return pulumi.get(self, "src")
 

@@ -53,7 +53,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? DisableStats { get; set; }
 
         /// <summary>
-        /// Proxy Configuration to talk to Mist
+        /// SSR proxy configuration to talk to Mist
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.SettingSsrProxyGetArgs>? Proxy { get; set; }

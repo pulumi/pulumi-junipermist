@@ -32,14 +32,14 @@ public final class ApitokenPrivilegeArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * enum: `org`, `site`, `sitegroup`
+     * enum: `org`, `site`, `sitegroup`, `orgsites`
      * 
      */
     @Import(name="scope", required=true)
     private Output<String> scope;
 
     /**
-     * @return enum: `org`, `site`, `sitegroup`
+     * @return enum: `org`, `site`, `sitegroup`, `orgsites`
      * 
      */
     public Output<String> scope() {
@@ -125,7 +125,7 @@ public final class ApitokenPrivilegeArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scope enum: `org`, `site`, `sitegroup`
+         * @param scope enum: `org`, `site`, `sitegroup`, `orgsites`
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ApitokenPrivilegeArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scope enum: `org`, `site`, `sitegroup`
+         * @param scope enum: `org`, `site`, `sitegroup`, `orgsites`
          * 
          * @return builder
          * 

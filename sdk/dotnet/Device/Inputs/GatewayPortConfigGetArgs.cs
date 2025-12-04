@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? AeIdx { get; set; }
 
         /// <summary>
-        /// For SRX Only, if `Aggregated`==`True`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+        /// For SRX only, if `Aggregated`==`True`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
         /// </summary>
         [Input("aeLacpForceUp")]
         public Input<bool>? AeLacpForceUp { get; set; }

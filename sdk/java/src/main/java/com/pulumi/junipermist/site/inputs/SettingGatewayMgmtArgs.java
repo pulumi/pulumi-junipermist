@@ -166,14 +166,14 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * For SRX only
+     * SRX only
      * 
      */
     @Import(name="rootPassword")
     private @Nullable Output<String> rootPassword;
 
     /**
-     * @return For SRX only
+     * @return SRX only
      * 
      */
     public Optional<Output<String>> rootPassword() {
@@ -447,7 +447,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rootPassword For SRX only
+         * @param rootPassword SRX only
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rootPassword For SRX only
+         * @param rootPassword SRX only
          * 
          * @return builder
          * 

@@ -27,13 +27,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? AntGain6;
         /// <summary>
-        /// Antenna Mode for AP which supports selectable antennas. enum: `External`, `Internal`
-        /// </summary>
-        public readonly string? AntMode;
-        /// <summary>
         /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
         /// </summary>
         public readonly string? AntennaMode;
+        /// <summary>
+        /// Antenna Mode for AP which supports selectable antennas. enum: `External`, `Internal`
+        /// </summary>
+        public readonly string? AntennaSelect;
         /// <summary>
         /// Radio Band AP settings
         /// </summary>
@@ -63,6 +63,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? IndoorUse;
         /// <summary>
+        /// Enable RRM to manage all radio settings (ignores all BandXxx configs)
+        /// </summary>
+        public readonly bool? RrmManaged;
+        /// <summary>
         /// Whether scanning radio is enabled
         /// </summary>
         public readonly bool? ScanningEnabled;
@@ -77,9 +81,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int? antGain6,
 
-            string? antMode,
-
             string? antennaMode,
+
+            string? antennaSelect,
 
             Outputs.ApRadioConfigBand24? band24,
 
@@ -95,14 +99,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? indoorUse,
 
+            bool? rrmManaged,
+
             bool? scanningEnabled)
         {
             AllowRrmDisable = allowRrmDisable;
             AntGain24 = antGain24;
             AntGain5 = antGain5;
             AntGain6 = antGain6;
-            AntMode = antMode;
             AntennaMode = antennaMode;
+            AntennaSelect = antennaSelect;
             Band24 = band24;
             Band24Usage = band24Usage;
             Band5 = band5;
@@ -110,6 +116,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Band6 = band6;
             FullAutomaticRrm = fullAutomaticRrm;
             IndoorUse = indoorUse;
+            RrmManaged = rrmManaged;
             ScanningEnabled = scanningEnabled;
         }
     }

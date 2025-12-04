@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 public final class SettingSsrProxyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingSsrProxyArgs Empty = new SettingSsrProxyArgs();
+
+    @Import(name="disabled")
+    private @Nullable Output<Boolean> disabled;
+
+    public Optional<Output<Boolean>> disabled() {
+        return Optional.ofNullable(this.disabled);
+    }
 
     @Import(name="url")
     private @Nullable Output<String> url;
@@ -25,6 +33,7 @@ public final class SettingSsrProxyArgs extends com.pulumi.resources.ResourceArgs
     private SettingSsrProxyArgs() {}
 
     private SettingSsrProxyArgs(SettingSsrProxyArgs $) {
+        this.disabled = $.disabled;
         this.url = $.url;
     }
 
@@ -44,6 +53,15 @@ public final class SettingSsrProxyArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(SettingSsrProxyArgs defaults) {
             $ = new SettingSsrProxyArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder disabled(@Nullable Output<Boolean> disabled) {
+            $.disabled = disabled;
+            return this;
+        }
+
+        public Builder disabled(Boolean disabled) {
+            return disabled(Output.of(disabled));
         }
 
         public Builder url(@Nullable Output<String> url) {

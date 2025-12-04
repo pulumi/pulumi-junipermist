@@ -19,7 +19,7 @@ public final class SsoRolePrivilege {
      */
     private String role;
     /**
-     * @return enum: `org`, `site`, `sitegroup`
+     * @return enum: `org`, `site`, `sitegroup`, `orgsites`
      * 
      */
     private String scope;
@@ -61,7 +61,7 @@ public final class SsoRolePrivilege {
         return this.role;
     }
     /**
-     * @return enum: `org`, `site`, `sitegroup`
+     * @return enum: `org`, `site`, `sitegroup`, `orgsites`
      * 
      */
     public String scope() {

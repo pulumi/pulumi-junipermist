@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchAclTags
     {
         /// <summary>
-        /// Can only be used under dst tags.
+        /// ARP / IPv6. Default is `Any`
         /// </summary>
         public readonly ImmutableArray<string> EtherTypes;
         /// <summary>

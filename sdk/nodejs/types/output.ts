@@ -702,13 +702,13 @@ export namespace device {
          */
         antGain6?: number;
         /**
-         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-         */
-        antMode?: string;
-        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode?: string;
+        /**
+         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         */
+        antennaSelect?: string;
         /**
          * Radio Band AP settings
          */
@@ -737,6 +737,10 @@ export namespace device {
          * To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
          */
         indoorUse?: boolean;
+        /**
+         * Enable RRM to manage all radio settings (ignores all bandXxx configs)
+         */
+        rrmManaged?: boolean;
         /**
          * Whether scanning radio is enabled
          */
@@ -788,6 +792,10 @@ export namespace device {
         allowRrmDisable: boolean;
         antGain: number;
         /**
+         * enum: `narrow`, `medium`, `wide`
+         */
+        antennaBeamPattern?: string;
+        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode: string;
@@ -829,6 +837,10 @@ export namespace device {
         allowRrmDisable: boolean;
         antGain: number;
         /**
+         * enum: `narrow`, `medium`, `wide`
+         */
+        antennaBeamPattern?: string;
+        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode: string;
@@ -869,6 +881,10 @@ export namespace device {
     export interface ApRadioConfigBand6 {
         allowRrmDisable: boolean;
         antGain: number;
+        /**
+         * enum: `narrow`, `medium`, `wide`
+         */
+        antennaBeamPattern?: string;
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
@@ -1548,7 +1564,7 @@ export namespace device {
          */
         aeIdx?: string;
         /**
-         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         * For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
         aeLacpForceUp?: boolean;
         aggregated?: boolean;
@@ -1951,7 +1967,7 @@ export namespace device {
          */
         antivirus?: outputs.device.GatewayServicePolicyAntivirus;
         /**
-         * For SRX Only
+         * SRX only
          */
         appqoe?: outputs.device.GatewayServicePolicyAppqoe;
         ewfs?: outputs.device.GatewayServicePolicyEwf[];
@@ -1977,9 +1993,17 @@ export namespace device {
          */
         services?: string[];
         /**
+         * SRX only
+         */
+        skyatp?: outputs.device.GatewayServicePolicySkyatp;
+        /**
          * For SRX-only
          */
         sslProxy?: outputs.device.GatewayServicePolicySslProxy;
+        /**
+         * Required for syslog logging
+         */
+        syslog?: outputs.device.GatewayServicePolicySyslog;
         /**
          * Required when `servicepolicyId` is not defined. List of Networks / Users
          */
@@ -2025,12 +2049,36 @@ export namespace device {
         profile?: string;
     }
 
+    export interface GatewayServicePolicySkyatp {
+        /**
+         * enum: `disabled`, `default`, `standard`, `strict`
+         */
+        dnsDgaDetection: string;
+        /**
+         * enum: `disabled`, `default`, `standard`, `strict`
+         */
+        dnsTunnelDetection: string;
+        /**
+         * enum: `disabled`, `standard`
+         */
+        httpInspection: string;
+        /**
+         * enum: `disabled`, `enabled`
+         */
+        iotDevicePolicy: string;
+    }
+
     export interface GatewayServicePolicySslProxy {
         /**
          * enum: `medium`, `strong`, `weak`
          */
         ciphersCategory?: string;
         enabled?: boolean;
+    }
+
+    export interface GatewayServicePolicySyslog {
+        enabled: boolean;
+        serverNames?: string[];
     }
 
     export interface GatewayTunnelConfigs {
@@ -4754,7 +4802,7 @@ export namespace device {
 
     export interface SwitchAclTags {
         /**
-         * Can only be used under dst tags.
+         * ARP / IPv6. Default is `any`
          */
         etherTypes?: string[];
         /**
@@ -5016,7 +5064,7 @@ export namespace device {
          */
         allNetworks?: boolean;
         /**
-         * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+         * Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: boolean;
         allowMultipleSupplicants?: boolean;
@@ -5441,7 +5489,7 @@ export namespace device {
          */
         allNetworks?: boolean;
         /**
-         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: boolean;
         /**
@@ -5456,6 +5504,10 @@ export namespace device {
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: boolean;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+         */
+        bypassAuthWhenServerDownForVoip: boolean;
         /**
          * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
          */
@@ -5537,6 +5589,10 @@ export namespace device {
          */
         poeDisabled?: boolean;
         /**
+         * PoE priority. enum: `low`, `high`
+         */
+        poePriority?: string;
+        /**
          * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          */
         portAuth?: string;
@@ -5615,7 +5671,7 @@ export namespace device {
          */
         expression?: string;
         /**
-         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
          */
         src: string;
         /**
@@ -6327,7 +6383,7 @@ export namespace org {
          */
         role: string;
         /**
-         * enum: `org`, `site`, `sitegroup`
+         * enum: `org`, `site`, `sitegroup`, `orgsites`
          */
         scope: string;
         /**
@@ -6823,13 +6879,13 @@ export namespace org {
          */
         antGain6?: number;
         /**
-         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
-         */
-        antMode?: string;
-        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode?: string;
+        /**
+         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         */
+        antennaSelect?: string;
         /**
          * Radio Band AP settings
          */
@@ -6858,6 +6914,10 @@ export namespace org {
          * To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
          */
         indoorUse?: boolean;
+        /**
+         * Enable RRM to manage all radio settings (ignores all bandXxx configs)
+         */
+        rrmManaged?: boolean;
         /**
          * Whether scanning radio is enabled
          */
@@ -6909,6 +6969,10 @@ export namespace org {
         allowRrmDisable: boolean;
         antGain: number;
         /**
+         * enum: `narrow`, `medium`, `wide`
+         */
+        antennaBeamPattern?: string;
+        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode: string;
@@ -6950,6 +7014,10 @@ export namespace org {
         allowRrmDisable: boolean;
         antGain: number;
         /**
+         * enum: `narrow`, `medium`, `wide`
+         */
+        antennaBeamPattern?: string;
+        /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
         antennaMode: string;
@@ -6990,6 +7058,10 @@ export namespace org {
     export interface DeviceprofileApRadioConfigBand6 {
         allowRrmDisable: boolean;
         antGain: number;
+        /**
+         * enum: `narrow`, `medium`, `wide`
+         */
+        antennaBeamPattern?: string;
         /**
          * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
          */
@@ -7646,7 +7718,7 @@ export namespace org {
          */
         aeIdx?: string;
         /**
-         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         * For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
         aeLacpForceUp?: boolean;
         aggregated?: boolean;
@@ -8037,7 +8109,7 @@ export namespace org {
          */
         antivirus?: outputs.org.DeviceprofileGatewayServicePolicyAntivirus;
         /**
-         * For SRX Only
+         * SRX only
          */
         appqoe?: outputs.org.DeviceprofileGatewayServicePolicyAppqoe;
         ewfs?: outputs.org.DeviceprofileGatewayServicePolicyEwf[];
@@ -8063,9 +8135,17 @@ export namespace org {
          */
         services?: string[];
         /**
+         * SRX only
+         */
+        skyatp?: outputs.org.DeviceprofileGatewayServicePolicySkyatp;
+        /**
          * For SRX-only
          */
         sslProxy?: outputs.org.DeviceprofileGatewayServicePolicySslProxy;
+        /**
+         * Required for syslog logging
+         */
+        syslog?: outputs.org.DeviceprofileGatewayServicePolicySyslog;
         /**
          * Required when `servicepolicyId` is not defined. List of Networks / Users
          */
@@ -8111,12 +8191,36 @@ export namespace org {
         profile?: string;
     }
 
+    export interface DeviceprofileGatewayServicePolicySkyatp {
+        /**
+         * enum: `disabled`, `default`, `standard`, `strict`
+         */
+        dnsDgaDetection: string;
+        /**
+         * enum: `disabled`, `default`, `standard`, `strict`
+         */
+        dnsTunnelDetection: string;
+        /**
+         * enum: `disabled`, `standard`
+         */
+        httpInspection: string;
+        /**
+         * enum: `disabled`, `enabled`
+         */
+        iotDevicePolicy: string;
+    }
+
     export interface DeviceprofileGatewayServicePolicySslProxy {
         /**
          * enum: `medium`, `strong`, `weak`
          */
         ciphersCategory?: string;
         enabled?: boolean;
+    }
+
+    export interface DeviceprofileGatewayServicePolicySyslog {
+        enabled: boolean;
+        serverNames?: string[];
     }
 
     export interface DeviceprofileGatewayTunnelConfigs {
@@ -9155,7 +9259,7 @@ export namespace org {
          */
         aeIdx?: string;
         /**
-         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         * For SRX only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
         aeLacpForceUp?: boolean;
         aggregated?: boolean;
@@ -9546,7 +9650,7 @@ export namespace org {
          */
         antivirus?: outputs.org.GatewaytemplateServicePolicyAntivirus;
         /**
-         * For SRX Only
+         * SRX only
          */
         appqoe?: outputs.org.GatewaytemplateServicePolicyAppqoe;
         ewfs?: outputs.org.GatewaytemplateServicePolicyEwf[];
@@ -9572,9 +9676,17 @@ export namespace org {
          */
         services?: string[];
         /**
+         * SRX only
+         */
+        skyatp?: outputs.org.GatewaytemplateServicePolicySkyatp;
+        /**
          * For SRX-only
          */
         sslProxy?: outputs.org.GatewaytemplateServicePolicySslProxy;
+        /**
+         * Required for syslog logging
+         */
+        syslog?: outputs.org.GatewaytemplateServicePolicySyslog;
         /**
          * Required when `servicepolicyId` is not defined. List of Networks / Users
          */
@@ -9620,12 +9732,36 @@ export namespace org {
         profile?: string;
     }
 
+    export interface GatewaytemplateServicePolicySkyatp {
+        /**
+         * enum: `disabled`, `default`, `standard`, `strict`
+         */
+        dnsDgaDetection: string;
+        /**
+         * enum: `disabled`, `default`, `standard`, `strict`
+         */
+        dnsTunnelDetection: string;
+        /**
+         * enum: `disabled`, `standard`
+         */
+        httpInspection: string;
+        /**
+         * enum: `disabled`, `enabled`
+         */
+        iotDevicePolicy: string;
+    }
+
     export interface GatewaytemplateServicePolicySslProxy {
         /**
          * enum: `medium`, `strong`, `weak`
          */
         ciphersCategory?: string;
         enabled?: boolean;
+    }
+
+    export interface GatewaytemplateServicePolicySyslog {
+        enabled: boolean;
+        serverNames?: string[];
     }
 
     export interface GatewaytemplateTunnelConfigs {
@@ -12698,7 +12834,7 @@ export namespace org {
 
     export interface NetworktemplateAclTags {
         /**
-         * Can only be used under dst tags.
+         * ARP / IPv6. Default is `any`
          */
         etherTypes?: string[];
         /**
@@ -12934,7 +13070,7 @@ export namespace org {
          */
         allNetworks?: boolean;
         /**
-         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: boolean;
         /**
@@ -12949,6 +13085,10 @@ export namespace org {
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: boolean;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+         */
+        bypassAuthWhenServerDownForVoip: boolean;
         /**
          * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
          */
@@ -12986,11 +13126,11 @@ export namespace org {
          */
         guestNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
          */
         interIsolationNetworkLink?: boolean;
         /**
-         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
          */
         interSwitchLink?: boolean;
         /**
@@ -13029,6 +13169,10 @@ export namespace org {
          * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: boolean;
+        /**
+         * PoE priority. enum: `low`, `high`
+         */
+        poePriority?: string;
         /**
          * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          */
@@ -13112,7 +13256,7 @@ export namespace org {
          */
         expression?: string;
         /**
-         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
          */
         src: string;
         /**
@@ -14411,9 +14555,15 @@ export namespace org {
     }
 
     export interface SettingMarvisAutoOperations {
+        apInsufficientCapacity: boolean;
+        apLoop: boolean;
+        apNonCompliant: boolean;
         bouncePortForAbnormalPoeClient: boolean;
         disablePortWhenDdosProtocolViolation: boolean;
         disablePortWhenRogueDhcpServerDetected: boolean;
+        gatewayNonCompliant: boolean;
+        switchMisconfiguredPort: boolean;
+        switchPortStuck: boolean;
     }
 
     export interface SettingMgmt {
@@ -14551,7 +14701,7 @@ export namespace org {
     }
 
     export interface SettingPcap {
-        bucket?: string;
+        bucket: string;
         /**
          * Max_len of non-management packets to capture
          */
@@ -14591,7 +14741,7 @@ export namespace org {
          */
         disableStats?: boolean;
         /**
-         * Proxy Configuration to talk to Mist
+         * SSR proxy configuration to talk to Mist
          */
         proxy?: outputs.org.SettingSsrProxy;
     }
@@ -14609,6 +14759,7 @@ export namespace org {
     }
 
     export interface SettingSsrProxy {
+        disabled: boolean;
         url?: string;
     }
 
@@ -14748,7 +14899,7 @@ export namespace org {
          */
         role: string;
         /**
-         * enum: `org`, `site`, `sitegroup`
+         * enum: `org`, `site`, `sitegroup`, `orgsites`
          */
         scope: string;
         /**
@@ -17783,7 +17934,7 @@ export namespace site {
 
     export interface NetworktemplateAclTags {
         /**
-         * Can only be used under dst tags.
+         * ARP / IPv6. Default is `any`
          */
         etherTypes?: string[];
         /**
@@ -18019,7 +18170,7 @@ export namespace site {
          */
         allNetworks?: boolean;
         /**
-         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: boolean;
         /**
@@ -18034,6 +18185,10 @@ export namespace site {
          * Only if `mode`!=`dynamic` and `portAuth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          */
         bypassAuthWhenServerDownForUnknownClient?: boolean;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+         */
+        bypassAuthWhenServerDownForVoip: boolean;
         /**
          * Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
          */
@@ -18071,11 +18226,11 @@ export namespace site {
          */
         guestNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interIsolationNetworkLink` is used together with `isolation` under networks, signaling that this port connects to isolated networks
          */
         interIsolationNetworkLink?: boolean;
         /**
-         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic`. `interSwitchLink` is used together with `isolation` under networks. NOTE: `interSwitchLink` works only between Juniper devices. This has to be applied to both ports connected together
          */
         interSwitchLink?: boolean;
         /**
@@ -18114,6 +18269,10 @@ export namespace site {
          * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: boolean;
+        /**
+         * PoE priority. enum: `low`, `high`
+         */
+        poePriority?: string;
         /**
          * Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
          */
@@ -18197,7 +18356,7 @@ export namespace site {
          */
         expression?: string;
         /**
-         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+         * enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
          */
         src: string;
         /**
@@ -19320,7 +19479,7 @@ export namespace site {
          */
         protectRe?: outputs.site.SettingGatewayMgmtProtectRe;
         /**
-         * For SRX only
+         * SRX only
          */
         rootPassword?: string;
         securityLogSourceAddress?: string;
@@ -19440,9 +19599,15 @@ export namespace site {
     }
 
     export interface SettingMarvisAutoOperations {
+        apInsufficientCapacity: boolean;
+        apLoop: boolean;
+        apNonCompliant: boolean;
         bouncePortForAbnormalPoeClient: boolean;
         disablePortWhenDdosProtocolViolation: boolean;
         disablePortWhenRogueDhcpServerDetected: boolean;
+        gatewayNonCompliant: boolean;
+        switchMisconfiguredPort: boolean;
+        switchPortStuck: boolean;
     }
 
     export interface SettingOccupancy {
@@ -19469,6 +19634,7 @@ export namespace site {
     }
 
     export interface SettingProxy {
+        disabled: boolean;
         url?: string;
     }
 
@@ -19604,7 +19770,7 @@ export namespace site {
          */
         disableStats?: boolean;
         /**
-         * Proxy Configuration to talk to Mist
+         * SSR proxy configuration to talk to Mist
          */
         proxy?: outputs.site.SettingSsrProxy;
     }
@@ -19622,6 +19788,7 @@ export namespace site {
     }
 
     export interface SettingSsrProxy {
+        disabled: boolean;
         url?: string;
     }
 

@@ -25,14 +25,14 @@ public final class ServicepolicyArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServicepolicyArgs Empty = new ServicepolicyArgs();
 
     /**
-     * For SRX Only
+     * SRX only
      * 
      */
     @Import(name="aamw")
     private @Nullable Output<ServicepolicyAamwArgs> aamw;
 
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     public Optional<Output<ServicepolicyAamwArgs>> aamw() {
@@ -70,14 +70,14 @@ public final class ServicepolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For SRX Only
+     * SRX only
      * 
      */
     @Import(name="appqoe")
     private @Nullable Output<ServicepolicyAppqoeArgs> appqoe;
 
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     public Optional<Output<ServicepolicyAppqoeArgs>> appqoe() {
@@ -208,7 +208,7 @@ public final class ServicepolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aamw For SRX Only
+         * @param aamw SRX only
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class ServicepolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aamw For SRX Only
+         * @param aamw SRX only
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ServicepolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appqoe For SRX Only
+         * @param appqoe SRX only
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class ServicepolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appqoe For SRX Only
+         * @param appqoe SRX only
          * 
          * @return builder
          * 

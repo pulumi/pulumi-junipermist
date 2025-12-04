@@ -394,10 +394,10 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.passwordPolicy);
     }
     @Export(name="pcap", refs={SettingPcap.class}, tree="[0]")
-    private Output</* @Nullable */ SettingPcap> pcap;
+    private Output<SettingPcap> pcap;
 
-    public Output<Optional<SettingPcap>> pcap() {
-        return Codegen.optional(this.pcap);
+    public Output<SettingPcap> pcap() {
+        return this.pcap;
     }
     @Export(name="security", refs={SettingSecurity.class}, tree="[0]")
     private Output</* @Nullable */ SettingSecurity> security;

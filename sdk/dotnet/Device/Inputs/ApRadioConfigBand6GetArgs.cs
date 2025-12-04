@@ -19,6 +19,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? AntGain { get; set; }
 
         /// <summary>
+        /// enum: `Narrow`, `Medium`, `Wide`
+        /// </summary>
+        [Input("antennaBeamPattern")]
+        public Input<string>? AntennaBeamPattern { get; set; }
+
+        /// <summary>
         /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
         /// </summary>
         [Input("antennaMode")]

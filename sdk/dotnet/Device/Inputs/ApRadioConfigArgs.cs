@@ -34,16 +34,16 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? AntGain6 { get; set; }
 
         /// <summary>
-        /// Antenna Mode for AP which supports selectable antennas. enum: `External`, `Internal`
-        /// </summary>
-        [Input("antMode")]
-        public Input<string>? AntMode { get; set; }
-
-        /// <summary>
         /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
         /// </summary>
         [Input("antennaMode")]
         public Input<string>? AntennaMode { get; set; }
+
+        /// <summary>
+        /// Antenna Mode for AP which supports selectable antennas. enum: `External`, `Internal`
+        /// </summary>
+        [Input("antennaSelect")]
+        public Input<string>? AntennaSelect { get; set; }
 
         /// <summary>
         /// Radio Band AP settings
@@ -86,6 +86,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         /// </summary>
         [Input("indoorUse")]
         public Input<bool>? IndoorUse { get; set; }
+
+        /// <summary>
+        /// Enable RRM to manage all radio settings (ignores all BandXxx configs)
+        /// </summary>
+        [Input("rrmManaged")]
+        public Input<bool>? RrmManaged { get; set; }
 
         /// <summary>
         /// Whether scanning radio is enabled

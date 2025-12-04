@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingProxyGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
         [Input("url")]
         public Input<string>? Url { get; set; }
 

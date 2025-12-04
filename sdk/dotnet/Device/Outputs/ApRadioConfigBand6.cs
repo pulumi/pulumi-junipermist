@@ -16,6 +16,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool? AllowRrmDisable;
         public readonly int? AntGain;
         /// <summary>
+        /// enum: `Narrow`, `Medium`, `Wide`
+        /// </summary>
+        public readonly string? AntennaBeamPattern;
+        /// <summary>
         /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
         /// </summary>
         public readonly string? AntennaMode;
@@ -62,6 +66,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int? antGain,
 
+            string? antennaBeamPattern,
+
             string? antennaMode,
 
             int? bandwidth,
@@ -84,6 +90,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         {
             AllowRrmDisable = allowRrmDisable;
             AntGain = antGain;
+            AntennaBeamPattern = antennaBeamPattern;
             AntennaMode = antennaMode;
             Bandwidth = bandwidth;
             Channel = channel;

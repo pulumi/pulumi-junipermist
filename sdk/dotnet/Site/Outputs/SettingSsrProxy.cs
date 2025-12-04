@@ -13,11 +13,16 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingSsrProxy
     {
+        public readonly bool? Disabled;
         public readonly string? Url;
 
         [OutputConstructor]
-        private SettingSsrProxy(string? url)
+        private SettingSsrProxy(
+            bool? disabled,
+
+            string? url)
         {
+            Disabled = disabled;
             Url = url;
         }
     }

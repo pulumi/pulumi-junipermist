@@ -777,7 +777,7 @@ class NetworktemplateAclTags(dict):
                  * `resource`: can only be used in `dst_tags`
                  * `static_gbp`: applying gbp tag against matching conditions
                  * `subnet`'
-        :param Sequence[_builtins.str] ether_types: Can only be used under dst tags.
+        :param Sequence[_builtins.str] ether_types: ARP / IPv6. Default is `any`
         :param _builtins.int gbp_tag: Required if
                  - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
                  - `type`==`gbp_resource`
@@ -842,7 +842,7 @@ class NetworktemplateAclTags(dict):
     @pulumi.getter(name="etherTypes")
     def ether_types(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Can only be used under dst tags.
+        ARP / IPv6. Default is `any`
         """
         return pulumi.get(self, "ether_types")
 
@@ -1707,6 +1707,8 @@ class NetworktemplatePortUsages(dict):
             suggest = "bypass_auth_when_server_down"
         elif key == "bypassAuthWhenServerDownForUnknownClient":
             suggest = "bypass_auth_when_server_down_for_unknown_client"
+        elif key == "bypassAuthWhenServerDownForVoip":
+            suggest = "bypass_auth_when_server_down_for_voip"
         elif key == "communityVlanId":
             suggest = "community_vlan_id"
         elif key == "disableAutoneg":
@@ -1735,6 +1737,8 @@ class NetworktemplatePortUsages(dict):
             suggest = "persist_mac"
         elif key == "poeDisabled":
             suggest = "poe_disabled"
+        elif key == "poePriority":
+            suggest = "poe_priority"
         elif key == "portAuth":
             suggest = "port_auth"
         elif key == "portNetwork":
@@ -1783,6 +1787,7 @@ class NetworktemplatePortUsages(dict):
                  allow_multiple_supplicants: Optional[_builtins.bool] = None,
                  bypass_auth_when_server_down: Optional[_builtins.bool] = None,
                  bypass_auth_when_server_down_for_unknown_client: Optional[_builtins.bool] = None,
+                 bypass_auth_when_server_down_for_voip: Optional[_builtins.bool] = None,
                  community_vlan_id: Optional[_builtins.int] = None,
                  description: Optional[_builtins.str] = None,
                  disable_autoneg: Optional[_builtins.bool] = None,
@@ -1803,6 +1808,7 @@ class NetworktemplatePortUsages(dict):
                  networks: Optional[Sequence[_builtins.str]] = None,
                  persist_mac: Optional[_builtins.bool] = None,
                  poe_disabled: Optional[_builtins.bool] = None,
+                 poe_priority: Optional[_builtins.str] = None,
                  port_auth: Optional[_builtins.str] = None,
                  port_network: Optional[_builtins.str] = None,
                  reauth_interval: Optional[_builtins.str] = None,
@@ -1822,10 +1828,11 @@ class NetworktemplatePortUsages(dict):
                  voip_network: Optional[_builtins.str] = None):
         """
         :param _builtins.bool all_networks: Only if `mode`==`trunk`. Whether to trunk all network/vlans
-        :param _builtins.bool allow_dhcpd: Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+        :param _builtins.bool allow_dhcpd: Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         :param _builtins.bool allow_multiple_supplicants: Only if `mode`!=`dynamic`
         :param _builtins.bool bypass_auth_when_server_down: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
         :param _builtins.bool bypass_auth_when_server_down_for_unknown_client: Only if `mode`!=`dynamic` and `port_auth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+        :param _builtins.bool bypass_auth_when_server_down_for_voip: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
         :param _builtins.int community_vlan_id: Only if `mode`!=`dynamic`. To be used together with `isolation` under networks. Signaling that this port connects to the networks isolated but wired clients belong to the same community can talk to each other
         :param _builtins.str description: Only if `mode`!=`dynamic`
         :param _builtins.bool disable_autoneg: Only if `mode`!=`dynamic`. If speed and duplex are specified, whether to disable autonegotiation
@@ -1835,8 +1842,8 @@ class NetworktemplatePortUsages(dict):
         :param _builtins.bool enable_mac_auth: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Whether to enable MAC Auth
         :param _builtins.bool enable_qos: Only if `mode`!=`dynamic`
         :param _builtins.str guest_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
-        :param _builtins.bool inter_isolation_network_link: Only if `mode`!=`dynamic`. `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
-        :param _builtins.bool inter_switch_link: Only if `mode`!=`dynamic`. `inter_switch_link` is used together with `isolation` under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        :param _builtins.bool inter_isolation_network_link: Only if `mode`!=`dynamic`. `inter_isolation_network_link` is used together with `isolation` under networks, signaling that this port connects to isolated networks
+        :param _builtins.bool inter_switch_link: Only if `mode`!=`dynamic`. `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper devices. This has to be applied to both ports connected together
         :param _builtins.bool mac_auth_only: Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
         :param _builtins.bool mac_auth_preferred: Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
         :param _builtins.str mac_auth_protocol: Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
@@ -1846,6 +1853,7 @@ class NetworktemplatePortUsages(dict):
         :param Sequence[_builtins.str] networks: Only if `mode`==`trunk`, the list of network/vlans
         :param _builtins.bool persist_mac: Only if `mode`==`access` and `port_auth`!=`dot1x`. Whether the port should retain dynamically learned MAC addresses
         :param _builtins.bool poe_disabled: Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
+        :param _builtins.str poe_priority: PoE priority. enum: `low`, `high`
         :param _builtins.str port_auth: Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
         :param _builtins.str port_network: Only if `mode`!=`dynamic`. Native network/vlan for untagged traffic
         :param _builtins.str reauth_interval: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range between 10 and 65535 (default: 3600)
@@ -1874,6 +1882,8 @@ class NetworktemplatePortUsages(dict):
             pulumi.set(__self__, "bypass_auth_when_server_down", bypass_auth_when_server_down)
         if bypass_auth_when_server_down_for_unknown_client is not None:
             pulumi.set(__self__, "bypass_auth_when_server_down_for_unknown_client", bypass_auth_when_server_down_for_unknown_client)
+        if bypass_auth_when_server_down_for_voip is not None:
+            pulumi.set(__self__, "bypass_auth_when_server_down_for_voip", bypass_auth_when_server_down_for_voip)
         if community_vlan_id is not None:
             pulumi.set(__self__, "community_vlan_id", community_vlan_id)
         if description is not None:
@@ -1914,6 +1924,8 @@ class NetworktemplatePortUsages(dict):
             pulumi.set(__self__, "persist_mac", persist_mac)
         if poe_disabled is not None:
             pulumi.set(__self__, "poe_disabled", poe_disabled)
+        if poe_priority is not None:
+            pulumi.set(__self__, "poe_priority", poe_priority)
         if port_auth is not None:
             pulumi.set(__self__, "port_auth", port_auth)
         if port_network is not None:
@@ -1961,7 +1973,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter(name="allowDhcpd")
     def allow_dhcpd(self) -> Optional[_builtins.bool]:
         """
-        Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
+        Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         """
         return pulumi.get(self, "allow_dhcpd")
 
@@ -1988,6 +2000,14 @@ class NetworktemplatePortUsages(dict):
         Only if `mode`!=`dynamic` and `port_auth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         """
         return pulumi.get(self, "bypass_auth_when_server_down_for_unknown_client")
+
+    @_builtins.property
+    @pulumi.getter(name="bypassAuthWhenServerDownForVoip")
+    def bypass_auth_when_server_down_for_voip(self) -> Optional[_builtins.bool]:
+        """
+        Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Bypass auth for VOIP if set to true when RADIUS server is down
+        """
+        return pulumi.get(self, "bypass_auth_when_server_down_for_voip")
 
     @_builtins.property
     @pulumi.getter(name="communityVlanId")
@@ -2065,7 +2085,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter(name="interIsolationNetworkLink")
     def inter_isolation_network_link(self) -> Optional[_builtins.bool]:
         """
-        Only if `mode`!=`dynamic`. `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper device. This has to be applied to both ports connected together
+        Only if `mode`!=`dynamic`. `inter_isolation_network_link` is used together with `isolation` under networks, signaling that this port connects to isolated networks
         """
         return pulumi.get(self, "inter_isolation_network_link")
 
@@ -2073,7 +2093,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter(name="interSwitchLink")
     def inter_switch_link(self) -> Optional[_builtins.bool]:
         """
-        Only if `mode`!=`dynamic`. `inter_switch_link` is used together with `isolation` under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        Only if `mode`!=`dynamic`. `inter_switch_link` is used together with `isolation` under networks. NOTE: `inter_switch_link` works only between Juniper devices. This has to be applied to both ports connected together
         """
         return pulumi.get(self, "inter_switch_link")
 
@@ -2148,6 +2168,14 @@ class NetworktemplatePortUsages(dict):
         Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
         """
         return pulumi.get(self, "poe_disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="poePriority")
+    def poe_priority(self) -> Optional[_builtins.str]:
+        """
+        PoE priority. enum: `low`, `high`
+        """
+        return pulumi.get(self, "poe_priority")
 
     @_builtins.property
     @pulumi.getter(name="portAuth")
@@ -2312,7 +2340,7 @@ class NetworktemplatePortUsagesRule(dict):
                  expression: Optional[_builtins.str] = None,
                  usage: Optional[_builtins.str] = None):
         """
-        :param _builtins.str src: enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+        :param _builtins.str src: enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_description`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
         :param Sequence[_builtins.str] equals_anies: Use `equals_any` to match any item in a list
         :param _builtins.str expression: "[0:3]":"abcdef" > "abc"
                "split(.)[1]": "a.b.c" > "b"
@@ -2333,7 +2361,7 @@ class NetworktemplatePortUsagesRule(dict):
     @pulumi.getter
     def src(self) -> _builtins.str:
         """
-        enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+        enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_description`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
         """
         return pulumi.get(self, "src")
 
@@ -7042,7 +7070,7 @@ class SettingGatewayMgmt(dict):
         :param 'SettingGatewayMgmtProtectReArgs' protect_re: Restrict inbound-traffic to host
                when enabled, all traffic that is not essential to our operation will be dropped 
                e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
-        :param _builtins.str root_password: For SRX only
+        :param _builtins.str root_password: SRX only
         """
         if admin_sshkeys is not None:
             pulumi.set(__self__, "admin_sshkeys", admin_sshkeys)
@@ -7162,7 +7190,7 @@ class SettingGatewayMgmt(dict):
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> Optional[_builtins.str]:
         """
-        For SRX only
+        SRX only
         """
         return pulumi.get(self, "root_password")
 
@@ -7761,12 +7789,24 @@ class SettingMarvisAutoOperations(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bouncePortForAbnormalPoeClient":
+        if key == "apInsufficientCapacity":
+            suggest = "ap_insufficient_capacity"
+        elif key == "apLoop":
+            suggest = "ap_loop"
+        elif key == "apNonCompliant":
+            suggest = "ap_non_compliant"
+        elif key == "bouncePortForAbnormalPoeClient":
             suggest = "bounce_port_for_abnormal_poe_client"
         elif key == "disablePortWhenDdosProtocolViolation":
             suggest = "disable_port_when_ddos_protocol_violation"
         elif key == "disablePortWhenRogueDhcpServerDetected":
             suggest = "disable_port_when_rogue_dhcp_server_detected"
+        elif key == "gatewayNonCompliant":
+            suggest = "gateway_non_compliant"
+        elif key == "switchMisconfiguredPort":
+            suggest = "switch_misconfigured_port"
+        elif key == "switchPortStuck":
+            suggest = "switch_port_stuck"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SettingMarvisAutoOperations. Access the value via the '{suggest}' property getter instead.")
@@ -7780,15 +7820,48 @@ class SettingMarvisAutoOperations(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 ap_insufficient_capacity: Optional[_builtins.bool] = None,
+                 ap_loop: Optional[_builtins.bool] = None,
+                 ap_non_compliant: Optional[_builtins.bool] = None,
                  bounce_port_for_abnormal_poe_client: Optional[_builtins.bool] = None,
                  disable_port_when_ddos_protocol_violation: Optional[_builtins.bool] = None,
-                 disable_port_when_rogue_dhcp_server_detected: Optional[_builtins.bool] = None):
+                 disable_port_when_rogue_dhcp_server_detected: Optional[_builtins.bool] = None,
+                 gateway_non_compliant: Optional[_builtins.bool] = None,
+                 switch_misconfigured_port: Optional[_builtins.bool] = None,
+                 switch_port_stuck: Optional[_builtins.bool] = None):
+        if ap_insufficient_capacity is not None:
+            pulumi.set(__self__, "ap_insufficient_capacity", ap_insufficient_capacity)
+        if ap_loop is not None:
+            pulumi.set(__self__, "ap_loop", ap_loop)
+        if ap_non_compliant is not None:
+            pulumi.set(__self__, "ap_non_compliant", ap_non_compliant)
         if bounce_port_for_abnormal_poe_client is not None:
             pulumi.set(__self__, "bounce_port_for_abnormal_poe_client", bounce_port_for_abnormal_poe_client)
         if disable_port_when_ddos_protocol_violation is not None:
             pulumi.set(__self__, "disable_port_when_ddos_protocol_violation", disable_port_when_ddos_protocol_violation)
         if disable_port_when_rogue_dhcp_server_detected is not None:
             pulumi.set(__self__, "disable_port_when_rogue_dhcp_server_detected", disable_port_when_rogue_dhcp_server_detected)
+        if gateway_non_compliant is not None:
+            pulumi.set(__self__, "gateway_non_compliant", gateway_non_compliant)
+        if switch_misconfigured_port is not None:
+            pulumi.set(__self__, "switch_misconfigured_port", switch_misconfigured_port)
+        if switch_port_stuck is not None:
+            pulumi.set(__self__, "switch_port_stuck", switch_port_stuck)
+
+    @_builtins.property
+    @pulumi.getter(name="apInsufficientCapacity")
+    def ap_insufficient_capacity(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "ap_insufficient_capacity")
+
+    @_builtins.property
+    @pulumi.getter(name="apLoop")
+    def ap_loop(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "ap_loop")
+
+    @_builtins.property
+    @pulumi.getter(name="apNonCompliant")
+    def ap_non_compliant(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "ap_non_compliant")
 
     @_builtins.property
     @pulumi.getter(name="bouncePortForAbnormalPoeClient")
@@ -7804,6 +7877,21 @@ class SettingMarvisAutoOperations(dict):
     @pulumi.getter(name="disablePortWhenRogueDhcpServerDetected")
     def disable_port_when_rogue_dhcp_server_detected(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "disable_port_when_rogue_dhcp_server_detected")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayNonCompliant")
+    def gateway_non_compliant(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "gateway_non_compliant")
+
+    @_builtins.property
+    @pulumi.getter(name="switchMisconfiguredPort")
+    def switch_misconfigured_port(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "switch_misconfigured_port")
+
+    @_builtins.property
+    @pulumi.getter(name="switchPortStuck")
+    def switch_port_stuck(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "switch_port_stuck")
 
 
 @pulumi.output_type
@@ -7901,9 +7989,17 @@ class SettingOccupancy(dict):
 @pulumi.output_type
 class SettingProxy(dict):
     def __init__(__self__, *,
+                 disabled: Optional[_builtins.bool] = None,
                  url: Optional[_builtins.str] = None):
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if url is not None:
             pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "disabled")
 
     @_builtins.property
     @pulumi.getter
@@ -8491,7 +8587,7 @@ class SettingSsr(dict):
         :param Sequence[_builtins.str] conductor_hosts: List of Conductor IP Addresses or Hosts to be used by the SSR Devices
         :param _builtins.str conductor_token: Token to be used by the SSR Devices to connect to the Conductor
         :param _builtins.bool disable_stats: Disable stats collection on SSR devices
-        :param 'SettingSsrProxyArgs' proxy: Proxy Configuration to talk to Mist
+        :param 'SettingSsrProxyArgs' proxy: SSR proxy configuration to talk to Mist
         """
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
@@ -8540,7 +8636,7 @@ class SettingSsr(dict):
     @pulumi.getter
     def proxy(self) -> Optional['outputs.SettingSsrProxy']:
         """
-        Proxy Configuration to talk to Mist
+        SSR proxy configuration to talk to Mist
         """
         return pulumi.get(self, "proxy")
 
@@ -8604,9 +8700,17 @@ class SettingSsrAutoUpgrade(dict):
 @pulumi.output_type
 class SettingSsrProxy(dict):
     def __init__(__self__, *,
+                 disabled: Optional[_builtins.bool] = None,
                  url: Optional[_builtins.str] = None):
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if url is not None:
             pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "disabled")
 
     @_builtins.property
     @pulumi.getter

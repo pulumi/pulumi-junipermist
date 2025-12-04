@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<Inputs.GatewayServicePolicyAntivirusArgs>? Antivirus { get; set; }
 
         /// <summary>
-        /// For SRX Only
+        /// SRX only
         /// </summary>
         [Input("appqoe")]
         public Input<Inputs.GatewayServicePolicyAppqoeArgs>? Appqoe { get; set; }
@@ -78,10 +78,22 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
+        /// SRX only
+        /// </summary>
+        [Input("skyatp")]
+        public Input<Inputs.GatewayServicePolicySkyatpArgs>? Skyatp { get; set; }
+
+        /// <summary>
         /// For SRX-only
         /// </summary>
         [Input("sslProxy")]
         public Input<Inputs.GatewayServicePolicySslProxyArgs>? SslProxy { get; set; }
+
+        /// <summary>
+        /// Required for syslog logging
+        /// </summary>
+        [Input("syslog")]
+        public Input<Inputs.GatewayServicePolicySyslogArgs>? Syslog { get; set; }
 
         [Input("tenants")]
         private InputList<string>? _tenants;
