@@ -53,6 +53,7 @@ jobs:
           module-path: provider
           ignore-modules: >-
             github.com/gotestyourself/gotest.tools,
+            gotest.tools,
             github.com/aead/chacha20,
             github.com/apache/arrow/go/v12,
             github.com/apache/thrift/lib/go/thrift,
