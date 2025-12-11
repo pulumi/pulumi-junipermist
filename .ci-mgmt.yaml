@@ -20,3 +20,4 @@ license:
     ignore:
         # This library does have a LICENSE file that uses Apache-2.0 but our tool is not detecting it.
         - github.com/gotestyourself/gotest.tools
+        - gotest.tools
