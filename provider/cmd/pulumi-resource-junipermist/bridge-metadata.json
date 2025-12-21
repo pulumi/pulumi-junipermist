@@ -56,9 +56,6 @@
                                             "maxItemsOne": false
                                         }
                                     }
-                                },
-                                "vlan_ids": {
-                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -533,6 +530,15 @@
                     "additional_config_cmds": {
                         "maxItemsOne": false
                     },
+                    "bgp_config": {
+                        "elem": {
+                            "fields": {
+                                "networks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "dhcp_snooping": {
                         "fields": {
                             "networks": {
@@ -592,6 +598,15 @@
                     },
                     "ntp_servers": {
                         "maxItemsOne": false
+                    },
+                    "port_config": {
+                        "elem": {
+                            "fields": {
+                                "networks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "port_mirroring": {
                         "elem": {
@@ -678,6 +693,45 @@
                                     "fields": {
                                         "contents": {
                                             "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "routing_policies": {
+                        "elem": {
+                            "fields": {
+                                "terms": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "actions": {
+                                                "fields": {
+                                                    "community": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "prepend_as_path": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            },
+                                            "matching": {
+                                                "fields": {
+                                                    "as_path": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "community": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "prefix": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "protocol": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -936,9 +990,6 @@
                                             "maxItemsOne": false
                                         }
                                     }
-                                },
-                                "vlan_ids": {
-                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -1381,7 +1432,28 @@
                     "switches": {
                         "elem": {
                             "fields": {
+                                "downlink_ips": {
+                                    "maxItemsOne": false
+                                },
+                                "downlinks": {
+                                    "maxItemsOne": false
+                                },
+                                "esilaglinks": {
+                                    "maxItemsOne": false
+                                },
                                 "pods": {
+                                    "maxItemsOne": false
+                                },
+                                "suggested_downlinks": {
+                                    "maxItemsOne": false
+                                },
+                                "suggested_esilaglinks": {
+                                    "maxItemsOne": false
+                                },
+                                "suggested_uplinks": {
+                                    "maxItemsOne": false
+                                },
+                                "uplinks": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1963,6 +2035,15 @@
                     "additional_config_cmds": {
                         "maxItemsOne": false
                     },
+                    "bgp_config": {
+                        "elem": {
+                            "fields": {
+                                "networks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "dhcp_snooping": {
                         "fields": {
                             "networks": {
@@ -2070,6 +2151,45 @@
                             }
                         }
                     },
+                    "routing_policies": {
+                        "elem": {
+                            "fields": {
+                                "terms": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "actions": {
+                                                "fields": {
+                                                    "community": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "prepend_as_path": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            },
+                                            "matching": {
+                                                "fields": {
+                                                    "as_path": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "community": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "prefix": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "protocol": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "snmp_config": {
                         "fields": {
                             "client_list": {
@@ -2165,6 +2285,15 @@
                                     "fields": {
                                         "additional_config_cmds": {
                                             "maxItemsOne": false
+                                        },
+                                        "port_config": {
+                                            "elem": {
+                                                "fields": {
+                                                    "networks": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
                                         },
                                         "port_mirroring": {
                                             "elem": {
@@ -2748,7 +2877,28 @@
                     "switches": {
                         "elem": {
                             "fields": {
+                                "downlink_ips": {
+                                    "maxItemsOne": false
+                                },
+                                "downlinks": {
+                                    "maxItemsOne": false
+                                },
+                                "esilaglinks": {
+                                    "maxItemsOne": false
+                                },
                                 "pods": {
+                                    "maxItemsOne": false
+                                },
+                                "suggested_downlinks": {
+                                    "maxItemsOne": false
+                                },
+                                "suggested_esilaglinks": {
+                                    "maxItemsOne": false
+                                },
+                                "suggested_uplinks": {
+                                    "maxItemsOne": false
+                                },
+                                "uplinks": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -2903,6 +3053,45 @@
                             }
                         }
                     },
+                    "routing_policies": {
+                        "elem": {
+                            "fields": {
+                                "terms": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "actions": {
+                                                "fields": {
+                                                    "community": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "prepend_as_path": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            },
+                                            "matching": {
+                                                "fields": {
+                                                    "as_path": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "community": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "prefix": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "protocol": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "snmp_config": {
                         "fields": {
                             "client_list": {
@@ -2998,6 +3187,15 @@
                                     "fields": {
                                         "additional_config_cmds": {
                                             "maxItemsOne": false
+                                        },
+                                        "port_config": {
+                                            "elem": {
+                                                "fields": {
+                                                    "networks": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
                                         },
                                         "port_mirroring": {
                                             "elem": {
@@ -3575,6 +3773,21 @@
                                     "fields": {
                                         "mgmt_addrs": {
                                             "maxItemsOne": false
+                                        },
+                                        "power_srcs": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "lldp_stats": {
+                                    "elem": {
+                                        "fields": {
+                                            "mgmt_addrs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "power_srcs": {
+                                                "maxItemsOne": false
+                                            }
                                         }
                                     }
                                 }
@@ -3675,6 +3888,9 @@
                                             "fans": {
                                                 "maxItemsOne": false
                                             },
+                                            "network_resources": {
+                                                "maxItemsOne": false
+                                            },
                                             "psus": {
                                                 "maxItemsOne": false
                                             },
@@ -3692,6 +3908,9 @@
                                     "elem": {
                                         "fields": {
                                             "fans": {
+                                                "maxItemsOne": false
+                                            },
+                                            "network_resources": {
                                                 "maxItemsOne": false
                                             },
                                             "psus": {
@@ -4216,6 +4435,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "assetfilter_ids": {
+                                    "maxItemsOne": false
+                                },
                                 "oauth2_scopes": {
                                     "maxItemsOne": false
                                 },
@@ -4467,6 +4689,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "assetfilter_ids": {
+                                    "maxItemsOne": false
+                                },
                                 "oauth2_scopes": {
                                     "maxItemsOne": false
                                 },
