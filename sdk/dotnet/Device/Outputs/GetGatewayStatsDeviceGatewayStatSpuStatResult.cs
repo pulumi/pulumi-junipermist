@@ -18,6 +18,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly int SpuMaxSession;
         public readonly int SpuMemory;
         public readonly int SpuPendingSession;
+        public readonly int SpuUptime;
         public readonly int SpuValidSession;
 
         [OutputConstructor]
@@ -32,6 +33,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int spuPendingSession,
 
+            int spuUptime,
+
             int spuValidSession)
         {
             SpuCpu = spuCpu;
@@ -39,6 +42,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             SpuMaxSession = spuMaxSession;
             SpuMemory = spuMemory;
             SpuPendingSession = spuPendingSession;
+            SpuUptime = spuUptime;
             SpuValidSession = spuValidSession;
         }
     }

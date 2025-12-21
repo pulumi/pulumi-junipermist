@@ -15,6 +15,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly string Airflow;
         public readonly string Name;
+        public readonly int Rpm;
         public readonly string Status;
 
         [OutputConstructor]
@@ -23,10 +24,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string name,
 
+            int rpm,
+
             string status)
         {
             Airflow = airflow;
             Name = name;
+            Rpm = rpm;
             Status = status;
         }
     }

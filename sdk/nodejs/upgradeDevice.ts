@@ -64,11 +64,15 @@ export class UpgradeDevice extends pulumi.CustomResource {
         return obj['__pulumiType'] === UpgradeDevice.__pulumiType;
     }
 
+    declare public /*out*/ readonly autoUpgradeStat: pulumi.Output<outputs.UpgradeDeviceAutoUpgradeStat>;
+    declare public /*out*/ readonly configTimestamp: pulumi.Output<number>;
+    declare public /*out*/ readonly configVersion: pulumi.Output<number>;
     declare public readonly deviceId: pulumi.Output<string>;
     /**
      * current device firmware version
      */
     declare public /*out*/ readonly deviceVersion: pulumi.Output<string>;
+    declare public /*out*/ readonly extIp: pulumi.Output<string>;
     declare public /*out*/ readonly fwupdate: pulumi.Output<outputs.UpgradeDeviceFwupdate>;
     /**
      * For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
@@ -107,6 +111,8 @@ export class UpgradeDevice extends pulumi.CustomResource {
      * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
      */
     declare public readonly syncUpgradeTimeout: pulumi.Output<number>;
+    declare public /*out*/ readonly tagId: pulumi.Output<number>;
+    declare public /*out*/ readonly tagUuid: pulumi.Output<string>;
     /**
      * firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions
      */
@@ -129,8 +135,12 @@ export class UpgradeDevice extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UpgradeDeviceState | undefined;
+            resourceInputs["autoUpgradeStat"] = state?.autoUpgradeStat;
+            resourceInputs["configTimestamp"] = state?.configTimestamp;
+            resourceInputs["configVersion"] = state?.configVersion;
             resourceInputs["deviceId"] = state?.deviceId;
             resourceInputs["deviceVersion"] = state?.deviceVersion;
+            resourceInputs["extIp"] = state?.extIp;
             resourceInputs["fwupdate"] = state?.fwupdate;
             resourceInputs["reboot"] = state?.reboot;
             resourceInputs["rebootAt"] = state?.rebootAt;
@@ -142,6 +152,8 @@ export class UpgradeDevice extends pulumi.CustomResource {
             resourceInputs["syncUpgradeRefreshInterval"] = state?.syncUpgradeRefreshInterval;
             resourceInputs["syncUpgradeStartTimeout"] = state?.syncUpgradeStartTimeout;
             resourceInputs["syncUpgradeTimeout"] = state?.syncUpgradeTimeout;
+            resourceInputs["tagId"] = state?.tagId;
+            resourceInputs["tagUuid"] = state?.tagUuid;
             resourceInputs["targetVersion"] = state?.targetVersion;
             resourceInputs["timestamp"] = state?.timestamp;
         } else {
@@ -166,9 +178,15 @@ export class UpgradeDevice extends pulumi.CustomResource {
             resourceInputs["syncUpgradeStartTimeout"] = args?.syncUpgradeStartTimeout;
             resourceInputs["syncUpgradeTimeout"] = args?.syncUpgradeTimeout;
             resourceInputs["targetVersion"] = args?.targetVersion;
+            resourceInputs["autoUpgradeStat"] = undefined /*out*/;
+            resourceInputs["configTimestamp"] = undefined /*out*/;
+            resourceInputs["configVersion"] = undefined /*out*/;
             resourceInputs["deviceVersion"] = undefined /*out*/;
+            resourceInputs["extIp"] = undefined /*out*/;
             resourceInputs["fwupdate"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["tagId"] = undefined /*out*/;
+            resourceInputs["tagUuid"] = undefined /*out*/;
             resourceInputs["timestamp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -180,11 +198,15 @@ export class UpgradeDevice extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UpgradeDevice resources.
  */
 export interface UpgradeDeviceState {
+    autoUpgradeStat?: pulumi.Input<inputs.UpgradeDeviceAutoUpgradeStat>;
+    configTimestamp?: pulumi.Input<number>;
+    configVersion?: pulumi.Input<number>;
     deviceId?: pulumi.Input<string>;
     /**
      * current device firmware version
      */
     deviceVersion?: pulumi.Input<string>;
+    extIp?: pulumi.Input<string>;
     fwupdate?: pulumi.Input<inputs.UpgradeDeviceFwupdate>;
     /**
      * For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
@@ -223,6 +245,8 @@ export interface UpgradeDeviceState {
      * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
      */
     syncUpgradeTimeout?: pulumi.Input<number>;
+    tagId?: pulumi.Input<number>;
+    tagUuid?: pulumi.Input<string>;
     /**
      * firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions
      */

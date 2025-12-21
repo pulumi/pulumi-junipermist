@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatApRedundancy;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatArpTableStats;
+import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatAutoUpgradeStat;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatBgpPeer;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatClusterConfig;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatClusterStat;
@@ -19,6 +20,7 @@ import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatIf2
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatIfStat;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatIp2Stat;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatIpStat;
+import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatMacTableStats;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatMemory2Stat;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatMemoryStat;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModule2Stat;
@@ -44,6 +46,7 @@ import java.util.Objects;
 public final class GetGatewayStatsDeviceGatewayStat {
     private GetGatewayStatsDeviceGatewayStatApRedundancy apRedundancy;
     private GetGatewayStatsDeviceGatewayStatArpTableStats arpTableStats;
+    private GetGatewayStatsDeviceGatewayStatAutoUpgradeStat autoUpgradeStat;
     /**
      * @return Only present when `bgpPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
      * 
@@ -54,6 +57,8 @@ public final class GetGatewayStatsDeviceGatewayStat {
     private GetGatewayStatsDeviceGatewayStatClusterStat clusterStat;
     private String conductorName;
     private String configStatus;
+    private Integer configTimestamp;
+    private Integer configVersion;
     private GetGatewayStatsDeviceGatewayStatCpu2Stat cpu2Stat;
     private GetGatewayStatsDeviceGatewayStatCpuStat cpuStat;
     /**
@@ -62,6 +67,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
      */
     private Double createdTime;
     private String deviceprofileId;
+    private String deviceprofileName;
     /**
      * @return Property key is the network name
      * 
@@ -117,6 +123,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
      * 
      */
     private String mac;
+    private GetGatewayStatsDeviceGatewayStatMacTableStats macTableStats;
     /**
      * @return Serial Number
      * 
@@ -174,6 +181,8 @@ public final class GetGatewayStatsDeviceGatewayStat {
     private List<GetGatewayStatsDeviceGatewayStatSpu2Stat> spu2Stats;
     private List<GetGatewayStatsDeviceGatewayStatSpuStat> spuStats;
     private String status;
+    private Integer tagId;
+    private String tagUuid;
     /**
      * @return Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
      * 
@@ -193,6 +202,9 @@ public final class GetGatewayStatsDeviceGatewayStat {
     }
     public GetGatewayStatsDeviceGatewayStatArpTableStats arpTableStats() {
         return this.arpTableStats;
+    }
+    public GetGatewayStatsDeviceGatewayStatAutoUpgradeStat autoUpgradeStat() {
+        return this.autoUpgradeStat;
     }
     /**
      * @return Only present when `bgpPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
@@ -216,6 +228,12 @@ public final class GetGatewayStatsDeviceGatewayStat {
     public String configStatus() {
         return this.configStatus;
     }
+    public Integer configTimestamp() {
+        return this.configTimestamp;
+    }
+    public Integer configVersion() {
+        return this.configVersion;
+    }
     public GetGatewayStatsDeviceGatewayStatCpu2Stat cpu2Stat() {
         return this.cpu2Stat;
     }
@@ -231,6 +249,9 @@ public final class GetGatewayStatsDeviceGatewayStat {
     }
     public String deviceprofileId() {
         return this.deviceprofileId;
+    }
+    public String deviceprofileName() {
+        return this.deviceprofileName;
     }
     /**
      * @return Property key is the network name
@@ -316,6 +337,9 @@ public final class GetGatewayStatsDeviceGatewayStat {
      */
     public String mac() {
         return this.mac;
+    }
+    public GetGatewayStatsDeviceGatewayStatMacTableStats macTableStats() {
+        return this.macTableStats;
     }
     /**
      * @return Serial Number
@@ -416,6 +440,12 @@ public final class GetGatewayStatsDeviceGatewayStat {
     public String status() {
         return this.status;
     }
+    public Integer tagId() {
+        return this.tagId;
+    }
+    public String tagUuid() {
+        return this.tagUuid;
+    }
     /**
      * @return Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
      * 
@@ -448,16 +478,20 @@ public final class GetGatewayStatsDeviceGatewayStat {
     public static final class Builder {
         private GetGatewayStatsDeviceGatewayStatApRedundancy apRedundancy;
         private GetGatewayStatsDeviceGatewayStatArpTableStats arpTableStats;
+        private GetGatewayStatsDeviceGatewayStatAutoUpgradeStat autoUpgradeStat;
         private List<GetGatewayStatsDeviceGatewayStatBgpPeer> bgpPeers;
         private Integer certExpiry;
         private GetGatewayStatsDeviceGatewayStatClusterConfig clusterConfig;
         private GetGatewayStatsDeviceGatewayStatClusterStat clusterStat;
         private String conductorName;
         private String configStatus;
+        private Integer configTimestamp;
+        private Integer configVersion;
         private GetGatewayStatsDeviceGatewayStatCpu2Stat cpu2Stat;
         private GetGatewayStatsDeviceGatewayStatCpuStat cpuStat;
         private Double createdTime;
         private String deviceprofileId;
+        private String deviceprofileName;
         private Map<String,GetGatewayStatsDeviceGatewayStatDhcpd2Stat> dhcpd2Stat;
         private Map<String,GetGatewayStatsDeviceGatewayStatDhcpdStat> dhcpdStat;
         private String extIp;
@@ -473,6 +507,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
         private Boolean isHa;
         private Double lastSeen;
         private String mac;
+        private GetGatewayStatsDeviceGatewayStatMacTableStats macTableStats;
         private String mapId;
         private GetGatewayStatsDeviceGatewayStatMemory2Stat memory2Stat;
         private GetGatewayStatsDeviceGatewayStatMemoryStat memoryStat;
@@ -494,6 +529,8 @@ public final class GetGatewayStatsDeviceGatewayStat {
         private List<GetGatewayStatsDeviceGatewayStatSpu2Stat> spu2Stats;
         private List<GetGatewayStatsDeviceGatewayStatSpuStat> spuStats;
         private String status;
+        private Integer tagId;
+        private String tagUuid;
         private List<GetGatewayStatsDeviceGatewayStatTunnel> tunnels;
         private Double uptime;
         private String version;
@@ -503,16 +540,20 @@ public final class GetGatewayStatsDeviceGatewayStat {
     	      Objects.requireNonNull(defaults);
     	      this.apRedundancy = defaults.apRedundancy;
     	      this.arpTableStats = defaults.arpTableStats;
+    	      this.autoUpgradeStat = defaults.autoUpgradeStat;
     	      this.bgpPeers = defaults.bgpPeers;
     	      this.certExpiry = defaults.certExpiry;
     	      this.clusterConfig = defaults.clusterConfig;
     	      this.clusterStat = defaults.clusterStat;
     	      this.conductorName = defaults.conductorName;
     	      this.configStatus = defaults.configStatus;
+    	      this.configTimestamp = defaults.configTimestamp;
+    	      this.configVersion = defaults.configVersion;
     	      this.cpu2Stat = defaults.cpu2Stat;
     	      this.cpuStat = defaults.cpuStat;
     	      this.createdTime = defaults.createdTime;
     	      this.deviceprofileId = defaults.deviceprofileId;
+    	      this.deviceprofileName = defaults.deviceprofileName;
     	      this.dhcpd2Stat = defaults.dhcpd2Stat;
     	      this.dhcpdStat = defaults.dhcpdStat;
     	      this.extIp = defaults.extIp;
@@ -528,6 +569,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
     	      this.isHa = defaults.isHa;
     	      this.lastSeen = defaults.lastSeen;
     	      this.mac = defaults.mac;
+    	      this.macTableStats = defaults.macTableStats;
     	      this.mapId = defaults.mapId;
     	      this.memory2Stat = defaults.memory2Stat;
     	      this.memoryStat = defaults.memoryStat;
@@ -549,6 +591,8 @@ public final class GetGatewayStatsDeviceGatewayStat {
     	      this.spu2Stats = defaults.spu2Stats;
     	      this.spuStats = defaults.spuStats;
     	      this.status = defaults.status;
+    	      this.tagId = defaults.tagId;
+    	      this.tagUuid = defaults.tagUuid;
     	      this.tunnels = defaults.tunnels;
     	      this.uptime = defaults.uptime;
     	      this.version = defaults.version;
@@ -569,6 +613,14 @@ public final class GetGatewayStatsDeviceGatewayStat {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "arpTableStats");
             }
             this.arpTableStats = arpTableStats;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoUpgradeStat(GetGatewayStatsDeviceGatewayStatAutoUpgradeStat autoUpgradeStat) {
+            if (autoUpgradeStat == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "autoUpgradeStat");
+            }
+            this.autoUpgradeStat = autoUpgradeStat;
             return this;
         }
         @CustomType.Setter
@@ -623,6 +675,22 @@ public final class GetGatewayStatsDeviceGatewayStat {
             return this;
         }
         @CustomType.Setter
+        public Builder configTimestamp(Integer configTimestamp) {
+            if (configTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "configTimestamp");
+            }
+            this.configTimestamp = configTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder configVersion(Integer configVersion) {
+            if (configVersion == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "configVersion");
+            }
+            this.configVersion = configVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder cpu2Stat(GetGatewayStatsDeviceGatewayStatCpu2Stat cpu2Stat) {
             if (cpu2Stat == null) {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "cpu2Stat");
@@ -652,6 +720,14 @@ public final class GetGatewayStatsDeviceGatewayStat {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "deviceprofileId");
             }
             this.deviceprofileId = deviceprofileId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deviceprofileName(String deviceprofileName) {
+            if (deviceprofileName == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "deviceprofileName");
+            }
+            this.deviceprofileName = deviceprofileName;
             return this;
         }
         @CustomType.Setter
@@ -772,6 +848,14 @@ public final class GetGatewayStatsDeviceGatewayStat {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "mac");
             }
             this.mac = mac;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder macTableStats(GetGatewayStatsDeviceGatewayStatMacTableStats macTableStats) {
+            if (macTableStats == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "macTableStats");
+            }
+            this.macTableStats = macTableStats;
             return this;
         }
         @CustomType.Setter
@@ -958,6 +1042,22 @@ public final class GetGatewayStatsDeviceGatewayStat {
             return this;
         }
         @CustomType.Setter
+        public Builder tagId(Integer tagId) {
+            if (tagId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "tagId");
+            }
+            this.tagId = tagId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tagUuid(String tagUuid) {
+            if (tagUuid == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "tagUuid");
+            }
+            this.tagUuid = tagUuid;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tunnels(List<GetGatewayStatsDeviceGatewayStatTunnel> tunnels) {
             if (tunnels == null) {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStat", "tunnels");
@@ -999,16 +1099,20 @@ public final class GetGatewayStatsDeviceGatewayStat {
             final var _resultValue = new GetGatewayStatsDeviceGatewayStat();
             _resultValue.apRedundancy = apRedundancy;
             _resultValue.arpTableStats = arpTableStats;
+            _resultValue.autoUpgradeStat = autoUpgradeStat;
             _resultValue.bgpPeers = bgpPeers;
             _resultValue.certExpiry = certExpiry;
             _resultValue.clusterConfig = clusterConfig;
             _resultValue.clusterStat = clusterStat;
             _resultValue.conductorName = conductorName;
             _resultValue.configStatus = configStatus;
+            _resultValue.configTimestamp = configTimestamp;
+            _resultValue.configVersion = configVersion;
             _resultValue.cpu2Stat = cpu2Stat;
             _resultValue.cpuStat = cpuStat;
             _resultValue.createdTime = createdTime;
             _resultValue.deviceprofileId = deviceprofileId;
+            _resultValue.deviceprofileName = deviceprofileName;
             _resultValue.dhcpd2Stat = dhcpd2Stat;
             _resultValue.dhcpdStat = dhcpdStat;
             _resultValue.extIp = extIp;
@@ -1024,6 +1128,7 @@ public final class GetGatewayStatsDeviceGatewayStat {
             _resultValue.isHa = isHa;
             _resultValue.lastSeen = lastSeen;
             _resultValue.mac = mac;
+            _resultValue.macTableStats = macTableStats;
             _resultValue.mapId = mapId;
             _resultValue.memory2Stat = memory2Stat;
             _resultValue.memoryStat = memoryStat;
@@ -1045,6 +1150,8 @@ public final class GetGatewayStatsDeviceGatewayStat {
             _resultValue.spu2Stats = spu2Stats;
             _resultValue.spuStats = spuStats;
             _resultValue.status = status;
+            _resultValue.tagId = tagId;
+            _resultValue.tagUuid = tagUuid;
             _resultValue.tunnels = tunnels;
             _resultValue.uptime = uptime;
             _resultValue.version = version;

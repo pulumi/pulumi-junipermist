@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.junipermist.UpgradeDeviceArgs;
 import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.inputs.UpgradeDeviceState;
+import com.pulumi.junipermist.outputs.UpgradeDeviceAutoUpgradeStat;
 import com.pulumi.junipermist.outputs.UpgradeDeviceFwupdate;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -74,6 +75,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:index/upgradeDevice:UpgradeDevice")
 public class UpgradeDevice extends com.pulumi.resources.CustomResource {
+    @Export(name="autoUpgradeStat", refs={UpgradeDeviceAutoUpgradeStat.class}, tree="[0]")
+    private Output<UpgradeDeviceAutoUpgradeStat> autoUpgradeStat;
+
+    public Output<UpgradeDeviceAutoUpgradeStat> autoUpgradeStat() {
+        return this.autoUpgradeStat;
+    }
+    @Export(name="configTimestamp", refs={Integer.class}, tree="[0]")
+    private Output<Integer> configTimestamp;
+
+    public Output<Integer> configTimestamp() {
+        return this.configTimestamp;
+    }
+    @Export(name="configVersion", refs={Integer.class}, tree="[0]")
+    private Output<Integer> configVersion;
+
+    public Output<Integer> configVersion() {
+        return this.configVersion;
+    }
     @Export(name="deviceId", refs={String.class}, tree="[0]")
     private Output<String> deviceId;
 
@@ -93,6 +112,12 @@ public class UpgradeDevice extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deviceVersion() {
         return this.deviceVersion;
+    }
+    @Export(name="extIp", refs={String.class}, tree="[0]")
+    private Output<String> extIp;
+
+    public Output<String> extIp() {
+        return this.extIp;
     }
     @Export(name="fwupdate", refs={UpgradeDeviceFwupdate.class}, tree="[0]")
     private Output<UpgradeDeviceFwupdate> fwupdate;
@@ -231,6 +256,18 @@ public class UpgradeDevice extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> syncUpgradeTimeout() {
         return this.syncUpgradeTimeout;
+    }
+    @Export(name="tagId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> tagId;
+
+    public Output<Integer> tagId() {
+        return this.tagId;
+    }
+    @Export(name="tagUuid", refs={String.class}, tree="[0]")
+    private Output<String> tagUuid;
+
+    public Output<String> tagUuid() {
+        return this.tagUuid;
     }
     /**
      * firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions

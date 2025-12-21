@@ -20,7 +20,7 @@ import java.util.Objects;
 @CustomType
 public final class GetServicepoliciesOrgServicepolicy {
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     private GetServicepoliciesOrgServicepolicyAamw aamw;
@@ -35,7 +35,7 @@ public final class GetServicepoliciesOrgServicepolicy {
      */
     private GetServicepoliciesOrgServicepolicyAntivirus antivirus;
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     private GetServicepoliciesOrgServicepolicyAppqoe appqoe;
@@ -78,7 +78,7 @@ public final class GetServicepoliciesOrgServicepolicy {
 
     private GetServicepoliciesOrgServicepolicy() {}
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     public GetServicepoliciesOrgServicepolicyAamw aamw() {
@@ -99,7 +99,7 @@ public final class GetServicepoliciesOrgServicepolicy {
         return this.antivirus;
     }
     /**
-     * @return For SRX Only
+     * @return SRX only
      * 
      */
     public GetServicepoliciesOrgServicepolicyAppqoe appqoe() {

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _asPaths;
 
         /// <summary>
-        /// takes regular expression
+        /// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         /// </summary>
         public InputList<string> AsPaths
         {
@@ -56,7 +56,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _protocols;
 
         /// <summary>
-        /// `Direct`, `Bgp`, `Osp`, `Static`, `Aggregate`...
+        /// enum: `Aggregate`, `Bgp`, `Direct`, `Ospf`, `Static` (SRX Only)
         /// </summary>
         public InputList<string> Protocols
         {

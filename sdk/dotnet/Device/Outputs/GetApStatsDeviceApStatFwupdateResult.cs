@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly int Progress;
         /// <summary>
-        /// enum: `Inprogress`, `Failed`, `Upgraded`
+        /// enum: `Inprogress`, `Failed`, `Upgraded`, `Success`, `Scheduled`, `Error`
         /// </summary>
         public readonly string Status;
         public readonly int StatusId;

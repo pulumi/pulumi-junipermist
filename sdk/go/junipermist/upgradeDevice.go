@@ -61,9 +61,13 @@ import (
 type UpgradeDevice struct {
 	pulumi.CustomResourceState
 
-	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
+	AutoUpgradeStat UpgradeDeviceAutoUpgradeStatOutput `pulumi:"autoUpgradeStat"`
+	ConfigTimestamp pulumi.IntOutput                   `pulumi:"configTimestamp"`
+	ConfigVersion   pulumi.IntOutput                   `pulumi:"configVersion"`
+	DeviceId        pulumi.StringOutput                `pulumi:"deviceId"`
 	// current device firmware version
 	DeviceVersion pulumi.StringOutput         `pulumi:"deviceVersion"`
+	ExtIp         pulumi.StringOutput         `pulumi:"extIp"`
 	Fwupdate      UpgradeDeviceFwupdateOutput `pulumi:"fwupdate"`
 	// For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
 	Reboot pulumi.BoolOutput `pulumi:"reboot"`
@@ -83,7 +87,9 @@ type UpgradeDevice struct {
 	// if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
 	SyncUpgradeStartTimeout pulumi.IntOutput `pulumi:"syncUpgradeStartTimeout"`
 	// if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
-	SyncUpgradeTimeout pulumi.IntOutput `pulumi:"syncUpgradeTimeout"`
+	SyncUpgradeTimeout pulumi.IntOutput    `pulumi:"syncUpgradeTimeout"`
+	TagId              pulumi.IntOutput    `pulumi:"tagId"`
+	TagUuid            pulumi.StringOutput `pulumi:"tagUuid"`
 	// firmware version to deploy to the device. Use the `device.getVersions` datasource to get the list of available firmware versions
 	TargetVersion pulumi.StringOutput `pulumi:"targetVersion"`
 	// Epoch (seconds)
@@ -129,9 +135,13 @@ func GetUpgradeDevice(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UpgradeDevice resources.
 type upgradeDeviceState struct {
-	DeviceId *string `pulumi:"deviceId"`
+	AutoUpgradeStat *UpgradeDeviceAutoUpgradeStat `pulumi:"autoUpgradeStat"`
+	ConfigTimestamp *int                          `pulumi:"configTimestamp"`
+	ConfigVersion   *int                          `pulumi:"configVersion"`
+	DeviceId        *string                       `pulumi:"deviceId"`
 	// current device firmware version
 	DeviceVersion *string                `pulumi:"deviceVersion"`
+	ExtIp         *string                `pulumi:"extIp"`
 	Fwupdate      *UpgradeDeviceFwupdate `pulumi:"fwupdate"`
 	// For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
 	Reboot *bool `pulumi:"reboot"`
@@ -151,7 +161,9 @@ type upgradeDeviceState struct {
 	// if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
 	SyncUpgradeStartTimeout *int `pulumi:"syncUpgradeStartTimeout"`
 	// if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
-	SyncUpgradeTimeout *int `pulumi:"syncUpgradeTimeout"`
+	SyncUpgradeTimeout *int    `pulumi:"syncUpgradeTimeout"`
+	TagId              *int    `pulumi:"tagId"`
+	TagUuid            *string `pulumi:"tagUuid"`
 	// firmware version to deploy to the device. Use the `device.getVersions` datasource to get the list of available firmware versions
 	TargetVersion *string `pulumi:"targetVersion"`
 	// Epoch (seconds)
@@ -159,9 +171,13 @@ type upgradeDeviceState struct {
 }
 
 type UpgradeDeviceState struct {
-	DeviceId pulumi.StringPtrInput
+	AutoUpgradeStat UpgradeDeviceAutoUpgradeStatPtrInput
+	ConfigTimestamp pulumi.IntPtrInput
+	ConfigVersion   pulumi.IntPtrInput
+	DeviceId        pulumi.StringPtrInput
 	// current device firmware version
 	DeviceVersion pulumi.StringPtrInput
+	ExtIp         pulumi.StringPtrInput
 	Fwupdate      UpgradeDeviceFwupdatePtrInput
 	// For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
 	Reboot pulumi.BoolPtrInput
@@ -182,6 +198,8 @@ type UpgradeDeviceState struct {
 	SyncUpgradeStartTimeout pulumi.IntPtrInput
 	// if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
 	SyncUpgradeTimeout pulumi.IntPtrInput
+	TagId              pulumi.IntPtrInput
+	TagUuid            pulumi.StringPtrInput
 	// firmware version to deploy to the device. Use the `device.getVersions` datasource to get the list of available firmware versions
 	TargetVersion pulumi.StringPtrInput
 	// Epoch (seconds)
@@ -326,6 +344,18 @@ func (o UpgradeDeviceOutput) ToUpgradeDeviceOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o UpgradeDeviceOutput) AutoUpgradeStat() UpgradeDeviceAutoUpgradeStatOutput {
+	return o.ApplyT(func(v *UpgradeDevice) UpgradeDeviceAutoUpgradeStatOutput { return v.AutoUpgradeStat }).(UpgradeDeviceAutoUpgradeStatOutput)
+}
+
+func (o UpgradeDeviceOutput) ConfigTimestamp() pulumi.IntOutput {
+	return o.ApplyT(func(v *UpgradeDevice) pulumi.IntOutput { return v.ConfigTimestamp }).(pulumi.IntOutput)
+}
+
+func (o UpgradeDeviceOutput) ConfigVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v *UpgradeDevice) pulumi.IntOutput { return v.ConfigVersion }).(pulumi.IntOutput)
+}
+
 func (o UpgradeDeviceOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
 }
@@ -333,6 +363,10 @@ func (o UpgradeDeviceOutput) DeviceId() pulumi.StringOutput {
 // current device firmware version
 func (o UpgradeDeviceOutput) DeviceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.StringOutput { return v.DeviceVersion }).(pulumi.StringOutput)
+}
+
+func (o UpgradeDeviceOutput) ExtIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *UpgradeDevice) pulumi.StringOutput { return v.ExtIp }).(pulumi.StringOutput)
 }
 
 func (o UpgradeDeviceOutput) Fwupdate() UpgradeDeviceFwupdateOutput {
@@ -386,6 +420,14 @@ func (o UpgradeDeviceOutput) SyncUpgradeStartTimeout() pulumi.IntOutput {
 // if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
 func (o UpgradeDeviceOutput) SyncUpgradeTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *UpgradeDevice) pulumi.IntOutput { return v.SyncUpgradeTimeout }).(pulumi.IntOutput)
+}
+
+func (o UpgradeDeviceOutput) TagId() pulumi.IntOutput {
+	return o.ApplyT(func(v *UpgradeDevice) pulumi.IntOutput { return v.TagId }).(pulumi.IntOutput)
+}
+
+func (o UpgradeDeviceOutput) TagUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *UpgradeDevice) pulumi.StringOutput { return v.TagUuid }).(pulumi.StringOutput)
 }
 
 // firmware version to deploy to the device. Use the `device.getVersions` datasource to get the list of available firmware versions

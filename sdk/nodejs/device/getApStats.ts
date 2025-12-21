@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  *     siteId: "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
  *     status: "connected",
  *     duration: "1d",
- *     start: 1736031600,
- *     end: 1736175934,
+ *     start: "1736031600",
+ *     end: "1736175934",
  * });
  * ```
  */
@@ -43,12 +43,24 @@ export function getApStats(args: GetApStatsArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getApStats.
  */
 export interface GetApStatsArgs {
+    /**
+     * Duration like 7d, 2w
+     */
     duration?: string;
-    end?: number;
+    /**
+     * End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+     */
+    end?: string;
     mac?: string;
     orgId: string;
     siteId?: string;
-    start?: number;
+    /**
+     * Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+     */
+    start?: string;
+    /**
+     * enum: `all`, `connected`, `disconnected`
+     */
     status?: string;
 }
 
@@ -57,8 +69,14 @@ export interface GetApStatsArgs {
  */
 export interface GetApStatsResult {
     readonly deviceApStats: outputs.device.GetApStatsDeviceApStat[];
+    /**
+     * Duration like 7d, 2w
+     */
     readonly duration?: string;
-    readonly end?: number;
+    /**
+     * End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+     */
+    readonly end?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -66,7 +84,13 @@ export interface GetApStatsResult {
     readonly mac?: string;
     readonly orgId: string;
     readonly siteId?: string;
-    readonly start?: number;
+    /**
+     * Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+     */
+    readonly start?: string;
+    /**
+     * enum: `all`, `connected`, `disconnected`
+     */
     readonly status?: string;
 }
 /**
@@ -84,8 +108,8 @@ export interface GetApStatsResult {
  *     siteId: "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
  *     status: "connected",
  *     duration: "1d",
- *     start: 1736031600,
- *     end: 1736175934,
+ *     start: "1736031600",
+ *     end: "1736175934",
  * });
  * ```
  */
@@ -106,11 +130,23 @@ export function getApStatsOutput(args: GetApStatsOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getApStats.
  */
 export interface GetApStatsOutputArgs {
+    /**
+     * Duration like 7d, 2w
+     */
     duration?: pulumi.Input<string>;
-    end?: pulumi.Input<number>;
+    /**
+     * End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+     */
+    end?: pulumi.Input<string>;
     mac?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     siteId?: pulumi.Input<string>;
-    start?: pulumi.Input<number>;
+    /**
+     * Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+     */
+    start?: pulumi.Input<string>;
+    /**
+     * enum: `all`, `connected`, `disconnected`
+     */
     status?: pulumi.Input<string>;
 }

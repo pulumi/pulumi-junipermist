@@ -22,6 +22,7 @@ import com.pulumi.junipermist.site.outputs.NetworktemplatePortMirroring;
 import com.pulumi.junipermist.site.outputs.NetworktemplatePortUsages;
 import com.pulumi.junipermist.site.outputs.NetworktemplateRadiusConfig;
 import com.pulumi.junipermist.site.outputs.NetworktemplateRemoteSyslog;
+import com.pulumi.junipermist.site.outputs.NetworktemplateRoutingPolicies;
 import com.pulumi.junipermist.site.outputs.NetworktemplateSnmpConfig;
 import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMatching;
 import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMgmt;
@@ -371,6 +372,20 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<NetworktemplateRemoteSyslog>> remoteSyslog() {
         return Codegen.optional(this.remoteSyslog);
+    }
+    /**
+     * Property key is the routing policy name
+     * 
+     */
+    @Export(name="routingPolicies", refs={Map.class,String.class,NetworktemplateRoutingPolicies.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,NetworktemplateRoutingPolicies>> routingPolicies;
+
+    /**
+     * @return Property key is the routing policy name
+     * 
+     */
+    public Output<Optional<Map<String,NetworktemplateRoutingPolicies>>> routingPolicies() {
+        return Codegen.optional(this.routingPolicies);
     }
     /**
      * Unique ID of the object instance in the Mist Organization

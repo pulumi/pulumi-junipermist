@@ -33,6 +33,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `RoutedAt` != `Core`, whether to do virtual-gateway at core as well
         /// </summary>
         public readonly bool CoreAsBorder;
+        /// <summary>
+        /// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+        /// </summary>
+        public readonly bool EnableInbandZtp;
         public readonly Outputs.GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayResult Overlay;
         /// <summary>
         /// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`Core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
@@ -64,6 +68,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool coreAsBorder,
 
+            bool enableInbandZtp,
+
             Outputs.GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayResult overlay,
 
             bool perVlanVgaV4Mac,
@@ -81,6 +87,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             AutoRouterIdSubnet = autoRouterIdSubnet;
             AutoRouterIdSubnet6 = autoRouterIdSubnet6;
             CoreAsBorder = coreAsBorder;
+            EnableInbandZtp = enableInbandZtp;
             Overlay = overlay;
             PerVlanVgaV4Mac = perVlanVgaV4Mac;
             PerVlanVgaV6Mac = perVlanVgaV6Mac;

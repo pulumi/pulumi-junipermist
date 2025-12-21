@@ -36,7 +36,7 @@ public final class GetNactagsOrgNactag {
      */
     private String id;
     /**
-     * @return if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * @return if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      * 
      */
     private String match;
@@ -45,7 +45,7 @@ public final class GetNactagsOrgNactag {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      * 
-     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      * 
      */
     private Boolean matchAll;
@@ -54,6 +54,11 @@ public final class GetNactagsOrgNactag {
      * 
      */
     private Double modifiedTime;
+    /**
+     * @return If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+     * 
+     */
+    private String nacportalId;
     private String name;
     private String orgId;
     /**
@@ -81,7 +86,7 @@ public final class GetNactagsOrgNactag {
      */
     private Integer sessionTimeout;
     /**
-     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
      * 
      */
     private String type;
@@ -134,7 +139,7 @@ public final class GetNactagsOrgNactag {
         return this.id;
     }
     /**
-     * @return if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * @return if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      * 
      */
     public String match() {
@@ -145,7 +150,7 @@ public final class GetNactagsOrgNactag {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      * 
-     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+     * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      * 
      */
     public Boolean matchAll() {
@@ -157,6 +162,13 @@ public final class GetNactagsOrgNactag {
      */
     public Double modifiedTime() {
         return this.modifiedTime;
+    }
+    /**
+     * @return If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+     * 
+     */
+    public String nacportalId() {
+        return this.nacportalId;
     }
     public String name() {
         return this.name;
@@ -197,7 +209,7 @@ public final class GetNactagsOrgNactag {
         return this.sessionTimeout;
     }
     /**
-     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
      * 
      */
     public String type() {
@@ -242,6 +254,7 @@ public final class GetNactagsOrgNactag {
         private String match;
         private Boolean matchAll;
         private Double modifiedTime;
+        private String nacportalId;
         private String name;
         private String orgId;
         private List<String> radiusAttrs;
@@ -263,6 +276,7 @@ public final class GetNactagsOrgNactag {
     	      this.match = defaults.match;
     	      this.matchAll = defaults.matchAll;
     	      this.modifiedTime = defaults.modifiedTime;
+    	      this.nacportalId = defaults.nacportalId;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.radiusAttrs = defaults.radiusAttrs;
@@ -340,6 +354,14 @@ public final class GetNactagsOrgNactag {
               throw new MissingRequiredPropertyException("GetNactagsOrgNactag", "modifiedTime");
             }
             this.modifiedTime = modifiedTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nacportalId(String nacportalId) {
+            if (nacportalId == null) {
+              throw new MissingRequiredPropertyException("GetNactagsOrgNactag", "nacportalId");
+            }
+            this.nacportalId = nacportalId;
             return this;
         }
         @CustomType.Setter
@@ -441,6 +463,7 @@ public final class GetNactagsOrgNactag {
             _resultValue.match = match;
             _resultValue.matchAll = matchAll;
             _resultValue.modifiedTime = modifiedTime;
+            _resultValue.nacportalId = nacportalId;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.radiusAttrs = radiusAttrs;

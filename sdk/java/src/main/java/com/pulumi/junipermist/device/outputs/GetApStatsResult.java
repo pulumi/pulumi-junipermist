@@ -6,7 +6,6 @@ package com.pulumi.junipermist.device.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStat;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,8 +15,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetApStatsResult {
     private List<GetApStatsDeviceApStat> deviceApStats;
+    /**
+     * @return Duration like 7d, 2w
+     * 
+     */
     private @Nullable String duration;
-    private @Nullable Integer end;
+    /**
+     * @return End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
+     * 
+     */
+    private @Nullable String end;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -26,17 +33,33 @@ public final class GetApStatsResult {
     private @Nullable String mac;
     private String orgId;
     private @Nullable String siteId;
-    private @Nullable Integer start;
+    /**
+     * @return Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
+     * 
+     */
+    private @Nullable String start;
+    /**
+     * @return enum: `all`, `connected`, `disconnected`
+     * 
+     */
     private @Nullable String status;
 
     private GetApStatsResult() {}
     public List<GetApStatsDeviceApStat> deviceApStats() {
         return this.deviceApStats;
     }
+    /**
+     * @return Duration like 7d, 2w
+     * 
+     */
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }
-    public Optional<Integer> end() {
+    /**
+     * @return End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
+     * 
+     */
+    public Optional<String> end() {
         return Optional.ofNullable(this.end);
     }
     /**
@@ -55,9 +78,17 @@ public final class GetApStatsResult {
     public Optional<String> siteId() {
         return Optional.ofNullable(this.siteId);
     }
-    public Optional<Integer> start() {
+    /**
+     * @return Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
+     * 
+     */
+    public Optional<String> start() {
         return Optional.ofNullable(this.start);
     }
+    /**
+     * @return enum: `all`, `connected`, `disconnected`
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
@@ -73,12 +104,12 @@ public final class GetApStatsResult {
     public static final class Builder {
         private List<GetApStatsDeviceApStat> deviceApStats;
         private @Nullable String duration;
-        private @Nullable Integer end;
+        private @Nullable String end;
         private String id;
         private @Nullable String mac;
         private String orgId;
         private @Nullable String siteId;
-        private @Nullable Integer start;
+        private @Nullable String start;
         private @Nullable String status;
         public Builder() {}
         public Builder(GetApStatsResult defaults) {
@@ -112,7 +143,7 @@ public final class GetApStatsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder end(@Nullable Integer end) {
+        public Builder end(@Nullable String end) {
 
             this.end = end;
             return this;
@@ -146,7 +177,7 @@ public final class GetApStatsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder start(@Nullable Integer start) {
+        public Builder start(@Nullable String start) {
 
             this.start = start;
             return this;

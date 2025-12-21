@@ -155,6 +155,8 @@ type Networktemplate struct {
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrOutput `pulumi:"radiusConfig"`
 	RemoteSyslog NetworktemplateRemoteSyslogPtrOutput `pulumi:"remoteSyslog"`
+	// Property key is the routing policy name
+	RoutingPolicies NetworktemplateRoutingPoliciesMapOutput `pulumi:"routingPolicies"`
 	// Unique ID of the object instance in the Mist Organization
 	SiteId     pulumi.StringOutput                `pulumi:"siteId"`
 	SnmpConfig NetworktemplateSnmpConfigPtrOutput `pulumi:"snmpConfig"`
@@ -234,6 +236,8 @@ type networktemplateState struct {
 	// Junos Radius config
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
+	// Property key is the routing policy name
+	RoutingPolicies map[string]NetworktemplateRoutingPolicies `pulumi:"routingPolicies"`
 	// Unique ID of the object instance in the Mist Organization
 	SiteId     *string                    `pulumi:"siteId"`
 	SnmpConfig *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
@@ -281,6 +285,8 @@ type NetworktemplateState struct {
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrInput
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
+	// Property key is the routing policy name
+	RoutingPolicies NetworktemplateRoutingPoliciesMapInput
 	// Unique ID of the object instance in the Mist Organization
 	SiteId     pulumi.StringPtrInput
 	SnmpConfig NetworktemplateSnmpConfigPtrInput
@@ -332,6 +338,8 @@ type networktemplateArgs struct {
 	// Junos Radius config
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
+	// Property key is the routing policy name
+	RoutingPolicies map[string]NetworktemplateRoutingPolicies `pulumi:"routingPolicies"`
 	// Unique ID of the object instance in the Mist Organization
 	SiteId     string                     `pulumi:"siteId"`
 	SnmpConfig *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
@@ -380,6 +388,8 @@ type NetworktemplateArgs struct {
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrInput
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
+	// Property key is the routing policy name
+	RoutingPolicies NetworktemplateRoutingPoliciesMapInput
 	// Unique ID of the object instance in the Mist Organization
 	SiteId     pulumi.StringInput
 	SnmpConfig NetworktemplateSnmpConfigPtrInput
@@ -568,6 +578,11 @@ func (o NetworktemplateOutput) RadiusConfig() NetworktemplateRadiusConfigPtrOutp
 
 func (o NetworktemplateOutput) RemoteSyslog() NetworktemplateRemoteSyslogPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateRemoteSyslogPtrOutput { return v.RemoteSyslog }).(NetworktemplateRemoteSyslogPtrOutput)
+}
+
+// Property key is the routing policy name
+func (o NetworktemplateOutput) RoutingPolicies() NetworktemplateRoutingPoliciesMapOutput {
+	return o.ApplyT(func(v *Networktemplate) NetworktemplateRoutingPoliciesMapOutput { return v.RoutingPolicies }).(NetworktemplateRoutingPoliciesMapOutput)
 }
 
 // Unique ID of the object instance in the Mist Organization

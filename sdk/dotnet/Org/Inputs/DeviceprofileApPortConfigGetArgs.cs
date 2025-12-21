@@ -94,17 +94,11 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }
 
-        [Input("vlanIds")]
-        private InputList<int>? _vlanIds;
-
         /// <summary>
-        /// If `Forwarding`==`Limited`
+        /// If `Forwarding`==`Limited`, comma separated list of additional vlan ids allowed on this port
         /// </summary>
-        public InputList<int> VlanIds
-        {
-            get => _vlanIds ?? (_vlanIds = new InputList<int>());
-            set => _vlanIds = value;
-        }
+        [Input("vlanIds")]
+        public Input<string>? VlanIds { get; set; }
 
         /// <summary>
         /// If `Forwarding`==`Wxtunnel`, the port is bridged to the vlan of the session

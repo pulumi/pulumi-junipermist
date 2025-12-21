@@ -16,6 +16,7 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'UpgradeDeviceAutoUpgradeStat',
     'UpgradeDeviceFwupdate',
     'GetConstAlarmsConstAlarmResult',
     'GetConstAppCategoriesConstAppCategoryResult',
@@ -28,6 +29,19 @@ __all__ = [
     'GetSitesSiteResult',
     'GetSitesSiteLatlngResult',
 ]
+
+@pulumi.output_type
+class UpgradeDeviceAutoUpgradeStat(dict):
+    def __init__(__self__, *,
+                 lastcheck: Optional[_builtins.int] = None):
+        if lastcheck is not None:
+            pulumi.set(__self__, "lastcheck", lastcheck)
+
+    @_builtins.property
+    @pulumi.getter
+    def lastcheck(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "lastcheck")
+
 
 @pulumi.output_type
 class UpgradeDeviceFwupdate(dict):

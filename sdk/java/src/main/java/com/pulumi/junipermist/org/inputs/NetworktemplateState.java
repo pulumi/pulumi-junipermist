@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.NetworktemplateAclPolicyArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateAclTagsArgs;
+import com.pulumi.junipermist.org.inputs.NetworktemplateBgpConfigArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateDhcpSnoopingArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateExtraRoutes6Args;
 import com.pulumi.junipermist.org.inputs.NetworktemplateExtraRoutesArgs;
@@ -17,6 +18,7 @@ import com.pulumi.junipermist.org.inputs.NetworktemplatePortMirroringArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplatePortUsagesArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateRadiusConfigArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateRemoteSyslogArgs;
+import com.pulumi.junipermist.org.inputs.NetworktemplateRoutingPoliciesArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateSnmpConfigArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateSwitchMatchingArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateSwitchMgmtArgs;
@@ -70,6 +72,13 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
         return Optional.ofNullable(this.additionalConfigCmds);
+    }
+
+    @Import(name="bgpConfig")
+    private @Nullable Output<Map<String,NetworktemplateBgpConfigArgs>> bgpConfig;
+
+    public Optional<Output<Map<String,NetworktemplateBgpConfigArgs>>> bgpConfig() {
+        return Optional.ofNullable(this.bgpConfig);
     }
 
     @Import(name="dhcpSnooping")
@@ -280,6 +289,21 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.removeExistingConfigs);
     }
 
+    /**
+     * Property key is the routing policy name
+     * 
+     */
+    @Import(name="routingPolicies")
+    private @Nullable Output<Map<String,NetworktemplateRoutingPoliciesArgs>> routingPolicies;
+
+    /**
+     * @return Property key is the routing policy name
+     * 
+     */
+    public Optional<Output<Map<String,NetworktemplateRoutingPoliciesArgs>>> routingPolicies() {
+        return Optional.ofNullable(this.routingPolicies);
+    }
+
     @Import(name="snmpConfig")
     private @Nullable Output<NetworktemplateSnmpConfigArgs> snmpConfig;
 
@@ -345,6 +369,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         this.aclPolicies = $.aclPolicies;
         this.aclTags = $.aclTags;
         this.additionalConfigCmds = $.additionalConfigCmds;
+        this.bgpConfig = $.bgpConfig;
         this.dhcpSnooping = $.dhcpSnooping;
         this.dnsServers = $.dnsServers;
         this.dnsSuffixes = $.dnsSuffixes;
@@ -361,6 +386,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         this.radiusConfig = $.radiusConfig;
         this.remoteSyslog = $.remoteSyslog;
         this.removeExistingConfigs = $.removeExistingConfigs;
+        this.routingPolicies = $.routingPolicies;
         this.snmpConfig = $.snmpConfig;
         this.switchMatching = $.switchMatching;
         this.switchMgmt = $.switchMgmt;
@@ -449,6 +475,15 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
          */
         public Builder additionalConfigCmds(String... additionalConfigCmds) {
             return additionalConfigCmds(List.of(additionalConfigCmds));
+        }
+
+        public Builder bgpConfig(@Nullable Output<Map<String,NetworktemplateBgpConfigArgs>> bgpConfig) {
+            $.bgpConfig = bgpConfig;
+            return this;
+        }
+
+        public Builder bgpConfig(Map<String,NetworktemplateBgpConfigArgs> bgpConfig) {
+            return bgpConfig(Output.of(bgpConfig));
         }
 
         public Builder dhcpSnooping(@Nullable Output<NetworktemplateDhcpSnoopingArgs> dhcpSnooping) {
@@ -767,6 +802,27 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
          */
         public Builder removeExistingConfigs(Boolean removeExistingConfigs) {
             return removeExistingConfigs(Output.of(removeExistingConfigs));
+        }
+
+        /**
+         * @param routingPolicies Property key is the routing policy name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routingPolicies(@Nullable Output<Map<String,NetworktemplateRoutingPoliciesArgs>> routingPolicies) {
+            $.routingPolicies = routingPolicies;
+            return this;
+        }
+
+        /**
+         * @param routingPolicies Property key is the routing policy name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routingPolicies(Map<String,NetworktemplateRoutingPoliciesArgs> routingPolicies) {
+            return routingPolicies(Output.of(routingPolicies));
         }
 
         public Builder snmpConfig(@Nullable Output<NetworktemplateSnmpConfigArgs> snmpConfig) {

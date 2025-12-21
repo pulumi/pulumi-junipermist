@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetServicesOrgServiceResult
     {
         /// <summary>
-        /// If `Type`==`Custom`, ip subnets (e.g. 10.0.0.0/8)
+        /// If `Type`==`Custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         /// </summary>
         public readonly ImmutableArray<string> Addresses;
         /// <summary>
@@ -33,11 +33,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Apps;
         /// <summary>
-        /// 0 means unlimited
+        /// 0 means unlimited, value from 0 to 107374182
         /// </summary>
         public readonly int ClientLimitDown;
         /// <summary>
-        /// 0 means unlimited
+        /// 0 means unlimited, value from 0 to 107374182
         /// </summary>
         public readonly int ClientLimitUp;
         /// <summary>
@@ -47,7 +47,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string Description;
         public readonly string Dscp;
         /// <summary>
-        /// enum: `NonRevertable`, `None`, `Revertable`
+        /// enum: `NonRevertible`, `None`, `Revertible`
         /// </summary>
         public readonly string FailoverPolicy;
         /// <summary>
@@ -68,11 +68,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string Name;
         public readonly string OrgId;
         /// <summary>
-        /// 0 means unlimited
+        /// 0 means unlimited, value from 0 to 107374182
         /// </summary>
         public readonly int ServiceLimitDown;
         /// <summary>
-        /// 0 means unlimited
+        /// 0 means unlimited, value from 0 to 107374182
         /// </summary>
         public readonly int ServiceLimitUp;
         /// <summary>

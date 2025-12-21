@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? AntennaMode;
         /// <summary>
-        /// Antenna Mode for AP which supports selectable antennas. enum: `External`, `Internal`
+        /// Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `External`, `Internal`
         /// </summary>
         public readonly string? AntennaSelect;
         /// <summary>

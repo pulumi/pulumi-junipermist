@@ -166,7 +166,7 @@ require (
 	github.com/stretchr/testify v1.11.1 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
-	github.com/tmunzer/mistapi-go v0.4.93 // indirect
+	github.com/tmunzer/mistapi-go v0.4.98 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	github.com/ulikunitz/xz v0.5.15 // indirect

@@ -21,37 +21,80 @@ public final class GetApStatsDeviceApStatLldpStat {
      */
     private Boolean lldpMedSupported;
     /**
-     * @return Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+     * @return Management IP address of the switch
      * 
      */
     private String mgmtAddr;
+    /**
+     * @return List of management IP addresses (IPv4 and IPv6)
+     * 
+     */
     private List<String> mgmtAddrs;
     /**
-     * @return ge-0/0/4
+     * @return Port description, e.g. “2/20”, “Port 2 on Switch0”
      * 
      */
     private String portDesc;
+    /**
+     * @return Port identifier
+     * 
+     */
     private String portId;
     /**
-     * @return In mW, provided/allocated by PSE
+     * @return In mW, power allocated by PSE
      * 
      */
     private Double powerAllocated;
+    /**
+     * @return In mW, total Power Avail at AP from pwr source
+     * 
+     */
+    private Integer powerAvail;
+    /**
+     * @return In mW, surplus if positive or deficit if negative
+     * 
+     */
+    private Integer powerBudget;
+    /**
+     * @return Whether power is insufficient
+     * 
+     */
+    private Boolean powerConstrained;
     /**
      * @return In mW, total power needed by PD
      * 
      */
     private Double powerDraw;
     /**
+     * @return In mW, total Power needed incl Peripherals
+     * 
+     */
+    private Integer powerNeeded;
+    /**
+     * @return Constrained mode
+     * 
+     */
+    private String powerOpmode;
+    /**
      * @return Number of negotiations, if it keeps increasing, we don’ t have a stable power
      * 
      */
     private Integer powerRequestCount;
     /**
-     * @return In mW, the current power requested by PD
+     * @return In mW, power requested by PD
      * 
      */
     private Double powerRequested;
+    /**
+     * @return Single power source (DC Input / PoE 802.3at / PoE 802.3af / PoE 802.3bt / MULTI-PD / LLDP / ? (unknown)).
+     * 
+     */
+    private String powerSrc;
+    /**
+     * @return List of management IP addresses (IPv4 and IPv6)
+     * 
+     */
+    private List<String> powerSrcs;
     /**
      * @return Description provided by switch
      * 
@@ -75,31 +118,60 @@ public final class GetApStatsDeviceApStatLldpStat {
         return this.lldpMedSupported;
     }
     /**
-     * @return Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+     * @return Management IP address of the switch
      * 
      */
     public String mgmtAddr() {
         return this.mgmtAddr;
     }
+    /**
+     * @return List of management IP addresses (IPv4 and IPv6)
+     * 
+     */
     public List<String> mgmtAddrs() {
         return this.mgmtAddrs;
     }
     /**
-     * @return ge-0/0/4
+     * @return Port description, e.g. “2/20”, “Port 2 on Switch0”
      * 
      */
     public String portDesc() {
         return this.portDesc;
     }
+    /**
+     * @return Port identifier
+     * 
+     */
     public String portId() {
         return this.portId;
     }
     /**
-     * @return In mW, provided/allocated by PSE
+     * @return In mW, power allocated by PSE
      * 
      */
     public Double powerAllocated() {
         return this.powerAllocated;
+    }
+    /**
+     * @return In mW, total Power Avail at AP from pwr source
+     * 
+     */
+    public Integer powerAvail() {
+        return this.powerAvail;
+    }
+    /**
+     * @return In mW, surplus if positive or deficit if negative
+     * 
+     */
+    public Integer powerBudget() {
+        return this.powerBudget;
+    }
+    /**
+     * @return Whether power is insufficient
+     * 
+     */
+    public Boolean powerConstrained() {
+        return this.powerConstrained;
     }
     /**
      * @return In mW, total power needed by PD
@@ -109,6 +181,20 @@ public final class GetApStatsDeviceApStatLldpStat {
         return this.powerDraw;
     }
     /**
+     * @return In mW, total Power needed incl Peripherals
+     * 
+     */
+    public Integer powerNeeded() {
+        return this.powerNeeded;
+    }
+    /**
+     * @return Constrained mode
+     * 
+     */
+    public String powerOpmode() {
+        return this.powerOpmode;
+    }
+    /**
      * @return Number of negotiations, if it keeps increasing, we don’ t have a stable power
      * 
      */
@@ -116,11 +202,25 @@ public final class GetApStatsDeviceApStatLldpStat {
         return this.powerRequestCount;
     }
     /**
-     * @return In mW, the current power requested by PD
+     * @return In mW, power requested by PD
      * 
      */
     public Double powerRequested() {
         return this.powerRequested;
+    }
+    /**
+     * @return Single power source (DC Input / PoE 802.3at / PoE 802.3af / PoE 802.3bt / MULTI-PD / LLDP / ? (unknown)).
+     * 
+     */
+    public String powerSrc() {
+        return this.powerSrc;
+    }
+    /**
+     * @return List of management IP addresses (IPv4 and IPv6)
+     * 
+     */
+    public List<String> powerSrcs() {
+        return this.powerSrcs;
     }
     /**
      * @return Description provided by switch
@@ -153,9 +253,16 @@ public final class GetApStatsDeviceApStatLldpStat {
         private String portDesc;
         private String portId;
         private Double powerAllocated;
+        private Integer powerAvail;
+        private Integer powerBudget;
+        private Boolean powerConstrained;
         private Double powerDraw;
+        private Integer powerNeeded;
+        private String powerOpmode;
         private Integer powerRequestCount;
         private Double powerRequested;
+        private String powerSrc;
+        private List<String> powerSrcs;
         private String systemDesc;
         private String systemName;
         public Builder() {}
@@ -168,9 +275,16 @@ public final class GetApStatsDeviceApStatLldpStat {
     	      this.portDesc = defaults.portDesc;
     	      this.portId = defaults.portId;
     	      this.powerAllocated = defaults.powerAllocated;
+    	      this.powerAvail = defaults.powerAvail;
+    	      this.powerBudget = defaults.powerBudget;
+    	      this.powerConstrained = defaults.powerConstrained;
     	      this.powerDraw = defaults.powerDraw;
+    	      this.powerNeeded = defaults.powerNeeded;
+    	      this.powerOpmode = defaults.powerOpmode;
     	      this.powerRequestCount = defaults.powerRequestCount;
     	      this.powerRequested = defaults.powerRequested;
+    	      this.powerSrc = defaults.powerSrc;
+    	      this.powerSrcs = defaults.powerSrcs;
     	      this.systemDesc = defaults.systemDesc;
     	      this.systemName = defaults.systemName;
         }
@@ -235,11 +349,51 @@ public final class GetApStatsDeviceApStatLldpStat {
             return this;
         }
         @CustomType.Setter
+        public Builder powerAvail(Integer powerAvail) {
+            if (powerAvail == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatLldpStat", "powerAvail");
+            }
+            this.powerAvail = powerAvail;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder powerBudget(Integer powerBudget) {
+            if (powerBudget == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatLldpStat", "powerBudget");
+            }
+            this.powerBudget = powerBudget;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder powerConstrained(Boolean powerConstrained) {
+            if (powerConstrained == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatLldpStat", "powerConstrained");
+            }
+            this.powerConstrained = powerConstrained;
+            return this;
+        }
+        @CustomType.Setter
         public Builder powerDraw(Double powerDraw) {
             if (powerDraw == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStatLldpStat", "powerDraw");
             }
             this.powerDraw = powerDraw;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder powerNeeded(Integer powerNeeded) {
+            if (powerNeeded == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatLldpStat", "powerNeeded");
+            }
+            this.powerNeeded = powerNeeded;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder powerOpmode(String powerOpmode) {
+            if (powerOpmode == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatLldpStat", "powerOpmode");
+            }
+            this.powerOpmode = powerOpmode;
             return this;
         }
         @CustomType.Setter
@@ -257,6 +411,25 @@ public final class GetApStatsDeviceApStatLldpStat {
             }
             this.powerRequested = powerRequested;
             return this;
+        }
+        @CustomType.Setter
+        public Builder powerSrc(String powerSrc) {
+            if (powerSrc == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatLldpStat", "powerSrc");
+            }
+            this.powerSrc = powerSrc;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder powerSrcs(List<String> powerSrcs) {
+            if (powerSrcs == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatLldpStat", "powerSrcs");
+            }
+            this.powerSrcs = powerSrcs;
+            return this;
+        }
+        public Builder powerSrcs(String... powerSrcs) {
+            return powerSrcs(List.of(powerSrcs));
         }
         @CustomType.Setter
         public Builder systemDesc(String systemDesc) {
@@ -283,9 +456,16 @@ public final class GetApStatsDeviceApStatLldpStat {
             _resultValue.portDesc = portDesc;
             _resultValue.portId = portId;
             _resultValue.powerAllocated = powerAllocated;
+            _resultValue.powerAvail = powerAvail;
+            _resultValue.powerBudget = powerBudget;
+            _resultValue.powerConstrained = powerConstrained;
             _resultValue.powerDraw = powerDraw;
+            _resultValue.powerNeeded = powerNeeded;
+            _resultValue.powerOpmode = powerOpmode;
             _resultValue.powerRequestCount = powerRequestCount;
             _resultValue.powerRequested = powerRequested;
+            _resultValue.powerSrc = powerSrc;
+            _resultValue.powerSrcs = powerSrcs;
             _resultValue.systemDesc = systemDesc;
             _resultValue.systemName = systemName;
             return _resultValue;

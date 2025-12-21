@@ -13,12 +13,17 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GetApStatsDeviceApStatResult
     {
+        /// <summary>
+        /// Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `External`, `Internal`
+        /// </summary>
+        public readonly string AntennaSelect;
         public readonly Outputs.GetApStatsDeviceApStatAutoPlacementResult AutoPlacement;
         public readonly Outputs.GetApStatsDeviceApStatAutoUpgradeStatResult AutoUpgradeStat;
         public readonly Outputs.GetApStatsDeviceApStatBleStatResult BleStat;
         public readonly double CertExpiry;
         public readonly bool ConfigReverted;
         public readonly int CpuSystem;
+        public readonly int CpuUser;
         public readonly int CpuUtil;
         /// <summary>
         /// When the object has been created, in epoch
@@ -30,9 +35,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly Outputs.GetApStatsDeviceApStatEnvStatResult EnvStat;
         public readonly Outputs.GetApStatsDeviceApStatEslStatResult EslStat;
+        /// <summary>
+        /// Map of certificate serial numbers to their expiry timestamps (in epoch) for certificates expiring within 30 days. Property key is the certificate serial number
+        /// </summary>
+        public readonly ImmutableDictionary<string, int> ExpiringCerts;
         public readonly string ExtIp;
         public readonly Outputs.GetApStatsDeviceApStatFwupdateResult Fwupdate;
-        public readonly Outputs.GetApStatsDeviceApStatGpsResult Gps;
+        public readonly Outputs.GetApStatsDeviceApStatGpsStatResult GpsStat;
         public readonly string HwRev;
         /// <summary>
         /// Unique ID of the object instance in the Mist Organization
@@ -47,7 +56,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly Outputs.GetApStatsDeviceApStatIpConfigResult IpConfig;
         public readonly Outputs.GetApStatsDeviceApStatIpStatResult IpStat;
         /// <summary>
-        /// L2TP tunnel status (key is the wxtunnel_id)
+        /// L2TP tunnel status (key is the wxtunnel*id)
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetApStatsDeviceApStatL2tpStatResult> L2tpStat;
         /// <summary>
@@ -63,9 +72,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly Outputs.GetApStatsDeviceApStatLedResult Led;
         /// <summary>
-        /// LLDP Stat (neighbor information, power negotiations)
+        /// LLDP neighbor information and power negotiations. For backward compatibility, when multiple neighbors exist, only information from the first neighbor is displayed.
         /// </summary>
         public readonly Outputs.GetApStatsDeviceApStatLldpStatResult LldpStat;
+        /// <summary>
+        /// Property key is the port name (e.g. "eth0", "eth1", ...). Map of ethernet ports to their respective LLDP neighbor information and power negotiations. Only present when multiple neighbors exist.
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.GetApStatsDeviceApStatLldpStatsResult> LldpStats;
         public readonly bool Locating;
         /// <summary>
         /// Whether this AP is considered locked (placement / orientation has been vetted)
@@ -76,6 +89,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string Mac;
         public readonly string MapId;
+        public readonly int MemTotalKb;
         public readonly int MemUsedKb;
         /// <summary>
         /// Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
@@ -165,6 +179,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
         [OutputConstructor]
         private GetApStatsDeviceApStatResult(
+            string antennaSelect,
+
             Outputs.GetApStatsDeviceApStatAutoPlacementResult autoPlacement,
 
             Outputs.GetApStatsDeviceApStatAutoUpgradeStatResult autoUpgradeStat,
@@ -177,6 +193,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int cpuSystem,
 
+            int cpuUser,
+
             int cpuUtil,
 
             double createdTime,
@@ -187,11 +205,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             Outputs.GetApStatsDeviceApStatEslStatResult eslStat,
 
+            ImmutableDictionary<string, int> expiringCerts,
+
             string extIp,
 
             Outputs.GetApStatsDeviceApStatFwupdateResult fwupdate,
 
-            Outputs.GetApStatsDeviceApStatGpsResult gps,
+            Outputs.GetApStatsDeviceApStatGpsStatResult gpsStat,
 
             string hwRev,
 
@@ -217,6 +237,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             Outputs.GetApStatsDeviceApStatLldpStatResult lldpStat,
 
+            ImmutableDictionary<string, Outputs.GetApStatsDeviceApStatLldpStatsResult> lldpStats,
+
             bool locating,
 
             bool locked,
@@ -224,6 +246,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
             string mac,
 
             string mapId,
+
+            int memTotalKb,
 
             int memUsedKb,
 
@@ -289,20 +313,23 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             double y)
         {
+            AntennaSelect = antennaSelect;
             AutoPlacement = autoPlacement;
             AutoUpgradeStat = autoUpgradeStat;
             BleStat = bleStat;
             CertExpiry = certExpiry;
             ConfigReverted = configReverted;
             CpuSystem = cpuSystem;
+            CpuUser = cpuUser;
             CpuUtil = cpuUtil;
             CreatedTime = createdTime;
             DeviceprofileId = deviceprofileId;
             EnvStat = envStat;
             EslStat = eslStat;
+            ExpiringCerts = expiringCerts;
             ExtIp = extIp;
             Fwupdate = fwupdate;
-            Gps = gps;
+            GpsStat = gpsStat;
             HwRev = hwRev;
             Id = id;
             InactiveWiredVlans = inactiveWiredVlans;
@@ -315,10 +342,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
             LastTrouble = lastTrouble;
             Led = led;
             LldpStat = lldpStat;
+            LldpStats = lldpStats;
             Locating = locating;
             Locked = locked;
             Mac = mac;
             MapId = mapId;
+            MemTotalKb = memTotalKb;
             MemUsedKb = memUsedKb;
             MeshDownlinks = meshDownlinks;
             MeshUplink = meshUplink;

@@ -89,14 +89,14 @@ public final class DeviceprofileApRadioConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+     * Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
      * 
      */
     @Import(name="antennaSelect")
     private @Nullable Output<String> antennaSelect;
 
     /**
-     * @return Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+     * @return Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
      * 
      */
     public Optional<Output<String>> antennaSelect() {
@@ -370,7 +370,7 @@ public final class DeviceprofileApRadioConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param antennaSelect Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         * @param antennaSelect Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class DeviceprofileApRadioConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param antennaSelect Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         * @param antennaSelect Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
          * 
          * @return builder
          * 

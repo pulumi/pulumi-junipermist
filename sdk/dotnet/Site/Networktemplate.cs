@@ -234,6 +234,12 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.NetworktemplateRemoteSyslog?> RemoteSyslog { get; private set; } = null!;
 
         /// <summary>
+        /// Property key is the routing policy name
+        /// </summary>
+        [Output("routingPolicies")]
+        public Output<ImmutableDictionary<string, Outputs.NetworktemplateRoutingPolicies>?> RoutingPolicies { get; private set; } = null!;
+
+        /// <summary>
         /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         [Output("siteId")]
@@ -489,6 +495,18 @@ namespace Pulumi.JuniperMist.Site
         [Input("remoteSyslog")]
         public Input<Inputs.NetworktemplateRemoteSyslogArgs>? RemoteSyslog { get; set; }
 
+        [Input("routingPolicies")]
+        private InputMap<Inputs.NetworktemplateRoutingPoliciesArgs>? _routingPolicies;
+
+        /// <summary>
+        /// Property key is the routing policy name
+        /// </summary>
+        public InputMap<Inputs.NetworktemplateRoutingPoliciesArgs> RoutingPolicies
+        {
+            get => _routingPolicies ?? (_routingPolicies = new InputMap<Inputs.NetworktemplateRoutingPoliciesArgs>());
+            set => _routingPolicies = value;
+        }
+
         /// <summary>
         /// Unique ID of the object instance in the Mist Organization
         /// </summary>
@@ -711,6 +729,18 @@ namespace Pulumi.JuniperMist.Site
 
         [Input("remoteSyslog")]
         public Input<Inputs.NetworktemplateRemoteSyslogGetArgs>? RemoteSyslog { get; set; }
+
+        [Input("routingPolicies")]
+        private InputMap<Inputs.NetworktemplateRoutingPoliciesGetArgs>? _routingPolicies;
+
+        /// <summary>
+        /// Property key is the routing policy name
+        /// </summary>
+        public InputMap<Inputs.NetworktemplateRoutingPoliciesGetArgs> RoutingPolicies
+        {
+            get => _routingPolicies ?? (_routingPolicies = new InputMap<Inputs.NetworktemplateRoutingPoliciesGetArgs>());
+            set => _routingPolicies = value;
+        }
 
         /// <summary>
         /// Unique ID of the object instance in the Mist Organization

@@ -19,31 +19,65 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool LldpMedSupported;
         /// <summary>
-        /// Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+        /// Management IP address of the switch
         /// </summary>
         public readonly string MgmtAddr;
+        /// <summary>
+        /// List of management IP addresses (IPv4 and IPv6)
+        /// </summary>
         public readonly ImmutableArray<string> MgmtAddrs;
         /// <summary>
-        /// ge-0/0/4
+        /// Port description, e.g. “2/20”, “Port 2 on Switch0”
         /// </summary>
         public readonly string PortDesc;
+        /// <summary>
+        /// Port identifier
+        /// </summary>
         public readonly string PortId;
         /// <summary>
-        /// In mW, provided/allocated by PSE
+        /// In mW, power allocated by PSE
         /// </summary>
         public readonly double PowerAllocated;
+        /// <summary>
+        /// In mW, total Power Avail at AP from pwr source
+        /// </summary>
+        public readonly int PowerAvail;
+        /// <summary>
+        /// In mW, surplus if positive or deficit if negative
+        /// </summary>
+        public readonly int PowerBudget;
+        /// <summary>
+        /// Whether power is insufficient
+        /// </summary>
+        public readonly bool PowerConstrained;
         /// <summary>
         /// In mW, total power needed by PD
         /// </summary>
         public readonly double PowerDraw;
         /// <summary>
+        /// In mW, total Power needed incl Peripherals
+        /// </summary>
+        public readonly int PowerNeeded;
+        /// <summary>
+        /// Constrained mode
+        /// </summary>
+        public readonly string PowerOpmode;
+        /// <summary>
         /// Number of negotiations, if it keeps increasing, we don’ t have a stable power
         /// </summary>
         public readonly int PowerRequestCount;
         /// <summary>
-        /// In mW, the current power requested by PD
+        /// In mW, power requested by PD
         /// </summary>
         public readonly double PowerRequested;
+        /// <summary>
+        /// Single power source (DC Input / PoE 802.3at / PoE 802.3af / PoE 802.3bt / MULTI-PD / LLDP / ? (unknown)).
+        /// </summary>
+        public readonly string PowerSrc;
+        /// <summary>
+        /// List of management IP addresses (IPv4 and IPv6)
+        /// </summary>
+        public readonly ImmutableArray<string> PowerSrcs;
         /// <summary>
         /// Description provided by switch
         /// </summary>
@@ -69,11 +103,25 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             double powerAllocated,
 
+            int powerAvail,
+
+            int powerBudget,
+
+            bool powerConstrained,
+
             double powerDraw,
+
+            int powerNeeded,
+
+            string powerOpmode,
 
             int powerRequestCount,
 
             double powerRequested,
+
+            string powerSrc,
+
+            ImmutableArray<string> powerSrcs,
 
             string systemDesc,
 
@@ -86,9 +134,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
             PortDesc = portDesc;
             PortId = portId;
             PowerAllocated = powerAllocated;
+            PowerAvail = powerAvail;
+            PowerBudget = powerBudget;
+            PowerConstrained = powerConstrained;
             PowerDraw = powerDraw;
+            PowerNeeded = powerNeeded;
+            PowerOpmode = powerOpmode;
             PowerRequestCount = powerRequestCount;
             PowerRequested = powerRequested;
+            PowerSrc = powerSrc;
+            PowerSrcs = powerSrcs;
             SystemDesc = systemDesc;
             SystemName = systemName;
         }

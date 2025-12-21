@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetServicepoliciesOrgServicepolicyResult
     {
         /// <summary>
-        /// For SRX Only
+        /// SRX only
         /// </summary>
         public readonly Outputs.GetServicepoliciesOrgServicepolicyAamwResult Aamw;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.GetServicepoliciesOrgServicepolicyAntivirusResult Antivirus;
         /// <summary>
-        /// For SRX Only
+        /// SRX only
         /// </summary>
         public readonly Outputs.GetServicepoliciesOrgServicepolicyAppqoeResult Appqoe;
         /// <summary>

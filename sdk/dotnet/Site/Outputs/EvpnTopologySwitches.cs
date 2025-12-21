@@ -14,6 +14,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class EvpnTopologySwitches
     {
         public readonly string? DeviceprofileId;
+        public readonly ImmutableArray<string> DownlinkIps;
+        public readonly ImmutableArray<string> Downlinks;
+        public readonly ImmutableArray<string> Esilaglinks;
         public readonly int? EvpnId;
         public readonly string? Mac;
         public readonly string? Model;
@@ -34,10 +37,20 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string Role;
         public readonly string? RouterId;
         public readonly string? SiteId;
+        public readonly ImmutableArray<string> SuggestedDownlinks;
+        public readonly ImmutableArray<string> SuggestedEsilaglinks;
+        public readonly ImmutableArray<string> SuggestedUplinks;
+        public readonly ImmutableArray<string> Uplinks;
 
         [OutputConstructor]
         private EvpnTopologySwitches(
             string? deviceprofileId,
+
+            ImmutableArray<string> downlinkIps,
+
+            ImmutableArray<string> downlinks,
+
+            ImmutableArray<string> esilaglinks,
 
             int? evpnId,
 
@@ -53,9 +66,20 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? routerId,
 
-            string? siteId)
+            string? siteId,
+
+            ImmutableArray<string> suggestedDownlinks,
+
+            ImmutableArray<string> suggestedEsilaglinks,
+
+            ImmutableArray<string> suggestedUplinks,
+
+            ImmutableArray<string> uplinks)
         {
             DeviceprofileId = deviceprofileId;
+            DownlinkIps = downlinkIps;
+            Downlinks = downlinks;
+            Esilaglinks = esilaglinks;
             EvpnId = evpnId;
             Mac = mac;
             Model = model;
@@ -64,6 +88,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
             Role = role;
             RouterId = routerId;
             SiteId = siteId;
+            SuggestedDownlinks = suggestedDownlinks;
+            SuggestedEsilaglinks = suggestedEsilaglinks;
+            SuggestedUplinks = suggestedUplinks;
+            Uplinks = uplinks;
         }
     }
 }

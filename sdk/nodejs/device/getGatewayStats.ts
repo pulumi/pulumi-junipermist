@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  *     siteId: "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
  *     status: "connected",
  *     duration: "1d",
- *     start: 1736031600,
- *     end: 1736175934,
+ *     start: "1736031600",
+ *     end: "1736175934",
  * });
  * ```
  */
@@ -48,16 +48,16 @@ export interface GetGatewayStatsArgs {
      */
     duration?: string;
     /**
-     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
      */
-    end?: number;
+    end?: string;
     mac?: string;
     orgId: string;
     siteId?: string;
     /**
-     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
      */
-    start?: number;
+    start?: string;
     /**
      * enum: `all`, `connected`, `disconnected`
      */
@@ -74,9 +74,9 @@ export interface GetGatewayStatsResult {
      */
     readonly duration?: string;
     /**
-     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
      */
-    readonly end?: number;
+    readonly end?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -85,9 +85,9 @@ export interface GetGatewayStatsResult {
     readonly orgId: string;
     readonly siteId?: string;
     /**
-     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
      */
-    readonly start?: number;
+    readonly start?: string;
     /**
      * enum: `all`, `connected`, `disconnected`
      */
@@ -108,8 +108,8 @@ export interface GetGatewayStatsResult {
  *     siteId: "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
  *     status: "connected",
  *     duration: "1d",
- *     start: 1736031600,
- *     end: 1736175934,
+ *     start: "1736031600",
+ *     end: "1736175934",
  * });
  * ```
  */
@@ -135,16 +135,16 @@ export interface GetGatewayStatsOutputArgs {
      */
     duration?: pulumi.Input<string>;
     /**
-     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
      */
-    end?: pulumi.Input<number>;
+    end?: pulumi.Input<string>;
     mac?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     siteId?: pulumi.Input<string>;
     /**
-     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
      */
-    start?: pulumi.Input<number>;
+    start?: pulumi.Input<string>;
     /**
      * enum: `all`, `connected`, `disconnected`
      */

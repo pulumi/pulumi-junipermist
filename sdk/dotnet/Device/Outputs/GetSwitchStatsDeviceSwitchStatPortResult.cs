@@ -92,6 +92,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// Is the device attached to POE
         /// </summary>
         public readonly bool PoeOn;
+        /// <summary>
+        /// PoE priority. enum: `Low`, `High`
+        /// </summary>
+        public readonly string PoePriority;
         public readonly string PortId;
         /// <summary>
         /// Interface MAC address
@@ -237,6 +241,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool poeOn,
 
+            string poePriority,
+
             string portId,
 
             string portMac,
@@ -311,6 +317,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             PoeDisabled = poeDisabled;
             PoeMode = poeMode;
             PoeOn = poeOn;
+            PoePriority = poePriority;
             PortId = portId;
             PortMac = portMac;
             PortUsage = portUsage;

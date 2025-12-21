@@ -5,6 +5,7 @@ package com.pulumi.junipermist.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.inputs.UpgradeDeviceAutoUpgradeStatArgs;
 import com.pulumi.junipermist.inputs.UpgradeDeviceFwupdateArgs;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -18,6 +19,27 @@ import javax.annotation.Nullable;
 public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs {
 
     public static final UpgradeDeviceState Empty = new UpgradeDeviceState();
+
+    @Import(name="autoUpgradeStat")
+    private @Nullable Output<UpgradeDeviceAutoUpgradeStatArgs> autoUpgradeStat;
+
+    public Optional<Output<UpgradeDeviceAutoUpgradeStatArgs>> autoUpgradeStat() {
+        return Optional.ofNullable(this.autoUpgradeStat);
+    }
+
+    @Import(name="configTimestamp")
+    private @Nullable Output<Integer> configTimestamp;
+
+    public Optional<Output<Integer>> configTimestamp() {
+        return Optional.ofNullable(this.configTimestamp);
+    }
+
+    @Import(name="configVersion")
+    private @Nullable Output<Integer> configVersion;
+
+    public Optional<Output<Integer>> configVersion() {
+        return Optional.ofNullable(this.configVersion);
+    }
 
     @Import(name="deviceId")
     private @Nullable Output<String> deviceId;
@@ -39,6 +61,13 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> deviceVersion() {
         return Optional.ofNullable(this.deviceVersion);
+    }
+
+    @Import(name="extIp")
+    private @Nullable Output<String> extIp;
+
+    public Optional<Output<String>> extIp() {
+        return Optional.ofNullable(this.extIp);
     }
 
     @Import(name="fwupdate")
@@ -190,6 +219,20 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.syncUpgradeTimeout);
     }
 
+    @Import(name="tagId")
+    private @Nullable Output<Integer> tagId;
+
+    public Optional<Output<Integer>> tagId() {
+        return Optional.ofNullable(this.tagId);
+    }
+
+    @Import(name="tagUuid")
+    private @Nullable Output<String> tagUuid;
+
+    public Optional<Output<String>> tagUuid() {
+        return Optional.ofNullable(this.tagUuid);
+    }
+
     /**
      * firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions
      * 
@@ -223,8 +266,12 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
     private UpgradeDeviceState() {}
 
     private UpgradeDeviceState(UpgradeDeviceState $) {
+        this.autoUpgradeStat = $.autoUpgradeStat;
+        this.configTimestamp = $.configTimestamp;
+        this.configVersion = $.configVersion;
         this.deviceId = $.deviceId;
         this.deviceVersion = $.deviceVersion;
+        this.extIp = $.extIp;
         this.fwupdate = $.fwupdate;
         this.reboot = $.reboot;
         this.rebootAt = $.rebootAt;
@@ -236,6 +283,8 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         this.syncUpgradeRefreshInterval = $.syncUpgradeRefreshInterval;
         this.syncUpgradeStartTimeout = $.syncUpgradeStartTimeout;
         this.syncUpgradeTimeout = $.syncUpgradeTimeout;
+        this.tagId = $.tagId;
+        this.tagUuid = $.tagUuid;
         this.targetVersion = $.targetVersion;
         this.timestamp = $.timestamp;
     }
@@ -256,6 +305,33 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
 
         public Builder(UpgradeDeviceState defaults) {
             $ = new UpgradeDeviceState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder autoUpgradeStat(@Nullable Output<UpgradeDeviceAutoUpgradeStatArgs> autoUpgradeStat) {
+            $.autoUpgradeStat = autoUpgradeStat;
+            return this;
+        }
+
+        public Builder autoUpgradeStat(UpgradeDeviceAutoUpgradeStatArgs autoUpgradeStat) {
+            return autoUpgradeStat(Output.of(autoUpgradeStat));
+        }
+
+        public Builder configTimestamp(@Nullable Output<Integer> configTimestamp) {
+            $.configTimestamp = configTimestamp;
+            return this;
+        }
+
+        public Builder configTimestamp(Integer configTimestamp) {
+            return configTimestamp(Output.of(configTimestamp));
+        }
+
+        public Builder configVersion(@Nullable Output<Integer> configVersion) {
+            $.configVersion = configVersion;
+            return this;
+        }
+
+        public Builder configVersion(Integer configVersion) {
+            return configVersion(Output.of(configVersion));
         }
 
         public Builder deviceId(@Nullable Output<String> deviceId) {
@@ -286,6 +362,15 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder deviceVersion(String deviceVersion) {
             return deviceVersion(Output.of(deviceVersion));
+        }
+
+        public Builder extIp(@Nullable Output<String> extIp) {
+            $.extIp = extIp;
+            return this;
+        }
+
+        public Builder extIp(String extIp) {
+            return extIp(Output.of(extIp));
         }
 
         public Builder fwupdate(@Nullable Output<UpgradeDeviceFwupdateArgs> fwupdate) {
@@ -493,6 +578,24 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder syncUpgradeTimeout(Integer syncUpgradeTimeout) {
             return syncUpgradeTimeout(Output.of(syncUpgradeTimeout));
+        }
+
+        public Builder tagId(@Nullable Output<Integer> tagId) {
+            $.tagId = tagId;
+            return this;
+        }
+
+        public Builder tagId(Integer tagId) {
+            return tagId(Output.of(tagId));
+        }
+
+        public Builder tagUuid(@Nullable Output<String> tagUuid) {
+            $.tagUuid = tagUuid;
+            return this;
+        }
+
+        public Builder tagUuid(String tagUuid) {
+            return tagUuid(Output.of(tagUuid));
         }
 
         /**

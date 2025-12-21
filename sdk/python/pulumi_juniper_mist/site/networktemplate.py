@@ -41,6 +41,7 @@ class NetworktemplateArgs:
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]]] = None,
                  radius_config: Optional[pulumi.Input['NetworktemplateRadiusConfigArgs']] = None,
                  remote_syslog: Optional[pulumi.Input['NetworktemplateRemoteSyslogArgs']] = None,
+                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateRoutingPoliciesArgs']]]] = None,
                  snmp_config: Optional[pulumi.Input['NetworktemplateSnmpConfigArgs']] = None,
                  switch_matching: Optional[pulumi.Input['NetworktemplateSwitchMatchingArgs']] = None,
                  switch_mgmt: Optional[pulumi.Input['NetworktemplateSwitchMgmtArgs']] = None,
@@ -64,6 +65,7 @@ class NetworktemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Defines custom switch configuration based on different criteria
         :param pulumi.Input['NetworktemplateSwitchMgmtArgs'] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
@@ -107,6 +109,8 @@ class NetworktemplateArgs:
             pulumi.set(__self__, "radius_config", radius_config)
         if remote_syslog is not None:
             pulumi.set(__self__, "remote_syslog", remote_syslog)
+        if routing_policies is not None:
+            pulumi.set(__self__, "routing_policies", routing_policies)
         if snmp_config is not None:
             pulumi.set(__self__, "snmp_config", snmp_config)
         if switch_matching is not None:
@@ -347,6 +351,18 @@ class NetworktemplateArgs:
         pulumi.set(self, "remote_syslog", value)
 
     @_builtins.property
+    @pulumi.getter(name="routingPolicies")
+    def routing_policies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateRoutingPoliciesArgs']]]]:
+        """
+        Property key is the routing policy name
+        """
+        return pulumi.get(self, "routing_policies")
+
+    @routing_policies.setter
+    def routing_policies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateRoutingPoliciesArgs']]]]):
+        pulumi.set(self, "routing_policies", value)
+
+    @_builtins.property
     @pulumi.getter(name="snmpConfig")
     def snmp_config(self) -> Optional[pulumi.Input['NetworktemplateSnmpConfigArgs']]:
         return pulumi.get(self, "snmp_config")
@@ -423,6 +439,7 @@ class _NetworktemplateState:
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]]] = None,
                  radius_config: Optional[pulumi.Input['NetworktemplateRadiusConfigArgs']] = None,
                  remote_syslog: Optional[pulumi.Input['NetworktemplateRemoteSyslogArgs']] = None,
+                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateRoutingPoliciesArgs']]]] = None,
                  site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  snmp_config: Optional[pulumi.Input['NetworktemplateSnmpConfigArgs']] = None,
                  switch_matching: Optional[pulumi.Input['NetworktemplateSwitchMatchingArgs']] = None,
@@ -446,6 +463,7 @@ class _NetworktemplateState:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[_builtins.str] site_id: Unique ID of the object instance in the Mist Organization
         :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Defines custom switch configuration based on different criteria
         :param pulumi.Input['NetworktemplateSwitchMgmtArgs'] switch_mgmt: Switch settings
@@ -489,6 +507,8 @@ class _NetworktemplateState:
             pulumi.set(__self__, "radius_config", radius_config)
         if remote_syslog is not None:
             pulumi.set(__self__, "remote_syslog", remote_syslog)
+        if routing_policies is not None:
+            pulumi.set(__self__, "routing_policies", routing_policies)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
         if snmp_config is not None:
@@ -719,6 +739,18 @@ class _NetworktemplateState:
         pulumi.set(self, "remote_syslog", value)
 
     @_builtins.property
+    @pulumi.getter(name="routingPolicies")
+    def routing_policies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateRoutingPoliciesArgs']]]]:
+        """
+        Property key is the routing policy name
+        """
+        return pulumi.get(self, "routing_policies")
+
+    @routing_policies.setter
+    def routing_policies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateRoutingPoliciesArgs']]]]):
+        pulumi.set(self, "routing_policies", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -810,6 +842,7 @@ class Networktemplate(pulumi.CustomResource):
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]]] = None,
                  radius_config: Optional[pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']]] = None,
                  remote_syslog: Optional[pulumi.Input[Union['NetworktemplateRemoteSyslogArgs', 'NetworktemplateRemoteSyslogArgsDict']]] = None,
+                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateRoutingPoliciesArgs', 'NetworktemplateRoutingPoliciesArgsDict']]]]] = None,
                  site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  snmp_config: Optional[pulumi.Input[Union['NetworktemplateSnmpConfigArgs', 'NetworktemplateSnmpConfigArgsDict']]] = None,
                  switch_matching: Optional[pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']]] = None,
@@ -916,6 +949,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateRoutingPoliciesArgs', 'NetworktemplateRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[_builtins.str] site_id: Unique ID of the object instance in the Mist Organization
         :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Defines custom switch configuration based on different criteria
         :param pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']] switch_mgmt: Switch settings
@@ -1043,6 +1077,7 @@ class Networktemplate(pulumi.CustomResource):
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]]] = None,
                  radius_config: Optional[pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']]] = None,
                  remote_syslog: Optional[pulumi.Input[Union['NetworktemplateRemoteSyslogArgs', 'NetworktemplateRemoteSyslogArgsDict']]] = None,
+                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateRoutingPoliciesArgs', 'NetworktemplateRoutingPoliciesArgsDict']]]]] = None,
                  site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  snmp_config: Optional[pulumi.Input[Union['NetworktemplateSnmpConfigArgs', 'NetworktemplateSnmpConfigArgsDict']]] = None,
                  switch_matching: Optional[pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']]] = None,
@@ -1077,6 +1112,7 @@ class Networktemplate(pulumi.CustomResource):
             __props__.__dict__["port_usages"] = port_usages
             __props__.__dict__["radius_config"] = radius_config
             __props__.__dict__["remote_syslog"] = remote_syslog
+            __props__.__dict__["routing_policies"] = routing_policies
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
@@ -1114,6 +1150,7 @@ class Networktemplate(pulumi.CustomResource):
             port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]]] = None,
             radius_config: Optional[pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']]] = None,
             remote_syslog: Optional[pulumi.Input[Union['NetworktemplateRemoteSyslogArgs', 'NetworktemplateRemoteSyslogArgsDict']]] = None,
+            routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateRoutingPoliciesArgs', 'NetworktemplateRoutingPoliciesArgsDict']]]]] = None,
             site_id: Optional[pulumi.Input[_builtins.str]] = None,
             snmp_config: Optional[pulumi.Input[Union['NetworktemplateSnmpConfigArgs', 'NetworktemplateSnmpConfigArgsDict']]] = None,
             switch_matching: Optional[pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']]] = None,
@@ -1142,6 +1179,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateRoutingPoliciesArgs', 'NetworktemplateRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[_builtins.str] site_id: Unique ID of the object instance in the Mist Organization
         :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Defines custom switch configuration based on different criteria
         :param pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']] switch_mgmt: Switch settings
@@ -1170,6 +1208,7 @@ class Networktemplate(pulumi.CustomResource):
         __props__.__dict__["port_usages"] = port_usages
         __props__.__dict__["radius_config"] = radius_config
         __props__.__dict__["remote_syslog"] = remote_syslog
+        __props__.__dict__["routing_policies"] = routing_policies
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["snmp_config"] = snmp_config
         __props__.__dict__["switch_matching"] = switch_matching
@@ -1317,6 +1356,14 @@ class Networktemplate(pulumi.CustomResource):
     @pulumi.getter(name="remoteSyslog")
     def remote_syslog(self) -> pulumi.Output[Optional['outputs.NetworktemplateRemoteSyslog']]:
         return pulumi.get(self, "remote_syslog")
+
+    @_builtins.property
+    @pulumi.getter(name="routingPolicies")
+    def routing_policies(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.NetworktemplateRoutingPolicies']]]:
+        """
+        Property key is the routing policy name
+        """
+        return pulumi.get(self, "routing_policies")
 
     @_builtins.property
     @pulumi.getter(name="siteId")

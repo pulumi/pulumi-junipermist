@@ -182,6 +182,10 @@ export class Networktemplate extends pulumi.CustomResource {
     declare public readonly radiusConfig: pulumi.Output<outputs.site.NetworktemplateRadiusConfig | undefined>;
     declare public readonly remoteSyslog: pulumi.Output<outputs.site.NetworktemplateRemoteSyslog | undefined>;
     /**
+     * Property key is the routing policy name
+     */
+    declare public readonly routingPolicies: pulumi.Output<{[key: string]: outputs.site.NetworktemplateRoutingPolicies} | undefined>;
+    /**
      * Unique ID of the object instance in the Mist Organization
      */
     declare public readonly siteId: pulumi.Output<string>;
@@ -232,6 +236,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["portUsages"] = state?.portUsages;
             resourceInputs["radiusConfig"] = state?.radiusConfig;
             resourceInputs["remoteSyslog"] = state?.remoteSyslog;
+            resourceInputs["routingPolicies"] = state?.routingPolicies;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["snmpConfig"] = state?.snmpConfig;
             resourceInputs["switchMatching"] = state?.switchMatching;
@@ -262,6 +267,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["portUsages"] = args?.portUsages;
             resourceInputs["radiusConfig"] = args?.radiusConfig;
             resourceInputs["remoteSyslog"] = args?.remoteSyslog;
+            resourceInputs["routingPolicies"] = args?.routingPolicies;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["snmpConfig"] = args?.snmpConfig;
             resourceInputs["switchMatching"] = args?.switchMatching;
@@ -342,6 +348,10 @@ export interface NetworktemplateState {
      */
     radiusConfig?: pulumi.Input<inputs.site.NetworktemplateRadiusConfig>;
     remoteSyslog?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslog>;
+    /**
+     * Property key is the routing policy name
+     */
+    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateRoutingPolicies>}>;
     /**
      * Unique ID of the object instance in the Mist Organization
      */
@@ -430,6 +440,10 @@ export interface NetworktemplateArgs {
      */
     radiusConfig?: pulumi.Input<inputs.site.NetworktemplateRadiusConfig>;
     remoteSyslog?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslog>;
+    /**
+     * Property key is the routing policy name
+     */
+    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateRoutingPolicies>}>;
     /**
      * Unique ID of the object instance in the Mist Organization
      */

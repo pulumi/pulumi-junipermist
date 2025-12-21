@@ -32,14 +32,14 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * password expiry in days
+     * Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
      * 
      */
     @Import(name="expiryInDays")
     private @Nullable Output<Integer> expiryInDays;
 
     /**
-     * @return password expiry in days
+     * @return Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
      * 
      */
     public Optional<Output<Integer>> expiryInDays() {
@@ -141,7 +141,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param expiryInDays password expiry in days
+         * @param expiryInDays Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param expiryInDays password expiry in days
+         * @param expiryInDays Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
          * 
          * @return builder
          * 

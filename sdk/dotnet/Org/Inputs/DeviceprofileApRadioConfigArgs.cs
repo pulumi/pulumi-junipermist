@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? AntennaMode { get; set; }
 
         /// <summary>
-        /// Antenna Mode for AP which supports selectable antennas. enum: `External`, `Internal`
+        /// Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `External`, `Internal`
         /// </summary>
         [Input("antennaSelect")]
         public Input<string>? AntennaSelect { get; set; }

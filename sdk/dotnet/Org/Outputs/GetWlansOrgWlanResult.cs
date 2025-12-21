@@ -30,11 +30,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.GetWlansOrgWlanAirwatchResult Airwatch;
         /// <summary>
-        /// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+        /// Only applicable when `LimitBcast`==`True`, which allows or disallows ipv6 Neighbor Discovery packets to go through
         /// </summary>
         public readonly bool AllowIpv6Ndp;
         /// <summary>
-        /// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+        /// Only applicable when `LimitBcast`==`True`, which allows mDNS / Bonjour packets to go through
         /// </summary>
         public readonly bool AllowMdns;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.GetWlansOrgWlanAppLimitResult AppLimit;
         /// <summary>
-        /// APp qos wlan settings
+        /// APP qos wlan settings
         /// </summary>
         public readonly Outputs.GetWlansOrgWlanAppQosResult AppQos;
         /// <summary>
@@ -293,7 +293,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PortalAllowedSubnets;
         /// <summary>
-        /// APi secret (auto-generated) that can be used to sign guest authorization requests
+        /// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `External`
         /// </summary>
         public readonly string PortalApiSecret;
         /// <summary>
@@ -304,6 +304,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Url of portal background image
         /// </summary>
         public readonly string PortalImage;
+        /// <summary>
+        /// URL used in the SSO process, auto-generated when auth is set to `Sso`
+        /// </summary>
         public readonly string PortalSsoUrl;
         public readonly Outputs.GetWlansOrgWlanQosResult Qos;
         /// <summary>

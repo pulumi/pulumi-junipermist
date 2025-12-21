@@ -194,8 +194,12 @@ class UpgradeDeviceArgs:
 @pulumi.input_type
 class _UpgradeDeviceState:
     def __init__(__self__, *,
+                 auto_upgrade_stat: Optional[pulumi.Input['UpgradeDeviceAutoUpgradeStatArgs']] = None,
+                 config_timestamp: Optional[pulumi.Input[_builtins.int]] = None,
+                 config_version: Optional[pulumi.Input[_builtins.int]] = None,
                  device_id: Optional[pulumi.Input[_builtins.str]] = None,
                  device_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 ext_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  fwupdate: Optional[pulumi.Input['UpgradeDeviceFwupdateArgs']] = None,
                  reboot: Optional[pulumi.Input[_builtins.bool]] = None,
                  reboot_at: Optional[pulumi.Input[_builtins.int]] = None,
@@ -207,6 +211,8 @@ class _UpgradeDeviceState:
                  sync_upgrade_refresh_interval: Optional[pulumi.Input[_builtins.int]] = None,
                  sync_upgrade_start_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  sync_upgrade_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 tag_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 tag_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  target_version: Optional[pulumi.Input[_builtins.str]] = None,
                  timestamp: Optional[pulumi.Input[_builtins.float]] = None):
         """
@@ -224,10 +230,18 @@ class _UpgradeDeviceState:
         :param pulumi.Input[_builtins.str] target_version: firmware version to deploy to the device. Use the `device_get_versions` datasource to get the list of available firmware versions
         :param pulumi.Input[_builtins.float] timestamp: Epoch (seconds)
         """
+        if auto_upgrade_stat is not None:
+            pulumi.set(__self__, "auto_upgrade_stat", auto_upgrade_stat)
+        if config_timestamp is not None:
+            pulumi.set(__self__, "config_timestamp", config_timestamp)
+        if config_version is not None:
+            pulumi.set(__self__, "config_version", config_version)
         if device_id is not None:
             pulumi.set(__self__, "device_id", device_id)
         if device_version is not None:
             pulumi.set(__self__, "device_version", device_version)
+        if ext_ip is not None:
+            pulumi.set(__self__, "ext_ip", ext_ip)
         if fwupdate is not None:
             pulumi.set(__self__, "fwupdate", fwupdate)
         if reboot is not None:
@@ -250,10 +264,41 @@ class _UpgradeDeviceState:
             pulumi.set(__self__, "sync_upgrade_start_timeout", sync_upgrade_start_timeout)
         if sync_upgrade_timeout is not None:
             pulumi.set(__self__, "sync_upgrade_timeout", sync_upgrade_timeout)
+        if tag_id is not None:
+            pulumi.set(__self__, "tag_id", tag_id)
+        if tag_uuid is not None:
+            pulumi.set(__self__, "tag_uuid", tag_uuid)
         if target_version is not None:
             pulumi.set(__self__, "target_version", target_version)
         if timestamp is not None:
             pulumi.set(__self__, "timestamp", timestamp)
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeStat")
+    def auto_upgrade_stat(self) -> Optional[pulumi.Input['UpgradeDeviceAutoUpgradeStatArgs']]:
+        return pulumi.get(self, "auto_upgrade_stat")
+
+    @auto_upgrade_stat.setter
+    def auto_upgrade_stat(self, value: Optional[pulumi.Input['UpgradeDeviceAutoUpgradeStatArgs']]):
+        pulumi.set(self, "auto_upgrade_stat", value)
+
+    @_builtins.property
+    @pulumi.getter(name="configTimestamp")
+    def config_timestamp(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "config_timestamp")
+
+    @config_timestamp.setter
+    def config_timestamp(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "config_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="configVersion")
+    def config_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "config_version")
+
+    @config_version.setter
+    def config_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "config_version", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceId")
@@ -275,6 +320,15 @@ class _UpgradeDeviceState:
     @device_version.setter
     def device_version(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "device_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="extIp")
+    def ext_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "ext_ip")
+
+    @ext_ip.setter
+    def ext_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ext_ip", value)
 
     @_builtins.property
     @pulumi.getter
@@ -401,6 +455,24 @@ class _UpgradeDeviceState:
     @sync_upgrade_timeout.setter
     def sync_upgrade_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "sync_upgrade_timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagId")
+    def tag_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "tag_id")
+
+    @tag_id.setter
+    def tag_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "tag_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagUuid")
+    def tag_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "tag_uuid")
+
+    @tag_uuid.setter
+    def tag_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tag_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="targetVersion")
@@ -571,9 +643,15 @@ class UpgradeDevice(pulumi.CustomResource):
             if target_version is None and not opts.urn:
                 raise TypeError("Missing required property 'target_version'")
             __props__.__dict__["target_version"] = target_version
+            __props__.__dict__["auto_upgrade_stat"] = None
+            __props__.__dict__["config_timestamp"] = None
+            __props__.__dict__["config_version"] = None
             __props__.__dict__["device_version"] = None
+            __props__.__dict__["ext_ip"] = None
             __props__.__dict__["fwupdate"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["tag_id"] = None
+            __props__.__dict__["tag_uuid"] = None
             __props__.__dict__["timestamp"] = None
         super(UpgradeDevice, __self__).__init__(
             'junipermist:index/upgradeDevice:UpgradeDevice',
@@ -585,8 +663,12 @@ class UpgradeDevice(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_upgrade_stat: Optional[pulumi.Input[Union['UpgradeDeviceAutoUpgradeStatArgs', 'UpgradeDeviceAutoUpgradeStatArgsDict']]] = None,
+            config_timestamp: Optional[pulumi.Input[_builtins.int]] = None,
+            config_version: Optional[pulumi.Input[_builtins.int]] = None,
             device_id: Optional[pulumi.Input[_builtins.str]] = None,
             device_version: Optional[pulumi.Input[_builtins.str]] = None,
+            ext_ip: Optional[pulumi.Input[_builtins.str]] = None,
             fwupdate: Optional[pulumi.Input[Union['UpgradeDeviceFwupdateArgs', 'UpgradeDeviceFwupdateArgsDict']]] = None,
             reboot: Optional[pulumi.Input[_builtins.bool]] = None,
             reboot_at: Optional[pulumi.Input[_builtins.int]] = None,
@@ -598,6 +680,8 @@ class UpgradeDevice(pulumi.CustomResource):
             sync_upgrade_refresh_interval: Optional[pulumi.Input[_builtins.int]] = None,
             sync_upgrade_start_timeout: Optional[pulumi.Input[_builtins.int]] = None,
             sync_upgrade_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+            tag_id: Optional[pulumi.Input[_builtins.int]] = None,
+            tag_uuid: Optional[pulumi.Input[_builtins.str]] = None,
             target_version: Optional[pulumi.Input[_builtins.str]] = None,
             timestamp: Optional[pulumi.Input[_builtins.float]] = None) -> 'UpgradeDevice':
         """
@@ -624,8 +708,12 @@ class UpgradeDevice(pulumi.CustomResource):
 
         __props__ = _UpgradeDeviceState.__new__(_UpgradeDeviceState)
 
+        __props__.__dict__["auto_upgrade_stat"] = auto_upgrade_stat
+        __props__.__dict__["config_timestamp"] = config_timestamp
+        __props__.__dict__["config_version"] = config_version
         __props__.__dict__["device_id"] = device_id
         __props__.__dict__["device_version"] = device_version
+        __props__.__dict__["ext_ip"] = ext_ip
         __props__.__dict__["fwupdate"] = fwupdate
         __props__.__dict__["reboot"] = reboot
         __props__.__dict__["reboot_at"] = reboot_at
@@ -637,9 +725,26 @@ class UpgradeDevice(pulumi.CustomResource):
         __props__.__dict__["sync_upgrade_refresh_interval"] = sync_upgrade_refresh_interval
         __props__.__dict__["sync_upgrade_start_timeout"] = sync_upgrade_start_timeout
         __props__.__dict__["sync_upgrade_timeout"] = sync_upgrade_timeout
+        __props__.__dict__["tag_id"] = tag_id
+        __props__.__dict__["tag_uuid"] = tag_uuid
         __props__.__dict__["target_version"] = target_version
         __props__.__dict__["timestamp"] = timestamp
         return UpgradeDevice(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeStat")
+    def auto_upgrade_stat(self) -> pulumi.Output['outputs.UpgradeDeviceAutoUpgradeStat']:
+        return pulumi.get(self, "auto_upgrade_stat")
+
+    @_builtins.property
+    @pulumi.getter(name="configTimestamp")
+    def config_timestamp(self) -> pulumi.Output[_builtins.int]:
+        return pulumi.get(self, "config_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="configVersion")
+    def config_version(self) -> pulumi.Output[_builtins.int]:
+        return pulumi.get(self, "config_version")
 
     @_builtins.property
     @pulumi.getter(name="deviceId")
@@ -653,6 +758,11 @@ class UpgradeDevice(pulumi.CustomResource):
         current device firmware version
         """
         return pulumi.get(self, "device_version")
+
+    @_builtins.property
+    @pulumi.getter(name="extIp")
+    def ext_ip(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "ext_ip")
 
     @_builtins.property
     @pulumi.getter
@@ -735,6 +845,16 @@ class UpgradeDevice(pulumi.CustomResource):
         if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
         """
         return pulumi.get(self, "sync_upgrade_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="tagId")
+    def tag_id(self) -> pulumi.Output[_builtins.int]:
+        return pulumi.get(self, "tag_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tagUuid")
+    def tag_uuid(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "tag_uuid")
 
     @_builtins.property
     @pulumi.getter(name="targetVersion")

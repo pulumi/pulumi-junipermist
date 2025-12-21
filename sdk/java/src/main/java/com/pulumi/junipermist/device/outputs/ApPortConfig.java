@@ -11,7 +11,6 @@ import com.pulumi.junipermist.device.outputs.ApPortConfigRadsec;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -84,10 +83,10 @@ public final class ApPortConfig {
      */
     private @Nullable Integer vlanId;
     /**
-     * @return If `forwarding`==`limited`
+     * @return If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
      * 
      */
-    private @Nullable List<Integer> vlanIds;
+    private @Nullable String vlanIds;
     /**
      * @return If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
      * 
@@ -194,11 +193,11 @@ public final class ApPortConfig {
         return Optional.ofNullable(this.vlanId);
     }
     /**
-     * @return If `forwarding`==`limited`
+     * @return If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
      * 
      */
-    public List<Integer> vlanIds() {
-        return this.vlanIds == null ? List.of() : this.vlanIds;
+    public Optional<String> vlanIds() {
+        return Optional.ofNullable(this.vlanIds);
     }
     /**
      * @return If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
@@ -238,7 +237,7 @@ public final class ApPortConfig {
         private @Nullable ApPortConfigRadiusConfig radiusConfig;
         private @Nullable ApPortConfigRadsec radsec;
         private @Nullable Integer vlanId;
-        private @Nullable List<Integer> vlanIds;
+        private @Nullable String vlanIds;
         private @Nullable String wxtunnelId;
         private @Nullable String wxtunnelRemoteId;
         public Builder() {}
@@ -348,13 +347,10 @@ public final class ApPortConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder vlanIds(@Nullable List<Integer> vlanIds) {
+        public Builder vlanIds(@Nullable String vlanIds) {
 
             this.vlanIds = vlanIds;
             return this;
-        }
-        public Builder vlanIds(Integer... vlanIds) {
-            return vlanIds(List.of(vlanIds));
         }
         @CustomType.Setter
         public Builder wxtunnelId(@Nullable String wxtunnelId) {

@@ -56,12 +56,12 @@ public final class GetWlansOrgWlan {
      */
     private GetWlansOrgWlanAirwatch airwatch;
     /**
-     * @return Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+     * @return Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
      * 
      */
     private Boolean allowIpv6Ndp;
     /**
-     * @return Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+     * @return Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
      * 
      */
     private Boolean allowMdns;
@@ -81,7 +81,7 @@ public final class GetWlansOrgWlan {
      */
     private GetWlansOrgWlanAppLimit appLimit;
     /**
-     * @return APp qos wlan settings
+     * @return APP qos wlan settings
      * 
      */
     private GetWlansOrgWlanAppQos appQos;
@@ -380,7 +380,7 @@ public final class GetWlansOrgWlan {
      */
     private List<String> portalAllowedSubnets;
     /**
-     * @return APi secret (auto-generated) that can be used to sign guest authorization requests
+     * @return API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
      * 
      */
     private String portalApiSecret;
@@ -394,6 +394,10 @@ public final class GetWlansOrgWlan {
      * 
      */
     private String portalImage;
+    /**
+     * @return URL used in the SSO process, auto-generated when auth is set to `sso`
+     * 
+     */
     private String portalSsoUrl;
     private GetWlansOrgWlanQos qos;
     /**
@@ -511,14 +515,14 @@ public final class GetWlansOrgWlan {
         return this.airwatch;
     }
     /**
-     * @return Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+     * @return Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
      * 
      */
     public Boolean allowIpv6Ndp() {
         return this.allowIpv6Ndp;
     }
     /**
-     * @return Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+     * @return Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
      * 
      */
     public Boolean allowMdns() {
@@ -546,7 +550,7 @@ public final class GetWlansOrgWlan {
         return this.appLimit;
     }
     /**
-     * @return APp qos wlan settings
+     * @return APP qos wlan settings
      * 
      */
     public GetWlansOrgWlanAppQos appQos() {
@@ -973,7 +977,7 @@ public final class GetWlansOrgWlan {
         return this.portalAllowedSubnets;
     }
     /**
-     * @return APi secret (auto-generated) that can be used to sign guest authorization requests
+     * @return API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
      * 
      */
     public String portalApiSecret() {
@@ -993,6 +997,10 @@ public final class GetWlansOrgWlan {
     public String portalImage() {
         return this.portalImage;
     }
+    /**
+     * @return URL used in the SSO process, auto-generated when auth is set to `sso`
+     * 
+     */
     public String portalSsoUrl() {
         return this.portalSsoUrl;
     }

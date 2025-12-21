@@ -22,6 +22,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// Guest portal authorization state. enum: `Authorized`, `Unknown`
+        /// </summary>
+        public readonly string GuestAuthState;
+        /// <summary>
         /// Unique ID of the object instance in the Mist Organization
         /// </summary>
         public readonly string Id;
@@ -42,6 +46,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool enabled,
 
+            string guestAuthState,
+
             string id,
 
             double modifiedTime,
@@ -54,6 +60,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         {
             CreatedTime = createdTime;
             Enabled = enabled;
+            GuestAuthState = guestAuthState;
             Id = id;
             ModifiedTime = modifiedTime;
             Name = name;

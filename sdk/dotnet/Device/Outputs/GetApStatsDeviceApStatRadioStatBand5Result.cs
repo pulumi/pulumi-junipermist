@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GetApStatsDeviceApStatRadioStatBand5Result
     {
         /// <summary>
-        /// channel width for the band.enum: `20`, `40`, `80` (only applicable for Band5 and band_6), `160` (only for band_6)
+        /// channel width for the band.enum: `0`(disabled, response only), `20`, `40`, `80` (only applicable for band*5 and band*6), `160` (only for band_6)
         /// </summary>
         public readonly int Bandwidth;
         /// <summary>

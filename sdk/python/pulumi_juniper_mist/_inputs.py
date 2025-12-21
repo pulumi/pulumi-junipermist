@@ -15,11 +15,36 @@ else:
 from . import _utilities
 
 __all__ = [
+    'UpgradeDeviceAutoUpgradeStatArgs',
+    'UpgradeDeviceAutoUpgradeStatArgsDict',
     'UpgradeDeviceFwupdateArgs',
     'UpgradeDeviceFwupdateArgsDict',
 ]
 
 MYPY = False
+
+if not MYPY:
+    class UpgradeDeviceAutoUpgradeStatArgsDict(TypedDict):
+        lastcheck: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    UpgradeDeviceAutoUpgradeStatArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UpgradeDeviceAutoUpgradeStatArgs:
+    def __init__(__self__, *,
+                 lastcheck: Optional[pulumi.Input[_builtins.int]] = None):
+        if lastcheck is not None:
+            pulumi.set(__self__, "lastcheck", lastcheck)
+
+    @_builtins.property
+    @pulumi.getter
+    def lastcheck(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "lastcheck")
+
+    @lastcheck.setter
+    def lastcheck(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "lastcheck", value)
+
 
 if not MYPY:
     class UpgradeDeviceFwupdateArgsDict(TypedDict):

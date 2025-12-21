@@ -34,8 +34,8 @@ class GetApStatsResult:
         if duration and not isinstance(duration, str):
             raise TypeError("Expected argument 'duration' to be a str")
         pulumi.set(__self__, "duration", duration)
-        if end and not isinstance(end, int):
-            raise TypeError("Expected argument 'end' to be a int")
+        if end and not isinstance(end, str):
+            raise TypeError("Expected argument 'end' to be a str")
         pulumi.set(__self__, "end", end)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -49,8 +49,8 @@ class GetApStatsResult:
         if site_id and not isinstance(site_id, str):
             raise TypeError("Expected argument 'site_id' to be a str")
         pulumi.set(__self__, "site_id", site_id)
-        if start and not isinstance(start, int):
-            raise TypeError("Expected argument 'start' to be a int")
+        if start and not isinstance(start, str):
+            raise TypeError("Expected argument 'start' to be a str")
         pulumi.set(__self__, "start", start)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
@@ -64,11 +64,17 @@ class GetApStatsResult:
     @_builtins.property
     @pulumi.getter
     def duration(self) -> Optional[_builtins.str]:
+        """
+        Duration like 7d, 2w
+        """
         return pulumi.get(self, "duration")
 
     @_builtins.property
     @pulumi.getter
-    def end(self) -> Optional[_builtins.int]:
+    def end(self) -> Optional[_builtins.str]:
+        """
+        End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+        """
         return pulumi.get(self, "end")
 
     @_builtins.property
@@ -96,12 +102,18 @@ class GetApStatsResult:
 
     @_builtins.property
     @pulumi.getter
-    def start(self) -> Optional[_builtins.int]:
+    def start(self) -> Optional[_builtins.str]:
+        """
+        Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+        """
         return pulumi.get(self, "start")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        enum: `all`, `connected`, `disconnected`
+        """
         return pulumi.get(self, "status")
 
 
@@ -123,11 +135,11 @@ class AwaitableGetApStatsResult(GetApStatsResult):
 
 
 def get_ap_stats(duration: Optional[_builtins.str] = None,
-                 end: Optional[_builtins.int] = None,
+                 end: Optional[_builtins.str] = None,
                  mac: Optional[_builtins.str] = None,
                  org_id: Optional[_builtins.str] = None,
                  site_id: Optional[_builtins.str] = None,
-                 start: Optional[_builtins.int] = None,
+                 start: Optional[_builtins.str] = None,
                  status: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApStatsResult:
     """
@@ -144,9 +156,15 @@ def get_ap_stats(duration: Optional[_builtins.str] = None,
         site_id="4a422ae5-7ca0-4599-87a3-8e49aa63685f",
         status="connected",
         duration="1d",
-        start=1736031600,
-        end=1736175934)
+        start="1736031600",
+        end="1736175934")
     ```
+
+
+    :param _builtins.str duration: Duration like 7d, 2w
+    :param _builtins.str end: End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+    :param _builtins.str start: Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+    :param _builtins.str status: enum: `all`, `connected`, `disconnected`
     """
     __args__ = dict()
     __args__['duration'] = duration
@@ -170,11 +188,11 @@ def get_ap_stats(duration: Optional[_builtins.str] = None,
         start=pulumi.get(__ret__, 'start'),
         status=pulumi.get(__ret__, 'status'))
 def get_ap_stats_output(duration: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        end: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                        end: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         mac: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         org_id: Optional[pulumi.Input[_builtins.str]] = None,
                         site_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        start: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                        start: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApStatsResult]:
     """
@@ -191,9 +209,15 @@ def get_ap_stats_output(duration: Optional[pulumi.Input[Optional[_builtins.str]]
         site_id="4a422ae5-7ca0-4599-87a3-8e49aa63685f",
         status="connected",
         duration="1d",
-        start=1736031600,
-        end=1736175934)
+        start="1736031600",
+        end="1736175934")
     ```
+
+
+    :param _builtins.str duration: Duration like 7d, 2w
+    :param _builtins.str end: End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+    :param _builtins.str start: Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+    :param _builtins.str status: enum: `all`, `connected`, `disconnected`
     """
     __args__ = dict()
     __args__['duration'] = duration

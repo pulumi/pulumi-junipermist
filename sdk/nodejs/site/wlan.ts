@@ -112,7 +112,7 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly appLimit: pulumi.Output<outputs.site.WlanAppLimit | undefined>;
     /**
-     * APp qos wlan settings
+     * APP qos wlan settings
      */
     declare public readonly appQos: pulumi.Output<outputs.site.WlanAppQos>;
     /**
@@ -686,7 +686,7 @@ export interface WlanState {
      */
     appLimit?: pulumi.Input<inputs.site.WlanAppLimit>;
     /**
-     * APp qos wlan settings
+     * APP qos wlan settings
      */
     appQos?: pulumi.Input<inputs.site.WlanAppQos>;
     /**
@@ -1044,7 +1044,7 @@ export interface WlanArgs {
      */
     appLimit?: pulumi.Input<inputs.site.WlanAppLimit>;
     /**
-     * APp qos wlan settings
+     * APP qos wlan settings
      */
     appQos?: pulumi.Input<inputs.site.WlanAppQos>;
     /**

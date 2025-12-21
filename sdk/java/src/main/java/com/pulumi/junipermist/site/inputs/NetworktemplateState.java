@@ -17,6 +17,7 @@ import com.pulumi.junipermist.site.inputs.NetworktemplatePortMirroringArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplatePortUsagesArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateRadiusConfigArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateRemoteSyslogArgs;
+import com.pulumi.junipermist.site.inputs.NetworktemplateRoutingPoliciesArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateSnmpConfigArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateSwitchMatchingArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateSwitchMgmtArgs;
@@ -289,6 +290,21 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Property key is the routing policy name
+     * 
+     */
+    @Import(name="routingPolicies")
+    private @Nullable Output<Map<String,NetworktemplateRoutingPoliciesArgs>> routingPolicies;
+
+    /**
+     * @return Property key is the routing policy name
+     * 
+     */
+    public Optional<Output<Map<String,NetworktemplateRoutingPoliciesArgs>>> routingPolicies() {
+        return Optional.ofNullable(this.routingPolicies);
+    }
+
+    /**
      * Unique ID of the object instance in the Mist Organization
      * 
      */
@@ -384,6 +400,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         this.portUsages = $.portUsages;
         this.radiusConfig = $.radiusConfig;
         this.remoteSyslog = $.remoteSyslog;
+        this.routingPolicies = $.routingPolicies;
         this.siteId = $.siteId;
         this.snmpConfig = $.snmpConfig;
         this.switchMatching = $.switchMatching;
@@ -813,6 +830,27 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
 
         public Builder remoteSyslog(NetworktemplateRemoteSyslogArgs remoteSyslog) {
             return remoteSyslog(Output.of(remoteSyslog));
+        }
+
+        /**
+         * @param routingPolicies Property key is the routing policy name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routingPolicies(@Nullable Output<Map<String,NetworktemplateRoutingPoliciesArgs>> routingPolicies) {
+            $.routingPolicies = routingPolicies;
+            return this;
+        }
+
+        /**
+         * @param routingPolicies Property key is the routing policy name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routingPolicies(Map<String,NetworktemplateRoutingPoliciesArgs> routingPolicies) {
+            return routingPolicies(Output.of(routingPolicies));
         }
 
         /**

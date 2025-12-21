@@ -80,7 +80,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Optional, for an import policy, LocalPreference can be changed
+        /// Optional, for an import policy, LocalPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         /// </summary>
         [Input("localPreference")]
         public Input<string>? LocalPreference { get; set; }
@@ -89,7 +89,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _prependAsPaths;
 
         /// <summary>
-        /// When used as export policy, optional. By default, the local AS will be prepended, to change it
+        /// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
         /// </summary>
         public InputList<string> PrependAsPaths
         {

@@ -235,7 +235,7 @@ public final class GetWlansOrgWlanPortal {
      */
     private String password;
     /**
-     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
      * 
      */
     private Boolean predefinedSponsorsEnabled;
@@ -276,10 +276,20 @@ public final class GetWlansOrgWlanPortal {
      */
     private String smsMessageFormat;
     /**
-     * @return Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+     * @return Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     private String smsProvider;
+    /**
+     * @return Required if `smsProvider`==`smsglobal`, Client API Key
+     * 
+     */
+    private String smsglobalApiKey;
+    /**
+     * @return Required if `smsProvider`==`smsglobal`, Client secret
+     * 
+     */
+    private String smsglobalApiSecret;
     /**
      * @return Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
      * 
@@ -335,7 +345,7 @@ public final class GetWlansOrgWlanPortal {
      */
     private String ssoIdpCert;
     /**
-     * @return Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     private String ssoIdpSignAlgo;
@@ -690,7 +700,7 @@ public final class GetWlansOrgWlanPortal {
         return this.password;
     }
     /**
-     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+     * @return Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
      * 
      */
     public Boolean predefinedSponsorsEnabled() {
@@ -749,11 +759,25 @@ public final class GetWlansOrgWlanPortal {
         return this.smsMessageFormat;
     }
     /**
-     * @return Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+     * @return Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
      * 
      */
     public String smsProvider() {
         return this.smsProvider;
+    }
+    /**
+     * @return Required if `smsProvider`==`smsglobal`, Client API Key
+     * 
+     */
+    public String smsglobalApiKey() {
+        return this.smsglobalApiKey;
+    }
+    /**
+     * @return Required if `smsProvider`==`smsglobal`, Client secret
+     * 
+     */
+    public String smsglobalApiSecret() {
+        return this.smsglobalApiSecret;
     }
     /**
      * @return Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
@@ -832,7 +856,7 @@ public final class GetWlansOrgWlanPortal {
         return this.ssoIdpCert;
     }
     /**
-     * @return Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     public String ssoIdpSignAlgo() {
@@ -958,6 +982,8 @@ public final class GetWlansOrgWlanPortal {
         private Integer smsExpire;
         private String smsMessageFormat;
         private String smsProvider;
+        private String smsglobalApiKey;
+        private String smsglobalApiSecret;
         private Boolean sponsorAutoApprove;
         private List<String> sponsorEmailDomains;
         private Boolean sponsorEnabled;
@@ -1035,6 +1061,8 @@ public final class GetWlansOrgWlanPortal {
     	      this.smsExpire = defaults.smsExpire;
     	      this.smsMessageFormat = defaults.smsMessageFormat;
     	      this.smsProvider = defaults.smsProvider;
+    	      this.smsglobalApiKey = defaults.smsglobalApiKey;
+    	      this.smsglobalApiSecret = defaults.smsglobalApiSecret;
     	      this.sponsorAutoApprove = defaults.sponsorAutoApprove;
     	      this.sponsorEmailDomains = defaults.sponsorEmailDomains;
     	      this.sponsorEnabled = defaults.sponsorEnabled;
@@ -1502,6 +1530,22 @@ public final class GetWlansOrgWlanPortal {
             return this;
         }
         @CustomType.Setter
+        public Builder smsglobalApiKey(String smsglobalApiKey) {
+            if (smsglobalApiKey == null) {
+              throw new MissingRequiredPropertyException("GetWlansOrgWlanPortal", "smsglobalApiKey");
+            }
+            this.smsglobalApiKey = smsglobalApiKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder smsglobalApiSecret(String smsglobalApiSecret) {
+            if (smsglobalApiSecret == null) {
+              throw new MissingRequiredPropertyException("GetWlansOrgWlanPortal", "smsglobalApiSecret");
+            }
+            this.smsglobalApiSecret = smsglobalApiSecret;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sponsorAutoApprove(Boolean sponsorAutoApprove) {
             if (sponsorAutoApprove == null) {
               throw new MissingRequiredPropertyException("GetWlansOrgWlanPortal", "sponsorAutoApprove");
@@ -1720,6 +1764,8 @@ public final class GetWlansOrgWlanPortal {
             _resultValue.smsExpire = smsExpire;
             _resultValue.smsMessageFormat = smsMessageFormat;
             _resultValue.smsProvider = smsProvider;
+            _resultValue.smsglobalApiKey = smsglobalApiKey;
+            _resultValue.smsglobalApiSecret = smsglobalApiSecret;
             _resultValue.sponsorAutoApprove = sponsorAutoApprove;
             _resultValue.sponsorEmailDomains = sponsorEmailDomains;
             _resultValue.sponsorEnabled = sponsorEnabled;

@@ -19,14 +19,14 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
     public static final GatewaytemplateRoutingPoliciesTermMatchingArgs Empty = new GatewaytemplateRoutingPoliciesTermMatchingArgs();
 
     /**
-     * takes regular expression
+     * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
      * 
      */
     @Import(name="asPaths")
     private @Nullable Output<List<String>> asPaths;
 
     /**
-     * @return takes regular expression
+     * @return BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
      * 
      */
     public Optional<Output<List<String>>> asPaths() {
@@ -63,14 +63,14 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
     }
 
     /**
-     * `direct`, `bgp`, `osp`, `static`, `aggregate`...
+     * enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
      * 
      */
     @Import(name="protocols")
     private @Nullable Output<List<String>> protocols;
 
     /**
-     * @return `direct`, `bgp`, `osp`, `static`, `aggregate`...
+     * @return enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
      * 
      */
     public Optional<Output<List<String>>> protocols() {
@@ -154,7 +154,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param asPaths takes regular expression
+         * @param asPaths BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param asPaths takes regular expression
+         * @param asPaths BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param asPaths takes regular expression
+         * @param asPaths BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param protocols `direct`, `bgp`, `osp`, `static`, `aggregate`...
+         * @param protocols enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param protocols `direct`, `bgp`, `osp`, `static`, `aggregate`...
+         * @param protocols enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GatewaytemplateRoutingPoliciesTermMatchingArgs extends com.pu
         }
 
         /**
-         * @param protocols `direct`, `bgp`, `osp`, `static`, `aggregate`...
+         * @param protocols enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? AllNetworks;
         /// <summary>
-        /// Only applies when `Mode`!=`Dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+        /// Only applies when `Mode`!=`Dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `True`: ports become trusted ports allowing DHCP server traffic, `False`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         /// </summary>
         public readonly bool? AllowDhcpd;
         /// <summary>

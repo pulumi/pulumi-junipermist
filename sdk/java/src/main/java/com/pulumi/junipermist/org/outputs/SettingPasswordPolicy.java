@@ -18,7 +18,7 @@ public final class SettingPasswordPolicy {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return password expiry in days
+     * @return Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
      * 
      */
     private @Nullable Integer expiryInDays;
@@ -47,7 +47,7 @@ public final class SettingPasswordPolicy {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return password expiry in days
+     * @return Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
      * 
      */
     public Optional<Integer> expiryInDays() {

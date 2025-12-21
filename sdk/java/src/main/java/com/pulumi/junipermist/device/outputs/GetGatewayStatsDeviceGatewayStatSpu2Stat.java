@@ -15,6 +15,7 @@ public final class GetGatewayStatsDeviceGatewayStatSpu2Stat {
     private Integer spuMaxSession;
     private Integer spuMemory;
     private Integer spuPendingSession;
+    private Integer spuUptime;
     private Integer spuValidSession;
 
     private GetGatewayStatsDeviceGatewayStatSpu2Stat() {}
@@ -32,6 +33,9 @@ public final class GetGatewayStatsDeviceGatewayStatSpu2Stat {
     }
     public Integer spuPendingSession() {
         return this.spuPendingSession;
+    }
+    public Integer spuUptime() {
+        return this.spuUptime;
     }
     public Integer spuValidSession() {
         return this.spuValidSession;
@@ -51,6 +55,7 @@ public final class GetGatewayStatsDeviceGatewayStatSpu2Stat {
         private Integer spuMaxSession;
         private Integer spuMemory;
         private Integer spuPendingSession;
+        private Integer spuUptime;
         private Integer spuValidSession;
         public Builder() {}
         public Builder(GetGatewayStatsDeviceGatewayStatSpu2Stat defaults) {
@@ -60,6 +65,7 @@ public final class GetGatewayStatsDeviceGatewayStatSpu2Stat {
     	      this.spuMaxSession = defaults.spuMaxSession;
     	      this.spuMemory = defaults.spuMemory;
     	      this.spuPendingSession = defaults.spuPendingSession;
+    	      this.spuUptime = defaults.spuUptime;
     	      this.spuValidSession = defaults.spuValidSession;
         }
 
@@ -104,6 +110,14 @@ public final class GetGatewayStatsDeviceGatewayStatSpu2Stat {
             return this;
         }
         @CustomType.Setter
+        public Builder spuUptime(Integer spuUptime) {
+            if (spuUptime == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatSpu2Stat", "spuUptime");
+            }
+            this.spuUptime = spuUptime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spuValidSession(Integer spuValidSession) {
             if (spuValidSession == null) {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatSpu2Stat", "spuValidSession");
@@ -118,6 +132,7 @@ public final class GetGatewayStatsDeviceGatewayStatSpu2Stat {
             _resultValue.spuMaxSession = spuMaxSession;
             _resultValue.spuMemory = spuMemory;
             _resultValue.spuPendingSession = spuPendingSession;
+            _resultValue.spuUptime = spuUptime;
             _resultValue.spuValidSession = spuValidSession;
             return _resultValue;
         }

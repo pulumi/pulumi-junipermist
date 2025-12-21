@@ -60,6 +60,7 @@ export class Switch extends pulumi.CustomResource {
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     declare public readonly additionalConfigCmds: pulumi.Output<string[] | undefined>;
+    declare public readonly bgpConfig: pulumi.Output<{[key: string]: outputs.device.SwitchBgpConfig} | undefined>;
     declare public readonly deviceId: pulumi.Output<string>;
     declare public readonly dhcpSnooping: pulumi.Output<outputs.device.SwitchDhcpSnooping | undefined>;
     declare public readonly dhcpdConfig: pulumi.Output<outputs.device.SwitchDhcpdConfig | undefined>;
@@ -167,6 +168,10 @@ export class Switch extends pulumi.CustomResource {
      */
     declare public readonly routerId: pulumi.Output<string>;
     /**
+     * Property key is the routing policy name
+     */
+    declare public readonly routingPolicies: pulumi.Output<{[key: string]: outputs.device.SwitchRoutingPolicies} | undefined>;
+    /**
      * Device Serial
      */
     declare public /*out*/ readonly serial: pulumi.Output<string>;
@@ -227,6 +232,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["aclPolicies"] = state?.aclPolicies;
             resourceInputs["aclTags"] = state?.aclTags;
             resourceInputs["additionalConfigCmds"] = state?.additionalConfigCmds;
+            resourceInputs["bgpConfig"] = state?.bgpConfig;
             resourceInputs["deviceId"] = state?.deviceId;
             resourceInputs["dhcpSnooping"] = state?.dhcpSnooping;
             resourceInputs["dhcpdConfig"] = state?.dhcpdConfig;
@@ -262,6 +268,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["remoteSyslog"] = state?.remoteSyslog;
             resourceInputs["role"] = state?.role;
             resourceInputs["routerId"] = state?.routerId;
+            resourceInputs["routingPolicies"] = state?.routingPolicies;
             resourceInputs["serial"] = state?.serial;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["snmpConfig"] = state?.snmpConfig;
@@ -287,6 +294,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["aclPolicies"] = args?.aclPolicies;
             resourceInputs["aclTags"] = args?.aclTags;
             resourceInputs["additionalConfigCmds"] = args?.additionalConfigCmds;
+            resourceInputs["bgpConfig"] = args?.bgpConfig;
             resourceInputs["deviceId"] = args?.deviceId;
             resourceInputs["dhcpSnooping"] = args?.dhcpSnooping;
             resourceInputs["dhcpdConfig"] = args?.dhcpdConfig;
@@ -316,6 +324,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["remoteSyslog"] = args?.remoteSyslog;
             resourceInputs["role"] = args?.role;
             resourceInputs["routerId"] = args?.routerId;
+            resourceInputs["routingPolicies"] = args?.routingPolicies;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["snmpConfig"] = args?.snmpConfig;
             resourceInputs["stpConfig"] = args?.stpConfig;
@@ -355,6 +364,7 @@ export interface SwitchState {
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
+    bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchBgpConfig>}>;
     deviceId?: pulumi.Input<string>;
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping>;
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;
@@ -462,6 +472,10 @@ export interface SwitchState {
      */
     routerId?: pulumi.Input<string>;
     /**
+     * Property key is the routing policy name
+     */
+    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchRoutingPolicies>}>;
+    /**
      * Device Serial
      */
     serial?: pulumi.Input<string>;
@@ -520,6 +534,7 @@ export interface SwitchArgs {
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
+    bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchBgpConfig>}>;
     deviceId: pulumi.Input<string>;
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping>;
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;
@@ -614,6 +629,10 @@ export interface SwitchArgs {
      * Used for OSPF / BGP / EVPN
      */
     routerId?: pulumi.Input<string>;
+    /**
+     * Property key is the routing policy name
+     */
+    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchRoutingPolicies>}>;
     siteId: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.device.SwitchSnmpConfig>;
     stpConfig?: pulumi.Input<inputs.device.SwitchStpConfig>;

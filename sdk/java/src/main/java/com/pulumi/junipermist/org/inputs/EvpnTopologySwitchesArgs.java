@@ -25,6 +25,27 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.deviceprofileId);
     }
 
+    @Import(name="downlinkIps")
+    private @Nullable Output<List<String>> downlinkIps;
+
+    public Optional<Output<List<String>>> downlinkIps() {
+        return Optional.ofNullable(this.downlinkIps);
+    }
+
+    @Import(name="downlinks")
+    private @Nullable Output<List<String>> downlinks;
+
+    public Optional<Output<List<String>>> downlinks() {
+        return Optional.ofNullable(this.downlinks);
+    }
+
+    @Import(name="esilaglinks")
+    private @Nullable Output<List<String>> esilaglinks;
+
+    public Optional<Output<List<String>>> esilaglinks() {
+        return Optional.ofNullable(this.esilaglinks);
+    }
+
     @Import(name="evpnId")
     private @Nullable Output<Integer> evpnId;
 
@@ -111,10 +132,41 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.siteId);
     }
 
+    @Import(name="suggestedDownlinks")
+    private @Nullable Output<List<String>> suggestedDownlinks;
+
+    public Optional<Output<List<String>>> suggestedDownlinks() {
+        return Optional.ofNullable(this.suggestedDownlinks);
+    }
+
+    @Import(name="suggestedEsilaglinks")
+    private @Nullable Output<List<String>> suggestedEsilaglinks;
+
+    public Optional<Output<List<String>>> suggestedEsilaglinks() {
+        return Optional.ofNullable(this.suggestedEsilaglinks);
+    }
+
+    @Import(name="suggestedUplinks")
+    private @Nullable Output<List<String>> suggestedUplinks;
+
+    public Optional<Output<List<String>>> suggestedUplinks() {
+        return Optional.ofNullable(this.suggestedUplinks);
+    }
+
+    @Import(name="uplinks")
+    private @Nullable Output<List<String>> uplinks;
+
+    public Optional<Output<List<String>>> uplinks() {
+        return Optional.ofNullable(this.uplinks);
+    }
+
     private EvpnTopologySwitchesArgs() {}
 
     private EvpnTopologySwitchesArgs(EvpnTopologySwitchesArgs $) {
         this.deviceprofileId = $.deviceprofileId;
+        this.downlinkIps = $.downlinkIps;
+        this.downlinks = $.downlinks;
+        this.esilaglinks = $.esilaglinks;
         this.evpnId = $.evpnId;
         this.mac = $.mac;
         this.model = $.model;
@@ -123,6 +175,10 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         this.role = $.role;
         this.routerId = $.routerId;
         this.siteId = $.siteId;
+        this.suggestedDownlinks = $.suggestedDownlinks;
+        this.suggestedEsilaglinks = $.suggestedEsilaglinks;
+        this.suggestedUplinks = $.suggestedUplinks;
+        this.uplinks = $.uplinks;
     }
 
     public static Builder builder() {
@@ -150,6 +206,45 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
 
         public Builder deviceprofileId(String deviceprofileId) {
             return deviceprofileId(Output.of(deviceprofileId));
+        }
+
+        public Builder downlinkIps(@Nullable Output<List<String>> downlinkIps) {
+            $.downlinkIps = downlinkIps;
+            return this;
+        }
+
+        public Builder downlinkIps(List<String> downlinkIps) {
+            return downlinkIps(Output.of(downlinkIps));
+        }
+
+        public Builder downlinkIps(String... downlinkIps) {
+            return downlinkIps(List.of(downlinkIps));
+        }
+
+        public Builder downlinks(@Nullable Output<List<String>> downlinks) {
+            $.downlinks = downlinks;
+            return this;
+        }
+
+        public Builder downlinks(List<String> downlinks) {
+            return downlinks(Output.of(downlinks));
+        }
+
+        public Builder downlinks(String... downlinks) {
+            return downlinks(List.of(downlinks));
+        }
+
+        public Builder esilaglinks(@Nullable Output<List<String>> esilaglinks) {
+            $.esilaglinks = esilaglinks;
+            return this;
+        }
+
+        public Builder esilaglinks(List<String> esilaglinks) {
+            return esilaglinks(Output.of(esilaglinks));
+        }
+
+        public Builder esilaglinks(String... esilaglinks) {
+            return esilaglinks(List.of(esilaglinks));
         }
 
         public Builder evpnId(@Nullable Output<Integer> evpnId) {
@@ -275,6 +370,58 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
 
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
+        }
+
+        public Builder suggestedDownlinks(@Nullable Output<List<String>> suggestedDownlinks) {
+            $.suggestedDownlinks = suggestedDownlinks;
+            return this;
+        }
+
+        public Builder suggestedDownlinks(List<String> suggestedDownlinks) {
+            return suggestedDownlinks(Output.of(suggestedDownlinks));
+        }
+
+        public Builder suggestedDownlinks(String... suggestedDownlinks) {
+            return suggestedDownlinks(List.of(suggestedDownlinks));
+        }
+
+        public Builder suggestedEsilaglinks(@Nullable Output<List<String>> suggestedEsilaglinks) {
+            $.suggestedEsilaglinks = suggestedEsilaglinks;
+            return this;
+        }
+
+        public Builder suggestedEsilaglinks(List<String> suggestedEsilaglinks) {
+            return suggestedEsilaglinks(Output.of(suggestedEsilaglinks));
+        }
+
+        public Builder suggestedEsilaglinks(String... suggestedEsilaglinks) {
+            return suggestedEsilaglinks(List.of(suggestedEsilaglinks));
+        }
+
+        public Builder suggestedUplinks(@Nullable Output<List<String>> suggestedUplinks) {
+            $.suggestedUplinks = suggestedUplinks;
+            return this;
+        }
+
+        public Builder suggestedUplinks(List<String> suggestedUplinks) {
+            return suggestedUplinks(Output.of(suggestedUplinks));
+        }
+
+        public Builder suggestedUplinks(String... suggestedUplinks) {
+            return suggestedUplinks(List.of(suggestedUplinks));
+        }
+
+        public Builder uplinks(@Nullable Output<List<String>> uplinks) {
+            $.uplinks = uplinks;
+            return this;
+        }
+
+        public Builder uplinks(List<String> uplinks) {
+            return uplinks(Output.of(uplinks));
+        }
+
+        public Builder uplinks(String... uplinks) {
+            return uplinks(List.of(uplinks));
         }
 
         public EvpnTopologySwitchesArgs build() {

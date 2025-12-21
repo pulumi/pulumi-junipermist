@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string BfdProfile;
         /// <summary>
-        /// If `Type`==`Mesh` and for SSR only, whether toi use tunnel mode
+        /// If `Type`==`Mesh` and for SSR only, whether to use tunnel mode
         /// </summary>
         public readonly bool BfdUseTunnelMode;
         /// <summary>

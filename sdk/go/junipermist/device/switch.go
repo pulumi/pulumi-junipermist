@@ -35,6 +35,7 @@ type Switch struct {
 	AclTags SwitchAclTagsMapOutput `pulumi:"aclTags"`
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayOutput    `pulumi:"additionalConfigCmds"`
+	BgpConfig            SwitchBgpConfigMapOutput    `pulumi:"bgpConfig"`
 	DeviceId             pulumi.StringOutput         `pulumi:"deviceId"`
 	DhcpSnooping         SwitchDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
 	DhcpdConfig          SwitchDhcpdConfigPtrOutput  `pulumi:"dhcpdConfig"`
@@ -95,6 +96,8 @@ type Switch struct {
 	Role         pulumi.StringPtrOutput      `pulumi:"role"`
 	// Used for OSPF / BGP / EVPN
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
+	// Property key is the routing policy name
+	RoutingPolicies SwitchRoutingPoliciesMapOutput `pulumi:"routingPolicies"`
 	// Device Serial
 	Serial     pulumi.StringOutput       `pulumi:"serial"`
 	SiteId     pulumi.StringOutput       `pulumi:"siteId"`
@@ -161,10 +164,11 @@ type switchState struct {
 	// ACL Tags to identify traffic source or destination. Key name is the tag name
 	AclTags map[string]SwitchAclTags `pulumi:"aclTags"`
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds []string            `pulumi:"additionalConfigCmds"`
-	DeviceId             *string             `pulumi:"deviceId"`
-	DhcpSnooping         *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
-	DhcpdConfig          *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
+	AdditionalConfigCmds []string                   `pulumi:"additionalConfigCmds"`
+	BgpConfig            map[string]SwitchBgpConfig `pulumi:"bgpConfig"`
+	DeviceId             *string                    `pulumi:"deviceId"`
+	DhcpSnooping         *SwitchDhcpSnooping        `pulumi:"dhcpSnooping"`
+	DhcpdConfig          *SwitchDhcpdConfig         `pulumi:"dhcpdConfig"`
 	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig *bool `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -222,6 +226,8 @@ type switchState struct {
 	Role         *string             `pulumi:"role"`
 	// Used for OSPF / BGP / EVPN
 	RouterId *string `pulumi:"routerId"`
+	// Property key is the routing policy name
+	RoutingPolicies map[string]SwitchRoutingPolicies `pulumi:"routingPolicies"`
 	// Device Serial
 	Serial     *string           `pulumi:"serial"`
 	SiteId     *string           `pulumi:"siteId"`
@@ -254,6 +260,7 @@ type SwitchState struct {
 	AclTags SwitchAclTagsMapInput
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
+	BgpConfig            SwitchBgpConfigMapInput
 	DeviceId             pulumi.StringPtrInput
 	DhcpSnooping         SwitchDhcpSnoopingPtrInput
 	DhcpdConfig          SwitchDhcpdConfigPtrInput
@@ -314,6 +321,8 @@ type SwitchState struct {
 	Role         pulumi.StringPtrInput
 	// Used for OSPF / BGP / EVPN
 	RouterId pulumi.StringPtrInput
+	// Property key is the routing policy name
+	RoutingPolicies SwitchRoutingPoliciesMapInput
 	// Device Serial
 	Serial     pulumi.StringPtrInput
 	SiteId     pulumi.StringPtrInput
@@ -349,10 +358,11 @@ type switchArgs struct {
 	// ACL Tags to identify traffic source or destination. Key name is the tag name
 	AclTags map[string]SwitchAclTags `pulumi:"aclTags"`
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds []string            `pulumi:"additionalConfigCmds"`
-	DeviceId             string              `pulumi:"deviceId"`
-	DhcpSnooping         *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
-	DhcpdConfig          *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
+	AdditionalConfigCmds []string                   `pulumi:"additionalConfigCmds"`
+	BgpConfig            map[string]SwitchBgpConfig `pulumi:"bgpConfig"`
+	DeviceId             string                     `pulumi:"deviceId"`
+	DhcpSnooping         *SwitchDhcpSnooping        `pulumi:"dhcpSnooping"`
+	DhcpdConfig          *SwitchDhcpdConfig         `pulumi:"dhcpdConfig"`
 	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig *bool `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -401,10 +411,12 @@ type switchArgs struct {
 	RemoteSyslog *SwitchRemoteSyslog `pulumi:"remoteSyslog"`
 	Role         *string             `pulumi:"role"`
 	// Used for OSPF / BGP / EVPN
-	RouterId   *string           `pulumi:"routerId"`
-	SiteId     string            `pulumi:"siteId"`
-	SnmpConfig *SwitchSnmpConfig `pulumi:"snmpConfig"`
-	StpConfig  *SwitchStpConfig  `pulumi:"stpConfig"`
+	RouterId *string `pulumi:"routerId"`
+	// Property key is the routing policy name
+	RoutingPolicies map[string]SwitchRoutingPolicies `pulumi:"routingPolicies"`
+	SiteId          string                           `pulumi:"siteId"`
+	SnmpConfig      *SwitchSnmpConfig                `pulumi:"snmpConfig"`
+	StpConfig       *SwitchStpConfig                 `pulumi:"stpConfig"`
 	// Switch settings
 	SwitchMgmt *SwitchSwitchMgmt `pulumi:"switchMgmt"`
 	// Whether to use it for snmp / syslog / tacplus / radius
@@ -431,6 +443,7 @@ type SwitchArgs struct {
 	AclTags SwitchAclTagsMapInput
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
+	BgpConfig            SwitchBgpConfigMapInput
 	DeviceId             pulumi.StringInput
 	DhcpSnooping         SwitchDhcpSnoopingPtrInput
 	DhcpdConfig          SwitchDhcpdConfigPtrInput
@@ -482,10 +495,12 @@ type SwitchArgs struct {
 	RemoteSyslog SwitchRemoteSyslogPtrInput
 	Role         pulumi.StringPtrInput
 	// Used for OSPF / BGP / EVPN
-	RouterId   pulumi.StringPtrInput
-	SiteId     pulumi.StringInput
-	SnmpConfig SwitchSnmpConfigPtrInput
-	StpConfig  SwitchStpConfigPtrInput
+	RouterId pulumi.StringPtrInput
+	// Property key is the routing policy name
+	RoutingPolicies SwitchRoutingPoliciesMapInput
+	SiteId          pulumi.StringInput
+	SnmpConfig      SwitchSnmpConfigPtrInput
+	StpConfig       SwitchStpConfigPtrInput
 	// Switch settings
 	SwitchMgmt SwitchSwitchMgmtPtrInput
 	// Whether to use it for snmp / syslog / tacplus / radius
@@ -604,6 +619,10 @@ func (o SwitchOutput) AclTags() SwitchAclTagsMapOutput {
 // additional CLI commands to append to the generated Junos config. **Note**: no check is done
 func (o SwitchOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringArrayOutput { return v.AdditionalConfigCmds }).(pulumi.StringArrayOutput)
+}
+
+func (o SwitchOutput) BgpConfig() SwitchBgpConfigMapOutput {
+	return o.ApplyT(func(v *Switch) SwitchBgpConfigMapOutput { return v.BgpConfig }).(SwitchBgpConfigMapOutput)
 }
 
 func (o SwitchOutput) DeviceId() pulumi.StringOutput {
@@ -769,6 +788,11 @@ func (o SwitchOutput) Role() pulumi.StringPtrOutput {
 // Used for OSPF / BGP / EVPN
 func (o SwitchOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// Property key is the routing policy name
+func (o SwitchOutput) RoutingPolicies() SwitchRoutingPoliciesMapOutput {
+	return o.ApplyT(func(v *Switch) SwitchRoutingPoliciesMapOutput { return v.RoutingPolicies }).(SwitchRoutingPoliciesMapOutput)
 }
 
 // Device Serial

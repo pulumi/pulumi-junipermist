@@ -6,7 +6,6 @@ package com.pulumi.junipermist.device.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,17 +16,33 @@ public final class GetApStatsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetApStatsArgs Empty = new GetApStatsArgs();
 
+    /**
+     * Duration like 7d, 2w
+     * 
+     */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
+    /**
+     * @return Duration like 7d, 2w
+     * 
+     */
     public Optional<Output<String>> duration() {
         return Optional.ofNullable(this.duration);
     }
 
+    /**
+     * End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
+     * 
+     */
     @Import(name="end")
-    private @Nullable Output<Integer> end;
+    private @Nullable Output<String> end;
 
-    public Optional<Output<Integer>> end() {
+    /**
+     * @return End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
+     * 
+     */
+    public Optional<Output<String>> end() {
         return Optional.ofNullable(this.end);
     }
 
@@ -52,16 +67,32 @@ public final class GetApStatsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.siteId);
     }
 
+    /**
+     * Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
+     * 
+     */
     @Import(name="start")
-    private @Nullable Output<Integer> start;
+    private @Nullable Output<String> start;
 
-    public Optional<Output<Integer>> start() {
+    /**
+     * @return Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
+     * 
+     */
+    public Optional<Output<String>> start() {
         return Optional.ofNullable(this.start);
     }
 
+    /**
+     * enum: `all`, `connected`, `disconnected`
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return enum: `all`, `connected`, `disconnected`
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -96,21 +127,45 @@ public final class GetApStatsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetApStatsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param duration Duration like 7d, 2w
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(@Nullable Output<String> duration) {
             $.duration = duration;
             return this;
         }
 
+        /**
+         * @param duration Duration like 7d, 2w
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
         }
 
-        public Builder end(@Nullable Output<Integer> end) {
+        /**
+         * @param end End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder end(@Nullable Output<String> end) {
             $.end = end;
             return this;
         }
 
-        public Builder end(Integer end) {
+        /**
+         * @param end End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder end(String end) {
             return end(Output.of(end));
         }
 
@@ -141,20 +196,44 @@ public final class GetApStatsArgs extends com.pulumi.resources.InvokeArgs {
             return siteId(Output.of(siteId));
         }
 
-        public Builder start(@Nullable Output<Integer> start) {
+        /**
+         * @param start Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder start(@Nullable Output<String> start) {
             $.start = start;
             return this;
         }
 
-        public Builder start(Integer start) {
+        /**
+         * @param start Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder start(String start) {
             return start(Output.of(start));
         }
 
+        /**
+         * @param status enum: `all`, `connected`, `disconnected`
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status enum: `all`, `connected`, `disconnected`
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

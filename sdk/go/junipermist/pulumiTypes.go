@@ -13,6 +13,139 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type UpgradeDeviceAutoUpgradeStat struct {
+	Lastcheck *int `pulumi:"lastcheck"`
+}
+
+// UpgradeDeviceAutoUpgradeStatInput is an input type that accepts UpgradeDeviceAutoUpgradeStatArgs and UpgradeDeviceAutoUpgradeStatOutput values.
+// You can construct a concrete instance of `UpgradeDeviceAutoUpgradeStatInput` via:
+//
+//	UpgradeDeviceAutoUpgradeStatArgs{...}
+type UpgradeDeviceAutoUpgradeStatInput interface {
+	pulumi.Input
+
+	ToUpgradeDeviceAutoUpgradeStatOutput() UpgradeDeviceAutoUpgradeStatOutput
+	ToUpgradeDeviceAutoUpgradeStatOutputWithContext(context.Context) UpgradeDeviceAutoUpgradeStatOutput
+}
+
+type UpgradeDeviceAutoUpgradeStatArgs struct {
+	Lastcheck pulumi.IntPtrInput `pulumi:"lastcheck"`
+}
+
+func (UpgradeDeviceAutoUpgradeStatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeDeviceAutoUpgradeStat)(nil)).Elem()
+}
+
+func (i UpgradeDeviceAutoUpgradeStatArgs) ToUpgradeDeviceAutoUpgradeStatOutput() UpgradeDeviceAutoUpgradeStatOutput {
+	return i.ToUpgradeDeviceAutoUpgradeStatOutputWithContext(context.Background())
+}
+
+func (i UpgradeDeviceAutoUpgradeStatArgs) ToUpgradeDeviceAutoUpgradeStatOutputWithContext(ctx context.Context) UpgradeDeviceAutoUpgradeStatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDeviceAutoUpgradeStatOutput)
+}
+
+func (i UpgradeDeviceAutoUpgradeStatArgs) ToUpgradeDeviceAutoUpgradeStatPtrOutput() UpgradeDeviceAutoUpgradeStatPtrOutput {
+	return i.ToUpgradeDeviceAutoUpgradeStatPtrOutputWithContext(context.Background())
+}
+
+func (i UpgradeDeviceAutoUpgradeStatArgs) ToUpgradeDeviceAutoUpgradeStatPtrOutputWithContext(ctx context.Context) UpgradeDeviceAutoUpgradeStatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDeviceAutoUpgradeStatOutput).ToUpgradeDeviceAutoUpgradeStatPtrOutputWithContext(ctx)
+}
+
+// UpgradeDeviceAutoUpgradeStatPtrInput is an input type that accepts UpgradeDeviceAutoUpgradeStatArgs, UpgradeDeviceAutoUpgradeStatPtr and UpgradeDeviceAutoUpgradeStatPtrOutput values.
+// You can construct a concrete instance of `UpgradeDeviceAutoUpgradeStatPtrInput` via:
+//
+//	        UpgradeDeviceAutoUpgradeStatArgs{...}
+//
+//	or:
+//
+//	        nil
+type UpgradeDeviceAutoUpgradeStatPtrInput interface {
+	pulumi.Input
+
+	ToUpgradeDeviceAutoUpgradeStatPtrOutput() UpgradeDeviceAutoUpgradeStatPtrOutput
+	ToUpgradeDeviceAutoUpgradeStatPtrOutputWithContext(context.Context) UpgradeDeviceAutoUpgradeStatPtrOutput
+}
+
+type upgradeDeviceAutoUpgradeStatPtrType UpgradeDeviceAutoUpgradeStatArgs
+
+func UpgradeDeviceAutoUpgradeStatPtr(v *UpgradeDeviceAutoUpgradeStatArgs) UpgradeDeviceAutoUpgradeStatPtrInput {
+	return (*upgradeDeviceAutoUpgradeStatPtrType)(v)
+}
+
+func (*upgradeDeviceAutoUpgradeStatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeDeviceAutoUpgradeStat)(nil)).Elem()
+}
+
+func (i *upgradeDeviceAutoUpgradeStatPtrType) ToUpgradeDeviceAutoUpgradeStatPtrOutput() UpgradeDeviceAutoUpgradeStatPtrOutput {
+	return i.ToUpgradeDeviceAutoUpgradeStatPtrOutputWithContext(context.Background())
+}
+
+func (i *upgradeDeviceAutoUpgradeStatPtrType) ToUpgradeDeviceAutoUpgradeStatPtrOutputWithContext(ctx context.Context) UpgradeDeviceAutoUpgradeStatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDeviceAutoUpgradeStatPtrOutput)
+}
+
+type UpgradeDeviceAutoUpgradeStatOutput struct{ *pulumi.OutputState }
+
+func (UpgradeDeviceAutoUpgradeStatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeDeviceAutoUpgradeStat)(nil)).Elem()
+}
+
+func (o UpgradeDeviceAutoUpgradeStatOutput) ToUpgradeDeviceAutoUpgradeStatOutput() UpgradeDeviceAutoUpgradeStatOutput {
+	return o
+}
+
+func (o UpgradeDeviceAutoUpgradeStatOutput) ToUpgradeDeviceAutoUpgradeStatOutputWithContext(ctx context.Context) UpgradeDeviceAutoUpgradeStatOutput {
+	return o
+}
+
+func (o UpgradeDeviceAutoUpgradeStatOutput) ToUpgradeDeviceAutoUpgradeStatPtrOutput() UpgradeDeviceAutoUpgradeStatPtrOutput {
+	return o.ToUpgradeDeviceAutoUpgradeStatPtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeDeviceAutoUpgradeStatOutput) ToUpgradeDeviceAutoUpgradeStatPtrOutputWithContext(ctx context.Context) UpgradeDeviceAutoUpgradeStatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeDeviceAutoUpgradeStat) *UpgradeDeviceAutoUpgradeStat {
+		return &v
+	}).(UpgradeDeviceAutoUpgradeStatPtrOutput)
+}
+
+func (o UpgradeDeviceAutoUpgradeStatOutput) Lastcheck() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UpgradeDeviceAutoUpgradeStat) *int { return v.Lastcheck }).(pulumi.IntPtrOutput)
+}
+
+type UpgradeDeviceAutoUpgradeStatPtrOutput struct{ *pulumi.OutputState }
+
+func (UpgradeDeviceAutoUpgradeStatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeDeviceAutoUpgradeStat)(nil)).Elem()
+}
+
+func (o UpgradeDeviceAutoUpgradeStatPtrOutput) ToUpgradeDeviceAutoUpgradeStatPtrOutput() UpgradeDeviceAutoUpgradeStatPtrOutput {
+	return o
+}
+
+func (o UpgradeDeviceAutoUpgradeStatPtrOutput) ToUpgradeDeviceAutoUpgradeStatPtrOutputWithContext(ctx context.Context) UpgradeDeviceAutoUpgradeStatPtrOutput {
+	return o
+}
+
+func (o UpgradeDeviceAutoUpgradeStatPtrOutput) Elem() UpgradeDeviceAutoUpgradeStatOutput {
+	return o.ApplyT(func(v *UpgradeDeviceAutoUpgradeStat) UpgradeDeviceAutoUpgradeStat {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeDeviceAutoUpgradeStat
+		return ret
+	}).(UpgradeDeviceAutoUpgradeStatOutput)
+}
+
+func (o UpgradeDeviceAutoUpgradeStatPtrOutput) Lastcheck() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *UpgradeDeviceAutoUpgradeStat) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Lastcheck
+	}).(pulumi.IntPtrOutput)
+}
+
 type UpgradeDeviceFwupdate struct {
 	Progress *int `pulumi:"progress"`
 	// enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
@@ -1448,6 +1581,8 @@ func (o GetSitesSiteLatlngOutput) Lng() pulumi.Float64Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDeviceAutoUpgradeStatInput)(nil)).Elem(), UpgradeDeviceAutoUpgradeStatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDeviceAutoUpgradeStatPtrInput)(nil)).Elem(), UpgradeDeviceAutoUpgradeStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDeviceFwupdateInput)(nil)).Elem(), UpgradeDeviceFwupdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDeviceFwupdatePtrInput)(nil)).Elem(), UpgradeDeviceFwupdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConstAlarmsConstAlarmInput)(nil)).Elem(), GetConstAlarmsConstAlarmArgs{})
@@ -1468,6 +1603,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteInput)(nil)).Elem(), GetSitesSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteArrayInput)(nil)).Elem(), GetSitesSiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteLatlngInput)(nil)).Elem(), GetSitesSiteLatlngArgs{})
+	pulumi.RegisterOutputType(UpgradeDeviceAutoUpgradeStatOutput{})
+	pulumi.RegisterOutputType(UpgradeDeviceAutoUpgradeStatPtrOutput{})
 	pulumi.RegisterOutputType(UpgradeDeviceFwupdateOutput{})
 	pulumi.RegisterOutputType(UpgradeDeviceFwupdatePtrOutput{})
 	pulumi.RegisterOutputType(GetConstAlarmsConstAlarmOutput{})

@@ -49,6 +49,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? Mtu;
         /// <summary>
+        /// List of network names. Required if `Usage`==`Inet`
+        /// </summary>
+        public readonly ImmutableArray<string> Networks;
+        /// <summary>
         /// Prevent helpdesk to override the port config
         /// </summary>
         public readonly bool? NoLocalOverwrite;
@@ -90,6 +94,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             int? mtu,
 
+            ImmutableArray<string> networks,
+
             bool? noLocalOverwrite,
 
             bool? poeDisabled,
@@ -111,6 +117,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             DynamicUsage = dynamicUsage;
             Esilag = esilag;
             Mtu = mtu;
+            Networks = networks;
             NoLocalOverwrite = noLocalOverwrite;
             PoeDisabled = poeDisabled;
             PortNetwork = portNetwork;

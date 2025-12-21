@@ -6,7 +6,6 @@ package com.pulumi.junipermist.device.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStat;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,10 +21,10 @@ public final class GetSwitchStatsResult {
      */
     private @Nullable String duration;
     /**
-     * @return End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * @return End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
      * 
      */
-    private @Nullable Integer end;
+    private @Nullable String end;
     /**
      * @return If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      * 
@@ -45,10 +44,10 @@ public final class GetSwitchStatsResult {
     private String orgId;
     private @Nullable String siteId;
     /**
-     * @return Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * @return Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
      * 
      */
-    private @Nullable Integer start;
+    private @Nullable String start;
     /**
      * @return enum: `all`, `connected`, `disconnected`
      * 
@@ -67,10 +66,10 @@ public final class GetSwitchStatsResult {
         return Optional.ofNullable(this.duration);
     }
     /**
-     * @return End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * @return End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
      * 
      */
-    public Optional<Integer> end() {
+    public Optional<String> end() {
         return Optional.ofNullable(this.end);
     }
     /**
@@ -104,10 +103,10 @@ public final class GetSwitchStatsResult {
         return Optional.ofNullable(this.siteId);
     }
     /**
-     * @return Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * @return Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
      * 
      */
-    public Optional<Integer> start() {
+    public Optional<String> start() {
         return Optional.ofNullable(this.start);
     }
     /**
@@ -129,14 +128,14 @@ public final class GetSwitchStatsResult {
     public static final class Builder {
         private List<GetSwitchStatsDeviceSwitchStat> deviceSwitchStats;
         private @Nullable String duration;
-        private @Nullable Integer end;
+        private @Nullable String end;
         private @Nullable String evpnUnused;
         private @Nullable String evpntopoId;
         private String id;
         private @Nullable String mac;
         private String orgId;
         private @Nullable String siteId;
-        private @Nullable Integer start;
+        private @Nullable String start;
         private @Nullable String status;
         public Builder() {}
         public Builder(GetSwitchStatsResult defaults) {
@@ -172,7 +171,7 @@ public final class GetSwitchStatsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder end(@Nullable Integer end) {
+        public Builder end(@Nullable String end) {
 
             this.end = end;
             return this;
@@ -218,7 +217,7 @@ public final class GetSwitchStatsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder start(@Nullable Integer start) {
+        public Builder start(@Nullable String start) {
 
             this.start = start;
             return this;
