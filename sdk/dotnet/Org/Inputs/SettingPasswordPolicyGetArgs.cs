@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// password expiry in days
+        /// Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
         /// </summary>
         [Input("expiryInDays")]
         public Input<int>? ExpiryInDays { get; set; }

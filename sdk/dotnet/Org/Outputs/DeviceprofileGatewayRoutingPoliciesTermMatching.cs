@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayRoutingPoliciesTermMatching
     {
         /// <summary>
-        /// takes regular expression
+        /// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         /// </summary>
         public readonly ImmutableArray<string> AsPaths;
         public readonly ImmutableArray<string> Communities;
@@ -24,7 +24,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Prefixes;
         /// <summary>
-        /// `Direct`, `Bgp`, `Osp`, `Static`, `Aggregate`...
+        /// enum: `Aggregate`, `Bgp`, `Direct`, `Ospf`, `Static` (SRX Only)
         /// </summary>
         public readonly ImmutableArray<string> Protocols;
         public readonly Outputs.DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExists? RouteExists;

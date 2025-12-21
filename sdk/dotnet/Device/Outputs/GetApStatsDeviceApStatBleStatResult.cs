@@ -21,13 +21,19 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string EddystoneUidNamespace;
         public readonly bool EddystoneUrlEnabled;
         /// <summary>
-        /// Frequency (msec) of data emmit by Eddystone-UID beacon
+        /// Frequency (msec) of data emit by Eddystone-UID beacon
         /// </summary>
         public readonly int EddystoneUrlFreqMsec;
         public readonly string EddystoneUrlUrl;
         public readonly bool IbeaconEnabled;
         public readonly int IbeaconFreqMsec;
+        /// <summary>
+        /// Major number for iBeacon
+        /// </summary>
         public readonly int IbeaconMajor;
+        /// <summary>
+        /// Minor number for iBeacon
+        /// </summary>
         public readonly int IbeaconMinor;
         public readonly string IbeaconUuid;
         public readonly int Major;

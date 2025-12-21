@@ -89,7 +89,7 @@ type Wlan struct {
 	ApIds pulumi.StringArrayOutput `pulumi:"apIds"`
 	// Bandwidth limiting for apps (applies to up/down)
 	AppLimit WlanAppLimitPtrOutput `pulumi:"appLimit"`
-	// APp qos wlan settings
+	// APP qos wlan settings
 	AppQos WlanAppQosOutput `pulumi:"appQos"`
 	// enum: `aps`, `site`, `wxtags`
 	ApplyTo pulumi.StringOutput `pulumi:"applyTo"`
@@ -318,7 +318,7 @@ type wlanState struct {
 	ApIds []string `pulumi:"apIds"`
 	// Bandwidth limiting for apps (applies to up/down)
 	AppLimit *WlanAppLimit `pulumi:"appLimit"`
-	// APp qos wlan settings
+	// APP qos wlan settings
 	AppQos *WlanAppQos `pulumi:"appQos"`
 	// enum: `aps`, `site`, `wxtags`
 	ApplyTo *string `pulumi:"applyTo"`
@@ -509,7 +509,7 @@ type WlanState struct {
 	ApIds pulumi.StringArrayInput
 	// Bandwidth limiting for apps (applies to up/down)
 	AppLimit WlanAppLimitPtrInput
-	// APp qos wlan settings
+	// APP qos wlan settings
 	AppQos WlanAppQosPtrInput
 	// enum: `aps`, `site`, `wxtags`
 	ApplyTo pulumi.StringPtrInput
@@ -704,7 +704,7 @@ type wlanArgs struct {
 	ApIds []string `pulumi:"apIds"`
 	// Bandwidth limiting for apps (applies to up/down)
 	AppLimit *WlanAppLimit `pulumi:"appLimit"`
-	// APp qos wlan settings
+	// APP qos wlan settings
 	AppQos *WlanAppQos `pulumi:"appQos"`
 	// enum: `aps`, `site`, `wxtags`
 	ApplyTo *string `pulumi:"applyTo"`
@@ -889,7 +889,7 @@ type WlanArgs struct {
 	ApIds pulumi.StringArrayInput
 	// Bandwidth limiting for apps (applies to up/down)
 	AppLimit WlanAppLimitPtrInput
-	// APp qos wlan settings
+	// APP qos wlan settings
 	AppQos WlanAppQosPtrInput
 	// enum: `aps`, `site`, `wxtags`
 	ApplyTo pulumi.StringPtrInput
@@ -1186,7 +1186,7 @@ func (o WlanOutput) AppLimit() WlanAppLimitPtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanAppLimitPtrOutput { return v.AppLimit }).(WlanAppLimitPtrOutput)
 }
 
-// APp qos wlan settings
+// APP qos wlan settings
 func (o WlanOutput) AppQos() WlanAppQosOutput {
 	return o.ApplyT(func(v *Wlan) WlanAppQosOutput { return v.AppQos }).(WlanAppQosOutput)
 }

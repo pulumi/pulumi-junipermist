@@ -15,6 +15,11 @@ import java.util.Objects;
 @CustomType
 public final class GetWebhooksOrgWebhook {
     /**
+     * @return Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * 
+     */
+    private List<String> assetfilterIds;
+    /**
      * @return When the object has been created, in epoch
      * 
      */
@@ -113,6 +118,13 @@ public final class GetWebhooksOrgWebhook {
     private Boolean verifyCert;
 
     private GetWebhooksOrgWebhook() {}
+    /**
+     * @return Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * 
+     */
+    public List<String> assetfilterIds() {
+        return this.assetfilterIds;
+    }
     /**
      * @return When the object has been created, in epoch
      * 
@@ -262,6 +274,7 @@ public final class GetWebhooksOrgWebhook {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> assetfilterIds;
         private Double createdTime;
         private Boolean enabled;
         private Map<String,String> headers;
@@ -286,6 +299,7 @@ public final class GetWebhooksOrgWebhook {
         public Builder() {}
         public Builder(GetWebhooksOrgWebhook defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.assetfilterIds = defaults.assetfilterIds;
     	      this.createdTime = defaults.createdTime;
     	      this.enabled = defaults.enabled;
     	      this.headers = defaults.headers;
@@ -309,6 +323,17 @@ public final class GetWebhooksOrgWebhook {
     	      this.verifyCert = defaults.verifyCert;
         }
 
+        @CustomType.Setter
+        public Builder assetfilterIds(List<String> assetfilterIds) {
+            if (assetfilterIds == null) {
+              throw new MissingRequiredPropertyException("GetWebhooksOrgWebhook", "assetfilterIds");
+            }
+            this.assetfilterIds = assetfilterIds;
+            return this;
+        }
+        public Builder assetfilterIds(String... assetfilterIds) {
+            return assetfilterIds(List.of(assetfilterIds));
+        }
         @CustomType.Setter
         public Builder createdTime(Double createdTime) {
             if (createdTime == null) {
@@ -485,6 +510,7 @@ public final class GetWebhooksOrgWebhook {
         }
         public GetWebhooksOrgWebhook build() {
             final var _resultValue = new GetWebhooksOrgWebhook();
+            _resultValue.assetfilterIds = assetfilterIds;
             _resultValue.createdTime = createdTime;
             _resultValue.enabled = enabled;
             _resultValue.headers = headers;

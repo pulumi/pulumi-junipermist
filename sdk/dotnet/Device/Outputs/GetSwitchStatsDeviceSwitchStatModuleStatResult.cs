@@ -15,6 +15,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly string BackupVersion;
         public readonly string BiosVersion;
+        public readonly string BootPartition;
         public readonly string CpldVersion;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult CpuStat;
         /// <summary>
@@ -30,6 +31,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly double LastSeen;
         public readonly bool Locating;
         public readonly string Mac;
+        /// <summary>
+        /// Memory usage stat (for virtual chassis, memory usage of master RE)
+        /// </summary>
+        public readonly Outputs.GetSwitchStatsDeviceSwitchStatModuleStatMemoryStatResult MemoryStat;
         public readonly string Model;
         public readonly string OpticsCpldVersion;
         public readonly string PendingVersion;
@@ -62,6 +67,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string biosVersion,
 
+            string bootPartition,
+
             string cpldVersion,
 
             Outputs.GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult cpuStat,
@@ -79,6 +86,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
             bool locating,
 
             string mac,
+
+            Outputs.GetSwitchStatsDeviceSwitchStatModuleStatMemoryStatResult memoryStat,
 
             string model,
 
@@ -126,6 +135,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         {
             BackupVersion = backupVersion;
             BiosVersion = biosVersion;
+            BootPartition = bootPartition;
             CpldVersion = cpldVersion;
             CpuStat = cpuStat;
             Errors = errors;
@@ -135,6 +145,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             LastSeen = lastSeen;
             Locating = locating;
             Mac = mac;
+            MemoryStat = memoryStat;
             Model = model;
             OpticsCpldVersion = opticsCpldVersion;
             PendingVersion = pendingVersion;

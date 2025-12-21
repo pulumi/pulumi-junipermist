@@ -12,6 +12,7 @@ import com.pulumi.junipermist.device.SwitchArgs;
 import com.pulumi.junipermist.device.inputs.SwitchState;
 import com.pulumi.junipermist.device.outputs.SwitchAclPolicy;
 import com.pulumi.junipermist.device.outputs.SwitchAclTags;
+import com.pulumi.junipermist.device.outputs.SwitchBgpConfig;
 import com.pulumi.junipermist.device.outputs.SwitchDhcpSnooping;
 import com.pulumi.junipermist.device.outputs.SwitchDhcpdConfig;
 import com.pulumi.junipermist.device.outputs.SwitchExtraRoutes6;
@@ -30,6 +31,7 @@ import com.pulumi.junipermist.device.outputs.SwitchPortMirroring;
 import com.pulumi.junipermist.device.outputs.SwitchPortUsages;
 import com.pulumi.junipermist.device.outputs.SwitchRadiusConfig;
 import com.pulumi.junipermist.device.outputs.SwitchRemoteSyslog;
+import com.pulumi.junipermist.device.outputs.SwitchRoutingPolicies;
 import com.pulumi.junipermist.device.outputs.SwitchSnmpConfig;
 import com.pulumi.junipermist.device.outputs.SwitchStpConfig;
 import com.pulumi.junipermist.device.outputs.SwitchSwitchMgmt;
@@ -98,6 +100,12 @@ public class Switch extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> additionalConfigCmds() {
         return Codegen.optional(this.additionalConfigCmds);
+    }
+    @Export(name="bgpConfig", refs={Map.class,String.class,SwitchBgpConfig.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,SwitchBgpConfig>> bgpConfig;
+
+    public Output<Optional<Map<String,SwitchBgpConfig>>> bgpConfig() {
+        return Codegen.optional(this.bgpConfig);
     }
     @Export(name="deviceId", refs={String.class}, tree="[0]")
     private Output<String> deviceId;
@@ -496,6 +504,20 @@ public class Switch extends com.pulumi.resources.CustomResource {
      */
     public Output<String> routerId() {
         return this.routerId;
+    }
+    /**
+     * Property key is the routing policy name
+     * 
+     */
+    @Export(name="routingPolicies", refs={Map.class,String.class,SwitchRoutingPolicies.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,SwitchRoutingPolicies>> routingPolicies;
+
+    /**
+     * @return Property key is the routing policy name
+     * 
+     */
+    public Output<Optional<Map<String,SwitchRoutingPolicies>>> routingPolicies() {
+        return Codegen.optional(this.routingPolicies);
     }
     /**
      * Device Serial

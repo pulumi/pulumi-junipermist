@@ -99,14 +99,14 @@ public final class GatewaytemplateRoutingPoliciesTermActionsArgs extends com.pul
     }
 
     /**
-     * Optional, for an import policy, localPreference can be changed
+     * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
      * 
      */
     @Import(name="localPreference")
     private @Nullable Output<String> localPreference;
 
     /**
-     * @return Optional, for an import policy, localPreference can be changed
+     * @return Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
      * 
      */
     public Optional<Output<String>> localPreference() {
@@ -114,14 +114,14 @@ public final class GatewaytemplateRoutingPoliciesTermActionsArgs extends com.pul
     }
 
     /**
-     * When used as export policy, optional. By default, the local AS will be prepended, to change it
+     * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
      * 
      */
     @Import(name="prependAsPaths")
     private @Nullable Output<List<String>> prependAsPaths;
 
     /**
-     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it
+     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
      * 
      */
     public Optional<Output<List<String>>> prependAsPaths() {
@@ -320,7 +320,7 @@ public final class GatewaytemplateRoutingPoliciesTermActionsArgs extends com.pul
         }
 
         /**
-         * @param localPreference Optional, for an import policy, localPreference can be changed
+         * @param localPreference Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class GatewaytemplateRoutingPoliciesTermActionsArgs extends com.pul
         }
 
         /**
-         * @param localPreference Optional, for an import policy, localPreference can be changed
+         * @param localPreference Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class GatewaytemplateRoutingPoliciesTermActionsArgs extends com.pul
         }
 
         /**
-         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it
+         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class GatewaytemplateRoutingPoliciesTermActionsArgs extends com.pul
         }
 
         /**
-         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it
+         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class GatewaytemplateRoutingPoliciesTermActionsArgs extends com.pul
         }
 
         /**
-         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it
+         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
          * 
          * @return builder
          * 

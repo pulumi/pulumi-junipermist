@@ -40,7 +40,7 @@ class NactagArgs:
         :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_nacportal_id`, `session_timeout`, `username_attr`, `vlan`
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
-        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_health`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match`
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
@@ -149,7 +149,7 @@ class NactagArgs:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_health`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         """
         return pulumi.get(self, "match")
 
@@ -307,7 +307,7 @@ class _NactagState:
         Input properties used for looking up and filtering Nactag resources.
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
-        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_health`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match`
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
@@ -398,7 +398,7 @@ class _NactagState:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_health`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         """
         return pulumi.get(self, "match")
 
@@ -610,7 +610,7 @@ class Nactag(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
-        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_health`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match`
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
@@ -761,7 +761,7 @@ class Nactag(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
-        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_health`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         :param pulumi.Input[_builtins.bool] match_all: This field is applicable only when `type`==`match`
                  * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
                  * `true`: means all values should be matched (i.e., match-all behavior)
@@ -829,7 +829,7 @@ class Nactag(pulumi.CustomResource):
     @pulumi.getter
     def match(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_health`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         """
         return pulumi.get(self, "match")
 

@@ -34,8 +34,8 @@ namespace Pulumi.JuniperMist.Device
         ///         EvpnUnused = "true",
         ///         EvpntopoId = "92984e2f-94db-4cd8-9763-9cf83fbd079e",
         ///         Duration = "1d",
-        ///         Start = 1736031600,
-        ///         End = 1736175934,
+        ///         Start = "1736031600",
+        ///         End = "1736175934",
         ///     });
         /// 
         /// });
@@ -67,8 +67,8 @@ namespace Pulumi.JuniperMist.Device
         ///         EvpnUnused = "true",
         ///         EvpntopoId = "92984e2f-94db-4cd8-9763-9cf83fbd079e",
         ///         Duration = "1d",
-        ///         Start = 1736031600,
-        ///         End = 1736175934,
+        ///         Start = "1736031600",
+        ///         End = "1736175934",
         ///     });
         /// 
         /// });
@@ -100,8 +100,8 @@ namespace Pulumi.JuniperMist.Device
         ///         EvpnUnused = "true",
         ///         EvpntopoId = "92984e2f-94db-4cd8-9763-9cf83fbd079e",
         ///         Duration = "1d",
-        ///         Start = 1736031600,
-        ///         End = 1736175934,
+        ///         Start = "1736031600",
+        ///         End = "1736175934",
         ///     });
         /// 
         /// });
@@ -121,10 +121,10 @@ namespace Pulumi.JuniperMist.Device
         public string? Duration { get; set; }
 
         /// <summary>
-        /// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+        /// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
         /// </summary>
         [Input("end")]
-        public int? End { get; set; }
+        public string? End { get; set; }
 
         /// <summary>
         /// If `EvpnUnused`==`True`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
@@ -148,10 +148,10 @@ namespace Pulumi.JuniperMist.Device
         public string? SiteId { get; set; }
 
         /// <summary>
-        /// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+        /// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
         /// </summary>
         [Input("start")]
-        public int? Start { get; set; }
+        public string? Start { get; set; }
 
         /// <summary>
         /// enum: `All`, `Connected`, `Disconnected`
@@ -174,10 +174,10 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+        /// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
         /// </summary>
         [Input("end")]
-        public Input<int>? End { get; set; }
+        public Input<string>? End { get; set; }
 
         /// <summary>
         /// If `EvpnUnused`==`True`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
@@ -201,10 +201,10 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+        /// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
         /// </summary>
         [Input("start")]
-        public Input<int>? Start { get; set; }
+        public Input<string>? Start { get; set; }
 
         /// <summary>
         /// enum: `All`, `Connected`, `Disconnected`
@@ -228,9 +228,9 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         public readonly string? Duration;
         /// <summary>
-        /// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+        /// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
         /// </summary>
-        public readonly int? End;
+        public readonly string? End;
         /// <summary>
         /// If `EvpnUnused`==`True`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
         /// </summary>
@@ -247,9 +247,9 @@ namespace Pulumi.JuniperMist.Device
         public readonly string OrgId;
         public readonly string? SiteId;
         /// <summary>
-        /// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+        /// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
         /// </summary>
-        public readonly int? Start;
+        public readonly string? Start;
         /// <summary>
         /// enum: `All`, `Connected`, `Disconnected`
         /// </summary>
@@ -261,7 +261,7 @@ namespace Pulumi.JuniperMist.Device
 
             string? duration,
 
-            int? end,
+            string? end,
 
             string? evpnUnused,
 
@@ -275,7 +275,7 @@ namespace Pulumi.JuniperMist.Device
 
             string? siteId,
 
-            int? start,
+            string? start,
 
             string? status)
         {

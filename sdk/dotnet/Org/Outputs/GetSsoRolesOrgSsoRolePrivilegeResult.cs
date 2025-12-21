@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string Role;
         /// <summary>
-        /// enum: `Org`, `Site`, `Sitegroup`
+        /// enum: `Org`, `Site`, `Sitegroup`, `Orgsites`
         /// </summary>
         public readonly string Scope;
         /// <summary>

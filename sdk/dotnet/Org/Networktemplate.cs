@@ -144,6 +144,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("additionalConfigCmds")]
         public Output<ImmutableArray<string>> AdditionalConfigCmds { get; private set; } = null!;
 
+        [Output("bgpConfig")]
+        public Output<ImmutableDictionary<string, Outputs.NetworktemplateBgpConfig>?> BgpConfig { get; private set; } = null!;
+
         [Output("dhcpSnooping")]
         public Output<Outputs.NetworktemplateDhcpSnooping?> DhcpSnooping { get; private set; } = null!;
 
@@ -227,6 +230,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Output("removeExistingConfigs")]
         public Output<bool?> RemoveExistingConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// Property key is the routing policy name
+        /// </summary>
+        [Output("routingPolicies")]
+        public Output<ImmutableDictionary<string, Outputs.NetworktemplateRoutingPolicies>?> RoutingPolicies { get; private set; } = null!;
 
         [Output("snmpConfig")]
         public Output<Outputs.NetworktemplateSnmpConfig?> SnmpConfig { get; private set; } = null!;
@@ -329,6 +338,14 @@ namespace Pulumi.JuniperMist.Org
         {
             get => _additionalConfigCmds ?? (_additionalConfigCmds = new InputList<string>());
             set => _additionalConfigCmds = value;
+        }
+
+        [Input("bgpConfig")]
+        private InputMap<Inputs.NetworktemplateBgpConfigArgs>? _bgpConfig;
+        public InputMap<Inputs.NetworktemplateBgpConfigArgs> BgpConfig
+        {
+            get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.NetworktemplateBgpConfigArgs>());
+            set => _bgpConfig = value;
         }
 
         [Input("dhcpSnooping")]
@@ -469,6 +486,18 @@ namespace Pulumi.JuniperMist.Org
         [Input("removeExistingConfigs")]
         public Input<bool>? RemoveExistingConfigs { get; set; }
 
+        [Input("routingPolicies")]
+        private InputMap<Inputs.NetworktemplateRoutingPoliciesArgs>? _routingPolicies;
+
+        /// <summary>
+        /// Property key is the routing policy name
+        /// </summary>
+        public InputMap<Inputs.NetworktemplateRoutingPoliciesArgs> RoutingPolicies
+        {
+            get => _routingPolicies ?? (_routingPolicies = new InputMap<Inputs.NetworktemplateRoutingPoliciesArgs>());
+            set => _routingPolicies = value;
+        }
+
         [Input("snmpConfig")]
         public Input<Inputs.NetworktemplateSnmpConfigArgs>? SnmpConfig { get; set; }
 
@@ -537,6 +566,14 @@ namespace Pulumi.JuniperMist.Org
         {
             get => _additionalConfigCmds ?? (_additionalConfigCmds = new InputList<string>());
             set => _additionalConfigCmds = value;
+        }
+
+        [Input("bgpConfig")]
+        private InputMap<Inputs.NetworktemplateBgpConfigGetArgs>? _bgpConfig;
+        public InputMap<Inputs.NetworktemplateBgpConfigGetArgs> BgpConfig
+        {
+            get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.NetworktemplateBgpConfigGetArgs>());
+            set => _bgpConfig = value;
         }
 
         [Input("dhcpSnooping")]
@@ -676,6 +713,18 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("removeExistingConfigs")]
         public Input<bool>? RemoveExistingConfigs { get; set; }
+
+        [Input("routingPolicies")]
+        private InputMap<Inputs.NetworktemplateRoutingPoliciesGetArgs>? _routingPolicies;
+
+        /// <summary>
+        /// Property key is the routing policy name
+        /// </summary>
+        public InputMap<Inputs.NetworktemplateRoutingPoliciesGetArgs> RoutingPolicies
+        {
+            get => _routingPolicies ?? (_routingPolicies = new InputMap<Inputs.NetworktemplateRoutingPoliciesGetArgs>());
+            set => _routingPolicies = value;
+        }
 
         [Input("snmpConfig")]
         public Input<Inputs.NetworktemplateSnmpConfigGetArgs>? SnmpConfig { get; set; }

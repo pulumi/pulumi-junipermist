@@ -12,7 +12,6 @@ import com.pulumi.junipermist.org.inputs.DeviceprofileApPortConfigRadsecArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -223,17 +222,17 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * If `forwarding`==`limited`
+     * If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
      * 
      */
     @Import(name="vlanIds")
-    private @Nullable Output<List<Integer>> vlanIds;
+    private @Nullable Output<String> vlanIds;
 
     /**
-     * @return If `forwarding`==`limited`
+     * @return If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
      * 
      */
-    public Optional<Output<List<Integer>>> vlanIds() {
+    public Optional<Output<String>> vlanIds() {
         return Optional.ofNullable(this.vlanIds);
     }
 
@@ -580,34 +579,24 @@ public final class DeviceprofileApPortConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vlanIds If `forwarding`==`limited`
+         * @param vlanIds If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
          * 
          * @return builder
          * 
          */
-        public Builder vlanIds(@Nullable Output<List<Integer>> vlanIds) {
+        public Builder vlanIds(@Nullable Output<String> vlanIds) {
             $.vlanIds = vlanIds;
             return this;
         }
 
         /**
-         * @param vlanIds If `forwarding`==`limited`
+         * @param vlanIds If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
          * 
          * @return builder
          * 
          */
-        public Builder vlanIds(List<Integer> vlanIds) {
+        public Builder vlanIds(String vlanIds) {
             return vlanIds(Output.of(vlanIds));
-        }
-
-        /**
-         * @param vlanIds If `forwarding`==`limited`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vlanIds(Integer... vlanIds) {
-            return vlanIds(List.of(vlanIds));
         }
 
         /**

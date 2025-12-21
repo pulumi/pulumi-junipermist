@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.device.inputs.SwitchAclPolicyArgs;
 import com.pulumi.junipermist.device.inputs.SwitchAclTagsArgs;
+import com.pulumi.junipermist.device.inputs.SwitchBgpConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchDhcpSnoopingArgs;
 import com.pulumi.junipermist.device.inputs.SwitchDhcpdConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchExtraRoutes6Args;
@@ -25,6 +26,7 @@ import com.pulumi.junipermist.device.inputs.SwitchPortMirroringArgs;
 import com.pulumi.junipermist.device.inputs.SwitchPortUsagesArgs;
 import com.pulumi.junipermist.device.inputs.SwitchRadiusConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchRemoteSyslogArgs;
+import com.pulumi.junipermist.device.inputs.SwitchRoutingPoliciesArgs;
 import com.pulumi.junipermist.device.inputs.SwitchSnmpConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchStpConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchSwitchMgmtArgs;
@@ -81,6 +83,13 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
         return Optional.ofNullable(this.additionalConfigCmds);
+    }
+
+    @Import(name="bgpConfig")
+    private @Nullable Output<Map<String,SwitchBgpConfigArgs>> bgpConfig;
+
+    public Optional<Output<Map<String,SwitchBgpConfigArgs>>> bgpConfig() {
+        return Optional.ofNullable(this.bgpConfig);
     }
 
     @Import(name="deviceId")
@@ -517,6 +526,21 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Property key is the routing policy name
+     * 
+     */
+    @Import(name="routingPolicies")
+    private @Nullable Output<Map<String,SwitchRoutingPoliciesArgs>> routingPolicies;
+
+    /**
+     * @return Property key is the routing policy name
+     * 
+     */
+    public Optional<Output<Map<String,SwitchRoutingPoliciesArgs>>> routingPolicies() {
+        return Optional.ofNullable(this.routingPolicies);
+    }
+
+    /**
      * Device Serial
      * 
      */
@@ -700,6 +724,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         this.aclPolicies = $.aclPolicies;
         this.aclTags = $.aclTags;
         this.additionalConfigCmds = $.additionalConfigCmds;
+        this.bgpConfig = $.bgpConfig;
         this.deviceId = $.deviceId;
         this.dhcpSnooping = $.dhcpSnooping;
         this.dhcpdConfig = $.dhcpdConfig;
@@ -735,6 +760,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         this.remoteSyslog = $.remoteSyslog;
         this.role = $.role;
         this.routerId = $.routerId;
+        this.routingPolicies = $.routingPolicies;
         this.serial = $.serial;
         this.siteId = $.siteId;
         this.snmpConfig = $.snmpConfig;
@@ -832,6 +858,15 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder additionalConfigCmds(String... additionalConfigCmds) {
             return additionalConfigCmds(List.of(additionalConfigCmds));
+        }
+
+        public Builder bgpConfig(@Nullable Output<Map<String,SwitchBgpConfigArgs>> bgpConfig) {
+            $.bgpConfig = bgpConfig;
+            return this;
+        }
+
+        public Builder bgpConfig(Map<String,SwitchBgpConfigArgs> bgpConfig) {
+            return bgpConfig(Output.of(bgpConfig));
         }
 
         public Builder deviceId(@Nullable Output<String> deviceId) {
@@ -1457,6 +1492,27 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder routerId(String routerId) {
             return routerId(Output.of(routerId));
+        }
+
+        /**
+         * @param routingPolicies Property key is the routing policy name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routingPolicies(@Nullable Output<Map<String,SwitchRoutingPoliciesArgs>> routingPolicies) {
+            $.routingPolicies = routingPolicies;
+            return this;
+        }
+
+        /**
+         * @param routingPolicies Property key is the routing policy name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routingPolicies(Map<String,SwitchRoutingPoliciesArgs> routingPolicies) {
+            return routingPolicies(Output.of(routingPolicies));
         }
 
         /**

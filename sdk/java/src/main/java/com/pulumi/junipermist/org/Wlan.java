@@ -233,14 +233,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.appLimit);
     }
     /**
-     * APp qos wlan settings
+     * APP qos wlan settings
      * 
      */
     @Export(name="appQos", refs={WlanAppQos.class}, tree="[0]")
     private Output<WlanAppQos> appQos;
 
     /**
-     * @return APp qos wlan settings
+     * @return APP qos wlan settings
      * 
      */
     public Output<WlanAppQos> appQos() {

@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -160,6 +161,21 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * List of network names. Required if `usage`==`inet`
+     * 
+     */
+    @Import(name="networks")
+    private @Nullable Output<List<String>> networks;
+
+    /**
+     * @return List of network names. Required if `usage`==`inet`
+     * 
+     */
+    public Optional<Output<List<String>>> networks() {
+        return Optional.ofNullable(this.networks);
+    }
+
+    /**
      * Prevent helpdesk to override the port config
      * 
      */
@@ -240,6 +256,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         this.dynamicUsage = $.dynamicUsage;
         this.esilag = $.esilag;
         this.mtu = $.mtu;
+        this.networks = $.networks;
         this.noLocalOverwrite = $.noLocalOverwrite;
         this.poeDisabled = $.poeDisabled;
         this.portNetwork = $.portNetwork;
@@ -458,6 +475,37 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder mtu(Integer mtu) {
             return mtu(Output.of(mtu));
+        }
+
+        /**
+         * @param networks List of network names. Required if `usage`==`inet`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networks(@Nullable Output<List<String>> networks) {
+            $.networks = networks;
+            return this;
+        }
+
+        /**
+         * @param networks List of network names. Required if `usage`==`inet`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networks(List<String> networks) {
+            return networks(Output.of(networks));
+        }
+
+        /**
+         * @param networks List of network names. Required if `usage`==`inet`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networks(String... networks) {
+            return networks(List.of(networks));
         }
 
         /**

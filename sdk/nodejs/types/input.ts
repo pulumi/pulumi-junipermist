@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface UpgradeDeviceAutoUpgradeStat {
+    lastcheck?: pulumi.Input<number>;
+}
+
 export interface UpgradeDeviceFwupdate {
     progress?: pulumi.Input<number>;
     /**
@@ -330,9 +334,9 @@ export namespace device {
          */
         vlanId?: pulumi.Input<number>;
         /**
-         * If `forwarding`==`limited`
+         * If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
          */
-        vlanIds?: pulumi.Input<pulumi.Input<number>[]>;
+        vlanIds?: pulumi.Input<string>;
         /**
          * If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
          */
@@ -529,7 +533,7 @@ export namespace device {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         * Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
          */
         antennaSelect?: pulumi.Input<string>;
         /**
@@ -1730,18 +1734,18 @@ export namespace device {
          */
         exportCommunities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Optional, for an import policy, localPreference can be changed
+         * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         localPreference?: pulumi.Input<string>;
         /**
-         * When used as export policy, optional. By default, the local AS will be prepended, to change it
+         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
          */
         prependAsPaths?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GatewayRoutingPoliciesTermMatching {
         /**
-         * takes regular expression
+         * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         asPaths?: pulumi.Input<pulumi.Input<string>[]>;
         communities?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1751,7 +1755,7 @@ export namespace device {
          */
         prefixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * `direct`, `bgp`, `osp`, `static`, `aggregate`...
+         * enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
          */
         protocols?: pulumi.Input<pulumi.Input<string>[]>;
         routeExists?: pulumi.Input<inputs.device.GatewayRoutingPoliciesTermMatchingRouteExists>;
@@ -2376,6 +2380,59 @@ export namespace device {
         protocol?: pulumi.Input<string>;
     }
 
+    export interface SwitchBgpConfig {
+        authKey?: pulumi.Input<string>;
+        /**
+         * Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
+         */
+        bfdMinimumInterval?: pulumi.Input<number>;
+        /**
+         * Export policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        exportPolicy?: pulumi.Input<string>;
+        /**
+         * Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+         */
+        holdTime?: pulumi.Input<number>;
+        /**
+         * Import policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        importPolicy?: pulumi.Input<string>;
+        localAs: pulumi.Input<string>;
+        /**
+         * Property key is the BGP Neighbor IP Address.
+         */
+        neighbors?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchBgpConfigNeighbors>}>;
+        /**
+         * List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+         */
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * enum: `external`, `internal`
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface SwitchBgpConfigNeighbors {
+        /**
+         * Export policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        exportPolicy?: pulumi.Input<string>;
+        /**
+         * Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+         */
+        holdTime?: pulumi.Input<number>;
+        /**
+         * Import policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        importPolicy?: pulumi.Input<string>;
+        multihopTtl?: pulumi.Input<number>;
+        /**
+         * Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `localAs`. For external BGP, this must differ from `localAs`.
+         */
+        neighborAs: pulumi.Input<string>;
+    }
+
     export interface SwitchDhcpSnooping {
         allNetworks?: pulumi.Input<boolean>;
         /**
@@ -2564,7 +2621,7 @@ export namespace device {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+         * Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: pulumi.Input<boolean>;
         allowMultipleSupplicants?: pulumi.Input<boolean>;
@@ -2913,6 +2970,10 @@ export namespace device {
          */
         mtu?: pulumi.Input<number>;
         /**
+         * List of network names. Required if `usage`==`inet`
+         */
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Prevent helpdesk to override the port config
          */
         noLocalOverwrite?: pulumi.Input<boolean>;
@@ -2989,7 +3050,7 @@ export namespace device {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: pulumi.Input<boolean>;
         /**
@@ -3407,6 +3468,57 @@ export namespace device {
          * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
          */
         severity?: pulumi.Input<string>;
+    }
+
+    export interface SwitchRoutingPolicies {
+        /**
+         * at least criteria/filter must be specified to match the term, all criteria have to be met
+         */
+        terms?: pulumi.Input<pulumi.Input<inputs.device.SwitchRoutingPoliciesTerm>[]>;
+    }
+
+    export interface SwitchRoutingPoliciesTerm {
+        /**
+         * When used as import policy
+         */
+        actions?: pulumi.Input<inputs.device.SwitchRoutingPoliciesTermActions>;
+        /**
+         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         */
+        matching?: pulumi.Input<inputs.device.SwitchRoutingPoliciesTermMatching>;
+        name: pulumi.Input<string>;
+    }
+
+    export interface SwitchRoutingPoliciesTermActions {
+        accept?: pulumi.Input<boolean>;
+        /**
+         * When used as export policy, optional
+         */
+        communities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         */
+        localPreference?: pulumi.Input<string>;
+        /**
+         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         */
+        prependAsPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SwitchRoutingPoliciesTermMatching {
+        /**
+         * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         */
+        asPaths?: pulumi.Input<pulumi.Input<string>[]>;
+        communities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         */
+        prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+         */
+        protocols?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface SwitchSnmpConfig {
@@ -4183,9 +4295,9 @@ export namespace org {
          */
         vlanId?: pulumi.Input<number>;
         /**
-         * If `forwarding`==`limited`
+         * If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
          */
-        vlanIds?: pulumi.Input<pulumi.Input<number>[]>;
+        vlanIds?: pulumi.Input<string>;
         /**
          * If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
          */
@@ -4382,7 +4494,7 @@ export namespace org {
          */
         antennaMode?: pulumi.Input<string>;
         /**
-         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         * Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
          */
         antennaSelect?: pulumi.Input<string>;
         /**
@@ -5548,18 +5660,18 @@ export namespace org {
          */
         exportCommunities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Optional, for an import policy, localPreference can be changed
+         * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         localPreference?: pulumi.Input<string>;
         /**
-         * When used as export policy, optional. By default, the local AS will be prepended, to change it
+         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
          */
         prependAsPaths?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface DeviceprofileGatewayRoutingPoliciesTermMatching {
         /**
-         * takes regular expression
+         * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         asPaths?: pulumi.Input<pulumi.Input<string>[]>;
         communities?: pulumi.Input<pulumi.Input<string>[]>;
@@ -5569,7 +5681,7 @@ export namespace org {
          */
         prefixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * `direct`, `bgp`, `osp`, `static`, `aggregate`...
+         * enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
          */
         protocols?: pulumi.Input<pulumi.Input<string>[]>;
         routeExists?: pulumi.Input<inputs.org.DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExists>;
@@ -6168,6 +6280,9 @@ export namespace org {
 
     export interface EvpnTopologySwitches {
         deviceprofileId?: pulumi.Input<string>;
+        downlinkIps?: pulumi.Input<pulumi.Input<string>[]>;
+        downlinks?: pulumi.Input<pulumi.Input<string>[]>;
+        esilaglinks?: pulumi.Input<pulumi.Input<string>[]>;
         evpnId?: pulumi.Input<number>;
         mac?: pulumi.Input<string>;
         model?: pulumi.Input<string>;
@@ -6188,6 +6303,10 @@ export namespace org {
         role: pulumi.Input<string>;
         routerId?: pulumi.Input<string>;
         siteId?: pulumi.Input<string>;
+        suggestedDownlinks?: pulumi.Input<pulumi.Input<string>[]>;
+        suggestedEsilaglinks?: pulumi.Input<pulumi.Input<string>[]>;
+        suggestedUplinks?: pulumi.Input<pulumi.Input<string>[]>;
+        uplinks?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GatewaytemplateBgpConfig {
@@ -7089,18 +7208,18 @@ export namespace org {
          */
         exportCommunities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Optional, for an import policy, localPreference can be changed
+         * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         localPreference?: pulumi.Input<string>;
         /**
-         * When used as export policy, optional. By default, the local AS will be prepended, to change it
+         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
          */
         prependAsPaths?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GatewaytemplateRoutingPoliciesTermMatching {
         /**
-         * takes regular expression
+         * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         asPaths?: pulumi.Input<pulumi.Input<string>[]>;
         communities?: pulumi.Input<pulumi.Input<string>[]>;
@@ -7110,7 +7229,7 @@ export namespace org {
          */
         prefixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * `direct`, `bgp`, `osp`, `static`, `aggregate`...
+         * enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
          */
         protocols?: pulumi.Input<pulumi.Input<string>[]>;
         routeExists?: pulumi.Input<inputs.org.GatewaytemplateRoutingPoliciesTermMatchingRouteExists>;
@@ -8027,6 +8146,59 @@ export namespace org {
         protocol?: pulumi.Input<string>;
     }
 
+    export interface NetworktemplateBgpConfig {
+        authKey?: pulumi.Input<string>;
+        /**
+         * Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
+         */
+        bfdMinimumInterval?: pulumi.Input<number>;
+        /**
+         * Export policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        exportPolicy?: pulumi.Input<string>;
+        /**
+         * Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+         */
+        holdTime?: pulumi.Input<number>;
+        /**
+         * Import policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        importPolicy?: pulumi.Input<string>;
+        localAs: pulumi.Input<string>;
+        /**
+         * Property key is the BGP Neighbor IP Address.
+         */
+        neighbors?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateBgpConfigNeighbors>}>;
+        /**
+         * List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+         */
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * enum: `external`, `internal`
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface NetworktemplateBgpConfigNeighbors {
+        /**
+         * Export policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        exportPolicy?: pulumi.Input<string>;
+        /**
+         * Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+         */
+        holdTime?: pulumi.Input<number>;
+        /**
+         * Import policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        importPolicy?: pulumi.Input<string>;
+        multihopTtl?: pulumi.Input<number>;
+        /**
+         * Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `localAs`. For external BGP, this must differ from `localAs`.
+         */
+        neighborAs: pulumi.Input<string>;
+    }
+
     export interface NetworktemplateDhcpSnooping {
         allNetworks?: pulumi.Input<boolean>;
         /**
@@ -8189,7 +8361,7 @@ export namespace org {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: pulumi.Input<boolean>;
         /**
@@ -8613,6 +8785,57 @@ export namespace org {
         severity?: pulumi.Input<string>;
     }
 
+    export interface NetworktemplateRoutingPolicies {
+        /**
+         * at least criteria/filter must be specified to match the term, all criteria have to be met
+         */
+        terms?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplateRoutingPoliciesTerm>[]>;
+    }
+
+    export interface NetworktemplateRoutingPoliciesTerm {
+        /**
+         * When used as import policy
+         */
+        actions?: pulumi.Input<inputs.org.NetworktemplateRoutingPoliciesTermActions>;
+        /**
+         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         */
+        matching?: pulumi.Input<inputs.org.NetworktemplateRoutingPoliciesTermMatching>;
+        name: pulumi.Input<string>;
+    }
+
+    export interface NetworktemplateRoutingPoliciesTermActions {
+        accept?: pulumi.Input<boolean>;
+        /**
+         * When used as export policy, optional
+         */
+        communities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         */
+        localPreference?: pulumi.Input<string>;
+        /**
+         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         */
+        prependAsPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface NetworktemplateRoutingPoliciesTermMatching {
+        /**
+         * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         */
+        asPaths?: pulumi.Input<pulumi.Input<string>[]>;
+        communities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         */
+        prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+         */
+        protocols?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface NetworktemplateSnmpConfig {
         clientLists?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplateSnmpConfigClientList>[]>;
         contact?: pulumi.Input<string>;
@@ -8942,6 +9165,10 @@ export namespace org {
          * Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
          */
         mtu?: pulumi.Input<number>;
+        /**
+         * List of network names. Required if `usage`==`inet`
+         */
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Prevent helpdesk to override the port config
          */
@@ -9802,7 +10029,7 @@ export namespace org {
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * password expiry in days
+         * Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
          */
         expiryInDays?: pulumi.Input<number>;
         /**
@@ -11675,6 +11902,9 @@ export namespace site {
 
     export interface EvpnTopologySwitches {
         deviceprofileId?: pulumi.Input<string>;
+        downlinkIps?: pulumi.Input<pulumi.Input<string>[]>;
+        downlinks?: pulumi.Input<pulumi.Input<string>[]>;
+        esilaglinks?: pulumi.Input<pulumi.Input<string>[]>;
         evpnId?: pulumi.Input<number>;
         mac?: pulumi.Input<string>;
         model?: pulumi.Input<string>;
@@ -11695,6 +11925,10 @@ export namespace site {
         role: pulumi.Input<string>;
         routerId?: pulumi.Input<string>;
         siteId?: pulumi.Input<string>;
+        suggestedDownlinks?: pulumi.Input<pulumi.Input<string>[]>;
+        suggestedEsilaglinks?: pulumi.Input<pulumi.Input<string>[]>;
+        suggestedUplinks?: pulumi.Input<pulumi.Input<string>[]>;
+        uplinks?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface NetworktemplateAclPolicy {
@@ -11959,7 +12193,7 @@ export namespace site {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: pulumi.Input<boolean>;
         /**
@@ -12383,6 +12617,57 @@ export namespace site {
         severity?: pulumi.Input<string>;
     }
 
+    export interface NetworktemplateRoutingPolicies {
+        /**
+         * at least criteria/filter must be specified to match the term, all criteria have to be met
+         */
+        terms?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateRoutingPoliciesTerm>[]>;
+    }
+
+    export interface NetworktemplateRoutingPoliciesTerm {
+        /**
+         * When used as import policy
+         */
+        actions?: pulumi.Input<inputs.site.NetworktemplateRoutingPoliciesTermActions>;
+        /**
+         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         */
+        matching?: pulumi.Input<inputs.site.NetworktemplateRoutingPoliciesTermMatching>;
+        name: pulumi.Input<string>;
+    }
+
+    export interface NetworktemplateRoutingPoliciesTermActions {
+        accept?: pulumi.Input<boolean>;
+        /**
+         * When used as export policy, optional
+         */
+        communities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         */
+        localPreference?: pulumi.Input<string>;
+        /**
+         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         */
+        prependAsPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface NetworktemplateRoutingPoliciesTermMatching {
+        /**
+         * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         */
+        asPaths?: pulumi.Input<pulumi.Input<string>[]>;
+        communities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         */
+        prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+         */
+        protocols?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface NetworktemplateSnmpConfig {
         clientLists?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateSnmpConfigClientList>[]>;
         contact?: pulumi.Input<string>;
@@ -12712,6 +12997,10 @@ export namespace site {
          * Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
          */
         mtu?: pulumi.Input<number>;
+        /**
+         * List of network names. Required if `usage`==`inet`
+         */
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Prevent helpdesk to override the port config
          */

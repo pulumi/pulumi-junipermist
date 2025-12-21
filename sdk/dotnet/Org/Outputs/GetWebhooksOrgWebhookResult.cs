@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetWebhooksOrgWebhookResult
     {
         /// <summary>
+        /// Only if `Type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+        /// </summary>
+        public readonly ImmutableArray<string> AssetfilterIds;
+        /// <summary>
         /// When the object has been created, in epoch
         /// </summary>
         public readonly double CreatedTime;
@@ -94,6 +98,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
         [OutputConstructor]
         private GetWebhooksOrgWebhookResult(
+            ImmutableArray<string> assetfilterIds,
+
             double createdTime,
 
             bool enabled,
@@ -136,6 +142,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool verifyCert)
         {
+            AssetfilterIds = assetfilterIds;
             CreatedTime = createdTime;
             Enabled = enabled;
             Headers = headers;

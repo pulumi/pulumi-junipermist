@@ -181,6 +181,10 @@ export interface GetSitesSiteLatlng {
     lng: number;
 }
 
+export interface UpgradeDeviceAutoUpgradeStat {
+    lastcheck: number;
+}
+
 export interface UpgradeDeviceFwupdate {
     progress: number;
     /**
@@ -507,9 +511,9 @@ export namespace device {
          */
         vlanId?: number;
         /**
-         * If `forwarding`==`limited`
+         * If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
          */
-        vlanIds?: number[];
+        vlanIds?: string;
         /**
          * If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
          */
@@ -706,7 +710,7 @@ export namespace device {
          */
         antennaMode?: string;
         /**
-         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         * Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
          */
         antennaSelect?: string;
         /**
@@ -1907,18 +1911,18 @@ export namespace device {
          */
         exportCommunities?: string[];
         /**
-         * Optional, for an import policy, localPreference can be changed
+         * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         localPreference?: string;
         /**
-         * When used as export policy, optional. By default, the local AS will be prepended, to change it
+         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
          */
         prependAsPaths?: string[];
     }
 
     export interface GatewayRoutingPoliciesTermMatching {
         /**
-         * takes regular expression
+         * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         asPaths?: string[];
         communities?: string[];
@@ -1928,7 +1932,7 @@ export namespace device {
          */
         prefixes?: string[];
         /**
-         * `direct`, `bgp`, `osp`, `static`, `aggregate`...
+         * enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
          */
         protocols?: string[];
         routeExists?: outputs.device.GatewayRoutingPoliciesTermMatchingRouteExists;
@@ -2454,12 +2458,17 @@ export namespace device {
     }
 
     export interface GetApStatsDeviceApStat {
+        /**
+         * Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
+         */
+        antennaSelect: string;
         autoPlacement: outputs.device.GetApStatsDeviceApStatAutoPlacement;
         autoUpgradeStat: outputs.device.GetApStatsDeviceApStatAutoUpgradeStat;
         bleStat: outputs.device.GetApStatsDeviceApStatBleStat;
         certExpiry: number;
         configReverted: boolean;
         cpuSystem: number;
+        cpuUser: number;
         cpuUtil: number;
         /**
          * When the object has been created, in epoch
@@ -2471,9 +2480,13 @@ export namespace device {
          */
         envStat: outputs.device.GetApStatsDeviceApStatEnvStat;
         eslStat: outputs.device.GetApStatsDeviceApStatEslStat;
+        /**
+         * Map of certificate serial numbers to their expiry timestamps (in epoch) for certificates expiring within 30 days. Property key is the certificate serial number
+         */
+        expiringCerts: {[key: string]: number};
         extIp: string;
         fwupdate: outputs.device.GetApStatsDeviceApStatFwupdate;
-        gps: outputs.device.GetApStatsDeviceApStatGps;
+        gpsStat: outputs.device.GetApStatsDeviceApStatGpsStat;
         hwRev: string;
         /**
          * Unique ID of the object instance in the Mist Organization
@@ -2488,7 +2501,7 @@ export namespace device {
         ipConfig: outputs.device.GetApStatsDeviceApStatIpConfig;
         ipStat: outputs.device.GetApStatsDeviceApStatIpStat;
         /**
-         * L2TP tunnel status (key is the wxtunnel_id)
+         * L2TP tunnel status (key is the wxtunnel*id)
          */
         l2tpStat: {[key: string]: outputs.device.GetApStatsDeviceApStatL2tpStat};
         /**
@@ -2504,9 +2517,13 @@ export namespace device {
          */
         led: outputs.device.GetApStatsDeviceApStatLed;
         /**
-         * LLDP Stat (neighbor information, power negotiations)
+         * LLDP neighbor information and power negotiations. For backward compatibility, when multiple neighbors exist, only information from the first neighbor is displayed.
          */
         lldpStat: outputs.device.GetApStatsDeviceApStatLldpStat;
+        /**
+         * Property key is the port name (e.g. "eth0", "eth1", ...). Map of ethernet ports to their respective LLDP neighbor information and power negotiations. Only present when multiple neighbors exist.
+         */
+        lldpStats: {[key: string]: outputs.device.GetApStatsDeviceApStatLldpStats};
         locating: boolean;
         /**
          * Whether this AP is considered locked (placement / orientation has been vetted)
@@ -2517,6 +2534,7 @@ export namespace device {
          */
         mac: string;
         mapId: string;
+        memTotalKb: number;
         memUsedKb: number;
         /**
          * Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
@@ -2683,13 +2701,19 @@ export namespace device {
         eddystoneUidNamespace: string;
         eddystoneUrlEnabled: boolean;
         /**
-         * Frequency (msec) of data emmit by Eddystone-UID beacon
+         * Frequency (msec) of data emit by Eddystone-UID beacon
          */
         eddystoneUrlFreqMsec: number;
         eddystoneUrlUrl: string;
         ibeaconEnabled: boolean;
         ibeaconFreqMsec: number;
+        /**
+         * Major number for iBeacon
+         */
         ibeaconMajor: number;
+        /**
+         * Minor number for iBeacon
+         */
         ibeaconMinor: number;
         ibeaconUuid: string;
         major: number;
@@ -2743,7 +2767,7 @@ export namespace device {
     export interface GetApStatsDeviceApStatFwupdate {
         progress: number;
         /**
-         * enum: `inprogress`, `failed`, `upgraded`
+         * enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
          */
         status: string;
         statusId: number;
@@ -2754,7 +2778,7 @@ export namespace device {
         willRetry: boolean;
     }
 
-    export interface GetApStatsDeviceApStatGps {
+    export interface GetApStatsDeviceApStatGpsStat {
         /**
          * The estimated accuracy or accuracy of the GPS coordinates, measured in meters.
          */
@@ -2772,9 +2796,7 @@ export namespace device {
          */
         longitude: number;
         /**
-         * The origin of the GPS data. enum:
-         *   * `gps`: from this device’s GPS estimates
-         *   * `otherAp` from neighboring device GPS estimates
+         * The origin of the GPS data. enum: `gps`: from this device GPS estimates, `otherAp` from neighboring device GPS estimates. Note: API responses may return `otherAps` which should be treated as `otherAp`
          */
         src: string;
         /**
@@ -2900,31 +2922,141 @@ export namespace device {
          */
         lldpMedSupported: boolean;
         /**
-         * Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+         * Management IP address of the switch
          */
         mgmtAddr: string;
+        /**
+         * List of management IP addresses (IPv4 and IPv6)
+         */
         mgmtAddrs: string[];
         /**
-         * ge-0/0/4
+         * Port description, e.g. “2/20”, “Port 2 on Switch0”
          */
         portDesc: string;
+        /**
+         * Port identifier
+         */
         portId: string;
         /**
-         * In mW, provided/allocated by PSE
+         * In mW, power allocated by PSE
          */
         powerAllocated: number;
+        /**
+         * In mW, total Power Avail at AP from pwr source
+         */
+        powerAvail: number;
+        /**
+         * In mW, surplus if positive or deficit if negative
+         */
+        powerBudget: number;
+        /**
+         * Whether power is insufficient
+         */
+        powerConstrained: boolean;
         /**
          * In mW, total power needed by PD
          */
         powerDraw: number;
         /**
+         * In mW, total Power needed incl Peripherals
+         */
+        powerNeeded: number;
+        /**
+         * Constrained mode
+         */
+        powerOpmode: string;
+        /**
          * Number of negotiations, if it keeps increasing, we don’ t have a stable power
          */
         powerRequestCount: number;
         /**
-         * In mW, the current power requested by PD
+         * In mW, power requested by PD
          */
         powerRequested: number;
+        /**
+         * Single power source (DC Input / PoE 802.3at / PoE 802.3af / PoE 802.3bt / MULTI-PD / LLDP / ? (unknown)).
+         */
+        powerSrc: string;
+        /**
+         * List of management IP addresses (IPv4 and IPv6)
+         */
+        powerSrcs: string[];
+        /**
+         * Description provided by switch
+         */
+        systemDesc: string;
+        /**
+         * Name of the switch
+         */
+        systemName: string;
+    }
+
+    export interface GetApStatsDeviceApStatLldpStats {
+        chassisId: string;
+        /**
+         * Whether it support LLDP-MED
+         */
+        lldpMedSupported: boolean;
+        /**
+         * Management IP address of the switch
+         */
+        mgmtAddr: string;
+        /**
+         * List of management IP addresses (IPv4 and IPv6)
+         */
+        mgmtAddrs: string[];
+        /**
+         * Port description, e.g. “2/20”, “Port 2 on Switch0”
+         */
+        portDesc: string;
+        /**
+         * Port identifier
+         */
+        portId: string;
+        /**
+         * In mW, power allocated by PSE
+         */
+        powerAllocated: number;
+        /**
+         * In mW, total Power Avail at AP from pwr source
+         */
+        powerAvail: number;
+        /**
+         * In mW, surplus if positive or deficit if negative
+         */
+        powerBudget: number;
+        /**
+         * Whether power is insufficient
+         */
+        powerConstrained: boolean;
+        /**
+         * In mW, total power needed by PD
+         */
+        powerDraw: number;
+        /**
+         * In mW, total Power needed incl Peripherals
+         */
+        powerNeeded: number;
+        /**
+         * Constrained mode
+         */
+        powerOpmode: string;
+        /**
+         * Number of negotiations, if it keeps increasing, we don’ t have a stable power
+         */
+        powerRequestCount: number;
+        /**
+         * In mW, power requested by PD
+         */
+        powerRequested: number;
+        /**
+         * Single power source (DC Input / PoE 802.3at / PoE 802.3af / PoE 802.3bt / MULTI-PD / LLDP / ? (unknown)).
+         */
+        powerSrc: string;
+        /**
+         * List of management IP addresses (IPv4 and IPv6)
+         */
+        powerSrcs: string[];
         /**
          * Description provided by switch
          */
@@ -3086,7 +3218,7 @@ export namespace device {
 
     export interface GetApStatsDeviceApStatRadioStatBand24 {
         /**
-         * channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
+         * channel width for the band.enum: `0`(disabled, response only), `20`, `40`, `80` (only applicable for band*5 and band*6), `160` (only for band_6)
          */
         bandwidth: number;
         /**
@@ -3160,7 +3292,7 @@ export namespace device {
 
     export interface GetApStatsDeviceApStatRadioStatBand5 {
         /**
-         * channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
+         * channel width for the band.enum: `0`(disabled, response only), `20`, `40`, `80` (only applicable for band*5 and band*6), `160` (only for band_6)
          */
         bandwidth: number;
         /**
@@ -3234,7 +3366,7 @@ export namespace device {
 
     export interface GetApStatsDeviceApStatRadioStatBand6 {
         /**
-         * channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
+         * channel width for the band.enum: `0`(disabled, response only), `20`, `40`, `80` (only applicable for band*5 and band*6), `160` (only for band_6)
          */
         bandwidth: number;
         /**
@@ -3321,6 +3453,7 @@ export namespace device {
     export interface GetGatewayStatsDeviceGatewayStat {
         apRedundancy: outputs.device.GetGatewayStatsDeviceGatewayStatApRedundancy;
         arpTableStats: outputs.device.GetGatewayStatsDeviceGatewayStatArpTableStats;
+        autoUpgradeStat: outputs.device.GetGatewayStatsDeviceGatewayStatAutoUpgradeStat;
         /**
          * Only present when `bgpPeers` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
          */
@@ -3330,6 +3463,8 @@ export namespace device {
         clusterStat: outputs.device.GetGatewayStatsDeviceGatewayStatClusterStat;
         conductorName: string;
         configStatus: string;
+        configTimestamp: number;
+        configVersion: number;
         cpu2Stat: outputs.device.GetGatewayStatsDeviceGatewayStatCpu2Stat;
         cpuStat: outputs.device.GetGatewayStatsDeviceGatewayStatCpuStat;
         /**
@@ -3337,6 +3472,7 @@ export namespace device {
          */
         createdTime: number;
         deviceprofileId: string;
+        deviceprofileName: string;
         /**
          * Property key is the network name
          */
@@ -3382,6 +3518,7 @@ export namespace device {
          * Device mac
          */
         mac: string;
+        macTableStats: outputs.device.GetGatewayStatsDeviceGatewayStatMacTableStats;
         /**
          * Serial Number
          */
@@ -3430,6 +3567,8 @@ export namespace device {
         spu2Stats: outputs.device.GetGatewayStatsDeviceGatewayStatSpu2Stat[];
         spuStats: outputs.device.GetGatewayStatsDeviceGatewayStatSpuStat[];
         status: string;
+        tagId: number;
+        tagUuid: string;
         /**
          * Only present when `tunnels` in `fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
          */
@@ -3459,6 +3598,10 @@ export namespace device {
     export interface GetGatewayStatsDeviceGatewayStatArpTableStats {
         arpTableCount: number;
         maxEntriesSupported: number;
+    }
+
+    export interface GetGatewayStatsDeviceGatewayStatAutoUpgradeStat {
+        lastcheck: number;
     }
 
     export interface GetGatewayStatsDeviceGatewayStatBgpPeer {
@@ -3566,6 +3709,10 @@ export namespace device {
          */
         system: number;
         /**
+         * CPU usage
+         */
+        usage: number;
+        /**
          * Percentage of CPU time being used by user processes
          */
         user: number;
@@ -3589,6 +3736,10 @@ export namespace device {
          */
         system: number;
         /**
+         * CPU usage
+         */
+        usage: number;
+        /**
          * Percentage of CPU time being used by user processes
          */
         user: number;
@@ -3607,7 +3758,7 @@ export namespace device {
     export interface GetGatewayStatsDeviceGatewayStatFwupdate {
         progress: number;
         /**
-         * enum: `inprogress`, `failed`, `upgraded`
+         * enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
          */
         status: string;
         statusId: number;
@@ -3726,6 +3877,11 @@ export namespace device {
         netmask6: string;
     }
 
+    export interface GetGatewayStatsDeviceGatewayStatMacTableStats {
+        macTableCount: number;
+        maxMacEntriesSupported: number;
+    }
+
     export interface GetGatewayStatsDeviceGatewayStatMemory2Stat {
         usage: number;
     }
@@ -3737,6 +3893,7 @@ export namespace device {
     export interface GetGatewayStatsDeviceGatewayStatModule2Stat {
         backupVersion: string;
         biosVersion: string;
+        bootPartition: string;
         cpldVersion: string;
         fans: outputs.device.GetGatewayStatsDeviceGatewayStatModule2StatFan[];
         fpgaVersion: string;
@@ -3746,7 +3903,12 @@ export namespace device {
         lastSeen: number;
         locating: boolean;
         mac: string;
+        /**
+         * Memory usage stat (for virtual chassis, memory usage of master RE)
+         */
+        memoryStat: outputs.device.GetGatewayStatsDeviceGatewayStatModule2StatMemoryStat;
         model: string;
+        networkResources: outputs.device.GetGatewayStatsDeviceGatewayStatModule2StatNetworkResource[];
         opticsCpldVersion: string;
         pendingVersion: string;
         poe: outputs.device.GetGatewayStatsDeviceGatewayStatModule2StatPoe;
@@ -3774,12 +3936,33 @@ export namespace device {
     export interface GetGatewayStatsDeviceGatewayStatModule2StatFan {
         airflow: string;
         name: string;
+        rpm: number;
         status: string;
+    }
+
+    export interface GetGatewayStatsDeviceGatewayStatModule2StatMemoryStat {
+        usage: number;
+    }
+
+    export interface GetGatewayStatsDeviceGatewayStatModule2StatNetworkResource {
+        /**
+         * current usage of the network resource
+         */
+        count: number;
+        /**
+         * maximum usage of the network resource
+         */
+        limit: number;
+        /**
+         * type of the network resource (e.g. FIB, FLOW, ...)
+         */
+        type: string;
     }
 
     export interface GetGatewayStatsDeviceGatewayStatModule2StatPoe {
         maxPower: number;
         powerDraw: number;
+        status: string;
     }
 
     export interface GetGatewayStatsDeviceGatewayStatModule2StatPsus {
@@ -3802,6 +3985,7 @@ export namespace device {
     export interface GetGatewayStatsDeviceGatewayStatModuleStat {
         backupVersion: string;
         biosVersion: string;
+        bootPartition: string;
         cpldVersion: string;
         fans: outputs.device.GetGatewayStatsDeviceGatewayStatModuleStatFan[];
         fpgaVersion: string;
@@ -3811,7 +3995,12 @@ export namespace device {
         lastSeen: number;
         locating: boolean;
         mac: string;
+        /**
+         * Memory usage stat (for virtual chassis, memory usage of master RE)
+         */
+        memoryStat: outputs.device.GetGatewayStatsDeviceGatewayStatModuleStatMemoryStat;
         model: string;
+        networkResources: outputs.device.GetGatewayStatsDeviceGatewayStatModuleStatNetworkResource[];
         opticsCpldVersion: string;
         pendingVersion: string;
         poe: outputs.device.GetGatewayStatsDeviceGatewayStatModuleStatPoe;
@@ -3839,12 +4028,33 @@ export namespace device {
     export interface GetGatewayStatsDeviceGatewayStatModuleStatFan {
         airflow: string;
         name: string;
+        rpm: number;
         status: string;
+    }
+
+    export interface GetGatewayStatsDeviceGatewayStatModuleStatMemoryStat {
+        usage: number;
+    }
+
+    export interface GetGatewayStatsDeviceGatewayStatModuleStatNetworkResource {
+        /**
+         * current usage of the network resource
+         */
+        count: number;
+        /**
+         * maximum usage of the network resource
+         */
+        limit: number;
+        /**
+         * type of the network resource (e.g. FIB, FLOW, ...)
+         */
+        type: string;
     }
 
     export interface GetGatewayStatsDeviceGatewayStatModuleStatPoe {
         maxPower: number;
         powerDraw: number;
+        status: string;
     }
 
     export interface GetGatewayStatsDeviceGatewayStatModuleStatPsus {
@@ -4085,6 +4295,7 @@ export namespace device {
         spuMaxSession: number;
         spuMemory: number;
         spuPendingSession: number;
+        spuUptime: number;
         spuValidSession: number;
     }
 
@@ -4094,6 +4305,7 @@ export namespace device {
         spuMaxSession: number;
         spuMemory: number;
         spuPendingSession: number;
+        spuUptime: number;
         spuValidSession: number;
     }
 
@@ -4179,10 +4391,24 @@ export namespace device {
          */
         isActive: boolean;
         /**
+         * Jitter in milliseconds
+         */
+        jitter: number;
+        /**
          * Last seen timestamp
          */
         lastSeen: number;
+        /**
+         * Latency in milliseconds
+         */
         latency: number;
+        /**
+         * Packet loss in percentage
+         */
+        loss: number;
+        /**
+         * Mean Opinion Score, a measure of the quality of the VPN link
+         */
         mos: number;
         mtu: number;
         /**
@@ -4211,10 +4437,13 @@ export namespace device {
     export interface GetSwitchStatsDeviceSwitchStat {
         apRedundancy: outputs.device.GetSwitchStatsDeviceSwitchStatApRedundancy;
         arpTableStats: outputs.device.GetSwitchStatsDeviceSwitchStatArpTableStats;
+        autoUpgradeStat: outputs.device.GetSwitchStatsDeviceSwitchStatAutoUpgradeStat;
         certExpiry: number;
         clients: outputs.device.GetSwitchStatsDeviceSwitchStatClient[];
         clientsStats: outputs.device.GetSwitchStatsDeviceSwitchStatClientsStats;
         configStatus: string;
+        configTimestamp: number;
+        configVersion: number;
         cpuStat: outputs.device.GetSwitchStatsDeviceSwitchStatCpuStat;
         /**
          * When the object has been created, in epoch
@@ -4226,6 +4455,7 @@ export namespace device {
          */
         dhcpdStat: {[key: string]: outputs.device.GetSwitchStatsDeviceSwitchStatDhcpdStat};
         evpntopoId: string;
+        extIp: string;
         fwVersionsOutofsync: boolean;
         fwupdate: outputs.device.GetSwitchStatsDeviceSwitchStatFwupdate;
         /**
@@ -4282,6 +4512,8 @@ export namespace device {
         serviceStat: {[key: string]: outputs.device.GetSwitchStatsDeviceSwitchStatServiceStat};
         siteId: string;
         status: string;
+        tagId: number;
+        tagUuid: string;
         uptime: number;
         vcMac: string;
         vcSetupInfo: outputs.device.GetSwitchStatsDeviceSwitchStatVcSetupInfo;
@@ -4305,6 +4537,10 @@ export namespace device {
     export interface GetSwitchStatsDeviceSwitchStatArpTableStats {
         arpTableCount: number;
         maxEntriesSupported: number;
+    }
+
+    export interface GetSwitchStatsDeviceSwitchStatAutoUpgradeStat {
+        lastcheck: number;
     }
 
     export interface GetSwitchStatsDeviceSwitchStatClient {
@@ -4341,6 +4577,10 @@ export namespace device {
          */
         system: number;
         /**
+         * CPU usage
+         */
+        usage: number;
+        /**
          * Percentage of CPU time being used by user processes
          */
         user: number;
@@ -4354,7 +4594,7 @@ export namespace device {
     export interface GetSwitchStatsDeviceSwitchStatFwupdate {
         progress: number;
         /**
-         * enum: `inprogress`, `failed`, `upgraded`
+         * enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
          */
         status: string;
         statusId: number;
@@ -4442,6 +4682,7 @@ export namespace device {
     export interface GetSwitchStatsDeviceSwitchStatModuleStat {
         backupVersion: string;
         biosVersion: string;
+        bootPartition: string;
         cpldVersion: string;
         cpuStat: outputs.device.GetSwitchStatsDeviceSwitchStatModuleStatCpuStat;
         /**
@@ -4457,6 +4698,10 @@ export namespace device {
         lastSeen: number;
         locating: boolean;
         mac: string;
+        /**
+         * Memory usage stat (for virtual chassis, memory usage of master RE)
+         */
+        memoryStat: outputs.device.GetSwitchStatsDeviceSwitchStatModuleStatMemoryStat;
         model: string;
         opticsCpldVersion: string;
         pendingVersion: string;
@@ -4502,6 +4747,10 @@ export namespace device {
          */
         system: number;
         /**
+         * CPU usage
+         */
+        usage: number;
+        /**
          * Percentage of CPU time being used by user processes
          */
         user: number;
@@ -4518,7 +4767,12 @@ export namespace device {
     export interface GetSwitchStatsDeviceSwitchStatModuleStatFan {
         airflow: string;
         name: string;
+        rpm: number;
         status: string;
+    }
+
+    export interface GetSwitchStatsDeviceSwitchStatModuleStatMemoryStat {
+        usage: number;
     }
 
     export interface GetSwitchStatsDeviceSwitchStatModuleStatPic {
@@ -4535,6 +4789,7 @@ export namespace device {
     export interface GetSwitchStatsDeviceSwitchStatModuleStatPoe {
         maxPower: number;
         powerDraw: number;
+        status: string;
     }
 
     export interface GetSwitchStatsDeviceSwitchStatModuleStatPsus {
@@ -4634,6 +4889,10 @@ export namespace device {
          * Is the device attached to POE
          */
         poeOn: boolean;
+        /**
+         * PoE priority. enum: `low`, `high`
+         */
+        poePriority: string;
         portId: string;
         /**
          * Interface MAC address
@@ -4876,6 +5135,59 @@ export namespace device {
         protocol: string;
     }
 
+    export interface SwitchBgpConfig {
+        authKey?: string;
+        /**
+         * Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
+         */
+        bfdMinimumInterval?: number;
+        /**
+         * Export policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        exportPolicy?: string;
+        /**
+         * Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+         */
+        holdTime?: number;
+        /**
+         * Import policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        importPolicy?: string;
+        localAs: string;
+        /**
+         * Property key is the BGP Neighbor IP Address.
+         */
+        neighbors?: {[key: string]: outputs.device.SwitchBgpConfigNeighbors};
+        /**
+         * List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+         */
+        networks?: string[];
+        /**
+         * enum: `external`, `internal`
+         */
+        type: string;
+    }
+
+    export interface SwitchBgpConfigNeighbors {
+        /**
+         * Export policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        exportPolicy?: string;
+        /**
+         * Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+         */
+        holdTime?: number;
+        /**
+         * Import policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        importPolicy?: string;
+        multihopTtl?: number;
+        /**
+         * Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `localAs`. For external BGP, this must differ from `localAs`.
+         */
+        neighborAs: string;
+    }
+
     export interface SwitchDhcpSnooping {
         allNetworks?: boolean;
         /**
@@ -5064,7 +5376,7 @@ export namespace device {
          */
         allNetworks?: boolean;
         /**
-         * Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+         * Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: boolean;
         allowMultipleSupplicants?: boolean;
@@ -5413,6 +5725,10 @@ export namespace device {
          */
         mtu?: number;
         /**
+         * List of network names. Required if `usage`==`inet`
+         */
+        networks?: string[];
+        /**
          * Prevent helpdesk to override the port config
          */
         noLocalOverwrite: boolean;
@@ -5489,7 +5805,7 @@ export namespace device {
          */
         allNetworks?: boolean;
         /**
-         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: boolean;
         /**
@@ -5907,6 +6223,57 @@ export namespace device {
          * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
          */
         severity: string;
+    }
+
+    export interface SwitchRoutingPolicies {
+        /**
+         * at least criteria/filter must be specified to match the term, all criteria have to be met
+         */
+        terms?: outputs.device.SwitchRoutingPoliciesTerm[];
+    }
+
+    export interface SwitchRoutingPoliciesTerm {
+        /**
+         * When used as import policy
+         */
+        actions?: outputs.device.SwitchRoutingPoliciesTermActions;
+        /**
+         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         */
+        matching?: outputs.device.SwitchRoutingPoliciesTermMatching;
+        name: string;
+    }
+
+    export interface SwitchRoutingPoliciesTermActions {
+        accept?: boolean;
+        /**
+         * When used as export policy, optional
+         */
+        communities?: string[];
+        /**
+         * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         */
+        localPreference?: string;
+        /**
+         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         */
+        prependAsPaths?: string[];
+    }
+
+    export interface SwitchRoutingPoliciesTermMatching {
+        /**
+         * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         */
+        asPaths?: string[];
+        communities?: string[];
+        /**
+         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         */
+        prefixes?: string[];
+        /**
+         * enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+         */
+        protocols?: string[];
     }
 
     export interface SwitchSnmpConfig {
@@ -6684,9 +7051,9 @@ export namespace org {
          */
         vlanId?: number;
         /**
-         * If `forwarding`==`limited`
+         * If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
          */
-        vlanIds?: number[];
+        vlanIds?: string;
         /**
          * If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
          */
@@ -6883,7 +7250,7 @@ export namespace org {
          */
         antennaMode?: string;
         /**
-         * Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+         * Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
          */
         antennaSelect?: string;
         /**
@@ -8049,18 +8416,18 @@ export namespace org {
          */
         exportCommunities?: string[];
         /**
-         * Optional, for an import policy, localPreference can be changed
+         * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         localPreference?: string;
         /**
-         * When used as export policy, optional. By default, the local AS will be prepended, to change it
+         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
          */
         prependAsPaths?: string[];
     }
 
     export interface DeviceprofileGatewayRoutingPoliciesTermMatching {
         /**
-         * takes regular expression
+         * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         asPaths?: string[];
         communities?: string[];
@@ -8070,7 +8437,7 @@ export namespace org {
          */
         prefixes?: string[];
         /**
-         * `direct`, `bgp`, `osp`, `static`, `aggregate`...
+         * enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
          */
         protocols?: string[];
         routeExists?: outputs.org.DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExists;
@@ -8669,6 +9036,9 @@ export namespace org {
 
     export interface EvpnTopologySwitches {
         deviceprofileId: string;
+        downlinkIps: string[];
+        downlinks: string[];
+        esilaglinks: string[];
         evpnId: number;
         mac: string;
         model: string;
@@ -8689,6 +9059,10 @@ export namespace org {
         role: string;
         routerId: string;
         siteId: string;
+        suggestedDownlinks: string[];
+        suggestedEsilaglinks: string[];
+        suggestedUplinks: string[];
+        uplinks: string[];
     }
 
     export interface GatewaytemplateBgpConfig {
@@ -9590,18 +9964,18 @@ export namespace org {
          */
         exportCommunities?: string[];
         /**
-         * Optional, for an import policy, localPreference can be changed
+         * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         localPreference?: string;
         /**
-         * When used as export policy, optional. By default, the local AS will be prepended, to change it
+         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
          */
         prependAsPaths?: string[];
     }
 
     export interface GatewaytemplateRoutingPoliciesTermMatching {
         /**
-         * takes regular expression
+         * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
          */
         asPaths?: string[];
         communities?: string[];
@@ -9611,7 +9985,7 @@ export namespace org {
          */
         prefixes?: string[];
         /**
-         * `direct`, `bgp`, `osp`, `static`, `aggregate`...
+         * enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
          */
         protocols?: string[];
         routeExists?: outputs.org.GatewaytemplateRoutingPoliciesTermMatchingRouteExists;
@@ -10216,7 +10590,7 @@ export namespace org {
          */
         createdTime: number;
         /**
-         * enum: `block`, `permit`
+         * enum: `block`, `log-and-permit`, `permit`
          */
         fallbackAction: string;
         /**
@@ -10303,6 +10677,10 @@ export namespace org {
          * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          */
         coreAsBorder: boolean;
+        /**
+         * if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+         */
+        enableInbandZtp: boolean;
         overlay: outputs.org.GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay;
         /**
          * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
@@ -10404,6 +10782,14 @@ export namespace org {
          */
         adopted: boolean;
         /**
+         * For Virtual Chassis only, the MAC Address of the FPC0
+         */
+        chassisMac: string;
+        /**
+         * For Virtual Chassis only, the Serial Number of the FPC0
+         */
+        chassisSerial: string;
+        /**
          * Device claim code
          */
         claimCode: string;
@@ -10489,6 +10875,10 @@ export namespace org {
          */
         enabled: boolean;
         /**
+         * Guest portal authorization state. enum: `authorized`, `unknown`
+         */
+        guestAuthState: string;
+        /**
          * Unique ID of the object instance in the Mist Organization
          */
         id: string;
@@ -10523,7 +10913,7 @@ export namespace org {
          */
         id: string;
         /**
-         * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+         * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
          */
         match: string;
         /**
@@ -10532,13 +10922,17 @@ export namespace org {
          *   * `true`: means all values should be matched (i.e., match-all behavior)
          *
          *
-         * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+         * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
          */
         matchAll: boolean;
         /**
          * When the object has been modified for the last time, in epoch
          */
         modifiedTime: number;
+        /**
+         * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+         */
+        nacportalId: string;
         name: string;
         orgId: string;
         /**
@@ -10562,7 +10956,7 @@ export namespace org {
          */
         sessionTimeout: number;
         /**
-         * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
+         * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
          */
         type: string;
         /**
@@ -10897,7 +11291,7 @@ export namespace org {
 
     export interface GetServicepoliciesOrgServicepolicy {
         /**
-         * For SRX Only
+         * SRX only
          */
         aamw: outputs.org.GetServicepoliciesOrgServicepolicyAamw;
         /**
@@ -10909,7 +11303,7 @@ export namespace org {
          */
         antivirus: outputs.org.GetServicepoliciesOrgServicepolicyAntivirus;
         /**
-         * For SRX Only
+         * SRX only
          */
         appqoe: outputs.org.GetServicepoliciesOrgServicepolicyAppqoe;
         /**
@@ -11005,7 +11399,7 @@ export namespace org {
 
     export interface GetServicesOrgService {
         /**
-         * If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+         * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
          */
         addresses: string[];
         /**
@@ -11024,11 +11418,11 @@ export namespace org {
          */
         apps: string[];
         /**
-         * 0 means unlimited
+         * 0 means unlimited, value from 0 to 107374182
          */
         clientLimitDown: number;
         /**
-         * 0 means unlimited
+         * 0 means unlimited, value from 0 to 107374182
          */
         clientLimitUp: number;
         /**
@@ -11038,7 +11432,7 @@ export namespace org {
         description: string;
         dscp: string;
         /**
-         * enum: `nonRevertable`, `none`, `revertable`
+         * enum: `nonRevertible`, `none`, `revertible`
          */
         failoverPolicy: string;
         /**
@@ -11059,11 +11453,11 @@ export namespace org {
         name: string;
         orgId: string;
         /**
-         * 0 means unlimited
+         * 0 means unlimited, value from 0 to 107374182
          */
         serviceLimitDown: number;
         /**
-         * 0 means unlimited
+         * 0 means unlimited, value from 0 to 107374182
          */
         serviceLimitUp: number;
         /**
@@ -11146,7 +11540,7 @@ export namespace org {
          */
         role: string;
         /**
-         * enum: `org`, `site`, `sitegroup`
+         * enum: `org`, `site`, `sitegroup`, `orgsites`
          */
         scope: string;
         /**
@@ -11218,7 +11612,7 @@ export namespace org {
          */
         bfdProfile: string;
         /**
-         * If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+         * If `type`==`mesh` and for SSR only, whether to use tunnel mode
          */
         bfdUseTunnelMode: boolean;
         /**
@@ -11247,6 +11641,10 @@ export namespace org {
     }
 
     export interface GetWebhooksOrgWebhook {
+        /**
+         * Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+         */
+        assetfilterIds: string[];
         /**
          * When the object has been created, in epoch
          */
@@ -11345,11 +11743,11 @@ export namespace org {
          */
         airwatch: outputs.org.GetWlansOrgWlanAirwatch;
         /**
-         * Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+         * Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
          */
         allowIpv6Ndp: boolean;
         /**
-         * Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+         * Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
          */
         allowMdns: boolean;
         /**
@@ -11365,7 +11763,7 @@ export namespace org {
          */
         appLimit: outputs.org.GetWlansOrgWlanAppLimit;
         /**
-         * APp qos wlan settings
+         * APP qos wlan settings
          */
         appQos: outputs.org.GetWlansOrgWlanAppQos;
         /**
@@ -11608,7 +12006,7 @@ export namespace org {
          */
         portalAllowedSubnets: string[];
         /**
-         * APi secret (auto-generated) that can be used to sign guest authorization requests
+         * API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
          */
         portalApiSecret: string;
         /**
@@ -11619,6 +12017,9 @@ export namespace org {
          * Url of portal background image
          */
         portalImage: string;
+        /**
+         * URL used in the SSO process, auto-generated when auth is set to `sso`
+         */
         portalSsoUrl: string;
         qos: outputs.org.GetWlansOrgWlanQos;
         /**
@@ -11988,6 +12389,26 @@ export namespace org {
 
     export interface GetWlansOrgWlanMistNac {
         /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         */
+        acctInterimInterval: number;
+        /**
+         * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+         */
+        authServersRetries: number;
+        /**
+         * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+         */
+        authServersTimeout: number;
+        /**
+         * Allows a RADIUS server to dynamically modify the authorization status of a user session.
+         */
+        coaEnabled: boolean;
+        /**
+         * the communication port used for “Change of Authorization” (CoA) messages
+         */
+        coaPort: number;
+        /**
          * When enabled:
          *   * `authServers` is ignored
          *   * `acctServers` is ignored
@@ -11997,6 +12418,18 @@ export namespace org {
          *   * `coaEnabled` is assumed
          */
         enabled: boolean;
+        /**
+         * If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+         */
+        fastDot1xTimers: boolean;
+        /**
+         * Which network the mist nac server resides in
+         */
+        network: string;
+        /**
+         * In case there is a static IP for this network, we can specify it using source ip
+         */
+        sourceIp: string;
     }
 
     export interface GetWlansOrgWlanPortal {
@@ -12177,7 +12610,7 @@ export namespace org {
          */
         password: string;
         /**
-         * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+         * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
          */
         predefinedSponsorsEnabled: boolean;
         /**
@@ -12210,9 +12643,17 @@ export namespace org {
          */
         smsMessageFormat: string;
         /**
-         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          */
         smsProvider: string;
+        /**
+         * Required if `smsProvider`==`smsglobal`, Client API Key
+         */
+        smsglobalApiKey: string;
+        /**
+         * Required if `smsProvider`==`smsglobal`, Client secret
+         */
+        smsglobalApiSecret: string;
         /**
          * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
          */
@@ -12258,7 +12699,7 @@ export namespace org {
          */
         ssoIdpCert: string;
         /**
-         * Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo: string;
         /**
@@ -12908,6 +13349,59 @@ export namespace org {
         protocol: string;
     }
 
+    export interface NetworktemplateBgpConfig {
+        authKey?: string;
+        /**
+         * Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
+         */
+        bfdMinimumInterval?: number;
+        /**
+         * Export policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        exportPolicy?: string;
+        /**
+         * Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+         */
+        holdTime?: number;
+        /**
+         * Import policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        importPolicy?: string;
+        localAs: string;
+        /**
+         * Property key is the BGP Neighbor IP Address.
+         */
+        neighbors?: {[key: string]: outputs.org.NetworktemplateBgpConfigNeighbors};
+        /**
+         * List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+         */
+        networks?: string[];
+        /**
+         * enum: `external`, `internal`
+         */
+        type: string;
+    }
+
+    export interface NetworktemplateBgpConfigNeighbors {
+        /**
+         * Export policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        exportPolicy?: string;
+        /**
+         * Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+         */
+        holdTime?: number;
+        /**
+         * Import policy must match one of the policy names defined in the `routingPolicies` property.
+         */
+        importPolicy?: string;
+        multihopTtl?: number;
+        /**
+         * Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `localAs`. For external BGP, this must differ from `localAs`.
+         */
+        neighborAs: string;
+    }
+
     export interface NetworktemplateDhcpSnooping {
         allNetworks?: boolean;
         /**
@@ -13070,7 +13564,7 @@ export namespace org {
          */
         allNetworks?: boolean;
         /**
-         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: boolean;
         /**
@@ -13494,6 +13988,57 @@ export namespace org {
         severity: string;
     }
 
+    export interface NetworktemplateRoutingPolicies {
+        /**
+         * at least criteria/filter must be specified to match the term, all criteria have to be met
+         */
+        terms?: outputs.org.NetworktemplateRoutingPoliciesTerm[];
+    }
+
+    export interface NetworktemplateRoutingPoliciesTerm {
+        /**
+         * When used as import policy
+         */
+        actions?: outputs.org.NetworktemplateRoutingPoliciesTermActions;
+        /**
+         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         */
+        matching?: outputs.org.NetworktemplateRoutingPoliciesTermMatching;
+        name: string;
+    }
+
+    export interface NetworktemplateRoutingPoliciesTermActions {
+        accept?: boolean;
+        /**
+         * When used as export policy, optional
+         */
+        communities?: string[];
+        /**
+         * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         */
+        localPreference?: string;
+        /**
+         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         */
+        prependAsPaths?: string[];
+    }
+
+    export interface NetworktemplateRoutingPoliciesTermMatching {
+        /**
+         * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         */
+        asPaths?: string[];
+        communities?: string[];
+        /**
+         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         */
+        prefixes?: string[];
+        /**
+         * enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+         */
+        protocols?: string[];
+    }
+
     export interface NetworktemplateSnmpConfig {
         clientLists?: outputs.org.NetworktemplateSnmpConfigClientList[];
         contact?: string;
@@ -13823,6 +14368,10 @@ export namespace org {
          * Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
          */
         mtu?: number;
+        /**
+         * List of network names. Required if `usage`==`inet`
+         */
+        networks?: string[];
         /**
          * Prevent helpdesk to override the port config
          */
@@ -14683,7 +15232,7 @@ export namespace org {
          */
         enabled: boolean;
         /**
-         * password expiry in days
+         * Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
          */
         expiryInDays?: number;
         /**
@@ -16557,6 +17106,9 @@ export namespace site {
 
     export interface EvpnTopologySwitches {
         deviceprofileId: string;
+        downlinkIps: string[];
+        downlinks: string[];
+        esilaglinks: string[];
         evpnId: number;
         mac: string;
         model: string;
@@ -16577,6 +17129,10 @@ export namespace site {
         role: string;
         routerId: string;
         siteId: string;
+        suggestedDownlinks: string[];
+        suggestedEsilaglinks: string[];
+        suggestedUplinks: string[];
+        uplinks: string[];
     }
 
     export interface GetEvpnTopologiesSiteEvpnTopology {
@@ -16625,6 +17181,10 @@ export namespace site {
          * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          */
         coreAsBorder: boolean;
+        /**
+         * if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+         */
+        enableInbandZtp: boolean;
         overlay: outputs.site.GetEvpnTopologiesSiteEvpnTopologyEvpnOptionsOverlay;
         /**
          * Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
@@ -16739,6 +17299,10 @@ export namespace site {
 
     export interface GetWebhooksSiteWebhook {
         /**
+         * Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+         */
+        assetfilterIds: string[];
+        /**
          * When the object has been created, in epoch
          */
         createdTime: number;
@@ -16837,11 +17401,11 @@ export namespace site {
          */
         airwatch: outputs.site.GetWlansSiteWlanAirwatch;
         /**
-         * Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+         * Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
          */
         allowIpv6Ndp: boolean;
         /**
-         * Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+         * Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
          */
         allowMdns: boolean;
         /**
@@ -16857,7 +17421,7 @@ export namespace site {
          */
         appLimit: outputs.site.GetWlansSiteWlanAppLimit;
         /**
-         * APp qos wlan settings
+         * APP qos wlan settings
          */
         appQos: outputs.site.GetWlansSiteWlanAppQos;
         /**
@@ -17100,7 +17664,7 @@ export namespace site {
          */
         portalAllowedSubnets: string[];
         /**
-         * APi secret (auto-generated) that can be used to sign guest authorization requests
+         * API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
          */
         portalApiSecret: string;
         /**
@@ -17111,6 +17675,9 @@ export namespace site {
          * Url of portal background image
          */
         portalImage: string;
+        /**
+         * URL used in the SSO process, auto-generated when auth is set to `sso`
+         */
         portalSsoUrl: string;
         qos: outputs.site.GetWlansSiteWlanQos;
         /**
@@ -17480,6 +18047,26 @@ export namespace site {
 
     export interface GetWlansSiteWlanMistNac {
         /**
+         * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+         */
+        acctInterimInterval: number;
+        /**
+         * Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+         */
+        authServersRetries: number;
+        /**
+         * Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+         */
+        authServersTimeout: number;
+        /**
+         * Allows a RADIUS server to dynamically modify the authorization status of a user session.
+         */
+        coaEnabled: boolean;
+        /**
+         * the communication port used for “Change of Authorization” (CoA) messages
+         */
+        coaPort: number;
+        /**
          * When enabled:
          *   * `authServers` is ignored
          *   * `acctServers` is ignored
@@ -17489,6 +18076,18 @@ export namespace site {
          *   * `coaEnabled` is assumed
          */
         enabled: boolean;
+        /**
+         * If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+         */
+        fastDot1xTimers: boolean;
+        /**
+         * Which network the mist nac server resides in
+         */
+        network: string;
+        /**
+         * In case there is a static IP for this network, we can specify it using source ip
+         */
+        sourceIp: string;
     }
 
     export interface GetWlansSiteWlanPortal {
@@ -17669,7 +18268,7 @@ export namespace site {
          */
         password: string;
         /**
-         * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+         * Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
          */
         predefinedSponsorsEnabled: boolean;
         /**
@@ -17702,9 +18301,17 @@ export namespace site {
          */
         smsMessageFormat: string;
         /**
-         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
          */
         smsProvider: string;
+        /**
+         * Required if `smsProvider`==`smsglobal`, Client API Key
+         */
+        smsglobalApiKey: string;
+        /**
+         * Required if `smsProvider`==`smsglobal`, Client secret
+         */
+        smsglobalApiSecret: string;
         /**
          * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
          */
@@ -17750,7 +18357,7 @@ export namespace site {
          */
         ssoIdpCert: string;
         /**
-         * Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo: string;
         /**
@@ -18170,7 +18777,7 @@ export namespace site {
          */
         allNetworks?: boolean;
         /**
-         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+         * Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
          */
         allowDhcpd?: boolean;
         /**
@@ -18594,6 +19201,57 @@ export namespace site {
         severity: string;
     }
 
+    export interface NetworktemplateRoutingPolicies {
+        /**
+         * at least criteria/filter must be specified to match the term, all criteria have to be met
+         */
+        terms?: outputs.site.NetworktemplateRoutingPoliciesTerm[];
+    }
+
+    export interface NetworktemplateRoutingPoliciesTerm {
+        /**
+         * When used as import policy
+         */
+        actions?: outputs.site.NetworktemplateRoutingPoliciesTermActions;
+        /**
+         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         */
+        matching?: outputs.site.NetworktemplateRoutingPoliciesTermMatching;
+        name: string;
+    }
+
+    export interface NetworktemplateRoutingPoliciesTermActions {
+        accept?: boolean;
+        /**
+         * When used as export policy, optional
+         */
+        communities?: string[];
+        /**
+         * Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         */
+        localPreference?: string;
+        /**
+         * When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+         */
+        prependAsPaths?: string[];
+    }
+
+    export interface NetworktemplateRoutingPoliciesTermMatching {
+        /**
+         * BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+         */
+        asPaths?: string[];
+        communities?: string[];
+        /**
+         * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         */
+        prefixes?: string[];
+        /**
+         * enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+         */
+        protocols?: string[];
+    }
+
     export interface NetworktemplateSnmpConfig {
         clientLists?: outputs.site.NetworktemplateSnmpConfigClientList[];
         contact?: string;
@@ -18923,6 +19581,10 @@ export namespace site {
          * Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
          */
         mtu?: number;
+        /**
+         * List of network names. Required if `usage`==`inet`
+         */
+        networks?: string[];
         /**
          * Prevent helpdesk to override the port config
          */

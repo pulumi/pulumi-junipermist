@@ -24,6 +24,11 @@ public final class GetNacrulesOrgNacrule {
      */
     private Boolean enabled;
     /**
+     * @return Guest portal authorization state. enum: `authorized`, `unknown`
+     * 
+     */
+    private String guestAuthState;
+    /**
      * @return Unique ID of the object instance in the Mist Organization
      * 
      */
@@ -55,6 +60,13 @@ public final class GetNacrulesOrgNacrule {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return Guest portal authorization state. enum: `authorized`, `unknown`
+     * 
+     */
+    public String guestAuthState() {
+        return this.guestAuthState;
     }
     /**
      * @return Unique ID of the object instance in the Mist Organization
@@ -95,6 +107,7 @@ public final class GetNacrulesOrgNacrule {
     public static final class Builder {
         private Double createdTime;
         private Boolean enabled;
+        private String guestAuthState;
         private String id;
         private Double modifiedTime;
         private String name;
@@ -105,6 +118,7 @@ public final class GetNacrulesOrgNacrule {
     	      Objects.requireNonNull(defaults);
     	      this.createdTime = defaults.createdTime;
     	      this.enabled = defaults.enabled;
+    	      this.guestAuthState = defaults.guestAuthState;
     	      this.id = defaults.id;
     	      this.modifiedTime = defaults.modifiedTime;
     	      this.name = defaults.name;
@@ -126,6 +140,14 @@ public final class GetNacrulesOrgNacrule {
               throw new MissingRequiredPropertyException("GetNacrulesOrgNacrule", "enabled");
             }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder guestAuthState(String guestAuthState) {
+            if (guestAuthState == null) {
+              throw new MissingRequiredPropertyException("GetNacrulesOrgNacrule", "guestAuthState");
+            }
+            this.guestAuthState = guestAuthState;
             return this;
         }
         @CustomType.Setter
@@ -172,6 +194,7 @@ public final class GetNacrulesOrgNacrule {
             final var _resultValue = new GetNacrulesOrgNacrule();
             _resultValue.createdTime = createdTime;
             _resultValue.enabled = enabled;
+            _resultValue.guestAuthState = guestAuthState;
             _resultValue.id = id;
             _resultValue.modifiedTime = modifiedTime;
             _resultValue.name = name;

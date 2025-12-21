@@ -51,6 +51,15 @@ namespace Pulumi.JuniperMist
     [JuniperMistResourceType("junipermist:index/upgradeDevice:UpgradeDevice")]
     public partial class UpgradeDevice : global::Pulumi.CustomResource
     {
+        [Output("autoUpgradeStat")]
+        public Output<Outputs.UpgradeDeviceAutoUpgradeStat> AutoUpgradeStat { get; private set; } = null!;
+
+        [Output("configTimestamp")]
+        public Output<int> ConfigTimestamp { get; private set; } = null!;
+
+        [Output("configVersion")]
+        public Output<int> ConfigVersion { get; private set; } = null!;
+
         [Output("deviceId")]
         public Output<string> DeviceId { get; private set; } = null!;
 
@@ -59,6 +68,9 @@ namespace Pulumi.JuniperMist
         /// </summary>
         [Output("deviceVersion")]
         public Output<string> DeviceVersion { get; private set; } = null!;
+
+        [Output("extIp")]
+        public Output<string> ExtIp { get; private set; } = null!;
 
         [Output("fwupdate")]
         public Output<Outputs.UpgradeDeviceFwupdate> Fwupdate { get; private set; } = null!;
@@ -119,6 +131,12 @@ namespace Pulumi.JuniperMist
         /// </summary>
         [Output("syncUpgradeTimeout")]
         public Output<int> SyncUpgradeTimeout { get; private set; } = null!;
+
+        [Output("tagId")]
+        public Output<int> TagId { get; private set; } = null!;
+
+        [Output("tagUuid")]
+        public Output<string> TagUuid { get; private set; } = null!;
 
         /// <summary>
         /// firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions
@@ -247,6 +265,15 @@ namespace Pulumi.JuniperMist
 
     public sealed class UpgradeDeviceState : global::Pulumi.ResourceArgs
     {
+        [Input("autoUpgradeStat")]
+        public Input<Inputs.UpgradeDeviceAutoUpgradeStatGetArgs>? AutoUpgradeStat { get; set; }
+
+        [Input("configTimestamp")]
+        public Input<int>? ConfigTimestamp { get; set; }
+
+        [Input("configVersion")]
+        public Input<int>? ConfigVersion { get; set; }
+
         [Input("deviceId")]
         public Input<string>? DeviceId { get; set; }
 
@@ -255,6 +282,9 @@ namespace Pulumi.JuniperMist
         /// </summary>
         [Input("deviceVersion")]
         public Input<string>? DeviceVersion { get; set; }
+
+        [Input("extIp")]
+        public Input<string>? ExtIp { get; set; }
 
         [Input("fwupdate")]
         public Input<Inputs.UpgradeDeviceFwupdateGetArgs>? Fwupdate { get; set; }
@@ -315,6 +345,12 @@ namespace Pulumi.JuniperMist
         /// </summary>
         [Input("syncUpgradeTimeout")]
         public Input<int>? SyncUpgradeTimeout { get; set; }
+
+        [Input("tagId")]
+        public Input<int>? TagId { get; set; }
+
+        [Input("tagUuid")]
+        public Input<string>? TagUuid { get; set; }
 
         /// <summary>
         /// firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions

@@ -175,14 +175,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * APp qos wlan settings
+     * APP qos wlan settings
      * 
      */
     @Import(name="appQos")
     private @Nullable Output<WlanAppQosArgs> appQos;
 
     /**
-     * @return APp qos wlan settings
+     * @return APP qos wlan settings
      * 
      */
     public Optional<Output<WlanAppQosArgs>> appQos() {
@@ -1710,7 +1710,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appQos APp qos wlan settings
+         * @param appQos APP qos wlan settings
          * 
          * @return builder
          * 
@@ -1721,7 +1721,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appQos APp qos wlan settings
+         * @param appQos APP qos wlan settings
          * 
          * @return builder
          * 

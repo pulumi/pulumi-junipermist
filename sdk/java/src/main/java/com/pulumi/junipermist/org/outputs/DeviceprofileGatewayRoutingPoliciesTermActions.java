@@ -37,12 +37,12 @@ public final class DeviceprofileGatewayRoutingPoliciesTermActions {
      */
     private @Nullable List<String> exportCommunities;
     /**
-     * @return Optional, for an import policy, localPreference can be changed
+     * @return Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
      * 
      */
     private @Nullable String localPreference;
     /**
-     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it
+     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
      * 
      */
     private @Nullable List<String> prependAsPaths;
@@ -86,14 +86,14 @@ public final class DeviceprofileGatewayRoutingPoliciesTermActions {
         return this.exportCommunities == null ? List.of() : this.exportCommunities;
     }
     /**
-     * @return Optional, for an import policy, localPreference can be changed
+     * @return Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
      * 
      */
     public Optional<String> localPreference() {
         return Optional.ofNullable(this.localPreference);
     }
     /**
-     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it
+     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
      * 
      */
     public List<String> prependAsPaths() {

@@ -69,6 +69,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
+        [Input("networks")]
+        private InputList<string>? _networks;
+
+        /// <summary>
+        /// List of network names. Required if `Usage`==`Inet`
+        /// </summary>
+        public InputList<string> Networks
+        {
+            get => _networks ?? (_networks = new InputList<string>());
+            set => _networks = value;
+        }
+
         /// <summary>
         /// Prevent helpdesk to override the port config
         /// </summary>

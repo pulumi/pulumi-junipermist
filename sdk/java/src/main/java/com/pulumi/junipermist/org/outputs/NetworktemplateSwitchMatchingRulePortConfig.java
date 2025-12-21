@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -57,6 +58,11 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
      * 
      */
     private @Nullable Integer mtu;
+    /**
+     * @return List of network names. Required if `usage`==`inet`
+     * 
+     */
+    private @Nullable List<String> networks;
     /**
      * @return Prevent helpdesk to override the port config
      * 
@@ -146,6 +152,13 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
         return Optional.ofNullable(this.mtu);
     }
     /**
+     * @return List of network names. Required if `usage`==`inet`
+     * 
+     */
+    public List<String> networks() {
+        return this.networks == null ? List.of() : this.networks;
+    }
+    /**
      * @return Prevent helpdesk to override the port config
      * 
      */
@@ -197,6 +210,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
         private @Nullable String dynamicUsage;
         private @Nullable Boolean esilag;
         private @Nullable Integer mtu;
+        private @Nullable List<String> networks;
         private @Nullable Boolean noLocalOverwrite;
         private @Nullable Boolean poeDisabled;
         private @Nullable String portNetwork;
@@ -216,6 +230,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
     	      this.dynamicUsage = defaults.dynamicUsage;
     	      this.esilag = defaults.esilag;
     	      this.mtu = defaults.mtu;
+    	      this.networks = defaults.networks;
     	      this.noLocalOverwrite = defaults.noLocalOverwrite;
     	      this.poeDisabled = defaults.poeDisabled;
     	      this.portNetwork = defaults.portNetwork;
@@ -290,6 +305,15 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder networks(@Nullable List<String> networks) {
+
+            this.networks = networks;
+            return this;
+        }
+        public Builder networks(String... networks) {
+            return networks(List.of(networks));
+        }
+        @CustomType.Setter
         public Builder noLocalOverwrite(@Nullable Boolean noLocalOverwrite) {
 
             this.noLocalOverwrite = noLocalOverwrite;
@@ -334,6 +358,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
             _resultValue.dynamicUsage = dynamicUsage;
             _resultValue.esilag = esilag;
             _resultValue.mtu = mtu;
+            _resultValue.networks = networks;
             _resultValue.noLocalOverwrite = noLocalOverwrite;
             _resultValue.poeDisabled = poeDisabled;
             _resultValue.portNetwork = portNetwork;

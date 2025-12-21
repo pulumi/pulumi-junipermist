@@ -39,7 +39,7 @@ public final class DeviceprofileApRadioConfig {
      */
     private @Nullable String antennaMode;
     /**
-     * @return Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+     * @return Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
      * 
      */
     private @Nullable String antennaSelect;
@@ -122,7 +122,7 @@ public final class DeviceprofileApRadioConfig {
         return Optional.ofNullable(this.antennaMode);
     }
     /**
-     * @return Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+     * @return Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
      * 
      */
     public Optional<String> antennaSelect() {

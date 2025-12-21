@@ -30,6 +30,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly double System;
         /// <summary>
+        /// CPU usage
+        /// </summary>
+        public readonly double Usage;
+        /// <summary>
         /// Percentage of CPU time being used by user processes
         /// </summary>
         public readonly double User;
@@ -44,12 +48,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             double system,
 
+            double usage,
+
             double user)
         {
             Idle = idle;
             Interrupt = interrupt;
             LoadAvgs = loadAvgs;
             System = system;
+            Usage = usage;
             User = user;
         }
     }

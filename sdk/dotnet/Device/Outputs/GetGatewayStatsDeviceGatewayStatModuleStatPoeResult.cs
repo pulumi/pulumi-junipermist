@@ -15,15 +15,19 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly double MaxPower;
         public readonly double PowerDraw;
+        public readonly string Status;
 
         [OutputConstructor]
         private GetGatewayStatsDeviceGatewayStatModuleStatPoeResult(
             double maxPower,
 
-            double powerDraw)
+            double powerDraw,
+
+            string status)
         {
             MaxPower = maxPower;
             PowerDraw = powerDraw;
+            Status = status;
         }
     }
 }

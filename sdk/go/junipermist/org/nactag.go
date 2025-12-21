@@ -65,7 +65,7 @@ type Nactag struct {
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames pulumi.StringArrayOutput `pulumi:"egressVlanNames"`
 	GbpTag          pulumi.StringPtrOutput   `pulumi:"gbpTag"`
-	// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringPtrOutput `pulumi:"match"`
 	// This field is applicable only when `type`==`match`
 	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -140,7 +140,7 @@ type nactagState struct {
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames []string `pulumi:"egressVlanNames"`
 	GbpTag          *string  `pulumi:"gbpTag"`
-	// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match *string `pulumi:"match"`
 	// This field is applicable only when `type`==`match`
 	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -180,7 +180,7 @@ type NactagState struct {
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames pulumi.StringArrayInput
 	GbpTag          pulumi.StringPtrInput
-	// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringPtrInput
 	// This field is applicable only when `type`==`match`
 	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -224,7 +224,7 @@ type nactagArgs struct {
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames []string `pulumi:"egressVlanNames"`
 	GbpTag          *string  `pulumi:"gbpTag"`
-	// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match *string `pulumi:"match"`
 	// This field is applicable only when `type`==`match`
 	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -265,7 +265,7 @@ type NactagArgs struct {
 	// If `type`==`egressVlanNames`, list of egress vlans to return
 	EgressVlanNames pulumi.StringArrayInput
 	GbpTag          pulumi.StringPtrInput
-	// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringPtrInput
 	// This field is applicable only when `type`==`match`
 	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -400,7 +400,7 @@ func (o NactagOutput) GbpTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.StringPtrOutput { return v.GbpTag }).(pulumi.StringPtrOutput)
 }
 
-// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrHealth`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 func (o NactagOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nactag) pulumi.StringPtrOutput { return v.Match }).(pulumi.StringPtrOutput)
 }

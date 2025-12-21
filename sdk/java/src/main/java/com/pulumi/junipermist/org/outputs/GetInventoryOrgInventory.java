@@ -17,6 +17,16 @@ public final class GetInventoryOrgInventory {
      */
     private Boolean adopted;
     /**
+     * @return For Virtual Chassis only, the MAC Address of the FPC0
+     * 
+     */
+    private String chassisMac;
+    /**
+     * @return For Virtual Chassis only, the Serial Number of the FPC0
+     * 
+     */
+    private String chassisSerial;
+    /**
      * @return Device claim code
      * 
      */
@@ -96,6 +106,20 @@ public final class GetInventoryOrgInventory {
      */
     public Boolean adopted() {
         return this.adopted;
+    }
+    /**
+     * @return For Virtual Chassis only, the MAC Address of the FPC0
+     * 
+     */
+    public String chassisMac() {
+        return this.chassisMac;
+    }
+    /**
+     * @return For Virtual Chassis only, the Serial Number of the FPC0
+     * 
+     */
+    public String chassisSerial() {
+        return this.chassisSerial;
     }
     /**
      * @return Device claim code
@@ -212,6 +236,8 @@ public final class GetInventoryOrgInventory {
     @CustomType.Builder
     public static final class Builder {
         private Boolean adopted;
+        private String chassisMac;
+        private String chassisSerial;
         private String claimCode;
         private Boolean connected;
         private String deviceprofileId;
@@ -232,6 +258,8 @@ public final class GetInventoryOrgInventory {
         public Builder(GetInventoryOrgInventory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adopted = defaults.adopted;
+    	      this.chassisMac = defaults.chassisMac;
+    	      this.chassisSerial = defaults.chassisSerial;
     	      this.claimCode = defaults.claimCode;
     	      this.connected = defaults.connected;
     	      this.deviceprofileId = defaults.deviceprofileId;
@@ -256,6 +284,22 @@ public final class GetInventoryOrgInventory {
               throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "adopted");
             }
             this.adopted = adopted;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder chassisMac(String chassisMac) {
+            if (chassisMac == null) {
+              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "chassisMac");
+            }
+            this.chassisMac = chassisMac;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder chassisSerial(String chassisSerial) {
+            if (chassisSerial == null) {
+              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "chassisSerial");
+            }
+            this.chassisSerial = chassisSerial;
             return this;
         }
         @CustomType.Setter
@@ -389,6 +433,8 @@ public final class GetInventoryOrgInventory {
         public GetInventoryOrgInventory build() {
             final var _resultValue = new GetInventoryOrgInventory();
             _resultValue.adopted = adopted;
+            _resultValue.chassisMac = chassisMac;
+            _resultValue.chassisSerial = chassisSerial;
             _resultValue.claimCode = claimCode;
             _resultValue.connected = connected;
             _resultValue.deviceprofileId = deviceprofileId;

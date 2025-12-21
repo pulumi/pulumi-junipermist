@@ -6,6 +6,8 @@ package com.pulumi.junipermist.device.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModule2StatFan;
+import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModule2StatMemoryStat;
+import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModule2StatNetworkResource;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModule2StatPoe;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModule2StatPsus;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsDeviceGatewayStatModule2StatTemperature;
@@ -21,6 +23,7 @@ import java.util.Objects;
 public final class GetGatewayStatsDeviceGatewayStatModule2Stat {
     private String backupVersion;
     private String biosVersion;
+    private String bootPartition;
     private String cpldVersion;
     private List<GetGatewayStatsDeviceGatewayStatModule2StatFan> fans;
     private String fpgaVersion;
@@ -31,7 +34,13 @@ public final class GetGatewayStatsDeviceGatewayStatModule2Stat {
     private Double lastSeen;
     private Boolean locating;
     private String mac;
+    /**
+     * @return Memory usage stat (for virtual chassis, memory usage of master RE)
+     * 
+     */
+    private GetGatewayStatsDeviceGatewayStatModule2StatMemoryStat memoryStat;
     private String model;
+    private List<GetGatewayStatsDeviceGatewayStatModule2StatNetworkResource> networkResources;
     private String opticsCpldVersion;
     private String pendingVersion;
     private GetGatewayStatsDeviceGatewayStatModule2StatPoe poe;
@@ -63,6 +72,9 @@ public final class GetGatewayStatsDeviceGatewayStatModule2Stat {
     public String biosVersion() {
         return this.biosVersion;
     }
+    public String bootPartition() {
+        return this.bootPartition;
+    }
     public String cpldVersion() {
         return this.cpldVersion;
     }
@@ -85,8 +97,18 @@ public final class GetGatewayStatsDeviceGatewayStatModule2Stat {
     public String mac() {
         return this.mac;
     }
+    /**
+     * @return Memory usage stat (for virtual chassis, memory usage of master RE)
+     * 
+     */
+    public GetGatewayStatsDeviceGatewayStatModule2StatMemoryStat memoryStat() {
+        return this.memoryStat;
+    }
     public String model() {
         return this.model;
+    }
+    public List<GetGatewayStatsDeviceGatewayStatModule2StatNetworkResource> networkResources() {
+        return this.networkResources;
     }
     public String opticsCpldVersion() {
         return this.opticsCpldVersion;
@@ -161,13 +183,16 @@ public final class GetGatewayStatsDeviceGatewayStatModule2Stat {
     public static final class Builder {
         private String backupVersion;
         private String biosVersion;
+        private String bootPartition;
         private String cpldVersion;
         private List<GetGatewayStatsDeviceGatewayStatModule2StatFan> fans;
         private String fpgaVersion;
         private Double lastSeen;
         private Boolean locating;
         private String mac;
+        private GetGatewayStatsDeviceGatewayStatModule2StatMemoryStat memoryStat;
         private String model;
+        private List<GetGatewayStatsDeviceGatewayStatModule2StatNetworkResource> networkResources;
         private String opticsCpldVersion;
         private String pendingVersion;
         private GetGatewayStatsDeviceGatewayStatModule2StatPoe poe;
@@ -192,13 +217,16 @@ public final class GetGatewayStatsDeviceGatewayStatModule2Stat {
     	      Objects.requireNonNull(defaults);
     	      this.backupVersion = defaults.backupVersion;
     	      this.biosVersion = defaults.biosVersion;
+    	      this.bootPartition = defaults.bootPartition;
     	      this.cpldVersion = defaults.cpldVersion;
     	      this.fans = defaults.fans;
     	      this.fpgaVersion = defaults.fpgaVersion;
     	      this.lastSeen = defaults.lastSeen;
     	      this.locating = defaults.locating;
     	      this.mac = defaults.mac;
+    	      this.memoryStat = defaults.memoryStat;
     	      this.model = defaults.model;
+    	      this.networkResources = defaults.networkResources;
     	      this.opticsCpldVersion = defaults.opticsCpldVersion;
     	      this.pendingVersion = defaults.pendingVersion;
     	      this.poe = defaults.poe;
@@ -234,6 +262,14 @@ public final class GetGatewayStatsDeviceGatewayStatModule2Stat {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModule2Stat", "biosVersion");
             }
             this.biosVersion = biosVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bootPartition(String bootPartition) {
+            if (bootPartition == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModule2Stat", "bootPartition");
+            }
+            this.bootPartition = bootPartition;
             return this;
         }
         @CustomType.Setter
@@ -288,12 +324,31 @@ public final class GetGatewayStatsDeviceGatewayStatModule2Stat {
             return this;
         }
         @CustomType.Setter
+        public Builder memoryStat(GetGatewayStatsDeviceGatewayStatModule2StatMemoryStat memoryStat) {
+            if (memoryStat == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModule2Stat", "memoryStat");
+            }
+            this.memoryStat = memoryStat;
+            return this;
+        }
+        @CustomType.Setter
         public Builder model(String model) {
             if (model == null) {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModule2Stat", "model");
             }
             this.model = model;
             return this;
+        }
+        @CustomType.Setter
+        public Builder networkResources(List<GetGatewayStatsDeviceGatewayStatModule2StatNetworkResource> networkResources) {
+            if (networkResources == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModule2Stat", "networkResources");
+            }
+            this.networkResources = networkResources;
+            return this;
+        }
+        public Builder networkResources(GetGatewayStatsDeviceGatewayStatModule2StatNetworkResource... networkResources) {
+            return networkResources(List.of(networkResources));
         }
         @CustomType.Setter
         public Builder opticsCpldVersion(String opticsCpldVersion) {
@@ -460,13 +515,16 @@ public final class GetGatewayStatsDeviceGatewayStatModule2Stat {
             final var _resultValue = new GetGatewayStatsDeviceGatewayStatModule2Stat();
             _resultValue.backupVersion = backupVersion;
             _resultValue.biosVersion = biosVersion;
+            _resultValue.bootPartition = bootPartition;
             _resultValue.cpldVersion = cpldVersion;
             _resultValue.fans = fans;
             _resultValue.fpgaVersion = fpgaVersion;
             _resultValue.lastSeen = lastSeen;
             _resultValue.locating = locating;
             _resultValue.mac = mac;
+            _resultValue.memoryStat = memoryStat;
             _resultValue.model = model;
+            _resultValue.networkResources = networkResources;
             _resultValue.opticsCpldVersion = opticsCpldVersion;
             _resultValue.pendingVersion = pendingVersion;
             _resultValue.poe = poe;

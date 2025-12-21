@@ -21,14 +21,22 @@ public final class GetApStatsDeviceApStatBleStat {
     private String eddystoneUidNamespace;
     private Boolean eddystoneUrlEnabled;
     /**
-     * @return Frequency (msec) of data emmit by Eddystone-UID beacon
+     * @return Frequency (msec) of data emit by Eddystone-UID beacon
      * 
      */
     private Integer eddystoneUrlFreqMsec;
     private String eddystoneUrlUrl;
     private Boolean ibeaconEnabled;
     private Integer ibeaconFreqMsec;
+    /**
+     * @return Major number for iBeacon
+     * 
+     */
     private Integer ibeaconMajor;
+    /**
+     * @return Minor number for iBeacon
+     * 
+     */
     private Integer ibeaconMinor;
     private String ibeaconUuid;
     private Integer major;
@@ -84,7 +92,7 @@ public final class GetApStatsDeviceApStatBleStat {
         return this.eddystoneUrlEnabled;
     }
     /**
-     * @return Frequency (msec) of data emmit by Eddystone-UID beacon
+     * @return Frequency (msec) of data emit by Eddystone-UID beacon
      * 
      */
     public Integer eddystoneUrlFreqMsec() {
@@ -99,9 +107,17 @@ public final class GetApStatsDeviceApStatBleStat {
     public Integer ibeaconFreqMsec() {
         return this.ibeaconFreqMsec;
     }
+    /**
+     * @return Major number for iBeacon
+     * 
+     */
     public Integer ibeaconMajor() {
         return this.ibeaconMajor;
     }
+    /**
+     * @return Minor number for iBeacon
+     * 
+     */
     public Integer ibeaconMinor() {
         return this.ibeaconMinor;
     }

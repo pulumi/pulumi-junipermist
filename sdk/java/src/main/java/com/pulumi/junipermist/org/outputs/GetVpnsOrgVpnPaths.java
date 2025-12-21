@@ -21,7 +21,7 @@ public final class GetVpnsOrgVpnPaths {
      */
     private String bfdProfile;
     /**
-     * @return If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+     * @return If `type`==`mesh` and for SSR only, whether to use tunnel mode
      * 
      */
     private Boolean bfdUseTunnelMode;
@@ -47,7 +47,7 @@ public final class GetVpnsOrgVpnPaths {
         return this.bfdProfile;
     }
     /**
-     * @return If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+     * @return If `type`==`mesh` and for SSR only, whether to use tunnel mode
      * 
      */
     public Boolean bfdUseTunnelMode() {

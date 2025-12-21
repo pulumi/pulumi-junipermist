@@ -19,11 +19,29 @@ public final class GetGatewayStatsDeviceGatewayStatVpnPeer {
      */
     private Boolean isActive;
     /**
+     * @return Jitter in milliseconds
+     * 
+     */
+    private Double jitter;
+    /**
      * @return Last seen timestamp
      * 
      */
     private Double lastSeen;
+    /**
+     * @return Latency in milliseconds
+     * 
+     */
     private Double latency;
+    /**
+     * @return Packet loss in percentage
+     * 
+     */
+    private Double loss;
+    /**
+     * @return Mean Opinion Score, a measure of the quality of the VPN link
+     * 
+     */
     private Double mos;
     private Integer mtu;
     /**
@@ -61,15 +79,37 @@ public final class GetGatewayStatsDeviceGatewayStatVpnPeer {
         return this.isActive;
     }
     /**
+     * @return Jitter in milliseconds
+     * 
+     */
+    public Double jitter() {
+        return this.jitter;
+    }
+    /**
      * @return Last seen timestamp
      * 
      */
     public Double lastSeen() {
         return this.lastSeen;
     }
+    /**
+     * @return Latency in milliseconds
+     * 
+     */
     public Double latency() {
         return this.latency;
     }
+    /**
+     * @return Packet loss in percentage
+     * 
+     */
+    public Double loss() {
+        return this.loss;
+    }
+    /**
+     * @return Mean Opinion Score, a measure of the quality of the VPN link
+     * 
+     */
     public Double mos() {
         return this.mos;
     }
@@ -130,8 +170,10 @@ public final class GetGatewayStatsDeviceGatewayStatVpnPeer {
     @CustomType.Builder
     public static final class Builder {
         private Boolean isActive;
+        private Double jitter;
         private Double lastSeen;
         private Double latency;
+        private Double loss;
         private Double mos;
         private Integer mtu;
         private String peerMac;
@@ -147,8 +189,10 @@ public final class GetGatewayStatsDeviceGatewayStatVpnPeer {
         public Builder(GetGatewayStatsDeviceGatewayStatVpnPeer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isActive = defaults.isActive;
+    	      this.jitter = defaults.jitter;
     	      this.lastSeen = defaults.lastSeen;
     	      this.latency = defaults.latency;
+    	      this.loss = defaults.loss;
     	      this.mos = defaults.mos;
     	      this.mtu = defaults.mtu;
     	      this.peerMac = defaults.peerMac;
@@ -171,6 +215,14 @@ public final class GetGatewayStatsDeviceGatewayStatVpnPeer {
             return this;
         }
         @CustomType.Setter
+        public Builder jitter(Double jitter) {
+            if (jitter == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatVpnPeer", "jitter");
+            }
+            this.jitter = jitter;
+            return this;
+        }
+        @CustomType.Setter
         public Builder lastSeen(Double lastSeen) {
             if (lastSeen == null) {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatVpnPeer", "lastSeen");
@@ -184,6 +236,14 @@ public final class GetGatewayStatsDeviceGatewayStatVpnPeer {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatVpnPeer", "latency");
             }
             this.latency = latency;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder loss(Double loss) {
+            if (loss == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatVpnPeer", "loss");
+            }
+            this.loss = loss;
             return this;
         }
         @CustomType.Setter
@@ -277,8 +337,10 @@ public final class GetGatewayStatsDeviceGatewayStatVpnPeer {
         public GetGatewayStatsDeviceGatewayStatVpnPeer build() {
             final var _resultValue = new GetGatewayStatsDeviceGatewayStatVpnPeer();
             _resultValue.isActive = isActive;
+            _resultValue.jitter = jitter;
             _resultValue.lastSeen = lastSeen;
             _resultValue.latency = latency;
+            _resultValue.loss = loss;
             _resultValue.mos = mos;
             _resultValue.mtu = mtu;
             _resultValue.peerMac = peerMac;

@@ -6,12 +6,14 @@ package com.pulumi.junipermist.device.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetGatewayStatsDeviceGatewayStatModuleStatPoe {
     private Double maxPower;
     private Double powerDraw;
+    private String status;
 
     private GetGatewayStatsDeviceGatewayStatModuleStatPoe() {}
     public Double maxPower() {
@@ -19,6 +21,9 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStatPoe {
     }
     public Double powerDraw() {
         return this.powerDraw;
+    }
+    public String status() {
+        return this.status;
     }
 
     public static Builder builder() {
@@ -32,11 +37,13 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStatPoe {
     public static final class Builder {
         private Double maxPower;
         private Double powerDraw;
+        private String status;
         public Builder() {}
         public Builder(GetGatewayStatsDeviceGatewayStatModuleStatPoe defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxPower = defaults.maxPower;
     	      this.powerDraw = defaults.powerDraw;
+    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
@@ -55,10 +62,19 @@ public final class GetGatewayStatsDeviceGatewayStatModuleStatPoe {
             this.powerDraw = powerDraw;
             return this;
         }
+        @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModuleStatPoe", "status");
+            }
+            this.status = status;
+            return this;
+        }
         public GetGatewayStatsDeviceGatewayStatModuleStatPoe build() {
             final var _resultValue = new GetGatewayStatsDeviceGatewayStatModuleStatPoe();
             _resultValue.maxPower = maxPower;
             _resultValue.powerDraw = powerDraw;
+            _resultValue.status = status;
             return _resultValue;
         }
     }

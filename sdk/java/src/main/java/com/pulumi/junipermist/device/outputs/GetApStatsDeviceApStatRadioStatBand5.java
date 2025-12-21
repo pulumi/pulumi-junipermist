@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetApStatsDeviceApStatRadioStatBand5 {
     /**
-     * @return channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
+     * @return channel width for the band.enum: `0`(disabled, response only), `20`, `40`, `80` (only applicable for band*5 and band*6), `160` (only for band_6)
      * 
      */
     private Integer bandwidth;
@@ -103,7 +103,7 @@ public final class GetApStatsDeviceApStatRadioStatBand5 {
 
     private GetApStatsDeviceApStatRadioStatBand5() {}
     /**
-     * @return channel width for the band.enum: `20`, `40`, `80` (only applicable for band5 and band_6), `160` (only for band_6)
+     * @return channel width for the band.enum: `0`(disabled, response only), `20`, `40`, `80` (only applicable for band*5 and band*6), `160` (only for band_6)
      * 
      */
     public Integer bandwidth() {

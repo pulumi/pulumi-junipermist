@@ -11,7 +11,7 @@ import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatBleStat;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatEnvStat;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatEslStat;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatFwupdate;
-import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatGps;
+import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatGpsStat;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatIotStat;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatIpConfig;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatIpStat;
@@ -19,6 +19,7 @@ import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatL2tpStat;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatLastTrouble;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatLed;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatLldpStat;
+import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatLldpStats;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatMeshDownlinks;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatMeshUplink;
 import com.pulumi.junipermist.device.outputs.GetApStatsDeviceApStatPortStat;
@@ -35,12 +36,18 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApStatsDeviceApStat {
+    /**
+     * @return Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
+     * 
+     */
+    private String antennaSelect;
     private GetApStatsDeviceApStatAutoPlacement autoPlacement;
     private GetApStatsDeviceApStatAutoUpgradeStat autoUpgradeStat;
     private GetApStatsDeviceApStatBleStat bleStat;
     private Double certExpiry;
     private Boolean configReverted;
     private Integer cpuSystem;
+    private Integer cpuUser;
     private Integer cpuUtil;
     /**
      * @return When the object has been created, in epoch
@@ -54,9 +61,14 @@ public final class GetApStatsDeviceApStat {
      */
     private GetApStatsDeviceApStatEnvStat envStat;
     private GetApStatsDeviceApStatEslStat eslStat;
+    /**
+     * @return Map of certificate serial numbers to their expiry timestamps (in epoch) for certificates expiring within 30 days. Property key is the certificate serial number
+     * 
+     */
+    private Map<String,Integer> expiringCerts;
     private String extIp;
     private GetApStatsDeviceApStatFwupdate fwupdate;
-    private GetApStatsDeviceApStatGps gps;
+    private GetApStatsDeviceApStatGpsStat gpsStat;
     private String hwRev;
     /**
      * @return Unique ID of the object instance in the Mist Organization
@@ -73,7 +85,7 @@ public final class GetApStatsDeviceApStat {
     private GetApStatsDeviceApStatIpConfig ipConfig;
     private GetApStatsDeviceApStatIpStat ipStat;
     /**
-     * @return L2TP tunnel status (key is the wxtunnel_id)
+     * @return L2TP tunnel status (key is the wxtunnel*id)
      * 
      */
     private Map<String,GetApStatsDeviceApStatL2tpStat> l2tpStat;
@@ -93,10 +105,15 @@ public final class GetApStatsDeviceApStat {
      */
     private GetApStatsDeviceApStatLed led;
     /**
-     * @return LLDP Stat (neighbor information, power negotiations)
+     * @return LLDP neighbor information and power negotiations. For backward compatibility, when multiple neighbors exist, only information from the first neighbor is displayed.
      * 
      */
     private GetApStatsDeviceApStatLldpStat lldpStat;
+    /**
+     * @return Property key is the port name (e.g. &#34;eth0&#34;, &#34;eth1&#34;, ...). Map of ethernet ports to their respective LLDP neighbor information and power negotiations. Only present when multiple neighbors exist.
+     * 
+     */
+    private Map<String,GetApStatsDeviceApStatLldpStats> lldpStats;
     private Boolean locating;
     /**
      * @return Whether this AP is considered locked (placement / orientation has been vetted)
@@ -109,6 +126,7 @@ public final class GetApStatsDeviceApStat {
      */
     private String mac;
     private String mapId;
+    private Integer memTotalKb;
     private Integer memUsedKb;
     /**
      * @return Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
@@ -215,6 +233,13 @@ public final class GetApStatsDeviceApStat {
     private Double y;
 
     private GetApStatsDeviceApStat() {}
+    /**
+     * @return Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
+     * 
+     */
+    public String antennaSelect() {
+        return this.antennaSelect;
+    }
     public GetApStatsDeviceApStatAutoPlacement autoPlacement() {
         return this.autoPlacement;
     }
@@ -232,6 +257,9 @@ public final class GetApStatsDeviceApStat {
     }
     public Integer cpuSystem() {
         return this.cpuSystem;
+    }
+    public Integer cpuUser() {
+        return this.cpuUser;
     }
     public Integer cpuUtil() {
         return this.cpuUtil;
@@ -256,14 +284,21 @@ public final class GetApStatsDeviceApStat {
     public GetApStatsDeviceApStatEslStat eslStat() {
         return this.eslStat;
     }
+    /**
+     * @return Map of certificate serial numbers to their expiry timestamps (in epoch) for certificates expiring within 30 days. Property key is the certificate serial number
+     * 
+     */
+    public Map<String,Integer> expiringCerts() {
+        return this.expiringCerts;
+    }
     public String extIp() {
         return this.extIp;
     }
     public GetApStatsDeviceApStatFwupdate fwupdate() {
         return this.fwupdate;
     }
-    public GetApStatsDeviceApStatGps gps() {
-        return this.gps;
+    public GetApStatsDeviceApStatGpsStat gpsStat() {
+        return this.gpsStat;
     }
     public String hwRev() {
         return this.hwRev;
@@ -295,7 +330,7 @@ public final class GetApStatsDeviceApStat {
         return this.ipStat;
     }
     /**
-     * @return L2TP tunnel status (key is the wxtunnel_id)
+     * @return L2TP tunnel status (key is the wxtunnel*id)
      * 
      */
     public Map<String,GetApStatsDeviceApStatL2tpStat> l2tpStat() {
@@ -323,11 +358,18 @@ public final class GetApStatsDeviceApStat {
         return this.led;
     }
     /**
-     * @return LLDP Stat (neighbor information, power negotiations)
+     * @return LLDP neighbor information and power negotiations. For backward compatibility, when multiple neighbors exist, only information from the first neighbor is displayed.
      * 
      */
     public GetApStatsDeviceApStatLldpStat lldpStat() {
         return this.lldpStat;
+    }
+    /**
+     * @return Property key is the port name (e.g. &#34;eth0&#34;, &#34;eth1&#34;, ...). Map of ethernet ports to their respective LLDP neighbor information and power negotiations. Only present when multiple neighbors exist.
+     * 
+     */
+    public Map<String,GetApStatsDeviceApStatLldpStats> lldpStats() {
+        return this.lldpStats;
     }
     public Boolean locating() {
         return this.locating;
@@ -348,6 +390,9 @@ public final class GetApStatsDeviceApStat {
     }
     public String mapId() {
         return this.mapId;
+    }
+    public Integer memTotalKb() {
+        return this.memTotalKb;
     }
     public Integer memUsedKb() {
         return this.memUsedKb;
@@ -527,20 +572,23 @@ public final class GetApStatsDeviceApStat {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String antennaSelect;
         private GetApStatsDeviceApStatAutoPlacement autoPlacement;
         private GetApStatsDeviceApStatAutoUpgradeStat autoUpgradeStat;
         private GetApStatsDeviceApStatBleStat bleStat;
         private Double certExpiry;
         private Boolean configReverted;
         private Integer cpuSystem;
+        private Integer cpuUser;
         private Integer cpuUtil;
         private Double createdTime;
         private String deviceprofileId;
         private GetApStatsDeviceApStatEnvStat envStat;
         private GetApStatsDeviceApStatEslStat eslStat;
+        private Map<String,Integer> expiringCerts;
         private String extIp;
         private GetApStatsDeviceApStatFwupdate fwupdate;
-        private GetApStatsDeviceApStatGps gps;
+        private GetApStatsDeviceApStatGpsStat gpsStat;
         private String hwRev;
         private String id;
         private List<Integer> inactiveWiredVlans;
@@ -553,10 +601,12 @@ public final class GetApStatsDeviceApStat {
         private GetApStatsDeviceApStatLastTrouble lastTrouble;
         private GetApStatsDeviceApStatLed led;
         private GetApStatsDeviceApStatLldpStat lldpStat;
+        private Map<String,GetApStatsDeviceApStatLldpStats> lldpStats;
         private Boolean locating;
         private Boolean locked;
         private String mac;
         private String mapId;
+        private Integer memTotalKb;
         private Integer memUsedKb;
         private Map<String,GetApStatsDeviceApStatMeshDownlinks> meshDownlinks;
         private GetApStatsDeviceApStatMeshUplink meshUplink;
@@ -592,20 +642,23 @@ public final class GetApStatsDeviceApStat {
         public Builder() {}
         public Builder(GetApStatsDeviceApStat defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.antennaSelect = defaults.antennaSelect;
     	      this.autoPlacement = defaults.autoPlacement;
     	      this.autoUpgradeStat = defaults.autoUpgradeStat;
     	      this.bleStat = defaults.bleStat;
     	      this.certExpiry = defaults.certExpiry;
     	      this.configReverted = defaults.configReverted;
     	      this.cpuSystem = defaults.cpuSystem;
+    	      this.cpuUser = defaults.cpuUser;
     	      this.cpuUtil = defaults.cpuUtil;
     	      this.createdTime = defaults.createdTime;
     	      this.deviceprofileId = defaults.deviceprofileId;
     	      this.envStat = defaults.envStat;
     	      this.eslStat = defaults.eslStat;
+    	      this.expiringCerts = defaults.expiringCerts;
     	      this.extIp = defaults.extIp;
     	      this.fwupdate = defaults.fwupdate;
-    	      this.gps = defaults.gps;
+    	      this.gpsStat = defaults.gpsStat;
     	      this.hwRev = defaults.hwRev;
     	      this.id = defaults.id;
     	      this.inactiveWiredVlans = defaults.inactiveWiredVlans;
@@ -618,10 +671,12 @@ public final class GetApStatsDeviceApStat {
     	      this.lastTrouble = defaults.lastTrouble;
     	      this.led = defaults.led;
     	      this.lldpStat = defaults.lldpStat;
+    	      this.lldpStats = defaults.lldpStats;
     	      this.locating = defaults.locating;
     	      this.locked = defaults.locked;
     	      this.mac = defaults.mac;
     	      this.mapId = defaults.mapId;
+    	      this.memTotalKb = defaults.memTotalKb;
     	      this.memUsedKb = defaults.memUsedKb;
     	      this.meshDownlinks = defaults.meshDownlinks;
     	      this.meshUplink = defaults.meshUplink;
@@ -656,6 +711,14 @@ public final class GetApStatsDeviceApStat {
     	      this.y = defaults.y;
         }
 
+        @CustomType.Setter
+        public Builder antennaSelect(String antennaSelect) {
+            if (antennaSelect == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "antennaSelect");
+            }
+            this.antennaSelect = antennaSelect;
+            return this;
+        }
         @CustomType.Setter
         public Builder autoPlacement(GetApStatsDeviceApStatAutoPlacement autoPlacement) {
             if (autoPlacement == null) {
@@ -705,6 +768,14 @@ public final class GetApStatsDeviceApStat {
             return this;
         }
         @CustomType.Setter
+        public Builder cpuUser(Integer cpuUser) {
+            if (cpuUser == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "cpuUser");
+            }
+            this.cpuUser = cpuUser;
+            return this;
+        }
+        @CustomType.Setter
         public Builder cpuUtil(Integer cpuUtil) {
             if (cpuUtil == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "cpuUtil");
@@ -745,6 +816,14 @@ public final class GetApStatsDeviceApStat {
             return this;
         }
         @CustomType.Setter
+        public Builder expiringCerts(Map<String,Integer> expiringCerts) {
+            if (expiringCerts == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "expiringCerts");
+            }
+            this.expiringCerts = expiringCerts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder extIp(String extIp) {
             if (extIp == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "extIp");
@@ -761,11 +840,11 @@ public final class GetApStatsDeviceApStat {
             return this;
         }
         @CustomType.Setter
-        public Builder gps(GetApStatsDeviceApStatGps gps) {
-            if (gps == null) {
-              throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "gps");
+        public Builder gpsStat(GetApStatsDeviceApStatGpsStat gpsStat) {
+            if (gpsStat == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "gpsStat");
             }
-            this.gps = gps;
+            this.gpsStat = gpsStat;
             return this;
         }
         @CustomType.Setter
@@ -868,6 +947,14 @@ public final class GetApStatsDeviceApStat {
             return this;
         }
         @CustomType.Setter
+        public Builder lldpStats(Map<String,GetApStatsDeviceApStatLldpStats> lldpStats) {
+            if (lldpStats == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "lldpStats");
+            }
+            this.lldpStats = lldpStats;
+            return this;
+        }
+        @CustomType.Setter
         public Builder locating(Boolean locating) {
             if (locating == null) {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "locating");
@@ -897,6 +984,14 @@ public final class GetApStatsDeviceApStat {
               throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "mapId");
             }
             this.mapId = mapId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder memTotalKb(Integer memTotalKb) {
+            if (memTotalKb == null) {
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStat", "memTotalKb");
+            }
+            this.memTotalKb = memTotalKb;
             return this;
         }
         @CustomType.Setter
@@ -1157,20 +1252,23 @@ public final class GetApStatsDeviceApStat {
         }
         public GetApStatsDeviceApStat build() {
             final var _resultValue = new GetApStatsDeviceApStat();
+            _resultValue.antennaSelect = antennaSelect;
             _resultValue.autoPlacement = autoPlacement;
             _resultValue.autoUpgradeStat = autoUpgradeStat;
             _resultValue.bleStat = bleStat;
             _resultValue.certExpiry = certExpiry;
             _resultValue.configReverted = configReverted;
             _resultValue.cpuSystem = cpuSystem;
+            _resultValue.cpuUser = cpuUser;
             _resultValue.cpuUtil = cpuUtil;
             _resultValue.createdTime = createdTime;
             _resultValue.deviceprofileId = deviceprofileId;
             _resultValue.envStat = envStat;
             _resultValue.eslStat = eslStat;
+            _resultValue.expiringCerts = expiringCerts;
             _resultValue.extIp = extIp;
             _resultValue.fwupdate = fwupdate;
-            _resultValue.gps = gps;
+            _resultValue.gpsStat = gpsStat;
             _resultValue.hwRev = hwRev;
             _resultValue.id = id;
             _resultValue.inactiveWiredVlans = inactiveWiredVlans;
@@ -1183,10 +1281,12 @@ public final class GetApStatsDeviceApStat {
             _resultValue.lastTrouble = lastTrouble;
             _resultValue.led = led;
             _resultValue.lldpStat = lldpStat;
+            _resultValue.lldpStats = lldpStats;
             _resultValue.locating = locating;
             _resultValue.locked = locked;
             _resultValue.mac = mac;
             _resultValue.mapId = mapId;
+            _resultValue.memTotalKb = memTotalKb;
             _resultValue.memUsedKb = memUsedKb;
             _resultValue.meshDownlinks = meshDownlinks;
             _resultValue.meshUplink = meshUplink;

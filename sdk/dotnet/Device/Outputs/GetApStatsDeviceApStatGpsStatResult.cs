@@ -11,7 +11,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 {
 
     [OutputType]
-    public sealed class GetApStatsDeviceApStatGpsResult
+    public sealed class GetApStatsDeviceApStatGpsStatResult
     {
         /// <summary>
         /// The estimated accuracy or accuracy of the GPS coordinates, measured in meters.
@@ -30,9 +30,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly double Longitude;
         /// <summary>
-        /// The origin of the GPS data. enum:
-        ///   * `Gps`: from this device’s GPS estimates
-        ///   * `OtherAp` from neighboring device GPS estimates
+        /// The origin of the GPS data. enum: `Gps`: from this device GPS estimates, `OtherAp` from neighboring device GPS estimates. Note: API responses may return `OtherAps` which should be treated as `OtherAp`
         /// </summary>
         public readonly string Src;
         /// <summary>
@@ -41,7 +39,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly double Timestamp;
 
         [OutputConstructor]
-        private GetApStatsDeviceApStatGpsResult(
+        private GetApStatsDeviceApStatGpsStatResult(
             double accuracy,
 
             double altitude,

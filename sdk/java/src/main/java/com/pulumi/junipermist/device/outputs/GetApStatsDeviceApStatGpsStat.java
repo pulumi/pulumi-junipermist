@@ -10,7 +10,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetApStatsDeviceApStatGps {
+public final class GetApStatsDeviceApStatGpsStat {
     /**
      * @return The estimated accuracy or accuracy of the GPS coordinates, measured in meters.
      * 
@@ -32,9 +32,7 @@ public final class GetApStatsDeviceApStatGps {
      */
     private Double longitude;
     /**
-     * @return The origin of the GPS data. enum:
-     *   * `gps`: from this device’s GPS estimates
-     *   * `otherAp` from neighboring device GPS estimates
+     * @return The origin of the GPS data. enum: `gps`: from this device GPS estimates, `otherAp` from neighboring device GPS estimates. Note: API responses may return `otherAps` which should be treated as `otherAp`
      * 
      */
     private String src;
@@ -44,7 +42,7 @@ public final class GetApStatsDeviceApStatGps {
      */
     private Double timestamp;
 
-    private GetApStatsDeviceApStatGps() {}
+    private GetApStatsDeviceApStatGpsStat() {}
     /**
      * @return The estimated accuracy or accuracy of the GPS coordinates, measured in meters.
      * 
@@ -74,9 +72,7 @@ public final class GetApStatsDeviceApStatGps {
         return this.longitude;
     }
     /**
-     * @return The origin of the GPS data. enum:
-     *   * `gps`: from this device’s GPS estimates
-     *   * `otherAp` from neighboring device GPS estimates
+     * @return The origin of the GPS data. enum: `gps`: from this device GPS estimates, `otherAp` from neighboring device GPS estimates. Note: API responses may return `otherAps` which should be treated as `otherAp`
      * 
      */
     public String src() {
@@ -94,7 +90,7 @@ public final class GetApStatsDeviceApStatGps {
         return new Builder();
     }
 
-    public static Builder builder(GetApStatsDeviceApStatGps defaults) {
+    public static Builder builder(GetApStatsDeviceApStatGpsStat defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -106,7 +102,7 @@ public final class GetApStatsDeviceApStatGps {
         private String src;
         private Double timestamp;
         public Builder() {}
-        public Builder(GetApStatsDeviceApStatGps defaults) {
+        public Builder(GetApStatsDeviceApStatGpsStat defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accuracy = defaults.accuracy;
     	      this.altitude = defaults.altitude;
@@ -119,7 +115,7 @@ public final class GetApStatsDeviceApStatGps {
         @CustomType.Setter
         public Builder accuracy(Double accuracy) {
             if (accuracy == null) {
-              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatGps", "accuracy");
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatGpsStat", "accuracy");
             }
             this.accuracy = accuracy;
             return this;
@@ -127,7 +123,7 @@ public final class GetApStatsDeviceApStatGps {
         @CustomType.Setter
         public Builder altitude(Double altitude) {
             if (altitude == null) {
-              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatGps", "altitude");
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatGpsStat", "altitude");
             }
             this.altitude = altitude;
             return this;
@@ -135,7 +131,7 @@ public final class GetApStatsDeviceApStatGps {
         @CustomType.Setter
         public Builder latitude(Double latitude) {
             if (latitude == null) {
-              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatGps", "latitude");
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatGpsStat", "latitude");
             }
             this.latitude = latitude;
             return this;
@@ -143,7 +139,7 @@ public final class GetApStatsDeviceApStatGps {
         @CustomType.Setter
         public Builder longitude(Double longitude) {
             if (longitude == null) {
-              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatGps", "longitude");
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatGpsStat", "longitude");
             }
             this.longitude = longitude;
             return this;
@@ -151,7 +147,7 @@ public final class GetApStatsDeviceApStatGps {
         @CustomType.Setter
         public Builder src(String src) {
             if (src == null) {
-              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatGps", "src");
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatGpsStat", "src");
             }
             this.src = src;
             return this;
@@ -159,13 +155,13 @@ public final class GetApStatsDeviceApStatGps {
         @CustomType.Setter
         public Builder timestamp(Double timestamp) {
             if (timestamp == null) {
-              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatGps", "timestamp");
+              throw new MissingRequiredPropertyException("GetApStatsDeviceApStatGpsStat", "timestamp");
             }
             this.timestamp = timestamp;
             return this;
         }
-        public GetApStatsDeviceApStatGps build() {
-            final var _resultValue = new GetApStatsDeviceApStatGps();
+        public GetApStatsDeviceApStatGpsStat build() {
+            final var _resultValue = new GetApStatsDeviceApStatGpsStat();
             _resultValue.accuracy = accuracy;
             _resultValue.altitude = altitude;
             _resultValue.latitude = latitude;

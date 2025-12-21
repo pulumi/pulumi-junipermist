@@ -15,6 +15,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EvpnTopologySwitches {
     private @Nullable String deviceprofileId;
+    private @Nullable List<String> downlinkIps;
+    private @Nullable List<String> downlinks;
+    private @Nullable List<String> esilaglinks;
     private @Nullable Integer evpnId;
     private @Nullable String mac;
     private @Nullable String model;
@@ -38,10 +41,23 @@ public final class EvpnTopologySwitches {
     private String role;
     private @Nullable String routerId;
     private @Nullable String siteId;
+    private @Nullable List<String> suggestedDownlinks;
+    private @Nullable List<String> suggestedEsilaglinks;
+    private @Nullable List<String> suggestedUplinks;
+    private @Nullable List<String> uplinks;
 
     private EvpnTopologySwitches() {}
     public Optional<String> deviceprofileId() {
         return Optional.ofNullable(this.deviceprofileId);
+    }
+    public List<String> downlinkIps() {
+        return this.downlinkIps == null ? List.of() : this.downlinkIps;
+    }
+    public List<String> downlinks() {
+        return this.downlinks == null ? List.of() : this.downlinks;
+    }
+    public List<String> esilaglinks() {
+        return this.esilaglinks == null ? List.of() : this.esilaglinks;
     }
     public Optional<Integer> evpnId() {
         return Optional.ofNullable(this.evpnId);
@@ -82,6 +98,18 @@ public final class EvpnTopologySwitches {
     public Optional<String> siteId() {
         return Optional.ofNullable(this.siteId);
     }
+    public List<String> suggestedDownlinks() {
+        return this.suggestedDownlinks == null ? List.of() : this.suggestedDownlinks;
+    }
+    public List<String> suggestedEsilaglinks() {
+        return this.suggestedEsilaglinks == null ? List.of() : this.suggestedEsilaglinks;
+    }
+    public List<String> suggestedUplinks() {
+        return this.suggestedUplinks == null ? List.of() : this.suggestedUplinks;
+    }
+    public List<String> uplinks() {
+        return this.uplinks == null ? List.of() : this.uplinks;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -93,6 +121,9 @@ public final class EvpnTopologySwitches {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String deviceprofileId;
+        private @Nullable List<String> downlinkIps;
+        private @Nullable List<String> downlinks;
+        private @Nullable List<String> esilaglinks;
         private @Nullable Integer evpnId;
         private @Nullable String mac;
         private @Nullable String model;
@@ -101,10 +132,17 @@ public final class EvpnTopologySwitches {
         private String role;
         private @Nullable String routerId;
         private @Nullable String siteId;
+        private @Nullable List<String> suggestedDownlinks;
+        private @Nullable List<String> suggestedEsilaglinks;
+        private @Nullable List<String> suggestedUplinks;
+        private @Nullable List<String> uplinks;
         public Builder() {}
         public Builder(EvpnTopologySwitches defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deviceprofileId = defaults.deviceprofileId;
+    	      this.downlinkIps = defaults.downlinkIps;
+    	      this.downlinks = defaults.downlinks;
+    	      this.esilaglinks = defaults.esilaglinks;
     	      this.evpnId = defaults.evpnId;
     	      this.mac = defaults.mac;
     	      this.model = defaults.model;
@@ -113,6 +151,10 @@ public final class EvpnTopologySwitches {
     	      this.role = defaults.role;
     	      this.routerId = defaults.routerId;
     	      this.siteId = defaults.siteId;
+    	      this.suggestedDownlinks = defaults.suggestedDownlinks;
+    	      this.suggestedEsilaglinks = defaults.suggestedEsilaglinks;
+    	      this.suggestedUplinks = defaults.suggestedUplinks;
+    	      this.uplinks = defaults.uplinks;
         }
 
         @CustomType.Setter
@@ -120,6 +162,33 @@ public final class EvpnTopologySwitches {
 
             this.deviceprofileId = deviceprofileId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder downlinkIps(@Nullable List<String> downlinkIps) {
+
+            this.downlinkIps = downlinkIps;
+            return this;
+        }
+        public Builder downlinkIps(String... downlinkIps) {
+            return downlinkIps(List.of(downlinkIps));
+        }
+        @CustomType.Setter
+        public Builder downlinks(@Nullable List<String> downlinks) {
+
+            this.downlinks = downlinks;
+            return this;
+        }
+        public Builder downlinks(String... downlinks) {
+            return downlinks(List.of(downlinks));
+        }
+        @CustomType.Setter
+        public Builder esilaglinks(@Nullable List<String> esilaglinks) {
+
+            this.esilaglinks = esilaglinks;
+            return this;
+        }
+        public Builder esilaglinks(String... esilaglinks) {
+            return esilaglinks(List.of(esilaglinks));
         }
         @CustomType.Setter
         public Builder evpnId(@Nullable Integer evpnId) {
@@ -174,9 +243,48 @@ public final class EvpnTopologySwitches {
             this.siteId = siteId;
             return this;
         }
+        @CustomType.Setter
+        public Builder suggestedDownlinks(@Nullable List<String> suggestedDownlinks) {
+
+            this.suggestedDownlinks = suggestedDownlinks;
+            return this;
+        }
+        public Builder suggestedDownlinks(String... suggestedDownlinks) {
+            return suggestedDownlinks(List.of(suggestedDownlinks));
+        }
+        @CustomType.Setter
+        public Builder suggestedEsilaglinks(@Nullable List<String> suggestedEsilaglinks) {
+
+            this.suggestedEsilaglinks = suggestedEsilaglinks;
+            return this;
+        }
+        public Builder suggestedEsilaglinks(String... suggestedEsilaglinks) {
+            return suggestedEsilaglinks(List.of(suggestedEsilaglinks));
+        }
+        @CustomType.Setter
+        public Builder suggestedUplinks(@Nullable List<String> suggestedUplinks) {
+
+            this.suggestedUplinks = suggestedUplinks;
+            return this;
+        }
+        public Builder suggestedUplinks(String... suggestedUplinks) {
+            return suggestedUplinks(List.of(suggestedUplinks));
+        }
+        @CustomType.Setter
+        public Builder uplinks(@Nullable List<String> uplinks) {
+
+            this.uplinks = uplinks;
+            return this;
+        }
+        public Builder uplinks(String... uplinks) {
+            return uplinks(List.of(uplinks));
+        }
         public EvpnTopologySwitches build() {
             final var _resultValue = new EvpnTopologySwitches();
             _resultValue.deviceprofileId = deviceprofileId;
+            _resultValue.downlinkIps = downlinkIps;
+            _resultValue.downlinks = downlinks;
+            _resultValue.esilaglinks = esilaglinks;
             _resultValue.evpnId = evpnId;
             _resultValue.mac = mac;
             _resultValue.model = model;
@@ -185,6 +293,10 @@ public final class EvpnTopologySwitches {
             _resultValue.role = role;
             _resultValue.routerId = routerId;
             _resultValue.siteId = siteId;
+            _resultValue.suggestedDownlinks = suggestedDownlinks;
+            _resultValue.suggestedEsilaglinks = suggestedEsilaglinks;
+            _resultValue.suggestedUplinks = suggestedUplinks;
+            _resultValue.uplinks = uplinks;
             return _resultValue;
         }
     }

@@ -15,7 +15,7 @@ import java.util.Objects;
 public final class GetGatewayStatsDeviceGatewayStatFwupdate {
     private Integer progress;
     /**
-     * @return enum: `inprogress`, `failed`, `upgraded`
+     * @return enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
      * 
      */
     private String status;
@@ -32,7 +32,7 @@ public final class GetGatewayStatsDeviceGatewayStatFwupdate {
         return this.progress;
     }
     /**
-     * @return enum: `inprogress`, `failed`, `upgraded`
+     * @return enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
      * 
      */
     public String status() {

@@ -33,8 +33,8 @@ import (
 //				SiteId:   pulumi.StringRef("4a422ae5-7ca0-4599-87a3-8e49aa63685f"),
 //				Status:   pulumi.StringRef("connected"),
 //				Duration: pulumi.StringRef("1d"),
-//				Start:    pulumi.IntRef(1736031600),
-//				End:      pulumi.IntRef(1736175934),
+//				Start:    pulumi.StringRef("1736031600"),
+//				End:      pulumi.StringRef("1736175934"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,13 +58,13 @@ func GetGatewayStats(ctx *pulumi.Context, args *GetGatewayStatsArgs, opts ...pul
 type GetGatewayStatsArgs struct {
 	// Duration like 7d, 2w
 	Duration *string `pulumi:"duration"`
-	// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
-	End    *int    `pulumi:"end"`
+	// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+	End    *string `pulumi:"end"`
 	Mac    *string `pulumi:"mac"`
 	OrgId  string  `pulumi:"orgId"`
 	SiteId *string `pulumi:"siteId"`
-	// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-	Start *int `pulumi:"start"`
+	// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+	Start *string `pulumi:"start"`
 	// enum: `all`, `connected`, `disconnected`
 	Status *string `pulumi:"status"`
 }
@@ -74,15 +74,15 @@ type GetGatewayStatsResult struct {
 	DeviceGatewayStats []GetGatewayStatsDeviceGatewayStat `pulumi:"deviceGatewayStats"`
 	// Duration like 7d, 2w
 	Duration *string `pulumi:"duration"`
-	// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
-	End *int `pulumi:"end"`
+	// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+	End *string `pulumi:"end"`
 	// The provider-assigned unique ID for this managed resource.
 	Id     string  `pulumi:"id"`
 	Mac    *string `pulumi:"mac"`
 	OrgId  string  `pulumi:"orgId"`
 	SiteId *string `pulumi:"siteId"`
-	// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-	Start *int `pulumi:"start"`
+	// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+	Start *string `pulumi:"start"`
 	// enum: `all`, `connected`, `disconnected`
 	Status *string `pulumi:"status"`
 }
@@ -100,13 +100,13 @@ func GetGatewayStatsOutput(ctx *pulumi.Context, args GetGatewayStatsOutputArgs, 
 type GetGatewayStatsOutputArgs struct {
 	// Duration like 7d, 2w
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
-	// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
-	End    pulumi.IntPtrInput    `pulumi:"end"`
+	// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+	End    pulumi.StringPtrInput `pulumi:"end"`
 	Mac    pulumi.StringPtrInput `pulumi:"mac"`
 	OrgId  pulumi.StringInput    `pulumi:"orgId"`
 	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
-	// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-	Start pulumi.IntPtrInput `pulumi:"start"`
+	// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+	Start pulumi.StringPtrInput `pulumi:"start"`
 	// enum: `all`, `connected`, `disconnected`
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
@@ -139,9 +139,9 @@ func (o GetGatewayStatsResultOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewayStatsResult) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
-// End datetime, can be epoch or relative time like -1d, -2h; now if not specified
-func (o GetGatewayStatsResultOutput) End() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetGatewayStatsResult) *int { return v.End }).(pulumi.IntPtrOutput)
+// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+func (o GetGatewayStatsResultOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewayStatsResult) *string { return v.End }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -161,9 +161,9 @@ func (o GetGatewayStatsResultOutput) SiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewayStatsResult) *string { return v.SiteId }).(pulumi.StringPtrOutput)
 }
 
-// Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
-func (o GetGatewayStatsResultOutput) Start() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetGatewayStatsResult) *int { return v.Start }).(pulumi.IntPtrOutput)
+// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+func (o GetGatewayStatsResultOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewayStatsResult) *string { return v.Start }).(pulumi.StringPtrOutput)
 }
 
 // enum: `all`, `connected`, `disconnected`

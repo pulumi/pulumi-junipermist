@@ -15,6 +15,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly string BackupVersion;
         public readonly string BiosVersion;
+        public readonly string BootPartition;
         public readonly string CpldVersion;
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModuleStatFanResult> Fans;
         public readonly string FpgaVersion;
@@ -24,7 +25,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly double LastSeen;
         public readonly bool Locating;
         public readonly string Mac;
+        /// <summary>
+        /// Memory usage stat (for virtual chassis, memory usage of master RE)
+        /// </summary>
+        public readonly Outputs.GetGatewayStatsDeviceGatewayStatModuleStatMemoryStatResult MemoryStat;
         public readonly string Model;
+        public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModuleStatNetworkResourceResult> NetworkResources;
         public readonly string OpticsCpldVersion;
         public readonly string PendingVersion;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatModuleStatPoeResult Poe;
@@ -54,6 +60,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string biosVersion,
 
+            string bootPartition,
+
             string cpldVersion,
 
             ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModuleStatFanResult> fans,
@@ -66,7 +74,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string mac,
 
+            Outputs.GetGatewayStatsDeviceGatewayStatModuleStatMemoryStatResult memoryStat,
+
             string model,
+
+            ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatModuleStatNetworkResourceResult> networkResources,
 
             string opticsCpldVersion,
 
@@ -108,13 +120,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
         {
             BackupVersion = backupVersion;
             BiosVersion = biosVersion;
+            BootPartition = bootPartition;
             CpldVersion = cpldVersion;
             Fans = fans;
             FpgaVersion = fpgaVersion;
             LastSeen = lastSeen;
             Locating = locating;
             Mac = mac;
+            MemoryStat = memoryStat;
             Model = model;
+            NetworkResources = networkResources;
             OpticsCpldVersion = opticsCpldVersion;
             PendingVersion = pendingVersion;
             Poe = poe;

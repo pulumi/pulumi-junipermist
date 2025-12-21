@@ -117,7 +117,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.WlanAppLimit?> AppLimit { get; private set; } = null!;
 
         /// <summary>
-        /// APp qos wlan settings
+        /// APP qos wlan settings
         /// </summary>
         [Output("appQos")]
         public Output<Outputs.WlanAppQos> AppQos { get; private set; } = null!;
@@ -718,7 +718,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanAppLimitArgs>? AppLimit { get; set; }
 
         /// <summary>
-        /// APp qos wlan settings
+        /// APP qos wlan settings
         /// </summary>
         [Input("appQos")]
         public Input<Inputs.WlanAppQosArgs>? AppQos { get; set; }
@@ -1322,7 +1322,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanAppLimitGetArgs>? AppLimit { get; set; }
 
         /// <summary>
-        /// APp qos wlan settings
+        /// APP qos wlan settings
         /// </summary>
         [Input("appQos")]
         public Input<Inputs.WlanAppQosGetArgs>? AppQos { get; set; }

@@ -12,6 +12,7 @@ import com.pulumi.junipermist.org.NetworktemplateArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateState;
 import com.pulumi.junipermist.org.outputs.NetworktemplateAclPolicy;
 import com.pulumi.junipermist.org.outputs.NetworktemplateAclTags;
+import com.pulumi.junipermist.org.outputs.NetworktemplateBgpConfig;
 import com.pulumi.junipermist.org.outputs.NetworktemplateDhcpSnooping;
 import com.pulumi.junipermist.org.outputs.NetworktemplateExtraRoutes6;
 import com.pulumi.junipermist.org.outputs.NetworktemplateExtraRoutes;
@@ -22,6 +23,7 @@ import com.pulumi.junipermist.org.outputs.NetworktemplatePortMirroring;
 import com.pulumi.junipermist.org.outputs.NetworktemplatePortUsages;
 import com.pulumi.junipermist.org.outputs.NetworktemplateRadiusConfig;
 import com.pulumi.junipermist.org.outputs.NetworktemplateRemoteSyslog;
+import com.pulumi.junipermist.org.outputs.NetworktemplateRoutingPolicies;
 import com.pulumi.junipermist.org.outputs.NetworktemplateSnmpConfig;
 import com.pulumi.junipermist.org.outputs.NetworktemplateSwitchMatching;
 import com.pulumi.junipermist.org.outputs.NetworktemplateSwitchMgmt;
@@ -169,6 +171,12 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> additionalConfigCmds() {
         return Codegen.optional(this.additionalConfigCmds);
+    }
+    @Export(name="bgpConfig", refs={Map.class,String.class,NetworktemplateBgpConfig.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,NetworktemplateBgpConfig>> bgpConfig;
+
+    public Output<Optional<Map<String,NetworktemplateBgpConfig>>> bgpConfig() {
+        return Codegen.optional(this.bgpConfig);
     }
     @Export(name="dhcpSnooping", refs={NetworktemplateDhcpSnooping.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateDhcpSnooping> dhcpSnooping;
@@ -361,6 +369,20 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> removeExistingConfigs() {
         return Codegen.optional(this.removeExistingConfigs);
+    }
+    /**
+     * Property key is the routing policy name
+     * 
+     */
+    @Export(name="routingPolicies", refs={Map.class,String.class,NetworktemplateRoutingPolicies.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,NetworktemplateRoutingPolicies>> routingPolicies;
+
+    /**
+     * @return Property key is the routing policy name
+     * 
+     */
+    public Output<Optional<Map<String,NetworktemplateRoutingPolicies>>> routingPolicies() {
+        return Codegen.optional(this.routingPolicies);
     }
     @Export(name="snmpConfig", refs={NetworktemplateSnmpConfig.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSnmpConfig> snmpConfig;

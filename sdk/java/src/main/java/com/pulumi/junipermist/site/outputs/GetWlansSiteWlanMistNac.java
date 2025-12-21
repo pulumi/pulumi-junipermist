@@ -6,10 +6,37 @@ package com.pulumi.junipermist.site.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetWlansSiteWlanMistNac {
+    /**
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+     * 
+     */
+    private Integer acctInterimInterval;
+    /**
+     * @return Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
+     * 
+     */
+    private Integer authServersRetries;
+    /**
+     * @return Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
+     * 
+     */
+    private Integer authServersTimeout;
+    /**
+     * @return Allows a RADIUS server to dynamically modify the authorization status of a user session.
+     * 
+     */
+    private Boolean coaEnabled;
+    /**
+     * @return the communication port used for “Change of Authorization” (CoA) messages
+     * 
+     */
+    private Integer coaPort;
     /**
      * @return When enabled:
      *   * `authServers` is ignored
@@ -21,8 +48,58 @@ public final class GetWlansSiteWlanMistNac {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+     * 
+     */
+    private Boolean fastDot1xTimers;
+    /**
+     * @return Which network the mist nac server resides in
+     * 
+     */
+    private String network;
+    /**
+     * @return In case there is a static IP for this network, we can specify it using source ip
+     * 
+     */
+    private String sourceIp;
 
     private GetWlansSiteWlanMistNac() {}
+    /**
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+     * 
+     */
+    public Integer acctInterimInterval() {
+        return this.acctInterimInterval;
+    }
+    /**
+     * @return Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
+     * 
+     */
+    public Integer authServersRetries() {
+        return this.authServersRetries;
+    }
+    /**
+     * @return Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
+     * 
+     */
+    public Integer authServersTimeout() {
+        return this.authServersTimeout;
+    }
+    /**
+     * @return Allows a RADIUS server to dynamically modify the authorization status of a user session.
+     * 
+     */
+    public Boolean coaEnabled() {
+        return this.coaEnabled;
+    }
+    /**
+     * @return the communication port used for “Change of Authorization” (CoA) messages
+     * 
+     */
+    public Integer coaPort() {
+        return this.coaPort;
+    }
     /**
      * @return When enabled:
      *   * `authServers` is ignored
@@ -36,6 +113,27 @@ public final class GetWlansSiteWlanMistNac {
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+     * 
+     */
+    public Boolean fastDot1xTimers() {
+        return this.fastDot1xTimers;
+    }
+    /**
+     * @return Which network the mist nac server resides in
+     * 
+     */
+    public String network() {
+        return this.network;
+    }
+    /**
+     * @return In case there is a static IP for this network, we can specify it using source ip
+     * 
+     */
+    public String sourceIp() {
+        return this.sourceIp;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -46,13 +144,69 @@ public final class GetWlansSiteWlanMistNac {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer acctInterimInterval;
+        private Integer authServersRetries;
+        private Integer authServersTimeout;
+        private Boolean coaEnabled;
+        private Integer coaPort;
         private Boolean enabled;
+        private Boolean fastDot1xTimers;
+        private String network;
+        private String sourceIp;
         public Builder() {}
         public Builder(GetWlansSiteWlanMistNac defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acctInterimInterval = defaults.acctInterimInterval;
+    	      this.authServersRetries = defaults.authServersRetries;
+    	      this.authServersTimeout = defaults.authServersTimeout;
+    	      this.coaEnabled = defaults.coaEnabled;
+    	      this.coaPort = defaults.coaPort;
     	      this.enabled = defaults.enabled;
+    	      this.fastDot1xTimers = defaults.fastDot1xTimers;
+    	      this.network = defaults.network;
+    	      this.sourceIp = defaults.sourceIp;
         }
 
+        @CustomType.Setter
+        public Builder acctInterimInterval(Integer acctInterimInterval) {
+            if (acctInterimInterval == null) {
+              throw new MissingRequiredPropertyException("GetWlansSiteWlanMistNac", "acctInterimInterval");
+            }
+            this.acctInterimInterval = acctInterimInterval;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authServersRetries(Integer authServersRetries) {
+            if (authServersRetries == null) {
+              throw new MissingRequiredPropertyException("GetWlansSiteWlanMistNac", "authServersRetries");
+            }
+            this.authServersRetries = authServersRetries;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authServersTimeout(Integer authServersTimeout) {
+            if (authServersTimeout == null) {
+              throw new MissingRequiredPropertyException("GetWlansSiteWlanMistNac", "authServersTimeout");
+            }
+            this.authServersTimeout = authServersTimeout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder coaEnabled(Boolean coaEnabled) {
+            if (coaEnabled == null) {
+              throw new MissingRequiredPropertyException("GetWlansSiteWlanMistNac", "coaEnabled");
+            }
+            this.coaEnabled = coaEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder coaPort(Integer coaPort) {
+            if (coaPort == null) {
+              throw new MissingRequiredPropertyException("GetWlansSiteWlanMistNac", "coaPort");
+            }
+            this.coaPort = coaPort;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
@@ -61,9 +215,41 @@ public final class GetWlansSiteWlanMistNac {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder fastDot1xTimers(Boolean fastDot1xTimers) {
+            if (fastDot1xTimers == null) {
+              throw new MissingRequiredPropertyException("GetWlansSiteWlanMistNac", "fastDot1xTimers");
+            }
+            this.fastDot1xTimers = fastDot1xTimers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder network(String network) {
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetWlansSiteWlanMistNac", "network");
+            }
+            this.network = network;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceIp(String sourceIp) {
+            if (sourceIp == null) {
+              throw new MissingRequiredPropertyException("GetWlansSiteWlanMistNac", "sourceIp");
+            }
+            this.sourceIp = sourceIp;
+            return this;
+        }
         public GetWlansSiteWlanMistNac build() {
             final var _resultValue = new GetWlansSiteWlanMistNac();
+            _resultValue.acctInterimInterval = acctInterimInterval;
+            _resultValue.authServersRetries = authServersRetries;
+            _resultValue.authServersTimeout = authServersTimeout;
+            _resultValue.coaEnabled = coaEnabled;
+            _resultValue.coaPort = coaPort;
             _resultValue.enabled = enabled;
+            _resultValue.fastDot1xTimers = fastDot1xTimers;
+            _resultValue.network = network;
+            _resultValue.sourceIp = sourceIp;
             return _resultValue;
         }
     }

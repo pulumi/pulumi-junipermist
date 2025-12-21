@@ -223,6 +223,10 @@ __all__ = [
     'SwitchAclTagsArgsDict',
     'SwitchAclTagsSpecArgs',
     'SwitchAclTagsSpecArgsDict',
+    'SwitchBgpConfigArgs',
+    'SwitchBgpConfigArgsDict',
+    'SwitchBgpConfigNeighborsArgs',
+    'SwitchBgpConfigNeighborsArgsDict',
     'SwitchDhcpSnoopingArgs',
     'SwitchDhcpSnoopingArgsDict',
     'SwitchDhcpdConfigArgs',
@@ -305,6 +309,14 @@ __all__ = [
     'SwitchRemoteSyslogUserArgsDict',
     'SwitchRemoteSyslogUserContentArgs',
     'SwitchRemoteSyslogUserContentArgsDict',
+    'SwitchRoutingPoliciesArgs',
+    'SwitchRoutingPoliciesArgsDict',
+    'SwitchRoutingPoliciesTermArgs',
+    'SwitchRoutingPoliciesTermArgsDict',
+    'SwitchRoutingPoliciesTermActionsArgs',
+    'SwitchRoutingPoliciesTermActionsArgsDict',
+    'SwitchRoutingPoliciesTermMatchingArgs',
+    'SwitchRoutingPoliciesTermMatchingArgsDict',
     'SwitchSnmpConfigArgs',
     'SwitchSnmpConfigArgsDict',
     'SwitchSnmpConfigClientListArgs',
@@ -1795,9 +1807,9 @@ if not MYPY:
           * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
           * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
         """
-        vlan_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+        vlan_ids: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If `forwarding`==`limited`
+        If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
         """
         wxtunnel_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1827,7 +1839,7 @@ class ApPortConfigArgs:
                  radius_config: Optional[pulumi.Input['ApPortConfigRadiusConfigArgs']] = None,
                  radsec: Optional[pulumi.Input['ApPortConfigRadsecArgs']] = None,
                  vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 vlan_ids: Optional[pulumi.Input[_builtins.str]] = None,
                  wxtunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
                  wxtunnel_remote_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -1849,7 +1861,7 @@ class ApPortConfigArgs:
         :param pulumi.Input[_builtins.int] vlan_id: Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
                  * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
                  * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] vlan_ids: If `forwarding`==`limited`
+        :param pulumi.Input[_builtins.str] vlan_ids: If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
         :param pulumi.Input[_builtins.str] wxtunnel_id: If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
         :param pulumi.Input[_builtins.str] wxtunnel_remote_id: If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
         """
@@ -2056,14 +2068,14 @@ class ApPortConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="vlanIds")
-    def vlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def vlan_ids(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If `forwarding`==`limited`
+        If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
         """
         return pulumi.get(self, "vlan_ids")
 
     @vlan_ids.setter
-    def vlan_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def vlan_ids(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "vlan_ids", value)
 
     @_builtins.property
@@ -3071,7 +3083,7 @@ if not MYPY:
         """
         antenna_select: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+        Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
         """
         band24: NotRequired[pulumi.Input['ApRadioConfigBand24ArgsDict']]
         """
@@ -3135,7 +3147,7 @@ class ApRadioConfigArgs:
         :param pulumi.Input[_builtins.int] ant_gain5: Antenna gain for 5G - for models with external antenna only
         :param pulumi.Input[_builtins.int] ant_gain6: Antenna gain for 6G - for models with external antenna only
         :param pulumi.Input[_builtins.str] antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
-        :param pulumi.Input[_builtins.str] antenna_select: Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+        :param pulumi.Input[_builtins.str] antenna_select: Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
         :param pulumi.Input['ApRadioConfigBand24Args'] band24: Radio Band AP settings
         :param pulumi.Input[_builtins.str] band24_usage: enum: `24`, `5`, `6`, `auto`
         :param pulumi.Input['ApRadioConfigBand5Args'] band5: Radio Band AP settings
@@ -3238,7 +3250,7 @@ class ApRadioConfigArgs:
     @pulumi.getter(name="antennaSelect")
     def antenna_select(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+        Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
         """
         return pulumi.get(self, "antenna_select")
 
@@ -9445,11 +9457,11 @@ if not MYPY:
         """
         local_preference: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Optional, for an import policy, local_preference can be changed
+        Optional, for an import policy, local_preference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         """
         prepend_as_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        When used as export policy, optional. By default, the local AS will be prepended, to change it
+        When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
         """
 elif False:
     GatewayRoutingPoliciesTermActionsArgsDict: TypeAlias = Mapping[str, Any]
@@ -9471,8 +9483,8 @@ class GatewayRoutingPoliciesTermActionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] communities: When used as export policy, optional
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_as_paths: When used as export policy, optional. To exclude certain AS
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_communities: When used as export policy, optional
-        :param pulumi.Input[_builtins.str] local_preference: Optional, for an import policy, local_preference can be changed
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prepend_as_paths: When used as export policy, optional. By default, the local AS will be prepended, to change it
+        :param pulumi.Input[_builtins.str] local_preference: Optional, for an import policy, local_preference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prepend_as_paths: When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
         """
         if accept is not None:
             pulumi.set(__self__, "accept", accept)
@@ -9572,7 +9584,7 @@ class GatewayRoutingPoliciesTermActionsArgs:
     @pulumi.getter(name="localPreference")
     def local_preference(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Optional, for an import policy, local_preference can be changed
+        Optional, for an import policy, local_preference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         """
         return pulumi.get(self, "local_preference")
 
@@ -9584,7 +9596,7 @@ class GatewayRoutingPoliciesTermActionsArgs:
     @pulumi.getter(name="prependAsPaths")
     def prepend_as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        When used as export policy, optional. By default, the local AS will be prepended, to change it
+        When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
         """
         return pulumi.get(self, "prepend_as_paths")
 
@@ -9597,7 +9609,7 @@ if not MYPY:
     class GatewayRoutingPoliciesTermMatchingArgsDict(TypedDict):
         as_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        takes regular expression
+        BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         """
         communities: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -9607,7 +9619,7 @@ if not MYPY:
         """
         protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        `direct`, `bgp`, `osp`, `static`, `aggregate`...
+        enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
         """
         route_exists: NotRequired[pulumi.Input['GatewayRoutingPoliciesTermMatchingRouteExistsArgsDict']]
         vpn_neighbor_macs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -9635,9 +9647,9 @@ class GatewayRoutingPoliciesTermMatchingArgs:
                  vpn_path_sla: Optional[pulumi.Input['GatewayRoutingPoliciesTermMatchingVpnPathSlaArgs']] = None,
                  vpn_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] as_paths: takes regular expression
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] as_paths: BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prefixes: zero or more criteria/filter can be specified to match the term, all criteria have to be met
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: `direct`, `bgp`, `osp`, `static`, `aggregate`...
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpn_neighbor_macs: overlay-facing criteria (used for bgp_config where via=vpn)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpn_paths: overlay-facing criteria (used for bgp_config where via=vpn). ordered-
         """
@@ -9664,7 +9676,7 @@ class GatewayRoutingPoliciesTermMatchingArgs:
     @pulumi.getter(name="asPaths")
     def as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        takes regular expression
+        BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         """
         return pulumi.get(self, "as_paths")
 
@@ -9706,7 +9718,7 @@ class GatewayRoutingPoliciesTermMatchingArgs:
     @pulumi.getter
     def protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        `direct`, `bgp`, `osp`, `static`, `aggregate`...
+        enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
         """
         return pulumi.get(self, "protocols")
 
@@ -12876,6 +12888,286 @@ class SwitchAclTagsSpecArgs:
 
 
 if not MYPY:
+    class SwitchBgpConfigArgsDict(TypedDict):
+        local_as: pulumi.Input[_builtins.str]
+        type: pulumi.Input[_builtins.str]
+        """
+        enum: `external`, `internal`
+        """
+        auth_key: NotRequired[pulumi.Input[_builtins.str]]
+        bfd_minimum_interval: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
+        """
+        export_policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Export policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        hold_time: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        """
+        import_policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Import policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        neighbors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigNeighborsArgsDict']]]]
+        """
+        Property key is the BGP Neighbor IP Address.
+        """
+        networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+        """
+elif False:
+    SwitchBgpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SwitchBgpConfigArgs:
+    def __init__(__self__, *,
+                 local_as: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str],
+                 auth_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 bfd_minimum_interval: Optional[pulumi.Input[_builtins.int]] = None,
+                 export_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 hold_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 import_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 neighbors: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigNeighborsArgs']]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: enum: `external`, `internal`
+        :param pulumi.Input[_builtins.int] bfd_minimum_interval: Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
+        :param pulumi.Input[_builtins.str] export_policy: Export policy must match one of the policy names defined in the `routing_policies` property.
+        :param pulumi.Input[_builtins.int] hold_time: Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        :param pulumi.Input[_builtins.str] import_policy: Import policy must match one of the policy names defined in the `routing_policies` property.
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigNeighborsArgs']]] neighbors: Property key is the BGP Neighbor IP Address.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+        """
+        pulumi.set(__self__, "local_as", local_as)
+        pulumi.set(__self__, "type", type)
+        if auth_key is not None:
+            pulumi.set(__self__, "auth_key", auth_key)
+        if bfd_minimum_interval is not None:
+            pulumi.set(__self__, "bfd_minimum_interval", bfd_minimum_interval)
+        if export_policy is not None:
+            pulumi.set(__self__, "export_policy", export_policy)
+        if hold_time is not None:
+            pulumi.set(__self__, "hold_time", hold_time)
+        if import_policy is not None:
+            pulumi.set(__self__, "import_policy", import_policy)
+        if neighbors is not None:
+            pulumi.set(__self__, "neighbors", neighbors)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+
+    @_builtins.property
+    @pulumi.getter(name="localAs")
+    def local_as(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "local_as")
+
+    @local_as.setter
+    def local_as(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "local_as", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        enum: `external`, `internal`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authKey")
+    def auth_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "auth_key")
+
+    @auth_key.setter
+    def auth_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "auth_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bfdMinimumInterval")
+    def bfd_minimum_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
+        """
+        return pulumi.get(self, "bfd_minimum_interval")
+
+    @bfd_minimum_interval.setter
+    def bfd_minimum_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "bfd_minimum_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exportPolicy")
+    def export_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Export policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        return pulumi.get(self, "export_policy")
+
+    @export_policy.setter
+    def export_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "export_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="holdTime")
+    def hold_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        """
+        return pulumi.get(self, "hold_time")
+
+    @hold_time.setter
+    def hold_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "hold_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="importPolicy")
+    def import_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Import policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        return pulumi.get(self, "import_policy")
+
+    @import_policy.setter
+    def import_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "import_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def neighbors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigNeighborsArgs']]]]:
+        """
+        Property key is the BGP Neighbor IP Address.
+        """
+        return pulumi.get(self, "neighbors")
+
+    @neighbors.setter
+    def neighbors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigNeighborsArgs']]]]):
+        pulumi.set(self, "neighbors", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "networks", value)
+
+
+if not MYPY:
+    class SwitchBgpConfigNeighborsArgsDict(TypedDict):
+        neighbor_as: pulumi.Input[_builtins.str]
+        """
+        Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `local_as`. For external BGP, this must differ from `local_as`.
+        """
+        export_policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Export policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        hold_time: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        """
+        import_policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Import policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        multihop_ttl: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    SwitchBgpConfigNeighborsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SwitchBgpConfigNeighborsArgs:
+    def __init__(__self__, *,
+                 neighbor_as: pulumi.Input[_builtins.str],
+                 export_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 hold_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 import_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 multihop_ttl: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] neighbor_as: Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `local_as`. For external BGP, this must differ from `local_as`.
+        :param pulumi.Input[_builtins.str] export_policy: Export policy must match one of the policy names defined in the `routing_policies` property.
+        :param pulumi.Input[_builtins.int] hold_time: Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        :param pulumi.Input[_builtins.str] import_policy: Import policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        pulumi.set(__self__, "neighbor_as", neighbor_as)
+        if export_policy is not None:
+            pulumi.set(__self__, "export_policy", export_policy)
+        if hold_time is not None:
+            pulumi.set(__self__, "hold_time", hold_time)
+        if import_policy is not None:
+            pulumi.set(__self__, "import_policy", import_policy)
+        if multihop_ttl is not None:
+            pulumi.set(__self__, "multihop_ttl", multihop_ttl)
+
+    @_builtins.property
+    @pulumi.getter(name="neighborAs")
+    def neighbor_as(self) -> pulumi.Input[_builtins.str]:
+        """
+        Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `local_as`. For external BGP, this must differ from `local_as`.
+        """
+        return pulumi.get(self, "neighbor_as")
+
+    @neighbor_as.setter
+    def neighbor_as(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "neighbor_as", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exportPolicy")
+    def export_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Export policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        return pulumi.get(self, "export_policy")
+
+    @export_policy.setter
+    def export_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "export_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="holdTime")
+    def hold_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        """
+        return pulumi.get(self, "hold_time")
+
+    @hold_time.setter
+    def hold_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "hold_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="importPolicy")
+    def import_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Import policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        return pulumi.get(self, "import_policy")
+
+    @import_policy.setter
+    def import_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "import_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="multihopTtl")
+    def multihop_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "multihop_ttl")
+
+    @multihop_ttl.setter
+    def multihop_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "multihop_ttl", value)
+
+
+if not MYPY:
     class SwitchDhcpSnoopingArgsDict(TypedDict):
         all_networks: NotRequired[pulumi.Input[_builtins.bool]]
         enable_arp_spoof_check: NotRequired[pulumi.Input[_builtins.bool]]
@@ -13926,7 +14218,7 @@ if not MYPY:
         """
         allow_dhcpd: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+        Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         """
         allow_multiple_supplicants: NotRequired[pulumi.Input[_builtins.bool]]
         bypass_auth_when_server_down: NotRequired[pulumi.Input[_builtins.bool]]
@@ -14095,7 +14387,7 @@ class SwitchLocalPortConfigArgs:
         """
         :param pulumi.Input[_builtins.str] usage: Port usage name.
         :param pulumi.Input[_builtins.bool] all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
-        :param pulumi.Input[_builtins.bool] allow_dhcpd: Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+        :param pulumi.Input[_builtins.bool] allow_dhcpd: Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         :param pulumi.Input[_builtins.bool] bypass_auth_when_server_down: Only if `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
         :param pulumi.Input[_builtins.bool] bypass_auth_when_server_down_for_unknown_client: Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         :param pulumi.Input[_builtins.bool] disable_autoneg: Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -14228,7 +14520,7 @@ class SwitchLocalPortConfigArgs:
     @pulumi.getter(name="allowDhcpd")
     def allow_dhcpd(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+        Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         """
         return pulumi.get(self, "allow_dhcpd")
 
@@ -15670,6 +15962,10 @@ if not MYPY:
         """
         Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
         """
+        networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of network names. Required if `usage`==`inet`
+        """
         no_local_overwrite: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Prevent helpdesk to override the port config
@@ -15701,6 +15997,7 @@ class SwitchPortConfigArgs:
                  dynamic_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  esilag: Optional[pulumi.Input[_builtins.bool]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  no_local_overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
                  poe_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  port_network: Optional[pulumi.Input[_builtins.str]] = None,
@@ -15715,6 +16012,7 @@ class SwitchPortConfigArgs:
         :param pulumi.Input[_builtins.str] duplex: enum: `auto`, `full`, `half`
         :param pulumi.Input[_builtins.str] dynamic_usage: Enable dynamic usage for this port. Set to `dynamic` to enable.
         :param pulumi.Input[_builtins.int] mtu: Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: List of network names. Required if `usage`==`inet`
         :param pulumi.Input[_builtins.bool] no_local_overwrite: Prevent helpdesk to override the port config
         :param pulumi.Input[_builtins.str] port_network: Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
         :param pulumi.Input[_builtins.str] speed: enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
@@ -15742,6 +16040,8 @@ class SwitchPortConfigArgs:
             pulumi.set(__self__, "esilag", esilag)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
         if no_local_overwrite is not None:
             pulumi.set(__self__, "no_local_overwrite", no_local_overwrite)
         if poe_disabled is not None:
@@ -15885,6 +16185,18 @@ class SwitchPortConfigArgs:
     @mtu.setter
     def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "mtu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of network names. Required if `usage`==`inet`
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter(name="noLocalOverwrite")
@@ -16210,7 +16522,7 @@ if not MYPY:
         """
         allow_dhcpd: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+        Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         """
         allow_multiple_supplicants: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -16427,7 +16739,7 @@ class SwitchPortUsagesArgs:
                  voip_network: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] all_networks: Only if `mode`==`trunk`. Whether to trunk all network/vlans
-        :param pulumi.Input[_builtins.bool] allow_dhcpd: Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+        :param pulumi.Input[_builtins.bool] allow_dhcpd: Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         :param pulumi.Input[_builtins.bool] allow_multiple_supplicants: Only if `mode`!=`dynamic`
         :param pulumi.Input[_builtins.bool] bypass_auth_when_server_down: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
         :param pulumi.Input[_builtins.bool] bypass_auth_when_server_down_for_unknown_client: Only if `mode`!=`dynamic` and `port_auth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
@@ -16573,7 +16885,7 @@ class SwitchPortUsagesArgs:
     @pulumi.getter(name="allowDhcpd")
     def allow_dhcpd(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+        Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         """
         return pulumi.get(self, "allow_dhcpd")
 
@@ -18622,6 +18934,272 @@ class SwitchRemoteSyslogUserContentArgs:
     @severity.setter
     def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "severity", value)
+
+
+if not MYPY:
+    class SwitchRoutingPoliciesArgsDict(TypedDict):
+        terms: NotRequired[pulumi.Input[Sequence[pulumi.Input['SwitchRoutingPoliciesTermArgsDict']]]]
+        """
+        at least criteria/filter must be specified to match the term, all criteria have to be met
+        """
+elif False:
+    SwitchRoutingPoliciesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SwitchRoutingPoliciesArgs:
+    def __init__(__self__, *,
+                 terms: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchRoutingPoliciesTermArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SwitchRoutingPoliciesTermArgs']]] terms: at least criteria/filter must be specified to match the term, all criteria have to be met
+        """
+        if terms is not None:
+            pulumi.set(__self__, "terms", terms)
+
+    @_builtins.property
+    @pulumi.getter
+    def terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SwitchRoutingPoliciesTermArgs']]]]:
+        """
+        at least criteria/filter must be specified to match the term, all criteria have to be met
+        """
+        return pulumi.get(self, "terms")
+
+    @terms.setter
+    def terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchRoutingPoliciesTermArgs']]]]):
+        pulumi.set(self, "terms", value)
+
+
+if not MYPY:
+    class SwitchRoutingPoliciesTermArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
+        actions: NotRequired[pulumi.Input['SwitchRoutingPoliciesTermActionsArgsDict']]
+        """
+        When used as import policy
+        """
+        matching: NotRequired[pulumi.Input['SwitchRoutingPoliciesTermMatchingArgsDict']]
+        """
+        zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        """
+elif False:
+    SwitchRoutingPoliciesTermArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SwitchRoutingPoliciesTermArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 actions: Optional[pulumi.Input['SwitchRoutingPoliciesTermActionsArgs']] = None,
+                 matching: Optional[pulumi.Input['SwitchRoutingPoliciesTermMatchingArgs']] = None):
+        """
+        :param pulumi.Input['SwitchRoutingPoliciesTermActionsArgs'] actions: When used as import policy
+        :param pulumi.Input['SwitchRoutingPoliciesTermMatchingArgs'] matching: zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        """
+        pulumi.set(__self__, "name", name)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if matching is not None:
+            pulumi.set(__self__, "matching", matching)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input['SwitchRoutingPoliciesTermActionsArgs']]:
+        """
+        When used as import policy
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input['SwitchRoutingPoliciesTermActionsArgs']]):
+        pulumi.set(self, "actions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def matching(self) -> Optional[pulumi.Input['SwitchRoutingPoliciesTermMatchingArgs']]:
+        """
+        zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        """
+        return pulumi.get(self, "matching")
+
+    @matching.setter
+    def matching(self, value: Optional[pulumi.Input['SwitchRoutingPoliciesTermMatchingArgs']]):
+        pulumi.set(self, "matching", value)
+
+
+if not MYPY:
+    class SwitchRoutingPoliciesTermActionsArgsDict(TypedDict):
+        accept: NotRequired[pulumi.Input[_builtins.bool]]
+        communities: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        When used as export policy, optional
+        """
+        local_preference: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional, for an import policy, local_preference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        """
+        prepend_as_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+        """
+elif False:
+    SwitchRoutingPoliciesTermActionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SwitchRoutingPoliciesTermActionsArgs:
+    def __init__(__self__, *,
+                 accept: Optional[pulumi.Input[_builtins.bool]] = None,
+                 communities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 local_preference: Optional[pulumi.Input[_builtins.str]] = None,
+                 prepend_as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] communities: When used as export policy, optional
+        :param pulumi.Input[_builtins.str] local_preference: Optional, for an import policy, local_preference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prepend_as_paths: When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+        """
+        if accept is not None:
+            pulumi.set(__self__, "accept", accept)
+        if communities is not None:
+            pulumi.set(__self__, "communities", communities)
+        if local_preference is not None:
+            pulumi.set(__self__, "local_preference", local_preference)
+        if prepend_as_paths is not None:
+            pulumi.set(__self__, "prepend_as_paths", prepend_as_paths)
+
+    @_builtins.property
+    @pulumi.getter
+    def accept(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "accept")
+
+    @accept.setter
+    def accept(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "accept", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def communities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        When used as export policy, optional
+        """
+        return pulumi.get(self, "communities")
+
+    @communities.setter
+    def communities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "communities", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localPreference")
+    def local_preference(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional, for an import policy, local_preference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        """
+        return pulumi.get(self, "local_preference")
+
+    @local_preference.setter
+    def local_preference(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "local_preference", value)
+
+    @_builtins.property
+    @pulumi.getter(name="prependAsPaths")
+    def prepend_as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+        """
+        return pulumi.get(self, "prepend_as_paths")
+
+    @prepend_as_paths.setter
+    def prepend_as_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "prepend_as_paths", value)
+
+
+if not MYPY:
+    class SwitchRoutingPoliciesTermMatchingArgsDict(TypedDict):
+        as_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        """
+        communities: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        """
+        protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+        """
+elif False:
+    SwitchRoutingPoliciesTermMatchingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SwitchRoutingPoliciesTermMatchingArgs:
+    def __init__(__self__, *,
+                 as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 communities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] as_paths: BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prefixes: zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+        """
+        if as_paths is not None:
+            pulumi.set(__self__, "as_paths", as_paths)
+        if communities is not None:
+            pulumi.set(__self__, "communities", communities)
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if protocols is not None:
+            pulumi.set(__self__, "protocols", protocols)
+
+    @_builtins.property
+    @pulumi.getter(name="asPaths")
+    def as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        """
+        return pulumi.get(self, "as_paths")
+
+    @as_paths.setter
+    def as_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "as_paths", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def communities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "communities")
+
+    @communities.setter
+    def communities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "communities", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        """
+        return pulumi.get(self, "prefixes")
+
+    @prefixes.setter
+    def prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "prefixes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+        """
+        return pulumi.get(self, "protocols")
+
+    @protocols.setter
+    def protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "protocols", value)
 
 
 if not MYPY:

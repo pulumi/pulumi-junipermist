@@ -16,7 +16,7 @@ import java.util.Objects;
 @CustomType
 public final class GetServicesOrgService {
     /**
-     * @return If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * @return If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
      * 
      */
     private List<String> addresses;
@@ -39,12 +39,12 @@ public final class GetServicesOrgService {
      */
     private List<String> apps;
     /**
-     * @return 0 means unlimited
+     * @return 0 means unlimited, value from 0 to 107374182
      * 
      */
     private Integer clientLimitDown;
     /**
-     * @return 0 means unlimited
+     * @return 0 means unlimited, value from 0 to 107374182
      * 
      */
     private Integer clientLimitUp;
@@ -56,7 +56,7 @@ public final class GetServicesOrgService {
     private String description;
     private String dscp;
     /**
-     * @return enum: `nonRevertable`, `none`, `revertable`
+     * @return enum: `nonRevertible`, `none`, `revertible`
      * 
      */
     private String failoverPolicy;
@@ -81,12 +81,12 @@ public final class GetServicesOrgService {
     private String name;
     private String orgId;
     /**
-     * @return 0 means unlimited
+     * @return 0 means unlimited, value from 0 to 107374182
      * 
      */
     private Integer serviceLimitDown;
     /**
-     * @return 0 means unlimited
+     * @return 0 means unlimited, value from 0 to 107374182
      * 
      */
     private Integer serviceLimitUp;
@@ -124,7 +124,7 @@ public final class GetServicesOrgService {
 
     private GetServicesOrgService() {}
     /**
-     * @return If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+     * @return If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
      * 
      */
     public List<String> addresses() {
@@ -155,14 +155,14 @@ public final class GetServicesOrgService {
         return this.apps;
     }
     /**
-     * @return 0 means unlimited
+     * @return 0 means unlimited, value from 0 to 107374182
      * 
      */
     public Integer clientLimitDown() {
         return this.clientLimitDown;
     }
     /**
-     * @return 0 means unlimited
+     * @return 0 means unlimited, value from 0 to 107374182
      * 
      */
     public Integer clientLimitUp() {
@@ -182,7 +182,7 @@ public final class GetServicesOrgService {
         return this.dscp;
     }
     /**
-     * @return enum: `nonRevertable`, `none`, `revertable`
+     * @return enum: `nonRevertible`, `none`, `revertible`
      * 
      */
     public String failoverPolicy() {
@@ -225,14 +225,14 @@ public final class GetServicesOrgService {
         return this.orgId;
     }
     /**
-     * @return 0 means unlimited
+     * @return 0 means unlimited, value from 0 to 107374182
      * 
      */
     public Integer serviceLimitDown() {
         return this.serviceLimitDown;
     }
     /**
-     * @return 0 means unlimited
+     * @return 0 means unlimited, value from 0 to 107374182
      * 
      */
     public Integer serviceLimitUp() {

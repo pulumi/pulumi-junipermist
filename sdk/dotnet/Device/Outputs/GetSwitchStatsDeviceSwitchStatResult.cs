@@ -15,10 +15,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatApRedundancyResult ApRedundancy;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatArpTableStatsResult ArpTableStats;
+        public readonly Outputs.GetSwitchStatsDeviceSwitchStatAutoUpgradeStatResult AutoUpgradeStat;
         public readonly int CertExpiry;
         public readonly ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatClientResult> Clients;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatClientsStatsResult ClientsStats;
         public readonly string ConfigStatus;
+        public readonly int ConfigTimestamp;
+        public readonly int ConfigVersion;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatCpuStatResult CpuStat;
         /// <summary>
         /// When the object has been created, in epoch
@@ -30,6 +33,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GetSwitchStatsDeviceSwitchStatDhcpdStatResult> DhcpdStat;
         public readonly string EvpntopoId;
+        public readonly string ExtIp;
         public readonly bool FwVersionsOutofsync;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatFwupdateResult Fwupdate;
         /// <summary>
@@ -86,6 +90,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableDictionary<string, Outputs.GetSwitchStatsDeviceSwitchStatServiceStatResult> ServiceStat;
         public readonly string SiteId;
         public readonly string Status;
+        public readonly int TagId;
+        public readonly string TagUuid;
         public readonly double Uptime;
         public readonly string VcMac;
         public readonly Outputs.GetSwitchStatsDeviceSwitchStatVcSetupInfoResult VcSetupInfo;
@@ -97,6 +103,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             Outputs.GetSwitchStatsDeviceSwitchStatArpTableStatsResult arpTableStats,
 
+            Outputs.GetSwitchStatsDeviceSwitchStatAutoUpgradeStatResult autoUpgradeStat,
+
             int certExpiry,
 
             ImmutableArray<Outputs.GetSwitchStatsDeviceSwitchStatClientResult> clients,
@@ -104,6 +112,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Outputs.GetSwitchStatsDeviceSwitchStatClientsStatsResult clientsStats,
 
             string configStatus,
+
+            int configTimestamp,
+
+            int configVersion,
 
             Outputs.GetSwitchStatsDeviceSwitchStatCpuStatResult cpuStat,
 
@@ -114,6 +126,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
             ImmutableDictionary<string, Outputs.GetSwitchStatsDeviceSwitchStatDhcpdStatResult> dhcpdStat,
 
             string evpntopoId,
+
+            string extIp,
 
             bool fwVersionsOutofsync,
 
@@ -167,6 +181,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string status,
 
+            int tagId,
+
+            string tagUuid,
+
             double uptime,
 
             string vcMac,
@@ -177,15 +195,19 @@ namespace Pulumi.JuniperMist.Device.Outputs
         {
             ApRedundancy = apRedundancy;
             ArpTableStats = arpTableStats;
+            AutoUpgradeStat = autoUpgradeStat;
             CertExpiry = certExpiry;
             Clients = clients;
             ClientsStats = clientsStats;
             ConfigStatus = configStatus;
+            ConfigTimestamp = configTimestamp;
+            ConfigVersion = configVersion;
             CpuStat = cpuStat;
             CreatedTime = createdTime;
             DeviceprofileId = deviceprofileId;
             DhcpdStat = dhcpdStat;
             EvpntopoId = evpntopoId;
+            ExtIp = extIp;
             FwVersionsOutofsync = fwVersionsOutofsync;
             Fwupdate = fwupdate;
             HasPcap = hasPcap;
@@ -212,6 +234,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
             ServiceStat = serviceStat;
             SiteId = siteId;
             Status = status;
+            TagId = tagId;
+            TagUuid = tagUuid;
             Uptime = uptime;
             VcMac = vcMac;
             VcSetupInfo = vcSetupInfo;

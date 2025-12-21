@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatCpuStat;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatError;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatFan;
+import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatMemoryStat;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatPic;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatPoe;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatModuleStatPsus;
@@ -24,6 +25,7 @@ import java.util.Objects;
 public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     private String backupVersion;
     private String biosVersion;
+    private String bootPartition;
     private String cpldVersion;
     private GetSwitchStatsDeviceSwitchStatModuleStatCpuStat cpuStat;
     /**
@@ -41,6 +43,11 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     private Double lastSeen;
     private Boolean locating;
     private String mac;
+    /**
+     * @return Memory usage stat (for virtual chassis, memory usage of master RE)
+     * 
+     */
+    private GetSwitchStatsDeviceSwitchStatModuleStatMemoryStat memoryStat;
     private String model;
     private String opticsCpldVersion;
     private String pendingVersion;
@@ -74,6 +81,9 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     }
     public String biosVersion() {
         return this.biosVersion;
+    }
+    public String bootPartition() {
+        return this.bootPartition;
     }
     public String cpldVersion() {
         return this.cpldVersion;
@@ -109,6 +119,13 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     }
     public String mac() {
         return this.mac;
+    }
+    /**
+     * @return Memory usage stat (for virtual chassis, memory usage of master RE)
+     * 
+     */
+    public GetSwitchStatsDeviceSwitchStatModuleStatMemoryStat memoryStat() {
+        return this.memoryStat;
     }
     public String model() {
         return this.model;
@@ -192,6 +209,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     public static final class Builder {
         private String backupVersion;
         private String biosVersion;
+        private String bootPartition;
         private String cpldVersion;
         private GetSwitchStatsDeviceSwitchStatModuleStatCpuStat cpuStat;
         private List<GetSwitchStatsDeviceSwitchStatModuleStatError> errors;
@@ -201,6 +219,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
         private Double lastSeen;
         private Boolean locating;
         private String mac;
+        private GetSwitchStatsDeviceSwitchStatModuleStatMemoryStat memoryStat;
         private String model;
         private String opticsCpldVersion;
         private String pendingVersion;
@@ -228,6 +247,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     	      Objects.requireNonNull(defaults);
     	      this.backupVersion = defaults.backupVersion;
     	      this.biosVersion = defaults.biosVersion;
+    	      this.bootPartition = defaults.bootPartition;
     	      this.cpldVersion = defaults.cpldVersion;
     	      this.cpuStat = defaults.cpuStat;
     	      this.errors = defaults.errors;
@@ -237,6 +257,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
     	      this.lastSeen = defaults.lastSeen;
     	      this.locating = defaults.locating;
     	      this.mac = defaults.mac;
+    	      this.memoryStat = defaults.memoryStat;
     	      this.model = defaults.model;
     	      this.opticsCpldVersion = defaults.opticsCpldVersion;
     	      this.pendingVersion = defaults.pendingVersion;
@@ -275,6 +296,14 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStat", "biosVersion");
             }
             this.biosVersion = biosVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bootPartition(String bootPartition) {
+            if (bootPartition == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStat", "bootPartition");
+            }
+            this.bootPartition = bootPartition;
             return this;
         }
         @CustomType.Setter
@@ -353,6 +382,14 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStat", "mac");
             }
             this.mac = mac;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder memoryStat(GetSwitchStatsDeviceSwitchStatModuleStatMemoryStat memoryStat) {
+            if (memoryStat == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStat", "memoryStat");
+            }
+            this.memoryStat = memoryStat;
             return this;
         }
         @CustomType.Setter
@@ -547,6 +584,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
             final var _resultValue = new GetSwitchStatsDeviceSwitchStatModuleStat();
             _resultValue.backupVersion = backupVersion;
             _resultValue.biosVersion = biosVersion;
+            _resultValue.bootPartition = bootPartition;
             _resultValue.cpldVersion = cpldVersion;
             _resultValue.cpuStat = cpuStat;
             _resultValue.errors = errors;
@@ -556,6 +594,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStat {
             _resultValue.lastSeen = lastSeen;
             _resultValue.locating = locating;
             _resultValue.mac = mac;
+            _resultValue.memoryStat = memoryStat;
             _resultValue.model = model;
             _resultValue.opticsCpldVersion = opticsCpldVersion;
             _resultValue.pendingVersion = pendingVersion;

@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// if `Type`==`Match`. enum: `CertCn`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
+        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrStatus`, `GbpTag`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
         /// </summary>
         public readonly string Match;
         /// <summary>
@@ -40,13 +40,17 @@ namespace Pulumi.JuniperMist.Org.Outputs
         ///   * `True`: means all values should be matched (i.e., match-all behavior)
         /// 
         /// 
-        /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole` or `Match`==`UsermacLabel`
+        /// Currently it makes sense to set this field to `True` only if the `Match`==`IdpRole`, `Match`==`UsermacLabel` and `EdrStatus`
         /// </summary>
         public readonly bool MatchAll;
         /// <summary>
         /// When the object has been modified for the last time, in epoch
         /// </summary>
         public readonly double ModifiedTime;
+        /// <summary>
+        /// If `Type`==`RedirectNacportalId`, the ID of the NAC portal to redirect to
+        /// </summary>
+        public readonly string NacportalId;
         public readonly string Name;
         public readonly string OrgId;
         /// <summary>
@@ -70,7 +74,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int SessionTimeout;
         /// <summary>
-        /// enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `SessionTimeout`, `UsernameAttr`, `Vlan`
+        /// enum: `EgressVlanNames`, `GbpTag`, `Match`, `RadiusAttrs`, `RadiusGroup`, `RadiusVendorAttrs`, `RedirectNacportalId`, `SessionTimeout`, `UsernameAttr`, `Vlan`
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -104,6 +108,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             double modifiedTime,
 
+            string nacportalId,
+
             string name,
 
             string orgId,
@@ -132,6 +138,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Match = match;
             MatchAll = matchAll;
             ModifiedTime = modifiedTime;
+            NacportalId = nacportalId;
             Name = name;
             OrgId = orgId;
             RadiusAttrs = radiusAttrs;

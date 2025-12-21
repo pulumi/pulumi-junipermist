@@ -15,6 +15,30 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("deviceprofileId")]
         public Input<string>? DeviceprofileId { get; set; }
 
+        [Input("downlinkIps")]
+        private InputList<string>? _downlinkIps;
+        public InputList<string> DownlinkIps
+        {
+            get => _downlinkIps ?? (_downlinkIps = new InputList<string>());
+            set => _downlinkIps = value;
+        }
+
+        [Input("downlinks")]
+        private InputList<string>? _downlinks;
+        public InputList<string> Downlinks
+        {
+            get => _downlinks ?? (_downlinks = new InputList<string>());
+            set => _downlinks = value;
+        }
+
+        [Input("esilaglinks")]
+        private InputList<string>? _esilaglinks;
+        public InputList<string> Esilaglinks
+        {
+            get => _esilaglinks ?? (_esilaglinks = new InputList<string>());
+            set => _esilaglinks = value;
+        }
+
         [Input("evpnId")]
         public Input<int>? EvpnId { get; set; }
 
@@ -56,6 +80,38 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
+
+        [Input("suggestedDownlinks")]
+        private InputList<string>? _suggestedDownlinks;
+        public InputList<string> SuggestedDownlinks
+        {
+            get => _suggestedDownlinks ?? (_suggestedDownlinks = new InputList<string>());
+            set => _suggestedDownlinks = value;
+        }
+
+        [Input("suggestedEsilaglinks")]
+        private InputList<string>? _suggestedEsilaglinks;
+        public InputList<string> SuggestedEsilaglinks
+        {
+            get => _suggestedEsilaglinks ?? (_suggestedEsilaglinks = new InputList<string>());
+            set => _suggestedEsilaglinks = value;
+        }
+
+        [Input("suggestedUplinks")]
+        private InputList<string>? _suggestedUplinks;
+        public InputList<string> SuggestedUplinks
+        {
+            get => _suggestedUplinks ?? (_suggestedUplinks = new InputList<string>());
+            set => _suggestedUplinks = value;
+        }
+
+        [Input("uplinks")]
+        private InputList<string>? _uplinks;
+        public InputList<string> Uplinks
+        {
+            get => _uplinks ?? (_uplinks = new InputList<string>());
+            set => _uplinks = value;
+        }
 
         public EvpnTopologySwitchesArgs()
         {

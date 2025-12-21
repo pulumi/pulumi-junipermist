@@ -68,7 +68,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> GbpTag { get; private set; } = null!;
 
         /// <summary>
-        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrHealth`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
+        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrStatus`, `GbpTag`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
         /// </summary>
         [Output("match")]
         public Output<string?> Match { get; private set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? GbpTag { get; set; }
 
         /// <summary>
-        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrHealth`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
+        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrStatus`, `GbpTag`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -345,7 +345,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? GbpTag { get; set; }
 
         /// <summary>
-        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrHealth`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
+        /// if `Type`==`Match`. enum: `CertCn`, `CertEku`, `CertIssuer`, `CertSan`, `CertSerial`, `CertSub`, `CertTemplate`, `ClientMac`, `EdrStatus`, `GbpTag`, `Hostname`, `IdpRole`, `IngressVlan`, `MdmStatus`, `NasIp`, `RadiusGroup`, `Realm`, `Ssid`, `UserName`, `UsermacLabel`
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }

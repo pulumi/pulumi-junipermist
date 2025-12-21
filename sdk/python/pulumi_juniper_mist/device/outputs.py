@@ -120,6 +120,8 @@ __all__ = [
     'SwitchAclPolicyAction',
     'SwitchAclTags',
     'SwitchAclTagsSpec',
+    'SwitchBgpConfig',
+    'SwitchBgpConfigNeighbors',
     'SwitchDhcpSnooping',
     'SwitchDhcpdConfig',
     'SwitchDhcpdConfigConfig',
@@ -161,6 +163,10 @@ __all__ = [
     'SwitchRemoteSyslogServerContent',
     'SwitchRemoteSyslogUser',
     'SwitchRemoteSyslogUserContent',
+    'SwitchRoutingPolicies',
+    'SwitchRoutingPoliciesTerm',
+    'SwitchRoutingPoliciesTermActions',
+    'SwitchRoutingPoliciesTermMatching',
     'SwitchSnmpConfig',
     'SwitchSnmpConfigClientList',
     'SwitchSnmpConfigTrapGroup',
@@ -205,7 +211,7 @@ __all__ = [
     'GetApStatsDeviceApStatEnvStatResult',
     'GetApStatsDeviceApStatEslStatResult',
     'GetApStatsDeviceApStatFwupdateResult',
-    'GetApStatsDeviceApStatGpsResult',
+    'GetApStatsDeviceApStatGpsStatResult',
     'GetApStatsDeviceApStatIotStatResult',
     'GetApStatsDeviceApStatIpConfigResult',
     'GetApStatsDeviceApStatIpStatResult',
@@ -214,6 +220,7 @@ __all__ = [
     'GetApStatsDeviceApStatLastTroubleResult',
     'GetApStatsDeviceApStatLedResult',
     'GetApStatsDeviceApStatLldpStatResult',
+    'GetApStatsDeviceApStatLldpStatsResult',
     'GetApStatsDeviceApStatMeshDownlinksResult',
     'GetApStatsDeviceApStatMeshUplinkResult',
     'GetApStatsDeviceApStatPortStatResult',
@@ -227,6 +234,7 @@ __all__ = [
     'GetGatewayStatsDeviceGatewayStatApRedundancyResult',
     'GetGatewayStatsDeviceGatewayStatApRedundancyModulesResult',
     'GetGatewayStatsDeviceGatewayStatArpTableStatsResult',
+    'GetGatewayStatsDeviceGatewayStatAutoUpgradeStatResult',
     'GetGatewayStatsDeviceGatewayStatBgpPeerResult',
     'GetGatewayStatsDeviceGatewayStatClusterConfigResult',
     'GetGatewayStatsDeviceGatewayStatClusterConfigControlLinkInfoResult',
@@ -245,16 +253,21 @@ __all__ = [
     'GetGatewayStatsDeviceGatewayStatIfStatServpInfoResult',
     'GetGatewayStatsDeviceGatewayStatIp2StatResult',
     'GetGatewayStatsDeviceGatewayStatIpStatResult',
+    'GetGatewayStatsDeviceGatewayStatMacTableStatsResult',
     'GetGatewayStatsDeviceGatewayStatMemory2StatResult',
     'GetGatewayStatsDeviceGatewayStatMemoryStatResult',
     'GetGatewayStatsDeviceGatewayStatModule2StatResult',
     'GetGatewayStatsDeviceGatewayStatModule2StatFanResult',
+    'GetGatewayStatsDeviceGatewayStatModule2StatMemoryStatResult',
+    'GetGatewayStatsDeviceGatewayStatModule2StatNetworkResourceResult',
     'GetGatewayStatsDeviceGatewayStatModule2StatPoeResult',
     'GetGatewayStatsDeviceGatewayStatModule2StatPsusResult',
     'GetGatewayStatsDeviceGatewayStatModule2StatTemperatureResult',
     'GetGatewayStatsDeviceGatewayStatModule2StatVcLinkResult',
     'GetGatewayStatsDeviceGatewayStatModuleStatResult',
     'GetGatewayStatsDeviceGatewayStatModuleStatFanResult',
+    'GetGatewayStatsDeviceGatewayStatModuleStatMemoryStatResult',
+    'GetGatewayStatsDeviceGatewayStatModuleStatNetworkResourceResult',
     'GetGatewayStatsDeviceGatewayStatModuleStatPoeResult',
     'GetGatewayStatsDeviceGatewayStatModuleStatPsusResult',
     'GetGatewayStatsDeviceGatewayStatModuleStatTemperatureResult',
@@ -272,6 +285,7 @@ __all__ = [
     'GetSwitchStatsDeviceSwitchStatApRedundancyResult',
     'GetSwitchStatsDeviceSwitchStatApRedundancyModulesResult',
     'GetSwitchStatsDeviceSwitchStatArpTableStatsResult',
+    'GetSwitchStatsDeviceSwitchStatAutoUpgradeStatResult',
     'GetSwitchStatsDeviceSwitchStatClientResult',
     'GetSwitchStatsDeviceSwitchStatClientsStatsResult',
     'GetSwitchStatsDeviceSwitchStatClientsStatsTotalResult',
@@ -288,6 +302,7 @@ __all__ = [
     'GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult',
     'GetSwitchStatsDeviceSwitchStatModuleStatErrorResult',
     'GetSwitchStatsDeviceSwitchStatModuleStatFanResult',
+    'GetSwitchStatsDeviceSwitchStatModuleStatMemoryStatResult',
     'GetSwitchStatsDeviceSwitchStatModuleStatPicResult',
     'GetSwitchStatsDeviceSwitchStatModuleStatPicPortGroupResult',
     'GetSwitchStatsDeviceSwitchStatModuleStatPoeResult',
@@ -1298,7 +1313,7 @@ class ApPortConfig(dict):
                  radius_config: Optional['outputs.ApPortConfigRadiusConfig'] = None,
                  radsec: Optional['outputs.ApPortConfigRadsec'] = None,
                  vlan_id: Optional[_builtins.int] = None,
-                 vlan_ids: Optional[Sequence[_builtins.int]] = None,
+                 vlan_ids: Optional[_builtins.str] = None,
                  wxtunnel_id: Optional[_builtins.str] = None,
                  wxtunnel_remote_id: Optional[_builtins.str] = None):
         """
@@ -1320,7 +1335,7 @@ class ApPortConfig(dict):
         :param _builtins.int vlan_id: Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `site_mxedge`.
                  * if vlan_id is not specified then it will use first one in vlan_ids[] of the mxtunnel.
                  * if forwarding == site_mxedge, vlan_ids comes from site_mxedge (`mxtunnels` under site setting)
-        :param Sequence[_builtins.int] vlan_ids: If `forwarding`==`limited`
+        :param _builtins.str vlan_ids: If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
         :param _builtins.str wxtunnel_id: If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
         :param _builtins.str wxtunnel_remote_id: If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
         """
@@ -1471,9 +1486,9 @@ class ApPortConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="vlanIds")
-    def vlan_ids(self) -> Optional[Sequence[_builtins.int]]:
+    def vlan_ids(self) -> Optional[_builtins.str]:
         """
-        If `forwarding`==`limited`
+        If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
         """
         return pulumi.get(self, "vlan_ids")
 
@@ -2303,7 +2318,7 @@ class ApRadioConfig(dict):
         :param _builtins.int ant_gain5: Antenna gain for 5G - for models with external antenna only
         :param _builtins.int ant_gain6: Antenna gain for 6G - for models with external antenna only
         :param _builtins.str antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
-        :param _builtins.str antenna_select: Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+        :param _builtins.str antenna_select: Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
         :param 'ApRadioConfigBand24Args' band24: Radio Band AP settings
         :param _builtins.str band24_usage: enum: `24`, `5`, `6`, `auto`
         :param 'ApRadioConfigBand5Args' band5: Radio Band AP settings
@@ -2386,7 +2401,7 @@ class ApRadioConfig(dict):
     @pulumi.getter(name="antennaSelect")
     def antenna_select(self) -> Optional[_builtins.str]:
         """
-        Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+        Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
         """
         return pulumi.get(self, "antenna_select")
 
@@ -6988,8 +7003,8 @@ class GatewayRoutingPoliciesTermActions(dict):
         :param Sequence[_builtins.str] communities: When used as export policy, optional
         :param Sequence[_builtins.str] exclude_as_paths: When used as export policy, optional. To exclude certain AS
         :param Sequence[_builtins.str] export_communities: When used as export policy, optional
-        :param _builtins.str local_preference: Optional, for an import policy, local_preference can be changed
-        :param Sequence[_builtins.str] prepend_as_paths: When used as export policy, optional. By default, the local AS will be prepended, to change it
+        :param _builtins.str local_preference: Optional, for an import policy, local_preference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        :param Sequence[_builtins.str] prepend_as_paths: When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
         """
         if accept is not None:
             pulumi.set(__self__, "accept", accept)
@@ -7061,7 +7076,7 @@ class GatewayRoutingPoliciesTermActions(dict):
     @pulumi.getter(name="localPreference")
     def local_preference(self) -> Optional[_builtins.str]:
         """
-        Optional, for an import policy, local_preference can be changed
+        Optional, for an import policy, local_preference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         """
         return pulumi.get(self, "local_preference")
 
@@ -7069,7 +7084,7 @@ class GatewayRoutingPoliciesTermActions(dict):
     @pulumi.getter(name="prependAsPaths")
     def prepend_as_paths(self) -> Optional[Sequence[_builtins.str]]:
         """
-        When used as export policy, optional. By default, the local AS will be prepended, to change it
+        When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
         """
         return pulumi.get(self, "prepend_as_paths")
 
@@ -7112,9 +7127,9 @@ class GatewayRoutingPoliciesTermMatching(dict):
                  vpn_path_sla: Optional['outputs.GatewayRoutingPoliciesTermMatchingVpnPathSla'] = None,
                  vpn_paths: Optional[Sequence[_builtins.str]] = None):
         """
-        :param Sequence[_builtins.str] as_paths: takes regular expression
+        :param Sequence[_builtins.str] as_paths: BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         :param Sequence[_builtins.str] prefixes: zero or more criteria/filter can be specified to match the term, all criteria have to be met
-        :param Sequence[_builtins.str] protocols: `direct`, `bgp`, `osp`, `static`, `aggregate`...
+        :param Sequence[_builtins.str] protocols: enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
         :param Sequence[_builtins.str] vpn_neighbor_macs: overlay-facing criteria (used for bgp_config where via=vpn)
         :param Sequence[_builtins.str] vpn_paths: overlay-facing criteria (used for bgp_config where via=vpn). ordered-
         """
@@ -7141,7 +7156,7 @@ class GatewayRoutingPoliciesTermMatching(dict):
     @pulumi.getter(name="asPaths")
     def as_paths(self) -> Optional[Sequence[_builtins.str]]:
         """
-        takes regular expression
+        BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         """
         return pulumi.get(self, "as_paths")
 
@@ -7167,7 +7182,7 @@ class GatewayRoutingPoliciesTermMatching(dict):
     @pulumi.getter
     def protocols(self) -> Optional[Sequence[_builtins.str]]:
         """
-        `direct`, `bgp`, `osp`, `static`, `aggregate`...
+        enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
         """
         return pulumi.get(self, "protocols")
 
@@ -9618,6 +9633,225 @@ class SwitchAclTagsSpec(dict):
 
 
 @pulumi.output_type
+class SwitchBgpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localAs":
+            suggest = "local_as"
+        elif key == "authKey":
+            suggest = "auth_key"
+        elif key == "bfdMinimumInterval":
+            suggest = "bfd_minimum_interval"
+        elif key == "exportPolicy":
+            suggest = "export_policy"
+        elif key == "holdTime":
+            suggest = "hold_time"
+        elif key == "importPolicy":
+            suggest = "import_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SwitchBgpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SwitchBgpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SwitchBgpConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_as: _builtins.str,
+                 type: _builtins.str,
+                 auth_key: Optional[_builtins.str] = None,
+                 bfd_minimum_interval: Optional[_builtins.int] = None,
+                 export_policy: Optional[_builtins.str] = None,
+                 hold_time: Optional[_builtins.int] = None,
+                 import_policy: Optional[_builtins.str] = None,
+                 neighbors: Optional[Mapping[str, 'outputs.SwitchBgpConfigNeighbors']] = None,
+                 networks: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str type: enum: `external`, `internal`
+        :param _builtins.int bfd_minimum_interval: Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
+        :param _builtins.str export_policy: Export policy must match one of the policy names defined in the `routing_policies` property.
+        :param _builtins.int hold_time: Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        :param _builtins.str import_policy: Import policy must match one of the policy names defined in the `routing_policies` property.
+        :param Mapping[str, 'SwitchBgpConfigNeighborsArgs'] neighbors: Property key is the BGP Neighbor IP Address.
+        :param Sequence[_builtins.str] networks: List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+        """
+        pulumi.set(__self__, "local_as", local_as)
+        pulumi.set(__self__, "type", type)
+        if auth_key is not None:
+            pulumi.set(__self__, "auth_key", auth_key)
+        if bfd_minimum_interval is not None:
+            pulumi.set(__self__, "bfd_minimum_interval", bfd_minimum_interval)
+        if export_policy is not None:
+            pulumi.set(__self__, "export_policy", export_policy)
+        if hold_time is not None:
+            pulumi.set(__self__, "hold_time", hold_time)
+        if import_policy is not None:
+            pulumi.set(__self__, "import_policy", import_policy)
+        if neighbors is not None:
+            pulumi.set(__self__, "neighbors", neighbors)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+
+    @_builtins.property
+    @pulumi.getter(name="localAs")
+    def local_as(self) -> _builtins.str:
+        return pulumi.get(self, "local_as")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        enum: `external`, `internal`
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="authKey")
+    def auth_key(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "auth_key")
+
+    @_builtins.property
+    @pulumi.getter(name="bfdMinimumInterval")
+    def bfd_minimum_interval(self) -> Optional[_builtins.int]:
+        """
+        Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
+        """
+        return pulumi.get(self, "bfd_minimum_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="exportPolicy")
+    def export_policy(self) -> Optional[_builtins.str]:
+        """
+        Export policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        return pulumi.get(self, "export_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="holdTime")
+    def hold_time(self) -> Optional[_builtins.int]:
+        """
+        Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        """
+        return pulumi.get(self, "hold_time")
+
+    @_builtins.property
+    @pulumi.getter(name="importPolicy")
+    def import_policy(self) -> Optional[_builtins.str]:
+        """
+        Import policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        return pulumi.get(self, "import_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def neighbors(self) -> Optional[Mapping[str, 'outputs.SwitchBgpConfigNeighbors']]:
+        """
+        Property key is the BGP Neighbor IP Address.
+        """
+        return pulumi.get(self, "neighbors")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+        """
+        return pulumi.get(self, "networks")
+
+
+@pulumi.output_type
+class SwitchBgpConfigNeighbors(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "neighborAs":
+            suggest = "neighbor_as"
+        elif key == "exportPolicy":
+            suggest = "export_policy"
+        elif key == "holdTime":
+            suggest = "hold_time"
+        elif key == "importPolicy":
+            suggest = "import_policy"
+        elif key == "multihopTtl":
+            suggest = "multihop_ttl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SwitchBgpConfigNeighbors. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SwitchBgpConfigNeighbors.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SwitchBgpConfigNeighbors.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 neighbor_as: _builtins.str,
+                 export_policy: Optional[_builtins.str] = None,
+                 hold_time: Optional[_builtins.int] = None,
+                 import_policy: Optional[_builtins.str] = None,
+                 multihop_ttl: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str neighbor_as: Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `local_as`. For external BGP, this must differ from `local_as`.
+        :param _builtins.str export_policy: Export policy must match one of the policy names defined in the `routing_policies` property.
+        :param _builtins.int hold_time: Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        :param _builtins.str import_policy: Import policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        pulumi.set(__self__, "neighbor_as", neighbor_as)
+        if export_policy is not None:
+            pulumi.set(__self__, "export_policy", export_policy)
+        if hold_time is not None:
+            pulumi.set(__self__, "hold_time", hold_time)
+        if import_policy is not None:
+            pulumi.set(__self__, "import_policy", import_policy)
+        if multihop_ttl is not None:
+            pulumi.set(__self__, "multihop_ttl", multihop_ttl)
+
+    @_builtins.property
+    @pulumi.getter(name="neighborAs")
+    def neighbor_as(self) -> _builtins.str:
+        """
+        Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `local_as`. For external BGP, this must differ from `local_as`.
+        """
+        return pulumi.get(self, "neighbor_as")
+
+    @_builtins.property
+    @pulumi.getter(name="exportPolicy")
+    def export_policy(self) -> Optional[_builtins.str]:
+        """
+        Export policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        return pulumi.get(self, "export_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="holdTime")
+    def hold_time(self) -> Optional[_builtins.int]:
+        """
+        Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        """
+        return pulumi.get(self, "hold_time")
+
+    @_builtins.property
+    @pulumi.getter(name="importPolicy")
+    def import_policy(self) -> Optional[_builtins.str]:
+        """
+        Import policy must match one of the policy names defined in the `routing_policies` property.
+        """
+        return pulumi.get(self, "import_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="multihopTtl")
+    def multihop_ttl(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "multihop_ttl")
+
+
+@pulumi.output_type
 class SwitchDhcpSnooping(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -10465,7 +10699,7 @@ class SwitchLocalPortConfig(dict):
         """
         :param _builtins.str usage: Port usage name.
         :param _builtins.bool all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
-        :param _builtins.bool allow_dhcpd: Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+        :param _builtins.bool allow_dhcpd: Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         :param _builtins.bool bypass_auth_when_server_down: Only if `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
         :param _builtins.bool bypass_auth_when_server_down_for_unknown_client: Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         :param _builtins.bool disable_autoneg: Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -10590,7 +10824,7 @@ class SwitchLocalPortConfig(dict):
     @pulumi.getter(name="allowDhcpd")
     def allow_dhcpd(self) -> Optional[_builtins.bool]:
         """
-        Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+        Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         """
         return pulumi.get(self, "allow_dhcpd")
 
@@ -11667,6 +11901,7 @@ class SwitchPortConfig(dict):
                  dynamic_usage: Optional[_builtins.str] = None,
                  esilag: Optional[_builtins.bool] = None,
                  mtu: Optional[_builtins.int] = None,
+                 networks: Optional[Sequence[_builtins.str]] = None,
                  no_local_overwrite: Optional[_builtins.bool] = None,
                  poe_disabled: Optional[_builtins.bool] = None,
                  port_network: Optional[_builtins.str] = None,
@@ -11681,6 +11916,7 @@ class SwitchPortConfig(dict):
         :param _builtins.str duplex: enum: `auto`, `full`, `half`
         :param _builtins.str dynamic_usage: Enable dynamic usage for this port. Set to `dynamic` to enable.
         :param _builtins.int mtu: Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+        :param Sequence[_builtins.str] networks: List of network names. Required if `usage`==`inet`
         :param _builtins.bool no_local_overwrite: Prevent helpdesk to override the port config
         :param _builtins.str port_network: Required if `usage`==`vlan_tunnel`. Q-in-Q tunneling using All-in-one bundling. This also enables standard L2PT for interfaces that are not encapsulation tunnel interfaces and uses MAC rewrite operation. [View more information](https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/topic-map/q-in-q.html#id-understanding-qinq-tunneling-and-vlan-translation)
         :param _builtins.str speed: enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
@@ -11708,6 +11944,8 @@ class SwitchPortConfig(dict):
             pulumi.set(__self__, "esilag", esilag)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
         if no_local_overwrite is not None:
             pulumi.set(__self__, "no_local_overwrite", no_local_overwrite)
         if poe_disabled is not None:
@@ -11803,6 +12041,14 @@ class SwitchPortConfig(dict):
         Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
         """
         return pulumi.get(self, "mtu")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of network names. Required if `usage`==`inet`
+        """
+        return pulumi.get(self, "networks")
 
     @_builtins.property
     @pulumi.getter(name="noLocalOverwrite")
@@ -12177,7 +12423,7 @@ class SwitchPortUsages(dict):
                  voip_network: Optional[_builtins.str] = None):
         """
         :param _builtins.bool all_networks: Only if `mode`==`trunk`. Whether to trunk all network/vlans
-        :param _builtins.bool allow_dhcpd: Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+        :param _builtins.bool allow_dhcpd: Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         :param _builtins.bool allow_multiple_supplicants: Only if `mode`!=`dynamic`
         :param _builtins.bool bypass_auth_when_server_down: Only if `mode`!=`dynamic` and `port_auth`==`dot1x`. Bypass auth for known clients if set to true when RADIUS server is down
         :param _builtins.bool bypass_auth_when_server_down_for_unknown_client: Only if `mode`!=`dynamic` and `port_auth`=`dot1x`. Bypass auth for all (including unknown clients) if set to true when RADIUS server is down
@@ -12319,7 +12565,7 @@ class SwitchPortUsages(dict):
     @pulumi.getter(name="allowDhcpd")
     def allow_dhcpd(self) -> Optional[_builtins.bool]:
         """
-        Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+        Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
         """
         return pulumi.get(self, "allow_dhcpd")
 
@@ -13773,6 +14019,201 @@ class SwitchRemoteSyslogUserContent(dict):
         enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
         """
         return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class SwitchRoutingPolicies(dict):
+    def __init__(__self__, *,
+                 terms: Optional[Sequence['outputs.SwitchRoutingPoliciesTerm']] = None):
+        """
+        :param Sequence['SwitchRoutingPoliciesTermArgs'] terms: at least criteria/filter must be specified to match the term, all criteria have to be met
+        """
+        if terms is not None:
+            pulumi.set(__self__, "terms", terms)
+
+    @_builtins.property
+    @pulumi.getter
+    def terms(self) -> Optional[Sequence['outputs.SwitchRoutingPoliciesTerm']]:
+        """
+        at least criteria/filter must be specified to match the term, all criteria have to be met
+        """
+        return pulumi.get(self, "terms")
+
+
+@pulumi.output_type
+class SwitchRoutingPoliciesTerm(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 actions: Optional['outputs.SwitchRoutingPoliciesTermActions'] = None,
+                 matching: Optional['outputs.SwitchRoutingPoliciesTermMatching'] = None):
+        """
+        :param 'SwitchRoutingPoliciesTermActionsArgs' actions: When used as import policy
+        :param 'SwitchRoutingPoliciesTermMatchingArgs' matching: zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        """
+        pulumi.set(__self__, "name", name)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if matching is not None:
+            pulumi.set(__self__, "matching", matching)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Optional['outputs.SwitchRoutingPoliciesTermActions']:
+        """
+        When used as import policy
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter
+    def matching(self) -> Optional['outputs.SwitchRoutingPoliciesTermMatching']:
+        """
+        zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        """
+        return pulumi.get(self, "matching")
+
+
+@pulumi.output_type
+class SwitchRoutingPoliciesTermActions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localPreference":
+            suggest = "local_preference"
+        elif key == "prependAsPaths":
+            suggest = "prepend_as_paths"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SwitchRoutingPoliciesTermActions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SwitchRoutingPoliciesTermActions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SwitchRoutingPoliciesTermActions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accept: Optional[_builtins.bool] = None,
+                 communities: Optional[Sequence[_builtins.str]] = None,
+                 local_preference: Optional[_builtins.str] = None,
+                 prepend_as_paths: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] communities: When used as export policy, optional
+        :param _builtins.str local_preference: Optional, for an import policy, local_preference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        :param Sequence[_builtins.str] prepend_as_paths: When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+        """
+        if accept is not None:
+            pulumi.set(__self__, "accept", accept)
+        if communities is not None:
+            pulumi.set(__self__, "communities", communities)
+        if local_preference is not None:
+            pulumi.set(__self__, "local_preference", local_preference)
+        if prepend_as_paths is not None:
+            pulumi.set(__self__, "prepend_as_paths", prepend_as_paths)
+
+    @_builtins.property
+    @pulumi.getter
+    def accept(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "accept")
+
+    @_builtins.property
+    @pulumi.getter
+    def communities(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        When used as export policy, optional
+        """
+        return pulumi.get(self, "communities")
+
+    @_builtins.property
+    @pulumi.getter(name="localPreference")
+    def local_preference(self) -> Optional[_builtins.str]:
+        """
+        Optional, for an import policy, local_preference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        """
+        return pulumi.get(self, "local_preference")
+
+    @_builtins.property
+    @pulumi.getter(name="prependAsPaths")
+    def prepend_as_paths(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+        """
+        return pulumi.get(self, "prepend_as_paths")
+
+
+@pulumi.output_type
+class SwitchRoutingPoliciesTermMatching(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "asPaths":
+            suggest = "as_paths"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SwitchRoutingPoliciesTermMatching. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SwitchRoutingPoliciesTermMatching.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SwitchRoutingPoliciesTermMatching.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 as_paths: Optional[Sequence[_builtins.str]] = None,
+                 communities: Optional[Sequence[_builtins.str]] = None,
+                 prefixes: Optional[Sequence[_builtins.str]] = None,
+                 protocols: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] as_paths: BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        :param Sequence[_builtins.str] prefixes: zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        :param Sequence[_builtins.str] protocols: enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+        """
+        if as_paths is not None:
+            pulumi.set(__self__, "as_paths", as_paths)
+        if communities is not None:
+            pulumi.set(__self__, "communities", communities)
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if protocols is not None:
+            pulumi.set(__self__, "protocols", protocols)
+
+    @_builtins.property
+    @pulumi.getter(name="asPaths")
+    def as_paths(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        """
+        return pulumi.get(self, "as_paths")
+
+    @_builtins.property
+    @pulumi.getter
+    def communities(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "communities")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefixes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        """
+        return pulumi.get(self, "prefixes")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocols(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+        """
+        return pulumi.get(self, "protocols")
 
 
 @pulumi.output_type
@@ -15779,20 +16220,23 @@ class BaseLatlng(dict):
 @pulumi.output_type
 class GetApStatsDeviceApStatResult(dict):
     def __init__(__self__, *,
+                 antenna_select: _builtins.str,
                  auto_placement: 'outputs.GetApStatsDeviceApStatAutoPlacementResult',
                  auto_upgrade_stat: 'outputs.GetApStatsDeviceApStatAutoUpgradeStatResult',
                  ble_stat: 'outputs.GetApStatsDeviceApStatBleStatResult',
                  cert_expiry: _builtins.float,
                  config_reverted: _builtins.bool,
                  cpu_system: _builtins.int,
+                 cpu_user: _builtins.int,
                  cpu_util: _builtins.int,
                  created_time: _builtins.float,
                  deviceprofile_id: _builtins.str,
                  env_stat: 'outputs.GetApStatsDeviceApStatEnvStatResult',
                  esl_stat: 'outputs.GetApStatsDeviceApStatEslStatResult',
+                 expiring_certs: Mapping[str, _builtins.int],
                  ext_ip: _builtins.str,
                  fwupdate: 'outputs.GetApStatsDeviceApStatFwupdateResult',
-                 gps: 'outputs.GetApStatsDeviceApStatGpsResult',
+                 gps_stat: 'outputs.GetApStatsDeviceApStatGpsStatResult',
                  hw_rev: _builtins.str,
                  id: _builtins.str,
                  inactive_wired_vlans: Sequence[_builtins.int],
@@ -15805,10 +16249,12 @@ class GetApStatsDeviceApStatResult(dict):
                  last_trouble: 'outputs.GetApStatsDeviceApStatLastTroubleResult',
                  led: 'outputs.GetApStatsDeviceApStatLedResult',
                  lldp_stat: 'outputs.GetApStatsDeviceApStatLldpStatResult',
+                 lldp_stats: Mapping[str, 'outputs.GetApStatsDeviceApStatLldpStatsResult'],
                  locating: _builtins.bool,
                  locked: _builtins.bool,
                  mac: _builtins.str,
                  map_id: _builtins.str,
+                 mem_total_kb: _builtins.int,
                  mem_used_kb: _builtins.int,
                  mesh_downlinks: Mapping[str, 'outputs.GetApStatsDeviceApStatMeshDownlinksResult'],
                  mesh_uplink: 'outputs.GetApStatsDeviceApStatMeshUplinkResult',
@@ -15842,15 +16288,18 @@ class GetApStatsDeviceApStatResult(dict):
                  x: _builtins.float,
                  y: _builtins.float):
         """
+        :param _builtins.str antenna_select: Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
         :param _builtins.float created_time: When the object has been created, in epoch
         :param 'GetApStatsDeviceApStatEnvStatArgs' env_stat: Device environment, including CPU temperature, Ambient temperature, Humidity, Attitude, Pressure, Accelerometers, Magnetometers and vCore Voltage
+        :param Mapping[str, _builtins.int] expiring_certs: Map of certificate serial numbers to their expiry timestamps (in epoch) for certificates expiring within 30 days. Property key is the certificate serial number
         :param _builtins.str id: Unique ID of the object instance in the Mist Organization
         :param 'GetApStatsDeviceApStatIpConfigArgs' ip_config: IP AP settings
-        :param Mapping[str, 'GetApStatsDeviceApStatL2tpStatArgs'] l2tp_stat: L2TP tunnel status (key is the wxtunnel_id)
+        :param Mapping[str, 'GetApStatsDeviceApStatL2tpStatArgs'] l2tp_stat: L2TP tunnel status (key is the wxtunnel*id)
         :param _builtins.float last_seen: Last seen timestamp
         :param 'GetApStatsDeviceApStatLastTroubleArgs' last_trouble: Last trouble code of switch
         :param 'GetApStatsDeviceApStatLedArgs' led: LED AP settings
-        :param 'GetApStatsDeviceApStatLldpStatArgs' lldp_stat: LLDP Stat (neighbor information, power negotiations)
+        :param 'GetApStatsDeviceApStatLldpStatArgs' lldp_stat: LLDP neighbor information and power negotiations. For backward compatibility, when multiple neighbors exist, only information from the first neighbor is displayed.
+        :param Mapping[str, 'GetApStatsDeviceApStatLldpStatsArgs'] lldp_stats: Property key is the port name (e.g. "eth0", "eth1", ...). Map of ethernet ports to their respective LLDP neighbor information and power negotiations. Only present when multiple neighbors exist.
         :param _builtins.bool locked: Whether this AP is considered locked (placement / orientation has been vetted)
         :param _builtins.str mac: Device mac
         :param Mapping[str, 'GetApStatsDeviceApStatMeshDownlinksArgs'] mesh_downlinks: Property key is the mesh downlink id (e.g. `00000000-0000-0000-1000-5c5b35000010`)
@@ -15872,20 +16321,23 @@ class GetApStatsDeviceApStatResult(dict):
         :param _builtins.int tx_pkts: Amount of packets sent since connection
         :param _builtins.float uptime: How long, in seconds, has the device been up (or rebooted)
         """
+        pulumi.set(__self__, "antenna_select", antenna_select)
         pulumi.set(__self__, "auto_placement", auto_placement)
         pulumi.set(__self__, "auto_upgrade_stat", auto_upgrade_stat)
         pulumi.set(__self__, "ble_stat", ble_stat)
         pulumi.set(__self__, "cert_expiry", cert_expiry)
         pulumi.set(__self__, "config_reverted", config_reverted)
         pulumi.set(__self__, "cpu_system", cpu_system)
+        pulumi.set(__self__, "cpu_user", cpu_user)
         pulumi.set(__self__, "cpu_util", cpu_util)
         pulumi.set(__self__, "created_time", created_time)
         pulumi.set(__self__, "deviceprofile_id", deviceprofile_id)
         pulumi.set(__self__, "env_stat", env_stat)
         pulumi.set(__self__, "esl_stat", esl_stat)
+        pulumi.set(__self__, "expiring_certs", expiring_certs)
         pulumi.set(__self__, "ext_ip", ext_ip)
         pulumi.set(__self__, "fwupdate", fwupdate)
-        pulumi.set(__self__, "gps", gps)
+        pulumi.set(__self__, "gps_stat", gps_stat)
         pulumi.set(__self__, "hw_rev", hw_rev)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "inactive_wired_vlans", inactive_wired_vlans)
@@ -15898,10 +16350,12 @@ class GetApStatsDeviceApStatResult(dict):
         pulumi.set(__self__, "last_trouble", last_trouble)
         pulumi.set(__self__, "led", led)
         pulumi.set(__self__, "lldp_stat", lldp_stat)
+        pulumi.set(__self__, "lldp_stats", lldp_stats)
         pulumi.set(__self__, "locating", locating)
         pulumi.set(__self__, "locked", locked)
         pulumi.set(__self__, "mac", mac)
         pulumi.set(__self__, "map_id", map_id)
+        pulumi.set(__self__, "mem_total_kb", mem_total_kb)
         pulumi.set(__self__, "mem_used_kb", mem_used_kb)
         pulumi.set(__self__, "mesh_downlinks", mesh_downlinks)
         pulumi.set(__self__, "mesh_uplink", mesh_uplink)
@@ -15936,6 +16390,14 @@ class GetApStatsDeviceApStatResult(dict):
         pulumi.set(__self__, "y", y)
 
     @_builtins.property
+    @pulumi.getter(name="antennaSelect")
+    def antenna_select(self) -> _builtins.str:
+        """
+        Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
+        """
+        return pulumi.get(self, "antenna_select")
+
+    @_builtins.property
     @pulumi.getter(name="autoPlacement")
     def auto_placement(self) -> 'outputs.GetApStatsDeviceApStatAutoPlacementResult':
         return pulumi.get(self, "auto_placement")
@@ -15964,6 +16426,11 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="cpuSystem")
     def cpu_system(self) -> _builtins.int:
         return pulumi.get(self, "cpu_system")
+
+    @_builtins.property
+    @pulumi.getter(name="cpuUser")
+    def cpu_user(self) -> _builtins.int:
+        return pulumi.get(self, "cpu_user")
 
     @_builtins.property
     @pulumi.getter(name="cpuUtil")
@@ -15997,6 +16464,14 @@ class GetApStatsDeviceApStatResult(dict):
         return pulumi.get(self, "esl_stat")
 
     @_builtins.property
+    @pulumi.getter(name="expiringCerts")
+    def expiring_certs(self) -> Mapping[str, _builtins.int]:
+        """
+        Map of certificate serial numbers to their expiry timestamps (in epoch) for certificates expiring within 30 days. Property key is the certificate serial number
+        """
+        return pulumi.get(self, "expiring_certs")
+
+    @_builtins.property
     @pulumi.getter(name="extIp")
     def ext_ip(self) -> _builtins.str:
         return pulumi.get(self, "ext_ip")
@@ -16007,9 +16482,9 @@ class GetApStatsDeviceApStatResult(dict):
         return pulumi.get(self, "fwupdate")
 
     @_builtins.property
-    @pulumi.getter
-    def gps(self) -> 'outputs.GetApStatsDeviceApStatGpsResult':
-        return pulumi.get(self, "gps")
+    @pulumi.getter(name="gpsStat")
+    def gps_stat(self) -> 'outputs.GetApStatsDeviceApStatGpsStatResult':
+        return pulumi.get(self, "gps_stat")
 
     @_builtins.property
     @pulumi.getter(name="hwRev")
@@ -16056,7 +16531,7 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="l2tpStat")
     def l2tp_stat(self) -> Mapping[str, 'outputs.GetApStatsDeviceApStatL2tpStatResult']:
         """
-        L2TP tunnel status (key is the wxtunnel_id)
+        L2TP tunnel status (key is the wxtunnel*id)
         """
         return pulumi.get(self, "l2tp_stat")
 
@@ -16088,9 +16563,17 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="lldpStat")
     def lldp_stat(self) -> 'outputs.GetApStatsDeviceApStatLldpStatResult':
         """
-        LLDP Stat (neighbor information, power negotiations)
+        LLDP neighbor information and power negotiations. For backward compatibility, when multiple neighbors exist, only information from the first neighbor is displayed.
         """
         return pulumi.get(self, "lldp_stat")
+
+    @_builtins.property
+    @pulumi.getter(name="lldpStats")
+    def lldp_stats(self) -> Mapping[str, 'outputs.GetApStatsDeviceApStatLldpStatsResult']:
+        """
+        Property key is the port name (e.g. "eth0", "eth1", ...). Map of ethernet ports to their respective LLDP neighbor information and power negotiations. Only present when multiple neighbors exist.
+        """
+        return pulumi.get(self, "lldp_stats")
 
     @_builtins.property
     @pulumi.getter
@@ -16117,6 +16600,11 @@ class GetApStatsDeviceApStatResult(dict):
     @pulumi.getter(name="mapId")
     def map_id(self) -> _builtins.str:
         return pulumi.get(self, "map_id")
+
+    @_builtins.property
+    @pulumi.getter(name="memTotalKb")
+    def mem_total_kb(self) -> _builtins.int:
+        return pulumi.get(self, "mem_total_kb")
 
     @_builtins.property
     @pulumi.getter(name="memUsedKb")
@@ -16547,7 +17035,9 @@ class GetApStatsDeviceApStatBleStatResult(dict):
                  tx_resets: _builtins.int,
                  uuid: _builtins.str):
         """
-        :param _builtins.int eddystone_url_freq_msec: Frequency (msec) of data emmit by Eddystone-UID beacon
+        :param _builtins.int eddystone_url_freq_msec: Frequency (msec) of data emit by Eddystone-UID beacon
+        :param _builtins.int ibeacon_major: Major number for iBeacon
+        :param _builtins.int ibeacon_minor: Minor number for iBeacon
         :param _builtins.int rx_bytes: Amount of traffic received since connection
         :param _builtins.int rx_pkts: Amount of packets received since connection
         :param _builtins.int tx_bytes: Amount of traffic sent since connection
@@ -16617,7 +17107,7 @@ class GetApStatsDeviceApStatBleStatResult(dict):
     @pulumi.getter(name="eddystoneUrlFreqMsec")
     def eddystone_url_freq_msec(self) -> _builtins.int:
         """
-        Frequency (msec) of data emmit by Eddystone-UID beacon
+        Frequency (msec) of data emit by Eddystone-UID beacon
         """
         return pulumi.get(self, "eddystone_url_freq_msec")
 
@@ -16639,11 +17129,17 @@ class GetApStatsDeviceApStatBleStatResult(dict):
     @_builtins.property
     @pulumi.getter(name="ibeaconMajor")
     def ibeacon_major(self) -> _builtins.int:
+        """
+        Major number for iBeacon
+        """
         return pulumi.get(self, "ibeacon_major")
 
     @_builtins.property
     @pulumi.getter(name="ibeaconMinor")
     def ibeacon_minor(self) -> _builtins.int:
+        """
+        Minor number for iBeacon
+        """
         return pulumi.get(self, "ibeacon_minor")
 
     @_builtins.property
@@ -16843,7 +17339,7 @@ class GetApStatsDeviceApStatFwupdateResult(dict):
                  timestamp: _builtins.float,
                  will_retry: _builtins.bool):
         """
-        :param _builtins.str status: enum: `inprogress`, `failed`, `upgraded`
+        :param _builtins.str status: enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         :param _builtins.float timestamp: Epoch (seconds)
         """
         pulumi.set(__self__, "progress", progress)
@@ -16861,7 +17357,7 @@ class GetApStatsDeviceApStatFwupdateResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        enum: `inprogress`, `failed`, `upgraded`
+        enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         """
         return pulumi.get(self, "status")
 
@@ -16885,7 +17381,7 @@ class GetApStatsDeviceApStatFwupdateResult(dict):
 
 
 @pulumi.output_type
-class GetApStatsDeviceApStatGpsResult(dict):
+class GetApStatsDeviceApStatGpsStatResult(dict):
     def __init__(__self__, *,
                  accuracy: _builtins.float,
                  altitude: _builtins.float,
@@ -16898,9 +17394,7 @@ class GetApStatsDeviceApStatGpsResult(dict):
         :param _builtins.float altitude: The elevation of the AP above sea level, measured in meters.
         :param _builtins.float latitude: The geographic latitude of the AP, measured in degrees.
         :param _builtins.float longitude: The geographic longitude of the AP, measured in degrees.
-        :param _builtins.str src: The origin of the GPS data. enum:
-                 * `gps`: from this device’s GPS estimates
-                 * `other_ap` from neighboring device GPS estimates
+        :param _builtins.str src: The origin of the GPS data. enum: `gps`: from this device GPS estimates, `other_ap` from neighboring device GPS estimates. Note: API responses may return `other_aps` which should be treated as `other_ap`
         :param _builtins.float timestamp: Epoch (seconds)
         """
         pulumi.set(__self__, "accuracy", accuracy)
@@ -16946,9 +17440,7 @@ class GetApStatsDeviceApStatGpsResult(dict):
     @pulumi.getter
     def src(self) -> _builtins.str:
         """
-        The origin of the GPS data. enum:
-          * `gps`: from this device’s GPS estimates
-          * `other_ap` from neighboring device GPS estimates
+        The origin of the GPS data. enum: `gps`: from this device GPS estimates, `other_ap` from neighboring device GPS estimates. Note: API responses may return `other_aps` which should be treated as `other_ap`
         """
         return pulumi.get(self, "src")
 
@@ -17331,19 +17823,35 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
                  port_desc: _builtins.str,
                  port_id: _builtins.str,
                  power_allocated: _builtins.float,
+                 power_avail: _builtins.int,
+                 power_budget: _builtins.int,
+                 power_constrained: _builtins.bool,
                  power_draw: _builtins.float,
+                 power_needed: _builtins.int,
+                 power_opmode: _builtins.str,
                  power_request_count: _builtins.int,
                  power_requested: _builtins.float,
+                 power_src: _builtins.str,
+                 power_srcs: Sequence[_builtins.str],
                  system_desc: _builtins.str,
                  system_name: _builtins.str):
         """
         :param _builtins.bool lldp_med_supported: Whether it support LLDP-MED
-        :param _builtins.str mgmt_addr: Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
-        :param _builtins.str port_desc: ge-0/0/4
-        :param _builtins.float power_allocated: In mW, provided/allocated by PSE
+        :param _builtins.str mgmt_addr: Management IP address of the switch
+        :param Sequence[_builtins.str] mgmt_addrs: List of management IP addresses (IPv4 and IPv6)
+        :param _builtins.str port_desc: Port description, e.g. “2/20”, “Port 2 on Switch0”
+        :param _builtins.str port_id: Port identifier
+        :param _builtins.float power_allocated: In mW, power allocated by PSE
+        :param _builtins.int power_avail: In mW, total Power Avail at AP from pwr source
+        :param _builtins.int power_budget: In mW, surplus if positive or deficit if negative
+        :param _builtins.bool power_constrained: Whether power is insufficient
         :param _builtins.float power_draw: In mW, total power needed by PD
+        :param _builtins.int power_needed: In mW, total Power needed incl Peripherals
+        :param _builtins.str power_opmode: Constrained mode
         :param _builtins.int power_request_count: Number of negotiations, if it keeps increasing, we don’ t have a stable power
-        :param _builtins.float power_requested: In mW, the current power requested by PD
+        :param _builtins.float power_requested: In mW, power requested by PD
+        :param _builtins.str power_src: Single power source (DC Input / PoE 802.3at / PoE 802.3af / PoE 802.3bt / MULTI-PD / LLDP / ? (unknown)).
+        :param Sequence[_builtins.str] power_srcs: List of management IP addresses (IPv4 and IPv6)
         :param _builtins.str system_desc: Description provided by switch
         :param _builtins.str system_name: Name of the switch
         """
@@ -17354,9 +17862,16 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
         pulumi.set(__self__, "port_desc", port_desc)
         pulumi.set(__self__, "port_id", port_id)
         pulumi.set(__self__, "power_allocated", power_allocated)
+        pulumi.set(__self__, "power_avail", power_avail)
+        pulumi.set(__self__, "power_budget", power_budget)
+        pulumi.set(__self__, "power_constrained", power_constrained)
         pulumi.set(__self__, "power_draw", power_draw)
+        pulumi.set(__self__, "power_needed", power_needed)
+        pulumi.set(__self__, "power_opmode", power_opmode)
         pulumi.set(__self__, "power_request_count", power_request_count)
         pulumi.set(__self__, "power_requested", power_requested)
+        pulumi.set(__self__, "power_src", power_src)
+        pulumi.set(__self__, "power_srcs", power_srcs)
         pulumi.set(__self__, "system_desc", system_desc)
         pulumi.set(__self__, "system_name", system_name)
 
@@ -17377,35 +17892,65 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
     @pulumi.getter(name="mgmtAddr")
     def mgmt_addr(self) -> _builtins.str:
         """
-        Switch’s management address (if advertised), can be IPv4, IPv6, or MAC
+        Management IP address of the switch
         """
         return pulumi.get(self, "mgmt_addr")
 
     @_builtins.property
     @pulumi.getter(name="mgmtAddrs")
     def mgmt_addrs(self) -> Sequence[_builtins.str]:
+        """
+        List of management IP addresses (IPv4 and IPv6)
+        """
         return pulumi.get(self, "mgmt_addrs")
 
     @_builtins.property
     @pulumi.getter(name="portDesc")
     def port_desc(self) -> _builtins.str:
         """
-        ge-0/0/4
+        Port description, e.g. “2/20”, “Port 2 on Switch0”
         """
         return pulumi.get(self, "port_desc")
 
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> _builtins.str:
+        """
+        Port identifier
+        """
         return pulumi.get(self, "port_id")
 
     @_builtins.property
     @pulumi.getter(name="powerAllocated")
     def power_allocated(self) -> _builtins.float:
         """
-        In mW, provided/allocated by PSE
+        In mW, power allocated by PSE
         """
         return pulumi.get(self, "power_allocated")
+
+    @_builtins.property
+    @pulumi.getter(name="powerAvail")
+    def power_avail(self) -> _builtins.int:
+        """
+        In mW, total Power Avail at AP from pwr source
+        """
+        return pulumi.get(self, "power_avail")
+
+    @_builtins.property
+    @pulumi.getter(name="powerBudget")
+    def power_budget(self) -> _builtins.int:
+        """
+        In mW, surplus if positive or deficit if negative
+        """
+        return pulumi.get(self, "power_budget")
+
+    @_builtins.property
+    @pulumi.getter(name="powerConstrained")
+    def power_constrained(self) -> _builtins.bool:
+        """
+        Whether power is insufficient
+        """
+        return pulumi.get(self, "power_constrained")
 
     @_builtins.property
     @pulumi.getter(name="powerDraw")
@@ -17414,6 +17959,22 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
         In mW, total power needed by PD
         """
         return pulumi.get(self, "power_draw")
+
+    @_builtins.property
+    @pulumi.getter(name="powerNeeded")
+    def power_needed(self) -> _builtins.int:
+        """
+        In mW, total Power needed incl Peripherals
+        """
+        return pulumi.get(self, "power_needed")
+
+    @_builtins.property
+    @pulumi.getter(name="powerOpmode")
+    def power_opmode(self) -> _builtins.str:
+        """
+        Constrained mode
+        """
+        return pulumi.get(self, "power_opmode")
 
     @_builtins.property
     @pulumi.getter(name="powerRequestCount")
@@ -17427,9 +17988,237 @@ class GetApStatsDeviceApStatLldpStatResult(dict):
     @pulumi.getter(name="powerRequested")
     def power_requested(self) -> _builtins.float:
         """
-        In mW, the current power requested by PD
+        In mW, power requested by PD
         """
         return pulumi.get(self, "power_requested")
+
+    @_builtins.property
+    @pulumi.getter(name="powerSrc")
+    def power_src(self) -> _builtins.str:
+        """
+        Single power source (DC Input / PoE 802.3at / PoE 802.3af / PoE 802.3bt / MULTI-PD / LLDP / ? (unknown)).
+        """
+        return pulumi.get(self, "power_src")
+
+    @_builtins.property
+    @pulumi.getter(name="powerSrcs")
+    def power_srcs(self) -> Sequence[_builtins.str]:
+        """
+        List of management IP addresses (IPv4 and IPv6)
+        """
+        return pulumi.get(self, "power_srcs")
+
+    @_builtins.property
+    @pulumi.getter(name="systemDesc")
+    def system_desc(self) -> _builtins.str:
+        """
+        Description provided by switch
+        """
+        return pulumi.get(self, "system_desc")
+
+    @_builtins.property
+    @pulumi.getter(name="systemName")
+    def system_name(self) -> _builtins.str:
+        """
+        Name of the switch
+        """
+        return pulumi.get(self, "system_name")
+
+
+@pulumi.output_type
+class GetApStatsDeviceApStatLldpStatsResult(dict):
+    def __init__(__self__, *,
+                 chassis_id: _builtins.str,
+                 lldp_med_supported: _builtins.bool,
+                 mgmt_addr: _builtins.str,
+                 mgmt_addrs: Sequence[_builtins.str],
+                 port_desc: _builtins.str,
+                 port_id: _builtins.str,
+                 power_allocated: _builtins.float,
+                 power_avail: _builtins.int,
+                 power_budget: _builtins.int,
+                 power_constrained: _builtins.bool,
+                 power_draw: _builtins.float,
+                 power_needed: _builtins.int,
+                 power_opmode: _builtins.str,
+                 power_request_count: _builtins.int,
+                 power_requested: _builtins.float,
+                 power_src: _builtins.str,
+                 power_srcs: Sequence[_builtins.str],
+                 system_desc: _builtins.str,
+                 system_name: _builtins.str):
+        """
+        :param _builtins.bool lldp_med_supported: Whether it support LLDP-MED
+        :param _builtins.str mgmt_addr: Management IP address of the switch
+        :param Sequence[_builtins.str] mgmt_addrs: List of management IP addresses (IPv4 and IPv6)
+        :param _builtins.str port_desc: Port description, e.g. “2/20”, “Port 2 on Switch0”
+        :param _builtins.str port_id: Port identifier
+        :param _builtins.float power_allocated: In mW, power allocated by PSE
+        :param _builtins.int power_avail: In mW, total Power Avail at AP from pwr source
+        :param _builtins.int power_budget: In mW, surplus if positive or deficit if negative
+        :param _builtins.bool power_constrained: Whether power is insufficient
+        :param _builtins.float power_draw: In mW, total power needed by PD
+        :param _builtins.int power_needed: In mW, total Power needed incl Peripherals
+        :param _builtins.str power_opmode: Constrained mode
+        :param _builtins.int power_request_count: Number of negotiations, if it keeps increasing, we don’ t have a stable power
+        :param _builtins.float power_requested: In mW, power requested by PD
+        :param _builtins.str power_src: Single power source (DC Input / PoE 802.3at / PoE 802.3af / PoE 802.3bt / MULTI-PD / LLDP / ? (unknown)).
+        :param Sequence[_builtins.str] power_srcs: List of management IP addresses (IPv4 and IPv6)
+        :param _builtins.str system_desc: Description provided by switch
+        :param _builtins.str system_name: Name of the switch
+        """
+        pulumi.set(__self__, "chassis_id", chassis_id)
+        pulumi.set(__self__, "lldp_med_supported", lldp_med_supported)
+        pulumi.set(__self__, "mgmt_addr", mgmt_addr)
+        pulumi.set(__self__, "mgmt_addrs", mgmt_addrs)
+        pulumi.set(__self__, "port_desc", port_desc)
+        pulumi.set(__self__, "port_id", port_id)
+        pulumi.set(__self__, "power_allocated", power_allocated)
+        pulumi.set(__self__, "power_avail", power_avail)
+        pulumi.set(__self__, "power_budget", power_budget)
+        pulumi.set(__self__, "power_constrained", power_constrained)
+        pulumi.set(__self__, "power_draw", power_draw)
+        pulumi.set(__self__, "power_needed", power_needed)
+        pulumi.set(__self__, "power_opmode", power_opmode)
+        pulumi.set(__self__, "power_request_count", power_request_count)
+        pulumi.set(__self__, "power_requested", power_requested)
+        pulumi.set(__self__, "power_src", power_src)
+        pulumi.set(__self__, "power_srcs", power_srcs)
+        pulumi.set(__self__, "system_desc", system_desc)
+        pulumi.set(__self__, "system_name", system_name)
+
+    @_builtins.property
+    @pulumi.getter(name="chassisId")
+    def chassis_id(self) -> _builtins.str:
+        return pulumi.get(self, "chassis_id")
+
+    @_builtins.property
+    @pulumi.getter(name="lldpMedSupported")
+    def lldp_med_supported(self) -> _builtins.bool:
+        """
+        Whether it support LLDP-MED
+        """
+        return pulumi.get(self, "lldp_med_supported")
+
+    @_builtins.property
+    @pulumi.getter(name="mgmtAddr")
+    def mgmt_addr(self) -> _builtins.str:
+        """
+        Management IP address of the switch
+        """
+        return pulumi.get(self, "mgmt_addr")
+
+    @_builtins.property
+    @pulumi.getter(name="mgmtAddrs")
+    def mgmt_addrs(self) -> Sequence[_builtins.str]:
+        """
+        List of management IP addresses (IPv4 and IPv6)
+        """
+        return pulumi.get(self, "mgmt_addrs")
+
+    @_builtins.property
+    @pulumi.getter(name="portDesc")
+    def port_desc(self) -> _builtins.str:
+        """
+        Port description, e.g. “2/20”, “Port 2 on Switch0”
+        """
+        return pulumi.get(self, "port_desc")
+
+    @_builtins.property
+    @pulumi.getter(name="portId")
+    def port_id(self) -> _builtins.str:
+        """
+        Port identifier
+        """
+        return pulumi.get(self, "port_id")
+
+    @_builtins.property
+    @pulumi.getter(name="powerAllocated")
+    def power_allocated(self) -> _builtins.float:
+        """
+        In mW, power allocated by PSE
+        """
+        return pulumi.get(self, "power_allocated")
+
+    @_builtins.property
+    @pulumi.getter(name="powerAvail")
+    def power_avail(self) -> _builtins.int:
+        """
+        In mW, total Power Avail at AP from pwr source
+        """
+        return pulumi.get(self, "power_avail")
+
+    @_builtins.property
+    @pulumi.getter(name="powerBudget")
+    def power_budget(self) -> _builtins.int:
+        """
+        In mW, surplus if positive or deficit if negative
+        """
+        return pulumi.get(self, "power_budget")
+
+    @_builtins.property
+    @pulumi.getter(name="powerConstrained")
+    def power_constrained(self) -> _builtins.bool:
+        """
+        Whether power is insufficient
+        """
+        return pulumi.get(self, "power_constrained")
+
+    @_builtins.property
+    @pulumi.getter(name="powerDraw")
+    def power_draw(self) -> _builtins.float:
+        """
+        In mW, total power needed by PD
+        """
+        return pulumi.get(self, "power_draw")
+
+    @_builtins.property
+    @pulumi.getter(name="powerNeeded")
+    def power_needed(self) -> _builtins.int:
+        """
+        In mW, total Power needed incl Peripherals
+        """
+        return pulumi.get(self, "power_needed")
+
+    @_builtins.property
+    @pulumi.getter(name="powerOpmode")
+    def power_opmode(self) -> _builtins.str:
+        """
+        Constrained mode
+        """
+        return pulumi.get(self, "power_opmode")
+
+    @_builtins.property
+    @pulumi.getter(name="powerRequestCount")
+    def power_request_count(self) -> _builtins.int:
+        """
+        Number of negotiations, if it keeps increasing, we don’ t have a stable power
+        """
+        return pulumi.get(self, "power_request_count")
+
+    @_builtins.property
+    @pulumi.getter(name="powerRequested")
+    def power_requested(self) -> _builtins.float:
+        """
+        In mW, power requested by PD
+        """
+        return pulumi.get(self, "power_requested")
+
+    @_builtins.property
+    @pulumi.getter(name="powerSrc")
+    def power_src(self) -> _builtins.str:
+        """
+        Single power source (DC Input / PoE 802.3at / PoE 802.3af / PoE 802.3bt / MULTI-PD / LLDP / ? (unknown)).
+        """
+        return pulumi.get(self, "power_src")
+
+    @_builtins.property
+    @pulumi.getter(name="powerSrcs")
+    def power_srcs(self) -> Sequence[_builtins.str]:
+        """
+        List of management IP addresses (IPv4 and IPv6)
+        """
+        return pulumi.get(self, "power_srcs")
 
     @_builtins.property
     @pulumi.getter(name="systemDesc")
@@ -17966,7 +18755,7 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
                  util_undecodable_wifi: _builtins.int,
                  util_unknown_wifi: _builtins.int):
         """
-        :param _builtins.int bandwidth: channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
+        :param _builtins.int bandwidth: channel width for the band.enum: `0`(disabled, response only), `20`, `40`, `80` (only applicable for band*5 and band*6), `160` (only for band_6)
         :param _builtins.int channel: Current channel the radio is running on
         :param _builtins.bool dynamic_chaining_enabled: Use dynamic chaining for downlink
         :param _builtins.str mac: Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
@@ -18009,7 +18798,7 @@ class GetApStatsDeviceApStatRadioStatBand24Result(dict):
     @pulumi.getter
     def bandwidth(self) -> _builtins.int:
         """
-        channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
+        channel width for the band.enum: `0`(disabled, response only), `20`, `40`, `80` (only applicable for band*5 and band*6), `160` (only for band_6)
         """
         return pulumi.get(self, "bandwidth")
 
@@ -18181,7 +18970,7 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
                  util_undecodable_wifi: _builtins.int,
                  util_unknown_wifi: _builtins.int):
         """
-        :param _builtins.int bandwidth: channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
+        :param _builtins.int bandwidth: channel width for the band.enum: `0`(disabled, response only), `20`, `40`, `80` (only applicable for band*5 and band*6), `160` (only for band_6)
         :param _builtins.int channel: Current channel the radio is running on
         :param _builtins.bool dynamic_chaining_enabled: Use dynamic chaining for downlink
         :param _builtins.str mac: Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
@@ -18224,7 +19013,7 @@ class GetApStatsDeviceApStatRadioStatBand5Result(dict):
     @pulumi.getter
     def bandwidth(self) -> _builtins.int:
         """
-        channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
+        channel width for the band.enum: `0`(disabled, response only), `20`, `40`, `80` (only applicable for band*5 and band*6), `160` (only for band_6)
         """
         return pulumi.get(self, "bandwidth")
 
@@ -18396,7 +19185,7 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
                  util_undecodable_wifi: _builtins.int,
                  util_unknown_wifi: _builtins.int):
         """
-        :param _builtins.int bandwidth: channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
+        :param _builtins.int bandwidth: channel width for the band.enum: `0`(disabled, response only), `20`, `40`, `80` (only applicable for band*5 and band*6), `160` (only for band_6)
         :param _builtins.int channel: Current channel the radio is running on
         :param _builtins.bool dynamic_chaining_enabled: Use dynamic chaining for downlink
         :param _builtins.str mac: Radio (base) mac, it can have 16 bssids (e.g. 5c5b350001a0-5c5b350001af)
@@ -18439,7 +19228,7 @@ class GetApStatsDeviceApStatRadioStatBand6Result(dict):
     @pulumi.getter
     def bandwidth(self) -> _builtins.int:
         """
-        channel width for the band.enum: `20`, `40`, `80` (only applicable for band_5 and band_6), `160` (only for band_6)
+        channel width for the band.enum: `0`(disabled, response only), `20`, `40`, `80` (only applicable for band*5 and band*6), `160` (only for band_6)
         """
         return pulumi.get(self, "bandwidth")
 
@@ -18644,16 +19433,20 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     def __init__(__self__, *,
                  ap_redundancy: 'outputs.GetGatewayStatsDeviceGatewayStatApRedundancyResult',
                  arp_table_stats: 'outputs.GetGatewayStatsDeviceGatewayStatArpTableStatsResult',
+                 auto_upgrade_stat: 'outputs.GetGatewayStatsDeviceGatewayStatAutoUpgradeStatResult',
                  bgp_peers: Sequence['outputs.GetGatewayStatsDeviceGatewayStatBgpPeerResult'],
                  cert_expiry: _builtins.int,
                  cluster_config: 'outputs.GetGatewayStatsDeviceGatewayStatClusterConfigResult',
                  cluster_stat: 'outputs.GetGatewayStatsDeviceGatewayStatClusterStatResult',
                  conductor_name: _builtins.str,
                  config_status: _builtins.str,
+                 config_timestamp: _builtins.int,
+                 config_version: _builtins.int,
                  cpu2_stat: 'outputs.GetGatewayStatsDeviceGatewayStatCpu2StatResult',
                  cpu_stat: 'outputs.GetGatewayStatsDeviceGatewayStatCpuStatResult',
                  created_time: _builtins.float,
                  deviceprofile_id: _builtins.str,
+                 deviceprofile_name: _builtins.str,
                  dhcpd2_stat: Mapping[str, 'outputs.GetGatewayStatsDeviceGatewayStatDhcpd2StatResult'],
                  dhcpd_stat: Mapping[str, 'outputs.GetGatewayStatsDeviceGatewayStatDhcpdStatResult'],
                  ext_ip: _builtins.str,
@@ -18669,6 +19462,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
                  is_ha: _builtins.bool,
                  last_seen: _builtins.float,
                  mac: _builtins.str,
+                 mac_table_stats: 'outputs.GetGatewayStatsDeviceGatewayStatMacTableStatsResult',
                  map_id: _builtins.str,
                  memory2_stat: 'outputs.GetGatewayStatsDeviceGatewayStatMemory2StatResult',
                  memory_stat: 'outputs.GetGatewayStatsDeviceGatewayStatMemoryStatResult',
@@ -18690,6 +19484,8 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
                  spu2_stats: Sequence['outputs.GetGatewayStatsDeviceGatewayStatSpu2StatResult'],
                  spu_stats: Sequence['outputs.GetGatewayStatsDeviceGatewayStatSpuStatResult'],
                  status: _builtins.str,
+                 tag_id: _builtins.int,
+                 tag_uuid: _builtins.str,
                  tunnels: Sequence['outputs.GetGatewayStatsDeviceGatewayStatTunnelResult'],
                  uptime: _builtins.float,
                  version: _builtins.str,
@@ -18721,16 +19517,20 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
         """
         pulumi.set(__self__, "ap_redundancy", ap_redundancy)
         pulumi.set(__self__, "arp_table_stats", arp_table_stats)
+        pulumi.set(__self__, "auto_upgrade_stat", auto_upgrade_stat)
         pulumi.set(__self__, "bgp_peers", bgp_peers)
         pulumi.set(__self__, "cert_expiry", cert_expiry)
         pulumi.set(__self__, "cluster_config", cluster_config)
         pulumi.set(__self__, "cluster_stat", cluster_stat)
         pulumi.set(__self__, "conductor_name", conductor_name)
         pulumi.set(__self__, "config_status", config_status)
+        pulumi.set(__self__, "config_timestamp", config_timestamp)
+        pulumi.set(__self__, "config_version", config_version)
         pulumi.set(__self__, "cpu2_stat", cpu2_stat)
         pulumi.set(__self__, "cpu_stat", cpu_stat)
         pulumi.set(__self__, "created_time", created_time)
         pulumi.set(__self__, "deviceprofile_id", deviceprofile_id)
+        pulumi.set(__self__, "deviceprofile_name", deviceprofile_name)
         pulumi.set(__self__, "dhcpd2_stat", dhcpd2_stat)
         pulumi.set(__self__, "dhcpd_stat", dhcpd_stat)
         pulumi.set(__self__, "ext_ip", ext_ip)
@@ -18746,6 +19546,7 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
         pulumi.set(__self__, "is_ha", is_ha)
         pulumi.set(__self__, "last_seen", last_seen)
         pulumi.set(__self__, "mac", mac)
+        pulumi.set(__self__, "mac_table_stats", mac_table_stats)
         pulumi.set(__self__, "map_id", map_id)
         pulumi.set(__self__, "memory2_stat", memory2_stat)
         pulumi.set(__self__, "memory_stat", memory_stat)
@@ -18767,6 +19568,8 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
         pulumi.set(__self__, "spu2_stats", spu2_stats)
         pulumi.set(__self__, "spu_stats", spu_stats)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tag_id", tag_id)
+        pulumi.set(__self__, "tag_uuid", tag_uuid)
         pulumi.set(__self__, "tunnels", tunnels)
         pulumi.set(__self__, "uptime", uptime)
         pulumi.set(__self__, "version", version)
@@ -18781,6 +19584,11 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter(name="arpTableStats")
     def arp_table_stats(self) -> 'outputs.GetGatewayStatsDeviceGatewayStatArpTableStatsResult':
         return pulumi.get(self, "arp_table_stats")
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeStat")
+    def auto_upgrade_stat(self) -> 'outputs.GetGatewayStatsDeviceGatewayStatAutoUpgradeStatResult':
+        return pulumi.get(self, "auto_upgrade_stat")
 
     @_builtins.property
     @pulumi.getter(name="bgpPeers")
@@ -18816,6 +19624,16 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
         return pulumi.get(self, "config_status")
 
     @_builtins.property
+    @pulumi.getter(name="configTimestamp")
+    def config_timestamp(self) -> _builtins.int:
+        return pulumi.get(self, "config_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="configVersion")
+    def config_version(self) -> _builtins.int:
+        return pulumi.get(self, "config_version")
+
+    @_builtins.property
     @pulumi.getter(name="cpu2Stat")
     def cpu2_stat(self) -> 'outputs.GetGatewayStatsDeviceGatewayStatCpu2StatResult':
         return pulumi.get(self, "cpu2_stat")
@@ -18837,6 +19655,11 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
     @pulumi.getter(name="deviceprofileId")
     def deviceprofile_id(self) -> _builtins.str:
         return pulumi.get(self, "deviceprofile_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deviceprofileName")
+    def deviceprofile_name(self) -> _builtins.str:
+        return pulumi.get(self, "deviceprofile_name")
 
     @_builtins.property
     @pulumi.getter(name="dhcpd2Stat")
@@ -18942,6 +19765,11 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
         Device mac
         """
         return pulumi.get(self, "mac")
+
+    @_builtins.property
+    @pulumi.getter(name="macTableStats")
+    def mac_table_stats(self) -> 'outputs.GetGatewayStatsDeviceGatewayStatMacTableStatsResult':
+        return pulumi.get(self, "mac_table_stats")
 
     @_builtins.property
     @pulumi.getter(name="mapId")
@@ -19076,6 +19904,16 @@ class GetGatewayStatsDeviceGatewayStatResult(dict):
         return pulumi.get(self, "status")
 
     @_builtins.property
+    @pulumi.getter(name="tagId")
+    def tag_id(self) -> _builtins.int:
+        return pulumi.get(self, "tag_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tagUuid")
+    def tag_uuid(self) -> _builtins.str:
+        return pulumi.get(self, "tag_uuid")
+
+    @_builtins.property
     @pulumi.getter
     def tunnels(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatTunnelResult']:
         """
@@ -19170,6 +20008,18 @@ class GetGatewayStatsDeviceGatewayStatArpTableStatsResult(dict):
     @pulumi.getter(name="maxEntriesSupported")
     def max_entries_supported(self) -> _builtins.int:
         return pulumi.get(self, "max_entries_supported")
+
+
+@pulumi.output_type
+class GetGatewayStatsDeviceGatewayStatAutoUpgradeStatResult(dict):
+    def __init__(__self__, *,
+                 lastcheck: _builtins.int):
+        pulumi.set(__self__, "lastcheck", lastcheck)
+
+    @_builtins.property
+    @pulumi.getter
+    def lastcheck(self) -> _builtins.int:
+        return pulumi.get(self, "lastcheck")
 
 
 @pulumi.output_type
@@ -19525,18 +20375,21 @@ class GetGatewayStatsDeviceGatewayStatCpu2StatResult(dict):
                  interrupt: _builtins.float,
                  load_avgs: Sequence[_builtins.float],
                  system: _builtins.float,
+                 usage: _builtins.float,
                  user: _builtins.float):
         """
         :param _builtins.float idle: Percentage of CPU time that is idle
         :param _builtins.float interrupt: Percentage of CPU time being used by interrupts
         :param Sequence[_builtins.float] load_avgs: Load averages for the last 1, 5, and 15 minutes
         :param _builtins.float system: Percentage of CPU time being used by system processes
+        :param _builtins.float usage: CPU usage
         :param _builtins.float user: Percentage of CPU time being used by user processes
         """
         pulumi.set(__self__, "idle", idle)
         pulumi.set(__self__, "interrupt", interrupt)
         pulumi.set(__self__, "load_avgs", load_avgs)
         pulumi.set(__self__, "system", system)
+        pulumi.set(__self__, "usage", usage)
         pulumi.set(__self__, "user", user)
 
     @_builtins.property
@@ -19570,6 +20423,14 @@ class GetGatewayStatsDeviceGatewayStatCpu2StatResult(dict):
         Percentage of CPU time being used by system processes
         """
         return pulumi.get(self, "system")
+
+    @_builtins.property
+    @pulumi.getter
+    def usage(self) -> _builtins.float:
+        """
+        CPU usage
+        """
+        return pulumi.get(self, "usage")
 
     @_builtins.property
     @pulumi.getter
@@ -19587,18 +20448,21 @@ class GetGatewayStatsDeviceGatewayStatCpuStatResult(dict):
                  interrupt: _builtins.float,
                  load_avgs: Sequence[_builtins.float],
                  system: _builtins.float,
+                 usage: _builtins.float,
                  user: _builtins.float):
         """
         :param _builtins.float idle: Percentage of CPU time that is idle
         :param _builtins.float interrupt: Percentage of CPU time being used by interrupts
         :param Sequence[_builtins.float] load_avgs: Load averages for the last 1, 5, and 15 minutes
         :param _builtins.float system: Percentage of CPU time being used by system processes
+        :param _builtins.float usage: CPU usage
         :param _builtins.float user: Percentage of CPU time being used by user processes
         """
         pulumi.set(__self__, "idle", idle)
         pulumi.set(__self__, "interrupt", interrupt)
         pulumi.set(__self__, "load_avgs", load_avgs)
         pulumi.set(__self__, "system", system)
+        pulumi.set(__self__, "usage", usage)
         pulumi.set(__self__, "user", user)
 
     @_builtins.property
@@ -19632,6 +20496,14 @@ class GetGatewayStatsDeviceGatewayStatCpuStatResult(dict):
         Percentage of CPU time being used by system processes
         """
         return pulumi.get(self, "system")
+
+    @_builtins.property
+    @pulumi.getter
+    def usage(self) -> _builtins.float:
+        """
+        CPU usage
+        """
+        return pulumi.get(self, "usage")
 
     @_builtins.property
     @pulumi.getter
@@ -19689,7 +20561,7 @@ class GetGatewayStatsDeviceGatewayStatFwupdateResult(dict):
                  timestamp: _builtins.float,
                  will_retry: _builtins.bool):
         """
-        :param _builtins.str status: enum: `inprogress`, `failed`, `upgraded`
+        :param _builtins.str status: enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         :param _builtins.float timestamp: Epoch (seconds)
         """
         pulumi.set(__self__, "progress", progress)
@@ -19707,7 +20579,7 @@ class GetGatewayStatsDeviceGatewayStatFwupdateResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        enum: `inprogress`, `failed`, `upgraded`
+        enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         """
         return pulumi.get(self, "status")
 
@@ -20259,6 +21131,25 @@ class GetGatewayStatsDeviceGatewayStatIpStatResult(dict):
 
 
 @pulumi.output_type
+class GetGatewayStatsDeviceGatewayStatMacTableStatsResult(dict):
+    def __init__(__self__, *,
+                 mac_table_count: _builtins.int,
+                 max_mac_entries_supported: _builtins.int):
+        pulumi.set(__self__, "mac_table_count", mac_table_count)
+        pulumi.set(__self__, "max_mac_entries_supported", max_mac_entries_supported)
+
+    @_builtins.property
+    @pulumi.getter(name="macTableCount")
+    def mac_table_count(self) -> _builtins.int:
+        return pulumi.get(self, "mac_table_count")
+
+    @_builtins.property
+    @pulumi.getter(name="maxMacEntriesSupported")
+    def max_mac_entries_supported(self) -> _builtins.int:
+        return pulumi.get(self, "max_mac_entries_supported")
+
+
+@pulumi.output_type
 class GetGatewayStatsDeviceGatewayStatMemory2StatResult(dict):
     def __init__(__self__, *,
                  usage: _builtins.float):
@@ -20287,13 +21178,16 @@ class GetGatewayStatsDeviceGatewayStatModule2StatResult(dict):
     def __init__(__self__, *,
                  backup_version: _builtins.str,
                  bios_version: _builtins.str,
+                 boot_partition: _builtins.str,
                  cpld_version: _builtins.str,
                  fans: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModule2StatFanResult'],
                  fpga_version: _builtins.str,
                  last_seen: _builtins.float,
                  locating: _builtins.bool,
                  mac: _builtins.str,
+                 memory_stat: 'outputs.GetGatewayStatsDeviceGatewayStatModule2StatMemoryStatResult',
                  model: _builtins.str,
+                 network_resources: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModule2StatNetworkResourceResult'],
                  optics_cpld_version: _builtins.str,
                  pending_version: _builtins.str,
                  poe: 'outputs.GetGatewayStatsDeviceGatewayStatModule2StatPoeResult',
@@ -20315,17 +21209,21 @@ class GetGatewayStatsDeviceGatewayStatModule2StatResult(dict):
                  version: _builtins.str):
         """
         :param _builtins.float last_seen: Last seen timestamp
+        :param 'GetGatewayStatsDeviceGatewayStatModule2StatMemoryStatArgs' memory_stat: Memory usage stat (for virtual chassis, memory usage of master RE)
         :param _builtins.str vc_role: enum: `master`, `backup`, `linecard`
         """
         pulumi.set(__self__, "backup_version", backup_version)
         pulumi.set(__self__, "bios_version", bios_version)
+        pulumi.set(__self__, "boot_partition", boot_partition)
         pulumi.set(__self__, "cpld_version", cpld_version)
         pulumi.set(__self__, "fans", fans)
         pulumi.set(__self__, "fpga_version", fpga_version)
         pulumi.set(__self__, "last_seen", last_seen)
         pulumi.set(__self__, "locating", locating)
         pulumi.set(__self__, "mac", mac)
+        pulumi.set(__self__, "memory_stat", memory_stat)
         pulumi.set(__self__, "model", model)
+        pulumi.set(__self__, "network_resources", network_resources)
         pulumi.set(__self__, "optics_cpld_version", optics_cpld_version)
         pulumi.set(__self__, "pending_version", pending_version)
         pulumi.set(__self__, "poe", poe)
@@ -20355,6 +21253,11 @@ class GetGatewayStatsDeviceGatewayStatModule2StatResult(dict):
     @pulumi.getter(name="biosVersion")
     def bios_version(self) -> _builtins.str:
         return pulumi.get(self, "bios_version")
+
+    @_builtins.property
+    @pulumi.getter(name="bootPartition")
+    def boot_partition(self) -> _builtins.str:
+        return pulumi.get(self, "boot_partition")
 
     @_builtins.property
     @pulumi.getter(name="cpldVersion")
@@ -20390,9 +21293,22 @@ class GetGatewayStatsDeviceGatewayStatModule2StatResult(dict):
         return pulumi.get(self, "mac")
 
     @_builtins.property
+    @pulumi.getter(name="memoryStat")
+    def memory_stat(self) -> 'outputs.GetGatewayStatsDeviceGatewayStatModule2StatMemoryStatResult':
+        """
+        Memory usage stat (for virtual chassis, memory usage of master RE)
+        """
+        return pulumi.get(self, "memory_stat")
+
+    @_builtins.property
     @pulumi.getter
     def model(self) -> _builtins.str:
         return pulumi.get(self, "model")
+
+    @_builtins.property
+    @pulumi.getter(name="networkResources")
+    def network_resources(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatModule2StatNetworkResourceResult']:
+        return pulumi.get(self, "network_resources")
 
     @_builtins.property
     @pulumi.getter(name="opticsCpldVersion")
@@ -20498,9 +21414,11 @@ class GetGatewayStatsDeviceGatewayStatModule2StatFanResult(dict):
     def __init__(__self__, *,
                  airflow: _builtins.str,
                  name: _builtins.str,
+                 rpm: _builtins.int,
                  status: _builtins.str):
         pulumi.set(__self__, "airflow", airflow)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "rpm", rpm)
         pulumi.set(__self__, "status", status)
 
     @_builtins.property
@@ -20515,17 +21433,76 @@ class GetGatewayStatsDeviceGatewayStatModule2StatFanResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def rpm(self) -> _builtins.int:
+        return pulumi.get(self, "rpm")
+
+    @_builtins.property
+    @pulumi.getter
     def status(self) -> _builtins.str:
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetGatewayStatsDeviceGatewayStatModule2StatMemoryStatResult(dict):
+    def __init__(__self__, *,
+                 usage: _builtins.float):
+        pulumi.set(__self__, "usage", usage)
+
+    @_builtins.property
+    @pulumi.getter
+    def usage(self) -> _builtins.float:
+        return pulumi.get(self, "usage")
+
+
+@pulumi.output_type
+class GetGatewayStatsDeviceGatewayStatModule2StatNetworkResourceResult(dict):
+    def __init__(__self__, *,
+                 count: _builtins.int,
+                 limit: _builtins.int,
+                 type: _builtins.str):
+        """
+        :param _builtins.int count: current usage of the network resource
+        :param _builtins.int limit: maximum usage of the network resource
+        :param _builtins.str type: type of the network resource (e.g. FIB, FLOW, ...)
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.int:
+        """
+        current usage of the network resource
+        """
+        return pulumi.get(self, "count")
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        maximum usage of the network resource
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        type of the network resource (e.g. FIB, FLOW, ...)
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
 class GetGatewayStatsDeviceGatewayStatModule2StatPoeResult(dict):
     def __init__(__self__, *,
                  max_power: _builtins.float,
-                 power_draw: _builtins.float):
+                 power_draw: _builtins.float,
+                 status: _builtins.str):
         pulumi.set(__self__, "max_power", max_power)
         pulumi.set(__self__, "power_draw", power_draw)
+        pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter(name="maxPower")
@@ -20536,6 +21513,11 @@ class GetGatewayStatsDeviceGatewayStatModule2StatPoeResult(dict):
     @pulumi.getter(name="powerDraw")
     def power_draw(self) -> _builtins.float:
         return pulumi.get(self, "power_draw")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -20614,13 +21596,16 @@ class GetGatewayStatsDeviceGatewayStatModuleStatResult(dict):
     def __init__(__self__, *,
                  backup_version: _builtins.str,
                  bios_version: _builtins.str,
+                 boot_partition: _builtins.str,
                  cpld_version: _builtins.str,
                  fans: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModuleStatFanResult'],
                  fpga_version: _builtins.str,
                  last_seen: _builtins.float,
                  locating: _builtins.bool,
                  mac: _builtins.str,
+                 memory_stat: 'outputs.GetGatewayStatsDeviceGatewayStatModuleStatMemoryStatResult',
                  model: _builtins.str,
+                 network_resources: Sequence['outputs.GetGatewayStatsDeviceGatewayStatModuleStatNetworkResourceResult'],
                  optics_cpld_version: _builtins.str,
                  pending_version: _builtins.str,
                  poe: 'outputs.GetGatewayStatsDeviceGatewayStatModuleStatPoeResult',
@@ -20642,17 +21627,21 @@ class GetGatewayStatsDeviceGatewayStatModuleStatResult(dict):
                  version: _builtins.str):
         """
         :param _builtins.float last_seen: Last seen timestamp
+        :param 'GetGatewayStatsDeviceGatewayStatModuleStatMemoryStatArgs' memory_stat: Memory usage stat (for virtual chassis, memory usage of master RE)
         :param _builtins.str vc_role: enum: `master`, `backup`, `linecard`
         """
         pulumi.set(__self__, "backup_version", backup_version)
         pulumi.set(__self__, "bios_version", bios_version)
+        pulumi.set(__self__, "boot_partition", boot_partition)
         pulumi.set(__self__, "cpld_version", cpld_version)
         pulumi.set(__self__, "fans", fans)
         pulumi.set(__self__, "fpga_version", fpga_version)
         pulumi.set(__self__, "last_seen", last_seen)
         pulumi.set(__self__, "locating", locating)
         pulumi.set(__self__, "mac", mac)
+        pulumi.set(__self__, "memory_stat", memory_stat)
         pulumi.set(__self__, "model", model)
+        pulumi.set(__self__, "network_resources", network_resources)
         pulumi.set(__self__, "optics_cpld_version", optics_cpld_version)
         pulumi.set(__self__, "pending_version", pending_version)
         pulumi.set(__self__, "poe", poe)
@@ -20682,6 +21671,11 @@ class GetGatewayStatsDeviceGatewayStatModuleStatResult(dict):
     @pulumi.getter(name="biosVersion")
     def bios_version(self) -> _builtins.str:
         return pulumi.get(self, "bios_version")
+
+    @_builtins.property
+    @pulumi.getter(name="bootPartition")
+    def boot_partition(self) -> _builtins.str:
+        return pulumi.get(self, "boot_partition")
 
     @_builtins.property
     @pulumi.getter(name="cpldVersion")
@@ -20717,9 +21711,22 @@ class GetGatewayStatsDeviceGatewayStatModuleStatResult(dict):
         return pulumi.get(self, "mac")
 
     @_builtins.property
+    @pulumi.getter(name="memoryStat")
+    def memory_stat(self) -> 'outputs.GetGatewayStatsDeviceGatewayStatModuleStatMemoryStatResult':
+        """
+        Memory usage stat (for virtual chassis, memory usage of master RE)
+        """
+        return pulumi.get(self, "memory_stat")
+
+    @_builtins.property
     @pulumi.getter
     def model(self) -> _builtins.str:
         return pulumi.get(self, "model")
+
+    @_builtins.property
+    @pulumi.getter(name="networkResources")
+    def network_resources(self) -> Sequence['outputs.GetGatewayStatsDeviceGatewayStatModuleStatNetworkResourceResult']:
+        return pulumi.get(self, "network_resources")
 
     @_builtins.property
     @pulumi.getter(name="opticsCpldVersion")
@@ -20825,9 +21832,11 @@ class GetGatewayStatsDeviceGatewayStatModuleStatFanResult(dict):
     def __init__(__self__, *,
                  airflow: _builtins.str,
                  name: _builtins.str,
+                 rpm: _builtins.int,
                  status: _builtins.str):
         pulumi.set(__self__, "airflow", airflow)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "rpm", rpm)
         pulumi.set(__self__, "status", status)
 
     @_builtins.property
@@ -20842,17 +21851,76 @@ class GetGatewayStatsDeviceGatewayStatModuleStatFanResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def rpm(self) -> _builtins.int:
+        return pulumi.get(self, "rpm")
+
+    @_builtins.property
+    @pulumi.getter
     def status(self) -> _builtins.str:
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetGatewayStatsDeviceGatewayStatModuleStatMemoryStatResult(dict):
+    def __init__(__self__, *,
+                 usage: _builtins.float):
+        pulumi.set(__self__, "usage", usage)
+
+    @_builtins.property
+    @pulumi.getter
+    def usage(self) -> _builtins.float:
+        return pulumi.get(self, "usage")
+
+
+@pulumi.output_type
+class GetGatewayStatsDeviceGatewayStatModuleStatNetworkResourceResult(dict):
+    def __init__(__self__, *,
+                 count: _builtins.int,
+                 limit: _builtins.int,
+                 type: _builtins.str):
+        """
+        :param _builtins.int count: current usage of the network resource
+        :param _builtins.int limit: maximum usage of the network resource
+        :param _builtins.str type: type of the network resource (e.g. FIB, FLOW, ...)
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.int:
+        """
+        current usage of the network resource
+        """
+        return pulumi.get(self, "count")
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        maximum usage of the network resource
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        type of the network resource (e.g. FIB, FLOW, ...)
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
 class GetGatewayStatsDeviceGatewayStatModuleStatPoeResult(dict):
     def __init__(__self__, *,
                  max_power: _builtins.float,
-                 power_draw: _builtins.float):
+                 power_draw: _builtins.float,
+                 status: _builtins.str):
         pulumi.set(__self__, "max_power", max_power)
         pulumi.set(__self__, "power_draw", power_draw)
+        pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter(name="maxPower")
@@ -20863,6 +21931,11 @@ class GetGatewayStatsDeviceGatewayStatModuleStatPoeResult(dict):
     @pulumi.getter(name="powerDraw")
     def power_draw(self) -> _builtins.float:
         return pulumi.get(self, "power_draw")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -21657,12 +22730,14 @@ class GetGatewayStatsDeviceGatewayStatSpu2StatResult(dict):
                  spu_max_session: _builtins.int,
                  spu_memory: _builtins.int,
                  spu_pending_session: _builtins.int,
+                 spu_uptime: _builtins.int,
                  spu_valid_session: _builtins.int):
         pulumi.set(__self__, "spu_cpu", spu_cpu)
         pulumi.set(__self__, "spu_current_session", spu_current_session)
         pulumi.set(__self__, "spu_max_session", spu_max_session)
         pulumi.set(__self__, "spu_memory", spu_memory)
         pulumi.set(__self__, "spu_pending_session", spu_pending_session)
+        pulumi.set(__self__, "spu_uptime", spu_uptime)
         pulumi.set(__self__, "spu_valid_session", spu_valid_session)
 
     @_builtins.property
@@ -21689,6 +22764,11 @@ class GetGatewayStatsDeviceGatewayStatSpu2StatResult(dict):
     @pulumi.getter(name="spuPendingSession")
     def spu_pending_session(self) -> _builtins.int:
         return pulumi.get(self, "spu_pending_session")
+
+    @_builtins.property
+    @pulumi.getter(name="spuUptime")
+    def spu_uptime(self) -> _builtins.int:
+        return pulumi.get(self, "spu_uptime")
 
     @_builtins.property
     @pulumi.getter(name="spuValidSession")
@@ -21704,12 +22784,14 @@ class GetGatewayStatsDeviceGatewayStatSpuStatResult(dict):
                  spu_max_session: _builtins.int,
                  spu_memory: _builtins.int,
                  spu_pending_session: _builtins.int,
+                 spu_uptime: _builtins.int,
                  spu_valid_session: _builtins.int):
         pulumi.set(__self__, "spu_cpu", spu_cpu)
         pulumi.set(__self__, "spu_current_session", spu_current_session)
         pulumi.set(__self__, "spu_max_session", spu_max_session)
         pulumi.set(__self__, "spu_memory", spu_memory)
         pulumi.set(__self__, "spu_pending_session", spu_pending_session)
+        pulumi.set(__self__, "spu_uptime", spu_uptime)
         pulumi.set(__self__, "spu_valid_session", spu_valid_session)
 
     @_builtins.property
@@ -21736,6 +22818,11 @@ class GetGatewayStatsDeviceGatewayStatSpuStatResult(dict):
     @pulumi.getter(name="spuPendingSession")
     def spu_pending_session(self) -> _builtins.int:
         return pulumi.get(self, "spu_pending_session")
+
+    @_builtins.property
+    @pulumi.getter(name="spuUptime")
+    def spu_uptime(self) -> _builtins.int:
+        return pulumi.get(self, "spu_uptime")
 
     @_builtins.property
     @pulumi.getter(name="spuValidSession")
@@ -21959,8 +23046,10 @@ class GetGatewayStatsDeviceGatewayStatTunnelResult(dict):
 class GetGatewayStatsDeviceGatewayStatVpnPeerResult(dict):
     def __init__(__self__, *,
                  is_active: _builtins.bool,
+                 jitter: _builtins.float,
                  last_seen: _builtins.float,
                  latency: _builtins.float,
+                 loss: _builtins.float,
                  mos: _builtins.float,
                  mtu: _builtins.int,
                  peer_mac: _builtins.str,
@@ -21974,15 +23063,21 @@ class GetGatewayStatsDeviceGatewayStatVpnPeerResult(dict):
                  uptime: _builtins.int):
         """
         :param _builtins.bool is_active: Redundancy status of the associated interface
+        :param _builtins.float jitter: Jitter in milliseconds
         :param _builtins.float last_seen: Last seen timestamp
+        :param _builtins.float latency: Latency in milliseconds
+        :param _builtins.float loss: Packet loss in percentage
+        :param _builtins.float mos: Mean Opinion Score, a measure of the quality of the VPN link
         :param _builtins.str peer_mac: Peer router mac address
         :param _builtins.str peer_port_id: Peer router device interface
         :param _builtins.str port_id: Router device interface
         :param _builtins.str type: `ipsec`for SRX, `svr` for 128T
         """
         pulumi.set(__self__, "is_active", is_active)
+        pulumi.set(__self__, "jitter", jitter)
         pulumi.set(__self__, "last_seen", last_seen)
         pulumi.set(__self__, "latency", latency)
+        pulumi.set(__self__, "loss", loss)
         pulumi.set(__self__, "mos", mos)
         pulumi.set(__self__, "mtu", mtu)
         pulumi.set(__self__, "peer_mac", peer_mac)
@@ -22004,6 +23099,14 @@ class GetGatewayStatsDeviceGatewayStatVpnPeerResult(dict):
         return pulumi.get(self, "is_active")
 
     @_builtins.property
+    @pulumi.getter
+    def jitter(self) -> _builtins.float:
+        """
+        Jitter in milliseconds
+        """
+        return pulumi.get(self, "jitter")
+
+    @_builtins.property
     @pulumi.getter(name="lastSeen")
     def last_seen(self) -> _builtins.float:
         """
@@ -22014,11 +23117,25 @@ class GetGatewayStatsDeviceGatewayStatVpnPeerResult(dict):
     @_builtins.property
     @pulumi.getter
     def latency(self) -> _builtins.float:
+        """
+        Latency in milliseconds
+        """
         return pulumi.get(self, "latency")
 
     @_builtins.property
     @pulumi.getter
+    def loss(self) -> _builtins.float:
+        """
+        Packet loss in percentage
+        """
+        return pulumi.get(self, "loss")
+
+    @_builtins.property
+    @pulumi.getter
     def mos(self) -> _builtins.float:
+        """
+        Mean Opinion Score, a measure of the quality of the VPN link
+        """
         return pulumi.get(self, "mos")
 
     @_builtins.property
@@ -22089,15 +23206,19 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
     def __init__(__self__, *,
                  ap_redundancy: 'outputs.GetSwitchStatsDeviceSwitchStatApRedundancyResult',
                  arp_table_stats: 'outputs.GetSwitchStatsDeviceSwitchStatArpTableStatsResult',
+                 auto_upgrade_stat: 'outputs.GetSwitchStatsDeviceSwitchStatAutoUpgradeStatResult',
                  cert_expiry: _builtins.int,
                  clients: Sequence['outputs.GetSwitchStatsDeviceSwitchStatClientResult'],
                  clients_stats: 'outputs.GetSwitchStatsDeviceSwitchStatClientsStatsResult',
                  config_status: _builtins.str,
+                 config_timestamp: _builtins.int,
+                 config_version: _builtins.int,
                  cpu_stat: 'outputs.GetSwitchStatsDeviceSwitchStatCpuStatResult',
                  created_time: _builtins.float,
                  deviceprofile_id: _builtins.str,
                  dhcpd_stat: Mapping[str, 'outputs.GetSwitchStatsDeviceSwitchStatDhcpdStatResult'],
                  evpntopo_id: _builtins.str,
+                 ext_ip: _builtins.str,
                  fw_versions_outofsync: _builtins.bool,
                  fwupdate: 'outputs.GetSwitchStatsDeviceSwitchStatFwupdateResult',
                  has_pcap: _builtins.bool,
@@ -22124,6 +23245,8 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
                  service_stat: Mapping[str, 'outputs.GetSwitchStatsDeviceSwitchStatServiceStatResult'],
                  site_id: _builtins.str,
                  status: _builtins.str,
+                 tag_id: _builtins.int,
+                 tag_uuid: _builtins.str,
                  uptime: _builtins.float,
                  vc_mac: _builtins.str,
                  vc_setup_info: 'outputs.GetSwitchStatsDeviceSwitchStatVcSetupInfoResult',
@@ -22144,15 +23267,19 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
         """
         pulumi.set(__self__, "ap_redundancy", ap_redundancy)
         pulumi.set(__self__, "arp_table_stats", arp_table_stats)
+        pulumi.set(__self__, "auto_upgrade_stat", auto_upgrade_stat)
         pulumi.set(__self__, "cert_expiry", cert_expiry)
         pulumi.set(__self__, "clients", clients)
         pulumi.set(__self__, "clients_stats", clients_stats)
         pulumi.set(__self__, "config_status", config_status)
+        pulumi.set(__self__, "config_timestamp", config_timestamp)
+        pulumi.set(__self__, "config_version", config_version)
         pulumi.set(__self__, "cpu_stat", cpu_stat)
         pulumi.set(__self__, "created_time", created_time)
         pulumi.set(__self__, "deviceprofile_id", deviceprofile_id)
         pulumi.set(__self__, "dhcpd_stat", dhcpd_stat)
         pulumi.set(__self__, "evpntopo_id", evpntopo_id)
+        pulumi.set(__self__, "ext_ip", ext_ip)
         pulumi.set(__self__, "fw_versions_outofsync", fw_versions_outofsync)
         pulumi.set(__self__, "fwupdate", fwupdate)
         pulumi.set(__self__, "has_pcap", has_pcap)
@@ -22179,6 +23306,8 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
         pulumi.set(__self__, "service_stat", service_stat)
         pulumi.set(__self__, "site_id", site_id)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tag_id", tag_id)
+        pulumi.set(__self__, "tag_uuid", tag_uuid)
         pulumi.set(__self__, "uptime", uptime)
         pulumi.set(__self__, "vc_mac", vc_mac)
         pulumi.set(__self__, "vc_setup_info", vc_setup_info)
@@ -22193,6 +23322,11 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
     @pulumi.getter(name="arpTableStats")
     def arp_table_stats(self) -> 'outputs.GetSwitchStatsDeviceSwitchStatArpTableStatsResult':
         return pulumi.get(self, "arp_table_stats")
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgradeStat")
+    def auto_upgrade_stat(self) -> 'outputs.GetSwitchStatsDeviceSwitchStatAutoUpgradeStatResult':
+        return pulumi.get(self, "auto_upgrade_stat")
 
     @_builtins.property
     @pulumi.getter(name="certExpiry")
@@ -22213,6 +23347,16 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
     @pulumi.getter(name="configStatus")
     def config_status(self) -> _builtins.str:
         return pulumi.get(self, "config_status")
+
+    @_builtins.property
+    @pulumi.getter(name="configTimestamp")
+    def config_timestamp(self) -> _builtins.int:
+        return pulumi.get(self, "config_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="configVersion")
+    def config_version(self) -> _builtins.int:
+        return pulumi.get(self, "config_version")
 
     @_builtins.property
     @pulumi.getter(name="cpuStat")
@@ -22244,6 +23388,11 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
     @pulumi.getter(name="evpntopoId")
     def evpntopo_id(self) -> _builtins.str:
         return pulumi.get(self, "evpntopo_id")
+
+    @_builtins.property
+    @pulumi.getter(name="extIp")
+    def ext_ip(self) -> _builtins.str:
+        return pulumi.get(self, "ext_ip")
 
     @_builtins.property
     @pulumi.getter(name="fwVersionsOutofsync")
@@ -22406,6 +23555,16 @@ class GetSwitchStatsDeviceSwitchStatResult(dict):
         return pulumi.get(self, "status")
 
     @_builtins.property
+    @pulumi.getter(name="tagId")
+    def tag_id(self) -> _builtins.int:
+        return pulumi.get(self, "tag_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tagUuid")
+    def tag_uuid(self) -> _builtins.str:
+        return pulumi.get(self, "tag_uuid")
+
+    @_builtins.property
     @pulumi.getter
     def uptime(self) -> _builtins.float:
         return pulumi.get(self, "uptime")
@@ -22497,6 +23656,18 @@ class GetSwitchStatsDeviceSwitchStatArpTableStatsResult(dict):
 
 
 @pulumi.output_type
+class GetSwitchStatsDeviceSwitchStatAutoUpgradeStatResult(dict):
+    def __init__(__self__, *,
+                 lastcheck: _builtins.int):
+        pulumi.set(__self__, "lastcheck", lastcheck)
+
+    @_builtins.property
+    @pulumi.getter
+    def lastcheck(self) -> _builtins.int:
+        return pulumi.get(self, "lastcheck")
+
+
+@pulumi.output_type
 class GetSwitchStatsDeviceSwitchStatClientResult(dict):
     def __init__(__self__, *,
                  device_mac: _builtins.str,
@@ -22567,18 +23738,21 @@ class GetSwitchStatsDeviceSwitchStatCpuStatResult(dict):
                  interrupt: _builtins.float,
                  load_avgs: Sequence[_builtins.float],
                  system: _builtins.float,
+                 usage: _builtins.float,
                  user: _builtins.float):
         """
         :param _builtins.float idle: Percentage of CPU time that is idle
         :param _builtins.float interrupt: Percentage of CPU time being used by interrupts
         :param Sequence[_builtins.float] load_avgs: Load averages for the last 1, 5, and 15 minutes
         :param _builtins.float system: Percentage of CPU time being used by system processes
+        :param _builtins.float usage: CPU usage
         :param _builtins.float user: Percentage of CPU time being used by user processes
         """
         pulumi.set(__self__, "idle", idle)
         pulumi.set(__self__, "interrupt", interrupt)
         pulumi.set(__self__, "load_avgs", load_avgs)
         pulumi.set(__self__, "system", system)
+        pulumi.set(__self__, "usage", usage)
         pulumi.set(__self__, "user", user)
 
     @_builtins.property
@@ -22612,6 +23786,14 @@ class GetSwitchStatsDeviceSwitchStatCpuStatResult(dict):
         Percentage of CPU time being used by system processes
         """
         return pulumi.get(self, "system")
+
+    @_builtins.property
+    @pulumi.getter
+    def usage(self) -> _builtins.float:
+        """
+        CPU usage
+        """
+        return pulumi.get(self, "usage")
 
     @_builtins.property
     @pulumi.getter
@@ -22650,7 +23832,7 @@ class GetSwitchStatsDeviceSwitchStatFwupdateResult(dict):
                  timestamp: _builtins.float,
                  will_retry: _builtins.bool):
         """
-        :param _builtins.str status: enum: `inprogress`, `failed`, `upgraded`
+        :param _builtins.str status: enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         :param _builtins.float timestamp: Epoch (seconds)
         """
         pulumi.set(__self__, "progress", progress)
@@ -22668,7 +23850,7 @@ class GetSwitchStatsDeviceSwitchStatFwupdateResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        enum: `inprogress`, `failed`, `upgraded`
+        enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         """
         return pulumi.get(self, "status")
 
@@ -23020,6 +24202,7 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
     def __init__(__self__, *,
                  backup_version: _builtins.str,
                  bios_version: _builtins.str,
+                 boot_partition: _builtins.str,
                  cpld_version: _builtins.str,
                  cpu_stat: 'outputs.GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult',
                  errors: Sequence['outputs.GetSwitchStatsDeviceSwitchStatModuleStatErrorResult'],
@@ -23029,6 +24212,7 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
                  last_seen: _builtins.float,
                  locating: _builtins.bool,
                  mac: _builtins.str,
+                 memory_stat: 'outputs.GetSwitchStatsDeviceSwitchStatModuleStatMemoryStatResult',
                  model: _builtins.str,
                  optics_cpld_version: _builtins.str,
                  pending_version: _builtins.str,
@@ -23054,10 +24238,12 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
         """
         :param Sequence['GetSwitchStatsDeviceSwitchStatModuleStatErrorArgs'] errors: Used to report all error states the device node is running into. An error should always have `type` and `since` fields, and could have some other fields specific to that type.
         :param _builtins.float last_seen: Last seen timestamp
+        :param 'GetSwitchStatsDeviceSwitchStatModuleStatMemoryStatArgs' memory_stat: Memory usage stat (for virtual chassis, memory usage of master RE)
         :param _builtins.str vc_role: enum: `master`, `backup`, `linecard`
         """
         pulumi.set(__self__, "backup_version", backup_version)
         pulumi.set(__self__, "bios_version", bios_version)
+        pulumi.set(__self__, "boot_partition", boot_partition)
         pulumi.set(__self__, "cpld_version", cpld_version)
         pulumi.set(__self__, "cpu_stat", cpu_stat)
         pulumi.set(__self__, "errors", errors)
@@ -23067,6 +24253,7 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
         pulumi.set(__self__, "last_seen", last_seen)
         pulumi.set(__self__, "locating", locating)
         pulumi.set(__self__, "mac", mac)
+        pulumi.set(__self__, "memory_stat", memory_stat)
         pulumi.set(__self__, "model", model)
         pulumi.set(__self__, "optics_cpld_version", optics_cpld_version)
         pulumi.set(__self__, "pending_version", pending_version)
@@ -23099,6 +24286,11 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
     @pulumi.getter(name="biosVersion")
     def bios_version(self) -> _builtins.str:
         return pulumi.get(self, "bios_version")
+
+    @_builtins.property
+    @pulumi.getter(name="bootPartition")
+    def boot_partition(self) -> _builtins.str:
+        return pulumi.get(self, "boot_partition")
 
     @_builtins.property
     @pulumi.getter(name="cpldVersion")
@@ -23150,6 +24342,14 @@ class GetSwitchStatsDeviceSwitchStatModuleStatResult(dict):
     @pulumi.getter
     def mac(self) -> _builtins.str:
         return pulumi.get(self, "mac")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryStat")
+    def memory_stat(self) -> 'outputs.GetSwitchStatsDeviceSwitchStatModuleStatMemoryStatResult':
+        """
+        Memory usage stat (for virtual chassis, memory usage of master RE)
+        """
+        return pulumi.get(self, "memory_stat")
 
     @_builtins.property
     @pulumi.getter
@@ -23272,18 +24472,21 @@ class GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult(dict):
                  interrupt: _builtins.float,
                  load_avgs: Sequence[_builtins.float],
                  system: _builtins.float,
+                 usage: _builtins.float,
                  user: _builtins.float):
         """
         :param _builtins.float idle: Percentage of CPU time that is idle
         :param _builtins.float interrupt: Percentage of CPU time being used by interrupts
         :param Sequence[_builtins.float] load_avgs: Load averages for the last 1, 5, and 15 minutes
         :param _builtins.float system: Percentage of CPU time being used by system processes
+        :param _builtins.float usage: CPU usage
         :param _builtins.float user: Percentage of CPU time being used by user processes
         """
         pulumi.set(__self__, "idle", idle)
         pulumi.set(__self__, "interrupt", interrupt)
         pulumi.set(__self__, "load_avgs", load_avgs)
         pulumi.set(__self__, "system", system)
+        pulumi.set(__self__, "usage", usage)
         pulumi.set(__self__, "user", user)
 
     @_builtins.property
@@ -23317,6 +24520,14 @@ class GetSwitchStatsDeviceSwitchStatModuleStatCpuStatResult(dict):
         Percentage of CPU time being used by system processes
         """
         return pulumi.get(self, "system")
+
+    @_builtins.property
+    @pulumi.getter
+    def usage(self) -> _builtins.float:
+        """
+        CPU usage
+        """
+        return pulumi.get(self, "usage")
 
     @_builtins.property
     @pulumi.getter
@@ -23372,9 +24583,11 @@ class GetSwitchStatsDeviceSwitchStatModuleStatFanResult(dict):
     def __init__(__self__, *,
                  airflow: _builtins.str,
                  name: _builtins.str,
+                 rpm: _builtins.int,
                  status: _builtins.str):
         pulumi.set(__self__, "airflow", airflow)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "rpm", rpm)
         pulumi.set(__self__, "status", status)
 
     @_builtins.property
@@ -23389,8 +24602,25 @@ class GetSwitchStatsDeviceSwitchStatModuleStatFanResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def rpm(self) -> _builtins.int:
+        return pulumi.get(self, "rpm")
+
+    @_builtins.property
+    @pulumi.getter
     def status(self) -> _builtins.str:
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetSwitchStatsDeviceSwitchStatModuleStatMemoryStatResult(dict):
+    def __init__(__self__, *,
+                 usage: _builtins.float):
+        pulumi.set(__self__, "usage", usage)
+
+    @_builtins.property
+    @pulumi.getter
+    def usage(self) -> _builtins.float:
+        return pulumi.get(self, "usage")
 
 
 @pulumi.output_type
@@ -23442,9 +24672,11 @@ class GetSwitchStatsDeviceSwitchStatModuleStatPicPortGroupResult(dict):
 class GetSwitchStatsDeviceSwitchStatModuleStatPoeResult(dict):
     def __init__(__self__, *,
                  max_power: _builtins.float,
-                 power_draw: _builtins.float):
+                 power_draw: _builtins.float,
+                 status: _builtins.str):
         pulumi.set(__self__, "max_power", max_power)
         pulumi.set(__self__, "power_draw", power_draw)
+        pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter(name="maxPower")
@@ -23455,6 +24687,11 @@ class GetSwitchStatsDeviceSwitchStatModuleStatPoeResult(dict):
     @pulumi.getter(name="powerDraw")
     def power_draw(self) -> _builtins.float:
         return pulumi.get(self, "power_draw")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -23553,6 +24790,7 @@ class GetSwitchStatsDeviceSwitchStatPortResult(dict):
                  poe_disabled: _builtins.bool,
                  poe_mode: _builtins.str,
                  poe_on: _builtins.bool,
+                 poe_priority: _builtins.str,
                  port_id: _builtins.str,
                  port_mac: _builtins.str,
                  port_usage: _builtins.str,
@@ -23599,6 +24837,7 @@ class GetSwitchStatsDeviceSwitchStatPortResult(dict):
         :param _builtins.bool poe_disabled: Is the POE disabled
         :param _builtins.str poe_mode: enum: `802.3af`, `802.3at`, `802.3bt`
         :param _builtins.bool poe_on: Is the device attached to POE
+        :param _builtins.str poe_priority: PoE priority. enum: `low`, `high`
         :param _builtins.str port_mac: Interface MAC address
         :param _builtins.str port_usage: gateway port usage. enum: `lan`
         :param _builtins.float power_draw: Amount of power being used by the interface at the time the command is executed. Unit in watts.
@@ -23646,6 +24885,7 @@ class GetSwitchStatsDeviceSwitchStatPortResult(dict):
         pulumi.set(__self__, "poe_disabled", poe_disabled)
         pulumi.set(__self__, "poe_mode", poe_mode)
         pulumi.set(__self__, "poe_on", poe_on)
+        pulumi.set(__self__, "poe_priority", poe_priority)
         pulumi.set(__self__, "port_id", port_id)
         pulumi.set(__self__, "port_mac", port_mac)
         pulumi.set(__self__, "port_usage", port_usage)
@@ -23839,6 +25079,14 @@ class GetSwitchStatsDeviceSwitchStatPortResult(dict):
         Is the device attached to POE
         """
         return pulumi.get(self, "poe_on")
+
+    @_builtins.property
+    @pulumi.getter(name="poePriority")
+    def poe_priority(self) -> _builtins.str:
+        """
+        PoE priority. enum: `low`, `high`
+        """
+        return pulumi.get(self, "poe_priority")
 
     @_builtins.property
     @pulumi.getter(name="portId")

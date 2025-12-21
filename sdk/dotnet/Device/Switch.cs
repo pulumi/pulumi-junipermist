@@ -44,6 +44,9 @@ namespace Pulumi.JuniperMist.Device
         [Output("additionalConfigCmds")]
         public Output<ImmutableArray<string>> AdditionalConfigCmds { get; private set; } = null!;
 
+        [Output("bgpConfig")]
+        public Output<ImmutableDictionary<string, Outputs.SwitchBgpConfig>?> BgpConfig { get; private set; } = null!;
+
         [Output("deviceId")]
         public Output<string> DeviceId { get; private set; } = null!;
 
@@ -221,6 +224,12 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> RouterId { get; private set; } = null!;
 
         /// <summary>
+        /// Property key is the routing policy name
+        /// </summary>
+        [Output("routingPolicies")]
+        public Output<ImmutableDictionary<string, Outputs.SwitchRoutingPolicies>?> RoutingPolicies { get; private set; } = null!;
+
+        /// <summary>
         /// Device Serial
         /// </summary>
         [Output("serial")]
@@ -369,6 +378,14 @@ namespace Pulumi.JuniperMist.Device
         {
             get => _additionalConfigCmds ?? (_additionalConfigCmds = new InputList<string>());
             set => _additionalConfigCmds = value;
+        }
+
+        [Input("bgpConfig")]
+        private InputMap<Inputs.SwitchBgpConfigArgs>? _bgpConfig;
+        public InputMap<Inputs.SwitchBgpConfigArgs> BgpConfig
+        {
+            get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.SwitchBgpConfigArgs>());
+            set => _bgpConfig = value;
         }
 
         [Input("deviceId", required: true)]
@@ -601,6 +618,18 @@ namespace Pulumi.JuniperMist.Device
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
 
+        [Input("routingPolicies")]
+        private InputMap<Inputs.SwitchRoutingPoliciesArgs>? _routingPolicies;
+
+        /// <summary>
+        /// Property key is the routing policy name
+        /// </summary>
+        public InputMap<Inputs.SwitchRoutingPoliciesArgs> RoutingPolicies
+        {
+            get => _routingPolicies ?? (_routingPolicies = new InputMap<Inputs.SwitchRoutingPoliciesArgs>());
+            set => _routingPolicies = value;
+        }
+
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
@@ -711,6 +740,14 @@ namespace Pulumi.JuniperMist.Device
         {
             get => _additionalConfigCmds ?? (_additionalConfigCmds = new InputList<string>());
             set => _additionalConfigCmds = value;
+        }
+
+        [Input("bgpConfig")]
+        private InputMap<Inputs.SwitchBgpConfigGetArgs>? _bgpConfig;
+        public InputMap<Inputs.SwitchBgpConfigGetArgs> BgpConfig
+        {
+            get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.SwitchBgpConfigGetArgs>());
+            set => _bgpConfig = value;
         }
 
         [Input("deviceId")]
@@ -966,6 +1003,18 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
+
+        [Input("routingPolicies")]
+        private InputMap<Inputs.SwitchRoutingPoliciesGetArgs>? _routingPolicies;
+
+        /// <summary>
+        /// Property key is the routing policy name
+        /// </summary>
+        public InputMap<Inputs.SwitchRoutingPoliciesGetArgs> RoutingPolicies
+        {
+            get => _routingPolicies ?? (_routingPolicies = new InputMap<Inputs.SwitchRoutingPoliciesGetArgs>());
+            set => _routingPolicies = value;
+        }
 
         /// <summary>
         /// Device Serial

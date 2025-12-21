@@ -15,6 +15,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatApRedundancyResult ApRedundancy;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatArpTableStatsResult ArpTableStats;
+        public readonly Outputs.GetGatewayStatsDeviceGatewayStatAutoUpgradeStatResult AutoUpgradeStat;
         /// <summary>
         /// Only present when `BgpPeers` in `Fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/bgp_peers/search` result object, except that org*id, site*id, mac, model are removed
         /// </summary>
@@ -24,6 +25,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatClusterStatResult ClusterStat;
         public readonly string ConductorName;
         public readonly string ConfigStatus;
+        public readonly int ConfigTimestamp;
+        public readonly int ConfigVersion;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatCpu2StatResult Cpu2Stat;
         public readonly Outputs.GetGatewayStatsDeviceGatewayStatCpuStatResult CpuStat;
         /// <summary>
@@ -31,6 +34,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly double CreatedTime;
         public readonly string DeviceprofileId;
+        public readonly string DeviceprofileName;
         /// <summary>
         /// Property key is the network name
         /// </summary>
@@ -76,6 +80,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// Device mac
         /// </summary>
         public readonly string Mac;
+        public readonly Outputs.GetGatewayStatsDeviceGatewayStatMacTableStatsResult MacTableStats;
         /// <summary>
         /// Serial Number
         /// </summary>
@@ -124,6 +129,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatSpu2StatResult> Spu2Stats;
         public readonly ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatSpuStatResult> SpuStats;
         public readonly string Status;
+        public readonly int TagId;
+        public readonly string TagUuid;
         /// <summary>
         /// Only present when `Tunnels` in `Fields` query parameter. Each port object is same as `GET /api/v1/sites/{site_id}/stats/tunnels/search` result object, except that org*id, site*id, mac, model are removed
         /// </summary>
@@ -141,6 +148,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             Outputs.GetGatewayStatsDeviceGatewayStatArpTableStatsResult arpTableStats,
 
+            Outputs.GetGatewayStatsDeviceGatewayStatAutoUpgradeStatResult autoUpgradeStat,
+
             ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatBgpPeerResult> bgpPeers,
 
             int certExpiry,
@@ -153,6 +162,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string configStatus,
 
+            int configTimestamp,
+
+            int configVersion,
+
             Outputs.GetGatewayStatsDeviceGatewayStatCpu2StatResult cpu2Stat,
 
             Outputs.GetGatewayStatsDeviceGatewayStatCpuStatResult cpuStat,
@@ -160,6 +173,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
             double createdTime,
 
             string deviceprofileId,
+
+            string deviceprofileName,
 
             ImmutableDictionary<string, Outputs.GetGatewayStatsDeviceGatewayStatDhcpd2StatResult> dhcpd2Stat,
 
@@ -190,6 +205,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
             double lastSeen,
 
             string mac,
+
+            Outputs.GetGatewayStatsDeviceGatewayStatMacTableStatsResult macTableStats,
 
             string mapId,
 
@@ -233,6 +250,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string status,
 
+            int tagId,
+
+            string tagUuid,
+
             ImmutableArray<Outputs.GetGatewayStatsDeviceGatewayStatTunnelResult> tunnels,
 
             double uptime,
@@ -243,16 +264,20 @@ namespace Pulumi.JuniperMist.Device.Outputs
         {
             ApRedundancy = apRedundancy;
             ArpTableStats = arpTableStats;
+            AutoUpgradeStat = autoUpgradeStat;
             BgpPeers = bgpPeers;
             CertExpiry = certExpiry;
             ClusterConfig = clusterConfig;
             ClusterStat = clusterStat;
             ConductorName = conductorName;
             ConfigStatus = configStatus;
+            ConfigTimestamp = configTimestamp;
+            ConfigVersion = configVersion;
             Cpu2Stat = cpu2Stat;
             CpuStat = cpuStat;
             CreatedTime = createdTime;
             DeviceprofileId = deviceprofileId;
+            DeviceprofileName = deviceprofileName;
             Dhcpd2Stat = dhcpd2Stat;
             DhcpdStat = dhcpdStat;
             ExtIp = extIp;
@@ -268,6 +293,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             IsHa = isHa;
             LastSeen = lastSeen;
             Mac = mac;
+            MacTableStats = macTableStats;
             MapId = mapId;
             Memory2Stat = memory2Stat;
             MemoryStat = memoryStat;
@@ -289,6 +315,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Spu2Stats = spu2Stats;
             SpuStats = spuStats;
             Status = status;
+            TagId = tagId;
+            TagUuid = tagUuid;
             Tunnels = tunnels;
             Uptime = uptime;
             Version = version;

@@ -5,7 +5,6 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,17 +31,17 @@ public final class GetSwitchStatsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
      * 
      */
     @Import(name="end")
-    private @Nullable Integer end;
+    private @Nullable String end;
 
     /**
-     * @return End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * @return End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
      * 
      */
-    public Optional<Integer> end() {
+    public Optional<String> end() {
         return Optional.ofNullable(this.end);
     }
 
@@ -98,17 +97,17 @@ public final class GetSwitchStatsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
      * 
      */
     @Import(name="start")
-    private @Nullable Integer start;
+    private @Nullable String start;
 
     /**
-     * @return Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * @return Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
      * 
      */
-    public Optional<Integer> start() {
+    public Optional<String> start() {
         return Optional.ofNullable(this.start);
     }
 
@@ -171,12 +170,12 @@ public final class GetSwitchStatsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param end End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+         * @param end End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
          * 
          * @return builder
          * 
          */
-        public Builder end(@Nullable Integer end) {
+        public Builder end(@Nullable String end) {
             $.end = end;
             return this;
         }
@@ -219,12 +218,12 @@ public final class GetSwitchStatsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param start Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+         * @param start Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
          * 
          * @return builder
          * 
          */
-        public Builder start(@Nullable Integer start) {
+        public Builder start(@Nullable String start) {
             $.start = start;
             return this;
         }

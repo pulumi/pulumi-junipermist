@@ -32,8 +32,8 @@ namespace Pulumi.JuniperMist.Device
         ///         SiteId = "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
         ///         Status = "connected",
         ///         Duration = "1d",
-        ///         Start = 1736031600,
-        ///         End = 1736175934,
+        ///         Start = "1736031600",
+        ///         End = "1736175934",
         ///     });
         /// 
         /// });
@@ -63,8 +63,8 @@ namespace Pulumi.JuniperMist.Device
         ///         SiteId = "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
         ///         Status = "connected",
         ///         Duration = "1d",
-        ///         Start = 1736031600,
-        ///         End = 1736175934,
+        ///         Start = "1736031600",
+        ///         End = "1736175934",
         ///     });
         /// 
         /// });
@@ -94,8 +94,8 @@ namespace Pulumi.JuniperMist.Device
         ///         SiteId = "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
         ///         Status = "connected",
         ///         Duration = "1d",
-        ///         Start = 1736031600,
-        ///         End = 1736175934,
+        ///         Start = "1736031600",
+        ///         End = "1736175934",
         ///     });
         /// 
         /// });
@@ -108,11 +108,17 @@ namespace Pulumi.JuniperMist.Device
 
     public sealed class GetApStatsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Duration like 7d, 2w
+        /// </summary>
         [Input("duration")]
         public string? Duration { get; set; }
 
+        /// <summary>
+        /// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+        /// </summary>
         [Input("end")]
-        public int? End { get; set; }
+        public string? End { get; set; }
 
         [Input("mac")]
         public string? Mac { get; set; }
@@ -123,9 +129,15 @@ namespace Pulumi.JuniperMist.Device
         [Input("siteId")]
         public string? SiteId { get; set; }
 
+        /// <summary>
+        /// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+        /// </summary>
         [Input("start")]
-        public int? Start { get; set; }
+        public string? Start { get; set; }
 
+        /// <summary>
+        /// enum: `All`, `Connected`, `Disconnected`
+        /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
@@ -137,11 +149,17 @@ namespace Pulumi.JuniperMist.Device
 
     public sealed class GetApStatsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Duration like 7d, 2w
+        /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 
+        /// <summary>
+        /// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+        /// </summary>
         [Input("end")]
-        public Input<int>? End { get; set; }
+        public Input<string>? End { get; set; }
 
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -152,9 +170,15 @@ namespace Pulumi.JuniperMist.Device
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
+        /// <summary>
+        /// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+        /// </summary>
         [Input("start")]
-        public Input<int>? Start { get; set; }
+        public Input<string>? Start { get; set; }
 
+        /// <summary>
+        /// enum: `All`, `Connected`, `Disconnected`
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
@@ -169,8 +193,14 @@ namespace Pulumi.JuniperMist.Device
     public sealed class GetApStatsResult
     {
         public readonly ImmutableArray<Outputs.GetApStatsDeviceApStatResult> DeviceApStats;
+        /// <summary>
+        /// Duration like 7d, 2w
+        /// </summary>
         public readonly string? Duration;
-        public readonly int? End;
+        /// <summary>
+        /// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+        /// </summary>
+        public readonly string? End;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -178,7 +208,13 @@ namespace Pulumi.JuniperMist.Device
         public readonly string? Mac;
         public readonly string OrgId;
         public readonly string? SiteId;
-        public readonly int? Start;
+        /// <summary>
+        /// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+        /// </summary>
+        public readonly string? Start;
+        /// <summary>
+        /// enum: `All`, `Connected`, `Disconnected`
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]
@@ -187,7 +223,7 @@ namespace Pulumi.JuniperMist.Device
 
             string? duration,
 
-            int? end,
+            string? end,
 
             string id,
 
@@ -197,7 +233,7 @@ namespace Pulumi.JuniperMist.Device
 
             string? siteId,
 
-            int? start,
+            string? start,
 
             string? status)
         {

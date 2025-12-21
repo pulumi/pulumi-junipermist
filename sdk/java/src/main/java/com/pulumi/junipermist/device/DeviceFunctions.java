@@ -57,8 +57,8 @@ public final class DeviceFunctions {
      *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .status("connected")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -103,8 +103,8 @@ public final class DeviceFunctions {
      *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .status("connected")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -149,8 +149,8 @@ public final class DeviceFunctions {
      *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .status("connected")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -195,8 +195,8 @@ public final class DeviceFunctions {
      *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .status("connected")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -241,8 +241,8 @@ public final class DeviceFunctions {
      *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .status("connected")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -287,8 +287,8 @@ public final class DeviceFunctions {
      *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .status("connected")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -333,8 +333,8 @@ public final class DeviceFunctions {
      *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .status("connected")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -379,8 +379,8 @@ public final class DeviceFunctions {
      *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .status("connected")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -425,8 +425,8 @@ public final class DeviceFunctions {
      *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .status("connected")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -471,8 +471,8 @@ public final class DeviceFunctions {
      *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .status("connected")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -519,8 +519,8 @@ public final class DeviceFunctions {
      *             .evpnUnused("true")
      *             .evpntopoId("92984e2f-94db-4cd8-9763-9cf83fbd079e")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -567,8 +567,8 @@ public final class DeviceFunctions {
      *             .evpnUnused("true")
      *             .evpntopoId("92984e2f-94db-4cd8-9763-9cf83fbd079e")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -615,8 +615,8 @@ public final class DeviceFunctions {
      *             .evpnUnused("true")
      *             .evpntopoId("92984e2f-94db-4cd8-9763-9cf83fbd079e")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -663,8 +663,8 @@ public final class DeviceFunctions {
      *             .evpnUnused("true")
      *             .evpntopoId("92984e2f-94db-4cd8-9763-9cf83fbd079e")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }
@@ -711,8 +711,8 @@ public final class DeviceFunctions {
      *             .evpnUnused("true")
      *             .evpntopoId("92984e2f-94db-4cd8-9763-9cf83fbd079e")
      *             .duration("1d")
-     *             .start(1736031600)
-     *             .end(1736175934)
+     *             .start("1736031600")
+     *             .end("1736175934")
      *             .build());
      * 
      *     }

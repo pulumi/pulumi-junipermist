@@ -32,6 +32,11 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStatCpuStat {
      */
     private Double system;
     /**
+     * @return CPU usage
+     * 
+     */
+    private Double usage;
+    /**
      * @return Percentage of CPU time being used by user processes
      * 
      */
@@ -67,6 +72,13 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStatCpuStat {
         return this.system;
     }
     /**
+     * @return CPU usage
+     * 
+     */
+    public Double usage() {
+        return this.usage;
+    }
+    /**
      * @return Percentage of CPU time being used by user processes
      * 
      */
@@ -87,6 +99,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStatCpuStat {
         private Double interrupt;
         private List<Double> loadAvgs;
         private Double system;
+        private Double usage;
         private Double user;
         public Builder() {}
         public Builder(GetSwitchStatsDeviceSwitchStatModuleStatCpuStat defaults) {
@@ -95,6 +108,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStatCpuStat {
     	      this.interrupt = defaults.interrupt;
     	      this.loadAvgs = defaults.loadAvgs;
     	      this.system = defaults.system;
+    	      this.usage = defaults.usage;
     	      this.user = defaults.user;
         }
 
@@ -134,6 +148,14 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStatCpuStat {
             return this;
         }
         @CustomType.Setter
+        public Builder usage(Double usage) {
+            if (usage == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStatCpuStat", "usage");
+            }
+            this.usage = usage;
+            return this;
+        }
+        @CustomType.Setter
         public Builder user(Double user) {
             if (user == null) {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatModuleStatCpuStat", "user");
@@ -147,6 +169,7 @@ public final class GetSwitchStatsDeviceSwitchStatModuleStatCpuStat {
             _resultValue.interrupt = interrupt;
             _resultValue.loadAvgs = loadAvgs;
             _resultValue.system = system;
+            _resultValue.usage = usage;
             _resultValue.user = user;
             return _resultValue;
         }

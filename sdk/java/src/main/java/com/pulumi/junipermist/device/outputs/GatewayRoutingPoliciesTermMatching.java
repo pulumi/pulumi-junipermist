@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayRoutingPoliciesTermMatching {
     /**
-     * @return takes regular expression
+     * @return BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
      * 
      */
     private @Nullable List<String> asPaths;
@@ -27,7 +27,7 @@ public final class GatewayRoutingPoliciesTermMatching {
      */
     private @Nullable List<String> prefixes;
     /**
-     * @return `direct`, `bgp`, `osp`, `static`, `aggregate`...
+     * @return enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
      * 
      */
     private @Nullable List<String> protocols;
@@ -46,7 +46,7 @@ public final class GatewayRoutingPoliciesTermMatching {
 
     private GatewayRoutingPoliciesTermMatching() {}
     /**
-     * @return takes regular expression
+     * @return BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
      * 
      */
     public List<String> asPaths() {
@@ -66,7 +66,7 @@ public final class GatewayRoutingPoliciesTermMatching {
         return this.prefixes == null ? List.of() : this.prefixes;
     }
     /**
-     * @return `direct`, `bgp`, `osp`, `static`, `aggregate`...
+     * @return enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
      * 
      */
     public List<String> protocols() {

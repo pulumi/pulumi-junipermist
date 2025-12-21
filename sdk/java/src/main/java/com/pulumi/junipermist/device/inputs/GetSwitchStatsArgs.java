@@ -6,7 +6,6 @@ package com.pulumi.junipermist.device.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,17 +32,17 @@ public final class GetSwitchStatsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
      * 
      */
     @Import(name="end")
-    private @Nullable Output<Integer> end;
+    private @Nullable Output<String> end;
 
     /**
-     * @return End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * @return End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
      * 
      */
-    public Optional<Output<Integer>> end() {
+    public Optional<Output<String>> end() {
         return Optional.ofNullable(this.end);
     }
 
@@ -99,17 +98,17 @@ public final class GetSwitchStatsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
      * 
      */
     @Import(name="start")
-    private @Nullable Output<Integer> start;
+    private @Nullable Output<String> start;
 
     /**
-     * @return Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * @return Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
      * 
      */
-    public Optional<Output<Integer>> start() {
+    public Optional<Output<String>> start() {
         return Optional.ofNullable(this.start);
     }
 
@@ -182,23 +181,23 @@ public final class GetSwitchStatsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param end End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+         * @param end End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
          * 
          * @return builder
          * 
          */
-        public Builder end(@Nullable Output<Integer> end) {
+        public Builder end(@Nullable Output<String> end) {
             $.end = end;
             return this;
         }
 
         /**
-         * @param end End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+         * @param end End time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-2h&#34;, &#34;now&#34;)
          * 
          * @return builder
          * 
          */
-        public Builder end(Integer end) {
+        public Builder end(String end) {
             return end(Output.of(end));
         }
 
@@ -272,23 +271,23 @@ public final class GetSwitchStatsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param start Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+         * @param start Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
          * 
          * @return builder
          * 
          */
-        public Builder start(@Nullable Output<Integer> start) {
+        public Builder start(@Nullable Output<String> start) {
             $.start = start;
             return this;
         }
 
         /**
-         * @param start Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+         * @param start Start time (epoch timestamp in seconds, or relative string like &#34;-1d&#34;, &#34;-1w&#34;)
          * 
          * @return builder
          * 
          */
-        public Builder start(Integer start) {
+        public Builder start(String start) {
             return start(Output.of(start));
         }
 

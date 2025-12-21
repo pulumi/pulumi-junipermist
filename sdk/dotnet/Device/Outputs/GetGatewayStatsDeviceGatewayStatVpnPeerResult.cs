@@ -18,10 +18,24 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool IsActive;
         /// <summary>
+        /// Jitter in milliseconds
+        /// </summary>
+        public readonly double Jitter;
+        /// <summary>
         /// Last seen timestamp
         /// </summary>
         public readonly double LastSeen;
+        /// <summary>
+        /// Latency in milliseconds
+        /// </summary>
         public readonly double Latency;
+        /// <summary>
+        /// Packet loss in percentage
+        /// </summary>
+        public readonly double Loss;
+        /// <summary>
+        /// Mean Opinion Score, a measure of the quality of the VPN link
+        /// </summary>
         public readonly double Mos;
         public readonly int Mtu;
         /// <summary>
@@ -50,9 +64,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
         private GetGatewayStatsDeviceGatewayStatVpnPeerResult(
             bool isActive,
 
+            double jitter,
+
             double lastSeen,
 
             double latency,
+
+            double loss,
 
             double mos,
 
@@ -77,8 +95,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
             int uptime)
         {
             IsActive = isActive;
+            Jitter = jitter;
             LastSeen = lastSeen;
             Latency = latency;
+            Loss = loss;
             Mos = mos;
             Mtu = mtu;
             PeerMac = peerMac;

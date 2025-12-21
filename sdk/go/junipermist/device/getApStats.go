@@ -33,8 +33,8 @@ import (
 //				SiteId:   pulumi.StringRef("4a422ae5-7ca0-4599-87a3-8e49aa63685f"),
 //				Status:   pulumi.StringRef("connected"),
 //				Duration: pulumi.StringRef("1d"),
-//				Start:    pulumi.IntRef(1736031600),
-//				End:      pulumi.IntRef(1736175934),
+//				Start:    pulumi.StringRef("1736031600"),
+//				End:      pulumi.StringRef("1736175934"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -56,26 +56,34 @@ func GetApStats(ctx *pulumi.Context, args *GetApStatsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getApStats.
 type GetApStatsArgs struct {
+	// Duration like 7d, 2w
 	Duration *string `pulumi:"duration"`
-	End      *int    `pulumi:"end"`
-	Mac      *string `pulumi:"mac"`
-	OrgId    string  `pulumi:"orgId"`
-	SiteId   *string `pulumi:"siteId"`
-	Start    *int    `pulumi:"start"`
-	Status   *string `pulumi:"status"`
+	// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+	End    *string `pulumi:"end"`
+	Mac    *string `pulumi:"mac"`
+	OrgId  string  `pulumi:"orgId"`
+	SiteId *string `pulumi:"siteId"`
+	// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+	Start *string `pulumi:"start"`
+	// enum: `all`, `connected`, `disconnected`
+	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getApStats.
 type GetApStatsResult struct {
 	DeviceApStats []GetApStatsDeviceApStat `pulumi:"deviceApStats"`
-	Duration      *string                  `pulumi:"duration"`
-	End           *int                     `pulumi:"end"`
+	// Duration like 7d, 2w
+	Duration *string `pulumi:"duration"`
+	// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+	End *string `pulumi:"end"`
 	// The provider-assigned unique ID for this managed resource.
 	Id     string  `pulumi:"id"`
 	Mac    *string `pulumi:"mac"`
 	OrgId  string  `pulumi:"orgId"`
 	SiteId *string `pulumi:"siteId"`
-	Start  *int    `pulumi:"start"`
+	// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+	Start *string `pulumi:"start"`
+	// enum: `all`, `connected`, `disconnected`
 	Status *string `pulumi:"status"`
 }
 
@@ -90,13 +98,17 @@ func GetApStatsOutput(ctx *pulumi.Context, args GetApStatsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getApStats.
 type GetApStatsOutputArgs struct {
+	// Duration like 7d, 2w
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
-	End      pulumi.IntPtrInput    `pulumi:"end"`
-	Mac      pulumi.StringPtrInput `pulumi:"mac"`
-	OrgId    pulumi.StringInput    `pulumi:"orgId"`
-	SiteId   pulumi.StringPtrInput `pulumi:"siteId"`
-	Start    pulumi.IntPtrInput    `pulumi:"start"`
-	Status   pulumi.StringPtrInput `pulumi:"status"`
+	// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+	End    pulumi.StringPtrInput `pulumi:"end"`
+	Mac    pulumi.StringPtrInput `pulumi:"mac"`
+	OrgId  pulumi.StringInput    `pulumi:"orgId"`
+	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
+	// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+	Start pulumi.StringPtrInput `pulumi:"start"`
+	// enum: `all`, `connected`, `disconnected`
+	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetApStatsOutputArgs) ElementType() reflect.Type {
@@ -122,12 +134,14 @@ func (o GetApStatsResultOutput) DeviceApStats() GetApStatsDeviceApStatArrayOutpu
 	return o.ApplyT(func(v GetApStatsResult) []GetApStatsDeviceApStat { return v.DeviceApStats }).(GetApStatsDeviceApStatArrayOutput)
 }
 
+// Duration like 7d, 2w
 func (o GetApStatsResultOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApStatsResult) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
-func (o GetApStatsResultOutput) End() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetApStatsResult) *int { return v.End }).(pulumi.IntPtrOutput)
+// End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
+func (o GetApStatsResultOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApStatsResult) *string { return v.End }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -147,10 +161,12 @@ func (o GetApStatsResultOutput) SiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApStatsResult) *string { return v.SiteId }).(pulumi.StringPtrOutput)
 }
 
-func (o GetApStatsResultOutput) Start() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetApStatsResult) *int { return v.Start }).(pulumi.IntPtrOutput)
+// Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
+func (o GetApStatsResultOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApStatsResult) *string { return v.Start }).(pulumi.StringPtrOutput)
 }
 
+// enum: `all`, `connected`, `disconnected`
 func (o GetApStatsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApStatsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

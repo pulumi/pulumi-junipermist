@@ -19,7 +19,7 @@ public final class GetAvprofilesOrgAvprofile {
      */
     private Double createdTime;
     /**
-     * @return enum: `block`, `permit`
+     * @return enum: `block`, `log-and-permit`, `permit`
      * 
      */
     private String fallbackAction;
@@ -57,7 +57,7 @@ public final class GetAvprofilesOrgAvprofile {
         return this.createdTime;
     }
     /**
-     * @return enum: `block`, `permit`
+     * @return enum: `block`, `log-and-permit`, `permit`
      * 
      */
     public String fallbackAction() {

@@ -111,6 +111,11 @@ public final class GetSwitchStatsDeviceSwitchStatPort {
      * 
      */
     private Boolean poeOn;
+    /**
+     * @return PoE priority. enum: `low`, `high`
+     * 
+     */
+    private String poePriority;
     private String portId;
     /**
      * @return Interface MAC address
@@ -377,6 +382,13 @@ public final class GetSwitchStatsDeviceSwitchStatPort {
     public Boolean poeOn() {
         return this.poeOn;
     }
+    /**
+     * @return PoE priority. enum: `low`, `high`
+     * 
+     */
+    public String poePriority() {
+        return this.poePriority;
+    }
     public String portId() {
         return this.portId;
     }
@@ -583,6 +595,7 @@ public final class GetSwitchStatsDeviceSwitchStatPort {
         private Boolean poeDisabled;
         private String poeMode;
         private Boolean poeOn;
+        private String poePriority;
         private String portId;
         private String portMac;
         private String portUsage;
@@ -634,6 +647,7 @@ public final class GetSwitchStatsDeviceSwitchStatPort {
     	      this.poeDisabled = defaults.poeDisabled;
     	      this.poeMode = defaults.poeMode;
     	      this.poeOn = defaults.poeOn;
+    	      this.poePriority = defaults.poePriority;
     	      this.portId = defaults.portId;
     	      this.portMac = defaults.portMac;
     	      this.portUsage = defaults.portUsage;
@@ -836,6 +850,14 @@ public final class GetSwitchStatsDeviceSwitchStatPort {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatPort", "poeOn");
             }
             this.poeOn = poeOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder poePriority(String poePriority) {
+            if (poePriority == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStatPort", "poePriority");
+            }
+            this.poePriority = poePriority;
             return this;
         }
         @CustomType.Setter
@@ -1070,6 +1092,7 @@ public final class GetSwitchStatsDeviceSwitchStatPort {
             _resultValue.poeDisabled = poeDisabled;
             _resultValue.poeMode = poeMode;
             _resultValue.poeOn = poeOn;
+            _resultValue.poePriority = poePriority;
             _resultValue.portId = portId;
             _resultValue.portMac = portMac;
             _resultValue.portUsage = portUsage;

@@ -33,11 +33,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExportCommunities;
         /// <summary>
-        /// Optional, for an import policy, LocalPreference can be changed
+        /// Optional, for an import policy, LocalPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
         /// </summary>
         public readonly string? LocalPreference;
         /// <summary>
-        /// When used as export policy, optional. By default, the local AS will be prepended, to change it
+        /// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
         /// </summary>
         public readonly ImmutableArray<string> PrependAsPaths;
 

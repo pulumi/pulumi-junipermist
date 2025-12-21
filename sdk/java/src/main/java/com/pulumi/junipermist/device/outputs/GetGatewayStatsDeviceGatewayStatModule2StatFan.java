@@ -5,6 +5,7 @@ package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -12,6 +13,7 @@ import java.util.Objects;
 public final class GetGatewayStatsDeviceGatewayStatModule2StatFan {
     private String airflow;
     private String name;
+    private Integer rpm;
     private String status;
 
     private GetGatewayStatsDeviceGatewayStatModule2StatFan() {}
@@ -20,6 +22,9 @@ public final class GetGatewayStatsDeviceGatewayStatModule2StatFan {
     }
     public String name() {
         return this.name;
+    }
+    public Integer rpm() {
+        return this.rpm;
     }
     public String status() {
         return this.status;
@@ -36,12 +41,14 @@ public final class GetGatewayStatsDeviceGatewayStatModule2StatFan {
     public static final class Builder {
         private String airflow;
         private String name;
+        private Integer rpm;
         private String status;
         public Builder() {}
         public Builder(GetGatewayStatsDeviceGatewayStatModule2StatFan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.airflow = defaults.airflow;
     	      this.name = defaults.name;
+    	      this.rpm = defaults.rpm;
     	      this.status = defaults.status;
         }
 
@@ -62,6 +69,14 @@ public final class GetGatewayStatsDeviceGatewayStatModule2StatFan {
             return this;
         }
         @CustomType.Setter
+        public Builder rpm(Integer rpm) {
+            if (rpm == null) {
+              throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModule2StatFan", "rpm");
+            }
+            this.rpm = rpm;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetGatewayStatsDeviceGatewayStatModule2StatFan", "status");
@@ -73,6 +88,7 @@ public final class GetGatewayStatsDeviceGatewayStatModule2StatFan {
             final var _resultValue = new GetGatewayStatsDeviceGatewayStatModule2StatFan();
             _resultValue.airflow = airflow;
             _resultValue.name = name;
+            _resultValue.rpm = rpm;
             _resultValue.status = status;
             return _resultValue;
         }

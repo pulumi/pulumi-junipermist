@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly double CreatedTime;
         /// <summary>
-        /// enum: `Block`, `Permit`
+        /// enum: `Block`, `log-and-permit`, `Permit`
         /// </summary>
         public readonly string FallbackAction;
         /// <summary>

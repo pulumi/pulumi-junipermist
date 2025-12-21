@@ -18,6 +18,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool Adopted;
         /// <summary>
+        /// For Virtual Chassis only, the MAC Address of the FPC0
+        /// </summary>
+        public readonly string ChassisMac;
+        /// <summary>
+        /// For Virtual Chassis only, the Serial Number of the FPC0
+        /// </summary>
+        public readonly string ChassisSerial;
+        /// <summary>
         /// Device claim code
         /// </summary>
         public readonly string ClaimCode;
@@ -80,6 +88,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         private GetInventoryOrgInventoryResult(
             bool adopted,
 
+            string chassisMac,
+
+            string chassisSerial,
+
             string claimCode,
 
             bool connected,
@@ -113,6 +125,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
             string vcMac)
         {
             Adopted = adopted;
+            ChassisMac = chassisMac;
+            ChassisSerial = chassisSerial;
             ClaimCode = claimCode;
             Connected = connected;
             DeviceprofileId = deviceprofileId;

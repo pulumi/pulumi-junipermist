@@ -123,7 +123,7 @@ class WlanArgs:
         :param pulumi.Input[_builtins.bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: List of device ids
         :param pulumi.Input['WlanAppLimitArgs'] app_limit: Bandwidth limiting for apps (applies to up/down)
-        :param pulumi.Input['WlanAppQosArgs'] app_qos: APp qos wlan settings
+        :param pulumi.Input['WlanAppQosArgs'] app_qos: APP qos wlan settings
         :param pulumi.Input[_builtins.str] apply_to: enum: `aps`, `site`, `wxtags`
         :param pulumi.Input[_builtins.bool] arp_filter: Whether to enable smart arp filter
         :param pulumi.Input['WlanAuthArgs'] auth: Authentication wlan settings
@@ -516,7 +516,7 @@ class WlanArgs:
     @pulumi.getter(name="appQos")
     def app_qos(self) -> Optional[pulumi.Input['WlanAppQosArgs']]:
         """
-        APp qos wlan settings
+        APP qos wlan settings
         """
         return pulumi.get(self, "app_qos")
 
@@ -1551,7 +1551,7 @@ class _WlanState:
         :param pulumi.Input[_builtins.bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: List of device ids
         :param pulumi.Input['WlanAppLimitArgs'] app_limit: Bandwidth limiting for apps (applies to up/down)
-        :param pulumi.Input['WlanAppQosArgs'] app_qos: APp qos wlan settings
+        :param pulumi.Input['WlanAppQosArgs'] app_qos: APP qos wlan settings
         :param pulumi.Input[_builtins.str] apply_to: enum: `aps`, `site`, `wxtags`
         :param pulumi.Input[_builtins.bool] arp_filter: Whether to enable smart arp filter
         :param pulumi.Input['WlanAuthArgs'] auth: Authentication wlan settings
@@ -1939,7 +1939,7 @@ class _WlanState:
     @pulumi.getter(name="appQos")
     def app_qos(self) -> Optional[pulumi.Input['WlanAppQosArgs']]:
         """
-        APp qos wlan settings
+        APP qos wlan settings
         """
         return pulumi.get(self, "app_qos")
 
@@ -3088,7 +3088,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: List of device ids
         :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: Bandwidth limiting for apps (applies to up/down)
-        :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: APp qos wlan settings
+        :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: APP qos wlan settings
         :param pulumi.Input[_builtins.str] apply_to: enum: `aps`, `site`, `wxtags`
         :param pulumi.Input[_builtins.bool] arp_filter: Whether to enable smart arp filter
         :param pulumi.Input[Union['WlanAuthArgs', 'WlanAuthArgsDict']] auth: Authentication wlan settings
@@ -3550,7 +3550,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_ssdp: Only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ap_ids: List of device ids
         :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: Bandwidth limiting for apps (applies to up/down)
-        :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: APp qos wlan settings
+        :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: APP qos wlan settings
         :param pulumi.Input[_builtins.str] apply_to: enum: `aps`, `site`, `wxtags`
         :param pulumi.Input[_builtins.bool] arp_filter: Whether to enable smart arp filter
         :param pulumi.Input[Union['WlanAuthArgs', 'WlanAuthArgsDict']] auth: Authentication wlan settings
@@ -3812,7 +3812,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="appQos")
     def app_qos(self) -> pulumi.Output['outputs.WlanAppQos']:
         """
-        APp qos wlan settings
+        APP qos wlan settings
         """
         return pulumi.get(self, "app_qos")
 

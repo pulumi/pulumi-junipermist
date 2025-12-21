@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// password expiry in days
+        /// Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
         /// </summary>
         public readonly int? ExpiryInDays;
         /// <summary>

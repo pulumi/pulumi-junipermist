@@ -68,9 +68,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? VlanId;
         /// <summary>
-        /// If `Forwarding`==`Limited`
+        /// If `Forwarding`==`Limited`, comma separated list of additional vlan ids allowed on this port
         /// </summary>
-        public readonly ImmutableArray<int> VlanIds;
+        public readonly string? VlanIds;
         /// <summary>
         /// If `Forwarding`==`Wxtunnel`, the port is bridged to the vlan of the session
         /// </summary>
@@ -110,7 +110,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int? vlanId,
 
-            ImmutableArray<int> vlanIds,
+            string? vlanIds,
 
             string? wxtunnelId,
 

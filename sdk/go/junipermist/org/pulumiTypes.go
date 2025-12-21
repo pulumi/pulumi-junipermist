@@ -2716,8 +2716,8 @@ type DeviceprofileApPortConfig struct {
 	//   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
 	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
 	VlanId *int `pulumi:"vlanId"`
-	// If `forwarding`==`limited`
-	VlanIds []int `pulumi:"vlanIds"`
+	// If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
+	VlanIds *string `pulumi:"vlanIds"`
 	// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
 	WxtunnelId *string `pulumi:"wxtunnelId"`
 	// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
@@ -2768,8 +2768,8 @@ type DeviceprofileApPortConfigArgs struct {
 	//   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
 	//   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
 	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
-	// If `forwarding`==`limited`
-	VlanIds pulumi.IntArrayInput `pulumi:"vlanIds"`
+	// If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
+	VlanIds pulumi.StringPtrInput `pulumi:"vlanIds"`
 	// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
 	WxtunnelId pulumi.StringPtrInput `pulumi:"wxtunnelId"`
 	// If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
@@ -2901,9 +2901,9 @@ func (o DeviceprofileApPortConfigOutput) VlanId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApPortConfig) *int { return v.VlanId }).(pulumi.IntPtrOutput)
 }
 
-// If `forwarding`==`limited`
-func (o DeviceprofileApPortConfigOutput) VlanIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v DeviceprofileApPortConfig) []int { return v.VlanIds }).(pulumi.IntArrayOutput)
+// If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
+func (o DeviceprofileApPortConfigOutput) VlanIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileApPortConfig) *string { return v.VlanIds }).(pulumi.StringPtrOutput)
 }
 
 // If `forwarding`==`wxtunnel`, the port is bridged to the vlan of the session
@@ -4534,7 +4534,7 @@ type DeviceprofileApRadioConfig struct {
 	AntGain6 *int `pulumi:"antGain6"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode *string `pulumi:"antennaMode"`
-	// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+	// Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
 	AntennaSelect *string `pulumi:"antennaSelect"`
 	// Radio Band AP settings
 	Band24 *DeviceprofileApRadioConfigBand24 `pulumi:"band24"`
@@ -4577,7 +4577,7 @@ type DeviceprofileApRadioConfigArgs struct {
 	AntGain6 pulumi.IntPtrInput `pulumi:"antGain6"`
 	// enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
 	AntennaMode pulumi.StringPtrInput `pulumi:"antennaMode"`
-	// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+	// Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
 	AntennaSelect pulumi.StringPtrInput `pulumi:"antennaSelect"`
 	// Radio Band AP settings
 	Band24 DeviceprofileApRadioConfigBand24PtrInput `pulumi:"band24"`
@@ -4700,7 +4700,7 @@ func (o DeviceprofileApRadioConfigOutput) AntennaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApRadioConfig) *string { return v.AntennaMode }).(pulumi.StringPtrOutput)
 }
 
-// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+// Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
 func (o DeviceprofileApRadioConfigOutput) AntennaSelect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileApRadioConfig) *string { return v.AntennaSelect }).(pulumi.StringPtrOutput)
 }
@@ -4823,7 +4823,7 @@ func (o DeviceprofileApRadioConfigPtrOutput) AntennaMode() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Antenna Mode for AP which supports selectable antennas. enum: `external`, `internal`
+// Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
 func (o DeviceprofileApRadioConfigPtrOutput) AntennaSelect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileApRadioConfig) *string {
 		if v == nil {
@@ -13165,9 +13165,9 @@ type DeviceprofileGatewayRoutingPoliciesTermActions struct {
 	ExcludeCommunities []string `pulumi:"excludeCommunities"`
 	// When used as export policy, optional
 	ExportCommunities []string `pulumi:"exportCommunities"`
-	// Optional, for an import policy, localPreference can be changed
+	// Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 	LocalPreference *string `pulumi:"localPreference"`
-	// When used as export policy, optional. By default, the local AS will be prepended, to change it
+	// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
 	PrependAsPaths []string `pulumi:"prependAsPaths"`
 }
 
@@ -13194,9 +13194,9 @@ type DeviceprofileGatewayRoutingPoliciesTermActionsArgs struct {
 	ExcludeCommunities pulumi.StringArrayInput `pulumi:"excludeCommunities"`
 	// When used as export policy, optional
 	ExportCommunities pulumi.StringArrayInput `pulumi:"exportCommunities"`
-	// Optional, for an import policy, localPreference can be changed
+	// Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 	LocalPreference pulumi.StringPtrInput `pulumi:"localPreference"`
-	// When used as export policy, optional. By default, the local AS will be prepended, to change it
+	// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
 	PrependAsPaths pulumi.StringArrayInput `pulumi:"prependAsPaths"`
 }
 
@@ -13309,12 +13309,12 @@ func (o DeviceprofileGatewayRoutingPoliciesTermActionsOutput) ExportCommunities(
 	return o.ApplyT(func(v DeviceprofileGatewayRoutingPoliciesTermActions) []string { return v.ExportCommunities }).(pulumi.StringArrayOutput)
 }
 
-// Optional, for an import policy, localPreference can be changed
+// Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 func (o DeviceprofileGatewayRoutingPoliciesTermActionsOutput) LocalPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayRoutingPoliciesTermActions) *string { return v.LocalPreference }).(pulumi.StringPtrOutput)
 }
 
-// When used as export policy, optional. By default, the local AS will be prepended, to change it
+// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
 func (o DeviceprofileGatewayRoutingPoliciesTermActionsOutput) PrependAsPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayRoutingPoliciesTermActions) []string { return v.PrependAsPaths }).(pulumi.StringArrayOutput)
 }
@@ -13410,7 +13410,7 @@ func (o DeviceprofileGatewayRoutingPoliciesTermActionsPtrOutput) ExportCommuniti
 	}).(pulumi.StringArrayOutput)
 }
 
-// Optional, for an import policy, localPreference can be changed
+// Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 func (o DeviceprofileGatewayRoutingPoliciesTermActionsPtrOutput) LocalPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileGatewayRoutingPoliciesTermActions) *string {
 		if v == nil {
@@ -13420,7 +13420,7 @@ func (o DeviceprofileGatewayRoutingPoliciesTermActionsPtrOutput) LocalPreference
 	}).(pulumi.StringPtrOutput)
 }
 
-// When used as export policy, optional. By default, the local AS will be prepended, to change it
+// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
 func (o DeviceprofileGatewayRoutingPoliciesTermActionsPtrOutput) PrependAsPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGatewayRoutingPoliciesTermActions) []string {
 		if v == nil {
@@ -13431,13 +13431,13 @@ func (o DeviceprofileGatewayRoutingPoliciesTermActionsPtrOutput) PrependAsPaths(
 }
 
 type DeviceprofileGatewayRoutingPoliciesTermMatching struct {
-	// takes regular expression
+	// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 	AsPaths     []string `pulumi:"asPaths"`
 	Communities []string `pulumi:"communities"`
 	Networks    []string `pulumi:"networks"`
 	// zero or more criteria/filter can be specified to match the term, all criteria have to be met
 	Prefixes []string `pulumi:"prefixes"`
-	// `direct`, `bgp`, `osp`, `static`, `aggregate`...
+	// enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
 	Protocols   []string                                                    `pulumi:"protocols"`
 	RouteExists *DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExists `pulumi:"routeExists"`
 	// overlay-facing criteria (used for bgpConfig where via=vpn)
@@ -13459,13 +13459,13 @@ type DeviceprofileGatewayRoutingPoliciesTermMatchingInput interface {
 }
 
 type DeviceprofileGatewayRoutingPoliciesTermMatchingArgs struct {
-	// takes regular expression
+	// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 	AsPaths     pulumi.StringArrayInput `pulumi:"asPaths"`
 	Communities pulumi.StringArrayInput `pulumi:"communities"`
 	Networks    pulumi.StringArrayInput `pulumi:"networks"`
 	// zero or more criteria/filter can be specified to match the term, all criteria have to be met
 	Prefixes pulumi.StringArrayInput `pulumi:"prefixes"`
-	// `direct`, `bgp`, `osp`, `static`, `aggregate`...
+	// enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
 	Protocols   pulumi.StringArrayInput                                            `pulumi:"protocols"`
 	RouteExists DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExistsPtrInput `pulumi:"routeExists"`
 	// overlay-facing criteria (used for bgpConfig where via=vpn)
@@ -13552,7 +13552,7 @@ func (o DeviceprofileGatewayRoutingPoliciesTermMatchingOutput) ToDeviceprofileGa
 	}).(DeviceprofileGatewayRoutingPoliciesTermMatchingPtrOutput)
 }
 
-// takes regular expression
+// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 func (o DeviceprofileGatewayRoutingPoliciesTermMatchingOutput) AsPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayRoutingPoliciesTermMatching) []string { return v.AsPaths }).(pulumi.StringArrayOutput)
 }
@@ -13570,7 +13570,7 @@ func (o DeviceprofileGatewayRoutingPoliciesTermMatchingOutput) Prefixes() pulumi
 	return o.ApplyT(func(v DeviceprofileGatewayRoutingPoliciesTermMatching) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
 }
 
-// `direct`, `bgp`, `osp`, `static`, `aggregate`...
+// enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
 func (o DeviceprofileGatewayRoutingPoliciesTermMatchingOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayRoutingPoliciesTermMatching) []string { return v.Protocols }).(pulumi.StringArrayOutput)
 }
@@ -13621,7 +13621,7 @@ func (o DeviceprofileGatewayRoutingPoliciesTermMatchingPtrOutput) Elem() Devicep
 	}).(DeviceprofileGatewayRoutingPoliciesTermMatchingOutput)
 }
 
-// takes regular expression
+// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 func (o DeviceprofileGatewayRoutingPoliciesTermMatchingPtrOutput) AsPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGatewayRoutingPoliciesTermMatching) []string {
 		if v == nil {
@@ -13659,7 +13659,7 @@ func (o DeviceprofileGatewayRoutingPoliciesTermMatchingPtrOutput) Prefixes() pul
 	}).(pulumi.StringArrayOutput)
 }
 
-// `direct`, `bgp`, `osp`, `static`, `aggregate`...
+// enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
 func (o DeviceprofileGatewayRoutingPoliciesTermMatchingPtrOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGatewayRoutingPoliciesTermMatching) []string {
 		if v == nil {
@@ -19257,10 +19257,13 @@ func (o EvpnTopologyEvpnOptionsVsInstancesMapOutput) MapIndex(k pulumi.StringInp
 }
 
 type EvpnTopologySwitches struct {
-	DeviceprofileId *string `pulumi:"deviceprofileId"`
-	EvpnId          *int    `pulumi:"evpnId"`
-	Mac             *string `pulumi:"mac"`
-	Model           *string `pulumi:"model"`
+	DeviceprofileId *string  `pulumi:"deviceprofileId"`
+	DownlinkIps     []string `pulumi:"downlinkIps"`
+	Downlinks       []string `pulumi:"downlinks"`
+	Esilaglinks     []string `pulumi:"esilaglinks"`
+	EvpnId          *int     `pulumi:"evpnId"`
+	Mac             *string  `pulumi:"mac"`
+	Model           *string  `pulumi:"model"`
 	// Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
 	//   * for CLOS, to group dist / access switches into pods
 	//   * for ERB/CRB, to group dist / esilag-access into pods
@@ -19269,9 +19272,13 @@ type EvpnTopologySwitches struct {
 	// if you want to limit the pods, you can specify pods.
 	Pods []int `pulumi:"pods"`
 	// use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
-	Role     string  `pulumi:"role"`
-	RouterId *string `pulumi:"routerId"`
-	SiteId   *string `pulumi:"siteId"`
+	Role                 string   `pulumi:"role"`
+	RouterId             *string  `pulumi:"routerId"`
+	SiteId               *string  `pulumi:"siteId"`
+	SuggestedDownlinks   []string `pulumi:"suggestedDownlinks"`
+	SuggestedEsilaglinks []string `pulumi:"suggestedEsilaglinks"`
+	SuggestedUplinks     []string `pulumi:"suggestedUplinks"`
+	Uplinks              []string `pulumi:"uplinks"`
 }
 
 // EvpnTopologySwitchesInput is an input type that accepts EvpnTopologySwitchesArgs and EvpnTopologySwitchesOutput values.
@@ -19286,10 +19293,13 @@ type EvpnTopologySwitchesInput interface {
 }
 
 type EvpnTopologySwitchesArgs struct {
-	DeviceprofileId pulumi.StringPtrInput `pulumi:"deviceprofileId"`
-	EvpnId          pulumi.IntPtrInput    `pulumi:"evpnId"`
-	Mac             pulumi.StringPtrInput `pulumi:"mac"`
-	Model           pulumi.StringPtrInput `pulumi:"model"`
+	DeviceprofileId pulumi.StringPtrInput   `pulumi:"deviceprofileId"`
+	DownlinkIps     pulumi.StringArrayInput `pulumi:"downlinkIps"`
+	Downlinks       pulumi.StringArrayInput `pulumi:"downlinks"`
+	Esilaglinks     pulumi.StringArrayInput `pulumi:"esilaglinks"`
+	EvpnId          pulumi.IntPtrInput      `pulumi:"evpnId"`
+	Mac             pulumi.StringPtrInput   `pulumi:"mac"`
+	Model           pulumi.StringPtrInput   `pulumi:"model"`
 	// Optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g.
 	//   * for CLOS, to group dist / access switches into pods
 	//   * for ERB/CRB, to group dist / esilag-access into pods
@@ -19298,9 +19308,13 @@ type EvpnTopologySwitchesArgs struct {
 	// if you want to limit the pods, you can specify pods.
 	Pods pulumi.IntArrayInput `pulumi:"pods"`
 	// use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
-	Role     pulumi.StringInput    `pulumi:"role"`
-	RouterId pulumi.StringPtrInput `pulumi:"routerId"`
-	SiteId   pulumi.StringPtrInput `pulumi:"siteId"`
+	Role                 pulumi.StringInput      `pulumi:"role"`
+	RouterId             pulumi.StringPtrInput   `pulumi:"routerId"`
+	SiteId               pulumi.StringPtrInput   `pulumi:"siteId"`
+	SuggestedDownlinks   pulumi.StringArrayInput `pulumi:"suggestedDownlinks"`
+	SuggestedEsilaglinks pulumi.StringArrayInput `pulumi:"suggestedEsilaglinks"`
+	SuggestedUplinks     pulumi.StringArrayInput `pulumi:"suggestedUplinks"`
+	Uplinks              pulumi.StringArrayInput `pulumi:"uplinks"`
 }
 
 func (EvpnTopologySwitchesArgs) ElementType() reflect.Type {
@@ -19358,6 +19372,18 @@ func (o EvpnTopologySwitchesOutput) DeviceprofileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) *string { return v.DeviceprofileId }).(pulumi.StringPtrOutput)
 }
 
+func (o EvpnTopologySwitchesOutput) DownlinkIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.DownlinkIps }).(pulumi.StringArrayOutput)
+}
+
+func (o EvpnTopologySwitchesOutput) Downlinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.Downlinks }).(pulumi.StringArrayOutput)
+}
+
+func (o EvpnTopologySwitchesOutput) Esilaglinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.Esilaglinks }).(pulumi.StringArrayOutput)
+}
+
 func (o EvpnTopologySwitchesOutput) EvpnId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) *int { return v.EvpnId }).(pulumi.IntPtrOutput)
 }
@@ -19394,6 +19420,22 @@ func (o EvpnTopologySwitchesOutput) RouterId() pulumi.StringPtrOutput {
 
 func (o EvpnTopologySwitchesOutput) SiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EvpnTopologySwitches) *string { return v.SiteId }).(pulumi.StringPtrOutput)
+}
+
+func (o EvpnTopologySwitchesOutput) SuggestedDownlinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.SuggestedDownlinks }).(pulumi.StringArrayOutput)
+}
+
+func (o EvpnTopologySwitchesOutput) SuggestedEsilaglinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.SuggestedEsilaglinks }).(pulumi.StringArrayOutput)
+}
+
+func (o EvpnTopologySwitchesOutput) SuggestedUplinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.SuggestedUplinks }).(pulumi.StringArrayOutput)
+}
+
+func (o EvpnTopologySwitchesOutput) Uplinks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EvpnTopologySwitches) []string { return v.Uplinks }).(pulumi.StringArrayOutput)
 }
 
 type EvpnTopologySwitchesMapOutput struct{ *pulumi.OutputState }
@@ -25860,9 +25902,9 @@ type GatewaytemplateRoutingPoliciesTermActions struct {
 	ExcludeCommunities []string `pulumi:"excludeCommunities"`
 	// When used as export policy, optional
 	ExportCommunities []string `pulumi:"exportCommunities"`
-	// Optional, for an import policy, localPreference can be changed
+	// Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 	LocalPreference *string `pulumi:"localPreference"`
-	// When used as export policy, optional. By default, the local AS will be prepended, to change it
+	// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
 	PrependAsPaths []string `pulumi:"prependAsPaths"`
 }
 
@@ -25889,9 +25931,9 @@ type GatewaytemplateRoutingPoliciesTermActionsArgs struct {
 	ExcludeCommunities pulumi.StringArrayInput `pulumi:"excludeCommunities"`
 	// When used as export policy, optional
 	ExportCommunities pulumi.StringArrayInput `pulumi:"exportCommunities"`
-	// Optional, for an import policy, localPreference can be changed
+	// Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 	LocalPreference pulumi.StringPtrInput `pulumi:"localPreference"`
-	// When used as export policy, optional. By default, the local AS will be prepended, to change it
+	// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
 	PrependAsPaths pulumi.StringArrayInput `pulumi:"prependAsPaths"`
 }
 
@@ -26004,12 +26046,12 @@ func (o GatewaytemplateRoutingPoliciesTermActionsOutput) ExportCommunities() pul
 	return o.ApplyT(func(v GatewaytemplateRoutingPoliciesTermActions) []string { return v.ExportCommunities }).(pulumi.StringArrayOutput)
 }
 
-// Optional, for an import policy, localPreference can be changed
+// Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 func (o GatewaytemplateRoutingPoliciesTermActionsOutput) LocalPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateRoutingPoliciesTermActions) *string { return v.LocalPreference }).(pulumi.StringPtrOutput)
 }
 
-// When used as export policy, optional. By default, the local AS will be prepended, to change it
+// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
 func (o GatewaytemplateRoutingPoliciesTermActionsOutput) PrependAsPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewaytemplateRoutingPoliciesTermActions) []string { return v.PrependAsPaths }).(pulumi.StringArrayOutput)
 }
@@ -26105,7 +26147,7 @@ func (o GatewaytemplateRoutingPoliciesTermActionsPtrOutput) ExportCommunities() 
 	}).(pulumi.StringArrayOutput)
 }
 
-// Optional, for an import policy, localPreference can be changed
+// Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 func (o GatewaytemplateRoutingPoliciesTermActionsPtrOutput) LocalPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewaytemplateRoutingPoliciesTermActions) *string {
 		if v == nil {
@@ -26115,7 +26157,7 @@ func (o GatewaytemplateRoutingPoliciesTermActionsPtrOutput) LocalPreference() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// When used as export policy, optional. By default, the local AS will be prepended, to change it
+// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
 func (o GatewaytemplateRoutingPoliciesTermActionsPtrOutput) PrependAsPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewaytemplateRoutingPoliciesTermActions) []string {
 		if v == nil {
@@ -26126,13 +26168,13 @@ func (o GatewaytemplateRoutingPoliciesTermActionsPtrOutput) PrependAsPaths() pul
 }
 
 type GatewaytemplateRoutingPoliciesTermMatching struct {
-	// takes regular expression
+	// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 	AsPaths     []string `pulumi:"asPaths"`
 	Communities []string `pulumi:"communities"`
 	Networks    []string `pulumi:"networks"`
 	// zero or more criteria/filter can be specified to match the term, all criteria have to be met
 	Prefixes []string `pulumi:"prefixes"`
-	// `direct`, `bgp`, `osp`, `static`, `aggregate`...
+	// enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
 	Protocols   []string                                               `pulumi:"protocols"`
 	RouteExists *GatewaytemplateRoutingPoliciesTermMatchingRouteExists `pulumi:"routeExists"`
 	// overlay-facing criteria (used for bgpConfig where via=vpn)
@@ -26154,13 +26196,13 @@ type GatewaytemplateRoutingPoliciesTermMatchingInput interface {
 }
 
 type GatewaytemplateRoutingPoliciesTermMatchingArgs struct {
-	// takes regular expression
+	// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 	AsPaths     pulumi.StringArrayInput `pulumi:"asPaths"`
 	Communities pulumi.StringArrayInput `pulumi:"communities"`
 	Networks    pulumi.StringArrayInput `pulumi:"networks"`
 	// zero or more criteria/filter can be specified to match the term, all criteria have to be met
 	Prefixes pulumi.StringArrayInput `pulumi:"prefixes"`
-	// `direct`, `bgp`, `osp`, `static`, `aggregate`...
+	// enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
 	Protocols   pulumi.StringArrayInput                                       `pulumi:"protocols"`
 	RouteExists GatewaytemplateRoutingPoliciesTermMatchingRouteExistsPtrInput `pulumi:"routeExists"`
 	// overlay-facing criteria (used for bgpConfig where via=vpn)
@@ -26247,7 +26289,7 @@ func (o GatewaytemplateRoutingPoliciesTermMatchingOutput) ToGatewaytemplateRouti
 	}).(GatewaytemplateRoutingPoliciesTermMatchingPtrOutput)
 }
 
-// takes regular expression
+// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 func (o GatewaytemplateRoutingPoliciesTermMatchingOutput) AsPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewaytemplateRoutingPoliciesTermMatching) []string { return v.AsPaths }).(pulumi.StringArrayOutput)
 }
@@ -26265,7 +26307,7 @@ func (o GatewaytemplateRoutingPoliciesTermMatchingOutput) Prefixes() pulumi.Stri
 	return o.ApplyT(func(v GatewaytemplateRoutingPoliciesTermMatching) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
 }
 
-// `direct`, `bgp`, `osp`, `static`, `aggregate`...
+// enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
 func (o GatewaytemplateRoutingPoliciesTermMatchingOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewaytemplateRoutingPoliciesTermMatching) []string { return v.Protocols }).(pulumi.StringArrayOutput)
 }
@@ -26316,7 +26358,7 @@ func (o GatewaytemplateRoutingPoliciesTermMatchingPtrOutput) Elem() Gatewaytempl
 	}).(GatewaytemplateRoutingPoliciesTermMatchingOutput)
 }
 
-// takes regular expression
+// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
 func (o GatewaytemplateRoutingPoliciesTermMatchingPtrOutput) AsPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewaytemplateRoutingPoliciesTermMatching) []string {
 		if v == nil {
@@ -26354,7 +26396,7 @@ func (o GatewaytemplateRoutingPoliciesTermMatchingPtrOutput) Prefixes() pulumi.S
 	}).(pulumi.StringArrayOutput)
 }
 
-// `direct`, `bgp`, `osp`, `static`, `aggregate`...
+// enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
 func (o GatewaytemplateRoutingPoliciesTermMatchingPtrOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewaytemplateRoutingPoliciesTermMatching) []string {
 		if v == nil {
@@ -34326,6 +34368,299 @@ func (o NetworktemplateAclTagsSpecArrayOutput) Index(i pulumi.IntInput) Networkt
 	}).(NetworktemplateAclTagsSpecOutput)
 }
 
+type NetworktemplateBgpConfig struct {
+	AuthKey *string `pulumi:"authKey"`
+	// Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
+	BfdMinimumInterval *int `pulumi:"bfdMinimumInterval"`
+	// Export policy must match one of the policy names defined in the `routingPolicies` property.
+	ExportPolicy *string `pulumi:"exportPolicy"`
+	// Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+	HoldTime *int `pulumi:"holdTime"`
+	// Import policy must match one of the policy names defined in the `routingPolicies` property.
+	ImportPolicy *string `pulumi:"importPolicy"`
+	LocalAs      string  `pulumi:"localAs"`
+	// Property key is the BGP Neighbor IP Address.
+	Neighbors map[string]NetworktemplateBgpConfigNeighbors `pulumi:"neighbors"`
+	// List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+	Networks []string `pulumi:"networks"`
+	// enum: `external`, `internal`
+	Type string `pulumi:"type"`
+}
+
+// NetworktemplateBgpConfigInput is an input type that accepts NetworktemplateBgpConfigArgs and NetworktemplateBgpConfigOutput values.
+// You can construct a concrete instance of `NetworktemplateBgpConfigInput` via:
+//
+//	NetworktemplateBgpConfigArgs{...}
+type NetworktemplateBgpConfigInput interface {
+	pulumi.Input
+
+	ToNetworktemplateBgpConfigOutput() NetworktemplateBgpConfigOutput
+	ToNetworktemplateBgpConfigOutputWithContext(context.Context) NetworktemplateBgpConfigOutput
+}
+
+type NetworktemplateBgpConfigArgs struct {
+	AuthKey pulumi.StringPtrInput `pulumi:"authKey"`
+	// Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
+	BfdMinimumInterval pulumi.IntPtrInput `pulumi:"bfdMinimumInterval"`
+	// Export policy must match one of the policy names defined in the `routingPolicies` property.
+	ExportPolicy pulumi.StringPtrInput `pulumi:"exportPolicy"`
+	// Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+	HoldTime pulumi.IntPtrInput `pulumi:"holdTime"`
+	// Import policy must match one of the policy names defined in the `routingPolicies` property.
+	ImportPolicy pulumi.StringPtrInput `pulumi:"importPolicy"`
+	LocalAs      pulumi.StringInput    `pulumi:"localAs"`
+	// Property key is the BGP Neighbor IP Address.
+	Neighbors NetworktemplateBgpConfigNeighborsMapInput `pulumi:"neighbors"`
+	// List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+	Networks pulumi.StringArrayInput `pulumi:"networks"`
+	// enum: `external`, `internal`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (NetworktemplateBgpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateBgpConfig)(nil)).Elem()
+}
+
+func (i NetworktemplateBgpConfigArgs) ToNetworktemplateBgpConfigOutput() NetworktemplateBgpConfigOutput {
+	return i.ToNetworktemplateBgpConfigOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateBgpConfigArgs) ToNetworktemplateBgpConfigOutputWithContext(ctx context.Context) NetworktemplateBgpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateBgpConfigOutput)
+}
+
+// NetworktemplateBgpConfigMapInput is an input type that accepts NetworktemplateBgpConfigMap and NetworktemplateBgpConfigMapOutput values.
+// You can construct a concrete instance of `NetworktemplateBgpConfigMapInput` via:
+//
+//	NetworktemplateBgpConfigMap{ "key": NetworktemplateBgpConfigArgs{...} }
+type NetworktemplateBgpConfigMapInput interface {
+	pulumi.Input
+
+	ToNetworktemplateBgpConfigMapOutput() NetworktemplateBgpConfigMapOutput
+	ToNetworktemplateBgpConfigMapOutputWithContext(context.Context) NetworktemplateBgpConfigMapOutput
+}
+
+type NetworktemplateBgpConfigMap map[string]NetworktemplateBgpConfigInput
+
+func (NetworktemplateBgpConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateBgpConfig)(nil)).Elem()
+}
+
+func (i NetworktemplateBgpConfigMap) ToNetworktemplateBgpConfigMapOutput() NetworktemplateBgpConfigMapOutput {
+	return i.ToNetworktemplateBgpConfigMapOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateBgpConfigMap) ToNetworktemplateBgpConfigMapOutputWithContext(ctx context.Context) NetworktemplateBgpConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateBgpConfigMapOutput)
+}
+
+type NetworktemplateBgpConfigOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateBgpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateBgpConfig)(nil)).Elem()
+}
+
+func (o NetworktemplateBgpConfigOutput) ToNetworktemplateBgpConfigOutput() NetworktemplateBgpConfigOutput {
+	return o
+}
+
+func (o NetworktemplateBgpConfigOutput) ToNetworktemplateBgpConfigOutputWithContext(ctx context.Context) NetworktemplateBgpConfigOutput {
+	return o
+}
+
+func (o NetworktemplateBgpConfigOutput) AuthKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfig) *string { return v.AuthKey }).(pulumi.StringPtrOutput)
+}
+
+// Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
+func (o NetworktemplateBgpConfigOutput) BfdMinimumInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfig) *int { return v.BfdMinimumInterval }).(pulumi.IntPtrOutput)
+}
+
+// Export policy must match one of the policy names defined in the `routingPolicies` property.
+func (o NetworktemplateBgpConfigOutput) ExportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfig) *string { return v.ExportPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+func (o NetworktemplateBgpConfigOutput) HoldTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfig) *int { return v.HoldTime }).(pulumi.IntPtrOutput)
+}
+
+// Import policy must match one of the policy names defined in the `routingPolicies` property.
+func (o NetworktemplateBgpConfigOutput) ImportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfig) *string { return v.ImportPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o NetworktemplateBgpConfigOutput) LocalAs() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfig) string { return v.LocalAs }).(pulumi.StringOutput)
+}
+
+// Property key is the BGP Neighbor IP Address.
+func (o NetworktemplateBgpConfigOutput) Neighbors() NetworktemplateBgpConfigNeighborsMapOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfig) map[string]NetworktemplateBgpConfigNeighbors { return v.Neighbors }).(NetworktemplateBgpConfigNeighborsMapOutput)
+}
+
+// List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+func (o NetworktemplateBgpConfigOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfig) []string { return v.Networks }).(pulumi.StringArrayOutput)
+}
+
+// enum: `external`, `internal`
+func (o NetworktemplateBgpConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type NetworktemplateBgpConfigMapOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateBgpConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateBgpConfig)(nil)).Elem()
+}
+
+func (o NetworktemplateBgpConfigMapOutput) ToNetworktemplateBgpConfigMapOutput() NetworktemplateBgpConfigMapOutput {
+	return o
+}
+
+func (o NetworktemplateBgpConfigMapOutput) ToNetworktemplateBgpConfigMapOutputWithContext(ctx context.Context) NetworktemplateBgpConfigMapOutput {
+	return o
+}
+
+func (o NetworktemplateBgpConfigMapOutput) MapIndex(k pulumi.StringInput) NetworktemplateBgpConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworktemplateBgpConfig {
+		return vs[0].(map[string]NetworktemplateBgpConfig)[vs[1].(string)]
+	}).(NetworktemplateBgpConfigOutput)
+}
+
+type NetworktemplateBgpConfigNeighbors struct {
+	// Export policy must match one of the policy names defined in the `routingPolicies` property.
+	ExportPolicy *string `pulumi:"exportPolicy"`
+	// Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+	HoldTime *int `pulumi:"holdTime"`
+	// Import policy must match one of the policy names defined in the `routingPolicies` property.
+	ImportPolicy *string `pulumi:"importPolicy"`
+	MultihopTtl  *int    `pulumi:"multihopTtl"`
+	// Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `localAs`. For external BGP, this must differ from `localAs`.
+	NeighborAs string `pulumi:"neighborAs"`
+}
+
+// NetworktemplateBgpConfigNeighborsInput is an input type that accepts NetworktemplateBgpConfigNeighborsArgs and NetworktemplateBgpConfigNeighborsOutput values.
+// You can construct a concrete instance of `NetworktemplateBgpConfigNeighborsInput` via:
+//
+//	NetworktemplateBgpConfigNeighborsArgs{...}
+type NetworktemplateBgpConfigNeighborsInput interface {
+	pulumi.Input
+
+	ToNetworktemplateBgpConfigNeighborsOutput() NetworktemplateBgpConfigNeighborsOutput
+	ToNetworktemplateBgpConfigNeighborsOutputWithContext(context.Context) NetworktemplateBgpConfigNeighborsOutput
+}
+
+type NetworktemplateBgpConfigNeighborsArgs struct {
+	// Export policy must match one of the policy names defined in the `routingPolicies` property.
+	ExportPolicy pulumi.StringPtrInput `pulumi:"exportPolicy"`
+	// Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+	HoldTime pulumi.IntPtrInput `pulumi:"holdTime"`
+	// Import policy must match one of the policy names defined in the `routingPolicies` property.
+	ImportPolicy pulumi.StringPtrInput `pulumi:"importPolicy"`
+	MultihopTtl  pulumi.IntPtrInput    `pulumi:"multihopTtl"`
+	// Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `localAs`. For external BGP, this must differ from `localAs`.
+	NeighborAs pulumi.StringInput `pulumi:"neighborAs"`
+}
+
+func (NetworktemplateBgpConfigNeighborsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateBgpConfigNeighbors)(nil)).Elem()
+}
+
+func (i NetworktemplateBgpConfigNeighborsArgs) ToNetworktemplateBgpConfigNeighborsOutput() NetworktemplateBgpConfigNeighborsOutput {
+	return i.ToNetworktemplateBgpConfigNeighborsOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateBgpConfigNeighborsArgs) ToNetworktemplateBgpConfigNeighborsOutputWithContext(ctx context.Context) NetworktemplateBgpConfigNeighborsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateBgpConfigNeighborsOutput)
+}
+
+// NetworktemplateBgpConfigNeighborsMapInput is an input type that accepts NetworktemplateBgpConfigNeighborsMap and NetworktemplateBgpConfigNeighborsMapOutput values.
+// You can construct a concrete instance of `NetworktemplateBgpConfigNeighborsMapInput` via:
+//
+//	NetworktemplateBgpConfigNeighborsMap{ "key": NetworktemplateBgpConfigNeighborsArgs{...} }
+type NetworktemplateBgpConfigNeighborsMapInput interface {
+	pulumi.Input
+
+	ToNetworktemplateBgpConfigNeighborsMapOutput() NetworktemplateBgpConfigNeighborsMapOutput
+	ToNetworktemplateBgpConfigNeighborsMapOutputWithContext(context.Context) NetworktemplateBgpConfigNeighborsMapOutput
+}
+
+type NetworktemplateBgpConfigNeighborsMap map[string]NetworktemplateBgpConfigNeighborsInput
+
+func (NetworktemplateBgpConfigNeighborsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateBgpConfigNeighbors)(nil)).Elem()
+}
+
+func (i NetworktemplateBgpConfigNeighborsMap) ToNetworktemplateBgpConfigNeighborsMapOutput() NetworktemplateBgpConfigNeighborsMapOutput {
+	return i.ToNetworktemplateBgpConfigNeighborsMapOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateBgpConfigNeighborsMap) ToNetworktemplateBgpConfigNeighborsMapOutputWithContext(ctx context.Context) NetworktemplateBgpConfigNeighborsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateBgpConfigNeighborsMapOutput)
+}
+
+type NetworktemplateBgpConfigNeighborsOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateBgpConfigNeighborsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateBgpConfigNeighbors)(nil)).Elem()
+}
+
+func (o NetworktemplateBgpConfigNeighborsOutput) ToNetworktemplateBgpConfigNeighborsOutput() NetworktemplateBgpConfigNeighborsOutput {
+	return o
+}
+
+func (o NetworktemplateBgpConfigNeighborsOutput) ToNetworktemplateBgpConfigNeighborsOutputWithContext(ctx context.Context) NetworktemplateBgpConfigNeighborsOutput {
+	return o
+}
+
+// Export policy must match one of the policy names defined in the `routingPolicies` property.
+func (o NetworktemplateBgpConfigNeighborsOutput) ExportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfigNeighbors) *string { return v.ExportPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+func (o NetworktemplateBgpConfigNeighborsOutput) HoldTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfigNeighbors) *int { return v.HoldTime }).(pulumi.IntPtrOutput)
+}
+
+// Import policy must match one of the policy names defined in the `routingPolicies` property.
+func (o NetworktemplateBgpConfigNeighborsOutput) ImportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfigNeighbors) *string { return v.ImportPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o NetworktemplateBgpConfigNeighborsOutput) MultihopTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfigNeighbors) *int { return v.MultihopTtl }).(pulumi.IntPtrOutput)
+}
+
+// Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `localAs`. For external BGP, this must differ from `localAs`.
+func (o NetworktemplateBgpConfigNeighborsOutput) NeighborAs() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateBgpConfigNeighbors) string { return v.NeighborAs }).(pulumi.StringOutput)
+}
+
+type NetworktemplateBgpConfigNeighborsMapOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateBgpConfigNeighborsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateBgpConfigNeighbors)(nil)).Elem()
+}
+
+func (o NetworktemplateBgpConfigNeighborsMapOutput) ToNetworktemplateBgpConfigNeighborsMapOutput() NetworktemplateBgpConfigNeighborsMapOutput {
+	return o
+}
+
+func (o NetworktemplateBgpConfigNeighborsMapOutput) ToNetworktemplateBgpConfigNeighborsMapOutputWithContext(ctx context.Context) NetworktemplateBgpConfigNeighborsMapOutput {
+	return o
+}
+
+func (o NetworktemplateBgpConfigNeighborsMapOutput) MapIndex(k pulumi.StringInput) NetworktemplateBgpConfigNeighborsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworktemplateBgpConfigNeighbors {
+		return vs[0].(map[string]NetworktemplateBgpConfigNeighbors)[vs[1].(string)]
+	}).(NetworktemplateBgpConfigNeighborsOutput)
+}
+
 type NetworktemplateDhcpSnooping struct {
 	AllNetworks *bool `pulumi:"allNetworks"`
 	// Enable for dynamic ARP inspection check
@@ -35720,7 +36055,7 @@ func (o NetworktemplatePortMirroringMapOutput) MapIndex(k pulumi.StringInput) Ne
 type NetworktemplatePortUsages struct {
 	// Only if `mode`==`trunk`. Whether to trunk all network/vlans
 	AllNetworks *bool `pulumi:"allNetworks"`
-	// Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+	// Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
 	AllowDhcpd *bool `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants *bool `pulumi:"allowMultipleSupplicants"`
@@ -35822,7 +36157,7 @@ type NetworktemplatePortUsagesInput interface {
 type NetworktemplatePortUsagesArgs struct {
 	// Only if `mode`==`trunk`. Whether to trunk all network/vlans
 	AllNetworks pulumi.BoolPtrInput `pulumi:"allNetworks"`
-	// Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+	// Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
 	AllowDhcpd pulumi.BoolPtrInput `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants pulumi.BoolPtrInput `pulumi:"allowMultipleSupplicants"`
@@ -35966,7 +36301,7 @@ func (o NetworktemplatePortUsagesOutput) AllNetworks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.AllNetworks }).(pulumi.BoolPtrOutput)
 }
 
-// Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; true: ports become trusted ports allowing DHCP server traffic, false: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
+// Only applies when `mode`!=`dynamic`. Controls whether DHCP server traffic is allowed on ports using this configuration if DHCP snooping is enabled. This is a tri-state setting; `true`: ports become trusted ports allowing DHCP server traffic, `false`: ports become untrusted blocking DHCP server traffic, undefined: use system defaults (access ports default to untrusted, trunk ports default to trusted).
 func (o NetworktemplatePortUsagesOutput) AllowDhcpd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.AllowDhcpd }).(pulumi.BoolPtrOutput)
 }
@@ -38729,6 +39064,599 @@ func (o NetworktemplateRemoteSyslogUserContentArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworktemplateRemoteSyslogUserContent {
 		return vs[0].([]NetworktemplateRemoteSyslogUserContent)[vs[1].(int)]
 	}).(NetworktemplateRemoteSyslogUserContentOutput)
+}
+
+type NetworktemplateRoutingPolicies struct {
+	// at least criteria/filter must be specified to match the term, all criteria have to be met
+	Terms []NetworktemplateRoutingPoliciesTerm `pulumi:"terms"`
+}
+
+// NetworktemplateRoutingPoliciesInput is an input type that accepts NetworktemplateRoutingPoliciesArgs and NetworktemplateRoutingPoliciesOutput values.
+// You can construct a concrete instance of `NetworktemplateRoutingPoliciesInput` via:
+//
+//	NetworktemplateRoutingPoliciesArgs{...}
+type NetworktemplateRoutingPoliciesInput interface {
+	pulumi.Input
+
+	ToNetworktemplateRoutingPoliciesOutput() NetworktemplateRoutingPoliciesOutput
+	ToNetworktemplateRoutingPoliciesOutputWithContext(context.Context) NetworktemplateRoutingPoliciesOutput
+}
+
+type NetworktemplateRoutingPoliciesArgs struct {
+	// at least criteria/filter must be specified to match the term, all criteria have to be met
+	Terms NetworktemplateRoutingPoliciesTermArrayInput `pulumi:"terms"`
+}
+
+func (NetworktemplateRoutingPoliciesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateRoutingPolicies)(nil)).Elem()
+}
+
+func (i NetworktemplateRoutingPoliciesArgs) ToNetworktemplateRoutingPoliciesOutput() NetworktemplateRoutingPoliciesOutput {
+	return i.ToNetworktemplateRoutingPoliciesOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateRoutingPoliciesArgs) ToNetworktemplateRoutingPoliciesOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateRoutingPoliciesOutput)
+}
+
+// NetworktemplateRoutingPoliciesMapInput is an input type that accepts NetworktemplateRoutingPoliciesMap and NetworktemplateRoutingPoliciesMapOutput values.
+// You can construct a concrete instance of `NetworktemplateRoutingPoliciesMapInput` via:
+//
+//	NetworktemplateRoutingPoliciesMap{ "key": NetworktemplateRoutingPoliciesArgs{...} }
+type NetworktemplateRoutingPoliciesMapInput interface {
+	pulumi.Input
+
+	ToNetworktemplateRoutingPoliciesMapOutput() NetworktemplateRoutingPoliciesMapOutput
+	ToNetworktemplateRoutingPoliciesMapOutputWithContext(context.Context) NetworktemplateRoutingPoliciesMapOutput
+}
+
+type NetworktemplateRoutingPoliciesMap map[string]NetworktemplateRoutingPoliciesInput
+
+func (NetworktemplateRoutingPoliciesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateRoutingPolicies)(nil)).Elem()
+}
+
+func (i NetworktemplateRoutingPoliciesMap) ToNetworktemplateRoutingPoliciesMapOutput() NetworktemplateRoutingPoliciesMapOutput {
+	return i.ToNetworktemplateRoutingPoliciesMapOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateRoutingPoliciesMap) ToNetworktemplateRoutingPoliciesMapOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateRoutingPoliciesMapOutput)
+}
+
+type NetworktemplateRoutingPoliciesOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateRoutingPoliciesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateRoutingPolicies)(nil)).Elem()
+}
+
+func (o NetworktemplateRoutingPoliciesOutput) ToNetworktemplateRoutingPoliciesOutput() NetworktemplateRoutingPoliciesOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesOutput) ToNetworktemplateRoutingPoliciesOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesOutput {
+	return o
+}
+
+// at least criteria/filter must be specified to match the term, all criteria have to be met
+func (o NetworktemplateRoutingPoliciesOutput) Terms() NetworktemplateRoutingPoliciesTermArrayOutput {
+	return o.ApplyT(func(v NetworktemplateRoutingPolicies) []NetworktemplateRoutingPoliciesTerm { return v.Terms }).(NetworktemplateRoutingPoliciesTermArrayOutput)
+}
+
+type NetworktemplateRoutingPoliciesMapOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateRoutingPoliciesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateRoutingPolicies)(nil)).Elem()
+}
+
+func (o NetworktemplateRoutingPoliciesMapOutput) ToNetworktemplateRoutingPoliciesMapOutput() NetworktemplateRoutingPoliciesMapOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesMapOutput) ToNetworktemplateRoutingPoliciesMapOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesMapOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesMapOutput) MapIndex(k pulumi.StringInput) NetworktemplateRoutingPoliciesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworktemplateRoutingPolicies {
+		return vs[0].(map[string]NetworktemplateRoutingPolicies)[vs[1].(string)]
+	}).(NetworktemplateRoutingPoliciesOutput)
+}
+
+type NetworktemplateRoutingPoliciesTerm struct {
+	// When used as import policy
+	Actions *NetworktemplateRoutingPoliciesTermActions `pulumi:"actions"`
+	// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+	Matching *NetworktemplateRoutingPoliciesTermMatching `pulumi:"matching"`
+	Name     string                                      `pulumi:"name"`
+}
+
+// NetworktemplateRoutingPoliciesTermInput is an input type that accepts NetworktemplateRoutingPoliciesTermArgs and NetworktemplateRoutingPoliciesTermOutput values.
+// You can construct a concrete instance of `NetworktemplateRoutingPoliciesTermInput` via:
+//
+//	NetworktemplateRoutingPoliciesTermArgs{...}
+type NetworktemplateRoutingPoliciesTermInput interface {
+	pulumi.Input
+
+	ToNetworktemplateRoutingPoliciesTermOutput() NetworktemplateRoutingPoliciesTermOutput
+	ToNetworktemplateRoutingPoliciesTermOutputWithContext(context.Context) NetworktemplateRoutingPoliciesTermOutput
+}
+
+type NetworktemplateRoutingPoliciesTermArgs struct {
+	// When used as import policy
+	Actions NetworktemplateRoutingPoliciesTermActionsPtrInput `pulumi:"actions"`
+	// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+	Matching NetworktemplateRoutingPoliciesTermMatchingPtrInput `pulumi:"matching"`
+	Name     pulumi.StringInput                                 `pulumi:"name"`
+}
+
+func (NetworktemplateRoutingPoliciesTermArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateRoutingPoliciesTerm)(nil)).Elem()
+}
+
+func (i NetworktemplateRoutingPoliciesTermArgs) ToNetworktemplateRoutingPoliciesTermOutput() NetworktemplateRoutingPoliciesTermOutput {
+	return i.ToNetworktemplateRoutingPoliciesTermOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateRoutingPoliciesTermArgs) ToNetworktemplateRoutingPoliciesTermOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateRoutingPoliciesTermOutput)
+}
+
+// NetworktemplateRoutingPoliciesTermArrayInput is an input type that accepts NetworktemplateRoutingPoliciesTermArray and NetworktemplateRoutingPoliciesTermArrayOutput values.
+// You can construct a concrete instance of `NetworktemplateRoutingPoliciesTermArrayInput` via:
+//
+//	NetworktemplateRoutingPoliciesTermArray{ NetworktemplateRoutingPoliciesTermArgs{...} }
+type NetworktemplateRoutingPoliciesTermArrayInput interface {
+	pulumi.Input
+
+	ToNetworktemplateRoutingPoliciesTermArrayOutput() NetworktemplateRoutingPoliciesTermArrayOutput
+	ToNetworktemplateRoutingPoliciesTermArrayOutputWithContext(context.Context) NetworktemplateRoutingPoliciesTermArrayOutput
+}
+
+type NetworktemplateRoutingPoliciesTermArray []NetworktemplateRoutingPoliciesTermInput
+
+func (NetworktemplateRoutingPoliciesTermArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworktemplateRoutingPoliciesTerm)(nil)).Elem()
+}
+
+func (i NetworktemplateRoutingPoliciesTermArray) ToNetworktemplateRoutingPoliciesTermArrayOutput() NetworktemplateRoutingPoliciesTermArrayOutput {
+	return i.ToNetworktemplateRoutingPoliciesTermArrayOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateRoutingPoliciesTermArray) ToNetworktemplateRoutingPoliciesTermArrayOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateRoutingPoliciesTermArrayOutput)
+}
+
+type NetworktemplateRoutingPoliciesTermOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateRoutingPoliciesTermOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateRoutingPoliciesTerm)(nil)).Elem()
+}
+
+func (o NetworktemplateRoutingPoliciesTermOutput) ToNetworktemplateRoutingPoliciesTermOutput() NetworktemplateRoutingPoliciesTermOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesTermOutput) ToNetworktemplateRoutingPoliciesTermOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermOutput {
+	return o
+}
+
+// When used as import policy
+func (o NetworktemplateRoutingPoliciesTermOutput) Actions() NetworktemplateRoutingPoliciesTermActionsPtrOutput {
+	return o.ApplyT(func(v NetworktemplateRoutingPoliciesTerm) *NetworktemplateRoutingPoliciesTermActions {
+		return v.Actions
+	}).(NetworktemplateRoutingPoliciesTermActionsPtrOutput)
+}
+
+// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+func (o NetworktemplateRoutingPoliciesTermOutput) Matching() NetworktemplateRoutingPoliciesTermMatchingPtrOutput {
+	return o.ApplyT(func(v NetworktemplateRoutingPoliciesTerm) *NetworktemplateRoutingPoliciesTermMatching {
+		return v.Matching
+	}).(NetworktemplateRoutingPoliciesTermMatchingPtrOutput)
+}
+
+func (o NetworktemplateRoutingPoliciesTermOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateRoutingPoliciesTerm) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type NetworktemplateRoutingPoliciesTermArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateRoutingPoliciesTermArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworktemplateRoutingPoliciesTerm)(nil)).Elem()
+}
+
+func (o NetworktemplateRoutingPoliciesTermArrayOutput) ToNetworktemplateRoutingPoliciesTermArrayOutput() NetworktemplateRoutingPoliciesTermArrayOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesTermArrayOutput) ToNetworktemplateRoutingPoliciesTermArrayOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermArrayOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesTermArrayOutput) Index(i pulumi.IntInput) NetworktemplateRoutingPoliciesTermOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworktemplateRoutingPoliciesTerm {
+		return vs[0].([]NetworktemplateRoutingPoliciesTerm)[vs[1].(int)]
+	}).(NetworktemplateRoutingPoliciesTermOutput)
+}
+
+type NetworktemplateRoutingPoliciesTermActions struct {
+	Accept *bool `pulumi:"accept"`
+	// When used as export policy, optional
+	Communities []string `pulumi:"communities"`
+	// Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+	LocalPreference *string `pulumi:"localPreference"`
+	// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+	PrependAsPaths []string `pulumi:"prependAsPaths"`
+}
+
+// NetworktemplateRoutingPoliciesTermActionsInput is an input type that accepts NetworktemplateRoutingPoliciesTermActionsArgs and NetworktemplateRoutingPoliciesTermActionsOutput values.
+// You can construct a concrete instance of `NetworktemplateRoutingPoliciesTermActionsInput` via:
+//
+//	NetworktemplateRoutingPoliciesTermActionsArgs{...}
+type NetworktemplateRoutingPoliciesTermActionsInput interface {
+	pulumi.Input
+
+	ToNetworktemplateRoutingPoliciesTermActionsOutput() NetworktemplateRoutingPoliciesTermActionsOutput
+	ToNetworktemplateRoutingPoliciesTermActionsOutputWithContext(context.Context) NetworktemplateRoutingPoliciesTermActionsOutput
+}
+
+type NetworktemplateRoutingPoliciesTermActionsArgs struct {
+	Accept pulumi.BoolPtrInput `pulumi:"accept"`
+	// When used as export policy, optional
+	Communities pulumi.StringArrayInput `pulumi:"communities"`
+	// Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+	LocalPreference pulumi.StringPtrInput `pulumi:"localPreference"`
+	// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+	PrependAsPaths pulumi.StringArrayInput `pulumi:"prependAsPaths"`
+}
+
+func (NetworktemplateRoutingPoliciesTermActionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateRoutingPoliciesTermActions)(nil)).Elem()
+}
+
+func (i NetworktemplateRoutingPoliciesTermActionsArgs) ToNetworktemplateRoutingPoliciesTermActionsOutput() NetworktemplateRoutingPoliciesTermActionsOutput {
+	return i.ToNetworktemplateRoutingPoliciesTermActionsOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateRoutingPoliciesTermActionsArgs) ToNetworktemplateRoutingPoliciesTermActionsOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermActionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateRoutingPoliciesTermActionsOutput)
+}
+
+func (i NetworktemplateRoutingPoliciesTermActionsArgs) ToNetworktemplateRoutingPoliciesTermActionsPtrOutput() NetworktemplateRoutingPoliciesTermActionsPtrOutput {
+	return i.ToNetworktemplateRoutingPoliciesTermActionsPtrOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateRoutingPoliciesTermActionsArgs) ToNetworktemplateRoutingPoliciesTermActionsPtrOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateRoutingPoliciesTermActionsOutput).ToNetworktemplateRoutingPoliciesTermActionsPtrOutputWithContext(ctx)
+}
+
+// NetworktemplateRoutingPoliciesTermActionsPtrInput is an input type that accepts NetworktemplateRoutingPoliciesTermActionsArgs, NetworktemplateRoutingPoliciesTermActionsPtr and NetworktemplateRoutingPoliciesTermActionsPtrOutput values.
+// You can construct a concrete instance of `NetworktemplateRoutingPoliciesTermActionsPtrInput` via:
+//
+//	        NetworktemplateRoutingPoliciesTermActionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworktemplateRoutingPoliciesTermActionsPtrInput interface {
+	pulumi.Input
+
+	ToNetworktemplateRoutingPoliciesTermActionsPtrOutput() NetworktemplateRoutingPoliciesTermActionsPtrOutput
+	ToNetworktemplateRoutingPoliciesTermActionsPtrOutputWithContext(context.Context) NetworktemplateRoutingPoliciesTermActionsPtrOutput
+}
+
+type networktemplateRoutingPoliciesTermActionsPtrType NetworktemplateRoutingPoliciesTermActionsArgs
+
+func NetworktemplateRoutingPoliciesTermActionsPtr(v *NetworktemplateRoutingPoliciesTermActionsArgs) NetworktemplateRoutingPoliciesTermActionsPtrInput {
+	return (*networktemplateRoutingPoliciesTermActionsPtrType)(v)
+}
+
+func (*networktemplateRoutingPoliciesTermActionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateRoutingPoliciesTermActions)(nil)).Elem()
+}
+
+func (i *networktemplateRoutingPoliciesTermActionsPtrType) ToNetworktemplateRoutingPoliciesTermActionsPtrOutput() NetworktemplateRoutingPoliciesTermActionsPtrOutput {
+	return i.ToNetworktemplateRoutingPoliciesTermActionsPtrOutputWithContext(context.Background())
+}
+
+func (i *networktemplateRoutingPoliciesTermActionsPtrType) ToNetworktemplateRoutingPoliciesTermActionsPtrOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateRoutingPoliciesTermActionsPtrOutput)
+}
+
+type NetworktemplateRoutingPoliciesTermActionsOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateRoutingPoliciesTermActionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateRoutingPoliciesTermActions)(nil)).Elem()
+}
+
+func (o NetworktemplateRoutingPoliciesTermActionsOutput) ToNetworktemplateRoutingPoliciesTermActionsOutput() NetworktemplateRoutingPoliciesTermActionsOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesTermActionsOutput) ToNetworktemplateRoutingPoliciesTermActionsOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermActionsOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesTermActionsOutput) ToNetworktemplateRoutingPoliciesTermActionsPtrOutput() NetworktemplateRoutingPoliciesTermActionsPtrOutput {
+	return o.ToNetworktemplateRoutingPoliciesTermActionsPtrOutputWithContext(context.Background())
+}
+
+func (o NetworktemplateRoutingPoliciesTermActionsOutput) ToNetworktemplateRoutingPoliciesTermActionsPtrOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermActionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworktemplateRoutingPoliciesTermActions) *NetworktemplateRoutingPoliciesTermActions {
+		return &v
+	}).(NetworktemplateRoutingPoliciesTermActionsPtrOutput)
+}
+
+func (o NetworktemplateRoutingPoliciesTermActionsOutput) Accept() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateRoutingPoliciesTermActions) *bool { return v.Accept }).(pulumi.BoolPtrOutput)
+}
+
+// When used as export policy, optional
+func (o NetworktemplateRoutingPoliciesTermActionsOutput) Communities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworktemplateRoutingPoliciesTermActions) []string { return v.Communities }).(pulumi.StringArrayOutput)
+}
+
+// Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+func (o NetworktemplateRoutingPoliciesTermActionsOutput) LocalPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateRoutingPoliciesTermActions) *string { return v.LocalPreference }).(pulumi.StringPtrOutput)
+}
+
+// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+func (o NetworktemplateRoutingPoliciesTermActionsOutput) PrependAsPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworktemplateRoutingPoliciesTermActions) []string { return v.PrependAsPaths }).(pulumi.StringArrayOutput)
+}
+
+type NetworktemplateRoutingPoliciesTermActionsPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateRoutingPoliciesTermActionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateRoutingPoliciesTermActions)(nil)).Elem()
+}
+
+func (o NetworktemplateRoutingPoliciesTermActionsPtrOutput) ToNetworktemplateRoutingPoliciesTermActionsPtrOutput() NetworktemplateRoutingPoliciesTermActionsPtrOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesTermActionsPtrOutput) ToNetworktemplateRoutingPoliciesTermActionsPtrOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermActionsPtrOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesTermActionsPtrOutput) Elem() NetworktemplateRoutingPoliciesTermActionsOutput {
+	return o.ApplyT(func(v *NetworktemplateRoutingPoliciesTermActions) NetworktemplateRoutingPoliciesTermActions {
+		if v != nil {
+			return *v
+		}
+		var ret NetworktemplateRoutingPoliciesTermActions
+		return ret
+	}).(NetworktemplateRoutingPoliciesTermActionsOutput)
+}
+
+func (o NetworktemplateRoutingPoliciesTermActionsPtrOutput) Accept() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateRoutingPoliciesTermActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Accept
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When used as export policy, optional
+func (o NetworktemplateRoutingPoliciesTermActionsPtrOutput) Communities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworktemplateRoutingPoliciesTermActions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Communities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional, for an import policy, localPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+func (o NetworktemplateRoutingPoliciesTermActionsPtrOutput) LocalPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateRoutingPoliciesTermActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalPreference
+	}).(pulumi.StringPtrOutput)
+}
+
+// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+func (o NetworktemplateRoutingPoliciesTermActionsPtrOutput) PrependAsPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworktemplateRoutingPoliciesTermActions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PrependAsPaths
+	}).(pulumi.StringArrayOutput)
+}
+
+type NetworktemplateRoutingPoliciesTermMatching struct {
+	// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+	AsPaths     []string `pulumi:"asPaths"`
+	Communities []string `pulumi:"communities"`
+	// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+	Prefixes []string `pulumi:"prefixes"`
+	// enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+	Protocols []string `pulumi:"protocols"`
+}
+
+// NetworktemplateRoutingPoliciesTermMatchingInput is an input type that accepts NetworktemplateRoutingPoliciesTermMatchingArgs and NetworktemplateRoutingPoliciesTermMatchingOutput values.
+// You can construct a concrete instance of `NetworktemplateRoutingPoliciesTermMatchingInput` via:
+//
+//	NetworktemplateRoutingPoliciesTermMatchingArgs{...}
+type NetworktemplateRoutingPoliciesTermMatchingInput interface {
+	pulumi.Input
+
+	ToNetworktemplateRoutingPoliciesTermMatchingOutput() NetworktemplateRoutingPoliciesTermMatchingOutput
+	ToNetworktemplateRoutingPoliciesTermMatchingOutputWithContext(context.Context) NetworktemplateRoutingPoliciesTermMatchingOutput
+}
+
+type NetworktemplateRoutingPoliciesTermMatchingArgs struct {
+	// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+	AsPaths     pulumi.StringArrayInput `pulumi:"asPaths"`
+	Communities pulumi.StringArrayInput `pulumi:"communities"`
+	// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+	Prefixes pulumi.StringArrayInput `pulumi:"prefixes"`
+	// enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+	Protocols pulumi.StringArrayInput `pulumi:"protocols"`
+}
+
+func (NetworktemplateRoutingPoliciesTermMatchingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateRoutingPoliciesTermMatching)(nil)).Elem()
+}
+
+func (i NetworktemplateRoutingPoliciesTermMatchingArgs) ToNetworktemplateRoutingPoliciesTermMatchingOutput() NetworktemplateRoutingPoliciesTermMatchingOutput {
+	return i.ToNetworktemplateRoutingPoliciesTermMatchingOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateRoutingPoliciesTermMatchingArgs) ToNetworktemplateRoutingPoliciesTermMatchingOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermMatchingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateRoutingPoliciesTermMatchingOutput)
+}
+
+func (i NetworktemplateRoutingPoliciesTermMatchingArgs) ToNetworktemplateRoutingPoliciesTermMatchingPtrOutput() NetworktemplateRoutingPoliciesTermMatchingPtrOutput {
+	return i.ToNetworktemplateRoutingPoliciesTermMatchingPtrOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateRoutingPoliciesTermMatchingArgs) ToNetworktemplateRoutingPoliciesTermMatchingPtrOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermMatchingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateRoutingPoliciesTermMatchingOutput).ToNetworktemplateRoutingPoliciesTermMatchingPtrOutputWithContext(ctx)
+}
+
+// NetworktemplateRoutingPoliciesTermMatchingPtrInput is an input type that accepts NetworktemplateRoutingPoliciesTermMatchingArgs, NetworktemplateRoutingPoliciesTermMatchingPtr and NetworktemplateRoutingPoliciesTermMatchingPtrOutput values.
+// You can construct a concrete instance of `NetworktemplateRoutingPoliciesTermMatchingPtrInput` via:
+//
+//	        NetworktemplateRoutingPoliciesTermMatchingArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworktemplateRoutingPoliciesTermMatchingPtrInput interface {
+	pulumi.Input
+
+	ToNetworktemplateRoutingPoliciesTermMatchingPtrOutput() NetworktemplateRoutingPoliciesTermMatchingPtrOutput
+	ToNetworktemplateRoutingPoliciesTermMatchingPtrOutputWithContext(context.Context) NetworktemplateRoutingPoliciesTermMatchingPtrOutput
+}
+
+type networktemplateRoutingPoliciesTermMatchingPtrType NetworktemplateRoutingPoliciesTermMatchingArgs
+
+func NetworktemplateRoutingPoliciesTermMatchingPtr(v *NetworktemplateRoutingPoliciesTermMatchingArgs) NetworktemplateRoutingPoliciesTermMatchingPtrInput {
+	return (*networktemplateRoutingPoliciesTermMatchingPtrType)(v)
+}
+
+func (*networktemplateRoutingPoliciesTermMatchingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateRoutingPoliciesTermMatching)(nil)).Elem()
+}
+
+func (i *networktemplateRoutingPoliciesTermMatchingPtrType) ToNetworktemplateRoutingPoliciesTermMatchingPtrOutput() NetworktemplateRoutingPoliciesTermMatchingPtrOutput {
+	return i.ToNetworktemplateRoutingPoliciesTermMatchingPtrOutputWithContext(context.Background())
+}
+
+func (i *networktemplateRoutingPoliciesTermMatchingPtrType) ToNetworktemplateRoutingPoliciesTermMatchingPtrOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermMatchingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateRoutingPoliciesTermMatchingPtrOutput)
+}
+
+type NetworktemplateRoutingPoliciesTermMatchingOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateRoutingPoliciesTermMatchingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateRoutingPoliciesTermMatching)(nil)).Elem()
+}
+
+func (o NetworktemplateRoutingPoliciesTermMatchingOutput) ToNetworktemplateRoutingPoliciesTermMatchingOutput() NetworktemplateRoutingPoliciesTermMatchingOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesTermMatchingOutput) ToNetworktemplateRoutingPoliciesTermMatchingOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermMatchingOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesTermMatchingOutput) ToNetworktemplateRoutingPoliciesTermMatchingPtrOutput() NetworktemplateRoutingPoliciesTermMatchingPtrOutput {
+	return o.ToNetworktemplateRoutingPoliciesTermMatchingPtrOutputWithContext(context.Background())
+}
+
+func (o NetworktemplateRoutingPoliciesTermMatchingOutput) ToNetworktemplateRoutingPoliciesTermMatchingPtrOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermMatchingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworktemplateRoutingPoliciesTermMatching) *NetworktemplateRoutingPoliciesTermMatching {
+		return &v
+	}).(NetworktemplateRoutingPoliciesTermMatchingPtrOutput)
+}
+
+// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+func (o NetworktemplateRoutingPoliciesTermMatchingOutput) AsPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworktemplateRoutingPoliciesTermMatching) []string { return v.AsPaths }).(pulumi.StringArrayOutput)
+}
+
+func (o NetworktemplateRoutingPoliciesTermMatchingOutput) Communities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworktemplateRoutingPoliciesTermMatching) []string { return v.Communities }).(pulumi.StringArrayOutput)
+}
+
+// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+func (o NetworktemplateRoutingPoliciesTermMatchingOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworktemplateRoutingPoliciesTermMatching) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+// enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+func (o NetworktemplateRoutingPoliciesTermMatchingOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworktemplateRoutingPoliciesTermMatching) []string { return v.Protocols }).(pulumi.StringArrayOutput)
+}
+
+type NetworktemplateRoutingPoliciesTermMatchingPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateRoutingPoliciesTermMatchingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateRoutingPoliciesTermMatching)(nil)).Elem()
+}
+
+func (o NetworktemplateRoutingPoliciesTermMatchingPtrOutput) ToNetworktemplateRoutingPoliciesTermMatchingPtrOutput() NetworktemplateRoutingPoliciesTermMatchingPtrOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesTermMatchingPtrOutput) ToNetworktemplateRoutingPoliciesTermMatchingPtrOutputWithContext(ctx context.Context) NetworktemplateRoutingPoliciesTermMatchingPtrOutput {
+	return o
+}
+
+func (o NetworktemplateRoutingPoliciesTermMatchingPtrOutput) Elem() NetworktemplateRoutingPoliciesTermMatchingOutput {
+	return o.ApplyT(func(v *NetworktemplateRoutingPoliciesTermMatching) NetworktemplateRoutingPoliciesTermMatching {
+		if v != nil {
+			return *v
+		}
+		var ret NetworktemplateRoutingPoliciesTermMatching
+		return ret
+	}).(NetworktemplateRoutingPoliciesTermMatchingOutput)
+}
+
+// BGP AS, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+func (o NetworktemplateRoutingPoliciesTermMatchingPtrOutput) AsPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworktemplateRoutingPoliciesTermMatching) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AsPaths
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o NetworktemplateRoutingPoliciesTermMatchingPtrOutput) Communities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworktemplateRoutingPoliciesTermMatching) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Communities
+	}).(pulumi.StringArrayOutput)
+}
+
+// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+func (o NetworktemplateRoutingPoliciesTermMatchingPtrOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworktemplateRoutingPoliciesTermMatching) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// enum: `bgp`, `direct`, `evpn`, `ospf`, `static`
+func (o NetworktemplateRoutingPoliciesTermMatchingPtrOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworktemplateRoutingPoliciesTermMatching) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocols
+	}).(pulumi.StringArrayOutput)
 }
 
 type NetworktemplateSnmpConfig struct {
@@ -41890,6 +42818,8 @@ type NetworktemplateSwitchMatchingRulePortConfig struct {
 	Esilag       *bool   `pulumi:"esilag"`
 	// Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
 	Mtu *int `pulumi:"mtu"`
+	// List of network names. Required if `usage`==`inet`
+	Networks []string `pulumi:"networks"`
 	// Prevent helpdesk to override the port config
 	NoLocalOverwrite *bool `pulumi:"noLocalOverwrite"`
 	PoeDisabled      *bool `pulumi:"poeDisabled"`
@@ -41932,6 +42862,8 @@ type NetworktemplateSwitchMatchingRulePortConfigArgs struct {
 	Esilag       pulumi.BoolPtrInput   `pulumi:"esilag"`
 	// Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
 	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
+	// List of network names. Required if `usage`==`inet`
+	Networks pulumi.StringArrayInput `pulumi:"networks"`
 	// Prevent helpdesk to override the port config
 	NoLocalOverwrite pulumi.BoolPtrInput `pulumi:"noLocalOverwrite"`
 	PoeDisabled      pulumi.BoolPtrInput `pulumi:"poeDisabled"`
@@ -42044,6 +42976,11 @@ func (o NetworktemplateSwitchMatchingRulePortConfigOutput) Esilag() pulumi.BoolP
 // Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
 func (o NetworktemplateSwitchMatchingRulePortConfigOutput) Mtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
+// List of network names. Required if `usage`==`inet`
+func (o NetworktemplateSwitchMatchingRulePortConfigOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
 // Prevent helpdesk to override the port config
@@ -51255,7 +52192,7 @@ func (o SettingOpticPortConfigMapOutput) MapIndex(k pulumi.StringInput) SettingO
 type SettingPasswordPolicy struct {
 	// Whether the policy is enabled
 	Enabled *bool `pulumi:"enabled"`
-	// password expiry in days
+	// Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
 	ExpiryInDays *int `pulumi:"expiryInDays"`
 	// Required password length
 	MinLength *int `pulumi:"minLength"`
@@ -51279,7 +52216,7 @@ type SettingPasswordPolicyInput interface {
 type SettingPasswordPolicyArgs struct {
 	// Whether the policy is enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// password expiry in days
+	// Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
 	ExpiryInDays pulumi.IntPtrInput `pulumi:"expiryInDays"`
 	// Required password length
 	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
@@ -51371,7 +52308,7 @@ func (o SettingPasswordPolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingPasswordPolicy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// password expiry in days
+// Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
 func (o SettingPasswordPolicyOutput) ExpiryInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingPasswordPolicy) *int { return v.ExpiryInDays }).(pulumi.IntPtrOutput)
 }
@@ -51425,7 +52362,7 @@ func (o SettingPasswordPolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// password expiry in days
+// Password expiry in days. Password Expiry Notice banner will display in the UI 14 days before expiration
 func (o SettingPasswordPolicyPtrOutput) ExpiryInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingPasswordPolicy) *int {
 		if v == nil {
@@ -64906,7 +65843,7 @@ func (o GetAlarmtemplatesOrgAlarmtemplateRulesDeliveryOutput) ToSiteAdmins() pul
 type GetAvprofilesOrgAvprofile struct {
 	// When the object has been created, in epoch
 	CreatedTime float64 `pulumi:"createdTime"`
-	// enum: `block`, `permit`
+	// enum: `block`, `log-and-permit`, `permit`
 	FallbackAction string `pulumi:"fallbackAction"`
 	// Unique ID of the object instance in the Mist Organization
 	Id string `pulumi:"id"`
@@ -64936,7 +65873,7 @@ type GetAvprofilesOrgAvprofileInput interface {
 type GetAvprofilesOrgAvprofileArgs struct {
 	// When the object has been created, in epoch
 	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
-	// enum: `block`, `permit`
+	// enum: `block`, `log-and-permit`, `permit`
 	FallbackAction pulumi.StringInput `pulumi:"fallbackAction"`
 	// Unique ID of the object instance in the Mist Organization
 	Id pulumi.StringInput `pulumi:"id"`
@@ -65008,7 +65945,7 @@ func (o GetAvprofilesOrgAvprofileOutput) CreatedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) float64 { return v.CreatedTime }).(pulumi.Float64Output)
 }
 
-// enum: `block`, `permit`
+// enum: `block`, `log-and-permit`, `permit`
 func (o GetAvprofilesOrgAvprofileOutput) FallbackAction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAvprofilesOrgAvprofile) string { return v.FallbackAction }).(pulumi.StringOutput)
 }
@@ -65462,8 +66399,10 @@ type GetEvpnTopologiesOrgEvpnTopologyEvpnOptions struct {
 	// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
 	AutoRouterIdSubnet6 string `pulumi:"autoRouterIdSubnet6"`
 	// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
-	CoreAsBorder bool                                               `pulumi:"coreAsBorder"`
-	Overlay      GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay `pulumi:"overlay"`
+	CoreAsBorder bool `pulumi:"coreAsBorder"`
+	// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+	EnableInbandZtp bool                                               `pulumi:"enableInbandZtp"`
+	Overlay         GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay `pulumi:"overlay"`
 	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
 	PerVlanVgaV4Mac bool `pulumi:"perVlanVgaV4Mac"`
 	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
@@ -65496,8 +66435,10 @@ type GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsArgs struct {
 	// Optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
 	AutoRouterIdSubnet6 pulumi.StringInput `pulumi:"autoRouterIdSubnet6"`
 	// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
-	CoreAsBorder pulumi.BoolInput                                        `pulumi:"coreAsBorder"`
-	Overlay      GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayInput `pulumi:"overlay"`
+	CoreAsBorder pulumi.BoolInput `pulumi:"coreAsBorder"`
+	// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+	EnableInbandZtp pulumi.BoolInput                                        `pulumi:"enableInbandZtp"`
+	Overlay         GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayInput `pulumi:"overlay"`
 	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
 	PerVlanVgaV4Mac pulumi.BoolInput `pulumi:"perVlanVgaV4Mac"`
 	// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-02-01 as the virtual-gateway-address's v6*mac. If enabled, 00-00-5e-00-1X-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)
@@ -65558,6 +66499,11 @@ func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) AutoRouterIdSubnet6()
 // Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
 func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) CoreAsBorder() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) bool { return v.CoreAsBorder }).(pulumi.BoolOutput)
+}
+
+// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
+func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) EnableInbandZtp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEvpnTopologiesOrgEvpnTopologyEvpnOptions) bool { return v.EnableInbandZtp }).(pulumi.BoolOutput)
 }
 
 func (o GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOutput) Overlay() GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlayOutput {
@@ -66260,6 +67206,10 @@ func (o GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) Severities() pulumi.
 type GetInventoryOrgInventory struct {
 	// Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
 	Adopted bool `pulumi:"adopted"`
+	// For Virtual Chassis only, the MAC Address of the FPC0
+	ChassisMac string `pulumi:"chassisMac"`
+	// For Virtual Chassis only, the Serial Number of the FPC0
+	ChassisSerial string `pulumi:"chassisSerial"`
 	// Device claim code
 	ClaimCode string `pulumi:"claimCode"`
 	// Whether the device is connected
@@ -66306,6 +67256,10 @@ type GetInventoryOrgInventoryInput interface {
 type GetInventoryOrgInventoryArgs struct {
 	// Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
 	Adopted pulumi.BoolInput `pulumi:"adopted"`
+	// For Virtual Chassis only, the MAC Address of the FPC0
+	ChassisMac pulumi.StringInput `pulumi:"chassisMac"`
+	// For Virtual Chassis only, the Serial Number of the FPC0
+	ChassisSerial pulumi.StringInput `pulumi:"chassisSerial"`
 	// Device claim code
 	ClaimCode pulumi.StringInput `pulumi:"claimCode"`
 	// Whether the device is connected
@@ -66392,6 +67346,16 @@ func (o GetInventoryOrgInventoryOutput) ToGetInventoryOrgInventoryOutputWithCont
 // Only if `type`==`switch` or `type`==`gateway`, whether the switch/gateway is adopted
 func (o GetInventoryOrgInventoryOutput) Adopted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInventoryOrgInventory) bool { return v.Adopted }).(pulumi.BoolOutput)
+}
+
+// For Virtual Chassis only, the MAC Address of the FPC0
+func (o GetInventoryOrgInventoryOutput) ChassisMac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.ChassisMac }).(pulumi.StringOutput)
+}
+
+// For Virtual Chassis only, the Serial Number of the FPC0
+func (o GetInventoryOrgInventoryOutput) ChassisSerial() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.ChassisSerial }).(pulumi.StringOutput)
 }
 
 // Device claim code
@@ -66633,6 +67597,8 @@ type GetNacrulesOrgNacrule struct {
 	CreatedTime float64 `pulumi:"createdTime"`
 	// Enabled or not
 	Enabled bool `pulumi:"enabled"`
+	// Guest portal authorization state. enum: `authorized`, `unknown`
+	GuestAuthState string `pulumi:"guestAuthState"`
 	// Unique ID of the object instance in the Mist Organization
 	Id string `pulumi:"id"`
 	// When the object has been modified for the last time, in epoch
@@ -66659,6 +67625,8 @@ type GetNacrulesOrgNacruleArgs struct {
 	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
 	// Enabled or not
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Guest portal authorization state. enum: `authorized`, `unknown`
+	GuestAuthState pulumi.StringInput `pulumi:"guestAuthState"`
 	// Unique ID of the object instance in the Mist Organization
 	Id pulumi.StringInput `pulumi:"id"`
 	// When the object has been modified for the last time, in epoch
@@ -66730,6 +67698,11 @@ func (o GetNacrulesOrgNacruleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNacrulesOrgNacrule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Guest portal authorization state. enum: `authorized`, `unknown`
+func (o GetNacrulesOrgNacruleOutput) GuestAuthState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacrulesOrgNacrule) string { return v.GuestAuthState }).(pulumi.StringOutput)
+}
+
 // Unique ID of the object instance in the Mist Organization
 func (o GetNacrulesOrgNacruleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNacrulesOrgNacrule) string { return v.Id }).(pulumi.StringOutput)
@@ -66783,18 +67756,20 @@ type GetNactagsOrgNactag struct {
 	GbpTag          string   `pulumi:"gbpTag"`
 	// Unique ID of the object instance in the Mist Organization
 	Id string `pulumi:"id"`
-	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match string `pulumi:"match"`
 	// This field is applicable only when `type`==`match`
 	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
 	//   * `true`: means all values should be matched (i.e., match-all behavior)
 	//
-	// Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+	// Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
 	MatchAll bool `pulumi:"matchAll"`
 	// When the object has been modified for the last time, in epoch
 	ModifiedTime float64 `pulumi:"modifiedTime"`
-	Name         string  `pulumi:"name"`
-	OrgId        string  `pulumi:"orgId"`
+	// If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+	NacportalId string `pulumi:"nacportalId"`
+	Name        string `pulumi:"name"`
+	OrgId       string `pulumi:"orgId"`
 	// If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs".
 	// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
 	// Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
@@ -66807,7 +67782,7 @@ type GetNactagsOrgNactag struct {
 	RadiusVendorAttrs []string `pulumi:"radiusVendorAttrs"`
 	// If `type`==`session_timeout, in seconds
 	SessionTimeout int `pulumi:"sessionTimeout"`
-	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
+	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
 	Type string `pulumi:"type"`
 	// enum: `automatic`, `cn`, `dns`, `email`, `upn`
 	UsernameAttr string `pulumi:"usernameAttr"`
@@ -66838,18 +67813,20 @@ type GetNactagsOrgNactagArgs struct {
 	GbpTag          pulumi.StringInput      `pulumi:"gbpTag"`
 	// Unique ID of the object instance in the Mist Organization
 	Id pulumi.StringInput `pulumi:"id"`
-	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 	Match pulumi.StringInput `pulumi:"match"`
 	// This field is applicable only when `type`==`match`
 	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
 	//   * `true`: means all values should be matched (i.e., match-all behavior)
 	//
-	// Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+	// Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
 	MatchAll pulumi.BoolInput `pulumi:"matchAll"`
 	// When the object has been modified for the last time, in epoch
 	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
-	Name         pulumi.StringInput  `pulumi:"name"`
-	OrgId        pulumi.StringInput  `pulumi:"orgId"`
+	// If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+	NacportalId pulumi.StringInput `pulumi:"nacportalId"`
+	Name        pulumi.StringInput `pulumi:"name"`
+	OrgId       pulumi.StringInput `pulumi:"orgId"`
 	// If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs".
 	// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
 	// Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
@@ -66862,7 +67839,7 @@ type GetNactagsOrgNactagArgs struct {
 	RadiusVendorAttrs pulumi.StringArrayInput `pulumi:"radiusVendorAttrs"`
 	// If `type`==`session_timeout, in seconds
 	SessionTimeout pulumi.IntInput `pulumi:"sessionTimeout"`
-	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
+	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
 	Type pulumi.StringInput `pulumi:"type"`
 	// enum: `automatic`, `cn`, `dns`, `email`, `upn`
 	UsernameAttr pulumi.StringInput `pulumi:"usernameAttr"`
@@ -66947,7 +67924,7 @@ func (o GetNactagsOrgNactagOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNactagsOrgNactag) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+// if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
 func (o GetNactagsOrgNactagOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNactagsOrgNactag) string { return v.Match }).(pulumi.StringOutput)
 }
@@ -66956,7 +67933,7 @@ func (o GetNactagsOrgNactagOutput) Match() pulumi.StringOutput {
 //   - `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
 //   - `true`: means all values should be matched (i.e., match-all behavior)
 //
-// Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
+// Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
 func (o GetNactagsOrgNactagOutput) MatchAll() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNactagsOrgNactag) bool { return v.MatchAll }).(pulumi.BoolOutput)
 }
@@ -66964,6 +67941,11 @@ func (o GetNactagsOrgNactagOutput) MatchAll() pulumi.BoolOutput {
 // When the object has been modified for the last time, in epoch
 func (o GetNactagsOrgNactagOutput) ModifiedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetNactagsOrgNactag) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
+}
+
+// If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+func (o GetNactagsOrgNactagOutput) NacportalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) string { return v.NacportalId }).(pulumi.StringOutput)
 }
 
 func (o GetNactagsOrgNactagOutput) Name() pulumi.StringOutput {
@@ -66998,7 +67980,7 @@ func (o GetNactagsOrgNactagOutput) SessionTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNactagsOrgNactag) int { return v.SessionTimeout }).(pulumi.IntOutput)
 }
 
-// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
+// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
 func (o GetNactagsOrgNactagOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNactagsOrgNactag) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -68900,13 +69882,13 @@ func (o GetRftemplatesOrgRftemplateArrayOutput) Index(i pulumi.IntInput) GetRfte
 }
 
 type GetServicepoliciesOrgServicepolicy struct {
-	// For SRX Only
+	// SRX only
 	Aamw GetServicepoliciesOrgServicepolicyAamw `pulumi:"aamw"`
 	// enum: `allow`, `deny`
 	Action string `pulumi:"action"`
 	// For SRX-only
 	Antivirus GetServicepoliciesOrgServicepolicyAntivirus `pulumi:"antivirus"`
-	// For SRX Only
+	// SRX only
 	Appqoe GetServicepoliciesOrgServicepolicyAppqoe `pulumi:"appqoe"`
 	// When the object has been created, in epoch
 	CreatedTime float64                                 `pulumi:"createdTime"`
@@ -68940,13 +69922,13 @@ type GetServicepoliciesOrgServicepolicyInput interface {
 }
 
 type GetServicepoliciesOrgServicepolicyArgs struct {
-	// For SRX Only
+	// SRX only
 	Aamw GetServicepoliciesOrgServicepolicyAamwInput `pulumi:"aamw"`
 	// enum: `allow`, `deny`
 	Action pulumi.StringInput `pulumi:"action"`
 	// For SRX-only
 	Antivirus GetServicepoliciesOrgServicepolicyAntivirusInput `pulumi:"antivirus"`
-	// For SRX Only
+	// SRX only
 	Appqoe GetServicepoliciesOrgServicepolicyAppqoeInput `pulumi:"appqoe"`
 	// When the object has been created, in epoch
 	CreatedTime pulumi.Float64Input                             `pulumi:"createdTime"`
@@ -69019,7 +70001,7 @@ func (o GetServicepoliciesOrgServicepolicyOutput) ToGetServicepoliciesOrgService
 	return o
 }
 
-// For SRX Only
+// SRX only
 func (o GetServicepoliciesOrgServicepolicyOutput) Aamw() GetServicepoliciesOrgServicepolicyAamwOutput {
 	return o.ApplyT(func(v GetServicepoliciesOrgServicepolicy) GetServicepoliciesOrgServicepolicyAamw { return v.Aamw }).(GetServicepoliciesOrgServicepolicyAamwOutput)
 }
@@ -69036,7 +70018,7 @@ func (o GetServicepoliciesOrgServicepolicyOutput) Antivirus() GetServicepolicies
 	}).(GetServicepoliciesOrgServicepolicyAntivirusOutput)
 }
 
-// For SRX Only
+// SRX only
 func (o GetServicepoliciesOrgServicepolicyOutput) Appqoe() GetServicepoliciesOrgServicepolicyAppqoeOutput {
 	return o.ApplyT(func(v GetServicepoliciesOrgServicepolicy) GetServicepoliciesOrgServicepolicyAppqoe { return v.Appqoe }).(GetServicepoliciesOrgServicepolicyAppqoeOutput)
 }
@@ -69547,7 +70529,7 @@ func (o GetServicepoliciesOrgServicepolicySslProxyOutput) Enabled() pulumi.BoolO
 }
 
 type GetServicesOrgService struct {
-	// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+	// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
 	Addresses []string `pulumi:"addresses"`
 	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 	AppCategories []string `pulumi:"appCategories"`
@@ -69558,15 +70540,15 @@ type GetServicesOrgService struct {
 	//   * List Gateway Applications
 	//   * /insight/top_app_by-bytes?wired=true
 	Apps []string `pulumi:"apps"`
-	// 0 means unlimited
+	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitDown int `pulumi:"clientLimitDown"`
-	// 0 means unlimited
+	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitUp int `pulumi:"clientLimitUp"`
 	// When the object has been created, in epoch
 	CreatedTime float64 `pulumi:"createdTime"`
 	Description string  `pulumi:"description"`
 	Dscp        string  `pulumi:"dscp"`
-	// enum: `nonRevertable`, `none`, `revertable`
+	// enum: `nonRevertible`, `none`, `revertible`
 	FailoverPolicy string `pulumi:"failoverPolicy"`
 	// If `type`==`custom`, web filtering
 	Hostnames []string `pulumi:"hostnames"`
@@ -69579,9 +70561,9 @@ type GetServicesOrgService struct {
 	ModifiedTime float64 `pulumi:"modifiedTime"`
 	Name         string  `pulumi:"name"`
 	OrgId        string  `pulumi:"orgId"`
-	// 0 means unlimited
+	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitDown int `pulumi:"serviceLimitDown"`
-	// 0 means unlimited
+	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitUp int `pulumi:"serviceLimitUp"`
 	// Whether to enable measure SLE
 	SleEnabled bool `pulumi:"sleEnabled"`
@@ -69610,7 +70592,7 @@ type GetServicesOrgServiceInput interface {
 }
 
 type GetServicesOrgServiceArgs struct {
-	// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+	// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
 	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
 	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
 	AppCategories pulumi.StringArrayInput `pulumi:"appCategories"`
@@ -69621,15 +70603,15 @@ type GetServicesOrgServiceArgs struct {
 	//   * List Gateway Applications
 	//   * /insight/top_app_by-bytes?wired=true
 	Apps pulumi.StringArrayInput `pulumi:"apps"`
-	// 0 means unlimited
+	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitDown pulumi.IntInput `pulumi:"clientLimitDown"`
-	// 0 means unlimited
+	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitUp pulumi.IntInput `pulumi:"clientLimitUp"`
 	// When the object has been created, in epoch
 	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
 	Description pulumi.StringInput  `pulumi:"description"`
 	Dscp        pulumi.StringInput  `pulumi:"dscp"`
-	// enum: `nonRevertable`, `none`, `revertable`
+	// enum: `nonRevertible`, `none`, `revertible`
 	FailoverPolicy pulumi.StringInput `pulumi:"failoverPolicy"`
 	// If `type`==`custom`, web filtering
 	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
@@ -69642,9 +70624,9 @@ type GetServicesOrgServiceArgs struct {
 	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
 	Name         pulumi.StringInput  `pulumi:"name"`
 	OrgId        pulumi.StringInput  `pulumi:"orgId"`
-	// 0 means unlimited
+	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitDown pulumi.IntInput `pulumi:"serviceLimitDown"`
-	// 0 means unlimited
+	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitUp pulumi.IntInput `pulumi:"serviceLimitUp"`
 	// Whether to enable measure SLE
 	SleEnabled pulumi.BoolInput `pulumi:"sleEnabled"`
@@ -69712,7 +70694,7 @@ func (o GetServicesOrgServiceOutput) ToGetServicesOrgServiceOutputWithContext(ct
 	return o
 }
 
-// If `type`==`custom`, ip subnets (e.g. 10.0.0.0/8)
+// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
 func (o GetServicesOrgServiceOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicesOrgService) []string { return v.Addresses }).(pulumi.StringArrayOutput)
 }
@@ -69735,12 +70717,12 @@ func (o GetServicesOrgServiceOutput) Apps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicesOrgService) []string { return v.Apps }).(pulumi.StringArrayOutput)
 }
 
-// 0 means unlimited
+// 0 means unlimited, value from 0 to 107374182
 func (o GetServicesOrgServiceOutput) ClientLimitDown() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServicesOrgService) int { return v.ClientLimitDown }).(pulumi.IntOutput)
 }
 
-// 0 means unlimited
+// 0 means unlimited, value from 0 to 107374182
 func (o GetServicesOrgServiceOutput) ClientLimitUp() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServicesOrgService) int { return v.ClientLimitUp }).(pulumi.IntOutput)
 }
@@ -69758,7 +70740,7 @@ func (o GetServicesOrgServiceOutput) Dscp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesOrgService) string { return v.Dscp }).(pulumi.StringOutput)
 }
 
-// enum: `nonRevertable`, `none`, `revertable`
+// enum: `nonRevertible`, `none`, `revertible`
 func (o GetServicesOrgServiceOutput) FailoverPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesOrgService) string { return v.FailoverPolicy }).(pulumi.StringOutput)
 }
@@ -69798,12 +70780,12 @@ func (o GetServicesOrgServiceOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesOrgService) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// 0 means unlimited
+// 0 means unlimited, value from 0 to 107374182
 func (o GetServicesOrgServiceOutput) ServiceLimitDown() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServicesOrgService) int { return v.ServiceLimitDown }).(pulumi.IntOutput)
 }
 
-// 0 means unlimited
+// 0 means unlimited, value from 0 to 107374182
 func (o GetServicesOrgServiceOutput) ServiceLimitUp() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServicesOrgService) int { return v.ServiceLimitUp }).(pulumi.IntOutput)
 }
@@ -70237,7 +71219,7 @@ func (o GetSsoRolesOrgSsoRoleArrayOutput) Index(i pulumi.IntInput) GetSsoRolesOr
 type GetSsoRolesOrgSsoRolePrivilege struct {
 	// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
 	Role string `pulumi:"role"`
-	// enum: `org`, `site`, `sitegroup`
+	// enum: `org`, `site`, `sitegroup`, `orgsites`
 	Scope string `pulumi:"scope"`
 	// If `scope`==`site`
 	SiteId string `pulumi:"siteId"`
@@ -70274,7 +71256,7 @@ type GetSsoRolesOrgSsoRolePrivilegeInput interface {
 type GetSsoRolesOrgSsoRolePrivilegeArgs struct {
 	// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
 	Role pulumi.StringInput `pulumi:"role"`
-	// enum: `org`, `site`, `sitegroup`
+	// enum: `org`, `site`, `sitegroup`, `orgsites`
 	Scope pulumi.StringInput `pulumi:"scope"`
 	// If `scope`==`site`
 	SiteId pulumi.StringInput `pulumi:"siteId"`
@@ -70353,7 +71335,7 @@ func (o GetSsoRolesOrgSsoRolePrivilegeOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSsoRolesOrgSsoRolePrivilege) string { return v.Role }).(pulumi.StringOutput)
 }
 
-// enum: `org`, `site`, `sitegroup`
+// enum: `org`, `site`, `sitegroup`, `orgsites`
 func (o GetSsoRolesOrgSsoRolePrivilegeOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSsoRolesOrgSsoRolePrivilege) string { return v.Scope }).(pulumi.StringOutput)
 }
@@ -70615,7 +71597,7 @@ func (o GetVpnsOrgVpnPathSelectionOutput) Strategy() pulumi.StringOutput {
 type GetVpnsOrgVpnPaths struct {
 	// enum: `broadband`, `lte`
 	BfdProfile string `pulumi:"bfdProfile"`
-	// If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+	// If `type`==`mesh` and for SSR only, whether to use tunnel mode
 	BfdUseTunnelMode bool `pulumi:"bfdUseTunnelMode"`
 	// If different from the wan port
 	Ip string `pulumi:"ip"`
@@ -70639,7 +71621,7 @@ type GetVpnsOrgVpnPathsInput interface {
 type GetVpnsOrgVpnPathsArgs struct {
 	// enum: `broadband`, `lte`
 	BfdProfile pulumi.StringInput `pulumi:"bfdProfile"`
-	// If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+	// If `type`==`mesh` and for SSR only, whether to use tunnel mode
 	BfdUseTunnelMode pulumi.BoolInput `pulumi:"bfdUseTunnelMode"`
 	// If different from the wan port
 	Ip pulumi.StringInput `pulumi:"ip"`
@@ -70705,7 +71687,7 @@ func (o GetVpnsOrgVpnPathsOutput) BfdProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnsOrgVpnPaths) string { return v.BfdProfile }).(pulumi.StringOutput)
 }
 
-// If `type`==`mesh` and for SSR only, whether toi use tunnel mode
+// If `type`==`mesh` and for SSR only, whether to use tunnel mode
 func (o GetVpnsOrgVpnPathsOutput) BfdUseTunnelMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVpnsOrgVpnPaths) bool { return v.BfdUseTunnelMode }).(pulumi.BoolOutput)
 }
@@ -70907,6 +71889,8 @@ func (o GetVpnsOrgVpnPathsTrafficShapingOutput) MaxTxKbps() pulumi.IntOutput {
 }
 
 type GetWebhooksOrgWebhook struct {
+	// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+	AssetfilterIds []string `pulumi:"assetfilterIds"`
 	// When the object has been created, in epoch
 	CreatedTime float64 `pulumi:"createdTime"`
 	// Whether webhook is enabled
@@ -70961,6 +71945,8 @@ type GetWebhooksOrgWebhookInput interface {
 }
 
 type GetWebhooksOrgWebhookArgs struct {
+	// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+	AssetfilterIds pulumi.StringArrayInput `pulumi:"assetfilterIds"`
 	// When the object has been created, in epoch
 	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
 	// Whether webhook is enabled
@@ -71052,6 +72038,11 @@ func (o GetWebhooksOrgWebhookOutput) ToGetWebhooksOrgWebhookOutput() GetWebhooks
 
 func (o GetWebhooksOrgWebhookOutput) ToGetWebhooksOrgWebhookOutputWithContext(ctx context.Context) GetWebhooksOrgWebhookOutput {
 	return o
+}
+
+// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+func (o GetWebhooksOrgWebhookOutput) AssetfilterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWebhooksOrgWebhook) []string { return v.AssetfilterIds }).(pulumi.StringArrayOutput)
 }
 
 // When the object has been created, in epoch
@@ -71186,9 +72177,9 @@ type GetWlansOrgWlan struct {
 	AcctServers []GetWlansOrgWlanAcctServer `pulumi:"acctServers"`
 	// Airwatch wlan settings
 	Airwatch GetWlansOrgWlanAirwatch `pulumi:"airwatch"`
-	// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp bool `pulumi:"allowIpv6Ndp"`
-	// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
 	AllowMdns bool `pulumi:"allowMdns"`
 	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp bool `pulumi:"allowSsdp"`
@@ -71196,7 +72187,7 @@ type GetWlansOrgWlan struct {
 	ApIds []string `pulumi:"apIds"`
 	// Bandwidth limiting for apps (applies to up/down)
 	AppLimit GetWlansOrgWlanAppLimit `pulumi:"appLimit"`
-	// APp qos wlan settings
+	// APP qos wlan settings
 	AppQos GetWlansOrgWlanAppQos `pulumi:"appQos"`
 	// enum: `aps`, `site`, `wxtags`
 	ApplyTo string `pulumi:"applyTo"`
@@ -71327,12 +72318,13 @@ type GetWlansOrgWlan struct {
 	PortalAllowedHostnames []string `pulumi:"portalAllowedHostnames"`
 	// List of CIDRs
 	PortalAllowedSubnets []string `pulumi:"portalAllowedSubnets"`
-	// APi secret (auto-generated) that can be used to sign guest authorization requests
+	// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
 	PortalApiSecret string `pulumi:"portalApiSecret"`
 	// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
 	PortalDeniedHostnames []string `pulumi:"portalDeniedHostnames"`
 	// Url of portal background image
-	PortalImage  string             `pulumi:"portalImage"`
+	PortalImage string `pulumi:"portalImage"`
+	// URL used in the SSO process, auto-generated when auth is set to `sso`
 	PortalSsoUrl string             `pulumi:"portalSsoUrl"`
 	Qos          GetWlansOrgWlanQos `pulumi:"qos"`
 	// RadSec settings
@@ -71393,9 +72385,9 @@ type GetWlansOrgWlanArgs struct {
 	AcctServers GetWlansOrgWlanAcctServerArrayInput `pulumi:"acctServers"`
 	// Airwatch wlan settings
 	Airwatch GetWlansOrgWlanAirwatchInput `pulumi:"airwatch"`
-	// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp pulumi.BoolInput `pulumi:"allowIpv6Ndp"`
-	// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+	// Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
 	AllowMdns pulumi.BoolInput `pulumi:"allowMdns"`
 	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp pulumi.BoolInput `pulumi:"allowSsdp"`
@@ -71403,7 +72395,7 @@ type GetWlansOrgWlanArgs struct {
 	ApIds pulumi.StringArrayInput `pulumi:"apIds"`
 	// Bandwidth limiting for apps (applies to up/down)
 	AppLimit GetWlansOrgWlanAppLimitInput `pulumi:"appLimit"`
-	// APp qos wlan settings
+	// APP qos wlan settings
 	AppQos GetWlansOrgWlanAppQosInput `pulumi:"appQos"`
 	// enum: `aps`, `site`, `wxtags`
 	ApplyTo pulumi.StringInput `pulumi:"applyTo"`
@@ -71534,12 +72526,13 @@ type GetWlansOrgWlanArgs struct {
 	PortalAllowedHostnames pulumi.StringArrayInput `pulumi:"portalAllowedHostnames"`
 	// List of CIDRs
 	PortalAllowedSubnets pulumi.StringArrayInput `pulumi:"portalAllowedSubnets"`
-	// APi secret (auto-generated) that can be used to sign guest authorization requests
+	// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
 	PortalApiSecret pulumi.StringInput `pulumi:"portalApiSecret"`
 	// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
 	PortalDeniedHostnames pulumi.StringArrayInput `pulumi:"portalDeniedHostnames"`
 	// Url of portal background image
-	PortalImage  pulumi.StringInput      `pulumi:"portalImage"`
+	PortalImage pulumi.StringInput `pulumi:"portalImage"`
+	// URL used in the SSO process, auto-generated when auth is set to `sso`
 	PortalSsoUrl pulumi.StringInput      `pulumi:"portalSsoUrl"`
 	Qos          GetWlansOrgWlanQosInput `pulumi:"qos"`
 	// RadSec settings
@@ -71651,12 +72644,12 @@ func (o GetWlansOrgWlanOutput) Airwatch() GetWlansOrgWlanAirwatchOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) GetWlansOrgWlanAirwatch { return v.Airwatch }).(GetWlansOrgWlanAirwatchOutput)
 }
 
-// Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 func (o GetWlansOrgWlanOutput) AllowIpv6Ndp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) bool { return v.AllowIpv6Ndp }).(pulumi.BoolOutput)
 }
 
-// Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+// Only applicable when `limitBcast`==`true`, which allows mDNS / Bonjour packets to go through
 func (o GetWlansOrgWlanOutput) AllowMdns() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) bool { return v.AllowMdns }).(pulumi.BoolOutput)
 }
@@ -71676,7 +72669,7 @@ func (o GetWlansOrgWlanOutput) AppLimit() GetWlansOrgWlanAppLimitOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) GetWlansOrgWlanAppLimit { return v.AppLimit }).(GetWlansOrgWlanAppLimitOutput)
 }
 
-// APp qos wlan settings
+// APP qos wlan settings
 func (o GetWlansOrgWlanOutput) AppQos() GetWlansOrgWlanAppQosOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) GetWlansOrgWlanAppQos { return v.AppQos }).(GetWlansOrgWlanAppQosOutput)
 }
@@ -71999,7 +72992,7 @@ func (o GetWlansOrgWlanOutput) PortalAllowedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) []string { return v.PortalAllowedSubnets }).(pulumi.StringArrayOutput)
 }
 
-// APi secret (auto-generated) that can be used to sign guest authorization requests
+// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
 func (o GetWlansOrgWlanOutput) PortalApiSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) string { return v.PortalApiSecret }).(pulumi.StringOutput)
 }
@@ -72014,6 +73007,7 @@ func (o GetWlansOrgWlanOutput) PortalImage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) string { return v.PortalImage }).(pulumi.StringOutput)
 }
 
+// URL used in the SSO process, auto-generated when auth is set to `sso`
 func (o GetWlansOrgWlanOutput) PortalSsoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlan) string { return v.PortalSsoUrl }).(pulumi.StringOutput)
 }
@@ -73809,6 +74803,16 @@ func (o GetWlansOrgWlanInjectDhcpOption82Output) Enabled() pulumi.BoolOutput {
 }
 
 type GetWlansOrgWlanMistNac struct {
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+	AcctInterimInterval int `pulumi:"acctInterimInterval"`
+	// Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+	AuthServersRetries int `pulumi:"authServersRetries"`
+	// Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+	AuthServersTimeout int `pulumi:"authServersTimeout"`
+	// Allows a RADIUS server to dynamically modify the authorization status of a user session.
+	CoaEnabled bool `pulumi:"coaEnabled"`
+	// the communication port used for “Change of Authorization” (CoA) messages
+	CoaPort int `pulumi:"coaPort"`
 	// When enabled:
 	//   * `authServers` is ignored
 	//   * `acctServers` is ignored
@@ -73817,6 +74821,12 @@ type GetWlansOrgWlanMistNac struct {
 	//   * `radsec` is ignored
 	//   * `coaEnabled` is assumed
 	Enabled bool `pulumi:"enabled"`
+	// If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+	FastDot1xTimers bool `pulumi:"fastDot1xTimers"`
+	// Which network the mist nac server resides in
+	Network string `pulumi:"network"`
+	// In case there is a static IP for this network, we can specify it using source ip
+	SourceIp string `pulumi:"sourceIp"`
 }
 
 // GetWlansOrgWlanMistNacInput is an input type that accepts GetWlansOrgWlanMistNacArgs and GetWlansOrgWlanMistNacOutput values.
@@ -73831,6 +74841,16 @@ type GetWlansOrgWlanMistNacInput interface {
 }
 
 type GetWlansOrgWlanMistNacArgs struct {
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+	AcctInterimInterval pulumi.IntInput `pulumi:"acctInterimInterval"`
+	// Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+	AuthServersRetries pulumi.IntInput `pulumi:"authServersRetries"`
+	// Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+	AuthServersTimeout pulumi.IntInput `pulumi:"authServersTimeout"`
+	// Allows a RADIUS server to dynamically modify the authorization status of a user session.
+	CoaEnabled pulumi.BoolInput `pulumi:"coaEnabled"`
+	// the communication port used for “Change of Authorization” (CoA) messages
+	CoaPort pulumi.IntInput `pulumi:"coaPort"`
 	// When enabled:
 	//   * `authServers` is ignored
 	//   * `acctServers` is ignored
@@ -73839,6 +74859,12 @@ type GetWlansOrgWlanMistNacArgs struct {
 	//   * `radsec` is ignored
 	//   * `coaEnabled` is assumed
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+	FastDot1xTimers pulumi.BoolInput `pulumi:"fastDot1xTimers"`
+	// Which network the mist nac server resides in
+	Network pulumi.StringInput `pulumi:"network"`
+	// In case there is a static IP for this network, we can specify it using source ip
+	SourceIp pulumi.StringInput `pulumi:"sourceIp"`
 }
 
 func (GetWlansOrgWlanMistNacArgs) ElementType() reflect.Type {
@@ -73867,6 +74893,31 @@ func (o GetWlansOrgWlanMistNacOutput) ToGetWlansOrgWlanMistNacOutputWithContext(
 	return o
 }
 
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+func (o GetWlansOrgWlanMistNacOutput) AcctInterimInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanMistNac) int { return v.AcctInterimInterval }).(pulumi.IntOutput)
+}
+
+// Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. "retries" are set to value of `authServersTimeout`. "max-requests" is also set when setting `authServersRetries` is set to default value to 3.
+func (o GetWlansOrgWlanMistNacOutput) AuthServersRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanMistNac) int { return v.AuthServersRetries }).(pulumi.IntOutput)
+}
+
+// Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. "quite-period" and "transmit-period" are set to half the value of `authServersTimeout`. "supplicant-timeout" is also set when setting `authServersTimeout` is set to default value of 10.
+func (o GetWlansOrgWlanMistNacOutput) AuthServersTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanMistNac) int { return v.AuthServersTimeout }).(pulumi.IntOutput)
+}
+
+// Allows a RADIUS server to dynamically modify the authorization status of a user session.
+func (o GetWlansOrgWlanMistNacOutput) CoaEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanMistNac) bool { return v.CoaEnabled }).(pulumi.BoolOutput)
+}
+
+// the communication port used for “Change of Authorization” (CoA) messages
+func (o GetWlansOrgWlanMistNacOutput) CoaPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanMistNac) int { return v.CoaPort }).(pulumi.IntOutput)
+}
+
 // When enabled:
 //   - `authServers` is ignored
 //   - `acctServers` is ignored
@@ -73876,6 +74927,21 @@ func (o GetWlansOrgWlanMistNacOutput) ToGetWlansOrgWlanMistNacOutputWithContext(
 //   - `coaEnabled` is assumed
 func (o GetWlansOrgWlanMistNacOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanMistNac) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// If set to true, sets default fast-timers with values calculated from `authServersTimeout` and `authServerRetries`.
+func (o GetWlansOrgWlanMistNacOutput) FastDot1xTimers() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanMistNac) bool { return v.FastDot1xTimers }).(pulumi.BoolOutput)
+}
+
+// Which network the mist nac server resides in
+func (o GetWlansOrgWlanMistNacOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanMistNac) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// In case there is a static IP for this network, we can specify it using source ip
+func (o GetWlansOrgWlanMistNacOutput) SourceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanMistNac) string { return v.SourceIp }).(pulumi.StringOutput)
 }
 
 type GetWlansOrgWlanPortal struct {
@@ -73967,7 +75033,7 @@ type GetWlansOrgWlanPortal struct {
 	PassphraseExpire int `pulumi:"passphraseExpire"`
 	// Required if `passphraseEnabled`==`true`.
 	Password string `pulumi:"password"`
-	// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+	// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
 	PredefinedSponsorsEnabled bool `pulumi:"predefinedSponsorsEnabled"`
 	// Whether to hide sponsor’s email from list of sponsors
 	PredefinedSponsorsHideEmail bool `pulumi:"predefinedSponsorsHideEmail"`
@@ -73984,8 +75050,12 @@ type GetWlansOrgWlanPortal struct {
 	SmsExpire int `pulumi:"smsExpire"`
 	// Optional if `smsEnabled`==`true`. SMS Message format
 	SmsMessageFormat string `pulumi:"smsMessageFormat"`
-	// Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+	// Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
 	SmsProvider string `pulumi:"smsProvider"`
+	// Required if `smsProvider`==`smsglobal`, Client API Key
+	SmsglobalApiKey string `pulumi:"smsglobalApiKey"`
+	// Required if `smsProvider`==`smsglobal`, Client secret
+	SmsglobalApiSecret string `pulumi:"smsglobalApiSecret"`
 	// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 	SponsorAutoApprove bool `pulumi:"sponsorAutoApprove"`
 	// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
@@ -74010,7 +75080,7 @@ type GetWlansOrgWlanPortal struct {
 	SsoForcedRole string `pulumi:"ssoForcedRole"`
 	// Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
 	SsoIdpCert string `pulumi:"ssoIdpCert"`
-	// Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+	// Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
 	SsoIdpSignAlgo string `pulumi:"ssoIdpSignAlgo"`
 	// Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
 	SsoIdpSsoUrl string `pulumi:"ssoIdpSsoUrl"`
@@ -74130,7 +75200,7 @@ type GetWlansOrgWlanPortalArgs struct {
 	PassphraseExpire pulumi.IntInput `pulumi:"passphraseExpire"`
 	// Required if `passphraseEnabled`==`true`.
 	Password pulumi.StringInput `pulumi:"password"`
-	// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+	// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
 	PredefinedSponsorsEnabled pulumi.BoolInput `pulumi:"predefinedSponsorsEnabled"`
 	// Whether to hide sponsor’s email from list of sponsors
 	PredefinedSponsorsHideEmail pulumi.BoolInput `pulumi:"predefinedSponsorsHideEmail"`
@@ -74147,8 +75217,12 @@ type GetWlansOrgWlanPortalArgs struct {
 	SmsExpire pulumi.IntInput `pulumi:"smsExpire"`
 	// Optional if `smsEnabled`==`true`. SMS Message format
 	SmsMessageFormat pulumi.StringInput `pulumi:"smsMessageFormat"`
-	// Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+	// Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
 	SmsProvider pulumi.StringInput `pulumi:"smsProvider"`
+	// Required if `smsProvider`==`smsglobal`, Client API Key
+	SmsglobalApiKey pulumi.StringInput `pulumi:"smsglobalApiKey"`
+	// Required if `smsProvider`==`smsglobal`, Client secret
+	SmsglobalApiSecret pulumi.StringInput `pulumi:"smsglobalApiSecret"`
 	// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 	SponsorAutoApprove pulumi.BoolInput `pulumi:"sponsorAutoApprove"`
 	// List of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
@@ -74173,7 +75247,7 @@ type GetWlansOrgWlanPortalArgs struct {
 	SsoForcedRole pulumi.StringInput `pulumi:"ssoForcedRole"`
 	// Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
 	SsoIdpCert pulumi.StringInput `pulumi:"ssoIdpCert"`
-	// Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+	// Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
 	SsoIdpSignAlgo pulumi.StringInput `pulumi:"ssoIdpSignAlgo"`
 	// Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
 	SsoIdpSsoUrl pulumi.StringInput `pulumi:"ssoIdpSsoUrl"`
@@ -74439,7 +75513,7 @@ func (o GetWlansOrgWlanPortalOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanPortal) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+// Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behavior is acc to `sponsorEmailDomains`
 func (o GetWlansOrgWlanPortalOutput) PredefinedSponsorsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanPortal) bool { return v.PredefinedSponsorsEnabled }).(pulumi.BoolOutput)
 }
@@ -74483,9 +75557,19 @@ func (o GetWlansOrgWlanPortalOutput) SmsMessageFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanPortal) string { return v.SmsMessageFormat }).(pulumi.StringOutput)
 }
 
-// Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+// Optional if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `smsglobal`, `telstra`, `twilio`
 func (o GetWlansOrgWlanPortalOutput) SmsProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanPortal) string { return v.SmsProvider }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`smsglobal`, Client API Key
+func (o GetWlansOrgWlanPortalOutput) SmsglobalApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanPortal) string { return v.SmsglobalApiKey }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`smsglobal`, Client secret
+func (o GetWlansOrgWlanPortalOutput) SmsglobalApiSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansOrgWlanPortal) string { return v.SmsglobalApiSecret }).(pulumi.StringOutput)
 }
 
 // Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
@@ -74546,7 +75630,7 @@ func (o GetWlansOrgWlanPortalOutput) SsoIdpCert() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanPortal) string { return v.SsoIdpCert }).(pulumi.StringOutput)
 }
 
-// Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+// Optional if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
 func (o GetWlansOrgWlanPortalOutput) SsoIdpSignAlgo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWlansOrgWlanPortal) string { return v.SsoIdpSignAlgo }).(pulumi.StringOutput)
 }
@@ -76096,6 +77180,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateAclTagsMapInput)(nil)).Elem(), NetworktemplateAclTagsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateAclTagsSpecInput)(nil)).Elem(), NetworktemplateAclTagsSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateAclTagsSpecArrayInput)(nil)).Elem(), NetworktemplateAclTagsSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateBgpConfigInput)(nil)).Elem(), NetworktemplateBgpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateBgpConfigMapInput)(nil)).Elem(), NetworktemplateBgpConfigMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateBgpConfigNeighborsInput)(nil)).Elem(), NetworktemplateBgpConfigNeighborsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateBgpConfigNeighborsMapInput)(nil)).Elem(), NetworktemplateBgpConfigNeighborsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateDhcpSnoopingInput)(nil)).Elem(), NetworktemplateDhcpSnoopingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateDhcpSnoopingPtrInput)(nil)).Elem(), NetworktemplateDhcpSnoopingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateExtraRoutes6Input)(nil)).Elem(), NetworktemplateExtraRoutes6Args{})
@@ -76150,6 +77238,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateRemoteSyslogUserArrayInput)(nil)).Elem(), NetworktemplateRemoteSyslogUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateRemoteSyslogUserContentInput)(nil)).Elem(), NetworktemplateRemoteSyslogUserContentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateRemoteSyslogUserContentArrayInput)(nil)).Elem(), NetworktemplateRemoteSyslogUserContentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateRoutingPoliciesInput)(nil)).Elem(), NetworktemplateRoutingPoliciesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateRoutingPoliciesMapInput)(nil)).Elem(), NetworktemplateRoutingPoliciesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateRoutingPoliciesTermInput)(nil)).Elem(), NetworktemplateRoutingPoliciesTermArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateRoutingPoliciesTermArrayInput)(nil)).Elem(), NetworktemplateRoutingPoliciesTermArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateRoutingPoliciesTermActionsInput)(nil)).Elem(), NetworktemplateRoutingPoliciesTermActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateRoutingPoliciesTermActionsPtrInput)(nil)).Elem(), NetworktemplateRoutingPoliciesTermActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateRoutingPoliciesTermMatchingInput)(nil)).Elem(), NetworktemplateRoutingPoliciesTermMatchingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateRoutingPoliciesTermMatchingPtrInput)(nil)).Elem(), NetworktemplateRoutingPoliciesTermMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSnmpConfigInput)(nil)).Elem(), NetworktemplateSnmpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSnmpConfigPtrInput)(nil)).Elem(), NetworktemplateSnmpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSnmpConfigClientListInput)(nil)).Elem(), NetworktemplateSnmpConfigClientListArgs{})
@@ -76914,6 +78010,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworktemplateAclTagsMapOutput{})
 	pulumi.RegisterOutputType(NetworktemplateAclTagsSpecOutput{})
 	pulumi.RegisterOutputType(NetworktemplateAclTagsSpecArrayOutput{})
+	pulumi.RegisterOutputType(NetworktemplateBgpConfigOutput{})
+	pulumi.RegisterOutputType(NetworktemplateBgpConfigMapOutput{})
+	pulumi.RegisterOutputType(NetworktemplateBgpConfigNeighborsOutput{})
+	pulumi.RegisterOutputType(NetworktemplateBgpConfigNeighborsMapOutput{})
 	pulumi.RegisterOutputType(NetworktemplateDhcpSnoopingOutput{})
 	pulumi.RegisterOutputType(NetworktemplateDhcpSnoopingPtrOutput{})
 	pulumi.RegisterOutputType(NetworktemplateExtraRoutes6Output{})
@@ -76968,6 +78068,14 @@ func init() {
 	pulumi.RegisterOutputType(NetworktemplateRemoteSyslogUserArrayOutput{})
 	pulumi.RegisterOutputType(NetworktemplateRemoteSyslogUserContentOutput{})
 	pulumi.RegisterOutputType(NetworktemplateRemoteSyslogUserContentArrayOutput{})
+	pulumi.RegisterOutputType(NetworktemplateRoutingPoliciesOutput{})
+	pulumi.RegisterOutputType(NetworktemplateRoutingPoliciesMapOutput{})
+	pulumi.RegisterOutputType(NetworktemplateRoutingPoliciesTermOutput{})
+	pulumi.RegisterOutputType(NetworktemplateRoutingPoliciesTermArrayOutput{})
+	pulumi.RegisterOutputType(NetworktemplateRoutingPoliciesTermActionsOutput{})
+	pulumi.RegisterOutputType(NetworktemplateRoutingPoliciesTermActionsPtrOutput{})
+	pulumi.RegisterOutputType(NetworktemplateRoutingPoliciesTermMatchingOutput{})
+	pulumi.RegisterOutputType(NetworktemplateRoutingPoliciesTermMatchingPtrOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSnmpConfigOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSnmpConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSnmpConfigClientListOutput{})

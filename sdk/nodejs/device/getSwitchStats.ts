@@ -23,8 +23,8 @@ import * as utilities from "../utilities";
  *     evpnUnused: "true",
  *     evpntopoId: "92984e2f-94db-4cd8-9763-9cf83fbd079e",
  *     duration: "1d",
- *     start: 1736031600,
- *     end: 1736175934,
+ *     start: "1736031600",
+ *     end: "1736175934",
  * });
  * ```
  */
@@ -52,9 +52,9 @@ export interface GetSwitchStatsArgs {
      */
     duration?: string;
     /**
-     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
      */
-    end?: number;
+    end?: string;
     /**
      * If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      */
@@ -67,9 +67,9 @@ export interface GetSwitchStatsArgs {
     orgId: string;
     siteId?: string;
     /**
-     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
      */
-    start?: number;
+    start?: string;
     /**
      * enum: `all`, `connected`, `disconnected`
      */
@@ -86,9 +86,9 @@ export interface GetSwitchStatsResult {
      */
     readonly duration?: string;
     /**
-     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
      */
-    readonly end?: number;
+    readonly end?: string;
     /**
      * If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      */
@@ -105,9 +105,9 @@ export interface GetSwitchStatsResult {
     readonly orgId: string;
     readonly siteId?: string;
     /**
-     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
      */
-    readonly start?: number;
+    readonly start?: string;
     /**
      * enum: `all`, `connected`, `disconnected`
      */
@@ -130,8 +130,8 @@ export interface GetSwitchStatsResult {
  *     evpnUnused: "true",
  *     evpntopoId: "92984e2f-94db-4cd8-9763-9cf83fbd079e",
  *     duration: "1d",
- *     start: 1736031600,
- *     end: 1736175934,
+ *     start: "1736031600",
+ *     end: "1736175934",
  * });
  * ```
  */
@@ -159,9 +159,9 @@ export interface GetSwitchStatsOutputArgs {
      */
     duration?: pulumi.Input<string>;
     /**
-     * End datetime, can be epoch or relative time like -1d, -2h; now if not specified
+     * End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
      */
-    end?: pulumi.Input<number>;
+    end?: pulumi.Input<string>;
     /**
      * If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      */
@@ -174,9 +174,9 @@ export interface GetSwitchStatsOutputArgs {
     orgId: pulumi.Input<string>;
     siteId?: pulumi.Input<string>;
     /**
-     * Start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
+     * Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
      */
-    start?: pulumi.Input<number>;
+    start?: pulumi.Input<string>;
     /**
      * enum: `all`, `connected`, `disconnected`
      */

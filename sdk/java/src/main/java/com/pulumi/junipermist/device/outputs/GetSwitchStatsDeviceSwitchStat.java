@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatApRedundancy;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatArpTableStats;
+import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatAutoUpgradeStat;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatClient;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatClientsStats;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsDeviceSwitchStatCpuStat;
@@ -34,10 +35,13 @@ import java.util.Objects;
 public final class GetSwitchStatsDeviceSwitchStat {
     private GetSwitchStatsDeviceSwitchStatApRedundancy apRedundancy;
     private GetSwitchStatsDeviceSwitchStatArpTableStats arpTableStats;
+    private GetSwitchStatsDeviceSwitchStatAutoUpgradeStat autoUpgradeStat;
     private Integer certExpiry;
     private List<GetSwitchStatsDeviceSwitchStatClient> clients;
     private GetSwitchStatsDeviceSwitchStatClientsStats clientsStats;
     private String configStatus;
+    private Integer configTimestamp;
+    private Integer configVersion;
     private GetSwitchStatsDeviceSwitchStatCpuStat cpuStat;
     /**
      * @return When the object has been created, in epoch
@@ -51,6 +55,7 @@ public final class GetSwitchStatsDeviceSwitchStat {
      */
     private Map<String,GetSwitchStatsDeviceSwitchStatDhcpdStat> dhcpdStat;
     private String evpntopoId;
+    private String extIp;
     private Boolean fwVersionsOutofsync;
     private GetSwitchStatsDeviceSwitchStatFwupdate fwupdate;
     /**
@@ -117,6 +122,8 @@ public final class GetSwitchStatsDeviceSwitchStat {
     private Map<String,GetSwitchStatsDeviceSwitchStatServiceStat> serviceStat;
     private String siteId;
     private String status;
+    private Integer tagId;
+    private String tagUuid;
     private Double uptime;
     private String vcMac;
     private GetSwitchStatsDeviceSwitchStatVcSetupInfo vcSetupInfo;
@@ -129,6 +136,9 @@ public final class GetSwitchStatsDeviceSwitchStat {
     public GetSwitchStatsDeviceSwitchStatArpTableStats arpTableStats() {
         return this.arpTableStats;
     }
+    public GetSwitchStatsDeviceSwitchStatAutoUpgradeStat autoUpgradeStat() {
+        return this.autoUpgradeStat;
+    }
     public Integer certExpiry() {
         return this.certExpiry;
     }
@@ -140,6 +150,12 @@ public final class GetSwitchStatsDeviceSwitchStat {
     }
     public String configStatus() {
         return this.configStatus;
+    }
+    public Integer configTimestamp() {
+        return this.configTimestamp;
+    }
+    public Integer configVersion() {
+        return this.configVersion;
     }
     public GetSwitchStatsDeviceSwitchStatCpuStat cpuStat() {
         return this.cpuStat;
@@ -163,6 +179,9 @@ public final class GetSwitchStatsDeviceSwitchStat {
     }
     public String evpntopoId() {
         return this.evpntopoId;
+    }
+    public String extIp() {
+        return this.extIp;
     }
     public Boolean fwVersionsOutofsync() {
         return this.fwVersionsOutofsync;
@@ -282,6 +301,12 @@ public final class GetSwitchStatsDeviceSwitchStat {
     public String status() {
         return this.status;
     }
+    public Integer tagId() {
+        return this.tagId;
+    }
+    public String tagUuid() {
+        return this.tagUuid;
+    }
     public Double uptime() {
         return this.uptime;
     }
@@ -306,15 +331,19 @@ public final class GetSwitchStatsDeviceSwitchStat {
     public static final class Builder {
         private GetSwitchStatsDeviceSwitchStatApRedundancy apRedundancy;
         private GetSwitchStatsDeviceSwitchStatArpTableStats arpTableStats;
+        private GetSwitchStatsDeviceSwitchStatAutoUpgradeStat autoUpgradeStat;
         private Integer certExpiry;
         private List<GetSwitchStatsDeviceSwitchStatClient> clients;
         private GetSwitchStatsDeviceSwitchStatClientsStats clientsStats;
         private String configStatus;
+        private Integer configTimestamp;
+        private Integer configVersion;
         private GetSwitchStatsDeviceSwitchStatCpuStat cpuStat;
         private Double createdTime;
         private String deviceprofileId;
         private Map<String,GetSwitchStatsDeviceSwitchStatDhcpdStat> dhcpdStat;
         private String evpntopoId;
+        private String extIp;
         private Boolean fwVersionsOutofsync;
         private GetSwitchStatsDeviceSwitchStatFwupdate fwupdate;
         private Boolean hasPcap;
@@ -341,6 +370,8 @@ public final class GetSwitchStatsDeviceSwitchStat {
         private Map<String,GetSwitchStatsDeviceSwitchStatServiceStat> serviceStat;
         private String siteId;
         private String status;
+        private Integer tagId;
+        private String tagUuid;
         private Double uptime;
         private String vcMac;
         private GetSwitchStatsDeviceSwitchStatVcSetupInfo vcSetupInfo;
@@ -350,15 +381,19 @@ public final class GetSwitchStatsDeviceSwitchStat {
     	      Objects.requireNonNull(defaults);
     	      this.apRedundancy = defaults.apRedundancy;
     	      this.arpTableStats = defaults.arpTableStats;
+    	      this.autoUpgradeStat = defaults.autoUpgradeStat;
     	      this.certExpiry = defaults.certExpiry;
     	      this.clients = defaults.clients;
     	      this.clientsStats = defaults.clientsStats;
     	      this.configStatus = defaults.configStatus;
+    	      this.configTimestamp = defaults.configTimestamp;
+    	      this.configVersion = defaults.configVersion;
     	      this.cpuStat = defaults.cpuStat;
     	      this.createdTime = defaults.createdTime;
     	      this.deviceprofileId = defaults.deviceprofileId;
     	      this.dhcpdStat = defaults.dhcpdStat;
     	      this.evpntopoId = defaults.evpntopoId;
+    	      this.extIp = defaults.extIp;
     	      this.fwVersionsOutofsync = defaults.fwVersionsOutofsync;
     	      this.fwupdate = defaults.fwupdate;
     	      this.hasPcap = defaults.hasPcap;
@@ -385,6 +420,8 @@ public final class GetSwitchStatsDeviceSwitchStat {
     	      this.serviceStat = defaults.serviceStat;
     	      this.siteId = defaults.siteId;
     	      this.status = defaults.status;
+    	      this.tagId = defaults.tagId;
+    	      this.tagUuid = defaults.tagUuid;
     	      this.uptime = defaults.uptime;
     	      this.vcMac = defaults.vcMac;
     	      this.vcSetupInfo = defaults.vcSetupInfo;
@@ -405,6 +442,14 @@ public final class GetSwitchStatsDeviceSwitchStat {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "arpTableStats");
             }
             this.arpTableStats = arpTableStats;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoUpgradeStat(GetSwitchStatsDeviceSwitchStatAutoUpgradeStat autoUpgradeStat) {
+            if (autoUpgradeStat == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "autoUpgradeStat");
+            }
+            this.autoUpgradeStat = autoUpgradeStat;
             return this;
         }
         @CustomType.Setter
@@ -440,6 +485,22 @@ public final class GetSwitchStatsDeviceSwitchStat {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "configStatus");
             }
             this.configStatus = configStatus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder configTimestamp(Integer configTimestamp) {
+            if (configTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "configTimestamp");
+            }
+            this.configTimestamp = configTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder configVersion(Integer configVersion) {
+            if (configVersion == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "configVersion");
+            }
+            this.configVersion = configVersion;
             return this;
         }
         @CustomType.Setter
@@ -480,6 +541,14 @@ public final class GetSwitchStatsDeviceSwitchStat {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "evpntopoId");
             }
             this.evpntopoId = evpntopoId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder extIp(String extIp) {
+            if (extIp == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "extIp");
+            }
+            this.extIp = extIp;
             return this;
         }
         @CustomType.Setter
@@ -697,6 +766,22 @@ public final class GetSwitchStatsDeviceSwitchStat {
             return this;
         }
         @CustomType.Setter
+        public Builder tagId(Integer tagId) {
+            if (tagId == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "tagId");
+            }
+            this.tagId = tagId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tagUuid(String tagUuid) {
+            if (tagUuid == null) {
+              throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "tagUuid");
+            }
+            this.tagUuid = tagUuid;
+            return this;
+        }
+        @CustomType.Setter
         public Builder uptime(Double uptime) {
             if (uptime == null) {
               throw new MissingRequiredPropertyException("GetSwitchStatsDeviceSwitchStat", "uptime");
@@ -732,15 +817,19 @@ public final class GetSwitchStatsDeviceSwitchStat {
             final var _resultValue = new GetSwitchStatsDeviceSwitchStat();
             _resultValue.apRedundancy = apRedundancy;
             _resultValue.arpTableStats = arpTableStats;
+            _resultValue.autoUpgradeStat = autoUpgradeStat;
             _resultValue.certExpiry = certExpiry;
             _resultValue.clients = clients;
             _resultValue.clientsStats = clientsStats;
             _resultValue.configStatus = configStatus;
+            _resultValue.configTimestamp = configTimestamp;
+            _resultValue.configVersion = configVersion;
             _resultValue.cpuStat = cpuStat;
             _resultValue.createdTime = createdTime;
             _resultValue.deviceprofileId = deviceprofileId;
             _resultValue.dhcpdStat = dhcpdStat;
             _resultValue.evpntopoId = evpntopoId;
+            _resultValue.extIp = extIp;
             _resultValue.fwVersionsOutofsync = fwVersionsOutofsync;
             _resultValue.fwupdate = fwupdate;
             _resultValue.hasPcap = hasPcap;
@@ -767,6 +856,8 @@ public final class GetSwitchStatsDeviceSwitchStat {
             _resultValue.serviceStat = serviceStat;
             _resultValue.siteId = siteId;
             _resultValue.status = status;
+            _resultValue.tagId = tagId;
+            _resultValue.tagUuid = tagUuid;
             _resultValue.uptime = uptime;
             _resultValue.vcMac = vcMac;
             _resultValue.vcSetupInfo = vcSetupInfo;
