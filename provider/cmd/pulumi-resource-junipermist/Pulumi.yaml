@@ -1,0 +1,3 @@
+name: junipermist
+description: A Pulumi resource provider for junipermist.
+language: schema
