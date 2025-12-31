@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := site.Newbase(ctx, "juniper_france", &site.baseArgs{
+//			_, err := site.NewBase(ctx, "juniper_france", &site.BaseArgs{
 //				OrgId:       pulumi.Any(terraformTest.Id),
 //				Name:        pulumi.String("JNP-FR-PAR"),
 //				CountryCode: pulumi.String("FR"),

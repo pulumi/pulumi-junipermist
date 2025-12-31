@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := org.Newbase(ctx, "org_one", &org.baseArgs{
+//			_, err := org.NewBase(ctx, "org_one", &org.BaseArgs{
 //				Name:            pulumi.String("Org One"),
 //				AlarmtemplateId: pulumi.Any(alarmtemplateOne.Id),
 //			})
