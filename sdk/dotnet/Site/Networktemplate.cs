@@ -149,12 +149,6 @@ namespace Pulumi.JuniperMist.Site
         [Output("autoUpgradeLinecard")]
         public Output<bool> AutoUpgradeLinecard { get; private set; } = null!;
 
-        /// <summary>
-        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
-        /// </summary>
-        [Output("defaultPortUsage")]
-        public Output<string?> DefaultPortUsage { get; private set; } = null!;
-
         [Output("dhcpSnooping")]
         public Output<Outputs.NetworktemplateDhcpSnooping?> DhcpSnooping { get; private set; } = null!;
 
@@ -350,12 +344,6 @@ namespace Pulumi.JuniperMist.Site
 
         [Input("autoUpgradeLinecard")]
         public Input<bool>? AutoUpgradeLinecard { get; set; }
-
-        /// <summary>
-        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
-        /// </summary>
-        [Input("defaultPortUsage")]
-        public Input<string>? DefaultPortUsage { get; set; }
 
         [Input("dhcpSnooping")]
         public Input<Inputs.NetworktemplateDhcpSnoopingArgs>? DhcpSnooping { get; set; }
@@ -585,12 +573,6 @@ namespace Pulumi.JuniperMist.Site
 
         [Input("autoUpgradeLinecard")]
         public Input<bool>? AutoUpgradeLinecard { get; set; }
-
-        /// <summary>
-        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
-        /// </summary>
-        [Input("defaultPortUsage")]
-        public Input<string>? DefaultPortUsage { get; set; }
 
         [Input("dhcpSnooping")]
         public Input<Inputs.NetworktemplateDhcpSnoopingGetArgs>? DhcpSnooping { get; set; }

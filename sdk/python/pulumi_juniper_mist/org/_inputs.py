@@ -28474,6 +28474,10 @@ if not MYPY:
         """
         additional CLI commands to append to the generated Junos config. **Note**: no check is done
         """
+        default_port_usage: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        """
         ip_config: NotRequired[pulumi.Input['NetworktemplateSwitchMatchingRuleIpConfigArgsDict']]
         """
         In-Band Management interface configuration
@@ -28518,6 +28522,7 @@ elif False:
 class NetworktemplateSwitchMatchingRuleArgs:
     def __init__(__self__, *,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_config: Optional[pulumi.Input['NetworktemplateSwitchMatchingRuleIpConfigArgs']] = None,
                  match_model: Optional[pulumi.Input[_builtins.str]] = None,
                  match_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -28530,6 +28535,7 @@ class NetworktemplateSwitchMatchingRuleArgs:
                  stp_config: Optional[pulumi.Input['NetworktemplateSwitchMatchingRuleStpConfigArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input['NetworktemplateSwitchMatchingRuleIpConfigArgs'] ip_config: In-Band Management interface configuration
         :param pulumi.Input[_builtins.str] match_model: string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
         :param pulumi.Input[_builtins.str] match_name: string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
@@ -28542,6 +28548,8 @@ class NetworktemplateSwitchMatchingRuleArgs:
         """
         if additional_config_cmds is not None:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
+        if default_port_usage is not None:
+            pulumi.set(__self__, "default_port_usage", default_port_usage)
         if ip_config is not None:
             pulumi.set(__self__, "ip_config", ip_config)
         if match_model is not None:
@@ -28574,6 +28582,18 @@ class NetworktemplateSwitchMatchingRuleArgs:
     @additional_config_cmds.setter
     def additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_config_cmds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPortUsage")
+    def default_port_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        """
+        return pulumi.get(self, "default_port_usage")
+
+    @default_port_usage.setter
+    def default_port_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_port_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfig")

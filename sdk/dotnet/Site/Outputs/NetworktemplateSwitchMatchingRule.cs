@@ -18,6 +18,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AdditionalConfigCmds;
         /// <summary>
+        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
+        /// </summary>
+        public readonly string? DefaultPortUsage;
+        /// <summary>
         /// In-Band Management interface configuration
         /// </summary>
         public readonly Outputs.NetworktemplateSwitchMatchingRuleIpConfig? IpConfig;
@@ -59,6 +63,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
         private NetworktemplateSwitchMatchingRule(
             ImmutableArray<string> additionalConfigCmds,
 
+            string? defaultPortUsage,
+
             Outputs.NetworktemplateSwitchMatchingRuleIpConfig? ipConfig,
 
             string? matchModel,
@@ -80,6 +86,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             Outputs.NetworktemplateSwitchMatchingRuleStpConfig? stpConfig)
         {
             AdditionalConfigCmds = additionalConfigCmds;
+            DefaultPortUsage = defaultPortUsage;
             IpConfig = ipConfig;
             MatchModel = matchModel;
             MatchName = matchName;

@@ -31,7 +31,6 @@ class SettingArgs:
                  config_auto_revert: Optional[pulumi.Input[_builtins.bool]] = None,
                  config_push_policy: Optional[pulumi.Input['SettingConfigPushPolicyArgs']] = None,
                  critical_url_monitoring: Optional[pulumi.Input['SettingCriticalUrlMonitoringArgs']] = None,
-                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  device_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_unii4: Optional[pulumi.Input[_builtins.bool]] = None,
                  engagement: Optional[pulumi.Input['SettingEngagementArgs']] = None,
@@ -77,7 +76,6 @@ class SettingArgs:
         :param pulumi.Input[_builtins.bool] config_auto_revert: Whether to enable ap auto config revert
         :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
         :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
-        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input[_builtins.int] device_updown_threshold: By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
         :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Site settings
@@ -122,8 +120,6 @@ class SettingArgs:
             pulumi.set(__self__, "config_push_policy", config_push_policy)
         if critical_url_monitoring is not None:
             pulumi.set(__self__, "critical_url_monitoring", critical_url_monitoring)
-        if default_port_usage is not None:
-            pulumi.set(__self__, "default_port_usage", default_port_usage)
         if device_updown_threshold is not None:
             pulumi.set(__self__, "device_updown_threshold", device_updown_threshold)
         if enable_unii4 is not None:
@@ -308,18 +304,6 @@ class SettingArgs:
     @critical_url_monitoring.setter
     def critical_url_monitoring(self, value: Optional[pulumi.Input['SettingCriticalUrlMonitoringArgs']]):
         pulumi.set(self, "critical_url_monitoring", value)
-
-    @_builtins.property
-    @pulumi.getter(name="defaultPortUsage")
-    def default_port_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-        """
-        return pulumi.get(self, "default_port_usage")
-
-    @default_port_usage.setter
-    def default_port_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "default_port_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceUpdownThreshold")
@@ -722,7 +706,6 @@ class _SettingState:
                  config_auto_revert: Optional[pulumi.Input[_builtins.bool]] = None,
                  config_push_policy: Optional[pulumi.Input['SettingConfigPushPolicyArgs']] = None,
                  critical_url_monitoring: Optional[pulumi.Input['SettingCriticalUrlMonitoringArgs']] = None,
-                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  device_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_unii4: Optional[pulumi.Input[_builtins.bool]] = None,
                  engagement: Optional[pulumi.Input['SettingEngagementArgs']] = None,
@@ -771,7 +754,6 @@ class _SettingState:
         :param pulumi.Input[_builtins.bool] config_auto_revert: Whether to enable ap auto config revert
         :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
         :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
-        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input[_builtins.int] device_updown_threshold: By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
         :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Site settings
@@ -817,8 +799,6 @@ class _SettingState:
             pulumi.set(__self__, "config_push_policy", config_push_policy)
         if critical_url_monitoring is not None:
             pulumi.set(__self__, "critical_url_monitoring", critical_url_monitoring)
-        if default_port_usage is not None:
-            pulumi.set(__self__, "default_port_usage", default_port_usage)
         if device_updown_threshold is not None:
             pulumi.set(__self__, "device_updown_threshold", device_updown_threshold)
         if enable_unii4 is not None:
@@ -1009,18 +989,6 @@ class _SettingState:
     @critical_url_monitoring.setter
     def critical_url_monitoring(self, value: Optional[pulumi.Input['SettingCriticalUrlMonitoringArgs']]):
         pulumi.set(self, "critical_url_monitoring", value)
-
-    @_builtins.property
-    @pulumi.getter(name="defaultPortUsage")
-    def default_port_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-        """
-        return pulumi.get(self, "default_port_usage")
-
-    @default_port_usage.setter
-    def default_port_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "default_port_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceUpdownThreshold")
@@ -1452,7 +1420,6 @@ class Setting(pulumi.CustomResource):
                  config_auto_revert: Optional[pulumi.Input[_builtins.bool]] = None,
                  config_push_policy: Optional[pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']]] = None,
                  critical_url_monitoring: Optional[pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']]] = None,
-                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  device_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_unii4: Optional[pulumi.Input[_builtins.bool]] = None,
                  engagement: Optional[pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
@@ -1547,7 +1514,6 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] config_auto_revert: Whether to enable ap auto config revert
         :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
         :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
-        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input[_builtins.int] device_updown_threshold: By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
         :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
@@ -1650,7 +1616,6 @@ class Setting(pulumi.CustomResource):
                  config_auto_revert: Optional[pulumi.Input[_builtins.bool]] = None,
                  config_push_policy: Optional[pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']]] = None,
                  critical_url_monitoring: Optional[pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']]] = None,
-                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  device_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_unii4: Optional[pulumi.Input[_builtins.bool]] = None,
                  engagement: Optional[pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
@@ -1705,7 +1670,6 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["config_auto_revert"] = config_auto_revert
             __props__.__dict__["config_push_policy"] = config_push_policy
             __props__.__dict__["critical_url_monitoring"] = critical_url_monitoring
-            __props__.__dict__["default_port_usage"] = default_port_usage
             __props__.__dict__["device_updown_threshold"] = device_updown_threshold
             __props__.__dict__["enable_unii4"] = enable_unii4
             __props__.__dict__["engagement"] = engagement
@@ -1767,7 +1731,6 @@ class Setting(pulumi.CustomResource):
             config_auto_revert: Optional[pulumi.Input[_builtins.bool]] = None,
             config_push_policy: Optional[pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']]] = None,
             critical_url_monitoring: Optional[pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']]] = None,
-            default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
             device_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
             enable_unii4: Optional[pulumi.Input[_builtins.bool]] = None,
             engagement: Optional[pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
@@ -1821,7 +1784,6 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] config_auto_revert: Whether to enable ap auto config revert
         :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
         :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
-        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input[_builtins.int] device_updown_threshold: By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
         :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
@@ -1861,7 +1823,6 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["config_auto_revert"] = config_auto_revert
         __props__.__dict__["config_push_policy"] = config_push_policy
         __props__.__dict__["critical_url_monitoring"] = critical_url_monitoring
-        __props__.__dict__["default_port_usage"] = default_port_usage
         __props__.__dict__["device_updown_threshold"] = device_updown_threshold
         __props__.__dict__["enable_unii4"] = enable_unii4
         __props__.__dict__["engagement"] = engagement
@@ -1975,14 +1936,6 @@ class Setting(pulumi.CustomResource):
         You can define some URLs that's critical to site operations the latency will be captured and considered for site health
         """
         return pulumi.get(self, "critical_url_monitoring")
-
-    @_builtins.property
-    @pulumi.getter(name="defaultPortUsage")
-    def default_port_usage(self) -> pulumi.Output[_builtins.str]:
-        """
-        Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-        """
-        return pulumi.get(self, "default_port_usage")
 
     @_builtins.property
     @pulumi.getter(name="deviceUpdownThreshold")

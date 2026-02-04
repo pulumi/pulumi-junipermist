@@ -81,21 +81,6 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.autoUpgradeLinecard);
     }
 
-    /**
-     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     * 
-     */
-    @Import(name="defaultPortUsage")
-    private @Nullable Output<String> defaultPortUsage;
-
-    /**
-     * @return Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     * 
-     */
-    public Optional<Output<String>> defaultPortUsage() {
-        return Optional.ofNullable(this.defaultPortUsage);
-    }
-
     @Import(name="dhcpSnooping")
     private @Nullable Output<NetworktemplateDhcpSnoopingArgs> dhcpSnooping;
 
@@ -386,7 +371,6 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         this.aclTags = $.aclTags;
         this.additionalConfigCmds = $.additionalConfigCmds;
         this.autoUpgradeLinecard = $.autoUpgradeLinecard;
-        this.defaultPortUsage = $.defaultPortUsage;
         this.dhcpSnooping = $.dhcpSnooping;
         this.disabledSystemDefinedPortUsages = $.disabledSystemDefinedPortUsages;
         this.dnsServers = $.dnsServers;
@@ -500,27 +484,6 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder autoUpgradeLinecard(Boolean autoUpgradeLinecard) {
             return autoUpgradeLinecard(Output.of(autoUpgradeLinecard));
-        }
-
-        /**
-         * @param defaultPortUsage Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultPortUsage(@Nullable Output<String> defaultPortUsage) {
-            $.defaultPortUsage = defaultPortUsage;
-            return this;
-        }
-
-        /**
-         * @param defaultPortUsage Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultPortUsage(String defaultPortUsage) {
-            return defaultPortUsage(Output.of(defaultPortUsage));
         }
 
         public Builder dhcpSnooping(@Nullable Output<NetworktemplateDhcpSnoopingArgs> dhcpSnooping) {

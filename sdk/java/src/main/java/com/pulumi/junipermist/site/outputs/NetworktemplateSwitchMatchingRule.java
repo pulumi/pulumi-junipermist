@@ -25,6 +25,11 @@ public final class NetworktemplateSwitchMatchingRule {
      */
     private @Nullable List<String> additionalConfigCmds;
     /**
+     * @return Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+     * 
+     */
+    private @Nullable String defaultPortUsage;
+    /**
      * @return In-Band Management interface configuration
      * 
      */
@@ -78,6 +83,13 @@ public final class NetworktemplateSwitchMatchingRule {
      */
     public List<String> additionalConfigCmds() {
         return this.additionalConfigCmds == null ? List.of() : this.additionalConfigCmds;
+    }
+    /**
+     * @return Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+     * 
+     */
+    public Optional<String> defaultPortUsage() {
+        return Optional.ofNullable(this.defaultPortUsage);
     }
     /**
      * @return In-Band Management interface configuration
@@ -156,6 +168,7 @@ public final class NetworktemplateSwitchMatchingRule {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> additionalConfigCmds;
+        private @Nullable String defaultPortUsage;
         private @Nullable NetworktemplateSwitchMatchingRuleIpConfig ipConfig;
         private @Nullable String matchModel;
         private @Nullable String matchName;
@@ -170,6 +183,7 @@ public final class NetworktemplateSwitchMatchingRule {
         public Builder(NetworktemplateSwitchMatchingRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalConfigCmds = defaults.additionalConfigCmds;
+    	      this.defaultPortUsage = defaults.defaultPortUsage;
     	      this.ipConfig = defaults.ipConfig;
     	      this.matchModel = defaults.matchModel;
     	      this.matchName = defaults.matchName;
@@ -190,6 +204,12 @@ public final class NetworktemplateSwitchMatchingRule {
         }
         public Builder additionalConfigCmds(String... additionalConfigCmds) {
             return additionalConfigCmds(List.of(additionalConfigCmds));
+        }
+        @CustomType.Setter
+        public Builder defaultPortUsage(@Nullable String defaultPortUsage) {
+
+            this.defaultPortUsage = defaultPortUsage;
+            return this;
         }
         @CustomType.Setter
         public Builder ipConfig(@Nullable NetworktemplateSwitchMatchingRuleIpConfig ipConfig) {
@@ -254,6 +274,7 @@ public final class NetworktemplateSwitchMatchingRule {
         public NetworktemplateSwitchMatchingRule build() {
             final var _resultValue = new NetworktemplateSwitchMatchingRule();
             _resultValue.additionalConfigCmds = additionalConfigCmds;
+            _resultValue.defaultPortUsage = defaultPortUsage;
             _resultValue.ipConfig = ipConfig;
             _resultValue.matchModel = matchModel;
             _resultValue.matchName = matchName;

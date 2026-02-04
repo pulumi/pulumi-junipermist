@@ -39,6 +39,21 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
+     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+     * 
+     */
+    @Import(name="defaultPortUsage")
+    private @Nullable Output<String> defaultPortUsage;
+
+    /**
+     * @return Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+     * 
+     */
+    public Optional<Output<String>> defaultPortUsage() {
+        return Optional.ofNullable(this.defaultPortUsage);
+    }
+
+    /**
      * In-Band Management interface configuration
      * 
      */
@@ -184,6 +199,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
 
     private NetworktemplateSwitchMatchingRuleArgs(NetworktemplateSwitchMatchingRuleArgs $) {
         this.additionalConfigCmds = $.additionalConfigCmds;
+        this.defaultPortUsage = $.defaultPortUsage;
         this.ipConfig = $.ipConfig;
         this.matchModel = $.matchModel;
         this.matchName = $.matchName;
@@ -243,6 +259,27 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
          */
         public Builder additionalConfigCmds(String... additionalConfigCmds) {
             return additionalConfigCmds(List.of(additionalConfigCmds));
+        }
+
+        /**
+         * @param defaultPortUsage Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultPortUsage(@Nullable Output<String> defaultPortUsage) {
+            $.defaultPortUsage = defaultPortUsage;
+            return this;
+        }
+
+        /**
+         * @param defaultPortUsage Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultPortUsage(String defaultPortUsage) {
+            return defaultPortUsage(Output.of(defaultPortUsage));
         }
 
         /**

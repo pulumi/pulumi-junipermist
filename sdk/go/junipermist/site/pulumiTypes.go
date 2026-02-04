@@ -9169,6 +9169,8 @@ func (o NetworktemplateSwitchMatchingPtrOutput) Rules() NetworktemplateSwitchMat
 type NetworktemplateSwitchMatchingRule struct {
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`
+	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+	DefaultPortUsage *string `pulumi:"defaultPortUsage"`
 	// In-Band Management interface configuration
 	IpConfig *NetworktemplateSwitchMatchingRuleIpConfig `pulumi:"ipConfig"`
 	// string the switch model must start with to use this rule. It is possible to combine with the `matchName` and `matchRole` attributes
@@ -9204,6 +9206,8 @@ type NetworktemplateSwitchMatchingRuleInput interface {
 type NetworktemplateSwitchMatchingRuleArgs struct {
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput `pulumi:"additionalConfigCmds"`
+	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+	DefaultPortUsage pulumi.StringPtrInput `pulumi:"defaultPortUsage"`
 	// In-Band Management interface configuration
 	IpConfig NetworktemplateSwitchMatchingRuleIpConfigPtrInput `pulumi:"ipConfig"`
 	// string the switch model must start with to use this rule. It is possible to combine with the `matchName` and `matchRole` attributes
@@ -9279,6 +9283,11 @@ func (o NetworktemplateSwitchMatchingRuleOutput) ToNetworktemplateSwitchMatching
 // additional CLI commands to append to the generated Junos config. **Note**: no check is done
 func (o NetworktemplateSwitchMatchingRuleOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) []string { return v.AdditionalConfigCmds }).(pulumi.StringArrayOutput)
+}
+
+// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+func (o NetworktemplateSwitchMatchingRuleOutput) DefaultPortUsage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) *string { return v.DefaultPortUsage }).(pulumi.StringPtrOutput)
 }
 
 // In-Band Management interface configuration

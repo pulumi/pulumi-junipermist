@@ -125,11 +125,9 @@ type Networktemplate struct {
 	// ACL Tags to identify traffic source or destination. Key name is the tag name
 	AclTags NetworktemplateAclTagsMapOutput `pulumi:"aclTags"`
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds pulumi.StringArrayOutput `pulumi:"additionalConfigCmds"`
-	AutoUpgradeLinecard  pulumi.BoolOutput        `pulumi:"autoUpgradeLinecard"`
-	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-	DefaultPortUsage pulumi.StringPtrOutput               `pulumi:"defaultPortUsage"`
-	DhcpSnooping     NetworktemplateDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
+	AdditionalConfigCmds pulumi.StringArrayOutput             `pulumi:"additionalConfigCmds"`
+	AutoUpgradeLinecard  pulumi.BoolOutput                    `pulumi:"autoUpgradeLinecard"`
+	DhcpSnooping         NetworktemplateDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
 	// If some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages pulumi.StringArrayOutput `pulumi:"disabledSystemDefinedPortUsages"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -206,11 +204,9 @@ type networktemplateState struct {
 	// ACL Tags to identify traffic source or destination. Key name is the tag name
 	AclTags map[string]NetworktemplateAclTags `pulumi:"aclTags"`
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`
-	AutoUpgradeLinecard  *bool    `pulumi:"autoUpgradeLinecard"`
-	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-	DefaultPortUsage *string                      `pulumi:"defaultPortUsage"`
-	DhcpSnooping     *NetworktemplateDhcpSnooping `pulumi:"dhcpSnooping"`
+	AdditionalConfigCmds []string                     `pulumi:"additionalConfigCmds"`
+	AutoUpgradeLinecard  *bool                        `pulumi:"autoUpgradeLinecard"`
+	DhcpSnooping         *NetworktemplateDhcpSnooping `pulumi:"dhcpSnooping"`
 	// If some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -257,9 +253,7 @@ type NetworktemplateState struct {
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	AutoUpgradeLinecard  pulumi.BoolPtrInput
-	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-	DefaultPortUsage pulumi.StringPtrInput
-	DhcpSnooping     NetworktemplateDhcpSnoopingPtrInput
+	DhcpSnooping         NetworktemplateDhcpSnoopingPtrInput
 	// If some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -308,11 +302,9 @@ type networktemplateArgs struct {
 	// ACL Tags to identify traffic source or destination. Key name is the tag name
 	AclTags map[string]NetworktemplateAclTags `pulumi:"aclTags"`
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`
-	AutoUpgradeLinecard  *bool    `pulumi:"autoUpgradeLinecard"`
-	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-	DefaultPortUsage *string                      `pulumi:"defaultPortUsage"`
-	DhcpSnooping     *NetworktemplateDhcpSnooping `pulumi:"dhcpSnooping"`
+	AdditionalConfigCmds []string                     `pulumi:"additionalConfigCmds"`
+	AutoUpgradeLinecard  *bool                        `pulumi:"autoUpgradeLinecard"`
+	DhcpSnooping         *NetworktemplateDhcpSnooping `pulumi:"dhcpSnooping"`
 	// If some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -360,9 +352,7 @@ type NetworktemplateArgs struct {
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	AutoUpgradeLinecard  pulumi.BoolPtrInput
-	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-	DefaultPortUsage pulumi.StringPtrInput
-	DhcpSnooping     NetworktemplateDhcpSnoopingPtrInput
+	DhcpSnooping         NetworktemplateDhcpSnoopingPtrInput
 	// If some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -505,11 +495,6 @@ func (o NetworktemplateOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 
 func (o NetworktemplateOutput) AutoUpgradeLinecard() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.BoolOutput { return v.AutoUpgradeLinecard }).(pulumi.BoolOutput)
-}
-
-// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-func (o NetworktemplateOutput) DefaultPortUsage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Networktemplate) pulumi.StringPtrOutput { return v.DefaultPortUsage }).(pulumi.StringPtrOutput)
 }
 
 func (o NetworktemplateOutput) DhcpSnooping() NetworktemplateDhcpSnoopingPtrOutput {
