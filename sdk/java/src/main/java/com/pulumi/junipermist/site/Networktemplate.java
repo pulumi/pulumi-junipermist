@@ -179,20 +179,6 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     public Output<Boolean> autoUpgradeLinecard() {
         return this.autoUpgradeLinecard;
     }
-    /**
-     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     * 
-     */
-    @Export(name="defaultPortUsage", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> defaultPortUsage;
-
-    /**
-     * @return Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     * 
-     */
-    public Output<Optional<String>> defaultPortUsage() {
-        return Codegen.optional(this.defaultPortUsage);
-    }
     @Export(name="dhcpSnooping", refs={NetworktemplateDhcpSnooping.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateDhcpSnooping> dhcpSnooping;
 

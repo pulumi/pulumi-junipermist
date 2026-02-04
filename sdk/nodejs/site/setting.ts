@@ -117,10 +117,6 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly criticalUrlMonitoring: pulumi.Output<outputs.site.SettingCriticalUrlMonitoring | undefined>;
     /**
-     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     */
-    declare public readonly defaultPortUsage: pulumi.Output<string>;
-    /**
      * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      */
     declare public readonly deviceUpdownThreshold: pulumi.Output<number | undefined>;
@@ -254,7 +250,6 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["configAutoRevert"] = state?.configAutoRevert;
             resourceInputs["configPushPolicy"] = state?.configPushPolicy;
             resourceInputs["criticalUrlMonitoring"] = state?.criticalUrlMonitoring;
-            resourceInputs["defaultPortUsage"] = state?.defaultPortUsage;
             resourceInputs["deviceUpdownThreshold"] = state?.deviceUpdownThreshold;
             resourceInputs["enableUnii4"] = state?.enableUnii4;
             resourceInputs["engagement"] = state?.engagement;
@@ -307,7 +302,6 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["configAutoRevert"] = args?.configAutoRevert;
             resourceInputs["configPushPolicy"] = args?.configPushPolicy;
             resourceInputs["criticalUrlMonitoring"] = args?.criticalUrlMonitoring;
-            resourceInputs["defaultPortUsage"] = args?.defaultPortUsage;
             resourceInputs["deviceUpdownThreshold"] = args?.deviceUpdownThreshold;
             resourceInputs["enableUnii4"] = args?.enableUnii4;
             resourceInputs["engagement"] = args?.engagement;
@@ -391,10 +385,6 @@ export interface SettingState {
      * You can define some URLs that's critical to site operations the latency will be captured and considered for site health
      */
     criticalUrlMonitoring?: pulumi.Input<inputs.site.SettingCriticalUrlMonitoring>;
-    /**
-     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     */
-    defaultPortUsage?: pulumi.Input<string>;
     /**
      * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      */
@@ -544,10 +534,6 @@ export interface SettingArgs {
      * You can define some URLs that's critical to site operations the latency will be captured and considered for site health
      */
     criticalUrlMonitoring?: pulumi.Input<inputs.site.SettingCriticalUrlMonitoring>;
-    /**
-     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     */
-    defaultPortUsage?: pulumi.Input<string>;
     /**
      * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      */

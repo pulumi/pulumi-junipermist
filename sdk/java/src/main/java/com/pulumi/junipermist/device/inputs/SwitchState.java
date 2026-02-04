@@ -92,6 +92,21 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.bgpConfig);
     }
 
+    /**
+     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+     * 
+     */
+    @Import(name="defaultPortUsage")
+    private @Nullable Output<String> defaultPortUsage;
+
+    /**
+     * @return Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+     * 
+     */
+    public Optional<Output<String>> defaultPortUsage() {
+        return Optional.ofNullable(this.defaultPortUsage);
+    }
+
     @Import(name="deviceId")
     private @Nullable Output<String> deviceId;
 
@@ -725,6 +740,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         this.aclTags = $.aclTags;
         this.additionalConfigCmds = $.additionalConfigCmds;
         this.bgpConfig = $.bgpConfig;
+        this.defaultPortUsage = $.defaultPortUsage;
         this.deviceId = $.deviceId;
         this.dhcpSnooping = $.dhcpSnooping;
         this.dhcpdConfig = $.dhcpdConfig;
@@ -867,6 +883,27 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
 
         public Builder bgpConfig(Map<String,SwitchBgpConfigArgs> bgpConfig) {
             return bgpConfig(Output.of(bgpConfig));
+        }
+
+        /**
+         * @param defaultPortUsage Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultPortUsage(@Nullable Output<String> defaultPortUsage) {
+            $.defaultPortUsage = defaultPortUsage;
+            return this;
+        }
+
+        /**
+         * @param defaultPortUsage Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultPortUsage(String defaultPortUsage) {
+            return defaultPortUsage(Output.of(defaultPortUsage));
         }
 
         public Builder deviceId(@Nullable Output<String> deviceId) {

@@ -125,12 +125,6 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingCriticalUrlMonitoring?> CriticalUrlMonitoring { get; private set; } = null!;
 
         /// <summary>
-        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
-        /// </summary>
-        [Output("defaultPortUsage")]
-        public Output<string> DefaultPortUsage { get; private set; } = null!;
-
-        /// <summary>
         /// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         /// </summary>
         [Output("deviceUpdownThreshold")]
@@ -415,12 +409,6 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingCriticalUrlMonitoringArgs>? CriticalUrlMonitoring { get; set; }
 
         /// <summary>
-        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
-        /// </summary>
-        [Input("defaultPortUsage")]
-        public Input<string>? DefaultPortUsage { get; set; }
-
-        /// <summary>
         /// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         /// </summary>
         [Input("deviceUpdownThreshold")]
@@ -679,12 +667,6 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("criticalUrlMonitoring")]
         public Input<Inputs.SettingCriticalUrlMonitoringGetArgs>? CriticalUrlMonitoring { get; set; }
-
-        /// <summary>
-        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
-        /// </summary>
-        [Input("defaultPortUsage")]
-        public Input<string>? DefaultPortUsage { get; set; }
 
         /// <summary>
         /// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following

@@ -94,8 +94,6 @@ type Setting struct {
 	ConfigPushPolicy SettingConfigPushPolicyPtrOutput `pulumi:"configPushPolicy"`
 	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrOutput `pulumi:"criticalUrlMonitoring"`
-	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-	DefaultPortUsage pulumi.StringOutput `pulumi:"defaultPortUsage"`
 	// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrOutput `pulumi:"deviceUpdownThreshold"`
 	EnableUnii4           pulumi.BoolOutput   `pulumi:"enableUnii4"`
@@ -211,8 +209,6 @@ type settingState struct {
 	ConfigPushPolicy *SettingConfigPushPolicy `pulumi:"configPushPolicy"`
 	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring *SettingCriticalUrlMonitoring `pulumi:"criticalUrlMonitoring"`
-	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-	DefaultPortUsage *string `pulumi:"defaultPortUsage"`
 	// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
 	DeviceUpdownThreshold *int  `pulumi:"deviceUpdownThreshold"`
 	EnableUnii4           *bool `pulumi:"enableUnii4"`
@@ -296,8 +292,6 @@ type SettingState struct {
 	ConfigPushPolicy SettingConfigPushPolicyPtrInput
 	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrInput
-	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-	DefaultPortUsage pulumi.StringPtrInput
 	// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
 	EnableUnii4           pulumi.BoolPtrInput
@@ -384,8 +378,6 @@ type settingArgs struct {
 	ConfigPushPolicy *SettingConfigPushPolicy `pulumi:"configPushPolicy"`
 	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring *SettingCriticalUrlMonitoring `pulumi:"criticalUrlMonitoring"`
-	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-	DefaultPortUsage *string `pulumi:"defaultPortUsage"`
 	// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
 	DeviceUpdownThreshold *int  `pulumi:"deviceUpdownThreshold"`
 	EnableUnii4           *bool `pulumi:"enableUnii4"`
@@ -467,8 +459,6 @@ type SettingArgs struct {
 	ConfigPushPolicy SettingConfigPushPolicyPtrInput
 	// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrInput
-	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-	DefaultPortUsage pulumi.StringPtrInput
 	// By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
 	EnableUnii4           pulumi.BoolPtrInput
@@ -664,11 +654,6 @@ func (o SettingOutput) ConfigPushPolicy() SettingConfigPushPolicyPtrOutput {
 // You can define some URLs that's critical to site operations the latency will be captured and considered for site health
 func (o SettingOutput) CriticalUrlMonitoring() SettingCriticalUrlMonitoringPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingCriticalUrlMonitoringPtrOutput { return v.CriticalUrlMonitoring }).(SettingCriticalUrlMonitoringPtrOutput)
-}
-
-// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-func (o SettingOutput) DefaultPortUsage() pulumi.StringOutput {
-	return o.ApplyT(func(v *Setting) pulumi.StringOutput { return v.DefaultPortUsage }).(pulumi.StringOutput)
 }
 
 // By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following

@@ -4868,6 +4868,8 @@ class NetworktemplateSwitchMatchingRule(dict):
         suggest = None
         if key == "additionalConfigCmds":
             suggest = "additional_config_cmds"
+        elif key == "defaultPortUsage":
+            suggest = "default_port_usage"
         elif key == "ipConfig":
             suggest = "ip_config"
         elif key == "matchModel":
@@ -4900,6 +4902,7 @@ class NetworktemplateSwitchMatchingRule(dict):
 
     def __init__(__self__, *,
                  additional_config_cmds: Optional[Sequence[_builtins.str]] = None,
+                 default_port_usage: Optional[_builtins.str] = None,
                  ip_config: Optional['outputs.NetworktemplateSwitchMatchingRuleIpConfig'] = None,
                  match_model: Optional[_builtins.str] = None,
                  match_name: Optional[_builtins.str] = None,
@@ -4912,6 +4915,7 @@ class NetworktemplateSwitchMatchingRule(dict):
                  stp_config: Optional['outputs.NetworktemplateSwitchMatchingRuleStpConfig'] = None):
         """
         :param Sequence[_builtins.str] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        :param _builtins.str default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param 'NetworktemplateSwitchMatchingRuleIpConfigArgs' ip_config: In-Band Management interface configuration
         :param _builtins.str match_model: string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
         :param _builtins.str match_name: string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
@@ -4924,6 +4928,8 @@ class NetworktemplateSwitchMatchingRule(dict):
         """
         if additional_config_cmds is not None:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
+        if default_port_usage is not None:
+            pulumi.set(__self__, "default_port_usage", default_port_usage)
         if ip_config is not None:
             pulumi.set(__self__, "ip_config", ip_config)
         if match_model is not None:
@@ -4952,6 +4958,14 @@ class NetworktemplateSwitchMatchingRule(dict):
         additional CLI commands to append to the generated Junos config. **Note**: no check is done
         """
         return pulumi.get(self, "additional_config_cmds")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPortUsage")
+    def default_port_usage(self) -> Optional[_builtins.str]:
+        """
+        Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        """
+        return pulumi.get(self, "default_port_usage")
 
     @_builtins.property
     @pulumi.getter(name="ipConfig")

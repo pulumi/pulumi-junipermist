@@ -61,6 +61,10 @@ export class Switch extends pulumi.CustomResource {
      */
     declare public readonly additionalConfigCmds: pulumi.Output<string[] | undefined>;
     declare public readonly bgpConfig: pulumi.Output<{[key: string]: outputs.device.SwitchBgpConfig} | undefined>;
+    /**
+     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+     */
+    declare public readonly defaultPortUsage: pulumi.Output<string>;
     declare public readonly deviceId: pulumi.Output<string>;
     declare public readonly dhcpSnooping: pulumi.Output<outputs.device.SwitchDhcpSnooping | undefined>;
     declare public readonly dhcpdConfig: pulumi.Output<outputs.device.SwitchDhcpdConfig | undefined>;
@@ -233,6 +237,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["aclTags"] = state?.aclTags;
             resourceInputs["additionalConfigCmds"] = state?.additionalConfigCmds;
             resourceInputs["bgpConfig"] = state?.bgpConfig;
+            resourceInputs["defaultPortUsage"] = state?.defaultPortUsage;
             resourceInputs["deviceId"] = state?.deviceId;
             resourceInputs["dhcpSnooping"] = state?.dhcpSnooping;
             resourceInputs["dhcpdConfig"] = state?.dhcpdConfig;
@@ -295,6 +300,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["aclTags"] = args?.aclTags;
             resourceInputs["additionalConfigCmds"] = args?.additionalConfigCmds;
             resourceInputs["bgpConfig"] = args?.bgpConfig;
+            resourceInputs["defaultPortUsage"] = args?.defaultPortUsage;
             resourceInputs["deviceId"] = args?.deviceId;
             resourceInputs["dhcpSnooping"] = args?.dhcpSnooping;
             resourceInputs["dhcpdConfig"] = args?.dhcpdConfig;
@@ -365,6 +371,10 @@ export interface SwitchState {
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchBgpConfig>}>;
+    /**
+     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+     */
+    defaultPortUsage?: pulumi.Input<string>;
     deviceId?: pulumi.Input<string>;
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping>;
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;
@@ -535,6 +545,10 @@ export interface SwitchArgs {
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchBgpConfig>}>;
+    /**
+     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+     */
+    defaultPortUsage?: pulumi.Input<string>;
     deviceId: pulumi.Input<string>;
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping>;
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;

@@ -248,20 +248,6 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.criticalUrlMonitoring);
     }
     /**
-     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     * 
-     */
-    @Export(name="defaultPortUsage", refs={String.class}, tree="[0]")
-    private Output<String> defaultPortUsage;
-
-    /**
-     * @return Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     * 
-     */
-    public Output<String> defaultPortUsage() {
-        return this.defaultPortUsage;
-    }
-    /**
      * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      * 
      */

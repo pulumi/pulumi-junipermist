@@ -183,21 +183,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     * 
-     */
-    @Import(name="defaultPortUsage")
-    private @Nullable Output<String> defaultPortUsage;
-
-    /**
-     * @return Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     * 
-     */
-    public Optional<Output<String>> defaultPortUsage() {
-        return Optional.ofNullable(this.defaultPortUsage);
-    }
-
-    /**
      * By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      * 
      */
@@ -668,7 +653,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.configAutoRevert = $.configAutoRevert;
         this.configPushPolicy = $.configPushPolicy;
         this.criticalUrlMonitoring = $.criticalUrlMonitoring;
-        this.defaultPortUsage = $.defaultPortUsage;
         this.deviceUpdownThreshold = $.deviceUpdownThreshold;
         this.enableUnii4 = $.enableUnii4;
         this.engagement = $.engagement;
@@ -911,27 +895,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder criticalUrlMonitoring(SettingCriticalUrlMonitoringArgs criticalUrlMonitoring) {
             return criticalUrlMonitoring(Output.of(criticalUrlMonitoring));
-        }
-
-        /**
-         * @param defaultPortUsage Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultPortUsage(@Nullable Output<String> defaultPortUsage) {
-            $.defaultPortUsage = defaultPortUsage;
-            return this;
-        }
-
-        /**
-         * @param defaultPortUsage Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-         * 
-         * @return builder
-         * 
-         */
-        public Builder defaultPortUsage(String defaultPortUsage) {
-            return defaultPortUsage(Output.of(defaultPortUsage));
         }
 
         /**

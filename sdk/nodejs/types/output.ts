@@ -14268,6 +14268,10 @@ export namespace org {
          */
         additionalConfigCmds?: string[];
         /**
+         * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+         */
+        defaultPortUsage: string;
+        /**
          * In-Band Management interface configuration
          */
         ipConfig?: outputs.org.NetworktemplateSwitchMatchingRuleIpConfig;
@@ -19480,6 +19484,10 @@ export namespace site {
          * additional CLI commands to append to the generated Junos config. **Note**: no check is done
          */
         additionalConfigCmds?: string[];
+        /**
+         * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+         */
+        defaultPortUsage: string;
         /**
          * In-Band Management interface configuration
          */

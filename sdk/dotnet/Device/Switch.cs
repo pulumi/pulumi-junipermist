@@ -47,6 +47,12 @@ namespace Pulumi.JuniperMist.Device
         [Output("bgpConfig")]
         public Output<ImmutableDictionary<string, Outputs.SwitchBgpConfig>?> BgpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
+        /// </summary>
+        [Output("defaultPortUsage")]
+        public Output<string> DefaultPortUsage { get; private set; } = null!;
+
         [Output("deviceId")]
         public Output<string> DeviceId { get; private set; } = null!;
 
@@ -387,6 +393,12 @@ namespace Pulumi.JuniperMist.Device
             get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.SwitchBgpConfigArgs>());
             set => _bgpConfig = value;
         }
+
+        /// <summary>
+        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
+        /// </summary>
+        [Input("defaultPortUsage")]
+        public Input<string>? DefaultPortUsage { get; set; }
 
         [Input("deviceId", required: true)]
         public Input<string> DeviceId { get; set; } = null!;
@@ -749,6 +761,12 @@ namespace Pulumi.JuniperMist.Device
             get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.SwitchBgpConfigGetArgs>());
             set => _bgpConfig = value;
         }
+
+        /// <summary>
+        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
+        /// </summary>
+        [Input("defaultPortUsage")]
+        public Input<string>? DefaultPortUsage { get; set; }
 
         [Input("deviceId")]
         public Input<string>? DeviceId { get; set; }

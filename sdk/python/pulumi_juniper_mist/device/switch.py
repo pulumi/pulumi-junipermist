@@ -27,6 +27,7 @@ class SwitchArgs:
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]] = None,
+                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_snooping: Optional[pulumi.Input['SwitchDhcpSnoopingArgs']] = None,
                  dhcpd_config: Optional[pulumi.Input['SwitchDhcpdConfigArgs']] = None,
                  disable_auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -71,6 +72,7 @@ class SwitchArgs:
         The set of arguments for constructing a Switch resource.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -114,6 +116,8 @@ class SwitchArgs:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
         if bgp_config is not None:
             pulumi.set(__self__, "bgp_config", bgp_config)
+        if default_port_usage is not None:
+            pulumi.set(__self__, "default_port_usage", default_port_usage)
         if dhcp_snooping is not None:
             pulumi.set(__self__, "dhcp_snooping", dhcp_snooping)
         if dhcpd_config is not None:
@@ -254,6 +258,18 @@ class SwitchArgs:
     @bgp_config.setter
     def bgp_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]]):
         pulumi.set(self, "bgp_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPortUsage")
+    def default_port_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        """
+        return pulumi.get(self, "default_port_usage")
+
+    @default_port_usage.setter
+    def default_port_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_port_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpSnooping")
@@ -715,6 +731,7 @@ class _SwitchState:
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]] = None,
+                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  device_id: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_snooping: Optional[pulumi.Input['SwitchDhcpSnoopingArgs']] = None,
                  dhcpd_config: Optional[pulumi.Input['SwitchDhcpdConfigArgs']] = None,
@@ -769,6 +786,7 @@ class _SwitchState:
         Input properties used for looking up and filtering Switch resources.
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -814,6 +832,8 @@ class _SwitchState:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
         if bgp_config is not None:
             pulumi.set(__self__, "bgp_config", bgp_config)
+        if default_port_usage is not None:
+            pulumi.set(__self__, "default_port_usage", default_port_usage)
         if device_id is not None:
             pulumi.set(__self__, "device_id", device_id)
         if dhcp_snooping is not None:
@@ -956,6 +976,18 @@ class _SwitchState:
     @bgp_config.setter
     def bgp_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]]):
         pulumi.set(self, "bgp_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPortUsage")
+    def default_port_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        """
+        return pulumi.get(self, "default_port_usage")
+
+    @default_port_usage.setter
+    def default_port_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_port_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceId")
@@ -1522,6 +1554,7 @@ class Switch(pulumi.CustomResource):
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]]] = None,
+                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  device_id: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_snooping: Optional[pulumi.Input[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']]] = None,
                  dhcpd_config: Optional[pulumi.Input[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']]] = None,
@@ -1586,6 +1619,7 @@ class Switch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -1661,6 +1695,7 @@ class Switch(pulumi.CustomResource):
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]]] = None,
+                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  device_id: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_snooping: Optional[pulumi.Input[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']]] = None,
                  dhcpd_config: Optional[pulumi.Input[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']]] = None,
@@ -1716,6 +1751,7 @@ class Switch(pulumi.CustomResource):
             __props__.__dict__["acl_tags"] = acl_tags
             __props__.__dict__["additional_config_cmds"] = additional_config_cmds
             __props__.__dict__["bgp_config"] = bgp_config
+            __props__.__dict__["default_port_usage"] = default_port_usage
             if device_id is None and not opts.urn:
                 raise TypeError("Missing required property 'device_id'")
             __props__.__dict__["device_id"] = device_id
@@ -1784,6 +1820,7 @@ class Switch(pulumi.CustomResource):
             acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]]] = None,
             additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]]] = None,
+            default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
             device_id: Optional[pulumi.Input[_builtins.str]] = None,
             dhcp_snooping: Optional[pulumi.Input[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']]] = None,
             dhcpd_config: Optional[pulumi.Input[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']]] = None,
@@ -1843,6 +1880,7 @@ class Switch(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input[_builtins.bool] disable_auto_config: This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -1888,6 +1926,7 @@ class Switch(pulumi.CustomResource):
         __props__.__dict__["acl_tags"] = acl_tags
         __props__.__dict__["additional_config_cmds"] = additional_config_cmds
         __props__.__dict__["bgp_config"] = bgp_config
+        __props__.__dict__["default_port_usage"] = default_port_usage
         __props__.__dict__["device_id"] = device_id
         __props__.__dict__["dhcp_snooping"] = dhcp_snooping
         __props__.__dict__["dhcpd_config"] = dhcpd_config
@@ -1965,6 +2004,14 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchBgpConfig']]]:
         return pulumi.get(self, "bgp_config")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPortUsage")
+    def default_port_usage(self) -> pulumi.Output[_builtins.str]:
+        """
+        Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+        """
+        return pulumi.get(self, "default_port_usage")
 
     @_builtins.property
     @pulumi.getter(name="deviceId")

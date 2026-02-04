@@ -34,11 +34,13 @@ type Switch struct {
 	// ACL Tags to identify traffic source or destination. Key name is the tag name
 	AclTags SwitchAclTagsMapOutput `pulumi:"aclTags"`
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds pulumi.StringArrayOutput    `pulumi:"additionalConfigCmds"`
-	BgpConfig            SwitchBgpConfigMapOutput    `pulumi:"bgpConfig"`
-	DeviceId             pulumi.StringOutput         `pulumi:"deviceId"`
-	DhcpSnooping         SwitchDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
-	DhcpdConfig          SwitchDhcpdConfigPtrOutput  `pulumi:"dhcpdConfig"`
+	AdditionalConfigCmds pulumi.StringArrayOutput `pulumi:"additionalConfigCmds"`
+	BgpConfig            SwitchBgpConfigMapOutput `pulumi:"bgpConfig"`
+	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+	DefaultPortUsage pulumi.StringOutput         `pulumi:"defaultPortUsage"`
+	DeviceId         pulumi.StringOutput         `pulumi:"deviceId"`
+	DhcpSnooping     SwitchDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
+	DhcpdConfig      SwitchDhcpdConfigPtrOutput  `pulumi:"dhcpdConfig"`
 	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig pulumi.BoolOutput `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -166,9 +168,11 @@ type switchState struct {
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string                   `pulumi:"additionalConfigCmds"`
 	BgpConfig            map[string]SwitchBgpConfig `pulumi:"bgpConfig"`
-	DeviceId             *string                    `pulumi:"deviceId"`
-	DhcpSnooping         *SwitchDhcpSnooping        `pulumi:"dhcpSnooping"`
-	DhcpdConfig          *SwitchDhcpdConfig         `pulumi:"dhcpdConfig"`
+	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+	DefaultPortUsage *string             `pulumi:"defaultPortUsage"`
+	DeviceId         *string             `pulumi:"deviceId"`
+	DhcpSnooping     *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
+	DhcpdConfig      *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
 	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig *bool `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -261,9 +265,11 @@ type SwitchState struct {
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	BgpConfig            SwitchBgpConfigMapInput
-	DeviceId             pulumi.StringPtrInput
-	DhcpSnooping         SwitchDhcpSnoopingPtrInput
-	DhcpdConfig          SwitchDhcpdConfigPtrInput
+	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+	DefaultPortUsage pulumi.StringPtrInput
+	DeviceId         pulumi.StringPtrInput
+	DhcpSnooping     SwitchDhcpSnoopingPtrInput
+	DhcpdConfig      SwitchDhcpdConfigPtrInput
 	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig pulumi.BoolPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -360,9 +366,11 @@ type switchArgs struct {
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string                   `pulumi:"additionalConfigCmds"`
 	BgpConfig            map[string]SwitchBgpConfig `pulumi:"bgpConfig"`
-	DeviceId             string                     `pulumi:"deviceId"`
-	DhcpSnooping         *SwitchDhcpSnooping        `pulumi:"dhcpSnooping"`
-	DhcpdConfig          *SwitchDhcpdConfig         `pulumi:"dhcpdConfig"`
+	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+	DefaultPortUsage *string             `pulumi:"defaultPortUsage"`
+	DeviceId         string              `pulumi:"deviceId"`
+	DhcpSnooping     *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
+	DhcpdConfig      *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
 	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig *bool `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -444,9 +452,11 @@ type SwitchArgs struct {
 	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	BgpConfig            SwitchBgpConfigMapInput
-	DeviceId             pulumi.StringInput
-	DhcpSnooping         SwitchDhcpSnoopingPtrInput
-	DhcpdConfig          SwitchDhcpdConfigPtrInput
+	// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+	DefaultPortUsage pulumi.StringPtrInput
+	DeviceId         pulumi.StringInput
+	DhcpSnooping     SwitchDhcpSnoopingPtrInput
+	DhcpdConfig      SwitchDhcpdConfigPtrInput
 	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
 	DisableAutoConfig pulumi.BoolPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -623,6 +633,11 @@ func (o SwitchOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 
 func (o SwitchOutput) BgpConfig() SwitchBgpConfigMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchBgpConfigMapOutput { return v.BgpConfig }).(SwitchBgpConfigMapOutput)
+}
+
+// Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+func (o SwitchOutput) DefaultPortUsage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.DefaultPortUsage }).(pulumi.StringOutput)
 }
 
 func (o SwitchOutput) DeviceId() pulumi.StringOutput {

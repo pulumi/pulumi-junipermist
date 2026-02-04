@@ -25,6 +25,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
+        /// Port usage to assign to switch ports without any port usage assigned. Default: `Default` to preserve default behavior
+        /// </summary>
+        [Input("defaultPortUsage")]
+        public Input<string>? DefaultPortUsage { get; set; }
+
+        /// <summary>
         /// In-Band Management interface configuration
         /// </summary>
         [Input("ipConfig")]

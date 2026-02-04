@@ -127,10 +127,6 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     declare public readonly additionalConfigCmds: pulumi.Output<string[] | undefined>;
     declare public readonly autoUpgradeLinecard: pulumi.Output<boolean>;
-    /**
-     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     */
-    declare public readonly defaultPortUsage: pulumi.Output<string | undefined>;
     declare public readonly dhcpSnooping: pulumi.Output<outputs.site.NetworktemplateDhcpSnooping | undefined>;
     /**
      * If some system-default port usages are not desired - namely, ap / iot / uplink
@@ -221,7 +217,6 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["aclTags"] = state?.aclTags;
             resourceInputs["additionalConfigCmds"] = state?.additionalConfigCmds;
             resourceInputs["autoUpgradeLinecard"] = state?.autoUpgradeLinecard;
-            resourceInputs["defaultPortUsage"] = state?.defaultPortUsage;
             resourceInputs["dhcpSnooping"] = state?.dhcpSnooping;
             resourceInputs["disabledSystemDefinedPortUsages"] = state?.disabledSystemDefinedPortUsages;
             resourceInputs["dnsServers"] = state?.dnsServers;
@@ -252,7 +247,6 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["aclTags"] = args?.aclTags;
             resourceInputs["additionalConfigCmds"] = args?.additionalConfigCmds;
             resourceInputs["autoUpgradeLinecard"] = args?.autoUpgradeLinecard;
-            resourceInputs["defaultPortUsage"] = args?.defaultPortUsage;
             resourceInputs["dhcpSnooping"] = args?.dhcpSnooping;
             resourceInputs["disabledSystemDefinedPortUsages"] = args?.disabledSystemDefinedPortUsages;
             resourceInputs["dnsServers"] = args?.dnsServers;
@@ -294,10 +288,6 @@ export interface NetworktemplateState {
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     autoUpgradeLinecard?: pulumi.Input<boolean>;
-    /**
-     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     */
-    defaultPortUsage?: pulumi.Input<string>;
     dhcpSnooping?: pulumi.Input<inputs.site.NetworktemplateDhcpSnooping>;
     /**
      * If some system-default port usages are not desired - namely, ap / iot / uplink
@@ -386,10 +376,6 @@ export interface NetworktemplateArgs {
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     autoUpgradeLinecard?: pulumi.Input<boolean>;
-    /**
-     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-     */
-    defaultPortUsage?: pulumi.Input<string>;
     dhcpSnooping?: pulumi.Input<inputs.site.NetworktemplateDhcpSnooping>;
     /**
      * If some system-default port usages are not desired - namely, ap / iot / uplink

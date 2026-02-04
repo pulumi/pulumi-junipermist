@@ -9065,6 +9065,10 @@ export namespace org {
          */
         additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+         */
+        defaultPortUsage?: pulumi.Input<string>;
+        /**
          * In-Band Management interface configuration
          */
         ipConfig?: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRuleIpConfig>;
@@ -12896,6 +12900,10 @@ export namespace site {
          * additional CLI commands to append to the generated Junos config. **Note**: no check is done
          */
         additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+         */
+        defaultPortUsage?: pulumi.Input<string>;
         /**
          * In-Band Management interface configuration
          */

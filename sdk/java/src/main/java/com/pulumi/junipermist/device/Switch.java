@@ -107,6 +107,20 @@ public class Switch extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,SwitchBgpConfig>>> bgpConfig() {
         return Codegen.optional(this.bgpConfig);
     }
+    /**
+     * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+     * 
+     */
+    @Export(name="defaultPortUsage", refs={String.class}, tree="[0]")
+    private Output<String> defaultPortUsage;
+
+    /**
+     * @return Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
+     * 
+     */
+    public Output<String> defaultPortUsage() {
+        return this.defaultPortUsage;
+    }
     @Export(name="deviceId", refs={String.class}, tree="[0]")
     private Output<String> deviceId;
 

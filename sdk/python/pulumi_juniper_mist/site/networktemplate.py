@@ -26,7 +26,6 @@ class NetworktemplateArgs:
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateAclTagsArgs']]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auto_upgrade_linecard: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_snooping: Optional[pulumi.Input['NetworktemplateDhcpSnoopingArgs']] = None,
                  disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -52,7 +51,6 @@ class NetworktemplateArgs:
         :param pulumi.Input[_builtins.str] site_id: Unique ID of the object instance in the Mist Organization
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_system_defined_port_usages: If some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -79,8 +77,6 @@ class NetworktemplateArgs:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
         if auto_upgrade_linecard is not None:
             pulumi.set(__self__, "auto_upgrade_linecard", auto_upgrade_linecard)
-        if default_port_usage is not None:
-            pulumi.set(__self__, "default_port_usage", default_port_usage)
         if dhcp_snooping is not None:
             pulumi.set(__self__, "dhcp_snooping", dhcp_snooping)
         if disabled_system_defined_port_usages is not None:
@@ -175,18 +171,6 @@ class NetworktemplateArgs:
     @auto_upgrade_linecard.setter
     def auto_upgrade_linecard(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "auto_upgrade_linecard", value)
-
-    @_builtins.property
-    @pulumi.getter(name="defaultPortUsage")
-    def default_port_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-        """
-        return pulumi.get(self, "default_port_usage")
-
-    @default_port_usage.setter
-    def default_port_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "default_port_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpSnooping")
@@ -424,7 +408,6 @@ class _NetworktemplateState:
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateAclTagsArgs']]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auto_upgrade_linecard: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_snooping: Optional[pulumi.Input['NetworktemplateDhcpSnoopingArgs']] = None,
                  disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -450,7 +433,6 @@ class _NetworktemplateState:
         Input properties used for looking up and filtering Networktemplate resources.
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_system_defined_port_usages: If some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -477,8 +459,6 @@ class _NetworktemplateState:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
         if auto_upgrade_linecard is not None:
             pulumi.set(__self__, "auto_upgrade_linecard", auto_upgrade_linecard)
-        if default_port_usage is not None:
-            pulumi.set(__self__, "default_port_usage", default_port_usage)
         if dhcp_snooping is not None:
             pulumi.set(__self__, "dhcp_snooping", dhcp_snooping)
         if disabled_system_defined_port_usages is not None:
@@ -563,18 +543,6 @@ class _NetworktemplateState:
     @auto_upgrade_linecard.setter
     def auto_upgrade_linecard(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "auto_upgrade_linecard", value)
-
-    @_builtins.property
-    @pulumi.getter(name="defaultPortUsage")
-    def default_port_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-        """
-        return pulumi.get(self, "default_port_usage")
-
-    @default_port_usage.setter
-    def default_port_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "default_port_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpSnooping")
@@ -827,7 +795,6 @@ class Networktemplate(pulumi.CustomResource):
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auto_upgrade_linecard: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_snooping: Optional[pulumi.Input[Union['NetworktemplateDhcpSnoopingArgs', 'NetworktemplateDhcpSnoopingArgsDict']]] = None,
                  disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -936,7 +903,6 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_system_defined_port_usages: If some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -1062,7 +1028,6 @@ class Networktemplate(pulumi.CustomResource):
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auto_upgrade_linecard: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  dhcp_snooping: Optional[pulumi.Input[Union['NetworktemplateDhcpSnoopingArgs', 'NetworktemplateDhcpSnoopingArgsDict']]] = None,
                  disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1097,7 +1062,6 @@ class Networktemplate(pulumi.CustomResource):
             __props__.__dict__["acl_tags"] = acl_tags
             __props__.__dict__["additional_config_cmds"] = additional_config_cmds
             __props__.__dict__["auto_upgrade_linecard"] = auto_upgrade_linecard
-            __props__.__dict__["default_port_usage"] = default_port_usage
             __props__.__dict__["dhcp_snooping"] = dhcp_snooping
             __props__.__dict__["disabled_system_defined_port_usages"] = disabled_system_defined_port_usages
             __props__.__dict__["dns_servers"] = dns_servers
@@ -1135,7 +1099,6 @@ class Networktemplate(pulumi.CustomResource):
             acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]]] = None,
             additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             auto_upgrade_linecard: Optional[pulumi.Input[_builtins.bool]] = None,
-            default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
             dhcp_snooping: Optional[pulumi.Input[Union['NetworktemplateDhcpSnoopingArgs', 'NetworktemplateDhcpSnoopingArgsDict']]] = None,
             disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1166,7 +1129,6 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[_builtins.str] default_port_usage: Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_system_defined_port_usages: If some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -1193,7 +1155,6 @@ class Networktemplate(pulumi.CustomResource):
         __props__.__dict__["acl_tags"] = acl_tags
         __props__.__dict__["additional_config_cmds"] = additional_config_cmds
         __props__.__dict__["auto_upgrade_linecard"] = auto_upgrade_linecard
-        __props__.__dict__["default_port_usage"] = default_port_usage
         __props__.__dict__["dhcp_snooping"] = dhcp_snooping
         __props__.__dict__["disabled_system_defined_port_usages"] = disabled_system_defined_port_usages
         __props__.__dict__["dns_servers"] = dns_servers
@@ -1242,14 +1203,6 @@ class Networktemplate(pulumi.CustomResource):
     @pulumi.getter(name="autoUpgradeLinecard")
     def auto_upgrade_linecard(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "auto_upgrade_linecard")
-
-    @_builtins.property
-    @pulumi.getter(name="defaultPortUsage")
-    def default_port_usage(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
-        """
-        return pulumi.get(self, "default_port_usage")
 
     @_builtins.property
     @pulumi.getter(name="dhcpSnooping")
