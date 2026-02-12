@@ -791,8 +791,7 @@ class DeviceprofileAp(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_deviceprofile_ap` with:
-
+        Using `pulumi import`, import `org.DeviceprofileAp` with:
         Device Profile can be imported by specifying the org_id and the deviceprofile_id
 
         ```sh
@@ -850,8 +849,7 @@ class DeviceprofileAp(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_deviceprofile_ap` with:
-
+        Using `pulumi import`, import `org.DeviceprofileAp` with:
         Device Profile can be imported by specifying the org_id and the deviceprofile_id
 
         ```sh

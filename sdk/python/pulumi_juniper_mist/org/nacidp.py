@@ -981,8 +981,7 @@ class Nacidp(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_nacidp` with:
-
+        Using `pulumi import`, import `org.Nacidp` with:
         Org PSK can be imported by specifying the org_id and the nacidp_id
 
         ```sh
@@ -1085,8 +1084,7 @@ class Nacidp(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_nacidp` with:
-
+        Using `pulumi import`, import `org.Nacidp` with:
         Org PSK can be imported by specifying the org_id and the nacidp_id
 
         ```sh

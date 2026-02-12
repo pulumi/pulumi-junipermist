@@ -695,8 +695,7 @@ class Webhook(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_webhook` with:
-
+        Using `pulumi import`, import `site.Webhook` with:
         Site Webhook can be imported by specifying the site_id and the webhook_id
 
         ```sh
@@ -765,8 +764,7 @@ class Webhook(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_webhook` with:
-
+        Using `pulumi import`, import `site.Webhook` with:
         Site Webhook can be imported by specifying the site_id and the webhook_id
 
         ```sh

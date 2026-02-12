@@ -424,8 +424,7 @@ class Wxtag(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_wxtag` with:
-
+        Using `pulumi import`, import `org.Wxtag` with:
         Org WxTag can be imported by specifying the org_id and the wxtag_id
 
         ```sh
@@ -498,8 +497,7 @@ class Wxtag(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_wxtag` with:
-
+        Using `pulumi import`, import `org.Wxtag` with:
         Org WxTag can be imported by specifying the org_id and the wxtag_id
 
         ```sh

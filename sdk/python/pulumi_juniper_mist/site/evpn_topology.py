@@ -262,8 +262,7 @@ class EvpnTopology(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_evpn_topology` with:
-
+        Using `pulumi import`, import `site.EvpnTopology` with:
         EVPN Topology can be imported by specifying the site_id and the evpn_topology_id
 
         ```sh
@@ -344,8 +343,7 @@ class EvpnTopology(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_evpn_topology` with:
-
+        Using `pulumi import`, import `site.EvpnTopology` with:
         EVPN Topology can be imported by specifying the site_id and the evpn_topology_id
 
         ```sh

@@ -364,8 +364,7 @@ class Wxrule(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_wxrule` with:
-
+        Using `pulumi import`, import `site.Wxrule` with:
         Site WxRule can be imported by specifying the site_id and the wxrule_id
 
         ```sh
@@ -410,8 +409,7 @@ class Wxrule(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_wxrule` with:
-
+        Using `pulumi import`, import `site.Wxrule` with:
         Site WxRule can be imported by specifying the site_id and the wxrule_id
 
         ```sh

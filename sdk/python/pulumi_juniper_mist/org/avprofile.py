@@ -271,8 +271,7 @@ class Avprofile(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_avprofile` with:
-
+        Using `pulumi import`, import `org.Avprofile` with:
         IDP Profile can be imported by specifying the org_id and the avprofile_id
 
         ```sh
@@ -326,8 +325,7 @@ class Avprofile(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_avprofile` with:
-
+        Using `pulumi import`, import `org.Avprofile` with:
         IDP Profile can be imported by specifying the org_id and the avprofile_id
 
         ```sh

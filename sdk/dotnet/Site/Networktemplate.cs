@@ -120,9 +120,8 @@ namespace Pulumi.JuniperMist.Site
     /// 
     /// ## Import
     /// 
-    /// Using `pulumi import`, import `mist_site_networktemplate` with:
-    /// 
-    /// Site Network Template can be imported by specifying the site_id
+    /// Using `pulumi import`, import `junipermist.site.Networktemplate` with:
+    /// Site Network Template can be imported by specifying the SiteId
     /// 
     /// ```sh
     /// $ pulumi import junipermist:site/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a

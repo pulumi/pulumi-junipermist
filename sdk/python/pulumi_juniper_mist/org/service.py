@@ -811,8 +811,7 @@ class Service(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_service` with:
-
+        Using `pulumi import`, import `org.Service` with:
         Org Service can be imported by specifying the org_id and the service_id
 
         ```sh
@@ -878,8 +877,7 @@ class Service(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_service` with:
-
+        Using `pulumi import`, import `org.Service` with:
         Org Service can be imported by specifying the org_id and the service_id
 
         ```sh

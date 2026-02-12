@@ -226,8 +226,7 @@ class Vpn(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_vpn` with:
-
+        Using `pulumi import`, import `org.Vpn` with:
         Org VPN can be imported by specifying the org_id and the vpn_id
 
         ```sh
@@ -283,8 +282,7 @@ class Vpn(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_vpn` with:
-
+        Using `pulumi import`, import `org.Vpn` with:
         Org VPN can be imported by specifying the org_id and the vpn_id
 
         ```sh

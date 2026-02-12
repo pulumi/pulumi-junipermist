@@ -31,9 +31,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import `mist_org_deviceprofile_ap` with:
- *
- * Device Profile can be imported by specifying the org_id and the deviceprofile_id
+ * Using `pulumi import`, import `junipermist.org.DeviceprofileAp` with:
+ * Device Profile can be imported by specifying the orgId and the deviceprofileId
  *
  * ```sh
  * $ pulumi import junipermist:org/deviceprofileAp:DeviceprofileAp deviceprofile_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

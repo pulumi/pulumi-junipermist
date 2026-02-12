@@ -52,9 +52,8 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Import
     /// 
-    /// Using `pulumi import`, import `mist_org_wxtag` with:
-    /// 
-    /// Org WxTag can be imported by specifying the org_id and the wxtag_id
+    /// Using `pulumi import`, import `junipermist.org.Wxtag` with:
+    /// Org WxTag can be imported by specifying the OrgId and the WxtagId
     /// 
     /// ```sh
     /// $ pulumi import junipermist:org/wxtag:Wxtag wxtag_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

@@ -38,9 +38,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import `mist_org_service` with:
- *
- * Org Service can be imported by specifying the org_id and the service_id
+ * Using `pulumi import`, import `junipermist.org.Service` with:
+ * Org Service can be imported by specifying the orgId and the serviceId
  *
  * ```sh
  * $ pulumi import junipermist:org/service:Service service_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

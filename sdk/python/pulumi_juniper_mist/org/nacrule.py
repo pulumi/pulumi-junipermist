@@ -333,8 +333,7 @@ class Nacrule(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_nacrule` with:
-
+        Using `pulumi import`, import `org.Nacrule` with:
         NAC Rule can be imported by specifying the org_id and the nacrule_id
 
         ```sh
@@ -385,8 +384,7 @@ class Nacrule(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_nacrule` with:
-
+        Using `pulumi import`, import `org.Nacrule` with:
         NAC Rule can be imported by specifying the org_id and the nacrule_id
 
         ```sh

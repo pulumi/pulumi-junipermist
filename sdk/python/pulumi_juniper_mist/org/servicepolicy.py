@@ -451,8 +451,7 @@ class Servicepolicy(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_servicepolicy` with:
-
+        Using `pulumi import`, import `org.Servicepolicy` with:
         Org Service Policy can be imported by specifying the org_id and the servicepolicy_id
 
         ```sh
@@ -505,8 +504,7 @@ class Servicepolicy(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_servicepolicy` with:
-
+        Using `pulumi import`, import `org.Servicepolicy` with:
         Org Service Policy can be imported by specifying the org_id and the servicepolicy_id
 
         ```sh

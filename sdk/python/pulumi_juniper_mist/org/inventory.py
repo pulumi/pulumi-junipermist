@@ -150,8 +150,7 @@ class Inventory(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_inventory` with:
-
+        Using `pulumi import`, import `org.Inventory` with:
         Org Inventory can be imported by specifying the org_id
 
         ```sh
@@ -208,8 +207,7 @@ class Inventory(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_inventory` with:
-
+        Using `pulumi import`, import `org.Inventory` with:
         Org Inventory can be imported by specifying the org_id
 
         ```sh

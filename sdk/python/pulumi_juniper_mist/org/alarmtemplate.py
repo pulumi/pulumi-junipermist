@@ -208,8 +208,7 @@ class Alarmtemplate(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_alarmtemplate` with:
-
+        Using `pulumi import`, import `org.Alarmtemplate` with:
         Org RF Template can be imported by specifying the org_id and the alarmtemplate_id
 
         ```sh
@@ -274,8 +273,7 @@ class Alarmtemplate(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_alarmtemplate` with:
-
+        Using `pulumi import`, import `org.Alarmtemplate` with:
         Org RF Template can be imported by specifying the org_id and the alarmtemplate_id
 
         ```sh

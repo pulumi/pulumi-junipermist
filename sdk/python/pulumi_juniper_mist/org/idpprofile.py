@@ -186,8 +186,7 @@ class Idpprofile(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_idpprofile` with:
-
+        Using `pulumi import`, import `org.Idpprofile` with:
         IDP Profile can be imported by specifying the org_id and the idpprofile_id
 
         ```sh
@@ -243,8 +242,7 @@ class Idpprofile(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_idpprofile` with:
-
+        Using `pulumi import`, import `org.Idpprofile` with:
         IDP Profile can be imported by specifying the org_id and the idpprofile_id
 
         ```sh

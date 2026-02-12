@@ -598,8 +598,7 @@ class Nactag(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_nactag` with:
-
+        Using `pulumi import`, import `org.Nactag` with:
         NAC Tag can be imported by specifying the org_id and the nactag_id
 
         ```sh
@@ -658,8 +657,7 @@ class Nactag(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_nactag` with:
-
+        Using `pulumi import`, import `org.Nactag` with:
         NAC Tag can be imported by specifying the org_id and the nactag_id
 
         ```sh

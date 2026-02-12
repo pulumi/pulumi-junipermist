@@ -47,9 +47,8 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Import
     /// 
-    /// Using `pulumi import`, import `mist_org_wxrule` with:
-    /// 
-    /// Org WxRule can be imported by specifying the org_id and the wxrule_id
+    /// Using `pulumi import`, import `junipermist.org.Wxrule` with:
+    /// Org WxRule can be imported by specifying the OrgId and the WxruleId
     /// 
     /// ```sh
     /// $ pulumi import junipermist:org/wxrule:Wxrule wxrule_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

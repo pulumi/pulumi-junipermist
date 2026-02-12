@@ -55,9 +55,8 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import `mist_site_psk` with:
-//
-// Site PSK can be imported by specifying the site_id and the psk_id
+// Using `pulumi import`, import `site.Psk` with:
+// Site PSK can be imported by specifying the siteId and the pskId
 //
 // ```sh
 // $ pulumi import junipermist:site/psk:Psk psk_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

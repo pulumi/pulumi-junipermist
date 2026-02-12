@@ -423,8 +423,7 @@ class Wxtag(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_wxtag` with:
-
+        Using `pulumi import`, import `site.Wxtag` with:
         Site WxTag can be imported by specifying the site_id and the wxtag_id
 
         ```sh
@@ -496,8 +495,7 @@ class Wxtag(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_wxtag` with:
-
+        Using `pulumi import`, import `site.Wxtag` with:
         Site WxTag can be imported by specifying the site_id and the wxtag_id
 
         ```sh

@@ -975,8 +975,7 @@ class Gatewaytemplate(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_gatewaytemplate` with:
-
+        Using `pulumi import`, import `org.Gatewaytemplate` with:
         Gateway Template can be imported by specifying the org_id and the gatewaytemplate_id
 
         ```sh
@@ -1101,8 +1100,7 @@ class Gatewaytemplate(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_gatewaytemplate` with:
-
+        Using `pulumi import`, import `org.Gatewaytemplate` with:
         Gateway Template can be imported by specifying the org_id and the gatewaytemplate_id
 
         ```sh

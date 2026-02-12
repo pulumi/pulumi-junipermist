@@ -1607,8 +1607,7 @@ class Switch(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_device_switch` with:
-
+        Using `pulumi import`, import `device.Switch` with:
         Switch Configuration can be imported by specifying the site_id and the device_id
 
         ```sh
@@ -1668,8 +1667,7 @@ class Switch(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_device_switch` with:
-
+        Using `pulumi import`, import `device.Switch` with:
         Switch Configuration can be imported by specifying the site_id and the device_id
 
         ```sh

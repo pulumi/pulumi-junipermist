@@ -1183,8 +1183,7 @@ class Ap(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_device_ap` with:
-
+        Using `pulumi import`, import `device.Ap` with:
         AP Configuration can be imported by specifying the site_id and the device_id
 
         ```sh
@@ -1233,8 +1232,7 @@ class Ap(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_device_ap` with:
-
+        Using `pulumi import`, import `device.Ap` with:
         AP Configuration can be imported by specifying the site_id and the device_id
 
         ```sh

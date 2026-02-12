@@ -959,8 +959,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_deviceprofile_gateway` with:
-
+        Using `pulumi import`, import `org.DeviceprofileGateway` with:
         Device Profile can be imported by specifying the org_id and the deviceprofile_id
 
         ```sh
@@ -1085,8 +1084,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_deviceprofile_gateway` with:
-
+        Using `pulumi import`, import `org.DeviceprofileGateway` with:
         Device Profile can be imported by specifying the org_id and the deviceprofile_id
 
         ```sh
