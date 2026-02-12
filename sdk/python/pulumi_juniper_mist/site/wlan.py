@@ -3069,8 +3069,7 @@ class Wlan(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_wlan` with:
-
+        Using `pulumi import`, import `site.Wlan` with:
         Site WLAN can be imported by specifying the site_id and the wlan_id
 
         ```sh
@@ -3208,8 +3207,7 @@ class Wlan(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_wlan` with:
-
+        Using `pulumi import`, import `site.Wlan` with:
         Site WLAN can be imported by specifying the site_id and the wlan_id
 
         ```sh

@@ -46,9 +46,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import `mist_site_setting` with:
- *
- * Site Setting can be imported by specifying the site_id
+ * Using `pulumi import`, import `junipermist.site.Setting` with:
+ * Site Setting can be imported by specifying the siteId
  *
  * ```sh
  * $ pulumi import junipermist:site/setting:Setting site_setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a

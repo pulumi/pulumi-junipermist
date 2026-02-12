@@ -1496,8 +1496,7 @@ class Setting(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_setting` with:
-
+        Using `pulumi import`, import `site.Setting` with:
         Site Setting can be imported by specifying the site_id
 
         ```sh
@@ -1584,8 +1583,7 @@ class Setting(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_setting` with:
-
+        Using `pulumi import`, import `site.Setting` with:
         Site Setting can be imported by specifying the site_id
 
         ```sh

@@ -21,13 +21,8 @@ __all__ = [
     'UpgradeDeviceFwupdateArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class UpgradeDeviceAutoUpgradeStatArgsDict(TypedDict):
-        lastcheck: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    UpgradeDeviceAutoUpgradeStatArgsDict: TypeAlias = Mapping[str, Any]
+class UpgradeDeviceAutoUpgradeStatArgsDict(TypedDict):
+    lastcheck: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class UpgradeDeviceAutoUpgradeStatArgs:
@@ -46,21 +41,18 @@ class UpgradeDeviceAutoUpgradeStatArgs:
         pulumi.set(self, "lastcheck", value)
 
 
-if not MYPY:
-    class UpgradeDeviceFwupdateArgsDict(TypedDict):
-        progress: NotRequired[pulumi.Input[_builtins.int]]
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
-        """
-        status_id: NotRequired[pulumi.Input[_builtins.int]]
-        timestamp: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Epoch (seconds)
-        """
-        will_retry: NotRequired[pulumi.Input[_builtins.bool]]
-elif False:
-    UpgradeDeviceFwupdateArgsDict: TypeAlias = Mapping[str, Any]
+class UpgradeDeviceFwupdateArgsDict(TypedDict):
+    progress: NotRequired[pulumi.Input[_builtins.int]]
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
+    """
+    status_id: NotRequired[pulumi.Input[_builtins.int]]
+    timestamp: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Epoch (seconds)
+    """
+    will_retry: NotRequired[pulumi.Input[_builtins.bool]]
 
 @pulumi.input_type
 class UpgradeDeviceFwupdateArgs:

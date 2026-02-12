@@ -481,8 +481,7 @@ class Rftemplate(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_rftemplate` with:
-
+        Using `pulumi import`, import `org.Rftemplate` with:
         Org RF Template can be imported by specifying the org_id and the rftemplate_id
 
         ```sh
@@ -551,8 +550,7 @@ class Rftemplate(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_rftemplate` with:
-
+        Using `pulumi import`, import `org.Rftemplate` with:
         Org RF Template can be imported by specifying the org_id and the rftemplate_id
 
         ```sh

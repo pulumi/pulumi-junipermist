@@ -468,8 +468,7 @@ class Sso(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_sso` with:
-
+        Using `pulumi import`, import `org.Sso` with:
         Org PSK can be imported by specifying the org_id and the sso_id
 
         ```sh
@@ -522,8 +521,7 @@ class Sso(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_sso` with:
-
+        Using `pulumi import`, import `org.Sso` with:
         Org PSK can be imported by specifying the org_id and the sso_id
 
         ```sh

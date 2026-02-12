@@ -586,8 +586,7 @@ class Psk(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_psk` with:
-
+        Using `pulumi import`, import `org.Psk` with:
         Org PSK can be imported by specifying the org_id and the psk_id
 
         ```sh
@@ -644,8 +643,7 @@ class Psk(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_psk` with:
-
+        Using `pulumi import`, import `org.Psk` with:
         Org PSK can be imported by specifying the org_id and the psk_id
 
         ```sh

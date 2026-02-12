@@ -129,8 +129,7 @@ class GatewayCluster(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_device_gateway_cluster` with:
-
+        Using `pulumi import`, import `device.GatewayCluster` with:
         Gateway cluster can be imported by specifying the org_id and the cluster_id
 
         ```sh
@@ -179,8 +178,7 @@ class GatewayCluster(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_device_gateway_cluster` with:
-
+        Using `pulumi import`, import `device.GatewayCluster` with:
         Gateway cluster can be imported by specifying the org_id and the cluster_id
 
         ```sh

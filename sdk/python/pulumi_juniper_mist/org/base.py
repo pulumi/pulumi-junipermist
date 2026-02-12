@@ -213,8 +213,7 @@ class Base(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org` with:
-
+        Using `pulumi import`, import `org.base` with:
         Organization can be imported by specifying the org_id
 
         ```sh
@@ -248,8 +247,7 @@ class Base(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org` with:
-
+        Using `pulumi import`, import `org.base` with:
         Organization can be imported by specifying the org_id
 
         ```sh

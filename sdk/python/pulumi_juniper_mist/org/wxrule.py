@@ -398,8 +398,7 @@ class Wxrule(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_wxrule` with:
-
+        Using `pulumi import`, import `org.Wxrule` with:
         Org WxRule can be imported by specifying the org_id and the wxrule_id
 
         ```sh
@@ -447,8 +446,7 @@ class Wxrule(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_wxrule` with:
-
+        Using `pulumi import`, import `org.Wxrule` with:
         Org WxRule can be imported by specifying the org_id and the wxrule_id
 
         ```sh

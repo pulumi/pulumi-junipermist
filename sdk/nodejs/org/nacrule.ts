@@ -37,9 +37,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import `mist_org_nacrule` with:
- *
- * NAC Rule can be imported by specifying the org_id and the nacrule_id
+ * Using `pulumi import`, import `junipermist.org.Nacrule` with:
+ * NAC Rule can be imported by specifying the orgId and the nacruleId
  *
  * ```sh
  * $ pulumi import junipermist:org/nacrule:Nacrule nacrule_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

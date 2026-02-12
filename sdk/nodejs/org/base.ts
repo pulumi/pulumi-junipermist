@@ -23,9 +23,8 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import `mist_org` with:
- *
- * Organization can be imported by specifying the org_id
+ * Using `pulumi import`, import `junipermist.org.base` with:
+ * Organization can be imported by specifying the orgId
  *
  * ```sh
  * $ pulumi import junipermist:org/base:base org_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a

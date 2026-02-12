@@ -107,8 +107,7 @@ class Sitegroup(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_sitegroup` with:
-
+        Using `pulumi import`, import `org.Sitegroup` with:
         Org Site Group can be imported by specifying the org_id and the sitegroup_id
 
         ```sh
@@ -143,8 +142,7 @@ class Sitegroup(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_sitegroup` with:
-
+        Using `pulumi import`, import `org.Sitegroup` with:
         Org Site Group can be imported by specifying the org_id and the sitegroup_id
 
         ```sh

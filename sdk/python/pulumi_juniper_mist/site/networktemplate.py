@@ -891,8 +891,7 @@ class Networktemplate(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_networktemplate` with:
-
+        Using `pulumi import`, import `site.Networktemplate` with:
         Site Network Template can be imported by specifying the site_id
 
         ```sh
@@ -1001,8 +1000,7 @@ class Networktemplate(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_networktemplate` with:
-
+        Using `pulumi import`, import `site.Networktemplate` with:
         Site Network Template can be imported by specifying the site_id
 
         ```sh

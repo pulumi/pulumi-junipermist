@@ -74,9 +74,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Using `pulumi import`, import `mist_site` with:
- * 
- * Site can be imported by specifying the site_id
+ * Using `pulumi import`, import `junipermist.site.base` with:
+ * Site can be imported by specifying the siteId
  * 
  * ```sh
  * $ pulumi import junipermist:device/base:base site_one d3c42998-9012-4859-9743-6b9bee475309

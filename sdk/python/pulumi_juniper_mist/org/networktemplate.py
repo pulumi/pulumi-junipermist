@@ -906,8 +906,7 @@ class Networktemplate(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_networktemplate` with:
-
+        Using `pulumi import`, import `org.Networktemplate` with:
         Org Network Template can be imported by specifying the org_id and the networktemplate_id
 
         ```sh
@@ -1013,8 +1012,7 @@ class Networktemplate(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_networktemplate` with:
-
+        Using `pulumi import`, import `org.Networktemplate` with:
         Org Network Template can be imported by specifying the org_id and the networktemplate_id
 
         ```sh

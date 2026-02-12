@@ -94,9 +94,8 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import `mist_org_setting` with:
-//
-// Org Setting can be imported by specifying the org_id
+// Using `pulumi import`, import `org.Setting` with:
+// Org Setting can be imported by specifying the orgId
 //
 // ```sh
 // $ pulumi import junipermist:org/setting:Setting setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a

@@ -109,9 +109,8 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import `mist_org_networktemplate` with:
-//
-// Org Network Template can be imported by specifying the org_id and the networktemplate_id
+// Using `pulumi import`, import `org.Networktemplate` with:
+// Org Network Template can be imported by specifying the orgId and the networktemplateId
 //
 // ```sh
 // $ pulumi import junipermist:org/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

@@ -1227,8 +1227,7 @@ class Gateway(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_device_gateway` with:
-
+        Using `pulumi import`, import `device.Gateway` with:
         Gateway Configuration can be imported by specifying the site_id and the device_id
 
         ```sh
@@ -1298,8 +1297,7 @@ class Gateway(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_device_gateway` with:
-
+        Using `pulumi import`, import `device.Gateway` with:
         Gateway Configuration can be imported by specifying the site_id and the device_id
 
         ```sh

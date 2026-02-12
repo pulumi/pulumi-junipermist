@@ -561,8 +561,7 @@ class Base(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site` with:
-
+        Using `pulumi import`, import `site.base` with:
         Site can be imported by specifying the site_id
 
         ```sh
@@ -624,8 +623,7 @@ class Base(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site` with:
-
+        Using `pulumi import`, import `site.base` with:
         Site can be imported by specifying the site_id
 
         ```sh

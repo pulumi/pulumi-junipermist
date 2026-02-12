@@ -3083,8 +3083,7 @@ class Wlan(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_wlan` with:
-
+        Using `pulumi import`, import `org.Wlan` with:
         Org WLAN can be imported by specifying the org_id and the wlan_id
 
         ```sh
@@ -3224,8 +3223,7 @@ class Wlan(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_wlan` with:
-
+        Using `pulumi import`, import `org.Wlan` with:
         Org WLAN can be imported by specifying the org_id and the wlan_id
 
         ```sh

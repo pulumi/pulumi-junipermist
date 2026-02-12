@@ -250,8 +250,7 @@ class NacEndpoint(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_nac_endpoint` with:
-
+        Using `pulumi import`, import `org.NacEndpoint` with:
         NAC Endpoint can be imported by specifying the org_id and the nac_endpoint_id
 
         ```sh
@@ -298,8 +297,7 @@ class NacEndpoint(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_nac_endpoint` with:
-
+        Using `pulumi import`, import `org.NacEndpoint` with:
         NAC Endpoint can be imported by specifying the org_id and the nac_endpoint_id
 
         ```sh

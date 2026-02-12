@@ -46,9 +46,8 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Import
     /// 
-    /// Using `pulumi import`, import `mist_org_psk` with:
-    /// 
-    /// Org PSK can be imported by specifying the org_id and the psk_id
+    /// Using `pulumi import`, import `junipermist.org.Psk` with:
+    /// Org PSK can be imported by specifying the OrgId and the PskId
     /// 
     /// ```sh
     /// $ pulumi import junipermist:org/psk:Psk psk_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

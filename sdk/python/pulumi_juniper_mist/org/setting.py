@@ -1119,8 +1119,7 @@ class Setting(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_setting` with:
-
+        Using `pulumi import`, import `org.Setting` with:
         Org Setting can be imported by specifying the org_id
 
         ```sh
@@ -1219,8 +1218,7 @@ class Setting(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_setting` with:
-
+        Using `pulumi import`, import `org.Setting` with:
         Org Setting can be imported by specifying the org_id
 
         ```sh

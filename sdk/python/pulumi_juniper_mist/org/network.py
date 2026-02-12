@@ -490,8 +490,7 @@ class Network(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_network` with:
-
+        Using `pulumi import`, import `org.Network` with:
         Org Network can be imported by specifying the org_id and the network_id
 
         ```sh
@@ -534,8 +533,7 @@ class Network(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_network` with:
-
+        Using `pulumi import`, import `org.Network` with:
         Org Network can be imported by specifying the org_id and the network_id
 
         ```sh

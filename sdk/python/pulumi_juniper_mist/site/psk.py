@@ -531,8 +531,7 @@ class Psk(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_psk` with:
-
+        Using `pulumi import`, import `site.Psk` with:
         Site PSK can be imported by specifying the site_id and the psk_id
 
         ```sh
@@ -586,8 +585,7 @@ class Psk(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_site_psk` with:
-
+        Using `pulumi import`, import `site.Psk` with:
         Site PSK can be imported by specifying the site_id and the psk_id
 
         ```sh

@@ -41,9 +41,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Using `pulumi import`, import `mist_device_ap` with:
- * 
- * AP Configuration can be imported by specifying the site_id and the device_id
+ * Using `pulumi import`, import `junipermist.device.Ap` with:
+ * AP Configuration can be imported by specifying the siteId and the deviceId
  * 
  * ```sh
  * $ pulumi import junipermist:device/ap:Ap ap_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

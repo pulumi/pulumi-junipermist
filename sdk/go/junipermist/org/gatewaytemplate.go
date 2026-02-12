@@ -124,9 +124,8 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import `mist_org_gatewaytemplate` with:
-//
-// Gateway Template can be imported by specifying the org_id and the gatewaytemplate_id
+// Using `pulumi import`, import `org.Gatewaytemplate` with:
+// Gateway Template can be imported by specifying the orgId and the gatewaytemplateId
 //
 // ```sh
 // $ pulumi import junipermist:org/gatewaytemplate:Gatewaytemplate gatewaytemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

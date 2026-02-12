@@ -245,8 +245,7 @@ class Wlantemplate(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_wlantemplate` with:
-
+        Using `pulumi import`, import `org.Wlantemplate` with:
         Org WLAN Template can be imported by specifying the org_id and the wlantemplate_id
 
         ```sh
@@ -289,8 +288,7 @@ class Wlantemplate(pulumi.CustomResource):
 
         ## Import
 
-        Using `pulumi import`, import `mist_org_wlantemplate` with:
-
+        Using `pulumi import`, import `org.Wlantemplate` with:
         Org WLAN Template can be imported by specifying the org_id and the wlantemplate_id
 
         ```sh
