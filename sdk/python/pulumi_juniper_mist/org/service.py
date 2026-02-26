@@ -47,6 +47,7 @@ class ServiceArgs:
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Service resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
@@ -412,6 +413,7 @@ class _ServiceState:
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Service resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_categories: When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_subcategories: When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
@@ -818,6 +820,7 @@ class Service(pulumi.CustomResource):
         $ pulumi import junipermist:org/service:Service service_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
@@ -883,6 +886,7 @@ class Service(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/service:Service service_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

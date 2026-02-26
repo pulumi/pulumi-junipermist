@@ -34,6 +34,7 @@ class UpgradeDeviceArgs:
                  sync_upgrade_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a UpgradeDevice resource.
+
         :param pulumi.Input[_builtins.str] target_version: firmware version to deploy to the device. Use the `device_get_versions` datasource to get the list of available firmware versions
         :param pulumi.Input[_builtins.bool] reboot: For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
         :param pulumi.Input[_builtins.int] reboot_at: For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
@@ -217,6 +218,7 @@ class _UpgradeDeviceState:
                  timestamp: Optional[pulumi.Input[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering UpgradeDevice resources.
+
         :param pulumi.Input[_builtins.str] device_version: current device firmware version
         :param pulumi.Input[_builtins.bool] reboot: For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
         :param pulumi.Input[_builtins.int] reboot_at: For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`
@@ -545,6 +547,7 @@ class UpgradeDevice(pulumi.CustomResource):
             sync_upgrade_timeout=3600)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] reboot: For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
@@ -590,6 +593,7 @@ class UpgradeDevice(pulumi.CustomResource):
             reboot=True,
             sync_upgrade_timeout=3600)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UpgradeDeviceArgs args: The arguments to use to populate this resource's properties.

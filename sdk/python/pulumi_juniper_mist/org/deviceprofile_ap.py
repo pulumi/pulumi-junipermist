@@ -46,6 +46,7 @@ class DeviceprofileApArgs:
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DeviceprofileAp resource.
+
         :param pulumi.Input['DeviceprofileApAeroscoutArgs'] aeroscout: Aeroscout AP settings
         :param pulumi.Input['DeviceprofileApBleConfigArgs'] ble_config: BLE AP settings
         :param pulumi.Input[_builtins.bool] disable_eth1: Whether to disable eth1 port
@@ -398,6 +399,7 @@ class _DeviceprofileApState:
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DeviceprofileAp resources.
+
         :param pulumi.Input['DeviceprofileApAeroscoutArgs'] aeroscout: Aeroscout AP settings
         :param pulumi.Input['DeviceprofileApBleConfigArgs'] ble_config: BLE AP settings
         :param pulumi.Input[_builtins.bool] disable_eth1: Whether to disable eth1 port
@@ -798,6 +800,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         $ pulumi import junipermist:org/deviceprofileAp:DeviceprofileAp deviceprofile_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict']] aeroscout: Aeroscout AP settings
@@ -855,6 +858,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/deviceprofileAp:DeviceprofileAp deviceprofile_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeviceprofileApArgs args: The arguments to use to populate this resource's properties.

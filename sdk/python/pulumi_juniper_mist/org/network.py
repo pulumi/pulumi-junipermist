@@ -38,6 +38,7 @@ class NetworkArgs:
                  vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]] = None):
         """
         The set of arguments for constructing a Network resource.
+
         :param pulumi.Input[_builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
         :param pulumi.Input['NetworkInternetAccessArgs'] internet_access: Whether this network has direct internet access
         :param pulumi.Input[_builtins.bool] isolation: Whether to allow clients in the network to talk to each other
@@ -252,6 +253,7 @@ class _NetworkState:
                  vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+
         :param pulumi.Input[_builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
         :param pulumi.Input['NetworkInternetAccessArgs'] internet_access: Whether this network has direct internet access
         :param pulumi.Input[_builtins.bool] isolation: Whether to allow clients in the network to talk to each other
@@ -497,6 +499,7 @@ class Network(pulumi.CustomResource):
         $ pulumi import junipermist:org/network:Network network_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
@@ -539,6 +542,7 @@ class Network(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/network:Network network_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkArgs args: The arguments to use to populate this resource's properties.

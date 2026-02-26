@@ -27,6 +27,7 @@ class AlarmtemplateArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Alarmtemplate resource.
+
         :param pulumi.Input['AlarmtemplateDeliveryArgs'] delivery: Delivery object to configure the alarm delivery
         :param pulumi.Input[Mapping[str, pulumi.Input['AlarmtemplateRulesArgs']]] rules: Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `get_const_alarms` data source).
         :param pulumi.Input[_builtins.str] name: Some string to name the alarm template
@@ -92,6 +93,7 @@ class _AlarmtemplateState:
                  rules: Optional[pulumi.Input[Mapping[str, pulumi.Input['AlarmtemplateRulesArgs']]]] = None):
         """
         Input properties used for looking up and filtering Alarmtemplate resources.
+
         :param pulumi.Input['AlarmtemplateDeliveryArgs'] delivery: Delivery object to configure the alarm delivery
         :param pulumi.Input[_builtins.str] name: Some string to name the alarm template
         :param pulumi.Input[Mapping[str, pulumi.Input['AlarmtemplateRulesArgs']]] rules: Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `get_const_alarms` data source).
@@ -215,6 +217,7 @@ class Alarmtemplate(pulumi.CustomResource):
         $ pulumi import junipermist:org/alarmtemplate:Alarmtemplate alarmtemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']] delivery: Delivery object to configure the alarm delivery
@@ -279,6 +282,7 @@ class Alarmtemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/alarmtemplate:Alarmtemplate alarmtemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AlarmtemplateArgs args: The arguments to use to populate this resource's properties.

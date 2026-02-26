@@ -146,6 +146,7 @@ class SsoRole(pulumi.CustomResource):
         $ pulumi import junipermist:org/ssoRole:SsoRole sso_role_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -186,6 +187,7 @@ class SsoRole(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/ssoRole:SsoRole sso_role_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SsoRoleArgs args: The arguments to use to populate this resource's properties.

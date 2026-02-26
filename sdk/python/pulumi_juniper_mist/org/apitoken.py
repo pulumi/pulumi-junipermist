@@ -27,6 +27,7 @@ class ApitokenArgs:
                  src_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Apitoken resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]] privileges: List of privileges the token has on the orgs/sites
         :param pulumi.Input[_builtins.str] name: Name of the token
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ips: List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
@@ -95,6 +96,7 @@ class _ApitokenState:
                  src_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Apitoken resources.
+
         :param pulumi.Input[_builtins.str] created_by: email of the token creator / null if creator is deleted
         :param pulumi.Input[_builtins.str] name: Name of the token
         :param pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]] privileges: List of privileges the token has on the orgs/sites
@@ -222,6 +224,7 @@ class Apitoken(pulumi.CustomResource):
             src_ips=["1.2.3.4/32"])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the token
@@ -264,6 +267,7 @@ class Apitoken(pulumi.CustomResource):
             ],
             src_ips=["1.2.3.4/32"])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApitokenArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class EvpnTopologyArgs:
                  pod_names: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EvpnTopology resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]] switches: Property key can be the switch MAC Address
         :param pulumi.Input['EvpnTopologyEvpnOptionsArgs'] evpn_options: EVPN Options
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pod_names: Property key is the pod number
@@ -107,6 +108,7 @@ class _EvpnTopologyState:
                  switches: Optional[pulumi.Input[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]]] = None):
         """
         Input properties used for looking up and filtering EvpnTopology resources.
+
         :param pulumi.Input['EvpnTopologyEvpnOptionsArgs'] evpn_options: EVPN Options
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pod_names: Property key is the pod number
         :param pulumi.Input[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]] switches: Property key can be the switch MAC Address
@@ -269,6 +271,7 @@ class EvpnTopology(pulumi.CustomResource):
         $ pulumi import junipermist:site/evpnTopology:EvpnTopology evpn_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']] evpn_options: EVPN Options
@@ -349,6 +352,7 @@ class EvpnTopology(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:site/evpnTopology:EvpnTopology evpn_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EvpnTopologyArgs args: The arguments to use to populate this resource's properties.

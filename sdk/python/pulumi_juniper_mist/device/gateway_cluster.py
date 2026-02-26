@@ -25,6 +25,7 @@ class GatewayClusterArgs:
                  site_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GatewayCluster resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]] nodes: When replacing a node, either mac has to remain the same as existing cluster
         """
         pulumi.set(__self__, "nodes", nodes)
@@ -59,6 +60,7 @@ class _GatewayClusterState:
                  site_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewayCluster resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]] nodes: When replacing a node, either mac has to remain the same as existing cluster
         """
         if nodes is not None:
@@ -136,6 +138,7 @@ class GatewayCluster(pulumi.CustomResource):
         $ pulumi import junipermist:device/gatewayCluster:GatewayCluster cluster_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]] nodes: When replacing a node, either mac has to remain the same as existing cluster
@@ -184,6 +187,7 @@ class GatewayCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:device/gatewayCluster:GatewayCluster cluster_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewayClusterArgs args: The arguments to use to populate this resource's properties.

@@ -33,6 +33,7 @@ class SsoArgs:
                  role_attr_from: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Sso resource.
+
         :param pulumi.Input[_builtins.str] idp_cert: IDP Cert (used to verify the signed response)
         :param pulumi.Input[_builtins.str] idp_sign_algo: Signing algorithm for SAML Assertion. enum `sha1`, `sha256`, `sha384`, `sha512`
         :param pulumi.Input[_builtins.str] idp_sso_url: IDP Single-Sign-On URL
@@ -225,6 +226,7 @@ class _SsoState:
                  role_attr_from: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Sso resources.
+
         :param pulumi.Input[_builtins.str] custom_logout_url: a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
         :param pulumi.Input[_builtins.str] default_role: default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         :param pulumi.Input[_builtins.str] domain: Random string generated during the SSO creation and used to generate the SAML URLs:
@@ -475,6 +477,7 @@ class Sso(pulumi.CustomResource):
         $ pulumi import junipermist:org/sso:Sso sso_admin_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_logout_url: a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
@@ -527,6 +530,7 @@ class Sso(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/sso:Sso sso_admin_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SsoArgs args: The arguments to use to populate this resource's properties.

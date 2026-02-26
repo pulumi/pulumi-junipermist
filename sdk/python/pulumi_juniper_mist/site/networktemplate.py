@@ -48,6 +48,7 @@ class NetworktemplateArgs:
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesArgs']]]] = None):
         """
         The set of arguments for constructing a Networktemplate resource.
+
         :param pulumi.Input[_builtins.str] site_id: Unique ID of the object instance in the Mist Organization
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
@@ -431,6 +432,7 @@ class _NetworktemplateState:
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesArgs']]]] = None):
         """
         Input properties used for looking up and filtering Networktemplate resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_system_defined_port_usages: If some system-default port usages are not desired - namely, ap / iot / uplink
@@ -898,6 +900,7 @@ class Networktemplate(pulumi.CustomResource):
         $ pulumi import junipermist:site/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
@@ -1006,6 +1009,7 @@ class Networktemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:site/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworktemplateArgs args: The arguments to use to populate this resource's properties.

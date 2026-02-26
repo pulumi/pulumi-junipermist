@@ -114,6 +114,7 @@ class WlanArgs:
                  wxtunnel_remote_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Wlan resource.
+
         :param pulumi.Input[_builtins.str] ssid: Name of the SSID
         :param pulumi.Input[_builtins.bool] acct_immediate_update: Enable coa-immediate-update and address-change-immediate-update on the access profile.
         :param pulumi.Input[_builtins.int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
@@ -1553,6 +1554,7 @@ class _WlanState:
                  wxtunnel_remote_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Wlan resources.
+
         :param pulumi.Input[_builtins.bool] acct_immediate_update: Enable coa-immediate-update and address-change-immediate-update on the access profile.
         :param pulumi.Input[_builtins.int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         :param pulumi.Input[Sequence[pulumi.Input['WlanAcctServerArgs']]] acct_servers: List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
@@ -3090,6 +3092,7 @@ class Wlan(pulumi.CustomResource):
         $ pulumi import junipermist:org/wlan:Wlan wlan_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] acct_immediate_update: Enable coa-immediate-update and address-change-immediate-update on the access profile.
@@ -3229,6 +3232,7 @@ class Wlan(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/wlan:Wlan wlan_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WlanArgs args: The arguments to use to populate this resource's properties.

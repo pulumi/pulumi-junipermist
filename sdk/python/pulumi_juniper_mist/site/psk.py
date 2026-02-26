@@ -36,6 +36,7 @@ class PskArgs:
                  vlan_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Psk resource.
+
         :param pulumi.Input[_builtins.str] passphrase: passphrase of the PSK (8-63 character or 64 in hex)
         :param pulumi.Input[_builtins.str] ssid: SSID this PSK should be applicable to
         :param pulumi.Input[_builtins.str] email: email to send psk expiring notifications to
@@ -262,6 +263,7 @@ class _PskState:
                  vlan_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Psk resources.
+
         :param pulumi.Input[_builtins.str] email: email to send psk expiring notifications to
         :param pulumi.Input[_builtins.int] expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         :param pulumi.Input[_builtins.int] expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
@@ -538,6 +540,7 @@ class Psk(pulumi.CustomResource):
         $ pulumi import junipermist:site/psk:Psk psk_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: email to send psk expiring notifications to
@@ -591,6 +594,7 @@ class Psk(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:site/psk:Psk psk_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PskArgs args: The arguments to use to populate this resource's properties.

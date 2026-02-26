@@ -36,6 +36,7 @@ class ServicepolicyArgs:
                  tenants: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Servicepolicy resource.
+
         :param pulumi.Input['ServicepolicyAamwArgs'] aamw: SRX only
         :param pulumi.Input[_builtins.str] action: enum: `allow`, `deny`
         :param pulumi.Input['ServicepolicyAntivirusArgs'] antivirus: For SRX-only
@@ -227,6 +228,7 @@ class _ServicepolicyState:
                  tenants: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Servicepolicy resources.
+
         :param pulumi.Input['ServicepolicyAamwArgs'] aamw: SRX only
         :param pulumi.Input[_builtins.str] action: enum: `allow`, `deny`
         :param pulumi.Input['ServicepolicyAntivirusArgs'] antivirus: For SRX-only
@@ -458,6 +460,7 @@ class Servicepolicy(pulumi.CustomResource):
         $ pulumi import junipermist:org/servicepolicy:Servicepolicy servicepolicy_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: SRX only
@@ -510,6 +513,7 @@ class Servicepolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/servicepolicy:Servicepolicy servicepolicy_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServicepolicyArgs args: The arguments to use to populate this resource's properties.

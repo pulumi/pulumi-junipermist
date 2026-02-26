@@ -68,6 +68,7 @@ class SettingArgs:
                  zone_occupancy_alert: Optional[pulumi.Input['SettingZoneOccupancyAlertArgs']] = None):
         """
         The set of arguments for constructing a Setting resource.
+
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input['SettingAutoUpgradeEslArgs'] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
@@ -746,6 +747,7 @@ class _SettingState:
                  zone_occupancy_alert: Optional[pulumi.Input['SettingZoneOccupancyAlertArgs']] = None):
         """
         Input properties used for looking up and filtering Setting resources.
+
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input['SettingAutoUpgradeEslArgs'] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
@@ -1503,6 +1505,7 @@ class Setting(pulumi.CustomResource):
         $ pulumi import junipermist:site/setting:Setting site_setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
@@ -1589,6 +1592,7 @@ class Setting(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:site/setting:Setting site_setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SettingArgs args: The arguments to use to populate this resource's properties.
