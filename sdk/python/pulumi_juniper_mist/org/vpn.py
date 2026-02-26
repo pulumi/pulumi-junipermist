@@ -28,6 +28,7 @@ class VpnArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Vpn resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]] paths: For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
         :param pulumi.Input['VpnPathSelectionArgs'] path_selection: Only if `type`==`hub_spoke`
         :param pulumi.Input[_builtins.str] type: enum: `hub_spoke`, `mesh`
@@ -107,6 +108,7 @@ class _VpnState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vpn resources.
+
         :param pulumi.Input['VpnPathSelectionArgs'] path_selection: Only if `type`==`hub_spoke`
         :param pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]] paths: For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
         :param pulumi.Input[_builtins.str] type: enum: `hub_spoke`, `mesh`
@@ -233,6 +235,7 @@ class Vpn(pulumi.CustomResource):
         $ pulumi import junipermist:org/vpn:Vpn vpn_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']] path_selection: Only if `type`==`hub_spoke`
@@ -288,6 +291,7 @@ class Vpn(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/vpn:Vpn vpn_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpnArgs args: The arguments to use to populate this resource's properties.

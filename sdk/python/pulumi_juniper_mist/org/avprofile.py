@@ -28,6 +28,7 @@ class AvprofileArgs:
                  url_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Avprofile resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
         :param pulumi.Input[_builtins.str] fallback_action: enum: `block`, `log-and-permit`, `permit`
         :param pulumi.Input[_builtins.int] max_filesize: In KB
@@ -130,6 +131,7 @@ class _AvprofileState:
                  url_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Avprofile resources.
+
         :param pulumi.Input[_builtins.str] fallback_action: enum: `block`, `log-and-permit`, `permit`
         :param pulumi.Input[_builtins.int] max_filesize: In KB
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
@@ -278,6 +280,7 @@ class Avprofile(pulumi.CustomResource):
         $ pulumi import junipermist:org/avprofile:Avprofile avprofile_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] fallback_action: enum: `block`, `log-and-permit`, `permit`
@@ -331,6 +334,7 @@ class Avprofile(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/avprofile:Avprofile avprofile_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AvprofileArgs args: The arguments to use to populate this resource's properties.

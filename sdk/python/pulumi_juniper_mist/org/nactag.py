@@ -37,6 +37,7 @@ class NactagArgs:
                  vlan: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Nactag resource.
+
         :param pulumi.Input[_builtins.str] type: enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_nacportal_id`, `session_timeout`, `username_attr`, `vlan`
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
@@ -305,6 +306,7 @@ class _NactagState:
                  vlan: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Nactag resources.
+
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_vlan_names: If `type`==`egress_vlan_names`, list of egress vlans to return
         :param pulumi.Input[_builtins.str] match: if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
@@ -605,6 +607,7 @@ class Nactag(pulumi.CustomResource):
         $ pulumi import junipermist:org/nactag:Nactag nactag_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_usermac_override: Can be set to true to allow the override by usermac result
@@ -663,6 +666,7 @@ class Nactag(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/nactag:Nactag nactag_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NactagArgs args: The arguments to use to populate this resource's properties.

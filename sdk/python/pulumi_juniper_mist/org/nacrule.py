@@ -32,6 +32,7 @@ class NacruleArgs:
                  not_matching: Optional[pulumi.Input['NacruleNotMatchingArgs']] = None):
         """
         The set of arguments for constructing a Nacrule resource.
+
         :param pulumi.Input[_builtins.str] action: enum: `allow`, `block`
         :param pulumi.Input[_builtins.int] order: Order of the rule, lower value implies higher priority
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: All optional, this goes into Access-Accept
@@ -165,6 +166,7 @@ class _NacruleState:
                  org_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Nacrule resources.
+
         :param pulumi.Input[_builtins.str] action: enum: `allow`, `block`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] apply_tags: All optional, this goes into Access-Accept
         :param pulumi.Input[_builtins.bool] enabled: Enabled or not
@@ -340,6 +342,7 @@ class Nacrule(pulumi.CustomResource):
         $ pulumi import junipermist:org/nacrule:Nacrule nacrule_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: enum: `allow`, `block`
@@ -390,6 +393,7 @@ class Nacrule(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/nacrule:Nacrule nacrule_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NacruleArgs args: The arguments to use to populate this resource's properties.

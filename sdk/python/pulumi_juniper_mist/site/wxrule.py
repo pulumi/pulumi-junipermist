@@ -31,6 +31,7 @@ class WxruleArgs:
                  src_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Wxrule resource.
+
         :param pulumi.Input[_builtins.str] action: type of action, allow / block. enum: `allow`, `block`
         :param pulumi.Input[_builtins.int] order: Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_apps: Blocked apps (always blocking, ignoring action), the key of Get Application List
@@ -184,6 +185,7 @@ class _WxruleState:
                  src_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Wxrule resources.
+
         :param pulumi.Input[_builtins.str] action: type of action, allow / block. enum: `allow`, `block`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_apps: Blocked apps (always blocking, ignoring action), the key of Get Application List
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
@@ -371,6 +373,7 @@ class Wxrule(pulumi.CustomResource):
         $ pulumi import junipermist:site/wxrule:Wxrule wxrule_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: type of action, allow / block. enum: `allow`, `block`
@@ -415,6 +418,7 @@ class Wxrule(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:site/wxrule:Wxrule wxrule_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WxruleArgs args: The arguments to use to populate this resource's properties.

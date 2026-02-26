@@ -32,6 +32,7 @@ class WxtagArgs:
                  vlan_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Wxtag resource.
+
         :param pulumi.Input[_builtins.str] type: enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
         :param pulumi.Input[_builtins.str] mac: If `type`==`client`, Client MAC Address
         :param pulumi.Input[_builtins.str] match: required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`, `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
@@ -210,6 +211,7 @@ class _WxtagState:
                  vlan_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Wxtag resources.
+
         :param pulumi.Input[_builtins.str] mac: If `type`==`client`, Client MAC Address
         :param pulumi.Input[_builtins.str] match: required if `type`==`match`. enum: `ap_id`, `app`, `asset_mac`, `client_mac`, `hostname`, `ip_range_subnet`, `port`, `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
         :param pulumi.Input[_builtins.str] name: The name
@@ -431,6 +433,7 @@ class Wxtag(pulumi.CustomResource):
         $ pulumi import junipermist:org/wxtag:Wxtag wxtag_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] mac: If `type`==`client`, Client MAC Address
@@ -503,6 +506,7 @@ class Wxtag(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/wxtag:Wxtag wxtag_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WxtagArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class NacEndpointArgs:
                  vlan: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NacEndpoint resource.
+
         :param pulumi.Input[_builtins.str] mac: Only non-local-admin MAC is accepted
         """
         pulumi.set(__self__, "mac", mac)
@@ -122,6 +123,7 @@ class _NacEndpointState:
                  vlan: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NacEndpoint resources.
+
         :param pulumi.Input[_builtins.str] mac: Only non-local-admin MAC is accepted
         """
         if labels is not None:
@@ -257,6 +259,7 @@ class NacEndpoint(pulumi.CustomResource):
         $ pulumi import junipermist:org/nacEndpoint:NacEndpoint endpoint_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] mac: Only non-local-admin MAC is accepted
@@ -303,6 +306,7 @@ class NacEndpoint(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/nacEndpoint:NacEndpoint endpoint_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NacEndpointArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class IdpprofileArgs:
                  overwrites: Optional[pulumi.Input[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]] = None):
         """
         The set of arguments for constructing a Idpprofile resource.
+
         :param pulumi.Input[_builtins.str] base_profile: enum: `critical`, `standard`, `strict`
         """
         pulumi.set(__self__, "base_profile", base_profile)
@@ -85,6 +86,7 @@ class _IdpprofileState:
                  overwrites: Optional[pulumi.Input[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]] = None):
         """
         Input properties used for looking up and filtering Idpprofile resources.
+
         :param pulumi.Input[_builtins.str] base_profile: enum: `critical`, `standard`, `strict`
         """
         if base_profile is not None:
@@ -193,6 +195,7 @@ class Idpprofile(pulumi.CustomResource):
         $ pulumi import junipermist:org/idpprofile:Idpprofile idpprofile_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] base_profile: enum: `critical`, `standard`, `strict`
@@ -248,6 +251,7 @@ class Idpprofile(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/idpprofile:Idpprofile idpprofile_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IdpprofileArgs args: The arguments to use to populate this resource's properties.

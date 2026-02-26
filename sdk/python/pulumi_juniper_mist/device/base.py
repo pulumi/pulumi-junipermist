@@ -38,6 +38,7 @@ class BaseArgs:
                  timezone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Base resource.
+
         :param pulumi.Input[_builtins.str] address: full address of the site
         :param pulumi.Input[_builtins.str] alarmtemplate_id: Alarm Template ID, this takes precedence over the Org-level alarmtemplate_id
         :param pulumi.Input[_builtins.str] aptemplate_id: AP Template ID, used by APs
@@ -273,6 +274,7 @@ class _BaseState:
                  tzoffset: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Base resources.
+
         :param pulumi.Input[_builtins.str] address: full address of the site
         :param pulumi.Input[_builtins.str] alarmtemplate_id: Alarm Template ID, this takes precedence over the Org-level alarmtemplate_id
         :param pulumi.Input[_builtins.str] aptemplate_id: AP Template ID, used by APs
@@ -568,6 +570,7 @@ class Base(pulumi.CustomResource):
         $ pulumi import junipermist:device/base:base site_one d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: full address of the site
@@ -629,6 +632,7 @@ class Base(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:device/base:base site_one d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BaseArgs args: The arguments to use to populate this resource's properties.

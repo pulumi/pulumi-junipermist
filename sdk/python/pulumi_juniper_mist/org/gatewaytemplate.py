@@ -51,6 +51,7 @@ class GatewaytemplateArgs:
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]] = None):
         """
         The set of arguments for constructing a Gatewaytemplate resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -466,6 +467,7 @@ class _GatewaytemplateState:
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]] = None):
         """
         Input properties used for looking up and filtering Gatewaytemplate resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -982,6 +984,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         $ pulumi import junipermist:org/gatewaytemplate:Gatewaytemplate gatewaytemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
@@ -1106,6 +1109,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/gatewaytemplate:Gatewaytemplate gatewaytemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GatewaytemplateArgs args: The arguments to use to populate this resource's properties.

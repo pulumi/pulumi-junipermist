@@ -131,6 +131,7 @@ class DeviceprofileAssign(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -159,6 +160,7 @@ class DeviceprofileAssign(pulumi.CustomResource):
                 "4c9614000001",
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DeviceprofileAssignArgs args: The arguments to use to populate this resource's properties.

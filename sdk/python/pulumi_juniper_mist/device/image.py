@@ -25,6 +25,7 @@ class ImageArgs:
                  site_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Image resource.
+
         :param pulumi.Input[_builtins.str] file: path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
         :param pulumi.Input[_builtins.int] image_number: number of the image, between 1 and 3
         """
@@ -85,6 +86,7 @@ class _ImageState:
                  site_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Image resources.
+
         :param pulumi.Input[_builtins.str] file: path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
         :param pulumi.Input[_builtins.int] image_number: number of the image, between 1 and 3
         """
@@ -158,6 +160,7 @@ class Image(pulumi.CustomResource):
 
         !> There is no validation on the Image currently uploaded to the Mist Cloud. Defining the same image twice (e.g. `image = 1`) for the same device will override the first image any warning or error.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] file: path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
@@ -175,6 +178,7 @@ class Image(pulumi.CustomResource):
         This resource can be used to add a picture to a Wireless Access point, a Switch or a Gateway. A Maximum of 3 pictures can be uploaded.
 
         !> There is no validation on the Image currently uploaded to the Mist Cloud. Defining the same image twice (e.g. `image = 1`) for the same device will override the first image any warning or error.
+
 
         :param str resource_name: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class WlantemplateArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Wlantemplate resource.
+
         :param pulumi.Input['WlantemplateAppliesArgs'] applies: Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deviceprofile_ids: List of Device Profile ids
         :param pulumi.Input['WlantemplateExceptionsArgs'] exceptions: Where this template should not be applied to (takes precedence)
@@ -124,6 +125,7 @@ class _WlantemplateState:
                  org_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Wlantemplate resources.
+
         :param pulumi.Input['WlantemplateAppliesArgs'] applies: Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deviceprofile_ids: List of Device Profile ids
         :param pulumi.Input['WlantemplateExceptionsArgs'] exceptions: Where this template should not be applied to (takes precedence)
@@ -252,6 +254,7 @@ class Wlantemplate(pulumi.CustomResource):
         $ pulumi import junipermist:org/wlantemplate:Wlantemplate wlantemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']] applies: Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
@@ -294,6 +297,7 @@ class Wlantemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/wlantemplate:Wlantemplate wlantemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WlantemplateArgs args: The arguments to use to populate this resource's properties.

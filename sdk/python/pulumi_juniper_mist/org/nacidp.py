@@ -48,6 +48,7 @@ class NacidpArgs:
                  scim_secret_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Nacidp resource.
+
         :param pulumi.Input[_builtins.str] idp_type: enum: `ldap`, `mxedge_proxy`, `oauth`
         :param pulumi.Input[_builtins.str] group_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
         :param pulumi.Input[_builtins.str] ldap_base_dn: Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
@@ -482,6 +483,7 @@ class _NacidpState:
                  scim_secret_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Nacidp resources.
+
         :param pulumi.Input[_builtins.str] group_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
         :param pulumi.Input[_builtins.str] idp_type: enum: `ldap`, `mxedge_proxy`, `oauth`
         :param pulumi.Input[_builtins.str] ldap_base_dn: Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
@@ -988,6 +990,7 @@ class Nacidp(pulumi.CustomResource):
         $ pulumi import junipermist:org/nacidp:Nacidp idp_azure 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
@@ -1090,6 +1093,7 @@ class Nacidp(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/nacidp:Nacidp idp_azure 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NacidpArgs args: The arguments to use to populate this resource's properties.

@@ -85,6 +85,7 @@ class _BaseState:
                  session_expiry: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Base resources.
+
         :param pulumi.Input[_builtins.str] msp_logo_url: logo uploaded by the MSP with advanced tier, only present if provided
         :param pulumi.Input[_builtins.str] msp_name: Name of the msp the org belongs to
         """
@@ -220,6 +221,7 @@ class Base(pulumi.CustomResource):
         $ pulumi import junipermist:org/base:base org_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -253,6 +255,7 @@ class Base(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/base:base org_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BaseArgs args: The arguments to use to populate this resource's properties.

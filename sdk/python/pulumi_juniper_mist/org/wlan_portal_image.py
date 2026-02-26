@@ -24,6 +24,7 @@ class WlanPortalImageArgs:
                  wlan_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WlanPortalImage resource.
+
         :param pulumi.Input[_builtins.str] file: path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
         :param pulumi.Input[_builtins.str] wlan_id: Org WLAN ID
         """
@@ -73,6 +74,7 @@ class _WlanPortalImageState:
                  wlan_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WlanPortalImage resources.
+
         :param pulumi.Input[_builtins.str] file: path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
         :param pulumi.Input[_builtins.str] wlan_id: Org WLAN ID
         """
@@ -142,6 +144,7 @@ class WlanPortalImage(pulumi.CustomResource):
             file="/Users/johndoe/Documents/image.jpg")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] file: path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
@@ -167,6 +170,7 @@ class WlanPortalImage(pulumi.CustomResource):
             wlan_id=wlan_one_mist_org["id"],
             file="/Users/johndoe/Documents/image.jpg")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param WlanPortalImageArgs args: The arguments to use to populate this resource's properties.

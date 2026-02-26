@@ -57,6 +57,7 @@ class SettingArgs:
                  wireless_pma: Optional[pulumi.Input['SettingWirelessPmaArgs']] = None):
         """
         The set of arguments for constructing a Setting resource.
+
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: RADSec certificates for AP
         :param pulumi.Input['SettingDeviceCertArgs'] device_cert: common device cert, optional
@@ -539,6 +540,7 @@ class _SettingState:
                  wireless_pma: Optional[pulumi.Input['SettingWirelessPmaArgs']] = None):
         """
         Input properties used for looking up and filtering Setting resources.
+
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: RADSec certificates for AP
         :param pulumi.Input['SettingDeviceCertArgs'] device_cert: common device cert, optional
@@ -1126,6 +1128,7 @@ class Setting(pulumi.CustomResource):
         $ pulumi import junipermist:org/setting:Setting setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
@@ -1224,6 +1227,7 @@ class Setting(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/setting:Setting setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SettingArgs args: The arguments to use to populate this resource's properties.

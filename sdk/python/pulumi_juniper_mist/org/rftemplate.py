@@ -36,6 +36,7 @@ class RftemplateArgs:
                  scanning_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Rftemplate resource.
+
         :param pulumi.Input['RftemplateBand24Args'] band24: Radio Band AP settings
         :param pulumi.Input[_builtins.str] band24_usage: enum: `24`, `5`, `6`, `auto`
         :param pulumi.Input['RftemplateBand5Args'] band5: Radio Band AP settings
@@ -235,6 +236,7 @@ class _RftemplateState:
                  scanning_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Rftemplate resources.
+
         :param pulumi.Input['RftemplateBand24Args'] band24: Radio Band AP settings
         :param pulumi.Input[_builtins.str] band24_usage: enum: `24`, `5`, `6`, `auto`
         :param pulumi.Input['RftemplateBand5Args'] band5: Radio Band AP settings
@@ -488,6 +490,7 @@ class Rftemplate(pulumi.CustomResource):
         $ pulumi import junipermist:org/rftemplate:Rftemplate rftemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RftemplateBand24Args', 'RftemplateBand24ArgsDict']] band24: Radio Band AP settings
@@ -556,6 +559,7 @@ class Rftemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/rftemplate:Rftemplate rftemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RftemplateArgs args: The arguments to use to populate this resource's properties.
