@@ -49,6 +49,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? EuOnly { get; set; }
 
         /// <summary>
+        /// Allows customer to enable client fingerprinting for policy enforcement
+        /// </summary>
+        [Input("fingerprinting")]
+        public Input<Inputs.SettingMistNacFingerprintingGetArgs>? Fingerprinting { get; set; }
+
+        /// <summary>
         /// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `Automatic`, `Cn`, `Dns`
         /// </summary>
         [Input("idpMachineCertLookupField")]
@@ -85,6 +91,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// </summary>
         [Input("useSslPort")]
         public Input<bool>? UseSslPort { get; set; }
+
+        /// <summary>
+        /// Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+        /// </summary>
+        [Input("usermacExpiry")]
+        public Input<int>? UsermacExpiry { get; set; }
 
         public SettingMistNacGetArgs()
         {

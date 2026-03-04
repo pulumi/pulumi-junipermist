@@ -182,11 +182,6 @@ public final class DeviceprofileGatewayPortConfig {
      */
     private @Nullable String wanArpPolicer;
     /**
-     * @return If `wanType`==`wan`, disable speedtest
-     * 
-     */
-    private @Nullable Boolean wanDisableSpeedtest;
-    /**
      * @return Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
      * 
      */
@@ -221,6 +216,11 @@ public final class DeviceprofileGatewayPortConfig {
      * 
      */
     private @Nullable DeviceprofileGatewayPortConfigWanSourceNat wanSourceNat;
+    /**
+     * @return Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+     * 
+     */
+    private @Nullable String wanSpeedtestMode;
     /**
      * @return Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
      * 
@@ -463,13 +463,6 @@ public final class DeviceprofileGatewayPortConfig {
         return Optional.ofNullable(this.wanArpPolicer);
     }
     /**
-     * @return If `wanType`==`wan`, disable speedtest
-     * 
-     */
-    public Optional<Boolean> wanDisableSpeedtest() {
-        return Optional.ofNullable(this.wanDisableSpeedtest);
-    }
-    /**
      * @return Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
      * 
      */
@@ -517,6 +510,13 @@ public final class DeviceprofileGatewayPortConfig {
      */
     public Optional<DeviceprofileGatewayPortConfigWanSourceNat> wanSourceNat() {
         return Optional.ofNullable(this.wanSourceNat);
+    }
+    /**
+     * @return Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+     * 
+     */
+    public Optional<String> wanSpeedtestMode() {
+        return Optional.ofNullable(this.wanSpeedtestMode);
     }
     /**
      * @return Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
@@ -573,7 +573,6 @@ public final class DeviceprofileGatewayPortConfig {
         private @Nullable String vlanId;
         private @Nullable Map<String,DeviceprofileGatewayPortConfigVpnPaths> vpnPaths;
         private @Nullable String wanArpPolicer;
-        private @Nullable Boolean wanDisableSpeedtest;
         private @Nullable String wanExtIp;
         private @Nullable String wanExtIp6;
         private @Nullable Map<String,DeviceprofileGatewayPortConfigWanExtraRoutes> wanExtraRoutes;
@@ -581,6 +580,7 @@ public final class DeviceprofileGatewayPortConfig {
         private @Nullable List<String> wanNetworks;
         private @Nullable DeviceprofileGatewayPortConfigWanProbeOverride wanProbeOverride;
         private @Nullable DeviceprofileGatewayPortConfigWanSourceNat wanSourceNat;
+        private @Nullable String wanSpeedtestMode;
         private @Nullable String wanType;
         public Builder() {}
         public Builder(DeviceprofileGatewayPortConfig defaults) {
@@ -623,7 +623,6 @@ public final class DeviceprofileGatewayPortConfig {
     	      this.vlanId = defaults.vlanId;
     	      this.vpnPaths = defaults.vpnPaths;
     	      this.wanArpPolicer = defaults.wanArpPolicer;
-    	      this.wanDisableSpeedtest = defaults.wanDisableSpeedtest;
     	      this.wanExtIp = defaults.wanExtIp;
     	      this.wanExtIp6 = defaults.wanExtIp6;
     	      this.wanExtraRoutes = defaults.wanExtraRoutes;
@@ -631,6 +630,7 @@ public final class DeviceprofileGatewayPortConfig {
     	      this.wanNetworks = defaults.wanNetworks;
     	      this.wanProbeOverride = defaults.wanProbeOverride;
     	      this.wanSourceNat = defaults.wanSourceNat;
+    	      this.wanSpeedtestMode = defaults.wanSpeedtestMode;
     	      this.wanType = defaults.wanType;
         }
 
@@ -871,12 +871,6 @@ public final class DeviceprofileGatewayPortConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder wanDisableSpeedtest(@Nullable Boolean wanDisableSpeedtest) {
-
-            this.wanDisableSpeedtest = wanDisableSpeedtest;
-            return this;
-        }
-        @CustomType.Setter
         public Builder wanExtIp(@Nullable String wanExtIp) {
 
             this.wanExtIp = wanExtIp;
@@ -919,6 +913,12 @@ public final class DeviceprofileGatewayPortConfig {
         public Builder wanSourceNat(@Nullable DeviceprofileGatewayPortConfigWanSourceNat wanSourceNat) {
 
             this.wanSourceNat = wanSourceNat;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder wanSpeedtestMode(@Nullable String wanSpeedtestMode) {
+
+            this.wanSpeedtestMode = wanSpeedtestMode;
             return this;
         }
         @CustomType.Setter
@@ -967,7 +967,6 @@ public final class DeviceprofileGatewayPortConfig {
             _resultValue.vlanId = vlanId;
             _resultValue.vpnPaths = vpnPaths;
             _resultValue.wanArpPolicer = wanArpPolicer;
-            _resultValue.wanDisableSpeedtest = wanDisableSpeedtest;
             _resultValue.wanExtIp = wanExtIp;
             _resultValue.wanExtIp6 = wanExtIp6;
             _resultValue.wanExtraRoutes = wanExtraRoutes;
@@ -975,6 +974,7 @@ public final class DeviceprofileGatewayPortConfig {
             _resultValue.wanNetworks = wanNetworks;
             _resultValue.wanProbeOverride = wanProbeOverride;
             _resultValue.wanSourceNat = wanSourceNat;
+            _resultValue.wanSpeedtestMode = wanSpeedtestMode;
             _resultValue.wanType = wanType;
             return _resultValue;
         }

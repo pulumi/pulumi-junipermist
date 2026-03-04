@@ -319,6 +319,21 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * 
+     */
+    @Import(name="oauthProviderDomain")
+    private @Nullable Output<String> oauthProviderDomain;
+
+    /**
+     * @return If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * 
+     */
+    public Optional<Output<String>> oauthProviderDomain() {
+        return Optional.ofNullable(this.oauthProviderDomain);
+    }
+
+    /**
      * If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      * 
      */
@@ -438,6 +453,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         this.oauthCcClientSecret = $.oauthCcClientSecret;
         this.oauthDiscoveryUrl = $.oauthDiscoveryUrl;
         this.oauthPingIdentityRegion = $.oauthPingIdentityRegion;
+        this.oauthProviderDomain = $.oauthProviderDomain;
         this.oauthRopcClientId = $.oauthRopcClientId;
         this.oauthRopcClientSecret = $.oauthRopcClientSecret;
         this.oauthTenantId = $.oauthTenantId;
@@ -903,6 +919,27 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder oauthPingIdentityRegion(String oauthPingIdentityRegion) {
             return oauthPingIdentityRegion(Output.of(oauthPingIdentityRegion));
+        }
+
+        /**
+         * @param oauthProviderDomain If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauthProviderDomain(@Nullable Output<String> oauthProviderDomain) {
+            $.oauthProviderDomain = oauthProviderDomain;
+            return this;
+        }
+
+        /**
+         * @param oauthProviderDomain If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauthProviderDomain(String oauthProviderDomain) {
+            return oauthProviderDomain(Output.of(oauthProviderDomain));
         }
 
         /**

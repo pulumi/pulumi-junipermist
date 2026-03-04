@@ -160,6 +160,21 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     * 
+     */
+    @Import(name="gatewayTunnelUpdownThreshold")
+    private @Nullable Output<Integer> gatewayTunnelUpdownThreshold;
+
+    /**
+     * @return enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     * 
+     */
+    public Optional<Output<Integer>> gatewayTunnelUpdownThreshold() {
+        return Optional.ofNullable(this.gatewayTunnelUpdownThreshold);
+    }
+
+    /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      * 
      */
@@ -414,6 +429,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.deviceUpdownThreshold = $.deviceUpdownThreshold;
         this.disablePcap = $.disablePcap;
         this.disableRemoteShell = $.disableRemoteShell;
+        this.gatewayTunnelUpdownThreshold = $.gatewayTunnelUpdownThreshold;
         this.gatewayUpdownThreshold = $.gatewayUpdownThreshold;
         this.installer = $.installer;
         this.jcloud = $.jcloud;
@@ -624,6 +640,27 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disableRemoteShell(Boolean disableRemoteShell) {
             return disableRemoteShell(Output.of(disableRemoteShell));
+        }
+
+        /**
+         * @param gatewayTunnelUpdownThreshold enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayTunnelUpdownThreshold(@Nullable Output<Integer> gatewayTunnelUpdownThreshold) {
+            $.gatewayTunnelUpdownThreshold = gatewayTunnelUpdownThreshold;
+            return this;
+        }
+
+        /**
+         * @param gatewayTunnelUpdownThreshold enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayTunnelUpdownThreshold(Integer gatewayTunnelUpdownThreshold) {
+            return gatewayTunnelUpdownThreshold(Output.of(gatewayTunnelUpdownThreshold));
         }
 
         /**

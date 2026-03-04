@@ -134,6 +134,8 @@ type Wlan struct {
 	Disable11be pulumi.BoolPtrOutput `pulumi:"disable11be"`
 	// To disable ht or vht rates
 	DisableHtVhtRates pulumi.BoolPtrOutput `pulumi:"disableHtVhtRates"`
+	// whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+	DisableMessageAuthenticatorCheck pulumi.BoolOutput `pulumi:"disableMessageAuthenticatorCheck"`
 	// Whether to disable U-APSD
 	DisableUapsd pulumi.BoolOutput `pulumi:"disableUapsd"`
 	// Disable sending v2 roam notification messages
@@ -363,6 +365,8 @@ type wlanState struct {
 	Disable11be *bool `pulumi:"disable11be"`
 	// To disable ht or vht rates
 	DisableHtVhtRates *bool `pulumi:"disableHtVhtRates"`
+	// whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+	DisableMessageAuthenticatorCheck *bool `pulumi:"disableMessageAuthenticatorCheck"`
 	// Whether to disable U-APSD
 	DisableUapsd *bool `pulumi:"disableUapsd"`
 	// Disable sending v2 roam notification messages
@@ -554,6 +558,8 @@ type WlanState struct {
 	Disable11be pulumi.BoolPtrInput
 	// To disable ht or vht rates
 	DisableHtVhtRates pulumi.BoolPtrInput
+	// whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+	DisableMessageAuthenticatorCheck pulumi.BoolPtrInput
 	// Whether to disable U-APSD
 	DisableUapsd pulumi.BoolPtrInput
 	// Disable sending v2 roam notification messages
@@ -1301,6 +1307,11 @@ func (o WlanOutput) Disable11be() pulumi.BoolPtrOutput {
 // To disable ht or vht rates
 func (o WlanOutput) DisableHtVhtRates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.DisableHtVhtRates }).(pulumi.BoolPtrOutput)
+}
+
+// whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+func (o WlanOutput) DisableMessageAuthenticatorCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.DisableMessageAuthenticatorCheck }).(pulumi.BoolOutput)
 }
 
 // Whether to disable U-APSD

@@ -141,7 +141,11 @@ public class Switch extends com.pulumi.resources.CustomResource {
     /**
      * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      * 
+     * @deprecated
+     * This attribute is being deprecated, please use `mistConfigured` instead
+     * 
      */
+    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
     @Export(name="disableAutoConfig", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableAutoConfig;
 
@@ -269,14 +273,18 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.mac;
     }
     /**
-     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
+     * 
+     * @deprecated
+     * This attribute is being deprecated, please use `mistConfigured` instead
      * 
      */
+    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
     @Export(name="managed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> managed;
 
     /**
-     * @return An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+     * @return An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
      * 
      */
     public Output<Boolean> managed() {
@@ -295,6 +303,20 @@ public class Switch extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> mapId() {
         return Codegen.optional(this.mapId);
+    }
+    /**
+     * whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+     * 
+     */
+    @Export(name="mistConfigured", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> mistConfigured;
+
+    /**
+     * @return whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+     * 
+     */
+    public Output<Boolean> mistConfigured() {
+        return this.mistConfigured;
     }
     /**
      * Enable mistNac to use RadSec

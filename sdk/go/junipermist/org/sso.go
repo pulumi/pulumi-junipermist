@@ -84,7 +84,9 @@ type Sso struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// enum: `email`, `unspecified`
 	NameidFormat pulumi.StringOutput `pulumi:"nameidFormat"`
-	OrgId        pulumi.StringOutput `pulumi:"orgId"`
+	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	OauthProviderDomain pulumi.StringOutput `pulumi:"oauthProviderDomain"`
+	OrgId               pulumi.StringOutput `pulumi:"orgId"`
 	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction pulumi.StringPtrOutput `pulumi:"roleAttrExtraction"`
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
@@ -158,7 +160,9 @@ type ssoState struct {
 	Name *string `pulumi:"name"`
 	// enum: `email`, `unspecified`
 	NameidFormat *string `pulumi:"nameidFormat"`
-	OrgId        *string `pulumi:"orgId"`
+	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	OauthProviderDomain *string `pulumi:"oauthProviderDomain"`
+	OrgId               *string `pulumi:"orgId"`
 	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction *string `pulumi:"roleAttrExtraction"`
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
@@ -188,7 +192,9 @@ type SsoState struct {
 	Name pulumi.StringPtrInput
 	// enum: `email`, `unspecified`
 	NameidFormat pulumi.StringPtrInput
-	OrgId        pulumi.StringPtrInput
+	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	OauthProviderDomain pulumi.StringPtrInput
+	OrgId               pulumi.StringPtrInput
 	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction pulumi.StringPtrInput
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
@@ -218,7 +224,9 @@ type ssoArgs struct {
 	Name *string `pulumi:"name"`
 	// enum: `email`, `unspecified`
 	NameidFormat *string `pulumi:"nameidFormat"`
-	OrgId        string  `pulumi:"orgId"`
+	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	OauthProviderDomain *string `pulumi:"oauthProviderDomain"`
+	OrgId               string  `pulumi:"orgId"`
 	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction *string `pulumi:"roleAttrExtraction"`
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
@@ -245,7 +253,9 @@ type SsoArgs struct {
 	Name pulumi.StringPtrInput
 	// enum: `email`, `unspecified`
 	NameidFormat pulumi.StringPtrInput
-	OrgId        pulumi.StringInput
+	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	OauthProviderDomain pulumi.StringPtrInput
+	OrgId               pulumi.StringInput
 	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction pulumi.StringPtrInput
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
@@ -389,6 +399,11 @@ func (o SsoOutput) Name() pulumi.StringOutput {
 // enum: `email`, `unspecified`
 func (o SsoOutput) NameidFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringOutput { return v.NameidFormat }).(pulumi.StringOutput)
+}
+
+// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+func (o SsoOutput) OauthProviderDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Sso) pulumi.StringOutput { return v.OauthProviderDomain }).(pulumi.StringOutput)
 }
 
 func (o SsoOutput) OrgId() pulumi.StringOutput {

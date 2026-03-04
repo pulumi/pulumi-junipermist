@@ -12,6 +12,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchPortUsagesRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional description of the rule
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         [Input("equals")]
         public Input<string>? Equals { get; set; }
 

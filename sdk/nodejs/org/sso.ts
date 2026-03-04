@@ -108,6 +108,10 @@ export class Sso extends pulumi.CustomResource {
      * enum: `email`, `unspecified`
      */
     declare public readonly nameidFormat: pulumi.Output<string>;
+    /**
+     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     */
+    declare public readonly oauthProviderDomain: pulumi.Output<string>;
     declare public readonly orgId: pulumi.Output<string>;
     /**
      * custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
@@ -141,6 +145,7 @@ export class Sso extends pulumi.CustomResource {
             resourceInputs["issuer"] = state?.issuer;
             resourceInputs["name"] = state?.name;
             resourceInputs["nameidFormat"] = state?.nameidFormat;
+            resourceInputs["oauthProviderDomain"] = state?.oauthProviderDomain;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["roleAttrExtraction"] = state?.roleAttrExtraction;
             resourceInputs["roleAttrFrom"] = state?.roleAttrFrom;
@@ -170,6 +175,7 @@ export class Sso extends pulumi.CustomResource {
             resourceInputs["issuer"] = args?.issuer;
             resourceInputs["name"] = args?.name;
             resourceInputs["nameidFormat"] = args?.nameidFormat;
+            resourceInputs["oauthProviderDomain"] = args?.oauthProviderDomain;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["roleAttrExtraction"] = args?.roleAttrExtraction;
             resourceInputs["roleAttrFrom"] = args?.roleAttrFrom;
@@ -226,6 +232,10 @@ export interface SsoState {
      * enum: `email`, `unspecified`
      */
     nameidFormat?: pulumi.Input<string>;
+    /**
+     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     */
+    oauthProviderDomain?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
      * custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
@@ -277,6 +287,10 @@ export interface SsoArgs {
      * enum: `email`, `unspecified`
      */
     nameidFormat?: pulumi.Input<string>;
+    /**
+     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     */
+    oauthProviderDomain?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**
      * custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>

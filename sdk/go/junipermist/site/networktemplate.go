@@ -161,7 +161,9 @@ type Networktemplate struct {
 	SwitchMatching NetworktemplateSwitchMatchingPtrOutput `pulumi:"switchMatching"`
 	// Switch settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrOutput `pulumi:"switchMgmt"`
-	VrfConfig  NetworktemplateVrfConfigPtrOutput  `pulumi:"vrfConfig"`
+	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+	UsesDescriptionFromPortUsage pulumi.BoolOutput                 `pulumi:"usesDescriptionFromPortUsage"`
+	VrfConfig                    NetworktemplateVrfConfigPtrOutput `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances NetworktemplateVrfInstancesMapOutput `pulumi:"vrfInstances"`
 }
@@ -240,7 +242,9 @@ type networktemplateState struct {
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
 	// Switch settings
 	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
-	VrfConfig  *NetworktemplateVrfConfig  `pulumi:"vrfConfig"`
+	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+	UsesDescriptionFromPortUsage *bool                     `pulumi:"usesDescriptionFromPortUsage"`
+	VrfConfig                    *NetworktemplateVrfConfig `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances map[string]NetworktemplateVrfInstances `pulumi:"vrfInstances"`
 }
@@ -287,7 +291,9 @@ type NetworktemplateState struct {
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
 	// Switch settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
-	VrfConfig  NetworktemplateVrfConfigPtrInput
+	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+	UsesDescriptionFromPortUsage pulumi.BoolPtrInput
+	VrfConfig                    NetworktemplateVrfConfigPtrInput
 	// Property key is the network name
 	VrfInstances NetworktemplateVrfInstancesMapInput
 }
@@ -586,6 +592,11 @@ func (o NetworktemplateOutput) SwitchMatching() NetworktemplateSwitchMatchingPtr
 // Switch settings
 func (o NetworktemplateOutput) SwitchMgmt() NetworktemplateSwitchMgmtPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSwitchMgmtPtrOutput { return v.SwitchMgmt }).(NetworktemplateSwitchMgmtPtrOutput)
+}
+
+// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+func (o NetworktemplateOutput) UsesDescriptionFromPortUsage() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Networktemplate) pulumi.BoolOutput { return v.UsesDescriptionFromPortUsage }).(pulumi.BoolOutput)
 }
 
 func (o NetworktemplateOutput) VrfConfig() NetworktemplateVrfConfigPtrOutput {

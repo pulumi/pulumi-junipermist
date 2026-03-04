@@ -54,12 +54,28 @@ public final class SettingSsrAutoUpgradeArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private SettingSsrAutoUpgradeArgs() {}
 
     private SettingSsrAutoUpgradeArgs(SettingSsrAutoUpgradeArgs $) {
         this.channel = $.channel;
         this.customVersions = $.customVersions;
         this.enabled = $.enabled;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -129,6 +145,27 @@ public final class SettingSsrAutoUpgradeArgs extends com.pulumi.resources.Resour
 
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param version Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public SettingSsrAutoUpgradeArgs build() {

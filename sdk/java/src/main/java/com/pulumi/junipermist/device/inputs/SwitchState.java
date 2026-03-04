@@ -131,14 +131,22 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     /**
      * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      * 
+     * @deprecated
+     * This attribute is being deprecated, please use `mistConfigured` instead
+     * 
      */
+    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
     @Import(name="disableAutoConfig")
     private @Nullable Output<Boolean> disableAutoConfig;
 
     /**
      * @return This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
      * 
+     * @deprecated
+     * This attribute is being deprecated, please use `mistConfigured` instead
+     * 
      */
+    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
     public Optional<Output<Boolean>> disableAutoConfig() {
         return Optional.ofNullable(this.disableAutoConfig);
     }
@@ -270,16 +278,24 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
+     * 
+     * @deprecated
+     * This attribute is being deprecated, please use `mistConfigured` instead
      * 
      */
+    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
     @Import(name="managed")
     private @Nullable Output<Boolean> managed;
 
     /**
-     * @return An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+     * @return An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
+     * 
+     * @deprecated
+     * This attribute is being deprecated, please use `mistConfigured` instead
      * 
      */
+    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
     public Optional<Output<Boolean>> managed() {
         return Optional.ofNullable(this.managed);
     }
@@ -297,6 +313,21 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> mapId() {
         return Optional.ofNullable(this.mapId);
+    }
+
+    /**
+     * whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+     * 
+     */
+    @Import(name="mistConfigured")
+    private @Nullable Output<Boolean> mistConfigured;
+
+    /**
+     * @return whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+     * 
+     */
+    public Optional<Output<Boolean>> mistConfigured() {
+        return Optional.ofNullable(this.mistConfigured);
     }
 
     /**
@@ -757,6 +788,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         this.mac = $.mac;
         this.managed = $.managed;
         this.mapId = $.mapId;
+        this.mistConfigured = $.mistConfigured;
         this.mistNac = $.mistNac;
         this.model = $.model;
         this.name = $.name;
@@ -938,7 +970,11 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is being deprecated, please use `mistConfigured` instead
+         * 
          */
+        @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
         public Builder disableAutoConfig(@Nullable Output<Boolean> disableAutoConfig) {
             $.disableAutoConfig = disableAutoConfig;
             return this;
@@ -949,7 +985,11 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is being deprecated, please use `mistConfigured` instead
+         * 
          */
+        @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
         public Builder disableAutoConfig(Boolean disableAutoConfig) {
             return disableAutoConfig(Output.of(disableAutoConfig));
         }
@@ -1149,22 +1189,30 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managed An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+         * @param managed An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is being deprecated, please use `mistConfigured` instead
+         * 
          */
+        @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
         public Builder managed(@Nullable Output<Boolean> managed) {
             $.managed = managed;
             return this;
         }
 
         /**
-         * @param managed An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+         * @param managed An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is being deprecated, please use `mistConfigured` instead
+         * 
          */
+        @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
         public Builder managed(Boolean managed) {
             return managed(Output.of(managed));
         }
@@ -1188,6 +1236,27 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mapId(String mapId) {
             return mapId(Output.of(mapId));
+        }
+
+        /**
+         * @param mistConfigured whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mistConfigured(@Nullable Output<Boolean> mistConfigured) {
+            $.mistConfigured = mistConfigured;
+            return this;
+        }
+
+        /**
+         * @param mistConfigured whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mistConfigured(Boolean mistConfigured) {
+            return mistConfigured(Output.of(mistConfigured));
         }
 
         /**

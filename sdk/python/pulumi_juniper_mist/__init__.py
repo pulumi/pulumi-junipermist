@@ -185,6 +185,14 @@ _utilities.register(
  },
  {
   "pkg": "junipermist",
+  "mod": "org/mxedge",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/mxedge:Mxedge": "Mxedge"
+  }
+ },
+ {
+  "pkg": "junipermist",
   "mod": "org/nacEndpoint",
   "fqn": "pulumi_juniper_mist.org",
   "classes": {

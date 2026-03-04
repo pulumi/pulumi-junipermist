@@ -534,21 +534,6 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If `wanType`==`wan`, disable speedtest
-     * 
-     */
-    @Import(name="wanDisableSpeedtest")
-    private @Nullable Output<Boolean> wanDisableSpeedtest;
-
-    /**
-     * @return If `wanType`==`wan`, disable speedtest
-     * 
-     */
-    public Optional<Output<Boolean>> wanDisableSpeedtest() {
-        return Optional.ofNullable(this.wanDisableSpeedtest);
-    }
-
-    /**
      * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
      * 
      */
@@ -654,6 +639,21 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+     * 
+     */
+    @Import(name="wanSpeedtestMode")
+    private @Nullable Output<String> wanSpeedtestMode;
+
+    /**
+     * @return Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+     * 
+     */
+    public Optional<Output<String>> wanSpeedtestMode() {
+        return Optional.ofNullable(this.wanSpeedtestMode);
+    }
+
+    /**
      * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
      * 
      */
@@ -709,7 +709,6 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         this.vlanId = $.vlanId;
         this.vpnPaths = $.vpnPaths;
         this.wanArpPolicer = $.wanArpPolicer;
-        this.wanDisableSpeedtest = $.wanDisableSpeedtest;
         this.wanExtIp = $.wanExtIp;
         this.wanExtIp6 = $.wanExtIp6;
         this.wanExtraRoutes = $.wanExtraRoutes;
@@ -717,6 +716,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         this.wanNetworks = $.wanNetworks;
         this.wanProbeOverride = $.wanProbeOverride;
         this.wanSourceNat = $.wanSourceNat;
+        this.wanSpeedtestMode = $.wanSpeedtestMode;
         this.wanType = $.wanType;
     }
 
@@ -1461,27 +1461,6 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanDisableSpeedtest If `wanType`==`wan`, disable speedtest
-         * 
-         * @return builder
-         * 
-         */
-        public Builder wanDisableSpeedtest(@Nullable Output<Boolean> wanDisableSpeedtest) {
-            $.wanDisableSpeedtest = wanDisableSpeedtest;
-            return this;
-        }
-
-        /**
-         * @param wanDisableSpeedtest If `wanType`==`wan`, disable speedtest
-         * 
-         * @return builder
-         * 
-         */
-        public Builder wanDisableSpeedtest(Boolean wanDisableSpeedtest) {
-            return wanDisableSpeedtest(Output.of(wanDisableSpeedtest));
-        }
-
-        /**
          * @param wanExtIp Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          * 
          * @return builder
@@ -1636,6 +1615,27 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder wanSourceNat(GatewayPortConfigWanSourceNatArgs wanSourceNat) {
             return wanSourceNat(Output.of(wanSourceNat));
+        }
+
+        /**
+         * @param wanSpeedtestMode Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanSpeedtestMode(@Nullable Output<String> wanSpeedtestMode) {
+            $.wanSpeedtestMode = wanSpeedtestMode;
+            return this;
+        }
+
+        /**
+         * @param wanSpeedtestMode Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanSpeedtestMode(String wanSpeedtestMode) {
+            return wanSpeedtestMode(Output.of(wanSpeedtestMode));
         }
 
         /**

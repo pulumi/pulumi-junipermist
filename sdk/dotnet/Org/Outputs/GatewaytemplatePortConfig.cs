@@ -142,10 +142,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? WanArpPolicer;
         /// <summary>
-        /// If `WanType`==`Wan`, disable speedtest
-        /// </summary>
-        public readonly bool? WanDisableSpeedtest;
-        /// <summary>
         /// Only if `Usage`==`Wan`, optional. If spoke should reach this port by a different IP
         /// </summary>
         public readonly string? WanExtIp;
@@ -173,6 +169,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Only if `Usage`==`Wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
         /// </summary>
         public readonly Outputs.GatewaytemplatePortConfigWanSourceNat? WanSourceNat;
+        /// <summary>
+        /// Controls whether Marvis/scheduler can run speedtest on this port. enum: `Auto`, `Enabled`, `Disabled`
+        /// </summary>
+        public readonly string? WanSpeedtestMode;
         /// <summary>
         /// Only if `Usage`==`Wan`. enum: `Broadband`, `Dsl`, `Lte`
         /// </summary>
@@ -256,8 +256,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? wanArpPolicer,
 
-            bool? wanDisableSpeedtest,
-
             string? wanExtIp,
 
             string? wanExtIp6,
@@ -271,6 +269,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Outputs.GatewaytemplatePortConfigWanProbeOverride? wanProbeOverride,
 
             Outputs.GatewaytemplatePortConfigWanSourceNat? wanSourceNat,
+
+            string? wanSpeedtestMode,
 
             string? wanType)
         {
@@ -312,7 +312,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
             VlanId = vlanId;
             VpnPaths = vpnPaths;
             WanArpPolicer = wanArpPolicer;
-            WanDisableSpeedtest = wanDisableSpeedtest;
             WanExtIp = wanExtIp;
             WanExtIp6 = wanExtIp6;
             WanExtraRoutes = wanExtraRoutes;
@@ -320,6 +319,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             WanNetworks = wanNetworks;
             WanProbeOverride = wanProbeOverride;
             WanSourceNat = wanSourceNat;
+            WanSpeedtestMode = wanSpeedtestMode;
             WanType = wanType;
         }
     }

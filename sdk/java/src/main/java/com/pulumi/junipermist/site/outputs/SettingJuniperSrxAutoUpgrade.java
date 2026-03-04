@@ -20,6 +20,11 @@ public final class SettingJuniperSrxAutoUpgrade {
     private @Nullable Map<String,String> customVersions;
     private @Nullable Boolean enabled;
     private @Nullable Boolean snapshot;
+    /**
+     * @return Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+     * 
+     */
+    private @Nullable String version;
 
     private SettingJuniperSrxAutoUpgrade() {}
     /**
@@ -35,6 +40,13 @@ public final class SettingJuniperSrxAutoUpgrade {
     public Optional<Boolean> snapshot() {
         return Optional.ofNullable(this.snapshot);
     }
+    /**
+     * @return Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -48,12 +60,14 @@ public final class SettingJuniperSrxAutoUpgrade {
         private @Nullable Map<String,String> customVersions;
         private @Nullable Boolean enabled;
         private @Nullable Boolean snapshot;
+        private @Nullable String version;
         public Builder() {}
         public Builder(SettingJuniperSrxAutoUpgrade defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customVersions = defaults.customVersions;
     	      this.enabled = defaults.enabled;
     	      this.snapshot = defaults.snapshot;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -74,11 +88,18 @@ public final class SettingJuniperSrxAutoUpgrade {
             this.snapshot = snapshot;
             return this;
         }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+
+            this.version = version;
+            return this;
+        }
         public SettingJuniperSrxAutoUpgrade build() {
             final var _resultValue = new SettingJuniperSrxAutoUpgrade();
             _resultValue.customVersions = customVersions;
             _resultValue.enabled = enabled;
             _resultValue.snapshot = snapshot;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

@@ -216,6 +216,20 @@ public class Base extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rftemplateId);
     }
     /**
+     * Router Template ID, used by gateways
+     * 
+     */
+    @Export(name="routertemplateId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> routertemplateId;
+
+    /**
+     * @return Router Template ID, used by gateways
+     * 
+     */
+    public Output<Optional<String>> routertemplateId() {
+        return Codegen.optional(this.routertemplateId);
+    }
+    /**
      * SecPolicy ID
      * 
      */

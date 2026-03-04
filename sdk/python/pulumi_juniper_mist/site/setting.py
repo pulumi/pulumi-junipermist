@@ -56,6 +56,7 @@ class SettingArgs:
                  synthetic_test: Optional[pulumi.Input['SettingSyntheticTestArgs']] = None,
                  track_anonymous_devices: Optional[pulumi.Input[_builtins.bool]] = None,
                  uplink_port_config: Optional[pulumi.Input['SettingUplinkPortConfigArgs']] = None,
+                 uses_description_from_port_usage: Optional[pulumi.Input[_builtins.bool]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vna: Optional[pulumi.Input['SettingVnaArgs']] = None,
                  vpn_path_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
@@ -94,6 +95,7 @@ class SettingArgs:
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
         :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
+        :param pulumi.Input[_builtins.bool] uses_description_from_port_usage: by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
         :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
@@ -171,6 +173,8 @@ class SettingArgs:
             pulumi.set(__self__, "track_anonymous_devices", track_anonymous_devices)
         if uplink_port_config is not None:
             pulumi.set(__self__, "uplink_port_config", uplink_port_config)
+        if uses_description_from_port_usage is not None:
+            pulumi.set(__self__, "uses_description_from_port_usage", uses_description_from_port_usage)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
         if vna is not None:
@@ -583,6 +587,18 @@ class SettingArgs:
         pulumi.set(self, "uplink_port_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="usesDescriptionFromPortUsage")
+    def uses_description_from_port_usage(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+        """
+        return pulumi.get(self, "uses_description_from_port_usage")
+
+    @uses_description_from_port_usage.setter
+    def uses_description_from_port_usage(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "uses_description_from_port_usage", value)
+
+    @_builtins.property
     @pulumi.getter
     def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -733,6 +749,7 @@ class _SettingState:
                  synthetic_test: Optional[pulumi.Input['SettingSyntheticTestArgs']] = None,
                  track_anonymous_devices: Optional[pulumi.Input[_builtins.bool]] = None,
                  uplink_port_config: Optional[pulumi.Input['SettingUplinkPortConfigArgs']] = None,
+                 uses_description_from_port_usage: Optional[pulumi.Input[_builtins.bool]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vna: Optional[pulumi.Input['SettingVnaArgs']] = None,
                  vpn_path_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
@@ -773,6 +790,7 @@ class _SettingState:
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
         :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
+        :param pulumi.Input[_builtins.bool] uses_description_from_port_usage: by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
         :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
@@ -853,6 +871,8 @@ class _SettingState:
             pulumi.set(__self__, "track_anonymous_devices", track_anonymous_devices)
         if uplink_port_config is not None:
             pulumi.set(__self__, "uplink_port_config", uplink_port_config)
+        if uses_description_from_port_usage is not None:
+            pulumi.set(__self__, "uses_description_from_port_usage", uses_description_from_port_usage)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
         if vna is not None:
@@ -1278,6 +1298,18 @@ class _SettingState:
         pulumi.set(self, "uplink_port_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="usesDescriptionFromPortUsage")
+    def uses_description_from_port_usage(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+        """
+        return pulumi.get(self, "uses_description_from_port_usage")
+
+    @uses_description_from_port_usage.setter
+    def uses_description_from_port_usage(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "uses_description_from_port_usage", value)
+
+    @_builtins.property
     @pulumi.getter
     def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -1448,6 +1480,7 @@ class Setting(pulumi.CustomResource):
                  synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  track_anonymous_devices: Optional[pulumi.Input[_builtins.bool]] = None,
                  uplink_port_config: Optional[pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
+                 uses_description_from_port_usage: Optional[pulumi.Input[_builtins.bool]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vna: Optional[pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
                  vpn_path_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1533,6 +1566,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
         :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
+        :param pulumi.Input[_builtins.bool] uses_description_from_port_usage: by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
         :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
@@ -1644,6 +1678,7 @@ class Setting(pulumi.CustomResource):
                  synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  track_anonymous_devices: Optional[pulumi.Input[_builtins.bool]] = None,
                  uplink_port_config: Optional[pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
+                 uses_description_from_port_usage: Optional[pulumi.Input[_builtins.bool]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vna: Optional[pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
                  vpn_path_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1700,6 +1735,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["synthetic_test"] = synthetic_test
             __props__.__dict__["track_anonymous_devices"] = track_anonymous_devices
             __props__.__dict__["uplink_port_config"] = uplink_port_config
+            __props__.__dict__["uses_description_from_port_usage"] = uses_description_from_port_usage
             __props__.__dict__["vars"] = vars
             __props__.__dict__["vna"] = vna
             __props__.__dict__["vpn_path_updown_threshold"] = vpn_path_updown_threshold
@@ -1759,6 +1795,7 @@ class Setting(pulumi.CustomResource):
             synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
             track_anonymous_devices: Optional[pulumi.Input[_builtins.bool]] = None,
             uplink_port_config: Optional[pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
+            uses_description_from_port_usage: Optional[pulumi.Input[_builtins.bool]] = None,
             vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vna: Optional[pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
             vpn_path_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1803,6 +1840,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
         :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
+        :param pulumi.Input[_builtins.bool] uses_description_from_port_usage: by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
         :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
@@ -1851,6 +1889,7 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["synthetic_test"] = synthetic_test
         __props__.__dict__["track_anonymous_devices"] = track_anonymous_devices
         __props__.__dict__["uplink_port_config"] = uplink_port_config
+        __props__.__dict__["uses_description_from_port_usage"] = uses_description_from_port_usage
         __props__.__dict__["vars"] = vars
         __props__.__dict__["vna"] = vna
         __props__.__dict__["vpn_path_updown_threshold"] = vpn_path_updown_threshold
@@ -2119,6 +2158,14 @@ class Setting(pulumi.CustomResource):
         AP Uplink port configuration
         """
         return pulumi.get(self, "uplink_port_config")
+
+    @_builtins.property
+    @pulumi.getter(name="usesDescriptionFromPortUsage")
+    def uses_description_from_port_usage(self) -> pulumi.Output[_builtins.bool]:
+        """
+        by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+        """
+        return pulumi.get(self, "uses_description_from_port_usage")
 
     @_builtins.property
     @pulumi.getter

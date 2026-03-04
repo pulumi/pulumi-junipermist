@@ -253,6 +253,12 @@ namespace Pulumi.JuniperMist.Site
         [Output("switchMgmt")]
         public Output<Outputs.NetworktemplateSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
 
+        /// <summary>
+        /// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+        /// </summary>
+        [Output("usesDescriptionFromPortUsage")]
+        public Output<bool> UsesDescriptionFromPortUsage { get; private set; } = null!;
+
         [Output("vrfConfig")]
         public Output<Outputs.NetworktemplateVrfConfig?> VrfConfig { get; private set; } = null!;
 
@@ -743,6 +749,12 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtGetArgs>? SwitchMgmt { get; set; }
+
+        /// <summary>
+        /// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+        /// </summary>
+        [Input("usesDescriptionFromPortUsage")]
+        public Input<bool>? UsesDescriptionFromPortUsage { get; set; }
 
         [Input("vrfConfig")]
         public Input<Inputs.NetworktemplateVrfConfigGetArgs>? VrfConfig { get; set; }

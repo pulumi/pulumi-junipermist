@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * It can be used to define specific configuration at the device level or to override Org Gateway template settings.
  *
- * > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway
+ * > **WARNING** For **adopted** devices, make sure to set `mistConfigured`=`true` to allow Mist to manage the gateway
  *
  * ## Example Usage
  *
@@ -117,11 +117,20 @@ export class Gateway extends pulumi.CustomResource {
      * Device MAC address
      */
     declare public /*out*/ readonly mac: pulumi.Output<string>;
-    declare public readonly managed: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+     *
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
+     */
+    declare public readonly managed: pulumi.Output<boolean>;
     /**
      * Map where the device belongs to
      */
     declare public readonly mapId: pulumi.Output<string | undefined>;
+    /**
+     * whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+     */
+    declare public readonly mistConfigured: pulumi.Output<boolean>;
     /**
      * Device Model
      */
@@ -224,6 +233,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["mac"] = state?.mac;
             resourceInputs["managed"] = state?.managed;
             resourceInputs["mapId"] = state?.mapId;
+            resourceInputs["mistConfigured"] = state?.mistConfigured;
             resourceInputs["model"] = state?.model;
             resourceInputs["mspId"] = state?.mspId;
             resourceInputs["name"] = state?.name;
@@ -271,6 +281,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["ipConfigs"] = args?.ipConfigs;
             resourceInputs["managed"] = args?.managed;
             resourceInputs["mapId"] = args?.mapId;
+            resourceInputs["mistConfigured"] = args?.mistConfigured;
             resourceInputs["mspId"] = args?.mspId;
             resourceInputs["name"] = args?.name;
             resourceInputs["networks"] = args?.networks;
@@ -353,11 +364,20 @@ export interface GatewayState {
      * Device MAC address
      */
     mac?: pulumi.Input<string>;
+    /**
+     * Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+     *
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
+     */
     managed?: pulumi.Input<boolean>;
     /**
      * Map where the device belongs to
      */
     mapId?: pulumi.Input<string>;
+    /**
+     * whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+     */
+    mistConfigured?: pulumi.Input<boolean>;
     /**
      * Device Model
      */
@@ -470,11 +490,20 @@ export interface GatewayArgs {
      * Property key is the network name
      */
     ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIpConfigs>}>;
+    /**
+     * Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+     *
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
+     */
     managed?: pulumi.Input<boolean>;
     /**
      * Map where the device belongs to
      */
     mapId?: pulumi.Input<string>;
+    /**
+     * whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+     */
+    mistConfigured?: pulumi.Input<boolean>;
     mspId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     networks?: pulumi.Input<pulumi.Input<inputs.device.GatewayNetwork>[]>;

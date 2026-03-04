@@ -1511,10 +1511,6 @@ export namespace device {
          */
         wanArpPolicer?: pulumi.Input<string>;
         /**
-         * If `wanType`==`wan`, disable speedtest
-         */
-        wanDisableSpeedtest?: pulumi.Input<boolean>;
-        /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: pulumi.Input<string>;
@@ -1542,6 +1538,10 @@ export namespace device {
          * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          */
         wanSourceNat?: pulumi.Input<inputs.device.GatewayPortConfigWanSourceNat>;
+        /**
+         * Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+         */
+        wanSpeedtestMode?: pulumi.Input<string>;
         /**
          * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
@@ -1877,22 +1877,38 @@ export namespace device {
     }
 
     export interface GatewayServicePolicySkyatp {
+        dnsDgaDetection?: pulumi.Input<inputs.device.GatewayServicePolicySkyatpDnsDgaDetection>;
+        dnsTunnelDetection?: pulumi.Input<inputs.device.GatewayServicePolicySkyatpDnsTunnelDetection>;
+        httpInspection?: pulumi.Input<inputs.device.GatewayServicePolicySkyatpHttpInspection>;
+        iotDevicePolicy?: pulumi.Input<inputs.device.GatewayServicePolicySkyatpIotDevicePolicy>;
+    }
+
+    export interface GatewayServicePolicySkyatpDnsDgaDetection {
+        enabled?: pulumi.Input<boolean>;
         /**
-         * enum: `disabled`, `default`, `standard`, `strict`
+         * enum: `default`, `standard`, `strict`
          */
-        dnsDgaDetection?: pulumi.Input<string>;
+        profile?: pulumi.Input<string>;
+    }
+
+    export interface GatewayServicePolicySkyatpDnsTunnelDetection {
+        enabled?: pulumi.Input<boolean>;
         /**
-         * enum: `disabled`, `default`, `standard`, `strict`
+         * enum: `default`, `standard`, `strict`
          */
-        dnsTunnelDetection?: pulumi.Input<string>;
+        profile?: pulumi.Input<string>;
+    }
+
+    export interface GatewayServicePolicySkyatpHttpInspection {
+        enabled?: pulumi.Input<boolean>;
         /**
-         * enum: `disabled`, `standard`
+         * enum: `standard`, `strict`
          */
-        httpInspection?: pulumi.Input<string>;
-        /**
-         * enum: `disabled`, `enabled`
-         */
-        iotDevicePolicy?: pulumi.Input<string>;
+        profile?: pulumi.Input<string>;
+    }
+
+    export interface GatewayServicePolicySkyatpIotDevicePolicy {
+        enabled?: pulumi.Input<boolean>;
     }
 
     export interface GatewayServicePolicySslProxy {
@@ -3220,6 +3236,10 @@ export namespace device {
     }
 
     export interface SwitchPortUsagesRule {
+        /**
+         * Optional description of the rule
+         */
+        description?: pulumi.Input<string>;
         equals?: pulumi.Input<string>;
         /**
          * Use `equalsAny` to match any item in a list
@@ -5449,10 +5469,6 @@ export namespace org {
          */
         wanArpPolicer?: pulumi.Input<string>;
         /**
-         * If `wanType`==`wan`, disable speedtest
-         */
-        wanDisableSpeedtest?: pulumi.Input<boolean>;
-        /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: pulumi.Input<string>;
@@ -5480,6 +5496,10 @@ export namespace org {
          * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          */
         wanSourceNat?: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfigWanSourceNat>;
+        /**
+         * Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+         */
+        wanSpeedtestMode?: pulumi.Input<string>;
         /**
          * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
@@ -5803,22 +5823,38 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayServicePolicySkyatp {
+        dnsDgaDetection?: pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection>;
+        dnsTunnelDetection?: pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection>;
+        httpInspection?: pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicySkyatpHttpInspection>;
+        iotDevicePolicy?: pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy>;
+    }
+
+    export interface DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection {
+        enabled?: pulumi.Input<boolean>;
         /**
-         * enum: `disabled`, `default`, `standard`, `strict`
+         * enum: `default`, `standard`, `strict`
          */
-        dnsDgaDetection?: pulumi.Input<string>;
+        profile?: pulumi.Input<string>;
+    }
+
+    export interface DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection {
+        enabled?: pulumi.Input<boolean>;
         /**
-         * enum: `disabled`, `default`, `standard`, `strict`
+         * enum: `default`, `standard`, `strict`
          */
-        dnsTunnelDetection?: pulumi.Input<string>;
+        profile?: pulumi.Input<string>;
+    }
+
+    export interface DeviceprofileGatewayServicePolicySkyatpHttpInspection {
+        enabled?: pulumi.Input<boolean>;
         /**
-         * enum: `disabled`, `standard`
+         * enum: `standard`, `strict`
          */
-        httpInspection?: pulumi.Input<string>;
-        /**
-         * enum: `disabled`, `enabled`
-         */
-        iotDevicePolicy?: pulumi.Input<string>;
+        profile?: pulumi.Input<string>;
+    }
+
+    export interface DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy {
+        enabled?: pulumi.Input<boolean>;
     }
 
     export interface DeviceprofileGatewayServicePolicySslProxy {
@@ -6997,10 +7033,6 @@ export namespace org {
          */
         wanArpPolicer?: pulumi.Input<string>;
         /**
-         * If `wanType`==`wan`, disable speedtest
-         */
-        wanDisableSpeedtest?: pulumi.Input<boolean>;
-        /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: pulumi.Input<string>;
@@ -7028,6 +7060,10 @@ export namespace org {
          * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          */
         wanSourceNat?: pulumi.Input<inputs.org.GatewaytemplatePortConfigWanSourceNat>;
+        /**
+         * Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+         */
+        wanSpeedtestMode?: pulumi.Input<string>;
         /**
          * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
@@ -7351,22 +7387,38 @@ export namespace org {
     }
 
     export interface GatewaytemplateServicePolicySkyatp {
+        dnsDgaDetection?: pulumi.Input<inputs.org.GatewaytemplateServicePolicySkyatpDnsDgaDetection>;
+        dnsTunnelDetection?: pulumi.Input<inputs.org.GatewaytemplateServicePolicySkyatpDnsTunnelDetection>;
+        httpInspection?: pulumi.Input<inputs.org.GatewaytemplateServicePolicySkyatpHttpInspection>;
+        iotDevicePolicy?: pulumi.Input<inputs.org.GatewaytemplateServicePolicySkyatpIotDevicePolicy>;
+    }
+
+    export interface GatewaytemplateServicePolicySkyatpDnsDgaDetection {
+        enabled?: pulumi.Input<boolean>;
         /**
-         * enum: `disabled`, `default`, `standard`, `strict`
+         * enum: `default`, `standard`, `strict`
          */
-        dnsDgaDetection?: pulumi.Input<string>;
+        profile?: pulumi.Input<string>;
+    }
+
+    export interface GatewaytemplateServicePolicySkyatpDnsTunnelDetection {
+        enabled?: pulumi.Input<boolean>;
         /**
-         * enum: `disabled`, `default`, `standard`, `strict`
+         * enum: `default`, `standard`, `strict`
          */
-        dnsTunnelDetection?: pulumi.Input<string>;
+        profile?: pulumi.Input<string>;
+    }
+
+    export interface GatewaytemplateServicePolicySkyatpHttpInspection {
+        enabled?: pulumi.Input<boolean>;
         /**
-         * enum: `disabled`, `standard`
+         * enum: `standard`, `strict`
          */
-        httpInspection?: pulumi.Input<string>;
-        /**
-         * enum: `disabled`, `enabled`
-         */
-        iotDevicePolicy?: pulumi.Input<string>;
+        profile?: pulumi.Input<string>;
+    }
+
+    export interface GatewaytemplateServicePolicySkyatpIotDevicePolicy {
+        enabled?: pulumi.Input<boolean>;
     }
 
     export interface GatewaytemplateServicePolicySslProxy {
@@ -7818,6 +7870,172 @@ export namespace org {
          * if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
          */
         vcMac?: pulumi.Input<string>;
+    }
+
+    export interface MxedgeMxedgeMgmt {
+        configAutoRevert?: pulumi.Input<boolean>;
+        fipsEnabled?: pulumi.Input<boolean>;
+        mistPassword?: pulumi.Input<string>;
+        /**
+         * enum: `dhcp`, `disabled`, `static`
+         */
+        oobIpType?: pulumi.Input<string>;
+        /**
+         * enum: `autoconf`, `dhcp`, `disabled`, `static`
+         */
+        oobIpType6?: pulumi.Input<string>;
+        rootPassword?: pulumi.Input<string>;
+    }
+
+    export interface MxedgeOobIpConfig {
+        autoconf6?: pulumi.Input<boolean>;
+        dhcp6?: pulumi.Input<boolean>;
+        /**
+         * IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+         */
+        dns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * If `type`=`static`
+         */
+        gateway?: pulumi.Input<string>;
+        gateway6?: pulumi.Input<string>;
+        /**
+         * If `type`=`static`
+         */
+        ip?: pulumi.Input<string>;
+        ip6?: pulumi.Input<string>;
+        /**
+         * If `type`=`static`
+         */
+        netmask?: pulumi.Input<string>;
+        netmask6?: pulumi.Input<string>;
+        /**
+         * enum: `dhcp`, `static`
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * enum: `dhcp`, `static`
+         */
+        type6?: pulumi.Input<string>;
+    }
+
+    export interface MxedgeProxy {
+        disabled?: pulumi.Input<boolean>;
+        url?: pulumi.Input<string>;
+    }
+
+    export interface MxedgeTuntermDhcpdConfig {
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * List of DHCP servers; required if `type`==`relay`
+         */
+        servers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * enum: `relay`
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface MxedgeTuntermExtraRoutes {
+        via?: pulumi.Input<string>;
+    }
+
+    export interface MxedgeTuntermIgmpSnoopingConfig {
+        enabled?: pulumi.Input<boolean>;
+        querier?: pulumi.Input<inputs.org.MxedgeTuntermIgmpSnoopingConfigQuerier>;
+        /**
+         * List of vlans on which tunterm performs IGMP snooping
+         */
+        vlanIds?: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface MxedgeTuntermIgmpSnoopingConfigQuerier {
+        /**
+         * Querier's query response interval, in tenths-of-seconds
+         */
+        maxResponseTime?: pulumi.Input<number>;
+        /**
+         * The MTU we use (needed when forming large IGMPv3 Reports)
+         */
+        mtu?: pulumi.Input<number>;
+        /**
+         * Querier's query interval, in seconds
+         */
+        queryInterval?: pulumi.Input<number>;
+        /**
+         * Querier's robustness
+         */
+        robustness?: pulumi.Input<number>;
+        /**
+         * Querier's maximum protocol version
+         */
+        version?: pulumi.Input<number>;
+    }
+
+    export interface MxedgeTuntermIpConfig {
+        gateway: pulumi.Input<string>;
+        gateway6?: pulumi.Input<string>;
+        /**
+         * Untagged VLAN
+         */
+        ip: pulumi.Input<string>;
+        ip6?: pulumi.Input<string>;
+        netmask: pulumi.Input<string>;
+        netmask6?: pulumi.Input<string>;
+    }
+
+    export interface MxedgeTuntermMonitoring {
+        host: pulumi.Input<string>;
+        port: pulumi.Input<number>;
+        protocol: pulumi.Input<string>;
+        srcVlanId: pulumi.Input<number>;
+        timeout: pulumi.Input<number>;
+    }
+
+    export interface MxedgeTuntermMulticastConfig {
+        mdns?: pulumi.Input<inputs.org.MxedgeTuntermMulticastConfigMdns>;
+        ssdp?: pulumi.Input<inputs.org.MxedgeTuntermMulticastConfigSsdp>;
+    }
+
+    export interface MxedgeTuntermMulticastConfigMdns {
+        enabled?: pulumi.Input<boolean>;
+        vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface MxedgeTuntermMulticastConfigSsdp {
+        enabled?: pulumi.Input<boolean>;
+        vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface MxedgeTuntermOtherIpConfigs {
+        ip: pulumi.Input<string>;
+        netmask: pulumi.Input<string>;
+    }
+
+    export interface MxedgeTuntermPortConfig {
+        /**
+         * List of ports to be used for downstream (to AP) purpose
+         */
+        downstreamPorts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether to separate upstream / downstream ports. default is false where all ports will be used.
+         */
+        separateUpstreamDownstream?: pulumi.Input<boolean>;
+        upstreamPortVlanId?: pulumi.Input<string>;
+        /**
+         * List of ports to be used for upstream purpose (to LAN)
+         */
+        upstreamPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface MxedgeTuntermSwitchConfig {
+        portVlanId?: pulumi.Input<number>;
+        vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface MxedgeVersions {
+        mxagent?: pulumi.Input<string>;
+        tunterm?: pulumi.Input<string>;
     }
 
     export interface NacruleMatching {
@@ -8535,6 +8753,10 @@ export namespace org {
     }
 
     export interface NetworktemplatePortUsagesRule {
+        /**
+         * Optional description of the rule
+         */
+        description?: pulumi.Input<string>;
         equals?: pulumi.Input<string>;
         /**
          * Use `equalsAny` to match any item in a list
@@ -9879,6 +10101,10 @@ export namespace org {
         customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         enabled?: pulumi.Input<boolean>;
         snapshot?: pulumi.Input<boolean>;
+        /**
+         * Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface SettingJunosShellAccess {
@@ -9953,6 +10179,10 @@ export namespace org {
          */
         euOnly?: pulumi.Input<boolean>;
         /**
+         * Allows customer to enable client fingerprinting for policy enforcement
+         */
+        fingerprinting?: pulumi.Input<inputs.org.SettingMistNacFingerprinting>;
+        /**
          * allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
          */
         idpMachineCertLookupField?: pulumi.Input<string>;
@@ -9973,6 +10203,29 @@ export namespace org {
          * By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `useSslPort`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedgeClusters that have mist-nac enabled
          */
         useSslPort?: pulumi.Input<boolean>;
+        /**
+         * Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+         */
+        usermacExpiry?: pulumi.Input<number>;
+    }
+
+    export interface SettingMistNacFingerprinting {
+        /**
+         * enable/disable writes to NAC DDB fingerprint table
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * enable/disable CoA triggers on fingerprint change for wired clients, always port-bounce
+         */
+        generateCoa?: pulumi.Input<boolean>;
+        /**
+         * enable/disable CoA triggers on fingerprint change for wireless clients
+         */
+        generateWirelessCoa?: pulumi.Input<boolean>;
+        /**
+         * enum: `reauth`, `disconnect`
+         */
+        wirelessCoaType?: pulumi.Input<string>;
     }
 
     export interface SettingMistNacIdp {
@@ -10106,6 +10359,10 @@ export namespace org {
          */
         customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         enabled?: pulumi.Input<boolean>;
+        /**
+         * Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface SettingSsrProxy {
@@ -10166,25 +10423,17 @@ export namespace org {
          */
         aggressiveness?: pulumi.Input<string>;
         /**
-         * If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+         * Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
          */
-        host?: pulumi.Input<string>;
-        /**
-         * If `type`==`tcp`, Port to be used for the custom probe
-         */
-        port?: pulumi.Input<number>;
+        target?: pulumi.Input<string>;
         /**
          * In milliseconds
          */
         threshold?: pulumi.Input<number>;
         /**
-         * enum: `curl`, `icmp`, `tcp`
+         * enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
          */
         type?: pulumi.Input<string>;
-        /**
-         * If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-         */
-        url?: pulumi.Input<string>;
     }
 
     export interface SettingSyntheticTestLanNetwork {
@@ -12371,6 +12620,10 @@ export namespace site {
     }
 
     export interface NetworktemplatePortUsagesRule {
+        /**
+         * Optional description of the rule
+         */
+        description?: pulumi.Input<string>;
         equals?: pulumi.Input<string>;
         /**
          * Use `equalsAny` to match any item in a list
@@ -13667,6 +13920,10 @@ export namespace site {
         customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         enabled?: pulumi.Input<boolean>;
         snapshot?: pulumi.Input<boolean>;
+        /**
+         * Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface SettingJuniperSrxGateway {
@@ -13871,6 +14128,10 @@ export namespace site {
          */
         customVersions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         enabled?: pulumi.Input<boolean>;
+        /**
+         * Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface SettingSsrProxy {
@@ -13905,25 +14166,17 @@ export namespace site {
          */
         aggressiveness?: pulumi.Input<string>;
         /**
-         * If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+         * Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
          */
-        host?: pulumi.Input<string>;
-        /**
-         * If `type`==`tcp`, Port to be used for the custom probe
-         */
-        port?: pulumi.Input<number>;
+        target?: pulumi.Input<string>;
         /**
          * In milliseconds
          */
         threshold?: pulumi.Input<number>;
         /**
-         * enum: `curl`, `icmp`, `tcp`
+         * enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
          */
         type?: pulumi.Input<string>;
-        /**
-         * If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-         */
-        url?: pulumi.Input<string>;
     }
 
     export interface SettingSyntheticTestLanNetwork {

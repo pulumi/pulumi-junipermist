@@ -11128,8 +11128,6 @@ type DeviceprofileGatewayPortConfig struct {
 	VpnPaths map[string]DeviceprofileGatewayPortConfigVpnPaths `pulumi:"vpnPaths"`
 	// Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 	WanArpPolicer *string `pulumi:"wanArpPolicer"`
-	// If `wanType`==`wan`, disable speedtest
-	WanDisableSpeedtest *bool `pulumi:"wanDisableSpeedtest"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp *string `pulumi:"wanExtIp"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
@@ -11144,6 +11142,8 @@ type DeviceprofileGatewayPortConfig struct {
 	WanProbeOverride *DeviceprofileGatewayPortConfigWanProbeOverride `pulumi:"wanProbeOverride"`
 	// Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
 	WanSourceNat *DeviceprofileGatewayPortConfigWanSourceNat `pulumi:"wanSourceNat"`
+	// Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+	WanSpeedtestMode *string `pulumi:"wanSpeedtestMode"`
 	// Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
 	WanType *string `pulumi:"wanType"`
 }
@@ -11228,8 +11228,6 @@ type DeviceprofileGatewayPortConfigArgs struct {
 	VpnPaths DeviceprofileGatewayPortConfigVpnPathsMapInput `pulumi:"vpnPaths"`
 	// Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 	WanArpPolicer pulumi.StringPtrInput `pulumi:"wanArpPolicer"`
-	// If `wanType`==`wan`, disable speedtest
-	WanDisableSpeedtest pulumi.BoolPtrInput `pulumi:"wanDisableSpeedtest"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp pulumi.StringPtrInput `pulumi:"wanExtIp"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
@@ -11244,6 +11242,8 @@ type DeviceprofileGatewayPortConfigArgs struct {
 	WanProbeOverride DeviceprofileGatewayPortConfigWanProbeOverridePtrInput `pulumi:"wanProbeOverride"`
 	// Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
 	WanSourceNat DeviceprofileGatewayPortConfigWanSourceNatPtrInput `pulumi:"wanSourceNat"`
+	// Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+	WanSpeedtestMode pulumi.StringPtrInput `pulumi:"wanSpeedtestMode"`
 	// Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
 	WanType pulumi.StringPtrInput `pulumi:"wanType"`
 }
@@ -11485,11 +11485,6 @@ func (o DeviceprofileGatewayPortConfigOutput) WanArpPolicer() pulumi.StringPtrOu
 	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *string { return v.WanArpPolicer }).(pulumi.StringPtrOutput)
 }
 
-// If `wanType`==`wan`, disable speedtest
-func (o DeviceprofileGatewayPortConfigOutput) WanDisableSpeedtest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *bool { return v.WanDisableSpeedtest }).(pulumi.BoolPtrOutput)
-}
-
 // Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 func (o DeviceprofileGatewayPortConfigOutput) WanExtIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *string { return v.WanExtIp }).(pulumi.StringPtrOutput)
@@ -11531,6 +11526,11 @@ func (o DeviceprofileGatewayPortConfigOutput) WanSourceNat() DeviceprofileGatewa
 	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *DeviceprofileGatewayPortConfigWanSourceNat {
 		return v.WanSourceNat
 	}).(DeviceprofileGatewayPortConfigWanSourceNatPtrOutput)
+}
+
+// Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+func (o DeviceprofileGatewayPortConfigOutput) WanSpeedtestMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *string { return v.WanSpeedtestMode }).(pulumi.StringPtrOutput)
 }
 
 // Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
@@ -14840,14 +14840,10 @@ func (o DeviceprofileGatewayServicePolicyIdpPtrOutput) Profile() pulumi.StringPt
 }
 
 type DeviceprofileGatewayServicePolicySkyatp struct {
-	// enum: `disabled`, `default`, `standard`, `strict`
-	DnsDgaDetection *string `pulumi:"dnsDgaDetection"`
-	// enum: `disabled`, `default`, `standard`, `strict`
-	DnsTunnelDetection *string `pulumi:"dnsTunnelDetection"`
-	// enum: `disabled`, `standard`
-	HttpInspection *string `pulumi:"httpInspection"`
-	// enum: `disabled`, `enabled`
-	IotDevicePolicy *string `pulumi:"iotDevicePolicy"`
+	DnsDgaDetection    *DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection    `pulumi:"dnsDgaDetection"`
+	DnsTunnelDetection *DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection `pulumi:"dnsTunnelDetection"`
+	HttpInspection     *DeviceprofileGatewayServicePolicySkyatpHttpInspection     `pulumi:"httpInspection"`
+	IotDevicePolicy    *DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy    `pulumi:"iotDevicePolicy"`
 }
 
 // DeviceprofileGatewayServicePolicySkyatpInput is an input type that accepts DeviceprofileGatewayServicePolicySkyatpArgs and DeviceprofileGatewayServicePolicySkyatpOutput values.
@@ -14862,14 +14858,10 @@ type DeviceprofileGatewayServicePolicySkyatpInput interface {
 }
 
 type DeviceprofileGatewayServicePolicySkyatpArgs struct {
-	// enum: `disabled`, `default`, `standard`, `strict`
-	DnsDgaDetection pulumi.StringPtrInput `pulumi:"dnsDgaDetection"`
-	// enum: `disabled`, `default`, `standard`, `strict`
-	DnsTunnelDetection pulumi.StringPtrInput `pulumi:"dnsTunnelDetection"`
-	// enum: `disabled`, `standard`
-	HttpInspection pulumi.StringPtrInput `pulumi:"httpInspection"`
-	// enum: `disabled`, `enabled`
-	IotDevicePolicy pulumi.StringPtrInput `pulumi:"iotDevicePolicy"`
+	DnsDgaDetection    DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrInput    `pulumi:"dnsDgaDetection"`
+	DnsTunnelDetection DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrInput `pulumi:"dnsTunnelDetection"`
+	HttpInspection     DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrInput     `pulumi:"httpInspection"`
+	IotDevicePolicy    DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrInput    `pulumi:"iotDevicePolicy"`
 }
 
 func (DeviceprofileGatewayServicePolicySkyatpArgs) ElementType() reflect.Type {
@@ -14949,24 +14941,28 @@ func (o DeviceprofileGatewayServicePolicySkyatpOutput) ToDeviceprofileGatewaySer
 	}).(DeviceprofileGatewayServicePolicySkyatpPtrOutput)
 }
 
-// enum: `disabled`, `default`, `standard`, `strict`
-func (o DeviceprofileGatewayServicePolicySkyatpOutput) DnsDgaDetection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatp) *string { return v.DnsDgaDetection }).(pulumi.StringPtrOutput)
+func (o DeviceprofileGatewayServicePolicySkyatpOutput) DnsDgaDetection() DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatp) *DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection {
+		return v.DnsDgaDetection
+	}).(DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput)
 }
 
-// enum: `disabled`, `default`, `standard`, `strict`
-func (o DeviceprofileGatewayServicePolicySkyatpOutput) DnsTunnelDetection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatp) *string { return v.DnsTunnelDetection }).(pulumi.StringPtrOutput)
+func (o DeviceprofileGatewayServicePolicySkyatpOutput) DnsTunnelDetection() DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatp) *DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection {
+		return v.DnsTunnelDetection
+	}).(DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput)
 }
 
-// enum: `disabled`, `standard`
-func (o DeviceprofileGatewayServicePolicySkyatpOutput) HttpInspection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatp) *string { return v.HttpInspection }).(pulumi.StringPtrOutput)
+func (o DeviceprofileGatewayServicePolicySkyatpOutput) HttpInspection() DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatp) *DeviceprofileGatewayServicePolicySkyatpHttpInspection {
+		return v.HttpInspection
+	}).(DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput)
 }
 
-// enum: `disabled`, `enabled`
-func (o DeviceprofileGatewayServicePolicySkyatpOutput) IotDevicePolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatp) *string { return v.IotDevicePolicy }).(pulumi.StringPtrOutput)
+func (o DeviceprofileGatewayServicePolicySkyatpOutput) IotDevicePolicy() DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatp) *DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy {
+		return v.IotDevicePolicy
+	}).(DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput)
 }
 
 type DeviceprofileGatewayServicePolicySkyatpPtrOutput struct{ *pulumi.OutputState }
@@ -14993,44 +14989,629 @@ func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) Elem() DeviceprofileGa
 	}).(DeviceprofileGatewayServicePolicySkyatpOutput)
 }
 
-// enum: `disabled`, `default`, `standard`, `strict`
-func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) DnsDgaDetection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) *string {
+func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) DnsDgaDetection() DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) *DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection {
 		if v == nil {
 			return nil
 		}
 		return v.DnsDgaDetection
-	}).(pulumi.StringPtrOutput)
+	}).(DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput)
 }
 
-// enum: `disabled`, `default`, `standard`, `strict`
-func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) DnsTunnelDetection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) *string {
+func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) DnsTunnelDetection() DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) *DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection {
 		if v == nil {
 			return nil
 		}
 		return v.DnsTunnelDetection
-	}).(pulumi.StringPtrOutput)
+	}).(DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput)
 }
 
-// enum: `disabled`, `standard`
-func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) HttpInspection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) *string {
+func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) HttpInspection() DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) *DeviceprofileGatewayServicePolicySkyatpHttpInspection {
 		if v == nil {
 			return nil
 		}
 		return v.HttpInspection
-	}).(pulumi.StringPtrOutput)
+	}).(DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput)
 }
 
-// enum: `disabled`, `enabled`
-func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) IotDevicePolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) *string {
+func (o DeviceprofileGatewayServicePolicySkyatpPtrOutput) IotDevicePolicy() DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatp) *DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy {
 		if v == nil {
 			return nil
 		}
 		return v.IotDevicePolicy
+	}).(DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection struct {
+	Enabled *bool `pulumi:"enabled"`
+	// enum: `default`, `standard`, `strict`
+	Profile *string `pulumi:"profile"`
+}
+
+// DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionInput is an input type that accepts DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs and DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionInput` via:
+//
+//	DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs{...}
+type DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput() DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput
+	ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutputWithContext(context.Context) DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput
+}
+
+type DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// enum: `default`, `standard`, `strict`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection)(nil)).Elem()
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs) ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput() DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs) ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput)
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs) ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs) ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput).ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrInput is an input type that accepts DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs, DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtr and DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrInput` via:
+//
+//	        DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput
+	ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(context.Context) DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput
+}
+
+type deviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrType DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs
+
+func DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtr(v *DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs) DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrInput {
+	return (*deviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrType)(v)
+}
+
+func (*deviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection)(nil)).Elem()
+}
+
+func (i *deviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrType) ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrType) ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput) ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput() DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput) ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput) ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o.ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput) ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection) *DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection {
+		return &v
+	}).(DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput)
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `default`, `standard`, `strict`
+func (o DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput) ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput) ToDeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput) Elem() DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection) DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection
+		return ret
+	}).(DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput)
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enum: `default`, `standard`, `strict`
+func (o DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
 	}).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection struct {
+	Enabled *bool `pulumi:"enabled"`
+	// enum: `default`, `standard`, `strict`
+	Profile *string `pulumi:"profile"`
+}
+
+// DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionInput is an input type that accepts DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs and DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionInput` via:
+//
+//	DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs{...}
+type DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput() DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput
+	ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutputWithContext(context.Context) DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput
+}
+
+type DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// enum: `default`, `standard`, `strict`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection)(nil)).Elem()
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs) ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput() DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs) ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput)
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs) ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs) ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput).ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrInput is an input type that accepts DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs, DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtr and DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrInput` via:
+//
+//	        DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput
+	ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(context.Context) DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput
+}
+
+type deviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrType DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs
+
+func DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtr(v *DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs) DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrInput {
+	return (*deviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrType)(v)
+}
+
+func (*deviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection)(nil)).Elem()
+}
+
+func (i *deviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrType) ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrType) ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput) ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput() DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput) ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput) ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o.ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput) ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection) *DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection {
+		return &v
+	}).(DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput)
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `default`, `standard`, `strict`
+func (o DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput) ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput) ToDeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput) Elem() DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection) DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection
+		return ret
+	}).(DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput)
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enum: `default`, `standard`, `strict`
+func (o DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpHttpInspection struct {
+	Enabled *bool `pulumi:"enabled"`
+	// enum: `standard`, `strict`
+	Profile *string `pulumi:"profile"`
+}
+
+// DeviceprofileGatewayServicePolicySkyatpHttpInspectionInput is an input type that accepts DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs and DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayServicePolicySkyatpHttpInspectionInput` via:
+//
+//	DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs{...}
+type DeviceprofileGatewayServicePolicySkyatpHttpInspectionInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput() DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput
+	ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionOutputWithContext(context.Context) DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput
+}
+
+type DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// enum: `standard`, `strict`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpHttpInspection)(nil)).Elem()
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs) ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput() DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs) ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput)
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs) ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs) ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput).ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrInput is an input type that accepts DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs, DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtr and DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrInput` via:
+//
+//	        DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput
+	ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(context.Context) DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput
+}
+
+type deviceprofileGatewayServicePolicySkyatpHttpInspectionPtrType DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs
+
+func DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtr(v *DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs) DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrInput {
+	return (*deviceprofileGatewayServicePolicySkyatpHttpInspectionPtrType)(v)
+}
+
+func (*deviceprofileGatewayServicePolicySkyatpHttpInspectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayServicePolicySkyatpHttpInspection)(nil)).Elem()
+}
+
+func (i *deviceprofileGatewayServicePolicySkyatpHttpInspectionPtrType) ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileGatewayServicePolicySkyatpHttpInspectionPtrType) ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpHttpInspection)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput) ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput() DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput) ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput) ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return o.ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput) ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileGatewayServicePolicySkyatpHttpInspection) *DeviceprofileGatewayServicePolicySkyatpHttpInspection {
+		return &v
+	}).(DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput)
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatpHttpInspection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `standard`, `strict`
+func (o DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatpHttpInspection) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayServicePolicySkyatpHttpInspection)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput) ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput() DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput) ToDeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput) Elem() DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatpHttpInspection) DeviceprofileGatewayServicePolicySkyatpHttpInspection {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileGatewayServicePolicySkyatpHttpInspection
+		return ret
+	}).(DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput)
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatpHttpInspection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enum: `standard`, `strict`
+func (o DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatpHttpInspection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyInput is an input type that accepts DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs and DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyInput` via:
+//
+//	DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs{...}
+type DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput() DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput
+	ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutputWithContext(context.Context) DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput
+}
+
+type DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy)(nil)).Elem()
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs) ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput() DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs) ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput)
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs) ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput() DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs) ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput).ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx)
+}
+
+// DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrInput is an input type that accepts DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs, DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtr and DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrInput` via:
+//
+//	        DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrInput interface {
+	pulumi.Input
+
+	ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput() DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput
+	ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(context.Context) DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput
+}
+
+type deviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrType DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs
+
+func DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtr(v *DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs) DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrInput {
+	return (*deviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrType)(v)
+}
+
+func (*deviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy)(nil)).Elem()
+}
+
+func (i *deviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrType) ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput() DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return i.ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *deviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrType) ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput) ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput() DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput) ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput) ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput() DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o.ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput) ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy) *DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy {
+		return &v
+	}).(DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput)
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy)(nil)).Elem()
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput) ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput() DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput) ToDeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx context.Context) DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput) Elem() DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy) DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy
+		return ret
+	}).(DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput)
+}
+
+func (o DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type DeviceprofileGatewayServicePolicySslProxy struct {
@@ -23871,8 +24452,6 @@ type GatewaytemplatePortConfig struct {
 	VpnPaths map[string]GatewaytemplatePortConfigVpnPaths `pulumi:"vpnPaths"`
 	// Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 	WanArpPolicer *string `pulumi:"wanArpPolicer"`
-	// If `wanType`==`wan`, disable speedtest
-	WanDisableSpeedtest *bool `pulumi:"wanDisableSpeedtest"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp *string `pulumi:"wanExtIp"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
@@ -23887,6 +24466,8 @@ type GatewaytemplatePortConfig struct {
 	WanProbeOverride *GatewaytemplatePortConfigWanProbeOverride `pulumi:"wanProbeOverride"`
 	// Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
 	WanSourceNat *GatewaytemplatePortConfigWanSourceNat `pulumi:"wanSourceNat"`
+	// Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+	WanSpeedtestMode *string `pulumi:"wanSpeedtestMode"`
 	// Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
 	WanType *string `pulumi:"wanType"`
 }
@@ -23971,8 +24552,6 @@ type GatewaytemplatePortConfigArgs struct {
 	VpnPaths GatewaytemplatePortConfigVpnPathsMapInput `pulumi:"vpnPaths"`
 	// Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 	WanArpPolicer pulumi.StringPtrInput `pulumi:"wanArpPolicer"`
-	// If `wanType`==`wan`, disable speedtest
-	WanDisableSpeedtest pulumi.BoolPtrInput `pulumi:"wanDisableSpeedtest"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp pulumi.StringPtrInput `pulumi:"wanExtIp"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
@@ -23987,6 +24566,8 @@ type GatewaytemplatePortConfigArgs struct {
 	WanProbeOverride GatewaytemplatePortConfigWanProbeOverridePtrInput `pulumi:"wanProbeOverride"`
 	// Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
 	WanSourceNat GatewaytemplatePortConfigWanSourceNatPtrInput `pulumi:"wanSourceNat"`
+	// Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+	WanSpeedtestMode pulumi.StringPtrInput `pulumi:"wanSpeedtestMode"`
 	// Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
 	WanType pulumi.StringPtrInput `pulumi:"wanType"`
 }
@@ -24224,11 +24805,6 @@ func (o GatewaytemplatePortConfigOutput) WanArpPolicer() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GatewaytemplatePortConfig) *string { return v.WanArpPolicer }).(pulumi.StringPtrOutput)
 }
 
-// If `wanType`==`wan`, disable speedtest
-func (o GatewaytemplatePortConfigOutput) WanDisableSpeedtest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewaytemplatePortConfig) *bool { return v.WanDisableSpeedtest }).(pulumi.BoolPtrOutput)
-}
-
 // Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 func (o GatewaytemplatePortConfigOutput) WanExtIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewaytemplatePortConfig) *string { return v.WanExtIp }).(pulumi.StringPtrOutput)
@@ -24268,6 +24844,11 @@ func (o GatewaytemplatePortConfigOutput) WanProbeOverride() GatewaytemplatePortC
 // Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
 func (o GatewaytemplatePortConfigOutput) WanSourceNat() GatewaytemplatePortConfigWanSourceNatPtrOutput {
 	return o.ApplyT(func(v GatewaytemplatePortConfig) *GatewaytemplatePortConfigWanSourceNat { return v.WanSourceNat }).(GatewaytemplatePortConfigWanSourceNatPtrOutput)
+}
+
+// Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+func (o GatewaytemplatePortConfigOutput) WanSpeedtestMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaytemplatePortConfig) *string { return v.WanSpeedtestMode }).(pulumi.StringPtrOutput)
 }
 
 // Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
@@ -27573,14 +28154,10 @@ func (o GatewaytemplateServicePolicyIdpPtrOutput) Profile() pulumi.StringPtrOutp
 }
 
 type GatewaytemplateServicePolicySkyatp struct {
-	// enum: `disabled`, `default`, `standard`, `strict`
-	DnsDgaDetection *string `pulumi:"dnsDgaDetection"`
-	// enum: `disabled`, `default`, `standard`, `strict`
-	DnsTunnelDetection *string `pulumi:"dnsTunnelDetection"`
-	// enum: `disabled`, `standard`
-	HttpInspection *string `pulumi:"httpInspection"`
-	// enum: `disabled`, `enabled`
-	IotDevicePolicy *string `pulumi:"iotDevicePolicy"`
+	DnsDgaDetection    *GatewaytemplateServicePolicySkyatpDnsDgaDetection    `pulumi:"dnsDgaDetection"`
+	DnsTunnelDetection *GatewaytemplateServicePolicySkyatpDnsTunnelDetection `pulumi:"dnsTunnelDetection"`
+	HttpInspection     *GatewaytemplateServicePolicySkyatpHttpInspection     `pulumi:"httpInspection"`
+	IotDevicePolicy    *GatewaytemplateServicePolicySkyatpIotDevicePolicy    `pulumi:"iotDevicePolicy"`
 }
 
 // GatewaytemplateServicePolicySkyatpInput is an input type that accepts GatewaytemplateServicePolicySkyatpArgs and GatewaytemplateServicePolicySkyatpOutput values.
@@ -27595,14 +28172,10 @@ type GatewaytemplateServicePolicySkyatpInput interface {
 }
 
 type GatewaytemplateServicePolicySkyatpArgs struct {
-	// enum: `disabled`, `default`, `standard`, `strict`
-	DnsDgaDetection pulumi.StringPtrInput `pulumi:"dnsDgaDetection"`
-	// enum: `disabled`, `default`, `standard`, `strict`
-	DnsTunnelDetection pulumi.StringPtrInput `pulumi:"dnsTunnelDetection"`
-	// enum: `disabled`, `standard`
-	HttpInspection pulumi.StringPtrInput `pulumi:"httpInspection"`
-	// enum: `disabled`, `enabled`
-	IotDevicePolicy pulumi.StringPtrInput `pulumi:"iotDevicePolicy"`
+	DnsDgaDetection    GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrInput    `pulumi:"dnsDgaDetection"`
+	DnsTunnelDetection GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrInput `pulumi:"dnsTunnelDetection"`
+	HttpInspection     GatewaytemplateServicePolicySkyatpHttpInspectionPtrInput     `pulumi:"httpInspection"`
+	IotDevicePolicy    GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrInput    `pulumi:"iotDevicePolicy"`
 }
 
 func (GatewaytemplateServicePolicySkyatpArgs) ElementType() reflect.Type {
@@ -27682,24 +28255,28 @@ func (o GatewaytemplateServicePolicySkyatpOutput) ToGatewaytemplateServicePolicy
 	}).(GatewaytemplateServicePolicySkyatpPtrOutput)
 }
 
-// enum: `disabled`, `default`, `standard`, `strict`
-func (o GatewaytemplateServicePolicySkyatpOutput) DnsDgaDetection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatp) *string { return v.DnsDgaDetection }).(pulumi.StringPtrOutput)
+func (o GatewaytemplateServicePolicySkyatpOutput) DnsDgaDetection() GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatp) *GatewaytemplateServicePolicySkyatpDnsDgaDetection {
+		return v.DnsDgaDetection
+	}).(GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput)
 }
 
-// enum: `disabled`, `default`, `standard`, `strict`
-func (o GatewaytemplateServicePolicySkyatpOutput) DnsTunnelDetection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatp) *string { return v.DnsTunnelDetection }).(pulumi.StringPtrOutput)
+func (o GatewaytemplateServicePolicySkyatpOutput) DnsTunnelDetection() GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatp) *GatewaytemplateServicePolicySkyatpDnsTunnelDetection {
+		return v.DnsTunnelDetection
+	}).(GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput)
 }
 
-// enum: `disabled`, `standard`
-func (o GatewaytemplateServicePolicySkyatpOutput) HttpInspection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatp) *string { return v.HttpInspection }).(pulumi.StringPtrOutput)
+func (o GatewaytemplateServicePolicySkyatpOutput) HttpInspection() GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatp) *GatewaytemplateServicePolicySkyatpHttpInspection {
+		return v.HttpInspection
+	}).(GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput)
 }
 
-// enum: `disabled`, `enabled`
-func (o GatewaytemplateServicePolicySkyatpOutput) IotDevicePolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatp) *string { return v.IotDevicePolicy }).(pulumi.StringPtrOutput)
+func (o GatewaytemplateServicePolicySkyatpOutput) IotDevicePolicy() GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatp) *GatewaytemplateServicePolicySkyatpIotDevicePolicy {
+		return v.IotDevicePolicy
+	}).(GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput)
 }
 
 type GatewaytemplateServicePolicySkyatpPtrOutput struct{ *pulumi.OutputState }
@@ -27726,44 +28303,629 @@ func (o GatewaytemplateServicePolicySkyatpPtrOutput) Elem() GatewaytemplateServi
 	}).(GatewaytemplateServicePolicySkyatpOutput)
 }
 
-// enum: `disabled`, `default`, `standard`, `strict`
-func (o GatewaytemplateServicePolicySkyatpPtrOutput) DnsDgaDetection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) *string {
+func (o GatewaytemplateServicePolicySkyatpPtrOutput) DnsDgaDetection() GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) *GatewaytemplateServicePolicySkyatpDnsDgaDetection {
 		if v == nil {
 			return nil
 		}
 		return v.DnsDgaDetection
-	}).(pulumi.StringPtrOutput)
+	}).(GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput)
 }
 
-// enum: `disabled`, `default`, `standard`, `strict`
-func (o GatewaytemplateServicePolicySkyatpPtrOutput) DnsTunnelDetection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) *string {
+func (o GatewaytemplateServicePolicySkyatpPtrOutput) DnsTunnelDetection() GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) *GatewaytemplateServicePolicySkyatpDnsTunnelDetection {
 		if v == nil {
 			return nil
 		}
 		return v.DnsTunnelDetection
-	}).(pulumi.StringPtrOutput)
+	}).(GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput)
 }
 
-// enum: `disabled`, `standard`
-func (o GatewaytemplateServicePolicySkyatpPtrOutput) HttpInspection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) *string {
+func (o GatewaytemplateServicePolicySkyatpPtrOutput) HttpInspection() GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) *GatewaytemplateServicePolicySkyatpHttpInspection {
 		if v == nil {
 			return nil
 		}
 		return v.HttpInspection
-	}).(pulumi.StringPtrOutput)
+	}).(GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput)
 }
 
-// enum: `disabled`, `enabled`
-func (o GatewaytemplateServicePolicySkyatpPtrOutput) IotDevicePolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) *string {
+func (o GatewaytemplateServicePolicySkyatpPtrOutput) IotDevicePolicy() GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatp) *GatewaytemplateServicePolicySkyatpIotDevicePolicy {
 		if v == nil {
 			return nil
 		}
 		return v.IotDevicePolicy
+	}).(GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpDnsDgaDetection struct {
+	Enabled *bool `pulumi:"enabled"`
+	// enum: `default`, `standard`, `strict`
+	Profile *string `pulumi:"profile"`
+}
+
+// GatewaytemplateServicePolicySkyatpDnsDgaDetectionInput is an input type that accepts GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs and GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput values.
+// You can construct a concrete instance of `GatewaytemplateServicePolicySkyatpDnsDgaDetectionInput` via:
+//
+//	GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs{...}
+type GatewaytemplateServicePolicySkyatpDnsDgaDetectionInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput() GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput
+	ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionOutputWithContext(context.Context) GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput
+}
+
+type GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// enum: `default`, `standard`, `strict`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateServicePolicySkyatpDnsDgaDetection)(nil)).Elem()
+}
+
+func (i GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs) ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput() GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs) ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput)
+}
+
+func (i GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs) ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput() GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs) ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput).ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx)
+}
+
+// GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrInput is an input type that accepts GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs, GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtr and GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput values.
+// You can construct a concrete instance of `GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrInput` via:
+//
+//	        GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput() GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput
+	ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(context.Context) GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput
+}
+
+type gatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrType GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs
+
+func GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtr(v *GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs) GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrInput {
+	return (*gatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrType)(v)
+}
+
+func (*gatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateServicePolicySkyatpDnsDgaDetection)(nil)).Elem()
+}
+
+func (i *gatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrType) ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput() GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrType) ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateServicePolicySkyatpDnsDgaDetection)(nil)).Elem()
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput) ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput() GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput) ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput) ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput() GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o.ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(context.Background())
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput) ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewaytemplateServicePolicySkyatpDnsDgaDetection) *GatewaytemplateServicePolicySkyatpDnsDgaDetection {
+		return &v
+	}).(GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput)
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatpDnsDgaDetection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `default`, `standard`, `strict`
+func (o GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatpDnsDgaDetection) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateServicePolicySkyatpDnsDgaDetection)(nil)).Elem()
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput) ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput() GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput) ToGatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput) Elem() GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatpDnsDgaDetection) GatewaytemplateServicePolicySkyatpDnsDgaDetection {
+		if v != nil {
+			return *v
+		}
+		var ret GatewaytemplateServicePolicySkyatpDnsDgaDetection
+		return ret
+	}).(GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput)
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatpDnsDgaDetection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enum: `default`, `standard`, `strict`
+func (o GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatpDnsDgaDetection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
 	}).(pulumi.StringPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpDnsTunnelDetection struct {
+	Enabled *bool `pulumi:"enabled"`
+	// enum: `default`, `standard`, `strict`
+	Profile *string `pulumi:"profile"`
+}
+
+// GatewaytemplateServicePolicySkyatpDnsTunnelDetectionInput is an input type that accepts GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs and GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput values.
+// You can construct a concrete instance of `GatewaytemplateServicePolicySkyatpDnsTunnelDetectionInput` via:
+//
+//	GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs{...}
+type GatewaytemplateServicePolicySkyatpDnsTunnelDetectionInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput() GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput
+	ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutputWithContext(context.Context) GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput
+}
+
+type GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// enum: `default`, `standard`, `strict`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateServicePolicySkyatpDnsTunnelDetection)(nil)).Elem()
+}
+
+func (i GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs) ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput() GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs) ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput)
+}
+
+func (i GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs) ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput() GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs) ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput).ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx)
+}
+
+// GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrInput is an input type that accepts GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs, GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtr and GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput values.
+// You can construct a concrete instance of `GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrInput` via:
+//
+//	        GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput() GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput
+	ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(context.Context) GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput
+}
+
+type gatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrType GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs
+
+func GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtr(v *GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs) GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrInput {
+	return (*gatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrType)(v)
+}
+
+func (*gatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateServicePolicySkyatpDnsTunnelDetection)(nil)).Elem()
+}
+
+func (i *gatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrType) ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput() GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrType) ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateServicePolicySkyatpDnsTunnelDetection)(nil)).Elem()
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput) ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput() GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput) ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput) ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput() GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o.ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(context.Background())
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput) ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewaytemplateServicePolicySkyatpDnsTunnelDetection) *GatewaytemplateServicePolicySkyatpDnsTunnelDetection {
+		return &v
+	}).(GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput)
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatpDnsTunnelDetection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `default`, `standard`, `strict`
+func (o GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatpDnsTunnelDetection) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateServicePolicySkyatpDnsTunnelDetection)(nil)).Elem()
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput) ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput() GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput) ToGatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput) Elem() GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatpDnsTunnelDetection) GatewaytemplateServicePolicySkyatpDnsTunnelDetection {
+		if v != nil {
+			return *v
+		}
+		var ret GatewaytemplateServicePolicySkyatpDnsTunnelDetection
+		return ret
+	}).(GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput)
+}
+
+func (o GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatpDnsTunnelDetection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enum: `default`, `standard`, `strict`
+func (o GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatpDnsTunnelDetection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpHttpInspection struct {
+	Enabled *bool `pulumi:"enabled"`
+	// enum: `standard`, `strict`
+	Profile *string `pulumi:"profile"`
+}
+
+// GatewaytemplateServicePolicySkyatpHttpInspectionInput is an input type that accepts GatewaytemplateServicePolicySkyatpHttpInspectionArgs and GatewaytemplateServicePolicySkyatpHttpInspectionOutput values.
+// You can construct a concrete instance of `GatewaytemplateServicePolicySkyatpHttpInspectionInput` via:
+//
+//	GatewaytemplateServicePolicySkyatpHttpInspectionArgs{...}
+type GatewaytemplateServicePolicySkyatpHttpInspectionInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateServicePolicySkyatpHttpInspectionOutput() GatewaytemplateServicePolicySkyatpHttpInspectionOutput
+	ToGatewaytemplateServicePolicySkyatpHttpInspectionOutputWithContext(context.Context) GatewaytemplateServicePolicySkyatpHttpInspectionOutput
+}
+
+type GatewaytemplateServicePolicySkyatpHttpInspectionArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// enum: `standard`, `strict`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (GatewaytemplateServicePolicySkyatpHttpInspectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateServicePolicySkyatpHttpInspection)(nil)).Elem()
+}
+
+func (i GatewaytemplateServicePolicySkyatpHttpInspectionArgs) ToGatewaytemplateServicePolicySkyatpHttpInspectionOutput() GatewaytemplateServicePolicySkyatpHttpInspectionOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpHttpInspectionOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateServicePolicySkyatpHttpInspectionArgs) ToGatewaytemplateServicePolicySkyatpHttpInspectionOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpHttpInspectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpHttpInspectionOutput)
+}
+
+func (i GatewaytemplateServicePolicySkyatpHttpInspectionArgs) ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput() GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateServicePolicySkyatpHttpInspectionArgs) ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpHttpInspectionOutput).ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx)
+}
+
+// GatewaytemplateServicePolicySkyatpHttpInspectionPtrInput is an input type that accepts GatewaytemplateServicePolicySkyatpHttpInspectionArgs, GatewaytemplateServicePolicySkyatpHttpInspectionPtr and GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput values.
+// You can construct a concrete instance of `GatewaytemplateServicePolicySkyatpHttpInspectionPtrInput` via:
+//
+//	        GatewaytemplateServicePolicySkyatpHttpInspectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewaytemplateServicePolicySkyatpHttpInspectionPtrInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput() GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput
+	ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutputWithContext(context.Context) GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput
+}
+
+type gatewaytemplateServicePolicySkyatpHttpInspectionPtrType GatewaytemplateServicePolicySkyatpHttpInspectionArgs
+
+func GatewaytemplateServicePolicySkyatpHttpInspectionPtr(v *GatewaytemplateServicePolicySkyatpHttpInspectionArgs) GatewaytemplateServicePolicySkyatpHttpInspectionPtrInput {
+	return (*gatewaytemplateServicePolicySkyatpHttpInspectionPtrType)(v)
+}
+
+func (*gatewaytemplateServicePolicySkyatpHttpInspectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateServicePolicySkyatpHttpInspection)(nil)).Elem()
+}
+
+func (i *gatewaytemplateServicePolicySkyatpHttpInspectionPtrType) ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput() GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewaytemplateServicePolicySkyatpHttpInspectionPtrType) ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpHttpInspectionOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateServicePolicySkyatpHttpInspectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateServicePolicySkyatpHttpInspection)(nil)).Elem()
+}
+
+func (o GatewaytemplateServicePolicySkyatpHttpInspectionOutput) ToGatewaytemplateServicePolicySkyatpHttpInspectionOutput() GatewaytemplateServicePolicySkyatpHttpInspectionOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpHttpInspectionOutput) ToGatewaytemplateServicePolicySkyatpHttpInspectionOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpHttpInspectionOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpHttpInspectionOutput) ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput() GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput {
+	return o.ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutputWithContext(context.Background())
+}
+
+func (o GatewaytemplateServicePolicySkyatpHttpInspectionOutput) ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewaytemplateServicePolicySkyatpHttpInspection) *GatewaytemplateServicePolicySkyatpHttpInspection {
+		return &v
+	}).(GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput)
+}
+
+func (o GatewaytemplateServicePolicySkyatpHttpInspectionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatpHttpInspection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `standard`, `strict`
+func (o GatewaytemplateServicePolicySkyatpHttpInspectionOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatpHttpInspection) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateServicePolicySkyatpHttpInspection)(nil)).Elem()
+}
+
+func (o GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput) ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput() GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput) ToGatewaytemplateServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput) Elem() GatewaytemplateServicePolicySkyatpHttpInspectionOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatpHttpInspection) GatewaytemplateServicePolicySkyatpHttpInspection {
+		if v != nil {
+			return *v
+		}
+		var ret GatewaytemplateServicePolicySkyatpHttpInspection
+		return ret
+	}).(GatewaytemplateServicePolicySkyatpHttpInspectionOutput)
+}
+
+func (o GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatpHttpInspection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enum: `standard`, `strict`
+func (o GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatpHttpInspection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpIotDevicePolicy struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GatewaytemplateServicePolicySkyatpIotDevicePolicyInput is an input type that accepts GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs and GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput values.
+// You can construct a concrete instance of `GatewaytemplateServicePolicySkyatpIotDevicePolicyInput` via:
+//
+//	GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs{...}
+type GatewaytemplateServicePolicySkyatpIotDevicePolicyInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateServicePolicySkyatpIotDevicePolicyOutput() GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput
+	ToGatewaytemplateServicePolicySkyatpIotDevicePolicyOutputWithContext(context.Context) GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput
+}
+
+type GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateServicePolicySkyatpIotDevicePolicy)(nil)).Elem()
+}
+
+func (i GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs) ToGatewaytemplateServicePolicySkyatpIotDevicePolicyOutput() GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpIotDevicePolicyOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs) ToGatewaytemplateServicePolicySkyatpIotDevicePolicyOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput)
+}
+
+func (i GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs) ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput() GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs) ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput).ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx)
+}
+
+// GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrInput is an input type that accepts GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs, GatewaytemplateServicePolicySkyatpIotDevicePolicyPtr and GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput values.
+// You can construct a concrete instance of `GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrInput` via:
+//
+//	        GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrInput interface {
+	pulumi.Input
+
+	ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput() GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput
+	ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(context.Context) GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput
+}
+
+type gatewaytemplateServicePolicySkyatpIotDevicePolicyPtrType GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs
+
+func GatewaytemplateServicePolicySkyatpIotDevicePolicyPtr(v *GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs) GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrInput {
+	return (*gatewaytemplateServicePolicySkyatpIotDevicePolicyPtrType)(v)
+}
+
+func (*gatewaytemplateServicePolicySkyatpIotDevicePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateServicePolicySkyatpIotDevicePolicy)(nil)).Elem()
+}
+
+func (i *gatewaytemplateServicePolicySkyatpIotDevicePolicyPtrType) ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput() GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return i.ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewaytemplateServicePolicySkyatpIotDevicePolicyPtrType) ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateServicePolicySkyatpIotDevicePolicy)(nil)).Elem()
+}
+
+func (o GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput) ToGatewaytemplateServicePolicySkyatpIotDevicePolicyOutput() GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput) ToGatewaytemplateServicePolicySkyatpIotDevicePolicyOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput) ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput() GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o.ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput) ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewaytemplateServicePolicySkyatpIotDevicePolicy) *GatewaytemplateServicePolicySkyatpIotDevicePolicy {
+		return &v
+	}).(GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput)
+}
+
+func (o GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateServicePolicySkyatpIotDevicePolicy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewaytemplateServicePolicySkyatpIotDevicePolicy)(nil)).Elem()
+}
+
+func (o GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput) ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput() GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput) ToGatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx context.Context) GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o
+}
+
+func (o GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput) Elem() GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatpIotDevicePolicy) GatewaytemplateServicePolicySkyatpIotDevicePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GatewaytemplateServicePolicySkyatpIotDevicePolicy
+		return ret
+	}).(GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput)
+}
+
+func (o GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewaytemplateServicePolicySkyatpIotDevicePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GatewaytemplateServicePolicySslProxy struct {
@@ -31694,6 +32856,2575 @@ func (o InventoryInventoryMapOutput) MapIndex(k pulumi.StringInput) InventoryInv
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InventoryInventory {
 		return vs[0].(map[string]InventoryInventory)[vs[1].(string)]
 	}).(InventoryInventoryOutput)
+}
+
+type MxedgeMxedgeMgmt struct {
+	ConfigAutoRevert *bool   `pulumi:"configAutoRevert"`
+	FipsEnabled      *bool   `pulumi:"fipsEnabled"`
+	MistPassword     *string `pulumi:"mistPassword"`
+	// enum: `dhcp`, `disabled`, `static`
+	OobIpType *string `pulumi:"oobIpType"`
+	// enum: `autoconf`, `dhcp`, `disabled`, `static`
+	OobIpType6   *string `pulumi:"oobIpType6"`
+	RootPassword *string `pulumi:"rootPassword"`
+}
+
+// MxedgeMxedgeMgmtInput is an input type that accepts MxedgeMxedgeMgmtArgs and MxedgeMxedgeMgmtOutput values.
+// You can construct a concrete instance of `MxedgeMxedgeMgmtInput` via:
+//
+//	MxedgeMxedgeMgmtArgs{...}
+type MxedgeMxedgeMgmtInput interface {
+	pulumi.Input
+
+	ToMxedgeMxedgeMgmtOutput() MxedgeMxedgeMgmtOutput
+	ToMxedgeMxedgeMgmtOutputWithContext(context.Context) MxedgeMxedgeMgmtOutput
+}
+
+type MxedgeMxedgeMgmtArgs struct {
+	ConfigAutoRevert pulumi.BoolPtrInput   `pulumi:"configAutoRevert"`
+	FipsEnabled      pulumi.BoolPtrInput   `pulumi:"fipsEnabled"`
+	MistPassword     pulumi.StringPtrInput `pulumi:"mistPassword"`
+	// enum: `dhcp`, `disabled`, `static`
+	OobIpType pulumi.StringPtrInput `pulumi:"oobIpType"`
+	// enum: `autoconf`, `dhcp`, `disabled`, `static`
+	OobIpType6   pulumi.StringPtrInput `pulumi:"oobIpType6"`
+	RootPassword pulumi.StringPtrInput `pulumi:"rootPassword"`
+}
+
+func (MxedgeMxedgeMgmtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeMxedgeMgmt)(nil)).Elem()
+}
+
+func (i MxedgeMxedgeMgmtArgs) ToMxedgeMxedgeMgmtOutput() MxedgeMxedgeMgmtOutput {
+	return i.ToMxedgeMxedgeMgmtOutputWithContext(context.Background())
+}
+
+func (i MxedgeMxedgeMgmtArgs) ToMxedgeMxedgeMgmtOutputWithContext(ctx context.Context) MxedgeMxedgeMgmtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeMxedgeMgmtOutput)
+}
+
+func (i MxedgeMxedgeMgmtArgs) ToMxedgeMxedgeMgmtPtrOutput() MxedgeMxedgeMgmtPtrOutput {
+	return i.ToMxedgeMxedgeMgmtPtrOutputWithContext(context.Background())
+}
+
+func (i MxedgeMxedgeMgmtArgs) ToMxedgeMxedgeMgmtPtrOutputWithContext(ctx context.Context) MxedgeMxedgeMgmtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeMxedgeMgmtOutput).ToMxedgeMxedgeMgmtPtrOutputWithContext(ctx)
+}
+
+// MxedgeMxedgeMgmtPtrInput is an input type that accepts MxedgeMxedgeMgmtArgs, MxedgeMxedgeMgmtPtr and MxedgeMxedgeMgmtPtrOutput values.
+// You can construct a concrete instance of `MxedgeMxedgeMgmtPtrInput` via:
+//
+//	        MxedgeMxedgeMgmtArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxedgeMxedgeMgmtPtrInput interface {
+	pulumi.Input
+
+	ToMxedgeMxedgeMgmtPtrOutput() MxedgeMxedgeMgmtPtrOutput
+	ToMxedgeMxedgeMgmtPtrOutputWithContext(context.Context) MxedgeMxedgeMgmtPtrOutput
+}
+
+type mxedgeMxedgeMgmtPtrType MxedgeMxedgeMgmtArgs
+
+func MxedgeMxedgeMgmtPtr(v *MxedgeMxedgeMgmtArgs) MxedgeMxedgeMgmtPtrInput {
+	return (*mxedgeMxedgeMgmtPtrType)(v)
+}
+
+func (*mxedgeMxedgeMgmtPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeMxedgeMgmt)(nil)).Elem()
+}
+
+func (i *mxedgeMxedgeMgmtPtrType) ToMxedgeMxedgeMgmtPtrOutput() MxedgeMxedgeMgmtPtrOutput {
+	return i.ToMxedgeMxedgeMgmtPtrOutputWithContext(context.Background())
+}
+
+func (i *mxedgeMxedgeMgmtPtrType) ToMxedgeMxedgeMgmtPtrOutputWithContext(ctx context.Context) MxedgeMxedgeMgmtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeMxedgeMgmtPtrOutput)
+}
+
+type MxedgeMxedgeMgmtOutput struct{ *pulumi.OutputState }
+
+func (MxedgeMxedgeMgmtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeMxedgeMgmt)(nil)).Elem()
+}
+
+func (o MxedgeMxedgeMgmtOutput) ToMxedgeMxedgeMgmtOutput() MxedgeMxedgeMgmtOutput {
+	return o
+}
+
+func (o MxedgeMxedgeMgmtOutput) ToMxedgeMxedgeMgmtOutputWithContext(ctx context.Context) MxedgeMxedgeMgmtOutput {
+	return o
+}
+
+func (o MxedgeMxedgeMgmtOutput) ToMxedgeMxedgeMgmtPtrOutput() MxedgeMxedgeMgmtPtrOutput {
+	return o.ToMxedgeMxedgeMgmtPtrOutputWithContext(context.Background())
+}
+
+func (o MxedgeMxedgeMgmtOutput) ToMxedgeMxedgeMgmtPtrOutputWithContext(ctx context.Context) MxedgeMxedgeMgmtPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxedgeMxedgeMgmt) *MxedgeMxedgeMgmt {
+		return &v
+	}).(MxedgeMxedgeMgmtPtrOutput)
+}
+
+func (o MxedgeMxedgeMgmtOutput) ConfigAutoRevert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxedgeMxedgeMgmt) *bool { return v.ConfigAutoRevert }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeMxedgeMgmtOutput) FipsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxedgeMxedgeMgmt) *bool { return v.FipsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeMxedgeMgmtOutput) MistPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeMxedgeMgmt) *string { return v.MistPassword }).(pulumi.StringPtrOutput)
+}
+
+// enum: `dhcp`, `disabled`, `static`
+func (o MxedgeMxedgeMgmtOutput) OobIpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeMxedgeMgmt) *string { return v.OobIpType }).(pulumi.StringPtrOutput)
+}
+
+// enum: `autoconf`, `dhcp`, `disabled`, `static`
+func (o MxedgeMxedgeMgmtOutput) OobIpType6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeMxedgeMgmt) *string { return v.OobIpType6 }).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeMxedgeMgmtOutput) RootPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeMxedgeMgmt) *string { return v.RootPassword }).(pulumi.StringPtrOutput)
+}
+
+type MxedgeMxedgeMgmtPtrOutput struct{ *pulumi.OutputState }
+
+func (MxedgeMxedgeMgmtPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeMxedgeMgmt)(nil)).Elem()
+}
+
+func (o MxedgeMxedgeMgmtPtrOutput) ToMxedgeMxedgeMgmtPtrOutput() MxedgeMxedgeMgmtPtrOutput {
+	return o
+}
+
+func (o MxedgeMxedgeMgmtPtrOutput) ToMxedgeMxedgeMgmtPtrOutputWithContext(ctx context.Context) MxedgeMxedgeMgmtPtrOutput {
+	return o
+}
+
+func (o MxedgeMxedgeMgmtPtrOutput) Elem() MxedgeMxedgeMgmtOutput {
+	return o.ApplyT(func(v *MxedgeMxedgeMgmt) MxedgeMxedgeMgmt {
+		if v != nil {
+			return *v
+		}
+		var ret MxedgeMxedgeMgmt
+		return ret
+	}).(MxedgeMxedgeMgmtOutput)
+}
+
+func (o MxedgeMxedgeMgmtPtrOutput) ConfigAutoRevert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxedgeMxedgeMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigAutoRevert
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeMxedgeMgmtPtrOutput) FipsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxedgeMxedgeMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FipsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeMxedgeMgmtPtrOutput) MistPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeMxedgeMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MistPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `dhcp`, `disabled`, `static`
+func (o MxedgeMxedgeMgmtPtrOutput) OobIpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeMxedgeMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OobIpType
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `autoconf`, `dhcp`, `disabled`, `static`
+func (o MxedgeMxedgeMgmtPtrOutput) OobIpType6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeMxedgeMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OobIpType6
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeMxedgeMgmtPtrOutput) RootPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeMxedgeMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RootPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+type MxedgeOobIpConfig struct {
+	Autoconf6 *bool `pulumi:"autoconf6"`
+	Dhcp6     *bool `pulumi:"dhcp6"`
+	// IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+	Dns []string `pulumi:"dns"`
+	// If `type`=`static`
+	Gateway  *string `pulumi:"gateway"`
+	Gateway6 *string `pulumi:"gateway6"`
+	// If `type`=`static`
+	Ip  *string `pulumi:"ip"`
+	Ip6 *string `pulumi:"ip6"`
+	// If `type`=`static`
+	Netmask  *string `pulumi:"netmask"`
+	Netmask6 *string `pulumi:"netmask6"`
+	// enum: `dhcp`, `static`
+	Type *string `pulumi:"type"`
+	// enum: `dhcp`, `static`
+	Type6 *string `pulumi:"type6"`
+}
+
+// MxedgeOobIpConfigInput is an input type that accepts MxedgeOobIpConfigArgs and MxedgeOobIpConfigOutput values.
+// You can construct a concrete instance of `MxedgeOobIpConfigInput` via:
+//
+//	MxedgeOobIpConfigArgs{...}
+type MxedgeOobIpConfigInput interface {
+	pulumi.Input
+
+	ToMxedgeOobIpConfigOutput() MxedgeOobIpConfigOutput
+	ToMxedgeOobIpConfigOutputWithContext(context.Context) MxedgeOobIpConfigOutput
+}
+
+type MxedgeOobIpConfigArgs struct {
+	Autoconf6 pulumi.BoolPtrInput `pulumi:"autoconf6"`
+	Dhcp6     pulumi.BoolPtrInput `pulumi:"dhcp6"`
+	// IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+	Dns pulumi.StringArrayInput `pulumi:"dns"`
+	// If `type`=`static`
+	Gateway  pulumi.StringPtrInput `pulumi:"gateway"`
+	Gateway6 pulumi.StringPtrInput `pulumi:"gateway6"`
+	// If `type`=`static`
+	Ip  pulumi.StringPtrInput `pulumi:"ip"`
+	Ip6 pulumi.StringPtrInput `pulumi:"ip6"`
+	// If `type`=`static`
+	Netmask  pulumi.StringPtrInput `pulumi:"netmask"`
+	Netmask6 pulumi.StringPtrInput `pulumi:"netmask6"`
+	// enum: `dhcp`, `static`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// enum: `dhcp`, `static`
+	Type6 pulumi.StringPtrInput `pulumi:"type6"`
+}
+
+func (MxedgeOobIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeOobIpConfig)(nil)).Elem()
+}
+
+func (i MxedgeOobIpConfigArgs) ToMxedgeOobIpConfigOutput() MxedgeOobIpConfigOutput {
+	return i.ToMxedgeOobIpConfigOutputWithContext(context.Background())
+}
+
+func (i MxedgeOobIpConfigArgs) ToMxedgeOobIpConfigOutputWithContext(ctx context.Context) MxedgeOobIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeOobIpConfigOutput)
+}
+
+func (i MxedgeOobIpConfigArgs) ToMxedgeOobIpConfigPtrOutput() MxedgeOobIpConfigPtrOutput {
+	return i.ToMxedgeOobIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MxedgeOobIpConfigArgs) ToMxedgeOobIpConfigPtrOutputWithContext(ctx context.Context) MxedgeOobIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeOobIpConfigOutput).ToMxedgeOobIpConfigPtrOutputWithContext(ctx)
+}
+
+// MxedgeOobIpConfigPtrInput is an input type that accepts MxedgeOobIpConfigArgs, MxedgeOobIpConfigPtr and MxedgeOobIpConfigPtrOutput values.
+// You can construct a concrete instance of `MxedgeOobIpConfigPtrInput` via:
+//
+//	        MxedgeOobIpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxedgeOobIpConfigPtrInput interface {
+	pulumi.Input
+
+	ToMxedgeOobIpConfigPtrOutput() MxedgeOobIpConfigPtrOutput
+	ToMxedgeOobIpConfigPtrOutputWithContext(context.Context) MxedgeOobIpConfigPtrOutput
+}
+
+type mxedgeOobIpConfigPtrType MxedgeOobIpConfigArgs
+
+func MxedgeOobIpConfigPtr(v *MxedgeOobIpConfigArgs) MxedgeOobIpConfigPtrInput {
+	return (*mxedgeOobIpConfigPtrType)(v)
+}
+
+func (*mxedgeOobIpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeOobIpConfig)(nil)).Elem()
+}
+
+func (i *mxedgeOobIpConfigPtrType) ToMxedgeOobIpConfigPtrOutput() MxedgeOobIpConfigPtrOutput {
+	return i.ToMxedgeOobIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *mxedgeOobIpConfigPtrType) ToMxedgeOobIpConfigPtrOutputWithContext(ctx context.Context) MxedgeOobIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeOobIpConfigPtrOutput)
+}
+
+type MxedgeOobIpConfigOutput struct{ *pulumi.OutputState }
+
+func (MxedgeOobIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeOobIpConfig)(nil)).Elem()
+}
+
+func (o MxedgeOobIpConfigOutput) ToMxedgeOobIpConfigOutput() MxedgeOobIpConfigOutput {
+	return o
+}
+
+func (o MxedgeOobIpConfigOutput) ToMxedgeOobIpConfigOutputWithContext(ctx context.Context) MxedgeOobIpConfigOutput {
+	return o
+}
+
+func (o MxedgeOobIpConfigOutput) ToMxedgeOobIpConfigPtrOutput() MxedgeOobIpConfigPtrOutput {
+	return o.ToMxedgeOobIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MxedgeOobIpConfigOutput) ToMxedgeOobIpConfigPtrOutputWithContext(ctx context.Context) MxedgeOobIpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxedgeOobIpConfig) *MxedgeOobIpConfig {
+		return &v
+	}).(MxedgeOobIpConfigPtrOutput)
+}
+
+func (o MxedgeOobIpConfigOutput) Autoconf6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxedgeOobIpConfig) *bool { return v.Autoconf6 }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeOobIpConfigOutput) Dhcp6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxedgeOobIpConfig) *bool { return v.Dhcp6 }).(pulumi.BoolPtrOutput)
+}
+
+// IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+func (o MxedgeOobIpConfigOutput) Dns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxedgeOobIpConfig) []string { return v.Dns }).(pulumi.StringArrayOutput)
+}
+
+// If `type`=`static`
+func (o MxedgeOobIpConfigOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeOobIpConfig) *string { return v.Gateway }).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeOobIpConfigOutput) Gateway6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeOobIpConfig) *string { return v.Gateway6 }).(pulumi.StringPtrOutput)
+}
+
+// If `type`=`static`
+func (o MxedgeOobIpConfigOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeOobIpConfig) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeOobIpConfigOutput) Ip6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeOobIpConfig) *string { return v.Ip6 }).(pulumi.StringPtrOutput)
+}
+
+// If `type`=`static`
+func (o MxedgeOobIpConfigOutput) Netmask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeOobIpConfig) *string { return v.Netmask }).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeOobIpConfigOutput) Netmask6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeOobIpConfig) *string { return v.Netmask6 }).(pulumi.StringPtrOutput)
+}
+
+// enum: `dhcp`, `static`
+func (o MxedgeOobIpConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeOobIpConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// enum: `dhcp`, `static`
+func (o MxedgeOobIpConfigOutput) Type6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeOobIpConfig) *string { return v.Type6 }).(pulumi.StringPtrOutput)
+}
+
+type MxedgeOobIpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MxedgeOobIpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeOobIpConfig)(nil)).Elem()
+}
+
+func (o MxedgeOobIpConfigPtrOutput) ToMxedgeOobIpConfigPtrOutput() MxedgeOobIpConfigPtrOutput {
+	return o
+}
+
+func (o MxedgeOobIpConfigPtrOutput) ToMxedgeOobIpConfigPtrOutputWithContext(ctx context.Context) MxedgeOobIpConfigPtrOutput {
+	return o
+}
+
+func (o MxedgeOobIpConfigPtrOutput) Elem() MxedgeOobIpConfigOutput {
+	return o.ApplyT(func(v *MxedgeOobIpConfig) MxedgeOobIpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MxedgeOobIpConfig
+		return ret
+	}).(MxedgeOobIpConfigOutput)
+}
+
+func (o MxedgeOobIpConfigPtrOutput) Autoconf6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxedgeOobIpConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Autoconf6
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeOobIpConfigPtrOutput) Dhcp6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxedgeOobIpConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Dhcp6
+	}).(pulumi.BoolPtrOutput)
+}
+
+// IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+func (o MxedgeOobIpConfigPtrOutput) Dns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MxedgeOobIpConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Dns
+	}).(pulumi.StringArrayOutput)
+}
+
+// If `type`=`static`
+func (o MxedgeOobIpConfigPtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeOobIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeOobIpConfigPtrOutput) Gateway6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeOobIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway6
+	}).(pulumi.StringPtrOutput)
+}
+
+// If `type`=`static`
+func (o MxedgeOobIpConfigPtrOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeOobIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ip
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeOobIpConfigPtrOutput) Ip6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeOobIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ip6
+	}).(pulumi.StringPtrOutput)
+}
+
+// If `type`=`static`
+func (o MxedgeOobIpConfigPtrOutput) Netmask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeOobIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Netmask
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeOobIpConfigPtrOutput) Netmask6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeOobIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Netmask6
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `dhcp`, `static`
+func (o MxedgeOobIpConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeOobIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `dhcp`, `static`
+func (o MxedgeOobIpConfigPtrOutput) Type6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeOobIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type6
+	}).(pulumi.StringPtrOutput)
+}
+
+type MxedgeProxy struct {
+	Disabled *bool   `pulumi:"disabled"`
+	Url      *string `pulumi:"url"`
+}
+
+// MxedgeProxyInput is an input type that accepts MxedgeProxyArgs and MxedgeProxyOutput values.
+// You can construct a concrete instance of `MxedgeProxyInput` via:
+//
+//	MxedgeProxyArgs{...}
+type MxedgeProxyInput interface {
+	pulumi.Input
+
+	ToMxedgeProxyOutput() MxedgeProxyOutput
+	ToMxedgeProxyOutputWithContext(context.Context) MxedgeProxyOutput
+}
+
+type MxedgeProxyArgs struct {
+	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
+	Url      pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (MxedgeProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeProxy)(nil)).Elem()
+}
+
+func (i MxedgeProxyArgs) ToMxedgeProxyOutput() MxedgeProxyOutput {
+	return i.ToMxedgeProxyOutputWithContext(context.Background())
+}
+
+func (i MxedgeProxyArgs) ToMxedgeProxyOutputWithContext(ctx context.Context) MxedgeProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeProxyOutput)
+}
+
+func (i MxedgeProxyArgs) ToMxedgeProxyPtrOutput() MxedgeProxyPtrOutput {
+	return i.ToMxedgeProxyPtrOutputWithContext(context.Background())
+}
+
+func (i MxedgeProxyArgs) ToMxedgeProxyPtrOutputWithContext(ctx context.Context) MxedgeProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeProxyOutput).ToMxedgeProxyPtrOutputWithContext(ctx)
+}
+
+// MxedgeProxyPtrInput is an input type that accepts MxedgeProxyArgs, MxedgeProxyPtr and MxedgeProxyPtrOutput values.
+// You can construct a concrete instance of `MxedgeProxyPtrInput` via:
+//
+//	        MxedgeProxyArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxedgeProxyPtrInput interface {
+	pulumi.Input
+
+	ToMxedgeProxyPtrOutput() MxedgeProxyPtrOutput
+	ToMxedgeProxyPtrOutputWithContext(context.Context) MxedgeProxyPtrOutput
+}
+
+type mxedgeProxyPtrType MxedgeProxyArgs
+
+func MxedgeProxyPtr(v *MxedgeProxyArgs) MxedgeProxyPtrInput {
+	return (*mxedgeProxyPtrType)(v)
+}
+
+func (*mxedgeProxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeProxy)(nil)).Elem()
+}
+
+func (i *mxedgeProxyPtrType) ToMxedgeProxyPtrOutput() MxedgeProxyPtrOutput {
+	return i.ToMxedgeProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *mxedgeProxyPtrType) ToMxedgeProxyPtrOutputWithContext(ctx context.Context) MxedgeProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeProxyPtrOutput)
+}
+
+type MxedgeProxyOutput struct{ *pulumi.OutputState }
+
+func (MxedgeProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeProxy)(nil)).Elem()
+}
+
+func (o MxedgeProxyOutput) ToMxedgeProxyOutput() MxedgeProxyOutput {
+	return o
+}
+
+func (o MxedgeProxyOutput) ToMxedgeProxyOutputWithContext(ctx context.Context) MxedgeProxyOutput {
+	return o
+}
+
+func (o MxedgeProxyOutput) ToMxedgeProxyPtrOutput() MxedgeProxyPtrOutput {
+	return o.ToMxedgeProxyPtrOutputWithContext(context.Background())
+}
+
+func (o MxedgeProxyOutput) ToMxedgeProxyPtrOutputWithContext(ctx context.Context) MxedgeProxyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxedgeProxy) *MxedgeProxy {
+		return &v
+	}).(MxedgeProxyPtrOutput)
+}
+
+func (o MxedgeProxyOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxedgeProxy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeProxyOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeProxy) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type MxedgeProxyPtrOutput struct{ *pulumi.OutputState }
+
+func (MxedgeProxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeProxy)(nil)).Elem()
+}
+
+func (o MxedgeProxyPtrOutput) ToMxedgeProxyPtrOutput() MxedgeProxyPtrOutput {
+	return o
+}
+
+func (o MxedgeProxyPtrOutput) ToMxedgeProxyPtrOutputWithContext(ctx context.Context) MxedgeProxyPtrOutput {
+	return o
+}
+
+func (o MxedgeProxyPtrOutput) Elem() MxedgeProxyOutput {
+	return o.ApplyT(func(v *MxedgeProxy) MxedgeProxy {
+		if v != nil {
+			return *v
+		}
+		var ret MxedgeProxy
+		return ret
+	}).(MxedgeProxyOutput)
+}
+
+func (o MxedgeProxyPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxedgeProxy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeProxyPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeProxy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type MxedgeTuntermDhcpdConfig struct {
+	Enabled *bool `pulumi:"enabled"`
+	// List of DHCP servers; required if `type`==`relay`
+	Servers []string `pulumi:"servers"`
+	// enum: `relay`
+	Type *string `pulumi:"type"`
+}
+
+// MxedgeTuntermDhcpdConfigInput is an input type that accepts MxedgeTuntermDhcpdConfigArgs and MxedgeTuntermDhcpdConfigOutput values.
+// You can construct a concrete instance of `MxedgeTuntermDhcpdConfigInput` via:
+//
+//	MxedgeTuntermDhcpdConfigArgs{...}
+type MxedgeTuntermDhcpdConfigInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermDhcpdConfigOutput() MxedgeTuntermDhcpdConfigOutput
+	ToMxedgeTuntermDhcpdConfigOutputWithContext(context.Context) MxedgeTuntermDhcpdConfigOutput
+}
+
+type MxedgeTuntermDhcpdConfigArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// List of DHCP servers; required if `type`==`relay`
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+	// enum: `relay`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (MxedgeTuntermDhcpdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermDhcpdConfig)(nil)).Elem()
+}
+
+func (i MxedgeTuntermDhcpdConfigArgs) ToMxedgeTuntermDhcpdConfigOutput() MxedgeTuntermDhcpdConfigOutput {
+	return i.ToMxedgeTuntermDhcpdConfigOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermDhcpdConfigArgs) ToMxedgeTuntermDhcpdConfigOutputWithContext(ctx context.Context) MxedgeTuntermDhcpdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermDhcpdConfigOutput)
+}
+
+// MxedgeTuntermDhcpdConfigMapInput is an input type that accepts MxedgeTuntermDhcpdConfigMap and MxedgeTuntermDhcpdConfigMapOutput values.
+// You can construct a concrete instance of `MxedgeTuntermDhcpdConfigMapInput` via:
+//
+//	MxedgeTuntermDhcpdConfigMap{ "key": MxedgeTuntermDhcpdConfigArgs{...} }
+type MxedgeTuntermDhcpdConfigMapInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermDhcpdConfigMapOutput() MxedgeTuntermDhcpdConfigMapOutput
+	ToMxedgeTuntermDhcpdConfigMapOutputWithContext(context.Context) MxedgeTuntermDhcpdConfigMapOutput
+}
+
+type MxedgeTuntermDhcpdConfigMap map[string]MxedgeTuntermDhcpdConfigInput
+
+func (MxedgeTuntermDhcpdConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxedgeTuntermDhcpdConfig)(nil)).Elem()
+}
+
+func (i MxedgeTuntermDhcpdConfigMap) ToMxedgeTuntermDhcpdConfigMapOutput() MxedgeTuntermDhcpdConfigMapOutput {
+	return i.ToMxedgeTuntermDhcpdConfigMapOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermDhcpdConfigMap) ToMxedgeTuntermDhcpdConfigMapOutputWithContext(ctx context.Context) MxedgeTuntermDhcpdConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermDhcpdConfigMapOutput)
+}
+
+type MxedgeTuntermDhcpdConfigOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermDhcpdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermDhcpdConfig)(nil)).Elem()
+}
+
+func (o MxedgeTuntermDhcpdConfigOutput) ToMxedgeTuntermDhcpdConfigOutput() MxedgeTuntermDhcpdConfigOutput {
+	return o
+}
+
+func (o MxedgeTuntermDhcpdConfigOutput) ToMxedgeTuntermDhcpdConfigOutputWithContext(ctx context.Context) MxedgeTuntermDhcpdConfigOutput {
+	return o
+}
+
+func (o MxedgeTuntermDhcpdConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermDhcpdConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// List of DHCP servers; required if `type`==`relay`
+func (o MxedgeTuntermDhcpdConfigOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxedgeTuntermDhcpdConfig) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+// enum: `relay`
+func (o MxedgeTuntermDhcpdConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermDhcpdConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type MxedgeTuntermDhcpdConfigMapOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermDhcpdConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxedgeTuntermDhcpdConfig)(nil)).Elem()
+}
+
+func (o MxedgeTuntermDhcpdConfigMapOutput) ToMxedgeTuntermDhcpdConfigMapOutput() MxedgeTuntermDhcpdConfigMapOutput {
+	return o
+}
+
+func (o MxedgeTuntermDhcpdConfigMapOutput) ToMxedgeTuntermDhcpdConfigMapOutputWithContext(ctx context.Context) MxedgeTuntermDhcpdConfigMapOutput {
+	return o
+}
+
+func (o MxedgeTuntermDhcpdConfigMapOutput) MapIndex(k pulumi.StringInput) MxedgeTuntermDhcpdConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MxedgeTuntermDhcpdConfig {
+		return vs[0].(map[string]MxedgeTuntermDhcpdConfig)[vs[1].(string)]
+	}).(MxedgeTuntermDhcpdConfigOutput)
+}
+
+type MxedgeTuntermExtraRoutes struct {
+	Via *string `pulumi:"via"`
+}
+
+// MxedgeTuntermExtraRoutesInput is an input type that accepts MxedgeTuntermExtraRoutesArgs and MxedgeTuntermExtraRoutesOutput values.
+// You can construct a concrete instance of `MxedgeTuntermExtraRoutesInput` via:
+//
+//	MxedgeTuntermExtraRoutesArgs{...}
+type MxedgeTuntermExtraRoutesInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermExtraRoutesOutput() MxedgeTuntermExtraRoutesOutput
+	ToMxedgeTuntermExtraRoutesOutputWithContext(context.Context) MxedgeTuntermExtraRoutesOutput
+}
+
+type MxedgeTuntermExtraRoutesArgs struct {
+	Via pulumi.StringPtrInput `pulumi:"via"`
+}
+
+func (MxedgeTuntermExtraRoutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermExtraRoutes)(nil)).Elem()
+}
+
+func (i MxedgeTuntermExtraRoutesArgs) ToMxedgeTuntermExtraRoutesOutput() MxedgeTuntermExtraRoutesOutput {
+	return i.ToMxedgeTuntermExtraRoutesOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermExtraRoutesArgs) ToMxedgeTuntermExtraRoutesOutputWithContext(ctx context.Context) MxedgeTuntermExtraRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermExtraRoutesOutput)
+}
+
+// MxedgeTuntermExtraRoutesMapInput is an input type that accepts MxedgeTuntermExtraRoutesMap and MxedgeTuntermExtraRoutesMapOutput values.
+// You can construct a concrete instance of `MxedgeTuntermExtraRoutesMapInput` via:
+//
+//	MxedgeTuntermExtraRoutesMap{ "key": MxedgeTuntermExtraRoutesArgs{...} }
+type MxedgeTuntermExtraRoutesMapInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermExtraRoutesMapOutput() MxedgeTuntermExtraRoutesMapOutput
+	ToMxedgeTuntermExtraRoutesMapOutputWithContext(context.Context) MxedgeTuntermExtraRoutesMapOutput
+}
+
+type MxedgeTuntermExtraRoutesMap map[string]MxedgeTuntermExtraRoutesInput
+
+func (MxedgeTuntermExtraRoutesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxedgeTuntermExtraRoutes)(nil)).Elem()
+}
+
+func (i MxedgeTuntermExtraRoutesMap) ToMxedgeTuntermExtraRoutesMapOutput() MxedgeTuntermExtraRoutesMapOutput {
+	return i.ToMxedgeTuntermExtraRoutesMapOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermExtraRoutesMap) ToMxedgeTuntermExtraRoutesMapOutputWithContext(ctx context.Context) MxedgeTuntermExtraRoutesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermExtraRoutesMapOutput)
+}
+
+type MxedgeTuntermExtraRoutesOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermExtraRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermExtraRoutes)(nil)).Elem()
+}
+
+func (o MxedgeTuntermExtraRoutesOutput) ToMxedgeTuntermExtraRoutesOutput() MxedgeTuntermExtraRoutesOutput {
+	return o
+}
+
+func (o MxedgeTuntermExtraRoutesOutput) ToMxedgeTuntermExtraRoutesOutputWithContext(ctx context.Context) MxedgeTuntermExtraRoutesOutput {
+	return o
+}
+
+func (o MxedgeTuntermExtraRoutesOutput) Via() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermExtraRoutes) *string { return v.Via }).(pulumi.StringPtrOutput)
+}
+
+type MxedgeTuntermExtraRoutesMapOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermExtraRoutesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxedgeTuntermExtraRoutes)(nil)).Elem()
+}
+
+func (o MxedgeTuntermExtraRoutesMapOutput) ToMxedgeTuntermExtraRoutesMapOutput() MxedgeTuntermExtraRoutesMapOutput {
+	return o
+}
+
+func (o MxedgeTuntermExtraRoutesMapOutput) ToMxedgeTuntermExtraRoutesMapOutputWithContext(ctx context.Context) MxedgeTuntermExtraRoutesMapOutput {
+	return o
+}
+
+func (o MxedgeTuntermExtraRoutesMapOutput) MapIndex(k pulumi.StringInput) MxedgeTuntermExtraRoutesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MxedgeTuntermExtraRoutes {
+		return vs[0].(map[string]MxedgeTuntermExtraRoutes)[vs[1].(string)]
+	}).(MxedgeTuntermExtraRoutesOutput)
+}
+
+type MxedgeTuntermIgmpSnoopingConfig struct {
+	Enabled *bool                                   `pulumi:"enabled"`
+	Querier *MxedgeTuntermIgmpSnoopingConfigQuerier `pulumi:"querier"`
+	// List of vlans on which tunterm performs IGMP snooping
+	VlanIds []int `pulumi:"vlanIds"`
+}
+
+// MxedgeTuntermIgmpSnoopingConfigInput is an input type that accepts MxedgeTuntermIgmpSnoopingConfigArgs and MxedgeTuntermIgmpSnoopingConfigOutput values.
+// You can construct a concrete instance of `MxedgeTuntermIgmpSnoopingConfigInput` via:
+//
+//	MxedgeTuntermIgmpSnoopingConfigArgs{...}
+type MxedgeTuntermIgmpSnoopingConfigInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermIgmpSnoopingConfigOutput() MxedgeTuntermIgmpSnoopingConfigOutput
+	ToMxedgeTuntermIgmpSnoopingConfigOutputWithContext(context.Context) MxedgeTuntermIgmpSnoopingConfigOutput
+}
+
+type MxedgeTuntermIgmpSnoopingConfigArgs struct {
+	Enabled pulumi.BoolPtrInput                            `pulumi:"enabled"`
+	Querier MxedgeTuntermIgmpSnoopingConfigQuerierPtrInput `pulumi:"querier"`
+	// List of vlans on which tunterm performs IGMP snooping
+	VlanIds pulumi.IntArrayInput `pulumi:"vlanIds"`
+}
+
+func (MxedgeTuntermIgmpSnoopingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermIgmpSnoopingConfig)(nil)).Elem()
+}
+
+func (i MxedgeTuntermIgmpSnoopingConfigArgs) ToMxedgeTuntermIgmpSnoopingConfigOutput() MxedgeTuntermIgmpSnoopingConfigOutput {
+	return i.ToMxedgeTuntermIgmpSnoopingConfigOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermIgmpSnoopingConfigArgs) ToMxedgeTuntermIgmpSnoopingConfigOutputWithContext(ctx context.Context) MxedgeTuntermIgmpSnoopingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermIgmpSnoopingConfigOutput)
+}
+
+func (i MxedgeTuntermIgmpSnoopingConfigArgs) ToMxedgeTuntermIgmpSnoopingConfigPtrOutput() MxedgeTuntermIgmpSnoopingConfigPtrOutput {
+	return i.ToMxedgeTuntermIgmpSnoopingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermIgmpSnoopingConfigArgs) ToMxedgeTuntermIgmpSnoopingConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermIgmpSnoopingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermIgmpSnoopingConfigOutput).ToMxedgeTuntermIgmpSnoopingConfigPtrOutputWithContext(ctx)
+}
+
+// MxedgeTuntermIgmpSnoopingConfigPtrInput is an input type that accepts MxedgeTuntermIgmpSnoopingConfigArgs, MxedgeTuntermIgmpSnoopingConfigPtr and MxedgeTuntermIgmpSnoopingConfigPtrOutput values.
+// You can construct a concrete instance of `MxedgeTuntermIgmpSnoopingConfigPtrInput` via:
+//
+//	        MxedgeTuntermIgmpSnoopingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxedgeTuntermIgmpSnoopingConfigPtrInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermIgmpSnoopingConfigPtrOutput() MxedgeTuntermIgmpSnoopingConfigPtrOutput
+	ToMxedgeTuntermIgmpSnoopingConfigPtrOutputWithContext(context.Context) MxedgeTuntermIgmpSnoopingConfigPtrOutput
+}
+
+type mxedgeTuntermIgmpSnoopingConfigPtrType MxedgeTuntermIgmpSnoopingConfigArgs
+
+func MxedgeTuntermIgmpSnoopingConfigPtr(v *MxedgeTuntermIgmpSnoopingConfigArgs) MxedgeTuntermIgmpSnoopingConfigPtrInput {
+	return (*mxedgeTuntermIgmpSnoopingConfigPtrType)(v)
+}
+
+func (*mxedgeTuntermIgmpSnoopingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermIgmpSnoopingConfig)(nil)).Elem()
+}
+
+func (i *mxedgeTuntermIgmpSnoopingConfigPtrType) ToMxedgeTuntermIgmpSnoopingConfigPtrOutput() MxedgeTuntermIgmpSnoopingConfigPtrOutput {
+	return i.ToMxedgeTuntermIgmpSnoopingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *mxedgeTuntermIgmpSnoopingConfigPtrType) ToMxedgeTuntermIgmpSnoopingConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermIgmpSnoopingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermIgmpSnoopingConfigPtrOutput)
+}
+
+type MxedgeTuntermIgmpSnoopingConfigOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermIgmpSnoopingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermIgmpSnoopingConfig)(nil)).Elem()
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigOutput) ToMxedgeTuntermIgmpSnoopingConfigOutput() MxedgeTuntermIgmpSnoopingConfigOutput {
+	return o
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigOutput) ToMxedgeTuntermIgmpSnoopingConfigOutputWithContext(ctx context.Context) MxedgeTuntermIgmpSnoopingConfigOutput {
+	return o
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigOutput) ToMxedgeTuntermIgmpSnoopingConfigPtrOutput() MxedgeTuntermIgmpSnoopingConfigPtrOutput {
+	return o.ToMxedgeTuntermIgmpSnoopingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigOutput) ToMxedgeTuntermIgmpSnoopingConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermIgmpSnoopingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxedgeTuntermIgmpSnoopingConfig) *MxedgeTuntermIgmpSnoopingConfig {
+		return &v
+	}).(MxedgeTuntermIgmpSnoopingConfigPtrOutput)
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermIgmpSnoopingConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigOutput) Querier() MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermIgmpSnoopingConfig) *MxedgeTuntermIgmpSnoopingConfigQuerier { return v.Querier }).(MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput)
+}
+
+// List of vlans on which tunterm performs IGMP snooping
+func (o MxedgeTuntermIgmpSnoopingConfigOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v MxedgeTuntermIgmpSnoopingConfig) []int { return v.VlanIds }).(pulumi.IntArrayOutput)
+}
+
+type MxedgeTuntermIgmpSnoopingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermIgmpSnoopingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermIgmpSnoopingConfig)(nil)).Elem()
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigPtrOutput) ToMxedgeTuntermIgmpSnoopingConfigPtrOutput() MxedgeTuntermIgmpSnoopingConfigPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigPtrOutput) ToMxedgeTuntermIgmpSnoopingConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermIgmpSnoopingConfigPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigPtrOutput) Elem() MxedgeTuntermIgmpSnoopingConfigOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIgmpSnoopingConfig) MxedgeTuntermIgmpSnoopingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MxedgeTuntermIgmpSnoopingConfig
+		return ret
+	}).(MxedgeTuntermIgmpSnoopingConfigOutput)
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIgmpSnoopingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigPtrOutput) Querier() MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIgmpSnoopingConfig) *MxedgeTuntermIgmpSnoopingConfigQuerier {
+		if v == nil {
+			return nil
+		}
+		return v.Querier
+	}).(MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput)
+}
+
+// List of vlans on which tunterm performs IGMP snooping
+func (o MxedgeTuntermIgmpSnoopingConfigPtrOutput) VlanIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIgmpSnoopingConfig) []int {
+		if v == nil {
+			return nil
+		}
+		return v.VlanIds
+	}).(pulumi.IntArrayOutput)
+}
+
+type MxedgeTuntermIgmpSnoopingConfigQuerier struct {
+	// Querier's query response interval, in tenths-of-seconds
+	MaxResponseTime *int `pulumi:"maxResponseTime"`
+	// The MTU we use (needed when forming large IGMPv3 Reports)
+	Mtu *int `pulumi:"mtu"`
+	// Querier's query interval, in seconds
+	QueryInterval *int `pulumi:"queryInterval"`
+	// Querier's robustness
+	Robustness *int `pulumi:"robustness"`
+	// Querier's maximum protocol version
+	Version *int `pulumi:"version"`
+}
+
+// MxedgeTuntermIgmpSnoopingConfigQuerierInput is an input type that accepts MxedgeTuntermIgmpSnoopingConfigQuerierArgs and MxedgeTuntermIgmpSnoopingConfigQuerierOutput values.
+// You can construct a concrete instance of `MxedgeTuntermIgmpSnoopingConfigQuerierInput` via:
+//
+//	MxedgeTuntermIgmpSnoopingConfigQuerierArgs{...}
+type MxedgeTuntermIgmpSnoopingConfigQuerierInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermIgmpSnoopingConfigQuerierOutput() MxedgeTuntermIgmpSnoopingConfigQuerierOutput
+	ToMxedgeTuntermIgmpSnoopingConfigQuerierOutputWithContext(context.Context) MxedgeTuntermIgmpSnoopingConfigQuerierOutput
+}
+
+type MxedgeTuntermIgmpSnoopingConfigQuerierArgs struct {
+	// Querier's query response interval, in tenths-of-seconds
+	MaxResponseTime pulumi.IntPtrInput `pulumi:"maxResponseTime"`
+	// The MTU we use (needed when forming large IGMPv3 Reports)
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
+	// Querier's query interval, in seconds
+	QueryInterval pulumi.IntPtrInput `pulumi:"queryInterval"`
+	// Querier's robustness
+	Robustness pulumi.IntPtrInput `pulumi:"robustness"`
+	// Querier's maximum protocol version
+	Version pulumi.IntPtrInput `pulumi:"version"`
+}
+
+func (MxedgeTuntermIgmpSnoopingConfigQuerierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermIgmpSnoopingConfigQuerier)(nil)).Elem()
+}
+
+func (i MxedgeTuntermIgmpSnoopingConfigQuerierArgs) ToMxedgeTuntermIgmpSnoopingConfigQuerierOutput() MxedgeTuntermIgmpSnoopingConfigQuerierOutput {
+	return i.ToMxedgeTuntermIgmpSnoopingConfigQuerierOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermIgmpSnoopingConfigQuerierArgs) ToMxedgeTuntermIgmpSnoopingConfigQuerierOutputWithContext(ctx context.Context) MxedgeTuntermIgmpSnoopingConfigQuerierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermIgmpSnoopingConfigQuerierOutput)
+}
+
+func (i MxedgeTuntermIgmpSnoopingConfigQuerierArgs) ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput() MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput {
+	return i.ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermIgmpSnoopingConfigQuerierArgs) ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutputWithContext(ctx context.Context) MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermIgmpSnoopingConfigQuerierOutput).ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutputWithContext(ctx)
+}
+
+// MxedgeTuntermIgmpSnoopingConfigQuerierPtrInput is an input type that accepts MxedgeTuntermIgmpSnoopingConfigQuerierArgs, MxedgeTuntermIgmpSnoopingConfigQuerierPtr and MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput values.
+// You can construct a concrete instance of `MxedgeTuntermIgmpSnoopingConfigQuerierPtrInput` via:
+//
+//	        MxedgeTuntermIgmpSnoopingConfigQuerierArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxedgeTuntermIgmpSnoopingConfigQuerierPtrInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput() MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput
+	ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutputWithContext(context.Context) MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput
+}
+
+type mxedgeTuntermIgmpSnoopingConfigQuerierPtrType MxedgeTuntermIgmpSnoopingConfigQuerierArgs
+
+func MxedgeTuntermIgmpSnoopingConfigQuerierPtr(v *MxedgeTuntermIgmpSnoopingConfigQuerierArgs) MxedgeTuntermIgmpSnoopingConfigQuerierPtrInput {
+	return (*mxedgeTuntermIgmpSnoopingConfigQuerierPtrType)(v)
+}
+
+func (*mxedgeTuntermIgmpSnoopingConfigQuerierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermIgmpSnoopingConfigQuerier)(nil)).Elem()
+}
+
+func (i *mxedgeTuntermIgmpSnoopingConfigQuerierPtrType) ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput() MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput {
+	return i.ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutputWithContext(context.Background())
+}
+
+func (i *mxedgeTuntermIgmpSnoopingConfigQuerierPtrType) ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutputWithContext(ctx context.Context) MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput)
+}
+
+type MxedgeTuntermIgmpSnoopingConfigQuerierOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermIgmpSnoopingConfigQuerierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermIgmpSnoopingConfigQuerier)(nil)).Elem()
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierOutput) ToMxedgeTuntermIgmpSnoopingConfigQuerierOutput() MxedgeTuntermIgmpSnoopingConfigQuerierOutput {
+	return o
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierOutput) ToMxedgeTuntermIgmpSnoopingConfigQuerierOutputWithContext(ctx context.Context) MxedgeTuntermIgmpSnoopingConfigQuerierOutput {
+	return o
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierOutput) ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput() MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput {
+	return o.ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutputWithContext(context.Background())
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierOutput) ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutputWithContext(ctx context.Context) MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxedgeTuntermIgmpSnoopingConfigQuerier) *MxedgeTuntermIgmpSnoopingConfigQuerier {
+		return &v
+	}).(MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput)
+}
+
+// Querier's query response interval, in tenths-of-seconds
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierOutput) MaxResponseTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermIgmpSnoopingConfigQuerier) *int { return v.MaxResponseTime }).(pulumi.IntPtrOutput)
+}
+
+// The MTU we use (needed when forming large IGMPv3 Reports)
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermIgmpSnoopingConfigQuerier) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
+// Querier's query interval, in seconds
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierOutput) QueryInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermIgmpSnoopingConfigQuerier) *int { return v.QueryInterval }).(pulumi.IntPtrOutput)
+}
+
+// Querier's robustness
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierOutput) Robustness() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermIgmpSnoopingConfigQuerier) *int { return v.Robustness }).(pulumi.IntPtrOutput)
+}
+
+// Querier's maximum protocol version
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermIgmpSnoopingConfigQuerier) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermIgmpSnoopingConfigQuerier)(nil)).Elem()
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput) ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput() MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput) ToMxedgeTuntermIgmpSnoopingConfigQuerierPtrOutputWithContext(ctx context.Context) MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput) Elem() MxedgeTuntermIgmpSnoopingConfigQuerierOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIgmpSnoopingConfigQuerier) MxedgeTuntermIgmpSnoopingConfigQuerier {
+		if v != nil {
+			return *v
+		}
+		var ret MxedgeTuntermIgmpSnoopingConfigQuerier
+		return ret
+	}).(MxedgeTuntermIgmpSnoopingConfigQuerierOutput)
+}
+
+// Querier's query response interval, in tenths-of-seconds
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput) MaxResponseTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIgmpSnoopingConfigQuerier) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxResponseTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// The MTU we use (needed when forming large IGMPv3 Reports)
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIgmpSnoopingConfigQuerier) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Mtu
+	}).(pulumi.IntPtrOutput)
+}
+
+// Querier's query interval, in seconds
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput) QueryInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIgmpSnoopingConfigQuerier) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueryInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Querier's robustness
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput) Robustness() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIgmpSnoopingConfigQuerier) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Robustness
+	}).(pulumi.IntPtrOutput)
+}
+
+// Querier's maximum protocol version
+func (o MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIgmpSnoopingConfigQuerier) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.IntPtrOutput)
+}
+
+type MxedgeTuntermIpConfig struct {
+	Gateway  string  `pulumi:"gateway"`
+	Gateway6 *string `pulumi:"gateway6"`
+	// Untagged VLAN
+	Ip       string  `pulumi:"ip"`
+	Ip6      *string `pulumi:"ip6"`
+	Netmask  string  `pulumi:"netmask"`
+	Netmask6 *string `pulumi:"netmask6"`
+}
+
+// MxedgeTuntermIpConfigInput is an input type that accepts MxedgeTuntermIpConfigArgs and MxedgeTuntermIpConfigOutput values.
+// You can construct a concrete instance of `MxedgeTuntermIpConfigInput` via:
+//
+//	MxedgeTuntermIpConfigArgs{...}
+type MxedgeTuntermIpConfigInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermIpConfigOutput() MxedgeTuntermIpConfigOutput
+	ToMxedgeTuntermIpConfigOutputWithContext(context.Context) MxedgeTuntermIpConfigOutput
+}
+
+type MxedgeTuntermIpConfigArgs struct {
+	Gateway  pulumi.StringInput    `pulumi:"gateway"`
+	Gateway6 pulumi.StringPtrInput `pulumi:"gateway6"`
+	// Untagged VLAN
+	Ip       pulumi.StringInput    `pulumi:"ip"`
+	Ip6      pulumi.StringPtrInput `pulumi:"ip6"`
+	Netmask  pulumi.StringInput    `pulumi:"netmask"`
+	Netmask6 pulumi.StringPtrInput `pulumi:"netmask6"`
+}
+
+func (MxedgeTuntermIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermIpConfig)(nil)).Elem()
+}
+
+func (i MxedgeTuntermIpConfigArgs) ToMxedgeTuntermIpConfigOutput() MxedgeTuntermIpConfigOutput {
+	return i.ToMxedgeTuntermIpConfigOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermIpConfigArgs) ToMxedgeTuntermIpConfigOutputWithContext(ctx context.Context) MxedgeTuntermIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermIpConfigOutput)
+}
+
+func (i MxedgeTuntermIpConfigArgs) ToMxedgeTuntermIpConfigPtrOutput() MxedgeTuntermIpConfigPtrOutput {
+	return i.ToMxedgeTuntermIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermIpConfigArgs) ToMxedgeTuntermIpConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermIpConfigOutput).ToMxedgeTuntermIpConfigPtrOutputWithContext(ctx)
+}
+
+// MxedgeTuntermIpConfigPtrInput is an input type that accepts MxedgeTuntermIpConfigArgs, MxedgeTuntermIpConfigPtr and MxedgeTuntermIpConfigPtrOutput values.
+// You can construct a concrete instance of `MxedgeTuntermIpConfigPtrInput` via:
+//
+//	        MxedgeTuntermIpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxedgeTuntermIpConfigPtrInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermIpConfigPtrOutput() MxedgeTuntermIpConfigPtrOutput
+	ToMxedgeTuntermIpConfigPtrOutputWithContext(context.Context) MxedgeTuntermIpConfigPtrOutput
+}
+
+type mxedgeTuntermIpConfigPtrType MxedgeTuntermIpConfigArgs
+
+func MxedgeTuntermIpConfigPtr(v *MxedgeTuntermIpConfigArgs) MxedgeTuntermIpConfigPtrInput {
+	return (*mxedgeTuntermIpConfigPtrType)(v)
+}
+
+func (*mxedgeTuntermIpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermIpConfig)(nil)).Elem()
+}
+
+func (i *mxedgeTuntermIpConfigPtrType) ToMxedgeTuntermIpConfigPtrOutput() MxedgeTuntermIpConfigPtrOutput {
+	return i.ToMxedgeTuntermIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *mxedgeTuntermIpConfigPtrType) ToMxedgeTuntermIpConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermIpConfigPtrOutput)
+}
+
+type MxedgeTuntermIpConfigOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermIpConfig)(nil)).Elem()
+}
+
+func (o MxedgeTuntermIpConfigOutput) ToMxedgeTuntermIpConfigOutput() MxedgeTuntermIpConfigOutput {
+	return o
+}
+
+func (o MxedgeTuntermIpConfigOutput) ToMxedgeTuntermIpConfigOutputWithContext(ctx context.Context) MxedgeTuntermIpConfigOutput {
+	return o
+}
+
+func (o MxedgeTuntermIpConfigOutput) ToMxedgeTuntermIpConfigPtrOutput() MxedgeTuntermIpConfigPtrOutput {
+	return o.ToMxedgeTuntermIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MxedgeTuntermIpConfigOutput) ToMxedgeTuntermIpConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermIpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxedgeTuntermIpConfig) *MxedgeTuntermIpConfig {
+		return &v
+	}).(MxedgeTuntermIpConfigPtrOutput)
+}
+
+func (o MxedgeTuntermIpConfigOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v MxedgeTuntermIpConfig) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+func (o MxedgeTuntermIpConfigOutput) Gateway6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermIpConfig) *string { return v.Gateway6 }).(pulumi.StringPtrOutput)
+}
+
+// Untagged VLAN
+func (o MxedgeTuntermIpConfigOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v MxedgeTuntermIpConfig) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+func (o MxedgeTuntermIpConfigOutput) Ip6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermIpConfig) *string { return v.Ip6 }).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeTuntermIpConfigOutput) Netmask() pulumi.StringOutput {
+	return o.ApplyT(func(v MxedgeTuntermIpConfig) string { return v.Netmask }).(pulumi.StringOutput)
+}
+
+func (o MxedgeTuntermIpConfigOutput) Netmask6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermIpConfig) *string { return v.Netmask6 }).(pulumi.StringPtrOutput)
+}
+
+type MxedgeTuntermIpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermIpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermIpConfig)(nil)).Elem()
+}
+
+func (o MxedgeTuntermIpConfigPtrOutput) ToMxedgeTuntermIpConfigPtrOutput() MxedgeTuntermIpConfigPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermIpConfigPtrOutput) ToMxedgeTuntermIpConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermIpConfigPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermIpConfigPtrOutput) Elem() MxedgeTuntermIpConfigOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIpConfig) MxedgeTuntermIpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MxedgeTuntermIpConfig
+		return ret
+	}).(MxedgeTuntermIpConfigOutput)
+}
+
+func (o MxedgeTuntermIpConfigPtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeTuntermIpConfigPtrOutput) Gateway6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway6
+	}).(pulumi.StringPtrOutput)
+}
+
+// Untagged VLAN
+func (o MxedgeTuntermIpConfigPtrOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Ip
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeTuntermIpConfigPtrOutput) Ip6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ip6
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeTuntermIpConfigPtrOutput) Netmask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Netmask
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeTuntermIpConfigPtrOutput) Netmask6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Netmask6
+	}).(pulumi.StringPtrOutput)
+}
+
+type MxedgeTuntermMonitoring struct {
+	Host      string `pulumi:"host"`
+	Port      int    `pulumi:"port"`
+	Protocol  string `pulumi:"protocol"`
+	SrcVlanId int    `pulumi:"srcVlanId"`
+	Timeout   int    `pulumi:"timeout"`
+}
+
+// MxedgeTuntermMonitoringInput is an input type that accepts MxedgeTuntermMonitoringArgs and MxedgeTuntermMonitoringOutput values.
+// You can construct a concrete instance of `MxedgeTuntermMonitoringInput` via:
+//
+//	MxedgeTuntermMonitoringArgs{...}
+type MxedgeTuntermMonitoringInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermMonitoringOutput() MxedgeTuntermMonitoringOutput
+	ToMxedgeTuntermMonitoringOutputWithContext(context.Context) MxedgeTuntermMonitoringOutput
+}
+
+type MxedgeTuntermMonitoringArgs struct {
+	Host      pulumi.StringInput `pulumi:"host"`
+	Port      pulumi.IntInput    `pulumi:"port"`
+	Protocol  pulumi.StringInput `pulumi:"protocol"`
+	SrcVlanId pulumi.IntInput    `pulumi:"srcVlanId"`
+	Timeout   pulumi.IntInput    `pulumi:"timeout"`
+}
+
+func (MxedgeTuntermMonitoringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermMonitoring)(nil)).Elem()
+}
+
+func (i MxedgeTuntermMonitoringArgs) ToMxedgeTuntermMonitoringOutput() MxedgeTuntermMonitoringOutput {
+	return i.ToMxedgeTuntermMonitoringOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermMonitoringArgs) ToMxedgeTuntermMonitoringOutputWithContext(ctx context.Context) MxedgeTuntermMonitoringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermMonitoringOutput)
+}
+
+// MxedgeTuntermMonitoringArrayInput is an input type that accepts MxedgeTuntermMonitoringArray and MxedgeTuntermMonitoringArrayOutput values.
+// You can construct a concrete instance of `MxedgeTuntermMonitoringArrayInput` via:
+//
+//	MxedgeTuntermMonitoringArray{ MxedgeTuntermMonitoringArgs{...} }
+type MxedgeTuntermMonitoringArrayInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermMonitoringArrayOutput() MxedgeTuntermMonitoringArrayOutput
+	ToMxedgeTuntermMonitoringArrayOutputWithContext(context.Context) MxedgeTuntermMonitoringArrayOutput
+}
+
+type MxedgeTuntermMonitoringArray []MxedgeTuntermMonitoringInput
+
+func (MxedgeTuntermMonitoringArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MxedgeTuntermMonitoring)(nil)).Elem()
+}
+
+func (i MxedgeTuntermMonitoringArray) ToMxedgeTuntermMonitoringArrayOutput() MxedgeTuntermMonitoringArrayOutput {
+	return i.ToMxedgeTuntermMonitoringArrayOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermMonitoringArray) ToMxedgeTuntermMonitoringArrayOutputWithContext(ctx context.Context) MxedgeTuntermMonitoringArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermMonitoringArrayOutput)
+}
+
+type MxedgeTuntermMonitoringOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermMonitoringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermMonitoring)(nil)).Elem()
+}
+
+func (o MxedgeTuntermMonitoringOutput) ToMxedgeTuntermMonitoringOutput() MxedgeTuntermMonitoringOutput {
+	return o
+}
+
+func (o MxedgeTuntermMonitoringOutput) ToMxedgeTuntermMonitoringOutputWithContext(ctx context.Context) MxedgeTuntermMonitoringOutput {
+	return o
+}
+
+func (o MxedgeTuntermMonitoringOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v MxedgeTuntermMonitoring) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o MxedgeTuntermMonitoringOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v MxedgeTuntermMonitoring) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o MxedgeTuntermMonitoringOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v MxedgeTuntermMonitoring) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+func (o MxedgeTuntermMonitoringOutput) SrcVlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v MxedgeTuntermMonitoring) int { return v.SrcVlanId }).(pulumi.IntOutput)
+}
+
+func (o MxedgeTuntermMonitoringOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v MxedgeTuntermMonitoring) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+type MxedgeTuntermMonitoringArrayOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermMonitoringArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MxedgeTuntermMonitoring)(nil)).Elem()
+}
+
+func (o MxedgeTuntermMonitoringArrayOutput) ToMxedgeTuntermMonitoringArrayOutput() MxedgeTuntermMonitoringArrayOutput {
+	return o
+}
+
+func (o MxedgeTuntermMonitoringArrayOutput) ToMxedgeTuntermMonitoringArrayOutputWithContext(ctx context.Context) MxedgeTuntermMonitoringArrayOutput {
+	return o
+}
+
+func (o MxedgeTuntermMonitoringArrayOutput) Index(i pulumi.IntInput) MxedgeTuntermMonitoringOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MxedgeTuntermMonitoring {
+		return vs[0].([]MxedgeTuntermMonitoring)[vs[1].(int)]
+	}).(MxedgeTuntermMonitoringOutput)
+}
+
+type MxedgeTuntermMulticastConfig struct {
+	Mdns *MxedgeTuntermMulticastConfigMdns `pulumi:"mdns"`
+	Ssdp *MxedgeTuntermMulticastConfigSsdp `pulumi:"ssdp"`
+}
+
+// MxedgeTuntermMulticastConfigInput is an input type that accepts MxedgeTuntermMulticastConfigArgs and MxedgeTuntermMulticastConfigOutput values.
+// You can construct a concrete instance of `MxedgeTuntermMulticastConfigInput` via:
+//
+//	MxedgeTuntermMulticastConfigArgs{...}
+type MxedgeTuntermMulticastConfigInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermMulticastConfigOutput() MxedgeTuntermMulticastConfigOutput
+	ToMxedgeTuntermMulticastConfigOutputWithContext(context.Context) MxedgeTuntermMulticastConfigOutput
+}
+
+type MxedgeTuntermMulticastConfigArgs struct {
+	Mdns MxedgeTuntermMulticastConfigMdnsPtrInput `pulumi:"mdns"`
+	Ssdp MxedgeTuntermMulticastConfigSsdpPtrInput `pulumi:"ssdp"`
+}
+
+func (MxedgeTuntermMulticastConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermMulticastConfig)(nil)).Elem()
+}
+
+func (i MxedgeTuntermMulticastConfigArgs) ToMxedgeTuntermMulticastConfigOutput() MxedgeTuntermMulticastConfigOutput {
+	return i.ToMxedgeTuntermMulticastConfigOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermMulticastConfigArgs) ToMxedgeTuntermMulticastConfigOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermMulticastConfigOutput)
+}
+
+func (i MxedgeTuntermMulticastConfigArgs) ToMxedgeTuntermMulticastConfigPtrOutput() MxedgeTuntermMulticastConfigPtrOutput {
+	return i.ToMxedgeTuntermMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermMulticastConfigArgs) ToMxedgeTuntermMulticastConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermMulticastConfigOutput).ToMxedgeTuntermMulticastConfigPtrOutputWithContext(ctx)
+}
+
+// MxedgeTuntermMulticastConfigPtrInput is an input type that accepts MxedgeTuntermMulticastConfigArgs, MxedgeTuntermMulticastConfigPtr and MxedgeTuntermMulticastConfigPtrOutput values.
+// You can construct a concrete instance of `MxedgeTuntermMulticastConfigPtrInput` via:
+//
+//	        MxedgeTuntermMulticastConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxedgeTuntermMulticastConfigPtrInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermMulticastConfigPtrOutput() MxedgeTuntermMulticastConfigPtrOutput
+	ToMxedgeTuntermMulticastConfigPtrOutputWithContext(context.Context) MxedgeTuntermMulticastConfigPtrOutput
+}
+
+type mxedgeTuntermMulticastConfigPtrType MxedgeTuntermMulticastConfigArgs
+
+func MxedgeTuntermMulticastConfigPtr(v *MxedgeTuntermMulticastConfigArgs) MxedgeTuntermMulticastConfigPtrInput {
+	return (*mxedgeTuntermMulticastConfigPtrType)(v)
+}
+
+func (*mxedgeTuntermMulticastConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermMulticastConfig)(nil)).Elem()
+}
+
+func (i *mxedgeTuntermMulticastConfigPtrType) ToMxedgeTuntermMulticastConfigPtrOutput() MxedgeTuntermMulticastConfigPtrOutput {
+	return i.ToMxedgeTuntermMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *mxedgeTuntermMulticastConfigPtrType) ToMxedgeTuntermMulticastConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermMulticastConfigPtrOutput)
+}
+
+type MxedgeTuntermMulticastConfigOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermMulticastConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermMulticastConfig)(nil)).Elem()
+}
+
+func (o MxedgeTuntermMulticastConfigOutput) ToMxedgeTuntermMulticastConfigOutput() MxedgeTuntermMulticastConfigOutput {
+	return o
+}
+
+func (o MxedgeTuntermMulticastConfigOutput) ToMxedgeTuntermMulticastConfigOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigOutput {
+	return o
+}
+
+func (o MxedgeTuntermMulticastConfigOutput) ToMxedgeTuntermMulticastConfigPtrOutput() MxedgeTuntermMulticastConfigPtrOutput {
+	return o.ToMxedgeTuntermMulticastConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MxedgeTuntermMulticastConfigOutput) ToMxedgeTuntermMulticastConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxedgeTuntermMulticastConfig) *MxedgeTuntermMulticastConfig {
+		return &v
+	}).(MxedgeTuntermMulticastConfigPtrOutput)
+}
+
+func (o MxedgeTuntermMulticastConfigOutput) Mdns() MxedgeTuntermMulticastConfigMdnsPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermMulticastConfig) *MxedgeTuntermMulticastConfigMdns { return v.Mdns }).(MxedgeTuntermMulticastConfigMdnsPtrOutput)
+}
+
+func (o MxedgeTuntermMulticastConfigOutput) Ssdp() MxedgeTuntermMulticastConfigSsdpPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermMulticastConfig) *MxedgeTuntermMulticastConfigSsdp { return v.Ssdp }).(MxedgeTuntermMulticastConfigSsdpPtrOutput)
+}
+
+type MxedgeTuntermMulticastConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermMulticastConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermMulticastConfig)(nil)).Elem()
+}
+
+func (o MxedgeTuntermMulticastConfigPtrOutput) ToMxedgeTuntermMulticastConfigPtrOutput() MxedgeTuntermMulticastConfigPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermMulticastConfigPtrOutput) ToMxedgeTuntermMulticastConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermMulticastConfigPtrOutput) Elem() MxedgeTuntermMulticastConfigOutput {
+	return o.ApplyT(func(v *MxedgeTuntermMulticastConfig) MxedgeTuntermMulticastConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MxedgeTuntermMulticastConfig
+		return ret
+	}).(MxedgeTuntermMulticastConfigOutput)
+}
+
+func (o MxedgeTuntermMulticastConfigPtrOutput) Mdns() MxedgeTuntermMulticastConfigMdnsPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermMulticastConfig) *MxedgeTuntermMulticastConfigMdns {
+		if v == nil {
+			return nil
+		}
+		return v.Mdns
+	}).(MxedgeTuntermMulticastConfigMdnsPtrOutput)
+}
+
+func (o MxedgeTuntermMulticastConfigPtrOutput) Ssdp() MxedgeTuntermMulticastConfigSsdpPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermMulticastConfig) *MxedgeTuntermMulticastConfigSsdp {
+		if v == nil {
+			return nil
+		}
+		return v.Ssdp
+	}).(MxedgeTuntermMulticastConfigSsdpPtrOutput)
+}
+
+type MxedgeTuntermMulticastConfigMdns struct {
+	Enabled *bool    `pulumi:"enabled"`
+	VlanIds []string `pulumi:"vlanIds"`
+}
+
+// MxedgeTuntermMulticastConfigMdnsInput is an input type that accepts MxedgeTuntermMulticastConfigMdnsArgs and MxedgeTuntermMulticastConfigMdnsOutput values.
+// You can construct a concrete instance of `MxedgeTuntermMulticastConfigMdnsInput` via:
+//
+//	MxedgeTuntermMulticastConfigMdnsArgs{...}
+type MxedgeTuntermMulticastConfigMdnsInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermMulticastConfigMdnsOutput() MxedgeTuntermMulticastConfigMdnsOutput
+	ToMxedgeTuntermMulticastConfigMdnsOutputWithContext(context.Context) MxedgeTuntermMulticastConfigMdnsOutput
+}
+
+type MxedgeTuntermMulticastConfigMdnsArgs struct {
+	Enabled pulumi.BoolPtrInput     `pulumi:"enabled"`
+	VlanIds pulumi.StringArrayInput `pulumi:"vlanIds"`
+}
+
+func (MxedgeTuntermMulticastConfigMdnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermMulticastConfigMdns)(nil)).Elem()
+}
+
+func (i MxedgeTuntermMulticastConfigMdnsArgs) ToMxedgeTuntermMulticastConfigMdnsOutput() MxedgeTuntermMulticastConfigMdnsOutput {
+	return i.ToMxedgeTuntermMulticastConfigMdnsOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermMulticastConfigMdnsArgs) ToMxedgeTuntermMulticastConfigMdnsOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigMdnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermMulticastConfigMdnsOutput)
+}
+
+func (i MxedgeTuntermMulticastConfigMdnsArgs) ToMxedgeTuntermMulticastConfigMdnsPtrOutput() MxedgeTuntermMulticastConfigMdnsPtrOutput {
+	return i.ToMxedgeTuntermMulticastConfigMdnsPtrOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermMulticastConfigMdnsArgs) ToMxedgeTuntermMulticastConfigMdnsPtrOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigMdnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermMulticastConfigMdnsOutput).ToMxedgeTuntermMulticastConfigMdnsPtrOutputWithContext(ctx)
+}
+
+// MxedgeTuntermMulticastConfigMdnsPtrInput is an input type that accepts MxedgeTuntermMulticastConfigMdnsArgs, MxedgeTuntermMulticastConfigMdnsPtr and MxedgeTuntermMulticastConfigMdnsPtrOutput values.
+// You can construct a concrete instance of `MxedgeTuntermMulticastConfigMdnsPtrInput` via:
+//
+//	        MxedgeTuntermMulticastConfigMdnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxedgeTuntermMulticastConfigMdnsPtrInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermMulticastConfigMdnsPtrOutput() MxedgeTuntermMulticastConfigMdnsPtrOutput
+	ToMxedgeTuntermMulticastConfigMdnsPtrOutputWithContext(context.Context) MxedgeTuntermMulticastConfigMdnsPtrOutput
+}
+
+type mxedgeTuntermMulticastConfigMdnsPtrType MxedgeTuntermMulticastConfigMdnsArgs
+
+func MxedgeTuntermMulticastConfigMdnsPtr(v *MxedgeTuntermMulticastConfigMdnsArgs) MxedgeTuntermMulticastConfigMdnsPtrInput {
+	return (*mxedgeTuntermMulticastConfigMdnsPtrType)(v)
+}
+
+func (*mxedgeTuntermMulticastConfigMdnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermMulticastConfigMdns)(nil)).Elem()
+}
+
+func (i *mxedgeTuntermMulticastConfigMdnsPtrType) ToMxedgeTuntermMulticastConfigMdnsPtrOutput() MxedgeTuntermMulticastConfigMdnsPtrOutput {
+	return i.ToMxedgeTuntermMulticastConfigMdnsPtrOutputWithContext(context.Background())
+}
+
+func (i *mxedgeTuntermMulticastConfigMdnsPtrType) ToMxedgeTuntermMulticastConfigMdnsPtrOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigMdnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermMulticastConfigMdnsPtrOutput)
+}
+
+type MxedgeTuntermMulticastConfigMdnsOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermMulticastConfigMdnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermMulticastConfigMdns)(nil)).Elem()
+}
+
+func (o MxedgeTuntermMulticastConfigMdnsOutput) ToMxedgeTuntermMulticastConfigMdnsOutput() MxedgeTuntermMulticastConfigMdnsOutput {
+	return o
+}
+
+func (o MxedgeTuntermMulticastConfigMdnsOutput) ToMxedgeTuntermMulticastConfigMdnsOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigMdnsOutput {
+	return o
+}
+
+func (o MxedgeTuntermMulticastConfigMdnsOutput) ToMxedgeTuntermMulticastConfigMdnsPtrOutput() MxedgeTuntermMulticastConfigMdnsPtrOutput {
+	return o.ToMxedgeTuntermMulticastConfigMdnsPtrOutputWithContext(context.Background())
+}
+
+func (o MxedgeTuntermMulticastConfigMdnsOutput) ToMxedgeTuntermMulticastConfigMdnsPtrOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigMdnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxedgeTuntermMulticastConfigMdns) *MxedgeTuntermMulticastConfigMdns {
+		return &v
+	}).(MxedgeTuntermMulticastConfigMdnsPtrOutput)
+}
+
+func (o MxedgeTuntermMulticastConfigMdnsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermMulticastConfigMdns) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeTuntermMulticastConfigMdnsOutput) VlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxedgeTuntermMulticastConfigMdns) []string { return v.VlanIds }).(pulumi.StringArrayOutput)
+}
+
+type MxedgeTuntermMulticastConfigMdnsPtrOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermMulticastConfigMdnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermMulticastConfigMdns)(nil)).Elem()
+}
+
+func (o MxedgeTuntermMulticastConfigMdnsPtrOutput) ToMxedgeTuntermMulticastConfigMdnsPtrOutput() MxedgeTuntermMulticastConfigMdnsPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermMulticastConfigMdnsPtrOutput) ToMxedgeTuntermMulticastConfigMdnsPtrOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigMdnsPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermMulticastConfigMdnsPtrOutput) Elem() MxedgeTuntermMulticastConfigMdnsOutput {
+	return o.ApplyT(func(v *MxedgeTuntermMulticastConfigMdns) MxedgeTuntermMulticastConfigMdns {
+		if v != nil {
+			return *v
+		}
+		var ret MxedgeTuntermMulticastConfigMdns
+		return ret
+	}).(MxedgeTuntermMulticastConfigMdnsOutput)
+}
+
+func (o MxedgeTuntermMulticastConfigMdnsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermMulticastConfigMdns) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeTuntermMulticastConfigMdnsPtrOutput) VlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MxedgeTuntermMulticastConfigMdns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VlanIds
+	}).(pulumi.StringArrayOutput)
+}
+
+type MxedgeTuntermMulticastConfigSsdp struct {
+	Enabled *bool    `pulumi:"enabled"`
+	VlanIds []string `pulumi:"vlanIds"`
+}
+
+// MxedgeTuntermMulticastConfigSsdpInput is an input type that accepts MxedgeTuntermMulticastConfigSsdpArgs and MxedgeTuntermMulticastConfigSsdpOutput values.
+// You can construct a concrete instance of `MxedgeTuntermMulticastConfigSsdpInput` via:
+//
+//	MxedgeTuntermMulticastConfigSsdpArgs{...}
+type MxedgeTuntermMulticastConfigSsdpInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermMulticastConfigSsdpOutput() MxedgeTuntermMulticastConfigSsdpOutput
+	ToMxedgeTuntermMulticastConfigSsdpOutputWithContext(context.Context) MxedgeTuntermMulticastConfigSsdpOutput
+}
+
+type MxedgeTuntermMulticastConfigSsdpArgs struct {
+	Enabled pulumi.BoolPtrInput     `pulumi:"enabled"`
+	VlanIds pulumi.StringArrayInput `pulumi:"vlanIds"`
+}
+
+func (MxedgeTuntermMulticastConfigSsdpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermMulticastConfigSsdp)(nil)).Elem()
+}
+
+func (i MxedgeTuntermMulticastConfigSsdpArgs) ToMxedgeTuntermMulticastConfigSsdpOutput() MxedgeTuntermMulticastConfigSsdpOutput {
+	return i.ToMxedgeTuntermMulticastConfigSsdpOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermMulticastConfigSsdpArgs) ToMxedgeTuntermMulticastConfigSsdpOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigSsdpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermMulticastConfigSsdpOutput)
+}
+
+func (i MxedgeTuntermMulticastConfigSsdpArgs) ToMxedgeTuntermMulticastConfigSsdpPtrOutput() MxedgeTuntermMulticastConfigSsdpPtrOutput {
+	return i.ToMxedgeTuntermMulticastConfigSsdpPtrOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermMulticastConfigSsdpArgs) ToMxedgeTuntermMulticastConfigSsdpPtrOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigSsdpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermMulticastConfigSsdpOutput).ToMxedgeTuntermMulticastConfigSsdpPtrOutputWithContext(ctx)
+}
+
+// MxedgeTuntermMulticastConfigSsdpPtrInput is an input type that accepts MxedgeTuntermMulticastConfigSsdpArgs, MxedgeTuntermMulticastConfigSsdpPtr and MxedgeTuntermMulticastConfigSsdpPtrOutput values.
+// You can construct a concrete instance of `MxedgeTuntermMulticastConfigSsdpPtrInput` via:
+//
+//	        MxedgeTuntermMulticastConfigSsdpArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxedgeTuntermMulticastConfigSsdpPtrInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermMulticastConfigSsdpPtrOutput() MxedgeTuntermMulticastConfigSsdpPtrOutput
+	ToMxedgeTuntermMulticastConfigSsdpPtrOutputWithContext(context.Context) MxedgeTuntermMulticastConfigSsdpPtrOutput
+}
+
+type mxedgeTuntermMulticastConfigSsdpPtrType MxedgeTuntermMulticastConfigSsdpArgs
+
+func MxedgeTuntermMulticastConfigSsdpPtr(v *MxedgeTuntermMulticastConfigSsdpArgs) MxedgeTuntermMulticastConfigSsdpPtrInput {
+	return (*mxedgeTuntermMulticastConfigSsdpPtrType)(v)
+}
+
+func (*mxedgeTuntermMulticastConfigSsdpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermMulticastConfigSsdp)(nil)).Elem()
+}
+
+func (i *mxedgeTuntermMulticastConfigSsdpPtrType) ToMxedgeTuntermMulticastConfigSsdpPtrOutput() MxedgeTuntermMulticastConfigSsdpPtrOutput {
+	return i.ToMxedgeTuntermMulticastConfigSsdpPtrOutputWithContext(context.Background())
+}
+
+func (i *mxedgeTuntermMulticastConfigSsdpPtrType) ToMxedgeTuntermMulticastConfigSsdpPtrOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigSsdpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermMulticastConfigSsdpPtrOutput)
+}
+
+type MxedgeTuntermMulticastConfigSsdpOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermMulticastConfigSsdpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermMulticastConfigSsdp)(nil)).Elem()
+}
+
+func (o MxedgeTuntermMulticastConfigSsdpOutput) ToMxedgeTuntermMulticastConfigSsdpOutput() MxedgeTuntermMulticastConfigSsdpOutput {
+	return o
+}
+
+func (o MxedgeTuntermMulticastConfigSsdpOutput) ToMxedgeTuntermMulticastConfigSsdpOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigSsdpOutput {
+	return o
+}
+
+func (o MxedgeTuntermMulticastConfigSsdpOutput) ToMxedgeTuntermMulticastConfigSsdpPtrOutput() MxedgeTuntermMulticastConfigSsdpPtrOutput {
+	return o.ToMxedgeTuntermMulticastConfigSsdpPtrOutputWithContext(context.Background())
+}
+
+func (o MxedgeTuntermMulticastConfigSsdpOutput) ToMxedgeTuntermMulticastConfigSsdpPtrOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigSsdpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxedgeTuntermMulticastConfigSsdp) *MxedgeTuntermMulticastConfigSsdp {
+		return &v
+	}).(MxedgeTuntermMulticastConfigSsdpPtrOutput)
+}
+
+func (o MxedgeTuntermMulticastConfigSsdpOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermMulticastConfigSsdp) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeTuntermMulticastConfigSsdpOutput) VlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxedgeTuntermMulticastConfigSsdp) []string { return v.VlanIds }).(pulumi.StringArrayOutput)
+}
+
+type MxedgeTuntermMulticastConfigSsdpPtrOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermMulticastConfigSsdpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermMulticastConfigSsdp)(nil)).Elem()
+}
+
+func (o MxedgeTuntermMulticastConfigSsdpPtrOutput) ToMxedgeTuntermMulticastConfigSsdpPtrOutput() MxedgeTuntermMulticastConfigSsdpPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermMulticastConfigSsdpPtrOutput) ToMxedgeTuntermMulticastConfigSsdpPtrOutputWithContext(ctx context.Context) MxedgeTuntermMulticastConfigSsdpPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermMulticastConfigSsdpPtrOutput) Elem() MxedgeTuntermMulticastConfigSsdpOutput {
+	return o.ApplyT(func(v *MxedgeTuntermMulticastConfigSsdp) MxedgeTuntermMulticastConfigSsdp {
+		if v != nil {
+			return *v
+		}
+		var ret MxedgeTuntermMulticastConfigSsdp
+		return ret
+	}).(MxedgeTuntermMulticastConfigSsdpOutput)
+}
+
+func (o MxedgeTuntermMulticastConfigSsdpPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermMulticastConfigSsdp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeTuntermMulticastConfigSsdpPtrOutput) VlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MxedgeTuntermMulticastConfigSsdp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VlanIds
+	}).(pulumi.StringArrayOutput)
+}
+
+type MxedgeTuntermOtherIpConfigs struct {
+	Ip      string `pulumi:"ip"`
+	Netmask string `pulumi:"netmask"`
+}
+
+// MxedgeTuntermOtherIpConfigsInput is an input type that accepts MxedgeTuntermOtherIpConfigsArgs and MxedgeTuntermOtherIpConfigsOutput values.
+// You can construct a concrete instance of `MxedgeTuntermOtherIpConfigsInput` via:
+//
+//	MxedgeTuntermOtherIpConfigsArgs{...}
+type MxedgeTuntermOtherIpConfigsInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermOtherIpConfigsOutput() MxedgeTuntermOtherIpConfigsOutput
+	ToMxedgeTuntermOtherIpConfigsOutputWithContext(context.Context) MxedgeTuntermOtherIpConfigsOutput
+}
+
+type MxedgeTuntermOtherIpConfigsArgs struct {
+	Ip      pulumi.StringInput `pulumi:"ip"`
+	Netmask pulumi.StringInput `pulumi:"netmask"`
+}
+
+func (MxedgeTuntermOtherIpConfigsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermOtherIpConfigs)(nil)).Elem()
+}
+
+func (i MxedgeTuntermOtherIpConfigsArgs) ToMxedgeTuntermOtherIpConfigsOutput() MxedgeTuntermOtherIpConfigsOutput {
+	return i.ToMxedgeTuntermOtherIpConfigsOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermOtherIpConfigsArgs) ToMxedgeTuntermOtherIpConfigsOutputWithContext(ctx context.Context) MxedgeTuntermOtherIpConfigsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermOtherIpConfigsOutput)
+}
+
+// MxedgeTuntermOtherIpConfigsMapInput is an input type that accepts MxedgeTuntermOtherIpConfigsMap and MxedgeTuntermOtherIpConfigsMapOutput values.
+// You can construct a concrete instance of `MxedgeTuntermOtherIpConfigsMapInput` via:
+//
+//	MxedgeTuntermOtherIpConfigsMap{ "key": MxedgeTuntermOtherIpConfigsArgs{...} }
+type MxedgeTuntermOtherIpConfigsMapInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermOtherIpConfigsMapOutput() MxedgeTuntermOtherIpConfigsMapOutput
+	ToMxedgeTuntermOtherIpConfigsMapOutputWithContext(context.Context) MxedgeTuntermOtherIpConfigsMapOutput
+}
+
+type MxedgeTuntermOtherIpConfigsMap map[string]MxedgeTuntermOtherIpConfigsInput
+
+func (MxedgeTuntermOtherIpConfigsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxedgeTuntermOtherIpConfigs)(nil)).Elem()
+}
+
+func (i MxedgeTuntermOtherIpConfigsMap) ToMxedgeTuntermOtherIpConfigsMapOutput() MxedgeTuntermOtherIpConfigsMapOutput {
+	return i.ToMxedgeTuntermOtherIpConfigsMapOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermOtherIpConfigsMap) ToMxedgeTuntermOtherIpConfigsMapOutputWithContext(ctx context.Context) MxedgeTuntermOtherIpConfigsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermOtherIpConfigsMapOutput)
+}
+
+type MxedgeTuntermOtherIpConfigsOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermOtherIpConfigsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermOtherIpConfigs)(nil)).Elem()
+}
+
+func (o MxedgeTuntermOtherIpConfigsOutput) ToMxedgeTuntermOtherIpConfigsOutput() MxedgeTuntermOtherIpConfigsOutput {
+	return o
+}
+
+func (o MxedgeTuntermOtherIpConfigsOutput) ToMxedgeTuntermOtherIpConfigsOutputWithContext(ctx context.Context) MxedgeTuntermOtherIpConfigsOutput {
+	return o
+}
+
+func (o MxedgeTuntermOtherIpConfigsOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v MxedgeTuntermOtherIpConfigs) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+func (o MxedgeTuntermOtherIpConfigsOutput) Netmask() pulumi.StringOutput {
+	return o.ApplyT(func(v MxedgeTuntermOtherIpConfigs) string { return v.Netmask }).(pulumi.StringOutput)
+}
+
+type MxedgeTuntermOtherIpConfigsMapOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermOtherIpConfigsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxedgeTuntermOtherIpConfigs)(nil)).Elem()
+}
+
+func (o MxedgeTuntermOtherIpConfigsMapOutput) ToMxedgeTuntermOtherIpConfigsMapOutput() MxedgeTuntermOtherIpConfigsMapOutput {
+	return o
+}
+
+func (o MxedgeTuntermOtherIpConfigsMapOutput) ToMxedgeTuntermOtherIpConfigsMapOutputWithContext(ctx context.Context) MxedgeTuntermOtherIpConfigsMapOutput {
+	return o
+}
+
+func (o MxedgeTuntermOtherIpConfigsMapOutput) MapIndex(k pulumi.StringInput) MxedgeTuntermOtherIpConfigsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MxedgeTuntermOtherIpConfigs {
+		return vs[0].(map[string]MxedgeTuntermOtherIpConfigs)[vs[1].(string)]
+	}).(MxedgeTuntermOtherIpConfigsOutput)
+}
+
+type MxedgeTuntermPortConfig struct {
+	// List of ports to be used for downstream (to AP) purpose
+	DownstreamPorts []string `pulumi:"downstreamPorts"`
+	// Whether to separate upstream / downstream ports. default is false where all ports will be used.
+	SeparateUpstreamDownstream *bool   `pulumi:"separateUpstreamDownstream"`
+	UpstreamPortVlanId         *string `pulumi:"upstreamPortVlanId"`
+	// List of ports to be used for upstream purpose (to LAN)
+	UpstreamPorts []string `pulumi:"upstreamPorts"`
+}
+
+// MxedgeTuntermPortConfigInput is an input type that accepts MxedgeTuntermPortConfigArgs and MxedgeTuntermPortConfigOutput values.
+// You can construct a concrete instance of `MxedgeTuntermPortConfigInput` via:
+//
+//	MxedgeTuntermPortConfigArgs{...}
+type MxedgeTuntermPortConfigInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermPortConfigOutput() MxedgeTuntermPortConfigOutput
+	ToMxedgeTuntermPortConfigOutputWithContext(context.Context) MxedgeTuntermPortConfigOutput
+}
+
+type MxedgeTuntermPortConfigArgs struct {
+	// List of ports to be used for downstream (to AP) purpose
+	DownstreamPorts pulumi.StringArrayInput `pulumi:"downstreamPorts"`
+	// Whether to separate upstream / downstream ports. default is false where all ports will be used.
+	SeparateUpstreamDownstream pulumi.BoolPtrInput   `pulumi:"separateUpstreamDownstream"`
+	UpstreamPortVlanId         pulumi.StringPtrInput `pulumi:"upstreamPortVlanId"`
+	// List of ports to be used for upstream purpose (to LAN)
+	UpstreamPorts pulumi.StringArrayInput `pulumi:"upstreamPorts"`
+}
+
+func (MxedgeTuntermPortConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermPortConfig)(nil)).Elem()
+}
+
+func (i MxedgeTuntermPortConfigArgs) ToMxedgeTuntermPortConfigOutput() MxedgeTuntermPortConfigOutput {
+	return i.ToMxedgeTuntermPortConfigOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermPortConfigArgs) ToMxedgeTuntermPortConfigOutputWithContext(ctx context.Context) MxedgeTuntermPortConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermPortConfigOutput)
+}
+
+func (i MxedgeTuntermPortConfigArgs) ToMxedgeTuntermPortConfigPtrOutput() MxedgeTuntermPortConfigPtrOutput {
+	return i.ToMxedgeTuntermPortConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermPortConfigArgs) ToMxedgeTuntermPortConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermPortConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermPortConfigOutput).ToMxedgeTuntermPortConfigPtrOutputWithContext(ctx)
+}
+
+// MxedgeTuntermPortConfigPtrInput is an input type that accepts MxedgeTuntermPortConfigArgs, MxedgeTuntermPortConfigPtr and MxedgeTuntermPortConfigPtrOutput values.
+// You can construct a concrete instance of `MxedgeTuntermPortConfigPtrInput` via:
+//
+//	        MxedgeTuntermPortConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxedgeTuntermPortConfigPtrInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermPortConfigPtrOutput() MxedgeTuntermPortConfigPtrOutput
+	ToMxedgeTuntermPortConfigPtrOutputWithContext(context.Context) MxedgeTuntermPortConfigPtrOutput
+}
+
+type mxedgeTuntermPortConfigPtrType MxedgeTuntermPortConfigArgs
+
+func MxedgeTuntermPortConfigPtr(v *MxedgeTuntermPortConfigArgs) MxedgeTuntermPortConfigPtrInput {
+	return (*mxedgeTuntermPortConfigPtrType)(v)
+}
+
+func (*mxedgeTuntermPortConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermPortConfig)(nil)).Elem()
+}
+
+func (i *mxedgeTuntermPortConfigPtrType) ToMxedgeTuntermPortConfigPtrOutput() MxedgeTuntermPortConfigPtrOutput {
+	return i.ToMxedgeTuntermPortConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *mxedgeTuntermPortConfigPtrType) ToMxedgeTuntermPortConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermPortConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermPortConfigPtrOutput)
+}
+
+type MxedgeTuntermPortConfigOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermPortConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermPortConfig)(nil)).Elem()
+}
+
+func (o MxedgeTuntermPortConfigOutput) ToMxedgeTuntermPortConfigOutput() MxedgeTuntermPortConfigOutput {
+	return o
+}
+
+func (o MxedgeTuntermPortConfigOutput) ToMxedgeTuntermPortConfigOutputWithContext(ctx context.Context) MxedgeTuntermPortConfigOutput {
+	return o
+}
+
+func (o MxedgeTuntermPortConfigOutput) ToMxedgeTuntermPortConfigPtrOutput() MxedgeTuntermPortConfigPtrOutput {
+	return o.ToMxedgeTuntermPortConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MxedgeTuntermPortConfigOutput) ToMxedgeTuntermPortConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermPortConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxedgeTuntermPortConfig) *MxedgeTuntermPortConfig {
+		return &v
+	}).(MxedgeTuntermPortConfigPtrOutput)
+}
+
+// List of ports to be used for downstream (to AP) purpose
+func (o MxedgeTuntermPortConfigOutput) DownstreamPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxedgeTuntermPortConfig) []string { return v.DownstreamPorts }).(pulumi.StringArrayOutput)
+}
+
+// Whether to separate upstream / downstream ports. default is false where all ports will be used.
+func (o MxedgeTuntermPortConfigOutput) SeparateUpstreamDownstream() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermPortConfig) *bool { return v.SeparateUpstreamDownstream }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeTuntermPortConfigOutput) UpstreamPortVlanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermPortConfig) *string { return v.UpstreamPortVlanId }).(pulumi.StringPtrOutput)
+}
+
+// List of ports to be used for upstream purpose (to LAN)
+func (o MxedgeTuntermPortConfigOutput) UpstreamPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxedgeTuntermPortConfig) []string { return v.UpstreamPorts }).(pulumi.StringArrayOutput)
+}
+
+type MxedgeTuntermPortConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermPortConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeTuntermPortConfig)(nil)).Elem()
+}
+
+func (o MxedgeTuntermPortConfigPtrOutput) ToMxedgeTuntermPortConfigPtrOutput() MxedgeTuntermPortConfigPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermPortConfigPtrOutput) ToMxedgeTuntermPortConfigPtrOutputWithContext(ctx context.Context) MxedgeTuntermPortConfigPtrOutput {
+	return o
+}
+
+func (o MxedgeTuntermPortConfigPtrOutput) Elem() MxedgeTuntermPortConfigOutput {
+	return o.ApplyT(func(v *MxedgeTuntermPortConfig) MxedgeTuntermPortConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MxedgeTuntermPortConfig
+		return ret
+	}).(MxedgeTuntermPortConfigOutput)
+}
+
+// List of ports to be used for downstream (to AP) purpose
+func (o MxedgeTuntermPortConfigPtrOutput) DownstreamPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MxedgeTuntermPortConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DownstreamPorts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether to separate upstream / downstream ports. default is false where all ports will be used.
+func (o MxedgeTuntermPortConfigPtrOutput) SeparateUpstreamDownstream() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermPortConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SeparateUpstreamDownstream
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MxedgeTuntermPortConfigPtrOutput) UpstreamPortVlanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeTuntermPortConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpstreamPortVlanId
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of ports to be used for upstream purpose (to LAN)
+func (o MxedgeTuntermPortConfigPtrOutput) UpstreamPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MxedgeTuntermPortConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UpstreamPorts
+	}).(pulumi.StringArrayOutput)
+}
+
+type MxedgeTuntermSwitchConfig struct {
+	PortVlanId *int     `pulumi:"portVlanId"`
+	VlanIds    []string `pulumi:"vlanIds"`
+}
+
+// MxedgeTuntermSwitchConfigInput is an input type that accepts MxedgeTuntermSwitchConfigArgs and MxedgeTuntermSwitchConfigOutput values.
+// You can construct a concrete instance of `MxedgeTuntermSwitchConfigInput` via:
+//
+//	MxedgeTuntermSwitchConfigArgs{...}
+type MxedgeTuntermSwitchConfigInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermSwitchConfigOutput() MxedgeTuntermSwitchConfigOutput
+	ToMxedgeTuntermSwitchConfigOutputWithContext(context.Context) MxedgeTuntermSwitchConfigOutput
+}
+
+type MxedgeTuntermSwitchConfigArgs struct {
+	PortVlanId pulumi.IntPtrInput      `pulumi:"portVlanId"`
+	VlanIds    pulumi.StringArrayInput `pulumi:"vlanIds"`
+}
+
+func (MxedgeTuntermSwitchConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermSwitchConfig)(nil)).Elem()
+}
+
+func (i MxedgeTuntermSwitchConfigArgs) ToMxedgeTuntermSwitchConfigOutput() MxedgeTuntermSwitchConfigOutput {
+	return i.ToMxedgeTuntermSwitchConfigOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermSwitchConfigArgs) ToMxedgeTuntermSwitchConfigOutputWithContext(ctx context.Context) MxedgeTuntermSwitchConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermSwitchConfigOutput)
+}
+
+// MxedgeTuntermSwitchConfigMapInput is an input type that accepts MxedgeTuntermSwitchConfigMap and MxedgeTuntermSwitchConfigMapOutput values.
+// You can construct a concrete instance of `MxedgeTuntermSwitchConfigMapInput` via:
+//
+//	MxedgeTuntermSwitchConfigMap{ "key": MxedgeTuntermSwitchConfigArgs{...} }
+type MxedgeTuntermSwitchConfigMapInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermSwitchConfigMapOutput() MxedgeTuntermSwitchConfigMapOutput
+	ToMxedgeTuntermSwitchConfigMapOutputWithContext(context.Context) MxedgeTuntermSwitchConfigMapOutput
+}
+
+type MxedgeTuntermSwitchConfigMap map[string]MxedgeTuntermSwitchConfigInput
+
+func (MxedgeTuntermSwitchConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxedgeTuntermSwitchConfig)(nil)).Elem()
+}
+
+func (i MxedgeTuntermSwitchConfigMap) ToMxedgeTuntermSwitchConfigMapOutput() MxedgeTuntermSwitchConfigMapOutput {
+	return i.ToMxedgeTuntermSwitchConfigMapOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermSwitchConfigMap) ToMxedgeTuntermSwitchConfigMapOutputWithContext(ctx context.Context) MxedgeTuntermSwitchConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermSwitchConfigMapOutput)
+}
+
+type MxedgeTuntermSwitchConfigOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermSwitchConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeTuntermSwitchConfig)(nil)).Elem()
+}
+
+func (o MxedgeTuntermSwitchConfigOutput) ToMxedgeTuntermSwitchConfigOutput() MxedgeTuntermSwitchConfigOutput {
+	return o
+}
+
+func (o MxedgeTuntermSwitchConfigOutput) ToMxedgeTuntermSwitchConfigOutputWithContext(ctx context.Context) MxedgeTuntermSwitchConfigOutput {
+	return o
+}
+
+func (o MxedgeTuntermSwitchConfigOutput) PortVlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxedgeTuntermSwitchConfig) *int { return v.PortVlanId }).(pulumi.IntPtrOutput)
+}
+
+func (o MxedgeTuntermSwitchConfigOutput) VlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxedgeTuntermSwitchConfig) []string { return v.VlanIds }).(pulumi.StringArrayOutput)
+}
+
+type MxedgeTuntermSwitchConfigMapOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermSwitchConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxedgeTuntermSwitchConfig)(nil)).Elem()
+}
+
+func (o MxedgeTuntermSwitchConfigMapOutput) ToMxedgeTuntermSwitchConfigMapOutput() MxedgeTuntermSwitchConfigMapOutput {
+	return o
+}
+
+func (o MxedgeTuntermSwitchConfigMapOutput) ToMxedgeTuntermSwitchConfigMapOutputWithContext(ctx context.Context) MxedgeTuntermSwitchConfigMapOutput {
+	return o
+}
+
+func (o MxedgeTuntermSwitchConfigMapOutput) MapIndex(k pulumi.StringInput) MxedgeTuntermSwitchConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MxedgeTuntermSwitchConfig {
+		return vs[0].(map[string]MxedgeTuntermSwitchConfig)[vs[1].(string)]
+	}).(MxedgeTuntermSwitchConfigOutput)
+}
+
+type MxedgeVersions struct {
+	Mxagent *string `pulumi:"mxagent"`
+	Tunterm *string `pulumi:"tunterm"`
+}
+
+// MxedgeVersionsInput is an input type that accepts MxedgeVersionsArgs and MxedgeVersionsOutput values.
+// You can construct a concrete instance of `MxedgeVersionsInput` via:
+//
+//	MxedgeVersionsArgs{...}
+type MxedgeVersionsInput interface {
+	pulumi.Input
+
+	ToMxedgeVersionsOutput() MxedgeVersionsOutput
+	ToMxedgeVersionsOutputWithContext(context.Context) MxedgeVersionsOutput
+}
+
+type MxedgeVersionsArgs struct {
+	Mxagent pulumi.StringPtrInput `pulumi:"mxagent"`
+	Tunterm pulumi.StringPtrInput `pulumi:"tunterm"`
+}
+
+func (MxedgeVersionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeVersions)(nil)).Elem()
+}
+
+func (i MxedgeVersionsArgs) ToMxedgeVersionsOutput() MxedgeVersionsOutput {
+	return i.ToMxedgeVersionsOutputWithContext(context.Background())
+}
+
+func (i MxedgeVersionsArgs) ToMxedgeVersionsOutputWithContext(ctx context.Context) MxedgeVersionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeVersionsOutput)
+}
+
+func (i MxedgeVersionsArgs) ToMxedgeVersionsPtrOutput() MxedgeVersionsPtrOutput {
+	return i.ToMxedgeVersionsPtrOutputWithContext(context.Background())
+}
+
+func (i MxedgeVersionsArgs) ToMxedgeVersionsPtrOutputWithContext(ctx context.Context) MxedgeVersionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeVersionsOutput).ToMxedgeVersionsPtrOutputWithContext(ctx)
+}
+
+// MxedgeVersionsPtrInput is an input type that accepts MxedgeVersionsArgs, MxedgeVersionsPtr and MxedgeVersionsPtrOutput values.
+// You can construct a concrete instance of `MxedgeVersionsPtrInput` via:
+//
+//	        MxedgeVersionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxedgeVersionsPtrInput interface {
+	pulumi.Input
+
+	ToMxedgeVersionsPtrOutput() MxedgeVersionsPtrOutput
+	ToMxedgeVersionsPtrOutputWithContext(context.Context) MxedgeVersionsPtrOutput
+}
+
+type mxedgeVersionsPtrType MxedgeVersionsArgs
+
+func MxedgeVersionsPtr(v *MxedgeVersionsArgs) MxedgeVersionsPtrInput {
+	return (*mxedgeVersionsPtrType)(v)
+}
+
+func (*mxedgeVersionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeVersions)(nil)).Elem()
+}
+
+func (i *mxedgeVersionsPtrType) ToMxedgeVersionsPtrOutput() MxedgeVersionsPtrOutput {
+	return i.ToMxedgeVersionsPtrOutputWithContext(context.Background())
+}
+
+func (i *mxedgeVersionsPtrType) ToMxedgeVersionsPtrOutputWithContext(ctx context.Context) MxedgeVersionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeVersionsPtrOutput)
+}
+
+type MxedgeVersionsOutput struct{ *pulumi.OutputState }
+
+func (MxedgeVersionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxedgeVersions)(nil)).Elem()
+}
+
+func (o MxedgeVersionsOutput) ToMxedgeVersionsOutput() MxedgeVersionsOutput {
+	return o
+}
+
+func (o MxedgeVersionsOutput) ToMxedgeVersionsOutputWithContext(ctx context.Context) MxedgeVersionsOutput {
+	return o
+}
+
+func (o MxedgeVersionsOutput) ToMxedgeVersionsPtrOutput() MxedgeVersionsPtrOutput {
+	return o.ToMxedgeVersionsPtrOutputWithContext(context.Background())
+}
+
+func (o MxedgeVersionsOutput) ToMxedgeVersionsPtrOutputWithContext(ctx context.Context) MxedgeVersionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxedgeVersions) *MxedgeVersions {
+		return &v
+	}).(MxedgeVersionsPtrOutput)
+}
+
+func (o MxedgeVersionsOutput) Mxagent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeVersions) *string { return v.Mxagent }).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeVersionsOutput) Tunterm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxedgeVersions) *string { return v.Tunterm }).(pulumi.StringPtrOutput)
+}
+
+type MxedgeVersionsPtrOutput struct{ *pulumi.OutputState }
+
+func (MxedgeVersionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxedgeVersions)(nil)).Elem()
+}
+
+func (o MxedgeVersionsPtrOutput) ToMxedgeVersionsPtrOutput() MxedgeVersionsPtrOutput {
+	return o
+}
+
+func (o MxedgeVersionsPtrOutput) ToMxedgeVersionsPtrOutputWithContext(ctx context.Context) MxedgeVersionsPtrOutput {
+	return o
+}
+
+func (o MxedgeVersionsPtrOutput) Elem() MxedgeVersionsOutput {
+	return o.ApplyT(func(v *MxedgeVersions) MxedgeVersions {
+		if v != nil {
+			return *v
+		}
+		var ret MxedgeVersions
+		return ret
+	}).(MxedgeVersionsOutput)
+}
+
+func (o MxedgeVersionsPtrOutput) Mxagent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeVersions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mxagent
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MxedgeVersionsPtrOutput) Tunterm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxedgeVersions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tunterm
+	}).(pulumi.StringPtrOutput)
 }
 
 type NacruleMatching struct {
@@ -36537,7 +40268,9 @@ func (o NetworktemplatePortUsagesMapOutput) MapIndex(k pulumi.StringInput) Netwo
 }
 
 type NetworktemplatePortUsagesRule struct {
-	Equals *string `pulumi:"equals"`
+	// Optional description of the rule
+	Description *string `pulumi:"description"`
+	Equals      *string `pulumi:"equals"`
 	// Use `equalsAny` to match any item in a list
 	EqualsAnies []string `pulumi:"equalsAnies"`
 	// "[0:3]":"abcdef" > "abc"
@@ -36562,7 +40295,9 @@ type NetworktemplatePortUsagesRuleInput interface {
 }
 
 type NetworktemplatePortUsagesRuleArgs struct {
-	Equals pulumi.StringPtrInput `pulumi:"equals"`
+	// Optional description of the rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Equals      pulumi.StringPtrInput `pulumi:"equals"`
 	// Use `equalsAny` to match any item in a list
 	EqualsAnies pulumi.StringArrayInput `pulumi:"equalsAnies"`
 	// "[0:3]":"abcdef" > "abc"
@@ -36624,6 +40359,11 @@ func (o NetworktemplatePortUsagesRuleOutput) ToNetworktemplatePortUsagesRuleOutp
 
 func (o NetworktemplatePortUsagesRuleOutput) ToNetworktemplatePortUsagesRuleOutputWithContext(ctx context.Context) NetworktemplatePortUsagesRuleOutput {
 	return o
+}
+
+// Optional description of the rule
+func (o NetworktemplatePortUsagesRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsagesRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o NetworktemplatePortUsagesRuleOutput) Equals() pulumi.StringPtrOutput {
@@ -50348,6 +54088,8 @@ type SettingJuniperSrxAutoUpgrade struct {
 	CustomVersions map[string]string `pulumi:"customVersions"`
 	Enabled        *bool             `pulumi:"enabled"`
 	Snapshot       *bool             `pulumi:"snapshot"`
+	// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+	Version *string `pulumi:"version"`
 }
 
 // SettingJuniperSrxAutoUpgradeInput is an input type that accepts SettingJuniperSrxAutoUpgradeArgs and SettingJuniperSrxAutoUpgradeOutput values.
@@ -50366,6 +54108,8 @@ type SettingJuniperSrxAutoUpgradeArgs struct {
 	CustomVersions pulumi.StringMapInput `pulumi:"customVersions"`
 	Enabled        pulumi.BoolPtrInput   `pulumi:"enabled"`
 	Snapshot       pulumi.BoolPtrInput   `pulumi:"snapshot"`
+	// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SettingJuniperSrxAutoUpgradeArgs) ElementType() reflect.Type {
@@ -50458,6 +54202,11 @@ func (o SettingJuniperSrxAutoUpgradeOutput) Snapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingJuniperSrxAutoUpgrade) *bool { return v.Snapshot }).(pulumi.BoolPtrOutput)
 }
 
+// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+func (o SettingJuniperSrxAutoUpgradeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingJuniperSrxAutoUpgrade) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type SettingJuniperSrxAutoUpgradePtrOutput struct{ *pulumi.OutputState }
 
 func (SettingJuniperSrxAutoUpgradePtrOutput) ElementType() reflect.Type {
@@ -50508,6 +54257,16 @@ func (o SettingJuniperSrxAutoUpgradePtrOutput) Snapshot() pulumi.BoolPtrOutput {
 		}
 		return v.Snapshot
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+func (o SettingJuniperSrxAutoUpgradePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingJuniperSrxAutoUpgrade) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 type SettingJunosShellAccess struct {
@@ -51276,6 +55035,8 @@ type SettingMistNac struct {
 	EapSslSecurityLevel *int `pulumi:"eapSslSecurityLevel"`
 	// By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
 	EuOnly *bool `pulumi:"euOnly"`
+	// Allows customer to enable client fingerprinting for policy enforcement
+	Fingerprinting *SettingMistNacFingerprinting `pulumi:"fingerprinting"`
 	// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
 	IdpMachineCertLookupField *string `pulumi:"idpMachineCertLookupField"`
 	// allow customer to choose the EAP-TLS client certificate's field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
@@ -51287,6 +55048,8 @@ type SettingMistNac struct {
 	UseIpVersion *string `pulumi:"useIpVersion"`
 	// By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `useSslPort`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedgeClusters that have mist-nac enabled
 	UseSslPort *bool `pulumi:"useSslPort"`
+	// Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+	UsermacExpiry *int `pulumi:"usermacExpiry"`
 }
 
 // SettingMistNacInput is an input type that accepts SettingMistNacArgs and SettingMistNacOutput values.
@@ -51311,6 +55074,8 @@ type SettingMistNacArgs struct {
 	EapSslSecurityLevel pulumi.IntPtrInput `pulumi:"eapSslSecurityLevel"`
 	// By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
 	EuOnly pulumi.BoolPtrInput `pulumi:"euOnly"`
+	// Allows customer to enable client fingerprinting for policy enforcement
+	Fingerprinting SettingMistNacFingerprintingPtrInput `pulumi:"fingerprinting"`
 	// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
 	IdpMachineCertLookupField pulumi.StringPtrInput `pulumi:"idpMachineCertLookupField"`
 	// allow customer to choose the EAP-TLS client certificate's field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
@@ -51322,6 +55087,8 @@ type SettingMistNacArgs struct {
 	UseIpVersion pulumi.StringPtrInput `pulumi:"useIpVersion"`
 	// By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `useSslPort`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedgeClusters that have mist-nac enabled
 	UseSslPort pulumi.BoolPtrInput `pulumi:"useSslPort"`
+	// Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+	UsermacExpiry pulumi.IntPtrInput `pulumi:"usermacExpiry"`
 }
 
 func (SettingMistNacArgs) ElementType() reflect.Type {
@@ -51426,6 +55193,11 @@ func (o SettingMistNacOutput) EuOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMistNac) *bool { return v.EuOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Allows customer to enable client fingerprinting for policy enforcement
+func (o SettingMistNacOutput) Fingerprinting() SettingMistNacFingerprintingPtrOutput {
+	return o.ApplyT(func(v SettingMistNac) *SettingMistNacFingerprinting { return v.Fingerprinting }).(SettingMistNacFingerprintingPtrOutput)
+}
+
 // allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
 func (o SettingMistNacOutput) IdpMachineCertLookupField() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingMistNac) *string { return v.IdpMachineCertLookupField }).(pulumi.StringPtrOutput)
@@ -51453,6 +55225,11 @@ func (o SettingMistNacOutput) UseIpVersion() pulumi.StringPtrOutput {
 // By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `useSslPort`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedgeClusters that have mist-nac enabled
 func (o SettingMistNacOutput) UseSslPort() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMistNac) *bool { return v.UseSslPort }).(pulumi.BoolPtrOutput)
+}
+
+// Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+func (o SettingMistNacOutput) UsermacExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingMistNac) *int { return v.UsermacExpiry }).(pulumi.IntPtrOutput)
 }
 
 type SettingMistNacPtrOutput struct{ *pulumi.OutputState }
@@ -51529,6 +55306,16 @@ func (o SettingMistNacPtrOutput) EuOnly() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Allows customer to enable client fingerprinting for policy enforcement
+func (o SettingMistNacPtrOutput) Fingerprinting() SettingMistNacFingerprintingPtrOutput {
+	return o.ApplyT(func(v *SettingMistNac) *SettingMistNacFingerprinting {
+		if v == nil {
+			return nil
+		}
+		return v.Fingerprinting
+	}).(SettingMistNacFingerprintingPtrOutput)
+}
+
 // allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
 func (o SettingMistNacPtrOutput) IdpMachineCertLookupField() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingMistNac) *string {
@@ -51586,6 +55373,210 @@ func (o SettingMistNacPtrOutput) UseSslPort() pulumi.BoolPtrOutput {
 		}
 		return v.UseSslPort
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+func (o SettingMistNacPtrOutput) UsermacExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SettingMistNac) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UsermacExpiry
+	}).(pulumi.IntPtrOutput)
+}
+
+type SettingMistNacFingerprinting struct {
+	// enable/disable writes to NAC DDB fingerprint table
+	Enabled *bool `pulumi:"enabled"`
+	// enable/disable CoA triggers on fingerprint change for wired clients, always port-bounce
+	GenerateCoa *bool `pulumi:"generateCoa"`
+	// enable/disable CoA triggers on fingerprint change for wireless clients
+	GenerateWirelessCoa *bool `pulumi:"generateWirelessCoa"`
+	// enum: `reauth`, `disconnect`
+	WirelessCoaType *string `pulumi:"wirelessCoaType"`
+}
+
+// SettingMistNacFingerprintingInput is an input type that accepts SettingMistNacFingerprintingArgs and SettingMistNacFingerprintingOutput values.
+// You can construct a concrete instance of `SettingMistNacFingerprintingInput` via:
+//
+//	SettingMistNacFingerprintingArgs{...}
+type SettingMistNacFingerprintingInput interface {
+	pulumi.Input
+
+	ToSettingMistNacFingerprintingOutput() SettingMistNacFingerprintingOutput
+	ToSettingMistNacFingerprintingOutputWithContext(context.Context) SettingMistNacFingerprintingOutput
+}
+
+type SettingMistNacFingerprintingArgs struct {
+	// enable/disable writes to NAC DDB fingerprint table
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// enable/disable CoA triggers on fingerprint change for wired clients, always port-bounce
+	GenerateCoa pulumi.BoolPtrInput `pulumi:"generateCoa"`
+	// enable/disable CoA triggers on fingerprint change for wireless clients
+	GenerateWirelessCoa pulumi.BoolPtrInput `pulumi:"generateWirelessCoa"`
+	// enum: `reauth`, `disconnect`
+	WirelessCoaType pulumi.StringPtrInput `pulumi:"wirelessCoaType"`
+}
+
+func (SettingMistNacFingerprintingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMistNacFingerprinting)(nil)).Elem()
+}
+
+func (i SettingMistNacFingerprintingArgs) ToSettingMistNacFingerprintingOutput() SettingMistNacFingerprintingOutput {
+	return i.ToSettingMistNacFingerprintingOutputWithContext(context.Background())
+}
+
+func (i SettingMistNacFingerprintingArgs) ToSettingMistNacFingerprintingOutputWithContext(ctx context.Context) SettingMistNacFingerprintingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMistNacFingerprintingOutput)
+}
+
+func (i SettingMistNacFingerprintingArgs) ToSettingMistNacFingerprintingPtrOutput() SettingMistNacFingerprintingPtrOutput {
+	return i.ToSettingMistNacFingerprintingPtrOutputWithContext(context.Background())
+}
+
+func (i SettingMistNacFingerprintingArgs) ToSettingMistNacFingerprintingPtrOutputWithContext(ctx context.Context) SettingMistNacFingerprintingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMistNacFingerprintingOutput).ToSettingMistNacFingerprintingPtrOutputWithContext(ctx)
+}
+
+// SettingMistNacFingerprintingPtrInput is an input type that accepts SettingMistNacFingerprintingArgs, SettingMistNacFingerprintingPtr and SettingMistNacFingerprintingPtrOutput values.
+// You can construct a concrete instance of `SettingMistNacFingerprintingPtrInput` via:
+//
+//	        SettingMistNacFingerprintingArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingMistNacFingerprintingPtrInput interface {
+	pulumi.Input
+
+	ToSettingMistNacFingerprintingPtrOutput() SettingMistNacFingerprintingPtrOutput
+	ToSettingMistNacFingerprintingPtrOutputWithContext(context.Context) SettingMistNacFingerprintingPtrOutput
+}
+
+type settingMistNacFingerprintingPtrType SettingMistNacFingerprintingArgs
+
+func SettingMistNacFingerprintingPtr(v *SettingMistNacFingerprintingArgs) SettingMistNacFingerprintingPtrInput {
+	return (*settingMistNacFingerprintingPtrType)(v)
+}
+
+func (*settingMistNacFingerprintingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMistNacFingerprinting)(nil)).Elem()
+}
+
+func (i *settingMistNacFingerprintingPtrType) ToSettingMistNacFingerprintingPtrOutput() SettingMistNacFingerprintingPtrOutput {
+	return i.ToSettingMistNacFingerprintingPtrOutputWithContext(context.Background())
+}
+
+func (i *settingMistNacFingerprintingPtrType) ToSettingMistNacFingerprintingPtrOutputWithContext(ctx context.Context) SettingMistNacFingerprintingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingMistNacFingerprintingPtrOutput)
+}
+
+type SettingMistNacFingerprintingOutput struct{ *pulumi.OutputState }
+
+func (SettingMistNacFingerprintingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingMistNacFingerprinting)(nil)).Elem()
+}
+
+func (o SettingMistNacFingerprintingOutput) ToSettingMistNacFingerprintingOutput() SettingMistNacFingerprintingOutput {
+	return o
+}
+
+func (o SettingMistNacFingerprintingOutput) ToSettingMistNacFingerprintingOutputWithContext(ctx context.Context) SettingMistNacFingerprintingOutput {
+	return o
+}
+
+func (o SettingMistNacFingerprintingOutput) ToSettingMistNacFingerprintingPtrOutput() SettingMistNacFingerprintingPtrOutput {
+	return o.ToSettingMistNacFingerprintingPtrOutputWithContext(context.Background())
+}
+
+func (o SettingMistNacFingerprintingOutput) ToSettingMistNacFingerprintingPtrOutputWithContext(ctx context.Context) SettingMistNacFingerprintingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingMistNacFingerprinting) *SettingMistNacFingerprinting {
+		return &v
+	}).(SettingMistNacFingerprintingPtrOutput)
+}
+
+// enable/disable writes to NAC DDB fingerprint table
+func (o SettingMistNacFingerprintingOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMistNacFingerprinting) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// enable/disable CoA triggers on fingerprint change for wired clients, always port-bounce
+func (o SettingMistNacFingerprintingOutput) GenerateCoa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMistNacFingerprinting) *bool { return v.GenerateCoa }).(pulumi.BoolPtrOutput)
+}
+
+// enable/disable CoA triggers on fingerprint change for wireless clients
+func (o SettingMistNacFingerprintingOutput) GenerateWirelessCoa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMistNacFingerprinting) *bool { return v.GenerateWirelessCoa }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `reauth`, `disconnect`
+func (o SettingMistNacFingerprintingOutput) WirelessCoaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMistNacFingerprinting) *string { return v.WirelessCoaType }).(pulumi.StringPtrOutput)
+}
+
+type SettingMistNacFingerprintingPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingMistNacFingerprintingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingMistNacFingerprinting)(nil)).Elem()
+}
+
+func (o SettingMistNacFingerprintingPtrOutput) ToSettingMistNacFingerprintingPtrOutput() SettingMistNacFingerprintingPtrOutput {
+	return o
+}
+
+func (o SettingMistNacFingerprintingPtrOutput) ToSettingMistNacFingerprintingPtrOutputWithContext(ctx context.Context) SettingMistNacFingerprintingPtrOutput {
+	return o
+}
+
+func (o SettingMistNacFingerprintingPtrOutput) Elem() SettingMistNacFingerprintingOutput {
+	return o.ApplyT(func(v *SettingMistNacFingerprinting) SettingMistNacFingerprinting {
+		if v != nil {
+			return *v
+		}
+		var ret SettingMistNacFingerprinting
+		return ret
+	}).(SettingMistNacFingerprintingOutput)
+}
+
+// enable/disable writes to NAC DDB fingerprint table
+func (o SettingMistNacFingerprintingPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMistNacFingerprinting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enable/disable CoA triggers on fingerprint change for wired clients, always port-bounce
+func (o SettingMistNacFingerprintingPtrOutput) GenerateCoa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMistNacFingerprinting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GenerateCoa
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enable/disable CoA triggers on fingerprint change for wireless clients
+func (o SettingMistNacFingerprintingPtrOutput) GenerateWirelessCoa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMistNacFingerprinting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GenerateWirelessCoa
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enum: `reauth`, `disconnect`
+func (o SettingMistNacFingerprintingPtrOutput) WirelessCoaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMistNacFingerprinting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WirelessCoaType
+	}).(pulumi.StringPtrOutput)
 }
 
 type SettingMistNacIdp struct {
@@ -52957,6 +56948,8 @@ type SettingSsrAutoUpgrade struct {
 	// Property key is the SSR model (e.g. "SSR130").
 	CustomVersions map[string]string `pulumi:"customVersions"`
 	Enabled        *bool             `pulumi:"enabled"`
+	// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+	Version *string `pulumi:"version"`
 }
 
 // SettingSsrAutoUpgradeInput is an input type that accepts SettingSsrAutoUpgradeArgs and SettingSsrAutoUpgradeOutput values.
@@ -52976,6 +56969,8 @@ type SettingSsrAutoUpgradeArgs struct {
 	// Property key is the SSR model (e.g. "SSR130").
 	CustomVersions pulumi.StringMapInput `pulumi:"customVersions"`
 	Enabled        pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SettingSsrAutoUpgradeArgs) ElementType() reflect.Type {
@@ -53069,6 +57064,11 @@ func (o SettingSsrAutoUpgradeOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSsrAutoUpgrade) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+func (o SettingSsrAutoUpgradeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingSsrAutoUpgrade) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type SettingSsrAutoUpgradePtrOutput struct{ *pulumi.OutputState }
 
 func (SettingSsrAutoUpgradePtrOutput) ElementType() reflect.Type {
@@ -53120,6 +57120,16 @@ func (o SettingSsrAutoUpgradePtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+func (o SettingSsrAutoUpgradePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingSsrAutoUpgrade) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 type SettingSsrProxy struct {
@@ -53942,16 +57952,12 @@ func (o SettingSyntheticTestPtrOutput) WanSpeedtest() SettingSyntheticTestWanSpe
 type SettingSyntheticTestCustomProbes struct {
 	// enum: `auto`, `high`, `low`
 	Aggressiveness *string `pulumi:"aggressiveness"`
-	// If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
-	Host *string `pulumi:"host"`
-	// If `type`==`tcp`, Port to be used for the custom probe
-	Port *int `pulumi:"port"`
+	// Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
+	Target *string `pulumi:"target"`
 	// In milliseconds
 	Threshold *int `pulumi:"threshold"`
-	// enum: `curl`, `icmp`, `tcp`
+	// enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
 	Type *string `pulumi:"type"`
-	// If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-	Url *string `pulumi:"url"`
 }
 
 // SettingSyntheticTestCustomProbesInput is an input type that accepts SettingSyntheticTestCustomProbesArgs and SettingSyntheticTestCustomProbesOutput values.
@@ -53968,16 +57974,12 @@ type SettingSyntheticTestCustomProbesInput interface {
 type SettingSyntheticTestCustomProbesArgs struct {
 	// enum: `auto`, `high`, `low`
 	Aggressiveness pulumi.StringPtrInput `pulumi:"aggressiveness"`
-	// If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// If `type`==`tcp`, Port to be used for the custom probe
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
+	Target pulumi.StringPtrInput `pulumi:"target"`
 	// In milliseconds
 	Threshold pulumi.IntPtrInput `pulumi:"threshold"`
-	// enum: `curl`, `icmp`, `tcp`
+	// enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (SettingSyntheticTestCustomProbesArgs) ElementType() reflect.Type {
@@ -54036,14 +58038,9 @@ func (o SettingSyntheticTestCustomProbesOutput) Aggressiveness() pulumi.StringPt
 	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Aggressiveness }).(pulumi.StringPtrOutput)
 }
 
-// If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
-func (o SettingSyntheticTestCustomProbesOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
-// If `type`==`tcp`, Port to be used for the custom probe
-func (o SettingSyntheticTestCustomProbesOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *int { return v.Port }).(pulumi.IntPtrOutput)
+// Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
+func (o SettingSyntheticTestCustomProbesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
 // In milliseconds
@@ -54051,14 +58048,9 @@ func (o SettingSyntheticTestCustomProbesOutput) Threshold() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *int { return v.Threshold }).(pulumi.IntPtrOutput)
 }
 
-// enum: `curl`, `icmp`, `tcp`
+// enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
 func (o SettingSyntheticTestCustomProbesOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-func (o SettingSyntheticTestCustomProbesOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 type SettingSyntheticTestCustomProbesMapOutput struct{ *pulumi.OutputState }
@@ -76806,6 +80798,51 @@ func (o GetWxtagsOrgWxtagSpecArrayOutput) Index(i pulumi.IntInput) GetWxtagsOrgW
 	}).(GetWxtagsOrgWxtagSpecOutput)
 }
 
+type MxedgeTuntermMonitoringArrayArray []MxedgeTuntermMonitoringArrayInput
+
+func (MxedgeTuntermMonitoringArrayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[][]MxedgeTuntermMonitoring)(nil)).Elem()
+}
+
+func (i MxedgeTuntermMonitoringArrayArray) ToMxedgeTuntermMonitoringArrayArrayOutput() MxedgeTuntermMonitoringArrayArrayOutput {
+	return i.ToMxedgeTuntermMonitoringArrayArrayOutputWithContext(context.Background())
+}
+
+func (i MxedgeTuntermMonitoringArrayArray) ToMxedgeTuntermMonitoringArrayArrayOutputWithContext(ctx context.Context) MxedgeTuntermMonitoringArrayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxedgeTuntermMonitoringArrayArrayOutput)
+}
+
+// MxedgeTuntermMonitoringArrayArrayInput is an input type that accepts MxedgeTuntermMonitoringArrayArray and MxedgeTuntermMonitoringArrayArrayOutput values.
+// You can construct a concrete instance of `MxedgeTuntermMonitoringArrayArrayInput` via:
+//
+//	MxedgeTuntermMonitoringArrayArray{ MxedgeTuntermMonitoringArray{ MxedgeTuntermMonitoringArgs{...} } }
+type MxedgeTuntermMonitoringArrayArrayInput interface {
+	pulumi.Input
+
+	ToMxedgeTuntermMonitoringArrayArrayOutput() MxedgeTuntermMonitoringArrayArrayOutput
+	ToMxedgeTuntermMonitoringArrayArrayOutputWithContext(context.Context) MxedgeTuntermMonitoringArrayArrayOutput
+}
+
+type MxedgeTuntermMonitoringArrayArrayOutput struct{ *pulumi.OutputState }
+
+func (MxedgeTuntermMonitoringArrayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[][]MxedgeTuntermMonitoring)(nil)).Elem()
+}
+
+func (o MxedgeTuntermMonitoringArrayArrayOutput) ToMxedgeTuntermMonitoringArrayArrayOutput() MxedgeTuntermMonitoringArrayArrayOutput {
+	return o
+}
+
+func (o MxedgeTuntermMonitoringArrayArrayOutput) ToMxedgeTuntermMonitoringArrayArrayOutputWithContext(ctx context.Context) MxedgeTuntermMonitoringArrayArrayOutput {
+	return o
+}
+
+func (o MxedgeTuntermMonitoringArrayArrayOutput) Index(i pulumi.IntInput) MxedgeTuntermMonitoringArrayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) []MxedgeTuntermMonitoring {
+		return vs[0].([][]MxedgeTuntermMonitoring)[vs[1].(int)]
+	}).(MxedgeTuntermMonitoringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmtemplateDeliveryInput)(nil)).Elem(), AlarmtemplateDeliveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmtemplateDeliveryPtrInput)(nil)).Elem(), AlarmtemplateDeliveryArgs{})
@@ -76963,6 +81000,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicyIdpPtrInput)(nil)).Elem(), DeviceprofileGatewayServicePolicyIdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySkyatpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpPtrInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySkyatpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpHttpInspectionInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySslProxyInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySslProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySslProxyPtrInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySslProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayServicePolicySyslogInput)(nil)).Elem(), DeviceprofileGatewayServicePolicySyslogArgs{})
@@ -77111,6 +81156,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicyIdpPtrInput)(nil)).Elem(), GatewaytemplateServicePolicyIdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySkyatpInput)(nil)).Elem(), GatewaytemplateServicePolicySkyatpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySkyatpPtrInput)(nil)).Elem(), GatewaytemplateServicePolicySkyatpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySkyatpDnsDgaDetectionInput)(nil)).Elem(), GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrInput)(nil)).Elem(), GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySkyatpDnsTunnelDetectionInput)(nil)).Elem(), GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrInput)(nil)).Elem(), GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySkyatpHttpInspectionInput)(nil)).Elem(), GatewaytemplateServicePolicySkyatpHttpInspectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySkyatpHttpInspectionPtrInput)(nil)).Elem(), GatewaytemplateServicePolicySkyatpHttpInspectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySkyatpIotDevicePolicyInput)(nil)).Elem(), GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrInput)(nil)).Elem(), GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySslProxyInput)(nil)).Elem(), GatewaytemplateServicePolicySslProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySslProxyPtrInput)(nil)).Elem(), GatewaytemplateServicePolicySslProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateServicePolicySyslogInput)(nil)).Elem(), GatewaytemplateServicePolicySyslogArgs{})
@@ -77155,6 +81208,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpprofileOverwriteMatchingPtrInput)(nil)).Elem(), IdpprofileOverwriteMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InventoryInventoryInput)(nil)).Elem(), InventoryInventoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InventoryInventoryMapInput)(nil)).Elem(), InventoryInventoryMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeMxedgeMgmtInput)(nil)).Elem(), MxedgeMxedgeMgmtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeMxedgeMgmtPtrInput)(nil)).Elem(), MxedgeMxedgeMgmtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeOobIpConfigInput)(nil)).Elem(), MxedgeOobIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeOobIpConfigPtrInput)(nil)).Elem(), MxedgeOobIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeProxyInput)(nil)).Elem(), MxedgeProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeProxyPtrInput)(nil)).Elem(), MxedgeProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermDhcpdConfigInput)(nil)).Elem(), MxedgeTuntermDhcpdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermDhcpdConfigMapInput)(nil)).Elem(), MxedgeTuntermDhcpdConfigMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermExtraRoutesInput)(nil)).Elem(), MxedgeTuntermExtraRoutesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermExtraRoutesMapInput)(nil)).Elem(), MxedgeTuntermExtraRoutesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermIgmpSnoopingConfigInput)(nil)).Elem(), MxedgeTuntermIgmpSnoopingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermIgmpSnoopingConfigPtrInput)(nil)).Elem(), MxedgeTuntermIgmpSnoopingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermIgmpSnoopingConfigQuerierInput)(nil)).Elem(), MxedgeTuntermIgmpSnoopingConfigQuerierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermIgmpSnoopingConfigQuerierPtrInput)(nil)).Elem(), MxedgeTuntermIgmpSnoopingConfigQuerierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermIpConfigInput)(nil)).Elem(), MxedgeTuntermIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermIpConfigPtrInput)(nil)).Elem(), MxedgeTuntermIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermMonitoringInput)(nil)).Elem(), MxedgeTuntermMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermMonitoringArrayInput)(nil)).Elem(), MxedgeTuntermMonitoringArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermMulticastConfigInput)(nil)).Elem(), MxedgeTuntermMulticastConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermMulticastConfigPtrInput)(nil)).Elem(), MxedgeTuntermMulticastConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermMulticastConfigMdnsInput)(nil)).Elem(), MxedgeTuntermMulticastConfigMdnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermMulticastConfigMdnsPtrInput)(nil)).Elem(), MxedgeTuntermMulticastConfigMdnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermMulticastConfigSsdpInput)(nil)).Elem(), MxedgeTuntermMulticastConfigSsdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermMulticastConfigSsdpPtrInput)(nil)).Elem(), MxedgeTuntermMulticastConfigSsdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermOtherIpConfigsInput)(nil)).Elem(), MxedgeTuntermOtherIpConfigsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermOtherIpConfigsMapInput)(nil)).Elem(), MxedgeTuntermOtherIpConfigsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermPortConfigInput)(nil)).Elem(), MxedgeTuntermPortConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermPortConfigPtrInput)(nil)).Elem(), MxedgeTuntermPortConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermSwitchConfigInput)(nil)).Elem(), MxedgeTuntermSwitchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermSwitchConfigMapInput)(nil)).Elem(), MxedgeTuntermSwitchConfigMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeVersionsInput)(nil)).Elem(), MxedgeVersionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeVersionsPtrInput)(nil)).Elem(), MxedgeVersionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NacruleMatchingInput)(nil)).Elem(), NacruleMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NacruleMatchingPtrInput)(nil)).Elem(), NacruleMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NacruleNotMatchingInput)(nil)).Elem(), NacruleNotMatchingArgs{})
@@ -77393,6 +81478,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingMgmtPtrInput)(nil)).Elem(), SettingMgmtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingMistNacInput)(nil)).Elem(), SettingMistNacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingMistNacPtrInput)(nil)).Elem(), SettingMistNacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMistNacFingerprintingInput)(nil)).Elem(), SettingMistNacFingerprintingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingMistNacFingerprintingPtrInput)(nil)).Elem(), SettingMistNacFingerprintingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingMistNacIdpInput)(nil)).Elem(), SettingMistNacIdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingMistNacIdpArrayInput)(nil)).Elem(), SettingMistNacIdpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingMistNacServerCertInput)(nil)).Elem(), SettingMistNacServerCertArgs{})
@@ -77637,6 +81724,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagArrayInput)(nil)).Elem(), GetWxtagsOrgWxtagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagSpecInput)(nil)).Elem(), GetWxtagsOrgWxtagSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagSpecArrayInput)(nil)).Elem(), GetWxtagsOrgWxtagSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermMonitoringArrayArrayInput)(nil)).Elem(), MxedgeTuntermMonitoringArrayArray{})
 	pulumi.RegisterOutputType(AlarmtemplateDeliveryOutput{})
 	pulumi.RegisterOutputType(AlarmtemplateDeliveryPtrOutput{})
 	pulumi.RegisterOutputType(AlarmtemplateRulesOutput{})
@@ -77793,6 +81881,14 @@ func init() {
 	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicyIdpPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySkyatpOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySkyatpPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySkyatpHttpInspectionOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySkyatpHttpInspectionPtrOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySslProxyOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySslProxyPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayServicePolicySyslogOutput{})
@@ -77941,6 +82037,14 @@ func init() {
 	pulumi.RegisterOutputType(GatewaytemplateServicePolicyIdpPtrOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateServicePolicySkyatpOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateServicePolicySkyatpPtrOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateServicePolicySkyatpDnsDgaDetectionOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateServicePolicySkyatpDnsDgaDetectionPtrOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateServicePolicySkyatpDnsTunnelDetectionOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateServicePolicySkyatpDnsTunnelDetectionPtrOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateServicePolicySkyatpHttpInspectionOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateServicePolicySkyatpHttpInspectionPtrOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateServicePolicySkyatpIotDevicePolicyOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateServicePolicySkyatpIotDevicePolicyPtrOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateServicePolicySslProxyOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateServicePolicySslProxyPtrOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateServicePolicySyslogOutput{})
@@ -77985,6 +82089,38 @@ func init() {
 	pulumi.RegisterOutputType(IdpprofileOverwriteMatchingPtrOutput{})
 	pulumi.RegisterOutputType(InventoryInventoryOutput{})
 	pulumi.RegisterOutputType(InventoryInventoryMapOutput{})
+	pulumi.RegisterOutputType(MxedgeMxedgeMgmtOutput{})
+	pulumi.RegisterOutputType(MxedgeMxedgeMgmtPtrOutput{})
+	pulumi.RegisterOutputType(MxedgeOobIpConfigOutput{})
+	pulumi.RegisterOutputType(MxedgeOobIpConfigPtrOutput{})
+	pulumi.RegisterOutputType(MxedgeProxyOutput{})
+	pulumi.RegisterOutputType(MxedgeProxyPtrOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermDhcpdConfigOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermDhcpdConfigMapOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermExtraRoutesOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermExtraRoutesMapOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermIgmpSnoopingConfigOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermIgmpSnoopingConfigPtrOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermIgmpSnoopingConfigQuerierOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermIgmpSnoopingConfigQuerierPtrOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermIpConfigOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermIpConfigPtrOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermMonitoringOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermMonitoringArrayOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermMulticastConfigOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermMulticastConfigPtrOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermMulticastConfigMdnsOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermMulticastConfigMdnsPtrOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermMulticastConfigSsdpOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermMulticastConfigSsdpPtrOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermOtherIpConfigsOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermOtherIpConfigsMapOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermPortConfigOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermPortConfigPtrOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermSwitchConfigOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermSwitchConfigMapOutput{})
+	pulumi.RegisterOutputType(MxedgeVersionsOutput{})
+	pulumi.RegisterOutputType(MxedgeVersionsPtrOutput{})
 	pulumi.RegisterOutputType(NacruleMatchingOutput{})
 	pulumi.RegisterOutputType(NacruleMatchingPtrOutput{})
 	pulumi.RegisterOutputType(NacruleNotMatchingOutput{})
@@ -78223,6 +82359,8 @@ func init() {
 	pulumi.RegisterOutputType(SettingMgmtPtrOutput{})
 	pulumi.RegisterOutputType(SettingMistNacOutput{})
 	pulumi.RegisterOutputType(SettingMistNacPtrOutput{})
+	pulumi.RegisterOutputType(SettingMistNacFingerprintingOutput{})
+	pulumi.RegisterOutputType(SettingMistNacFingerprintingPtrOutput{})
 	pulumi.RegisterOutputType(SettingMistNacIdpOutput{})
 	pulumi.RegisterOutputType(SettingMistNacIdpArrayOutput{})
 	pulumi.RegisterOutputType(SettingMistNacServerCertOutput{})
@@ -78467,4 +82605,5 @@ func init() {
 	pulumi.RegisterOutputType(GetWxtagsOrgWxtagArrayOutput{})
 	pulumi.RegisterOutputType(GetWxtagsOrgWxtagSpecOutput{})
 	pulumi.RegisterOutputType(GetWxtagsOrgWxtagSpecArrayOutput{})
+	pulumi.RegisterOutputType(MxedgeTuntermMonitoringArrayArrayOutput{})
 }

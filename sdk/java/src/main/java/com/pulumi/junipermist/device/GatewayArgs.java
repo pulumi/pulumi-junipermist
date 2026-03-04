@@ -179,9 +179,25 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ipConfigs);
     }
 
+    /**
+     * Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+     * 
+     * @deprecated
+     * This attribute is being deprecated, please use `mistConfigured` instead
+     * 
+     */
+    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
     @Import(name="managed")
     private @Nullable Output<Boolean> managed;
 
+    /**
+     * @return Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+     * 
+     * @deprecated
+     * This attribute is being deprecated, please use `mistConfigured` instead
+     * 
+     */
+    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
     public Optional<Output<Boolean>> managed() {
         return Optional.ofNullable(this.managed);
     }
@@ -199,6 +215,21 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> mapId() {
         return Optional.ofNullable(this.mapId);
+    }
+
+    /**
+     * whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+     * 
+     */
+    @Import(name="mistConfigured")
+    private @Nullable Output<Boolean> mistConfigured;
+
+    /**
+     * @return whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+     * 
+     */
+    public Optional<Output<Boolean>> mistConfigured() {
+        return Optional.ofNullable(this.mistConfigured);
     }
 
     @Import(name="mspId")
@@ -467,6 +498,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         this.ipConfigs = $.ipConfigs;
         this.managed = $.managed;
         this.mapId = $.mapId;
+        this.mistConfigured = $.mistConfigured;
         this.mspId = $.mspId;
         this.name = $.name;
         this.networks = $.networks;
@@ -734,11 +766,31 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
             return ipConfigs(Output.of(ipConfigs));
         }
 
+        /**
+         * @param managed Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is being deprecated, please use `mistConfigured` instead
+         * 
+         */
+        @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
         public Builder managed(@Nullable Output<Boolean> managed) {
             $.managed = managed;
             return this;
         }
 
+        /**
+         * @param managed Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is being deprecated, please use `mistConfigured` instead
+         * 
+         */
+        @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
         public Builder managed(Boolean managed) {
             return managed(Output.of(managed));
         }
@@ -762,6 +814,27 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mapId(String mapId) {
             return mapId(Output.of(mapId));
+        }
+
+        /**
+         * @param mistConfigured whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mistConfigured(@Nullable Output<Boolean> mistConfigured) {
+            $.mistConfigured = mistConfigured;
+            return this;
+        }
+
+        /**
+         * @param mistConfigured whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mistConfigured(Boolean mistConfigured) {
+            return mistConfigured(Output.of(mistConfigured));
         }
 
         public Builder mspId(@Nullable Output<String> mspId) {

@@ -519,6 +519,21 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+     * 
+     */
+    @Import(name="disableMessageAuthenticatorCheck")
+    private @Nullable Output<Boolean> disableMessageAuthenticatorCheck;
+
+    /**
+     * @return whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+     * 
+     */
+    public Optional<Output<Boolean>> disableMessageAuthenticatorCheck() {
+        return Optional.ofNullable(this.disableMessageAuthenticatorCheck);
+    }
+
+    /**
      * Whether to disable U-APSD
      * 
      */
@@ -1418,6 +1433,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         this.disable11ax = $.disable11ax;
         this.disable11be = $.disable11be;
         this.disableHtVhtRates = $.disableHtVhtRates;
+        this.disableMessageAuthenticatorCheck = $.disableMessageAuthenticatorCheck;
         this.disableUapsd = $.disableUapsd;
         this.disableV1RoamNotify = $.disableV1RoamNotify;
         this.disableV2RoamNotify = $.disableV2RoamNotify;
@@ -2217,6 +2233,27 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disableHtVhtRates(Boolean disableHtVhtRates) {
             return disableHtVhtRates(Output.of(disableHtVhtRates));
+        }
+
+        /**
+         * @param disableMessageAuthenticatorCheck whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableMessageAuthenticatorCheck(@Nullable Output<Boolean> disableMessageAuthenticatorCheck) {
+            $.disableMessageAuthenticatorCheck = disableMessageAuthenticatorCheck;
+            return this;
+        }
+
+        /**
+         * @param disableMessageAuthenticatorCheck whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableMessageAuthenticatorCheck(Boolean disableMessageAuthenticatorCheck) {
+            return disableMessageAuthenticatorCheck(Output.of(disableMessageAuthenticatorCheck));
         }
 
         /**

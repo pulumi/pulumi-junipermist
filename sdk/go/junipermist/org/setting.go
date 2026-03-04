@@ -103,6 +103,8 @@ import (
 type Setting struct {
 	pulumi.CustomResourceState
 
+	// whether to allow Mist to look at this org
+	AllowMist pulumi.BoolOutput `pulumi:"allowMist"`
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrOutput       `pulumi:"apUpdownThreshold"`
 	ApiPolicy         SettingApiPolicyPtrOutput `pulumi:"apiPolicy"`
@@ -121,6 +123,8 @@ type Setting struct {
 	DisablePcap pulumi.BoolPtrOutput `pulumi:"disablePcap"`
 	// Whether to disable remote shell access for an entire org
 	DisableRemoteShell pulumi.BoolPtrOutput `pulumi:"disableRemoteShell"`
+	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+	GatewayTunnelUpdownThreshold pulumi.IntPtrOutput `pulumi:"gatewayTunnelUpdownThreshold"`
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrOutput       `pulumi:"gatewayUpdownThreshold"`
 	Installer              SettingInstallerPtrOutput `pulumi:"installer"`
@@ -193,6 +197,8 @@ func GetSetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Setting resources.
 type settingState struct {
+	// whether to allow Mist to look at this org
+	AllowMist *bool `pulumi:"allowMist"`
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int              `pulumi:"apUpdownThreshold"`
 	ApiPolicy         *SettingApiPolicy `pulumi:"apiPolicy"`
@@ -211,6 +217,8 @@ type settingState struct {
 	DisablePcap *bool `pulumi:"disablePcap"`
 	// Whether to disable remote shell access for an entire org
 	DisableRemoteShell *bool `pulumi:"disableRemoteShell"`
+	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+	GatewayTunnelUpdownThreshold *int `pulumi:"gatewayTunnelUpdownThreshold"`
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold *int              `pulumi:"gatewayUpdownThreshold"`
 	Installer              *SettingInstaller `pulumi:"installer"`
@@ -251,6 +259,8 @@ type settingState struct {
 }
 
 type SettingState struct {
+	// whether to allow Mist to look at this org
+	AllowMist pulumi.BoolPtrInput
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
 	ApiPolicy         SettingApiPolicyPtrInput
@@ -269,6 +279,8 @@ type SettingState struct {
 	DisablePcap pulumi.BoolPtrInput
 	// Whether to disable remote shell access for an entire org
 	DisableRemoteShell pulumi.BoolPtrInput
+	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+	GatewayTunnelUpdownThreshold pulumi.IntPtrInput
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrInput
 	Installer              SettingInstallerPtrInput
@@ -330,6 +342,8 @@ type settingArgs struct {
 	DisablePcap *bool `pulumi:"disablePcap"`
 	// Whether to disable remote shell access for an entire org
 	DisableRemoteShell *bool `pulumi:"disableRemoteShell"`
+	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+	GatewayTunnelUpdownThreshold *int `pulumi:"gatewayTunnelUpdownThreshold"`
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold *int              `pulumi:"gatewayUpdownThreshold"`
 	Installer              *SettingInstaller `pulumi:"installer"`
@@ -386,6 +400,8 @@ type SettingArgs struct {
 	DisablePcap pulumi.BoolPtrInput
 	// Whether to disable remote shell access for an entire org
 	DisableRemoteShell pulumi.BoolPtrInput
+	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+	GatewayTunnelUpdownThreshold pulumi.IntPtrInput
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrInput
 	Installer              SettingInstallerPtrInput
@@ -510,6 +526,11 @@ func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOu
 	return o
 }
 
+// whether to allow Mist to look at this org
+func (o SettingOutput) AllowMist() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.AllowMist }).(pulumi.BoolOutput)
+}
+
 // Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
 func (o SettingOutput) ApUpdownThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.ApUpdownThreshold }).(pulumi.IntPtrOutput)
@@ -556,6 +577,11 @@ func (o SettingOutput) DisablePcap() pulumi.BoolPtrOutput {
 // Whether to disable remote shell access for an entire org
 func (o SettingOutput) DisableRemoteShell() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Setting) pulumi.BoolPtrOutput { return v.DisableRemoteShell }).(pulumi.BoolPtrOutput)
+}
+
+// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+func (o SettingOutput) GatewayTunnelUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.GatewayTunnelUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
 // Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.

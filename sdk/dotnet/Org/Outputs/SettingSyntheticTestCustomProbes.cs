@@ -18,46 +18,32 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Aggressiveness;
         /// <summary>
-        /// If `Type`==`Icmp` or `Type`==`Tcp`, Host to be used for the custom probe
+        /// Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
         /// </summary>
-        public readonly string? Host;
-        /// <summary>
-        /// If `Type`==`Tcp`, Port to be used for the custom probe
-        /// </summary>
-        public readonly int? Port;
+        public readonly string? Target;
         /// <summary>
         /// In milliseconds
         /// </summary>
         public readonly int? Threshold;
         /// <summary>
-        /// enum: `Curl`, `Icmp`, `Tcp`
+        /// enum: `Application`, `Curl`, `Icmp`, `Reachability`, `Tcp`
         /// </summary>
         public readonly string? Type;
-        /// <summary>
-        /// If `Type`==`Curl`, URL to be used for the custom probe, can be url or IP
-        /// </summary>
-        public readonly string? Url;
 
         [OutputConstructor]
         private SettingSyntheticTestCustomProbes(
             string? aggressiveness,
 
-            string? host,
-
-            int? port,
+            string? target,
 
             int? threshold,
 
-            string? type,
-
-            string? url)
+            string? type)
         {
             Aggressiveness = aggressiveness;
-            Host = host;
-            Port = port;
+            Target = target;
             Threshold = threshold;
             Type = type;
-            Url = url;
         }
     }
 }

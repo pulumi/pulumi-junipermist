@@ -428,6 +428,7 @@ class _NetworktemplateState:
                  snmp_config: Optional[pulumi.Input['NetworktemplateSnmpConfigArgs']] = None,
                  switch_matching: Optional[pulumi.Input['NetworktemplateSwitchMatchingArgs']] = None,
                  switch_mgmt: Optional[pulumi.Input['NetworktemplateSwitchMgmtArgs']] = None,
+                 uses_description_from_port_usage: Optional[pulumi.Input[_builtins.bool]] = None,
                  vrf_config: Optional[pulumi.Input['NetworktemplateVrfConfigArgs']] = None,
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesArgs']]]] = None):
         """
@@ -451,6 +452,7 @@ class _NetworktemplateState:
         :param pulumi.Input[_builtins.str] site_id: Unique ID of the object instance in the Mist Organization
         :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Defines custom switch configuration based on different criteria
         :param pulumi.Input['NetworktemplateSwitchMgmtArgs'] switch_mgmt: Switch settings
+        :param pulumi.Input[_builtins.bool] uses_description_from_port_usage: by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
         """
         if acl_policies is not None:
@@ -499,6 +501,8 @@ class _NetworktemplateState:
             pulumi.set(__self__, "switch_matching", switch_matching)
         if switch_mgmt is not None:
             pulumi.set(__self__, "switch_mgmt", switch_mgmt)
+        if uses_description_from_port_usage is not None:
+            pulumi.set(__self__, "uses_description_from_port_usage", uses_description_from_port_usage)
         if vrf_config is not None:
             pulumi.set(__self__, "vrf_config", vrf_config)
         if vrf_instances is not None:
@@ -764,6 +768,18 @@ class _NetworktemplateState:
     @switch_mgmt.setter
     def switch_mgmt(self, value: Optional[pulumi.Input['NetworktemplateSwitchMgmtArgs']]):
         pulumi.set(self, "switch_mgmt", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usesDescriptionFromPortUsage")
+    def uses_description_from_port_usage(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+        """
+        return pulumi.get(self, "uses_description_from_port_usage")
+
+    @uses_description_from_port_usage.setter
+    def uses_description_from_port_usage(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "uses_description_from_port_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
@@ -1087,6 +1103,7 @@ class Networktemplate(pulumi.CustomResource):
             __props__.__dict__["switch_mgmt"] = switch_mgmt
             __props__.__dict__["vrf_config"] = vrf_config
             __props__.__dict__["vrf_instances"] = vrf_instances
+            __props__.__dict__["uses_description_from_port_usage"] = None
         super(Networktemplate, __self__).__init__(
             'junipermist:site/networktemplate:Networktemplate',
             resource_name,
@@ -1120,6 +1137,7 @@ class Networktemplate(pulumi.CustomResource):
             snmp_config: Optional[pulumi.Input[Union['NetworktemplateSnmpConfigArgs', 'NetworktemplateSnmpConfigArgsDict']]] = None,
             switch_matching: Optional[pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']]] = None,
             switch_mgmt: Optional[pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']]] = None,
+            uses_description_from_port_usage: Optional[pulumi.Input[_builtins.bool]] = None,
             vrf_config: Optional[pulumi.Input[Union['NetworktemplateVrfConfigArgs', 'NetworktemplateVrfConfigArgsDict']]] = None,
             vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]]] = None) -> 'Networktemplate':
         """
@@ -1147,6 +1165,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] site_id: Unique ID of the object instance in the Mist Organization
         :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Defines custom switch configuration based on different criteria
         :param pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']] switch_mgmt: Switch settings
+        :param pulumi.Input[_builtins.bool] uses_description_from_port_usage: by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1176,6 +1195,7 @@ class Networktemplate(pulumi.CustomResource):
         __props__.__dict__["snmp_config"] = snmp_config
         __props__.__dict__["switch_matching"] = switch_matching
         __props__.__dict__["switch_mgmt"] = switch_mgmt
+        __props__.__dict__["uses_description_from_port_usage"] = uses_description_from_port_usage
         __props__.__dict__["vrf_config"] = vrf_config
         __props__.__dict__["vrf_instances"] = vrf_instances
         return Networktemplate(resource_name, opts=opts, __props__=__props__)
@@ -1348,6 +1368,14 @@ class Networktemplate(pulumi.CustomResource):
         Switch settings
         """
         return pulumi.get(self, "switch_mgmt")
+
+    @_builtins.property
+    @pulumi.getter(name="usesDescriptionFromPortUsage")
+    def uses_description_from_port_usage(self) -> pulumi.Output[_builtins.bool]:
+        """
+        by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+        """
+        return pulumi.get(self, "uses_description_from_port_usage")
 
     @_builtins.property
     @pulumi.getter(name="vrfConfig")

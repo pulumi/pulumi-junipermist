@@ -160,6 +160,21 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Router Template ID, used by gateways
+     * 
+     */
+    @Import(name="routertemplateId")
+    private @Nullable Output<String> routertemplateId;
+
+    /**
+     * @return Router Template ID, used by gateways
+     * 
+     */
+    public Optional<Output<String>> routertemplateId() {
+        return Optional.ofNullable(this.routertemplateId);
+    }
+
+    /**
      * SecPolicy ID
      * 
      */
@@ -240,6 +255,7 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
         this.notes = $.notes;
         this.orgId = $.orgId;
         this.rftemplateId = $.rftemplateId;
+        this.routertemplateId = $.routertemplateId;
         this.secpolicyId = $.secpolicyId;
         this.sitegroupIds = $.sitegroupIds;
         this.sitetemplateId = $.sitetemplateId;
@@ -458,6 +474,27 @@ public final class BaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rftemplateId(String rftemplateId) {
             return rftemplateId(Output.of(rftemplateId));
+        }
+
+        /**
+         * @param routertemplateId Router Template ID, used by gateways
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routertemplateId(@Nullable Output<String> routertemplateId) {
+            $.routertemplateId = routertemplateId;
+            return this;
+        }
+
+        /**
+         * @param routertemplateId Router Template ID, used by gateways
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routertemplateId(String routertemplateId) {
+            return routertemplateId(Output.of(routertemplateId));
         }
 
         /**

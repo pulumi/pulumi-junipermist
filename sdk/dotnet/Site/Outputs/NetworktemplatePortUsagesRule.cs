@@ -13,6 +13,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplatePortUsagesRule
     {
+        /// <summary>
+        /// Optional description of the rule
+        /// </summary>
+        public readonly string? Description;
         public readonly string? Equals;
         /// <summary>
         /// Use `EqualsAny` to match any item in a list
@@ -35,6 +39,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
         [OutputConstructor]
         private NetworktemplatePortUsagesRule(
+            string? description,
+
             string? equals,
 
             ImmutableArray<string> equalsAnies,
@@ -45,6 +51,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? usage)
         {
+            Description = description;
             Equals = equals;
             EqualsAnies = equalsAnies;
             Expression = expression;

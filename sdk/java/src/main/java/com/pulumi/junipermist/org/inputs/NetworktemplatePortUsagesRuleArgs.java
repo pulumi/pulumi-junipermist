@@ -17,6 +17,21 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
 
     public static final NetworktemplatePortUsagesRuleArgs Empty = new NetworktemplatePortUsagesRuleArgs();
 
+    /**
+     * Optional description of the rule
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Optional description of the rule
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
     @Import(name="equals")
     private @Nullable Output<String> equals;
 
@@ -91,6 +106,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
     private NetworktemplatePortUsagesRuleArgs() {}
 
     private NetworktemplatePortUsagesRuleArgs(NetworktemplatePortUsagesRuleArgs $) {
+        this.description = $.description;
         this.equals = $.equals;
         this.equalsAnies = $.equalsAnies;
         this.expression = $.expression;
@@ -114,6 +130,27 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
 
         public Builder(NetworktemplatePortUsagesRuleArgs defaults) {
             $ = new NetworktemplatePortUsagesRuleArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param description Optional description of the rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Optional description of the rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         public Builder equals_(@Nullable Output<String> equals) {

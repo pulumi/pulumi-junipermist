@@ -30,6 +30,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("snapshot")]
         public Input<bool>? Snapshot { get; set; }
 
+        /// <summary>
+        /// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when CustomVersions not specified
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public SettingJuniperSrxAutoUpgradeGetArgs()
         {
         }

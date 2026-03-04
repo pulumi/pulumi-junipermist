@@ -4,61 +4,32 @@
 package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import com.pulumi.junipermist.device.outputs.GatewayServicePolicySkyatpDnsDgaDetection;
+import com.pulumi.junipermist.device.outputs.GatewayServicePolicySkyatpDnsTunnelDetection;
+import com.pulumi.junipermist.device.outputs.GatewayServicePolicySkyatpHttpInspection;
+import com.pulumi.junipermist.device.outputs.GatewayServicePolicySkyatpIotDevicePolicy;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayServicePolicySkyatp {
-    /**
-     * @return enum: `disabled`, `default`, `standard`, `strict`
-     * 
-     */
-    private @Nullable String dnsDgaDetection;
-    /**
-     * @return enum: `disabled`, `default`, `standard`, `strict`
-     * 
-     */
-    private @Nullable String dnsTunnelDetection;
-    /**
-     * @return enum: `disabled`, `standard`
-     * 
-     */
-    private @Nullable String httpInspection;
-    /**
-     * @return enum: `disabled`, `enabled`
-     * 
-     */
-    private @Nullable String iotDevicePolicy;
+    private @Nullable GatewayServicePolicySkyatpDnsDgaDetection dnsDgaDetection;
+    private @Nullable GatewayServicePolicySkyatpDnsTunnelDetection dnsTunnelDetection;
+    private @Nullable GatewayServicePolicySkyatpHttpInspection httpInspection;
+    private @Nullable GatewayServicePolicySkyatpIotDevicePolicy iotDevicePolicy;
 
     private GatewayServicePolicySkyatp() {}
-    /**
-     * @return enum: `disabled`, `default`, `standard`, `strict`
-     * 
-     */
-    public Optional<String> dnsDgaDetection() {
+    public Optional<GatewayServicePolicySkyatpDnsDgaDetection> dnsDgaDetection() {
         return Optional.ofNullable(this.dnsDgaDetection);
     }
-    /**
-     * @return enum: `disabled`, `default`, `standard`, `strict`
-     * 
-     */
-    public Optional<String> dnsTunnelDetection() {
+    public Optional<GatewayServicePolicySkyatpDnsTunnelDetection> dnsTunnelDetection() {
         return Optional.ofNullable(this.dnsTunnelDetection);
     }
-    /**
-     * @return enum: `disabled`, `standard`
-     * 
-     */
-    public Optional<String> httpInspection() {
+    public Optional<GatewayServicePolicySkyatpHttpInspection> httpInspection() {
         return Optional.ofNullable(this.httpInspection);
     }
-    /**
-     * @return enum: `disabled`, `enabled`
-     * 
-     */
-    public Optional<String> iotDevicePolicy() {
+    public Optional<GatewayServicePolicySkyatpIotDevicePolicy> iotDevicePolicy() {
         return Optional.ofNullable(this.iotDevicePolicy);
     }
 
@@ -71,10 +42,10 @@ public final class GatewayServicePolicySkyatp {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String dnsDgaDetection;
-        private @Nullable String dnsTunnelDetection;
-        private @Nullable String httpInspection;
-        private @Nullable String iotDevicePolicy;
+        private @Nullable GatewayServicePolicySkyatpDnsDgaDetection dnsDgaDetection;
+        private @Nullable GatewayServicePolicySkyatpDnsTunnelDetection dnsTunnelDetection;
+        private @Nullable GatewayServicePolicySkyatpHttpInspection httpInspection;
+        private @Nullable GatewayServicePolicySkyatpIotDevicePolicy iotDevicePolicy;
         public Builder() {}
         public Builder(GatewayServicePolicySkyatp defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,25 +56,25 @@ public final class GatewayServicePolicySkyatp {
         }
 
         @CustomType.Setter
-        public Builder dnsDgaDetection(@Nullable String dnsDgaDetection) {
+        public Builder dnsDgaDetection(@Nullable GatewayServicePolicySkyatpDnsDgaDetection dnsDgaDetection) {
 
             this.dnsDgaDetection = dnsDgaDetection;
             return this;
         }
         @CustomType.Setter
-        public Builder dnsTunnelDetection(@Nullable String dnsTunnelDetection) {
+        public Builder dnsTunnelDetection(@Nullable GatewayServicePolicySkyatpDnsTunnelDetection dnsTunnelDetection) {
 
             this.dnsTunnelDetection = dnsTunnelDetection;
             return this;
         }
         @CustomType.Setter
-        public Builder httpInspection(@Nullable String httpInspection) {
+        public Builder httpInspection(@Nullable GatewayServicePolicySkyatpHttpInspection httpInspection) {
 
             this.httpInspection = httpInspection;
             return this;
         }
         @CustomType.Setter
-        public Builder iotDevicePolicy(@Nullable String iotDevicePolicy) {
+        public Builder iotDevicePolicy(@Nullable GatewayServicePolicySkyatpIotDevicePolicy iotDevicePolicy) {
 
             this.iotDevicePolicy = iotDevicePolicy;
             return this;

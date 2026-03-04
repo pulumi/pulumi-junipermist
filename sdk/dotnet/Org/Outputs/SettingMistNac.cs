@@ -34,6 +34,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? EuOnly;
         /// <summary>
+        /// Allows customer to enable client fingerprinting for policy enforcement
+        /// </summary>
+        public readonly Outputs.SettingMistNacFingerprinting? Fingerprinting;
+        /// <summary>
         /// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `Automatic`, `Cn`, `Dns`
         /// </summary>
         public readonly string? IdpMachineCertLookupField;
@@ -54,6 +58,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `UseSslPort`==`True` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and MxedgeClusters that have mist-nac enabled
         /// </summary>
         public readonly bool? UseSslPort;
+        /// <summary>
+        /// Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+        /// </summary>
+        public readonly int? UsermacExpiry;
 
         [OutputConstructor]
         private SettingMistNac(
@@ -67,6 +75,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool? euOnly,
 
+            Outputs.SettingMistNacFingerprinting? fingerprinting,
+
             string? idpMachineCertLookupField,
 
             string? idpUserCertLookupField,
@@ -77,19 +87,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? useIpVersion,
 
-            bool? useSslPort)
+            bool? useSslPort,
+
+            int? usermacExpiry)
         {
             Cacerts = cacerts;
             DefaultIdpId = defaultIdpId;
             DisableRsaeAlgorithms = disableRsaeAlgorithms;
             EapSslSecurityLevel = eapSslSecurityLevel;
             EuOnly = euOnly;
+            Fingerprinting = fingerprinting;
             IdpMachineCertLookupField = idpMachineCertLookupField;
             IdpUserCertLookupField = idpUserCertLookupField;
             Idps = idps;
             ServerCert = serverCert;
             UseIpVersion = useIpVersion;
             UseSslPort = useSslPort;
+            UsermacExpiry = usermacExpiry;
         }
     }
 }

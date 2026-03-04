@@ -39,6 +39,7 @@ class SwitchArgs:
                  local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]] = None,
                  managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  map_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
                  mist_nac: Optional[pulumi.Input['SwitchMistNacArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  networks: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]] = None,
@@ -81,8 +82,9 @@ class SwitchArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input['SwitchIpConfigArgs'] ip_config: Junos IP Config
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
+        :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
         :param pulumi.Input['SwitchMistNacArgs'] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
@@ -124,6 +126,9 @@ class SwitchArgs:
         if dhcpd_config is not None:
             pulumi.set(__self__, "dhcpd_config", dhcpd_config)
         if disable_auto_config is not None:
+            warnings.warn("""This attribute is being deprecated, please use `mist_configured` instead""", DeprecationWarning)
+            pulumi.log.warn("""disable_auto_config is deprecated: This attribute is being deprecated, please use `mist_configured` instead""")
+        if disable_auto_config is not None:
             pulumi.set(__self__, "disable_auto_config", disable_auto_config)
         if dns_servers is not None:
             pulumi.set(__self__, "dns_servers", dns_servers)
@@ -138,9 +143,14 @@ class SwitchArgs:
         if local_port_config is not None:
             pulumi.set(__self__, "local_port_config", local_port_config)
         if managed is not None:
+            warnings.warn("""This attribute is being deprecated, please use `mist_configured` instead""", DeprecationWarning)
+            pulumi.log.warn("""managed is deprecated: This attribute is being deprecated, please use `mist_configured` instead""")
+        if managed is not None:
             pulumi.set(__self__, "managed", managed)
         if map_id is not None:
             pulumi.set(__self__, "map_id", map_id)
+        if mist_configured is not None:
+            pulumi.set(__self__, "mist_configured", mist_configured)
         if mist_nac is not None:
             pulumi.set(__self__, "mist_nac", mist_nac)
         if name is not None:
@@ -292,6 +302,7 @@ class SwitchArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableAutoConfig")
+    @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
     def disable_auto_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
@@ -376,9 +387,10 @@ class SwitchArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
     def managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         """
         return pulumi.get(self, "managed")
 
@@ -397,6 +409,18 @@ class SwitchArgs:
     @map_id.setter
     def map_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "map_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mistConfigured")
+    def mist_configured(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
+        """
+        return pulumi.get(self, "mist_configured")
+
+    @mist_configured.setter
+    def mist_configured(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "mist_configured", value)
 
     @_builtins.property
     @pulumi.getter(name="mistNac")
@@ -749,6 +773,7 @@ class _SwitchState:
                  mac: Optional[pulumi.Input[_builtins.str]] = None,
                  managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  map_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
                  mist_nac: Optional[pulumi.Input['SwitchMistNacArgs']] = None,
                  model: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -797,8 +822,9 @@ class _SwitchState:
         :param pulumi.Input['SwitchIpConfigArgs'] ip_config: Junos IP Config
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] mac: Device MAC address
-        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
+        :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
         :param pulumi.Input['SwitchMistNacArgs'] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[_builtins.str] model: Device Model
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]] networks: Property key is network name
@@ -843,6 +869,9 @@ class _SwitchState:
         if dhcpd_config is not None:
             pulumi.set(__self__, "dhcpd_config", dhcpd_config)
         if disable_auto_config is not None:
+            warnings.warn("""This attribute is being deprecated, please use `mist_configured` instead""", DeprecationWarning)
+            pulumi.log.warn("""disable_auto_config is deprecated: This attribute is being deprecated, please use `mist_configured` instead""")
+        if disable_auto_config is not None:
             pulumi.set(__self__, "disable_auto_config", disable_auto_config)
         if dns_servers is not None:
             pulumi.set(__self__, "dns_servers", dns_servers)
@@ -865,9 +894,14 @@ class _SwitchState:
         if mac is not None:
             pulumi.set(__self__, "mac", mac)
         if managed is not None:
+            warnings.warn("""This attribute is being deprecated, please use `mist_configured` instead""", DeprecationWarning)
+            pulumi.log.warn("""managed is deprecated: This attribute is being deprecated, please use `mist_configured` instead""")
+        if managed is not None:
             pulumi.set(__self__, "managed", managed)
         if map_id is not None:
             pulumi.set(__self__, "map_id", map_id)
+        if mist_configured is not None:
+            pulumi.set(__self__, "mist_configured", mist_configured)
         if mist_nac is not None:
             pulumi.set(__self__, "mist_nac", mist_nac)
         if model is not None:
@@ -1020,6 +1054,7 @@ class _SwitchState:
 
     @_builtins.property
     @pulumi.getter(name="disableAutoConfig")
+    @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
     def disable_auto_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
@@ -1143,9 +1178,10 @@ class _SwitchState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
     def managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         """
         return pulumi.get(self, "managed")
 
@@ -1164,6 +1200,18 @@ class _SwitchState:
     @map_id.setter
     def map_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "map_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mistConfigured")
+    def mist_configured(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
+        """
+        return pulumi.get(self, "mist_configured")
+
+    @mist_configured.setter
+    def mist_configured(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "mist_configured", value)
 
     @_builtins.property
     @pulumi.getter(name="mistNac")
@@ -1569,6 +1617,7 @@ class Switch(pulumi.CustomResource):
                  local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
                  managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  map_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
                  mist_nac: Optional[pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]]] = None,
@@ -1629,8 +1678,9 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Junos IP Config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
+        :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
         :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
@@ -1710,6 +1760,7 @@ class Switch(pulumi.CustomResource):
                  local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
                  managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  map_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
                  mist_nac: Optional[pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]]] = None,
@@ -1768,6 +1819,7 @@ class Switch(pulumi.CustomResource):
             __props__.__dict__["local_port_config"] = local_port_config
             __props__.__dict__["managed"] = managed
             __props__.__dict__["map_id"] = map_id
+            __props__.__dict__["mist_configured"] = mist_configured
             __props__.__dict__["mist_nac"] = mist_nac
             __props__.__dict__["name"] = name
             __props__.__dict__["networks"] = networks
@@ -1839,6 +1891,7 @@ class Switch(pulumi.CustomResource):
             mac: Optional[pulumi.Input[_builtins.str]] = None,
             managed: Optional[pulumi.Input[_builtins.bool]] = None,
             map_id: Optional[pulumi.Input[_builtins.str]] = None,
+            mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
             mist_nac: Optional[pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
             model: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1891,8 +1944,9 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Junos IP Config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] mac: Device MAC address
-        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+        :param pulumi.Input[_builtins.bool] managed: An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
+        :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
         :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: Enable mist_nac to use RadSec
         :param pulumi.Input[_builtins.str] model: Device Model
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]] networks: Property key is network name
@@ -1945,6 +1999,7 @@ class Switch(pulumi.CustomResource):
         __props__.__dict__["mac"] = mac
         __props__.__dict__["managed"] = managed
         __props__.__dict__["map_id"] = map_id
+        __props__.__dict__["mist_configured"] = mist_configured
         __props__.__dict__["mist_nac"] = mist_nac
         __props__.__dict__["model"] = model
         __props__.__dict__["name"] = name
@@ -2032,6 +2087,7 @@ class Switch(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="disableAutoConfig")
+    @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
     def disable_auto_config(self) -> pulumi.Output[_builtins.bool]:
         """
         This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
@@ -2111,9 +2167,10 @@ class Switch(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
     def managed(self) -> pulumi.Output[_builtins.bool]:
         """
-        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+        An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         """
         return pulumi.get(self, "managed")
 
@@ -2124,6 +2181,14 @@ class Switch(pulumi.CustomResource):
         Map where the device belongs to
         """
         return pulumi.get(self, "map_id")
+
+    @_builtins.property
+    @pulumi.getter(name="mistConfigured")
+    def mist_configured(self) -> pulumi.Output[_builtins.bool]:
+        """
+        whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
+        """
+        return pulumi.get(self, "mist_configured")
 
     @_builtins.property
     @pulumi.getter(name="mistNac")

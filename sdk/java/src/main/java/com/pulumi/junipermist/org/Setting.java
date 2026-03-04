@@ -145,6 +145,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/setting:Setting")
 public class Setting extends com.pulumi.resources.CustomResource {
     /**
+     * whether to allow Mist to look at this org
+     * 
+     */
+    @Export(name="allowMist", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> allowMist;
+
+    /**
+     * @return whether to allow Mist to look at this org
+     * 
+     */
+    public Output<Boolean> allowMist() {
+        return this.allowMist;
+    }
+    /**
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      * 
      */
@@ -255,6 +269,20 @@ public class Setting extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> disableRemoteShell() {
         return Codegen.optional(this.disableRemoteShell);
+    }
+    /**
+     * enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     * 
+     */
+    @Export(name="gatewayTunnelUpdownThreshold", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> gatewayTunnelUpdownThreshold;
+
+    /**
+     * @return enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     * 
+     */
+    public Output<Optional<Integer>> gatewayTunnelUpdownThreshold() {
+        return Codegen.optional(this.gatewayTunnelUpdownThreshold);
     }
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.

@@ -552,6 +552,20 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disableHtVhtRates);
     }
     /**
+     * whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+     * 
+     */
+    @Export(name="disableMessageAuthenticatorCheck", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> disableMessageAuthenticatorCheck;
+
+    /**
+     * @return whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+     * 
+     */
+    public Output<Boolean> disableMessageAuthenticatorCheck() {
+        return this.disableMessageAuthenticatorCheck;
+    }
+    /**
      * Whether to disable U-APSD
      * 
      */

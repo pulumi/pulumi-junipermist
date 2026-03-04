@@ -11190,8 +11190,6 @@ type GatewayPortConfig struct {
 	VpnPaths map[string]GatewayPortConfigVpnPaths `pulumi:"vpnPaths"`
 	// Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 	WanArpPolicer *string `pulumi:"wanArpPolicer"`
-	// If `wanType`==`wan`, disable speedtest
-	WanDisableSpeedtest *bool `pulumi:"wanDisableSpeedtest"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp *string `pulumi:"wanExtIp"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
@@ -11206,6 +11204,8 @@ type GatewayPortConfig struct {
 	WanProbeOverride *GatewayPortConfigWanProbeOverride `pulumi:"wanProbeOverride"`
 	// Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
 	WanSourceNat *GatewayPortConfigWanSourceNat `pulumi:"wanSourceNat"`
+	// Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+	WanSpeedtestMode *string `pulumi:"wanSpeedtestMode"`
 	// Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
 	WanType *string `pulumi:"wanType"`
 }
@@ -11290,8 +11290,6 @@ type GatewayPortConfigArgs struct {
 	VpnPaths GatewayPortConfigVpnPathsMapInput `pulumi:"vpnPaths"`
 	// Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 	WanArpPolicer pulumi.StringPtrInput `pulumi:"wanArpPolicer"`
-	// If `wanType`==`wan`, disable speedtest
-	WanDisableSpeedtest pulumi.BoolPtrInput `pulumi:"wanDisableSpeedtest"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp pulumi.StringPtrInput `pulumi:"wanExtIp"`
 	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
@@ -11306,6 +11304,8 @@ type GatewayPortConfigArgs struct {
 	WanProbeOverride GatewayPortConfigWanProbeOverridePtrInput `pulumi:"wanProbeOverride"`
 	// Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
 	WanSourceNat GatewayPortConfigWanSourceNatPtrInput `pulumi:"wanSourceNat"`
+	// Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+	WanSpeedtestMode pulumi.StringPtrInput `pulumi:"wanSpeedtestMode"`
 	// Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
 	WanType pulumi.StringPtrInput `pulumi:"wanType"`
 }
@@ -11543,11 +11543,6 @@ func (o GatewayPortConfigOutput) WanArpPolicer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.WanArpPolicer }).(pulumi.StringPtrOutput)
 }
 
-// If `wanType`==`wan`, disable speedtest
-func (o GatewayPortConfigOutput) WanDisableSpeedtest() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayPortConfig) *bool { return v.WanDisableSpeedtest }).(pulumi.BoolPtrOutput)
-}
-
 // Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 func (o GatewayPortConfigOutput) WanExtIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.WanExtIp }).(pulumi.StringPtrOutput)
@@ -11581,6 +11576,11 @@ func (o GatewayPortConfigOutput) WanProbeOverride() GatewayPortConfigWanProbeOve
 // Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
 func (o GatewayPortConfigOutput) WanSourceNat() GatewayPortConfigWanSourceNatPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *GatewayPortConfigWanSourceNat { return v.WanSourceNat }).(GatewayPortConfigWanSourceNatPtrOutput)
+}
+
+// Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+func (o GatewayPortConfigOutput) WanSpeedtestMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfig) *string { return v.WanSpeedtestMode }).(pulumi.StringPtrOutput)
 }
 
 // Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
@@ -15206,14 +15206,10 @@ func (o GatewayServicePolicyIdpPtrOutput) Profile() pulumi.StringPtrOutput {
 }
 
 type GatewayServicePolicySkyatp struct {
-	// enum: `disabled`, `default`, `standard`, `strict`
-	DnsDgaDetection *string `pulumi:"dnsDgaDetection"`
-	// enum: `disabled`, `default`, `standard`, `strict`
-	DnsTunnelDetection *string `pulumi:"dnsTunnelDetection"`
-	// enum: `disabled`, `standard`
-	HttpInspection *string `pulumi:"httpInspection"`
-	// enum: `disabled`, `enabled`
-	IotDevicePolicy *string `pulumi:"iotDevicePolicy"`
+	DnsDgaDetection    *GatewayServicePolicySkyatpDnsDgaDetection    `pulumi:"dnsDgaDetection"`
+	DnsTunnelDetection *GatewayServicePolicySkyatpDnsTunnelDetection `pulumi:"dnsTunnelDetection"`
+	HttpInspection     *GatewayServicePolicySkyatpHttpInspection     `pulumi:"httpInspection"`
+	IotDevicePolicy    *GatewayServicePolicySkyatpIotDevicePolicy    `pulumi:"iotDevicePolicy"`
 }
 
 // GatewayServicePolicySkyatpInput is an input type that accepts GatewayServicePolicySkyatpArgs and GatewayServicePolicySkyatpOutput values.
@@ -15228,14 +15224,10 @@ type GatewayServicePolicySkyatpInput interface {
 }
 
 type GatewayServicePolicySkyatpArgs struct {
-	// enum: `disabled`, `default`, `standard`, `strict`
-	DnsDgaDetection pulumi.StringPtrInput `pulumi:"dnsDgaDetection"`
-	// enum: `disabled`, `default`, `standard`, `strict`
-	DnsTunnelDetection pulumi.StringPtrInput `pulumi:"dnsTunnelDetection"`
-	// enum: `disabled`, `standard`
-	HttpInspection pulumi.StringPtrInput `pulumi:"httpInspection"`
-	// enum: `disabled`, `enabled`
-	IotDevicePolicy pulumi.StringPtrInput `pulumi:"iotDevicePolicy"`
+	DnsDgaDetection    GatewayServicePolicySkyatpDnsDgaDetectionPtrInput    `pulumi:"dnsDgaDetection"`
+	DnsTunnelDetection GatewayServicePolicySkyatpDnsTunnelDetectionPtrInput `pulumi:"dnsTunnelDetection"`
+	HttpInspection     GatewayServicePolicySkyatpHttpInspectionPtrInput     `pulumi:"httpInspection"`
+	IotDevicePolicy    GatewayServicePolicySkyatpIotDevicePolicyPtrInput    `pulumi:"iotDevicePolicy"`
 }
 
 func (GatewayServicePolicySkyatpArgs) ElementType() reflect.Type {
@@ -15315,24 +15307,26 @@ func (o GatewayServicePolicySkyatpOutput) ToGatewayServicePolicySkyatpPtrOutputW
 	}).(GatewayServicePolicySkyatpPtrOutput)
 }
 
-// enum: `disabled`, `default`, `standard`, `strict`
-func (o GatewayServicePolicySkyatpOutput) DnsDgaDetection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayServicePolicySkyatp) *string { return v.DnsDgaDetection }).(pulumi.StringPtrOutput)
+func (o GatewayServicePolicySkyatpOutput) DnsDgaDetection() GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o.ApplyT(func(v GatewayServicePolicySkyatp) *GatewayServicePolicySkyatpDnsDgaDetection {
+		return v.DnsDgaDetection
+	}).(GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput)
 }
 
-// enum: `disabled`, `default`, `standard`, `strict`
-func (o GatewayServicePolicySkyatpOutput) DnsTunnelDetection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayServicePolicySkyatp) *string { return v.DnsTunnelDetection }).(pulumi.StringPtrOutput)
+func (o GatewayServicePolicySkyatpOutput) DnsTunnelDetection() GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o.ApplyT(func(v GatewayServicePolicySkyatp) *GatewayServicePolicySkyatpDnsTunnelDetection {
+		return v.DnsTunnelDetection
+	}).(GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput)
 }
 
-// enum: `disabled`, `standard`
-func (o GatewayServicePolicySkyatpOutput) HttpInspection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayServicePolicySkyatp) *string { return v.HttpInspection }).(pulumi.StringPtrOutput)
+func (o GatewayServicePolicySkyatpOutput) HttpInspection() GatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return o.ApplyT(func(v GatewayServicePolicySkyatp) *GatewayServicePolicySkyatpHttpInspection { return v.HttpInspection }).(GatewayServicePolicySkyatpHttpInspectionPtrOutput)
 }
 
-// enum: `disabled`, `enabled`
-func (o GatewayServicePolicySkyatpOutput) IotDevicePolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayServicePolicySkyatp) *string { return v.IotDevicePolicy }).(pulumi.StringPtrOutput)
+func (o GatewayServicePolicySkyatpOutput) IotDevicePolicy() GatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o.ApplyT(func(v GatewayServicePolicySkyatp) *GatewayServicePolicySkyatpIotDevicePolicy {
+		return v.IotDevicePolicy
+	}).(GatewayServicePolicySkyatpIotDevicePolicyPtrOutput)
 }
 
 type GatewayServicePolicySkyatpPtrOutput struct{ *pulumi.OutputState }
@@ -15359,44 +15353,629 @@ func (o GatewayServicePolicySkyatpPtrOutput) Elem() GatewayServicePolicySkyatpOu
 	}).(GatewayServicePolicySkyatpOutput)
 }
 
-// enum: `disabled`, `default`, `standard`, `strict`
-func (o GatewayServicePolicySkyatpPtrOutput) DnsDgaDetection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayServicePolicySkyatp) *string {
+func (o GatewayServicePolicySkyatpPtrOutput) DnsDgaDetection() GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatp) *GatewayServicePolicySkyatpDnsDgaDetection {
 		if v == nil {
 			return nil
 		}
 		return v.DnsDgaDetection
-	}).(pulumi.StringPtrOutput)
+	}).(GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput)
 }
 
-// enum: `disabled`, `default`, `standard`, `strict`
-func (o GatewayServicePolicySkyatpPtrOutput) DnsTunnelDetection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayServicePolicySkyatp) *string {
+func (o GatewayServicePolicySkyatpPtrOutput) DnsTunnelDetection() GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatp) *GatewayServicePolicySkyatpDnsTunnelDetection {
 		if v == nil {
 			return nil
 		}
 		return v.DnsTunnelDetection
-	}).(pulumi.StringPtrOutput)
+	}).(GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput)
 }
 
-// enum: `disabled`, `standard`
-func (o GatewayServicePolicySkyatpPtrOutput) HttpInspection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayServicePolicySkyatp) *string {
+func (o GatewayServicePolicySkyatpPtrOutput) HttpInspection() GatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatp) *GatewayServicePolicySkyatpHttpInspection {
 		if v == nil {
 			return nil
 		}
 		return v.HttpInspection
-	}).(pulumi.StringPtrOutput)
+	}).(GatewayServicePolicySkyatpHttpInspectionPtrOutput)
 }
 
-// enum: `disabled`, `enabled`
-func (o GatewayServicePolicySkyatpPtrOutput) IotDevicePolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayServicePolicySkyatp) *string {
+func (o GatewayServicePolicySkyatpPtrOutput) IotDevicePolicy() GatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatp) *GatewayServicePolicySkyatpIotDevicePolicy {
 		if v == nil {
 			return nil
 		}
 		return v.IotDevicePolicy
+	}).(GatewayServicePolicySkyatpIotDevicePolicyPtrOutput)
+}
+
+type GatewayServicePolicySkyatpDnsDgaDetection struct {
+	Enabled *bool `pulumi:"enabled"`
+	// enum: `default`, `standard`, `strict`
+	Profile *string `pulumi:"profile"`
+}
+
+// GatewayServicePolicySkyatpDnsDgaDetectionInput is an input type that accepts GatewayServicePolicySkyatpDnsDgaDetectionArgs and GatewayServicePolicySkyatpDnsDgaDetectionOutput values.
+// You can construct a concrete instance of `GatewayServicePolicySkyatpDnsDgaDetectionInput` via:
+//
+//	GatewayServicePolicySkyatpDnsDgaDetectionArgs{...}
+type GatewayServicePolicySkyatpDnsDgaDetectionInput interface {
+	pulumi.Input
+
+	ToGatewayServicePolicySkyatpDnsDgaDetectionOutput() GatewayServicePolicySkyatpDnsDgaDetectionOutput
+	ToGatewayServicePolicySkyatpDnsDgaDetectionOutputWithContext(context.Context) GatewayServicePolicySkyatpDnsDgaDetectionOutput
+}
+
+type GatewayServicePolicySkyatpDnsDgaDetectionArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// enum: `default`, `standard`, `strict`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (GatewayServicePolicySkyatpDnsDgaDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayServicePolicySkyatpDnsDgaDetection)(nil)).Elem()
+}
+
+func (i GatewayServicePolicySkyatpDnsDgaDetectionArgs) ToGatewayServicePolicySkyatpDnsDgaDetectionOutput() GatewayServicePolicySkyatpDnsDgaDetectionOutput {
+	return i.ToGatewayServicePolicySkyatpDnsDgaDetectionOutputWithContext(context.Background())
+}
+
+func (i GatewayServicePolicySkyatpDnsDgaDetectionArgs) ToGatewayServicePolicySkyatpDnsDgaDetectionOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpDnsDgaDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServicePolicySkyatpDnsDgaDetectionOutput)
+}
+
+func (i GatewayServicePolicySkyatpDnsDgaDetectionArgs) ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput() GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return i.ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayServicePolicySkyatpDnsDgaDetectionArgs) ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServicePolicySkyatpDnsDgaDetectionOutput).ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx)
+}
+
+// GatewayServicePolicySkyatpDnsDgaDetectionPtrInput is an input type that accepts GatewayServicePolicySkyatpDnsDgaDetectionArgs, GatewayServicePolicySkyatpDnsDgaDetectionPtr and GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput values.
+// You can construct a concrete instance of `GatewayServicePolicySkyatpDnsDgaDetectionPtrInput` via:
+//
+//	        GatewayServicePolicySkyatpDnsDgaDetectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayServicePolicySkyatpDnsDgaDetectionPtrInput interface {
+	pulumi.Input
+
+	ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput() GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput
+	ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(context.Context) GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput
+}
+
+type gatewayServicePolicySkyatpDnsDgaDetectionPtrType GatewayServicePolicySkyatpDnsDgaDetectionArgs
+
+func GatewayServicePolicySkyatpDnsDgaDetectionPtr(v *GatewayServicePolicySkyatpDnsDgaDetectionArgs) GatewayServicePolicySkyatpDnsDgaDetectionPtrInput {
+	return (*gatewayServicePolicySkyatpDnsDgaDetectionPtrType)(v)
+}
+
+func (*gatewayServicePolicySkyatpDnsDgaDetectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayServicePolicySkyatpDnsDgaDetection)(nil)).Elem()
+}
+
+func (i *gatewayServicePolicySkyatpDnsDgaDetectionPtrType) ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput() GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return i.ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayServicePolicySkyatpDnsDgaDetectionPtrType) ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput)
+}
+
+type GatewayServicePolicySkyatpDnsDgaDetectionOutput struct{ *pulumi.OutputState }
+
+func (GatewayServicePolicySkyatpDnsDgaDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayServicePolicySkyatpDnsDgaDetection)(nil)).Elem()
+}
+
+func (o GatewayServicePolicySkyatpDnsDgaDetectionOutput) ToGatewayServicePolicySkyatpDnsDgaDetectionOutput() GatewayServicePolicySkyatpDnsDgaDetectionOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpDnsDgaDetectionOutput) ToGatewayServicePolicySkyatpDnsDgaDetectionOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpDnsDgaDetectionOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpDnsDgaDetectionOutput) ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput() GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o.ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayServicePolicySkyatpDnsDgaDetectionOutput) ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayServicePolicySkyatpDnsDgaDetection) *GatewayServicePolicySkyatpDnsDgaDetection {
+		return &v
+	}).(GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput)
+}
+
+func (o GatewayServicePolicySkyatpDnsDgaDetectionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayServicePolicySkyatpDnsDgaDetection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `default`, `standard`, `strict`
+func (o GatewayServicePolicySkyatpDnsDgaDetectionOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayServicePolicySkyatpDnsDgaDetection) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayServicePolicySkyatpDnsDgaDetection)(nil)).Elem()
+}
+
+func (o GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput) ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutput() GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput) ToGatewayServicePolicySkyatpDnsDgaDetectionPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput) Elem() GatewayServicePolicySkyatpDnsDgaDetectionOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatpDnsDgaDetection) GatewayServicePolicySkyatpDnsDgaDetection {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayServicePolicySkyatpDnsDgaDetection
+		return ret
+	}).(GatewayServicePolicySkyatpDnsDgaDetectionOutput)
+}
+
+func (o GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatpDnsDgaDetection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enum: `default`, `standard`, `strict`
+func (o GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatpDnsDgaDetection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
 	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayServicePolicySkyatpDnsTunnelDetection struct {
+	Enabled *bool `pulumi:"enabled"`
+	// enum: `default`, `standard`, `strict`
+	Profile *string `pulumi:"profile"`
+}
+
+// GatewayServicePolicySkyatpDnsTunnelDetectionInput is an input type that accepts GatewayServicePolicySkyatpDnsTunnelDetectionArgs and GatewayServicePolicySkyatpDnsTunnelDetectionOutput values.
+// You can construct a concrete instance of `GatewayServicePolicySkyatpDnsTunnelDetectionInput` via:
+//
+//	GatewayServicePolicySkyatpDnsTunnelDetectionArgs{...}
+type GatewayServicePolicySkyatpDnsTunnelDetectionInput interface {
+	pulumi.Input
+
+	ToGatewayServicePolicySkyatpDnsTunnelDetectionOutput() GatewayServicePolicySkyatpDnsTunnelDetectionOutput
+	ToGatewayServicePolicySkyatpDnsTunnelDetectionOutputWithContext(context.Context) GatewayServicePolicySkyatpDnsTunnelDetectionOutput
+}
+
+type GatewayServicePolicySkyatpDnsTunnelDetectionArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// enum: `default`, `standard`, `strict`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (GatewayServicePolicySkyatpDnsTunnelDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayServicePolicySkyatpDnsTunnelDetection)(nil)).Elem()
+}
+
+func (i GatewayServicePolicySkyatpDnsTunnelDetectionArgs) ToGatewayServicePolicySkyatpDnsTunnelDetectionOutput() GatewayServicePolicySkyatpDnsTunnelDetectionOutput {
+	return i.ToGatewayServicePolicySkyatpDnsTunnelDetectionOutputWithContext(context.Background())
+}
+
+func (i GatewayServicePolicySkyatpDnsTunnelDetectionArgs) ToGatewayServicePolicySkyatpDnsTunnelDetectionOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpDnsTunnelDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServicePolicySkyatpDnsTunnelDetectionOutput)
+}
+
+func (i GatewayServicePolicySkyatpDnsTunnelDetectionArgs) ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput() GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return i.ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayServicePolicySkyatpDnsTunnelDetectionArgs) ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServicePolicySkyatpDnsTunnelDetectionOutput).ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx)
+}
+
+// GatewayServicePolicySkyatpDnsTunnelDetectionPtrInput is an input type that accepts GatewayServicePolicySkyatpDnsTunnelDetectionArgs, GatewayServicePolicySkyatpDnsTunnelDetectionPtr and GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput values.
+// You can construct a concrete instance of `GatewayServicePolicySkyatpDnsTunnelDetectionPtrInput` via:
+//
+//	        GatewayServicePolicySkyatpDnsTunnelDetectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayServicePolicySkyatpDnsTunnelDetectionPtrInput interface {
+	pulumi.Input
+
+	ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput() GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput
+	ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(context.Context) GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput
+}
+
+type gatewayServicePolicySkyatpDnsTunnelDetectionPtrType GatewayServicePolicySkyatpDnsTunnelDetectionArgs
+
+func GatewayServicePolicySkyatpDnsTunnelDetectionPtr(v *GatewayServicePolicySkyatpDnsTunnelDetectionArgs) GatewayServicePolicySkyatpDnsTunnelDetectionPtrInput {
+	return (*gatewayServicePolicySkyatpDnsTunnelDetectionPtrType)(v)
+}
+
+func (*gatewayServicePolicySkyatpDnsTunnelDetectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayServicePolicySkyatpDnsTunnelDetection)(nil)).Elem()
+}
+
+func (i *gatewayServicePolicySkyatpDnsTunnelDetectionPtrType) ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput() GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return i.ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayServicePolicySkyatpDnsTunnelDetectionPtrType) ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput)
+}
+
+type GatewayServicePolicySkyatpDnsTunnelDetectionOutput struct{ *pulumi.OutputState }
+
+func (GatewayServicePolicySkyatpDnsTunnelDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayServicePolicySkyatpDnsTunnelDetection)(nil)).Elem()
+}
+
+func (o GatewayServicePolicySkyatpDnsTunnelDetectionOutput) ToGatewayServicePolicySkyatpDnsTunnelDetectionOutput() GatewayServicePolicySkyatpDnsTunnelDetectionOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpDnsTunnelDetectionOutput) ToGatewayServicePolicySkyatpDnsTunnelDetectionOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpDnsTunnelDetectionOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpDnsTunnelDetectionOutput) ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput() GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o.ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayServicePolicySkyatpDnsTunnelDetectionOutput) ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayServicePolicySkyatpDnsTunnelDetection) *GatewayServicePolicySkyatpDnsTunnelDetection {
+		return &v
+	}).(GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput)
+}
+
+func (o GatewayServicePolicySkyatpDnsTunnelDetectionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayServicePolicySkyatpDnsTunnelDetection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `default`, `standard`, `strict`
+func (o GatewayServicePolicySkyatpDnsTunnelDetectionOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayServicePolicySkyatpDnsTunnelDetection) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayServicePolicySkyatpDnsTunnelDetection)(nil)).Elem()
+}
+
+func (o GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput) ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput() GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput) ToGatewayServicePolicySkyatpDnsTunnelDetectionPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput) Elem() GatewayServicePolicySkyatpDnsTunnelDetectionOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatpDnsTunnelDetection) GatewayServicePolicySkyatpDnsTunnelDetection {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayServicePolicySkyatpDnsTunnelDetection
+		return ret
+	}).(GatewayServicePolicySkyatpDnsTunnelDetectionOutput)
+}
+
+func (o GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatpDnsTunnelDetection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enum: `default`, `standard`, `strict`
+func (o GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatpDnsTunnelDetection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayServicePolicySkyatpHttpInspection struct {
+	Enabled *bool `pulumi:"enabled"`
+	// enum: `standard`, `strict`
+	Profile *string `pulumi:"profile"`
+}
+
+// GatewayServicePolicySkyatpHttpInspectionInput is an input type that accepts GatewayServicePolicySkyatpHttpInspectionArgs and GatewayServicePolicySkyatpHttpInspectionOutput values.
+// You can construct a concrete instance of `GatewayServicePolicySkyatpHttpInspectionInput` via:
+//
+//	GatewayServicePolicySkyatpHttpInspectionArgs{...}
+type GatewayServicePolicySkyatpHttpInspectionInput interface {
+	pulumi.Input
+
+	ToGatewayServicePolicySkyatpHttpInspectionOutput() GatewayServicePolicySkyatpHttpInspectionOutput
+	ToGatewayServicePolicySkyatpHttpInspectionOutputWithContext(context.Context) GatewayServicePolicySkyatpHttpInspectionOutput
+}
+
+type GatewayServicePolicySkyatpHttpInspectionArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// enum: `standard`, `strict`
+	Profile pulumi.StringPtrInput `pulumi:"profile"`
+}
+
+func (GatewayServicePolicySkyatpHttpInspectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayServicePolicySkyatpHttpInspection)(nil)).Elem()
+}
+
+func (i GatewayServicePolicySkyatpHttpInspectionArgs) ToGatewayServicePolicySkyatpHttpInspectionOutput() GatewayServicePolicySkyatpHttpInspectionOutput {
+	return i.ToGatewayServicePolicySkyatpHttpInspectionOutputWithContext(context.Background())
+}
+
+func (i GatewayServicePolicySkyatpHttpInspectionArgs) ToGatewayServicePolicySkyatpHttpInspectionOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpHttpInspectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServicePolicySkyatpHttpInspectionOutput)
+}
+
+func (i GatewayServicePolicySkyatpHttpInspectionArgs) ToGatewayServicePolicySkyatpHttpInspectionPtrOutput() GatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return i.ToGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayServicePolicySkyatpHttpInspectionArgs) ToGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServicePolicySkyatpHttpInspectionOutput).ToGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx)
+}
+
+// GatewayServicePolicySkyatpHttpInspectionPtrInput is an input type that accepts GatewayServicePolicySkyatpHttpInspectionArgs, GatewayServicePolicySkyatpHttpInspectionPtr and GatewayServicePolicySkyatpHttpInspectionPtrOutput values.
+// You can construct a concrete instance of `GatewayServicePolicySkyatpHttpInspectionPtrInput` via:
+//
+//	        GatewayServicePolicySkyatpHttpInspectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayServicePolicySkyatpHttpInspectionPtrInput interface {
+	pulumi.Input
+
+	ToGatewayServicePolicySkyatpHttpInspectionPtrOutput() GatewayServicePolicySkyatpHttpInspectionPtrOutput
+	ToGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(context.Context) GatewayServicePolicySkyatpHttpInspectionPtrOutput
+}
+
+type gatewayServicePolicySkyatpHttpInspectionPtrType GatewayServicePolicySkyatpHttpInspectionArgs
+
+func GatewayServicePolicySkyatpHttpInspectionPtr(v *GatewayServicePolicySkyatpHttpInspectionArgs) GatewayServicePolicySkyatpHttpInspectionPtrInput {
+	return (*gatewayServicePolicySkyatpHttpInspectionPtrType)(v)
+}
+
+func (*gatewayServicePolicySkyatpHttpInspectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayServicePolicySkyatpHttpInspection)(nil)).Elem()
+}
+
+func (i *gatewayServicePolicySkyatpHttpInspectionPtrType) ToGatewayServicePolicySkyatpHttpInspectionPtrOutput() GatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return i.ToGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayServicePolicySkyatpHttpInspectionPtrType) ToGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServicePolicySkyatpHttpInspectionPtrOutput)
+}
+
+type GatewayServicePolicySkyatpHttpInspectionOutput struct{ *pulumi.OutputState }
+
+func (GatewayServicePolicySkyatpHttpInspectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayServicePolicySkyatpHttpInspection)(nil)).Elem()
+}
+
+func (o GatewayServicePolicySkyatpHttpInspectionOutput) ToGatewayServicePolicySkyatpHttpInspectionOutput() GatewayServicePolicySkyatpHttpInspectionOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpHttpInspectionOutput) ToGatewayServicePolicySkyatpHttpInspectionOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpHttpInspectionOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpHttpInspectionOutput) ToGatewayServicePolicySkyatpHttpInspectionPtrOutput() GatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return o.ToGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayServicePolicySkyatpHttpInspectionOutput) ToGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayServicePolicySkyatpHttpInspection) *GatewayServicePolicySkyatpHttpInspection {
+		return &v
+	}).(GatewayServicePolicySkyatpHttpInspectionPtrOutput)
+}
+
+func (o GatewayServicePolicySkyatpHttpInspectionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayServicePolicySkyatpHttpInspection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `standard`, `strict`
+func (o GatewayServicePolicySkyatpHttpInspectionOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayServicePolicySkyatpHttpInspection) *string { return v.Profile }).(pulumi.StringPtrOutput)
+}
+
+type GatewayServicePolicySkyatpHttpInspectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayServicePolicySkyatpHttpInspectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayServicePolicySkyatpHttpInspection)(nil)).Elem()
+}
+
+func (o GatewayServicePolicySkyatpHttpInspectionPtrOutput) ToGatewayServicePolicySkyatpHttpInspectionPtrOutput() GatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpHttpInspectionPtrOutput) ToGatewayServicePolicySkyatpHttpInspectionPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpHttpInspectionPtrOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpHttpInspectionPtrOutput) Elem() GatewayServicePolicySkyatpHttpInspectionOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatpHttpInspection) GatewayServicePolicySkyatpHttpInspection {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayServicePolicySkyatpHttpInspection
+		return ret
+	}).(GatewayServicePolicySkyatpHttpInspectionOutput)
+}
+
+func (o GatewayServicePolicySkyatpHttpInspectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatpHttpInspection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enum: `standard`, `strict`
+func (o GatewayServicePolicySkyatpHttpInspectionPtrOutput) Profile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatpHttpInspection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Profile
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayServicePolicySkyatpIotDevicePolicy struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GatewayServicePolicySkyatpIotDevicePolicyInput is an input type that accepts GatewayServicePolicySkyatpIotDevicePolicyArgs and GatewayServicePolicySkyatpIotDevicePolicyOutput values.
+// You can construct a concrete instance of `GatewayServicePolicySkyatpIotDevicePolicyInput` via:
+//
+//	GatewayServicePolicySkyatpIotDevicePolicyArgs{...}
+type GatewayServicePolicySkyatpIotDevicePolicyInput interface {
+	pulumi.Input
+
+	ToGatewayServicePolicySkyatpIotDevicePolicyOutput() GatewayServicePolicySkyatpIotDevicePolicyOutput
+	ToGatewayServicePolicySkyatpIotDevicePolicyOutputWithContext(context.Context) GatewayServicePolicySkyatpIotDevicePolicyOutput
+}
+
+type GatewayServicePolicySkyatpIotDevicePolicyArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GatewayServicePolicySkyatpIotDevicePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayServicePolicySkyatpIotDevicePolicy)(nil)).Elem()
+}
+
+func (i GatewayServicePolicySkyatpIotDevicePolicyArgs) ToGatewayServicePolicySkyatpIotDevicePolicyOutput() GatewayServicePolicySkyatpIotDevicePolicyOutput {
+	return i.ToGatewayServicePolicySkyatpIotDevicePolicyOutputWithContext(context.Background())
+}
+
+func (i GatewayServicePolicySkyatpIotDevicePolicyArgs) ToGatewayServicePolicySkyatpIotDevicePolicyOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpIotDevicePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServicePolicySkyatpIotDevicePolicyOutput)
+}
+
+func (i GatewayServicePolicySkyatpIotDevicePolicyArgs) ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutput() GatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return i.ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayServicePolicySkyatpIotDevicePolicyArgs) ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServicePolicySkyatpIotDevicePolicyOutput).ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx)
+}
+
+// GatewayServicePolicySkyatpIotDevicePolicyPtrInput is an input type that accepts GatewayServicePolicySkyatpIotDevicePolicyArgs, GatewayServicePolicySkyatpIotDevicePolicyPtr and GatewayServicePolicySkyatpIotDevicePolicyPtrOutput values.
+// You can construct a concrete instance of `GatewayServicePolicySkyatpIotDevicePolicyPtrInput` via:
+//
+//	        GatewayServicePolicySkyatpIotDevicePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayServicePolicySkyatpIotDevicePolicyPtrInput interface {
+	pulumi.Input
+
+	ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutput() GatewayServicePolicySkyatpIotDevicePolicyPtrOutput
+	ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(context.Context) GatewayServicePolicySkyatpIotDevicePolicyPtrOutput
+}
+
+type gatewayServicePolicySkyatpIotDevicePolicyPtrType GatewayServicePolicySkyatpIotDevicePolicyArgs
+
+func GatewayServicePolicySkyatpIotDevicePolicyPtr(v *GatewayServicePolicySkyatpIotDevicePolicyArgs) GatewayServicePolicySkyatpIotDevicePolicyPtrInput {
+	return (*gatewayServicePolicySkyatpIotDevicePolicyPtrType)(v)
+}
+
+func (*gatewayServicePolicySkyatpIotDevicePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayServicePolicySkyatpIotDevicePolicy)(nil)).Elem()
+}
+
+func (i *gatewayServicePolicySkyatpIotDevicePolicyPtrType) ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutput() GatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return i.ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayServicePolicySkyatpIotDevicePolicyPtrType) ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServicePolicySkyatpIotDevicePolicyPtrOutput)
+}
+
+type GatewayServicePolicySkyatpIotDevicePolicyOutput struct{ *pulumi.OutputState }
+
+func (GatewayServicePolicySkyatpIotDevicePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayServicePolicySkyatpIotDevicePolicy)(nil)).Elem()
+}
+
+func (o GatewayServicePolicySkyatpIotDevicePolicyOutput) ToGatewayServicePolicySkyatpIotDevicePolicyOutput() GatewayServicePolicySkyatpIotDevicePolicyOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpIotDevicePolicyOutput) ToGatewayServicePolicySkyatpIotDevicePolicyOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpIotDevicePolicyOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpIotDevicePolicyOutput) ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutput() GatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o.ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayServicePolicySkyatpIotDevicePolicyOutput) ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayServicePolicySkyatpIotDevicePolicy) *GatewayServicePolicySkyatpIotDevicePolicy {
+		return &v
+	}).(GatewayServicePolicySkyatpIotDevicePolicyPtrOutput)
+}
+
+func (o GatewayServicePolicySkyatpIotDevicePolicyOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayServicePolicySkyatpIotDevicePolicy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GatewayServicePolicySkyatpIotDevicePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayServicePolicySkyatpIotDevicePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayServicePolicySkyatpIotDevicePolicy)(nil)).Elem()
+}
+
+func (o GatewayServicePolicySkyatpIotDevicePolicyPtrOutput) ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutput() GatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpIotDevicePolicyPtrOutput) ToGatewayServicePolicySkyatpIotDevicePolicyPtrOutputWithContext(ctx context.Context) GatewayServicePolicySkyatpIotDevicePolicyPtrOutput {
+	return o
+}
+
+func (o GatewayServicePolicySkyatpIotDevicePolicyPtrOutput) Elem() GatewayServicePolicySkyatpIotDevicePolicyOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatpIotDevicePolicy) GatewayServicePolicySkyatpIotDevicePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayServicePolicySkyatpIotDevicePolicy
+		return ret
+	}).(GatewayServicePolicySkyatpIotDevicePolicyOutput)
+}
+
+func (o GatewayServicePolicySkyatpIotDevicePolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayServicePolicySkyatpIotDevicePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GatewayServicePolicySslProxy struct {
@@ -24237,7 +24816,9 @@ func (o SwitchPortUsagesMapOutput) MapIndex(k pulumi.StringInput) SwitchPortUsag
 }
 
 type SwitchPortUsagesRule struct {
-	Equals *string `pulumi:"equals"`
+	// Optional description of the rule
+	Description *string `pulumi:"description"`
+	Equals      *string `pulumi:"equals"`
 	// Use `equalsAny` to match any item in a list
 	EqualsAnies []string `pulumi:"equalsAnies"`
 	// "[0:3]":"abcdef" > "abc"
@@ -24262,7 +24843,9 @@ type SwitchPortUsagesRuleInput interface {
 }
 
 type SwitchPortUsagesRuleArgs struct {
-	Equals pulumi.StringPtrInput `pulumi:"equals"`
+	// Optional description of the rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Equals      pulumi.StringPtrInput `pulumi:"equals"`
 	// Use `equalsAny` to match any item in a list
 	EqualsAnies pulumi.StringArrayInput `pulumi:"equalsAnies"`
 	// "[0:3]":"abcdef" > "abc"
@@ -24324,6 +24907,11 @@ func (o SwitchPortUsagesRuleOutput) ToSwitchPortUsagesRuleOutput() SwitchPortUsa
 
 func (o SwitchPortUsagesRuleOutput) ToSwitchPortUsagesRuleOutputWithContext(ctx context.Context) SwitchPortUsagesRuleOutput {
 	return o
+}
+
+// Optional description of the rule
+func (o SwitchPortUsagesRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchPortUsagesRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o SwitchPortUsagesRuleOutput) Equals() pulumi.StringPtrOutput {
@@ -46925,6 +47513,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicyIdpPtrInput)(nil)).Elem(), GatewayServicePolicyIdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySkyatpInput)(nil)).Elem(), GatewayServicePolicySkyatpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySkyatpPtrInput)(nil)).Elem(), GatewayServicePolicySkyatpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySkyatpDnsDgaDetectionInput)(nil)).Elem(), GatewayServicePolicySkyatpDnsDgaDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySkyatpDnsDgaDetectionPtrInput)(nil)).Elem(), GatewayServicePolicySkyatpDnsDgaDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySkyatpDnsTunnelDetectionInput)(nil)).Elem(), GatewayServicePolicySkyatpDnsTunnelDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySkyatpDnsTunnelDetectionPtrInput)(nil)).Elem(), GatewayServicePolicySkyatpDnsTunnelDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySkyatpHttpInspectionInput)(nil)).Elem(), GatewayServicePolicySkyatpHttpInspectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySkyatpHttpInspectionPtrInput)(nil)).Elem(), GatewayServicePolicySkyatpHttpInspectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySkyatpIotDevicePolicyInput)(nil)).Elem(), GatewayServicePolicySkyatpIotDevicePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySkyatpIotDevicePolicyPtrInput)(nil)).Elem(), GatewayServicePolicySkyatpIotDevicePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySslProxyInput)(nil)).Elem(), GatewayServicePolicySslProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySslProxyPtrInput)(nil)).Elem(), GatewayServicePolicySslProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServicePolicySyslogInput)(nil)).Elem(), GatewayServicePolicySyslogArgs{})
@@ -47460,6 +48056,14 @@ func init() {
 	pulumi.RegisterOutputType(GatewayServicePolicyIdpPtrOutput{})
 	pulumi.RegisterOutputType(GatewayServicePolicySkyatpOutput{})
 	pulumi.RegisterOutputType(GatewayServicePolicySkyatpPtrOutput{})
+	pulumi.RegisterOutputType(GatewayServicePolicySkyatpDnsDgaDetectionOutput{})
+	pulumi.RegisterOutputType(GatewayServicePolicySkyatpDnsDgaDetectionPtrOutput{})
+	pulumi.RegisterOutputType(GatewayServicePolicySkyatpDnsTunnelDetectionOutput{})
+	pulumi.RegisterOutputType(GatewayServicePolicySkyatpDnsTunnelDetectionPtrOutput{})
+	pulumi.RegisterOutputType(GatewayServicePolicySkyatpHttpInspectionOutput{})
+	pulumi.RegisterOutputType(GatewayServicePolicySkyatpHttpInspectionPtrOutput{})
+	pulumi.RegisterOutputType(GatewayServicePolicySkyatpIotDevicePolicyOutput{})
+	pulumi.RegisterOutputType(GatewayServicePolicySkyatpIotDevicePolicyPtrOutput{})
 	pulumi.RegisterOutputType(GatewayServicePolicySslProxyOutput{})
 	pulumi.RegisterOutputType(GatewayServicePolicySslProxyPtrOutput{})
 	pulumi.RegisterOutputType(GatewayServicePolicySyslogOutput{})

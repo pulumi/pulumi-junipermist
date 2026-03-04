@@ -40,6 +40,7 @@ class NacidpArgs:
                  oauth_cc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_ping_identity_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_ropc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_ropc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -69,6 +70,7 @@ class NacidpArgs:
         :param pulumi.Input[_builtins.str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         :param pulumi.Input[_builtins.str] oauth_discovery_url: If `idp_type`==`oauth`
         :param pulumi.Input[_builtins.str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
         :param pulumi.Input[_builtins.str] oauth_ropc_client_id: If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         :param pulumi.Input[_builtins.str] oauth_ropc_client_secret: If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[_builtins.str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
@@ -116,6 +118,8 @@ class NacidpArgs:
             pulumi.set(__self__, "oauth_discovery_url", oauth_discovery_url)
         if oauth_ping_identity_region is not None:
             pulumi.set(__self__, "oauth_ping_identity_region", oauth_ping_identity_region)
+        if oauth_provider_domain is not None:
+            pulumi.set(__self__, "oauth_provider_domain", oauth_provider_domain)
         if oauth_ropc_client_id is not None:
             pulumi.set(__self__, "oauth_ropc_client_id", oauth_ropc_client_id)
         if oauth_ropc_client_secret is not None:
@@ -379,6 +383,18 @@ class NacidpArgs:
         pulumi.set(self, "oauth_ping_identity_region", value)
 
     @_builtins.property
+    @pulumi.getter(name="oauthProviderDomain")
+    def oauth_provider_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        """
+        return pulumi.get(self, "oauth_provider_domain")
+
+    @oauth_provider_domain.setter
+    def oauth_provider_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "oauth_provider_domain", value)
+
+    @_builtins.property
     @pulumi.getter(name="oauthRopcClientId")
     def oauth_ropc_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -474,6 +490,7 @@ class _NacidpState:
                  oauth_cc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_ping_identity_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_ropc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_ropc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -504,6 +521,7 @@ class _NacidpState:
         :param pulumi.Input[_builtins.str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         :param pulumi.Input[_builtins.str] oauth_discovery_url: If `idp_type`==`oauth`
         :param pulumi.Input[_builtins.str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
         :param pulumi.Input[_builtins.str] oauth_ropc_client_id: If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         :param pulumi.Input[_builtins.str] oauth_ropc_client_secret: If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[_builtins.str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
@@ -551,6 +569,8 @@ class _NacidpState:
             pulumi.set(__self__, "oauth_discovery_url", oauth_discovery_url)
         if oauth_ping_identity_region is not None:
             pulumi.set(__self__, "oauth_ping_identity_region", oauth_ping_identity_region)
+        if oauth_provider_domain is not None:
+            pulumi.set(__self__, "oauth_provider_domain", oauth_provider_domain)
         if oauth_ropc_client_id is not None:
             pulumi.set(__self__, "oauth_ropc_client_id", oauth_ropc_client_id)
         if oauth_ropc_client_secret is not None:
@@ -807,6 +827,18 @@ class _NacidpState:
         pulumi.set(self, "oauth_ping_identity_region", value)
 
     @_builtins.property
+    @pulumi.getter(name="oauthProviderDomain")
+    def oauth_provider_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        """
+        return pulumi.get(self, "oauth_provider_domain")
+
+    @oauth_provider_domain.setter
+    def oauth_provider_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "oauth_provider_domain", value)
+
+    @_builtins.property
     @pulumi.getter(name="oauthRopcClientId")
     def oauth_ropc_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -914,6 +946,7 @@ class Nacidp(pulumi.CustomResource):
                  oauth_cc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_ping_identity_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_ropc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_ropc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1013,6 +1046,7 @@ class Nacidp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         :param pulumi.Input[_builtins.str] oauth_discovery_url: If `idp_type`==`oauth`
         :param pulumi.Input[_builtins.str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
         :param pulumi.Input[_builtins.str] oauth_ropc_client_id: If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         :param pulumi.Input[_builtins.str] oauth_ropc_client_secret: If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[_builtins.str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
@@ -1130,6 +1164,7 @@ class Nacidp(pulumi.CustomResource):
                  oauth_cc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_ping_identity_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_ropc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_ropc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1168,6 +1203,7 @@ class Nacidp(pulumi.CustomResource):
             __props__.__dict__["oauth_cc_client_secret"] = oauth_cc_client_secret
             __props__.__dict__["oauth_discovery_url"] = oauth_discovery_url
             __props__.__dict__["oauth_ping_identity_region"] = oauth_ping_identity_region
+            __props__.__dict__["oauth_provider_domain"] = oauth_provider_domain
             __props__.__dict__["oauth_ropc_client_id"] = oauth_ropc_client_id
             __props__.__dict__["oauth_ropc_client_secret"] = oauth_ropc_client_secret
             __props__.__dict__["oauth_tenant_id"] = oauth_tenant_id
@@ -1207,6 +1243,7 @@ class Nacidp(pulumi.CustomResource):
             oauth_cc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
             oauth_discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
             oauth_ping_identity_region: Optional[pulumi.Input[_builtins.str]] = None,
+            oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
             oauth_ropc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
             oauth_ropc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
             oauth_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1241,6 +1278,7 @@ class Nacidp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         :param pulumi.Input[_builtins.str] oauth_discovery_url: If `idp_type`==`oauth`
         :param pulumi.Input[_builtins.str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
         :param pulumi.Input[_builtins.str] oauth_ropc_client_id: If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         :param pulumi.Input[_builtins.str] oauth_ropc_client_secret: If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[_builtins.str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
@@ -1272,6 +1310,7 @@ class Nacidp(pulumi.CustomResource):
         __props__.__dict__["oauth_cc_client_secret"] = oauth_cc_client_secret
         __props__.__dict__["oauth_discovery_url"] = oauth_discovery_url
         __props__.__dict__["oauth_ping_identity_region"] = oauth_ping_identity_region
+        __props__.__dict__["oauth_provider_domain"] = oauth_provider_domain
         __props__.__dict__["oauth_ropc_client_id"] = oauth_ropc_client_id
         __props__.__dict__["oauth_ropc_client_secret"] = oauth_ropc_client_secret
         __props__.__dict__["oauth_tenant_id"] = oauth_tenant_id
@@ -1440,6 +1479,14 @@ class Nacidp(pulumi.CustomResource):
         enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
         """
         return pulumi.get(self, "oauth_ping_identity_region")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthProviderDomain")
+    def oauth_provider_domain(self) -> pulumi.Output[_builtins.str]:
+        """
+        If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        """
+        return pulumi.get(self, "oauth_provider_domain")
 
     @_builtins.property
     @pulumi.getter(name="oauthRopcClientId")

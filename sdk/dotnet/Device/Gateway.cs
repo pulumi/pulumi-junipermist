@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device
     /// 
     /// It can be used to define specific configuration at the device level or to override Org Gateway template settings.
     /// 
-    /// &gt; **WARNING** For **adopted** devices, make sure to set `Managed`=`True` to allow Mist to manage the gateway
+    /// &gt; **WARNING** For **adopted** devices, make sure to set `MistConfigured`=`True` to allow Mist to manage the gateway
     /// 
     /// ## Example Usage
     /// 
@@ -137,14 +137,23 @@ namespace Pulumi.JuniperMist.Device
         [Output("mac")]
         public Output<string> Mac { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+        /// </summary>
         [Output("managed")]
-        public Output<bool?> Managed { get; private set; } = null!;
+        public Output<bool> Managed { get; private set; } = null!;
 
         /// <summary>
         /// Map where the device belongs to
         /// </summary>
         [Output("mapId")]
         public Output<string?> MapId { get; private set; } = null!;
+
+        /// <summary>
+        /// whether the device can be configured by Mist or not. This deprecates `Managed` for adopted devices.
+        /// </summary>
+        [Output("mistConfigured")]
+        public Output<bool> MistConfigured { get; private set; } = null!;
 
         /// <summary>
         /// Device Model
@@ -420,6 +429,9 @@ namespace Pulumi.JuniperMist.Device
             set => _ipConfigs = value;
         }
 
+        /// <summary>
+        /// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+        /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
 
@@ -428,6 +440,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("mapId")]
         public Input<string>? MapId { get; set; }
+
+        /// <summary>
+        /// whether the device can be configured by Mist or not. This deprecates `Managed` for adopted devices.
+        /// </summary>
+        [Input("mistConfigured")]
+        public Input<bool>? MistConfigured { get; set; }
 
         [Input("mspId")]
         public Input<string>? MspId { get; set; }
@@ -715,6 +733,9 @@ namespace Pulumi.JuniperMist.Device
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 
+        /// <summary>
+        /// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+        /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
 
@@ -723,6 +744,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("mapId")]
         public Input<string>? MapId { get; set; }
+
+        /// <summary>
+        /// whether the device can be configured by Mist or not. This deprecates `Managed` for adopted devices.
+        /// </summary>
+        [Input("mistConfigured")]
+        public Input<bool>? MistConfigured { get; set; }
 
         /// <summary>
         /// Device Model

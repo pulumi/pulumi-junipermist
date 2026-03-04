@@ -69,6 +69,8 @@ export class Switch extends pulumi.CustomResource {
     declare public readonly dhcpdConfig: pulumi.Output<outputs.device.SwitchDhcpdConfig | undefined>;
     /**
      * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+     *
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      */
     declare public readonly disableAutoConfig: pulumi.Output<boolean>;
     /**
@@ -103,13 +105,19 @@ export class Switch extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly mac: pulumi.Output<string>;
     /**
-     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
+     *
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      */
     declare public readonly managed: pulumi.Output<boolean>;
     /**
      * Map where the device belongs to
      */
     declare public readonly mapId: pulumi.Output<string | undefined>;
+    /**
+     * whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+     */
+    declare public readonly mistConfigured: pulumi.Output<boolean>;
     /**
      * Enable mistNac to use RadSec
      */
@@ -253,6 +261,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["mac"] = state?.mac;
             resourceInputs["managed"] = state?.managed;
             resourceInputs["mapId"] = state?.mapId;
+            resourceInputs["mistConfigured"] = state?.mistConfigured;
             resourceInputs["mistNac"] = state?.mistNac;
             resourceInputs["model"] = state?.model;
             resourceInputs["name"] = state?.name;
@@ -312,6 +321,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["localPortConfig"] = args?.localPortConfig;
             resourceInputs["managed"] = args?.managed;
             resourceInputs["mapId"] = args?.mapId;
+            resourceInputs["mistConfigured"] = args?.mistConfigured;
             resourceInputs["mistNac"] = args?.mistNac;
             resourceInputs["name"] = args?.name;
             resourceInputs["networks"] = args?.networks;
@@ -379,6 +389,8 @@ export interface SwitchState {
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;
     /**
      * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+     *
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      */
     disableAutoConfig?: pulumi.Input<boolean>;
     /**
@@ -413,13 +425,19 @@ export interface SwitchState {
      */
     mac?: pulumi.Input<string>;
     /**
-     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
+     *
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      */
     managed?: pulumi.Input<boolean>;
     /**
      * Map where the device belongs to
      */
     mapId?: pulumi.Input<string>;
+    /**
+     * whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+     */
+    mistConfigured?: pulumi.Input<boolean>;
     /**
      * Enable mistNac to use RadSec
      */
@@ -553,6 +571,8 @@ export interface SwitchArgs {
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;
     /**
      * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+     *
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      */
     disableAutoConfig?: pulumi.Input<boolean>;
     /**
@@ -580,13 +600,19 @@ export interface SwitchArgs {
      */
     localPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchLocalPortConfig>}>;
     /**
-     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+     * An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
+     *
+     * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      */
     managed?: pulumi.Input<boolean>;
     /**
      * Map where the device belongs to
      */
     mapId?: pulumi.Input<string>;
+    /**
+     * whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+     */
+    mistConfigured?: pulumi.Input<boolean>;
     /**
      * Enable mistNac to use RadSec
      */

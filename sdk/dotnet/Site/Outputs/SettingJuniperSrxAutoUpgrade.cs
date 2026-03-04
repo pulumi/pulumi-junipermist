@@ -19,6 +19,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly ImmutableDictionary<string, string>? CustomVersions;
         public readonly bool? Enabled;
         public readonly bool? Snapshot;
+        /// <summary>
+        /// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when CustomVersions not specified
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
         private SettingJuniperSrxAutoUpgrade(
@@ -26,11 +30,14 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             bool? enabled,
 
-            bool? snapshot)
+            bool? snapshot,
+
+            string? version)
         {
             CustomVersions = customVersions;
             Enabled = enabled;
             Snapshot = snapshot;
+            Version = version;
         }
     }
 }

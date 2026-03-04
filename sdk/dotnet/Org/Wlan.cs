@@ -256,6 +256,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> DisableHtVhtRates { get; private set; } = null!;
 
         /// <summary>
+        /// whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+        /// </summary>
+        [Output("disableMessageAuthenticatorCheck")]
+        public Output<bool> DisableMessageAuthenticatorCheck { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to disable U-APSD
         /// </summary>
         [Output("disableUapsd")]
@@ -1480,6 +1486,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("disableHtVhtRates")]
         public Input<bool>? DisableHtVhtRates { get; set; }
+
+        /// <summary>
+        /// whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+        /// </summary>
+        [Input("disableMessageAuthenticatorCheck")]
+        public Input<bool>? DisableMessageAuthenticatorCheck { get; set; }
 
         /// <summary>
         /// Whether to disable U-APSD

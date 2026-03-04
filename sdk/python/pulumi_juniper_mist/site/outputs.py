@@ -2403,12 +2403,14 @@ class NetworktemplatePortUsagesRule(dict):
 
     def __init__(__self__, *,
                  src: _builtins.str,
+                 description: Optional[_builtins.str] = None,
                  equals: Optional[_builtins.str] = None,
                  equals_anies: Optional[Sequence[_builtins.str]] = None,
                  expression: Optional[_builtins.str] = None,
                  usage: Optional[_builtins.str] = None):
         """
         :param _builtins.str src: enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_description`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+        :param _builtins.str description: Optional description of the rule
         :param Sequence[_builtins.str] equals_anies: Use `equals_any` to match any item in a list
         :param _builtins.str expression: "[0:3]":"abcdef" > "abc"
                "split(.)[1]": "a.b.c" > "b"
@@ -2416,6 +2418,8 @@ class NetworktemplatePortUsagesRule(dict):
         :param _builtins.str usage: `port_usage` name
         """
         pulumi.set(__self__, "src", src)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if equals is not None:
             pulumi.set(__self__, "equals", equals)
         if equals_anies is not None:
@@ -2432,6 +2436,14 @@ class NetworktemplatePortUsagesRule(dict):
         enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_description`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
         """
         return pulumi.get(self, "src")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Optional description of the rule
+        """
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
@@ -7942,9 +7954,11 @@ class SettingJuniperSrxAutoUpgrade(dict):
     def __init__(__self__, *,
                  custom_versions: Optional[Mapping[str, _builtins.str]] = None,
                  enabled: Optional[_builtins.bool] = None,
-                 snapshot: Optional[_builtins.bool] = None):
+                 snapshot: Optional[_builtins.bool] = None,
+                 version: Optional[_builtins.str] = None):
         """
         :param Mapping[str, _builtins.str] custom_versions: Property key is the SRX Hardware model (e.g. "SRX4600")
+        :param _builtins.str version: Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when custom_versions not specified
         """
         if custom_versions is not None:
             pulumi.set(__self__, "custom_versions", custom_versions)
@@ -7952,6 +7966,8 @@ class SettingJuniperSrxAutoUpgrade(dict):
             pulumi.set(__self__, "enabled", enabled)
         if snapshot is not None:
             pulumi.set(__self__, "snapshot", snapshot)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter(name="customVersions")
@@ -7970,6 +7986,14 @@ class SettingJuniperSrxAutoUpgrade(dict):
     @pulumi.getter
     def snapshot(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "snapshot")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when custom_versions not specified
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -8952,10 +8976,12 @@ class SettingSsrAutoUpgrade(dict):
     def __init__(__self__, *,
                  channel: Optional[_builtins.str] = None,
                  custom_versions: Optional[Mapping[str, _builtins.str]] = None,
-                 enabled: Optional[_builtins.bool] = None):
+                 enabled: Optional[_builtins.bool] = None,
+                 version: Optional[_builtins.str] = None):
         """
         :param _builtins.str channel: upgrade channel to follow. enum: `alpha`, `beta`, `stable`
         :param Mapping[str, _builtins.str] custom_versions: Property key is the SSR model (e.g. "SSR130").
+        :param _builtins.str version: Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when custom_versions not specified
         """
         if channel is not None:
             pulumi.set(__self__, "channel", channel)
@@ -8963,6 +8989,8 @@ class SettingSsrAutoUpgrade(dict):
             pulumi.set(__self__, "custom_versions", custom_versions)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
@@ -8984,6 +9012,14 @@ class SettingSsrAutoUpgrade(dict):
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when custom_versions not specified
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -9100,31 +9136,23 @@ class SettingSyntheticTest(dict):
 class SettingSyntheticTestCustomProbes(dict):
     def __init__(__self__, *,
                  aggressiveness: Optional[_builtins.str] = None,
-                 host: Optional[_builtins.str] = None,
-                 port: Optional[_builtins.int] = None,
+                 target: Optional[_builtins.str] = None,
                  threshold: Optional[_builtins.int] = None,
-                 type: Optional[_builtins.str] = None,
-                 url: Optional[_builtins.str] = None):
+                 type: Optional[_builtins.str] = None):
         """
         :param _builtins.str aggressiveness: enum: `auto`, `high`, `low`
-        :param _builtins.str host: If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
-        :param _builtins.int port: If `type`==`tcp`, Port to be used for the custom probe
+        :param _builtins.str target: Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
         :param _builtins.int threshold: In milliseconds
-        :param _builtins.str type: enum: `curl`, `icmp`, `tcp`
-        :param _builtins.str url: If `type`==`curl`, URL to be used for the custom probe, can be url or IP
+        :param _builtins.str type: enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
         """
         if aggressiveness is not None:
             pulumi.set(__self__, "aggressiveness", aggressiveness)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
 
     @_builtins.property
     @pulumi.getter
@@ -9136,19 +9164,11 @@ class SettingSyntheticTestCustomProbes(dict):
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[_builtins.str]:
+    def target(self) -> Optional[_builtins.str]:
         """
-        If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+        Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
         """
-        return pulumi.get(self, "host")
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> Optional[_builtins.int]:
-        """
-        If `type`==`tcp`, Port to be used for the custom probe
-        """
-        return pulumi.get(self, "port")
+        return pulumi.get(self, "target")
 
     @_builtins.property
     @pulumi.getter
@@ -9162,17 +9182,9 @@ class SettingSyntheticTestCustomProbes(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        enum: `curl`, `icmp`, `tcp`
+        enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
         """
         return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter
-    def url(self) -> Optional[_builtins.str]:
-        """
-        If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-        """
-        return pulumi.get(self, "url")
 
 
 @pulumi.output_type

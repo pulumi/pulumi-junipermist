@@ -31,6 +31,7 @@ class SettingArgs:
                  device_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  disable_pcap: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_remote_shell: Optional[pulumi.Input[_builtins.bool]] = None,
+                 gateway_tunnel_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  installer: Optional[pulumi.Input['SettingInstallerArgs']] = None,
                  jcloud: Optional[pulumi.Input['SettingJcloudArgs']] = None,
@@ -66,6 +67,7 @@ class SettingArgs:
                  * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
         :param pulumi.Input[_builtins.bool] disable_pcap: Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         :param pulumi.Input[_builtins.bool] disable_remote_shell: Whether to disable remote shell access for an entire org
+        :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
         :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: junos_shell_access: Manages role-based web-shell access.  
@@ -96,6 +98,8 @@ class SettingArgs:
             pulumi.set(__self__, "disable_pcap", disable_pcap)
         if disable_remote_shell is not None:
             pulumi.set(__self__, "disable_remote_shell", disable_remote_shell)
+        if gateway_tunnel_updown_threshold is not None:
+            pulumi.set(__self__, "gateway_tunnel_updown_threshold", gateway_tunnel_updown_threshold)
         if gateway_updown_threshold is not None:
             pulumi.set(__self__, "gateway_updown_threshold", gateway_updown_threshold)
         if installer is not None:
@@ -254,6 +258,18 @@ class SettingArgs:
     @disable_remote_shell.setter
     def disable_remote_shell(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disable_remote_shell", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayTunnelUpdownThreshold")
+    def gateway_tunnel_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+        """
+        return pulumi.get(self, "gateway_tunnel_updown_threshold")
+
+    @gateway_tunnel_updown_threshold.setter
+    def gateway_tunnel_updown_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "gateway_tunnel_updown_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayUpdownThreshold")
@@ -501,6 +517,7 @@ class SettingArgs:
 @pulumi.input_type
 class _SettingState:
     def __init__(__self__, *,
+                 allow_mist: Optional[pulumi.Input[_builtins.bool]] = None,
                  ap_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  api_policy: Optional[pulumi.Input['SettingApiPolicyArgs']] = None,
                  cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -511,6 +528,7 @@ class _SettingState:
                  device_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  disable_pcap: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_remote_shell: Optional[pulumi.Input[_builtins.bool]] = None,
+                 gateway_tunnel_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  installer: Optional[pulumi.Input['SettingInstallerArgs']] = None,
                  jcloud: Optional[pulumi.Input['SettingJcloudArgs']] = None,
@@ -541,6 +559,7 @@ class _SettingState:
         """
         Input properties used for looking up and filtering Setting resources.
 
+        :param pulumi.Input[_builtins.bool] allow_mist: whether to allow Mist to look at this org
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: RADSec certificates for AP
         :param pulumi.Input['SettingDeviceCertArgs'] device_cert: common device cert, optional
@@ -549,6 +568,7 @@ class _SettingState:
                  * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
         :param pulumi.Input[_builtins.bool] disable_pcap: Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         :param pulumi.Input[_builtins.bool] disable_remote_shell: Whether to disable remote shell access for an entire org
+        :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
         :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: junos_shell_access: Manages role-based web-shell access.  
@@ -560,6 +580,8 @@ class _SettingState:
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
         """
+        if allow_mist is not None:
+            pulumi.set(__self__, "allow_mist", allow_mist)
         if ap_updown_threshold is not None:
             pulumi.set(__self__, "ap_updown_threshold", ap_updown_threshold)
         if api_policy is not None:
@@ -580,6 +602,8 @@ class _SettingState:
             pulumi.set(__self__, "disable_pcap", disable_pcap)
         if disable_remote_shell is not None:
             pulumi.set(__self__, "disable_remote_shell", disable_remote_shell)
+        if gateway_tunnel_updown_threshold is not None:
+            pulumi.set(__self__, "gateway_tunnel_updown_threshold", gateway_tunnel_updown_threshold)
         if gateway_updown_threshold is not None:
             pulumi.set(__self__, "gateway_updown_threshold", gateway_updown_threshold)
         if installer is not None:
@@ -634,6 +658,18 @@ class _SettingState:
             pulumi.set(__self__, "wired_pma", wired_pma)
         if wireless_pma is not None:
             pulumi.set(__self__, "wireless_pma", wireless_pma)
+
+    @_builtins.property
+    @pulumi.getter(name="allowMist")
+    def allow_mist(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        whether to allow Mist to look at this org
+        """
+        return pulumi.get(self, "allow_mist")
+
+    @allow_mist.setter
+    def allow_mist(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_mist", value)
 
     @_builtins.property
     @pulumi.getter(name="apUpdownThreshold")
@@ -744,6 +780,18 @@ class _SettingState:
     @disable_remote_shell.setter
     def disable_remote_shell(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disable_remote_shell", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayTunnelUpdownThreshold")
+    def gateway_tunnel_updown_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+        """
+        return pulumi.get(self, "gateway_tunnel_updown_threshold")
+
+    @gateway_tunnel_updown_threshold.setter
+    def gateway_tunnel_updown_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "gateway_tunnel_updown_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayUpdownThreshold")
@@ -1030,6 +1078,7 @@ class Setting(pulumi.CustomResource):
                  device_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  disable_pcap: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_remote_shell: Optional[pulumi.Input[_builtins.bool]] = None,
+                 gateway_tunnel_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
                  jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
@@ -1139,6 +1188,7 @@ class Setting(pulumi.CustomResource):
                  * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
         :param pulumi.Input[_builtins.bool] disable_pcap: Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         :param pulumi.Input[_builtins.bool] disable_remote_shell: Whether to disable remote shell access for an entire org
+        :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
         :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: junos_shell_access: Manages role-based web-shell access.  
@@ -1253,6 +1303,7 @@ class Setting(pulumi.CustomResource):
                  device_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  disable_pcap: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_remote_shell: Optional[pulumi.Input[_builtins.bool]] = None,
+                 gateway_tunnel_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
                  installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
                  jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
@@ -1296,6 +1347,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["device_updown_threshold"] = device_updown_threshold
             __props__.__dict__["disable_pcap"] = disable_pcap
             __props__.__dict__["disable_remote_shell"] = disable_remote_shell
+            __props__.__dict__["gateway_tunnel_updown_threshold"] = gateway_tunnel_updown_threshold
             __props__.__dict__["gateway_updown_threshold"] = gateway_updown_threshold
             __props__.__dict__["installer"] = installer
             __props__.__dict__["jcloud"] = jcloud
@@ -1323,6 +1375,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["wan_pma"] = wan_pma
             __props__.__dict__["wired_pma"] = wired_pma
             __props__.__dict__["wireless_pma"] = wireless_pma
+            __props__.__dict__["allow_mist"] = None
             __props__.__dict__["cradlepoint"] = None
             __props__.__dict__["juniper"] = None
             __props__.__dict__["pcap"] = None
@@ -1336,6 +1389,7 @@ class Setting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_mist: Optional[pulumi.Input[_builtins.bool]] = None,
             ap_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
             api_policy: Optional[pulumi.Input[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']]] = None,
             cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1346,6 +1400,7 @@ class Setting(pulumi.CustomResource):
             device_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
             disable_pcap: Optional[pulumi.Input[_builtins.bool]] = None,
             disable_remote_shell: Optional[pulumi.Input[_builtins.bool]] = None,
+            gateway_tunnel_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
             gateway_updown_threshold: Optional[pulumi.Input[_builtins.int]] = None,
             installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
             jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
@@ -1380,6 +1435,7 @@ class Setting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_mist: whether to allow Mist to look at this org
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: RADSec certificates for AP
         :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: common device cert, optional
@@ -1388,6 +1444,7 @@ class Setting(pulumi.CustomResource):
                  * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
         :param pulumi.Input[_builtins.bool] disable_pcap: Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         :param pulumi.Input[_builtins.bool] disable_remote_shell: Whether to disable remote shell access for an entire org
+        :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
         :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: junos_shell_access: Manages role-based web-shell access.  
@@ -1403,6 +1460,7 @@ class Setting(pulumi.CustomResource):
 
         __props__ = _SettingState.__new__(_SettingState)
 
+        __props__.__dict__["allow_mist"] = allow_mist
         __props__.__dict__["ap_updown_threshold"] = ap_updown_threshold
         __props__.__dict__["api_policy"] = api_policy
         __props__.__dict__["cacerts"] = cacerts
@@ -1413,6 +1471,7 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["device_updown_threshold"] = device_updown_threshold
         __props__.__dict__["disable_pcap"] = disable_pcap
         __props__.__dict__["disable_remote_shell"] = disable_remote_shell
+        __props__.__dict__["gateway_tunnel_updown_threshold"] = gateway_tunnel_updown_threshold
         __props__.__dict__["gateway_updown_threshold"] = gateway_updown_threshold
         __props__.__dict__["installer"] = installer
         __props__.__dict__["jcloud"] = jcloud
@@ -1441,6 +1500,14 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["wired_pma"] = wired_pma
         __props__.__dict__["wireless_pma"] = wireless_pma
         return Setting(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="allowMist")
+    def allow_mist(self) -> pulumi.Output[_builtins.bool]:
+        """
+        whether to allow Mist to look at this org
+        """
+        return pulumi.get(self, "allow_mist")
 
     @_builtins.property
     @pulumi.getter(name="apUpdownThreshold")
@@ -1511,6 +1578,14 @@ class Setting(pulumi.CustomResource):
         Whether to disable remote shell access for an entire org
         """
         return pulumi.get(self, "disable_remote_shell")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayTunnelUpdownThreshold")
+    def gateway_tunnel_updown_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+        """
+        return pulumi.get(self, "gateway_tunnel_updown_threshold")
 
     @_builtins.property
     @pulumi.getter(name="gatewayUpdownThreshold")

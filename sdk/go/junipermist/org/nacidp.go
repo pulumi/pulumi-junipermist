@@ -136,6 +136,8 @@ type Nacidp struct {
 	OauthDiscoveryUrl pulumi.StringPtrOutput `pulumi:"oauthDiscoveryUrl"`
 	// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
 	OauthPingIdentityRegion pulumi.StringOutput `pulumi:"oauthPingIdentityRegion"`
+	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	OauthProviderDomain pulumi.StringOutput `pulumi:"oauthProviderDomain"`
 	// If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId pulumi.StringPtrOutput `pulumi:"oauthRopcClientId"`
 	// If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
@@ -227,6 +229,8 @@ type nacidpState struct {
 	OauthDiscoveryUrl *string `pulumi:"oauthDiscoveryUrl"`
 	// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
 	OauthPingIdentityRegion *string `pulumi:"oauthPingIdentityRegion"`
+	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	OauthProviderDomain *string `pulumi:"oauthProviderDomain"`
 	// If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId *string `pulumi:"oauthRopcClientId"`
 	// If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
@@ -283,6 +287,8 @@ type NacidpState struct {
 	OauthDiscoveryUrl pulumi.StringPtrInput
 	// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
 	OauthPingIdentityRegion pulumi.StringPtrInput
+	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	OauthProviderDomain pulumi.StringPtrInput
 	// If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId pulumi.StringPtrInput
 	// If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
@@ -343,6 +349,8 @@ type nacidpArgs struct {
 	OauthDiscoveryUrl *string `pulumi:"oauthDiscoveryUrl"`
 	// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
 	OauthPingIdentityRegion *string `pulumi:"oauthPingIdentityRegion"`
+	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	OauthProviderDomain *string `pulumi:"oauthProviderDomain"`
 	// If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId *string `pulumi:"oauthRopcClientId"`
 	// If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
@@ -400,6 +408,8 @@ type NacidpArgs struct {
 	OauthDiscoveryUrl pulumi.StringPtrInput
 	// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
 	OauthPingIdentityRegion pulumi.StringPtrInput
+	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	OauthProviderDomain pulumi.StringPtrInput
 	// If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId pulumi.StringPtrInput
 	// If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
@@ -600,6 +610,11 @@ func (o NacidpOutput) OauthDiscoveryUrl() pulumi.StringPtrOutput {
 // enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
 func (o NacidpOutput) OauthPingIdentityRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringOutput { return v.OauthPingIdentityRegion }).(pulumi.StringOutput)
+}
+
+// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+func (o NacidpOutput) OauthProviderDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Nacidp) pulumi.StringOutput { return v.OauthProviderDomain }).(pulumi.StringOutput)
 }
 
 // If `idpType`==`oauth`, ropc = Resource Owner Password Credentials

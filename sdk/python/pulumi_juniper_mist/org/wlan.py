@@ -1490,6 +1490,7 @@ class _WlanState:
                  disable11ax: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable11be: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_ht_vht_rates: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_message_authenticator_check: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_uapsd: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_v1_roam_notify: Optional[pulumi.Input[_builtins.bool]] = None,
                  disable_v2_roam_notify: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1586,6 +1587,7 @@ class _WlanState:
         :param pulumi.Input[_builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
         :param pulumi.Input[_builtins.bool] disable11be: To disable Wi-Fi 7 EHT IEs
         :param pulumi.Input[_builtins.bool] disable_ht_vht_rates: To disable ht or vht rates
+        :param pulumi.Input[_builtins.bool] disable_message_authenticator_check: whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
         :param pulumi.Input[_builtins.bool] disable_uapsd: Whether to disable U-APSD
         :param pulumi.Input[_builtins.bool] disable_v1_roam_notify: Disable sending v2 roam notification messages
         :param pulumi.Input[_builtins.bool] disable_v2_roam_notify: Disable sending v2 roam notification messages
@@ -1715,6 +1717,8 @@ class _WlanState:
             pulumi.set(__self__, "disable11be", disable11be)
         if disable_ht_vht_rates is not None:
             pulumi.set(__self__, "disable_ht_vht_rates", disable_ht_vht_rates)
+        if disable_message_authenticator_check is not None:
+            pulumi.set(__self__, "disable_message_authenticator_check", disable_message_authenticator_check)
         if disable_uapsd is not None:
             pulumi.set(__self__, "disable_uapsd", disable_uapsd)
         if disable_v1_roam_notify is not None:
@@ -2229,6 +2233,18 @@ class _WlanState:
     @disable_ht_vht_rates.setter
     def disable_ht_vht_rates(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disable_ht_vht_rates", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableMessageAuthenticatorCheck")
+    def disable_message_authenticator_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+        """
+        return pulumi.get(self, "disable_message_authenticator_check")
+
+    @disable_message_authenticator_check.setter
+    def disable_message_authenticator_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_message_authenticator_check", value)
 
     @_builtins.property
     @pulumi.getter(name="disableUapsd")
@@ -3446,6 +3462,7 @@ class Wlan(pulumi.CustomResource):
             __props__.__dict__["wxtag_ids"] = wxtag_ids
             __props__.__dict__["wxtunnel_id"] = wxtunnel_id
             __props__.__dict__["wxtunnel_remote_id"] = wxtunnel_remote_id
+            __props__.__dict__["disable_message_authenticator_check"] = None
             __props__.__dict__["msp_id"] = None
             __props__.__dict__["portal_api_secret"] = None
             __props__.__dict__["portal_image"] = None
@@ -3493,6 +3510,7 @@ class Wlan(pulumi.CustomResource):
             disable11ax: Optional[pulumi.Input[_builtins.bool]] = None,
             disable11be: Optional[pulumi.Input[_builtins.bool]] = None,
             disable_ht_vht_rates: Optional[pulumi.Input[_builtins.bool]] = None,
+            disable_message_authenticator_check: Optional[pulumi.Input[_builtins.bool]] = None,
             disable_uapsd: Optional[pulumi.Input[_builtins.bool]] = None,
             disable_v1_roam_notify: Optional[pulumi.Input[_builtins.bool]] = None,
             disable_v2_roam_notify: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -3593,6 +3611,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
         :param pulumi.Input[_builtins.bool] disable11be: To disable Wi-Fi 7 EHT IEs
         :param pulumi.Input[_builtins.bool] disable_ht_vht_rates: To disable ht or vht rates
+        :param pulumi.Input[_builtins.bool] disable_message_authenticator_check: whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
         :param pulumi.Input[_builtins.bool] disable_uapsd: Whether to disable U-APSD
         :param pulumi.Input[_builtins.bool] disable_v1_roam_notify: Disable sending v2 roam notification messages
         :param pulumi.Input[_builtins.bool] disable_v2_roam_notify: Disable sending v2 roam notification messages
@@ -3693,6 +3712,7 @@ class Wlan(pulumi.CustomResource):
         __props__.__dict__["disable11ax"] = disable11ax
         __props__.__dict__["disable11be"] = disable11be
         __props__.__dict__["disable_ht_vht_rates"] = disable_ht_vht_rates
+        __props__.__dict__["disable_message_authenticator_check"] = disable_message_authenticator_check
         __props__.__dict__["disable_uapsd"] = disable_uapsd
         __props__.__dict__["disable_v1_roam_notify"] = disable_v1_roam_notify
         __props__.__dict__["disable_v2_roam_notify"] = disable_v2_roam_notify
@@ -4014,6 +4034,14 @@ class Wlan(pulumi.CustomResource):
         To disable ht or vht rates
         """
         return pulumi.get(self, "disable_ht_vht_rates")
+
+    @_builtins.property
+    @pulumi.getter(name="disableMessageAuthenticatorCheck")
+    def disable_message_authenticator_check(self) -> pulumi.Output[_builtins.bool]:
+        """
+        whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+        """
+        return pulumi.get(self, "disable_message_authenticator_check")
 
     @_builtins.property
     @pulumi.getter(name="disableUapsd")
