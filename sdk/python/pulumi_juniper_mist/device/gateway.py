@@ -35,6 +35,7 @@ class GatewayArgs:
                  ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]]] = None,
                  managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  map_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
                  msp_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['GatewayNetworkArgs']]]] = None,
@@ -67,7 +68,9 @@ class GatewayArgs:
         :param pulumi.Input['GatewayGatewayMgmtArgs'] gateway_mgmt: Gateway settings
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Property key is the network name
+        :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
+        :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
         :param pulumi.Input['GatewayOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -104,9 +107,14 @@ class GatewayArgs:
         if ip_configs is not None:
             pulumi.set(__self__, "ip_configs", ip_configs)
         if managed is not None:
+            warnings.warn("""This attribute is being deprecated, please use `mist_configured` instead""", DeprecationWarning)
+            pulumi.log.warn("""managed is deprecated: This attribute is being deprecated, please use `mist_configured` instead""")
+        if managed is not None:
             pulumi.set(__self__, "managed", managed)
         if map_id is not None:
             pulumi.set(__self__, "map_id", map_id)
+        if mist_configured is not None:
+            pulumi.set(__self__, "mist_configured", mist_configured)
         if msp_id is not None:
             pulumi.set(__self__, "msp_id", msp_id)
         if name is not None:
@@ -284,7 +292,11 @@ class GatewayArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
     def managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+        """
         return pulumi.get(self, "managed")
 
     @managed.setter
@@ -302,6 +314,18 @@ class GatewayArgs:
     @map_id.setter
     def map_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "map_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mistConfigured")
+    def mist_configured(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+        """
+        return pulumi.get(self, "mist_configured")
+
+    @mist_configured.setter
+    def mist_configured(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "mist_configured", value)
 
     @_builtins.property
     @pulumi.getter(name="mspId")
@@ -549,6 +573,7 @@ class _GatewayState:
                  mac: Optional[pulumi.Input[_builtins.str]] = None,
                  managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  map_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
                  model: Optional[pulumi.Input[_builtins.str]] = None,
                  msp_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -587,7 +612,9 @@ class _GatewayState:
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.str] mac: Device MAC address
+        :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
+        :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
         :param pulumi.Input[_builtins.str] model: Device Model
         :param pulumi.Input['GatewayOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPathPreferencesArgs']]] path_preferences: Property key is the path name
@@ -635,9 +662,14 @@ class _GatewayState:
         if mac is not None:
             pulumi.set(__self__, "mac", mac)
         if managed is not None:
+            warnings.warn("""This attribute is being deprecated, please use `mist_configured` instead""", DeprecationWarning)
+            pulumi.log.warn("""managed is deprecated: This attribute is being deprecated, please use `mist_configured` instead""")
+        if managed is not None:
             pulumi.set(__self__, "managed", managed)
         if map_id is not None:
             pulumi.set(__self__, "map_id", map_id)
+        if mist_configured is not None:
+            pulumi.set(__self__, "mist_configured", mist_configured)
         if model is not None:
             pulumi.set(__self__, "model", model)
         if msp_id is not None:
@@ -855,7 +887,11 @@ class _GatewayState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
     def managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+        """
         return pulumi.get(self, "managed")
 
     @managed.setter
@@ -873,6 +909,18 @@ class _GatewayState:
     @map_id.setter
     def map_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "map_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mistConfigured")
+    def mist_configured(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+        """
+        return pulumi.get(self, "mist_configured")
+
+    @mist_configured.setter
+    def mist_configured(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "mist_configured", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1173,6 +1221,7 @@ class Gateway(pulumi.CustomResource):
                  ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]]] = None,
                  managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  map_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
                  msp_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayNetworkArgs', 'GatewayNetworkArgsDict']]]]] = None,
@@ -1201,7 +1250,7 @@ class Gateway(pulumi.CustomResource):
 
         It can be used to define specific configuration at the device level or to override Org Gateway template settings.
 
-        > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway
+        > **WARNING** For **adopted** devices, make sure to set `mist_configured`=`true` to allow Mist to manage the gateway
 
         ## Example Usage
 
@@ -1247,7 +1296,9 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']] gateway_mgmt: Gateway settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
+        :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
+        :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
         :param pulumi.Input[Union['GatewayOobIpConfigArgs', 'GatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayPathPreferencesArgs', 'GatewayPathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayPortConfigArgs', 'GatewayPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -1272,7 +1323,7 @@ class Gateway(pulumi.CustomResource):
 
         It can be used to define specific configuration at the device level or to override Org Gateway template settings.
 
-        > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway
+        > **WARNING** For **adopted** devices, make sure to set `mist_configured`=`true` to allow Mist to manage the gateway
 
         ## Example Usage
 
@@ -1336,6 +1387,7 @@ class Gateway(pulumi.CustomResource):
                  ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]]] = None,
                  managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  map_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
                  msp_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayNetworkArgs', 'GatewayNetworkArgsDict']]]]] = None,
@@ -1382,6 +1434,7 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["ip_configs"] = ip_configs
             __props__.__dict__["managed"] = managed
             __props__.__dict__["map_id"] = map_id
+            __props__.__dict__["mist_configured"] = mist_configured
             __props__.__dict__["msp_id"] = msp_id
             __props__.__dict__["name"] = name
             __props__.__dict__["networks"] = networks
@@ -1441,6 +1494,7 @@ class Gateway(pulumi.CustomResource):
             mac: Optional[pulumi.Input[_builtins.str]] = None,
             managed: Optional[pulumi.Input[_builtins.bool]] = None,
             map_id: Optional[pulumi.Input[_builtins.str]] = None,
+            mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
             model: Optional[pulumi.Input[_builtins.str]] = None,
             msp_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1483,7 +1537,9 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.str] mac: Device MAC address
+        :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
+        :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
         :param pulumi.Input[_builtins.str] model: Device Model
         :param pulumi.Input[Union['GatewayOobIpConfigArgs', 'GatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayPathPreferencesArgs', 'GatewayPathPreferencesArgsDict']]]] path_preferences: Property key is the path name
@@ -1521,6 +1577,7 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["mac"] = mac
         __props__.__dict__["managed"] = managed
         __props__.__dict__["map_id"] = map_id
+        __props__.__dict__["mist_configured"] = mist_configured
         __props__.__dict__["model"] = model
         __props__.__dict__["msp_id"] = msp_id
         __props__.__dict__["name"] = name
@@ -1653,7 +1710,11 @@ class Gateway(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def managed(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
+    def managed(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+        """
         return pulumi.get(self, "managed")
 
     @_builtins.property
@@ -1663,6 +1724,14 @@ class Gateway(pulumi.CustomResource):
         Map where the device belongs to
         """
         return pulumi.get(self, "map_id")
+
+    @_builtins.property
+    @pulumi.getter(name="mistConfigured")
+    def mist_configured(self) -> pulumi.Output[_builtins.bool]:
+        """
+        whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+        """
+        return pulumi.get(self, "mist_configured")
 
     @_builtins.property
     @pulumi.getter

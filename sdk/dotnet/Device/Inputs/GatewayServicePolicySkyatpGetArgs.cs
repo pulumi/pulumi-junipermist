@@ -12,29 +12,17 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayServicePolicySkyatpGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// enum: `Disabled`, `Default`, `Standard`, `Strict`
-        /// </summary>
         [Input("dnsDgaDetection")]
-        public Input<string>? DnsDgaDetection { get; set; }
+        public Input<Inputs.GatewayServicePolicySkyatpDnsDgaDetectionGetArgs>? DnsDgaDetection { get; set; }
 
-        /// <summary>
-        /// enum: `Disabled`, `Default`, `Standard`, `Strict`
-        /// </summary>
         [Input("dnsTunnelDetection")]
-        public Input<string>? DnsTunnelDetection { get; set; }
+        public Input<Inputs.GatewayServicePolicySkyatpDnsTunnelDetectionGetArgs>? DnsTunnelDetection { get; set; }
 
-        /// <summary>
-        /// enum: `Disabled`, `Standard`
-        /// </summary>
         [Input("httpInspection")]
-        public Input<string>? HttpInspection { get; set; }
+        public Input<Inputs.GatewayServicePolicySkyatpHttpInspectionGetArgs>? HttpInspection { get; set; }
 
-        /// <summary>
-        /// enum: `Disabled`, `Enabled`
-        /// </summary>
         [Input("iotDevicePolicy")]
-        public Input<string>? IotDevicePolicy { get; set; }
+        public Input<Inputs.GatewayServicePolicySkyatpIotDevicePolicyGetArgs>? IotDevicePolicy { get; set; }
 
         public GatewayServicePolicySkyatpGetArgs()
         {

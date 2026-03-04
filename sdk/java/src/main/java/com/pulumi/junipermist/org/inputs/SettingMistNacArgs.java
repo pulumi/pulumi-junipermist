@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.org.inputs.SettingMistNacFingerprintingArgs;
 import com.pulumi.junipermist.org.inputs.SettingMistNacIdpArgs;
 import com.pulumi.junipermist.org.inputs.SettingMistNacServerCertArgs;
 import java.lang.Boolean;
@@ -96,6 +97,21 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Allows customer to enable client fingerprinting for policy enforcement
+     * 
+     */
+    @Import(name="fingerprinting")
+    private @Nullable Output<SettingMistNacFingerprintingArgs> fingerprinting;
+
+    /**
+     * @return Allows customer to enable client fingerprinting for policy enforcement
+     * 
+     */
+    public Optional<Output<SettingMistNacFingerprintingArgs>> fingerprinting() {
+        return Optional.ofNullable(this.fingerprinting);
+    }
+
+    /**
      * allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
      * 
      */
@@ -177,6 +193,21 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.useSslPort);
     }
 
+    /**
+     * Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+     * 
+     */
+    @Import(name="usermacExpiry")
+    private @Nullable Output<Integer> usermacExpiry;
+
+    /**
+     * @return Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+     * 
+     */
+    public Optional<Output<Integer>> usermacExpiry() {
+        return Optional.ofNullable(this.usermacExpiry);
+    }
+
     private SettingMistNacArgs() {}
 
     private SettingMistNacArgs(SettingMistNacArgs $) {
@@ -185,12 +216,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         this.disableRsaeAlgorithms = $.disableRsaeAlgorithms;
         this.eapSslSecurityLevel = $.eapSslSecurityLevel;
         this.euOnly = $.euOnly;
+        this.fingerprinting = $.fingerprinting;
         this.idpMachineCertLookupField = $.idpMachineCertLookupField;
         this.idpUserCertLookupField = $.idpUserCertLookupField;
         this.idps = $.idps;
         this.serverCert = $.serverCert;
         this.useIpVersion = $.useIpVersion;
         this.useSslPort = $.useSslPort;
+        this.usermacExpiry = $.usermacExpiry;
     }
 
     public static Builder builder() {
@@ -327,6 +360,27 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param fingerprinting Allows customer to enable client fingerprinting for policy enforcement
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fingerprinting(@Nullable Output<SettingMistNacFingerprintingArgs> fingerprinting) {
+            $.fingerprinting = fingerprinting;
+            return this;
+        }
+
+        /**
+         * @param fingerprinting Allows customer to enable client fingerprinting for policy enforcement
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fingerprinting(SettingMistNacFingerprintingArgs fingerprinting) {
+            return fingerprinting(Output.of(fingerprinting));
+        }
+
+        /**
          * @param idpMachineCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
          * 
          * @return builder
@@ -442,6 +496,27 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder useSslPort(Boolean useSslPort) {
             return useSslPort(Output.of(useSslPort));
+        }
+
+        /**
+         * @param usermacExpiry Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usermacExpiry(@Nullable Output<Integer> usermacExpiry) {
+            $.usermacExpiry = usermacExpiry;
+            return this;
+        }
+
+        /**
+         * @param usermacExpiry Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usermacExpiry(Integer usermacExpiry) {
+            return usermacExpiry(Output.of(usermacExpiry));
         }
 
         public SettingMistNacArgs build() {

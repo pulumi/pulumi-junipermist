@@ -19,16 +19,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Aggressiveness { get; set; }
 
         /// <summary>
-        /// If `Type`==`Icmp` or `Type`==`Tcp`, Host to be used for the custom probe
+        /// Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
         /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
-        /// <summary>
-        /// If `Type`==`Tcp`, Port to be used for the custom probe
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
+        [Input("target")]
+        public Input<string>? Target { get; set; }
 
         /// <summary>
         /// In milliseconds
@@ -37,16 +31,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? Threshold { get; set; }
 
         /// <summary>
-        /// enum: `Curl`, `Icmp`, `Tcp`
+        /// enum: `Application`, `Curl`, `Icmp`, `Reachability`, `Tcp`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
-
-        /// <summary>
-        /// If `Type`==`Curl`, URL to be used for the custom probe, can be url or IP
-        /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
 
         public SettingSyntheticTestCustomProbesArgs()
         {

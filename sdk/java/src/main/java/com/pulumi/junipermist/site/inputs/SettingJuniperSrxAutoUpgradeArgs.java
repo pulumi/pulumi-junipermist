@@ -46,12 +46,28 @@ public final class SettingJuniperSrxAutoUpgradeArgs extends com.pulumi.resources
         return Optional.ofNullable(this.snapshot);
     }
 
+    /**
+     * Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private SettingJuniperSrxAutoUpgradeArgs() {}
 
     private SettingJuniperSrxAutoUpgradeArgs(SettingJuniperSrxAutoUpgradeArgs $) {
         this.customVersions = $.customVersions;
         this.enabled = $.enabled;
         this.snapshot = $.snapshot;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -109,6 +125,27 @@ public final class SettingJuniperSrxAutoUpgradeArgs extends com.pulumi.resources
 
         public Builder snapshot(Boolean snapshot) {
             return snapshot(Output.of(snapshot));
+        }
+
+        /**
+         * @param version Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public SettingJuniperSrxAutoUpgradeArgs build() {

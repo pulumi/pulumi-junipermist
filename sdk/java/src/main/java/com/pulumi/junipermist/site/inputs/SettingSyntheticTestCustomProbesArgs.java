@@ -32,33 +32,18 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
     }
 
     /**
-     * If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+     * Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
      * 
      */
-    @Import(name="host")
-    private @Nullable Output<String> host;
+    @Import(name="target")
+    private @Nullable Output<String> target;
 
     /**
-     * @return If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+     * @return Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
      * 
      */
-    public Optional<Output<String>> host() {
-        return Optional.ofNullable(this.host);
-    }
-
-    /**
-     * If `type`==`tcp`, Port to be used for the custom probe
-     * 
-     */
-    @Import(name="port")
-    private @Nullable Output<Integer> port;
-
-    /**
-     * @return If `type`==`tcp`, Port to be used for the custom probe
-     * 
-     */
-    public Optional<Output<Integer>> port() {
-        return Optional.ofNullable(this.port);
+    public Optional<Output<String>> target() {
+        return Optional.ofNullable(this.target);
     }
 
     /**
@@ -77,44 +62,27 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
     }
 
     /**
-     * enum: `curl`, `icmp`, `tcp`
+     * enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `curl`, `icmp`, `tcp`
+     * @return enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
-    /**
-     * If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-     * 
-     */
-    @Import(name="url")
-    private @Nullable Output<String> url;
-
-    /**
-     * @return If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-     * 
-     */
-    public Optional<Output<String>> url() {
-        return Optional.ofNullable(this.url);
-    }
-
     private SettingSyntheticTestCustomProbesArgs() {}
 
     private SettingSyntheticTestCustomProbesArgs(SettingSyntheticTestCustomProbesArgs $) {
         this.aggressiveness = $.aggressiveness;
-        this.host = $.host;
-        this.port = $.port;
+        this.target = $.target;
         this.threshold = $.threshold;
         this.type = $.type;
-        this.url = $.url;
     }
 
     public static Builder builder() {
@@ -157,45 +125,24 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param host If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+         * @param target Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
          * 
          * @return builder
          * 
          */
-        public Builder host(@Nullable Output<String> host) {
-            $.host = host;
+        public Builder target(@Nullable Output<String> target) {
+            $.target = target;
             return this;
         }
 
         /**
-         * @param host If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+         * @param target Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
          * 
          * @return builder
          * 
          */
-        public Builder host(String host) {
-            return host(Output.of(host));
-        }
-
-        /**
-         * @param port If `type`==`tcp`, Port to be used for the custom probe
-         * 
-         * @return builder
-         * 
-         */
-        public Builder port(@Nullable Output<Integer> port) {
-            $.port = port;
-            return this;
-        }
-
-        /**
-         * @param port If `type`==`tcp`, Port to be used for the custom probe
-         * 
-         * @return builder
-         * 
-         */
-        public Builder port(Integer port) {
-            return port(Output.of(port));
+        public Builder target(String target) {
+            return target(Output.of(target));
         }
 
         /**
@@ -220,7 +167,7 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param type enum: `curl`, `icmp`, `tcp`
+         * @param type enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
          * 
          * @return builder
          * 
@@ -231,34 +178,13 @@ public final class SettingSyntheticTestCustomProbesArgs extends com.pulumi.resou
         }
 
         /**
-         * @param type enum: `curl`, `icmp`, `tcp`
+         * @param type enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
          * 
          * @return builder
          * 
          */
         public Builder type(String type) {
             return type(Output.of(type));
-        }
-
-        /**
-         * @param url If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-         * 
-         * @return builder
-         * 
-         */
-        public Builder url(@Nullable Output<String> url) {
-            $.url = url;
-            return this;
-        }
-
-        /**
-         * @param url If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-         * 
-         * @return builder
-         * 
-         */
-        public Builder url(String url) {
-            return url(Output.of(url));
         }
 
         public SettingSyntheticTestCustomProbesArgs build() {

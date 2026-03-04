@@ -94,6 +94,10 @@ __all__ = [
     'DeviceprofileGatewayServicePolicyEwf',
     'DeviceprofileGatewayServicePolicyIdp',
     'DeviceprofileGatewayServicePolicySkyatp',
+    'DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection',
+    'DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection',
+    'DeviceprofileGatewayServicePolicySkyatpHttpInspection',
+    'DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy',
     'DeviceprofileGatewayServicePolicySslProxy',
     'DeviceprofileGatewayServicePolicySyslog',
     'DeviceprofileGatewayTunnelConfigs',
@@ -168,6 +172,10 @@ __all__ = [
     'GatewaytemplateServicePolicyEwf',
     'GatewaytemplateServicePolicyIdp',
     'GatewaytemplateServicePolicySkyatp',
+    'GatewaytemplateServicePolicySkyatpDnsDgaDetection',
+    'GatewaytemplateServicePolicySkyatpDnsTunnelDetection',
+    'GatewaytemplateServicePolicySkyatpHttpInspection',
+    'GatewaytemplateServicePolicySkyatpIotDevicePolicy',
     'GatewaytemplateServicePolicySslProxy',
     'GatewaytemplateServicePolicySyslog',
     'GatewaytemplateTunnelConfigs',
@@ -190,6 +198,22 @@ __all__ = [
     'IdpprofileOverwrite',
     'IdpprofileOverwriteMatching',
     'InventoryInventory',
+    'MxedgeMxedgeMgmt',
+    'MxedgeOobIpConfig',
+    'MxedgeProxy',
+    'MxedgeTuntermDhcpdConfig',
+    'MxedgeTuntermExtraRoutes',
+    'MxedgeTuntermIgmpSnoopingConfig',
+    'MxedgeTuntermIgmpSnoopingConfigQuerier',
+    'MxedgeTuntermIpConfig',
+    'MxedgeTuntermMonitoring',
+    'MxedgeTuntermMulticastConfig',
+    'MxedgeTuntermMulticastConfigMdns',
+    'MxedgeTuntermMulticastConfigSsdp',
+    'MxedgeTuntermOtherIpConfigs',
+    'MxedgeTuntermPortConfig',
+    'MxedgeTuntermSwitchConfig',
+    'MxedgeVersions',
     'NacruleMatching',
     'NacruleNotMatching',
     'NetworkInternalAccess',
@@ -309,6 +333,7 @@ __all__ = [
     'SettingMarvisAutoOperations',
     'SettingMgmt',
     'SettingMistNac',
+    'SettingMistNacFingerprinting',
     'SettingMistNacIdp',
     'SettingMistNacServerCert',
     'SettingMxedgeMgmt',
@@ -5943,8 +5968,6 @@ class DeviceprofileGatewayPortConfig(dict):
             suggest = "vpn_paths"
         elif key == "wanArpPolicer":
             suggest = "wan_arp_policer"
-        elif key == "wanDisableSpeedtest":
-            suggest = "wan_disable_speedtest"
         elif key == "wanExtIp":
             suggest = "wan_ext_ip"
         elif key == "wanExtIp6":
@@ -5959,6 +5982,8 @@ class DeviceprofileGatewayPortConfig(dict):
             suggest = "wan_probe_override"
         elif key == "wanSourceNat":
             suggest = "wan_source_nat"
+        elif key == "wanSpeedtestMode":
+            suggest = "wan_speedtest_mode"
         elif key == "wanType":
             suggest = "wan_type"
 
@@ -6012,7 +6037,6 @@ class DeviceprofileGatewayPortConfig(dict):
                  vlan_id: Optional[_builtins.str] = None,
                  vpn_paths: Optional[Mapping[str, 'outputs.DeviceprofileGatewayPortConfigVpnPaths']] = None,
                  wan_arp_policer: Optional[_builtins.str] = None,
-                 wan_disable_speedtest: Optional[_builtins.bool] = None,
                  wan_ext_ip: Optional[_builtins.str] = None,
                  wan_ext_ip6: Optional[_builtins.str] = None,
                  wan_extra_routes: Optional[Mapping[str, 'outputs.DeviceprofileGatewayPortConfigWanExtraRoutes']] = None,
@@ -6020,6 +6044,7 @@ class DeviceprofileGatewayPortConfig(dict):
                  wan_networks: Optional[Sequence[_builtins.str]] = None,
                  wan_probe_override: Optional['outputs.DeviceprofileGatewayPortConfigWanProbeOverride'] = None,
                  wan_source_nat: Optional['outputs.DeviceprofileGatewayPortConfigWanSourceNat'] = None,
+                 wan_speedtest_mode: Optional[_builtins.str] = None,
                  wan_type: Optional[_builtins.str] = None):
         """
         :param _builtins.str usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
@@ -6052,7 +6077,6 @@ class DeviceprofileGatewayPortConfig(dict):
         :param _builtins.str svr_port_range: For SSR only
         :param Mapping[str, 'DeviceprofileGatewayPortConfigVpnPathsArgs'] vpn_paths: Property key is the VPN name
         :param _builtins.str wan_arp_policer: Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
-        :param _builtins.bool wan_disable_speedtest: If `wan_type`==`wan`, disable speedtest
         :param _builtins.str wan_ext_ip: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
         :param _builtins.str wan_ext_ip6: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
         :param Mapping[str, 'DeviceprofileGatewayPortConfigWanExtraRoutesArgs'] wan_extra_routes: Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
@@ -6060,6 +6084,7 @@ class DeviceprofileGatewayPortConfig(dict):
         :param Sequence[_builtins.str] wan_networks: Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
         :param 'DeviceprofileGatewayPortConfigWanProbeOverrideArgs' wan_probe_override: Only if `usage`==`wan`
         :param 'DeviceprofileGatewayPortConfigWanSourceNatArgs' wan_source_nat: Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+        :param _builtins.str wan_speedtest_mode: Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
         :param _builtins.str wan_type: Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
         """
         pulumi.set(__self__, "usage", usage)
@@ -6137,8 +6162,6 @@ class DeviceprofileGatewayPortConfig(dict):
             pulumi.set(__self__, "vpn_paths", vpn_paths)
         if wan_arp_policer is not None:
             pulumi.set(__self__, "wan_arp_policer", wan_arp_policer)
-        if wan_disable_speedtest is not None:
-            pulumi.set(__self__, "wan_disable_speedtest", wan_disable_speedtest)
         if wan_ext_ip is not None:
             pulumi.set(__self__, "wan_ext_ip", wan_ext_ip)
         if wan_ext_ip6 is not None:
@@ -6153,6 +6176,8 @@ class DeviceprofileGatewayPortConfig(dict):
             pulumi.set(__self__, "wan_probe_override", wan_probe_override)
         if wan_source_nat is not None:
             pulumi.set(__self__, "wan_source_nat", wan_source_nat)
+        if wan_speedtest_mode is not None:
+            pulumi.set(__self__, "wan_speedtest_mode", wan_speedtest_mode)
         if wan_type is not None:
             pulumi.set(__self__, "wan_type", wan_type)
 
@@ -6437,14 +6462,6 @@ class DeviceprofileGatewayPortConfig(dict):
         return pulumi.get(self, "wan_arp_policer")
 
     @_builtins.property
-    @pulumi.getter(name="wanDisableSpeedtest")
-    def wan_disable_speedtest(self) -> Optional[_builtins.bool]:
-        """
-        If `wan_type`==`wan`, disable speedtest
-        """
-        return pulumi.get(self, "wan_disable_speedtest")
-
-    @_builtins.property
     @pulumi.getter(name="wanExtIp")
     def wan_ext_ip(self) -> Optional[_builtins.str]:
         """
@@ -6499,6 +6516,14 @@ class DeviceprofileGatewayPortConfig(dict):
         Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
         """
         return pulumi.get(self, "wan_source_nat")
+
+    @_builtins.property
+    @pulumi.getter(name="wanSpeedtestMode")
+    def wan_speedtest_mode(self) -> Optional[_builtins.str]:
+        """
+        Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+        """
+        return pulumi.get(self, "wan_speedtest_mode")
 
     @_builtins.property
     @pulumi.getter(name="wanType")
@@ -7860,16 +7885,10 @@ class DeviceprofileGatewayServicePolicySkyatp(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 dns_dga_detection: Optional[_builtins.str] = None,
-                 dns_tunnel_detection: Optional[_builtins.str] = None,
-                 http_inspection: Optional[_builtins.str] = None,
-                 iot_device_policy: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str dns_dga_detection: enum: `disabled`, `default`, `standard`, `strict`
-        :param _builtins.str dns_tunnel_detection: enum: `disabled`, `default`, `standard`, `strict`
-        :param _builtins.str http_inspection: enum: `disabled`, `standard`
-        :param _builtins.str iot_device_policy: enum: `disabled`, `enabled`
-        """
+                 dns_dga_detection: Optional['outputs.DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection'] = None,
+                 dns_tunnel_detection: Optional['outputs.DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection'] = None,
+                 http_inspection: Optional['outputs.DeviceprofileGatewayServicePolicySkyatpHttpInspection'] = None,
+                 iot_device_policy: Optional['outputs.DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy'] = None):
         if dns_dga_detection is not None:
             pulumi.set(__self__, "dns_dga_detection", dns_dga_detection)
         if dns_tunnel_detection is not None:
@@ -7881,35 +7900,117 @@ class DeviceprofileGatewayServicePolicySkyatp(dict):
 
     @_builtins.property
     @pulumi.getter(name="dnsDgaDetection")
-    def dns_dga_detection(self) -> Optional[_builtins.str]:
-        """
-        enum: `disabled`, `default`, `standard`, `strict`
-        """
+    def dns_dga_detection(self) -> Optional['outputs.DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection']:
         return pulumi.get(self, "dns_dga_detection")
 
     @_builtins.property
     @pulumi.getter(name="dnsTunnelDetection")
-    def dns_tunnel_detection(self) -> Optional[_builtins.str]:
-        """
-        enum: `disabled`, `default`, `standard`, `strict`
-        """
+    def dns_tunnel_detection(self) -> Optional['outputs.DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection']:
         return pulumi.get(self, "dns_tunnel_detection")
 
     @_builtins.property
     @pulumi.getter(name="httpInspection")
-    def http_inspection(self) -> Optional[_builtins.str]:
-        """
-        enum: `disabled`, `standard`
-        """
+    def http_inspection(self) -> Optional['outputs.DeviceprofileGatewayServicePolicySkyatpHttpInspection']:
         return pulumi.get(self, "http_inspection")
 
     @_builtins.property
     @pulumi.getter(name="iotDevicePolicy")
-    def iot_device_policy(self) -> Optional[_builtins.str]:
-        """
-        enum: `disabled`, `enabled`
-        """
+    def iot_device_policy(self) -> Optional['outputs.DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy']:
         return pulumi.get(self, "iot_device_policy")
+
+
+@pulumi.output_type
+class DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 profile: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str profile: enum: `default`, `standard`, `strict`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> Optional[_builtins.str]:
+        """
+        enum: `default`, `standard`, `strict`
+        """
+        return pulumi.get(self, "profile")
+
+
+@pulumi.output_type
+class DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 profile: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str profile: enum: `default`, `standard`, `strict`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> Optional[_builtins.str]:
+        """
+        enum: `default`, `standard`, `strict`
+        """
+        return pulumi.get(self, "profile")
+
+
+@pulumi.output_type
+class DeviceprofileGatewayServicePolicySkyatpHttpInspection(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 profile: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str profile: enum: `standard`, `strict`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> Optional[_builtins.str]:
+        """
+        enum: `standard`, `strict`
+        """
+        return pulumi.get(self, "profile")
+
+
+@pulumi.output_type
+class DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -12221,8 +12322,6 @@ class GatewaytemplatePortConfig(dict):
             suggest = "vpn_paths"
         elif key == "wanArpPolicer":
             suggest = "wan_arp_policer"
-        elif key == "wanDisableSpeedtest":
-            suggest = "wan_disable_speedtest"
         elif key == "wanExtIp":
             suggest = "wan_ext_ip"
         elif key == "wanExtIp6":
@@ -12237,6 +12336,8 @@ class GatewaytemplatePortConfig(dict):
             suggest = "wan_probe_override"
         elif key == "wanSourceNat":
             suggest = "wan_source_nat"
+        elif key == "wanSpeedtestMode":
+            suggest = "wan_speedtest_mode"
         elif key == "wanType":
             suggest = "wan_type"
 
@@ -12290,7 +12391,6 @@ class GatewaytemplatePortConfig(dict):
                  vlan_id: Optional[_builtins.str] = None,
                  vpn_paths: Optional[Mapping[str, 'outputs.GatewaytemplatePortConfigVpnPaths']] = None,
                  wan_arp_policer: Optional[_builtins.str] = None,
-                 wan_disable_speedtest: Optional[_builtins.bool] = None,
                  wan_ext_ip: Optional[_builtins.str] = None,
                  wan_ext_ip6: Optional[_builtins.str] = None,
                  wan_extra_routes: Optional[Mapping[str, 'outputs.GatewaytemplatePortConfigWanExtraRoutes']] = None,
@@ -12298,6 +12398,7 @@ class GatewaytemplatePortConfig(dict):
                  wan_networks: Optional[Sequence[_builtins.str]] = None,
                  wan_probe_override: Optional['outputs.GatewaytemplatePortConfigWanProbeOverride'] = None,
                  wan_source_nat: Optional['outputs.GatewaytemplatePortConfigWanSourceNat'] = None,
+                 wan_speedtest_mode: Optional[_builtins.str] = None,
                  wan_type: Optional[_builtins.str] = None):
         """
         :param _builtins.str usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
@@ -12330,7 +12431,6 @@ class GatewaytemplatePortConfig(dict):
         :param _builtins.str svr_port_range: For SSR only
         :param Mapping[str, 'GatewaytemplatePortConfigVpnPathsArgs'] vpn_paths: Property key is the VPN name
         :param _builtins.str wan_arp_policer: Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
-        :param _builtins.bool wan_disable_speedtest: If `wan_type`==`wan`, disable speedtest
         :param _builtins.str wan_ext_ip: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
         :param _builtins.str wan_ext_ip6: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
         :param Mapping[str, 'GatewaytemplatePortConfigWanExtraRoutesArgs'] wan_extra_routes: Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
@@ -12338,6 +12438,7 @@ class GatewaytemplatePortConfig(dict):
         :param Sequence[_builtins.str] wan_networks: Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
         :param 'GatewaytemplatePortConfigWanProbeOverrideArgs' wan_probe_override: Only if `usage`==`wan`
         :param 'GatewaytemplatePortConfigWanSourceNatArgs' wan_source_nat: Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+        :param _builtins.str wan_speedtest_mode: Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
         :param _builtins.str wan_type: Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
         """
         pulumi.set(__self__, "usage", usage)
@@ -12415,8 +12516,6 @@ class GatewaytemplatePortConfig(dict):
             pulumi.set(__self__, "vpn_paths", vpn_paths)
         if wan_arp_policer is not None:
             pulumi.set(__self__, "wan_arp_policer", wan_arp_policer)
-        if wan_disable_speedtest is not None:
-            pulumi.set(__self__, "wan_disable_speedtest", wan_disable_speedtest)
         if wan_ext_ip is not None:
             pulumi.set(__self__, "wan_ext_ip", wan_ext_ip)
         if wan_ext_ip6 is not None:
@@ -12431,6 +12530,8 @@ class GatewaytemplatePortConfig(dict):
             pulumi.set(__self__, "wan_probe_override", wan_probe_override)
         if wan_source_nat is not None:
             pulumi.set(__self__, "wan_source_nat", wan_source_nat)
+        if wan_speedtest_mode is not None:
+            pulumi.set(__self__, "wan_speedtest_mode", wan_speedtest_mode)
         if wan_type is not None:
             pulumi.set(__self__, "wan_type", wan_type)
 
@@ -12715,14 +12816,6 @@ class GatewaytemplatePortConfig(dict):
         return pulumi.get(self, "wan_arp_policer")
 
     @_builtins.property
-    @pulumi.getter(name="wanDisableSpeedtest")
-    def wan_disable_speedtest(self) -> Optional[_builtins.bool]:
-        """
-        If `wan_type`==`wan`, disable speedtest
-        """
-        return pulumi.get(self, "wan_disable_speedtest")
-
-    @_builtins.property
     @pulumi.getter(name="wanExtIp")
     def wan_ext_ip(self) -> Optional[_builtins.str]:
         """
@@ -12777,6 +12870,14 @@ class GatewaytemplatePortConfig(dict):
         Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
         """
         return pulumi.get(self, "wan_source_nat")
+
+    @_builtins.property
+    @pulumi.getter(name="wanSpeedtestMode")
+    def wan_speedtest_mode(self) -> Optional[_builtins.str]:
+        """
+        Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+        """
+        return pulumi.get(self, "wan_speedtest_mode")
 
     @_builtins.property
     @pulumi.getter(name="wanType")
@@ -14138,16 +14239,10 @@ class GatewaytemplateServicePolicySkyatp(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 dns_dga_detection: Optional[_builtins.str] = None,
-                 dns_tunnel_detection: Optional[_builtins.str] = None,
-                 http_inspection: Optional[_builtins.str] = None,
-                 iot_device_policy: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str dns_dga_detection: enum: `disabled`, `default`, `standard`, `strict`
-        :param _builtins.str dns_tunnel_detection: enum: `disabled`, `default`, `standard`, `strict`
-        :param _builtins.str http_inspection: enum: `disabled`, `standard`
-        :param _builtins.str iot_device_policy: enum: `disabled`, `enabled`
-        """
+                 dns_dga_detection: Optional['outputs.GatewaytemplateServicePolicySkyatpDnsDgaDetection'] = None,
+                 dns_tunnel_detection: Optional['outputs.GatewaytemplateServicePolicySkyatpDnsTunnelDetection'] = None,
+                 http_inspection: Optional['outputs.GatewaytemplateServicePolicySkyatpHttpInspection'] = None,
+                 iot_device_policy: Optional['outputs.GatewaytemplateServicePolicySkyatpIotDevicePolicy'] = None):
         if dns_dga_detection is not None:
             pulumi.set(__self__, "dns_dga_detection", dns_dga_detection)
         if dns_tunnel_detection is not None:
@@ -14159,35 +14254,117 @@ class GatewaytemplateServicePolicySkyatp(dict):
 
     @_builtins.property
     @pulumi.getter(name="dnsDgaDetection")
-    def dns_dga_detection(self) -> Optional[_builtins.str]:
-        """
-        enum: `disabled`, `default`, `standard`, `strict`
-        """
+    def dns_dga_detection(self) -> Optional['outputs.GatewaytemplateServicePolicySkyatpDnsDgaDetection']:
         return pulumi.get(self, "dns_dga_detection")
 
     @_builtins.property
     @pulumi.getter(name="dnsTunnelDetection")
-    def dns_tunnel_detection(self) -> Optional[_builtins.str]:
-        """
-        enum: `disabled`, `default`, `standard`, `strict`
-        """
+    def dns_tunnel_detection(self) -> Optional['outputs.GatewaytemplateServicePolicySkyatpDnsTunnelDetection']:
         return pulumi.get(self, "dns_tunnel_detection")
 
     @_builtins.property
     @pulumi.getter(name="httpInspection")
-    def http_inspection(self) -> Optional[_builtins.str]:
-        """
-        enum: `disabled`, `standard`
-        """
+    def http_inspection(self) -> Optional['outputs.GatewaytemplateServicePolicySkyatpHttpInspection']:
         return pulumi.get(self, "http_inspection")
 
     @_builtins.property
     @pulumi.getter(name="iotDevicePolicy")
-    def iot_device_policy(self) -> Optional[_builtins.str]:
-        """
-        enum: `disabled`, `enabled`
-        """
+    def iot_device_policy(self) -> Optional['outputs.GatewaytemplateServicePolicySkyatpIotDevicePolicy']:
         return pulumi.get(self, "iot_device_policy")
+
+
+@pulumi.output_type
+class GatewaytemplateServicePolicySkyatpDnsDgaDetection(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 profile: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str profile: enum: `default`, `standard`, `strict`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> Optional[_builtins.str]:
+        """
+        enum: `default`, `standard`, `strict`
+        """
+        return pulumi.get(self, "profile")
+
+
+@pulumi.output_type
+class GatewaytemplateServicePolicySkyatpDnsTunnelDetection(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 profile: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str profile: enum: `default`, `standard`, `strict`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> Optional[_builtins.str]:
+        """
+        enum: `default`, `standard`, `strict`
+        """
+        return pulumi.get(self, "profile")
+
+
+@pulumi.output_type
+class GatewaytemplateServicePolicySkyatpHttpInspection(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 profile: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str profile: enum: `standard`, `strict`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> Optional[_builtins.str]:
+        """
+        enum: `standard`, `strict`
+        """
+        return pulumi.get(self, "profile")
+
+
+@pulumi.output_type
+class GatewaytemplateServicePolicySkyatpIotDevicePolicy(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -15966,6 +16143,790 @@ class InventoryInventory(dict):
         if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
         """
         return pulumi.get(self, "vc_mac")
+
+
+@pulumi.output_type
+class MxedgeMxedgeMgmt(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configAutoRevert":
+            suggest = "config_auto_revert"
+        elif key == "fipsEnabled":
+            suggest = "fips_enabled"
+        elif key == "mistPassword":
+            suggest = "mist_password"
+        elif key == "oobIpType":
+            suggest = "oob_ip_type"
+        elif key == "oobIpType6":
+            suggest = "oob_ip_type6"
+        elif key == "rootPassword":
+            suggest = "root_password"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxedgeMxedgeMgmt. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxedgeMxedgeMgmt.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxedgeMxedgeMgmt.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_auto_revert: Optional[_builtins.bool] = None,
+                 fips_enabled: Optional[_builtins.bool] = None,
+                 mist_password: Optional[_builtins.str] = None,
+                 oob_ip_type: Optional[_builtins.str] = None,
+                 oob_ip_type6: Optional[_builtins.str] = None,
+                 root_password: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str oob_ip_type: enum: `dhcp`, `disabled`, `static`
+        :param _builtins.str oob_ip_type6: enum: `autoconf`, `dhcp`, `disabled`, `static`
+        """
+        if config_auto_revert is not None:
+            pulumi.set(__self__, "config_auto_revert", config_auto_revert)
+        if fips_enabled is not None:
+            pulumi.set(__self__, "fips_enabled", fips_enabled)
+        if mist_password is not None:
+            pulumi.set(__self__, "mist_password", mist_password)
+        if oob_ip_type is not None:
+            pulumi.set(__self__, "oob_ip_type", oob_ip_type)
+        if oob_ip_type6 is not None:
+            pulumi.set(__self__, "oob_ip_type6", oob_ip_type6)
+        if root_password is not None:
+            pulumi.set(__self__, "root_password", root_password)
+
+    @_builtins.property
+    @pulumi.getter(name="configAutoRevert")
+    def config_auto_revert(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "config_auto_revert")
+
+    @_builtins.property
+    @pulumi.getter(name="fipsEnabled")
+    def fips_enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "fips_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="mistPassword")
+    def mist_password(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "mist_password")
+
+    @_builtins.property
+    @pulumi.getter(name="oobIpType")
+    def oob_ip_type(self) -> Optional[_builtins.str]:
+        """
+        enum: `dhcp`, `disabled`, `static`
+        """
+        return pulumi.get(self, "oob_ip_type")
+
+    @_builtins.property
+    @pulumi.getter(name="oobIpType6")
+    def oob_ip_type6(self) -> Optional[_builtins.str]:
+        """
+        enum: `autoconf`, `dhcp`, `disabled`, `static`
+        """
+        return pulumi.get(self, "oob_ip_type6")
+
+    @_builtins.property
+    @pulumi.getter(name="rootPassword")
+    def root_password(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "root_password")
+
+
+@pulumi.output_type
+class MxedgeOobIpConfig(dict):
+    def __init__(__self__, *,
+                 autoconf6: Optional[_builtins.bool] = None,
+                 dhcp6: Optional[_builtins.bool] = None,
+                 dns: Optional[Sequence[_builtins.str]] = None,
+                 gateway: Optional[_builtins.str] = None,
+                 gateway6: Optional[_builtins.str] = None,
+                 ip: Optional[_builtins.str] = None,
+                 ip6: Optional[_builtins.str] = None,
+                 netmask: Optional[_builtins.str] = None,
+                 netmask6: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 type6: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] dns: IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+        :param _builtins.str gateway: If `type`=`static`
+        :param _builtins.str ip: If `type`=`static`
+        :param _builtins.str netmask: If `type`=`static`
+        :param _builtins.str type: enum: `dhcp`, `static`
+        :param _builtins.str type6: enum: `dhcp`, `static`
+        """
+        if autoconf6 is not None:
+            pulumi.set(__self__, "autoconf6", autoconf6)
+        if dhcp6 is not None:
+            pulumi.set(__self__, "dhcp6", dhcp6)
+        if dns is not None:
+            pulumi.set(__self__, "dns", dns)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if gateway6 is not None:
+            pulumi.set(__self__, "gateway6", gateway6)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if ip6 is not None:
+            pulumi.set(__self__, "ip6", ip6)
+        if netmask is not None:
+            pulumi.set(__self__, "netmask", netmask)
+        if netmask6 is not None:
+            pulumi.set(__self__, "netmask6", netmask6)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if type6 is not None:
+            pulumi.set(__self__, "type6", type6)
+
+    @_builtins.property
+    @pulumi.getter
+    def autoconf6(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "autoconf6")
+
+    @_builtins.property
+    @pulumi.getter
+    def dhcp6(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "dhcp6")
+
+    @_builtins.property
+    @pulumi.getter
+    def dns(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+        """
+        return pulumi.get(self, "dns")
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> Optional[_builtins.str]:
+        """
+        If `type`=`static`
+        """
+        return pulumi.get(self, "gateway")
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway6(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "gateway6")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[_builtins.str]:
+        """
+        If `type`=`static`
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip6(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "ip6")
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask(self) -> Optional[_builtins.str]:
+        """
+        If `type`=`static`
+        """
+        return pulumi.get(self, "netmask")
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask6(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "netmask6")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        enum: `dhcp`, `static`
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def type6(self) -> Optional[_builtins.str]:
+        """
+        enum: `dhcp`, `static`
+        """
+        return pulumi.get(self, "type6")
+
+
+@pulumi.output_type
+class MxedgeProxy(dict):
+    def __init__(__self__, *,
+                 disabled: Optional[_builtins.bool] = None,
+                 url: Optional[_builtins.str] = None):
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "disabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class MxedgeTuntermDhcpdConfig(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 servers: Optional[Sequence[_builtins.str]] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] servers: List of DHCP servers; required if `type`==`relay`
+        :param _builtins.str type: enum: `relay`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if servers is not None:
+            pulumi.set(__self__, "servers", servers)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of DHCP servers; required if `type`==`relay`
+        """
+        return pulumi.get(self, "servers")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        enum: `relay`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class MxedgeTuntermExtraRoutes(dict):
+    def __init__(__self__, *,
+                 via: Optional[_builtins.str] = None):
+        if via is not None:
+            pulumi.set(__self__, "via", via)
+
+    @_builtins.property
+    @pulumi.getter
+    def via(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "via")
+
+
+@pulumi.output_type
+class MxedgeTuntermIgmpSnoopingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vlanIds":
+            suggest = "vlan_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxedgeTuntermIgmpSnoopingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxedgeTuntermIgmpSnoopingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxedgeTuntermIgmpSnoopingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 querier: Optional['outputs.MxedgeTuntermIgmpSnoopingConfigQuerier'] = None,
+                 vlan_ids: Optional[Sequence[_builtins.int]] = None):
+        """
+        :param Sequence[_builtins.int] vlan_ids: List of vlans on which tunterm performs IGMP snooping
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if querier is not None:
+            pulumi.set(__self__, "querier", querier)
+        if vlan_ids is not None:
+            pulumi.set(__self__, "vlan_ids", vlan_ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def querier(self) -> Optional['outputs.MxedgeTuntermIgmpSnoopingConfigQuerier']:
+        return pulumi.get(self, "querier")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanIds")
+    def vlan_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        List of vlans on which tunterm performs IGMP snooping
+        """
+        return pulumi.get(self, "vlan_ids")
+
+
+@pulumi.output_type
+class MxedgeTuntermIgmpSnoopingConfigQuerier(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxResponseTime":
+            suggest = "max_response_time"
+        elif key == "queryInterval":
+            suggest = "query_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxedgeTuntermIgmpSnoopingConfigQuerier. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxedgeTuntermIgmpSnoopingConfigQuerier.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxedgeTuntermIgmpSnoopingConfigQuerier.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_response_time: Optional[_builtins.int] = None,
+                 mtu: Optional[_builtins.int] = None,
+                 query_interval: Optional[_builtins.int] = None,
+                 robustness: Optional[_builtins.int] = None,
+                 version: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int max_response_time: Querier's query response interval, in tenths-of-seconds
+        :param _builtins.int mtu: The MTU we use (needed when forming large IGMPv3 Reports)
+        :param _builtins.int query_interval: Querier's query interval, in seconds
+        :param _builtins.int robustness: Querier's robustness
+        :param _builtins.int version: Querier's maximum protocol version
+        """
+        if max_response_time is not None:
+            pulumi.set(__self__, "max_response_time", max_response_time)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
+        if query_interval is not None:
+            pulumi.set(__self__, "query_interval", query_interval)
+        if robustness is not None:
+            pulumi.set(__self__, "robustness", robustness)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="maxResponseTime")
+    def max_response_time(self) -> Optional[_builtins.int]:
+        """
+        Querier's query response interval, in tenths-of-seconds
+        """
+        return pulumi.get(self, "max_response_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def mtu(self) -> Optional[_builtins.int]:
+        """
+        The MTU we use (needed when forming large IGMPv3 Reports)
+        """
+        return pulumi.get(self, "mtu")
+
+    @_builtins.property
+    @pulumi.getter(name="queryInterval")
+    def query_interval(self) -> Optional[_builtins.int]:
+        """
+        Querier's query interval, in seconds
+        """
+        return pulumi.get(self, "query_interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def robustness(self) -> Optional[_builtins.int]:
+        """
+        Querier's robustness
+        """
+        return pulumi.get(self, "robustness")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.int]:
+        """
+        Querier's maximum protocol version
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class MxedgeTuntermIpConfig(dict):
+    def __init__(__self__, *,
+                 gateway: _builtins.str,
+                 ip: _builtins.str,
+                 netmask: _builtins.str,
+                 gateway6: Optional[_builtins.str] = None,
+                 ip6: Optional[_builtins.str] = None,
+                 netmask6: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ip: Untagged VLAN
+        """
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "netmask", netmask)
+        if gateway6 is not None:
+            pulumi.set(__self__, "gateway6", gateway6)
+        if ip6 is not None:
+            pulumi.set(__self__, "ip6", ip6)
+        if netmask6 is not None:
+            pulumi.set(__self__, "netmask6", netmask6)
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway(self) -> _builtins.str:
+        return pulumi.get(self, "gateway")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        Untagged VLAN
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask(self) -> _builtins.str:
+        return pulumi.get(self, "netmask")
+
+    @_builtins.property
+    @pulumi.getter
+    def gateway6(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "gateway6")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip6(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "ip6")
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask6(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "netmask6")
+
+
+@pulumi.output_type
+class MxedgeTuntermMonitoring(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "srcVlanId":
+            suggest = "src_vlan_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxedgeTuntermMonitoring. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxedgeTuntermMonitoring.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxedgeTuntermMonitoring.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 port: _builtins.int,
+                 protocol: _builtins.str,
+                 src_vlan_id: _builtins.int,
+                 timeout: _builtins.int):
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "src_vlan_id", src_vlan_id)
+        pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="srcVlanId")
+    def src_vlan_id(self) -> _builtins.int:
+        return pulumi.get(self, "src_vlan_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class MxedgeTuntermMulticastConfig(dict):
+    def __init__(__self__, *,
+                 mdns: Optional['outputs.MxedgeTuntermMulticastConfigMdns'] = None,
+                 ssdp: Optional['outputs.MxedgeTuntermMulticastConfigSsdp'] = None):
+        if mdns is not None:
+            pulumi.set(__self__, "mdns", mdns)
+        if ssdp is not None:
+            pulumi.set(__self__, "ssdp", ssdp)
+
+    @_builtins.property
+    @pulumi.getter
+    def mdns(self) -> Optional['outputs.MxedgeTuntermMulticastConfigMdns']:
+        return pulumi.get(self, "mdns")
+
+    @_builtins.property
+    @pulumi.getter
+    def ssdp(self) -> Optional['outputs.MxedgeTuntermMulticastConfigSsdp']:
+        return pulumi.get(self, "ssdp")
+
+
+@pulumi.output_type
+class MxedgeTuntermMulticastConfigMdns(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vlanIds":
+            suggest = "vlan_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxedgeTuntermMulticastConfigMdns. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxedgeTuntermMulticastConfigMdns.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxedgeTuntermMulticastConfigMdns.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 vlan_ids: Optional[Sequence[_builtins.str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if vlan_ids is not None:
+            pulumi.set(__self__, "vlan_ids", vlan_ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanIds")
+    def vlan_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "vlan_ids")
+
+
+@pulumi.output_type
+class MxedgeTuntermMulticastConfigSsdp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vlanIds":
+            suggest = "vlan_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxedgeTuntermMulticastConfigSsdp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxedgeTuntermMulticastConfigSsdp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxedgeTuntermMulticastConfigSsdp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 vlan_ids: Optional[Sequence[_builtins.str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if vlan_ids is not None:
+            pulumi.set(__self__, "vlan_ids", vlan_ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanIds")
+    def vlan_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "vlan_ids")
+
+
+@pulumi.output_type
+class MxedgeTuntermOtherIpConfigs(dict):
+    def __init__(__self__, *,
+                 ip: _builtins.str,
+                 netmask: _builtins.str):
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "netmask", netmask)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def netmask(self) -> _builtins.str:
+        return pulumi.get(self, "netmask")
+
+
+@pulumi.output_type
+class MxedgeTuntermPortConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "downstreamPorts":
+            suggest = "downstream_ports"
+        elif key == "separateUpstreamDownstream":
+            suggest = "separate_upstream_downstream"
+        elif key == "upstreamPortVlanId":
+            suggest = "upstream_port_vlan_id"
+        elif key == "upstreamPorts":
+            suggest = "upstream_ports"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxedgeTuntermPortConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxedgeTuntermPortConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxedgeTuntermPortConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 downstream_ports: Optional[Sequence[_builtins.str]] = None,
+                 separate_upstream_downstream: Optional[_builtins.bool] = None,
+                 upstream_port_vlan_id: Optional[_builtins.str] = None,
+                 upstream_ports: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] downstream_ports: List of ports to be used for downstream (to AP) purpose
+        :param _builtins.bool separate_upstream_downstream: Whether to separate upstream / downstream ports. default is false where all ports will be used.
+        :param Sequence[_builtins.str] upstream_ports: List of ports to be used for upstream purpose (to LAN)
+        """
+        if downstream_ports is not None:
+            pulumi.set(__self__, "downstream_ports", downstream_ports)
+        if separate_upstream_downstream is not None:
+            pulumi.set(__self__, "separate_upstream_downstream", separate_upstream_downstream)
+        if upstream_port_vlan_id is not None:
+            pulumi.set(__self__, "upstream_port_vlan_id", upstream_port_vlan_id)
+        if upstream_ports is not None:
+            pulumi.set(__self__, "upstream_ports", upstream_ports)
+
+    @_builtins.property
+    @pulumi.getter(name="downstreamPorts")
+    def downstream_ports(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of ports to be used for downstream (to AP) purpose
+        """
+        return pulumi.get(self, "downstream_ports")
+
+    @_builtins.property
+    @pulumi.getter(name="separateUpstreamDownstream")
+    def separate_upstream_downstream(self) -> Optional[_builtins.bool]:
+        """
+        Whether to separate upstream / downstream ports. default is false where all ports will be used.
+        """
+        return pulumi.get(self, "separate_upstream_downstream")
+
+    @_builtins.property
+    @pulumi.getter(name="upstreamPortVlanId")
+    def upstream_port_vlan_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "upstream_port_vlan_id")
+
+    @_builtins.property
+    @pulumi.getter(name="upstreamPorts")
+    def upstream_ports(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of ports to be used for upstream purpose (to LAN)
+        """
+        return pulumi.get(self, "upstream_ports")
+
+
+@pulumi.output_type
+class MxedgeTuntermSwitchConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "portVlanId":
+            suggest = "port_vlan_id"
+        elif key == "vlanIds":
+            suggest = "vlan_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxedgeTuntermSwitchConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxedgeTuntermSwitchConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxedgeTuntermSwitchConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 port_vlan_id: Optional[_builtins.int] = None,
+                 vlan_ids: Optional[Sequence[_builtins.str]] = None):
+        if port_vlan_id is not None:
+            pulumi.set(__self__, "port_vlan_id", port_vlan_id)
+        if vlan_ids is not None:
+            pulumi.set(__self__, "vlan_ids", vlan_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="portVlanId")
+    def port_vlan_id(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "port_vlan_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanIds")
+    def vlan_ids(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "vlan_ids")
+
+
+@pulumi.output_type
+class MxedgeVersions(dict):
+    def __init__(__self__, *,
+                 mxagent: Optional[_builtins.str] = None,
+                 tunterm: Optional[_builtins.str] = None):
+        if mxagent is not None:
+            pulumi.set(__self__, "mxagent", mxagent)
+        if tunterm is not None:
+            pulumi.set(__self__, "tunterm", tunterm)
+
+    @_builtins.property
+    @pulumi.getter
+    def mxagent(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "mxagent")
+
+    @_builtins.property
+    @pulumi.getter
+    def tunterm(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "tunterm")
 
 
 @pulumi.output_type
@@ -18851,12 +19812,14 @@ class NetworktemplatePortUsagesRule(dict):
 
     def __init__(__self__, *,
                  src: _builtins.str,
+                 description: Optional[_builtins.str] = None,
                  equals: Optional[_builtins.str] = None,
                  equals_anies: Optional[Sequence[_builtins.str]] = None,
                  expression: Optional[_builtins.str] = None,
                  usage: Optional[_builtins.str] = None):
         """
         :param _builtins.str src: enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_description`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+        :param _builtins.str description: Optional description of the rule
         :param Sequence[_builtins.str] equals_anies: Use `equals_any` to match any item in a list
         :param _builtins.str expression: "[0:3]":"abcdef" > "abc"
                "split(.)[1]": "a.b.c" > "b"
@@ -18864,6 +19827,8 @@ class NetworktemplatePortUsagesRule(dict):
         :param _builtins.str usage: `port_usage` name
         """
         pulumi.set(__self__, "src", src)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if equals is not None:
             pulumi.set(__self__, "equals", equals)
         if equals_anies is not None:
@@ -18880,6 +19845,14 @@ class NetworktemplatePortUsagesRule(dict):
         enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_description`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
         """
         return pulumi.get(self, "src")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Optional description of the rule
+        """
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
@@ -24754,9 +25727,11 @@ class SettingJuniperSrxAutoUpgrade(dict):
     def __init__(__self__, *,
                  custom_versions: Optional[Mapping[str, _builtins.str]] = None,
                  enabled: Optional[_builtins.bool] = None,
-                 snapshot: Optional[_builtins.bool] = None):
+                 snapshot: Optional[_builtins.bool] = None,
+                 version: Optional[_builtins.str] = None):
         """
         :param Mapping[str, _builtins.str] custom_versions: Property key is the SRX Hardware model (e.g. "SRX4600")
+        :param _builtins.str version: Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when custom_versions not specified
         """
         if custom_versions is not None:
             pulumi.set(__self__, "custom_versions", custom_versions)
@@ -24764,6 +25739,8 @@ class SettingJuniperSrxAutoUpgrade(dict):
             pulumi.set(__self__, "enabled", enabled)
         if snapshot is not None:
             pulumi.set(__self__, "snapshot", snapshot)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter(name="customVersions")
@@ -24782,6 +25759,14 @@ class SettingJuniperSrxAutoUpgrade(dict):
     @pulumi.getter
     def snapshot(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "snapshot")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when custom_versions not specified
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -25066,6 +26051,8 @@ class SettingMistNac(dict):
             suggest = "use_ip_version"
         elif key == "useSslPort":
             suggest = "use_ssl_port"
+        elif key == "usermacExpiry":
+            suggest = "usermac_expiry"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SettingMistNac. Access the value via the '{suggest}' property getter instead.")
@@ -25084,23 +26071,27 @@ class SettingMistNac(dict):
                  disable_rsae_algorithms: Optional[_builtins.bool] = None,
                  eap_ssl_security_level: Optional[_builtins.int] = None,
                  eu_only: Optional[_builtins.bool] = None,
+                 fingerprinting: Optional['outputs.SettingMistNacFingerprinting'] = None,
                  idp_machine_cert_lookup_field: Optional[_builtins.str] = None,
                  idp_user_cert_lookup_field: Optional[_builtins.str] = None,
                  idps: Optional[Sequence['outputs.SettingMistNacIdp']] = None,
                  server_cert: Optional['outputs.SettingMistNacServerCert'] = None,
                  use_ip_version: Optional[_builtins.str] = None,
-                 use_ssl_port: Optional[_builtins.bool] = None):
+                 use_ssl_port: Optional[_builtins.bool] = None,
+                 usermac_expiry: Optional[_builtins.int] = None):
         """
         :param Sequence[_builtins.str] cacerts: List of PEM-encoded ca certs
         :param _builtins.str default_idp_id: use this IDP when no explicit realm present in the incoming username/CN OR when no IDP is explicitly mapped to the incoming realm.
         :param _builtins.bool disable_rsae_algorithms: to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
         :param _builtins.int eap_ssl_security_level: eap ssl security level, see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
         :param _builtins.bool eu_only: By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
+        :param 'SettingMistNacFingerprintingArgs' fingerprinting: Allows customer to enable client fingerprinting for policy enforcement
         :param _builtins.str idp_machine_cert_lookup_field: allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
         :param _builtins.str idp_user_cert_lookup_field: allow customer to choose the EAP-TLS client certificate's field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
         :param 'SettingMistNacServerCertArgs' server_cert: radius server cert to be presented in EAP TLS
         :param _builtins.str use_ip_version: by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
         :param _builtins.bool use_ssl_port: By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
+        :param _builtins.int usermac_expiry: Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
         """
         if cacerts is not None:
             pulumi.set(__self__, "cacerts", cacerts)
@@ -25112,6 +26103,8 @@ class SettingMistNac(dict):
             pulumi.set(__self__, "eap_ssl_security_level", eap_ssl_security_level)
         if eu_only is not None:
             pulumi.set(__self__, "eu_only", eu_only)
+        if fingerprinting is not None:
+            pulumi.set(__self__, "fingerprinting", fingerprinting)
         if idp_machine_cert_lookup_field is not None:
             pulumi.set(__self__, "idp_machine_cert_lookup_field", idp_machine_cert_lookup_field)
         if idp_user_cert_lookup_field is not None:
@@ -25124,6 +26117,8 @@ class SettingMistNac(dict):
             pulumi.set(__self__, "use_ip_version", use_ip_version)
         if use_ssl_port is not None:
             pulumi.set(__self__, "use_ssl_port", use_ssl_port)
+        if usermac_expiry is not None:
+            pulumi.set(__self__, "usermac_expiry", usermac_expiry)
 
     @_builtins.property
     @pulumi.getter
@@ -25164,6 +26159,14 @@ class SettingMistNac(dict):
         By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
         """
         return pulumi.get(self, "eu_only")
+
+    @_builtins.property
+    @pulumi.getter
+    def fingerprinting(self) -> Optional['outputs.SettingMistNacFingerprinting']:
+        """
+        Allows customer to enable client fingerprinting for policy enforcement
+        """
+        return pulumi.get(self, "fingerprinting")
 
     @_builtins.property
     @pulumi.getter(name="idpMachineCertLookupField")
@@ -25209,6 +26212,90 @@ class SettingMistNac(dict):
         By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
         """
         return pulumi.get(self, "use_ssl_port")
+
+    @_builtins.property
+    @pulumi.getter(name="usermacExpiry")
+    def usermac_expiry(self) -> Optional[_builtins.int]:
+        """
+        Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+        """
+        return pulumi.get(self, "usermac_expiry")
+
+
+@pulumi.output_type
+class SettingMistNacFingerprinting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "generateCoa":
+            suggest = "generate_coa"
+        elif key == "generateWirelessCoa":
+            suggest = "generate_wireless_coa"
+        elif key == "wirelessCoaType":
+            suggest = "wireless_coa_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SettingMistNacFingerprinting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SettingMistNacFingerprinting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SettingMistNacFingerprinting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 generate_coa: Optional[_builtins.bool] = None,
+                 generate_wireless_coa: Optional[_builtins.bool] = None,
+                 wireless_coa_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: enable/disable writes to NAC DDB fingerprint table
+        :param _builtins.bool generate_coa: enable/disable CoA triggers on fingerprint change for wired clients, always port-bounce
+        :param _builtins.bool generate_wireless_coa: enable/disable CoA triggers on fingerprint change for wireless clients
+        :param _builtins.str wireless_coa_type: enum: `reauth`, `disconnect`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if generate_coa is not None:
+            pulumi.set(__self__, "generate_coa", generate_coa)
+        if generate_wireless_coa is not None:
+            pulumi.set(__self__, "generate_wireless_coa", generate_wireless_coa)
+        if wireless_coa_type is not None:
+            pulumi.set(__self__, "wireless_coa_type", wireless_coa_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        enable/disable writes to NAC DDB fingerprint table
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="generateCoa")
+    def generate_coa(self) -> Optional[_builtins.bool]:
+        """
+        enable/disable CoA triggers on fingerprint change for wired clients, always port-bounce
+        """
+        return pulumi.get(self, "generate_coa")
+
+    @_builtins.property
+    @pulumi.getter(name="generateWirelessCoa")
+    def generate_wireless_coa(self) -> Optional[_builtins.bool]:
+        """
+        enable/disable CoA triggers on fingerprint change for wireless clients
+        """
+        return pulumi.get(self, "generate_wireless_coa")
+
+    @_builtins.property
+    @pulumi.getter(name="wirelessCoaType")
+    def wireless_coa_type(self) -> Optional[_builtins.str]:
+        """
+        enum: `reauth`, `disconnect`
+        """
+        return pulumi.get(self, "wireless_coa_type")
 
 
 @pulumi.output_type
@@ -25741,10 +26828,12 @@ class SettingSsrAutoUpgrade(dict):
     def __init__(__self__, *,
                  channel: Optional[_builtins.str] = None,
                  custom_versions: Optional[Mapping[str, _builtins.str]] = None,
-                 enabled: Optional[_builtins.bool] = None):
+                 enabled: Optional[_builtins.bool] = None,
+                 version: Optional[_builtins.str] = None):
         """
         :param _builtins.str channel: upgrade channel to follow. enum: `alpha`, `beta`, `stable`
         :param Mapping[str, _builtins.str] custom_versions: Property key is the SSR model (e.g. "SSR130").
+        :param _builtins.str version: Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when custom_versions not specified
         """
         if channel is not None:
             pulumi.set(__self__, "channel", channel)
@@ -25752,6 +26841,8 @@ class SettingSsrAutoUpgrade(dict):
             pulumi.set(__self__, "custom_versions", custom_versions)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
@@ -25773,6 +26864,14 @@ class SettingSsrAutoUpgrade(dict):
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when custom_versions not specified
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -26015,31 +27114,23 @@ class SettingSyntheticTest(dict):
 class SettingSyntheticTestCustomProbes(dict):
     def __init__(__self__, *,
                  aggressiveness: Optional[_builtins.str] = None,
-                 host: Optional[_builtins.str] = None,
-                 port: Optional[_builtins.int] = None,
+                 target: Optional[_builtins.str] = None,
                  threshold: Optional[_builtins.int] = None,
-                 type: Optional[_builtins.str] = None,
-                 url: Optional[_builtins.str] = None):
+                 type: Optional[_builtins.str] = None):
         """
         :param _builtins.str aggressiveness: enum: `auto`, `high`, `low`
-        :param _builtins.str host: If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
-        :param _builtins.int port: If `type`==`tcp`, Port to be used for the custom probe
+        :param _builtins.str target: Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
         :param _builtins.int threshold: In milliseconds
-        :param _builtins.str type: enum: `curl`, `icmp`, `tcp`
-        :param _builtins.str url: If `type`==`curl`, URL to be used for the custom probe, can be url or IP
+        :param _builtins.str type: enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
         """
         if aggressiveness is not None:
             pulumi.set(__self__, "aggressiveness", aggressiveness)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
         if threshold is not None:
             pulumi.set(__self__, "threshold", threshold)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
 
     @_builtins.property
     @pulumi.getter
@@ -26051,19 +27142,11 @@ class SettingSyntheticTestCustomProbes(dict):
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[_builtins.str]:
+    def target(self) -> Optional[_builtins.str]:
         """
-        If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+        Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
         """
-        return pulumi.get(self, "host")
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> Optional[_builtins.int]:
-        """
-        If `type`==`tcp`, Port to be used for the custom probe
-        """
-        return pulumi.get(self, "port")
+        return pulumi.get(self, "target")
 
     @_builtins.property
     @pulumi.getter
@@ -26077,17 +27160,9 @@ class SettingSyntheticTestCustomProbes(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        enum: `curl`, `icmp`, `tcp`
+        enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
         """
         return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter
-    def url(self) -> Optional[_builtins.str]:
-        """
-        If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-        """
-        return pulumi.get(self, "url")
 
 
 @pulumi.output_type

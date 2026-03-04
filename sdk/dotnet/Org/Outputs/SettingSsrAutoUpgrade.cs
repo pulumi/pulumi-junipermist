@@ -22,6 +22,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomVersions;
         public readonly bool? Enabled;
+        /// <summary>
+        /// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when CustomVersions not specified
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
         private SettingSsrAutoUpgrade(
@@ -29,11 +33,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             ImmutableDictionary<string, string>? customVersions,
 
-            bool? enabled)
+            bool? enabled,
+
+            string? version)
         {
             Channel = channel;
             CustomVersions = customVersions;
             Enabled = enabled;
+            Version = version;
         }
     }
 }

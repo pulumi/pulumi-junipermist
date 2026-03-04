@@ -18,30 +18,20 @@ public final class SettingSyntheticTestCustomProbes {
      */
     private @Nullable String aggressiveness;
     /**
-     * @return If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+     * @return Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
      * 
      */
-    private @Nullable String host;
-    /**
-     * @return If `type`==`tcp`, Port to be used for the custom probe
-     * 
-     */
-    private @Nullable Integer port;
+    private @Nullable String target;
     /**
      * @return In milliseconds
      * 
      */
     private @Nullable Integer threshold;
     /**
-     * @return enum: `curl`, `icmp`, `tcp`
+     * @return enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
      * 
      */
     private @Nullable String type;
-    /**
-     * @return If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-     * 
-     */
-    private @Nullable String url;
 
     private SettingSyntheticTestCustomProbes() {}
     /**
@@ -52,18 +42,11 @@ public final class SettingSyntheticTestCustomProbes {
         return Optional.ofNullable(this.aggressiveness);
     }
     /**
-     * @return If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+     * @return Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
      * 
      */
-    public Optional<String> host() {
-        return Optional.ofNullable(this.host);
-    }
-    /**
-     * @return If `type`==`tcp`, Port to be used for the custom probe
-     * 
-     */
-    public Optional<Integer> port() {
-        return Optional.ofNullable(this.port);
+    public Optional<String> target() {
+        return Optional.ofNullable(this.target);
     }
     /**
      * @return In milliseconds
@@ -73,18 +56,11 @@ public final class SettingSyntheticTestCustomProbes {
         return Optional.ofNullable(this.threshold);
     }
     /**
-     * @return enum: `curl`, `icmp`, `tcp`
+     * @return enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
-    }
-    /**
-     * @return If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-     * 
-     */
-    public Optional<String> url() {
-        return Optional.ofNullable(this.url);
     }
 
     public static Builder builder() {
@@ -97,20 +73,16 @@ public final class SettingSyntheticTestCustomProbes {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String aggressiveness;
-        private @Nullable String host;
-        private @Nullable Integer port;
+        private @Nullable String target;
         private @Nullable Integer threshold;
         private @Nullable String type;
-        private @Nullable String url;
         public Builder() {}
         public Builder(SettingSyntheticTestCustomProbes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aggressiveness = defaults.aggressiveness;
-    	      this.host = defaults.host;
-    	      this.port = defaults.port;
+    	      this.target = defaults.target;
     	      this.threshold = defaults.threshold;
     	      this.type = defaults.type;
-    	      this.url = defaults.url;
         }
 
         @CustomType.Setter
@@ -120,15 +92,9 @@ public final class SettingSyntheticTestCustomProbes {
             return this;
         }
         @CustomType.Setter
-        public Builder host(@Nullable String host) {
+        public Builder target(@Nullable String target) {
 
-            this.host = host;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder port(@Nullable Integer port) {
-
-            this.port = port;
+            this.target = target;
             return this;
         }
         @CustomType.Setter
@@ -143,20 +109,12 @@ public final class SettingSyntheticTestCustomProbes {
             this.type = type;
             return this;
         }
-        @CustomType.Setter
-        public Builder url(@Nullable String url) {
-
-            this.url = url;
-            return this;
-        }
         public SettingSyntheticTestCustomProbes build() {
             final var _resultValue = new SettingSyntheticTestCustomProbes();
             _resultValue.aggressiveness = aggressiveness;
-            _resultValue.host = host;
-            _resultValue.port = port;
+            _resultValue.target = target;
             _resultValue.threshold = threshold;
             _resultValue.type = type;
-            _resultValue.url = url;
             return _resultValue;
         }
     }

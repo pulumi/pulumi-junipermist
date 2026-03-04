@@ -1688,10 +1688,6 @@ export namespace device {
          */
         wanArpPolicer?: string;
         /**
-         * If `wanType`==`wan`, disable speedtest
-         */
-        wanDisableSpeedtest?: boolean;
-        /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: string;
@@ -1719,6 +1715,10 @@ export namespace device {
          * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          */
         wanSourceNat?: outputs.device.GatewayPortConfigWanSourceNat;
+        /**
+         * Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+         */
+        wanSpeedtestMode: string;
         /**
          * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
@@ -2054,22 +2054,38 @@ export namespace device {
     }
 
     export interface GatewayServicePolicySkyatp {
+        dnsDgaDetection?: outputs.device.GatewayServicePolicySkyatpDnsDgaDetection;
+        dnsTunnelDetection?: outputs.device.GatewayServicePolicySkyatpDnsTunnelDetection;
+        httpInspection?: outputs.device.GatewayServicePolicySkyatpHttpInspection;
+        iotDevicePolicy?: outputs.device.GatewayServicePolicySkyatpIotDevicePolicy;
+    }
+
+    export interface GatewayServicePolicySkyatpDnsDgaDetection {
+        enabled?: boolean;
         /**
-         * enum: `disabled`, `default`, `standard`, `strict`
+         * enum: `default`, `standard`, `strict`
          */
-        dnsDgaDetection: string;
+        profile?: string;
+    }
+
+    export interface GatewayServicePolicySkyatpDnsTunnelDetection {
+        enabled?: boolean;
         /**
-         * enum: `disabled`, `default`, `standard`, `strict`
+         * enum: `default`, `standard`, `strict`
          */
-        dnsTunnelDetection: string;
+        profile?: string;
+    }
+
+    export interface GatewayServicePolicySkyatpHttpInspection {
+        enabled?: boolean;
         /**
-         * enum: `disabled`, `standard`
+         * enum: `standard`, `strict`
          */
-        httpInspection: string;
-        /**
-         * enum: `disabled`, `enabled`
-         */
-        iotDevicePolicy: string;
+        profile?: string;
+    }
+
+    export interface GatewayServicePolicySkyatpIotDevicePolicy {
+        enabled?: boolean;
     }
 
     export interface GatewayServicePolicySslProxy {
@@ -5975,6 +5991,10 @@ export namespace device {
     }
 
     export interface SwitchPortUsagesRule {
+        /**
+         * Optional description of the rule
+         */
+        description?: string;
         equals?: string;
         /**
          * Use `equalsAny` to match any item in a list
@@ -8205,10 +8225,6 @@ export namespace org {
          */
         wanArpPolicer?: string;
         /**
-         * If `wanType`==`wan`, disable speedtest
-         */
-        wanDisableSpeedtest?: boolean;
-        /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: string;
@@ -8236,6 +8252,10 @@ export namespace org {
          * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          */
         wanSourceNat?: outputs.org.DeviceprofileGatewayPortConfigWanSourceNat;
+        /**
+         * Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+         */
+        wanSpeedtestMode: string;
         /**
          * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
@@ -8559,22 +8579,38 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayServicePolicySkyatp {
+        dnsDgaDetection?: outputs.org.DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection;
+        dnsTunnelDetection?: outputs.org.DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection;
+        httpInspection?: outputs.org.DeviceprofileGatewayServicePolicySkyatpHttpInspection;
+        iotDevicePolicy?: outputs.org.DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy;
+    }
+
+    export interface DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection {
+        enabled?: boolean;
         /**
-         * enum: `disabled`, `default`, `standard`, `strict`
+         * enum: `default`, `standard`, `strict`
          */
-        dnsDgaDetection: string;
+        profile?: string;
+    }
+
+    export interface DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection {
+        enabled?: boolean;
         /**
-         * enum: `disabled`, `default`, `standard`, `strict`
+         * enum: `default`, `standard`, `strict`
          */
-        dnsTunnelDetection: string;
+        profile?: string;
+    }
+
+    export interface DeviceprofileGatewayServicePolicySkyatpHttpInspection {
+        enabled?: boolean;
         /**
-         * enum: `disabled`, `standard`
+         * enum: `standard`, `strict`
          */
-        httpInspection: string;
-        /**
-         * enum: `disabled`, `enabled`
-         */
-        iotDevicePolicy: string;
+        profile?: string;
+    }
+
+    export interface DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy {
+        enabled?: boolean;
     }
 
     export interface DeviceprofileGatewayServicePolicySslProxy {
@@ -9753,10 +9789,6 @@ export namespace org {
          */
         wanArpPolicer?: string;
         /**
-         * If `wanType`==`wan`, disable speedtest
-         */
-        wanDisableSpeedtest?: boolean;
-        /**
          * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: string;
@@ -9784,6 +9816,10 @@ export namespace org {
          * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          */
         wanSourceNat?: outputs.org.GatewaytemplatePortConfigWanSourceNat;
+        /**
+         * Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+         */
+        wanSpeedtestMode: string;
         /**
          * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
@@ -10107,22 +10143,38 @@ export namespace org {
     }
 
     export interface GatewaytemplateServicePolicySkyatp {
+        dnsDgaDetection?: outputs.org.GatewaytemplateServicePolicySkyatpDnsDgaDetection;
+        dnsTunnelDetection?: outputs.org.GatewaytemplateServicePolicySkyatpDnsTunnelDetection;
+        httpInspection?: outputs.org.GatewaytemplateServicePolicySkyatpHttpInspection;
+        iotDevicePolicy?: outputs.org.GatewaytemplateServicePolicySkyatpIotDevicePolicy;
+    }
+
+    export interface GatewaytemplateServicePolicySkyatpDnsDgaDetection {
+        enabled?: boolean;
         /**
-         * enum: `disabled`, `default`, `standard`, `strict`
+         * enum: `default`, `standard`, `strict`
          */
-        dnsDgaDetection: string;
+        profile?: string;
+    }
+
+    export interface GatewaytemplateServicePolicySkyatpDnsTunnelDetection {
+        enabled?: boolean;
         /**
-         * enum: `disabled`, `default`, `standard`, `strict`
+         * enum: `default`, `standard`, `strict`
          */
-        dnsTunnelDetection: string;
+        profile?: string;
+    }
+
+    export interface GatewaytemplateServicePolicySkyatpHttpInspection {
+        enabled?: boolean;
         /**
-         * enum: `disabled`, `standard`
+         * enum: `standard`, `strict`
          */
-        httpInspection: string;
-        /**
-         * enum: `disabled`, `enabled`
-         */
-        iotDevicePolicy: string;
+        profile?: string;
+    }
+
+    export interface GatewaytemplateServicePolicySkyatpIotDevicePolicy {
+        enabled?: boolean;
     }
 
     export interface GatewaytemplateServicePolicySslProxy {
@@ -13023,6 +13075,172 @@ export namespace org {
         vcMac: string;
     }
 
+    export interface MxedgeMxedgeMgmt {
+        configAutoRevert: boolean;
+        fipsEnabled: boolean;
+        mistPassword?: string;
+        /**
+         * enum: `dhcp`, `disabled`, `static`
+         */
+        oobIpType: string;
+        /**
+         * enum: `autoconf`, `dhcp`, `disabled`, `static`
+         */
+        oobIpType6: string;
+        rootPassword?: string;
+    }
+
+    export interface MxedgeOobIpConfig {
+        autoconf6: boolean;
+        dhcp6: boolean;
+        /**
+         * IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+         */
+        dns?: string[];
+        /**
+         * If `type`=`static`
+         */
+        gateway?: string;
+        gateway6?: string;
+        /**
+         * If `type`=`static`
+         */
+        ip?: string;
+        ip6?: string;
+        /**
+         * If `type`=`static`
+         */
+        netmask?: string;
+        netmask6?: string;
+        /**
+         * enum: `dhcp`, `static`
+         */
+        type: string;
+        /**
+         * enum: `dhcp`, `static`
+         */
+        type6: string;
+    }
+
+    export interface MxedgeProxy {
+        disabled: boolean;
+        url?: string;
+    }
+
+    export interface MxedgeTuntermDhcpdConfig {
+        enabled: boolean;
+        /**
+         * List of DHCP servers; required if `type`==`relay`
+         */
+        servers?: string[];
+        /**
+         * enum: `relay`
+         */
+        type: string;
+    }
+
+    export interface MxedgeTuntermExtraRoutes {
+        via?: string;
+    }
+
+    export interface MxedgeTuntermIgmpSnoopingConfig {
+        enabled: boolean;
+        querier?: outputs.org.MxedgeTuntermIgmpSnoopingConfigQuerier;
+        /**
+         * List of vlans on which tunterm performs IGMP snooping
+         */
+        vlanIds?: number[];
+    }
+
+    export interface MxedgeTuntermIgmpSnoopingConfigQuerier {
+        /**
+         * Querier's query response interval, in tenths-of-seconds
+         */
+        maxResponseTime?: number;
+        /**
+         * The MTU we use (needed when forming large IGMPv3 Reports)
+         */
+        mtu?: number;
+        /**
+         * Querier's query interval, in seconds
+         */
+        queryInterval?: number;
+        /**
+         * Querier's robustness
+         */
+        robustness?: number;
+        /**
+         * Querier's maximum protocol version
+         */
+        version?: number;
+    }
+
+    export interface MxedgeTuntermIpConfig {
+        gateway: string;
+        gateway6?: string;
+        /**
+         * Untagged VLAN
+         */
+        ip: string;
+        ip6?: string;
+        netmask: string;
+        netmask6?: string;
+    }
+
+    export interface MxedgeTuntermMonitoring {
+        host: string;
+        port: number;
+        protocol: string;
+        srcVlanId: number;
+        timeout: number;
+    }
+
+    export interface MxedgeTuntermMulticastConfig {
+        mdns?: outputs.org.MxedgeTuntermMulticastConfigMdns;
+        ssdp?: outputs.org.MxedgeTuntermMulticastConfigSsdp;
+    }
+
+    export interface MxedgeTuntermMulticastConfigMdns {
+        enabled?: boolean;
+        vlanIds?: string[];
+    }
+
+    export interface MxedgeTuntermMulticastConfigSsdp {
+        enabled?: boolean;
+        vlanIds?: string[];
+    }
+
+    export interface MxedgeTuntermOtherIpConfigs {
+        ip: string;
+        netmask: string;
+    }
+
+    export interface MxedgeTuntermPortConfig {
+        /**
+         * List of ports to be used for downstream (to AP) purpose
+         */
+        downstreamPorts?: string[];
+        /**
+         * Whether to separate upstream / downstream ports. default is false where all ports will be used.
+         */
+        separateUpstreamDownstream: boolean;
+        upstreamPortVlanId?: string;
+        /**
+         * List of ports to be used for upstream purpose (to LAN)
+         */
+        upstreamPorts?: string[];
+    }
+
+    export interface MxedgeTuntermSwitchConfig {
+        portVlanId?: number;
+        vlanIds?: string[];
+    }
+
+    export interface MxedgeVersions {
+        mxagent: string;
+        tunterm: string;
+    }
+
     export interface NacruleMatching {
         /**
          * enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
@@ -13738,6 +13956,10 @@ export namespace org {
     }
 
     export interface NetworktemplatePortUsagesRule {
+        /**
+         * Optional description of the rule
+         */
+        description?: string;
         equals?: string;
         /**
          * Use `equalsAny` to match any item in a list
@@ -15082,6 +15304,10 @@ export namespace org {
         customVersions?: {[key: string]: string};
         enabled?: boolean;
         snapshot?: boolean;
+        /**
+         * Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+         */
+        version?: string;
     }
 
     export interface SettingJunosShellAccess {
@@ -15156,6 +15382,10 @@ export namespace org {
          */
         euOnly: boolean;
         /**
+         * Allows customer to enable client fingerprinting for policy enforcement
+         */
+        fingerprinting?: outputs.org.SettingMistNacFingerprinting;
+        /**
          * allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
          */
         idpMachineCertLookupField?: string;
@@ -15176,6 +15406,29 @@ export namespace org {
          * By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `useSslPort`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedgeClusters that have mist-nac enabled
          */
         useSslPort?: boolean;
+        /**
+         * Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+         */
+        usermacExpiry: number;
+    }
+
+    export interface SettingMistNacFingerprinting {
+        /**
+         * enable/disable writes to NAC DDB fingerprint table
+         */
+        enabled: boolean;
+        /**
+         * enable/disable CoA triggers on fingerprint change for wired clients, always port-bounce
+         */
+        generateCoa: boolean;
+        /**
+         * enable/disable CoA triggers on fingerprint change for wireless clients
+         */
+        generateWirelessCoa: boolean;
+        /**
+         * enum: `reauth`, `disconnect`
+         */
+        wirelessCoaType?: string;
     }
 
     export interface SettingMistNacIdp {
@@ -15309,6 +15562,10 @@ export namespace org {
          */
         customVersions?: {[key: string]: string};
         enabled?: boolean;
+        /**
+         * Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+         */
+        version?: string;
     }
 
     export interface SettingSsrProxy {
@@ -15369,25 +15626,17 @@ export namespace org {
          */
         aggressiveness: string;
         /**
-         * If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+         * Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
          */
-        host?: string;
-        /**
-         * If `type`==`tcp`, Port to be used for the custom probe
-         */
-        port?: number;
+        target?: string;
         /**
          * In milliseconds
          */
         threshold?: number;
         /**
-         * enum: `curl`, `icmp`, `tcp`
+         * enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
          */
         type: string;
-        /**
-         * If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-         */
-        url?: string;
     }
 
     export interface SettingSyntheticTestLanNetwork {
@@ -18955,6 +19204,10 @@ export namespace site {
     }
 
     export interface NetworktemplatePortUsagesRule {
+        /**
+         * Optional description of the rule
+         */
+        description?: string;
         equals?: string;
         /**
          * Use `equalsAny` to match any item in a list
@@ -20251,6 +20504,10 @@ export namespace site {
         customVersions?: {[key: string]: string};
         enabled?: boolean;
         snapshot?: boolean;
+        /**
+         * Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+         */
+        version?: string;
     }
 
     export interface SettingJuniperSrxGateway {
@@ -20455,6 +20712,10 @@ export namespace site {
          */
         customVersions?: {[key: string]: string};
         enabled?: boolean;
+        /**
+         * Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+         */
+        version?: string;
     }
 
     export interface SettingSsrProxy {
@@ -20489,25 +20750,17 @@ export namespace site {
          */
         aggressiveness: string;
         /**
-         * If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
+         * Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
          */
-        host?: string;
-        /**
-         * If `type`==`tcp`, Port to be used for the custom probe
-         */
-        port?: number;
+        target?: string;
         /**
          * In milliseconds
          */
         threshold?: number;
         /**
-         * enum: `curl`, `icmp`, `tcp`
+         * enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
          */
         type: string;
-        /**
-         * If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-         */
-        url?: string;
     }
 
     export interface SettingSyntheticTestLanNetwork {

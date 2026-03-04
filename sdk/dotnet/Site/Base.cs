@@ -121,6 +121,12 @@ namespace Pulumi.JuniperMist.Site
         public Output<string?> RftemplateId { get; private set; } = null!;
 
         /// <summary>
+        /// Router Template ID, used by gateways
+        /// </summary>
+        [Output("routertemplateId")]
+        public Output<string?> RoutertemplateId { get; private set; } = null!;
+
+        /// <summary>
         /// SecPolicy ID
         /// </summary>
         [Output("secpolicyId")]
@@ -256,6 +262,12 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? RftemplateId { get; set; }
 
         /// <summary>
+        /// Router Template ID, used by gateways
+        /// </summary>
+        [Input("routertemplateId")]
+        public Input<string>? RoutertemplateId { get; set; }
+
+        /// <summary>
         /// SecPolicy ID
         /// </summary>
         [Input("secpolicyId")]
@@ -349,6 +361,12 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("rftemplateId")]
         public Input<string>? RftemplateId { get; set; }
+
+        /// <summary>
+        /// Router Template ID, used by gateways
+        /// </summary>
+        [Input("routertemplateId")]
+        public Input<string>? RoutertemplateId { get; set; }
 
         /// <summary>
         /// SecPolicy ID

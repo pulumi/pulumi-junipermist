@@ -5,7 +5,10 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,63 +18,31 @@ public final class DeviceprofileGatewayServicePolicySkyatpArgs extends com.pulum
 
     public static final DeviceprofileGatewayServicePolicySkyatpArgs Empty = new DeviceprofileGatewayServicePolicySkyatpArgs();
 
-    /**
-     * enum: `disabled`, `default`, `standard`, `strict`
-     * 
-     */
     @Import(name="dnsDgaDetection")
-    private @Nullable Output<String> dnsDgaDetection;
+    private @Nullable Output<DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs> dnsDgaDetection;
 
-    /**
-     * @return enum: `disabled`, `default`, `standard`, `strict`
-     * 
-     */
-    public Optional<Output<String>> dnsDgaDetection() {
+    public Optional<Output<DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs>> dnsDgaDetection() {
         return Optional.ofNullable(this.dnsDgaDetection);
     }
 
-    /**
-     * enum: `disabled`, `default`, `standard`, `strict`
-     * 
-     */
     @Import(name="dnsTunnelDetection")
-    private @Nullable Output<String> dnsTunnelDetection;
+    private @Nullable Output<DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs> dnsTunnelDetection;
 
-    /**
-     * @return enum: `disabled`, `default`, `standard`, `strict`
-     * 
-     */
-    public Optional<Output<String>> dnsTunnelDetection() {
+    public Optional<Output<DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs>> dnsTunnelDetection() {
         return Optional.ofNullable(this.dnsTunnelDetection);
     }
 
-    /**
-     * enum: `disabled`, `standard`
-     * 
-     */
     @Import(name="httpInspection")
-    private @Nullable Output<String> httpInspection;
+    private @Nullable Output<DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs> httpInspection;
 
-    /**
-     * @return enum: `disabled`, `standard`
-     * 
-     */
-    public Optional<Output<String>> httpInspection() {
+    public Optional<Output<DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs>> httpInspection() {
         return Optional.ofNullable(this.httpInspection);
     }
 
-    /**
-     * enum: `disabled`, `enabled`
-     * 
-     */
     @Import(name="iotDevicePolicy")
-    private @Nullable Output<String> iotDevicePolicy;
+    private @Nullable Output<DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs> iotDevicePolicy;
 
-    /**
-     * @return enum: `disabled`, `enabled`
-     * 
-     */
-    public Optional<Output<String>> iotDevicePolicy() {
+    public Optional<Output<DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs>> iotDevicePolicy() {
         return Optional.ofNullable(this.iotDevicePolicy);
     }
 
@@ -102,87 +73,39 @@ public final class DeviceprofileGatewayServicePolicySkyatpArgs extends com.pulum
             $ = new DeviceprofileGatewayServicePolicySkyatpArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param dnsDgaDetection enum: `disabled`, `default`, `standard`, `strict`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dnsDgaDetection(@Nullable Output<String> dnsDgaDetection) {
+        public Builder dnsDgaDetection(@Nullable Output<DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs> dnsDgaDetection) {
             $.dnsDgaDetection = dnsDgaDetection;
             return this;
         }
 
-        /**
-         * @param dnsDgaDetection enum: `disabled`, `default`, `standard`, `strict`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dnsDgaDetection(String dnsDgaDetection) {
+        public Builder dnsDgaDetection(DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs dnsDgaDetection) {
             return dnsDgaDetection(Output.of(dnsDgaDetection));
         }
 
-        /**
-         * @param dnsTunnelDetection enum: `disabled`, `default`, `standard`, `strict`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dnsTunnelDetection(@Nullable Output<String> dnsTunnelDetection) {
+        public Builder dnsTunnelDetection(@Nullable Output<DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs> dnsTunnelDetection) {
             $.dnsTunnelDetection = dnsTunnelDetection;
             return this;
         }
 
-        /**
-         * @param dnsTunnelDetection enum: `disabled`, `default`, `standard`, `strict`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dnsTunnelDetection(String dnsTunnelDetection) {
+        public Builder dnsTunnelDetection(DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs dnsTunnelDetection) {
             return dnsTunnelDetection(Output.of(dnsTunnelDetection));
         }
 
-        /**
-         * @param httpInspection enum: `disabled`, `standard`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder httpInspection(@Nullable Output<String> httpInspection) {
+        public Builder httpInspection(@Nullable Output<DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs> httpInspection) {
             $.httpInspection = httpInspection;
             return this;
         }
 
-        /**
-         * @param httpInspection enum: `disabled`, `standard`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder httpInspection(String httpInspection) {
+        public Builder httpInspection(DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs httpInspection) {
             return httpInspection(Output.of(httpInspection));
         }
 
-        /**
-         * @param iotDevicePolicy enum: `disabled`, `enabled`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder iotDevicePolicy(@Nullable Output<String> iotDevicePolicy) {
+        public Builder iotDevicePolicy(@Nullable Output<DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs> iotDevicePolicy) {
             $.iotDevicePolicy = iotDevicePolicy;
             return this;
         }
 
-        /**
-         * @param iotDevicePolicy enum: `disabled`, `enabled`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder iotDevicePolicy(String iotDevicePolicy) {
+        public Builder iotDevicePolicy(DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs iotDevicePolicy) {
             return iotDevicePolicy(Output.of(iotDevicePolicy));
         }
 

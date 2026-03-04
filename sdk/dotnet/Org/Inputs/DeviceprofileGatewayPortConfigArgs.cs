@@ -245,12 +245,6 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? WanArpPolicer { get; set; }
 
         /// <summary>
-        /// If `WanType`==`Wan`, disable speedtest
-        /// </summary>
-        [Input("wanDisableSpeedtest")]
-        public Input<bool>? WanDisableSpeedtest { get; set; }
-
-        /// <summary>
         /// Only if `Usage`==`Wan`, optional. If spoke should reach this port by a different IP
         /// </summary>
         [Input("wanExtIp")]
@@ -309,6 +303,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// </summary>
         [Input("wanSourceNat")]
         public Input<Inputs.DeviceprofileGatewayPortConfigWanSourceNatArgs>? WanSourceNat { get; set; }
+
+        /// <summary>
+        /// Controls whether Marvis/scheduler can run speedtest on this port. enum: `Auto`, `Enabled`, `Disabled`
+        /// </summary>
+        [Input("wanSpeedtestMode")]
+        public Input<string>? WanSpeedtestMode { get; set; }
 
         /// <summary>
         /// Only if `Usage`==`Wan`. enum: `Broadband`, `Dsl`, `Lte`

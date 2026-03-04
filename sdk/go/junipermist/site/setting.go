@@ -136,6 +136,8 @@ type Setting struct {
 	TrackAnonymousDevices pulumi.BoolPtrOutput `pulumi:"trackAnonymousDevices"`
 	// AP Uplink port configuration
 	UplinkPortConfig SettingUplinkPortConfigOutput `pulumi:"uplinkPortConfig"`
+	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+	UsesDescriptionFromPortUsage pulumi.BoolOutput `pulumi:"usesDescriptionFromPortUsage"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
 	Vna  SettingVnaPtrOutput    `pulumi:"vna"`
@@ -251,6 +253,8 @@ type settingState struct {
 	TrackAnonymousDevices *bool `pulumi:"trackAnonymousDevices"`
 	// AP Uplink port configuration
 	UplinkPortConfig *SettingUplinkPortConfig `pulumi:"uplinkPortConfig"`
+	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+	UsesDescriptionFromPortUsage *bool `pulumi:"usesDescriptionFromPortUsage"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
 	Vna  *SettingVna       `pulumi:"vna"`
@@ -334,6 +338,8 @@ type SettingState struct {
 	TrackAnonymousDevices pulumi.BoolPtrInput
 	// AP Uplink port configuration
 	UplinkPortConfig SettingUplinkPortConfigPtrInput
+	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+	UsesDescriptionFromPortUsage pulumi.BoolPtrInput
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
 	Vna  SettingVnaPtrInput
@@ -420,6 +426,8 @@ type settingArgs struct {
 	TrackAnonymousDevices *bool `pulumi:"trackAnonymousDevices"`
 	// AP Uplink port configuration
 	UplinkPortConfig *SettingUplinkPortConfig `pulumi:"uplinkPortConfig"`
+	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+	UsesDescriptionFromPortUsage *bool `pulumi:"usesDescriptionFromPortUsage"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
 	Vna  *SettingVna       `pulumi:"vna"`
@@ -501,6 +509,8 @@ type SettingArgs struct {
 	TrackAnonymousDevices pulumi.BoolPtrInput
 	// AP Uplink port configuration
 	UplinkPortConfig SettingUplinkPortConfigPtrInput
+	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+	UsesDescriptionFromPortUsage pulumi.BoolPtrInput
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
 	Vna  SettingVnaPtrInput
@@ -774,6 +784,11 @@ func (o SettingOutput) TrackAnonymousDevices() pulumi.BoolPtrOutput {
 // AP Uplink port configuration
 func (o SettingOutput) UplinkPortConfig() SettingUplinkPortConfigOutput {
 	return o.ApplyT(func(v *Setting) SettingUplinkPortConfigOutput { return v.UplinkPortConfig }).(SettingUplinkPortConfigOutput)
+}
+
+// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+func (o SettingOutput) UsesDescriptionFromPortUsage() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.UsesDescriptionFromPortUsage }).(pulumi.BoolOutput)
 }
 
 // Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars

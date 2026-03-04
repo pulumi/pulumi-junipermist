@@ -24,6 +24,11 @@ public final class SettingSsrAutoUpgrade {
      */
     private @Nullable Map<String,String> customVersions;
     private @Nullable Boolean enabled;
+    /**
+     * @return Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+     * 
+     */
+    private @Nullable String version;
 
     private SettingSsrAutoUpgrade() {}
     /**
@@ -43,6 +48,13 @@ public final class SettingSsrAutoUpgrade {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -56,12 +68,14 @@ public final class SettingSsrAutoUpgrade {
         private @Nullable String channel;
         private @Nullable Map<String,String> customVersions;
         private @Nullable Boolean enabled;
+        private @Nullable String version;
         public Builder() {}
         public Builder(SettingSsrAutoUpgrade defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channel = defaults.channel;
     	      this.customVersions = defaults.customVersions;
     	      this.enabled = defaults.enabled;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -82,11 +96,18 @@ public final class SettingSsrAutoUpgrade {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+
+            this.version = version;
+            return this;
+        }
         public SettingSsrAutoUpgrade build() {
             final var _resultValue = new SettingSsrAutoUpgrade();
             _resultValue.channel = channel;
             _resultValue.customVersions = customVersions;
             _resultValue.enabled = enabled;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

@@ -97,6 +97,10 @@ __all__ = [
     'GatewayServicePolicyEwf',
     'GatewayServicePolicyIdp',
     'GatewayServicePolicySkyatp',
+    'GatewayServicePolicySkyatpDnsDgaDetection',
+    'GatewayServicePolicySkyatpDnsTunnelDetection',
+    'GatewayServicePolicySkyatpHttpInspection',
+    'GatewayServicePolicySkyatpIotDevicePolicy',
     'GatewayServicePolicySslProxy',
     'GatewayServicePolicySyslog',
     'GatewayTunnelConfigs',
@@ -5705,8 +5709,6 @@ class GatewayPortConfig(dict):
             suggest = "vpn_paths"
         elif key == "wanArpPolicer":
             suggest = "wan_arp_policer"
-        elif key == "wanDisableSpeedtest":
-            suggest = "wan_disable_speedtest"
         elif key == "wanExtIp":
             suggest = "wan_ext_ip"
         elif key == "wanExtIp6":
@@ -5721,6 +5723,8 @@ class GatewayPortConfig(dict):
             suggest = "wan_probe_override"
         elif key == "wanSourceNat":
             suggest = "wan_source_nat"
+        elif key == "wanSpeedtestMode":
+            suggest = "wan_speedtest_mode"
         elif key == "wanType":
             suggest = "wan_type"
 
@@ -5774,7 +5778,6 @@ class GatewayPortConfig(dict):
                  vlan_id: Optional[_builtins.str] = None,
                  vpn_paths: Optional[Mapping[str, 'outputs.GatewayPortConfigVpnPaths']] = None,
                  wan_arp_policer: Optional[_builtins.str] = None,
-                 wan_disable_speedtest: Optional[_builtins.bool] = None,
                  wan_ext_ip: Optional[_builtins.str] = None,
                  wan_ext_ip6: Optional[_builtins.str] = None,
                  wan_extra_routes: Optional[Mapping[str, 'outputs.GatewayPortConfigWanExtraRoutes']] = None,
@@ -5782,6 +5785,7 @@ class GatewayPortConfig(dict):
                  wan_networks: Optional[Sequence[_builtins.str]] = None,
                  wan_probe_override: Optional['outputs.GatewayPortConfigWanProbeOverride'] = None,
                  wan_source_nat: Optional['outputs.GatewayPortConfigWanSourceNat'] = None,
+                 wan_speedtest_mode: Optional[_builtins.str] = None,
                  wan_type: Optional[_builtins.str] = None):
         """
         :param _builtins.str usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
@@ -5814,7 +5818,6 @@ class GatewayPortConfig(dict):
         :param _builtins.str svr_port_range: For SSR only
         :param Mapping[str, 'GatewayPortConfigVpnPathsArgs'] vpn_paths: Property key is the VPN name
         :param _builtins.str wan_arp_policer: Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
-        :param _builtins.bool wan_disable_speedtest: If `wan_type`==`wan`, disable speedtest
         :param _builtins.str wan_ext_ip: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
         :param _builtins.str wan_ext_ip6: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
         :param Mapping[str, 'GatewayPortConfigWanExtraRoutesArgs'] wan_extra_routes: Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
@@ -5822,6 +5825,7 @@ class GatewayPortConfig(dict):
         :param Sequence[_builtins.str] wan_networks: Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
         :param 'GatewayPortConfigWanProbeOverrideArgs' wan_probe_override: Only if `usage`==`wan`
         :param 'GatewayPortConfigWanSourceNatArgs' wan_source_nat: Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+        :param _builtins.str wan_speedtest_mode: Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
         :param _builtins.str wan_type: Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
         """
         pulumi.set(__self__, "usage", usage)
@@ -5899,8 +5903,6 @@ class GatewayPortConfig(dict):
             pulumi.set(__self__, "vpn_paths", vpn_paths)
         if wan_arp_policer is not None:
             pulumi.set(__self__, "wan_arp_policer", wan_arp_policer)
-        if wan_disable_speedtest is not None:
-            pulumi.set(__self__, "wan_disable_speedtest", wan_disable_speedtest)
         if wan_ext_ip is not None:
             pulumi.set(__self__, "wan_ext_ip", wan_ext_ip)
         if wan_ext_ip6 is not None:
@@ -5915,6 +5917,8 @@ class GatewayPortConfig(dict):
             pulumi.set(__self__, "wan_probe_override", wan_probe_override)
         if wan_source_nat is not None:
             pulumi.set(__self__, "wan_source_nat", wan_source_nat)
+        if wan_speedtest_mode is not None:
+            pulumi.set(__self__, "wan_speedtest_mode", wan_speedtest_mode)
         if wan_type is not None:
             pulumi.set(__self__, "wan_type", wan_type)
 
@@ -6199,14 +6203,6 @@ class GatewayPortConfig(dict):
         return pulumi.get(self, "wan_arp_policer")
 
     @_builtins.property
-    @pulumi.getter(name="wanDisableSpeedtest")
-    def wan_disable_speedtest(self) -> Optional[_builtins.bool]:
-        """
-        If `wan_type`==`wan`, disable speedtest
-        """
-        return pulumi.get(self, "wan_disable_speedtest")
-
-    @_builtins.property
     @pulumi.getter(name="wanExtIp")
     def wan_ext_ip(self) -> Optional[_builtins.str]:
         """
@@ -6261,6 +6257,14 @@ class GatewayPortConfig(dict):
         Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
         """
         return pulumi.get(self, "wan_source_nat")
+
+    @_builtins.property
+    @pulumi.getter(name="wanSpeedtestMode")
+    def wan_speedtest_mode(self) -> Optional[_builtins.str]:
+        """
+        Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+        """
+        return pulumi.get(self, "wan_speedtest_mode")
 
     @_builtins.property
     @pulumi.getter(name="wanType")
@@ -7720,16 +7724,10 @@ class GatewayServicePolicySkyatp(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 dns_dga_detection: Optional[_builtins.str] = None,
-                 dns_tunnel_detection: Optional[_builtins.str] = None,
-                 http_inspection: Optional[_builtins.str] = None,
-                 iot_device_policy: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str dns_dga_detection: enum: `disabled`, `default`, `standard`, `strict`
-        :param _builtins.str dns_tunnel_detection: enum: `disabled`, `default`, `standard`, `strict`
-        :param _builtins.str http_inspection: enum: `disabled`, `standard`
-        :param _builtins.str iot_device_policy: enum: `disabled`, `enabled`
-        """
+                 dns_dga_detection: Optional['outputs.GatewayServicePolicySkyatpDnsDgaDetection'] = None,
+                 dns_tunnel_detection: Optional['outputs.GatewayServicePolicySkyatpDnsTunnelDetection'] = None,
+                 http_inspection: Optional['outputs.GatewayServicePolicySkyatpHttpInspection'] = None,
+                 iot_device_policy: Optional['outputs.GatewayServicePolicySkyatpIotDevicePolicy'] = None):
         if dns_dga_detection is not None:
             pulumi.set(__self__, "dns_dga_detection", dns_dga_detection)
         if dns_tunnel_detection is not None:
@@ -7741,35 +7739,117 @@ class GatewayServicePolicySkyatp(dict):
 
     @_builtins.property
     @pulumi.getter(name="dnsDgaDetection")
-    def dns_dga_detection(self) -> Optional[_builtins.str]:
-        """
-        enum: `disabled`, `default`, `standard`, `strict`
-        """
+    def dns_dga_detection(self) -> Optional['outputs.GatewayServicePolicySkyatpDnsDgaDetection']:
         return pulumi.get(self, "dns_dga_detection")
 
     @_builtins.property
     @pulumi.getter(name="dnsTunnelDetection")
-    def dns_tunnel_detection(self) -> Optional[_builtins.str]:
-        """
-        enum: `disabled`, `default`, `standard`, `strict`
-        """
+    def dns_tunnel_detection(self) -> Optional['outputs.GatewayServicePolicySkyatpDnsTunnelDetection']:
         return pulumi.get(self, "dns_tunnel_detection")
 
     @_builtins.property
     @pulumi.getter(name="httpInspection")
-    def http_inspection(self) -> Optional[_builtins.str]:
-        """
-        enum: `disabled`, `standard`
-        """
+    def http_inspection(self) -> Optional['outputs.GatewayServicePolicySkyatpHttpInspection']:
         return pulumi.get(self, "http_inspection")
 
     @_builtins.property
     @pulumi.getter(name="iotDevicePolicy")
-    def iot_device_policy(self) -> Optional[_builtins.str]:
-        """
-        enum: `disabled`, `enabled`
-        """
+    def iot_device_policy(self) -> Optional['outputs.GatewayServicePolicySkyatpIotDevicePolicy']:
         return pulumi.get(self, "iot_device_policy")
+
+
+@pulumi.output_type
+class GatewayServicePolicySkyatpDnsDgaDetection(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 profile: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str profile: enum: `default`, `standard`, `strict`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> Optional[_builtins.str]:
+        """
+        enum: `default`, `standard`, `strict`
+        """
+        return pulumi.get(self, "profile")
+
+
+@pulumi.output_type
+class GatewayServicePolicySkyatpDnsTunnelDetection(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 profile: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str profile: enum: `default`, `standard`, `strict`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> Optional[_builtins.str]:
+        """
+        enum: `default`, `standard`, `strict`
+        """
+        return pulumi.get(self, "profile")
+
+
+@pulumi.output_type
+class GatewayServicePolicySkyatpHttpInspection(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 profile: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str profile: enum: `standard`, `strict`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> Optional[_builtins.str]:
+        """
+        enum: `standard`, `strict`
+        """
+        return pulumi.get(self, "profile")
+
+
+@pulumi.output_type
+class GatewayServicePolicySkyatpIotDevicePolicy(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -12919,12 +12999,14 @@ class SwitchPortUsagesRule(dict):
 
     def __init__(__self__, *,
                  src: _builtins.str,
+                 description: Optional[_builtins.str] = None,
                  equals: Optional[_builtins.str] = None,
                  equals_anies: Optional[Sequence[_builtins.str]] = None,
                  expression: Optional[_builtins.str] = None,
                  usage: Optional[_builtins.str] = None):
         """
         :param _builtins.str src: enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_description`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
+        :param _builtins.str description: Optional description of the rule
         :param Sequence[_builtins.str] equals_anies: Use `equals_any` to match any item in a list
         :param _builtins.str expression: "[0:3]":"abcdef" > "abc"
                "split(.)[1]": "a.b.c" > "b"
@@ -12932,6 +13014,8 @@ class SwitchPortUsagesRule(dict):
         :param _builtins.str usage: `port_usage` name
         """
         pulumi.set(__self__, "src", src)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if equals is not None:
             pulumi.set(__self__, "equals", equals)
         if equals_anies is not None:
@@ -12948,6 +13032,14 @@ class SwitchPortUsagesRule(dict):
         enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_description`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
         """
         return pulumi.get(self, "src")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Optional description of the rule
+        """
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter

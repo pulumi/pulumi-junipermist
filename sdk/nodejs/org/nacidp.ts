@@ -183,6 +183,10 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly oauthPingIdentityRegion: pulumi.Output<string>;
     /**
+     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     */
+    declare public readonly oauthProviderDomain: pulumi.Output<string>;
+    /**
      * If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      */
     declare public readonly oauthRopcClientId: pulumi.Output<string | undefined>;
@@ -241,6 +245,7 @@ export class Nacidp extends pulumi.CustomResource {
             resourceInputs["oauthCcClientSecret"] = state?.oauthCcClientSecret;
             resourceInputs["oauthDiscoveryUrl"] = state?.oauthDiscoveryUrl;
             resourceInputs["oauthPingIdentityRegion"] = state?.oauthPingIdentityRegion;
+            resourceInputs["oauthProviderDomain"] = state?.oauthProviderDomain;
             resourceInputs["oauthRopcClientId"] = state?.oauthRopcClientId;
             resourceInputs["oauthRopcClientSecret"] = state?.oauthRopcClientSecret;
             resourceInputs["oauthTenantId"] = state?.oauthTenantId;
@@ -276,6 +281,7 @@ export class Nacidp extends pulumi.CustomResource {
             resourceInputs["oauthCcClientSecret"] = args?.oauthCcClientSecret;
             resourceInputs["oauthDiscoveryUrl"] = args?.oauthDiscoveryUrl;
             resourceInputs["oauthPingIdentityRegion"] = args?.oauthPingIdentityRegion;
+            resourceInputs["oauthProviderDomain"] = args?.oauthProviderDomain;
             resourceInputs["oauthRopcClientId"] = args?.oauthRopcClientId;
             resourceInputs["oauthRopcClientSecret"] = args?.oauthRopcClientSecret;
             resourceInputs["oauthTenantId"] = args?.oauthTenantId;
@@ -373,6 +379,10 @@ export interface NacidpState {
      * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
      */
     oauthPingIdentityRegion?: pulumi.Input<string>;
+    /**
+     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     */
+    oauthProviderDomain?: pulumi.Input<string>;
     /**
      * If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      */
@@ -484,6 +494,10 @@ export interface NacidpArgs {
      * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
      */
     oauthPingIdentityRegion?: pulumi.Input<string>;
+    /**
+     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     */
+    oauthProviderDomain?: pulumi.Input<string>;
     /**
      * If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      */

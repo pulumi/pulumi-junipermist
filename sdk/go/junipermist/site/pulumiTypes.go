@@ -3430,7 +3430,9 @@ func (o NetworktemplatePortUsagesMapOutput) MapIndex(k pulumi.StringInput) Netwo
 }
 
 type NetworktemplatePortUsagesRule struct {
-	Equals *string `pulumi:"equals"`
+	// Optional description of the rule
+	Description *string `pulumi:"description"`
+	Equals      *string `pulumi:"equals"`
 	// Use `equalsAny` to match any item in a list
 	EqualsAnies []string `pulumi:"equalsAnies"`
 	// "[0:3]":"abcdef" > "abc"
@@ -3455,7 +3457,9 @@ type NetworktemplatePortUsagesRuleInput interface {
 }
 
 type NetworktemplatePortUsagesRuleArgs struct {
-	Equals pulumi.StringPtrInput `pulumi:"equals"`
+	// Optional description of the rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Equals      pulumi.StringPtrInput `pulumi:"equals"`
 	// Use `equalsAny` to match any item in a list
 	EqualsAnies pulumi.StringArrayInput `pulumi:"equalsAnies"`
 	// "[0:3]":"abcdef" > "abc"
@@ -3517,6 +3521,11 @@ func (o NetworktemplatePortUsagesRuleOutput) ToNetworktemplatePortUsagesRuleOutp
 
 func (o NetworktemplatePortUsagesRuleOutput) ToNetworktemplatePortUsagesRuleOutputWithContext(ctx context.Context) NetworktemplatePortUsagesRuleOutput {
 	return o
+}
+
+// Optional description of the rule
+func (o NetworktemplatePortUsagesRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsagesRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o NetworktemplatePortUsagesRuleOutput) Equals() pulumi.StringPtrOutput {
@@ -16172,6 +16181,8 @@ type SettingJuniperSrxAutoUpgrade struct {
 	CustomVersions map[string]string `pulumi:"customVersions"`
 	Enabled        *bool             `pulumi:"enabled"`
 	Snapshot       *bool             `pulumi:"snapshot"`
+	// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+	Version *string `pulumi:"version"`
 }
 
 // SettingJuniperSrxAutoUpgradeInput is an input type that accepts SettingJuniperSrxAutoUpgradeArgs and SettingJuniperSrxAutoUpgradeOutput values.
@@ -16190,6 +16201,8 @@ type SettingJuniperSrxAutoUpgradeArgs struct {
 	CustomVersions pulumi.StringMapInput `pulumi:"customVersions"`
 	Enabled        pulumi.BoolPtrInput   `pulumi:"enabled"`
 	Snapshot       pulumi.BoolPtrInput   `pulumi:"snapshot"`
+	// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SettingJuniperSrxAutoUpgradeArgs) ElementType() reflect.Type {
@@ -16282,6 +16295,11 @@ func (o SettingJuniperSrxAutoUpgradeOutput) Snapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingJuniperSrxAutoUpgrade) *bool { return v.Snapshot }).(pulumi.BoolPtrOutput)
 }
 
+// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+func (o SettingJuniperSrxAutoUpgradeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingJuniperSrxAutoUpgrade) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type SettingJuniperSrxAutoUpgradePtrOutput struct{ *pulumi.OutputState }
 
 func (SettingJuniperSrxAutoUpgradePtrOutput) ElementType() reflect.Type {
@@ -16332,6 +16350,16 @@ func (o SettingJuniperSrxAutoUpgradePtrOutput) Snapshot() pulumi.BoolPtrOutput {
 		}
 		return v.Snapshot
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Firmware version to deploy (e.g. 23.4R2-S5.5). Optional, used when customVersions not specified
+func (o SettingJuniperSrxAutoUpgradePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingJuniperSrxAutoUpgrade) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 type SettingJuniperSrxGateway struct {
@@ -19183,6 +19211,8 @@ type SettingSsrAutoUpgrade struct {
 	// Property key is the SSR model (e.g. "SSR130").
 	CustomVersions map[string]string `pulumi:"customVersions"`
 	Enabled        *bool             `pulumi:"enabled"`
+	// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+	Version *string `pulumi:"version"`
 }
 
 // SettingSsrAutoUpgradeInput is an input type that accepts SettingSsrAutoUpgradeArgs and SettingSsrAutoUpgradeOutput values.
@@ -19202,6 +19232,8 @@ type SettingSsrAutoUpgradeArgs struct {
 	// Property key is the SSR model (e.g. "SSR130").
 	CustomVersions pulumi.StringMapInput `pulumi:"customVersions"`
 	Enabled        pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SettingSsrAutoUpgradeArgs) ElementType() reflect.Type {
@@ -19295,6 +19327,11 @@ func (o SettingSsrAutoUpgradeOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingSsrAutoUpgrade) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+func (o SettingSsrAutoUpgradeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingSsrAutoUpgrade) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type SettingSsrAutoUpgradePtrOutput struct{ *pulumi.OutputState }
 
 func (SettingSsrAutoUpgradePtrOutput) ElementType() reflect.Type {
@@ -19346,6 +19383,16 @@ func (o SettingSsrAutoUpgradePtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when customVersions not specified
+func (o SettingSsrAutoUpgradePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingSsrAutoUpgrade) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 type SettingSsrProxy struct {
@@ -19723,16 +19770,12 @@ func (o SettingSyntheticTestPtrOutput) WanSpeedtest() SettingSyntheticTestWanSpe
 type SettingSyntheticTestCustomProbes struct {
 	// enum: `auto`, `high`, `low`
 	Aggressiveness *string `pulumi:"aggressiveness"`
-	// If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
-	Host *string `pulumi:"host"`
-	// If `type`==`tcp`, Port to be used for the custom probe
-	Port *int `pulumi:"port"`
+	// Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
+	Target *string `pulumi:"target"`
 	// In milliseconds
 	Threshold *int `pulumi:"threshold"`
-	// enum: `curl`, `icmp`, `tcp`
+	// enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
 	Type *string `pulumi:"type"`
-	// If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-	Url *string `pulumi:"url"`
 }
 
 // SettingSyntheticTestCustomProbesInput is an input type that accepts SettingSyntheticTestCustomProbesArgs and SettingSyntheticTestCustomProbesOutput values.
@@ -19749,16 +19792,12 @@ type SettingSyntheticTestCustomProbesInput interface {
 type SettingSyntheticTestCustomProbesArgs struct {
 	// enum: `auto`, `high`, `low`
 	Aggressiveness pulumi.StringPtrInput `pulumi:"aggressiveness"`
-	// If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// If `type`==`tcp`, Port to be used for the custom probe
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
+	Target pulumi.StringPtrInput `pulumi:"target"`
 	// In milliseconds
 	Threshold pulumi.IntPtrInput `pulumi:"threshold"`
-	// enum: `curl`, `icmp`, `tcp`
+	// enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (SettingSyntheticTestCustomProbesArgs) ElementType() reflect.Type {
@@ -19817,14 +19856,9 @@ func (o SettingSyntheticTestCustomProbesOutput) Aggressiveness() pulumi.StringPt
 	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Aggressiveness }).(pulumi.StringPtrOutput)
 }
 
-// If `type`==`icmp` or `type`==`tcp`, Host to be used for the custom probe
-func (o SettingSyntheticTestCustomProbesOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
-// If `type`==`tcp`, Port to be used for the custom probe
-func (o SettingSyntheticTestCustomProbesOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *int { return v.Port }).(pulumi.IntPtrOutput)
+// Can be URL (e.g. http://x.com, https://x.com:8080/path/to/resource), IP address, or IP:port combination
+func (o SettingSyntheticTestCustomProbesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
 // In milliseconds
@@ -19832,14 +19866,9 @@ func (o SettingSyntheticTestCustomProbesOutput) Threshold() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *int { return v.Threshold }).(pulumi.IntPtrOutput)
 }
 
-// enum: `curl`, `icmp`, `tcp`
+// enum: `application`, `curl`, `icmp`, `reachability`, `tcp`
 func (o SettingSyntheticTestCustomProbesOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// If `type`==`curl`, URL to be used for the custom probe, can be url or IP
-func (o SettingSyntheticTestCustomProbesOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingSyntheticTestCustomProbes) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 type SettingSyntheticTestCustomProbesMapOutput struct{ *pulumi.OutputState }

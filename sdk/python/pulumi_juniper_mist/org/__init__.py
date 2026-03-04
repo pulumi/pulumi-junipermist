@@ -43,6 +43,7 @@ from .get_wlantemplates import *
 from .get_wxtags import *
 from .idpprofile import *
 from .inventory import *
+from .mxedge import *
 from .nac_endpoint import *
 from .nacidp import *
 from .nacrule import *

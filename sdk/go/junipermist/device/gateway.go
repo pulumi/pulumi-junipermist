@@ -16,7 +16,7 @@ import (
 //
 // It can be used to define specific configuration at the device level or to override Org Gateway template settings.
 //
-// > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway
+// > **WARNING** For **adopted** devices, make sure to set `mistConfigured`=`true` to allow Mist to manage the gateway
 //
 // ## Example Usage
 //
@@ -94,10 +94,15 @@ type Gateway struct {
 	// Property key is the network name
 	IpConfigs GatewayIpConfigsMapOutput `pulumi:"ipConfigs"`
 	// Device MAC address
-	Mac     pulumi.StringOutput  `pulumi:"mac"`
-	Managed pulumi.BoolPtrOutput `pulumi:"managed"`
+	Mac pulumi.StringOutput `pulumi:"mac"`
+	// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
+	Managed pulumi.BoolOutput `pulumi:"managed"`
 	// Map where the device belongs to
 	MapId pulumi.StringPtrOutput `pulumi:"mapId"`
+	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+	MistConfigured pulumi.BoolOutput `pulumi:"mistConfigured"`
 	// Device Model
 	Model      pulumi.StringOutput       `pulumi:"model"`
 	MspId      pulumi.StringPtrOutput    `pulumi:"mspId"`
@@ -200,10 +205,15 @@ type gatewayState struct {
 	// Property key is the network name
 	IpConfigs map[string]GatewayIpConfigs `pulumi:"ipConfigs"`
 	// Device MAC address
-	Mac     *string `pulumi:"mac"`
-	Managed *bool   `pulumi:"managed"`
+	Mac *string `pulumi:"mac"`
+	// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
+	Managed *bool `pulumi:"managed"`
 	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
+	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+	MistConfigured *bool `pulumi:"mistConfigured"`
 	// Device Model
 	Model      *string          `pulumi:"model"`
 	MspId      *string          `pulumi:"mspId"`
@@ -271,10 +281,15 @@ type GatewayState struct {
 	// Property key is the network name
 	IpConfigs GatewayIpConfigsMapInput
 	// Device MAC address
-	Mac     pulumi.StringPtrInput
+	Mac pulumi.StringPtrInput
+	// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 	Managed pulumi.BoolPtrInput
 	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
+	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+	MistConfigured pulumi.BoolPtrInput
 	// Device Model
 	Model      pulumi.StringPtrInput
 	MspId      pulumi.StringPtrInput
@@ -342,14 +357,19 @@ type gatewayArgs struct {
 	IdpProfiles map[string]GatewayIdpProfiles `pulumi:"idpProfiles"`
 	// Property key is the network name
 	IpConfigs map[string]GatewayIpConfigs `pulumi:"ipConfigs"`
-	Managed   *bool                       `pulumi:"managed"`
+	// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
+	Managed *bool `pulumi:"managed"`
 	// Map where the device belongs to
-	MapId      *string          `pulumi:"mapId"`
-	MspId      *string          `pulumi:"mspId"`
-	Name       *string          `pulumi:"name"`
-	Networks   []GatewayNetwork `pulumi:"networks"`
-	Notes      *string          `pulumi:"notes"`
-	NtpServers []string         `pulumi:"ntpServers"`
+	MapId *string `pulumi:"mapId"`
+	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+	MistConfigured *bool            `pulumi:"mistConfigured"`
+	MspId          *string          `pulumi:"mspId"`
+	Name           *string          `pulumi:"name"`
+	Networks       []GatewayNetwork `pulumi:"networks"`
+	Notes          *string          `pulumi:"notes"`
+	NtpServers     []string         `pulumi:"ntpServers"`
 	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig *GatewayOobIpConfig `pulumi:"oobIpConfig"`
 	// Property key is the path name
@@ -402,14 +422,19 @@ type GatewayArgs struct {
 	IdpProfiles GatewayIdpProfilesMapInput
 	// Property key is the network name
 	IpConfigs GatewayIpConfigsMapInput
-	Managed   pulumi.BoolPtrInput
+	// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
+	Managed pulumi.BoolPtrInput
 	// Map where the device belongs to
-	MapId      pulumi.StringPtrInput
-	MspId      pulumi.StringPtrInput
-	Name       pulumi.StringPtrInput
-	Networks   GatewayNetworkArrayInput
-	Notes      pulumi.StringPtrInput
-	NtpServers pulumi.StringArrayInput
+	MapId pulumi.StringPtrInput
+	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+	MistConfigured pulumi.BoolPtrInput
+	MspId          pulumi.StringPtrInput
+	Name           pulumi.StringPtrInput
+	Networks       GatewayNetworkArrayInput
+	Notes          pulumi.StringPtrInput
+	NtpServers     pulumi.StringArrayInput
 	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig GatewayOobIpConfigPtrInput
 	// Property key is the path name
@@ -597,13 +622,21 @@ func (o GatewayOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }
 
-func (o GatewayOutput) Managed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.Managed }).(pulumi.BoolPtrOutput)
+// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+//
+// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
+func (o GatewayOutput) Managed() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolOutput { return v.Managed }).(pulumi.BoolOutput)
 }
 
 // Map where the device belongs to
 func (o GatewayOutput) MapId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.MapId }).(pulumi.StringPtrOutput)
+}
+
+// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+func (o GatewayOutput) MistConfigured() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolOutput { return v.MistConfigured }).(pulumi.BoolOutput)
 }
 
 // Device Model

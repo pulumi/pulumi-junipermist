@@ -89,6 +89,8 @@ type Base struct {
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId pulumi.StringPtrOutput `pulumi:"rftemplateId"`
+	// Router Template ID, used by gateways
+	RoutertemplateId pulumi.StringPtrOutput `pulumi:"routertemplateId"`
 	// SecPolicy ID
 	SecpolicyId pulumi.StringPtrOutput `pulumi:"secpolicyId"`
 	// Sitegroups this site belongs to
@@ -161,6 +163,8 @@ type baseState struct {
 	OrgId *string `pulumi:"orgId"`
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId *string `pulumi:"rftemplateId"`
+	// Router Template ID, used by gateways
+	RoutertemplateId *string `pulumi:"routertemplateId"`
 	// SecPolicy ID
 	SecpolicyId *string `pulumi:"secpolicyId"`
 	// Sitegroups this site belongs to
@@ -192,6 +196,8 @@ type BaseState struct {
 	OrgId pulumi.StringPtrInput
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId pulumi.StringPtrInput
+	// Router Template ID, used by gateways
+	RoutertemplateId pulumi.StringPtrInput
 	// SecPolicy ID
 	SecpolicyId pulumi.StringPtrInput
 	// Sitegroups this site belongs to
@@ -227,6 +233,8 @@ type baseArgs struct {
 	OrgId string  `pulumi:"orgId"`
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId *string `pulumi:"rftemplateId"`
+	// Router Template ID, used by gateways
+	RoutertemplateId *string `pulumi:"routertemplateId"`
 	// SecPolicy ID
 	SecpolicyId *string `pulumi:"secpolicyId"`
 	// Sitegroups this site belongs to
@@ -258,6 +266,8 @@ type BaseArgs struct {
 	OrgId pulumi.StringInput
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId pulumi.StringPtrInput
+	// Router Template ID, used by gateways
+	RoutertemplateId pulumi.StringPtrInput
 	// SecPolicy ID
 	SecpolicyId pulumi.StringPtrInput
 	// Sitegroups this site belongs to
@@ -405,6 +415,11 @@ func (o BaseOutput) OrgId() pulumi.StringOutput {
 // RF Template ID, this takes precedence over Site Settings
 func (o BaseOutput) RftemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.RftemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Router Template ID, used by gateways
+func (o BaseOutput) RoutertemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.RoutertemplateId }).(pulumi.StringPtrOutput)
 }
 
 // SecPolicy ID

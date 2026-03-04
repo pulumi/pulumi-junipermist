@@ -41,6 +41,8 @@ type Switch struct {
 	DhcpSnooping     SwitchDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
 	DhcpdConfig      SwitchDhcpdConfigPtrOutput  `pulumi:"dhcpdConfig"`
 	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 	DisableAutoConfig pulumi.BoolOutput `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
@@ -59,10 +61,14 @@ type Switch struct {
 	LocalPortConfig SwitchLocalPortConfigMapOutput `pulumi:"localPortConfig"`
 	// Device MAC address
 	Mac pulumi.StringOutput `pulumi:"mac"`
-	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 	Managed pulumi.BoolOutput `pulumi:"managed"`
 	// Map where the device belongs to
 	MapId pulumi.StringPtrOutput `pulumi:"mapId"`
+	// whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+	MistConfigured pulumi.BoolOutput `pulumi:"mistConfigured"`
 	// Enable mistNac to use RadSec
 	MistNac SwitchMistNacPtrOutput `pulumi:"mistNac"`
 	// Device Model
@@ -173,6 +179,8 @@ type switchState struct {
 	DhcpSnooping     *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
 	DhcpdConfig      *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
 	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 	DisableAutoConfig *bool `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
@@ -191,10 +199,14 @@ type switchState struct {
 	LocalPortConfig map[string]SwitchLocalPortConfig `pulumi:"localPortConfig"`
 	// Device MAC address
 	Mac *string `pulumi:"mac"`
-	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 	Managed *bool `pulumi:"managed"`
 	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
+	// whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+	MistConfigured *bool `pulumi:"mistConfigured"`
 	// Enable mistNac to use RadSec
 	MistNac *SwitchMistNac `pulumi:"mistNac"`
 	// Device Model
@@ -270,6 +282,8 @@ type SwitchState struct {
 	DhcpSnooping     SwitchDhcpSnoopingPtrInput
 	DhcpdConfig      SwitchDhcpdConfigPtrInput
 	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 	DisableAutoConfig pulumi.BoolPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayInput
@@ -288,10 +302,14 @@ type SwitchState struct {
 	LocalPortConfig SwitchLocalPortConfigMapInput
 	// Device MAC address
 	Mac pulumi.StringPtrInput
-	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 	Managed pulumi.BoolPtrInput
 	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
+	// whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+	MistConfigured pulumi.BoolPtrInput
 	// Enable mistNac to use RadSec
 	MistNac SwitchMistNacPtrInput
 	// Device Model
@@ -371,6 +389,8 @@ type switchArgs struct {
 	DhcpSnooping     *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
 	DhcpdConfig      *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
 	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 	DisableAutoConfig *bool `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
@@ -384,10 +404,14 @@ type switchArgs struct {
 	IpConfig *SwitchIpConfig `pulumi:"ipConfig"`
 	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
 	LocalPortConfig map[string]SwitchLocalPortConfig `pulumi:"localPortConfig"`
-	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 	Managed *bool `pulumi:"managed"`
 	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
+	// whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+	MistConfigured *bool `pulumi:"mistConfigured"`
 	// Enable mistNac to use RadSec
 	MistNac *SwitchMistNac `pulumi:"mistNac"`
 	Name    *string        `pulumi:"name"`
@@ -457,6 +481,8 @@ type SwitchArgs struct {
 	DhcpSnooping     SwitchDhcpSnoopingPtrInput
 	DhcpdConfig      SwitchDhcpdConfigPtrInput
 	// This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 	DisableAutoConfig pulumi.BoolPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayInput
@@ -470,10 +496,14 @@ type SwitchArgs struct {
 	IpConfig SwitchIpConfigPtrInput
 	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
 	LocalPortConfig SwitchLocalPortConfigMapInput
-	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+	// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
+	//
+	// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 	Managed pulumi.BoolPtrInput
 	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
+	// whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+	MistConfigured pulumi.BoolPtrInput
 	// Enable mistNac to use RadSec
 	MistNac SwitchMistNacPtrInput
 	Name    pulumi.StringPtrInput
@@ -652,6 +682,8 @@ func (o SwitchOutput) DhcpdConfig() SwitchDhcpdConfigPtrOutput {
 }
 
 // This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
+//
+// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 func (o SwitchOutput) DisableAutoConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Switch) pulumi.BoolOutput { return v.DisableAutoConfig }).(pulumi.BoolOutput)
 }
@@ -703,7 +735,9 @@ func (o SwitchOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }
 
-// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist.
+// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
+//
+// Deprecated: This attribute is being deprecated, please use `mistConfigured` instead
 func (o SwitchOutput) Managed() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Switch) pulumi.BoolOutput { return v.Managed }).(pulumi.BoolOutput)
 }
@@ -711,6 +745,11 @@ func (o SwitchOutput) Managed() pulumi.BoolOutput {
 // Map where the device belongs to
 func (o SwitchOutput) MapId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringPtrOutput { return v.MapId }).(pulumi.StringPtrOutput)
+}
+
+// whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disableAutoConfig` for claimed device)
+func (o SwitchOutput) MistConfigured() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Switch) pulumi.BoolOutput { return v.MistConfigured }).(pulumi.BoolOutput)
 }
 
 // Enable mistNac to use RadSec

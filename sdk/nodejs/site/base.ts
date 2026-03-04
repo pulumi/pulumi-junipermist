@@ -112,6 +112,10 @@ export class Base extends pulumi.CustomResource {
      */
     declare public readonly rftemplateId: pulumi.Output<string | undefined>;
     /**
+     * Router Template ID, used by gateways
+     */
+    declare public readonly routertemplateId: pulumi.Output<string | undefined>;
+    /**
      * SecPolicy ID
      */
     declare public readonly secpolicyId: pulumi.Output<string | undefined>;
@@ -153,6 +157,7 @@ export class Base extends pulumi.CustomResource {
             resourceInputs["notes"] = state?.notes;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["rftemplateId"] = state?.rftemplateId;
+            resourceInputs["routertemplateId"] = state?.routertemplateId;
             resourceInputs["secpolicyId"] = state?.secpolicyId;
             resourceInputs["sitegroupIds"] = state?.sitegroupIds;
             resourceInputs["sitetemplateId"] = state?.sitetemplateId;
@@ -177,6 +182,7 @@ export class Base extends pulumi.CustomResource {
             resourceInputs["notes"] = args?.notes;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["rftemplateId"] = args?.rftemplateId;
+            resourceInputs["routertemplateId"] = args?.routertemplateId;
             resourceInputs["secpolicyId"] = args?.secpolicyId;
             resourceInputs["sitegroupIds"] = args?.sitegroupIds;
             resourceInputs["sitetemplateId"] = args?.sitetemplateId;
@@ -229,6 +235,10 @@ export interface BaseState {
      * RF Template ID, this takes precedence over Site Settings
      */
     rftemplateId?: pulumi.Input<string>;
+    /**
+     * Router Template ID, used by gateways
+     */
+    routertemplateId?: pulumi.Input<string>;
     /**
      * SecPolicy ID
      */
@@ -287,6 +297,10 @@ export interface BaseArgs {
      * RF Template ID, this takes precedence over Site Settings
      */
     rftemplateId?: pulumi.Input<string>;
+    /**
+     * Router Template ID, used by gateways
+     */
+    routertemplateId?: pulumi.Input<string>;
     /**
      * SecPolicy ID
      */

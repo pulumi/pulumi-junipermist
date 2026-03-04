@@ -33,6 +33,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Firmware version to deploy (e.g. 6.3.0-107.r1). Optional, used when CustomVersions not specified
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public SettingSsrAutoUpgradeArgs()
         {
         }

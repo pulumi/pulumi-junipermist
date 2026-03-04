@@ -32,6 +32,7 @@ class BaseArgs:
                  networktemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
                  notes: Optional[pulumi.Input[_builtins.str]] = None,
                  rftemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 routertemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
                  secpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  sitegroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  sitetemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -47,6 +48,7 @@ class BaseArgs:
         :param pulumi.Input[_builtins.str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] notes: Optional, any notes about the site
         :param pulumi.Input[_builtins.str] rftemplate_id: RF Template ID, this takes precedence over Site Settings
+        :param pulumi.Input[_builtins.str] routertemplate_id: Router Template ID, used by gateways
         :param pulumi.Input[_builtins.str] secpolicy_id: SecPolicy ID
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sitegroup_ids: Sitegroups this site belongs to
         :param pulumi.Input[_builtins.str] sitetemplate_id: Site Template ID
@@ -72,6 +74,8 @@ class BaseArgs:
             pulumi.set(__self__, "notes", notes)
         if rftemplate_id is not None:
             pulumi.set(__self__, "rftemplate_id", rftemplate_id)
+        if routertemplate_id is not None:
+            pulumi.set(__self__, "routertemplate_id", routertemplate_id)
         if secpolicy_id is not None:
             pulumi.set(__self__, "secpolicy_id", secpolicy_id)
         if sitegroup_ids is not None:
@@ -205,6 +209,18 @@ class BaseArgs:
         pulumi.set(self, "rftemplate_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="routertemplateId")
+    def routertemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Router Template ID, used by gateways
+        """
+        return pulumi.get(self, "routertemplate_id")
+
+    @routertemplate_id.setter
+    def routertemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "routertemplate_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="secpolicyId")
     def secpolicy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -267,6 +283,7 @@ class _BaseState:
                  notes: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  rftemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 routertemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
                  secpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  sitegroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  sitetemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -283,6 +300,7 @@ class _BaseState:
         :param pulumi.Input[_builtins.str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] notes: Optional, any notes about the site
         :param pulumi.Input[_builtins.str] rftemplate_id: RF Template ID, this takes precedence over Site Settings
+        :param pulumi.Input[_builtins.str] routertemplate_id: Router Template ID, used by gateways
         :param pulumi.Input[_builtins.str] secpolicy_id: SecPolicy ID
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sitegroup_ids: Sitegroups this site belongs to
         :param pulumi.Input[_builtins.str] sitetemplate_id: Site Template ID
@@ -310,6 +328,8 @@ class _BaseState:
             pulumi.set(__self__, "org_id", org_id)
         if rftemplate_id is not None:
             pulumi.set(__self__, "rftemplate_id", rftemplate_id)
+        if routertemplate_id is not None:
+            pulumi.set(__self__, "routertemplate_id", routertemplate_id)
         if secpolicy_id is not None:
             pulumi.set(__self__, "secpolicy_id", secpolicy_id)
         if sitegroup_ids is not None:
@@ -445,6 +465,18 @@ class _BaseState:
         pulumi.set(self, "rftemplate_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="routertemplateId")
+    def routertemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Router Template ID, used by gateways
+        """
+        return pulumi.get(self, "routertemplate_id")
+
+    @routertemplate_id.setter
+    def routertemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "routertemplate_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="secpolicyId")
     def secpolicy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -519,6 +551,7 @@ class Base(pulumi.CustomResource):
                  notes: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  rftemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 routertemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
                  secpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  sitegroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  sitetemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -576,6 +609,7 @@ class Base(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] notes: Optional, any notes about the site
         :param pulumi.Input[_builtins.str] rftemplate_id: RF Template ID, this takes precedence over Site Settings
+        :param pulumi.Input[_builtins.str] routertemplate_id: Router Template ID, used by gateways
         :param pulumi.Input[_builtins.str] secpolicy_id: SecPolicy ID
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sitegroup_ids: Sitegroups this site belongs to
         :param pulumi.Input[_builtins.str] sitetemplate_id: Site Template ID
@@ -655,6 +689,7 @@ class Base(pulumi.CustomResource):
                  notes: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  rftemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 routertemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
                  secpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  sitegroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  sitetemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -683,6 +718,7 @@ class Base(pulumi.CustomResource):
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["rftemplate_id"] = rftemplate_id
+            __props__.__dict__["routertemplate_id"] = routertemplate_id
             __props__.__dict__["secpolicy_id"] = secpolicy_id
             __props__.__dict__["sitegroup_ids"] = sitegroup_ids
             __props__.__dict__["sitetemplate_id"] = sitetemplate_id
@@ -711,6 +747,7 @@ class Base(pulumi.CustomResource):
             notes: Optional[pulumi.Input[_builtins.str]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
             rftemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
+            routertemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
             secpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
             sitegroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             sitetemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -731,6 +768,7 @@ class Base(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] notes: Optional, any notes about the site
         :param pulumi.Input[_builtins.str] rftemplate_id: RF Template ID, this takes precedence over Site Settings
+        :param pulumi.Input[_builtins.str] routertemplate_id: Router Template ID, used by gateways
         :param pulumi.Input[_builtins.str] secpolicy_id: SecPolicy ID
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sitegroup_ids: Sitegroups this site belongs to
         :param pulumi.Input[_builtins.str] sitetemplate_id: Site Template ID
@@ -751,6 +789,7 @@ class Base(pulumi.CustomResource):
         __props__.__dict__["notes"] = notes
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["rftemplate_id"] = rftemplate_id
+        __props__.__dict__["routertemplate_id"] = routertemplate_id
         __props__.__dict__["secpolicy_id"] = secpolicy_id
         __props__.__dict__["sitegroup_ids"] = sitegroup_ids
         __props__.__dict__["sitetemplate_id"] = sitetemplate_id
@@ -836,6 +875,14 @@ class Base(pulumi.CustomResource):
         RF Template ID, this takes precedence over Site Settings
         """
         return pulumi.get(self, "rftemplate_id")
+
+    @_builtins.property
+    @pulumi.getter(name="routertemplateId")
+    def routertemplate_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Router Template ID, used by gateways
+        """
+        return pulumi.get(self, "routertemplate_id")
 
     @_builtins.property
     @pulumi.getter(name="secpolicyId")

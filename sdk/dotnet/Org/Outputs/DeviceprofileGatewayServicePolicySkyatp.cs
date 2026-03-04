@@ -13,32 +13,20 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileGatewayServicePolicySkyatp
     {
-        /// <summary>
-        /// enum: `Disabled`, `Default`, `Standard`, `Strict`
-        /// </summary>
-        public readonly string? DnsDgaDetection;
-        /// <summary>
-        /// enum: `Disabled`, `Default`, `Standard`, `Strict`
-        /// </summary>
-        public readonly string? DnsTunnelDetection;
-        /// <summary>
-        /// enum: `Disabled`, `Standard`
-        /// </summary>
-        public readonly string? HttpInspection;
-        /// <summary>
-        /// enum: `Disabled`, `Enabled`
-        /// </summary>
-        public readonly string? IotDevicePolicy;
+        public readonly Outputs.DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection? DnsDgaDetection;
+        public readonly Outputs.DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection? DnsTunnelDetection;
+        public readonly Outputs.DeviceprofileGatewayServicePolicySkyatpHttpInspection? HttpInspection;
+        public readonly Outputs.DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy? IotDevicePolicy;
 
         [OutputConstructor]
         private DeviceprofileGatewayServicePolicySkyatp(
-            string? dnsDgaDetection,
+            Outputs.DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection? dnsDgaDetection,
 
-            string? dnsTunnelDetection,
+            Outputs.DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection? dnsTunnelDetection,
 
-            string? httpInspection,
+            Outputs.DeviceprofileGatewayServicePolicySkyatpHttpInspection? httpInspection,
 
-            string? iotDevicePolicy)
+            Outputs.DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy? iotDevicePolicy)
         {
             DnsDgaDetection = dnsDgaDetection;
             DnsTunnelDetection = dnsTunnelDetection;

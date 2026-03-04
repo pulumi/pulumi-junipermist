@@ -115,6 +115,12 @@ namespace Pulumi.JuniperMist.Org
         [Output("nameidFormat")]
         public Output<string> NameidFormat { get; private set; } = null!;
 
+        /// <summary>
+        /// If `OauthType`==`Okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        /// </summary>
+        [Output("oauthProviderDomain")]
+        public Output<string> OauthProviderDomain { get; private set; } = null!;
+
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -231,6 +237,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("nameidFormat")]
         public Input<string>? NameidFormat { get; set; }
 
+        /// <summary>
+        /// If `OauthType`==`Okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        /// </summary>
+        [Input("oauthProviderDomain")]
+        public Input<string>? OauthProviderDomain { get; set; }
+
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -315,6 +327,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("nameidFormat")]
         public Input<string>? NameidFormat { get; set; }
+
+        /// <summary>
+        /// If `OauthType`==`Okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        /// </summary>
+        [Input("oauthProviderDomain")]
+        public Input<string>? OauthProviderDomain { get; set; }
 
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }

@@ -119,7 +119,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `True` enables the adopted switch/gateway to be managed/configured by Mist.
+        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `True` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         /// </summary>
         [Output("managed")]
         public Output<bool> Managed { get; private set; } = null!;
@@ -129,6 +129,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Output("mapId")]
         public Output<string?> MapId { get; private set; } = null!;
+
+        /// <summary>
+        /// whether the device can be configured by Mist or not. This deprecates `Managed` (for adopted device) and `DisableAutoConfig` for claimed device)
+        /// </summary>
+        [Output("mistConfigured")]
+        public Output<bool> MistConfigured { get; private set; } = null!;
 
         /// <summary>
         /// Enable MistNac to use RadSec
@@ -481,7 +487,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `True` enables the adopted switch/gateway to be managed/configured by Mist.
+        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `True` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
@@ -491,6 +497,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("mapId")]
         public Input<string>? MapId { get; set; }
+
+        /// <summary>
+        /// whether the device can be configured by Mist or not. This deprecates `Managed` (for adopted device) and `DisableAutoConfig` for claimed device)
+        /// </summary>
+        [Input("mistConfigured")]
+        public Input<bool>? MistConfigured { get; set; }
 
         /// <summary>
         /// Enable MistNac to use RadSec
@@ -864,7 +876,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `True` enables the adopted switch/gateway to be managed/configured by Mist.
+        /// An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `True` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
@@ -874,6 +886,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("mapId")]
         public Input<string>? MapId { get; set; }
+
+        /// <summary>
+        /// whether the device can be configured by Mist or not. This deprecates `Managed` (for adopted device) and `DisableAutoConfig` for claimed device)
+        /// </summary>
+        [Input("mistConfigured")]
+        public Input<bool>? MistConfigured { get; set; }
 
         /// <summary>
         /// Enable MistNac to use RadSec

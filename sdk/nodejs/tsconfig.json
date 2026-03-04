@@ -74,6 +74,7 @@
         "org/idpprofile.ts",
         "org/index.ts",
         "org/inventory.ts",
+        "org/mxedge.ts",
         "org/nacEndpoint.ts",
         "org/nacidp.ts",
         "org/nacrule.ts",

@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.junipermist.org.outputs.SettingMistNacFingerprinting;
 import com.pulumi.junipermist.org.outputs.SettingMistNacIdp;
 import com.pulumi.junipermist.org.outputs.SettingMistNacServerCert;
 import java.lang.Boolean;
@@ -42,6 +43,11 @@ public final class SettingMistNac {
      */
     private @Nullable Boolean euOnly;
     /**
+     * @return Allows customer to enable client fingerprinting for policy enforcement
+     * 
+     */
+    private @Nullable SettingMistNacFingerprinting fingerprinting;
+    /**
      * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
      * 
      */
@@ -67,6 +73,11 @@ public final class SettingMistNac {
      * 
      */
     private @Nullable Boolean useSslPort;
+    /**
+     * @return Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+     * 
+     */
+    private @Nullable Integer usermacExpiry;
 
     private SettingMistNac() {}
     /**
@@ -103,6 +114,13 @@ public final class SettingMistNac {
      */
     public Optional<Boolean> euOnly() {
         return Optional.ofNullable(this.euOnly);
+    }
+    /**
+     * @return Allows customer to enable client fingerprinting for policy enforcement
+     * 
+     */
+    public Optional<SettingMistNacFingerprinting> fingerprinting() {
+        return Optional.ofNullable(this.fingerprinting);
     }
     /**
      * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
@@ -142,6 +160,13 @@ public final class SettingMistNac {
     public Optional<Boolean> useSslPort() {
         return Optional.ofNullable(this.useSslPort);
     }
+    /**
+     * @return Allow customer to configure an expiry time for usermacs by attaching a Quarantine label to those which have been inactive for the configured period of time (in days). 0 means no expiry
+     * 
+     */
+    public Optional<Integer> usermacExpiry() {
+        return Optional.ofNullable(this.usermacExpiry);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -157,12 +182,14 @@ public final class SettingMistNac {
         private @Nullable Boolean disableRsaeAlgorithms;
         private @Nullable Integer eapSslSecurityLevel;
         private @Nullable Boolean euOnly;
+        private @Nullable SettingMistNacFingerprinting fingerprinting;
         private @Nullable String idpMachineCertLookupField;
         private @Nullable String idpUserCertLookupField;
         private @Nullable List<SettingMistNacIdp> idps;
         private @Nullable SettingMistNacServerCert serverCert;
         private @Nullable String useIpVersion;
         private @Nullable Boolean useSslPort;
+        private @Nullable Integer usermacExpiry;
         public Builder() {}
         public Builder(SettingMistNac defaults) {
     	      Objects.requireNonNull(defaults);
@@ -171,12 +198,14 @@ public final class SettingMistNac {
     	      this.disableRsaeAlgorithms = defaults.disableRsaeAlgorithms;
     	      this.eapSslSecurityLevel = defaults.eapSslSecurityLevel;
     	      this.euOnly = defaults.euOnly;
+    	      this.fingerprinting = defaults.fingerprinting;
     	      this.idpMachineCertLookupField = defaults.idpMachineCertLookupField;
     	      this.idpUserCertLookupField = defaults.idpUserCertLookupField;
     	      this.idps = defaults.idps;
     	      this.serverCert = defaults.serverCert;
     	      this.useIpVersion = defaults.useIpVersion;
     	      this.useSslPort = defaults.useSslPort;
+    	      this.usermacExpiry = defaults.usermacExpiry;
         }
 
         @CustomType.Setter
@@ -210,6 +239,12 @@ public final class SettingMistNac {
         public Builder euOnly(@Nullable Boolean euOnly) {
 
             this.euOnly = euOnly;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fingerprinting(@Nullable SettingMistNacFingerprinting fingerprinting) {
+
+            this.fingerprinting = fingerprinting;
             return this;
         }
         @CustomType.Setter
@@ -251,6 +286,12 @@ public final class SettingMistNac {
             this.useSslPort = useSslPort;
             return this;
         }
+        @CustomType.Setter
+        public Builder usermacExpiry(@Nullable Integer usermacExpiry) {
+
+            this.usermacExpiry = usermacExpiry;
+            return this;
+        }
         public SettingMistNac build() {
             final var _resultValue = new SettingMistNac();
             _resultValue.cacerts = cacerts;
@@ -258,12 +299,14 @@ public final class SettingMistNac {
             _resultValue.disableRsaeAlgorithms = disableRsaeAlgorithms;
             _resultValue.eapSslSecurityLevel = eapSslSecurityLevel;
             _resultValue.euOnly = euOnly;
+            _resultValue.fingerprinting = fingerprinting;
             _resultValue.idpMachineCertLookupField = idpMachineCertLookupField;
             _resultValue.idpUserCertLookupField = idpUserCertLookupField;
             _resultValue.idps = idps;
             _resultValue.serverCert = serverCert;
             _resultValue.useIpVersion = useIpVersion;
             _resultValue.useSslPort = useSslPort;
+            _resultValue.usermacExpiry = usermacExpiry;
             return _resultValue;
         }
     }

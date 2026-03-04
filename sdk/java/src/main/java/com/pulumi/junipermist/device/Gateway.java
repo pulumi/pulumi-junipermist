@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  * 
  * It can be used to define specific configuration at the device level or to override Org Gateway template settings.
  * 
- * &gt; **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway
+ * &gt; **WARNING** For **adopted** devices, make sure to set `mistConfigured`=`true` to allow Mist to manage the gateway
  * 
  * ## Example Usage
  * 
@@ -264,11 +264,23 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     public Output<String> mac() {
         return this.mac;
     }
+    /**
+     * Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+     * 
+     * @deprecated
+     * This attribute is being deprecated, please use `mistConfigured` instead
+     * 
+     */
+    @Deprecated /* This attribute is being deprecated, please use `mistConfigured` instead */
     @Export(name="managed", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> managed;
+    private Output<Boolean> managed;
 
-    public Output<Optional<Boolean>> managed() {
-        return Codegen.optional(this.managed);
+    /**
+     * @return Whether the device is managed by Mist. Deprecated in favour of mist_configured.
+     * 
+     */
+    public Output<Boolean> managed() {
+        return this.managed;
     }
     /**
      * Map where the device belongs to
@@ -283,6 +295,20 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> mapId() {
         return Codegen.optional(this.mapId);
+    }
+    /**
+     * whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+     * 
+     */
+    @Export(name="mistConfigured", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> mistConfigured;
+
+    /**
+     * @return whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
+     * 
+     */
+    public Output<Boolean> mistConfigured() {
+        return this.mistConfigured;
     }
     /**
      * Device Model

@@ -170,6 +170,21 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.nameidFormat);
     }
 
+    /**
+     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * 
+     */
+    @Import(name="oauthProviderDomain")
+    private @Nullable Output<String> oauthProviderDomain;
+
+    /**
+     * @return If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * 
+     */
+    public Optional<Output<String>> oauthProviderDomain() {
+        return Optional.ofNullable(this.oauthProviderDomain);
+    }
+
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
@@ -220,6 +235,7 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
         this.issuer = $.issuer;
         this.name = $.name;
         this.nameidFormat = $.nameidFormat;
+        this.oauthProviderDomain = $.oauthProviderDomain;
         this.orgId = $.orgId;
         this.roleAttrExtraction = $.roleAttrExtraction;
         this.roleAttrFrom = $.roleAttrFrom;
@@ -455,6 +471,27 @@ public final class SsoState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nameidFormat(String nameidFormat) {
             return nameidFormat(Output.of(nameidFormat));
+        }
+
+        /**
+         * @param oauthProviderDomain If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauthProviderDomain(@Nullable Output<String> oauthProviderDomain) {
+            $.oauthProviderDomain = oauthProviderDomain;
+            return this;
+        }
+
+        /**
+         * @param oauthProviderDomain If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauthProviderDomain(String oauthProviderDomain) {
+            return oauthProviderDomain(Output.of(oauthProviderDomain));
         }
 
         public Builder orgId(@Nullable Output<String> orgId) {

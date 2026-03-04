@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Idpprofile{}
 	case "junipermist:org/inventory:Inventory":
 		r = &Inventory{}
+	case "junipermist:org/mxedge:Mxedge":
+		r = &Mxedge{}
 	case "junipermist:org/nacEndpoint:NacEndpoint":
 		r = &NacEndpoint{}
 	case "junipermist:org/nacidp:Nacidp":
@@ -153,6 +155,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"org/inventory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/mxedge",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

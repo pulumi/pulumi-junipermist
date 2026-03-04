@@ -193,6 +193,10 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly uplinkPortConfig: pulumi.Output<outputs.site.SettingUplinkPortConfig>;
     /**
+     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+     */
+    declare public readonly usesDescriptionFromPortUsage: pulumi.Output<boolean>;
+    /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
@@ -275,6 +279,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["syntheticTest"] = state?.syntheticTest;
             resourceInputs["trackAnonymousDevices"] = state?.trackAnonymousDevices;
             resourceInputs["uplinkPortConfig"] = state?.uplinkPortConfig;
+            resourceInputs["usesDescriptionFromPortUsage"] = state?.usesDescriptionFromPortUsage;
             resourceInputs["vars"] = state?.vars;
             resourceInputs["vna"] = state?.vna;
             resourceInputs["vpnPathUpdownThreshold"] = state?.vpnPathUpdownThreshold;
@@ -327,6 +332,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["syntheticTest"] = args?.syntheticTest;
             resourceInputs["trackAnonymousDevices"] = args?.trackAnonymousDevices;
             resourceInputs["uplinkPortConfig"] = args?.uplinkPortConfig;
+            resourceInputs["usesDescriptionFromPortUsage"] = args?.usesDescriptionFromPortUsage;
             resourceInputs["vars"] = args?.vars;
             resourceInputs["vna"] = args?.vna;
             resourceInputs["vpnPathUpdownThreshold"] = args?.vpnPathUpdownThreshold;
@@ -461,6 +467,10 @@ export interface SettingState {
      * AP Uplink port configuration
      */
     uplinkPortConfig?: pulumi.Input<inputs.site.SettingUplinkPortConfig>;
+    /**
+     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+     */
+    usesDescriptionFromPortUsage?: pulumi.Input<boolean>;
     /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
@@ -610,6 +620,10 @@ export interface SettingArgs {
      * AP Uplink port configuration
      */
     uplinkPortConfig?: pulumi.Input<inputs.site.SettingUplinkPortConfig>;
+    /**
+     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+     */
+    usesDescriptionFromPortUsage?: pulumi.Input<boolean>;
     /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */

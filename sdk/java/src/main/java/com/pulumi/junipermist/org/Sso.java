@@ -218,6 +218,20 @@ public class Sso extends com.pulumi.resources.CustomResource {
     public Output<String> nameidFormat() {
         return this.nameidFormat;
     }
+    /**
+     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * 
+     */
+    @Export(name="oauthProviderDomain", refs={String.class}, tree="[0]")
+    private Output<String> oauthProviderDomain;
+
+    /**
+     * @return If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * 
+     */
+    public Output<String> oauthProviderDomain() {
+        return this.oauthProviderDomain;
+    }
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 

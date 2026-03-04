@@ -201,6 +201,10 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly disableHtVhtRates: pulumi.Output<boolean | undefined>;
     /**
+     * whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+     */
+    declare public /*out*/ readonly disableMessageAuthenticatorCheck: pulumi.Output<boolean>;
+    /**
      * Whether to disable U-APSD
      */
     declare public readonly disableUapsd: pulumi.Output<boolean>;
@@ -473,6 +477,7 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["disable11ax"] = state?.disable11ax;
             resourceInputs["disable11be"] = state?.disable11be;
             resourceInputs["disableHtVhtRates"] = state?.disableHtVhtRates;
+            resourceInputs["disableMessageAuthenticatorCheck"] = state?.disableMessageAuthenticatorCheck;
             resourceInputs["disableUapsd"] = state?.disableUapsd;
             resourceInputs["disableV1RoamNotify"] = state?.disableV1RoamNotify;
             resourceInputs["disableV2RoamNotify"] = state?.disableV2RoamNotify;
@@ -633,6 +638,7 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["wxtagIds"] = args?.wxtagIds;
             resourceInputs["wxtunnelId"] = args?.wxtunnelId;
             resourceInputs["wxtunnelRemoteId"] = args?.wxtunnelRemoteId;
+            resourceInputs["disableMessageAuthenticatorCheck"] = undefined /*out*/;
             resourceInputs["mspId"] = undefined /*out*/;
             resourceInputs["orgId"] = undefined /*out*/;
             resourceInputs["portalApiSecret"] = undefined /*out*/;
@@ -774,6 +780,10 @@ export interface WlanState {
      * To disable ht or vht rates
      */
     disableHtVhtRates?: pulumi.Input<boolean>;
+    /**
+     * whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+     */
+    disableMessageAuthenticatorCheck?: pulumi.Input<boolean>;
     /**
      * Whether to disable U-APSD
      */

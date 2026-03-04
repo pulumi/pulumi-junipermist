@@ -214,6 +214,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OauthPingIdentityRegion { get; private set; } = null!;
 
         /// <summary>
+        /// If `OauthType`==`Okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        /// </summary>
+        [Output("oauthProviderDomain")]
+        public Output<string> OauthProviderDomain { get; private set; } = null!;
+
+        /// <summary>
         /// If `IdpType`==`Oauth`, ropc = Resource Owner Password Credentials
         /// </summary>
         [Output("oauthRopcClientId")]
@@ -432,6 +438,12 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OauthPingIdentityRegion { get; set; }
 
         /// <summary>
+        /// If `OauthType`==`Okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        /// </summary>
+        [Input("oauthProviderDomain")]
+        public Input<string>? OauthProviderDomain { get; set; }
+
+        /// <summary>
         /// If `IdpType`==`Oauth`, ropc = Resource Owner Password Credentials
         /// </summary>
         [Input("oauthRopcClientId")]
@@ -609,6 +621,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("oauthPingIdentityRegion")]
         public Input<string>? OauthPingIdentityRegion { get; set; }
+
+        /// <summary>
+        /// If `OauthType`==`Okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        /// </summary>
+        [Input("oauthProviderDomain")]
+        public Input<string>? OauthProviderDomain { get; set; }
 
         /// <summary>
         /// If `IdpType`==`Oauth`, ropc = Resource Owner Password Credentials

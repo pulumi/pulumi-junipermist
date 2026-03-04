@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchPortUsagesRule {
+    /**
+     * @return Optional description of the rule
+     * 
+     */
+    private @Nullable String description;
     private @Nullable String equals;
     /**
      * @return Use `equalsAny` to match any item in a list
@@ -38,6 +43,13 @@ public final class SwitchPortUsagesRule {
     private @Nullable String usage;
 
     private SwitchPortUsagesRule() {}
+    /**
+     * @return Optional description of the rule
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
     public Optional<String> equals_() {
         return Optional.ofNullable(this.equals);
     }
@@ -81,6 +93,7 @@ public final class SwitchPortUsagesRule {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String description;
         private @Nullable String equals;
         private @Nullable List<String> equalsAnies;
         private @Nullable String expression;
@@ -89,6 +102,7 @@ public final class SwitchPortUsagesRule {
         public Builder() {}
         public Builder(SwitchPortUsagesRule defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.description = defaults.description;
     	      this.equals = defaults.equals;
     	      this.equalsAnies = defaults.equalsAnies;
     	      this.expression = defaults.expression;
@@ -96,6 +110,12 @@ public final class SwitchPortUsagesRule {
     	      this.usage = defaults.usage;
         }
 
+        @CustomType.Setter
+        public Builder description(@Nullable String description) {
+
+            this.description = description;
+            return this;
+        }
         @CustomType.Setter("equals")
         public Builder equals_(@Nullable String equals) {
 
@@ -133,6 +153,7 @@ public final class SwitchPortUsagesRule {
         }
         public SwitchPortUsagesRule build() {
             final var _resultValue = new SwitchPortUsagesRule();
+            _resultValue.description = description;
             _resultValue.equals = equals;
             _resultValue.equalsAnies = equalsAnies;
             _resultValue.expression = expression;

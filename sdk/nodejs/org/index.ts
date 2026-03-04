@@ -190,6 +190,11 @@ export type Inventory = import("./inventory").Inventory;
 export const Inventory: typeof import("./inventory").Inventory = null as any;
 utilities.lazyLoad(exports, ["Inventory"], () => require("./inventory"));
 
+export { MxedgeArgs, MxedgeState } from "./mxedge";
+export type Mxedge = import("./mxedge").Mxedge;
+export const Mxedge: typeof import("./mxedge").Mxedge = null as any;
+utilities.lazyLoad(exports, ["Mxedge"], () => require("./mxedge"));
+
 export { NacEndpointArgs, NacEndpointState } from "./nacEndpoint";
 export type NacEndpoint = import("./nacEndpoint").NacEndpoint;
 export const NacEndpoint: typeof import("./nacEndpoint").NacEndpoint = null as any;
@@ -327,6 +332,8 @@ const _module = {
                 return new Idpprofile(name, <any>undefined, { urn })
             case "junipermist:org/inventory:Inventory":
                 return new Inventory(name, <any>undefined, { urn })
+            case "junipermist:org/mxedge:Mxedge":
+                return new Mxedge(name, <any>undefined, { urn })
             case "junipermist:org/nacEndpoint:NacEndpoint":
                 return new NacEndpoint(name, <any>undefined, { urn })
             case "junipermist:org/nacidp:Nacidp":
@@ -387,6 +394,7 @@ pulumi.runtime.registerResourceModule("junipermist", "org/evpnTopology", _module
 pulumi.runtime.registerResourceModule("junipermist", "org/gatewaytemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/idpprofile", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/inventory", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/mxedge", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nacEndpoint", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nacidp", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nacrule", _module)

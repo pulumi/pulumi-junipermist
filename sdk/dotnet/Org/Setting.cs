@@ -106,6 +106,12 @@ namespace Pulumi.JuniperMist.Org
     public partial class Setting : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// whether to allow Mist to look at this org
+        /// </summary>
+        [Output("allowMist")]
+        public Output<bool> AllowMist { get; private set; } = null!;
+
+        /// <summary>
         /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Output("apUpdownThreshold")]
@@ -154,6 +160,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Output("disableRemoteShell")]
         public Output<bool?> DisableRemoteShell { get; private set; } = null!;
+
+        /// <summary>
+        /// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+        /// </summary>
+        [Output("gatewayTunnelUpdownThreshold")]
+        public Output<int?> GatewayTunnelUpdownThreshold { get; private set; } = null!;
 
         /// <summary>
         /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `DeviceUpdownThreshold` is ignored.
@@ -363,6 +375,12 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? DisableRemoteShell { get; set; }
 
         /// <summary>
+        /// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+        /// </summary>
+        [Input("gatewayTunnelUpdownThreshold")]
+        public Input<int>? GatewayTunnelUpdownThreshold { get; set; }
+
+        /// <summary>
         /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Input("gatewayUpdownThreshold")]
@@ -478,6 +496,12 @@ namespace Pulumi.JuniperMist.Org
     public sealed class SettingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// whether to allow Mist to look at this org
+        /// </summary>
+        [Input("allowMist")]
+        public Input<bool>? AllowMist { get; set; }
+
+        /// <summary>
         /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Input("apUpdownThreshold")]
@@ -532,6 +556,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("disableRemoteShell")]
         public Input<bool>? DisableRemoteShell { get; set; }
+
+        /// <summary>
+        /// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+        /// </summary>
+        [Input("gatewayTunnelUpdownThreshold")]
+        public Input<int>? GatewayTunnelUpdownThreshold { get; set; }
 
         /// <summary>
         /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `DeviceUpdownThreshold` is ignored.

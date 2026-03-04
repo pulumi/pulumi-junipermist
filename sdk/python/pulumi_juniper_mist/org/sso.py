@@ -29,6 +29,7 @@ class SsoArgs:
                  ignore_unmatched_roles: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  nameid_format: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  role_attr_extraction: Optional[pulumi.Input[_builtins.str]] = None,
                  role_attr_from: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -43,6 +44,7 @@ class SsoArgs:
         :param pulumi.Input[_builtins.bool] ignore_unmatched_roles: ignore any unmatched roles provided in assertion. By default, an assertion is treated as invalid for any unmatched role
         :param pulumi.Input[_builtins.str] name: Name
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
         :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         :param pulumi.Input[_builtins.str] role_attr_from: name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
@@ -61,6 +63,8 @@ class SsoArgs:
             pulumi.set(__self__, "name", name)
         if nameid_format is not None:
             pulumi.set(__self__, "nameid_format", nameid_format)
+        if oauth_provider_domain is not None:
+            pulumi.set(__self__, "oauth_provider_domain", oauth_provider_domain)
         if role_attr_extraction is not None:
             pulumi.set(__self__, "role_attr_extraction", role_attr_extraction)
         if role_attr_from is not None:
@@ -184,6 +188,18 @@ class SsoArgs:
         pulumi.set(self, "nameid_format", value)
 
     @_builtins.property
+    @pulumi.getter(name="oauthProviderDomain")
+    def oauth_provider_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        """
+        return pulumi.get(self, "oauth_provider_domain")
+
+    @oauth_provider_domain.setter
+    def oauth_provider_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "oauth_provider_domain", value)
+
+    @_builtins.property
     @pulumi.getter(name="roleAttrExtraction")
     def role_attr_extraction(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -221,6 +237,7 @@ class _SsoState:
                  issuer: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  nameid_format: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  role_attr_extraction: Optional[pulumi.Input[_builtins.str]] = None,
                  role_attr_from: Optional[pulumi.Input[_builtins.str]] = None):
@@ -239,6 +256,7 @@ class _SsoState:
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
         :param pulumi.Input[_builtins.str] name: Name
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
         :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         :param pulumi.Input[_builtins.str] role_attr_from: name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
@@ -262,6 +280,8 @@ class _SsoState:
             pulumi.set(__self__, "name", name)
         if nameid_format is not None:
             pulumi.set(__self__, "nameid_format", nameid_format)
+        if oauth_provider_domain is not None:
+            pulumi.set(__self__, "oauth_provider_domain", oauth_provider_domain)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if role_attr_extraction is not None:
@@ -392,6 +412,18 @@ class _SsoState:
         pulumi.set(self, "nameid_format", value)
 
     @_builtins.property
+    @pulumi.getter(name="oauthProviderDomain")
+    def oauth_provider_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        """
+        return pulumi.get(self, "oauth_provider_domain")
+
+    @oauth_provider_domain.setter
+    def oauth_provider_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "oauth_provider_domain", value)
+
+    @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "org_id")
@@ -440,6 +472,7 @@ class Sso(pulumi.CustomResource):
                  issuer: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  nameid_format: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  role_attr_extraction: Optional[pulumi.Input[_builtins.str]] = None,
                  role_attr_from: Optional[pulumi.Input[_builtins.str]] = None,
@@ -489,6 +522,7 @@ class Sso(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
         :param pulumi.Input[_builtins.str] name: Name
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
         :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         :param pulumi.Input[_builtins.str] role_attr_from: name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
@@ -556,6 +590,7 @@ class Sso(pulumi.CustomResource):
                  issuer: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  nameid_format: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
                  role_attr_extraction: Optional[pulumi.Input[_builtins.str]] = None,
                  role_attr_from: Optional[pulumi.Input[_builtins.str]] = None,
@@ -585,6 +620,7 @@ class Sso(pulumi.CustomResource):
             __props__.__dict__["issuer"] = issuer
             __props__.__dict__["name"] = name
             __props__.__dict__["nameid_format"] = nameid_format
+            __props__.__dict__["oauth_provider_domain"] = oauth_provider_domain
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
@@ -611,6 +647,7 @@ class Sso(pulumi.CustomResource):
             issuer: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             nameid_format: Optional[pulumi.Input[_builtins.str]] = None,
+            oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
             role_attr_extraction: Optional[pulumi.Input[_builtins.str]] = None,
             role_attr_from: Optional[pulumi.Input[_builtins.str]] = None) -> 'Sso':
@@ -633,6 +670,7 @@ class Sso(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
         :param pulumi.Input[_builtins.str] name: Name
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
         :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         :param pulumi.Input[_builtins.str] role_attr_from: name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
@@ -650,6 +688,7 @@ class Sso(pulumi.CustomResource):
         __props__.__dict__["issuer"] = issuer
         __props__.__dict__["name"] = name
         __props__.__dict__["nameid_format"] = nameid_format
+        __props__.__dict__["oauth_provider_domain"] = oauth_provider_domain
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["role_attr_extraction"] = role_attr_extraction
         __props__.__dict__["role_attr_from"] = role_attr_from
@@ -736,6 +775,14 @@ class Sso(pulumi.CustomResource):
         enum: `email`, `unspecified`
         """
         return pulumi.get(self, "nameid_format")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthProviderDomain")
+    def oauth_provider_domain(self) -> pulumi.Output[_builtins.str]:
+        """
+        If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        """
+        return pulumi.get(self, "oauth_provider_domain")
 
     @_builtins.property
     @pulumi.getter(name="orgId")

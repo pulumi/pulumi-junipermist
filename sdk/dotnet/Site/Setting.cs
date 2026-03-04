@@ -253,6 +253,12 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingUplinkPortConfig> UplinkPortConfig { get; private set; } = null!;
 
         /// <summary>
+        /// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+        /// </summary>
+        [Output("usesDescriptionFromPortUsage")]
+        public Output<bool> UsesDescriptionFromPortUsage { get; private set; } = null!;
+
+        /// <summary>
         /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         [Output("vars")]
@@ -542,6 +548,12 @@ namespace Pulumi.JuniperMist.Site
         [Input("uplinkPortConfig")]
         public Input<Inputs.SettingUplinkPortConfigArgs>? UplinkPortConfig { get; set; }
 
+        /// <summary>
+        /// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+        /// </summary>
+        [Input("usesDescriptionFromPortUsage")]
+        public Input<bool>? UsesDescriptionFromPortUsage { get; set; }
+
         [Input("vars")]
         private InputMap<string>? _vars;
 
@@ -801,6 +813,12 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.SettingUplinkPortConfigGetArgs>? UplinkPortConfig { get; set; }
+
+        /// <summary>
+        /// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+        /// </summary>
+        [Input("usesDescriptionFromPortUsage")]
+        public Input<bool>? UsesDescriptionFromPortUsage { get; set; }
 
         [Input("vars")]
         private InputMap<string>? _vars;

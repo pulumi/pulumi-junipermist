@@ -108,6 +108,10 @@ export class Setting extends pulumi.CustomResource {
     }
 
     /**
+     * whether to allow Mist to look at this org
+     */
+    declare public /*out*/ readonly allowMist: pulumi.Output<boolean>;
+    /**
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
     declare public readonly apUpdownThreshold: pulumi.Output<number | undefined>;
@@ -137,6 +141,10 @@ export class Setting extends pulumi.CustomResource {
      * Whether to disable remote shell access for an entire org
      */
     declare public readonly disableRemoteShell: pulumi.Output<boolean | undefined>;
+    /**
+     * enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     */
+    declare public readonly gatewayTunnelUpdownThreshold: pulumi.Output<number | undefined>;
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
@@ -204,6 +212,7 @@ export class Setting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SettingState | undefined;
+            resourceInputs["allowMist"] = state?.allowMist;
             resourceInputs["apUpdownThreshold"] = state?.apUpdownThreshold;
             resourceInputs["apiPolicy"] = state?.apiPolicy;
             resourceInputs["cacerts"] = state?.cacerts;
@@ -214,6 +223,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["deviceUpdownThreshold"] = state?.deviceUpdownThreshold;
             resourceInputs["disablePcap"] = state?.disablePcap;
             resourceInputs["disableRemoteShell"] = state?.disableRemoteShell;
+            resourceInputs["gatewayTunnelUpdownThreshold"] = state?.gatewayTunnelUpdownThreshold;
             resourceInputs["gatewayUpdownThreshold"] = state?.gatewayUpdownThreshold;
             resourceInputs["installer"] = state?.installer;
             resourceInputs["jcloud"] = state?.jcloud;
@@ -255,6 +265,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["deviceUpdownThreshold"] = args?.deviceUpdownThreshold;
             resourceInputs["disablePcap"] = args?.disablePcap;
             resourceInputs["disableRemoteShell"] = args?.disableRemoteShell;
+            resourceInputs["gatewayTunnelUpdownThreshold"] = args?.gatewayTunnelUpdownThreshold;
             resourceInputs["gatewayUpdownThreshold"] = args?.gatewayUpdownThreshold;
             resourceInputs["installer"] = args?.installer;
             resourceInputs["jcloud"] = args?.jcloud;
@@ -280,6 +291,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["wanPma"] = args?.wanPma;
             resourceInputs["wiredPma"] = args?.wiredPma;
             resourceInputs["wirelessPma"] = args?.wirelessPma;
+            resourceInputs["allowMist"] = undefined /*out*/;
             resourceInputs["cradlepoint"] = undefined /*out*/;
             resourceInputs["juniper"] = undefined /*out*/;
             resourceInputs["pcap"] = undefined /*out*/;
@@ -293,6 +305,10 @@ export class Setting extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Setting resources.
  */
 export interface SettingState {
+    /**
+     * whether to allow Mist to look at this org
+     */
+    allowMist?: pulumi.Input<boolean>;
     /**
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
@@ -323,6 +339,10 @@ export interface SettingState {
      * Whether to disable remote shell access for an entire org
      */
     disableRemoteShell?: pulumi.Input<boolean>;
+    /**
+     * enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     */
+    gatewayTunnelUpdownThreshold?: pulumi.Input<number>;
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
@@ -411,6 +431,10 @@ export interface SettingArgs {
      * Whether to disable remote shell access for an entire org
      */
     disableRemoteShell?: pulumi.Input<boolean>;
+    /**
+     * enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     */
+    gatewayTunnelUpdownThreshold?: pulumi.Input<number>;
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */

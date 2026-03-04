@@ -193,6 +193,10 @@ export class Networktemplate extends pulumi.CustomResource {
      * Switch settings
      */
     declare public readonly switchMgmt: pulumi.Output<outputs.site.NetworktemplateSwitchMgmt | undefined>;
+    /**
+     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+     */
+    declare public /*out*/ readonly usesDescriptionFromPortUsage: pulumi.Output<boolean>;
     declare public readonly vrfConfig: pulumi.Output<outputs.site.NetworktemplateVrfConfig | undefined>;
     /**
      * Property key is the network name
@@ -235,6 +239,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["snmpConfig"] = state?.snmpConfig;
             resourceInputs["switchMatching"] = state?.switchMatching;
             resourceInputs["switchMgmt"] = state?.switchMgmt;
+            resourceInputs["usesDescriptionFromPortUsage"] = state?.usesDescriptionFromPortUsage;
             resourceInputs["vrfConfig"] = state?.vrfConfig;
             resourceInputs["vrfInstances"] = state?.vrfInstances;
         } else {
@@ -267,6 +272,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["switchMgmt"] = args?.switchMgmt;
             resourceInputs["vrfConfig"] = args?.vrfConfig;
             resourceInputs["vrfInstances"] = args?.vrfInstances;
+            resourceInputs["usesDescriptionFromPortUsage"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Networktemplate.__pulumiType, name, resourceInputs, opts);
@@ -354,6 +360,10 @@ export interface NetworktemplateState {
      * Switch settings
      */
     switchMgmt?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmt>;
+    /**
+     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+     */
+    usesDescriptionFromPortUsage?: pulumi.Input<boolean>;
     vrfConfig?: pulumi.Input<inputs.site.NetworktemplateVrfConfig>;
     /**
      * Property key is the network name

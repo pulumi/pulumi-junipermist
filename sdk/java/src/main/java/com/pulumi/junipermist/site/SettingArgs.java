@@ -495,6 +495,21 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+     * 
+     */
+    @Import(name="usesDescriptionFromPortUsage")
+    private @Nullable Output<Boolean> usesDescriptionFromPortUsage;
+
+    /**
+     * @return by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+     * 
+     */
+    public Optional<Output<Boolean>> usesDescriptionFromPortUsage() {
+        return Optional.ofNullable(this.usesDescriptionFromPortUsage);
+    }
+
+    /**
      * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
@@ -658,6 +673,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.syntheticTest = $.syntheticTest;
         this.trackAnonymousDevices = $.trackAnonymousDevices;
         this.uplinkPortConfig = $.uplinkPortConfig;
+        this.usesDescriptionFromPortUsage = $.usesDescriptionFromPortUsage;
         this.vars = $.vars;
         this.vna = $.vna;
         this.vpnPathUpdownThreshold = $.vpnPathUpdownThreshold;
@@ -1311,6 +1327,27 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uplinkPortConfig(SettingUplinkPortConfigArgs uplinkPortConfig) {
             return uplinkPortConfig(Output.of(uplinkPortConfig));
+        }
+
+        /**
+         * @param usesDescriptionFromPortUsage by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usesDescriptionFromPortUsage(@Nullable Output<Boolean> usesDescriptionFromPortUsage) {
+            $.usesDescriptionFromPortUsage = usesDescriptionFromPortUsage;
+            return this;
+        }
+
+        /**
+         * @param usesDescriptionFromPortUsage by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usesDescriptionFromPortUsage(Boolean usesDescriptionFromPortUsage) {
+            return usesDescriptionFromPortUsage(Output.of(usesDescriptionFromPortUsage));
         }
 
         /**

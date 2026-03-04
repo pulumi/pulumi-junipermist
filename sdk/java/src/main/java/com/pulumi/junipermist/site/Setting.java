@@ -539,6 +539,20 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.uplinkPortConfig;
     }
     /**
+     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+     * 
+     */
+    @Export(name="usesDescriptionFromPortUsage", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> usesDescriptionFromPortUsage;
+
+    /**
+     * @return by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+     * 
+     */
+    public Output<Boolean> usesDescriptionFromPortUsage() {
+        return this.usesDescriptionFromPortUsage;
+    }
+    /**
      * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
