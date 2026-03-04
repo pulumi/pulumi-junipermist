@@ -1866,6 +1866,83 @@
             "mist_org_inventory": {
                 "current": "junipermist:org/inventory:Inventory"
             },
+            "mist_org_mxedge": {
+                "current": "junipermist:org/mxedge:Mxedge",
+                "fields": {
+                    "ntp_servers": {
+                        "maxItemsOne": false
+                    },
+                    "oob_ip_config": {
+                        "fields": {
+                            "dns": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "services": {
+                        "maxItemsOne": false
+                    },
+                    "tunterm_dhcpd_config": {
+                        "elem": {
+                            "fields": {
+                                "servers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tunterm_igmp_snooping_config": {
+                        "fields": {
+                            "vlan_ids": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "tunterm_monitoring": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "maxItemsOne": false
+                        }
+                    },
+                    "tunterm_multicast_config": {
+                        "fields": {
+                            "mdns": {
+                                "fields": {
+                                    "vlan_ids": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "ssdp": {
+                                "fields": {
+                                    "vlan_ids": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tunterm_port_config": {
+                        "fields": {
+                            "downstream_ports": {
+                                "maxItemsOne": false
+                            },
+                            "upstream_ports": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "tunterm_switch_config": {
+                        "elem": {
+                            "fields": {
+                                "vlan_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "mist_org_nac_endpoint": {
                 "current": "junipermist:org/nacEndpoint:NacEndpoint",
                 "fields": {
