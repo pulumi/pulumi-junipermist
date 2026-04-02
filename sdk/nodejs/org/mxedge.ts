@@ -10,6 +10,15 @@ import * as utilities from "../utilities";
  * This resource manages MxEdge devices in the Mist Organization.
  *
  * MxEdge is a multi-service edge platform that provides tunneling, switching, and other network services.
+ *
+ * ## Import
+ *
+ * Using `pulumi import`, import `junipermist.org.Mxedge` with:
+ * Mist Org MxEdge can be imported by specifying the orgId and the mxedgeId
+ *
+ * ```sh
+ * $ pulumi import junipermist:org/mxedge:Mxedge edge_one 17f90707-aebe-4274-af42-f42952a665a3.387804a7-3474-85ce-15a2-f9a9684c9c90
+ * ```
  */
 export class Mxedge extends pulumi.CustomResource {
     /**
@@ -49,7 +58,7 @@ export class Mxedge extends pulumi.CustomResource {
     declare public readonly mxclusterId: pulumi.Output<string | undefined>;
     declare public readonly mxedgeMgmt: pulumi.Output<outputs.org.MxedgeMxedgeMgmt | undefined>;
     declare public readonly name: pulumi.Output<string>;
-    declare public readonly note: pulumi.Output<string | undefined>;
+    declare public readonly notes: pulumi.Output<string | undefined>;
     declare public readonly ntpServers: pulumi.Output<string[] | undefined>;
     /**
      * IPconfiguration of the Mist Edge out-of*band management interface
@@ -119,7 +128,7 @@ export class Mxedge extends pulumi.CustomResource {
             resourceInputs["mxclusterId"] = state?.mxclusterId;
             resourceInputs["mxedgeMgmt"] = state?.mxedgeMgmt;
             resourceInputs["name"] = state?.name;
-            resourceInputs["note"] = state?.note;
+            resourceInputs["notes"] = state?.notes;
             resourceInputs["ntpServers"] = state?.ntpServers;
             resourceInputs["oobIpConfig"] = state?.oobIpConfig;
             resourceInputs["orgId"] = state?.orgId;
@@ -148,7 +157,7 @@ export class Mxedge extends pulumi.CustomResource {
             resourceInputs["mxclusterId"] = args?.mxclusterId;
             resourceInputs["mxedgeMgmt"] = args?.mxedgeMgmt;
             resourceInputs["name"] = args?.name;
-            resourceInputs["note"] = args?.note;
+            resourceInputs["notes"] = args?.notes;
             resourceInputs["ntpServers"] = args?.ntpServers;
             resourceInputs["oobIpConfig"] = args?.oobIpConfig;
             resourceInputs["orgId"] = args?.orgId;
@@ -189,7 +198,7 @@ export interface MxedgeState {
     mxclusterId?: pulumi.Input<string>;
     mxedgeMgmt?: pulumi.Input<inputs.org.MxedgeMxedgeMgmt>;
     name?: pulumi.Input<string>;
-    note?: pulumi.Input<string>;
+    notes?: pulumi.Input<string>;
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * IPconfiguration of the Mist Edge out-of*band management interface
@@ -252,7 +261,7 @@ export interface MxedgeArgs {
     mxclusterId?: pulumi.Input<string>;
     mxedgeMgmt?: pulumi.Input<inputs.org.MxedgeMxedgeMgmt>;
     name?: pulumi.Input<string>;
-    note?: pulumi.Input<string>;
+    notes?: pulumi.Input<string>;
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * IPconfiguration of the Mist Edge out-of*band management interface

@@ -1866,6 +1866,69 @@
             "mist_org_inventory": {
                 "current": "junipermist:org/inventory:Inventory"
             },
+            "mist_org_mxcluster": {
+                "current": "junipermist:org/mxcluster:Mxcluster",
+                "fields": {
+                    "mist_das": {
+                        "fields": {
+                            "coa_servers": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "radsec": {
+                        "fields": {
+                            "acct_servers": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "ssids": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "auth_servers": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "ssids": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "proxy_hosts": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "tunterm_ap_subnets": {
+                        "maxItemsOne": false
+                    },
+                    "tunterm_dhcpd_config": {
+                        "elem": {
+                            "fields": {
+                                "servers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tunterm_hosts": {
+                        "maxItemsOne": false
+                    },
+                    "tunterm_hosts_order": {
+                        "maxItemsOne": false
+                    },
+                    "tunterm_monitoring": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "maxItemsOne": false
+                        }
+                    }
+                }
+            },
             "mist_org_mxedge": {
                 "current": "junipermist:org/mxedge:Mxedge",
                 "fields": {
@@ -1950,6 +2013,30 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "mist_org_nac_portal": {
+                "current": "junipermist:org/nacPortal:NacPortal",
+                "fields": {
+                    "additional_cacerts": {
+                        "maxItemsOne": false
+                    },
+                    "additional_nac_server_name": {
+                        "maxItemsOne": false
+                    },
+                    "sso": {
+                        "fields": {
+                            "sso_role_matching": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "mist_org_nac_portal_image": {
+                "current": "junipermist:org/nacPortalImage:NacPortalImage"
+            },
+            "mist_org_nac_portal_template": {
+                "current": "junipermist:org/nacPortalTemplate:NacPortalTemplate"
             },
             "mist_org_nacidp": {
                 "current": "junipermist:org/nacidp:Nacidp",
@@ -4985,6 +5072,12 @@
                 "org_id"
             ],
             "mist_org_inventory": [
+                "org_id"
+            ],
+            "mist_org_nac_portal_image": [
+                "org_id"
+            ],
+            "mist_org_nac_portal_template": [
                 "org_id"
             ],
             "mist_org_setting": [

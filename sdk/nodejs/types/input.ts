@@ -7872,6 +7872,199 @@ export namespace org {
         vcMac?: pulumi.Input<string>;
     }
 
+    export interface MxclusterMistDas {
+        /**
+         * Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+         */
+        coaServers?: pulumi.Input<pulumi.Input<inputs.org.MxclusterMistDasCoaServer>[]>;
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface MxclusterMistDasCoaServer {
+        /**
+         * Whether to disable Event-Timestamp Check
+         */
+        disableEventTimestampCheck?: pulumi.Input<boolean>;
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * This server configured to send CoA|DM to mist edges
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * Mist edges will allow this host on this port
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator?: pulumi.Input<boolean>;
+        secret?: pulumi.Input<string>;
+    }
+
+    export interface MxclusterMistNac {
+        acctServerPort?: pulumi.Input<number>;
+        authServerPort?: pulumi.Input<number>;
+        /**
+         * Property key is the RADIUS Client IP/Subnet.
+         */
+        clientIps?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxclusterMistNacClientIps>}>;
+        enabled?: pulumi.Input<boolean>;
+        secret?: pulumi.Input<string>;
+    }
+
+    export interface MxclusterMistNacClientIps {
+    }
+
+    export interface MxclusterMxedgeMgmt {
+        configAutoRevert?: pulumi.Input<boolean>;
+        fipsEnabled?: pulumi.Input<boolean>;
+        mistPassword?: pulumi.Input<string>;
+        /**
+         * enum: `dhcp`, `disabled`, `static`
+         */
+        oobIpType?: pulumi.Input<string>;
+        /**
+         * enum: `autoconf`, `dhcp`, `disabled`, `static`
+         */
+        oobIpType6?: pulumi.Input<string>;
+        rootPassword?: pulumi.Input<string>;
+    }
+
+    export interface MxclusterProxy {
+        disabled?: pulumi.Input<boolean>;
+        url?: pulumi.Input<string>;
+    }
+
+    export interface MxclusterRadsec {
+        /**
+         * List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+         */
+        acctServers?: pulumi.Input<pulumi.Input<inputs.org.MxclusterRadsecAcctServer>[]>;
+        /**
+         * List of RADIUS authentication servers, order matters where the first one is treated as primary
+         */
+        authServers?: pulumi.Input<pulumi.Input<inputs.org.MxclusterRadsecAuthServer>[]>;
+        /**
+         * Whether to enable service on Mist Edge i.e. RADIUS proxy over TLS
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Whether to match ssid in request message to select from a subset of RADIUS servers
+         */
+        matchSsid?: pulumi.Input<boolean>;
+        /**
+         * SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+         */
+        nasIpSource?: pulumi.Input<string>;
+        /**
+         * Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+         */
+        proxyHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+         */
+        serverSelection?: pulumi.Input<string>;
+        /**
+         * Specify IP address to connect to authServers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+         */
+        srcIpSource?: pulumi.Input<string>;
+    }
+
+    export interface MxclusterRadsecAcctServer {
+        /**
+         * IP / hostname of RADIUS server
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * Acct port of RADIUS server
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Secret of RADIUS server
+         */
+        secret?: pulumi.Input<string>;
+        /**
+         * List of ssids that will use this server if matchSsid is true and match is found
+         */
+        ssids?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface MxclusterRadsecAuthServer {
+        /**
+         * IP / hostname of RADIUS server
+         */
+        host?: pulumi.Input<string>;
+        /**
+         * Whether to enable inband status check
+         */
+        inbandStatusCheck?: pulumi.Input<boolean>;
+        /**
+         * Inband status interval, in seconds
+         */
+        inbandStatusInterval?: pulumi.Input<number>;
+        /**
+         * If used for Mist APs, enable keywrap algorithm. Default is false
+         */
+        keywrapEnabled?: pulumi.Input<boolean>;
+        /**
+         * if used for Mist APs. enum: `ascii`, `hex`
+         */
+        keywrapFormat?: pulumi.Input<string>;
+        /**
+         * If used for Mist APs, encryption key
+         */
+        keywrapKek?: pulumi.Input<string>;
+        /**
+         * If used for Mist APs, Message Authentication Code Key
+         */
+        keywrapMack?: pulumi.Input<string>;
+        /**
+         * Auth port of RADIUS server
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Authentication request retry
+         */
+        retry?: pulumi.Input<number>;
+        /**
+         * Secret of RADIUS server
+         */
+        secret?: pulumi.Input<string>;
+        /**
+         * List of ssids that will use this server if matchSsid is true and match is found
+         */
+        ssids?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Authentication request timeout, in seconds
+         */
+        timeout?: pulumi.Input<number>;
+    }
+
+    export interface MxclusterRadsecTls {
+        keypair?: pulumi.Input<string>;
+    }
+
+    export interface MxclusterTuntermDhcpdConfig {
+        enabled?: pulumi.Input<boolean>;
+        servers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * enum: `relay`
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface MxclusterTuntermExtraRoutes {
+        via?: pulumi.Input<string>;
+    }
+
+    export interface MxclusterTuntermMonitoring {
+        host: pulumi.Input<string>;
+        port: pulumi.Input<number>;
+        protocol: pulumi.Input<string>;
+        srcVlanId: pulumi.Input<number>;
+        timeout: pulumi.Input<number>;
+    }
+
     export interface MxedgeMxedgeMgmt {
         configAutoRevert?: pulumi.Input<boolean>;
         fipsEnabled?: pulumi.Input<boolean>;
@@ -8036,6 +8229,62 @@ export namespace org {
     export interface MxedgeVersions {
         mxagent?: pulumi.Input<string>;
         tunterm?: pulumi.Input<string>;
+    }
+
+    export interface NacPortalPortal {
+        /**
+         * Guest portal authentication type. enum: `external`, `multi`, `none`
+         */
+        auth?: pulumi.Input<string>;
+        /**
+         * If `auth`==`none` or `auth`==`multi`, whether to expire the guest after a certain time
+         */
+        expire?: pulumi.Input<number>;
+        /**
+         * If `auth`==`external`, the URL to redirect the user to for authentication
+         */
+        externalPortalUrl?: pulumi.Input<string>;
+        /**
+         * Disconnect client (workaround for reauth issues)
+         */
+        forceReconnect?: pulumi.Input<boolean>;
+        /**
+         * If `auth`==`none` or `auth`==`multi`, whether to forward the user to the guest portal after authentication
+         */
+        forward?: pulumi.Input<boolean>;
+        /**
+         * If `auth`==`none` or `auth`==`multi`, URL to forward the user to after authentication
+         */
+        forwardUrl?: pulumi.Input<string>;
+        /**
+         * Maximum number of clients allowed per guest. 0 (default, unlimited), 1-100 range
+         */
+        maxNumDevices?: pulumi.Input<number>;
+        /**
+         * If `auth`==`none` or `auth`==`multi`, whether to show the privacy policy
+         */
+        privacy?: pulumi.Input<boolean>;
+    }
+
+    export interface NacPortalSso {
+        idpCert?: pulumi.Input<string>;
+        /**
+         * Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+         */
+        idpSignAlgo?: pulumi.Input<string>;
+        idpSsoUrl?: pulumi.Input<string>;
+        issuer?: pulumi.Input<string>;
+        nameidFormat?: pulumi.Input<string>;
+        ssoRoleMatchings?: pulumi.Input<pulumi.Input<inputs.org.NacPortalSsoSsoRoleMatching>[]>;
+        /**
+         * If it's desired to inject a role into Cert's Subject (so it can be used later on in policy)
+         */
+        useSsoRoleForCert?: pulumi.Input<boolean>;
+    }
+
+    export interface NacPortalSsoSsoRoleMatching {
+        assigned?: pulumi.Input<string>;
+        match?: pulumi.Input<string>;
     }
 
     export interface NacruleMatching {

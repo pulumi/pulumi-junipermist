@@ -27,7 +27,7 @@ class MxedgeArgs:
                  mxcluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  mxedge_mgmt: Optional[pulumi.Input['MxedgeMxedgeMgmtArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
+                 notes: Optional[pulumi.Input[_builtins.str]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oob_ip_config: Optional[pulumi.Input['MxedgeOobIpConfigArgs']] = None,
                  proxy: Optional[pulumi.Input['MxedgeProxyArgs']] = None,
@@ -66,8 +66,8 @@ class MxedgeArgs:
             pulumi.set(__self__, "mxedge_mgmt", mxedge_mgmt)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if note is not None:
-            pulumi.set(__self__, "note", note)
+        if notes is not None:
+            pulumi.set(__self__, "notes", notes)
         if ntp_servers is not None:
             pulumi.set(__self__, "ntp_servers", ntp_servers)
         if oob_ip_config is not None:
@@ -156,12 +156,12 @@ class MxedgeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def note(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "note")
+    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "notes")
 
-    @note.setter
-    def note(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "note", value)
+    @notes.setter
+    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
@@ -324,7 +324,7 @@ class _MxedgeState:
                  mxcluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  mxedge_mgmt: Optional[pulumi.Input['MxedgeMxedgeMgmtArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
+                 notes: Optional[pulumi.Input[_builtins.str]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oob_ip_config: Optional[pulumi.Input['MxedgeOobIpConfigArgs']] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -372,8 +372,8 @@ class _MxedgeState:
             pulumi.set(__self__, "mxedge_mgmt", mxedge_mgmt)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if note is not None:
-            pulumi.set(__self__, "note", note)
+        if notes is not None:
+            pulumi.set(__self__, "notes", notes)
         if ntp_servers is not None:
             pulumi.set(__self__, "ntp_servers", ntp_servers)
         if oob_ip_config is not None:
@@ -479,12 +479,12 @@ class _MxedgeState:
 
     @_builtins.property
     @pulumi.getter
-    def note(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "note")
+    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "notes")
 
-    @note.setter
-    def note(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "note", value)
+    @notes.setter
+    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
@@ -690,7 +690,7 @@ class Mxedge(pulumi.CustomResource):
                  mxcluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  mxedge_mgmt: Optional[pulumi.Input[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
+                 notes: Optional[pulumi.Input[_builtins.str]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oob_ip_config: Optional[pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -711,6 +711,15 @@ class Mxedge(pulumi.CustomResource):
         This resource manages MxEdge devices in the Mist Organization.
 
         MxEdge is a multi-service edge platform that provides tunneling, switching, and other network services.
+
+        ## Import
+
+        Using `pulumi import`, import `org.Mxedge` with:
+        Mist Org MxEdge can be imported by specifying the org_id and the mxedge_id
+
+        ```sh
+        $ pulumi import junipermist:org/mxedge:Mxedge edge_one 17f90707-aebe-4274-af42-f42952a665a3.387804a7-3474-85ce-15a2-f9a9684c9c90
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -736,6 +745,15 @@ class Mxedge(pulumi.CustomResource):
 
         MxEdge is a multi-service edge platform that provides tunneling, switching, and other network services.
 
+        ## Import
+
+        Using `pulumi import`, import `org.Mxedge` with:
+        Mist Org MxEdge can be imported by specifying the org_id and the mxedge_id
+
+        ```sh
+        $ pulumi import junipermist:org/mxedge:Mxedge edge_one 17f90707-aebe-4274-af42-f42952a665a3.387804a7-3474-85ce-15a2-f9a9684c9c90
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param MxedgeArgs args: The arguments to use to populate this resource's properties.
@@ -757,7 +775,7 @@ class Mxedge(pulumi.CustomResource):
                  mxcluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  mxedge_mgmt: Optional[pulumi.Input[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
+                 notes: Optional[pulumi.Input[_builtins.str]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oob_ip_config: Optional[pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
                  org_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -787,7 +805,7 @@ class Mxedge(pulumi.CustomResource):
             __props__.__dict__["mxcluster_id"] = mxcluster_id
             __props__.__dict__["mxedge_mgmt"] = mxedge_mgmt
             __props__.__dict__["name"] = name
-            __props__.__dict__["note"] = note
+            __props__.__dict__["notes"] = notes
             __props__.__dict__["ntp_servers"] = ntp_servers
             __props__.__dict__["oob_ip_config"] = oob_ip_config
             if org_id is None and not opts.urn:
@@ -827,7 +845,7 @@ class Mxedge(pulumi.CustomResource):
             mxcluster_id: Optional[pulumi.Input[_builtins.str]] = None,
             mxedge_mgmt: Optional[pulumi.Input[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
-            note: Optional[pulumi.Input[_builtins.str]] = None,
+            notes: Optional[pulumi.Input[_builtins.str]] = None,
             ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             oob_ip_config: Optional[pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
             org_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -876,7 +894,7 @@ class Mxedge(pulumi.CustomResource):
         __props__.__dict__["mxcluster_id"] = mxcluster_id
         __props__.__dict__["mxedge_mgmt"] = mxedge_mgmt
         __props__.__dict__["name"] = name
-        __props__.__dict__["note"] = note
+        __props__.__dict__["notes"] = notes
         __props__.__dict__["ntp_servers"] = ntp_servers
         __props__.__dict__["oob_ip_config"] = oob_ip_config
         __props__.__dict__["org_id"] = org_id
@@ -937,8 +955,8 @@ class Mxedge(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def note(self) -> pulumi.Output[Optional[_builtins.str]]:
-        return pulumi.get(self, "note")
+    def notes(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "notes")
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
