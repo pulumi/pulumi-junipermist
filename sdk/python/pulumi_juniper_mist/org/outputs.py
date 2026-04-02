@@ -198,6 +198,19 @@ __all__ = [
     'IdpprofileOverwrite',
     'IdpprofileOverwriteMatching',
     'InventoryInventory',
+    'MxclusterMistDas',
+    'MxclusterMistDasCoaServer',
+    'MxclusterMistNac',
+    'MxclusterMistNacClientIps',
+    'MxclusterMxedgeMgmt',
+    'MxclusterProxy',
+    'MxclusterRadsec',
+    'MxclusterRadsecAcctServer',
+    'MxclusterRadsecAuthServer',
+    'MxclusterRadsecTls',
+    'MxclusterTuntermDhcpdConfig',
+    'MxclusterTuntermExtraRoutes',
+    'MxclusterTuntermMonitoring',
     'MxedgeMxedgeMgmt',
     'MxedgeOobIpConfig',
     'MxedgeProxy',
@@ -214,6 +227,9 @@ __all__ = [
     'MxedgeTuntermPortConfig',
     'MxedgeTuntermSwitchConfig',
     'MxedgeVersions',
+    'NacPortalPortal',
+    'NacPortalSso',
+    'NacPortalSsoSsoRoleMatching',
     'NacruleMatching',
     'NacruleNotMatching',
     'NetworkInternalAccess',
@@ -16146,6 +16162,812 @@ class InventoryInventory(dict):
 
 
 @pulumi.output_type
+class MxclusterMistDas(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coaServers":
+            suggest = "coa_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxclusterMistDas. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxclusterMistDas.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxclusterMistDas.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 coa_servers: Optional[Sequence['outputs.MxclusterMistDasCoaServer']] = None,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param Sequence['MxclusterMistDasCoaServerArgs'] coa_servers: Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+        """
+        if coa_servers is not None:
+            pulumi.set(__self__, "coa_servers", coa_servers)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="coaServers")
+    def coa_servers(self) -> Optional[Sequence['outputs.MxclusterMistDasCoaServer']]:
+        """
+        Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+        """
+        return pulumi.get(self, "coa_servers")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class MxclusterMistDasCoaServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableEventTimestampCheck":
+            suggest = "disable_event_timestamp_check"
+        elif key == "requireMessageAuthenticator":
+            suggest = "require_message_authenticator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxclusterMistDasCoaServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxclusterMistDasCoaServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxclusterMistDasCoaServer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable_event_timestamp_check: Optional[_builtins.bool] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 host: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 require_message_authenticator: Optional[_builtins.bool] = None,
+                 secret: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool disable_event_timestamp_check: Whether to disable Event-Timestamp Check
+        :param _builtins.str host: This server configured to send CoA|DM to mist edges
+        :param _builtins.int port: Mist edges will allow this host on this port
+        :param _builtins.bool require_message_authenticator: Whether to require Message-Authenticator in requests
+        """
+        if disable_event_timestamp_check is not None:
+            pulumi.set(__self__, "disable_event_timestamp_check", disable_event_timestamp_check)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if require_message_authenticator is not None:
+            pulumi.set(__self__, "require_message_authenticator", require_message_authenticator)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @_builtins.property
+    @pulumi.getter(name="disableEventTimestampCheck")
+    def disable_event_timestamp_check(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable Event-Timestamp Check
+        """
+        return pulumi.get(self, "disable_event_timestamp_check")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        This server configured to send CoA|DM to mist edges
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Mist edges will allow this host on this port
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="requireMessageAuthenticator")
+    def require_message_authenticator(self) -> Optional[_builtins.bool]:
+        """
+        Whether to require Message-Authenticator in requests
+        """
+        return pulumi.get(self, "require_message_authenticator")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class MxclusterMistNac(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acctServerPort":
+            suggest = "acct_server_port"
+        elif key == "authServerPort":
+            suggest = "auth_server_port"
+        elif key == "clientIps":
+            suggest = "client_ips"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxclusterMistNac. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxclusterMistNac.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxclusterMistNac.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 acct_server_port: Optional[_builtins.int] = None,
+                 auth_server_port: Optional[_builtins.int] = None,
+                 client_ips: Optional[Mapping[str, 'outputs.MxclusterMistNacClientIps']] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 secret: Optional[_builtins.str] = None):
+        """
+        :param Mapping[str, 'MxclusterMistNacClientIpsArgs'] client_ips: Property key is the RADIUS Client IP/Subnet.
+        """
+        if acct_server_port is not None:
+            pulumi.set(__self__, "acct_server_port", acct_server_port)
+        if auth_server_port is not None:
+            pulumi.set(__self__, "auth_server_port", auth_server_port)
+        if client_ips is not None:
+            pulumi.set(__self__, "client_ips", client_ips)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @_builtins.property
+    @pulumi.getter(name="acctServerPort")
+    def acct_server_port(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "acct_server_port")
+
+    @_builtins.property
+    @pulumi.getter(name="authServerPort")
+    def auth_server_port(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "auth_server_port")
+
+    @_builtins.property
+    @pulumi.getter(name="clientIps")
+    def client_ips(self) -> Optional[Mapping[str, 'outputs.MxclusterMistNacClientIps']]:
+        """
+        Property key is the RADIUS Client IP/Subnet.
+        """
+        return pulumi.get(self, "client_ips")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class MxclusterMistNacClientIps(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class MxclusterMxedgeMgmt(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configAutoRevert":
+            suggest = "config_auto_revert"
+        elif key == "fipsEnabled":
+            suggest = "fips_enabled"
+        elif key == "mistPassword":
+            suggest = "mist_password"
+        elif key == "oobIpType":
+            suggest = "oob_ip_type"
+        elif key == "oobIpType6":
+            suggest = "oob_ip_type6"
+        elif key == "rootPassword":
+            suggest = "root_password"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxclusterMxedgeMgmt. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxclusterMxedgeMgmt.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxclusterMxedgeMgmt.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_auto_revert: Optional[_builtins.bool] = None,
+                 fips_enabled: Optional[_builtins.bool] = None,
+                 mist_password: Optional[_builtins.str] = None,
+                 oob_ip_type: Optional[_builtins.str] = None,
+                 oob_ip_type6: Optional[_builtins.str] = None,
+                 root_password: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str oob_ip_type: enum: `dhcp`, `disabled`, `static`
+        :param _builtins.str oob_ip_type6: enum: `autoconf`, `dhcp`, `disabled`, `static`
+        """
+        if config_auto_revert is not None:
+            pulumi.set(__self__, "config_auto_revert", config_auto_revert)
+        if fips_enabled is not None:
+            pulumi.set(__self__, "fips_enabled", fips_enabled)
+        if mist_password is not None:
+            pulumi.set(__self__, "mist_password", mist_password)
+        if oob_ip_type is not None:
+            pulumi.set(__self__, "oob_ip_type", oob_ip_type)
+        if oob_ip_type6 is not None:
+            pulumi.set(__self__, "oob_ip_type6", oob_ip_type6)
+        if root_password is not None:
+            pulumi.set(__self__, "root_password", root_password)
+
+    @_builtins.property
+    @pulumi.getter(name="configAutoRevert")
+    def config_auto_revert(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "config_auto_revert")
+
+    @_builtins.property
+    @pulumi.getter(name="fipsEnabled")
+    def fips_enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "fips_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="mistPassword")
+    def mist_password(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "mist_password")
+
+    @_builtins.property
+    @pulumi.getter(name="oobIpType")
+    def oob_ip_type(self) -> Optional[_builtins.str]:
+        """
+        enum: `dhcp`, `disabled`, `static`
+        """
+        return pulumi.get(self, "oob_ip_type")
+
+    @_builtins.property
+    @pulumi.getter(name="oobIpType6")
+    def oob_ip_type6(self) -> Optional[_builtins.str]:
+        """
+        enum: `autoconf`, `dhcp`, `disabled`, `static`
+        """
+        return pulumi.get(self, "oob_ip_type6")
+
+    @_builtins.property
+    @pulumi.getter(name="rootPassword")
+    def root_password(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "root_password")
+
+
+@pulumi.output_type
+class MxclusterProxy(dict):
+    def __init__(__self__, *,
+                 disabled: Optional[_builtins.bool] = None,
+                 url: Optional[_builtins.str] = None):
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "disabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class MxclusterRadsec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acctServers":
+            suggest = "acct_servers"
+        elif key == "authServers":
+            suggest = "auth_servers"
+        elif key == "matchSsid":
+            suggest = "match_ssid"
+        elif key == "nasIpSource":
+            suggest = "nas_ip_source"
+        elif key == "proxyHosts":
+            suggest = "proxy_hosts"
+        elif key == "serverSelection":
+            suggest = "server_selection"
+        elif key == "srcIpSource":
+            suggest = "src_ip_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxclusterRadsec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxclusterRadsec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxclusterRadsec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 acct_servers: Optional[Sequence['outputs.MxclusterRadsecAcctServer']] = None,
+                 auth_servers: Optional[Sequence['outputs.MxclusterRadsecAuthServer']] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 match_ssid: Optional[_builtins.bool] = None,
+                 nas_ip_source: Optional[_builtins.str] = None,
+                 proxy_hosts: Optional[Sequence[_builtins.str]] = None,
+                 server_selection: Optional[_builtins.str] = None,
+                 src_ip_source: Optional[_builtins.str] = None):
+        """
+        :param Sequence['MxclusterRadsecAcctServerArgs'] acct_servers: List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        :param Sequence['MxclusterRadsecAuthServerArgs'] auth_servers: List of RADIUS authentication servers, order matters where the first one is treated as primary
+        :param _builtins.bool enabled: Whether to enable service on Mist Edge i.e. RADIUS proxy over TLS
+        :param _builtins.bool match_ssid: Whether to match ssid in request message to select from a subset of RADIUS servers
+        :param _builtins.str nas_ip_source: SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+        :param Sequence[_builtins.str] proxy_hosts: Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tunterm_hosts`
+        :param _builtins.str server_selection: When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+        :param _builtins.str src_ip_source: Specify IP address to connect to auth_servers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+        """
+        if acct_servers is not None:
+            pulumi.set(__self__, "acct_servers", acct_servers)
+        if auth_servers is not None:
+            pulumi.set(__self__, "auth_servers", auth_servers)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if match_ssid is not None:
+            pulumi.set(__self__, "match_ssid", match_ssid)
+        if nas_ip_source is not None:
+            pulumi.set(__self__, "nas_ip_source", nas_ip_source)
+        if proxy_hosts is not None:
+            pulumi.set(__self__, "proxy_hosts", proxy_hosts)
+        if server_selection is not None:
+            pulumi.set(__self__, "server_selection", server_selection)
+        if src_ip_source is not None:
+            pulumi.set(__self__, "src_ip_source", src_ip_source)
+
+    @_builtins.property
+    @pulumi.getter(name="acctServers")
+    def acct_servers(self) -> Optional[Sequence['outputs.MxclusterRadsecAcctServer']]:
+        """
+        List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+        """
+        return pulumi.get(self, "acct_servers")
+
+    @_builtins.property
+    @pulumi.getter(name="authServers")
+    def auth_servers(self) -> Optional[Sequence['outputs.MxclusterRadsecAuthServer']]:
+        """
+        List of RADIUS authentication servers, order matters where the first one is treated as primary
+        """
+        return pulumi.get(self, "auth_servers")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable service on Mist Edge i.e. RADIUS proxy over TLS
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="matchSsid")
+    def match_ssid(self) -> Optional[_builtins.bool]:
+        """
+        Whether to match ssid in request message to select from a subset of RADIUS servers
+        """
+        return pulumi.get(self, "match_ssid")
+
+    @_builtins.property
+    @pulumi.getter(name="nasIpSource")
+    def nas_ip_source(self) -> Optional[_builtins.str]:
+        """
+        SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+        """
+        return pulumi.get(self, "nas_ip_source")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyHosts")
+    def proxy_hosts(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tunterm_hosts`
+        """
+        return pulumi.get(self, "proxy_hosts")
+
+    @_builtins.property
+    @pulumi.getter(name="serverSelection")
+    def server_selection(self) -> Optional[_builtins.str]:
+        """
+        When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+        """
+        return pulumi.get(self, "server_selection")
+
+    @_builtins.property
+    @pulumi.getter(name="srcIpSource")
+    def src_ip_source(self) -> Optional[_builtins.str]:
+        """
+        Specify IP address to connect to auth_servers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+        """
+        return pulumi.get(self, "src_ip_source")
+
+
+@pulumi.output_type
+class MxclusterRadsecAcctServer(dict):
+    def __init__(__self__, *,
+                 host: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 secret: Optional[_builtins.str] = None,
+                 ssids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str host: IP / hostname of RADIUS server
+        :param _builtins.int port: Acct port of RADIUS server
+        :param _builtins.str secret: Secret of RADIUS server
+        :param Sequence[_builtins.str] ssids: List of ssids that will use this server if match_ssid is true and match is found
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if ssids is not None:
+            pulumi.set(__self__, "ssids", ssids)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        IP / hostname of RADIUS server
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Acct port of RADIUS server
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[_builtins.str]:
+        """
+        Secret of RADIUS server
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter
+    def ssids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of ssids that will use this server if match_ssid is true and match is found
+        """
+        return pulumi.get(self, "ssids")
+
+
+@pulumi.output_type
+class MxclusterRadsecAuthServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inbandStatusCheck":
+            suggest = "inband_status_check"
+        elif key == "inbandStatusInterval":
+            suggest = "inband_status_interval"
+        elif key == "keywrapEnabled":
+            suggest = "keywrap_enabled"
+        elif key == "keywrapFormat":
+            suggest = "keywrap_format"
+        elif key == "keywrapKek":
+            suggest = "keywrap_kek"
+        elif key == "keywrapMack":
+            suggest = "keywrap_mack"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxclusterRadsecAuthServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxclusterRadsecAuthServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxclusterRadsecAuthServer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: Optional[_builtins.str] = None,
+                 inband_status_check: Optional[_builtins.bool] = None,
+                 inband_status_interval: Optional[_builtins.int] = None,
+                 keywrap_enabled: Optional[_builtins.bool] = None,
+                 keywrap_format: Optional[_builtins.str] = None,
+                 keywrap_kek: Optional[_builtins.str] = None,
+                 keywrap_mack: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 retry: Optional[_builtins.int] = None,
+                 secret: Optional[_builtins.str] = None,
+                 ssids: Optional[Sequence[_builtins.str]] = None,
+                 timeout: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str host: IP / hostname of RADIUS server
+        :param _builtins.bool inband_status_check: Whether to enable inband status check
+        :param _builtins.int inband_status_interval: Inband status interval, in seconds
+        :param _builtins.bool keywrap_enabled: If used for Mist APs, enable keywrap algorithm. Default is false
+        :param _builtins.str keywrap_format: if used for Mist APs. enum: `ascii`, `hex`
+        :param _builtins.str keywrap_kek: If used for Mist APs, encryption key
+        :param _builtins.str keywrap_mack: If used for Mist APs, Message Authentication Code Key
+        :param _builtins.int port: Auth port of RADIUS server
+        :param _builtins.int retry: Authentication request retry
+        :param _builtins.str secret: Secret of RADIUS server
+        :param Sequence[_builtins.str] ssids: List of ssids that will use this server if match_ssid is true and match is found
+        :param _builtins.int timeout: Authentication request timeout, in seconds
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if inband_status_check is not None:
+            pulumi.set(__self__, "inband_status_check", inband_status_check)
+        if inband_status_interval is not None:
+            pulumi.set(__self__, "inband_status_interval", inband_status_interval)
+        if keywrap_enabled is not None:
+            pulumi.set(__self__, "keywrap_enabled", keywrap_enabled)
+        if keywrap_format is not None:
+            pulumi.set(__self__, "keywrap_format", keywrap_format)
+        if keywrap_kek is not None:
+            pulumi.set(__self__, "keywrap_kek", keywrap_kek)
+        if keywrap_mack is not None:
+            pulumi.set(__self__, "keywrap_mack", keywrap_mack)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if retry is not None:
+            pulumi.set(__self__, "retry", retry)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if ssids is not None:
+            pulumi.set(__self__, "ssids", ssids)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        IP / hostname of RADIUS server
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter(name="inbandStatusCheck")
+    def inband_status_check(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable inband status check
+        """
+        return pulumi.get(self, "inband_status_check")
+
+    @_builtins.property
+    @pulumi.getter(name="inbandStatusInterval")
+    def inband_status_interval(self) -> Optional[_builtins.int]:
+        """
+        Inband status interval, in seconds
+        """
+        return pulumi.get(self, "inband_status_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="keywrapEnabled")
+    def keywrap_enabled(self) -> Optional[_builtins.bool]:
+        """
+        If used for Mist APs, enable keywrap algorithm. Default is false
+        """
+        return pulumi.get(self, "keywrap_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="keywrapFormat")
+    def keywrap_format(self) -> Optional[_builtins.str]:
+        """
+        if used for Mist APs. enum: `ascii`, `hex`
+        """
+        return pulumi.get(self, "keywrap_format")
+
+    @_builtins.property
+    @pulumi.getter(name="keywrapKek")
+    def keywrap_kek(self) -> Optional[_builtins.str]:
+        """
+        If used for Mist APs, encryption key
+        """
+        return pulumi.get(self, "keywrap_kek")
+
+    @_builtins.property
+    @pulumi.getter(name="keywrapMack")
+    def keywrap_mack(self) -> Optional[_builtins.str]:
+        """
+        If used for Mist APs, Message Authentication Code Key
+        """
+        return pulumi.get(self, "keywrap_mack")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Auth port of RADIUS server
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def retry(self) -> Optional[_builtins.int]:
+        """
+        Authentication request retry
+        """
+        return pulumi.get(self, "retry")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[_builtins.str]:
+        """
+        Secret of RADIUS server
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter
+    def ssids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of ssids that will use this server if match_ssid is true and match is found
+        """
+        return pulumi.get(self, "ssids")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[_builtins.int]:
+        """
+        Authentication request timeout, in seconds
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class MxclusterRadsecTls(dict):
+    def __init__(__self__, *,
+                 keypair: Optional[_builtins.str] = None):
+        if keypair is not None:
+            pulumi.set(__self__, "keypair", keypair)
+
+    @_builtins.property
+    @pulumi.getter
+    def keypair(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "keypair")
+
+
+@pulumi.output_type
+class MxclusterTuntermDhcpdConfig(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 servers: Optional[Sequence[_builtins.str]] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: enum: `relay`
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if servers is not None:
+            pulumi.set(__self__, "servers", servers)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "servers")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        enum: `relay`
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class MxclusterTuntermExtraRoutes(dict):
+    def __init__(__self__, *,
+                 via: Optional[_builtins.str] = None):
+        if via is not None:
+            pulumi.set(__self__, "via", via)
+
+    @_builtins.property
+    @pulumi.getter
+    def via(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "via")
+
+
+@pulumi.output_type
+class MxclusterTuntermMonitoring(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "srcVlanId":
+            suggest = "src_vlan_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MxclusterTuntermMonitoring. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MxclusterTuntermMonitoring.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MxclusterTuntermMonitoring.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 port: _builtins.int,
+                 protocol: _builtins.str,
+                 src_vlan_id: _builtins.int,
+                 timeout: _builtins.int):
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "src_vlan_id", src_vlan_id)
+        pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="srcVlanId")
+    def src_vlan_id(self) -> _builtins.int:
+        return pulumi.get(self, "src_vlan_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
 class MxedgeMxedgeMgmt(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -16927,6 +17749,251 @@ class MxedgeVersions(dict):
     @pulumi.getter
     def tunterm(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "tunterm")
+
+
+@pulumi.output_type
+class NacPortalPortal(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalPortalUrl":
+            suggest = "external_portal_url"
+        elif key == "forceReconnect":
+            suggest = "force_reconnect"
+        elif key == "forwardUrl":
+            suggest = "forward_url"
+        elif key == "maxNumDevices":
+            suggest = "max_num_devices"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NacPortalPortal. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NacPortalPortal.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NacPortalPortal.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth: Optional[_builtins.str] = None,
+                 expire: Optional[_builtins.int] = None,
+                 external_portal_url: Optional[_builtins.str] = None,
+                 force_reconnect: Optional[_builtins.bool] = None,
+                 forward: Optional[_builtins.bool] = None,
+                 forward_url: Optional[_builtins.str] = None,
+                 max_num_devices: Optional[_builtins.int] = None,
+                 privacy: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str auth: Guest portal authentication type. enum: `external`, `multi`, `none`
+        :param _builtins.int expire: If `auth`==`none` or `auth`==`multi`, whether to expire the guest after a certain time
+        :param _builtins.str external_portal_url: If `auth`==`external`, the URL to redirect the user to for authentication
+        :param _builtins.bool force_reconnect: Disconnect client (workaround for reauth issues)
+        :param _builtins.bool forward: If `auth`==`none` or `auth`==`multi`, whether to forward the user to the guest portal after authentication
+        :param _builtins.str forward_url: If `auth`==`none` or `auth`==`multi`, URL to forward the user to after authentication
+        :param _builtins.int max_num_devices: Maximum number of clients allowed per guest. 0 (default, unlimited), 1-100 range
+        :param _builtins.bool privacy: If `auth`==`none` or `auth`==`multi`, whether to show the privacy policy
+        """
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
+        if expire is not None:
+            pulumi.set(__self__, "expire", expire)
+        if external_portal_url is not None:
+            pulumi.set(__self__, "external_portal_url", external_portal_url)
+        if force_reconnect is not None:
+            pulumi.set(__self__, "force_reconnect", force_reconnect)
+        if forward is not None:
+            pulumi.set(__self__, "forward", forward)
+        if forward_url is not None:
+            pulumi.set(__self__, "forward_url", forward_url)
+        if max_num_devices is not None:
+            pulumi.set(__self__, "max_num_devices", max_num_devices)
+        if privacy is not None:
+            pulumi.set(__self__, "privacy", privacy)
+
+    @_builtins.property
+    @pulumi.getter
+    def auth(self) -> Optional[_builtins.str]:
+        """
+        Guest portal authentication type. enum: `external`, `multi`, `none`
+        """
+        return pulumi.get(self, "auth")
+
+    @_builtins.property
+    @pulumi.getter
+    def expire(self) -> Optional[_builtins.int]:
+        """
+        If `auth`==`none` or `auth`==`multi`, whether to expire the guest after a certain time
+        """
+        return pulumi.get(self, "expire")
+
+    @_builtins.property
+    @pulumi.getter(name="externalPortalUrl")
+    def external_portal_url(self) -> Optional[_builtins.str]:
+        """
+        If `auth`==`external`, the URL to redirect the user to for authentication
+        """
+        return pulumi.get(self, "external_portal_url")
+
+    @_builtins.property
+    @pulumi.getter(name="forceReconnect")
+    def force_reconnect(self) -> Optional[_builtins.bool]:
+        """
+        Disconnect client (workaround for reauth issues)
+        """
+        return pulumi.get(self, "force_reconnect")
+
+    @_builtins.property
+    @pulumi.getter
+    def forward(self) -> Optional[_builtins.bool]:
+        """
+        If `auth`==`none` or `auth`==`multi`, whether to forward the user to the guest portal after authentication
+        """
+        return pulumi.get(self, "forward")
+
+    @_builtins.property
+    @pulumi.getter(name="forwardUrl")
+    def forward_url(self) -> Optional[_builtins.str]:
+        """
+        If `auth`==`none` or `auth`==`multi`, URL to forward the user to after authentication
+        """
+        return pulumi.get(self, "forward_url")
+
+    @_builtins.property
+    @pulumi.getter(name="maxNumDevices")
+    def max_num_devices(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of clients allowed per guest. 0 (default, unlimited), 1-100 range
+        """
+        return pulumi.get(self, "max_num_devices")
+
+    @_builtins.property
+    @pulumi.getter
+    def privacy(self) -> Optional[_builtins.bool]:
+        """
+        If `auth`==`none` or `auth`==`multi`, whether to show the privacy policy
+        """
+        return pulumi.get(self, "privacy")
+
+
+@pulumi.output_type
+class NacPortalSso(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idpCert":
+            suggest = "idp_cert"
+        elif key == "idpSignAlgo":
+            suggest = "idp_sign_algo"
+        elif key == "idpSsoUrl":
+            suggest = "idp_sso_url"
+        elif key == "nameidFormat":
+            suggest = "nameid_format"
+        elif key == "ssoRoleMatchings":
+            suggest = "sso_role_matchings"
+        elif key == "useSsoRoleForCert":
+            suggest = "use_sso_role_for_cert"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NacPortalSso. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NacPortalSso.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NacPortalSso.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 idp_cert: Optional[_builtins.str] = None,
+                 idp_sign_algo: Optional[_builtins.str] = None,
+                 idp_sso_url: Optional[_builtins.str] = None,
+                 issuer: Optional[_builtins.str] = None,
+                 nameid_format: Optional[_builtins.str] = None,
+                 sso_role_matchings: Optional[Sequence['outputs.NacPortalSsoSsoRoleMatching']] = None,
+                 use_sso_role_for_cert: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str idp_sign_algo: Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+        :param _builtins.bool use_sso_role_for_cert: If it's desired to inject a role into Cert's Subject (so it can be used later on in policy)
+        """
+        if idp_cert is not None:
+            pulumi.set(__self__, "idp_cert", idp_cert)
+        if idp_sign_algo is not None:
+            pulumi.set(__self__, "idp_sign_algo", idp_sign_algo)
+        if idp_sso_url is not None:
+            pulumi.set(__self__, "idp_sso_url", idp_sso_url)
+        if issuer is not None:
+            pulumi.set(__self__, "issuer", issuer)
+        if nameid_format is not None:
+            pulumi.set(__self__, "nameid_format", nameid_format)
+        if sso_role_matchings is not None:
+            pulumi.set(__self__, "sso_role_matchings", sso_role_matchings)
+        if use_sso_role_for_cert is not None:
+            pulumi.set(__self__, "use_sso_role_for_cert", use_sso_role_for_cert)
+
+    @_builtins.property
+    @pulumi.getter(name="idpCert")
+    def idp_cert(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "idp_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="idpSignAlgo")
+    def idp_sign_algo(self) -> Optional[_builtins.str]:
+        """
+        Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+        """
+        return pulumi.get(self, "idp_sign_algo")
+
+    @_builtins.property
+    @pulumi.getter(name="idpSsoUrl")
+    def idp_sso_url(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "idp_sso_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def issuer(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "issuer")
+
+    @_builtins.property
+    @pulumi.getter(name="nameidFormat")
+    def nameid_format(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "nameid_format")
+
+    @_builtins.property
+    @pulumi.getter(name="ssoRoleMatchings")
+    def sso_role_matchings(self) -> Optional[Sequence['outputs.NacPortalSsoSsoRoleMatching']]:
+        return pulumi.get(self, "sso_role_matchings")
+
+    @_builtins.property
+    @pulumi.getter(name="useSsoRoleForCert")
+    def use_sso_role_for_cert(self) -> Optional[_builtins.bool]:
+        """
+        If it's desired to inject a role into Cert's Subject (so it can be used later on in policy)
+        """
+        return pulumi.get(self, "use_sso_role_for_cert")
+
+
+@pulumi.output_type
+class NacPortalSsoSsoRoleMatching(dict):
+    def __init__(__self__, *,
+                 assigned: Optional[_builtins.str] = None,
+                 match: Optional[_builtins.str] = None):
+        if assigned is not None:
+            pulumi.set(__self__, "assigned", assigned)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+
+    @_builtins.property
+    @pulumi.getter
+    def assigned(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "assigned")
+
+    @_builtins.property
+    @pulumi.getter
+    def match(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match")
 
 
 @pulumi.output_type

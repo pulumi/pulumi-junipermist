@@ -74,11 +74,11 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
-    @Import(name="note")
-    private @Nullable Output<String> note;
+    @Import(name="notes")
+    private @Nullable Output<String> notes;
 
-    public Optional<Output<String>> note() {
-        return Optional.ofNullable(this.note);
+    public Optional<Output<String>> notes() {
+        return Optional.ofNullable(this.notes);
     }
 
     @Import(name="ntpServers")
@@ -258,7 +258,7 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
         this.mxclusterId = $.mxclusterId;
         this.mxedgeMgmt = $.mxedgeMgmt;
         this.name = $.name;
-        this.note = $.note;
+        this.notes = $.notes;
         this.ntpServers = $.ntpServers;
         this.oobIpConfig = $.oobIpConfig;
         this.orgId = $.orgId;
@@ -351,13 +351,13 @@ public final class MxedgeArgs extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        public Builder note(@Nullable Output<String> note) {
-            $.note = note;
+        public Builder notes(@Nullable Output<String> notes) {
+            $.notes = notes;
             return this;
         }
 
-        public Builder note(String note) {
-            return note(Output.of(note));
+        public Builder notes(String notes) {
+            return notes(Output.of(notes));
         }
 
         public Builder ntpServers(@Nullable Output<List<String>> ntpServers) {

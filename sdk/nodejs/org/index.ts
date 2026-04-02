@@ -190,6 +190,11 @@ export type Inventory = import("./inventory").Inventory;
 export const Inventory: typeof import("./inventory").Inventory = null as any;
 utilities.lazyLoad(exports, ["Inventory"], () => require("./inventory"));
 
+export { MxclusterArgs, MxclusterState } from "./mxcluster";
+export type Mxcluster = import("./mxcluster").Mxcluster;
+export const Mxcluster: typeof import("./mxcluster").Mxcluster = null as any;
+utilities.lazyLoad(exports, ["Mxcluster"], () => require("./mxcluster"));
+
 export { MxedgeArgs, MxedgeState } from "./mxedge";
 export type Mxedge = import("./mxedge").Mxedge;
 export const Mxedge: typeof import("./mxedge").Mxedge = null as any;
@@ -199,6 +204,21 @@ export { NacEndpointArgs, NacEndpointState } from "./nacEndpoint";
 export type NacEndpoint = import("./nacEndpoint").NacEndpoint;
 export const NacEndpoint: typeof import("./nacEndpoint").NacEndpoint = null as any;
 utilities.lazyLoad(exports, ["NacEndpoint"], () => require("./nacEndpoint"));
+
+export { NacPortalArgs, NacPortalState } from "./nacPortal";
+export type NacPortal = import("./nacPortal").NacPortal;
+export const NacPortal: typeof import("./nacPortal").NacPortal = null as any;
+utilities.lazyLoad(exports, ["NacPortal"], () => require("./nacPortal"));
+
+export { NacPortalImageArgs, NacPortalImageState } from "./nacPortalImage";
+export type NacPortalImage = import("./nacPortalImage").NacPortalImage;
+export const NacPortalImage: typeof import("./nacPortalImage").NacPortalImage = null as any;
+utilities.lazyLoad(exports, ["NacPortalImage"], () => require("./nacPortalImage"));
+
+export { NacPortalTemplateArgs, NacPortalTemplateState } from "./nacPortalTemplate";
+export type NacPortalTemplate = import("./nacPortalTemplate").NacPortalTemplate;
+export const NacPortalTemplate: typeof import("./nacPortalTemplate").NacPortalTemplate = null as any;
+utilities.lazyLoad(exports, ["NacPortalTemplate"], () => require("./nacPortalTemplate"));
 
 export { NacidpArgs, NacidpState } from "./nacidp";
 export type Nacidp = import("./nacidp").Nacidp;
@@ -332,10 +352,18 @@ const _module = {
                 return new Idpprofile(name, <any>undefined, { urn })
             case "junipermist:org/inventory:Inventory":
                 return new Inventory(name, <any>undefined, { urn })
+            case "junipermist:org/mxcluster:Mxcluster":
+                return new Mxcluster(name, <any>undefined, { urn })
             case "junipermist:org/mxedge:Mxedge":
                 return new Mxedge(name, <any>undefined, { urn })
             case "junipermist:org/nacEndpoint:NacEndpoint":
                 return new NacEndpoint(name, <any>undefined, { urn })
+            case "junipermist:org/nacPortal:NacPortal":
+                return new NacPortal(name, <any>undefined, { urn })
+            case "junipermist:org/nacPortalImage:NacPortalImage":
+                return new NacPortalImage(name, <any>undefined, { urn })
+            case "junipermist:org/nacPortalTemplate:NacPortalTemplate":
+                return new NacPortalTemplate(name, <any>undefined, { urn })
             case "junipermist:org/nacidp:Nacidp":
                 return new Nacidp(name, <any>undefined, { urn })
             case "junipermist:org/nacrule:Nacrule":
@@ -394,8 +422,12 @@ pulumi.runtime.registerResourceModule("junipermist", "org/evpnTopology", _module
 pulumi.runtime.registerResourceModule("junipermist", "org/gatewaytemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/idpprofile", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/inventory", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/mxcluster", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/mxedge", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nacEndpoint", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/nacPortal", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/nacPortalImage", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/nacPortalTemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nacidp", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nacrule", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nactag", _module)

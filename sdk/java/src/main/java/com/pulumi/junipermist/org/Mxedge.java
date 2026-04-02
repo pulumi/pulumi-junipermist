@@ -35,6 +35,15 @@ import javax.annotation.Nullable;
  * 
  * MxEdge is a multi-service edge platform that provides tunneling, switching, and other network services.
  * 
+ * ## Import
+ * 
+ * Using `pulumi import`, import `junipermist.org.Mxedge` with:
+ * Mist Org MxEdge can be imported by specifying the orgId and the mxedgeId
+ * 
+ * ```sh
+ * $ pulumi import junipermist:org/mxedge:Mxedge edge_one 17f90707-aebe-4274-af42-f42952a665a3.387804a7-3474-85ce-15a2-f9a9684c9c90
+ * ```
+ * 
  */
 @ResourceType(type="junipermist:org/mxedge:Mxedge")
 public class Mxedge extends com.pulumi.resources.CustomResource {
@@ -88,11 +97,11 @@ public class Mxedge extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="note", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> note;
+    @Export(name="notes", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> notes;
 
-    public Output<Optional<String>> note() {
-        return Codegen.optional(this.note);
+    public Output<Optional<String>> notes() {
+        return Codegen.optional(this.notes);
     }
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ntpServers;

@@ -43,8 +43,12 @@ from .get_wlantemplates import *
 from .get_wxtags import *
 from .idpprofile import *
 from .inventory import *
+from .mxcluster import *
 from .mxedge import *
 from .nac_endpoint import *
+from .nac_portal import *
+from .nac_portal_image import *
+from .nac_portal_template import *
 from .nacidp import *
 from .nacrule import *
 from .nactag import *

@@ -15,6 +15,15 @@ import (
 // This resource manages MxEdge devices in the Mist Organization.
 //
 // MxEdge is a multi-service edge platform that provides tunneling, switching, and other network services.
+//
+// ## Import
+//
+// Using `pulumi import`, import `org.Mxedge` with:
+// Mist Org MxEdge can be imported by specifying the orgId and the mxedgeId
+//
+// ```sh
+// $ pulumi import junipermist:org/mxedge:Mxedge edge_one 17f90707-aebe-4274-af42-f42952a665a3.387804a7-3474-85ce-15a2-f9a9684c9c90
+// ```
 type Mxedge struct {
 	pulumi.CustomResourceState
 
@@ -26,7 +35,7 @@ type Mxedge struct {
 	MxclusterId pulumi.StringPtrOutput    `pulumi:"mxclusterId"`
 	MxedgeMgmt  MxedgeMxedgeMgmtPtrOutput `pulumi:"mxedgeMgmt"`
 	Name        pulumi.StringOutput       `pulumi:"name"`
-	Note        pulumi.StringPtrOutput    `pulumi:"note"`
+	Notes       pulumi.StringPtrOutput    `pulumi:"notes"`
 	NtpServers  pulumi.StringArrayOutput  `pulumi:"ntpServers"`
 	// IPconfiguration of the Mist Edge out-of*band management interface
 	OobIpConfig MxedgeOobIpConfigPtrOutput `pulumi:"oobIpConfig"`
@@ -98,7 +107,7 @@ type mxedgeState struct {
 	MxclusterId *string           `pulumi:"mxclusterId"`
 	MxedgeMgmt  *MxedgeMxedgeMgmt `pulumi:"mxedgeMgmt"`
 	Name        *string           `pulumi:"name"`
-	Note        *string           `pulumi:"note"`
+	Notes       *string           `pulumi:"notes"`
 	NtpServers  []string          `pulumi:"ntpServers"`
 	// IPconfiguration of the Mist Edge out-of*band management interface
 	OobIpConfig *MxedgeOobIpConfig `pulumi:"oobIpConfig"`
@@ -138,7 +147,7 @@ type MxedgeState struct {
 	MxclusterId pulumi.StringPtrInput
 	MxedgeMgmt  MxedgeMxedgeMgmtPtrInput
 	Name        pulumi.StringPtrInput
-	Note        pulumi.StringPtrInput
+	Notes       pulumi.StringPtrInput
 	NtpServers  pulumi.StringArrayInput
 	// IPconfiguration of the Mist Edge out-of*band management interface
 	OobIpConfig MxedgeOobIpConfigPtrInput
@@ -180,7 +189,7 @@ type mxedgeArgs struct {
 	MxclusterId *string           `pulumi:"mxclusterId"`
 	MxedgeMgmt  *MxedgeMxedgeMgmt `pulumi:"mxedgeMgmt"`
 	Name        *string           `pulumi:"name"`
-	Note        *string           `pulumi:"note"`
+	Notes       *string           `pulumi:"notes"`
 	NtpServers  []string          `pulumi:"ntpServers"`
 	// IPconfiguration of the Mist Edge out-of*band management interface
 	OobIpConfig *MxedgeOobIpConfig `pulumi:"oobIpConfig"`
@@ -214,7 +223,7 @@ type MxedgeArgs struct {
 	MxclusterId pulumi.StringPtrInput
 	MxedgeMgmt  MxedgeMxedgeMgmtPtrInput
 	Name        pulumi.StringPtrInput
-	Note        pulumi.StringPtrInput
+	Notes       pulumi.StringPtrInput
 	NtpServers  pulumi.StringArrayInput
 	// IPconfiguration of the Mist Edge out-of*band management interface
 	OobIpConfig MxedgeOobIpConfigPtrInput
@@ -356,8 +365,8 @@ func (o MxedgeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mxedge) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o MxedgeOutput) Note() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Mxedge) pulumi.StringPtrOutput { return v.Note }).(pulumi.StringPtrOutput)
+func (o MxedgeOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Mxedge) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
 func (o MxedgeOutput) NtpServers() pulumi.StringArrayOutput {

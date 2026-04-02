@@ -13075,6 +13075,199 @@ export namespace org {
         vcMac: string;
     }
 
+    export interface MxclusterMistDas {
+        /**
+         * Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+         */
+        coaServers?: outputs.org.MxclusterMistDasCoaServer[];
+        enabled: boolean;
+    }
+
+    export interface MxclusterMistDasCoaServer {
+        /**
+         * Whether to disable Event-Timestamp Check
+         */
+        disableEventTimestampCheck: boolean;
+        enabled?: boolean;
+        /**
+         * This server configured to send CoA|DM to mist edges
+         */
+        host?: string;
+        /**
+         * Mist edges will allow this host on this port
+         */
+        port: number;
+        /**
+         * Whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator: boolean;
+        secret?: string;
+    }
+
+    export interface MxclusterMistNac {
+        acctServerPort: number;
+        authServerPort: number;
+        /**
+         * Property key is the RADIUS Client IP/Subnet.
+         */
+        clientIps: {[key: string]: outputs.org.MxclusterMistNacClientIps};
+        enabled: boolean;
+        secret?: string;
+    }
+
+    export interface MxclusterMistNacClientIps {
+    }
+
+    export interface MxclusterMxedgeMgmt {
+        configAutoRevert: boolean;
+        fipsEnabled: boolean;
+        mistPassword?: string;
+        /**
+         * enum: `dhcp`, `disabled`, `static`
+         */
+        oobIpType: string;
+        /**
+         * enum: `autoconf`, `dhcp`, `disabled`, `static`
+         */
+        oobIpType6: string;
+        rootPassword?: string;
+    }
+
+    export interface MxclusterProxy {
+        disabled: boolean;
+        url?: string;
+    }
+
+    export interface MxclusterRadsec {
+        /**
+         * List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+         */
+        acctServers?: outputs.org.MxclusterRadsecAcctServer[];
+        /**
+         * List of RADIUS authentication servers, order matters where the first one is treated as primary
+         */
+        authServers?: outputs.org.MxclusterRadsecAuthServer[];
+        /**
+         * Whether to enable service on Mist Edge i.e. RADIUS proxy over TLS
+         */
+        enabled?: boolean;
+        /**
+         * Whether to match ssid in request message to select from a subset of RADIUS servers
+         */
+        matchSsid?: boolean;
+        /**
+         * SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+         */
+        nasIpSource: string;
+        /**
+         * Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+         */
+        proxyHosts?: string[];
+        /**
+         * When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+         */
+        serverSelection: string;
+        /**
+         * Specify IP address to connect to authServers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+         */
+        srcIpSource: string;
+    }
+
+    export interface MxclusterRadsecAcctServer {
+        /**
+         * IP / hostname of RADIUS server
+         */
+        host?: string;
+        /**
+         * Acct port of RADIUS server
+         */
+        port: number;
+        /**
+         * Secret of RADIUS server
+         */
+        secret?: string;
+        /**
+         * List of ssids that will use this server if matchSsid is true and match is found
+         */
+        ssids?: string[];
+    }
+
+    export interface MxclusterRadsecAuthServer {
+        /**
+         * IP / hostname of RADIUS server
+         */
+        host?: string;
+        /**
+         * Whether to enable inband status check
+         */
+        inbandStatusCheck: boolean;
+        /**
+         * Inband status interval, in seconds
+         */
+        inbandStatusInterval: number;
+        /**
+         * If used for Mist APs, enable keywrap algorithm. Default is false
+         */
+        keywrapEnabled?: boolean;
+        /**
+         * if used for Mist APs. enum: `ascii`, `hex`
+         */
+        keywrapFormat: string;
+        /**
+         * If used for Mist APs, encryption key
+         */
+        keywrapKek?: string;
+        /**
+         * If used for Mist APs, Message Authentication Code Key
+         */
+        keywrapMack?: string;
+        /**
+         * Auth port of RADIUS server
+         */
+        port: number;
+        /**
+         * Authentication request retry
+         */
+        retry: number;
+        /**
+         * Secret of RADIUS server
+         */
+        secret?: string;
+        /**
+         * List of ssids that will use this server if matchSsid is true and match is found
+         */
+        ssids?: string[];
+        /**
+         * Authentication request timeout, in seconds
+         */
+        timeout: number;
+    }
+
+    export interface MxclusterRadsecTls {
+        keypair?: string;
+    }
+
+    export interface MxclusterTuntermDhcpdConfig {
+        enabled: boolean;
+        servers?: string[];
+        /**
+         * enum: `relay`
+         */
+        type: string;
+    }
+
+    export interface MxclusterTuntermExtraRoutes {
+        via?: string;
+    }
+
+    export interface MxclusterTuntermMonitoring {
+        host: string;
+        port: number;
+        protocol: string;
+        srcVlanId: number;
+        timeout: number;
+    }
+
     export interface MxedgeMxedgeMgmt {
         configAutoRevert: boolean;
         fipsEnabled: boolean;
@@ -13239,6 +13432,62 @@ export namespace org {
     export interface MxedgeVersions {
         mxagent: string;
         tunterm: string;
+    }
+
+    export interface NacPortalPortal {
+        /**
+         * Guest portal authentication type. enum: `external`, `multi`, `none`
+         */
+        auth?: string;
+        /**
+         * If `auth`==`none` or `auth`==`multi`, whether to expire the guest after a certain time
+         */
+        expire?: number;
+        /**
+         * If `auth`==`external`, the URL to redirect the user to for authentication
+         */
+        externalPortalUrl?: string;
+        /**
+         * Disconnect client (workaround for reauth issues)
+         */
+        forceReconnect?: boolean;
+        /**
+         * If `auth`==`none` or `auth`==`multi`, whether to forward the user to the guest portal after authentication
+         */
+        forward?: boolean;
+        /**
+         * If `auth`==`none` or `auth`==`multi`, URL to forward the user to after authentication
+         */
+        forwardUrl?: string;
+        /**
+         * Maximum number of clients allowed per guest. 0 (default, unlimited), 1-100 range
+         */
+        maxNumDevices: number;
+        /**
+         * If `auth`==`none` or `auth`==`multi`, whether to show the privacy policy
+         */
+        privacy?: boolean;
+    }
+
+    export interface NacPortalSso {
+        idpCert?: string;
+        /**
+         * Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+         */
+        idpSignAlgo: string;
+        idpSsoUrl?: string;
+        issuer?: string;
+        nameidFormat?: string;
+        ssoRoleMatchings?: outputs.org.NacPortalSsoSsoRoleMatching[];
+        /**
+         * If it's desired to inject a role into Cert's Subject (so it can be used later on in policy)
+         */
+        useSsoRoleForCert?: boolean;
+    }
+
+    export interface NacPortalSsoSsoRoleMatching {
+        assigned?: string;
+        match?: string;
     }
 
     export interface NacruleMatching {

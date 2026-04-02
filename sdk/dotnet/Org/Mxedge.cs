@@ -13,6 +13,15 @@ namespace Pulumi.JuniperMist.Org
     /// This resource manages MxEdge devices in the Mist Organization.
     /// 
     /// MxEdge is a multi-service edge platform that provides tunneling, switching, and other network services.
+    /// 
+    /// ## Import
+    /// 
+    /// Using `pulumi import`, import `junipermist.org.Mxedge` with:
+    /// Mist Org MxEdge can be imported by specifying the OrgId and the MxedgeId
+    /// 
+    /// ```sh
+    /// $ pulumi import junipermist:org/mxedge:Mxedge edge_one 17f90707-aebe-4274-af42-f42952a665a3.387804a7-3474-85ce-15a2-f9a9684c9c90
+    /// ```
     /// </summary>
     [JuniperMistResourceType("junipermist:org/mxedge:Mxedge")]
     public partial class Mxedge : global::Pulumi.CustomResource
@@ -41,8 +50,8 @@ namespace Pulumi.JuniperMist.Org
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        [Output("note")]
-        public Output<string?> Note { get; private set; } = null!;
+        [Output("notes")]
+        public Output<string?> Notes { get; private set; } = null!;
 
         [Output("ntpServers")]
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
@@ -193,8 +202,8 @@ namespace Pulumi.JuniperMist.Org
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("note")]
-        public Input<string>? Note { get; set; }
+        [Input("notes")]
+        public Input<string>? Notes { get; set; }
 
         [Input("ntpServers")]
         private InputList<string>? _ntpServers;
@@ -331,8 +340,8 @@ namespace Pulumi.JuniperMist.Org
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("note")]
-        public Input<string>? Note { get; set; }
+        [Input("notes")]
+        public Input<string>? Notes { get; set; }
 
         [Input("ntpServers")]
         private InputList<string>? _ntpServers;

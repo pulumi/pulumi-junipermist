@@ -43,10 +43,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Idpprofile{}
 	case "junipermist:org/inventory:Inventory":
 		r = &Inventory{}
+	case "junipermist:org/mxcluster:Mxcluster":
+		r = &Mxcluster{}
 	case "junipermist:org/mxedge:Mxedge":
 		r = &Mxedge{}
 	case "junipermist:org/nacEndpoint:NacEndpoint":
 		r = &NacEndpoint{}
+	case "junipermist:org/nacPortal:NacPortal":
+		r = &NacPortal{}
+	case "junipermist:org/nacPortalImage:NacPortalImage":
+		r = &NacPortalImage{}
+	case "junipermist:org/nacPortalTemplate:NacPortalTemplate":
+		r = &NacPortalTemplate{}
 	case "junipermist:org/nacidp:Nacidp":
 		r = &Nacidp{}
 	case "junipermist:org/nacrule:Nacrule":
@@ -159,12 +167,32 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"junipermist",
+		"org/mxcluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
 		"org/mxedge",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"org/nacEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/nacPortal",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/nacPortalImage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/nacPortalTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

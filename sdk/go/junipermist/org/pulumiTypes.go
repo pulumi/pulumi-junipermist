@@ -32858,6 +32858,1987 @@ func (o InventoryInventoryMapOutput) MapIndex(k pulumi.StringInput) InventoryInv
 	}).(InventoryInventoryOutput)
 }
 
+type MxclusterMistDas struct {
+	// Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+	CoaServers []MxclusterMistDasCoaServer `pulumi:"coaServers"`
+	Enabled    *bool                       `pulumi:"enabled"`
+}
+
+// MxclusterMistDasInput is an input type that accepts MxclusterMistDasArgs and MxclusterMistDasOutput values.
+// You can construct a concrete instance of `MxclusterMistDasInput` via:
+//
+//	MxclusterMistDasArgs{...}
+type MxclusterMistDasInput interface {
+	pulumi.Input
+
+	ToMxclusterMistDasOutput() MxclusterMistDasOutput
+	ToMxclusterMistDasOutputWithContext(context.Context) MxclusterMistDasOutput
+}
+
+type MxclusterMistDasArgs struct {
+	// Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+	CoaServers MxclusterMistDasCoaServerArrayInput `pulumi:"coaServers"`
+	Enabled    pulumi.BoolPtrInput                 `pulumi:"enabled"`
+}
+
+func (MxclusterMistDasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterMistDas)(nil)).Elem()
+}
+
+func (i MxclusterMistDasArgs) ToMxclusterMistDasOutput() MxclusterMistDasOutput {
+	return i.ToMxclusterMistDasOutputWithContext(context.Background())
+}
+
+func (i MxclusterMistDasArgs) ToMxclusterMistDasOutputWithContext(ctx context.Context) MxclusterMistDasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMistDasOutput)
+}
+
+func (i MxclusterMistDasArgs) ToMxclusterMistDasPtrOutput() MxclusterMistDasPtrOutput {
+	return i.ToMxclusterMistDasPtrOutputWithContext(context.Background())
+}
+
+func (i MxclusterMistDasArgs) ToMxclusterMistDasPtrOutputWithContext(ctx context.Context) MxclusterMistDasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMistDasOutput).ToMxclusterMistDasPtrOutputWithContext(ctx)
+}
+
+// MxclusterMistDasPtrInput is an input type that accepts MxclusterMistDasArgs, MxclusterMistDasPtr and MxclusterMistDasPtrOutput values.
+// You can construct a concrete instance of `MxclusterMistDasPtrInput` via:
+//
+//	        MxclusterMistDasArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxclusterMistDasPtrInput interface {
+	pulumi.Input
+
+	ToMxclusterMistDasPtrOutput() MxclusterMistDasPtrOutput
+	ToMxclusterMistDasPtrOutputWithContext(context.Context) MxclusterMistDasPtrOutput
+}
+
+type mxclusterMistDasPtrType MxclusterMistDasArgs
+
+func MxclusterMistDasPtr(v *MxclusterMistDasArgs) MxclusterMistDasPtrInput {
+	return (*mxclusterMistDasPtrType)(v)
+}
+
+func (*mxclusterMistDasPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxclusterMistDas)(nil)).Elem()
+}
+
+func (i *mxclusterMistDasPtrType) ToMxclusterMistDasPtrOutput() MxclusterMistDasPtrOutput {
+	return i.ToMxclusterMistDasPtrOutputWithContext(context.Background())
+}
+
+func (i *mxclusterMistDasPtrType) ToMxclusterMistDasPtrOutputWithContext(ctx context.Context) MxclusterMistDasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMistDasPtrOutput)
+}
+
+type MxclusterMistDasOutput struct{ *pulumi.OutputState }
+
+func (MxclusterMistDasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterMistDas)(nil)).Elem()
+}
+
+func (o MxclusterMistDasOutput) ToMxclusterMistDasOutput() MxclusterMistDasOutput {
+	return o
+}
+
+func (o MxclusterMistDasOutput) ToMxclusterMistDasOutputWithContext(ctx context.Context) MxclusterMistDasOutput {
+	return o
+}
+
+func (o MxclusterMistDasOutput) ToMxclusterMistDasPtrOutput() MxclusterMistDasPtrOutput {
+	return o.ToMxclusterMistDasPtrOutputWithContext(context.Background())
+}
+
+func (o MxclusterMistDasOutput) ToMxclusterMistDasPtrOutputWithContext(ctx context.Context) MxclusterMistDasPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxclusterMistDas) *MxclusterMistDas {
+		return &v
+	}).(MxclusterMistDasPtrOutput)
+}
+
+// Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+func (o MxclusterMistDasOutput) CoaServers() MxclusterMistDasCoaServerArrayOutput {
+	return o.ApplyT(func(v MxclusterMistDas) []MxclusterMistDasCoaServer { return v.CoaServers }).(MxclusterMistDasCoaServerArrayOutput)
+}
+
+func (o MxclusterMistDasOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterMistDas) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type MxclusterMistDasPtrOutput struct{ *pulumi.OutputState }
+
+func (MxclusterMistDasPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxclusterMistDas)(nil)).Elem()
+}
+
+func (o MxclusterMistDasPtrOutput) ToMxclusterMistDasPtrOutput() MxclusterMistDasPtrOutput {
+	return o
+}
+
+func (o MxclusterMistDasPtrOutput) ToMxclusterMistDasPtrOutputWithContext(ctx context.Context) MxclusterMistDasPtrOutput {
+	return o
+}
+
+func (o MxclusterMistDasPtrOutput) Elem() MxclusterMistDasOutput {
+	return o.ApplyT(func(v *MxclusterMistDas) MxclusterMistDas {
+		if v != nil {
+			return *v
+		}
+		var ret MxclusterMistDas
+		return ret
+	}).(MxclusterMistDasOutput)
+}
+
+// Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+func (o MxclusterMistDasPtrOutput) CoaServers() MxclusterMistDasCoaServerArrayOutput {
+	return o.ApplyT(func(v *MxclusterMistDas) []MxclusterMistDasCoaServer {
+		if v == nil {
+			return nil
+		}
+		return v.CoaServers
+	}).(MxclusterMistDasCoaServerArrayOutput)
+}
+
+func (o MxclusterMistDasPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxclusterMistDas) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type MxclusterMistDasCoaServer struct {
+	// Whether to disable Event-Timestamp Check
+	DisableEventTimestampCheck *bool `pulumi:"disableEventTimestampCheck"`
+	Enabled                    *bool `pulumi:"enabled"`
+	// This server configured to send CoA|DM to mist edges
+	Host *string `pulumi:"host"`
+	// Mist edges will allow this host on this port
+	Port *int `pulumi:"port"`
+	// Whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator *bool   `pulumi:"requireMessageAuthenticator"`
+	Secret                      *string `pulumi:"secret"`
+}
+
+// MxclusterMistDasCoaServerInput is an input type that accepts MxclusterMistDasCoaServerArgs and MxclusterMistDasCoaServerOutput values.
+// You can construct a concrete instance of `MxclusterMistDasCoaServerInput` via:
+//
+//	MxclusterMistDasCoaServerArgs{...}
+type MxclusterMistDasCoaServerInput interface {
+	pulumi.Input
+
+	ToMxclusterMistDasCoaServerOutput() MxclusterMistDasCoaServerOutput
+	ToMxclusterMistDasCoaServerOutputWithContext(context.Context) MxclusterMistDasCoaServerOutput
+}
+
+type MxclusterMistDasCoaServerArgs struct {
+	// Whether to disable Event-Timestamp Check
+	DisableEventTimestampCheck pulumi.BoolPtrInput `pulumi:"disableEventTimestampCheck"`
+	Enabled                    pulumi.BoolPtrInput `pulumi:"enabled"`
+	// This server configured to send CoA|DM to mist edges
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Mist edges will allow this host on this port
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator pulumi.BoolPtrInput   `pulumi:"requireMessageAuthenticator"`
+	Secret                      pulumi.StringPtrInput `pulumi:"secret"`
+}
+
+func (MxclusterMistDasCoaServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterMistDasCoaServer)(nil)).Elem()
+}
+
+func (i MxclusterMistDasCoaServerArgs) ToMxclusterMistDasCoaServerOutput() MxclusterMistDasCoaServerOutput {
+	return i.ToMxclusterMistDasCoaServerOutputWithContext(context.Background())
+}
+
+func (i MxclusterMistDasCoaServerArgs) ToMxclusterMistDasCoaServerOutputWithContext(ctx context.Context) MxclusterMistDasCoaServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMistDasCoaServerOutput)
+}
+
+// MxclusterMistDasCoaServerArrayInput is an input type that accepts MxclusterMistDasCoaServerArray and MxclusterMistDasCoaServerArrayOutput values.
+// You can construct a concrete instance of `MxclusterMistDasCoaServerArrayInput` via:
+//
+//	MxclusterMistDasCoaServerArray{ MxclusterMistDasCoaServerArgs{...} }
+type MxclusterMistDasCoaServerArrayInput interface {
+	pulumi.Input
+
+	ToMxclusterMistDasCoaServerArrayOutput() MxclusterMistDasCoaServerArrayOutput
+	ToMxclusterMistDasCoaServerArrayOutputWithContext(context.Context) MxclusterMistDasCoaServerArrayOutput
+}
+
+type MxclusterMistDasCoaServerArray []MxclusterMistDasCoaServerInput
+
+func (MxclusterMistDasCoaServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MxclusterMistDasCoaServer)(nil)).Elem()
+}
+
+func (i MxclusterMistDasCoaServerArray) ToMxclusterMistDasCoaServerArrayOutput() MxclusterMistDasCoaServerArrayOutput {
+	return i.ToMxclusterMistDasCoaServerArrayOutputWithContext(context.Background())
+}
+
+func (i MxclusterMistDasCoaServerArray) ToMxclusterMistDasCoaServerArrayOutputWithContext(ctx context.Context) MxclusterMistDasCoaServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMistDasCoaServerArrayOutput)
+}
+
+type MxclusterMistDasCoaServerOutput struct{ *pulumi.OutputState }
+
+func (MxclusterMistDasCoaServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterMistDasCoaServer)(nil)).Elem()
+}
+
+func (o MxclusterMistDasCoaServerOutput) ToMxclusterMistDasCoaServerOutput() MxclusterMistDasCoaServerOutput {
+	return o
+}
+
+func (o MxclusterMistDasCoaServerOutput) ToMxclusterMistDasCoaServerOutputWithContext(ctx context.Context) MxclusterMistDasCoaServerOutput {
+	return o
+}
+
+// Whether to disable Event-Timestamp Check
+func (o MxclusterMistDasCoaServerOutput) DisableEventTimestampCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterMistDasCoaServer) *bool { return v.DisableEventTimestampCheck }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxclusterMistDasCoaServerOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterMistDasCoaServer) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// This server configured to send CoA|DM to mist edges
+func (o MxclusterMistDasCoaServerOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterMistDasCoaServer) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Mist edges will allow this host on this port
+func (o MxclusterMistDasCoaServerOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxclusterMistDasCoaServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Whether to require Message-Authenticator in requests
+func (o MxclusterMistDasCoaServerOutput) RequireMessageAuthenticator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterMistDasCoaServer) *bool { return v.RequireMessageAuthenticator }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxclusterMistDasCoaServerOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterMistDasCoaServer) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+type MxclusterMistDasCoaServerArrayOutput struct{ *pulumi.OutputState }
+
+func (MxclusterMistDasCoaServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MxclusterMistDasCoaServer)(nil)).Elem()
+}
+
+func (o MxclusterMistDasCoaServerArrayOutput) ToMxclusterMistDasCoaServerArrayOutput() MxclusterMistDasCoaServerArrayOutput {
+	return o
+}
+
+func (o MxclusterMistDasCoaServerArrayOutput) ToMxclusterMistDasCoaServerArrayOutputWithContext(ctx context.Context) MxclusterMistDasCoaServerArrayOutput {
+	return o
+}
+
+func (o MxclusterMistDasCoaServerArrayOutput) Index(i pulumi.IntInput) MxclusterMistDasCoaServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MxclusterMistDasCoaServer {
+		return vs[0].([]MxclusterMistDasCoaServer)[vs[1].(int)]
+	}).(MxclusterMistDasCoaServerOutput)
+}
+
+type MxclusterMistNac struct {
+	AcctServerPort *int `pulumi:"acctServerPort"`
+	AuthServerPort *int `pulumi:"authServerPort"`
+	// Property key is the RADIUS Client IP/Subnet.
+	ClientIps map[string]MxclusterMistNacClientIps `pulumi:"clientIps"`
+	Enabled   *bool                                `pulumi:"enabled"`
+	Secret    *string                              `pulumi:"secret"`
+}
+
+// MxclusterMistNacInput is an input type that accepts MxclusterMistNacArgs and MxclusterMistNacOutput values.
+// You can construct a concrete instance of `MxclusterMistNacInput` via:
+//
+//	MxclusterMistNacArgs{...}
+type MxclusterMistNacInput interface {
+	pulumi.Input
+
+	ToMxclusterMistNacOutput() MxclusterMistNacOutput
+	ToMxclusterMistNacOutputWithContext(context.Context) MxclusterMistNacOutput
+}
+
+type MxclusterMistNacArgs struct {
+	AcctServerPort pulumi.IntPtrInput `pulumi:"acctServerPort"`
+	AuthServerPort pulumi.IntPtrInput `pulumi:"authServerPort"`
+	// Property key is the RADIUS Client IP/Subnet.
+	ClientIps MxclusterMistNacClientIpsMapInput `pulumi:"clientIps"`
+	Enabled   pulumi.BoolPtrInput               `pulumi:"enabled"`
+	Secret    pulumi.StringPtrInput             `pulumi:"secret"`
+}
+
+func (MxclusterMistNacArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterMistNac)(nil)).Elem()
+}
+
+func (i MxclusterMistNacArgs) ToMxclusterMistNacOutput() MxclusterMistNacOutput {
+	return i.ToMxclusterMistNacOutputWithContext(context.Background())
+}
+
+func (i MxclusterMistNacArgs) ToMxclusterMistNacOutputWithContext(ctx context.Context) MxclusterMistNacOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMistNacOutput)
+}
+
+func (i MxclusterMistNacArgs) ToMxclusterMistNacPtrOutput() MxclusterMistNacPtrOutput {
+	return i.ToMxclusterMistNacPtrOutputWithContext(context.Background())
+}
+
+func (i MxclusterMistNacArgs) ToMxclusterMistNacPtrOutputWithContext(ctx context.Context) MxclusterMistNacPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMistNacOutput).ToMxclusterMistNacPtrOutputWithContext(ctx)
+}
+
+// MxclusterMistNacPtrInput is an input type that accepts MxclusterMistNacArgs, MxclusterMistNacPtr and MxclusterMistNacPtrOutput values.
+// You can construct a concrete instance of `MxclusterMistNacPtrInput` via:
+//
+//	        MxclusterMistNacArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxclusterMistNacPtrInput interface {
+	pulumi.Input
+
+	ToMxclusterMistNacPtrOutput() MxclusterMistNacPtrOutput
+	ToMxclusterMistNacPtrOutputWithContext(context.Context) MxclusterMistNacPtrOutput
+}
+
+type mxclusterMistNacPtrType MxclusterMistNacArgs
+
+func MxclusterMistNacPtr(v *MxclusterMistNacArgs) MxclusterMistNacPtrInput {
+	return (*mxclusterMistNacPtrType)(v)
+}
+
+func (*mxclusterMistNacPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxclusterMistNac)(nil)).Elem()
+}
+
+func (i *mxclusterMistNacPtrType) ToMxclusterMistNacPtrOutput() MxclusterMistNacPtrOutput {
+	return i.ToMxclusterMistNacPtrOutputWithContext(context.Background())
+}
+
+func (i *mxclusterMistNacPtrType) ToMxclusterMistNacPtrOutputWithContext(ctx context.Context) MxclusterMistNacPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMistNacPtrOutput)
+}
+
+type MxclusterMistNacOutput struct{ *pulumi.OutputState }
+
+func (MxclusterMistNacOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterMistNac)(nil)).Elem()
+}
+
+func (o MxclusterMistNacOutput) ToMxclusterMistNacOutput() MxclusterMistNacOutput {
+	return o
+}
+
+func (o MxclusterMistNacOutput) ToMxclusterMistNacOutputWithContext(ctx context.Context) MxclusterMistNacOutput {
+	return o
+}
+
+func (o MxclusterMistNacOutput) ToMxclusterMistNacPtrOutput() MxclusterMistNacPtrOutput {
+	return o.ToMxclusterMistNacPtrOutputWithContext(context.Background())
+}
+
+func (o MxclusterMistNacOutput) ToMxclusterMistNacPtrOutputWithContext(ctx context.Context) MxclusterMistNacPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxclusterMistNac) *MxclusterMistNac {
+		return &v
+	}).(MxclusterMistNacPtrOutput)
+}
+
+func (o MxclusterMistNacOutput) AcctServerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxclusterMistNac) *int { return v.AcctServerPort }).(pulumi.IntPtrOutput)
+}
+
+func (o MxclusterMistNacOutput) AuthServerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxclusterMistNac) *int { return v.AuthServerPort }).(pulumi.IntPtrOutput)
+}
+
+// Property key is the RADIUS Client IP/Subnet.
+func (o MxclusterMistNacOutput) ClientIps() MxclusterMistNacClientIpsMapOutput {
+	return o.ApplyT(func(v MxclusterMistNac) map[string]MxclusterMistNacClientIps { return v.ClientIps }).(MxclusterMistNacClientIpsMapOutput)
+}
+
+func (o MxclusterMistNacOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterMistNac) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxclusterMistNacOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterMistNac) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+type MxclusterMistNacPtrOutput struct{ *pulumi.OutputState }
+
+func (MxclusterMistNacPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxclusterMistNac)(nil)).Elem()
+}
+
+func (o MxclusterMistNacPtrOutput) ToMxclusterMistNacPtrOutput() MxclusterMistNacPtrOutput {
+	return o
+}
+
+func (o MxclusterMistNacPtrOutput) ToMxclusterMistNacPtrOutputWithContext(ctx context.Context) MxclusterMistNacPtrOutput {
+	return o
+}
+
+func (o MxclusterMistNacPtrOutput) Elem() MxclusterMistNacOutput {
+	return o.ApplyT(func(v *MxclusterMistNac) MxclusterMistNac {
+		if v != nil {
+			return *v
+		}
+		var ret MxclusterMistNac
+		return ret
+	}).(MxclusterMistNacOutput)
+}
+
+func (o MxclusterMistNacPtrOutput) AcctServerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MxclusterMistNac) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AcctServerPort
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MxclusterMistNacPtrOutput) AuthServerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MxclusterMistNac) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AuthServerPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Property key is the RADIUS Client IP/Subnet.
+func (o MxclusterMistNacPtrOutput) ClientIps() MxclusterMistNacClientIpsMapOutput {
+	return o.ApplyT(func(v *MxclusterMistNac) map[string]MxclusterMistNacClientIps {
+		if v == nil {
+			return nil
+		}
+		return v.ClientIps
+	}).(MxclusterMistNacClientIpsMapOutput)
+}
+
+func (o MxclusterMistNacPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxclusterMistNac) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MxclusterMistNacPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxclusterMistNac) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+type MxclusterMistNacClientIps struct {
+}
+
+// MxclusterMistNacClientIpsInput is an input type that accepts MxclusterMistNacClientIpsArgs and MxclusterMistNacClientIpsOutput values.
+// You can construct a concrete instance of `MxclusterMistNacClientIpsInput` via:
+//
+//	MxclusterMistNacClientIpsArgs{...}
+type MxclusterMistNacClientIpsInput interface {
+	pulumi.Input
+
+	ToMxclusterMistNacClientIpsOutput() MxclusterMistNacClientIpsOutput
+	ToMxclusterMistNacClientIpsOutputWithContext(context.Context) MxclusterMistNacClientIpsOutput
+}
+
+type MxclusterMistNacClientIpsArgs struct {
+}
+
+func (MxclusterMistNacClientIpsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterMistNacClientIps)(nil)).Elem()
+}
+
+func (i MxclusterMistNacClientIpsArgs) ToMxclusterMistNacClientIpsOutput() MxclusterMistNacClientIpsOutput {
+	return i.ToMxclusterMistNacClientIpsOutputWithContext(context.Background())
+}
+
+func (i MxclusterMistNacClientIpsArgs) ToMxclusterMistNacClientIpsOutputWithContext(ctx context.Context) MxclusterMistNacClientIpsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMistNacClientIpsOutput)
+}
+
+// MxclusterMistNacClientIpsMapInput is an input type that accepts MxclusterMistNacClientIpsMap and MxclusterMistNacClientIpsMapOutput values.
+// You can construct a concrete instance of `MxclusterMistNacClientIpsMapInput` via:
+//
+//	MxclusterMistNacClientIpsMap{ "key": MxclusterMistNacClientIpsArgs{...} }
+type MxclusterMistNacClientIpsMapInput interface {
+	pulumi.Input
+
+	ToMxclusterMistNacClientIpsMapOutput() MxclusterMistNacClientIpsMapOutput
+	ToMxclusterMistNacClientIpsMapOutputWithContext(context.Context) MxclusterMistNacClientIpsMapOutput
+}
+
+type MxclusterMistNacClientIpsMap map[string]MxclusterMistNacClientIpsInput
+
+func (MxclusterMistNacClientIpsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxclusterMistNacClientIps)(nil)).Elem()
+}
+
+func (i MxclusterMistNacClientIpsMap) ToMxclusterMistNacClientIpsMapOutput() MxclusterMistNacClientIpsMapOutput {
+	return i.ToMxclusterMistNacClientIpsMapOutputWithContext(context.Background())
+}
+
+func (i MxclusterMistNacClientIpsMap) ToMxclusterMistNacClientIpsMapOutputWithContext(ctx context.Context) MxclusterMistNacClientIpsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMistNacClientIpsMapOutput)
+}
+
+type MxclusterMistNacClientIpsOutput struct{ *pulumi.OutputState }
+
+func (MxclusterMistNacClientIpsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterMistNacClientIps)(nil)).Elem()
+}
+
+func (o MxclusterMistNacClientIpsOutput) ToMxclusterMistNacClientIpsOutput() MxclusterMistNacClientIpsOutput {
+	return o
+}
+
+func (o MxclusterMistNacClientIpsOutput) ToMxclusterMistNacClientIpsOutputWithContext(ctx context.Context) MxclusterMistNacClientIpsOutput {
+	return o
+}
+
+type MxclusterMistNacClientIpsMapOutput struct{ *pulumi.OutputState }
+
+func (MxclusterMistNacClientIpsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxclusterMistNacClientIps)(nil)).Elem()
+}
+
+func (o MxclusterMistNacClientIpsMapOutput) ToMxclusterMistNacClientIpsMapOutput() MxclusterMistNacClientIpsMapOutput {
+	return o
+}
+
+func (o MxclusterMistNacClientIpsMapOutput) ToMxclusterMistNacClientIpsMapOutputWithContext(ctx context.Context) MxclusterMistNacClientIpsMapOutput {
+	return o
+}
+
+func (o MxclusterMistNacClientIpsMapOutput) MapIndex(k pulumi.StringInput) MxclusterMistNacClientIpsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MxclusterMistNacClientIps {
+		return vs[0].(map[string]MxclusterMistNacClientIps)[vs[1].(string)]
+	}).(MxclusterMistNacClientIpsOutput)
+}
+
+type MxclusterMxedgeMgmt struct {
+	ConfigAutoRevert *bool   `pulumi:"configAutoRevert"`
+	FipsEnabled      *bool   `pulumi:"fipsEnabled"`
+	MistPassword     *string `pulumi:"mistPassword"`
+	// enum: `dhcp`, `disabled`, `static`
+	OobIpType *string `pulumi:"oobIpType"`
+	// enum: `autoconf`, `dhcp`, `disabled`, `static`
+	OobIpType6   *string `pulumi:"oobIpType6"`
+	RootPassword *string `pulumi:"rootPassword"`
+}
+
+// MxclusterMxedgeMgmtInput is an input type that accepts MxclusterMxedgeMgmtArgs and MxclusterMxedgeMgmtOutput values.
+// You can construct a concrete instance of `MxclusterMxedgeMgmtInput` via:
+//
+//	MxclusterMxedgeMgmtArgs{...}
+type MxclusterMxedgeMgmtInput interface {
+	pulumi.Input
+
+	ToMxclusterMxedgeMgmtOutput() MxclusterMxedgeMgmtOutput
+	ToMxclusterMxedgeMgmtOutputWithContext(context.Context) MxclusterMxedgeMgmtOutput
+}
+
+type MxclusterMxedgeMgmtArgs struct {
+	ConfigAutoRevert pulumi.BoolPtrInput   `pulumi:"configAutoRevert"`
+	FipsEnabled      pulumi.BoolPtrInput   `pulumi:"fipsEnabled"`
+	MistPassword     pulumi.StringPtrInput `pulumi:"mistPassword"`
+	// enum: `dhcp`, `disabled`, `static`
+	OobIpType pulumi.StringPtrInput `pulumi:"oobIpType"`
+	// enum: `autoconf`, `dhcp`, `disabled`, `static`
+	OobIpType6   pulumi.StringPtrInput `pulumi:"oobIpType6"`
+	RootPassword pulumi.StringPtrInput `pulumi:"rootPassword"`
+}
+
+func (MxclusterMxedgeMgmtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterMxedgeMgmt)(nil)).Elem()
+}
+
+func (i MxclusterMxedgeMgmtArgs) ToMxclusterMxedgeMgmtOutput() MxclusterMxedgeMgmtOutput {
+	return i.ToMxclusterMxedgeMgmtOutputWithContext(context.Background())
+}
+
+func (i MxclusterMxedgeMgmtArgs) ToMxclusterMxedgeMgmtOutputWithContext(ctx context.Context) MxclusterMxedgeMgmtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMxedgeMgmtOutput)
+}
+
+func (i MxclusterMxedgeMgmtArgs) ToMxclusterMxedgeMgmtPtrOutput() MxclusterMxedgeMgmtPtrOutput {
+	return i.ToMxclusterMxedgeMgmtPtrOutputWithContext(context.Background())
+}
+
+func (i MxclusterMxedgeMgmtArgs) ToMxclusterMxedgeMgmtPtrOutputWithContext(ctx context.Context) MxclusterMxedgeMgmtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMxedgeMgmtOutput).ToMxclusterMxedgeMgmtPtrOutputWithContext(ctx)
+}
+
+// MxclusterMxedgeMgmtPtrInput is an input type that accepts MxclusterMxedgeMgmtArgs, MxclusterMxedgeMgmtPtr and MxclusterMxedgeMgmtPtrOutput values.
+// You can construct a concrete instance of `MxclusterMxedgeMgmtPtrInput` via:
+//
+//	        MxclusterMxedgeMgmtArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxclusterMxedgeMgmtPtrInput interface {
+	pulumi.Input
+
+	ToMxclusterMxedgeMgmtPtrOutput() MxclusterMxedgeMgmtPtrOutput
+	ToMxclusterMxedgeMgmtPtrOutputWithContext(context.Context) MxclusterMxedgeMgmtPtrOutput
+}
+
+type mxclusterMxedgeMgmtPtrType MxclusterMxedgeMgmtArgs
+
+func MxclusterMxedgeMgmtPtr(v *MxclusterMxedgeMgmtArgs) MxclusterMxedgeMgmtPtrInput {
+	return (*mxclusterMxedgeMgmtPtrType)(v)
+}
+
+func (*mxclusterMxedgeMgmtPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxclusterMxedgeMgmt)(nil)).Elem()
+}
+
+func (i *mxclusterMxedgeMgmtPtrType) ToMxclusterMxedgeMgmtPtrOutput() MxclusterMxedgeMgmtPtrOutput {
+	return i.ToMxclusterMxedgeMgmtPtrOutputWithContext(context.Background())
+}
+
+func (i *mxclusterMxedgeMgmtPtrType) ToMxclusterMxedgeMgmtPtrOutputWithContext(ctx context.Context) MxclusterMxedgeMgmtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterMxedgeMgmtPtrOutput)
+}
+
+type MxclusterMxedgeMgmtOutput struct{ *pulumi.OutputState }
+
+func (MxclusterMxedgeMgmtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterMxedgeMgmt)(nil)).Elem()
+}
+
+func (o MxclusterMxedgeMgmtOutput) ToMxclusterMxedgeMgmtOutput() MxclusterMxedgeMgmtOutput {
+	return o
+}
+
+func (o MxclusterMxedgeMgmtOutput) ToMxclusterMxedgeMgmtOutputWithContext(ctx context.Context) MxclusterMxedgeMgmtOutput {
+	return o
+}
+
+func (o MxclusterMxedgeMgmtOutput) ToMxclusterMxedgeMgmtPtrOutput() MxclusterMxedgeMgmtPtrOutput {
+	return o.ToMxclusterMxedgeMgmtPtrOutputWithContext(context.Background())
+}
+
+func (o MxclusterMxedgeMgmtOutput) ToMxclusterMxedgeMgmtPtrOutputWithContext(ctx context.Context) MxclusterMxedgeMgmtPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxclusterMxedgeMgmt) *MxclusterMxedgeMgmt {
+		return &v
+	}).(MxclusterMxedgeMgmtPtrOutput)
+}
+
+func (o MxclusterMxedgeMgmtOutput) ConfigAutoRevert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterMxedgeMgmt) *bool { return v.ConfigAutoRevert }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxclusterMxedgeMgmtOutput) FipsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterMxedgeMgmt) *bool { return v.FipsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxclusterMxedgeMgmtOutput) MistPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterMxedgeMgmt) *string { return v.MistPassword }).(pulumi.StringPtrOutput)
+}
+
+// enum: `dhcp`, `disabled`, `static`
+func (o MxclusterMxedgeMgmtOutput) OobIpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterMxedgeMgmt) *string { return v.OobIpType }).(pulumi.StringPtrOutput)
+}
+
+// enum: `autoconf`, `dhcp`, `disabled`, `static`
+func (o MxclusterMxedgeMgmtOutput) OobIpType6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterMxedgeMgmt) *string { return v.OobIpType6 }).(pulumi.StringPtrOutput)
+}
+
+func (o MxclusterMxedgeMgmtOutput) RootPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterMxedgeMgmt) *string { return v.RootPassword }).(pulumi.StringPtrOutput)
+}
+
+type MxclusterMxedgeMgmtPtrOutput struct{ *pulumi.OutputState }
+
+func (MxclusterMxedgeMgmtPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxclusterMxedgeMgmt)(nil)).Elem()
+}
+
+func (o MxclusterMxedgeMgmtPtrOutput) ToMxclusterMxedgeMgmtPtrOutput() MxclusterMxedgeMgmtPtrOutput {
+	return o
+}
+
+func (o MxclusterMxedgeMgmtPtrOutput) ToMxclusterMxedgeMgmtPtrOutputWithContext(ctx context.Context) MxclusterMxedgeMgmtPtrOutput {
+	return o
+}
+
+func (o MxclusterMxedgeMgmtPtrOutput) Elem() MxclusterMxedgeMgmtOutput {
+	return o.ApplyT(func(v *MxclusterMxedgeMgmt) MxclusterMxedgeMgmt {
+		if v != nil {
+			return *v
+		}
+		var ret MxclusterMxedgeMgmt
+		return ret
+	}).(MxclusterMxedgeMgmtOutput)
+}
+
+func (o MxclusterMxedgeMgmtPtrOutput) ConfigAutoRevert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxclusterMxedgeMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigAutoRevert
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MxclusterMxedgeMgmtPtrOutput) FipsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxclusterMxedgeMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FipsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MxclusterMxedgeMgmtPtrOutput) MistPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxclusterMxedgeMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MistPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `dhcp`, `disabled`, `static`
+func (o MxclusterMxedgeMgmtPtrOutput) OobIpType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxclusterMxedgeMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OobIpType
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `autoconf`, `dhcp`, `disabled`, `static`
+func (o MxclusterMxedgeMgmtPtrOutput) OobIpType6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxclusterMxedgeMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OobIpType6
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MxclusterMxedgeMgmtPtrOutput) RootPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxclusterMxedgeMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RootPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+type MxclusterProxy struct {
+	Disabled *bool   `pulumi:"disabled"`
+	Url      *string `pulumi:"url"`
+}
+
+// MxclusterProxyInput is an input type that accepts MxclusterProxyArgs and MxclusterProxyOutput values.
+// You can construct a concrete instance of `MxclusterProxyInput` via:
+//
+//	MxclusterProxyArgs{...}
+type MxclusterProxyInput interface {
+	pulumi.Input
+
+	ToMxclusterProxyOutput() MxclusterProxyOutput
+	ToMxclusterProxyOutputWithContext(context.Context) MxclusterProxyOutput
+}
+
+type MxclusterProxyArgs struct {
+	Disabled pulumi.BoolPtrInput   `pulumi:"disabled"`
+	Url      pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (MxclusterProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterProxy)(nil)).Elem()
+}
+
+func (i MxclusterProxyArgs) ToMxclusterProxyOutput() MxclusterProxyOutput {
+	return i.ToMxclusterProxyOutputWithContext(context.Background())
+}
+
+func (i MxclusterProxyArgs) ToMxclusterProxyOutputWithContext(ctx context.Context) MxclusterProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterProxyOutput)
+}
+
+func (i MxclusterProxyArgs) ToMxclusterProxyPtrOutput() MxclusterProxyPtrOutput {
+	return i.ToMxclusterProxyPtrOutputWithContext(context.Background())
+}
+
+func (i MxclusterProxyArgs) ToMxclusterProxyPtrOutputWithContext(ctx context.Context) MxclusterProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterProxyOutput).ToMxclusterProxyPtrOutputWithContext(ctx)
+}
+
+// MxclusterProxyPtrInput is an input type that accepts MxclusterProxyArgs, MxclusterProxyPtr and MxclusterProxyPtrOutput values.
+// You can construct a concrete instance of `MxclusterProxyPtrInput` via:
+//
+//	        MxclusterProxyArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxclusterProxyPtrInput interface {
+	pulumi.Input
+
+	ToMxclusterProxyPtrOutput() MxclusterProxyPtrOutput
+	ToMxclusterProxyPtrOutputWithContext(context.Context) MxclusterProxyPtrOutput
+}
+
+type mxclusterProxyPtrType MxclusterProxyArgs
+
+func MxclusterProxyPtr(v *MxclusterProxyArgs) MxclusterProxyPtrInput {
+	return (*mxclusterProxyPtrType)(v)
+}
+
+func (*mxclusterProxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxclusterProxy)(nil)).Elem()
+}
+
+func (i *mxclusterProxyPtrType) ToMxclusterProxyPtrOutput() MxclusterProxyPtrOutput {
+	return i.ToMxclusterProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *mxclusterProxyPtrType) ToMxclusterProxyPtrOutputWithContext(ctx context.Context) MxclusterProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterProxyPtrOutput)
+}
+
+type MxclusterProxyOutput struct{ *pulumi.OutputState }
+
+func (MxclusterProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterProxy)(nil)).Elem()
+}
+
+func (o MxclusterProxyOutput) ToMxclusterProxyOutput() MxclusterProxyOutput {
+	return o
+}
+
+func (o MxclusterProxyOutput) ToMxclusterProxyOutputWithContext(ctx context.Context) MxclusterProxyOutput {
+	return o
+}
+
+func (o MxclusterProxyOutput) ToMxclusterProxyPtrOutput() MxclusterProxyPtrOutput {
+	return o.ToMxclusterProxyPtrOutputWithContext(context.Background())
+}
+
+func (o MxclusterProxyOutput) ToMxclusterProxyPtrOutputWithContext(ctx context.Context) MxclusterProxyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxclusterProxy) *MxclusterProxy {
+		return &v
+	}).(MxclusterProxyPtrOutput)
+}
+
+func (o MxclusterProxyOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterProxy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxclusterProxyOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterProxy) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type MxclusterProxyPtrOutput struct{ *pulumi.OutputState }
+
+func (MxclusterProxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxclusterProxy)(nil)).Elem()
+}
+
+func (o MxclusterProxyPtrOutput) ToMxclusterProxyPtrOutput() MxclusterProxyPtrOutput {
+	return o
+}
+
+func (o MxclusterProxyPtrOutput) ToMxclusterProxyPtrOutputWithContext(ctx context.Context) MxclusterProxyPtrOutput {
+	return o
+}
+
+func (o MxclusterProxyPtrOutput) Elem() MxclusterProxyOutput {
+	return o.ApplyT(func(v *MxclusterProxy) MxclusterProxy {
+		if v != nil {
+			return *v
+		}
+		var ret MxclusterProxy
+		return ret
+	}).(MxclusterProxyOutput)
+}
+
+func (o MxclusterProxyPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxclusterProxy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o MxclusterProxyPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxclusterProxy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type MxclusterRadsec struct {
+	// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+	AcctServers []MxclusterRadsecAcctServer `pulumi:"acctServers"`
+	// List of RADIUS authentication servers, order matters where the first one is treated as primary
+	AuthServers []MxclusterRadsecAuthServer `pulumi:"authServers"`
+	// Whether to enable service on Mist Edge i.e. RADIUS proxy over TLS
+	Enabled *bool `pulumi:"enabled"`
+	// Whether to match ssid in request message to select from a subset of RADIUS servers
+	MatchSsid *bool `pulumi:"matchSsid"`
+	// SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+	NasIpSource *string `pulumi:"nasIpSource"`
+	// Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+	ProxyHosts []string `pulumi:"proxyHosts"`
+	// When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+	ServerSelection *string `pulumi:"serverSelection"`
+	// Specify IP address to connect to authServers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+	SrcIpSource *string `pulumi:"srcIpSource"`
+}
+
+// MxclusterRadsecInput is an input type that accepts MxclusterRadsecArgs and MxclusterRadsecOutput values.
+// You can construct a concrete instance of `MxclusterRadsecInput` via:
+//
+//	MxclusterRadsecArgs{...}
+type MxclusterRadsecInput interface {
+	pulumi.Input
+
+	ToMxclusterRadsecOutput() MxclusterRadsecOutput
+	ToMxclusterRadsecOutputWithContext(context.Context) MxclusterRadsecOutput
+}
+
+type MxclusterRadsecArgs struct {
+	// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+	AcctServers MxclusterRadsecAcctServerArrayInput `pulumi:"acctServers"`
+	// List of RADIUS authentication servers, order matters where the first one is treated as primary
+	AuthServers MxclusterRadsecAuthServerArrayInput `pulumi:"authServers"`
+	// Whether to enable service on Mist Edge i.e. RADIUS proxy over TLS
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether to match ssid in request message to select from a subset of RADIUS servers
+	MatchSsid pulumi.BoolPtrInput `pulumi:"matchSsid"`
+	// SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+	NasIpSource pulumi.StringPtrInput `pulumi:"nasIpSource"`
+	// Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+	ProxyHosts pulumi.StringArrayInput `pulumi:"proxyHosts"`
+	// When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+	ServerSelection pulumi.StringPtrInput `pulumi:"serverSelection"`
+	// Specify IP address to connect to authServers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+	SrcIpSource pulumi.StringPtrInput `pulumi:"srcIpSource"`
+}
+
+func (MxclusterRadsecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterRadsec)(nil)).Elem()
+}
+
+func (i MxclusterRadsecArgs) ToMxclusterRadsecOutput() MxclusterRadsecOutput {
+	return i.ToMxclusterRadsecOutputWithContext(context.Background())
+}
+
+func (i MxclusterRadsecArgs) ToMxclusterRadsecOutputWithContext(ctx context.Context) MxclusterRadsecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterRadsecOutput)
+}
+
+func (i MxclusterRadsecArgs) ToMxclusterRadsecPtrOutput() MxclusterRadsecPtrOutput {
+	return i.ToMxclusterRadsecPtrOutputWithContext(context.Background())
+}
+
+func (i MxclusterRadsecArgs) ToMxclusterRadsecPtrOutputWithContext(ctx context.Context) MxclusterRadsecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterRadsecOutput).ToMxclusterRadsecPtrOutputWithContext(ctx)
+}
+
+// MxclusterRadsecPtrInput is an input type that accepts MxclusterRadsecArgs, MxclusterRadsecPtr and MxclusterRadsecPtrOutput values.
+// You can construct a concrete instance of `MxclusterRadsecPtrInput` via:
+//
+//	        MxclusterRadsecArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxclusterRadsecPtrInput interface {
+	pulumi.Input
+
+	ToMxclusterRadsecPtrOutput() MxclusterRadsecPtrOutput
+	ToMxclusterRadsecPtrOutputWithContext(context.Context) MxclusterRadsecPtrOutput
+}
+
+type mxclusterRadsecPtrType MxclusterRadsecArgs
+
+func MxclusterRadsecPtr(v *MxclusterRadsecArgs) MxclusterRadsecPtrInput {
+	return (*mxclusterRadsecPtrType)(v)
+}
+
+func (*mxclusterRadsecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxclusterRadsec)(nil)).Elem()
+}
+
+func (i *mxclusterRadsecPtrType) ToMxclusterRadsecPtrOutput() MxclusterRadsecPtrOutput {
+	return i.ToMxclusterRadsecPtrOutputWithContext(context.Background())
+}
+
+func (i *mxclusterRadsecPtrType) ToMxclusterRadsecPtrOutputWithContext(ctx context.Context) MxclusterRadsecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterRadsecPtrOutput)
+}
+
+type MxclusterRadsecOutput struct{ *pulumi.OutputState }
+
+func (MxclusterRadsecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterRadsec)(nil)).Elem()
+}
+
+func (o MxclusterRadsecOutput) ToMxclusterRadsecOutput() MxclusterRadsecOutput {
+	return o
+}
+
+func (o MxclusterRadsecOutput) ToMxclusterRadsecOutputWithContext(ctx context.Context) MxclusterRadsecOutput {
+	return o
+}
+
+func (o MxclusterRadsecOutput) ToMxclusterRadsecPtrOutput() MxclusterRadsecPtrOutput {
+	return o.ToMxclusterRadsecPtrOutputWithContext(context.Background())
+}
+
+func (o MxclusterRadsecOutput) ToMxclusterRadsecPtrOutputWithContext(ctx context.Context) MxclusterRadsecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxclusterRadsec) *MxclusterRadsec {
+		return &v
+	}).(MxclusterRadsecPtrOutput)
+}
+
+// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+func (o MxclusterRadsecOutput) AcctServers() MxclusterRadsecAcctServerArrayOutput {
+	return o.ApplyT(func(v MxclusterRadsec) []MxclusterRadsecAcctServer { return v.AcctServers }).(MxclusterRadsecAcctServerArrayOutput)
+}
+
+// List of RADIUS authentication servers, order matters where the first one is treated as primary
+func (o MxclusterRadsecOutput) AuthServers() MxclusterRadsecAuthServerArrayOutput {
+	return o.ApplyT(func(v MxclusterRadsec) []MxclusterRadsecAuthServer { return v.AuthServers }).(MxclusterRadsecAuthServerArrayOutput)
+}
+
+// Whether to enable service on Mist Edge i.e. RADIUS proxy over TLS
+func (o MxclusterRadsecOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsec) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to match ssid in request message to select from a subset of RADIUS servers
+func (o MxclusterRadsecOutput) MatchSsid() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsec) *bool { return v.MatchSsid }).(pulumi.BoolPtrOutput)
+}
+
+// SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+func (o MxclusterRadsecOutput) NasIpSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsec) *string { return v.NasIpSource }).(pulumi.StringPtrOutput)
+}
+
+// Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+func (o MxclusterRadsecOutput) ProxyHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxclusterRadsec) []string { return v.ProxyHosts }).(pulumi.StringArrayOutput)
+}
+
+// When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+func (o MxclusterRadsecOutput) ServerSelection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsec) *string { return v.ServerSelection }).(pulumi.StringPtrOutput)
+}
+
+// Specify IP address to connect to authServers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+func (o MxclusterRadsecOutput) SrcIpSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsec) *string { return v.SrcIpSource }).(pulumi.StringPtrOutput)
+}
+
+type MxclusterRadsecPtrOutput struct{ *pulumi.OutputState }
+
+func (MxclusterRadsecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxclusterRadsec)(nil)).Elem()
+}
+
+func (o MxclusterRadsecPtrOutput) ToMxclusterRadsecPtrOutput() MxclusterRadsecPtrOutput {
+	return o
+}
+
+func (o MxclusterRadsecPtrOutput) ToMxclusterRadsecPtrOutputWithContext(ctx context.Context) MxclusterRadsecPtrOutput {
+	return o
+}
+
+func (o MxclusterRadsecPtrOutput) Elem() MxclusterRadsecOutput {
+	return o.ApplyT(func(v *MxclusterRadsec) MxclusterRadsec {
+		if v != nil {
+			return *v
+		}
+		var ret MxclusterRadsec
+		return ret
+	}).(MxclusterRadsecOutput)
+}
+
+// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+func (o MxclusterRadsecPtrOutput) AcctServers() MxclusterRadsecAcctServerArrayOutput {
+	return o.ApplyT(func(v *MxclusterRadsec) []MxclusterRadsecAcctServer {
+		if v == nil {
+			return nil
+		}
+		return v.AcctServers
+	}).(MxclusterRadsecAcctServerArrayOutput)
+}
+
+// List of RADIUS authentication servers, order matters where the first one is treated as primary
+func (o MxclusterRadsecPtrOutput) AuthServers() MxclusterRadsecAuthServerArrayOutput {
+	return o.ApplyT(func(v *MxclusterRadsec) []MxclusterRadsecAuthServer {
+		if v == nil {
+			return nil
+		}
+		return v.AuthServers
+	}).(MxclusterRadsecAuthServerArrayOutput)
+}
+
+// Whether to enable service on Mist Edge i.e. RADIUS proxy over TLS
+func (o MxclusterRadsecPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxclusterRadsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to match ssid in request message to select from a subset of RADIUS servers
+func (o MxclusterRadsecPtrOutput) MatchSsid() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MxclusterRadsec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MatchSsid
+	}).(pulumi.BoolPtrOutput)
+}
+
+// SSpecify NAS-IP-ADDRESS, NAS-IPv6-ADDRESS to use with auth_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+func (o MxclusterRadsecPtrOutput) NasIpSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxclusterRadsec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NasIpSource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hostnames or IPs for Mist AP to use as the TLS Server (i.e. they are reachable from AP) in addition to `tuntermHosts`
+func (o MxclusterRadsecPtrOutput) ProxyHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MxclusterRadsec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// When ordered, Mist Edge will prefer and go back to the first radius server if possible. enum: `ordered`, `unordered`
+func (o MxclusterRadsecPtrOutput) ServerSelection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxclusterRadsec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerSelection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify IP address to connect to authServers and acct_servers. enum: `any`, `oob`, `oob6`, `tunnel`, `tunnel6`
+func (o MxclusterRadsecPtrOutput) SrcIpSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxclusterRadsec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcIpSource
+	}).(pulumi.StringPtrOutput)
+}
+
+type MxclusterRadsecAcctServer struct {
+	// IP / hostname of RADIUS server
+	Host *string `pulumi:"host"`
+	// Acct port of RADIUS server
+	Port *int `pulumi:"port"`
+	// Secret of RADIUS server
+	Secret *string `pulumi:"secret"`
+	// List of ssids that will use this server if matchSsid is true and match is found
+	Ssids []string `pulumi:"ssids"`
+}
+
+// MxclusterRadsecAcctServerInput is an input type that accepts MxclusterRadsecAcctServerArgs and MxclusterRadsecAcctServerOutput values.
+// You can construct a concrete instance of `MxclusterRadsecAcctServerInput` via:
+//
+//	MxclusterRadsecAcctServerArgs{...}
+type MxclusterRadsecAcctServerInput interface {
+	pulumi.Input
+
+	ToMxclusterRadsecAcctServerOutput() MxclusterRadsecAcctServerOutput
+	ToMxclusterRadsecAcctServerOutputWithContext(context.Context) MxclusterRadsecAcctServerOutput
+}
+
+type MxclusterRadsecAcctServerArgs struct {
+	// IP / hostname of RADIUS server
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Acct port of RADIUS server
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Secret of RADIUS server
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// List of ssids that will use this server if matchSsid is true and match is found
+	Ssids pulumi.StringArrayInput `pulumi:"ssids"`
+}
+
+func (MxclusterRadsecAcctServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterRadsecAcctServer)(nil)).Elem()
+}
+
+func (i MxclusterRadsecAcctServerArgs) ToMxclusterRadsecAcctServerOutput() MxclusterRadsecAcctServerOutput {
+	return i.ToMxclusterRadsecAcctServerOutputWithContext(context.Background())
+}
+
+func (i MxclusterRadsecAcctServerArgs) ToMxclusterRadsecAcctServerOutputWithContext(ctx context.Context) MxclusterRadsecAcctServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterRadsecAcctServerOutput)
+}
+
+// MxclusterRadsecAcctServerArrayInput is an input type that accepts MxclusterRadsecAcctServerArray and MxclusterRadsecAcctServerArrayOutput values.
+// You can construct a concrete instance of `MxclusterRadsecAcctServerArrayInput` via:
+//
+//	MxclusterRadsecAcctServerArray{ MxclusterRadsecAcctServerArgs{...} }
+type MxclusterRadsecAcctServerArrayInput interface {
+	pulumi.Input
+
+	ToMxclusterRadsecAcctServerArrayOutput() MxclusterRadsecAcctServerArrayOutput
+	ToMxclusterRadsecAcctServerArrayOutputWithContext(context.Context) MxclusterRadsecAcctServerArrayOutput
+}
+
+type MxclusterRadsecAcctServerArray []MxclusterRadsecAcctServerInput
+
+func (MxclusterRadsecAcctServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MxclusterRadsecAcctServer)(nil)).Elem()
+}
+
+func (i MxclusterRadsecAcctServerArray) ToMxclusterRadsecAcctServerArrayOutput() MxclusterRadsecAcctServerArrayOutput {
+	return i.ToMxclusterRadsecAcctServerArrayOutputWithContext(context.Background())
+}
+
+func (i MxclusterRadsecAcctServerArray) ToMxclusterRadsecAcctServerArrayOutputWithContext(ctx context.Context) MxclusterRadsecAcctServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterRadsecAcctServerArrayOutput)
+}
+
+type MxclusterRadsecAcctServerOutput struct{ *pulumi.OutputState }
+
+func (MxclusterRadsecAcctServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterRadsecAcctServer)(nil)).Elem()
+}
+
+func (o MxclusterRadsecAcctServerOutput) ToMxclusterRadsecAcctServerOutput() MxclusterRadsecAcctServerOutput {
+	return o
+}
+
+func (o MxclusterRadsecAcctServerOutput) ToMxclusterRadsecAcctServerOutputWithContext(ctx context.Context) MxclusterRadsecAcctServerOutput {
+	return o
+}
+
+// IP / hostname of RADIUS server
+func (o MxclusterRadsecAcctServerOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAcctServer) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Acct port of RADIUS server
+func (o MxclusterRadsecAcctServerOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAcctServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Secret of RADIUS server
+func (o MxclusterRadsecAcctServerOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAcctServer) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// List of ssids that will use this server if matchSsid is true and match is found
+func (o MxclusterRadsecAcctServerOutput) Ssids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxclusterRadsecAcctServer) []string { return v.Ssids }).(pulumi.StringArrayOutput)
+}
+
+type MxclusterRadsecAcctServerArrayOutput struct{ *pulumi.OutputState }
+
+func (MxclusterRadsecAcctServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MxclusterRadsecAcctServer)(nil)).Elem()
+}
+
+func (o MxclusterRadsecAcctServerArrayOutput) ToMxclusterRadsecAcctServerArrayOutput() MxclusterRadsecAcctServerArrayOutput {
+	return o
+}
+
+func (o MxclusterRadsecAcctServerArrayOutput) ToMxclusterRadsecAcctServerArrayOutputWithContext(ctx context.Context) MxclusterRadsecAcctServerArrayOutput {
+	return o
+}
+
+func (o MxclusterRadsecAcctServerArrayOutput) Index(i pulumi.IntInput) MxclusterRadsecAcctServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MxclusterRadsecAcctServer {
+		return vs[0].([]MxclusterRadsecAcctServer)[vs[1].(int)]
+	}).(MxclusterRadsecAcctServerOutput)
+}
+
+type MxclusterRadsecAuthServer struct {
+	// IP / hostname of RADIUS server
+	Host *string `pulumi:"host"`
+	// Whether to enable inband status check
+	InbandStatusCheck *bool `pulumi:"inbandStatusCheck"`
+	// Inband status interval, in seconds
+	InbandStatusInterval *int `pulumi:"inbandStatusInterval"`
+	// If used for Mist APs, enable keywrap algorithm. Default is false
+	KeywrapEnabled *bool `pulumi:"keywrapEnabled"`
+	// if used for Mist APs. enum: `ascii`, `hex`
+	KeywrapFormat *string `pulumi:"keywrapFormat"`
+	// If used for Mist APs, encryption key
+	KeywrapKek *string `pulumi:"keywrapKek"`
+	// If used for Mist APs, Message Authentication Code Key
+	KeywrapMack *string `pulumi:"keywrapMack"`
+	// Auth port of RADIUS server
+	Port *int `pulumi:"port"`
+	// Authentication request retry
+	Retry *int `pulumi:"retry"`
+	// Secret of RADIUS server
+	Secret *string `pulumi:"secret"`
+	// List of ssids that will use this server if matchSsid is true and match is found
+	Ssids []string `pulumi:"ssids"`
+	// Authentication request timeout, in seconds
+	Timeout *int `pulumi:"timeout"`
+}
+
+// MxclusterRadsecAuthServerInput is an input type that accepts MxclusterRadsecAuthServerArgs and MxclusterRadsecAuthServerOutput values.
+// You can construct a concrete instance of `MxclusterRadsecAuthServerInput` via:
+//
+//	MxclusterRadsecAuthServerArgs{...}
+type MxclusterRadsecAuthServerInput interface {
+	pulumi.Input
+
+	ToMxclusterRadsecAuthServerOutput() MxclusterRadsecAuthServerOutput
+	ToMxclusterRadsecAuthServerOutputWithContext(context.Context) MxclusterRadsecAuthServerOutput
+}
+
+type MxclusterRadsecAuthServerArgs struct {
+	// IP / hostname of RADIUS server
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Whether to enable inband status check
+	InbandStatusCheck pulumi.BoolPtrInput `pulumi:"inbandStatusCheck"`
+	// Inband status interval, in seconds
+	InbandStatusInterval pulumi.IntPtrInput `pulumi:"inbandStatusInterval"`
+	// If used for Mist APs, enable keywrap algorithm. Default is false
+	KeywrapEnabled pulumi.BoolPtrInput `pulumi:"keywrapEnabled"`
+	// if used for Mist APs. enum: `ascii`, `hex`
+	KeywrapFormat pulumi.StringPtrInput `pulumi:"keywrapFormat"`
+	// If used for Mist APs, encryption key
+	KeywrapKek pulumi.StringPtrInput `pulumi:"keywrapKek"`
+	// If used for Mist APs, Message Authentication Code Key
+	KeywrapMack pulumi.StringPtrInput `pulumi:"keywrapMack"`
+	// Auth port of RADIUS server
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Authentication request retry
+	Retry pulumi.IntPtrInput `pulumi:"retry"`
+	// Secret of RADIUS server
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// List of ssids that will use this server if matchSsid is true and match is found
+	Ssids pulumi.StringArrayInput `pulumi:"ssids"`
+	// Authentication request timeout, in seconds
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+}
+
+func (MxclusterRadsecAuthServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterRadsecAuthServer)(nil)).Elem()
+}
+
+func (i MxclusterRadsecAuthServerArgs) ToMxclusterRadsecAuthServerOutput() MxclusterRadsecAuthServerOutput {
+	return i.ToMxclusterRadsecAuthServerOutputWithContext(context.Background())
+}
+
+func (i MxclusterRadsecAuthServerArgs) ToMxclusterRadsecAuthServerOutputWithContext(ctx context.Context) MxclusterRadsecAuthServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterRadsecAuthServerOutput)
+}
+
+// MxclusterRadsecAuthServerArrayInput is an input type that accepts MxclusterRadsecAuthServerArray and MxclusterRadsecAuthServerArrayOutput values.
+// You can construct a concrete instance of `MxclusterRadsecAuthServerArrayInput` via:
+//
+//	MxclusterRadsecAuthServerArray{ MxclusterRadsecAuthServerArgs{...} }
+type MxclusterRadsecAuthServerArrayInput interface {
+	pulumi.Input
+
+	ToMxclusterRadsecAuthServerArrayOutput() MxclusterRadsecAuthServerArrayOutput
+	ToMxclusterRadsecAuthServerArrayOutputWithContext(context.Context) MxclusterRadsecAuthServerArrayOutput
+}
+
+type MxclusterRadsecAuthServerArray []MxclusterRadsecAuthServerInput
+
+func (MxclusterRadsecAuthServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MxclusterRadsecAuthServer)(nil)).Elem()
+}
+
+func (i MxclusterRadsecAuthServerArray) ToMxclusterRadsecAuthServerArrayOutput() MxclusterRadsecAuthServerArrayOutput {
+	return i.ToMxclusterRadsecAuthServerArrayOutputWithContext(context.Background())
+}
+
+func (i MxclusterRadsecAuthServerArray) ToMxclusterRadsecAuthServerArrayOutputWithContext(ctx context.Context) MxclusterRadsecAuthServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterRadsecAuthServerArrayOutput)
+}
+
+type MxclusterRadsecAuthServerOutput struct{ *pulumi.OutputState }
+
+func (MxclusterRadsecAuthServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterRadsecAuthServer)(nil)).Elem()
+}
+
+func (o MxclusterRadsecAuthServerOutput) ToMxclusterRadsecAuthServerOutput() MxclusterRadsecAuthServerOutput {
+	return o
+}
+
+func (o MxclusterRadsecAuthServerOutput) ToMxclusterRadsecAuthServerOutputWithContext(ctx context.Context) MxclusterRadsecAuthServerOutput {
+	return o
+}
+
+// IP / hostname of RADIUS server
+func (o MxclusterRadsecAuthServerOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAuthServer) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable inband status check
+func (o MxclusterRadsecAuthServerOutput) InbandStatusCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAuthServer) *bool { return v.InbandStatusCheck }).(pulumi.BoolPtrOutput)
+}
+
+// Inband status interval, in seconds
+func (o MxclusterRadsecAuthServerOutput) InbandStatusInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAuthServer) *int { return v.InbandStatusInterval }).(pulumi.IntPtrOutput)
+}
+
+// If used for Mist APs, enable keywrap algorithm. Default is false
+func (o MxclusterRadsecAuthServerOutput) KeywrapEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAuthServer) *bool { return v.KeywrapEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// if used for Mist APs. enum: `ascii`, `hex`
+func (o MxclusterRadsecAuthServerOutput) KeywrapFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAuthServer) *string { return v.KeywrapFormat }).(pulumi.StringPtrOutput)
+}
+
+// If used for Mist APs, encryption key
+func (o MxclusterRadsecAuthServerOutput) KeywrapKek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAuthServer) *string { return v.KeywrapKek }).(pulumi.StringPtrOutput)
+}
+
+// If used for Mist APs, Message Authentication Code Key
+func (o MxclusterRadsecAuthServerOutput) KeywrapMack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAuthServer) *string { return v.KeywrapMack }).(pulumi.StringPtrOutput)
+}
+
+// Auth port of RADIUS server
+func (o MxclusterRadsecAuthServerOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAuthServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Authentication request retry
+func (o MxclusterRadsecAuthServerOutput) Retry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAuthServer) *int { return v.Retry }).(pulumi.IntPtrOutput)
+}
+
+// Secret of RADIUS server
+func (o MxclusterRadsecAuthServerOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAuthServer) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// List of ssids that will use this server if matchSsid is true and match is found
+func (o MxclusterRadsecAuthServerOutput) Ssids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxclusterRadsecAuthServer) []string { return v.Ssids }).(pulumi.StringArrayOutput)
+}
+
+// Authentication request timeout, in seconds
+func (o MxclusterRadsecAuthServerOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecAuthServer) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+type MxclusterRadsecAuthServerArrayOutput struct{ *pulumi.OutputState }
+
+func (MxclusterRadsecAuthServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MxclusterRadsecAuthServer)(nil)).Elem()
+}
+
+func (o MxclusterRadsecAuthServerArrayOutput) ToMxclusterRadsecAuthServerArrayOutput() MxclusterRadsecAuthServerArrayOutput {
+	return o
+}
+
+func (o MxclusterRadsecAuthServerArrayOutput) ToMxclusterRadsecAuthServerArrayOutputWithContext(ctx context.Context) MxclusterRadsecAuthServerArrayOutput {
+	return o
+}
+
+func (o MxclusterRadsecAuthServerArrayOutput) Index(i pulumi.IntInput) MxclusterRadsecAuthServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MxclusterRadsecAuthServer {
+		return vs[0].([]MxclusterRadsecAuthServer)[vs[1].(int)]
+	}).(MxclusterRadsecAuthServerOutput)
+}
+
+type MxclusterRadsecTls struct {
+	Keypair *string `pulumi:"keypair"`
+}
+
+// MxclusterRadsecTlsInput is an input type that accepts MxclusterRadsecTlsArgs and MxclusterRadsecTlsOutput values.
+// You can construct a concrete instance of `MxclusterRadsecTlsInput` via:
+//
+//	MxclusterRadsecTlsArgs{...}
+type MxclusterRadsecTlsInput interface {
+	pulumi.Input
+
+	ToMxclusterRadsecTlsOutput() MxclusterRadsecTlsOutput
+	ToMxclusterRadsecTlsOutputWithContext(context.Context) MxclusterRadsecTlsOutput
+}
+
+type MxclusterRadsecTlsArgs struct {
+	Keypair pulumi.StringPtrInput `pulumi:"keypair"`
+}
+
+func (MxclusterRadsecTlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterRadsecTls)(nil)).Elem()
+}
+
+func (i MxclusterRadsecTlsArgs) ToMxclusterRadsecTlsOutput() MxclusterRadsecTlsOutput {
+	return i.ToMxclusterRadsecTlsOutputWithContext(context.Background())
+}
+
+func (i MxclusterRadsecTlsArgs) ToMxclusterRadsecTlsOutputWithContext(ctx context.Context) MxclusterRadsecTlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterRadsecTlsOutput)
+}
+
+func (i MxclusterRadsecTlsArgs) ToMxclusterRadsecTlsPtrOutput() MxclusterRadsecTlsPtrOutput {
+	return i.ToMxclusterRadsecTlsPtrOutputWithContext(context.Background())
+}
+
+func (i MxclusterRadsecTlsArgs) ToMxclusterRadsecTlsPtrOutputWithContext(ctx context.Context) MxclusterRadsecTlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterRadsecTlsOutput).ToMxclusterRadsecTlsPtrOutputWithContext(ctx)
+}
+
+// MxclusterRadsecTlsPtrInput is an input type that accepts MxclusterRadsecTlsArgs, MxclusterRadsecTlsPtr and MxclusterRadsecTlsPtrOutput values.
+// You can construct a concrete instance of `MxclusterRadsecTlsPtrInput` via:
+//
+//	        MxclusterRadsecTlsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MxclusterRadsecTlsPtrInput interface {
+	pulumi.Input
+
+	ToMxclusterRadsecTlsPtrOutput() MxclusterRadsecTlsPtrOutput
+	ToMxclusterRadsecTlsPtrOutputWithContext(context.Context) MxclusterRadsecTlsPtrOutput
+}
+
+type mxclusterRadsecTlsPtrType MxclusterRadsecTlsArgs
+
+func MxclusterRadsecTlsPtr(v *MxclusterRadsecTlsArgs) MxclusterRadsecTlsPtrInput {
+	return (*mxclusterRadsecTlsPtrType)(v)
+}
+
+func (*mxclusterRadsecTlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxclusterRadsecTls)(nil)).Elem()
+}
+
+func (i *mxclusterRadsecTlsPtrType) ToMxclusterRadsecTlsPtrOutput() MxclusterRadsecTlsPtrOutput {
+	return i.ToMxclusterRadsecTlsPtrOutputWithContext(context.Background())
+}
+
+func (i *mxclusterRadsecTlsPtrType) ToMxclusterRadsecTlsPtrOutputWithContext(ctx context.Context) MxclusterRadsecTlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterRadsecTlsPtrOutput)
+}
+
+type MxclusterRadsecTlsOutput struct{ *pulumi.OutputState }
+
+func (MxclusterRadsecTlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterRadsecTls)(nil)).Elem()
+}
+
+func (o MxclusterRadsecTlsOutput) ToMxclusterRadsecTlsOutput() MxclusterRadsecTlsOutput {
+	return o
+}
+
+func (o MxclusterRadsecTlsOutput) ToMxclusterRadsecTlsOutputWithContext(ctx context.Context) MxclusterRadsecTlsOutput {
+	return o
+}
+
+func (o MxclusterRadsecTlsOutput) ToMxclusterRadsecTlsPtrOutput() MxclusterRadsecTlsPtrOutput {
+	return o.ToMxclusterRadsecTlsPtrOutputWithContext(context.Background())
+}
+
+func (o MxclusterRadsecTlsOutput) ToMxclusterRadsecTlsPtrOutputWithContext(ctx context.Context) MxclusterRadsecTlsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MxclusterRadsecTls) *MxclusterRadsecTls {
+		return &v
+	}).(MxclusterRadsecTlsPtrOutput)
+}
+
+func (o MxclusterRadsecTlsOutput) Keypair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterRadsecTls) *string { return v.Keypair }).(pulumi.StringPtrOutput)
+}
+
+type MxclusterRadsecTlsPtrOutput struct{ *pulumi.OutputState }
+
+func (MxclusterRadsecTlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MxclusterRadsecTls)(nil)).Elem()
+}
+
+func (o MxclusterRadsecTlsPtrOutput) ToMxclusterRadsecTlsPtrOutput() MxclusterRadsecTlsPtrOutput {
+	return o
+}
+
+func (o MxclusterRadsecTlsPtrOutput) ToMxclusterRadsecTlsPtrOutputWithContext(ctx context.Context) MxclusterRadsecTlsPtrOutput {
+	return o
+}
+
+func (o MxclusterRadsecTlsPtrOutput) Elem() MxclusterRadsecTlsOutput {
+	return o.ApplyT(func(v *MxclusterRadsecTls) MxclusterRadsecTls {
+		if v != nil {
+			return *v
+		}
+		var ret MxclusterRadsecTls
+		return ret
+	}).(MxclusterRadsecTlsOutput)
+}
+
+func (o MxclusterRadsecTlsPtrOutput) Keypair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MxclusterRadsecTls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Keypair
+	}).(pulumi.StringPtrOutput)
+}
+
+type MxclusterTuntermDhcpdConfig struct {
+	Enabled *bool    `pulumi:"enabled"`
+	Servers []string `pulumi:"servers"`
+	// enum: `relay`
+	Type *string `pulumi:"type"`
+}
+
+// MxclusterTuntermDhcpdConfigInput is an input type that accepts MxclusterTuntermDhcpdConfigArgs and MxclusterTuntermDhcpdConfigOutput values.
+// You can construct a concrete instance of `MxclusterTuntermDhcpdConfigInput` via:
+//
+//	MxclusterTuntermDhcpdConfigArgs{...}
+type MxclusterTuntermDhcpdConfigInput interface {
+	pulumi.Input
+
+	ToMxclusterTuntermDhcpdConfigOutput() MxclusterTuntermDhcpdConfigOutput
+	ToMxclusterTuntermDhcpdConfigOutputWithContext(context.Context) MxclusterTuntermDhcpdConfigOutput
+}
+
+type MxclusterTuntermDhcpdConfigArgs struct {
+	Enabled pulumi.BoolPtrInput     `pulumi:"enabled"`
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+	// enum: `relay`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (MxclusterTuntermDhcpdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterTuntermDhcpdConfig)(nil)).Elem()
+}
+
+func (i MxclusterTuntermDhcpdConfigArgs) ToMxclusterTuntermDhcpdConfigOutput() MxclusterTuntermDhcpdConfigOutput {
+	return i.ToMxclusterTuntermDhcpdConfigOutputWithContext(context.Background())
+}
+
+func (i MxclusterTuntermDhcpdConfigArgs) ToMxclusterTuntermDhcpdConfigOutputWithContext(ctx context.Context) MxclusterTuntermDhcpdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterTuntermDhcpdConfigOutput)
+}
+
+// MxclusterTuntermDhcpdConfigMapInput is an input type that accepts MxclusterTuntermDhcpdConfigMap and MxclusterTuntermDhcpdConfigMapOutput values.
+// You can construct a concrete instance of `MxclusterTuntermDhcpdConfigMapInput` via:
+//
+//	MxclusterTuntermDhcpdConfigMap{ "key": MxclusterTuntermDhcpdConfigArgs{...} }
+type MxclusterTuntermDhcpdConfigMapInput interface {
+	pulumi.Input
+
+	ToMxclusterTuntermDhcpdConfigMapOutput() MxclusterTuntermDhcpdConfigMapOutput
+	ToMxclusterTuntermDhcpdConfigMapOutputWithContext(context.Context) MxclusterTuntermDhcpdConfigMapOutput
+}
+
+type MxclusterTuntermDhcpdConfigMap map[string]MxclusterTuntermDhcpdConfigInput
+
+func (MxclusterTuntermDhcpdConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxclusterTuntermDhcpdConfig)(nil)).Elem()
+}
+
+func (i MxclusterTuntermDhcpdConfigMap) ToMxclusterTuntermDhcpdConfigMapOutput() MxclusterTuntermDhcpdConfigMapOutput {
+	return i.ToMxclusterTuntermDhcpdConfigMapOutputWithContext(context.Background())
+}
+
+func (i MxclusterTuntermDhcpdConfigMap) ToMxclusterTuntermDhcpdConfigMapOutputWithContext(ctx context.Context) MxclusterTuntermDhcpdConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterTuntermDhcpdConfigMapOutput)
+}
+
+type MxclusterTuntermDhcpdConfigOutput struct{ *pulumi.OutputState }
+
+func (MxclusterTuntermDhcpdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterTuntermDhcpdConfig)(nil)).Elem()
+}
+
+func (o MxclusterTuntermDhcpdConfigOutput) ToMxclusterTuntermDhcpdConfigOutput() MxclusterTuntermDhcpdConfigOutput {
+	return o
+}
+
+func (o MxclusterTuntermDhcpdConfigOutput) ToMxclusterTuntermDhcpdConfigOutputWithContext(ctx context.Context) MxclusterTuntermDhcpdConfigOutput {
+	return o
+}
+
+func (o MxclusterTuntermDhcpdConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MxclusterTuntermDhcpdConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o MxclusterTuntermDhcpdConfigOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MxclusterTuntermDhcpdConfig) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+// enum: `relay`
+func (o MxclusterTuntermDhcpdConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterTuntermDhcpdConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type MxclusterTuntermDhcpdConfigMapOutput struct{ *pulumi.OutputState }
+
+func (MxclusterTuntermDhcpdConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxclusterTuntermDhcpdConfig)(nil)).Elem()
+}
+
+func (o MxclusterTuntermDhcpdConfigMapOutput) ToMxclusterTuntermDhcpdConfigMapOutput() MxclusterTuntermDhcpdConfigMapOutput {
+	return o
+}
+
+func (o MxclusterTuntermDhcpdConfigMapOutput) ToMxclusterTuntermDhcpdConfigMapOutputWithContext(ctx context.Context) MxclusterTuntermDhcpdConfigMapOutput {
+	return o
+}
+
+func (o MxclusterTuntermDhcpdConfigMapOutput) MapIndex(k pulumi.StringInput) MxclusterTuntermDhcpdConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MxclusterTuntermDhcpdConfig {
+		return vs[0].(map[string]MxclusterTuntermDhcpdConfig)[vs[1].(string)]
+	}).(MxclusterTuntermDhcpdConfigOutput)
+}
+
+type MxclusterTuntermExtraRoutes struct {
+	Via *string `pulumi:"via"`
+}
+
+// MxclusterTuntermExtraRoutesInput is an input type that accepts MxclusterTuntermExtraRoutesArgs and MxclusterTuntermExtraRoutesOutput values.
+// You can construct a concrete instance of `MxclusterTuntermExtraRoutesInput` via:
+//
+//	MxclusterTuntermExtraRoutesArgs{...}
+type MxclusterTuntermExtraRoutesInput interface {
+	pulumi.Input
+
+	ToMxclusterTuntermExtraRoutesOutput() MxclusterTuntermExtraRoutesOutput
+	ToMxclusterTuntermExtraRoutesOutputWithContext(context.Context) MxclusterTuntermExtraRoutesOutput
+}
+
+type MxclusterTuntermExtraRoutesArgs struct {
+	Via pulumi.StringPtrInput `pulumi:"via"`
+}
+
+func (MxclusterTuntermExtraRoutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterTuntermExtraRoutes)(nil)).Elem()
+}
+
+func (i MxclusterTuntermExtraRoutesArgs) ToMxclusterTuntermExtraRoutesOutput() MxclusterTuntermExtraRoutesOutput {
+	return i.ToMxclusterTuntermExtraRoutesOutputWithContext(context.Background())
+}
+
+func (i MxclusterTuntermExtraRoutesArgs) ToMxclusterTuntermExtraRoutesOutputWithContext(ctx context.Context) MxclusterTuntermExtraRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterTuntermExtraRoutesOutput)
+}
+
+// MxclusterTuntermExtraRoutesMapInput is an input type that accepts MxclusterTuntermExtraRoutesMap and MxclusterTuntermExtraRoutesMapOutput values.
+// You can construct a concrete instance of `MxclusterTuntermExtraRoutesMapInput` via:
+//
+//	MxclusterTuntermExtraRoutesMap{ "key": MxclusterTuntermExtraRoutesArgs{...} }
+type MxclusterTuntermExtraRoutesMapInput interface {
+	pulumi.Input
+
+	ToMxclusterTuntermExtraRoutesMapOutput() MxclusterTuntermExtraRoutesMapOutput
+	ToMxclusterTuntermExtraRoutesMapOutputWithContext(context.Context) MxclusterTuntermExtraRoutesMapOutput
+}
+
+type MxclusterTuntermExtraRoutesMap map[string]MxclusterTuntermExtraRoutesInput
+
+func (MxclusterTuntermExtraRoutesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxclusterTuntermExtraRoutes)(nil)).Elem()
+}
+
+func (i MxclusterTuntermExtraRoutesMap) ToMxclusterTuntermExtraRoutesMapOutput() MxclusterTuntermExtraRoutesMapOutput {
+	return i.ToMxclusterTuntermExtraRoutesMapOutputWithContext(context.Background())
+}
+
+func (i MxclusterTuntermExtraRoutesMap) ToMxclusterTuntermExtraRoutesMapOutputWithContext(ctx context.Context) MxclusterTuntermExtraRoutesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterTuntermExtraRoutesMapOutput)
+}
+
+type MxclusterTuntermExtraRoutesOutput struct{ *pulumi.OutputState }
+
+func (MxclusterTuntermExtraRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterTuntermExtraRoutes)(nil)).Elem()
+}
+
+func (o MxclusterTuntermExtraRoutesOutput) ToMxclusterTuntermExtraRoutesOutput() MxclusterTuntermExtraRoutesOutput {
+	return o
+}
+
+func (o MxclusterTuntermExtraRoutesOutput) ToMxclusterTuntermExtraRoutesOutputWithContext(ctx context.Context) MxclusterTuntermExtraRoutesOutput {
+	return o
+}
+
+func (o MxclusterTuntermExtraRoutesOutput) Via() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MxclusterTuntermExtraRoutes) *string { return v.Via }).(pulumi.StringPtrOutput)
+}
+
+type MxclusterTuntermExtraRoutesMapOutput struct{ *pulumi.OutputState }
+
+func (MxclusterTuntermExtraRoutesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MxclusterTuntermExtraRoutes)(nil)).Elem()
+}
+
+func (o MxclusterTuntermExtraRoutesMapOutput) ToMxclusterTuntermExtraRoutesMapOutput() MxclusterTuntermExtraRoutesMapOutput {
+	return o
+}
+
+func (o MxclusterTuntermExtraRoutesMapOutput) ToMxclusterTuntermExtraRoutesMapOutputWithContext(ctx context.Context) MxclusterTuntermExtraRoutesMapOutput {
+	return o
+}
+
+func (o MxclusterTuntermExtraRoutesMapOutput) MapIndex(k pulumi.StringInput) MxclusterTuntermExtraRoutesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MxclusterTuntermExtraRoutes {
+		return vs[0].(map[string]MxclusterTuntermExtraRoutes)[vs[1].(string)]
+	}).(MxclusterTuntermExtraRoutesOutput)
+}
+
+type MxclusterTuntermMonitoring struct {
+	Host      string `pulumi:"host"`
+	Port      int    `pulumi:"port"`
+	Protocol  string `pulumi:"protocol"`
+	SrcVlanId int    `pulumi:"srcVlanId"`
+	Timeout   int    `pulumi:"timeout"`
+}
+
+// MxclusterTuntermMonitoringInput is an input type that accepts MxclusterTuntermMonitoringArgs and MxclusterTuntermMonitoringOutput values.
+// You can construct a concrete instance of `MxclusterTuntermMonitoringInput` via:
+//
+//	MxclusterTuntermMonitoringArgs{...}
+type MxclusterTuntermMonitoringInput interface {
+	pulumi.Input
+
+	ToMxclusterTuntermMonitoringOutput() MxclusterTuntermMonitoringOutput
+	ToMxclusterTuntermMonitoringOutputWithContext(context.Context) MxclusterTuntermMonitoringOutput
+}
+
+type MxclusterTuntermMonitoringArgs struct {
+	Host      pulumi.StringInput `pulumi:"host"`
+	Port      pulumi.IntInput    `pulumi:"port"`
+	Protocol  pulumi.StringInput `pulumi:"protocol"`
+	SrcVlanId pulumi.IntInput    `pulumi:"srcVlanId"`
+	Timeout   pulumi.IntInput    `pulumi:"timeout"`
+}
+
+func (MxclusterTuntermMonitoringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterTuntermMonitoring)(nil)).Elem()
+}
+
+func (i MxclusterTuntermMonitoringArgs) ToMxclusterTuntermMonitoringOutput() MxclusterTuntermMonitoringOutput {
+	return i.ToMxclusterTuntermMonitoringOutputWithContext(context.Background())
+}
+
+func (i MxclusterTuntermMonitoringArgs) ToMxclusterTuntermMonitoringOutputWithContext(ctx context.Context) MxclusterTuntermMonitoringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterTuntermMonitoringOutput)
+}
+
+// MxclusterTuntermMonitoringArrayInput is an input type that accepts MxclusterTuntermMonitoringArray and MxclusterTuntermMonitoringArrayOutput values.
+// You can construct a concrete instance of `MxclusterTuntermMonitoringArrayInput` via:
+//
+//	MxclusterTuntermMonitoringArray{ MxclusterTuntermMonitoringArgs{...} }
+type MxclusterTuntermMonitoringArrayInput interface {
+	pulumi.Input
+
+	ToMxclusterTuntermMonitoringArrayOutput() MxclusterTuntermMonitoringArrayOutput
+	ToMxclusterTuntermMonitoringArrayOutputWithContext(context.Context) MxclusterTuntermMonitoringArrayOutput
+}
+
+type MxclusterTuntermMonitoringArray []MxclusterTuntermMonitoringInput
+
+func (MxclusterTuntermMonitoringArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MxclusterTuntermMonitoring)(nil)).Elem()
+}
+
+func (i MxclusterTuntermMonitoringArray) ToMxclusterTuntermMonitoringArrayOutput() MxclusterTuntermMonitoringArrayOutput {
+	return i.ToMxclusterTuntermMonitoringArrayOutputWithContext(context.Background())
+}
+
+func (i MxclusterTuntermMonitoringArray) ToMxclusterTuntermMonitoringArrayOutputWithContext(ctx context.Context) MxclusterTuntermMonitoringArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterTuntermMonitoringArrayOutput)
+}
+
+type MxclusterTuntermMonitoringOutput struct{ *pulumi.OutputState }
+
+func (MxclusterTuntermMonitoringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MxclusterTuntermMonitoring)(nil)).Elem()
+}
+
+func (o MxclusterTuntermMonitoringOutput) ToMxclusterTuntermMonitoringOutput() MxclusterTuntermMonitoringOutput {
+	return o
+}
+
+func (o MxclusterTuntermMonitoringOutput) ToMxclusterTuntermMonitoringOutputWithContext(ctx context.Context) MxclusterTuntermMonitoringOutput {
+	return o
+}
+
+func (o MxclusterTuntermMonitoringOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v MxclusterTuntermMonitoring) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o MxclusterTuntermMonitoringOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v MxclusterTuntermMonitoring) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o MxclusterTuntermMonitoringOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v MxclusterTuntermMonitoring) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+func (o MxclusterTuntermMonitoringOutput) SrcVlanId() pulumi.IntOutput {
+	return o.ApplyT(func(v MxclusterTuntermMonitoring) int { return v.SrcVlanId }).(pulumi.IntOutput)
+}
+
+func (o MxclusterTuntermMonitoringOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v MxclusterTuntermMonitoring) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+type MxclusterTuntermMonitoringArrayOutput struct{ *pulumi.OutputState }
+
+func (MxclusterTuntermMonitoringArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MxclusterTuntermMonitoring)(nil)).Elem()
+}
+
+func (o MxclusterTuntermMonitoringArrayOutput) ToMxclusterTuntermMonitoringArrayOutput() MxclusterTuntermMonitoringArrayOutput {
+	return o
+}
+
+func (o MxclusterTuntermMonitoringArrayOutput) ToMxclusterTuntermMonitoringArrayOutputWithContext(ctx context.Context) MxclusterTuntermMonitoringArrayOutput {
+	return o
+}
+
+func (o MxclusterTuntermMonitoringArrayOutput) Index(i pulumi.IntInput) MxclusterTuntermMonitoringOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MxclusterTuntermMonitoring {
+		return vs[0].([]MxclusterTuntermMonitoring)[vs[1].(int)]
+	}).(MxclusterTuntermMonitoringOutput)
+}
+
 type MxedgeMxedgeMgmt struct {
 	ConfigAutoRevert *bool   `pulumi:"configAutoRevert"`
 	FipsEnabled      *bool   `pulumi:"fipsEnabled"`
@@ -35425,6 +37406,607 @@ func (o MxedgeVersionsPtrOutput) Tunterm() pulumi.StringPtrOutput {
 		}
 		return v.Tunterm
 	}).(pulumi.StringPtrOutput)
+}
+
+type NacPortalPortal struct {
+	// Guest portal authentication type. enum: `external`, `multi`, `none`
+	Auth *string `pulumi:"auth"`
+	// If `auth`==`none` or `auth`==`multi`, whether to expire the guest after a certain time
+	Expire *int `pulumi:"expire"`
+	// If `auth`==`external`, the URL to redirect the user to for authentication
+	ExternalPortalUrl *string `pulumi:"externalPortalUrl"`
+	// Disconnect client (workaround for reauth issues)
+	ForceReconnect *bool `pulumi:"forceReconnect"`
+	// If `auth`==`none` or `auth`==`multi`, whether to forward the user to the guest portal after authentication
+	Forward *bool `pulumi:"forward"`
+	// If `auth`==`none` or `auth`==`multi`, URL to forward the user to after authentication
+	ForwardUrl *string `pulumi:"forwardUrl"`
+	// Maximum number of clients allowed per guest. 0 (default, unlimited), 1-100 range
+	MaxNumDevices *int `pulumi:"maxNumDevices"`
+	// If `auth`==`none` or `auth`==`multi`, whether to show the privacy policy
+	Privacy *bool `pulumi:"privacy"`
+}
+
+// NacPortalPortalInput is an input type that accepts NacPortalPortalArgs and NacPortalPortalOutput values.
+// You can construct a concrete instance of `NacPortalPortalInput` via:
+//
+//	NacPortalPortalArgs{...}
+type NacPortalPortalInput interface {
+	pulumi.Input
+
+	ToNacPortalPortalOutput() NacPortalPortalOutput
+	ToNacPortalPortalOutputWithContext(context.Context) NacPortalPortalOutput
+}
+
+type NacPortalPortalArgs struct {
+	// Guest portal authentication type. enum: `external`, `multi`, `none`
+	Auth pulumi.StringPtrInput `pulumi:"auth"`
+	// If `auth`==`none` or `auth`==`multi`, whether to expire the guest after a certain time
+	Expire pulumi.IntPtrInput `pulumi:"expire"`
+	// If `auth`==`external`, the URL to redirect the user to for authentication
+	ExternalPortalUrl pulumi.StringPtrInput `pulumi:"externalPortalUrl"`
+	// Disconnect client (workaround for reauth issues)
+	ForceReconnect pulumi.BoolPtrInput `pulumi:"forceReconnect"`
+	// If `auth`==`none` or `auth`==`multi`, whether to forward the user to the guest portal after authentication
+	Forward pulumi.BoolPtrInput `pulumi:"forward"`
+	// If `auth`==`none` or `auth`==`multi`, URL to forward the user to after authentication
+	ForwardUrl pulumi.StringPtrInput `pulumi:"forwardUrl"`
+	// Maximum number of clients allowed per guest. 0 (default, unlimited), 1-100 range
+	MaxNumDevices pulumi.IntPtrInput `pulumi:"maxNumDevices"`
+	// If `auth`==`none` or `auth`==`multi`, whether to show the privacy policy
+	Privacy pulumi.BoolPtrInput `pulumi:"privacy"`
+}
+
+func (NacPortalPortalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NacPortalPortal)(nil)).Elem()
+}
+
+func (i NacPortalPortalArgs) ToNacPortalPortalOutput() NacPortalPortalOutput {
+	return i.ToNacPortalPortalOutputWithContext(context.Background())
+}
+
+func (i NacPortalPortalArgs) ToNacPortalPortalOutputWithContext(ctx context.Context) NacPortalPortalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NacPortalPortalOutput)
+}
+
+func (i NacPortalPortalArgs) ToNacPortalPortalPtrOutput() NacPortalPortalPtrOutput {
+	return i.ToNacPortalPortalPtrOutputWithContext(context.Background())
+}
+
+func (i NacPortalPortalArgs) ToNacPortalPortalPtrOutputWithContext(ctx context.Context) NacPortalPortalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NacPortalPortalOutput).ToNacPortalPortalPtrOutputWithContext(ctx)
+}
+
+// NacPortalPortalPtrInput is an input type that accepts NacPortalPortalArgs, NacPortalPortalPtr and NacPortalPortalPtrOutput values.
+// You can construct a concrete instance of `NacPortalPortalPtrInput` via:
+//
+//	        NacPortalPortalArgs{...}
+//
+//	or:
+//
+//	        nil
+type NacPortalPortalPtrInput interface {
+	pulumi.Input
+
+	ToNacPortalPortalPtrOutput() NacPortalPortalPtrOutput
+	ToNacPortalPortalPtrOutputWithContext(context.Context) NacPortalPortalPtrOutput
+}
+
+type nacPortalPortalPtrType NacPortalPortalArgs
+
+func NacPortalPortalPtr(v *NacPortalPortalArgs) NacPortalPortalPtrInput {
+	return (*nacPortalPortalPtrType)(v)
+}
+
+func (*nacPortalPortalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NacPortalPortal)(nil)).Elem()
+}
+
+func (i *nacPortalPortalPtrType) ToNacPortalPortalPtrOutput() NacPortalPortalPtrOutput {
+	return i.ToNacPortalPortalPtrOutputWithContext(context.Background())
+}
+
+func (i *nacPortalPortalPtrType) ToNacPortalPortalPtrOutputWithContext(ctx context.Context) NacPortalPortalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NacPortalPortalPtrOutput)
+}
+
+type NacPortalPortalOutput struct{ *pulumi.OutputState }
+
+func (NacPortalPortalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NacPortalPortal)(nil)).Elem()
+}
+
+func (o NacPortalPortalOutput) ToNacPortalPortalOutput() NacPortalPortalOutput {
+	return o
+}
+
+func (o NacPortalPortalOutput) ToNacPortalPortalOutputWithContext(ctx context.Context) NacPortalPortalOutput {
+	return o
+}
+
+func (o NacPortalPortalOutput) ToNacPortalPortalPtrOutput() NacPortalPortalPtrOutput {
+	return o.ToNacPortalPortalPtrOutputWithContext(context.Background())
+}
+
+func (o NacPortalPortalOutput) ToNacPortalPortalPtrOutputWithContext(ctx context.Context) NacPortalPortalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NacPortalPortal) *NacPortalPortal {
+		return &v
+	}).(NacPortalPortalPtrOutput)
+}
+
+// Guest portal authentication type. enum: `external`, `multi`, `none`
+func (o NacPortalPortalOutput) Auth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NacPortalPortal) *string { return v.Auth }).(pulumi.StringPtrOutput)
+}
+
+// If `auth`==`none` or `auth`==`multi`, whether to expire the guest after a certain time
+func (o NacPortalPortalOutput) Expire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NacPortalPortal) *int { return v.Expire }).(pulumi.IntPtrOutput)
+}
+
+// If `auth`==`external`, the URL to redirect the user to for authentication
+func (o NacPortalPortalOutput) ExternalPortalUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NacPortalPortal) *string { return v.ExternalPortalUrl }).(pulumi.StringPtrOutput)
+}
+
+// Disconnect client (workaround for reauth issues)
+func (o NacPortalPortalOutput) ForceReconnect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NacPortalPortal) *bool { return v.ForceReconnect }).(pulumi.BoolPtrOutput)
+}
+
+// If `auth`==`none` or `auth`==`multi`, whether to forward the user to the guest portal after authentication
+func (o NacPortalPortalOutput) Forward() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NacPortalPortal) *bool { return v.Forward }).(pulumi.BoolPtrOutput)
+}
+
+// If `auth`==`none` or `auth`==`multi`, URL to forward the user to after authentication
+func (o NacPortalPortalOutput) ForwardUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NacPortalPortal) *string { return v.ForwardUrl }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of clients allowed per guest. 0 (default, unlimited), 1-100 range
+func (o NacPortalPortalOutput) MaxNumDevices() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NacPortalPortal) *int { return v.MaxNumDevices }).(pulumi.IntPtrOutput)
+}
+
+// If `auth`==`none` or `auth`==`multi`, whether to show the privacy policy
+func (o NacPortalPortalOutput) Privacy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NacPortalPortal) *bool { return v.Privacy }).(pulumi.BoolPtrOutput)
+}
+
+type NacPortalPortalPtrOutput struct{ *pulumi.OutputState }
+
+func (NacPortalPortalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NacPortalPortal)(nil)).Elem()
+}
+
+func (o NacPortalPortalPtrOutput) ToNacPortalPortalPtrOutput() NacPortalPortalPtrOutput {
+	return o
+}
+
+func (o NacPortalPortalPtrOutput) ToNacPortalPortalPtrOutputWithContext(ctx context.Context) NacPortalPortalPtrOutput {
+	return o
+}
+
+func (o NacPortalPortalPtrOutput) Elem() NacPortalPortalOutput {
+	return o.ApplyT(func(v *NacPortalPortal) NacPortalPortal {
+		if v != nil {
+			return *v
+		}
+		var ret NacPortalPortal
+		return ret
+	}).(NacPortalPortalOutput)
+}
+
+// Guest portal authentication type. enum: `external`, `multi`, `none`
+func (o NacPortalPortalPtrOutput) Auth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NacPortalPortal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Auth
+	}).(pulumi.StringPtrOutput)
+}
+
+// If `auth`==`none` or `auth`==`multi`, whether to expire the guest after a certain time
+func (o NacPortalPortalPtrOutput) Expire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NacPortalPortal) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Expire
+	}).(pulumi.IntPtrOutput)
+}
+
+// If `auth`==`external`, the URL to redirect the user to for authentication
+func (o NacPortalPortalPtrOutput) ExternalPortalUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NacPortalPortal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalPortalUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Disconnect client (workaround for reauth issues)
+func (o NacPortalPortalPtrOutput) ForceReconnect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NacPortalPortal) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceReconnect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If `auth`==`none` or `auth`==`multi`, whether to forward the user to the guest portal after authentication
+func (o NacPortalPortalPtrOutput) Forward() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NacPortalPortal) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Forward
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If `auth`==`none` or `auth`==`multi`, URL to forward the user to after authentication
+func (o NacPortalPortalPtrOutput) ForwardUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NacPortalPortal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of clients allowed per guest. 0 (default, unlimited), 1-100 range
+func (o NacPortalPortalPtrOutput) MaxNumDevices() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NacPortalPortal) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNumDevices
+	}).(pulumi.IntPtrOutput)
+}
+
+// If `auth`==`none` or `auth`==`multi`, whether to show the privacy policy
+func (o NacPortalPortalPtrOutput) Privacy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NacPortalPortal) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Privacy
+	}).(pulumi.BoolPtrOutput)
+}
+
+type NacPortalSso struct {
+	IdpCert *string `pulumi:"idpCert"`
+	// Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+	IdpSignAlgo      *string                       `pulumi:"idpSignAlgo"`
+	IdpSsoUrl        *string                       `pulumi:"idpSsoUrl"`
+	Issuer           *string                       `pulumi:"issuer"`
+	NameidFormat     *string                       `pulumi:"nameidFormat"`
+	SsoRoleMatchings []NacPortalSsoSsoRoleMatching `pulumi:"ssoRoleMatchings"`
+	// If it's desired to inject a role into Cert's Subject (so it can be used later on in policy)
+	UseSsoRoleForCert *bool `pulumi:"useSsoRoleForCert"`
+}
+
+// NacPortalSsoInput is an input type that accepts NacPortalSsoArgs and NacPortalSsoOutput values.
+// You can construct a concrete instance of `NacPortalSsoInput` via:
+//
+//	NacPortalSsoArgs{...}
+type NacPortalSsoInput interface {
+	pulumi.Input
+
+	ToNacPortalSsoOutput() NacPortalSsoOutput
+	ToNacPortalSsoOutputWithContext(context.Context) NacPortalSsoOutput
+}
+
+type NacPortalSsoArgs struct {
+	IdpCert pulumi.StringPtrInput `pulumi:"idpCert"`
+	// Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+	IdpSignAlgo      pulumi.StringPtrInput                 `pulumi:"idpSignAlgo"`
+	IdpSsoUrl        pulumi.StringPtrInput                 `pulumi:"idpSsoUrl"`
+	Issuer           pulumi.StringPtrInput                 `pulumi:"issuer"`
+	NameidFormat     pulumi.StringPtrInput                 `pulumi:"nameidFormat"`
+	SsoRoleMatchings NacPortalSsoSsoRoleMatchingArrayInput `pulumi:"ssoRoleMatchings"`
+	// If it's desired to inject a role into Cert's Subject (so it can be used later on in policy)
+	UseSsoRoleForCert pulumi.BoolPtrInput `pulumi:"useSsoRoleForCert"`
+}
+
+func (NacPortalSsoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NacPortalSso)(nil)).Elem()
+}
+
+func (i NacPortalSsoArgs) ToNacPortalSsoOutput() NacPortalSsoOutput {
+	return i.ToNacPortalSsoOutputWithContext(context.Background())
+}
+
+func (i NacPortalSsoArgs) ToNacPortalSsoOutputWithContext(ctx context.Context) NacPortalSsoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NacPortalSsoOutput)
+}
+
+func (i NacPortalSsoArgs) ToNacPortalSsoPtrOutput() NacPortalSsoPtrOutput {
+	return i.ToNacPortalSsoPtrOutputWithContext(context.Background())
+}
+
+func (i NacPortalSsoArgs) ToNacPortalSsoPtrOutputWithContext(ctx context.Context) NacPortalSsoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NacPortalSsoOutput).ToNacPortalSsoPtrOutputWithContext(ctx)
+}
+
+// NacPortalSsoPtrInput is an input type that accepts NacPortalSsoArgs, NacPortalSsoPtr and NacPortalSsoPtrOutput values.
+// You can construct a concrete instance of `NacPortalSsoPtrInput` via:
+//
+//	        NacPortalSsoArgs{...}
+//
+//	or:
+//
+//	        nil
+type NacPortalSsoPtrInput interface {
+	pulumi.Input
+
+	ToNacPortalSsoPtrOutput() NacPortalSsoPtrOutput
+	ToNacPortalSsoPtrOutputWithContext(context.Context) NacPortalSsoPtrOutput
+}
+
+type nacPortalSsoPtrType NacPortalSsoArgs
+
+func NacPortalSsoPtr(v *NacPortalSsoArgs) NacPortalSsoPtrInput {
+	return (*nacPortalSsoPtrType)(v)
+}
+
+func (*nacPortalSsoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NacPortalSso)(nil)).Elem()
+}
+
+func (i *nacPortalSsoPtrType) ToNacPortalSsoPtrOutput() NacPortalSsoPtrOutput {
+	return i.ToNacPortalSsoPtrOutputWithContext(context.Background())
+}
+
+func (i *nacPortalSsoPtrType) ToNacPortalSsoPtrOutputWithContext(ctx context.Context) NacPortalSsoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NacPortalSsoPtrOutput)
+}
+
+type NacPortalSsoOutput struct{ *pulumi.OutputState }
+
+func (NacPortalSsoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NacPortalSso)(nil)).Elem()
+}
+
+func (o NacPortalSsoOutput) ToNacPortalSsoOutput() NacPortalSsoOutput {
+	return o
+}
+
+func (o NacPortalSsoOutput) ToNacPortalSsoOutputWithContext(ctx context.Context) NacPortalSsoOutput {
+	return o
+}
+
+func (o NacPortalSsoOutput) ToNacPortalSsoPtrOutput() NacPortalSsoPtrOutput {
+	return o.ToNacPortalSsoPtrOutputWithContext(context.Background())
+}
+
+func (o NacPortalSsoOutput) ToNacPortalSsoPtrOutputWithContext(ctx context.Context) NacPortalSsoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NacPortalSso) *NacPortalSso {
+		return &v
+	}).(NacPortalSsoPtrOutput)
+}
+
+func (o NacPortalSsoOutput) IdpCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NacPortalSso) *string { return v.IdpCert }).(pulumi.StringPtrOutput)
+}
+
+// Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+func (o NacPortalSsoOutput) IdpSignAlgo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NacPortalSso) *string { return v.IdpSignAlgo }).(pulumi.StringPtrOutput)
+}
+
+func (o NacPortalSsoOutput) IdpSsoUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NacPortalSso) *string { return v.IdpSsoUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o NacPortalSsoOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NacPortalSso) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+}
+
+func (o NacPortalSsoOutput) NameidFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NacPortalSso) *string { return v.NameidFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o NacPortalSsoOutput) SsoRoleMatchings() NacPortalSsoSsoRoleMatchingArrayOutput {
+	return o.ApplyT(func(v NacPortalSso) []NacPortalSsoSsoRoleMatching { return v.SsoRoleMatchings }).(NacPortalSsoSsoRoleMatchingArrayOutput)
+}
+
+// If it's desired to inject a role into Cert's Subject (so it can be used later on in policy)
+func (o NacPortalSsoOutput) UseSsoRoleForCert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NacPortalSso) *bool { return v.UseSsoRoleForCert }).(pulumi.BoolPtrOutput)
+}
+
+type NacPortalSsoPtrOutput struct{ *pulumi.OutputState }
+
+func (NacPortalSsoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NacPortalSso)(nil)).Elem()
+}
+
+func (o NacPortalSsoPtrOutput) ToNacPortalSsoPtrOutput() NacPortalSsoPtrOutput {
+	return o
+}
+
+func (o NacPortalSsoPtrOutput) ToNacPortalSsoPtrOutputWithContext(ctx context.Context) NacPortalSsoPtrOutput {
+	return o
+}
+
+func (o NacPortalSsoPtrOutput) Elem() NacPortalSsoOutput {
+	return o.ApplyT(func(v *NacPortalSso) NacPortalSso {
+		if v != nil {
+			return *v
+		}
+		var ret NacPortalSso
+		return ret
+	}).(NacPortalSsoOutput)
+}
+
+func (o NacPortalSsoPtrOutput) IdpCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NacPortalSso) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpCert
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+func (o NacPortalSsoPtrOutput) IdpSignAlgo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NacPortalSso) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpSignAlgo
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NacPortalSsoPtrOutput) IdpSsoUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NacPortalSso) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpSsoUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NacPortalSsoPtrOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NacPortalSso) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Issuer
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NacPortalSsoPtrOutput) NameidFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NacPortalSso) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameidFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NacPortalSsoPtrOutput) SsoRoleMatchings() NacPortalSsoSsoRoleMatchingArrayOutput {
+	return o.ApplyT(func(v *NacPortalSso) []NacPortalSsoSsoRoleMatching {
+		if v == nil {
+			return nil
+		}
+		return v.SsoRoleMatchings
+	}).(NacPortalSsoSsoRoleMatchingArrayOutput)
+}
+
+// If it's desired to inject a role into Cert's Subject (so it can be used later on in policy)
+func (o NacPortalSsoPtrOutput) UseSsoRoleForCert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NacPortalSso) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSsoRoleForCert
+	}).(pulumi.BoolPtrOutput)
+}
+
+type NacPortalSsoSsoRoleMatching struct {
+	Assigned *string `pulumi:"assigned"`
+	Match    *string `pulumi:"match"`
+}
+
+// NacPortalSsoSsoRoleMatchingInput is an input type that accepts NacPortalSsoSsoRoleMatchingArgs and NacPortalSsoSsoRoleMatchingOutput values.
+// You can construct a concrete instance of `NacPortalSsoSsoRoleMatchingInput` via:
+//
+//	NacPortalSsoSsoRoleMatchingArgs{...}
+type NacPortalSsoSsoRoleMatchingInput interface {
+	pulumi.Input
+
+	ToNacPortalSsoSsoRoleMatchingOutput() NacPortalSsoSsoRoleMatchingOutput
+	ToNacPortalSsoSsoRoleMatchingOutputWithContext(context.Context) NacPortalSsoSsoRoleMatchingOutput
+}
+
+type NacPortalSsoSsoRoleMatchingArgs struct {
+	Assigned pulumi.StringPtrInput `pulumi:"assigned"`
+	Match    pulumi.StringPtrInput `pulumi:"match"`
+}
+
+func (NacPortalSsoSsoRoleMatchingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NacPortalSsoSsoRoleMatching)(nil)).Elem()
+}
+
+func (i NacPortalSsoSsoRoleMatchingArgs) ToNacPortalSsoSsoRoleMatchingOutput() NacPortalSsoSsoRoleMatchingOutput {
+	return i.ToNacPortalSsoSsoRoleMatchingOutputWithContext(context.Background())
+}
+
+func (i NacPortalSsoSsoRoleMatchingArgs) ToNacPortalSsoSsoRoleMatchingOutputWithContext(ctx context.Context) NacPortalSsoSsoRoleMatchingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NacPortalSsoSsoRoleMatchingOutput)
+}
+
+// NacPortalSsoSsoRoleMatchingArrayInput is an input type that accepts NacPortalSsoSsoRoleMatchingArray and NacPortalSsoSsoRoleMatchingArrayOutput values.
+// You can construct a concrete instance of `NacPortalSsoSsoRoleMatchingArrayInput` via:
+//
+//	NacPortalSsoSsoRoleMatchingArray{ NacPortalSsoSsoRoleMatchingArgs{...} }
+type NacPortalSsoSsoRoleMatchingArrayInput interface {
+	pulumi.Input
+
+	ToNacPortalSsoSsoRoleMatchingArrayOutput() NacPortalSsoSsoRoleMatchingArrayOutput
+	ToNacPortalSsoSsoRoleMatchingArrayOutputWithContext(context.Context) NacPortalSsoSsoRoleMatchingArrayOutput
+}
+
+type NacPortalSsoSsoRoleMatchingArray []NacPortalSsoSsoRoleMatchingInput
+
+func (NacPortalSsoSsoRoleMatchingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NacPortalSsoSsoRoleMatching)(nil)).Elem()
+}
+
+func (i NacPortalSsoSsoRoleMatchingArray) ToNacPortalSsoSsoRoleMatchingArrayOutput() NacPortalSsoSsoRoleMatchingArrayOutput {
+	return i.ToNacPortalSsoSsoRoleMatchingArrayOutputWithContext(context.Background())
+}
+
+func (i NacPortalSsoSsoRoleMatchingArray) ToNacPortalSsoSsoRoleMatchingArrayOutputWithContext(ctx context.Context) NacPortalSsoSsoRoleMatchingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NacPortalSsoSsoRoleMatchingArrayOutput)
+}
+
+type NacPortalSsoSsoRoleMatchingOutput struct{ *pulumi.OutputState }
+
+func (NacPortalSsoSsoRoleMatchingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NacPortalSsoSsoRoleMatching)(nil)).Elem()
+}
+
+func (o NacPortalSsoSsoRoleMatchingOutput) ToNacPortalSsoSsoRoleMatchingOutput() NacPortalSsoSsoRoleMatchingOutput {
+	return o
+}
+
+func (o NacPortalSsoSsoRoleMatchingOutput) ToNacPortalSsoSsoRoleMatchingOutputWithContext(ctx context.Context) NacPortalSsoSsoRoleMatchingOutput {
+	return o
+}
+
+func (o NacPortalSsoSsoRoleMatchingOutput) Assigned() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NacPortalSsoSsoRoleMatching) *string { return v.Assigned }).(pulumi.StringPtrOutput)
+}
+
+func (o NacPortalSsoSsoRoleMatchingOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NacPortalSsoSsoRoleMatching) *string { return v.Match }).(pulumi.StringPtrOutput)
+}
+
+type NacPortalSsoSsoRoleMatchingArrayOutput struct{ *pulumi.OutputState }
+
+func (NacPortalSsoSsoRoleMatchingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NacPortalSsoSsoRoleMatching)(nil)).Elem()
+}
+
+func (o NacPortalSsoSsoRoleMatchingArrayOutput) ToNacPortalSsoSsoRoleMatchingArrayOutput() NacPortalSsoSsoRoleMatchingArrayOutput {
+	return o
+}
+
+func (o NacPortalSsoSsoRoleMatchingArrayOutput) ToNacPortalSsoSsoRoleMatchingArrayOutputWithContext(ctx context.Context) NacPortalSsoSsoRoleMatchingArrayOutput {
+	return o
+}
+
+func (o NacPortalSsoSsoRoleMatchingArrayOutput) Index(i pulumi.IntInput) NacPortalSsoSsoRoleMatchingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NacPortalSsoSsoRoleMatching {
+		return vs[0].([]NacPortalSsoSsoRoleMatching)[vs[1].(int)]
+	}).(NacPortalSsoSsoRoleMatchingOutput)
 }
 
 type NacruleMatching struct {
@@ -80798,6 +83380,51 @@ func (o GetWxtagsOrgWxtagSpecArrayOutput) Index(i pulumi.IntInput) GetWxtagsOrgW
 	}).(GetWxtagsOrgWxtagSpecOutput)
 }
 
+type MxclusterTuntermMonitoringArrayArray []MxclusterTuntermMonitoringArrayInput
+
+func (MxclusterTuntermMonitoringArrayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[][]MxclusterTuntermMonitoring)(nil)).Elem()
+}
+
+func (i MxclusterTuntermMonitoringArrayArray) ToMxclusterTuntermMonitoringArrayArrayOutput() MxclusterTuntermMonitoringArrayArrayOutput {
+	return i.ToMxclusterTuntermMonitoringArrayArrayOutputWithContext(context.Background())
+}
+
+func (i MxclusterTuntermMonitoringArrayArray) ToMxclusterTuntermMonitoringArrayArrayOutputWithContext(ctx context.Context) MxclusterTuntermMonitoringArrayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MxclusterTuntermMonitoringArrayArrayOutput)
+}
+
+// MxclusterTuntermMonitoringArrayArrayInput is an input type that accepts MxclusterTuntermMonitoringArrayArray and MxclusterTuntermMonitoringArrayArrayOutput values.
+// You can construct a concrete instance of `MxclusterTuntermMonitoringArrayArrayInput` via:
+//
+//	MxclusterTuntermMonitoringArrayArray{ MxclusterTuntermMonitoringArray{ MxclusterTuntermMonitoringArgs{...} } }
+type MxclusterTuntermMonitoringArrayArrayInput interface {
+	pulumi.Input
+
+	ToMxclusterTuntermMonitoringArrayArrayOutput() MxclusterTuntermMonitoringArrayArrayOutput
+	ToMxclusterTuntermMonitoringArrayArrayOutputWithContext(context.Context) MxclusterTuntermMonitoringArrayArrayOutput
+}
+
+type MxclusterTuntermMonitoringArrayArrayOutput struct{ *pulumi.OutputState }
+
+func (MxclusterTuntermMonitoringArrayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[][]MxclusterTuntermMonitoring)(nil)).Elem()
+}
+
+func (o MxclusterTuntermMonitoringArrayArrayOutput) ToMxclusterTuntermMonitoringArrayArrayOutput() MxclusterTuntermMonitoringArrayArrayOutput {
+	return o
+}
+
+func (o MxclusterTuntermMonitoringArrayArrayOutput) ToMxclusterTuntermMonitoringArrayArrayOutputWithContext(ctx context.Context) MxclusterTuntermMonitoringArrayArrayOutput {
+	return o
+}
+
+func (o MxclusterTuntermMonitoringArrayArrayOutput) Index(i pulumi.IntInput) MxclusterTuntermMonitoringArrayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) []MxclusterTuntermMonitoring {
+		return vs[0].([][]MxclusterTuntermMonitoring)[vs[1].(int)]
+	}).(MxclusterTuntermMonitoringArrayOutput)
+}
+
 type MxedgeTuntermMonitoringArrayArray []MxedgeTuntermMonitoringArrayInput
 
 func (MxedgeTuntermMonitoringArrayArray) ElementType() reflect.Type {
@@ -81208,6 +83835,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpprofileOverwriteMatchingPtrInput)(nil)).Elem(), IdpprofileOverwriteMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InventoryInventoryInput)(nil)).Elem(), InventoryInventoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InventoryInventoryMapInput)(nil)).Elem(), InventoryInventoryMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterMistDasInput)(nil)).Elem(), MxclusterMistDasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterMistDasPtrInput)(nil)).Elem(), MxclusterMistDasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterMistDasCoaServerInput)(nil)).Elem(), MxclusterMistDasCoaServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterMistDasCoaServerArrayInput)(nil)).Elem(), MxclusterMistDasCoaServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterMistNacInput)(nil)).Elem(), MxclusterMistNacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterMistNacPtrInput)(nil)).Elem(), MxclusterMistNacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterMistNacClientIpsInput)(nil)).Elem(), MxclusterMistNacClientIpsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterMistNacClientIpsMapInput)(nil)).Elem(), MxclusterMistNacClientIpsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterMxedgeMgmtInput)(nil)).Elem(), MxclusterMxedgeMgmtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterMxedgeMgmtPtrInput)(nil)).Elem(), MxclusterMxedgeMgmtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterProxyInput)(nil)).Elem(), MxclusterProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterProxyPtrInput)(nil)).Elem(), MxclusterProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterRadsecInput)(nil)).Elem(), MxclusterRadsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterRadsecPtrInput)(nil)).Elem(), MxclusterRadsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterRadsecAcctServerInput)(nil)).Elem(), MxclusterRadsecAcctServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterRadsecAcctServerArrayInput)(nil)).Elem(), MxclusterRadsecAcctServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterRadsecAuthServerInput)(nil)).Elem(), MxclusterRadsecAuthServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterRadsecAuthServerArrayInput)(nil)).Elem(), MxclusterRadsecAuthServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterRadsecTlsInput)(nil)).Elem(), MxclusterRadsecTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterRadsecTlsPtrInput)(nil)).Elem(), MxclusterRadsecTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterTuntermDhcpdConfigInput)(nil)).Elem(), MxclusterTuntermDhcpdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterTuntermDhcpdConfigMapInput)(nil)).Elem(), MxclusterTuntermDhcpdConfigMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterTuntermExtraRoutesInput)(nil)).Elem(), MxclusterTuntermExtraRoutesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterTuntermExtraRoutesMapInput)(nil)).Elem(), MxclusterTuntermExtraRoutesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterTuntermMonitoringInput)(nil)).Elem(), MxclusterTuntermMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterTuntermMonitoringArrayInput)(nil)).Elem(), MxclusterTuntermMonitoringArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeMxedgeMgmtInput)(nil)).Elem(), MxedgeMxedgeMgmtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeMxedgeMgmtPtrInput)(nil)).Elem(), MxedgeMxedgeMgmtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeOobIpConfigInput)(nil)).Elem(), MxedgeOobIpConfigArgs{})
@@ -81240,6 +83893,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermSwitchConfigMapInput)(nil)).Elem(), MxedgeTuntermSwitchConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeVersionsInput)(nil)).Elem(), MxedgeVersionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeVersionsPtrInput)(nil)).Elem(), MxedgeVersionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NacPortalPortalInput)(nil)).Elem(), NacPortalPortalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NacPortalPortalPtrInput)(nil)).Elem(), NacPortalPortalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NacPortalSsoInput)(nil)).Elem(), NacPortalSsoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NacPortalSsoPtrInput)(nil)).Elem(), NacPortalSsoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NacPortalSsoSsoRoleMatchingInput)(nil)).Elem(), NacPortalSsoSsoRoleMatchingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NacPortalSsoSsoRoleMatchingArrayInput)(nil)).Elem(), NacPortalSsoSsoRoleMatchingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NacruleMatchingInput)(nil)).Elem(), NacruleMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NacruleMatchingPtrInput)(nil)).Elem(), NacruleMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NacruleNotMatchingInput)(nil)).Elem(), NacruleNotMatchingArgs{})
@@ -81724,6 +84383,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagArrayInput)(nil)).Elem(), GetWxtagsOrgWxtagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagSpecInput)(nil)).Elem(), GetWxtagsOrgWxtagSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagSpecArrayInput)(nil)).Elem(), GetWxtagsOrgWxtagSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MxclusterTuntermMonitoringArrayArrayInput)(nil)).Elem(), MxclusterTuntermMonitoringArrayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MxedgeTuntermMonitoringArrayArrayInput)(nil)).Elem(), MxedgeTuntermMonitoringArrayArray{})
 	pulumi.RegisterOutputType(AlarmtemplateDeliveryOutput{})
 	pulumi.RegisterOutputType(AlarmtemplateDeliveryPtrOutput{})
@@ -82089,6 +84749,32 @@ func init() {
 	pulumi.RegisterOutputType(IdpprofileOverwriteMatchingPtrOutput{})
 	pulumi.RegisterOutputType(InventoryInventoryOutput{})
 	pulumi.RegisterOutputType(InventoryInventoryMapOutput{})
+	pulumi.RegisterOutputType(MxclusterMistDasOutput{})
+	pulumi.RegisterOutputType(MxclusterMistDasPtrOutput{})
+	pulumi.RegisterOutputType(MxclusterMistDasCoaServerOutput{})
+	pulumi.RegisterOutputType(MxclusterMistDasCoaServerArrayOutput{})
+	pulumi.RegisterOutputType(MxclusterMistNacOutput{})
+	pulumi.RegisterOutputType(MxclusterMistNacPtrOutput{})
+	pulumi.RegisterOutputType(MxclusterMistNacClientIpsOutput{})
+	pulumi.RegisterOutputType(MxclusterMistNacClientIpsMapOutput{})
+	pulumi.RegisterOutputType(MxclusterMxedgeMgmtOutput{})
+	pulumi.RegisterOutputType(MxclusterMxedgeMgmtPtrOutput{})
+	pulumi.RegisterOutputType(MxclusterProxyOutput{})
+	pulumi.RegisterOutputType(MxclusterProxyPtrOutput{})
+	pulumi.RegisterOutputType(MxclusterRadsecOutput{})
+	pulumi.RegisterOutputType(MxclusterRadsecPtrOutput{})
+	pulumi.RegisterOutputType(MxclusterRadsecAcctServerOutput{})
+	pulumi.RegisterOutputType(MxclusterRadsecAcctServerArrayOutput{})
+	pulumi.RegisterOutputType(MxclusterRadsecAuthServerOutput{})
+	pulumi.RegisterOutputType(MxclusterRadsecAuthServerArrayOutput{})
+	pulumi.RegisterOutputType(MxclusterRadsecTlsOutput{})
+	pulumi.RegisterOutputType(MxclusterRadsecTlsPtrOutput{})
+	pulumi.RegisterOutputType(MxclusterTuntermDhcpdConfigOutput{})
+	pulumi.RegisterOutputType(MxclusterTuntermDhcpdConfigMapOutput{})
+	pulumi.RegisterOutputType(MxclusterTuntermExtraRoutesOutput{})
+	pulumi.RegisterOutputType(MxclusterTuntermExtraRoutesMapOutput{})
+	pulumi.RegisterOutputType(MxclusterTuntermMonitoringOutput{})
+	pulumi.RegisterOutputType(MxclusterTuntermMonitoringArrayOutput{})
 	pulumi.RegisterOutputType(MxedgeMxedgeMgmtOutput{})
 	pulumi.RegisterOutputType(MxedgeMxedgeMgmtPtrOutput{})
 	pulumi.RegisterOutputType(MxedgeOobIpConfigOutput{})
@@ -82121,6 +84807,12 @@ func init() {
 	pulumi.RegisterOutputType(MxedgeTuntermSwitchConfigMapOutput{})
 	pulumi.RegisterOutputType(MxedgeVersionsOutput{})
 	pulumi.RegisterOutputType(MxedgeVersionsPtrOutput{})
+	pulumi.RegisterOutputType(NacPortalPortalOutput{})
+	pulumi.RegisterOutputType(NacPortalPortalPtrOutput{})
+	pulumi.RegisterOutputType(NacPortalSsoOutput{})
+	pulumi.RegisterOutputType(NacPortalSsoPtrOutput{})
+	pulumi.RegisterOutputType(NacPortalSsoSsoRoleMatchingOutput{})
+	pulumi.RegisterOutputType(NacPortalSsoSsoRoleMatchingArrayOutput{})
 	pulumi.RegisterOutputType(NacruleMatchingOutput{})
 	pulumi.RegisterOutputType(NacruleMatchingPtrOutput{})
 	pulumi.RegisterOutputType(NacruleNotMatchingOutput{})
@@ -82605,5 +85297,6 @@ func init() {
 	pulumi.RegisterOutputType(GetWxtagsOrgWxtagArrayOutput{})
 	pulumi.RegisterOutputType(GetWxtagsOrgWxtagSpecOutput{})
 	pulumi.RegisterOutputType(GetWxtagsOrgWxtagSpecArrayOutput{})
+	pulumi.RegisterOutputType(MxclusterTuntermMonitoringArrayArrayOutput{})
 	pulumi.RegisterOutputType(MxedgeTuntermMonitoringArrayArrayOutput{})
 }

@@ -185,6 +185,14 @@ _utilities.register(
  },
  {
   "pkg": "junipermist",
+  "mod": "org/mxcluster",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/mxcluster:Mxcluster": "Mxcluster"
+  }
+ },
+ {
+  "pkg": "junipermist",
   "mod": "org/mxedge",
   "fqn": "pulumi_juniper_mist.org",
   "classes": {
@@ -197,6 +205,30 @@ _utilities.register(
   "fqn": "pulumi_juniper_mist.org",
   "classes": {
    "junipermist:org/nacEndpoint:NacEndpoint": "NacEndpoint"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "org/nacPortal",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/nacPortal:NacPortal": "NacPortal"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "org/nacPortalImage",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/nacPortalImage:NacPortalImage": "NacPortalImage"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "org/nacPortalTemplate",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/nacPortalTemplate:NacPortalTemplate": "NacPortalTemplate"
   }
  },
  {
