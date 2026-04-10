@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfWebhooks = JuniperMist.GetConstWebhooks.Invoke();
+        ///     var listOfWebhooks = JuniperMist.Index.GetConstWebhooks.Invoke();
         /// 
         /// });
         /// ```
@@ -55,7 +55,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfWebhooks = JuniperMist.GetConstWebhooks.Invoke();
+        ///     var listOfWebhooks = JuniperMist.Index.GetConstWebhooks.Invoke();
         /// 
         /// });
         /// ```
@@ -81,7 +81,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfWebhooks = JuniperMist.GetConstWebhooks.Invoke();
+        ///     var listOfWebhooks = JuniperMist.Index.GetConstWebhooks.Invoke();
         /// 
         /// });
         /// ```

@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sites = JuniperMist.GetSites.Invoke(new()
+        ///     var sites = JuniperMist.Index.GetSites.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sites = JuniperMist.GetSites.Invoke(new()
+        ///     var sites = JuniperMist.Index.GetSites.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sites = JuniperMist.GetSites.Invoke(new()
+        ///     var sites = JuniperMist.Index.GetSites.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
         ///     });
