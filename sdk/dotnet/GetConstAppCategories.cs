@@ -27,7 +27,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfAppCategories = JuniperMist.GetConstAppCategories.Invoke();
+        ///     var listOfAppCategories = JuniperMist.Index.GetConstAppCategories.Invoke();
         /// 
         /// });
         /// ```
@@ -51,7 +51,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfAppCategories = JuniperMist.GetConstAppCategories.Invoke();
+        ///     var listOfAppCategories = JuniperMist.Index.GetConstAppCategories.Invoke();
         /// 
         /// });
         /// ```
@@ -75,7 +75,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfAppCategories = JuniperMist.GetConstAppCategories.Invoke();
+        ///     var listOfAppCategories = JuniperMist.Index.GetConstAppCategories.Invoke();
         /// 
         /// });
         /// ```

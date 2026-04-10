@@ -215,7 +215,7 @@ class EvpnTopology(pulumi.CustomResource):
         import pulumi
         import pulumi_mist as mist
 
-        evpn_one = mist.index.SiteSiteEvpnTopology("evpn_one",
+        evpn_one = mist.SiteSiteEvpnTopology("evpn_one",
             site_id=terraform_test.id,
             name=evpn_one,
             evpn_options={
@@ -297,7 +297,7 @@ class EvpnTopology(pulumi.CustomResource):
         import pulumi
         import pulumi_mist as mist
 
-        evpn_one = mist.index.SiteSiteEvpnTopology("evpn_one",
+        evpn_one = mist.SiteSiteEvpnTopology("evpn_one",
             site_id=terraform_test.id,
             name=evpn_one,
             evpn_options={

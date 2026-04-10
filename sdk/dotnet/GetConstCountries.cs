@@ -27,7 +27,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfCountries = JuniperMist.GetConstCountries.Invoke();
+        ///     var listOfCountries = JuniperMist.Index.GetConstCountries.Invoke();
         /// 
         /// });
         /// ```
@@ -51,7 +51,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfCountries = JuniperMist.GetConstCountries.Invoke();
+        ///     var listOfCountries = JuniperMist.Index.GetConstCountries.Invoke();
         /// 
         /// });
         /// ```
@@ -75,7 +75,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfCountries = JuniperMist.GetConstCountries.Invoke();
+        ///     var listOfCountries = JuniperMist.Index.GetConstCountries.Invoke();
         /// 
         /// });
         /// ```

@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfFingerprints = JuniperMist.GetConstFingerprints.Invoke();
+        ///     var listOfFingerprints = JuniperMist.Index.GetConstFingerprints.Invoke();
         /// 
         /// });
         /// ```
@@ -61,7 +61,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfFingerprints = JuniperMist.GetConstFingerprints.Invoke();
+        ///     var listOfFingerprints = JuniperMist.Index.GetConstFingerprints.Invoke();
         /// 
         /// });
         /// ```
@@ -90,7 +90,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfFingerprints = JuniperMist.GetConstFingerprints.Invoke();
+        ///     var listOfFingerprints = JuniperMist.Index.GetConstFingerprints.Invoke();
         /// 
         /// });
         /// ```

@@ -29,14 +29,14 @@ namespace Pulumi.JuniperMist
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var apUpgrade = new JuniperMist.UpgradeDevice("ap_upgrade", new()
+    ///     var apUpgrade = new JuniperMist.Index.UpgradeDevice("ap_upgrade", new()
     ///     {
     ///         SiteId = terraformTest.Id,
     ///         DeviceId = apOne.Id,
     ///         TargetVersion = "0.14.29543",
     ///     });
     /// 
-    ///     var switchUpgrade = new JuniperMist.UpgradeDevice("switch_upgrade", new()
+    ///     var switchUpgrade = new JuniperMist.Index.UpgradeDevice("switch_upgrade", new()
     ///     {
     ///         SiteId = terraformTest.Id,
     ///         DeviceId = switchOne.Id,
