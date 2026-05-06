@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Site
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var evpnOne = new Mist.Index.SiteSiteEvpnTopology("evpn_one", new()
+    ///     var evpnOne = new Mist.SiteSiteEvpnTopology("evpn_one", new()
     ///     {
     ///         SiteId = terraformTest.Id,
     ///         Name = "evpn_one",

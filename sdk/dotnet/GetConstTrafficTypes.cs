@@ -27,7 +27,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfTrafficTypes = JuniperMist.Index.GetConstTrafficTypes.Invoke();
+        ///     var listOfTrafficTypes = JuniperMist.GetConstTrafficTypes.Invoke();
         /// 
         /// });
         /// ```
@@ -51,7 +51,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfTrafficTypes = JuniperMist.Index.GetConstTrafficTypes.Invoke();
+        ///     var listOfTrafficTypes = JuniperMist.GetConstTrafficTypes.Invoke();
         /// 
         /// });
         /// ```
@@ -75,7 +75,7 @@ namespace Pulumi.JuniperMist
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var listOfTrafficTypes = JuniperMist.Index.GetConstTrafficTypes.Invoke();
+        ///     var listOfTrafficTypes = JuniperMist.GetConstTrafficTypes.Invoke();
         /// 
         /// });
         /// ```

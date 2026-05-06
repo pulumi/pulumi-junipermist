@@ -106,8 +106,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -148,8 +148,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -190,8 +190,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -232,8 +232,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -274,8 +274,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -322,8 +322,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetAvprofilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -370,8 +370,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetAvprofilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -418,8 +418,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetAvprofilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -466,8 +466,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetAvprofilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -514,8 +514,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetAvprofilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -556,8 +556,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetDeviceprofilesApArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -598,8 +598,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetDeviceprofilesApArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -640,8 +640,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetDeviceprofilesApArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -682,8 +682,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetDeviceprofilesApArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -724,8 +724,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetDeviceprofilesApArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -768,8 +768,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetDeviceprofilesGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -812,8 +812,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetDeviceprofilesGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -856,8 +856,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetDeviceprofilesGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -900,8 +900,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetDeviceprofilesGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -944,8 +944,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetDeviceprofilesGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -986,8 +986,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetEvpnTopologiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1028,8 +1028,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetEvpnTopologiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1070,8 +1070,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetEvpnTopologiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1112,8 +1112,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetEvpnTopologiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1154,8 +1154,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetEvpnTopologiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1196,8 +1196,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetGatewaytemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1238,8 +1238,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetGatewaytemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1280,8 +1280,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetGatewaytemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1322,8 +1322,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetGatewaytemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1364,8 +1364,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetGatewaytemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1408,8 +1408,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetIdpprofilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1452,8 +1452,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetIdpprofilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1496,8 +1496,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetIdpprofilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1540,8 +1540,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetIdpprofilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1584,8 +1584,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetIdpprofilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1624,8 +1624,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetInventoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1671,8 +1671,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetInventoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1718,8 +1718,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetInventoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1765,8 +1765,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetInventoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1812,8 +1812,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetInventoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1861,8 +1861,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1905,8 +1905,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1949,8 +1949,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1993,8 +1993,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2037,8 +2037,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2081,8 +2081,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacidpMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2124,8 +2124,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacidpMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2167,8 +2167,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacidpMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2210,8 +2210,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacidpMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2253,8 +2253,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacidpMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2296,8 +2296,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacrulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2338,8 +2338,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacrulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2380,8 +2380,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacrulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2422,8 +2422,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacrulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2464,8 +2464,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNacrulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2506,8 +2506,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNactagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2550,8 +2550,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNactagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2594,8 +2594,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNactagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2638,8 +2638,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNactagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2682,8 +2682,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNactagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2726,8 +2726,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2768,8 +2768,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2810,8 +2810,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2852,8 +2852,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2894,8 +2894,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNetworksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2937,8 +2937,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNetworktemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2980,8 +2980,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNetworktemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3023,8 +3023,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNetworktemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3066,8 +3066,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNetworktemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3109,8 +3109,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetNetworktemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3154,8 +3154,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetPsksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3202,8 +3202,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetPsksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3250,8 +3250,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetPsksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3298,8 +3298,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetPsksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3346,8 +3346,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetPsksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3391,8 +3391,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetRftemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3433,8 +3433,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetRftemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3475,8 +3475,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetRftemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3517,8 +3517,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetRftemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3559,8 +3559,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetRftemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3605,8 +3605,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetServicepoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3651,8 +3651,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetServicepoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3697,8 +3697,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetServicepoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3743,8 +3743,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetServicepoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3789,8 +3789,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetServicepoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3835,8 +3835,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3881,8 +3881,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3927,8 +3927,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3973,8 +3973,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4019,8 +4019,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetServicesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4062,8 +4062,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSitegroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4105,8 +4105,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSitegroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4148,8 +4148,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSitegroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4191,8 +4191,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSitegroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4234,8 +4234,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSitegroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4276,8 +4276,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSsoMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4319,8 +4319,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSsoMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4362,8 +4362,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSsoMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4405,8 +4405,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSsoMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4448,8 +4448,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSsoMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4493,8 +4493,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSsoRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4537,8 +4537,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSsoRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4581,8 +4581,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSsoRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4625,8 +4625,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSsoRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4669,8 +4669,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetSsoRolesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4709,8 +4709,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetVpnsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4749,8 +4749,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetVpnsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4789,8 +4789,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetVpnsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4829,8 +4829,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetVpnsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4869,8 +4869,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetVpnsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4913,8 +4913,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4957,8 +4957,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5001,8 +5001,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5045,8 +5045,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5089,8 +5089,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5131,8 +5131,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5173,8 +5173,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5215,8 +5215,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5257,8 +5257,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5299,8 +5299,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5343,8 +5343,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWlantemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5387,8 +5387,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWlantemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5431,8 +5431,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWlantemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5475,8 +5475,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWlantemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5519,8 +5519,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.org.OrgFunctions;
      * import com.pulumi.junipermist.org.inputs.GetWlantemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5570,8 +5570,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetSwitchStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5621,8 +5621,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetSwitchStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5672,8 +5672,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetSwitchStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5723,8 +5723,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetSwitchStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5774,8 +5774,8 @@ public final class OrgFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetSwitchStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
