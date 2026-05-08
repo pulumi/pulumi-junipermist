@@ -95,7 +95,7 @@ def get_webhooks(site_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         site_id=pulumi.get(__ret__, 'site_id'),
         site_webhooks=pulumi.get(__ret__, 'site_webhooks'))
-def get_webhooks_output(site_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_webhooks_output(site_id: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebhooksResult]:
     """
     This data source provides the list of Site Webhooks.

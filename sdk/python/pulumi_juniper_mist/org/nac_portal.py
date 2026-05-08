@@ -22,20 +22,20 @@ __all__ = ['NacPortalArgs', 'NacPortal']
 class NacPortalArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 additional_cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 additional_nac_server_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cert_expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 eap_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_telemetry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiry_notification_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 portal: Optional[pulumi.Input['NacPortalPortalArgs']] = None,
-                 ssid: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso: Optional[pulumi.Input['NacPortalSsoArgs']] = None,
-                 tos: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 additional_cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 additional_nac_server_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cert_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 eap_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_telemetry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 portal: pulumi.Input[Optional['NacPortalPortalArgs']] = None,
+                 ssid: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso: pulumi.Input[Optional['NacPortalSsoArgs']] = None,
+                 tos: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NacPortal resource.
 
@@ -103,112 +103,112 @@ class NacPortalArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         if `type`==`marvis_client`. enum: `wireless`, `wireless+wired`
         """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalCacerts")
-    def additional_cacerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_cacerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional list of additional CA certificates to be used
         """
         return pulumi.get(self, "additional_cacerts")
 
     @additional_cacerts.setter
-    def additional_cacerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_cacerts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_cacerts", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalNacServerNames")
-    def additional_nac_server_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_nac_server_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional list of additional NAC server names
         """
         return pulumi.get(self, "additional_nac_server_names")
 
     @additional_nac_server_names.setter
-    def additional_nac_server_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_nac_server_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_nac_server_names", value)
 
     @_builtins.property
     @pulumi.getter(name="certExpireTime")
-    def cert_expire_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cert_expire_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         In days
         """
         return pulumi.get(self, "cert_expire_time")
 
     @cert_expire_time.setter
-    def cert_expire_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cert_expire_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cert_expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="eapType")
-    def eap_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eap_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `wpa2`, `wpa3`
         """
         return pulumi.get(self, "eap_type")
 
     @eap_type.setter
-    def eap_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eap_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eap_type", value)
 
     @_builtins.property
     @pulumi.getter(name="enableTelemetry")
-    def enable_telemetry(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_telemetry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Model, version, fingering, events (connecting, disconnect, roaming), which ap
         """
         return pulumi.get(self, "enable_telemetry")
 
     @enable_telemetry.setter
-    def enable_telemetry(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_telemetry(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_telemetry", value)
 
     @_builtins.property
     @pulumi.getter(name="expiryNotificationTime")
-    def expiry_notification_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiry_notification_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         In days
         """
         return pulumi.get(self, "expiry_notification_time")
 
     @expiry_notification_time.setter
-    def expiry_notification_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiry_notification_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiry_notification_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyExpiry")
-    def notify_expiry(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_expiry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         phase 2
         """
         return pulumi.get(self, "notify_expiry")
 
     @notify_expiry.setter
-    def notify_expiry(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_expiry(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_expiry", value)
 
     @_builtins.property
     @pulumi.getter
-    def portal(self) -> Optional[pulumi.Input['NacPortalPortalArgs']]:
+    def portal(self) -> pulumi.Input[Optional['NacPortalPortalArgs']]:
         """
         Guest portal configuration when `type`==`guest_portal`. If 
           * `auth`==`none`, the user is presented with a terms of service and can click and continue.
@@ -224,39 +224,39 @@ class NacPortalArgs:
         return pulumi.get(self, "portal")
 
     @portal.setter
-    def portal(self, value: Optional[pulumi.Input['NacPortalPortalArgs']]):
+    def portal(self, value: pulumi.Input[Optional['NacPortalPortalArgs']]):
         pulumi.set(self, "portal", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssid(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ssid")
 
     @ssid.setter
-    def ssid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssid", value)
 
     @_builtins.property
     @pulumi.getter
-    def sso(self) -> Optional[pulumi.Input['NacPortalSsoArgs']]:
+    def sso(self) -> pulumi.Input[Optional['NacPortalSsoArgs']]:
         return pulumi.get(self, "sso")
 
     @sso.setter
-    def sso(self, value: Optional[pulumi.Input['NacPortalSsoArgs']]):
+    def sso(self, value: pulumi.Input[Optional['NacPortalSsoArgs']]):
         pulumi.set(self, "sso", value)
 
     @_builtins.property
     @pulumi.getter
-    def tos(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tos(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "tos")
 
     @tos.setter
-    def tos(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tos(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tos", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: 
           * `guest_admin`: NAC-Based Portal Admin for Pre Created Guest Authentication
@@ -266,28 +266,28 @@ class NacPortalArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _NacPortalState:
     def __init__(__self__, *,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 additional_cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 additional_nac_server_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cert_expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 eap_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_telemetry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiry_notification_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 portal: Optional[pulumi.Input['NacPortalPortalArgs']] = None,
-                 ssid: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso: Optional[pulumi.Input['NacPortalSsoArgs']] = None,
-                 tos: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 additional_cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 additional_nac_server_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cert_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 eap_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_telemetry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 portal: pulumi.Input[Optional['NacPortalPortalArgs']] = None,
+                 ssid: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso: pulumi.Input[Optional['NacPortalSsoArgs']] = None,
+                 tos: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NacPortal resources.
 
@@ -347,121 +347,121 @@ class _NacPortalState:
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         if `type`==`marvis_client`. enum: `wireless`, `wireless+wired`
         """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalCacerts")
-    def additional_cacerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_cacerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional list of additional CA certificates to be used
         """
         return pulumi.get(self, "additional_cacerts")
 
     @additional_cacerts.setter
-    def additional_cacerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_cacerts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_cacerts", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalNacServerNames")
-    def additional_nac_server_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_nac_server_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional list of additional NAC server names
         """
         return pulumi.get(self, "additional_nac_server_names")
 
     @additional_nac_server_names.setter
-    def additional_nac_server_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_nac_server_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_nac_server_names", value)
 
     @_builtins.property
     @pulumi.getter(name="certExpireTime")
-    def cert_expire_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cert_expire_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         In days
         """
         return pulumi.get(self, "cert_expire_time")
 
     @cert_expire_time.setter
-    def cert_expire_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cert_expire_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cert_expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="eapType")
-    def eap_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eap_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `wpa2`, `wpa3`
         """
         return pulumi.get(self, "eap_type")
 
     @eap_type.setter
-    def eap_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eap_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eap_type", value)
 
     @_builtins.property
     @pulumi.getter(name="enableTelemetry")
-    def enable_telemetry(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_telemetry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Model, version, fingering, events (connecting, disconnect, roaming), which ap
         """
         return pulumi.get(self, "enable_telemetry")
 
     @enable_telemetry.setter
-    def enable_telemetry(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_telemetry(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_telemetry", value)
 
     @_builtins.property
     @pulumi.getter(name="expiryNotificationTime")
-    def expiry_notification_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiry_notification_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         In days
         """
         return pulumi.get(self, "expiry_notification_time")
 
     @expiry_notification_time.setter
-    def expiry_notification_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiry_notification_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiry_notification_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyExpiry")
-    def notify_expiry(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_expiry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         phase 2
         """
         return pulumi.get(self, "notify_expiry")
 
     @notify_expiry.setter
-    def notify_expiry(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_expiry(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def portal(self) -> Optional[pulumi.Input['NacPortalPortalArgs']]:
+    def portal(self) -> pulumi.Input[Optional['NacPortalPortalArgs']]:
         """
         Guest portal configuration when `type`==`guest_portal`. If 
           * `auth`==`none`, the user is presented with a terms of service and can click and continue.
@@ -477,39 +477,39 @@ class _NacPortalState:
         return pulumi.get(self, "portal")
 
     @portal.setter
-    def portal(self, value: Optional[pulumi.Input['NacPortalPortalArgs']]):
+    def portal(self, value: pulumi.Input[Optional['NacPortalPortalArgs']]):
         pulumi.set(self, "portal", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssid(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ssid")
 
     @ssid.setter
-    def ssid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssid", value)
 
     @_builtins.property
     @pulumi.getter
-    def sso(self) -> Optional[pulumi.Input['NacPortalSsoArgs']]:
+    def sso(self) -> pulumi.Input[Optional['NacPortalSsoArgs']]:
         return pulumi.get(self, "sso")
 
     @sso.setter
-    def sso(self, value: Optional[pulumi.Input['NacPortalSsoArgs']]):
+    def sso(self, value: pulumi.Input[Optional['NacPortalSsoArgs']]):
         pulumi.set(self, "sso", value)
 
     @_builtins.property
     @pulumi.getter
-    def tos(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tos(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "tos")
 
     @tos.setter
-    def tos(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tos(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tos", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: 
           * `guest_admin`: NAC-Based Portal Admin for Pre Created Guest Authentication
@@ -519,7 +519,7 @@ class _NacPortalState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -529,21 +529,21 @@ class NacPortal(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 additional_cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 additional_nac_server_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cert_expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 eap_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_telemetry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiry_notification_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 portal: Optional[pulumi.Input[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict']]] = None,
-                 ssid: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso: Optional[pulumi.Input[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']]] = None,
-                 tos: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 additional_cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 additional_nac_server_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cert_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 eap_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_telemetry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 portal: pulumi.Input[Optional[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict']]] = None,
+                 ssid: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso: pulumi.Input[Optional[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']]] = None,
+                 tos: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource manages Org NAC Portals.
@@ -733,21 +733,21 @@ class NacPortal(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 additional_cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 additional_nac_server_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cert_expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 eap_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_telemetry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiry_notification_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 portal: Optional[pulumi.Input[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict']]] = None,
-                 ssid: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso: Optional[pulumi.Input[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']]] = None,
-                 tos: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 additional_cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 additional_nac_server_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cert_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 eap_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_telemetry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 portal: pulumi.Input[Optional[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict']]] = None,
+                 ssid: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso: pulumi.Input[Optional[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']]] = None,
+                 tos: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -784,21 +784,21 @@ class NacPortal(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_type: Optional[pulumi.Input[_builtins.str]] = None,
-            additional_cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            additional_nac_server_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cert_expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-            eap_type: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_telemetry: Optional[pulumi.Input[_builtins.bool]] = None,
-            expiry_notification_time: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notify_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            portal: Optional[pulumi.Input[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict']]] = None,
-            ssid: Optional[pulumi.Input[_builtins.str]] = None,
-            sso: Optional[pulumi.Input[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']]] = None,
-            tos: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'NacPortal':
+            access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            additional_cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            additional_nac_server_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cert_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+            eap_type: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_telemetry: pulumi.Input[Optional[_builtins.bool]] = None,
+            expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            portal: pulumi.Input[Optional[Union['NacPortalPortalArgs', 'NacPortalPortalArgsDict']]] = None,
+            ssid: pulumi.Input[Optional[_builtins.str]] = None,
+            sso: pulumi.Input[Optional[Union['NacPortalSsoArgs', 'NacPortalSsoArgsDict']]] = None,
+            tos: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'NacPortal':
         """
         Get an existing NacPortal resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

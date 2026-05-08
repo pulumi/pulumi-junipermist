@@ -95,7 +95,7 @@ def get_wlantemplates(org_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_wlantemplates=pulumi.get(__ret__, 'org_wlantemplates'))
-def get_wlantemplates_output(org_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_wlantemplates_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWlantemplatesResult]:
     """
     This datasource provides the list of WLAN Templates in a Mist Organization.

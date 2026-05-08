@@ -133,21 +133,21 @@ export interface ApitokenState {
     /**
      * email of the token creator / null if creator is deleted
      */
-    createdBy?: pulumi.Input<string>;
-    key?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Name of the token
      */
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * List of privileges the token has on the orgs/sites
      */
-    privileges?: pulumi.Input<pulumi.Input<inputs.org.ApitokenPrivilege>[]>;
+    privileges?: pulumi.Input<pulumi.Input<inputs.org.ApitokenPrivilege>[] | undefined>;
     /**
      * List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
      */
-    srcIps?: pulumi.Input<pulumi.Input<string>[]>;
+    srcIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -157,7 +157,7 @@ export interface ApitokenArgs {
     /**
      * Name of the token
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * List of privileges the token has on the orgs/sites
@@ -166,5 +166,5 @@ export interface ApitokenArgs {
     /**
      * List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
      */
-    srcIps?: pulumi.Input<pulumi.Input<string>[]>;
+    srcIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

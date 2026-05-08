@@ -23,8 +23,8 @@ class IdpprofileArgs:
     def __init__(__self__, *,
                  base_profile: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrites: Optional[pulumi.Input[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrites: pulumi.Input[Optional[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]] = None):
         """
         The set of arguments for constructing a Idpprofile resource.
 
@@ -60,30 +60,30 @@ class IdpprofileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def overwrites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]]:
+    def overwrites(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]]:
         return pulumi.get(self, "overwrites")
 
     @overwrites.setter
-    def overwrites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]]):
+    def overwrites(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]]):
         pulumi.set(self, "overwrites", value)
 
 
 @pulumi.input_type
 class _IdpprofileState:
     def __init__(__self__, *,
-                 base_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrites: Optional[pulumi.Input[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]] = None):
+                 base_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrites: pulumi.Input[Optional[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]] = None):
         """
         Input properties used for looking up and filtering Idpprofile resources.
 
@@ -100,41 +100,41 @@ class _IdpprofileState:
 
     @_builtins.property
     @pulumi.getter(name="baseProfile")
-    def base_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `critical`, `standard`, `strict`
         """
         return pulumi.get(self, "base_profile")
 
     @base_profile.setter
-    def base_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_profile", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def overwrites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]]:
+    def overwrites(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]]:
         return pulumi.get(self, "overwrites")
 
     @overwrites.setter
-    def overwrites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]]):
+    def overwrites(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]]):
         pulumi.set(self, "overwrites", value)
 
 
@@ -144,10 +144,10 @@ class Idpprofile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrites: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None,
+                 base_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource manages WAN Assurance Idp Profiles.
@@ -268,10 +268,10 @@ class Idpprofile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrites: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None,
+                 base_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -299,10 +299,10 @@ class Idpprofile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            base_profile: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            overwrites: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None) -> 'Idpprofile':
+            base_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            overwrites: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None) -> 'Idpprofile':
         """
         Get an existing Idpprofile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

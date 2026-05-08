@@ -56,8 +56,8 @@ class GatewayClusterArgs:
 @pulumi.input_type
 class _GatewayClusterState:
     def __init__(__self__, *,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input['GatewayClusterNodeArgs']]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewayCluster resources.
 
@@ -70,23 +70,23 @@ class _GatewayClusterState:
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewayClusterNodeArgs']]]]:
         """
         When replacing a node, either mac has to remain the same as existing cluster
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GatewayClusterNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
 
@@ -96,8 +96,8 @@ class GatewayCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource can be used to form or delete a Gateway Clusters.
@@ -204,8 +204,8 @@ class GatewayCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -231,8 +231,8 @@ class GatewayCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GatewayCluster':
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'GatewayCluster':
         """
         Get an existing GatewayCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

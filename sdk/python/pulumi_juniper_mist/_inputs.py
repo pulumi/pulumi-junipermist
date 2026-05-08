@@ -22,46 +22,46 @@ __all__ = [
 ]
 
 class UpgradeDeviceAutoUpgradeStatArgsDict(TypedDict):
-    lastcheck: NotRequired[pulumi.Input[_builtins.int]]
+    lastcheck: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class UpgradeDeviceAutoUpgradeStatArgs:
     def __init__(__self__, *,
-                 lastcheck: Optional[pulumi.Input[_builtins.int]] = None):
+                 lastcheck: pulumi.Input[Optional[_builtins.int]] = None):
         if lastcheck is not None:
             pulumi.set(__self__, "lastcheck", lastcheck)
 
     @_builtins.property
     @pulumi.getter
-    def lastcheck(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lastcheck(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "lastcheck")
 
     @lastcheck.setter
-    def lastcheck(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lastcheck(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lastcheck", value)
 
 
 class UpgradeDeviceFwupdateArgsDict(TypedDict):
-    progress: NotRequired[pulumi.Input[_builtins.int]]
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    progress: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
     """
-    status_id: NotRequired[pulumi.Input[_builtins.int]]
-    timestamp: NotRequired[pulumi.Input[_builtins.float]]
+    status_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    timestamp: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Epoch (seconds)
     """
-    will_retry: NotRequired[pulumi.Input[_builtins.bool]]
+    will_retry: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
 class UpgradeDeviceFwupdateArgs:
     def __init__(__self__, *,
-                 progress: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 timestamp: Optional[pulumi.Input[_builtins.float]] = None,
-                 will_retry: Optional[pulumi.Input[_builtins.bool]] = None):
+                 progress: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 timestamp: pulumi.Input[Optional[_builtins.float]] = None,
+                 will_retry: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] status: enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         :param pulumi.Input[_builtins.float] timestamp: Epoch (seconds)
@@ -79,53 +79,53 @@ class UpgradeDeviceFwupdateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def progress(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def progress(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "progress")
 
     @progress.setter
-    def progress(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def progress(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "progress", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="statusId")
-    def status_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "status_id")
 
     @status_id.setter
-    def status_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timestamp(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def timestamp(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Epoch (seconds)
         """
         return pulumi.get(self, "timestamp")
 
     @timestamp.setter
-    def timestamp(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def timestamp(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="willRetry")
-    def will_retry(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def will_retry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "will_retry")
 
     @will_retry.setter
-    def will_retry(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def will_retry(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "will_retry", value)
 
 

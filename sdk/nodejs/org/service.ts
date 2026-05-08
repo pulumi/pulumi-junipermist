@@ -228,78 +228,78 @@ export interface ServiceState {
     /**
      * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
      */
-    addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
      */
-    appCategories?: pulumi.Input<pulumi.Input<string>[]>;
+    appCategories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
      */
-    appSubcategories?: pulumi.Input<pulumi.Input<string>[]>;
+    appSubcategories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When `type`==`apps`, list of applications are available through:
      *   * List Applications
      *   * List Gateway Applications
      *   * /insight/top_app_by-bytes?wired=true
      */
-    apps?: pulumi.Input<pulumi.Input<string>[]>;
+    apps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * 0 means unlimited, value from 0 to 107374182
      */
-    clientLimitDown?: pulumi.Input<number>;
+    clientLimitDown?: pulumi.Input<number | undefined>;
     /**
      * 0 means unlimited, value from 0 to 107374182
      */
-    clientLimitUp?: pulumi.Input<number>;
-    description?: pulumi.Input<string>;
-    dscp?: pulumi.Input<string>;
+    clientLimitUp?: pulumi.Input<number | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    dscp?: pulumi.Input<string | undefined>;
     /**
      * enum: `nonRevertible`, `none`, `revertible`
      */
-    failoverPolicy?: pulumi.Input<string>;
+    failoverPolicy?: pulumi.Input<string | undefined>;
     /**
      * If `type`==`custom`, web filtering
      */
-    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
-    maxJitter?: pulumi.Input<string>;
-    maxLatency?: pulumi.Input<string>;
-    maxLoss?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    maxJitter?: pulumi.Input<string | undefined>;
+    maxLatency?: pulumi.Input<string | undefined>;
+    maxLoss?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * 0 means unlimited, value from 0 to 107374182
      */
-    serviceLimitDown?: pulumi.Input<number>;
+    serviceLimitDown?: pulumi.Input<number | undefined>;
     /**
      * 0 means unlimited, value from 0 to 107374182
      */
-    serviceLimitUp?: pulumi.Input<number>;
+    serviceLimitUp?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable measure SLE
      */
-    sleEnabled?: pulumi.Input<boolean>;
+    sleEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
      */
-    specs?: pulumi.Input<pulumi.Input<inputs.org.ServiceSpec>[]>;
-    ssrRelaxedTcpStateEnforcement?: pulumi.Input<boolean>;
+    specs?: pulumi.Input<pulumi.Input<inputs.org.ServiceSpec>[] | undefined>;
+    ssrRelaxedTcpStateEnforcement?: pulumi.Input<boolean | undefined>;
     /**
      * when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
      */
-    trafficClass?: pulumi.Input<string>;
+    trafficClass?: pulumi.Input<string | undefined>;
     /**
      * values from List Traffic Types
      */
-    trafficType?: pulumi.Input<string>;
+    trafficType?: pulumi.Input<string | undefined>;
     /**
      * enum: `appCategories`, `apps`, `custom`, `urls`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * When `type`==`urls`, no need for spec as URL can encode the ports being used
      */
-    urls?: pulumi.Input<pulumi.Input<string>[]>;
+    urls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -309,76 +309,76 @@ export interface ServiceArgs {
     /**
      * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
      */
-    addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
      */
-    appCategories?: pulumi.Input<pulumi.Input<string>[]>;
+    appCategories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
      */
-    appSubcategories?: pulumi.Input<pulumi.Input<string>[]>;
+    appSubcategories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When `type`==`apps`, list of applications are available through:
      *   * List Applications
      *   * List Gateway Applications
      *   * /insight/top_app_by-bytes?wired=true
      */
-    apps?: pulumi.Input<pulumi.Input<string>[]>;
+    apps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * 0 means unlimited, value from 0 to 107374182
      */
-    clientLimitDown?: pulumi.Input<number>;
+    clientLimitDown?: pulumi.Input<number | undefined>;
     /**
      * 0 means unlimited, value from 0 to 107374182
      */
-    clientLimitUp?: pulumi.Input<number>;
-    description?: pulumi.Input<string>;
-    dscp?: pulumi.Input<string>;
+    clientLimitUp?: pulumi.Input<number | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    dscp?: pulumi.Input<string | undefined>;
     /**
      * enum: `nonRevertible`, `none`, `revertible`
      */
-    failoverPolicy?: pulumi.Input<string>;
+    failoverPolicy?: pulumi.Input<string | undefined>;
     /**
      * If `type`==`custom`, web filtering
      */
-    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
-    maxJitter?: pulumi.Input<string>;
-    maxLatency?: pulumi.Input<string>;
-    maxLoss?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    maxJitter?: pulumi.Input<string | undefined>;
+    maxLatency?: pulumi.Input<string | undefined>;
+    maxLoss?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * 0 means unlimited, value from 0 to 107374182
      */
-    serviceLimitDown?: pulumi.Input<number>;
+    serviceLimitDown?: pulumi.Input<number | undefined>;
     /**
      * 0 means unlimited, value from 0 to 107374182
      */
-    serviceLimitUp?: pulumi.Input<number>;
+    serviceLimitUp?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable measure SLE
      */
-    sleEnabled?: pulumi.Input<boolean>;
+    sleEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
      */
-    specs?: pulumi.Input<pulumi.Input<inputs.org.ServiceSpec>[]>;
-    ssrRelaxedTcpStateEnforcement?: pulumi.Input<boolean>;
+    specs?: pulumi.Input<pulumi.Input<inputs.org.ServiceSpec>[] | undefined>;
+    ssrRelaxedTcpStateEnforcement?: pulumi.Input<boolean | undefined>;
     /**
      * when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
      */
-    trafficClass?: pulumi.Input<string>;
+    trafficClass?: pulumi.Input<string | undefined>;
     /**
      * values from List Traffic Types
      */
-    trafficType?: pulumi.Input<string>;
+    trafficType?: pulumi.Input<string | undefined>;
     /**
      * enum: `appCategories`, `apps`, `custom`, `urls`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * When `type`==`urls`, no need for spec as URL can encode the ports being used
      */
-    urls?: pulumi.Input<pulumi.Input<string>[]>;
+    urls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

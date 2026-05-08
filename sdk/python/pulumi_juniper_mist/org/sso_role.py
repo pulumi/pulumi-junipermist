@@ -23,7 +23,7 @@ class SsoRoleArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
                  privileges: pulumi.Input[Sequence[pulumi.Input['SsoRolePrivilegeArgs']]],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SsoRole resource.
         """
@@ -52,20 +52,20 @@ class SsoRoleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _SsoRoleState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 privileges: Optional[pulumi.Input[Sequence[pulumi.Input['SsoRolePrivilegeArgs']]]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 privileges: pulumi.Input[Optional[Sequence[pulumi.Input['SsoRolePrivilegeArgs']]]] = None):
         """
         Input properties used for looking up and filtering SsoRole resources.
         """
@@ -78,29 +78,29 @@ class _SsoRoleState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def privileges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SsoRolePrivilegeArgs']]]]:
+    def privileges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SsoRolePrivilegeArgs']]]]:
         return pulumi.get(self, "privileges")
 
     @privileges.setter
-    def privileges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SsoRolePrivilegeArgs']]]]):
+    def privileges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SsoRolePrivilegeArgs']]]]):
         pulumi.set(self, "privileges", value)
 
 
@@ -110,9 +110,9 @@ class SsoRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 privileges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource manages Org SSO Roles for Admin Authentication.
@@ -204,9 +204,9 @@ class SsoRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 privileges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -233,9 +233,9 @@ class SsoRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            privileges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]]] = None) -> 'SsoRole':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            privileges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]]] = None) -> 'SsoRole':
         """
         Get an existing SsoRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

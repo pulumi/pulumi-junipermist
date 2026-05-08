@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.junipermist.org.IdpprofileArgs;
  * import com.pulumi.junipermist.org.inputs.IdpprofileOverwriteArgs;
  * import com.pulumi.junipermist.org.inputs.IdpprofileOverwriteMatchingArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -56,17 +56,17 @@ import javax.annotation.Nullable;
  *                 IdpprofileOverwriteArgs.builder()
  *                     .name("server_bypass")
  *                     .matching(IdpprofileOverwriteMatchingArgs.builder()
- *                         .severity(List.of())
- *                         .dstSubnet(List.of())
- *                         .attackName(List.of("SSL:OVERFLOW:KEY-ARG-NO-ENTROPY"))
+ *                         .severity(Arrays.asList())
+ *                         .dstSubnet(Arrays.asList())
+ *                         .attackName(Arrays.asList("SSL:OVERFLOW:KEY-ARG-NO-ENTROPY"))
  *                         .build())
  *                     .build(),
  *                 IdpprofileOverwriteArgs.builder()
  *                     .name("guest-bypass")
  *                     .matching(IdpprofileOverwriteMatchingArgs.builder()
- *                         .severity(List.of())
- *                         .dstSubnet(List.of("8.8.8.8/32"))
- *                         .attackName(List.of("UDP:ZERO-DATA"))
+ *                         .severity(Arrays.asList())
+ *                         .dstSubnet(Arrays.asList("8.8.8.8/32"))
+ *                         .attackName(Arrays.asList("UDP:ZERO-DATA"))
  *                         .build())
  *                     .build())
  *             .name("idpprofile_one")

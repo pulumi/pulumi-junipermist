@@ -175,28 +175,28 @@ export interface WxtagState {
     /**
      * If `type`==`client`, Client MAC Address
      */
-    mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
     /**
      * required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
      */
-    match?: pulumi.Input<string>;
+    match?: pulumi.Input<string | undefined>;
     /**
      * The name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
      */
-    op?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    op?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * If `type`==`spec`
      */
-    specs?: pulumi.Input<pulumi.Input<inputs.org.WxtagSpec>[]>;
+    specs?: pulumi.Input<pulumi.Input<inputs.org.WxtagSpec>[] | undefined>;
     /**
      * enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Required if `type`==`match` and
      *   * `match`==`apId`: list of AP IDs
@@ -218,8 +218,8 @@ export interface WxtagState {
      * **Notes**:
      * Variables are not allowed
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
-    vlanId?: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    vlanId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -229,24 +229,24 @@ export interface WxtagArgs {
     /**
      * If `type`==`client`, Client MAC Address
      */
-    mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
     /**
      * required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
      */
-    match?: pulumi.Input<string>;
+    match?: pulumi.Input<string | undefined>;
     /**
      * The name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
      */
-    op?: pulumi.Input<string>;
+    op?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * If `type`==`spec`
      */
-    specs?: pulumi.Input<pulumi.Input<inputs.org.WxtagSpec>[]>;
+    specs?: pulumi.Input<pulumi.Input<inputs.org.WxtagSpec>[] | undefined>;
     /**
      * enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
      */
@@ -272,6 +272,6 @@ export interface WxtagArgs {
      * **Notes**:
      * Variables are not allowed
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
-    vlanId?: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    vlanId?: pulumi.Input<string | undefined>;
 }

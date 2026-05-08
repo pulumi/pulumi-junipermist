@@ -22,29 +22,29 @@ __all__ = ['ServiceArgs', 'Service']
 class ServiceArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_subcategories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 apps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 client_limit_down: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_limit_up: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dscp: Optional[pulumi.Input[_builtins.str]] = None,
-                 failover_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_jitter: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_latency: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_loss: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_limit_down: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_limit_up: Optional[pulumi.Input[_builtins.int]] = None,
-                 sle_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 specs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]]] = None,
-                 ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 traffic_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_subcategories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 apps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dscp: pulumi.Input[Optional[_builtins.str]] = None,
+                 failover_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_jitter: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_latency: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_loss: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
+                 sle_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specs: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceSpecArgs']]]] = None,
+                 ssr_relaxed_tcp_state_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
+                 traffic_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Service resource.
 
@@ -127,43 +127,43 @@ class ServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         """
         return pulumi.get(self, "addresses")
 
     @addresses.setter
-    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="appCategories")
-    def app_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def app_categories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         """
         return pulumi.get(self, "app_categories")
 
     @app_categories.setter
-    def app_categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def app_categories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_categories", value)
 
     @_builtins.property
     @pulumi.getter(name="appSubcategories")
-    def app_subcategories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def app_subcategories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
         """
         return pulumi.get(self, "app_subcategories")
 
     @app_subcategories.setter
-    def app_subcategories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def app_subcategories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_subcategories", value)
 
     @_builtins.property
     @pulumi.getter
-    def apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def apps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         When `type`==`apps`, list of applications are available through:
           * List Applications
@@ -173,244 +173,244 @@ class ServiceArgs:
         return pulumi.get(self, "apps")
 
     @apps.setter
-    def apps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def apps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "apps", value)
 
     @_builtins.property
     @pulumi.getter(name="clientLimitDown")
-    def client_limit_down(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def client_limit_down(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         0 means unlimited, value from 0 to 107374182
         """
         return pulumi.get(self, "client_limit_down")
 
     @client_limit_down.setter
-    def client_limit_down(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def client_limit_down(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_limit_down", value)
 
     @_builtins.property
     @pulumi.getter(name="clientLimitUp")
-    def client_limit_up(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def client_limit_up(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         0 means unlimited, value from 0 to 107374182
         """
         return pulumi.get(self, "client_limit_up")
 
     @client_limit_up.setter
-    def client_limit_up(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def client_limit_up(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_limit_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def dscp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dscp(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dscp")
 
     @dscp.setter
-    def dscp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dscp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dscp", value)
 
     @_builtins.property
     @pulumi.getter(name="failoverPolicy")
-    def failover_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failover_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `non_revertible`, `none`, `revertible`
         """
         return pulumi.get(self, "failover_policy")
 
     @failover_policy.setter
-    def failover_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failover_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failover_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def hostnames(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`custom`, web filtering
         """
         return pulumi.get(self, "hostnames")
 
     @hostnames.setter
-    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def hostnames(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "hostnames", value)
 
     @_builtins.property
     @pulumi.getter(name="maxJitter")
-    def max_jitter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_jitter(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "max_jitter")
 
     @max_jitter.setter
-    def max_jitter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_jitter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_jitter", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLatency")
-    def max_latency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_latency(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "max_latency")
 
     @max_latency.setter
-    def max_latency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_latency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_latency", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLoss")
-    def max_loss(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_loss(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "max_loss")
 
     @max_loss.setter
-    def max_loss(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_loss(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_loss", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceLimitDown")
-    def service_limit_down(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_limit_down(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         0 means unlimited, value from 0 to 107374182
         """
         return pulumi.get(self, "service_limit_down")
 
     @service_limit_down.setter
-    def service_limit_down(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_limit_down(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_limit_down", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceLimitUp")
-    def service_limit_up(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_limit_up(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         0 means unlimited, value from 0 to 107374182
         """
         return pulumi.get(self, "service_limit_up")
 
     @service_limit_up.setter
-    def service_limit_up(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_limit_up(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_limit_up", value)
 
     @_builtins.property
     @pulumi.getter(name="sleEnabled")
-    def sle_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sle_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable measure SLE
         """
         return pulumi.get(self, "sle_enabled")
 
     @sle_enabled.setter
-    def sle_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sle_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sle_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]]]:
+    def specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceSpecArgs']]]]:
         """
         When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         """
         return pulumi.get(self, "specs")
 
     @specs.setter
-    def specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]]]):
+    def specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceSpecArgs']]]]):
         pulumi.set(self, "specs", value)
 
     @_builtins.property
     @pulumi.getter(name="ssrRelaxedTcpStateEnforcement")
-    def ssr_relaxed_tcp_state_enforcement(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ssr_relaxed_tcp_state_enforcement(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "ssr_relaxed_tcp_state_enforcement")
 
     @ssr_relaxed_tcp_state_enforcement.setter
-    def ssr_relaxed_tcp_state_enforcement(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ssr_relaxed_tcp_state_enforcement(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ssr_relaxed_tcp_state_enforcement", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficClass")
-    def traffic_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
         """
         return pulumi.get(self, "traffic_class")
 
     @traffic_class.setter
-    def traffic_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_class", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficType")
-    def traffic_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         values from List Traffic Types
         """
         return pulumi.get(self, "traffic_type")
 
     @traffic_type.setter
-    def traffic_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `app_categories`, `apps`, `custom`, `urls`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         When `type`==`urls`, no need for spec as URL can encode the ports being used
         """
         return pulumi.get(self, "urls")
 
     @urls.setter
-    def urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "urls", value)
 
 
 @pulumi.input_type
 class _ServiceState:
     def __init__(__self__, *,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_subcategories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 apps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 client_limit_down: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_limit_up: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dscp: Optional[pulumi.Input[_builtins.str]] = None,
-                 failover_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_jitter: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_latency: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_loss: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_limit_down: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_limit_up: Optional[pulumi.Input[_builtins.int]] = None,
-                 sle_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 specs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]]] = None,
-                 ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 traffic_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_subcategories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 apps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dscp: pulumi.Input[Optional[_builtins.str]] = None,
+                 failover_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_jitter: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_latency: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_loss: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
+                 sle_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specs: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceSpecArgs']]]] = None,
+                 ssr_relaxed_tcp_state_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
+                 traffic_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Service resources.
 
@@ -485,43 +485,43 @@ class _ServiceState:
 
     @_builtins.property
     @pulumi.getter
-    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
         """
         return pulumi.get(self, "addresses")
 
     @addresses.setter
-    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="appCategories")
-    def app_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def app_categories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         When `type`==`app_categories`, list of application categories are available through List App Category Definitions
         """
         return pulumi.get(self, "app_categories")
 
     @app_categories.setter
-    def app_categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def app_categories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_categories", value)
 
     @_builtins.property
     @pulumi.getter(name="appSubcategories")
-    def app_subcategories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def app_subcategories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         When `type`==`app_categories`, list of application categories are available through List App Sub Category Definitions
         """
         return pulumi.get(self, "app_subcategories")
 
     @app_subcategories.setter
-    def app_subcategories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def app_subcategories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_subcategories", value)
 
     @_builtins.property
     @pulumi.getter
-    def apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def apps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         When `type`==`apps`, list of applications are available through:
           * List Applications
@@ -531,223 +531,223 @@ class _ServiceState:
         return pulumi.get(self, "apps")
 
     @apps.setter
-    def apps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def apps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "apps", value)
 
     @_builtins.property
     @pulumi.getter(name="clientLimitDown")
-    def client_limit_down(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def client_limit_down(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         0 means unlimited, value from 0 to 107374182
         """
         return pulumi.get(self, "client_limit_down")
 
     @client_limit_down.setter
-    def client_limit_down(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def client_limit_down(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_limit_down", value)
 
     @_builtins.property
     @pulumi.getter(name="clientLimitUp")
-    def client_limit_up(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def client_limit_up(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         0 means unlimited, value from 0 to 107374182
         """
         return pulumi.get(self, "client_limit_up")
 
     @client_limit_up.setter
-    def client_limit_up(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def client_limit_up(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_limit_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def dscp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dscp(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dscp")
 
     @dscp.setter
-    def dscp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dscp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dscp", value)
 
     @_builtins.property
     @pulumi.getter(name="failoverPolicy")
-    def failover_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failover_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `non_revertible`, `none`, `revertible`
         """
         return pulumi.get(self, "failover_policy")
 
     @failover_policy.setter
-    def failover_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failover_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failover_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def hostnames(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`custom`, web filtering
         """
         return pulumi.get(self, "hostnames")
 
     @hostnames.setter
-    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def hostnames(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "hostnames", value)
 
     @_builtins.property
     @pulumi.getter(name="maxJitter")
-    def max_jitter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_jitter(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "max_jitter")
 
     @max_jitter.setter
-    def max_jitter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_jitter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_jitter", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLatency")
-    def max_latency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_latency(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "max_latency")
 
     @max_latency.setter
-    def max_latency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_latency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_latency", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLoss")
-    def max_loss(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_loss(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "max_loss")
 
     @max_loss.setter
-    def max_loss(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_loss(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_loss", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceLimitDown")
-    def service_limit_down(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_limit_down(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         0 means unlimited, value from 0 to 107374182
         """
         return pulumi.get(self, "service_limit_down")
 
     @service_limit_down.setter
-    def service_limit_down(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_limit_down(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_limit_down", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceLimitUp")
-    def service_limit_up(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_limit_up(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         0 means unlimited, value from 0 to 107374182
         """
         return pulumi.get(self, "service_limit_up")
 
     @service_limit_up.setter
-    def service_limit_up(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_limit_up(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_limit_up", value)
 
     @_builtins.property
     @pulumi.getter(name="sleEnabled")
-    def sle_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sle_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable measure SLE
         """
         return pulumi.get(self, "sle_enabled")
 
     @sle_enabled.setter
-    def sle_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sle_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sle_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]]]:
+    def specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceSpecArgs']]]]:
         """
         When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         """
         return pulumi.get(self, "specs")
 
     @specs.setter
-    def specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceSpecArgs']]]]):
+    def specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceSpecArgs']]]]):
         pulumi.set(self, "specs", value)
 
     @_builtins.property
     @pulumi.getter(name="ssrRelaxedTcpStateEnforcement")
-    def ssr_relaxed_tcp_state_enforcement(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ssr_relaxed_tcp_state_enforcement(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "ssr_relaxed_tcp_state_enforcement")
 
     @ssr_relaxed_tcp_state_enforcement.setter
-    def ssr_relaxed_tcp_state_enforcement(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ssr_relaxed_tcp_state_enforcement(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ssr_relaxed_tcp_state_enforcement", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficClass")
-    def traffic_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
         """
         return pulumi.get(self, "traffic_class")
 
     @traffic_class.setter
-    def traffic_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_class", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficType")
-    def traffic_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         values from List Traffic Types
         """
         return pulumi.get(self, "traffic_type")
 
     @traffic_type.setter
-    def traffic_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `app_categories`, `apps`, `custom`, `urls`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         When `type`==`urls`, no need for spec as URL can encode the ports being used
         """
         return pulumi.get(self, "urls")
 
     @urls.setter
-    def urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "urls", value)
 
 
@@ -757,30 +757,30 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_subcategories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 apps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 client_limit_down: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_limit_up: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dscp: Optional[pulumi.Input[_builtins.str]] = None,
-                 failover_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_jitter: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_latency: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_loss: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_limit_down: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_limit_up: Optional[pulumi.Input[_builtins.int]] = None,
-                 sle_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
-                 ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 traffic_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_subcategories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 apps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dscp: pulumi.Input[Optional[_builtins.str]] = None,
+                 failover_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_jitter: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_latency: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_loss: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
+                 sle_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
+                 ssr_relaxed_tcp_state_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
+                 traffic_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         This resource manages WAN Assurance Services (Applications).
@@ -903,30 +903,30 @@ class Service(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_subcategories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 apps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 client_limit_down: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_limit_up: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dscp: Optional[pulumi.Input[_builtins.str]] = None,
-                 failover_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_jitter: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_latency: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_loss: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_limit_down: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_limit_up: Optional[pulumi.Input[_builtins.int]] = None,
-                 sle_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
-                 ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 traffic_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_subcategories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 apps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dscp: pulumi.Input[Optional[_builtins.str]] = None,
+                 failover_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_jitter: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_latency: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_loss: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
+                 sle_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
+                 ssr_relaxed_tcp_state_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
+                 traffic_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -972,30 +972,30 @@ class Service(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            app_categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            app_subcategories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            apps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            client_limit_down: Optional[pulumi.Input[_builtins.int]] = None,
-            client_limit_up: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dscp: Optional[pulumi.Input[_builtins.str]] = None,
-            failover_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            max_jitter: Optional[pulumi.Input[_builtins.str]] = None,
-            max_latency: Optional[pulumi.Input[_builtins.str]] = None,
-            max_loss: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_limit_down: Optional[pulumi.Input[_builtins.int]] = None,
-            service_limit_up: Optional[pulumi.Input[_builtins.int]] = None,
-            sle_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
-            ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[_builtins.bool]] = None,
-            traffic_class: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic_type: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Service':
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_subcategories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            apps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            client_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
+            client_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dscp: pulumi.Input[Optional[_builtins.str]] = None,
+            failover_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            max_jitter: pulumi.Input[Optional[_builtins.str]] = None,
+            max_latency: pulumi.Input[Optional[_builtins.str]] = None,
+            max_loss: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_limit_down: pulumi.Input[Optional[_builtins.int]] = None,
+            service_limit_up: pulumi.Input[Optional[_builtins.int]] = None,
+            sle_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
+            ssr_relaxed_tcp_state_enforcement: pulumi.Input[Optional[_builtins.bool]] = None,
+            traffic_class: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_type: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

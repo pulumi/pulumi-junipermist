@@ -21,10 +21,10 @@ class NacPortalTemplateArgs:
     def __init__(__self__, *,
                  nacportal_id: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
-                 alignment: Optional[pulumi.Input[_builtins.str]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 logo: Optional[pulumi.Input[_builtins.str]] = None,
-                 powered_by: Optional[pulumi.Input[_builtins.bool]] = None):
+                 alignment: pulumi.Input[Optional[_builtins.str]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 logo: pulumi.Input[Optional[_builtins.str]] = None,
+                 powered_by: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a NacPortalTemplate resource.
 
@@ -67,59 +67,59 @@ class NacPortalTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alignment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alignment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         defines alignment on portal. enum: `center`, `left`, `right`
         """
         return pulumi.get(self, "alignment")
 
     @alignment.setter
-    def alignment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alignment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alignment", value)
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def logo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
         """
         return pulumi.get(self, "logo")
 
     @logo.setter
-    def logo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logo", value)
 
     @_builtins.property
     @pulumi.getter(name="poweredBy")
-    def powered_by(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def powered_by(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to hide "Powered by Juniper Mist" and email footers
         """
         return pulumi.get(self, "powered_by")
 
     @powered_by.setter
-    def powered_by(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def powered_by(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "powered_by", value)
 
 
 @pulumi.input_type
 class _NacPortalTemplateState:
     def __init__(__self__, *,
-                 alignment: Optional[pulumi.Input[_builtins.str]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 logo: Optional[pulumi.Input[_builtins.str]] = None,
-                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 powered_by: Optional[pulumi.Input[_builtins.bool]] = None):
+                 alignment: pulumi.Input[Optional[_builtins.str]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 logo: pulumi.Input[Optional[_builtins.str]] = None,
+                 nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 powered_by: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering NacPortalTemplate resources.
 
@@ -143,68 +143,68 @@ class _NacPortalTemplateState:
 
     @_builtins.property
     @pulumi.getter
-    def alignment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alignment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         defines alignment on portal. enum: `center`, `left`, `right`
         """
         return pulumi.get(self, "alignment")
 
     @alignment.setter
-    def alignment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alignment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alignment", value)
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def logo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
         """
         return pulumi.get(self, "logo")
 
     @logo.setter
-    def logo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logo", value)
 
     @_builtins.property
     @pulumi.getter(name="nacportalId")
-    def nacportal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nacportal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Org NAC Portal ID
         """
         return pulumi.get(self, "nacportal_id")
 
     @nacportal_id.setter
-    def nacportal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nacportal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nacportal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="poweredBy")
-    def powered_by(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def powered_by(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to hide "Powered by Juniper Mist" and email footers
         """
         return pulumi.get(self, "powered_by")
 
     @powered_by.setter
-    def powered_by(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def powered_by(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "powered_by", value)
 
 
@@ -214,12 +214,12 @@ class NacPortalTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alignment: Optional[pulumi.Input[_builtins.str]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 logo: Optional[pulumi.Input[_builtins.str]] = None,
-                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 powered_by: Optional[pulumi.Input[_builtins.bool]] = None,
+                 alignment: pulumi.Input[Optional[_builtins.str]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 logo: pulumi.Input[Optional[_builtins.str]] = None,
+                 nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 powered_by: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         This resource is used to customize the NAC Portal.
@@ -337,12 +337,12 @@ class NacPortalTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alignment: Optional[pulumi.Input[_builtins.str]] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 logo: Optional[pulumi.Input[_builtins.str]] = None,
-                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 powered_by: Optional[pulumi.Input[_builtins.bool]] = None,
+                 alignment: pulumi.Input[Optional[_builtins.str]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 logo: pulumi.Input[Optional[_builtins.str]] = None,
+                 nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 powered_by: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -372,12 +372,12 @@ class NacPortalTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alignment: Optional[pulumi.Input[_builtins.str]] = None,
-            color: Optional[pulumi.Input[_builtins.str]] = None,
-            logo: Optional[pulumi.Input[_builtins.str]] = None,
-            nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            powered_by: Optional[pulumi.Input[_builtins.bool]] = None) -> 'NacPortalTemplate':
+            alignment: pulumi.Input[Optional[_builtins.str]] = None,
+            color: pulumi.Input[Optional[_builtins.str]] = None,
+            logo: pulumi.Input[Optional[_builtins.str]] = None,
+            nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            powered_by: pulumi.Input[Optional[_builtins.bool]] = None) -> 'NacPortalTemplate':
         """
         Get an existing NacPortalTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -192,16 +192,16 @@ export interface NactagState {
     /**
      * Can be set to true to allow the override by usermac result
      */
-    allowUsermacOverride?: pulumi.Input<boolean>;
+    allowUsermacOverride?: pulumi.Input<boolean | undefined>;
     /**
      * If `type`==`egressVlanNames`, list of egress vlans to return
      */
-    egressVlanNames?: pulumi.Input<pulumi.Input<string>[]>;
-    gbpTag?: pulumi.Input<string>;
+    egressVlanNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    gbpTag?: pulumi.Input<string | undefined>;
     /**
      * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      */
-    match?: pulumi.Input<string>;
+    match?: pulumi.Input<string | undefined>;
     /**
      * This field is applicable only when `type`==`match`
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -210,49 +210,49 @@ export interface NactagState {
      *
      * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      */
-    matchAll?: pulumi.Input<boolean>;
+    matchAll?: pulumi.Input<boolean | undefined>;
     /**
      * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
      */
-    nacportalId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    nacportalId?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". 
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
      * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
      */
-    radiusAttrs?: pulumi.Input<pulumi.Input<string>[]>;
+    radiusAttrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If `type`==`radiusGroup`
      */
-    radiusGroup?: pulumi.Input<string>;
+    radiusGroup?: pulumi.Input<string | undefined>;
     /**
      * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs". 
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
      * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
      */
-    radiusVendorAttrs?: pulumi.Input<pulumi.Input<string>[]>;
+    radiusVendorAttrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If `type`==`session_timeout, in seconds
      */
-    sessionTimeout?: pulumi.Input<number>;
+    sessionTimeout?: pulumi.Input<number | undefined>;
     /**
      * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * enum: `automatic`, `cn`, `dns`, `email`, `upn`
      */
-    usernameAttr?: pulumi.Input<string>;
+    usernameAttr?: pulumi.Input<string | undefined>;
     /**
      * If `type`==`match`
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If `type`==`vlan`
      */
-    vlan?: pulumi.Input<string>;
+    vlan?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -262,16 +262,16 @@ export interface NactagArgs {
     /**
      * Can be set to true to allow the override by usermac result
      */
-    allowUsermacOverride?: pulumi.Input<boolean>;
+    allowUsermacOverride?: pulumi.Input<boolean | undefined>;
     /**
      * If `type`==`egressVlanNames`, list of egress vlans to return
      */
-    egressVlanNames?: pulumi.Input<pulumi.Input<string>[]>;
-    gbpTag?: pulumi.Input<string>;
+    egressVlanNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    gbpTag?: pulumi.Input<string | undefined>;
     /**
      * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
      */
-    match?: pulumi.Input<string>;
+    match?: pulumi.Input<string | undefined>;
     /**
      * This field is applicable only when `type`==`match`
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -280,33 +280,33 @@ export interface NactagArgs {
      *
      * Currently it makes sense to set this field to `true` only if the `match`==`idpRole`, `match`==`usermacLabel` and `edrStatus`
      */
-    matchAll?: pulumi.Input<boolean>;
+    matchAll?: pulumi.Input<boolean | undefined>;
     /**
      * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
      */
-    nacportalId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    nacportalId?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". 
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
      * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
      */
-    radiusAttrs?: pulumi.Input<pulumi.Input<string>[]>;
+    radiusAttrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If `type`==`radiusGroup`
      */
-    radiusGroup?: pulumi.Input<string>;
+    radiusGroup?: pulumi.Input<string | undefined>;
     /**
      * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs". 
      * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
      * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
      */
-    radiusVendorAttrs?: pulumi.Input<pulumi.Input<string>[]>;
+    radiusVendorAttrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If `type`==`session_timeout, in seconds
      */
-    sessionTimeout?: pulumi.Input<number>;
+    sessionTimeout?: pulumi.Input<number | undefined>;
     /**
      * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
      */
@@ -314,13 +314,13 @@ export interface NactagArgs {
     /**
      * enum: `automatic`, `cn`, `dns`, `email`, `upn`
      */
-    usernameAttr?: pulumi.Input<string>;
+    usernameAttr?: pulumi.Input<string | undefined>;
     /**
      * If `type`==`match`
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If `type`==`vlan`
      */
-    vlan?: pulumi.Input<string>;
+    vlan?: pulumi.Input<string | undefined>;
 }

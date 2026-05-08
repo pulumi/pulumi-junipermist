@@ -80,10 +80,10 @@ class ImageArgs:
 @pulumi.input_type
 class _ImageState:
     def __init__(__self__, *,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Image resources.
 
@@ -101,44 +101,44 @@ class _ImageState:
 
     @_builtins.property
     @pulumi.getter(name="deviceId")
-    def device_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "device_id")
 
     @device_id.setter
-    def device_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
         """
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter(name="imageNumber")
-    def image_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def image_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         number of the image, between 1 and 3
         """
         return pulumi.get(self, "image_number")
 
     @image_number.setter
-    def image_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def image_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "image_number", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
 
@@ -148,10 +148,10 @@ class Image(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource is used to upload a Device picture.
@@ -195,10 +195,10 @@ class Image(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -230,10 +230,10 @@ class Image(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            device_id: Optional[pulumi.Input[_builtins.str]] = None,
-            file: Optional[pulumi.Input[_builtins.str]] = None,
-            image_number: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Image':
+            device_id: pulumi.Input[Optional[_builtins.str]] = None,
+            file: pulumi.Input[Optional[_builtins.str]] = None,
+            image_number: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

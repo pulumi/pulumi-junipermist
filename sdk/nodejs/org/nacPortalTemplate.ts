@@ -143,21 +143,21 @@ export interface NacPortalTemplateState {
     /**
      * defines alignment on portal. enum: `center`, `left`, `right`
      */
-    alignment?: pulumi.Input<string>;
-    color?: pulumi.Input<string>;
+    alignment?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
      */
-    logo?: pulumi.Input<string>;
+    logo?: pulumi.Input<string | undefined>;
     /**
      * Org NAC Portal ID
      */
-    nacportalId?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    nacportalId?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Whether to hide "Powered by Juniper Mist" and email footers
      */
-    poweredBy?: pulumi.Input<boolean>;
+    poweredBy?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -167,12 +167,12 @@ export interface NacPortalTemplateArgs {
     /**
      * defines alignment on portal. enum: `center`, `left`, `right`
      */
-    alignment?: pulumi.Input<string>;
-    color?: pulumi.Input<string>;
+    alignment?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
      */
-    logo?: pulumi.Input<string>;
+    logo?: pulumi.Input<string | undefined>;
     /**
      * Org NAC Portal ID
      */
@@ -181,5 +181,5 @@ export interface NacPortalTemplateArgs {
     /**
      * Whether to hide "Powered by Juniper Mist" and email footers
      */
-    poweredBy?: pulumi.Input<boolean>;
+    poweredBy?: pulumi.Input<boolean | undefined>;
 }

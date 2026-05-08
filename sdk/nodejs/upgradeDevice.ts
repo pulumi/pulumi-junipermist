@@ -198,63 +198,63 @@ export class UpgradeDevice extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UpgradeDevice resources.
  */
 export interface UpgradeDeviceState {
-    autoUpgradeStat?: pulumi.Input<inputs.UpgradeDeviceAutoUpgradeStat>;
-    configTimestamp?: pulumi.Input<number>;
-    configVersion?: pulumi.Input<number>;
-    deviceId?: pulumi.Input<string>;
+    autoUpgradeStat?: pulumi.Input<inputs.UpgradeDeviceAutoUpgradeStat | undefined>;
+    configTimestamp?: pulumi.Input<number | undefined>;
+    configVersion?: pulumi.Input<number | undefined>;
+    deviceId?: pulumi.Input<string | undefined>;
     /**
      * current device firmware version
      */
-    deviceVersion?: pulumi.Input<string>;
-    extIp?: pulumi.Input<string>;
-    fwupdate?: pulumi.Input<inputs.UpgradeDeviceFwupdate>;
+    deviceVersion?: pulumi.Input<string | undefined>;
+    extIp?: pulumi.Input<string | undefined>;
+    fwupdate?: pulumi.Input<inputs.UpgradeDeviceFwupdate | undefined>;
     /**
      * For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
      */
-    reboot?: pulumi.Input<boolean>;
+    reboot?: pulumi.Input<boolean | undefined>;
     /**
      * For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
      */
-    rebootAt?: pulumi.Input<number>;
-    siteId?: pulumi.Input<string>;
+    rebootAt?: pulumi.Input<number | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * For Junos devices only. Perform recovery snapshot after device is rebooted
      */
-    snapshot?: pulumi.Input<boolean>;
+    snapshot?: pulumi.Input<boolean | undefined>;
     /**
      * Firmware download start time in epoch
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
      */
-    syncUpgrade?: pulumi.Input<boolean>;
+    syncUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * if set to `syncUpgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
      */
-    syncUpgradeRefreshInterval?: pulumi.Input<number>;
+    syncUpgradeRefreshInterval?: pulumi.Input<number | undefined>;
     /**
      * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
      */
-    syncUpgradeStartTimeout?: pulumi.Input<number>;
+    syncUpgradeStartTimeout?: pulumi.Input<number | undefined>;
     /**
      * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
      */
-    syncUpgradeTimeout?: pulumi.Input<number>;
-    tagId?: pulumi.Input<number>;
-    tagUuid?: pulumi.Input<string>;
+    syncUpgradeTimeout?: pulumi.Input<number | undefined>;
+    tagId?: pulumi.Input<number | undefined>;
+    tagUuid?: pulumi.Input<string | undefined>;
     /**
      * firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions
      */
-    targetVersion?: pulumi.Input<string>;
+    targetVersion?: pulumi.Input<string | undefined>;
     /**
      * Epoch (seconds)
      */
-    timestamp?: pulumi.Input<number>;
+    timestamp?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -265,36 +265,36 @@ export interface UpgradeDeviceArgs {
     /**
      * For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
      */
-    reboot?: pulumi.Input<boolean>;
+    reboot?: pulumi.Input<boolean | undefined>;
     /**
      * For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
      */
-    rebootAt?: pulumi.Input<number>;
+    rebootAt?: pulumi.Input<number | undefined>;
     siteId: pulumi.Input<string>;
     /**
      * For Junos devices only. Perform recovery snapshot after device is rebooted
      */
-    snapshot?: pulumi.Input<boolean>;
+    snapshot?: pulumi.Input<boolean | undefined>;
     /**
      * Firmware download start time in epoch
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`
      */
-    syncUpgrade?: pulumi.Input<boolean>;
+    syncUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * if set to `syncUpgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15
      */
-    syncUpgradeRefreshInterval?: pulumi.Input<number>;
+    syncUpgradeRefreshInterval?: pulumi.Input<number | undefined>;
     /**
      * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60
      */
-    syncUpgradeStartTimeout?: pulumi.Input<number>;
+    syncUpgradeStartTimeout?: pulumi.Input<number | undefined>;
     /**
      * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
      */
-    syncUpgradeTimeout?: pulumi.Input<number>;
+    syncUpgradeTimeout?: pulumi.Input<number | undefined>;
     /**
      * firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions
      */

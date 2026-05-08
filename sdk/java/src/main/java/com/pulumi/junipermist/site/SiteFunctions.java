@@ -40,8 +40,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetEvpnTopologiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -82,8 +82,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetEvpnTopologiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -124,8 +124,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetEvpnTopologiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -166,8 +166,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetEvpnTopologiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -208,8 +208,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetEvpnTopologiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -253,8 +253,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetPsksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -301,8 +301,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetPsksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -349,8 +349,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetPsksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -397,8 +397,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetPsksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -445,8 +445,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetPsksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -492,8 +492,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -536,8 +536,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -580,8 +580,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -624,8 +624,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -668,8 +668,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetWebhooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -710,8 +710,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetWlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -752,8 +752,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetWlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -794,8 +794,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetWlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -836,8 +836,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetWlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -878,8 +878,8 @@ public final class SiteFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.site.SiteFunctions;
      * import com.pulumi.junipermist.site.inputs.GetWlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

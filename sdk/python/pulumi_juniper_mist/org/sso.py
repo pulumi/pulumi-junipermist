@@ -24,14 +24,14 @@ class SsoArgs:
                  idp_sso_url: pulumi.Input[_builtins.str],
                  issuer: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
-                 custom_logout_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_unmatched_roles: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nameid_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_attr_extraction: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_attr_from: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_unmatched_roles: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nameid_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_attr_extraction: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_attr_from: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Sso resource.
 
@@ -129,118 +129,118 @@ class SsoArgs:
 
     @_builtins.property
     @pulumi.getter(name="customLogoutUrl")
-    def custom_logout_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_logout_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
         """
         return pulumi.get(self, "custom_logout_url")
 
     @custom_logout_url.setter
-    def custom_logout_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_logout_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_logout_url", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRole")
-    def default_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         """
         return pulumi.get(self, "default_role")
 
     @default_role.setter
-    def default_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_role", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreUnmatchedRoles")
-    def ignore_unmatched_roles(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_unmatched_roles(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         ignore any unmatched roles provided in assertion. By default, an assertion is treated as invalid for any unmatched role
         """
         return pulumi.get(self, "ignore_unmatched_roles")
 
     @ignore_unmatched_roles.setter
-    def ignore_unmatched_roles(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_unmatched_roles(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_unmatched_roles", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nameidFormat")
-    def nameid_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nameid_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `email`, `unspecified`
         """
         return pulumi.get(self, "nameid_format")
 
     @nameid_format.setter
-    def nameid_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nameid_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nameid_format", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthProviderDomain")
-    def oauth_provider_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_provider_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
         """
         return pulumi.get(self, "oauth_provider_domain")
 
     @oauth_provider_domain.setter
-    def oauth_provider_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_provider_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_provider_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="roleAttrExtraction")
-    def role_attr_extraction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_attr_extraction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         """
         return pulumi.get(self, "role_attr_extraction")
 
     @role_attr_extraction.setter
-    def role_attr_extraction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_attr_extraction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_attr_extraction", value)
 
     @_builtins.property
     @pulumi.getter(name="roleAttrFrom")
-    def role_attr_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_attr_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
         return pulumi.get(self, "role_attr_from")
 
     @role_attr_from.setter
-    def role_attr_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_attr_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_attr_from", value)
 
 
 @pulumi.input_type
 class _SsoState:
     def __init__(__self__, *,
-                 custom_logout_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_sign_algo: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_sso_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_unmatched_roles: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nameid_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_attr_extraction: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_attr_from: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_sign_algo: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_sso_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_unmatched_roles: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nameid_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_attr_extraction: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_attr_from: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Sso resources.
 
@@ -291,31 +291,31 @@ class _SsoState:
 
     @_builtins.property
     @pulumi.getter(name="customLogoutUrl")
-    def custom_logout_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_logout_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
         """
         return pulumi.get(self, "custom_logout_url")
 
     @custom_logout_url.setter
-    def custom_logout_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_logout_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_logout_url", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRole")
-    def default_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         """
         return pulumi.get(self, "default_role")
 
     @default_role.setter
-    def default_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_role", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Random string generated during the SSO creation and used to generate the SAML URLs:
           * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
@@ -324,136 +324,136 @@ class _SsoState:
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="idpCert")
-    def idp_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def idp_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IDP Cert (used to verify the signed response)
         """
         return pulumi.get(self, "idp_cert")
 
     @idp_cert.setter
-    def idp_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def idp_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "idp_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="idpSignAlgo")
-    def idp_sign_algo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def idp_sign_algo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Signing algorithm for SAML Assertion. enum `sha1`, `sha256`, `sha384`, `sha512`
         """
         return pulumi.get(self, "idp_sign_algo")
 
     @idp_sign_algo.setter
-    def idp_sign_algo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def idp_sign_algo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "idp_sign_algo", value)
 
     @_builtins.property
     @pulumi.getter(name="idpSsoUrl")
-    def idp_sso_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def idp_sso_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IDP Single-Sign-On URL
         """
         return pulumi.get(self, "idp_sso_url")
 
     @idp_sso_url.setter
-    def idp_sso_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def idp_sso_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "idp_sso_url", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreUnmatchedRoles")
-    def ignore_unmatched_roles(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_unmatched_roles(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         ignore any unmatched roles provided in assertion. By default, an assertion is treated as invalid for any unmatched role
         """
         return pulumi.get(self, "ignore_unmatched_roles")
 
     @ignore_unmatched_roles.setter
-    def ignore_unmatched_roles(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_unmatched_roles(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_unmatched_roles", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IDP issuer URL
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nameidFormat")
-    def nameid_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nameid_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `email`, `unspecified`
         """
         return pulumi.get(self, "nameid_format")
 
     @nameid_format.setter
-    def nameid_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nameid_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nameid_format", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthProviderDomain")
-    def oauth_provider_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_provider_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
         """
         return pulumi.get(self, "oauth_provider_domain")
 
     @oauth_provider_domain.setter
-    def oauth_provider_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_provider_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_provider_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleAttrExtraction")
-    def role_attr_extraction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_attr_extraction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         """
         return pulumi.get(self, "role_attr_extraction")
 
     @role_attr_extraction.setter
-    def role_attr_extraction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_attr_extraction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_attr_extraction", value)
 
     @_builtins.property
     @pulumi.getter(name="roleAttrFrom")
-    def role_attr_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_attr_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
         return pulumi.get(self, "role_attr_from")
 
     @role_attr_from.setter
-    def role_attr_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_attr_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_attr_from", value)
 
 
@@ -463,19 +463,19 @@ class Sso(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_logout_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_sign_algo: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_sso_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_unmatched_roles: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nameid_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_attr_extraction: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_attr_from: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_sign_algo: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_sso_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_unmatched_roles: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nameid_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_attr_extraction: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_attr_from: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource manages Org SSO Configuration.
@@ -581,19 +581,19 @@ class Sso(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_logout_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_sign_algo: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_sso_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_unmatched_roles: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nameid_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_attr_extraction: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_attr_from: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_sign_algo: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_sso_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_unmatched_roles: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nameid_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_attr_extraction: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_attr_from: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -637,20 +637,20 @@ class Sso(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            custom_logout_url: Optional[pulumi.Input[_builtins.str]] = None,
-            default_role: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            idp_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            idp_sign_algo: Optional[pulumi.Input[_builtins.str]] = None,
-            idp_sso_url: Optional[pulumi.Input[_builtins.str]] = None,
-            ignore_unmatched_roles: Optional[pulumi.Input[_builtins.bool]] = None,
-            issuer: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nameid_format: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_attr_extraction: Optional[pulumi.Input[_builtins.str]] = None,
-            role_attr_from: Optional[pulumi.Input[_builtins.str]] = None) -> 'Sso':
+            custom_logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+            default_role: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            idp_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            idp_sign_algo: pulumi.Input[Optional[_builtins.str]] = None,
+            idp_sso_url: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_unmatched_roles: pulumi.Input[Optional[_builtins.bool]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nameid_format: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_attr_extraction: pulumi.Input[Optional[_builtins.str]] = None,
+            role_attr_from: pulumi.Input[Optional[_builtins.str]] = None) -> 'Sso':
         """
         Get an existing Sso resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

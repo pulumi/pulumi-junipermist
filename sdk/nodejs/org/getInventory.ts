@@ -167,34 +167,34 @@ export interface GetInventoryOutputArgs {
     /**
      * MAC address
      */
-    mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
     /**
      * Device model
      */
-    model?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * Device serial
      */
-    serial?: pulumi.Input<string>;
+    serial?: pulumi.Input<string | undefined>;
     /**
      * Site id if assigned, null if not assigned
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * enum: `ap`, `gateway`, `switch`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * To display Unassigned devices
      */
-    unassigned?: pulumi.Input<boolean>;
+    unassigned?: pulumi.Input<boolean | undefined>;
     /**
      * To display Virtual Chassis members
      */
-    vc?: pulumi.Input<boolean>;
+    vc?: pulumi.Input<boolean | undefined>;
     /**
      * Virtual Chassis MAC Address
      */
-    vcMac?: pulumi.Input<string>;
+    vcMac?: pulumi.Input<string | undefined>;
 }

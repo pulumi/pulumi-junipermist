@@ -22,20 +22,20 @@ class PskArgs:
                  org_id: pulumi.Input[_builtins.str],
                  passphrase: pulumi.Input[_builtins.str],
                  ssid: pulumi.Input[_builtins.str],
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiry_notification_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 macs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_usage: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_on_create_or_edit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 old_passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 macs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_usage: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_on_create_or_edit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 old_passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Psk resource.
 
@@ -119,181 +119,181 @@ class PskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         email to send psk expiring notifications to
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="expiryNotificationTime")
-    def expiry_notification_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiry_notification_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
         """
         return pulumi.get(self, "expiry_notification_time")
 
     @expiry_notification_time.setter
-    def expiry_notification_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiry_notification_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiry_notification_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def mac(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         """
         return pulumi.get(self, "mac")
 
     @mac.setter
-    def mac(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac", value)
 
     @_builtins.property
     @pulumi.getter
-    def macs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def macs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         """
         return pulumi.get(self, "macs")
 
     @macs.setter
-    def macs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def macs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "macs", value)
 
     @_builtins.property
     @pulumi.getter(name="maxUsage")
-    def max_usage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_usage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
         """
         return pulumi.get(self, "max_usage")
 
     @max_usage.setter
-    def max_usage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_usage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_usage", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def note(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "note")
 
     @note.setter
-    def note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "note", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyExpiry")
-    def notify_expiry(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_expiry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, reminder notification will be sent when psk is about to expire
         """
         return pulumi.get(self, "notify_expiry")
 
     @notify_expiry.setter
-    def notify_expiry(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_expiry(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnCreateOrEdit")
-    def notify_on_create_or_edit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_on_create_or_edit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, notification will be sent when psk is created or edited
         """
         return pulumi.get(self, "notify_on_create_or_edit")
 
     @notify_on_create_or_edit.setter
-    def notify_on_create_or_edit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_on_create_or_edit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_on_create_or_edit", value)
 
     @_builtins.property
     @pulumi.getter(name="oldPassphrase")
-    def old_passphrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def old_passphrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         previous passphrase of the PSK if it has been rotated
         """
         return pulumi.get(self, "old_passphrase")
 
     @old_passphrase.setter
-    def old_passphrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def old_passphrase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "old_passphrase", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `macs`, `multi`, `single`
         """
         return pulumi.get(self, "usage")
 
     @usage.setter
-    def usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vlan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
-    def vlan_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vlan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vlan_id", value)
 
 
 @pulumi.input_type
 class _PskState:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiry_notification_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 macs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_usage: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_on_create_or_edit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 old_passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssid: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 macs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_usage: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_on_create_or_edit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 old_passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssid: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Psk resources.
 
@@ -347,191 +347,191 @@ class _PskState:
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         email to send psk expiring notifications to
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="expiryNotificationTime")
-    def expiry_notification_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiry_notification_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
         """
         return pulumi.get(self, "expiry_notification_time")
 
     @expiry_notification_time.setter
-    def expiry_notification_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiry_notification_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiry_notification_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def mac(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
         """
         return pulumi.get(self, "mac")
 
     @mac.setter
-    def mac(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac", value)
 
     @_builtins.property
     @pulumi.getter
-    def macs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def macs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
         """
         return pulumi.get(self, "macs")
 
     @macs.setter
-    def macs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def macs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "macs", value)
 
     @_builtins.property
     @pulumi.getter(name="maxUsage")
-    def max_usage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_usage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
         """
         return pulumi.get(self, "max_usage")
 
     @max_usage.setter
-    def max_usage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_usage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_usage", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def note(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "note")
 
     @note.setter
-    def note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "note", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyExpiry")
-    def notify_expiry(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_expiry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, reminder notification will be sent when psk is about to expire
         """
         return pulumi.get(self, "notify_expiry")
 
     @notify_expiry.setter
-    def notify_expiry(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_expiry(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnCreateOrEdit")
-    def notify_on_create_or_edit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_on_create_or_edit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, notification will be sent when psk is created or edited
         """
         return pulumi.get(self, "notify_on_create_or_edit")
 
     @notify_on_create_or_edit.setter
-    def notify_on_create_or_edit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_on_create_or_edit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_on_create_or_edit", value)
 
     @_builtins.property
     @pulumi.getter(name="oldPassphrase")
-    def old_passphrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def old_passphrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         previous passphrase of the PSK if it has been rotated
         """
         return pulumi.get(self, "old_passphrase")
 
     @old_passphrase.setter
-    def old_passphrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def old_passphrase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "old_passphrase", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def passphrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def passphrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         passphrase of the PSK (8-63 character or 64 in hex)
         """
         return pulumi.get(self, "passphrase")
 
     @passphrase.setter
-    def passphrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def passphrase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "passphrase", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SSID this PSK should be applicable to
         """
         return pulumi.get(self, "ssid")
 
     @ssid.setter
-    def ssid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssid", value)
 
     @_builtins.property
     @pulumi.getter
-    def usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `macs`, `multi`, `single`
         """
         return pulumi.get(self, "usage")
 
     @usage.setter
-    def usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vlan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
-    def vlan_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vlan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vlan_id", value)
 
 
@@ -541,23 +541,23 @@ class Psk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiry_notification_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 macs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_usage: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_on_create_or_edit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 old_passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssid: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 macs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_usage: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_on_create_or_edit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 old_passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssid: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This data source provides the list of Org PSKs.
@@ -669,23 +669,23 @@ class Psk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiry_notification_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 macs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_usage: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_on_create_or_edit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 old_passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssid: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 macs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_usage: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_on_create_or_edit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 old_passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssid: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -730,23 +730,23 @@ class Psk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-            expiry_notification_time: Optional[pulumi.Input[_builtins.int]] = None,
-            mac: Optional[pulumi.Input[_builtins.str]] = None,
-            macs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            max_usage: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            note: Optional[pulumi.Input[_builtins.str]] = None,
-            notify_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-            notify_on_create_or_edit: Optional[pulumi.Input[_builtins.bool]] = None,
-            old_passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            ssid: Optional[pulumi.Input[_builtins.str]] = None,
-            usage: Optional[pulumi.Input[_builtins.str]] = None,
-            vlan_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Psk':
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+            expiry_notification_time: pulumi.Input[Optional[_builtins.int]] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            macs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            max_usage: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            note: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+            notify_on_create_or_edit: pulumi.Input[Optional[_builtins.bool]] = None,
+            old_passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            ssid: pulumi.Input[Optional[_builtins.str]] = None,
+            usage: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Psk':
         """
         Get an existing Psk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

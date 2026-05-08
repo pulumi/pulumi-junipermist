@@ -218,69 +218,69 @@ export interface WebhookState {
     /**
      * Whether webhook is enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      */
-    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the webhook
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required when `oauth2GrantType`==`clientCredentials`
      */
-    oauth2ClientId?: pulumi.Input<string>;
+    oauth2ClientId?: pulumi.Input<string | undefined>;
     /**
      * Required when `oauth2GrantType`==`clientCredentials`
      */
-    oauth2ClientSecret?: pulumi.Input<string>;
+    oauth2ClientSecret?: pulumi.Input<string | undefined>;
     /**
      * required when `type`==`oauth2`. enum: `clientCredentials`, `password`
      */
-    oauth2GrantType?: pulumi.Input<string>;
+    oauth2GrantType?: pulumi.Input<string | undefined>;
     /**
      * Required when `oauth2GrantType`==`password`
      */
-    oauth2Password?: pulumi.Input<string>;
+    oauth2Password?: pulumi.Input<string | undefined>;
     /**
      * Required when `type`==`oauth2`, if provided, will be used in the token request
      */
-    oauth2Scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    oauth2Scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required when `type`==`oauth2`
      */
-    oauth2TokenUrl?: pulumi.Input<string>;
+    oauth2TokenUrl?: pulumi.Input<string | undefined>;
     /**
      * Required when `oauth2GrantType`==`password`
      */
-    oauth2Username?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    oauth2Username?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Only if `type`=`http-post`
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
      */
-    singleEventPerMessage?: pulumi.Input<boolean>;
+    singleEventPerMessage?: pulumi.Input<boolean | undefined>;
     /**
      * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      */
-    splunkToken?: pulumi.Input<string>;
+    splunkToken?: pulumi.Input<string | undefined>;
     /**
      * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
      */
-    topics?: pulumi.Input<pulumi.Input<string>[]>;
+    topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
      */
-    type?: pulumi.Input<string>;
-    url?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * When url uses HTTPS, whether to verify the certificate
      */
-    verifyCert?: pulumi.Input<boolean>;
+    verifyCert?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -290,56 +290,56 @@ export interface WebhookArgs {
     /**
      * Whether webhook is enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      */
-    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the webhook
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required when `oauth2GrantType`==`clientCredentials`
      */
-    oauth2ClientId?: pulumi.Input<string>;
+    oauth2ClientId?: pulumi.Input<string | undefined>;
     /**
      * Required when `oauth2GrantType`==`clientCredentials`
      */
-    oauth2ClientSecret?: pulumi.Input<string>;
+    oauth2ClientSecret?: pulumi.Input<string | undefined>;
     /**
      * required when `type`==`oauth2`. enum: `clientCredentials`, `password`
      */
-    oauth2GrantType?: pulumi.Input<string>;
+    oauth2GrantType?: pulumi.Input<string | undefined>;
     /**
      * Required when `oauth2GrantType`==`password`
      */
-    oauth2Password?: pulumi.Input<string>;
+    oauth2Password?: pulumi.Input<string | undefined>;
     /**
      * Required when `type`==`oauth2`, if provided, will be used in the token request
      */
-    oauth2Scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    oauth2Scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required when `type`==`oauth2`
      */
-    oauth2TokenUrl?: pulumi.Input<string>;
+    oauth2TokenUrl?: pulumi.Input<string | undefined>;
     /**
      * Required when `oauth2GrantType`==`password`
      */
-    oauth2Username?: pulumi.Input<string>;
+    oauth2Username?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * Only if `type`=`http-post`
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
      */
-    singleEventPerMessage?: pulumi.Input<boolean>;
+    singleEventPerMessage?: pulumi.Input<boolean | undefined>;
     /**
      * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      */
-    splunkToken?: pulumi.Input<string>;
+    splunkToken?: pulumi.Input<string | undefined>;
     /**
      * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
      */
@@ -347,10 +347,10 @@ export interface WebhookArgs {
     /**
      * enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     url: pulumi.Input<string>;
     /**
      * When url uses HTTPS, whether to verify the certificate
      */
-    verifyCert?: pulumi.Input<boolean>;
+    verifyCert?: pulumi.Input<boolean | undefined>;
 }

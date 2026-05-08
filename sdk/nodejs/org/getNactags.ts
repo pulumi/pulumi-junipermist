@@ -90,8 +90,8 @@ export function getNactagsOutput(args: GetNactagsOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getNactags.
  */
 export interface GetNactagsOutputArgs {
-    match?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    match?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

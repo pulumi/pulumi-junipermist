@@ -19,10 +19,10 @@ __all__ = ['BaseArgs', 'Base']
 @pulumi.input_type
 class BaseArgs:
     def __init__(__self__, *,
-                 alarmtemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_mist: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_expiry: Optional[pulumi.Input[_builtins.int]] = None):
+                 alarmtemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_expiry: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Base resource.
         """
@@ -37,52 +37,52 @@ class BaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="alarmtemplateId")
-    def alarmtemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alarmtemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "alarmtemplate_id")
 
     @alarmtemplate_id.setter
-    def alarmtemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alarmtemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alarmtemplate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowMist")
-    def allow_mist(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_mist(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "allow_mist")
 
     @allow_mist.setter
-    def allow_mist(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_mist(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_mist", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionExpiry")
-    def session_expiry(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_expiry(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "session_expiry")
 
     @session_expiry.setter
-    def session_expiry(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_expiry(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_expiry", value)
 
 
 @pulumi.input_type
 class _BaseState:
     def __init__(__self__, *,
-                 alarmtemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_mist: Optional[pulumi.Input[_builtins.bool]] = None,
-                 msp_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 msp_logo_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 msp_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 orggroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 session_expiry: Optional[pulumi.Input[_builtins.int]] = None):
+                 alarmtemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
+                 msp_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 msp_logo_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 msp_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 orggroup_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 session_expiry: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Base resources.
 
@@ -108,80 +108,80 @@ class _BaseState:
 
     @_builtins.property
     @pulumi.getter(name="alarmtemplateId")
-    def alarmtemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alarmtemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "alarmtemplate_id")
 
     @alarmtemplate_id.setter
-    def alarmtemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alarmtemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alarmtemplate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowMist")
-    def allow_mist(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_mist(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "allow_mist")
 
     @allow_mist.setter
-    def allow_mist(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_mist(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_mist", value)
 
     @_builtins.property
     @pulumi.getter(name="mspId")
-    def msp_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def msp_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "msp_id")
 
     @msp_id.setter
-    def msp_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def msp_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "msp_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mspLogoUrl")
-    def msp_logo_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def msp_logo_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         logo uploaded by the MSP with advanced tier, only present if provided
         """
         return pulumi.get(self, "msp_logo_url")
 
     @msp_logo_url.setter
-    def msp_logo_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def msp_logo_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "msp_logo_url", value)
 
     @_builtins.property
     @pulumi.getter(name="mspName")
-    def msp_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def msp_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the msp the org belongs to
         """
         return pulumi.get(self, "msp_name")
 
     @msp_name.setter
-    def msp_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def msp_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "msp_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orggroupIds")
-    def orggroup_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def orggroup_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "orggroup_ids")
 
     @orggroup_ids.setter
-    def orggroup_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def orggroup_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "orggroup_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionExpiry")
-    def session_expiry(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_expiry(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "session_expiry")
 
     @session_expiry.setter
-    def session_expiry(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_expiry(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_expiry", value)
 
 
@@ -191,10 +191,10 @@ class Base(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alarmtemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_mist: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_expiry: Optional[pulumi.Input[_builtins.int]] = None,
+                 alarmtemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         This resource manages the Mist Organization.
@@ -272,10 +272,10 @@ class Base(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alarmtemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_mist: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_expiry: Optional[pulumi.Input[_builtins.int]] = None,
+                 alarmtemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -303,14 +303,14 @@ class Base(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alarmtemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            allow_mist: Optional[pulumi.Input[_builtins.bool]] = None,
-            msp_id: Optional[pulumi.Input[_builtins.str]] = None,
-            msp_logo_url: Optional[pulumi.Input[_builtins.str]] = None,
-            msp_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            orggroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            session_expiry: Optional[pulumi.Input[_builtins.int]] = None) -> 'Base':
+            alarmtemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
+            msp_id: pulumi.Input[Optional[_builtins.str]] = None,
+            msp_logo_url: pulumi.Input[Optional[_builtins.str]] = None,
+            msp_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            orggroup_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            session_expiry: pulumi.Input[Optional[_builtins.int]] = None) -> 'Base':
         """
         Get an existing Base resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

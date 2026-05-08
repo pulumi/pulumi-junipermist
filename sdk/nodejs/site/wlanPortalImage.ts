@@ -101,12 +101,12 @@ export interface WlanPortalImageState {
     /**
      * path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
      */
-    file?: pulumi.Input<string>;
-    siteId?: pulumi.Input<string>;
+    file?: pulumi.Input<string | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Site WLAN ID
      */
-    wlanId?: pulumi.Input<string>;
+    wlanId?: pulumi.Input<string | undefined>;
 }
 
 /**

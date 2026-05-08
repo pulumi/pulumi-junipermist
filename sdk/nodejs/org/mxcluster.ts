@@ -339,50 +339,50 @@ export interface MxclusterState {
     /**
      * Configure cloud-assisted dynamic authorization service on this cluster of mist edges
      */
-    mistDas?: pulumi.Input<inputs.org.MxclusterMistDas>;
-    mistNac?: pulumi.Input<inputs.org.MxclusterMistNac>;
-    mxedgeMgmt?: pulumi.Input<inputs.org.MxclusterMxedgeMgmt>;
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    mistDas?: pulumi.Input<inputs.org.MxclusterMistDas | undefined>;
+    mistNac?: pulumi.Input<inputs.org.MxclusterMistNac | undefined>;
+    mxedgeMgmt?: pulumi.Input<inputs.org.MxclusterMxedgeMgmt | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Proxy Configuration to talk to Mist
      */
-    proxy?: pulumi.Input<inputs.org.MxclusterProxy>;
+    proxy?: pulumi.Input<inputs.org.MxclusterProxy | undefined>;
     /**
      * MxEdge RadSec Configuration
      */
-    radsec?: pulumi.Input<inputs.org.MxclusterRadsec>;
-    radsecTls?: pulumi.Input<inputs.org.MxclusterRadsecTls>;
-    siteId?: pulumi.Input<string>;
+    radsec?: pulumi.Input<inputs.org.MxclusterRadsec | undefined>;
+    radsecTls?: pulumi.Input<inputs.org.MxclusterRadsecTls | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * List of subnets where we allow AP to establish Mist Tunnels from
      */
-    tuntermApSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+    tuntermApSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
      */
-    tuntermDhcpdConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxclusterTuntermDhcpdConfig>}>;
+    tuntermDhcpdConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxclusterTuntermDhcpdConfig>} | undefined>;
     /**
      * Extra routes for Mist Tunneled VLANs. Property key is a CIDR
      */
-    tuntermExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxclusterTuntermExtraRoutes>}>;
+    tuntermExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxclusterTuntermExtraRoutes>} | undefined>;
     /**
      * Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
      */
-    tuntermHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    tuntermHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of index of tunterm_hosts
      */
-    tuntermHostsOrders?: pulumi.Input<pulumi.Input<number>[]>;
+    tuntermHostsOrders?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
      *   * `shuffle`: the ordering of tuntermHosts is randomized by the device''s MAC
      *   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
      *   * `ordered`: order decided by tunterm_hosts_order
      */
-    tuntermHostsSelection?: pulumi.Input<string>;
-    tuntermMonitoringDisabled?: pulumi.Input<boolean>;
-    tuntermMonitorings?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.org.MxclusterTuntermMonitoring>[]>[]>;
+    tuntermHostsSelection?: pulumi.Input<string | undefined>;
+    tuntermMonitoringDisabled?: pulumi.Input<boolean | undefined>;
+    tuntermMonitorings?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.org.MxclusterTuntermMonitoring>[]>[] | undefined>;
 }
 
 /**
@@ -392,47 +392,47 @@ export interface MxclusterArgs {
     /**
      * Configure cloud-assisted dynamic authorization service on this cluster of mist edges
      */
-    mistDas?: pulumi.Input<inputs.org.MxclusterMistDas>;
-    mistNac?: pulumi.Input<inputs.org.MxclusterMistNac>;
-    mxedgeMgmt?: pulumi.Input<inputs.org.MxclusterMxedgeMgmt>;
-    name?: pulumi.Input<string>;
+    mistDas?: pulumi.Input<inputs.org.MxclusterMistDas | undefined>;
+    mistNac?: pulumi.Input<inputs.org.MxclusterMistNac | undefined>;
+    mxedgeMgmt?: pulumi.Input<inputs.org.MxclusterMxedgeMgmt | undefined>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * Proxy Configuration to talk to Mist
      */
-    proxy?: pulumi.Input<inputs.org.MxclusterProxy>;
+    proxy?: pulumi.Input<inputs.org.MxclusterProxy | undefined>;
     /**
      * MxEdge RadSec Configuration
      */
-    radsec?: pulumi.Input<inputs.org.MxclusterRadsec>;
-    siteId?: pulumi.Input<string>;
+    radsec?: pulumi.Input<inputs.org.MxclusterRadsec | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * List of subnets where we allow AP to establish Mist Tunnels from
      */
-    tuntermApSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+    tuntermApSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
      */
-    tuntermDhcpdConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxclusterTuntermDhcpdConfig>}>;
+    tuntermDhcpdConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxclusterTuntermDhcpdConfig>} | undefined>;
     /**
      * Extra routes for Mist Tunneled VLANs. Property key is a CIDR
      */
-    tuntermExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxclusterTuntermExtraRoutes>}>;
+    tuntermExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxclusterTuntermExtraRoutes>} | undefined>;
     /**
      * Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
      */
-    tuntermHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    tuntermHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of index of tunterm_hosts
      */
-    tuntermHostsOrders?: pulumi.Input<pulumi.Input<number>[]>;
+    tuntermHostsOrders?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
      *   * `shuffle`: the ordering of tuntermHosts is randomized by the device''s MAC
      *   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
      *   * `ordered`: order decided by tunterm_hosts_order
      */
-    tuntermHostsSelection?: pulumi.Input<string>;
-    tuntermMonitoringDisabled?: pulumi.Input<boolean>;
-    tuntermMonitorings?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.org.MxclusterTuntermMonitoring>[]>[]>;
+    tuntermHostsSelection?: pulumi.Input<string | undefined>;
+    tuntermMonitoringDisabled?: pulumi.Input<boolean | undefined>;
+    tuntermMonitorings?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.org.MxclusterTuntermMonitoring>[]>[] | undefined>;
 }

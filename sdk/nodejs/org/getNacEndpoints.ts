@@ -101,10 +101,10 @@ export interface GetNacEndpointsOutputArgs {
     /**
      * Optional, array of strings of labels
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Partial/full MAC address
      */
-    mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
 }

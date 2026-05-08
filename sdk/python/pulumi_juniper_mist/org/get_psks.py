@@ -135,10 +135,10 @@ def get_psks(name: Optional[_builtins.str] = None,
         org_psks=pulumi.get(__ret__, 'org_psks'),
         role=pulumi.get(__ret__, 'role'),
         ssid=pulumi.get(__ret__, 'ssid'))
-def get_psks_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                    role: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    ssid: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_psks_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                    role: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    ssid: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPsksResult]:
     """
     This data source provides the list Org Psks.

@@ -166,18 +166,18 @@ export interface EvpnTopologyState {
     /**
      * EVPN Options
      */
-    evpnOptions?: pulumi.Input<inputs.site.EvpnTopologyEvpnOptions>;
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    evpnOptions?: pulumi.Input<inputs.site.EvpnTopologyEvpnOptions | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Property key is the pod number
      */
-    podNames?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    siteId?: pulumi.Input<string>;
+    podNames?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Property key can be the switch MAC Address
      */
-    switches?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.EvpnTopologySwitches>}>;
+    switches?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.EvpnTopologySwitches>} | undefined>;
 }
 
 /**
@@ -187,12 +187,12 @@ export interface EvpnTopologyArgs {
     /**
      * EVPN Options
      */
-    evpnOptions?: pulumi.Input<inputs.site.EvpnTopologyEvpnOptions>;
-    name?: pulumi.Input<string>;
+    evpnOptions?: pulumi.Input<inputs.site.EvpnTopologyEvpnOptions | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Property key is the pod number
      */
-    podNames?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    podNames?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     siteId: pulumi.Input<string>;
     /**
      * Property key can be the switch MAC Address

@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.mist.SiteSiteEvpnTopology;
  * import com.pulumi.mist.SiteSiteEvpnTopologyArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 )),
  *                 Map.entry("autoRouterIdSubnet", "172.16.254.0/23")
  *             ))
- *             .switches(List.of(            
+ *             .switches(Arrays.asList(            
  *                 Map.ofEntries(
  *                     Map.entry("mac", "020004000001"),
  *                     Map.entry("role", "core")

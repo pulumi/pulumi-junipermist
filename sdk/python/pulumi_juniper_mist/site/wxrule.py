@@ -22,13 +22,13 @@ class WxruleArgs:
                  action: pulumi.Input[_builtins.str],
                  order: pulumi.Input[_builtins.int],
                  site_id: pulumi.Input[_builtins.str],
-                 apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 blocked_apps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dst_allow_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dst_deny_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dst_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 src_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 blocked_apps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dst_allow_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dst_deny_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dst_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 src_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Wxrule resource.
 
@@ -93,96 +93,96 @@ class WxruleArgs:
 
     @_builtins.property
     @pulumi.getter(name="applyTags")
-    def apply_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def apply_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "apply_tags")
 
     @apply_tags.setter
-    def apply_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def apply_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "apply_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="blockedApps")
-    def blocked_apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def blocked_apps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Blocked apps (always blocking, ignoring action), the key of Get Application List
         """
         return pulumi.get(self, "blocked_apps")
 
     @blocked_apps.setter
-    def blocked_apps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def blocked_apps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blocked_apps", value)
 
     @_builtins.property
     @pulumi.getter(name="dstAllowWxtags")
-    def dst_allow_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dst_allow_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of WxTag UUID to indicate these tags are allowed access
         """
         return pulumi.get(self, "dst_allow_wxtags")
 
     @dst_allow_wxtags.setter
-    def dst_allow_wxtags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dst_allow_wxtags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dst_allow_wxtags", value)
 
     @_builtins.property
     @pulumi.getter(name="dstDenyWxtags")
-    def dst_deny_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dst_deny_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of WxTag UUID to indicate these tags are blocked access
         """
         return pulumi.get(self, "dst_deny_wxtags")
 
     @dst_deny_wxtags.setter
-    def dst_deny_wxtags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dst_deny_wxtags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dst_deny_wxtags", value)
 
     @_builtins.property
     @pulumi.getter(name="dstWxtags")
-    def dst_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dst_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of WxTag UUID
         """
         return pulumi.get(self, "dst_wxtags")
 
     @dst_wxtags.setter
-    def dst_wxtags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dst_wxtags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dst_wxtags", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="srcWxtags")
-    def src_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def src_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of WxTag UUID to determine if this rule would match
         """
         return pulumi.get(self, "src_wxtags")
 
     @src_wxtags.setter
-    def src_wxtags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def src_wxtags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "src_wxtags", value)
 
 
 @pulumi.input_type
 class _WxruleState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 blocked_apps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dst_allow_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dst_deny_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dst_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 blocked_apps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dst_allow_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dst_deny_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dst_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Wxrule resources.
 
@@ -217,113 +217,113 @@ class _WxruleState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         type of action, allow / block. enum: `allow`, `block`
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="applyTags")
-    def apply_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def apply_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "apply_tags")
 
     @apply_tags.setter
-    def apply_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def apply_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "apply_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="blockedApps")
-    def blocked_apps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def blocked_apps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Blocked apps (always blocking, ignoring action), the key of Get Application List
         """
         return pulumi.get(self, "blocked_apps")
 
     @blocked_apps.setter
-    def blocked_apps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def blocked_apps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blocked_apps", value)
 
     @_builtins.property
     @pulumi.getter(name="dstAllowWxtags")
-    def dst_allow_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dst_allow_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of WxTag UUID to indicate these tags are allowed access
         """
         return pulumi.get(self, "dst_allow_wxtags")
 
     @dst_allow_wxtags.setter
-    def dst_allow_wxtags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dst_allow_wxtags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dst_allow_wxtags", value)
 
     @_builtins.property
     @pulumi.getter(name="dstDenyWxtags")
-    def dst_deny_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dst_deny_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of WxTag UUID to indicate these tags are blocked access
         """
         return pulumi.get(self, "dst_deny_wxtags")
 
     @dst_deny_wxtags.setter
-    def dst_deny_wxtags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dst_deny_wxtags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dst_deny_wxtags", value)
 
     @_builtins.property
     @pulumi.getter(name="dstWxtags")
-    def dst_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dst_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of WxTag UUID
         """
         return pulumi.get(self, "dst_wxtags")
 
     @dst_wxtags.setter
-    def dst_wxtags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dst_wxtags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dst_wxtags", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         """
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def order(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "order", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="srcWxtags")
-    def src_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def src_wxtags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of WxTag UUID to determine if this rule would match
         """
         return pulumi.get(self, "src_wxtags")
 
     @src_wxtags.setter
-    def src_wxtags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def src_wxtags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "src_wxtags", value)
 
 
@@ -333,16 +333,16 @@ class Wxrule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 blocked_apps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dst_allow_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dst_deny_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dst_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 blocked_apps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dst_allow_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dst_deny_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dst_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         This resource manages the Site WxRules (WLAN policies).
@@ -435,16 +435,16 @@ class Wxrule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 blocked_apps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dst_allow_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dst_deny_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dst_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 blocked_apps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dst_allow_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dst_deny_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dst_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -480,16 +480,16 @@ class Wxrule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            blocked_apps: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            dst_allow_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            dst_deny_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            dst_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            order: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            src_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Wxrule':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            blocked_apps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dst_allow_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dst_deny_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dst_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            order: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            src_wxtags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Wxrule':
         """
         Get an existing Wxrule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

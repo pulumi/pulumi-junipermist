@@ -133,20 +133,20 @@ export interface GetApStatsOutputArgs {
     /**
      * Duration like 7d, 2w
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
      */
-    end?: pulumi.Input<string>;
-    mac?: pulumi.Input<string>;
+    end?: pulumi.Input<string | undefined>;
+    mac?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
      */
-    start?: pulumi.Input<string>;
+    start?: pulumi.Input<string | undefined>;
     /**
      * enum: `all`, `connected`, `disconnected`
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

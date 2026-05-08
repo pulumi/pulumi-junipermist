@@ -24,12 +24,12 @@ class NacruleArgs:
                  action: pulumi.Input[_builtins.str],
                  order: pulumi.Input[_builtins.int],
                  org_id: pulumi.Input[_builtins.str],
-                 apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_auth_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 matching: Optional[pulumi.Input['NacruleMatchingArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_matching: Optional[pulumi.Input['NacruleNotMatchingArgs']] = None):
+                 apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 matching: pulumi.Input[Optional['NacruleMatchingArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_matching: pulumi.Input[Optional['NacruleNotMatchingArgs']] = None):
         """
         The set of arguments for constructing a Nacrule resource.
 
@@ -90,80 +90,80 @@ class NacruleArgs:
 
     @_builtins.property
     @pulumi.getter(name="applyTags")
-    def apply_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def apply_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         All optional, this goes into Access-Accept
         """
         return pulumi.get(self, "apply_tags")
 
     @apply_tags.setter
-    def apply_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def apply_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "apply_tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enabled or not
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="guestAuthState")
-    def guest_auth_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def guest_auth_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Guest portal authorization state. enum: `authorized`, `unknown`
         """
         return pulumi.get(self, "guest_auth_state")
 
     @guest_auth_state.setter
-    def guest_auth_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def guest_auth_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "guest_auth_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def matching(self) -> Optional[pulumi.Input['NacruleMatchingArgs']]:
+    def matching(self) -> pulumi.Input[Optional['NacruleMatchingArgs']]:
         return pulumi.get(self, "matching")
 
     @matching.setter
-    def matching(self, value: Optional[pulumi.Input['NacruleMatchingArgs']]):
+    def matching(self, value: pulumi.Input[Optional['NacruleMatchingArgs']]):
         pulumi.set(self, "matching", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notMatching")
-    def not_matching(self) -> Optional[pulumi.Input['NacruleNotMatchingArgs']]:
+    def not_matching(self) -> pulumi.Input[Optional['NacruleNotMatchingArgs']]:
         return pulumi.get(self, "not_matching")
 
     @not_matching.setter
-    def not_matching(self, value: Optional[pulumi.Input['NacruleNotMatchingArgs']]):
+    def not_matching(self, value: pulumi.Input[Optional['NacruleNotMatchingArgs']]):
         pulumi.set(self, "not_matching", value)
 
 
 @pulumi.input_type
 class _NacruleState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_auth_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 matching: Optional[pulumi.Input['NacruleMatchingArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_matching: Optional[pulumi.Input['NacruleNotMatchingArgs']] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 matching: pulumi.Input[Optional['NacruleMatchingArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_matching: pulumi.Input[Optional['NacruleNotMatchingArgs']] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Nacrule resources.
 
@@ -194,98 +194,98 @@ class _NacruleState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `allow`, `block`
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="applyTags")
-    def apply_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def apply_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         All optional, this goes into Access-Accept
         """
         return pulumi.get(self, "apply_tags")
 
     @apply_tags.setter
-    def apply_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def apply_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "apply_tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enabled or not
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="guestAuthState")
-    def guest_auth_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def guest_auth_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Guest portal authorization state. enum: `authorized`, `unknown`
         """
         return pulumi.get(self, "guest_auth_state")
 
     @guest_auth_state.setter
-    def guest_auth_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def guest_auth_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "guest_auth_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def matching(self) -> Optional[pulumi.Input['NacruleMatchingArgs']]:
+    def matching(self) -> pulumi.Input[Optional['NacruleMatchingArgs']]:
         return pulumi.get(self, "matching")
 
     @matching.setter
-    def matching(self, value: Optional[pulumi.Input['NacruleMatchingArgs']]):
+    def matching(self, value: pulumi.Input[Optional['NacruleMatchingArgs']]):
         pulumi.set(self, "matching", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notMatching")
-    def not_matching(self) -> Optional[pulumi.Input['NacruleNotMatchingArgs']]:
+    def not_matching(self) -> pulumi.Input[Optional['NacruleNotMatchingArgs']]:
         return pulumi.get(self, "not_matching")
 
     @not_matching.setter
-    def not_matching(self, value: Optional[pulumi.Input['NacruleNotMatchingArgs']]):
+    def not_matching(self, value: pulumi.Input[Optional['NacruleNotMatchingArgs']]):
         pulumi.set(self, "not_matching", value)
 
     @_builtins.property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Order of the rule, lower value implies higher priority
         """
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def order(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "order", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
 
@@ -295,15 +295,15 @@ class Nacrule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_auth_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 matching: Optional[pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_matching: Optional[pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_matching: pulumi.Input[Optional[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource manages the NAC Rules (Auth Policies).
@@ -410,15 +410,15 @@ class Nacrule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_auth_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 matching: Optional[pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_matching: Optional[pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_matching: pulumi.Input[Optional[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -453,15 +453,15 @@ class Nacrule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            guest_auth_state: Optional[pulumi.Input[_builtins.str]] = None,
-            matching: Optional[pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            not_matching: Optional[pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
-            order: Optional[pulumi.Input[_builtins.int]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Nacrule':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            apply_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            guest_auth_state: pulumi.Input[Optional[_builtins.str]] = None,
+            matching: pulumi.Input[Optional[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            not_matching: pulumi.Input[Optional[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
+            order: pulumi.Input[Optional[_builtins.int]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Nacrule':
         """
         Get an existing Nacrule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

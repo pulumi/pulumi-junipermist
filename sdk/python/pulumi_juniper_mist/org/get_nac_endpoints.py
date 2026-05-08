@@ -129,9 +129,9 @@ def get_nac_endpoints(labels: Optional[Sequence[_builtins.str]] = None,
         mac=pulumi.get(__ret__, 'mac'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_usermacs=pulumi.get(__ret__, 'org_usermacs'))
-def get_nac_endpoints_output(labels: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             mac: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             org_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_nac_endpoints_output(labels: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             mac: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             org_id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNacEndpointsResult]:
     """
     This data source provides the list of NAC Endpoints (User MACs).

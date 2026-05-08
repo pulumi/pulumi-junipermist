@@ -131,10 +131,10 @@ def get_nactags(match: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         org_nactags=pulumi.get(__ret__, 'org_nactags'),
         type=pulumi.get(__ret__, 'type'))
-def get_nactags_output(match: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                       type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_nactags_output(match: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                       type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNactagsResult]:
     """
     This data source provides the list of NAC Tags (Auth Policy Labels).

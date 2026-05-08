@@ -69,9 +69,9 @@ class NacPortalImageArgs:
 @pulumi.input_type
 class _NacPortalImageState:
     def __init__(__self__, *,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NacPortalImage resources.
 
@@ -87,35 +87,35 @@ class _NacPortalImageState:
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
         """
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter(name="nacportalId")
-    def nacportal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nacportal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Org NAC Portal ID
         """
         return pulumi.get(self, "nacportal_id")
 
     @nacportal_id.setter
-    def nacportal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nacportal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nacportal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
 
@@ -125,9 +125,9 @@ class NacPortalImage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource is used to upload a NAC Portal background image.
@@ -163,9 +163,9 @@ class NacPortalImage(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -194,9 +194,9 @@ class NacPortalImage(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            file: Optional[pulumi.Input[_builtins.str]] = None,
-            nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'NacPortalImage':
+            file: pulumi.Input[Optional[_builtins.str]] = None,
+            nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NacPortalImage':
         """
         Get an existing NacPortalImage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

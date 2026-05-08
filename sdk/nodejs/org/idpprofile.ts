@@ -131,10 +131,10 @@ export interface IdpprofileState {
     /**
      * enum: `critical`, `standard`, `strict`
      */
-    baseProfile?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
-    overwrites?: pulumi.Input<pulumi.Input<inputs.org.IdpprofileOverwrite>[]>;
+    baseProfile?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
+    overwrites?: pulumi.Input<pulumi.Input<inputs.org.IdpprofileOverwrite>[] | undefined>;
 }
 
 /**
@@ -145,7 +145,7 @@ export interface IdpprofileArgs {
      * enum: `critical`, `standard`, `strict`
      */
     baseProfile: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
-    overwrites?: pulumi.Input<pulumi.Input<inputs.org.IdpprofileOverwrite>[]>;
+    overwrites?: pulumi.Input<pulumi.Input<inputs.org.IdpprofileOverwrite>[] | undefined>;
 }

@@ -283,178 +283,178 @@ export class Networktemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Networktemplate resources.
  */
 export interface NetworktemplateState {
-    aclPolicies?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateAclPolicy>[]>;
+    aclPolicies?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateAclPolicy>[] | undefined>;
     /**
      * ACL Tags to identify traffic source or destination. Key name is the tag name
      */
-    aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateAclTags>}>;
+    aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateAclTags>} | undefined>;
     /**
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
-    additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
-    autoUpgradeLinecard?: pulumi.Input<boolean>;
-    dhcpSnooping?: pulumi.Input<inputs.site.NetworktemplateDhcpSnooping>;
+    additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    autoUpgradeLinecard?: pulumi.Input<boolean | undefined>;
+    dhcpSnooping?: pulumi.Input<inputs.site.NetworktemplateDhcpSnooping | undefined>;
     /**
      * If some system-default port usages are not desired - namely, ap / iot / uplink
      */
-    disabledSystemDefinedPortUsages?: pulumi.Input<pulumi.Input<string>[]>;
+    disabledSystemDefinedPortUsages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "10.0.0.0/8")
      */
-    extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateExtraRoutes>}>;
+    extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateExtraRoutes>} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
      */
-    extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateExtraRoutes6>}>;
+    extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateExtraRoutes6>} | undefined>;
     /**
      * Enable mistNac to use RadSec
      */
-    mistNac?: pulumi.Input<inputs.site.NetworktemplateMistNac>;
+    mistNac?: pulumi.Input<inputs.site.NetworktemplateMistNac | undefined>;
     /**
      * Property key is network name
      */
-    networks?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateNetworks>}>;
+    networks?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateNetworks>} | undefined>;
     /**
      * List of NTP servers
      */
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      */
-    ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>}>;
+    ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>} | undefined>;
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      */
-    portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>}>;
+    portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>} | undefined>;
     /**
      * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
      */
-    portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortUsages>}>;
+    portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortUsages>} | undefined>;
     /**
      * Junos Radius config
      */
-    radiusConfig?: pulumi.Input<inputs.site.NetworktemplateRadiusConfig>;
-    remoteSyslog?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslog>;
+    radiusConfig?: pulumi.Input<inputs.site.NetworktemplateRadiusConfig | undefined>;
+    remoteSyslog?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslog | undefined>;
     /**
      * Property key is the routing policy name
      */
-    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateRoutingPolicies>}>;
+    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateRoutingPolicies>} | undefined>;
     /**
      * Unique ID of the object instance in the Mist Organization
      */
-    siteId?: pulumi.Input<string>;
-    snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
+    siteId?: pulumi.Input<string | undefined>;
+    snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig | undefined>;
     /**
      * Defines custom switch configuration based on different criteria
      */
-    switchMatching?: pulumi.Input<inputs.site.NetworktemplateSwitchMatching>;
+    switchMatching?: pulumi.Input<inputs.site.NetworktemplateSwitchMatching | undefined>;
     /**
      * Switch settings
      */
-    switchMgmt?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmt>;
+    switchMgmt?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmt | undefined>;
     /**
      * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
      */
-    usesDescriptionFromPortUsage?: pulumi.Input<boolean>;
-    vrfConfig?: pulumi.Input<inputs.site.NetworktemplateVrfConfig>;
+    usesDescriptionFromPortUsage?: pulumi.Input<boolean | undefined>;
+    vrfConfig?: pulumi.Input<inputs.site.NetworktemplateVrfConfig | undefined>;
     /**
      * Property key is the network name
      */
-    vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateVrfInstances>}>;
+    vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateVrfInstances>} | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Networktemplate resource.
  */
 export interface NetworktemplateArgs {
-    aclPolicies?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateAclPolicy>[]>;
+    aclPolicies?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateAclPolicy>[] | undefined>;
     /**
      * ACL Tags to identify traffic source or destination. Key name is the tag name
      */
-    aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateAclTags>}>;
+    aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateAclTags>} | undefined>;
     /**
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
-    additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
-    autoUpgradeLinecard?: pulumi.Input<boolean>;
-    dhcpSnooping?: pulumi.Input<inputs.site.NetworktemplateDhcpSnooping>;
+    additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    autoUpgradeLinecard?: pulumi.Input<boolean | undefined>;
+    dhcpSnooping?: pulumi.Input<inputs.site.NetworktemplateDhcpSnooping | undefined>;
     /**
      * If some system-default port usages are not desired - namely, ap / iot / uplink
      */
-    disabledSystemDefinedPortUsages?: pulumi.Input<pulumi.Input<string>[]>;
+    disabledSystemDefinedPortUsages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "10.0.0.0/8")
      */
-    extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateExtraRoutes>}>;
+    extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateExtraRoutes>} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
      */
-    extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateExtraRoutes6>}>;
+    extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateExtraRoutes6>} | undefined>;
     /**
      * Enable mistNac to use RadSec
      */
-    mistNac?: pulumi.Input<inputs.site.NetworktemplateMistNac>;
+    mistNac?: pulumi.Input<inputs.site.NetworktemplateMistNac | undefined>;
     /**
      * Property key is network name
      */
-    networks?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateNetworks>}>;
+    networks?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateNetworks>} | undefined>;
     /**
      * List of NTP servers
      */
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
      */
-    ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>}>;
+    ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>} | undefined>;
     /**
      * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
      */
-    portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>}>;
+    portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>} | undefined>;
     /**
      * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
      */
-    portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortUsages>}>;
+    portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortUsages>} | undefined>;
     /**
      * Junos Radius config
      */
-    radiusConfig?: pulumi.Input<inputs.site.NetworktemplateRadiusConfig>;
-    remoteSyslog?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslog>;
+    radiusConfig?: pulumi.Input<inputs.site.NetworktemplateRadiusConfig | undefined>;
+    remoteSyslog?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslog | undefined>;
     /**
      * Property key is the routing policy name
      */
-    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateRoutingPolicies>}>;
+    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateRoutingPolicies>} | undefined>;
     /**
      * Unique ID of the object instance in the Mist Organization
      */
     siteId: pulumi.Input<string>;
-    snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
+    snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig | undefined>;
     /**
      * Defines custom switch configuration based on different criteria
      */
-    switchMatching?: pulumi.Input<inputs.site.NetworktemplateSwitchMatching>;
+    switchMatching?: pulumi.Input<inputs.site.NetworktemplateSwitchMatching | undefined>;
     /**
      * Switch settings
      */
-    switchMgmt?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmt>;
-    vrfConfig?: pulumi.Input<inputs.site.NetworktemplateVrfConfig>;
+    switchMgmt?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmt | undefined>;
+    vrfConfig?: pulumi.Input<inputs.site.NetworktemplateVrfConfig | undefined>;
     /**
      * Property key is the network name
      */
-    vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateVrfInstances>}>;
+    vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateVrfInstances>} | undefined>;
 }

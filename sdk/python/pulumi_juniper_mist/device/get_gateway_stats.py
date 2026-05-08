@@ -187,13 +187,13 @@ def get_gateway_stats(duration: Optional[_builtins.str] = None,
         site_id=pulumi.get(__ret__, 'site_id'),
         start=pulumi.get(__ret__, 'start'),
         status=pulumi.get(__ret__, 'status'))
-def get_gateway_stats_output(duration: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             end: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             mac: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             site_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             start: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_gateway_stats_output(duration: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             end: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             mac: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             site_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             start: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayStatsResult]:
     """
     This data source provides the list of Gateways with their statistics.

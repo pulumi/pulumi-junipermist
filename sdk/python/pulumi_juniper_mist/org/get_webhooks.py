@@ -95,7 +95,7 @@ def get_webhooks(org_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_webhooks=pulumi.get(__ret__, 'org_webhooks'))
-def get_webhooks_output(org_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_webhooks_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebhooksResult]:
     """
     This data source provides the list of Org Webhooks.

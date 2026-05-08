@@ -98,8 +98,8 @@ export function getPsksOutput(args: GetPsksOutputArgs, opts?: pulumi.InvokeOutpu
  * A collection of arguments for invoking getPsks.
  */
 export interface GetPsksOutputArgs {
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
-    ssid?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
+    ssid?: pulumi.Input<string | undefined>;
 }

@@ -97,7 +97,7 @@ def get_servicepolicies(org_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_servicepolicies=pulumi.get(__ret__, 'org_servicepolicies'))
-def get_servicepolicies_output(org_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_servicepolicies_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicepoliciesResult]:
     """
     This data source provides the list of WAN Assurance Service Policies (Application Policies).

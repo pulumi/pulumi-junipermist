@@ -118,8 +118,8 @@ export interface GatewayClusterState {
     /**
      * When replacing a node, either mac has to remain the same as existing cluster
      */
-    nodes?: pulumi.Input<pulumi.Input<inputs.device.GatewayClusterNode>[]>;
-    siteId?: pulumi.Input<string>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.device.GatewayClusterNode>[] | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
 }
 
 /**

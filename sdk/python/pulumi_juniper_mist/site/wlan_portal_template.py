@@ -71,9 +71,9 @@ class WlanPortalTemplateArgs:
 @pulumi.input_type
 class _WlanPortalTemplateState:
     def __init__(__self__, *,
-                 portal_template: Optional[pulumi.Input['WlanPortalTemplatePortalTemplateArgs']] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wlan_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 portal_template: pulumi.Input[Optional['WlanPortalTemplatePortalTemplateArgs']] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wlan_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WlanPortalTemplate resources.
 
@@ -89,35 +89,35 @@ class _WlanPortalTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="portalTemplate")
-    def portal_template(self) -> Optional[pulumi.Input['WlanPortalTemplatePortalTemplateArgs']]:
+    def portal_template(self) -> pulumi.Input[Optional['WlanPortalTemplatePortalTemplateArgs']]:
         """
         Portal template wlan settings
         """
         return pulumi.get(self, "portal_template")
 
     @portal_template.setter
-    def portal_template(self, value: Optional[pulumi.Input['WlanPortalTemplatePortalTemplateArgs']]):
+    def portal_template(self, value: pulumi.Input[Optional['WlanPortalTemplatePortalTemplateArgs']]):
         pulumi.set(self, "portal_template", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="wlanId")
-    def wlan_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wlan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Site WLAN ID
         """
         return pulumi.get(self, "wlan_id")
 
     @wlan_id.setter
-    def wlan_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wlan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wlan_id", value)
 
 
@@ -127,9 +127,9 @@ class WlanPortalTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 portal_template: Optional[pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wlan_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 portal_template: pulumi.Input[Optional[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource is used customize the WLAN Guest Portal.
@@ -221,9 +221,9 @@ class WlanPortalTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 portal_template: Optional[pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wlan_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 portal_template: pulumi.Input[Optional[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -252,9 +252,9 @@ class WlanPortalTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            portal_template: Optional[pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            wlan_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WlanPortalTemplate':
+            portal_template: pulumi.Input[Optional[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wlan_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WlanPortalTemplate':
         """
         Get an existing WlanPortalTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

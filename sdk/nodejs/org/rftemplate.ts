@@ -181,90 +181,90 @@ export class Rftemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Rftemplate resources.
  */
 export interface RftemplateState {
-    antGain24?: pulumi.Input<number>;
-    antGain5?: pulumi.Input<number>;
-    antGain6?: pulumi.Input<number>;
+    antGain24?: pulumi.Input<number | undefined>;
+    antGain5?: pulumi.Input<number | undefined>;
+    antGain6?: pulumi.Input<number | undefined>;
     /**
      * Radio Band AP settings
      */
-    band24?: pulumi.Input<inputs.org.RftemplateBand24>;
+    band24?: pulumi.Input<inputs.org.RftemplateBand24 | undefined>;
     /**
      * enum: `24`, `5`, `6`, `auto`
      */
-    band24Usage?: pulumi.Input<string>;
+    band24Usage?: pulumi.Input<string | undefined>;
     /**
      * Radio Band AP settings
      */
-    band5?: pulumi.Input<inputs.org.RftemplateBand5>;
+    band5?: pulumi.Input<inputs.org.RftemplateBand5 | undefined>;
     /**
      * Radio Band AP settings
      */
-    band5On24Radio?: pulumi.Input<inputs.org.RftemplateBand5On24Radio>;
+    band5On24Radio?: pulumi.Input<inputs.org.RftemplateBand5On24Radio | undefined>;
     /**
      * Radio Band AP settings
      */
-    band6?: pulumi.Input<inputs.org.RftemplateBand6>;
+    band6?: pulumi.Input<inputs.org.RftemplateBand6 | undefined>;
     /**
      * Optional, country code to use. If specified, this gets applied to all sites using the RF Template
      */
-    countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string | undefined>;
     /**
      * overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
      */
-    modelSpecific?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.RftemplateModelSpecific>}>;
+    modelSpecific?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.RftemplateModelSpecific>} | undefined>;
     /**
      * The name of the RF template
      */
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Whether scanning radio is enabled
      */
-    scanningEnabled?: pulumi.Input<boolean>;
+    scanningEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Rftemplate resource.
  */
 export interface RftemplateArgs {
-    antGain24?: pulumi.Input<number>;
-    antGain5?: pulumi.Input<number>;
-    antGain6?: pulumi.Input<number>;
+    antGain24?: pulumi.Input<number | undefined>;
+    antGain5?: pulumi.Input<number | undefined>;
+    antGain6?: pulumi.Input<number | undefined>;
     /**
      * Radio Band AP settings
      */
-    band24?: pulumi.Input<inputs.org.RftemplateBand24>;
+    band24?: pulumi.Input<inputs.org.RftemplateBand24 | undefined>;
     /**
      * enum: `24`, `5`, `6`, `auto`
      */
-    band24Usage?: pulumi.Input<string>;
+    band24Usage?: pulumi.Input<string | undefined>;
     /**
      * Radio Band AP settings
      */
-    band5?: pulumi.Input<inputs.org.RftemplateBand5>;
+    band5?: pulumi.Input<inputs.org.RftemplateBand5 | undefined>;
     /**
      * Radio Band AP settings
      */
-    band5On24Radio?: pulumi.Input<inputs.org.RftemplateBand5On24Radio>;
+    band5On24Radio?: pulumi.Input<inputs.org.RftemplateBand5On24Radio | undefined>;
     /**
      * Radio Band AP settings
      */
-    band6?: pulumi.Input<inputs.org.RftemplateBand6>;
+    band6?: pulumi.Input<inputs.org.RftemplateBand6 | undefined>;
     /**
      * Optional, country code to use. If specified, this gets applied to all sites using the RF Template
      */
-    countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string | undefined>;
     /**
      * overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
      */
-    modelSpecific?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.RftemplateModelSpecific>}>;
+    modelSpecific?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.RftemplateModelSpecific>} | undefined>;
     /**
      * The name of the RF template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * Whether scanning radio is enabled
      */
-    scanningEnabled?: pulumi.Input<boolean>;
+    scanningEnabled?: pulumi.Input<boolean | undefined>;
 }

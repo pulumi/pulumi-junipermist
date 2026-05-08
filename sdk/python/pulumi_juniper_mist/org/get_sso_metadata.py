@@ -160,8 +160,8 @@ def get_sso_metadata(org_id: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         scim_base_url=pulumi.get(__ret__, 'scim_base_url'),
         sso_id=pulumi.get(__ret__, 'sso_id'))
-def get_sso_metadata_output(org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            sso_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_sso_metadata_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            sso_id: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSsoMetadataResult]:
     """
     This data source provides the SSO Metadata information.

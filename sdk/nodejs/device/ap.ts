@@ -292,130 +292,130 @@ export interface ApState {
     /**
      * Aeroscout AP settings
      */
-    aeroscout?: pulumi.Input<inputs.device.ApAeroscout>;
-    airista?: pulumi.Input<inputs.device.ApAirista>;
+    aeroscout?: pulumi.Input<inputs.device.ApAeroscout | undefined>;
+    airista?: pulumi.Input<inputs.device.ApAirista | undefined>;
     /**
      * BLE AP settings
      */
-    bleConfig?: pulumi.Input<inputs.device.ApBleConfig>;
-    centrak?: pulumi.Input<inputs.device.ApCentrak>;
-    clientBridge?: pulumi.Input<inputs.device.ApClientBridge>;
-    deviceId?: pulumi.Input<string>;
+    bleConfig?: pulumi.Input<inputs.device.ApBleConfig | undefined>;
+    centrak?: pulumi.Input<inputs.device.ApCentrak | undefined>;
+    clientBridge?: pulumi.Input<inputs.device.ApClientBridge | undefined>;
+    deviceId?: pulumi.Input<string | undefined>;
     /**
      * Whether to disable eth1 port
      */
-    disableEth1?: pulumi.Input<boolean>;
+    disableEth1?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable eth2 port
      */
-    disableEth2?: pulumi.Input<boolean>;
+    disableEth2?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable eth3 port
      */
-    disableEth3?: pulumi.Input<boolean>;
+    disableEth3?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable module port
      */
-    disableModule?: pulumi.Input<boolean>;
-    eslConfig?: pulumi.Input<inputs.device.ApEslConfig>;
+    disableModule?: pulumi.Input<boolean | undefined>;
+    eslConfig?: pulumi.Input<inputs.device.ApEslConfig | undefined>;
     /**
      * For some AP models, flowControl can be enabled to address some switch compatibility issue
      */
-    flowControl?: pulumi.Input<boolean>;
+    flowControl?: pulumi.Input<boolean | undefined>;
     /**
      * Height, in meters, optional
      */
-    height?: pulumi.Input<number>;
-    image1Url?: pulumi.Input<string>;
-    image2Url?: pulumi.Input<string>;
-    image3Url?: pulumi.Input<string>;
+    height?: pulumi.Input<number | undefined>;
+    image1Url?: pulumi.Input<string | undefined>;
+    image2Url?: pulumi.Input<string | undefined>;
+    image3Url?: pulumi.Input<string | undefined>;
     /**
      * IP AP settings
      */
-    ipConfig?: pulumi.Input<inputs.device.ApIpConfig>;
-    lacpConfig?: pulumi.Input<inputs.device.ApLacpConfig>;
+    ipConfig?: pulumi.Input<inputs.device.ApIpConfig | undefined>;
+    lacpConfig?: pulumi.Input<inputs.device.ApLacpConfig | undefined>;
     /**
      * LED AP settings
      */
-    led?: pulumi.Input<inputs.device.ApLed>;
+    led?: pulumi.Input<inputs.device.ApLed | undefined>;
     /**
      * Whether this map is considered locked down
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Device MAC address
      */
-    mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
     /**
      * Map where the device belongs to
      */
-    mapId?: pulumi.Input<string>;
+    mapId?: pulumi.Input<string | undefined>;
     /**
      * Mesh AP settings
      */
-    mesh?: pulumi.Input<inputs.device.ApMesh>;
+    mesh?: pulumi.Input<inputs.device.ApMesh | undefined>;
     /**
      * Device Model
      */
-    model?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    model?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Any notes about this AP
      */
-    notes?: pulumi.Input<string>;
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
-    orgId?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Orientation, 0-359, in degrees, up is 0, right is 90.
      */
-    orientation?: pulumi.Input<number>;
+    orientation?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
-    poePassthrough?: pulumi.Input<boolean>;
+    poePassthrough?: pulumi.Input<boolean | undefined>;
     /**
      * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      */
-    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>}>;
+    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>} | undefined>;
     /**
      * Power related configs
      */
-    pwrConfig?: pulumi.Input<inputs.device.ApPwrConfig>;
+    pwrConfig?: pulumi.Input<inputs.device.ApPwrConfig | undefined>;
     /**
      * Radio AP settings
      */
-    radioConfig?: pulumi.Input<inputs.device.ApRadioConfig>;
+    radioConfig?: pulumi.Input<inputs.device.ApRadioConfig | undefined>;
     /**
      * Device Serial
      */
-    serial?: pulumi.Input<string>;
-    siteId?: pulumi.Input<string>;
+    serial?: pulumi.Input<string | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Device Type. enum: `ap`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * AP Uplink port configuration
      */
-    uplinkPortConfig?: pulumi.Input<inputs.device.ApUplinkPortConfig>;
+    uplinkPortConfig?: pulumi.Input<inputs.device.ApUplinkPortConfig | undefined>;
     /**
      * USB AP settings
      *   - Note: if native imagotag is enabled, BLE will be disabled automatically
      *   - Note: legacy, new config moved to ESL Config.
      */
-    usbConfig?: pulumi.Input<inputs.device.ApUsbConfig>;
+    usbConfig?: pulumi.Input<inputs.device.ApUsbConfig | undefined>;
     /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
-    vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * X in pixel
      */
-    x?: pulumi.Input<number>;
+    x?: pulumi.Input<number | undefined>;
     /**
      * Y in pixel
      */
-    y?: pulumi.Input<number>;
+    y?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -425,108 +425,108 @@ export interface ApArgs {
     /**
      * Aeroscout AP settings
      */
-    aeroscout?: pulumi.Input<inputs.device.ApAeroscout>;
-    airista?: pulumi.Input<inputs.device.ApAirista>;
+    aeroscout?: pulumi.Input<inputs.device.ApAeroscout | undefined>;
+    airista?: pulumi.Input<inputs.device.ApAirista | undefined>;
     /**
      * BLE AP settings
      */
-    bleConfig?: pulumi.Input<inputs.device.ApBleConfig>;
-    centrak?: pulumi.Input<inputs.device.ApCentrak>;
-    clientBridge?: pulumi.Input<inputs.device.ApClientBridge>;
+    bleConfig?: pulumi.Input<inputs.device.ApBleConfig | undefined>;
+    centrak?: pulumi.Input<inputs.device.ApCentrak | undefined>;
+    clientBridge?: pulumi.Input<inputs.device.ApClientBridge | undefined>;
     deviceId: pulumi.Input<string>;
     /**
      * Whether to disable eth1 port
      */
-    disableEth1?: pulumi.Input<boolean>;
+    disableEth1?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable eth2 port
      */
-    disableEth2?: pulumi.Input<boolean>;
+    disableEth2?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable eth3 port
      */
-    disableEth3?: pulumi.Input<boolean>;
+    disableEth3?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable module port
      */
-    disableModule?: pulumi.Input<boolean>;
-    eslConfig?: pulumi.Input<inputs.device.ApEslConfig>;
+    disableModule?: pulumi.Input<boolean | undefined>;
+    eslConfig?: pulumi.Input<inputs.device.ApEslConfig | undefined>;
     /**
      * For some AP models, flowControl can be enabled to address some switch compatibility issue
      */
-    flowControl?: pulumi.Input<boolean>;
+    flowControl?: pulumi.Input<boolean | undefined>;
     /**
      * Height, in meters, optional
      */
-    height?: pulumi.Input<number>;
+    height?: pulumi.Input<number | undefined>;
     /**
      * IP AP settings
      */
-    ipConfig?: pulumi.Input<inputs.device.ApIpConfig>;
-    lacpConfig?: pulumi.Input<inputs.device.ApLacpConfig>;
+    ipConfig?: pulumi.Input<inputs.device.ApIpConfig | undefined>;
+    lacpConfig?: pulumi.Input<inputs.device.ApLacpConfig | undefined>;
     /**
      * LED AP settings
      */
-    led?: pulumi.Input<inputs.device.ApLed>;
+    led?: pulumi.Input<inputs.device.ApLed | undefined>;
     /**
      * Whether this map is considered locked down
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Map where the device belongs to
      */
-    mapId?: pulumi.Input<string>;
+    mapId?: pulumi.Input<string | undefined>;
     /**
      * Mesh AP settings
      */
-    mesh?: pulumi.Input<inputs.device.ApMesh>;
-    name?: pulumi.Input<string>;
+    mesh?: pulumi.Input<inputs.device.ApMesh | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Any notes about this AP
      */
-    notes?: pulumi.Input<string>;
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    notes?: pulumi.Input<string | undefined>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Orientation, 0-359, in degrees, up is 0, right is 90.
      */
-    orientation?: pulumi.Input<number>;
+    orientation?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
-    poePassthrough?: pulumi.Input<boolean>;
+    poePassthrough?: pulumi.Input<boolean | undefined>;
     /**
      * eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
      */
-    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>}>;
+    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.ApPortConfig>} | undefined>;
     /**
      * Power related configs
      */
-    pwrConfig?: pulumi.Input<inputs.device.ApPwrConfig>;
+    pwrConfig?: pulumi.Input<inputs.device.ApPwrConfig | undefined>;
     /**
      * Radio AP settings
      */
-    radioConfig?: pulumi.Input<inputs.device.ApRadioConfig>;
+    radioConfig?: pulumi.Input<inputs.device.ApRadioConfig | undefined>;
     siteId: pulumi.Input<string>;
     /**
      * AP Uplink port configuration
      */
-    uplinkPortConfig?: pulumi.Input<inputs.device.ApUplinkPortConfig>;
+    uplinkPortConfig?: pulumi.Input<inputs.device.ApUplinkPortConfig | undefined>;
     /**
      * USB AP settings
      *   - Note: if native imagotag is enabled, BLE will be disabled automatically
      *   - Note: legacy, new config moved to ESL Config.
      */
-    usbConfig?: pulumi.Input<inputs.device.ApUsbConfig>;
+    usbConfig?: pulumi.Input<inputs.device.ApUsbConfig | undefined>;
     /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
-    vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * X in pixel
      */
-    x?: pulumi.Input<number>;
+    x?: pulumi.Input<number | undefined>;
     /**
      * Y in pixel
      */
-    y?: pulumi.Input<number>;
+    y?: pulumi.Input<number | undefined>;
 }

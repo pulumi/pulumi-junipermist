@@ -38,8 +38,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetApStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -84,8 +84,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetApStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -130,8 +130,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetApStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -176,8 +176,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetApStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -222,8 +222,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetApStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -268,8 +268,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetGatewayStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -314,8 +314,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetGatewayStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -360,8 +360,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetGatewayStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -406,8 +406,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetGatewayStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -452,8 +452,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetGatewayStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -498,8 +498,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetSwitchStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -546,8 +546,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetSwitchStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -594,8 +594,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetSwitchStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -642,8 +642,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetSwitchStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -690,8 +690,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetSwitchStatsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -738,8 +738,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -780,8 +780,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -822,8 +822,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -864,8 +864,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -906,8 +906,8 @@ public final class DeviceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.junipermist.device.DeviceFunctions;
      * import com.pulumi.junipermist.device.inputs.GetVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

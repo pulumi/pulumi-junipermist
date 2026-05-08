@@ -69,9 +69,9 @@ class WlanPortalImageArgs:
 @pulumi.input_type
 class _WlanPortalImageState:
     def __init__(__self__, *,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wlan_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wlan_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WlanPortalImage resources.
 
@@ -87,35 +87,35 @@ class _WlanPortalImageState:
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
         """
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="wlanId")
-    def wlan_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wlan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Site WLAN ID
         """
         return pulumi.get(self, "wlan_id")
 
     @wlan_id.setter
-    def wlan_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wlan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wlan_id", value)
 
 
@@ -125,9 +125,9 @@ class WlanPortalImage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wlan_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource is used to upload a WLAN Captive Web Portal background image.
@@ -187,9 +187,9 @@ class WlanPortalImage(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wlan_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wlan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -218,9 +218,9 @@ class WlanPortalImage(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            file: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            wlan_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WlanPortalImage':
+            file: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wlan_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WlanPortalImage':
         """
         Get an existing WlanPortalImage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

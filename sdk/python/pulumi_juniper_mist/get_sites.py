@@ -92,7 +92,7 @@ def get_sites(org_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         sites=pulumi.get(__ret__, 'sites'))
-def get_sites_output(org_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_sites_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSitesResult]:
     """
     This datasource provides the list of sites in a Mist Organization.

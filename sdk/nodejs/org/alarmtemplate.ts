@@ -147,16 +147,16 @@ export interface AlarmtemplateState {
     /**
      * Delivery object to configure the alarm delivery
      */
-    delivery?: pulumi.Input<inputs.org.AlarmtemplateDelivery>;
+    delivery?: pulumi.Input<inputs.org.AlarmtemplateDelivery | undefined>;
     /**
      * Some string to name the alarm template
      */
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `junipermist.getConstAlarms` data source).
      */
-    rules?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.AlarmtemplateRules>}>;
+    rules?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.AlarmtemplateRules>} | undefined>;
 }
 
 /**
@@ -170,7 +170,7 @@ export interface AlarmtemplateArgs {
     /**
      * Some string to name the alarm template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `junipermist.getConstAlarms` data source).

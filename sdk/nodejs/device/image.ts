@@ -95,16 +95,16 @@ export class Image extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Image resources.
  */
 export interface ImageState {
-    deviceId?: pulumi.Input<string>;
+    deviceId?: pulumi.Input<string | undefined>;
     /**
      * path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
      */
-    file?: pulumi.Input<string>;
+    file?: pulumi.Input<string | undefined>;
     /**
      * number of the image, between 1 and 3
      */
-    imageNumber?: pulumi.Input<number>;
-    siteId?: pulumi.Input<string>;
+    imageNumber?: pulumi.Input<number | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
 }
 
 /**

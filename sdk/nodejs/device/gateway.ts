@@ -325,130 +325,130 @@ export interface GatewayState {
     /**
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
-    additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
-    bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayBgpConfig>}>;
-    deviceId?: pulumi.Input<string>;
-    dhcpdConfig?: pulumi.Input<inputs.device.GatewayDhcpdConfig>;
+    additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayBgpConfig>} | undefined>;
+    deviceId?: pulumi.Input<string | undefined>;
+    dhcpdConfig?: pulumi.Input<inputs.device.GatewayDhcpdConfig | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
-    extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes>}>;
+    extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes>} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
-    extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes6>}>;
+    extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes6>} | undefined>;
     /**
      * Gateway settings
      */
-    gatewayMgmt?: pulumi.Input<inputs.device.GatewayGatewayMgmt>;
+    gatewayMgmt?: pulumi.Input<inputs.device.GatewayGatewayMgmt | undefined>;
     /**
      * Property key is the profile name
      */
-    idpProfiles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIdpProfiles>}>;
-    image1Url?: pulumi.Input<string>;
-    image2Url?: pulumi.Input<string>;
-    image3Url?: pulumi.Input<string>;
+    idpProfiles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIdpProfiles>} | undefined>;
+    image1Url?: pulumi.Input<string | undefined>;
+    image2Url?: pulumi.Input<string | undefined>;
+    image3Url?: pulumi.Input<string | undefined>;
     /**
      * Property key is the network name
      */
-    ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIpConfigs>}>;
+    ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIpConfigs>} | undefined>;
     /**
      * Device MAC address
      */
-    mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
     /**
      * Whether the device is managed by Mist. Deprecated in favour of mist_configured.
      *
      * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      */
-    managed?: pulumi.Input<boolean>;
+    managed?: pulumi.Input<boolean | undefined>;
     /**
      * Map where the device belongs to
      */
-    mapId?: pulumi.Input<string>;
+    mapId?: pulumi.Input<string | undefined>;
     /**
      * whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
      */
-    mistConfigured?: pulumi.Input<boolean>;
+    mistConfigured?: pulumi.Input<boolean | undefined>;
     /**
      * Device Model
      */
-    model?: pulumi.Input<string>;
-    mspId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    networks?: pulumi.Input<pulumi.Input<inputs.device.GatewayNetwork>[]>;
-    notes?: pulumi.Input<string>;
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    model?: pulumi.Input<string | undefined>;
+    mspId?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    networks?: pulumi.Input<pulumi.Input<inputs.device.GatewayNetwork>[] | undefined>;
+    notes?: pulumi.Input<string | undefined>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Out-of-band (vme/em0/fxp0) IP config
      */
-    oobIpConfig?: pulumi.Input<inputs.device.GatewayOobIpConfig>;
-    orgId?: pulumi.Input<string>;
+    oobIpConfig?: pulumi.Input<inputs.device.GatewayOobIpConfig | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Property key is the path name
      */
-    pathPreferences?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPathPreferences>}>;
+    pathPreferences?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPathPreferences>} | undefined>;
     /**
      * Property key is the port name or range (e.g. "ge-0/0/0-10")
      */
-    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfig>}>;
-    portMirroring?: pulumi.Input<inputs.device.GatewayPortMirroring>;
+    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfig>} | undefined>;
+    portMirroring?: pulumi.Input<inputs.device.GatewayPortMirroring | undefined>;
     /**
      * Auto assigned if not set
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * Property key is the routing policy name
      */
-    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayRoutingPolicies>}>;
+    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayRoutingPolicies>} | undefined>;
     /**
      * Device Serial
      */
-    serial?: pulumi.Input<string>;
-    servicePolicies?: pulumi.Input<pulumi.Input<inputs.device.GatewayServicePolicy>[]>;
-    siteId?: pulumi.Input<string>;
+    serial?: pulumi.Input<string | undefined>;
+    servicePolicies?: pulumi.Input<pulumi.Input<inputs.device.GatewayServicePolicy>[] | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * additional CLI commands to append to the generated SSR config. **Note**: no check is done
      */
-    ssrAdditionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
+    ssrAdditionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Property key is the tunnel name
      */
-    tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayTunnelConfigs>}>;
-    tunnelProviderOptions?: pulumi.Input<inputs.device.GatewayTunnelProviderOptions>;
+    tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayTunnelConfigs>} | undefined>;
+    tunnelProviderOptions?: pulumi.Input<inputs.device.GatewayTunnelProviderOptions | undefined>;
     /**
      * Device Type. enum: `gateway`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * When a service policy denies a app_category, what message to show in user's browser
      */
-    urlFilteringDenyMsg?: pulumi.Input<string>;
+    urlFilteringDenyMsg?: pulumi.Input<string | undefined>;
     /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
-    vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    vrfConfig?: pulumi.Input<inputs.device.GatewayVrfConfig>;
+    vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    vrfConfig?: pulumi.Input<inputs.device.GatewayVrfConfig | undefined>;
     /**
      * Property key is the network name
      */
-    vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayVrfInstances>}>;
+    vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayVrfInstances>} | undefined>;
     /**
      * X in pixel
      */
-    x?: pulumi.Input<number>;
+    x?: pulumi.Input<number | undefined>;
     /**
      * Y in pixel
      */
-    y?: pulumi.Input<number>;
+    y?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -458,108 +458,108 @@ export interface GatewayArgs {
     /**
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
-    additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
-    bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayBgpConfig>}>;
+    additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayBgpConfig>} | undefined>;
     deviceId: pulumi.Input<string>;
-    dhcpdConfig?: pulumi.Input<inputs.device.GatewayDhcpdConfig>;
+    dhcpdConfig?: pulumi.Input<inputs.device.GatewayDhcpdConfig | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
-    extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes>}>;
+    extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes>} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
-    extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes6>}>;
+    extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes6>} | undefined>;
     /**
      * Gateway settings
      */
-    gatewayMgmt?: pulumi.Input<inputs.device.GatewayGatewayMgmt>;
+    gatewayMgmt?: pulumi.Input<inputs.device.GatewayGatewayMgmt | undefined>;
     /**
      * Property key is the profile name
      */
-    idpProfiles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIdpProfiles>}>;
+    idpProfiles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIdpProfiles>} | undefined>;
     /**
      * Property key is the network name
      */
-    ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIpConfigs>}>;
+    ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayIpConfigs>} | undefined>;
     /**
      * Whether the device is managed by Mist. Deprecated in favour of mist_configured.
      *
      * @deprecated This attribute is being deprecated, please use `mistConfigured` instead
      */
-    managed?: pulumi.Input<boolean>;
+    managed?: pulumi.Input<boolean | undefined>;
     /**
      * Map where the device belongs to
      */
-    mapId?: pulumi.Input<string>;
+    mapId?: pulumi.Input<string | undefined>;
     /**
      * whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
      */
-    mistConfigured?: pulumi.Input<boolean>;
-    mspId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    networks?: pulumi.Input<pulumi.Input<inputs.device.GatewayNetwork>[]>;
-    notes?: pulumi.Input<string>;
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    mistConfigured?: pulumi.Input<boolean | undefined>;
+    mspId?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    networks?: pulumi.Input<pulumi.Input<inputs.device.GatewayNetwork>[] | undefined>;
+    notes?: pulumi.Input<string | undefined>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Out-of-band (vme/em0/fxp0) IP config
      */
-    oobIpConfig?: pulumi.Input<inputs.device.GatewayOobIpConfig>;
+    oobIpConfig?: pulumi.Input<inputs.device.GatewayOobIpConfig | undefined>;
     /**
      * Property key is the path name
      */
-    pathPreferences?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPathPreferences>}>;
+    pathPreferences?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPathPreferences>} | undefined>;
     /**
      * Property key is the port name or range (e.g. "ge-0/0/0-10")
      */
-    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfig>}>;
-    portMirroring?: pulumi.Input<inputs.device.GatewayPortMirroring>;
+    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfig>} | undefined>;
+    portMirroring?: pulumi.Input<inputs.device.GatewayPortMirroring | undefined>;
     /**
      * Auto assigned if not set
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * Property key is the routing policy name
      */
-    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayRoutingPolicies>}>;
-    servicePolicies?: pulumi.Input<pulumi.Input<inputs.device.GatewayServicePolicy>[]>;
+    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayRoutingPolicies>} | undefined>;
+    servicePolicies?: pulumi.Input<pulumi.Input<inputs.device.GatewayServicePolicy>[] | undefined>;
     siteId: pulumi.Input<string>;
     /**
      * additional CLI commands to append to the generated SSR config. **Note**: no check is done
      */
-    ssrAdditionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
+    ssrAdditionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Property key is the tunnel name
      */
-    tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayTunnelConfigs>}>;
-    tunnelProviderOptions?: pulumi.Input<inputs.device.GatewayTunnelProviderOptions>;
+    tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayTunnelConfigs>} | undefined>;
+    tunnelProviderOptions?: pulumi.Input<inputs.device.GatewayTunnelProviderOptions | undefined>;
     /**
      * When a service policy denies a app_category, what message to show in user's browser
      */
-    urlFilteringDenyMsg?: pulumi.Input<string>;
+    urlFilteringDenyMsg?: pulumi.Input<string | undefined>;
     /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
-    vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    vrfConfig?: pulumi.Input<inputs.device.GatewayVrfConfig>;
+    vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    vrfConfig?: pulumi.Input<inputs.device.GatewayVrfConfig | undefined>;
     /**
      * Property key is the network name
      */
-    vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayVrfInstances>}>;
+    vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayVrfInstances>} | undefined>;
     /**
      * X in pixel
      */
-    x?: pulumi.Input<number>;
+    x?: pulumi.Input<number | undefined>;
     /**
      * Y in pixel
      */
-    y?: pulumi.Input<number>;
+    y?: pulumi.Input<number | undefined>;
 }
