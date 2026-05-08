@@ -21,11 +21,11 @@ class AvprofileArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
                  protocols: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 fallback_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_filesize: Optional[pulumi.Input[_builtins.int]] = None,
-                 mime_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 fallback_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_filesize: pulumi.Input[Optional[_builtins.int]] = None,
+                 mime_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Avprofile resource.
 
@@ -69,66 +69,66 @@ class AvprofileArgs:
 
     @_builtins.property
     @pulumi.getter(name="fallbackAction")
-    def fallback_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fallback_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `block`, `log-and-permit`, `permit`
         """
         return pulumi.get(self, "fallback_action")
 
     @fallback_action.setter
-    def fallback_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fallback_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fallback_action", value)
 
     @_builtins.property
     @pulumi.getter(name="maxFilesize")
-    def max_filesize(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_filesize(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         In KB
         """
         return pulumi.get(self, "max_filesize")
 
     @max_filesize.setter
-    def max_filesize(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_filesize(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_filesize", value)
 
     @_builtins.property
     @pulumi.getter(name="mimeWhitelists")
-    def mime_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mime_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "mime_whitelists")
 
     @mime_whitelists.setter
-    def mime_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mime_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mime_whitelists", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="urlWhitelists")
-    def url_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def url_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "url_whitelists")
 
     @url_whitelists.setter
-    def url_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def url_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "url_whitelists", value)
 
 
 @pulumi.input_type
 class _AvprofileState:
     def __init__(__self__, *,
-                 fallback_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_filesize: Optional[pulumi.Input[_builtins.int]] = None,
-                 mime_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 fallback_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_filesize: pulumi.Input[Optional[_builtins.int]] = None,
+                 mime_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Avprofile resources.
 
@@ -153,74 +153,74 @@ class _AvprofileState:
 
     @_builtins.property
     @pulumi.getter(name="fallbackAction")
-    def fallback_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fallback_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `block`, `log-and-permit`, `permit`
         """
         return pulumi.get(self, "fallback_action")
 
     @fallback_action.setter
-    def fallback_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fallback_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fallback_action", value)
 
     @_builtins.property
     @pulumi.getter(name="maxFilesize")
-    def max_filesize(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_filesize(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         In KB
         """
         return pulumi.get(self, "max_filesize")
 
     @max_filesize.setter
-    def max_filesize(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_filesize(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_filesize", value)
 
     @_builtins.property
     @pulumi.getter(name="mimeWhitelists")
-    def mime_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mime_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "mime_whitelists")
 
     @mime_whitelists.setter
-    def mime_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mime_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mime_whitelists", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
         """
         return pulumi.get(self, "protocols")
 
     @protocols.setter
-    def protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="urlWhitelists")
-    def url_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def url_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "url_whitelists")
 
     @url_whitelists.setter
-    def url_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def url_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "url_whitelists", value)
 
 
@@ -230,13 +230,13 @@ class Avprofile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fallback_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_filesize: Optional[pulumi.Input[_builtins.int]] = None,
-                 mime_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 fallback_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_filesize: pulumi.Input[Optional[_builtins.int]] = None,
+                 mime_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         This resource manages the Org Antivirus Profile.
@@ -351,13 +351,13 @@ class Avprofile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fallback_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_filesize: Optional[pulumi.Input[_builtins.int]] = None,
-                 mime_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 fallback_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_filesize: pulumi.Input[Optional[_builtins.int]] = None,
+                 mime_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -388,13 +388,13 @@ class Avprofile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            fallback_action: Optional[pulumi.Input[_builtins.str]] = None,
-            max_filesize: Optional[pulumi.Input[_builtins.int]] = None,
-            mime_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            url_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Avprofile':
+            fallback_action: pulumi.Input[Optional[_builtins.str]] = None,
+            max_filesize: pulumi.Input[Optional[_builtins.int]] = None,
+            mime_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Avprofile':
         """
         Get an existing Avprofile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

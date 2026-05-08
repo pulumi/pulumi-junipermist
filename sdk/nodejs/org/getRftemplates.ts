@@ -79,5 +79,5 @@ export function getRftemplatesOutput(args: GetRftemplatesOutputArgs, opts?: pulu
  */
 export interface GetRftemplatesOutputArgs {
     orgId: pulumi.Input<string>;
-    page?: pulumi.Input<number>;
+    page?: pulumi.Input<number | undefined>;
 }

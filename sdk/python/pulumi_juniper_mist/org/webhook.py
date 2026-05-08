@@ -22,21 +22,21 @@ class WebhookArgs:
                  org_id: pulumi.Input[_builtins.str],
                  topics: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  url: pulumi.Input[_builtins.str],
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_grant_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oauth2_token_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 single_event_per_message: Optional[pulumi.Input[_builtins.bool]] = None,
-                 splunk_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_cert: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_grant_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 splunk_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_cert: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Webhook resource.
 
@@ -123,206 +123,206 @@ class WebhookArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether webhook is enabled
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         """
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the webhook
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2ClientId")
-    def oauth2_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when `oauth2_grant_type`==`client_credentials`
         """
         return pulumi.get(self, "oauth2_client_id")
 
     @oauth2_client_id.setter
-    def oauth2_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2ClientSecret")
-    def oauth2_client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when `oauth2_grant_type`==`client_credentials`
         """
         return pulumi.get(self, "oauth2_client_secret")
 
     @oauth2_client_secret.setter
-    def oauth2_client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2GrantType")
-    def oauth2_grant_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_grant_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         required when `type`==`oauth2`. enum: `client_credentials`, `password`
         """
         return pulumi.get(self, "oauth2_grant_type")
 
     @oauth2_grant_type.setter
-    def oauth2_grant_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_grant_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_grant_type", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2Password")
-    def oauth2_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when `oauth2_grant_type`==`password`
         """
         return pulumi.get(self, "oauth2_password")
 
     @oauth2_password.setter
-    def oauth2_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_password", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2Scopes")
-    def oauth2_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def oauth2_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Required when `type`==`oauth2`, if provided, will be used in the token request
         """
         return pulumi.get(self, "oauth2_scopes")
 
     @oauth2_scopes.setter
-    def oauth2_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def oauth2_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "oauth2_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2TokenUrl")
-    def oauth2_token_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_token_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when `type`==`oauth2`
         """
         return pulumi.get(self, "oauth2_token_url")
 
     @oauth2_token_url.setter
-    def oauth2_token_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_token_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_token_url", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2Username")
-    def oauth2_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when `oauth2_grant_type`==`password`
         """
         return pulumi.get(self, "oauth2_username")
 
     @oauth2_username.setter
-    def oauth2_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_username", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only if `type`=`http-post`
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter(name="singleEventPerMessage")
-    def single_event_per_message(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def single_event_per_message(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         """
         return pulumi.get(self, "single_event_per_message")
 
     @single_event_per_message.setter
-    def single_event_per_message(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def single_event_per_message(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "single_event_per_message", value)
 
     @_builtins.property
     @pulumi.getter(name="splunkToken")
-    def splunk_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def splunk_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         """
         return pulumi.get(self, "splunk_token")
 
     @splunk_token.setter
-    def splunk_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def splunk_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "splunk_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="verifyCert")
-    def verify_cert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verify_cert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When url uses HTTPS, whether to verify the certificate
         """
         return pulumi.get(self, "verify_cert")
 
     @verify_cert.setter
-    def verify_cert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verify_cert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verify_cert", value)
 
 
 @pulumi.input_type
 class _WebhookState:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_grant_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oauth2_token_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 single_event_per_message: Optional[pulumi.Input[_builtins.bool]] = None,
-                 splunk_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_cert: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_grant_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 splunk_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_cert: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Webhook resources.
 
@@ -382,212 +382,212 @@ class _WebhookState:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether webhook is enabled
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         """
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the webhook
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2ClientId")
-    def oauth2_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when `oauth2_grant_type`==`client_credentials`
         """
         return pulumi.get(self, "oauth2_client_id")
 
     @oauth2_client_id.setter
-    def oauth2_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2ClientSecret")
-    def oauth2_client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when `oauth2_grant_type`==`client_credentials`
         """
         return pulumi.get(self, "oauth2_client_secret")
 
     @oauth2_client_secret.setter
-    def oauth2_client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2GrantType")
-    def oauth2_grant_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_grant_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         required when `type`==`oauth2`. enum: `client_credentials`, `password`
         """
         return pulumi.get(self, "oauth2_grant_type")
 
     @oauth2_grant_type.setter
-    def oauth2_grant_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_grant_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_grant_type", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2Password")
-    def oauth2_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when `oauth2_grant_type`==`password`
         """
         return pulumi.get(self, "oauth2_password")
 
     @oauth2_password.setter
-    def oauth2_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_password", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2Scopes")
-    def oauth2_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def oauth2_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Required when `type`==`oauth2`, if provided, will be used in the token request
         """
         return pulumi.get(self, "oauth2_scopes")
 
     @oauth2_scopes.setter
-    def oauth2_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def oauth2_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "oauth2_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2TokenUrl")
-    def oauth2_token_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_token_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when `type`==`oauth2`
         """
         return pulumi.get(self, "oauth2_token_url")
 
     @oauth2_token_url.setter
-    def oauth2_token_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_token_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_token_url", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2Username")
-    def oauth2_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when `oauth2_grant_type`==`password`
         """
         return pulumi.get(self, "oauth2_username")
 
     @oauth2_username.setter
-    def oauth2_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_username", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only if `type`=`http-post`
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter(name="singleEventPerMessage")
-    def single_event_per_message(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def single_event_per_message(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         """
         return pulumi.get(self, "single_event_per_message")
 
     @single_event_per_message.setter
-    def single_event_per_message(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def single_event_per_message(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "single_event_per_message", value)
 
     @_builtins.property
     @pulumi.getter(name="splunkToken")
-    def splunk_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def splunk_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         """
         return pulumi.get(self, "splunk_token")
 
     @splunk_token.setter
-    def splunk_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def splunk_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "splunk_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def topics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
         """
         return pulumi.get(self, "topics")
 
     @topics.setter
-    def topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def topics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "topics", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="verifyCert")
-    def verify_cert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verify_cert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When url uses HTTPS, whether to verify the certificate
         """
         return pulumi.get(self, "verify_cert")
 
     @verify_cert.setter
-    def verify_cert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verify_cert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verify_cert", value)
 
 
@@ -597,24 +597,24 @@ class Webhook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_grant_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oauth2_token_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 single_event_per_message: Optional[pulumi.Input[_builtins.bool]] = None,
-                 splunk_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_cert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_grant_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 splunk_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_cert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         This resource manages Org Webhooks.
@@ -744,24 +744,24 @@ class Webhook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_grant_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oauth2_token_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 single_event_per_message: Optional[pulumi.Input[_builtins.bool]] = None,
-                 splunk_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_cert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_grant_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 splunk_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_cert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -807,24 +807,24 @@ class Webhook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth2_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth2_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth2_grant_type: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth2_password: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth2_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            oauth2_token_url: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth2_username: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            secret: Optional[pulumi.Input[_builtins.str]] = None,
-            single_event_per_message: Optional[pulumi.Input[_builtins.bool]] = None,
-            splunk_token: Optional[pulumi.Input[_builtins.str]] = None,
-            topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            verify_cert: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Webhook':
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_grant_type: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_password: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            oauth2_token_url: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_username: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            single_event_per_message: pulumi.Input[Optional[_builtins.bool]] = None,
+            splunk_token: pulumi.Input[Optional[_builtins.str]] = None,
+            topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            verify_cert: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Webhook':
         """
         Get an existing Webhook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

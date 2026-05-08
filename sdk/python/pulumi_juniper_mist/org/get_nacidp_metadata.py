@@ -160,8 +160,8 @@ def get_nacidp_metadata(nacidp_id: Optional[_builtins.str] = None,
         nacidp_id=pulumi.get(__ret__, 'nacidp_id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         scim_base_url=pulumi.get(__ret__, 'scim_base_url'))
-def get_nacidp_metadata_output(nacidp_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               org_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_nacidp_metadata_output(nacidp_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               org_id: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNacidpMetadataResult]:
     """
     This data source provides the NAC IDP Metadata information.

@@ -119,12 +119,12 @@ export interface WlanPortalTemplateState {
     /**
      * Portal template wlan settings
      */
-    portalTemplate?: pulumi.Input<inputs.site.WlanPortalTemplatePortalTemplate>;
-    siteId?: pulumi.Input<string>;
+    portalTemplate?: pulumi.Input<inputs.site.WlanPortalTemplatePortalTemplate | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Site WLAN ID
      */
-    wlanId?: pulumi.Input<string>;
+    wlanId?: pulumi.Input<string | undefined>;
 }
 
 /**

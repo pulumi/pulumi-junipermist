@@ -23,37 +23,37 @@ class ApArgs:
     def __init__(__self__, *,
                  device_id: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 aeroscout: Optional[pulumi.Input['ApAeroscoutArgs']] = None,
-                 airista: Optional[pulumi.Input['ApAiristaArgs']] = None,
-                 ble_config: Optional[pulumi.Input['ApBleConfigArgs']] = None,
-                 centrak: Optional[pulumi.Input['ApCentrakArgs']] = None,
-                 client_bridge: Optional[pulumi.Input['ApClientBridgeArgs']] = None,
-                 disable_eth1: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_eth2: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_eth3: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_module: Optional[pulumi.Input[_builtins.bool]] = None,
-                 esl_config: Optional[pulumi.Input['ApEslConfigArgs']] = None,
-                 flow_control: Optional[pulumi.Input[_builtins.bool]] = None,
-                 height: Optional[pulumi.Input[_builtins.float]] = None,
-                 ip_config: Optional[pulumi.Input['ApIpConfigArgs']] = None,
-                 lacp_config: Optional[pulumi.Input['ApLacpConfigArgs']] = None,
-                 led: Optional[pulumi.Input['ApLedArgs']] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 map_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mesh: Optional[pulumi.Input['ApMeshArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 orientation: Optional[pulumi.Input[_builtins.int]] = None,
-                 poe_passthrough: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]] = None,
-                 pwr_config: Optional[pulumi.Input['ApPwrConfigArgs']] = None,
-                 radio_config: Optional[pulumi.Input['ApRadioConfigArgs']] = None,
-                 uplink_port_config: Optional[pulumi.Input['ApUplinkPortConfigArgs']] = None,
-                 usb_config: Optional[pulumi.Input['ApUsbConfigArgs']] = None,
-                 vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 x: Optional[pulumi.Input[_builtins.float]] = None,
-                 y: Optional[pulumi.Input[_builtins.float]] = None):
+                 aeroscout: pulumi.Input[Optional['ApAeroscoutArgs']] = None,
+                 airista: pulumi.Input[Optional['ApAiristaArgs']] = None,
+                 ble_config: pulumi.Input[Optional['ApBleConfigArgs']] = None,
+                 centrak: pulumi.Input[Optional['ApCentrakArgs']] = None,
+                 client_bridge: pulumi.Input[Optional['ApClientBridgeArgs']] = None,
+                 disable_eth1: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
+                 esl_config: pulumi.Input[Optional['ApEslConfigArgs']] = None,
+                 flow_control: pulumi.Input[Optional[_builtins.bool]] = None,
+                 height: pulumi.Input[Optional[_builtins.float]] = None,
+                 ip_config: pulumi.Input[Optional['ApIpConfigArgs']] = None,
+                 lacp_config: pulumi.Input[Optional['ApLacpConfigArgs']] = None,
+                 led: pulumi.Input[Optional['ApLedArgs']] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mesh: pulumi.Input[Optional['ApMeshArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 orientation: pulumi.Input[Optional[_builtins.int]] = None,
+                 poe_passthrough: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['ApPortConfigArgs']]]] = None,
+                 pwr_config: pulumi.Input[Optional['ApPwrConfigArgs']] = None,
+                 radio_config: pulumi.Input[Optional['ApRadioConfigArgs']] = None,
+                 uplink_port_config: pulumi.Input[Optional['ApUplinkPortConfigArgs']] = None,
+                 usb_config: pulumi.Input[Optional['ApUsbConfigArgs']] = None,
+                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 x: pulumi.Input[Optional[_builtins.float]] = None,
+                 y: pulumi.Input[Optional[_builtins.float]] = None):
         """
         The set of arguments for constructing a Ap resource.
 
@@ -169,310 +169,310 @@ class ApArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aeroscout(self) -> Optional[pulumi.Input['ApAeroscoutArgs']]:
+    def aeroscout(self) -> pulumi.Input[Optional['ApAeroscoutArgs']]:
         """
         Aeroscout AP settings
         """
         return pulumi.get(self, "aeroscout")
 
     @aeroscout.setter
-    def aeroscout(self, value: Optional[pulumi.Input['ApAeroscoutArgs']]):
+    def aeroscout(self, value: pulumi.Input[Optional['ApAeroscoutArgs']]):
         pulumi.set(self, "aeroscout", value)
 
     @_builtins.property
     @pulumi.getter
-    def airista(self) -> Optional[pulumi.Input['ApAiristaArgs']]:
+    def airista(self) -> pulumi.Input[Optional['ApAiristaArgs']]:
         return pulumi.get(self, "airista")
 
     @airista.setter
-    def airista(self, value: Optional[pulumi.Input['ApAiristaArgs']]):
+    def airista(self, value: pulumi.Input[Optional['ApAiristaArgs']]):
         pulumi.set(self, "airista", value)
 
     @_builtins.property
     @pulumi.getter(name="bleConfig")
-    def ble_config(self) -> Optional[pulumi.Input['ApBleConfigArgs']]:
+    def ble_config(self) -> pulumi.Input[Optional['ApBleConfigArgs']]:
         """
         BLE AP settings
         """
         return pulumi.get(self, "ble_config")
 
     @ble_config.setter
-    def ble_config(self, value: Optional[pulumi.Input['ApBleConfigArgs']]):
+    def ble_config(self, value: pulumi.Input[Optional['ApBleConfigArgs']]):
         pulumi.set(self, "ble_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def centrak(self) -> Optional[pulumi.Input['ApCentrakArgs']]:
+    def centrak(self) -> pulumi.Input[Optional['ApCentrakArgs']]:
         return pulumi.get(self, "centrak")
 
     @centrak.setter
-    def centrak(self, value: Optional[pulumi.Input['ApCentrakArgs']]):
+    def centrak(self, value: pulumi.Input[Optional['ApCentrakArgs']]):
         pulumi.set(self, "centrak", value)
 
     @_builtins.property
     @pulumi.getter(name="clientBridge")
-    def client_bridge(self) -> Optional[pulumi.Input['ApClientBridgeArgs']]:
+    def client_bridge(self) -> pulumi.Input[Optional['ApClientBridgeArgs']]:
         return pulumi.get(self, "client_bridge")
 
     @client_bridge.setter
-    def client_bridge(self, value: Optional[pulumi.Input['ApClientBridgeArgs']]):
+    def client_bridge(self, value: pulumi.Input[Optional['ApClientBridgeArgs']]):
         pulumi.set(self, "client_bridge", value)
 
     @_builtins.property
     @pulumi.getter(name="disableEth1")
-    def disable_eth1(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_eth1(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable eth1 port
         """
         return pulumi.get(self, "disable_eth1")
 
     @disable_eth1.setter
-    def disable_eth1(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_eth1(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_eth1", value)
 
     @_builtins.property
     @pulumi.getter(name="disableEth2")
-    def disable_eth2(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_eth2(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable eth2 port
         """
         return pulumi.get(self, "disable_eth2")
 
     @disable_eth2.setter
-    def disable_eth2(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_eth2(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_eth2", value)
 
     @_builtins.property
     @pulumi.getter(name="disableEth3")
-    def disable_eth3(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_eth3(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable eth3 port
         """
         return pulumi.get(self, "disable_eth3")
 
     @disable_eth3.setter
-    def disable_eth3(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_eth3(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_eth3", value)
 
     @_builtins.property
     @pulumi.getter(name="disableModule")
-    def disable_module(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_module(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable module port
         """
         return pulumi.get(self, "disable_module")
 
     @disable_module.setter
-    def disable_module(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_module(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_module", value)
 
     @_builtins.property
     @pulumi.getter(name="eslConfig")
-    def esl_config(self) -> Optional[pulumi.Input['ApEslConfigArgs']]:
+    def esl_config(self) -> pulumi.Input[Optional['ApEslConfigArgs']]:
         return pulumi.get(self, "esl_config")
 
     @esl_config.setter
-    def esl_config(self, value: Optional[pulumi.Input['ApEslConfigArgs']]):
+    def esl_config(self, value: pulumi.Input[Optional['ApEslConfigArgs']]):
         pulumi.set(self, "esl_config", value)
 
     @_builtins.property
     @pulumi.getter(name="flowControl")
-    def flow_control(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def flow_control(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         For some AP models, flow_control can be enabled to address some switch compatibility issue
         """
         return pulumi.get(self, "flow_control")
 
     @flow_control.setter
-    def flow_control(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def flow_control(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "flow_control", value)
 
     @_builtins.property
     @pulumi.getter
-    def height(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def height(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Height, in meters, optional
         """
         return pulumi.get(self, "height")
 
     @height.setter
-    def height(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def height(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "height", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfig")
-    def ip_config(self) -> Optional[pulumi.Input['ApIpConfigArgs']]:
+    def ip_config(self) -> pulumi.Input[Optional['ApIpConfigArgs']]:
         """
         IP AP settings
         """
         return pulumi.get(self, "ip_config")
 
     @ip_config.setter
-    def ip_config(self, value: Optional[pulumi.Input['ApIpConfigArgs']]):
+    def ip_config(self, value: pulumi.Input[Optional['ApIpConfigArgs']]):
         pulumi.set(self, "ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="lacpConfig")
-    def lacp_config(self) -> Optional[pulumi.Input['ApLacpConfigArgs']]:
+    def lacp_config(self) -> pulumi.Input[Optional['ApLacpConfigArgs']]:
         return pulumi.get(self, "lacp_config")
 
     @lacp_config.setter
-    def lacp_config(self, value: Optional[pulumi.Input['ApLacpConfigArgs']]):
+    def lacp_config(self, value: pulumi.Input[Optional['ApLacpConfigArgs']]):
         pulumi.set(self, "lacp_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def led(self) -> Optional[pulumi.Input['ApLedArgs']]:
+    def led(self) -> pulumi.Input[Optional['ApLedArgs']]:
         """
         LED AP settings
         """
         return pulumi.get(self, "led")
 
     @led.setter
-    def led(self, value: Optional[pulumi.Input['ApLedArgs']]):
+    def led(self, value: pulumi.Input[Optional['ApLedArgs']]):
         pulumi.set(self, "led", value)
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this map is considered locked down
         """
         return pulumi.get(self, "locked")
 
     @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "locked", value)
 
     @_builtins.property
     @pulumi.getter(name="mapId")
-    def map_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def map_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Map where the device belongs to
         """
         return pulumi.get(self, "map_id")
 
     @map_id.setter
-    def map_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def map_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "map_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def mesh(self) -> Optional[pulumi.Input['ApMeshArgs']]:
+    def mesh(self) -> pulumi.Input[Optional['ApMeshArgs']]:
         """
         Mesh AP settings
         """
         return pulumi.get(self, "mesh")
 
     @mesh.setter
-    def mesh(self, value: Optional[pulumi.Input['ApMeshArgs']]):
+    def mesh(self, value: pulumi.Input[Optional['ApMeshArgs']]):
         pulumi.set(self, "mesh", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Any notes about this AP
         """
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
-    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ntp_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ntp_servers", value)
 
     @_builtins.property
     @pulumi.getter
-    def orientation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def orientation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Orientation, 0-359, in degrees, up is 0, right is 90.
         """
         return pulumi.get(self, "orientation")
 
     @orientation.setter
-    def orientation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def orientation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "orientation", value)
 
     @_builtins.property
     @pulumi.getter(name="poePassthrough")
-    def poe_passthrough(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def poe_passthrough(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         """
         return pulumi.get(self, "poe_passthrough")
 
     @poe_passthrough.setter
-    def poe_passthrough(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def poe_passthrough(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "poe_passthrough", value)
 
     @_builtins.property
     @pulumi.getter(name="portConfig")
-    def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]:
+    def port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]:
         """
         eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
         """
         return pulumi.get(self, "port_config")
 
     @port_config.setter
-    def port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]):
+    def port_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]):
         pulumi.set(self, "port_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pwrConfig")
-    def pwr_config(self) -> Optional[pulumi.Input['ApPwrConfigArgs']]:
+    def pwr_config(self) -> pulumi.Input[Optional['ApPwrConfigArgs']]:
         """
         Power related configs
         """
         return pulumi.get(self, "pwr_config")
 
     @pwr_config.setter
-    def pwr_config(self, value: Optional[pulumi.Input['ApPwrConfigArgs']]):
+    def pwr_config(self, value: pulumi.Input[Optional['ApPwrConfigArgs']]):
         pulumi.set(self, "pwr_config", value)
 
     @_builtins.property
     @pulumi.getter(name="radioConfig")
-    def radio_config(self) -> Optional[pulumi.Input['ApRadioConfigArgs']]:
+    def radio_config(self) -> pulumi.Input[Optional['ApRadioConfigArgs']]:
         """
         Radio AP settings
         """
         return pulumi.get(self, "radio_config")
 
     @radio_config.setter
-    def radio_config(self, value: Optional[pulumi.Input['ApRadioConfigArgs']]):
+    def radio_config(self, value: pulumi.Input[Optional['ApRadioConfigArgs']]):
         pulumi.set(self, "radio_config", value)
 
     @_builtins.property
     @pulumi.getter(name="uplinkPortConfig")
-    def uplink_port_config(self) -> Optional[pulumi.Input['ApUplinkPortConfigArgs']]:
+    def uplink_port_config(self) -> pulumi.Input[Optional['ApUplinkPortConfigArgs']]:
         """
         AP Uplink port configuration
         """
         return pulumi.get(self, "uplink_port_config")
 
     @uplink_port_config.setter
-    def uplink_port_config(self, value: Optional[pulumi.Input['ApUplinkPortConfigArgs']]):
+    def uplink_port_config(self, value: pulumi.Input[Optional['ApUplinkPortConfigArgs']]):
         pulumi.set(self, "uplink_port_config", value)
 
     @_builtins.property
     @pulumi.getter(name="usbConfig")
-    def usb_config(self) -> Optional[pulumi.Input['ApUsbConfigArgs']]:
+    def usb_config(self) -> pulumi.Input[Optional['ApUsbConfigArgs']]:
         """
         USB AP settings
           - Note: if native imagotag is enabled, BLE will be disabled automatically
@@ -481,90 +481,90 @@ class ApArgs:
         return pulumi.get(self, "usb_config")
 
     @usb_config.setter
-    def usb_config(self, value: Optional[pulumi.Input['ApUsbConfigArgs']]):
+    def usb_config(self, value: pulumi.Input[Optional['ApUsbConfigArgs']]):
         pulumi.set(self, "usb_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
     @vars.setter
-    def vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def vars(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vars", value)
 
     @_builtins.property
     @pulumi.getter
-    def x(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def x(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         X in pixel
         """
         return pulumi.get(self, "x")
 
     @x.setter
-    def x(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def x(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "x", value)
 
     @_builtins.property
     @pulumi.getter
-    def y(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def y(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Y in pixel
         """
         return pulumi.get(self, "y")
 
     @y.setter
-    def y(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def y(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "y", value)
 
 
 @pulumi.input_type
 class _ApState:
     def __init__(__self__, *,
-                 aeroscout: Optional[pulumi.Input['ApAeroscoutArgs']] = None,
-                 airista: Optional[pulumi.Input['ApAiristaArgs']] = None,
-                 ble_config: Optional[pulumi.Input['ApBleConfigArgs']] = None,
-                 centrak: Optional[pulumi.Input['ApCentrakArgs']] = None,
-                 client_bridge: Optional[pulumi.Input['ApClientBridgeArgs']] = None,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_eth1: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_eth2: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_eth3: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_module: Optional[pulumi.Input[_builtins.bool]] = None,
-                 esl_config: Optional[pulumi.Input['ApEslConfigArgs']] = None,
-                 flow_control: Optional[pulumi.Input[_builtins.bool]] = None,
-                 height: Optional[pulumi.Input[_builtins.float]] = None,
-                 image1_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 image2_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 image3_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_config: Optional[pulumi.Input['ApIpConfigArgs']] = None,
-                 lacp_config: Optional[pulumi.Input['ApLacpConfigArgs']] = None,
-                 led: Optional[pulumi.Input['ApLedArgs']] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 map_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mesh: Optional[pulumi.Input['ApMeshArgs']] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 orientation: Optional[pulumi.Input[_builtins.int]] = None,
-                 poe_passthrough: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]] = None,
-                 pwr_config: Optional[pulumi.Input['ApPwrConfigArgs']] = None,
-                 radio_config: Optional[pulumi.Input['ApRadioConfigArgs']] = None,
-                 serial: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uplink_port_config: Optional[pulumi.Input['ApUplinkPortConfigArgs']] = None,
-                 usb_config: Optional[pulumi.Input['ApUsbConfigArgs']] = None,
-                 vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 x: Optional[pulumi.Input[_builtins.float]] = None,
-                 y: Optional[pulumi.Input[_builtins.float]] = None):
+                 aeroscout: pulumi.Input[Optional['ApAeroscoutArgs']] = None,
+                 airista: pulumi.Input[Optional['ApAiristaArgs']] = None,
+                 ble_config: pulumi.Input[Optional['ApBleConfigArgs']] = None,
+                 centrak: pulumi.Input[Optional['ApCentrakArgs']] = None,
+                 client_bridge: pulumi.Input[Optional['ApClientBridgeArgs']] = None,
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_eth1: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
+                 esl_config: pulumi.Input[Optional['ApEslConfigArgs']] = None,
+                 flow_control: pulumi.Input[Optional[_builtins.bool]] = None,
+                 height: pulumi.Input[Optional[_builtins.float]] = None,
+                 image1_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 image2_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 image3_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_config: pulumi.Input[Optional['ApIpConfigArgs']] = None,
+                 lacp_config: pulumi.Input[Optional['ApLacpConfigArgs']] = None,
+                 led: pulumi.Input[Optional['ApLedArgs']] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mesh: pulumi.Input[Optional['ApMeshArgs']] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 orientation: pulumi.Input[Optional[_builtins.int]] = None,
+                 poe_passthrough: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['ApPortConfigArgs']]]] = None,
+                 pwr_config: pulumi.Input[Optional['ApPwrConfigArgs']] = None,
+                 radio_config: pulumi.Input[Optional['ApRadioConfigArgs']] = None,
+                 serial: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uplink_port_config: pulumi.Input[Optional['ApUplinkPortConfigArgs']] = None,
+                 usb_config: pulumi.Input[Optional['ApUsbConfigArgs']] = None,
+                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 x: pulumi.Input[Optional[_builtins.float]] = None,
+                 y: pulumi.Input[Optional[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering Ap resources.
 
@@ -684,412 +684,412 @@ class _ApState:
 
     @_builtins.property
     @pulumi.getter
-    def aeroscout(self) -> Optional[pulumi.Input['ApAeroscoutArgs']]:
+    def aeroscout(self) -> pulumi.Input[Optional['ApAeroscoutArgs']]:
         """
         Aeroscout AP settings
         """
         return pulumi.get(self, "aeroscout")
 
     @aeroscout.setter
-    def aeroscout(self, value: Optional[pulumi.Input['ApAeroscoutArgs']]):
+    def aeroscout(self, value: pulumi.Input[Optional['ApAeroscoutArgs']]):
         pulumi.set(self, "aeroscout", value)
 
     @_builtins.property
     @pulumi.getter
-    def airista(self) -> Optional[pulumi.Input['ApAiristaArgs']]:
+    def airista(self) -> pulumi.Input[Optional['ApAiristaArgs']]:
         return pulumi.get(self, "airista")
 
     @airista.setter
-    def airista(self, value: Optional[pulumi.Input['ApAiristaArgs']]):
+    def airista(self, value: pulumi.Input[Optional['ApAiristaArgs']]):
         pulumi.set(self, "airista", value)
 
     @_builtins.property
     @pulumi.getter(name="bleConfig")
-    def ble_config(self) -> Optional[pulumi.Input['ApBleConfigArgs']]:
+    def ble_config(self) -> pulumi.Input[Optional['ApBleConfigArgs']]:
         """
         BLE AP settings
         """
         return pulumi.get(self, "ble_config")
 
     @ble_config.setter
-    def ble_config(self, value: Optional[pulumi.Input['ApBleConfigArgs']]):
+    def ble_config(self, value: pulumi.Input[Optional['ApBleConfigArgs']]):
         pulumi.set(self, "ble_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def centrak(self) -> Optional[pulumi.Input['ApCentrakArgs']]:
+    def centrak(self) -> pulumi.Input[Optional['ApCentrakArgs']]:
         return pulumi.get(self, "centrak")
 
     @centrak.setter
-    def centrak(self, value: Optional[pulumi.Input['ApCentrakArgs']]):
+    def centrak(self, value: pulumi.Input[Optional['ApCentrakArgs']]):
         pulumi.set(self, "centrak", value)
 
     @_builtins.property
     @pulumi.getter(name="clientBridge")
-    def client_bridge(self) -> Optional[pulumi.Input['ApClientBridgeArgs']]:
+    def client_bridge(self) -> pulumi.Input[Optional['ApClientBridgeArgs']]:
         return pulumi.get(self, "client_bridge")
 
     @client_bridge.setter
-    def client_bridge(self, value: Optional[pulumi.Input['ApClientBridgeArgs']]):
+    def client_bridge(self, value: pulumi.Input[Optional['ApClientBridgeArgs']]):
         pulumi.set(self, "client_bridge", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceId")
-    def device_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "device_id")
 
     @device_id.setter
-    def device_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_id", value)
 
     @_builtins.property
     @pulumi.getter(name="disableEth1")
-    def disable_eth1(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_eth1(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable eth1 port
         """
         return pulumi.get(self, "disable_eth1")
 
     @disable_eth1.setter
-    def disable_eth1(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_eth1(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_eth1", value)
 
     @_builtins.property
     @pulumi.getter(name="disableEth2")
-    def disable_eth2(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_eth2(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable eth2 port
         """
         return pulumi.get(self, "disable_eth2")
 
     @disable_eth2.setter
-    def disable_eth2(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_eth2(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_eth2", value)
 
     @_builtins.property
     @pulumi.getter(name="disableEth3")
-    def disable_eth3(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_eth3(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable eth3 port
         """
         return pulumi.get(self, "disable_eth3")
 
     @disable_eth3.setter
-    def disable_eth3(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_eth3(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_eth3", value)
 
     @_builtins.property
     @pulumi.getter(name="disableModule")
-    def disable_module(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_module(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable module port
         """
         return pulumi.get(self, "disable_module")
 
     @disable_module.setter
-    def disable_module(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_module(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_module", value)
 
     @_builtins.property
     @pulumi.getter(name="eslConfig")
-    def esl_config(self) -> Optional[pulumi.Input['ApEslConfigArgs']]:
+    def esl_config(self) -> pulumi.Input[Optional['ApEslConfigArgs']]:
         return pulumi.get(self, "esl_config")
 
     @esl_config.setter
-    def esl_config(self, value: Optional[pulumi.Input['ApEslConfigArgs']]):
+    def esl_config(self, value: pulumi.Input[Optional['ApEslConfigArgs']]):
         pulumi.set(self, "esl_config", value)
 
     @_builtins.property
     @pulumi.getter(name="flowControl")
-    def flow_control(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def flow_control(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         For some AP models, flow_control can be enabled to address some switch compatibility issue
         """
         return pulumi.get(self, "flow_control")
 
     @flow_control.setter
-    def flow_control(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def flow_control(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "flow_control", value)
 
     @_builtins.property
     @pulumi.getter
-    def height(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def height(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Height, in meters, optional
         """
         return pulumi.get(self, "height")
 
     @height.setter
-    def height(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def height(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "height", value)
 
     @_builtins.property
     @pulumi.getter(name="image1Url")
-    def image1_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image1_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "image1_url")
 
     @image1_url.setter
-    def image1_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image1_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image1_url", value)
 
     @_builtins.property
     @pulumi.getter(name="image2Url")
-    def image2_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image2_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "image2_url")
 
     @image2_url.setter
-    def image2_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image2_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image2_url", value)
 
     @_builtins.property
     @pulumi.getter(name="image3Url")
-    def image3_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image3_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "image3_url")
 
     @image3_url.setter
-    def image3_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image3_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image3_url", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfig")
-    def ip_config(self) -> Optional[pulumi.Input['ApIpConfigArgs']]:
+    def ip_config(self) -> pulumi.Input[Optional['ApIpConfigArgs']]:
         """
         IP AP settings
         """
         return pulumi.get(self, "ip_config")
 
     @ip_config.setter
-    def ip_config(self, value: Optional[pulumi.Input['ApIpConfigArgs']]):
+    def ip_config(self, value: pulumi.Input[Optional['ApIpConfigArgs']]):
         pulumi.set(self, "ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="lacpConfig")
-    def lacp_config(self) -> Optional[pulumi.Input['ApLacpConfigArgs']]:
+    def lacp_config(self) -> pulumi.Input[Optional['ApLacpConfigArgs']]:
         return pulumi.get(self, "lacp_config")
 
     @lacp_config.setter
-    def lacp_config(self, value: Optional[pulumi.Input['ApLacpConfigArgs']]):
+    def lacp_config(self, value: pulumi.Input[Optional['ApLacpConfigArgs']]):
         pulumi.set(self, "lacp_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def led(self) -> Optional[pulumi.Input['ApLedArgs']]:
+    def led(self) -> pulumi.Input[Optional['ApLedArgs']]:
         """
         LED AP settings
         """
         return pulumi.get(self, "led")
 
     @led.setter
-    def led(self, value: Optional[pulumi.Input['ApLedArgs']]):
+    def led(self, value: pulumi.Input[Optional['ApLedArgs']]):
         pulumi.set(self, "led", value)
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this map is considered locked down
         """
         return pulumi.get(self, "locked")
 
     @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "locked", value)
 
     @_builtins.property
     @pulumi.getter
-    def mac(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Device MAC address
         """
         return pulumi.get(self, "mac")
 
     @mac.setter
-    def mac(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac", value)
 
     @_builtins.property
     @pulumi.getter(name="mapId")
-    def map_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def map_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Map where the device belongs to
         """
         return pulumi.get(self, "map_id")
 
     @map_id.setter
-    def map_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def map_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "map_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def mesh(self) -> Optional[pulumi.Input['ApMeshArgs']]:
+    def mesh(self) -> pulumi.Input[Optional['ApMeshArgs']]:
         """
         Mesh AP settings
         """
         return pulumi.get(self, "mesh")
 
     @mesh.setter
-    def mesh(self, value: Optional[pulumi.Input['ApMeshArgs']]):
+    def mesh(self, value: pulumi.Input[Optional['ApMeshArgs']]):
         pulumi.set(self, "mesh", value)
 
     @_builtins.property
     @pulumi.getter
-    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Device Model
         """
         return pulumi.get(self, "model")
 
     @model.setter
-    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Any notes about this AP
         """
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
-    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ntp_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ntp_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def orientation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def orientation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Orientation, 0-359, in degrees, up is 0, right is 90.
         """
         return pulumi.get(self, "orientation")
 
     @orientation.setter
-    def orientation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def orientation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "orientation", value)
 
     @_builtins.property
     @pulumi.getter(name="poePassthrough")
-    def poe_passthrough(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def poe_passthrough(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         """
         return pulumi.get(self, "poe_passthrough")
 
     @poe_passthrough.setter
-    def poe_passthrough(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def poe_passthrough(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "poe_passthrough", value)
 
     @_builtins.property
     @pulumi.getter(name="portConfig")
-    def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]:
+    def port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]:
         """
         eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
         """
         return pulumi.get(self, "port_config")
 
     @port_config.setter
-    def port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]):
+    def port_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['ApPortConfigArgs']]]]):
         pulumi.set(self, "port_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pwrConfig")
-    def pwr_config(self) -> Optional[pulumi.Input['ApPwrConfigArgs']]:
+    def pwr_config(self) -> pulumi.Input[Optional['ApPwrConfigArgs']]:
         """
         Power related configs
         """
         return pulumi.get(self, "pwr_config")
 
     @pwr_config.setter
-    def pwr_config(self, value: Optional[pulumi.Input['ApPwrConfigArgs']]):
+    def pwr_config(self, value: pulumi.Input[Optional['ApPwrConfigArgs']]):
         pulumi.set(self, "pwr_config", value)
 
     @_builtins.property
     @pulumi.getter(name="radioConfig")
-    def radio_config(self) -> Optional[pulumi.Input['ApRadioConfigArgs']]:
+    def radio_config(self) -> pulumi.Input[Optional['ApRadioConfigArgs']]:
         """
         Radio AP settings
         """
         return pulumi.get(self, "radio_config")
 
     @radio_config.setter
-    def radio_config(self, value: Optional[pulumi.Input['ApRadioConfigArgs']]):
+    def radio_config(self, value: pulumi.Input[Optional['ApRadioConfigArgs']]):
         pulumi.set(self, "radio_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def serial(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serial(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Device Serial
         """
         return pulumi.get(self, "serial")
 
     @serial.setter
-    def serial(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serial(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serial", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Device Type. enum: `ap`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="uplinkPortConfig")
-    def uplink_port_config(self) -> Optional[pulumi.Input['ApUplinkPortConfigArgs']]:
+    def uplink_port_config(self) -> pulumi.Input[Optional['ApUplinkPortConfigArgs']]:
         """
         AP Uplink port configuration
         """
         return pulumi.get(self, "uplink_port_config")
 
     @uplink_port_config.setter
-    def uplink_port_config(self, value: Optional[pulumi.Input['ApUplinkPortConfigArgs']]):
+    def uplink_port_config(self, value: pulumi.Input[Optional['ApUplinkPortConfigArgs']]):
         pulumi.set(self, "uplink_port_config", value)
 
     @_builtins.property
     @pulumi.getter(name="usbConfig")
-    def usb_config(self) -> Optional[pulumi.Input['ApUsbConfigArgs']]:
+    def usb_config(self) -> pulumi.Input[Optional['ApUsbConfigArgs']]:
         """
         USB AP settings
           - Note: if native imagotag is enabled, BLE will be disabled automatically
@@ -1098,43 +1098,43 @@ class _ApState:
         return pulumi.get(self, "usb_config")
 
     @usb_config.setter
-    def usb_config(self, value: Optional[pulumi.Input['ApUsbConfigArgs']]):
+    def usb_config(self, value: pulumi.Input[Optional['ApUsbConfigArgs']]):
         pulumi.set(self, "usb_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
     @vars.setter
-    def vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def vars(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vars", value)
 
     @_builtins.property
     @pulumi.getter
-    def x(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def x(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         X in pixel
         """
         return pulumi.get(self, "x")
 
     @x.setter
-    def x(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def x(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "x", value)
 
     @_builtins.property
     @pulumi.getter
-    def y(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def y(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Y in pixel
         """
         return pulumi.get(self, "y")
 
     @y.setter
-    def y(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def y(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "y", value)
 
 
@@ -1144,39 +1144,39 @@ class Ap(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aeroscout: Optional[pulumi.Input[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']]] = None,
-                 airista: Optional[pulumi.Input[Union['ApAiristaArgs', 'ApAiristaArgsDict']]] = None,
-                 ble_config: Optional[pulumi.Input[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']]] = None,
-                 centrak: Optional[pulumi.Input[Union['ApCentrakArgs', 'ApCentrakArgsDict']]] = None,
-                 client_bridge: Optional[pulumi.Input[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict']]] = None,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_eth1: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_eth2: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_eth3: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_module: Optional[pulumi.Input[_builtins.bool]] = None,
-                 esl_config: Optional[pulumi.Input[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']]] = None,
-                 flow_control: Optional[pulumi.Input[_builtins.bool]] = None,
-                 height: Optional[pulumi.Input[_builtins.float]] = None,
-                 ip_config: Optional[pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']]] = None,
-                 lacp_config: Optional[pulumi.Input[Union['ApLacpConfigArgs', 'ApLacpConfigArgsDict']]] = None,
-                 led: Optional[pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 map_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mesh: Optional[pulumi.Input[Union['ApMeshArgs', 'ApMeshArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 orientation: Optional[pulumi.Input[_builtins.int]] = None,
-                 poe_passthrough: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]]] = None,
-                 pwr_config: Optional[pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']]] = None,
-                 radio_config: Optional[pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 uplink_port_config: Optional[pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']]] = None,
-                 usb_config: Optional[pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']]] = None,
-                 vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 x: Optional[pulumi.Input[_builtins.float]] = None,
-                 y: Optional[pulumi.Input[_builtins.float]] = None,
+                 aeroscout: pulumi.Input[Optional[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']]] = None,
+                 airista: pulumi.Input[Optional[Union['ApAiristaArgs', 'ApAiristaArgsDict']]] = None,
+                 ble_config: pulumi.Input[Optional[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']]] = None,
+                 centrak: pulumi.Input[Optional[Union['ApCentrakArgs', 'ApCentrakArgsDict']]] = None,
+                 client_bridge: pulumi.Input[Optional[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict']]] = None,
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_eth1: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
+                 esl_config: pulumi.Input[Optional[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']]] = None,
+                 flow_control: pulumi.Input[Optional[_builtins.bool]] = None,
+                 height: pulumi.Input[Optional[_builtins.float]] = None,
+                 ip_config: pulumi.Input[Optional[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']]] = None,
+                 lacp_config: pulumi.Input[Optional[Union['ApLacpConfigArgs', 'ApLacpConfigArgsDict']]] = None,
+                 led: pulumi.Input[Optional[Union['ApLedArgs', 'ApLedArgsDict']]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mesh: pulumi.Input[Optional[Union['ApMeshArgs', 'ApMeshArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 orientation: pulumi.Input[Optional[_builtins.int]] = None,
+                 poe_passthrough: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]]] = None,
+                 pwr_config: pulumi.Input[Optional[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']]] = None,
+                 radio_config: pulumi.Input[Optional[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 uplink_port_config: pulumi.Input[Optional[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']]] = None,
+                 usb_config: pulumi.Input[Optional[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']]] = None,
+                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 x: pulumi.Input[Optional[_builtins.float]] = None,
+                 y: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         """
         This resource manages the Wireless Access Point configuration.
@@ -1258,39 +1258,39 @@ class Ap(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aeroscout: Optional[pulumi.Input[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']]] = None,
-                 airista: Optional[pulumi.Input[Union['ApAiristaArgs', 'ApAiristaArgsDict']]] = None,
-                 ble_config: Optional[pulumi.Input[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']]] = None,
-                 centrak: Optional[pulumi.Input[Union['ApCentrakArgs', 'ApCentrakArgsDict']]] = None,
-                 client_bridge: Optional[pulumi.Input[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict']]] = None,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_eth1: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_eth2: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_eth3: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_module: Optional[pulumi.Input[_builtins.bool]] = None,
-                 esl_config: Optional[pulumi.Input[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']]] = None,
-                 flow_control: Optional[pulumi.Input[_builtins.bool]] = None,
-                 height: Optional[pulumi.Input[_builtins.float]] = None,
-                 ip_config: Optional[pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']]] = None,
-                 lacp_config: Optional[pulumi.Input[Union['ApLacpConfigArgs', 'ApLacpConfigArgsDict']]] = None,
-                 led: Optional[pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 map_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mesh: Optional[pulumi.Input[Union['ApMeshArgs', 'ApMeshArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 orientation: Optional[pulumi.Input[_builtins.int]] = None,
-                 poe_passthrough: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]]] = None,
-                 pwr_config: Optional[pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']]] = None,
-                 radio_config: Optional[pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 uplink_port_config: Optional[pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']]] = None,
-                 usb_config: Optional[pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']]] = None,
-                 vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 x: Optional[pulumi.Input[_builtins.float]] = None,
-                 y: Optional[pulumi.Input[_builtins.float]] = None,
+                 aeroscout: pulumi.Input[Optional[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']]] = None,
+                 airista: pulumi.Input[Optional[Union['ApAiristaArgs', 'ApAiristaArgsDict']]] = None,
+                 ble_config: pulumi.Input[Optional[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']]] = None,
+                 centrak: pulumi.Input[Optional[Union['ApCentrakArgs', 'ApCentrakArgsDict']]] = None,
+                 client_bridge: pulumi.Input[Optional[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict']]] = None,
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_eth1: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
+                 esl_config: pulumi.Input[Optional[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']]] = None,
+                 flow_control: pulumi.Input[Optional[_builtins.bool]] = None,
+                 height: pulumi.Input[Optional[_builtins.float]] = None,
+                 ip_config: pulumi.Input[Optional[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']]] = None,
+                 lacp_config: pulumi.Input[Optional[Union['ApLacpConfigArgs', 'ApLacpConfigArgsDict']]] = None,
+                 led: pulumi.Input[Optional[Union['ApLedArgs', 'ApLedArgsDict']]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mesh: pulumi.Input[Optional[Union['ApMeshArgs', 'ApMeshArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 orientation: pulumi.Input[Optional[_builtins.int]] = None,
+                 poe_passthrough: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]]] = None,
+                 pwr_config: pulumi.Input[Optional[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']]] = None,
+                 radio_config: pulumi.Input[Optional[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 uplink_port_config: pulumi.Input[Optional[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']]] = None,
+                 usb_config: pulumi.Input[Optional[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']]] = None,
+                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 x: pulumi.Input[Optional[_builtins.float]] = None,
+                 y: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1355,47 +1355,47 @@ class Ap(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aeroscout: Optional[pulumi.Input[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']]] = None,
-            airista: Optional[pulumi.Input[Union['ApAiristaArgs', 'ApAiristaArgsDict']]] = None,
-            ble_config: Optional[pulumi.Input[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']]] = None,
-            centrak: Optional[pulumi.Input[Union['ApCentrakArgs', 'ApCentrakArgsDict']]] = None,
-            client_bridge: Optional[pulumi.Input[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict']]] = None,
-            device_id: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_eth1: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_eth2: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_eth3: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_module: Optional[pulumi.Input[_builtins.bool]] = None,
-            esl_config: Optional[pulumi.Input[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']]] = None,
-            flow_control: Optional[pulumi.Input[_builtins.bool]] = None,
-            height: Optional[pulumi.Input[_builtins.float]] = None,
-            image1_url: Optional[pulumi.Input[_builtins.str]] = None,
-            image2_url: Optional[pulumi.Input[_builtins.str]] = None,
-            image3_url: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_config: Optional[pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']]] = None,
-            lacp_config: Optional[pulumi.Input[Union['ApLacpConfigArgs', 'ApLacpConfigArgsDict']]] = None,
-            led: Optional[pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']]] = None,
-            locked: Optional[pulumi.Input[_builtins.bool]] = None,
-            mac: Optional[pulumi.Input[_builtins.str]] = None,
-            map_id: Optional[pulumi.Input[_builtins.str]] = None,
-            mesh: Optional[pulumi.Input[Union['ApMeshArgs', 'ApMeshArgsDict']]] = None,
-            model: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notes: Optional[pulumi.Input[_builtins.str]] = None,
-            ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            orientation: Optional[pulumi.Input[_builtins.int]] = None,
-            poe_passthrough: Optional[pulumi.Input[_builtins.bool]] = None,
-            port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]]] = None,
-            pwr_config: Optional[pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']]] = None,
-            radio_config: Optional[pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']]] = None,
-            serial: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            uplink_port_config: Optional[pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']]] = None,
-            usb_config: Optional[pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']]] = None,
-            vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            x: Optional[pulumi.Input[_builtins.float]] = None,
-            y: Optional[pulumi.Input[_builtins.float]] = None) -> 'Ap':
+            aeroscout: pulumi.Input[Optional[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']]] = None,
+            airista: pulumi.Input[Optional[Union['ApAiristaArgs', 'ApAiristaArgsDict']]] = None,
+            ble_config: pulumi.Input[Optional[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']]] = None,
+            centrak: pulumi.Input[Optional[Union['ApCentrakArgs', 'ApCentrakArgsDict']]] = None,
+            client_bridge: pulumi.Input[Optional[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict']]] = None,
+            device_id: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_eth1: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_eth2: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_eth3: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_module: pulumi.Input[Optional[_builtins.bool]] = None,
+            esl_config: pulumi.Input[Optional[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']]] = None,
+            flow_control: pulumi.Input[Optional[_builtins.bool]] = None,
+            height: pulumi.Input[Optional[_builtins.float]] = None,
+            image1_url: pulumi.Input[Optional[_builtins.str]] = None,
+            image2_url: pulumi.Input[Optional[_builtins.str]] = None,
+            image3_url: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_config: pulumi.Input[Optional[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']]] = None,
+            lacp_config: pulumi.Input[Optional[Union['ApLacpConfigArgs', 'ApLacpConfigArgsDict']]] = None,
+            led: pulumi.Input[Optional[Union['ApLedArgs', 'ApLedArgsDict']]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            map_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mesh: pulumi.Input[Optional[Union['ApMeshArgs', 'ApMeshArgsDict']]] = None,
+            model: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            orientation: pulumi.Input[Optional[_builtins.int]] = None,
+            poe_passthrough: pulumi.Input[Optional[_builtins.bool]] = None,
+            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]]] = None,
+            pwr_config: pulumi.Input[Optional[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']]] = None,
+            radio_config: pulumi.Input[Optional[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']]] = None,
+            serial: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uplink_port_config: pulumi.Input[Optional[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']]] = None,
+            usb_config: pulumi.Input[Optional[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']]] = None,
+            vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            x: pulumi.Input[Optional[_builtins.float]] = None,
+            y: pulumi.Input[Optional[_builtins.float]] = None) -> 'Ap':
         """
         Get an existing Ap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

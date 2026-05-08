@@ -207,59 +207,59 @@ export interface BaseState {
     /**
      * full address of the site
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Alarm Template ID, this takes precedence over the Org-level alarmtemplate_id
      */
-    alarmtemplateId?: pulumi.Input<string>;
+    alarmtemplateId?: pulumi.Input<string | undefined>;
     /**
      * AP Template ID, used by APs
      */
-    aptemplateId?: pulumi.Input<string>;
+    aptemplateId?: pulumi.Input<string | undefined>;
     /**
      * Country code for the site (for AP config generation), in two-character
      */
-    countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string | undefined>;
     /**
      * Gateway Template ID, used by gateways
      */
-    gatewaytemplateId?: pulumi.Input<string>;
-    latlng?: pulumi.Input<inputs.device.BaseLatlng>;
-    name?: pulumi.Input<string>;
+    gatewaytemplateId?: pulumi.Input<string | undefined>;
+    latlng?: pulumi.Input<inputs.device.BaseLatlng | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network Template ID, this takes precedence over Site Settings
      */
-    networktemplateId?: pulumi.Input<string>;
+    networktemplateId?: pulumi.Input<string | undefined>;
     /**
      * Optional, any notes about the site
      */
-    notes?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * RF Template ID, this takes precedence over Site Settings
      */
-    rftemplateId?: pulumi.Input<string>;
+    rftemplateId?: pulumi.Input<string | undefined>;
     /**
      * Router Template ID, used by gateways
      */
-    routertemplateId?: pulumi.Input<string>;
+    routertemplateId?: pulumi.Input<string | undefined>;
     /**
      * SecPolicy ID
      */
-    secpolicyId?: pulumi.Input<string>;
+    secpolicyId?: pulumi.Input<string | undefined>;
     /**
      * Sitegroups this site belongs to
      */
-    sitegroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    sitegroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Site Template ID
      */
-    sitetemplateId?: pulumi.Input<string>;
+    sitetemplateId?: pulumi.Input<string | undefined>;
     /**
      * Timezone the site is at
      */
-    timezone?: pulumi.Input<string>;
-    tzoffset?: pulumi.Input<number>;
+    timezone?: pulumi.Input<string | undefined>;
+    tzoffset?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -273,52 +273,52 @@ export interface BaseArgs {
     /**
      * Alarm Template ID, this takes precedence over the Org-level alarmtemplate_id
      */
-    alarmtemplateId?: pulumi.Input<string>;
+    alarmtemplateId?: pulumi.Input<string | undefined>;
     /**
      * AP Template ID, used by APs
      */
-    aptemplateId?: pulumi.Input<string>;
+    aptemplateId?: pulumi.Input<string | undefined>;
     /**
      * Country code for the site (for AP config generation), in two-character
      */
-    countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string | undefined>;
     /**
      * Gateway Template ID, used by gateways
      */
-    gatewaytemplateId?: pulumi.Input<string>;
-    latlng?: pulumi.Input<inputs.device.BaseLatlng>;
-    name?: pulumi.Input<string>;
+    gatewaytemplateId?: pulumi.Input<string | undefined>;
+    latlng?: pulumi.Input<inputs.device.BaseLatlng | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network Template ID, this takes precedence over Site Settings
      */
-    networktemplateId?: pulumi.Input<string>;
+    networktemplateId?: pulumi.Input<string | undefined>;
     /**
      * Optional, any notes about the site
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * RF Template ID, this takes precedence over Site Settings
      */
-    rftemplateId?: pulumi.Input<string>;
+    rftemplateId?: pulumi.Input<string | undefined>;
     /**
      * Router Template ID, used by gateways
      */
-    routertemplateId?: pulumi.Input<string>;
+    routertemplateId?: pulumi.Input<string | undefined>;
     /**
      * SecPolicy ID
      */
-    secpolicyId?: pulumi.Input<string>;
+    secpolicyId?: pulumi.Input<string | undefined>;
     /**
      * Sitegroups this site belongs to
      */
-    sitegroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    sitegroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Site Template ID
      */
-    sitetemplateId?: pulumi.Input<string>;
+    sitetemplateId?: pulumi.Input<string | undefined>;
     /**
      * Timezone the site is at
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
 }

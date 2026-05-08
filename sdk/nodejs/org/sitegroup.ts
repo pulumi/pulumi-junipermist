@@ -94,14 +94,14 @@ export class Sitegroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Sitegroup resources.
  */
 export interface SitegroupState {
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Sitegroup resource.
  */
 export interface SitegroupArgs {
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
 }

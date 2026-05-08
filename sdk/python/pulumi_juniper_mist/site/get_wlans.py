@@ -93,7 +93,7 @@ def get_wlans(site_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         site_id=pulumi.get(__ret__, 'site_id'),
         site_wlans=pulumi.get(__ret__, 'site_wlans'))
-def get_wlans_output(site_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_wlans_output(site_id: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWlansResult]:
     """
     This data source provides the list of Site Wlans.

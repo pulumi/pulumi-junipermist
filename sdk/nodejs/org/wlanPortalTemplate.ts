@@ -117,15 +117,15 @@ export class WlanPortalTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WlanPortalTemplate resources.
  */
 export interface WlanPortalTemplateState {
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Portal template wlan settings
      */
-    portalTemplate?: pulumi.Input<inputs.org.WlanPortalTemplatePortalTemplate>;
+    portalTemplate?: pulumi.Input<inputs.org.WlanPortalTemplatePortalTemplate | undefined>;
     /**
      * Org WLAN ID
      */
-    wlanId?: pulumi.Input<string>;
+    wlanId?: pulumi.Input<string | undefined>;
 }
 
 /**

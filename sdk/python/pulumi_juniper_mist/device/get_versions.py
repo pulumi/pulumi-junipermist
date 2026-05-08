@@ -127,9 +127,9 @@ def get_versions(model: Optional[_builtins.str] = None,
         model=pulumi.get(__ret__, 'model'),
         org_id=pulumi.get(__ret__, 'org_id'),
         type=pulumi.get(__ret__, 'type'))
-def get_versions_output(model: Optional[pulumi.Input[_builtins.str]] = None,
-                        org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_versions_output(model: pulumi.Input[Optional[_builtins.str]] = None,
+                        org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        type: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVersionsResult]:
     """
     This data source provides the list of available Firmware Versions.

@@ -22,18 +22,18 @@ __all__ = ['ServicepolicyArgs', 'Servicepolicy']
 class ServicepolicyArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
-                 aamw: Optional[pulumi.Input['ServicepolicyAamwArgs']] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 antivirus: Optional[pulumi.Input['ServicepolicyAntivirusArgs']] = None,
-                 appqoe: Optional[pulumi.Input['ServicepolicyAppqoeArgs']] = None,
-                 ewfs: Optional[pulumi.Input[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]] = None,
-                 idp: Optional[pulumi.Input['ServicepolicyIdpArgs']] = None,
-                 local_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_preference: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ssl_proxy: Optional[pulumi.Input['ServicepolicySslProxyArgs']] = None,
-                 tenants: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 aamw: pulumi.Input[Optional['ServicepolicyAamwArgs']] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 antivirus: pulumi.Input[Optional['ServicepolicyAntivirusArgs']] = None,
+                 appqoe: pulumi.Input[Optional['ServicepolicyAppqoeArgs']] = None,
+                 ewfs: pulumi.Input[Optional[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]] = None,
+                 idp: pulumi.Input[Optional['ServicepolicyIdpArgs']] = None,
+                 local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_preference: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ssl_proxy: pulumi.Input[Optional['ServicepolicySslProxyArgs']] = None,
+                 tenants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Servicepolicy resource.
 
@@ -82,150 +82,150 @@ class ServicepolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aamw(self) -> Optional[pulumi.Input['ServicepolicyAamwArgs']]:
+    def aamw(self) -> pulumi.Input[Optional['ServicepolicyAamwArgs']]:
         """
         SRX only
         """
         return pulumi.get(self, "aamw")
 
     @aamw.setter
-    def aamw(self, value: Optional[pulumi.Input['ServicepolicyAamwArgs']]):
+    def aamw(self, value: pulumi.Input[Optional['ServicepolicyAamwArgs']]):
         pulumi.set(self, "aamw", value)
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `allow`, `deny`
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def antivirus(self) -> Optional[pulumi.Input['ServicepolicyAntivirusArgs']]:
+    def antivirus(self) -> pulumi.Input[Optional['ServicepolicyAntivirusArgs']]:
         """
         For SRX-only
         """
         return pulumi.get(self, "antivirus")
 
     @antivirus.setter
-    def antivirus(self, value: Optional[pulumi.Input['ServicepolicyAntivirusArgs']]):
+    def antivirus(self, value: pulumi.Input[Optional['ServicepolicyAntivirusArgs']]):
         pulumi.set(self, "antivirus", value)
 
     @_builtins.property
     @pulumi.getter
-    def appqoe(self) -> Optional[pulumi.Input['ServicepolicyAppqoeArgs']]:
+    def appqoe(self) -> pulumi.Input[Optional['ServicepolicyAppqoeArgs']]:
         """
         SRX only
         """
         return pulumi.get(self, "appqoe")
 
     @appqoe.setter
-    def appqoe(self, value: Optional[pulumi.Input['ServicepolicyAppqoeArgs']]):
+    def appqoe(self, value: pulumi.Input[Optional['ServicepolicyAppqoeArgs']]):
         pulumi.set(self, "appqoe", value)
 
     @_builtins.property
     @pulumi.getter
-    def ewfs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]]:
+    def ewfs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]]:
         return pulumi.get(self, "ewfs")
 
     @ewfs.setter
-    def ewfs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]]):
+    def ewfs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]]):
         pulumi.set(self, "ewfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def idp(self) -> Optional[pulumi.Input['ServicepolicyIdpArgs']]:
+    def idp(self) -> pulumi.Input[Optional['ServicepolicyIdpArgs']]:
         return pulumi.get(self, "idp")
 
     @idp.setter
-    def idp(self, value: Optional[pulumi.Input['ServicepolicyIdpArgs']]):
+    def idp(self, value: pulumi.Input[Optional['ServicepolicyIdpArgs']]):
         pulumi.set(self, "idp", value)
 
     @_builtins.property
     @pulumi.getter(name="localRouting")
-    def local_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def local_routing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         access within the same VRF
         """
         return pulumi.get(self, "local_routing")
 
     @local_routing.setter
-    def local_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def local_routing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "local_routing", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="pathPreference")
-    def path_preference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_preference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         """
         return pulumi.get(self, "path_preference")
 
     @path_preference.setter
-    def path_preference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_preference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_preference", value)
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "services", value)
 
     @_builtins.property
     @pulumi.getter(name="sslProxy")
-    def ssl_proxy(self) -> Optional[pulumi.Input['ServicepolicySslProxyArgs']]:
+    def ssl_proxy(self) -> pulumi.Input[Optional['ServicepolicySslProxyArgs']]:
         """
         For SRX-only
         """
         return pulumi.get(self, "ssl_proxy")
 
     @ssl_proxy.setter
-    def ssl_proxy(self, value: Optional[pulumi.Input['ServicepolicySslProxyArgs']]):
+    def ssl_proxy(self, value: pulumi.Input[Optional['ServicepolicySslProxyArgs']]):
         pulumi.set(self, "ssl_proxy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tenants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tenants")
 
     @tenants.setter
-    def tenants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tenants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tenants", value)
 
 
 @pulumi.input_type
 class _ServicepolicyState:
     def __init__(__self__, *,
-                 aamw: Optional[pulumi.Input['ServicepolicyAamwArgs']] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 antivirus: Optional[pulumi.Input['ServicepolicyAntivirusArgs']] = None,
-                 appqoe: Optional[pulumi.Input['ServicepolicyAppqoeArgs']] = None,
-                 ewfs: Optional[pulumi.Input[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]] = None,
-                 idp: Optional[pulumi.Input['ServicepolicyIdpArgs']] = None,
-                 local_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_preference: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ssl_proxy: Optional[pulumi.Input['ServicepolicySslProxyArgs']] = None,
-                 tenants: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 aamw: pulumi.Input[Optional['ServicepolicyAamwArgs']] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 antivirus: pulumi.Input[Optional['ServicepolicyAntivirusArgs']] = None,
+                 appqoe: pulumi.Input[Optional['ServicepolicyAppqoeArgs']] = None,
+                 ewfs: pulumi.Input[Optional[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]] = None,
+                 idp: pulumi.Input[Optional['ServicepolicyIdpArgs']] = None,
+                 local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_preference: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ssl_proxy: pulumi.Input[Optional['ServicepolicySslProxyArgs']] = None,
+                 tenants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Servicepolicy resources.
 
@@ -266,140 +266,140 @@ class _ServicepolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def aamw(self) -> Optional[pulumi.Input['ServicepolicyAamwArgs']]:
+    def aamw(self) -> pulumi.Input[Optional['ServicepolicyAamwArgs']]:
         """
         SRX only
         """
         return pulumi.get(self, "aamw")
 
     @aamw.setter
-    def aamw(self, value: Optional[pulumi.Input['ServicepolicyAamwArgs']]):
+    def aamw(self, value: pulumi.Input[Optional['ServicepolicyAamwArgs']]):
         pulumi.set(self, "aamw", value)
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `allow`, `deny`
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def antivirus(self) -> Optional[pulumi.Input['ServicepolicyAntivirusArgs']]:
+    def antivirus(self) -> pulumi.Input[Optional['ServicepolicyAntivirusArgs']]:
         """
         For SRX-only
         """
         return pulumi.get(self, "antivirus")
 
     @antivirus.setter
-    def antivirus(self, value: Optional[pulumi.Input['ServicepolicyAntivirusArgs']]):
+    def antivirus(self, value: pulumi.Input[Optional['ServicepolicyAntivirusArgs']]):
         pulumi.set(self, "antivirus", value)
 
     @_builtins.property
     @pulumi.getter
-    def appqoe(self) -> Optional[pulumi.Input['ServicepolicyAppqoeArgs']]:
+    def appqoe(self) -> pulumi.Input[Optional['ServicepolicyAppqoeArgs']]:
         """
         SRX only
         """
         return pulumi.get(self, "appqoe")
 
     @appqoe.setter
-    def appqoe(self, value: Optional[pulumi.Input['ServicepolicyAppqoeArgs']]):
+    def appqoe(self, value: pulumi.Input[Optional['ServicepolicyAppqoeArgs']]):
         pulumi.set(self, "appqoe", value)
 
     @_builtins.property
     @pulumi.getter
-    def ewfs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]]:
+    def ewfs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]]:
         return pulumi.get(self, "ewfs")
 
     @ewfs.setter
-    def ewfs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]]):
+    def ewfs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]]):
         pulumi.set(self, "ewfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def idp(self) -> Optional[pulumi.Input['ServicepolicyIdpArgs']]:
+    def idp(self) -> pulumi.Input[Optional['ServicepolicyIdpArgs']]:
         return pulumi.get(self, "idp")
 
     @idp.setter
-    def idp(self, value: Optional[pulumi.Input['ServicepolicyIdpArgs']]):
+    def idp(self, value: pulumi.Input[Optional['ServicepolicyIdpArgs']]):
         pulumi.set(self, "idp", value)
 
     @_builtins.property
     @pulumi.getter(name="localRouting")
-    def local_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def local_routing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         access within the same VRF
         """
         return pulumi.get(self, "local_routing")
 
     @local_routing.setter
-    def local_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def local_routing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "local_routing", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pathPreference")
-    def path_preference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_preference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         """
         return pulumi.get(self, "path_preference")
 
     @path_preference.setter
-    def path_preference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_preference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_preference", value)
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "services", value)
 
     @_builtins.property
     @pulumi.getter(name="sslProxy")
-    def ssl_proxy(self) -> Optional[pulumi.Input['ServicepolicySslProxyArgs']]:
+    def ssl_proxy(self) -> pulumi.Input[Optional['ServicepolicySslProxyArgs']]:
         """
         For SRX-only
         """
         return pulumi.get(self, "ssl_proxy")
 
     @ssl_proxy.setter
-    def ssl_proxy(self, value: Optional[pulumi.Input['ServicepolicySslProxyArgs']]):
+    def ssl_proxy(self, value: pulumi.Input[Optional['ServicepolicySslProxyArgs']]):
         pulumi.set(self, "ssl_proxy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tenants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tenants")
 
     @tenants.setter
-    def tenants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tenants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tenants", value)
 
 
@@ -409,19 +409,19 @@ class Servicepolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aamw: Optional[pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']]] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 antivirus: Optional[pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']]] = None,
-                 appqoe: Optional[pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
-                 ewfs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]]] = None,
-                 idp: Optional[pulumi.Input[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']]] = None,
-                 local_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_preference: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ssl_proxy: Optional[pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']]] = None,
-                 tenants: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aamw: pulumi.Input[Optional[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 antivirus: pulumi.Input[Optional[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']]] = None,
+                 appqoe: pulumi.Input[Optional[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
+                 ewfs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]]] = None,
+                 idp: pulumi.Input[Optional[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']]] = None,
+                 local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_preference: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ssl_proxy: pulumi.Input[Optional[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']]] = None,
+                 tenants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         This resource manages WAN Assurance Service Policies (Application Policies).
@@ -530,19 +530,19 @@ class Servicepolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aamw: Optional[pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']]] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 antivirus: Optional[pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']]] = None,
-                 appqoe: Optional[pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
-                 ewfs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]]] = None,
-                 idp: Optional[pulumi.Input[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']]] = None,
-                 local_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_preference: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ssl_proxy: Optional[pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']]] = None,
-                 tenants: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aamw: pulumi.Input[Optional[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 antivirus: pulumi.Input[Optional[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']]] = None,
+                 appqoe: pulumi.Input[Optional[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
+                 ewfs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]]] = None,
+                 idp: pulumi.Input[Optional[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']]] = None,
+                 local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_preference: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ssl_proxy: pulumi.Input[Optional[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']]] = None,
+                 tenants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -577,19 +577,19 @@ class Servicepolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aamw: Optional[pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']]] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            antivirus: Optional[pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']]] = None,
-            appqoe: Optional[pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
-            ewfs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]]] = None,
-            idp: Optional[pulumi.Input[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']]] = None,
-            local_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            path_preference: Optional[pulumi.Input[_builtins.str]] = None,
-            services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ssl_proxy: Optional[pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']]] = None,
-            tenants: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Servicepolicy':
+            aamw: pulumi.Input[Optional[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']]] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            antivirus: pulumi.Input[Optional[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']]] = None,
+            appqoe: pulumi.Input[Optional[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
+            ewfs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]]] = None,
+            idp: pulumi.Input[Optional[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']]] = None,
+            local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            path_preference: pulumi.Input[Optional[_builtins.str]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ssl_proxy: pulumi.Input[Optional[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']]] = None,
+            tenants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Servicepolicy':
         """
         Get an existing Servicepolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

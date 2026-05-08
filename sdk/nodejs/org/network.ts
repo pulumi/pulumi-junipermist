@@ -163,39 +163,39 @@ export interface NetworkState {
     /**
      * Whether to disallow Mist Devices in the network
      */
-    disallowMistServices?: pulumi.Input<boolean>;
-    gateway?: pulumi.Input<string>;
-    gateway6?: pulumi.Input<string>;
-    internalAccess?: pulumi.Input<inputs.org.NetworkInternalAccess>;
+    disallowMistServices?: pulumi.Input<boolean | undefined>;
+    gateway?: pulumi.Input<string | undefined>;
+    gateway6?: pulumi.Input<string | undefined>;
+    internalAccess?: pulumi.Input<inputs.org.NetworkInternalAccess | undefined>;
     /**
      * Whether this network has direct internet access
      */
-    internetAccess?: pulumi.Input<inputs.org.NetworkInternetAccess>;
+    internetAccess?: pulumi.Input<inputs.org.NetworkInternetAccess | undefined>;
     /**
      * Whether to allow clients in the network to talk to each other
      */
-    isolation?: pulumi.Input<boolean>;
+    isolation?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable multicast support (only PIM-sparse mode is supported)
      */
-    multicast?: pulumi.Input<inputs.org.NetworkMulticast>;
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    multicast?: pulumi.Input<inputs.org.NetworkMulticast | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      */
-    routedForNetworks?: pulumi.Input<pulumi.Input<string>[]>;
-    subnet?: pulumi.Input<string>;
-    subnet6?: pulumi.Input<string>;
+    routedForNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    subnet?: pulumi.Input<string | undefined>;
+    subnet6?: pulumi.Input<string | undefined>;
     /**
      * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
      */
-    tenants?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkTenants>}>;
-    vlanId?: pulumi.Input<string>;
+    tenants?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkTenants>} | undefined>;
+    vlanId?: pulumi.Input<string | undefined>;
     /**
      * Property key is the VPN name. Whether this network can be accessed from vpn
      */
-    vpnAccess?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkVpnAccess>}>;
+    vpnAccess?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkVpnAccess>} | undefined>;
 }
 
 /**
@@ -205,37 +205,37 @@ export interface NetworkArgs {
     /**
      * Whether to disallow Mist Devices in the network
      */
-    disallowMistServices?: pulumi.Input<boolean>;
-    gateway?: pulumi.Input<string>;
-    gateway6?: pulumi.Input<string>;
-    internalAccess?: pulumi.Input<inputs.org.NetworkInternalAccess>;
+    disallowMistServices?: pulumi.Input<boolean | undefined>;
+    gateway?: pulumi.Input<string | undefined>;
+    gateway6?: pulumi.Input<string | undefined>;
+    internalAccess?: pulumi.Input<inputs.org.NetworkInternalAccess | undefined>;
     /**
      * Whether this network has direct internet access
      */
-    internetAccess?: pulumi.Input<inputs.org.NetworkInternetAccess>;
+    internetAccess?: pulumi.Input<inputs.org.NetworkInternetAccess | undefined>;
     /**
      * Whether to allow clients in the network to talk to each other
      */
-    isolation?: pulumi.Input<boolean>;
+    isolation?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable multicast support (only PIM-sparse mode is supported)
      */
-    multicast?: pulumi.Input<inputs.org.NetworkMulticast>;
-    name?: pulumi.Input<string>;
+    multicast?: pulumi.Input<inputs.org.NetworkMulticast | undefined>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      */
-    routedForNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    routedForNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     subnet: pulumi.Input<string>;
-    subnet6?: pulumi.Input<string>;
+    subnet6?: pulumi.Input<string | undefined>;
     /**
      * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
      */
-    tenants?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkTenants>}>;
-    vlanId?: pulumi.Input<string>;
+    tenants?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkTenants>} | undefined>;
+    vlanId?: pulumi.Input<string | undefined>;
     /**
      * Property key is the VPN name. Whether this network can be accessed from vpn
      */
-    vpnAccess?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkVpnAccess>}>;
+    vpnAccess?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkVpnAccess>} | undefined>;
 }

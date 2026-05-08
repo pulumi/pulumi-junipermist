@@ -23,9 +23,9 @@ class EvpnTopologyArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
                  switches: pulumi.Input[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]],
-                 evpn_options: Optional[pulumi.Input['EvpnTopologyEvpnOptionsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_names: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 evpn_options: pulumi.Input[Optional['EvpnTopologyEvpnOptionsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_names: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EvpnTopology resource.
 
@@ -65,46 +65,46 @@ class EvpnTopologyArgs:
 
     @_builtins.property
     @pulumi.getter(name="evpnOptions")
-    def evpn_options(self) -> Optional[pulumi.Input['EvpnTopologyEvpnOptionsArgs']]:
+    def evpn_options(self) -> pulumi.Input[Optional['EvpnTopologyEvpnOptionsArgs']]:
         """
         EVPN Options
         """
         return pulumi.get(self, "evpn_options")
 
     @evpn_options.setter
-    def evpn_options(self, value: Optional[pulumi.Input['EvpnTopologyEvpnOptionsArgs']]):
+    def evpn_options(self, value: pulumi.Input[Optional['EvpnTopologyEvpnOptionsArgs']]):
         pulumi.set(self, "evpn_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="podNames")
-    def pod_names(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pod_names(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Property key is the pod number
         """
         return pulumi.get(self, "pod_names")
 
     @pod_names.setter
-    def pod_names(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pod_names(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pod_names", value)
 
 
 @pulumi.input_type
 class _EvpnTopologyState:
     def __init__(__self__, *,
-                 evpn_options: Optional[pulumi.Input['EvpnTopologyEvpnOptionsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_names: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 switches: Optional[pulumi.Input[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]]] = None):
+                 evpn_options: pulumi.Input[Optional['EvpnTopologyEvpnOptionsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_names: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 switches: pulumi.Input[Optional[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]]] = None):
         """
         Input properties used for looking up and filtering EvpnTopology resources.
 
@@ -125,56 +125,56 @@ class _EvpnTopologyState:
 
     @_builtins.property
     @pulumi.getter(name="evpnOptions")
-    def evpn_options(self) -> Optional[pulumi.Input['EvpnTopologyEvpnOptionsArgs']]:
+    def evpn_options(self) -> pulumi.Input[Optional['EvpnTopologyEvpnOptionsArgs']]:
         """
         EVPN Options
         """
         return pulumi.get(self, "evpn_options")
 
     @evpn_options.setter
-    def evpn_options(self, value: Optional[pulumi.Input['EvpnTopologyEvpnOptionsArgs']]):
+    def evpn_options(self, value: pulumi.Input[Optional['EvpnTopologyEvpnOptionsArgs']]):
         pulumi.set(self, "evpn_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="podNames")
-    def pod_names(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pod_names(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Property key is the pod number
         """
         return pulumi.get(self, "pod_names")
 
     @pod_names.setter
-    def pod_names(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pod_names(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pod_names", value)
 
     @_builtins.property
     @pulumi.getter
-    def switches(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]]]:
+    def switches(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]]]:
         """
         Property key can be the switch MAC Address
         """
         return pulumi.get(self, "switches")
 
     @switches.setter
-    def switches(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]]]):
+    def switches(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]]]):
         pulumi.set(self, "switches", value)
 
 
@@ -184,11 +184,11 @@ class EvpnTopology(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 evpn_options: Optional[pulumi.Input[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_names: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 switches: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]]] = None,
+                 evpn_options: pulumi.Input[Optional[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_names: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 switches: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource manages the Org Evpn Topology.
@@ -357,11 +357,11 @@ class EvpnTopology(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 evpn_options: Optional[pulumi.Input[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_names: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 switches: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]]] = None,
+                 evpn_options: pulumi.Input[Optional[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_names: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 switches: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,11 +390,11 @@ class EvpnTopology(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            evpn_options: Optional[pulumi.Input[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            pod_names: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            switches: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]]] = None) -> 'EvpnTopology':
+            evpn_options: pulumi.Input[Optional[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pod_names: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            switches: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]]] = None) -> 'EvpnTopology':
         """
         Get an existing EvpnTopology resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

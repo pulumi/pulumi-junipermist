@@ -22,7 +22,7 @@ __all__ = ['InventoryArgs', 'Inventory']
 class InventoryArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
-                 inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]] = None):
+                 inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]] = None):
         """
         The set of arguments for constructing a Inventory resource.
 
@@ -47,7 +47,7 @@ class InventoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def inventory(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]:
+    def inventory(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]:
         """
         Property key can be the device Claim Code or the device MAC Address:
           * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
@@ -58,15 +58,15 @@ class InventoryArgs:
         return pulumi.get(self, "inventory")
 
     @inventory.setter
-    def inventory(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]):
+    def inventory(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]):
         pulumi.set(self, "inventory", value)
 
 
 @pulumi.input_type
 class _InventoryState:
     def __init__(__self__, *,
-                 inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Inventory resources.
 
@@ -83,7 +83,7 @@ class _InventoryState:
 
     @_builtins.property
     @pulumi.getter
-    def inventory(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]:
+    def inventory(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]:
         """
         Property key can be the device Claim Code or the device MAC Address:
           * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
@@ -94,16 +94,16 @@ class _InventoryState:
         return pulumi.get(self, "inventory")
 
     @inventory.setter
-    def inventory(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]):
+    def inventory(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]):
         pulumi.set(self, "inventory", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
 
@@ -113,8 +113,8 @@ class Inventory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource manages the Org Inventory.
@@ -233,8 +233,8 @@ class Inventory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -258,8 +258,8 @@ class Inventory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Inventory':
+            inventory: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Inventory':
         """
         Get an existing Inventory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

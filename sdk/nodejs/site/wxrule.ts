@@ -151,34 +151,34 @@ export interface WxruleState {
     /**
      * type of action, allow / block. enum: `allow`, `block`
      */
-    action?: pulumi.Input<string>;
-    applyTags?: pulumi.Input<pulumi.Input<string>[]>;
+    action?: pulumi.Input<string | undefined>;
+    applyTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Blocked apps (always blocking, ignoring action), the key of Get Application List
      */
-    blockedApps?: pulumi.Input<pulumi.Input<string>[]>;
+    blockedApps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of WxTag UUID to indicate these tags are allowed access
      */
-    dstAllowWxtags?: pulumi.Input<pulumi.Input<string>[]>;
+    dstAllowWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of WxTag UUID to indicate these tags are blocked access
      */
-    dstDenyWxtags?: pulumi.Input<pulumi.Input<string>[]>;
+    dstDenyWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of WxTag UUID
      */
-    dstWxtags?: pulumi.Input<pulumi.Input<string>[]>;
-    enabled?: pulumi.Input<boolean>;
+    dstWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      */
-    order?: pulumi.Input<number>;
-    siteId?: pulumi.Input<string>;
+    order?: pulumi.Input<number | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * List of WxTag UUID to determine if this rule would match
      */
-    srcWxtags?: pulumi.Input<pulumi.Input<string>[]>;
+    srcWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -189,24 +189,24 @@ export interface WxruleArgs {
      * type of action, allow / block. enum: `allow`, `block`
      */
     action: pulumi.Input<string>;
-    applyTags?: pulumi.Input<pulumi.Input<string>[]>;
+    applyTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Blocked apps (always blocking, ignoring action), the key of Get Application List
      */
-    blockedApps?: pulumi.Input<pulumi.Input<string>[]>;
+    blockedApps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of WxTag UUID to indicate these tags are allowed access
      */
-    dstAllowWxtags?: pulumi.Input<pulumi.Input<string>[]>;
+    dstAllowWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of WxTag UUID to indicate these tags are blocked access
      */
-    dstDenyWxtags?: pulumi.Input<pulumi.Input<string>[]>;
+    dstDenyWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of WxTag UUID
      */
-    dstWxtags?: pulumi.Input<pulumi.Input<string>[]>;
-    enabled?: pulumi.Input<boolean>;
+    dstWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      */
@@ -215,5 +215,5 @@ export interface WxruleArgs {
     /**
      * List of WxTag UUID to determine if this rule would match
      */
-    srcWxtags?: pulumi.Input<pulumi.Input<string>[]>;
+    srcWxtags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

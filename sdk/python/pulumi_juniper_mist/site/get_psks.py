@@ -135,10 +135,10 @@ def get_psks(name: Optional[_builtins.str] = None,
         site_id=pulumi.get(__ret__, 'site_id'),
         site_psks=pulumi.get(__ret__, 'site_psks'),
         ssid=pulumi.get(__ret__, 'ssid'))
-def get_psks_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    role: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                    ssid: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_psks_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    role: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                    ssid: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPsksResult]:
     """
     This data source provides the list of Site Psks.

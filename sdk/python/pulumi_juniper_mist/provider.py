@@ -19,13 +19,13 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 api_debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_timeout: Optional[pulumi.Input[_builtins.float]] = None,
-                 apitoken: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_timeout: pulumi.Input[Optional[_builtins.float]] = None,
+                 apitoken: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -54,86 +54,86 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiDebug")
-    def api_debug(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def api_debug(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable API request/response debugging. When enabled, request and response bodies, headers, and other sensitive data may be logged. Can also be set via the `MIST_API_DEBUG` environment variable. Default: `false`.
         """
         return pulumi.get(self, "api_debug")
 
     @api_debug.setter
-    def api_debug(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def api_debug(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "api_debug", value)
 
     @_builtins.property
     @pulumi.getter(name="apiTimeout")
-    def api_timeout(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def api_timeout(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Timeout in seconds for API requests. Set to 0 for infinite timeout. Can also be set via the `MIST_API_TIMEOUT` environment variable. Default: `10` seconds.
         """
         return pulumi.get(self, "api_timeout")
 
     @api_timeout.setter
-    def api_timeout(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def api_timeout(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "api_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def apitoken(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def apitoken(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mist API Token for authentication. Can also be set via the `MIST_APITOKEN` environment variable. This is the recommended authentication method.
         """
         return pulumi.get(self, "apitoken")
 
     @apitoken.setter
-    def apitoken(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def apitoken(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "apitoken", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the Mist Cloud (e.g., `api.mist.com`). Can also be set via the `MIST_HOST` environment variable.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mist Account password for basic authentication. Can also be set via the `MIST_PASSWORD` environment variable. Requires `username` to be set.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Proxy configuration for API requests. The value may be either a complete URL or `[username:password@]host[:port]` format. Supported schemes: `http`, `https`, and `socks5`. If no scheme is provided, `http` is assumed. Can also be set via the `MIST_PROXY` environment variable.
         """
         return pulumi.get(self, "proxy")
 
     @proxy.setter
-    def proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mist Account username for basic authentication. Can also be set via the `MIST_USERNAME` environment variable. Requires `password` to be set and 2FA to be disabled.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -143,13 +143,13 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_timeout: Optional[pulumi.Input[_builtins.float]] = None,
-                 apitoken: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_timeout: pulumi.Input[Optional[_builtins.float]] = None,
+                 apitoken: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the mist package. By default, resources use package-wide configuration
@@ -196,13 +196,13 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_timeout: Optional[pulumi.Input[_builtins.float]] = None,
-                 apitoken: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_timeout: pulumi.Input[Optional[_builtins.float]] = None,
+                 apitoken: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

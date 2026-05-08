@@ -23,52 +23,52 @@ class SwitchArgs:
     def __init__(__self__, *,
                  device_id: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 acl_policies: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]] = None,
-                 acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]] = None,
-                 additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]] = None,
-                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_snooping: Optional[pulumi.Input['SwitchDhcpSnoopingArgs']] = None,
-                 dhcpd_config: Optional[pulumi.Input['SwitchDhcpdConfigArgs']] = None,
-                 disable_auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]] = None,
-                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]] = None,
-                 ip_config: Optional[pulumi.Input['SwitchIpConfigArgs']] = None,
-                 local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]] = None,
-                 managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 map_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mist_nac: Optional[pulumi.Input['SwitchMistNacArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input['SwitchOobIpConfigArgs']] = None,
-                 ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]] = None,
-                 ospf_config: Optional[pulumi.Input['SwitchOspfConfigArgs']] = None,
-                 other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]] = None,
-                 port_config_overwrite: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]] = None,
-                 port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]] = None,
-                 port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]] = None,
-                 radius_config: Optional[pulumi.Input['SwitchRadiusConfigArgs']] = None,
-                 remote_syslog: Optional[pulumi.Input['SwitchRemoteSyslogArgs']] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]] = None,
-                 snmp_config: Optional[pulumi.Input['SwitchSnmpConfigArgs']] = None,
-                 stp_config: Optional[pulumi.Input['SwitchStpConfigArgs']] = None,
-                 switch_mgmt: Optional[pulumi.Input['SwitchSwitchMgmtArgs']] = None,
-                 use_router_id_as_source_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 virtual_chassis: Optional[pulumi.Input['SwitchVirtualChassisArgs']] = None,
-                 vrf_config: Optional[pulumi.Input['SwitchVrfConfigArgs']] = None,
-                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]] = None,
-                 vrrp_config: Optional[pulumi.Input['SwitchVrrpConfigArgs']] = None,
-                 x: Optional[pulumi.Input[_builtins.float]] = None,
-                 y: Optional[pulumi.Input[_builtins.float]] = None):
+                 acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]] = None,
+                 acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]] = None,
+                 additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]] = None,
+                 default_port_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_snooping: pulumi.Input[Optional['SwitchDhcpSnoopingArgs']] = None,
+                 dhcpd_config: pulumi.Input[Optional['SwitchDhcpdConfigArgs']] = None,
+                 disable_auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]] = None,
+                 ip_config: pulumi.Input[Optional['SwitchIpConfigArgs']] = None,
+                 local_port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]] = None,
+                 managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mist_nac: pulumi.Input[Optional['SwitchMistNacArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oob_ip_config: pulumi.Input[Optional['SwitchOobIpConfigArgs']] = None,
+                 ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]] = None,
+                 ospf_config: pulumi.Input[Optional['SwitchOspfConfigArgs']] = None,
+                 other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]] = None,
+                 port_config_overwrite: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]] = None,
+                 port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]] = None,
+                 port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]] = None,
+                 radius_config: pulumi.Input[Optional['SwitchRadiusConfigArgs']] = None,
+                 remote_syslog: pulumi.Input[Optional['SwitchRemoteSyslogArgs']] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]] = None,
+                 snmp_config: pulumi.Input[Optional['SwitchSnmpConfigArgs']] = None,
+                 stp_config: pulumi.Input[Optional['SwitchStpConfigArgs']] = None,
+                 switch_mgmt: pulumi.Input[Optional['SwitchSwitchMgmtArgs']] = None,
+                 use_router_id_as_source_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 virtual_chassis: pulumi.Input[Optional['SwitchVirtualChassisArgs']] = None,
+                 vrf_config: pulumi.Input[Optional['SwitchVrfConfigArgs']] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]] = None,
+                 vrrp_config: pulumi.Input[Optional['SwitchVrrpConfigArgs']] = None,
+                 x: pulumi.Input[Optional[_builtins.float]] = None,
+                 y: pulumi.Input[Optional[_builtins.float]] = None):
         """
         The set of arguments for constructing a Switch resource.
 
@@ -230,255 +230,255 @@ class SwitchArgs:
 
     @_builtins.property
     @pulumi.getter(name="aclPolicies")
-    def acl_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]]:
+    def acl_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]]:
         return pulumi.get(self, "acl_policies")
 
     @acl_policies.setter
-    def acl_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]]):
+    def acl_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]]):
         pulumi.set(self, "acl_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="aclTags")
-    def acl_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]]:
+    def acl_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]]:
         """
         ACL Tags to identify traffic source or destination. Key name is the tag name
         """
         return pulumi.get(self, "acl_tags")
 
     @acl_tags.setter
-    def acl_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]]):
+    def acl_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]]):
         pulumi.set(self, "acl_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalConfigCmds")
-    def additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         additional CLI commands to append to the generated Junos config. **Note**: no check is done
         """
         return pulumi.get(self, "additional_config_cmds")
 
     @additional_config_cmds.setter
-    def additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_config_cmds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_config_cmds", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
-    def bgp_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]]:
+    def bgp_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]]:
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
-    def bgp_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]]):
+    def bgp_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]]):
         pulumi.set(self, "bgp_config", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPortUsage")
-    def default_port_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_port_usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         """
         return pulumi.get(self, "default_port_usage")
 
     @default_port_usage.setter
-    def default_port_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_port_usage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_port_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpSnooping")
-    def dhcp_snooping(self) -> Optional[pulumi.Input['SwitchDhcpSnoopingArgs']]:
+    def dhcp_snooping(self) -> pulumi.Input[Optional['SwitchDhcpSnoopingArgs']]:
         return pulumi.get(self, "dhcp_snooping")
 
     @dhcp_snooping.setter
-    def dhcp_snooping(self, value: Optional[pulumi.Input['SwitchDhcpSnoopingArgs']]):
+    def dhcp_snooping(self, value: pulumi.Input[Optional['SwitchDhcpSnoopingArgs']]):
         pulumi.set(self, "dhcp_snooping", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
-    def dhcpd_config(self) -> Optional[pulumi.Input['SwitchDhcpdConfigArgs']]:
+    def dhcpd_config(self) -> pulumi.Input[Optional['SwitchDhcpdConfigArgs']]:
         return pulumi.get(self, "dhcpd_config")
 
     @dhcpd_config.setter
-    def dhcpd_config(self, value: Optional[pulumi.Input['SwitchDhcpdConfigArgs']]):
+    def dhcpd_config(self, value: pulumi.Input[Optional['SwitchDhcpdConfigArgs']]):
         pulumi.set(self, "dhcpd_config", value)
 
     @_builtins.property
     @pulumi.getter(name="disableAutoConfig")
     @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
-    def disable_auto_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_auto_config(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         """
         return pulumi.get(self, "disable_auto_config")
 
     @disable_auto_config.setter
-    def disable_auto_config(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_auto_config(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_auto_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         """
         return pulumi.get(self, "dns_servers")
 
     @dns_servers.setter
-    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsSuffixes")
-    def dns_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         """
         return pulumi.get(self, "dns_suffixes")
 
     @dns_suffixes.setter
-    def dns_suffixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_suffixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_suffixes", value)
 
     @_builtins.property
     @pulumi.getter(name="extraRoutes")
-    def extra_routes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]]:
+    def extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]]:
         """
         Property key is the destination CIDR (e.g. "10.0.0.0/8")
         """
         return pulumi.get(self, "extra_routes")
 
     @extra_routes.setter
-    def extra_routes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]]):
+    def extra_routes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]]):
         pulumi.set(self, "extra_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="extraRoutes6")
-    def extra_routes6(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]]:
+    def extra_routes6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]]:
         """
         Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         """
         return pulumi.get(self, "extra_routes6")
 
     @extra_routes6.setter
-    def extra_routes6(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]]):
+    def extra_routes6(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]]):
         pulumi.set(self, "extra_routes6", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfig")
-    def ip_config(self) -> Optional[pulumi.Input['SwitchIpConfigArgs']]:
+    def ip_config(self) -> pulumi.Input[Optional['SwitchIpConfigArgs']]:
         """
         Junos IP Config
         """
         return pulumi.get(self, "ip_config")
 
     @ip_config.setter
-    def ip_config(self, value: Optional[pulumi.Input['SwitchIpConfigArgs']]):
+    def ip_config(self, value: pulumi.Input[Optional['SwitchIpConfigArgs']]):
         pulumi.set(self, "ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="localPortConfig")
-    def local_port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]:
+    def local_port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]:
         """
         Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
         """
         return pulumi.get(self, "local_port_config")
 
     @local_port_config.setter
-    def local_port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]):
+    def local_port_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]):
         pulumi.set(self, "local_port_config", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
-    def managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         """
         return pulumi.get(self, "managed")
 
     @managed.setter
-    def managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "managed", value)
 
     @_builtins.property
     @pulumi.getter(name="mapId")
-    def map_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def map_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Map where the device belongs to
         """
         return pulumi.get(self, "map_id")
 
     @map_id.setter
-    def map_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def map_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "map_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mistConfigured")
-    def mist_configured(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mist_configured(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
         """
         return pulumi.get(self, "mist_configured")
 
     @mist_configured.setter
-    def mist_configured(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mist_configured(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mist_configured", value)
 
     @_builtins.property
     @pulumi.getter(name="mistNac")
-    def mist_nac(self) -> Optional[pulumi.Input['SwitchMistNacArgs']]:
+    def mist_nac(self) -> pulumi.Input[Optional['SwitchMistNacArgs']]:
         """
         Enable mist_nac to use RadSec
         """
         return pulumi.get(self, "mist_nac")
 
     @mist_nac.setter
-    def mist_nac(self, value: Optional[pulumi.Input['SwitchMistNacArgs']]):
+    def mist_nac(self, value: pulumi.Input[Optional['SwitchMistNacArgs']]):
         pulumi.set(self, "mist_nac", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]]:
         """
         Property key is network name
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of NTP servers specific to this device. By default, those in Site Settings will be used
         """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
-    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ntp_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ntp_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="oobIpConfig")
-    def oob_ip_config(self) -> Optional[pulumi.Input['SwitchOobIpConfigArgs']]:
+    def oob_ip_config(self) -> pulumi.Input[Optional['SwitchOobIpConfigArgs']]:
         """
         Switch OOB IP Config:
           - If HA configuration: key parameter will be nodeX (eg: node1)
@@ -487,327 +487,327 @@ class SwitchArgs:
         return pulumi.get(self, "oob_ip_config")
 
     @oob_ip_config.setter
-    def oob_ip_config(self, value: Optional[pulumi.Input['SwitchOobIpConfigArgs']]):
+    def oob_ip_config(self, value: pulumi.Input[Optional['SwitchOobIpConfigArgs']]):
         pulumi.set(self, "oob_ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ospfAreas")
-    def ospf_areas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]:
+    def ospf_areas(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]:
         """
         Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         """
         return pulumi.get(self, "ospf_areas")
 
     @ospf_areas.setter
-    def ospf_areas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]):
+    def ospf_areas(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]):
         pulumi.set(self, "ospf_areas", value)
 
     @_builtins.property
     @pulumi.getter(name="ospfConfig")
-    def ospf_config(self) -> Optional[pulumi.Input['SwitchOspfConfigArgs']]:
+    def ospf_config(self) -> pulumi.Input[Optional['SwitchOspfConfigArgs']]:
         return pulumi.get(self, "ospf_config")
 
     @ospf_config.setter
-    def ospf_config(self, value: Optional[pulumi.Input['SwitchOspfConfigArgs']]):
+    def ospf_config(self, value: pulumi.Input[Optional['SwitchOspfConfigArgs']]):
         pulumi.set(self, "ospf_config", value)
 
     @_builtins.property
     @pulumi.getter(name="otherIpConfigs")
-    def other_ip_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]]:
+    def other_ip_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]]:
         """
         Property key is the network name. Defines the additional IP Addresses configured on the device.
         """
         return pulumi.get(self, "other_ip_configs")
 
     @other_ip_configs.setter
-    def other_ip_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]]):
+    def other_ip_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]]):
         pulumi.set(self, "other_ip_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="portConfig")
-    def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]]:
+    def port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]]:
         """
         Property key is the port name or range (e.g. "ge-0/0/0-10")
         """
         return pulumi.get(self, "port_config")
 
     @port_config.setter
-    def port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]]):
+    def port_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]]):
         pulumi.set(self, "port_config", value)
 
     @_builtins.property
     @pulumi.getter(name="portConfigOverwrite")
-    def port_config_overwrite(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]:
+    def port_config_overwrite(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]:
         """
         Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
         """
         return pulumi.get(self, "port_config_overwrite")
 
     @port_config_overwrite.setter
-    def port_config_overwrite(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]):
+    def port_config_overwrite(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]):
         pulumi.set(self, "port_config_overwrite", value)
 
     @_builtins.property
     @pulumi.getter(name="portMirroring")
-    def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
+    def port_mirroring(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
         """
         Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         """
         return pulumi.get(self, "port_mirroring")
 
     @port_mirroring.setter
-    def port_mirroring(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]):
+    def port_mirroring(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]):
         pulumi.set(self, "port_mirroring", value)
 
     @_builtins.property
     @pulumi.getter(name="portUsages")
-    def port_usages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]]:
+    def port_usages(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]]:
         """
         Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         """
         return pulumi.get(self, "port_usages")
 
     @port_usages.setter
-    def port_usages(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]]):
+    def port_usages(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]]):
         pulumi.set(self, "port_usages", value)
 
     @_builtins.property
     @pulumi.getter(name="radiusConfig")
-    def radius_config(self) -> Optional[pulumi.Input['SwitchRadiusConfigArgs']]:
+    def radius_config(self) -> pulumi.Input[Optional['SwitchRadiusConfigArgs']]:
         """
         Junos Radius config
         """
         return pulumi.get(self, "radius_config")
 
     @radius_config.setter
-    def radius_config(self, value: Optional[pulumi.Input['SwitchRadiusConfigArgs']]):
+    def radius_config(self, value: pulumi.Input[Optional['SwitchRadiusConfigArgs']]):
         pulumi.set(self, "radius_config", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteSyslog")
-    def remote_syslog(self) -> Optional[pulumi.Input['SwitchRemoteSyslogArgs']]:
+    def remote_syslog(self) -> pulumi.Input[Optional['SwitchRemoteSyslogArgs']]:
         return pulumi.get(self, "remote_syslog")
 
     @remote_syslog.setter
-    def remote_syslog(self, value: Optional[pulumi.Input['SwitchRemoteSyslogArgs']]):
+    def remote_syslog(self, value: pulumi.Input[Optional['SwitchRemoteSyslogArgs']]):
         pulumi.set(self, "remote_syslog", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used for OSPF / BGP / EVPN
         """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routingPolicies")
-    def routing_policies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]]:
+    def routing_policies(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]]:
         """
         Property key is the routing policy name
         """
         return pulumi.get(self, "routing_policies")
 
     @routing_policies.setter
-    def routing_policies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]]):
+    def routing_policies(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]]):
         pulumi.set(self, "routing_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="snmpConfig")
-    def snmp_config(self) -> Optional[pulumi.Input['SwitchSnmpConfigArgs']]:
+    def snmp_config(self) -> pulumi.Input[Optional['SwitchSnmpConfigArgs']]:
         return pulumi.get(self, "snmp_config")
 
     @snmp_config.setter
-    def snmp_config(self, value: Optional[pulumi.Input['SwitchSnmpConfigArgs']]):
+    def snmp_config(self, value: pulumi.Input[Optional['SwitchSnmpConfigArgs']]):
         pulumi.set(self, "snmp_config", value)
 
     @_builtins.property
     @pulumi.getter(name="stpConfig")
-    def stp_config(self) -> Optional[pulumi.Input['SwitchStpConfigArgs']]:
+    def stp_config(self) -> pulumi.Input[Optional['SwitchStpConfigArgs']]:
         return pulumi.get(self, "stp_config")
 
     @stp_config.setter
-    def stp_config(self, value: Optional[pulumi.Input['SwitchStpConfigArgs']]):
+    def stp_config(self, value: pulumi.Input[Optional['SwitchStpConfigArgs']]):
         pulumi.set(self, "stp_config", value)
 
     @_builtins.property
     @pulumi.getter(name="switchMgmt")
-    def switch_mgmt(self) -> Optional[pulumi.Input['SwitchSwitchMgmtArgs']]:
+    def switch_mgmt(self) -> pulumi.Input[Optional['SwitchSwitchMgmtArgs']]:
         """
         Switch settings
         """
         return pulumi.get(self, "switch_mgmt")
 
     @switch_mgmt.setter
-    def switch_mgmt(self, value: Optional[pulumi.Input['SwitchSwitchMgmtArgs']]):
+    def switch_mgmt(self, value: pulumi.Input[Optional['SwitchSwitchMgmtArgs']]):
         pulumi.set(self, "switch_mgmt", value)
 
     @_builtins.property
     @pulumi.getter(name="useRouterIdAsSourceIp")
-    def use_router_id_as_source_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_router_id_as_source_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use it for snmp / syslog / tacplus / radius
         """
         return pulumi.get(self, "use_router_id_as_source_ip")
 
     @use_router_id_as_source_ip.setter
-    def use_router_id_as_source_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_router_id_as_source_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_router_id_as_source_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
     @vars.setter
-    def vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def vars(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vars", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualChassis")
-    def virtual_chassis(self) -> Optional[pulumi.Input['SwitchVirtualChassisArgs']]:
+    def virtual_chassis(self) -> pulumi.Input[Optional['SwitchVirtualChassisArgs']]:
         """
         Required for preprovisioned Virtual Chassis
         """
         return pulumi.get(self, "virtual_chassis")
 
     @virtual_chassis.setter
-    def virtual_chassis(self, value: Optional[pulumi.Input['SwitchVirtualChassisArgs']]):
+    def virtual_chassis(self, value: pulumi.Input[Optional['SwitchVirtualChassisArgs']]):
         pulumi.set(self, "virtual_chassis", value)
 
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
-    def vrf_config(self) -> Optional[pulumi.Input['SwitchVrfConfigArgs']]:
+    def vrf_config(self) -> pulumi.Input[Optional['SwitchVrfConfigArgs']]:
         return pulumi.get(self, "vrf_config")
 
     @vrf_config.setter
-    def vrf_config(self, value: Optional[pulumi.Input['SwitchVrfConfigArgs']]):
+    def vrf_config(self, value: pulumi.Input[Optional['SwitchVrfConfigArgs']]):
         pulumi.set(self, "vrf_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vrfInstances")
-    def vrf_instances(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]]:
+    def vrf_instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]]:
         """
         Property key is the network name
         """
         return pulumi.get(self, "vrf_instances")
 
     @vrf_instances.setter
-    def vrf_instances(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]]):
+    def vrf_instances(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]]):
         pulumi.set(self, "vrf_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="vrrpConfig")
-    def vrrp_config(self) -> Optional[pulumi.Input['SwitchVrrpConfigArgs']]:
+    def vrrp_config(self) -> pulumi.Input[Optional['SwitchVrrpConfigArgs']]:
         """
         Junos VRRP config
         """
         return pulumi.get(self, "vrrp_config")
 
     @vrrp_config.setter
-    def vrrp_config(self, value: Optional[pulumi.Input['SwitchVrrpConfigArgs']]):
+    def vrrp_config(self, value: pulumi.Input[Optional['SwitchVrrpConfigArgs']]):
         pulumi.set(self, "vrrp_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def x(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def x(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         X in pixel
         """
         return pulumi.get(self, "x")
 
     @x.setter
-    def x(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def x(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "x", value)
 
     @_builtins.property
     @pulumi.getter
-    def y(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def y(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Y in pixel
         """
         return pulumi.get(self, "y")
 
     @y.setter
-    def y(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def y(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "y", value)
 
 
 @pulumi.input_type
 class _SwitchState:
     def __init__(__self__, *,
-                 acl_policies: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]] = None,
-                 acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]] = None,
-                 additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]] = None,
-                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_snooping: Optional[pulumi.Input['SwitchDhcpSnoopingArgs']] = None,
-                 dhcpd_config: Optional[pulumi.Input['SwitchDhcpdConfigArgs']] = None,
-                 disable_auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]] = None,
-                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]] = None,
-                 image1_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 image2_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 image3_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_config: Optional[pulumi.Input['SwitchIpConfigArgs']] = None,
-                 local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 map_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mist_nac: Optional[pulumi.Input['SwitchMistNacArgs']] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input['SwitchOobIpConfigArgs']] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]] = None,
-                 ospf_config: Optional[pulumi.Input['SwitchOspfConfigArgs']] = None,
-                 other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]] = None,
-                 port_config_overwrite: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]] = None,
-                 port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]] = None,
-                 port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]] = None,
-                 radius_config: Optional[pulumi.Input['SwitchRadiusConfigArgs']] = None,
-                 remote_syslog: Optional[pulumi.Input['SwitchRemoteSyslogArgs']] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]] = None,
-                 serial: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snmp_config: Optional[pulumi.Input['SwitchSnmpConfigArgs']] = None,
-                 stp_config: Optional[pulumi.Input['SwitchStpConfigArgs']] = None,
-                 switch_mgmt: Optional[pulumi.Input['SwitchSwitchMgmtArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_router_id_as_source_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 virtual_chassis: Optional[pulumi.Input['SwitchVirtualChassisArgs']] = None,
-                 vrf_config: Optional[pulumi.Input['SwitchVrfConfigArgs']] = None,
-                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]] = None,
-                 vrrp_config: Optional[pulumi.Input['SwitchVrrpConfigArgs']] = None,
-                 x: Optional[pulumi.Input[_builtins.float]] = None,
-                 y: Optional[pulumi.Input[_builtins.float]] = None):
+                 acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]] = None,
+                 acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]] = None,
+                 additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]] = None,
+                 default_port_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_snooping: pulumi.Input[Optional['SwitchDhcpSnoopingArgs']] = None,
+                 dhcpd_config: pulumi.Input[Optional['SwitchDhcpdConfigArgs']] = None,
+                 disable_auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]] = None,
+                 image1_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 image2_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 image3_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_config: pulumi.Input[Optional['SwitchIpConfigArgs']] = None,
+                 local_port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mist_nac: pulumi.Input[Optional['SwitchMistNacArgs']] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oob_ip_config: pulumi.Input[Optional['SwitchOobIpConfigArgs']] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]] = None,
+                 ospf_config: pulumi.Input[Optional['SwitchOspfConfigArgs']] = None,
+                 other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]] = None,
+                 port_config_overwrite: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]] = None,
+                 port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]] = None,
+                 port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]] = None,
+                 radius_config: pulumi.Input[Optional['SwitchRadiusConfigArgs']] = None,
+                 remote_syslog: pulumi.Input[Optional['SwitchRemoteSyslogArgs']] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]] = None,
+                 serial: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snmp_config: pulumi.Input[Optional['SwitchSnmpConfigArgs']] = None,
+                 stp_config: pulumi.Input[Optional['SwitchStpConfigArgs']] = None,
+                 switch_mgmt: pulumi.Input[Optional['SwitchSwitchMgmtArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_router_id_as_source_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 virtual_chassis: pulumi.Input[Optional['SwitchVirtualChassisArgs']] = None,
+                 vrf_config: pulumi.Input[Optional['SwitchVrfConfigArgs']] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]] = None,
+                 vrrp_config: pulumi.Input[Optional['SwitchVrrpConfigArgs']] = None,
+                 x: pulumi.Input[Optional[_builtins.float]] = None,
+                 y: pulumi.Input[Optional[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering Switch resources.
 
@@ -973,315 +973,315 @@ class _SwitchState:
 
     @_builtins.property
     @pulumi.getter(name="aclPolicies")
-    def acl_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]]:
+    def acl_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]]:
         return pulumi.get(self, "acl_policies")
 
     @acl_policies.setter
-    def acl_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]]):
+    def acl_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SwitchAclPolicyArgs']]]]):
         pulumi.set(self, "acl_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="aclTags")
-    def acl_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]]:
+    def acl_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]]:
         """
         ACL Tags to identify traffic source or destination. Key name is the tag name
         """
         return pulumi.get(self, "acl_tags")
 
     @acl_tags.setter
-    def acl_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]]):
+    def acl_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchAclTagsArgs']]]]):
         pulumi.set(self, "acl_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalConfigCmds")
-    def additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         additional CLI commands to append to the generated Junos config. **Note**: no check is done
         """
         return pulumi.get(self, "additional_config_cmds")
 
     @additional_config_cmds.setter
-    def additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_config_cmds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_config_cmds", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
-    def bgp_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]]:
+    def bgp_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]]:
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
-    def bgp_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]]):
+    def bgp_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchBgpConfigArgs']]]]):
         pulumi.set(self, "bgp_config", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPortUsage")
-    def default_port_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_port_usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
         """
         return pulumi.get(self, "default_port_usage")
 
     @default_port_usage.setter
-    def default_port_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_port_usage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_port_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceId")
-    def device_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "device_id")
 
     @device_id.setter
-    def device_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpSnooping")
-    def dhcp_snooping(self) -> Optional[pulumi.Input['SwitchDhcpSnoopingArgs']]:
+    def dhcp_snooping(self) -> pulumi.Input[Optional['SwitchDhcpSnoopingArgs']]:
         return pulumi.get(self, "dhcp_snooping")
 
     @dhcp_snooping.setter
-    def dhcp_snooping(self, value: Optional[pulumi.Input['SwitchDhcpSnoopingArgs']]):
+    def dhcp_snooping(self, value: pulumi.Input[Optional['SwitchDhcpSnoopingArgs']]):
         pulumi.set(self, "dhcp_snooping", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
-    def dhcpd_config(self) -> Optional[pulumi.Input['SwitchDhcpdConfigArgs']]:
+    def dhcpd_config(self) -> pulumi.Input[Optional['SwitchDhcpdConfigArgs']]:
         return pulumi.get(self, "dhcpd_config")
 
     @dhcpd_config.setter
-    def dhcpd_config(self, value: Optional[pulumi.Input['SwitchDhcpdConfigArgs']]):
+    def dhcpd_config(self, value: pulumi.Input[Optional['SwitchDhcpdConfigArgs']]):
         pulumi.set(self, "dhcpd_config", value)
 
     @_builtins.property
     @pulumi.getter(name="disableAutoConfig")
     @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
-    def disable_auto_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_auto_config(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
         """
         return pulumi.get(self, "disable_auto_config")
 
     @disable_auto_config.setter
-    def disable_auto_config(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_auto_config(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_auto_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         """
         return pulumi.get(self, "dns_servers")
 
     @dns_servers.setter
-    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsSuffixes")
-    def dns_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         """
         return pulumi.get(self, "dns_suffixes")
 
     @dns_suffixes.setter
-    def dns_suffixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_suffixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_suffixes", value)
 
     @_builtins.property
     @pulumi.getter(name="extraRoutes")
-    def extra_routes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]]:
+    def extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]]:
         """
         Property key is the destination CIDR (e.g. "10.0.0.0/8")
         """
         return pulumi.get(self, "extra_routes")
 
     @extra_routes.setter
-    def extra_routes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]]):
+    def extra_routes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]]):
         pulumi.set(self, "extra_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="extraRoutes6")
-    def extra_routes6(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]]:
+    def extra_routes6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]]:
         """
         Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         """
         return pulumi.get(self, "extra_routes6")
 
     @extra_routes6.setter
-    def extra_routes6(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]]):
+    def extra_routes6(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]]):
         pulumi.set(self, "extra_routes6", value)
 
     @_builtins.property
     @pulumi.getter(name="image1Url")
-    def image1_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image1_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "image1_url")
 
     @image1_url.setter
-    def image1_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image1_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image1_url", value)
 
     @_builtins.property
     @pulumi.getter(name="image2Url")
-    def image2_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image2_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "image2_url")
 
     @image2_url.setter
-    def image2_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image2_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image2_url", value)
 
     @_builtins.property
     @pulumi.getter(name="image3Url")
-    def image3_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image3_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "image3_url")
 
     @image3_url.setter
-    def image3_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image3_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image3_url", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfig")
-    def ip_config(self) -> Optional[pulumi.Input['SwitchIpConfigArgs']]:
+    def ip_config(self) -> pulumi.Input[Optional['SwitchIpConfigArgs']]:
         """
         Junos IP Config
         """
         return pulumi.get(self, "ip_config")
 
     @ip_config.setter
-    def ip_config(self, value: Optional[pulumi.Input['SwitchIpConfigArgs']]):
+    def ip_config(self, value: pulumi.Input[Optional['SwitchIpConfigArgs']]):
         pulumi.set(self, "ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="localPortConfig")
-    def local_port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]:
+    def local_port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]:
         """
         Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g. "ge-0/0/0-10")
         """
         return pulumi.get(self, "local_port_config")
 
     @local_port_config.setter
-    def local_port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]):
+    def local_port_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]):
         pulumi.set(self, "local_port_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def mac(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Device MAC address
         """
         return pulumi.get(self, "mac")
 
     @mac.setter
-    def mac(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is being deprecated, please use `mist_configured` instead""")
-    def managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         An adopted switch/gateway will not be managed/configured by Mist by default. Setting this parameter to `true` enables the adopted switch/gateway to be managed/configured by Mist. Deprecated in favour of mist_configured, which is more intuitive and can be used for both adopted and claimed devices.
         """
         return pulumi.get(self, "managed")
 
     @managed.setter
-    def managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "managed", value)
 
     @_builtins.property
     @pulumi.getter(name="mapId")
-    def map_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def map_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Map where the device belongs to
         """
         return pulumi.get(self, "map_id")
 
     @map_id.setter
-    def map_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def map_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "map_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mistConfigured")
-    def mist_configured(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mist_configured(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         whether the device can be configured by Mist or not. This deprecates `managed` (for adopted device) and `disable_auto_config` for claimed device)
         """
         return pulumi.get(self, "mist_configured")
 
     @mist_configured.setter
-    def mist_configured(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mist_configured(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mist_configured", value)
 
     @_builtins.property
     @pulumi.getter(name="mistNac")
-    def mist_nac(self) -> Optional[pulumi.Input['SwitchMistNacArgs']]:
+    def mist_nac(self) -> pulumi.Input[Optional['SwitchMistNacArgs']]:
         """
         Enable mist_nac to use RadSec
         """
         return pulumi.get(self, "mist_nac")
 
     @mist_nac.setter
-    def mist_nac(self, value: Optional[pulumi.Input['SwitchMistNacArgs']]):
+    def mist_nac(self, value: pulumi.Input[Optional['SwitchMistNacArgs']]):
         pulumi.set(self, "mist_nac", value)
 
     @_builtins.property
     @pulumi.getter
-    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Device Model
         """
         return pulumi.get(self, "model")
 
     @model.setter
-    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]]:
         """
         Property key is network name
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchNetworksArgs']]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of NTP servers specific to this device. By default, those in Site Settings will be used
         """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
-    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ntp_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ntp_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="oobIpConfig")
-    def oob_ip_config(self) -> Optional[pulumi.Input['SwitchOobIpConfigArgs']]:
+    def oob_ip_config(self) -> pulumi.Input[Optional['SwitchOobIpConfigArgs']]:
         """
         Switch OOB IP Config:
           - If HA configuration: key parameter will be nodeX (eg: node1)
@@ -1290,307 +1290,307 @@ class _SwitchState:
         return pulumi.get(self, "oob_ip_config")
 
     @oob_ip_config.setter
-    def oob_ip_config(self, value: Optional[pulumi.Input['SwitchOobIpConfigArgs']]):
+    def oob_ip_config(self, value: pulumi.Input[Optional['SwitchOobIpConfigArgs']]):
         pulumi.set(self, "oob_ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ospfAreas")
-    def ospf_areas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]:
+    def ospf_areas(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]:
         """
         Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
         """
         return pulumi.get(self, "ospf_areas")
 
     @ospf_areas.setter
-    def ospf_areas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]):
+    def ospf_areas(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]]]):
         pulumi.set(self, "ospf_areas", value)
 
     @_builtins.property
     @pulumi.getter(name="ospfConfig")
-    def ospf_config(self) -> Optional[pulumi.Input['SwitchOspfConfigArgs']]:
+    def ospf_config(self) -> pulumi.Input[Optional['SwitchOspfConfigArgs']]:
         return pulumi.get(self, "ospf_config")
 
     @ospf_config.setter
-    def ospf_config(self, value: Optional[pulumi.Input['SwitchOspfConfigArgs']]):
+    def ospf_config(self, value: pulumi.Input[Optional['SwitchOspfConfigArgs']]):
         pulumi.set(self, "ospf_config", value)
 
     @_builtins.property
     @pulumi.getter(name="otherIpConfigs")
-    def other_ip_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]]:
+    def other_ip_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]]:
         """
         Property key is the network name. Defines the additional IP Addresses configured on the device.
         """
         return pulumi.get(self, "other_ip_configs")
 
     @other_ip_configs.setter
-    def other_ip_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]]):
+    def other_ip_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]]]):
         pulumi.set(self, "other_ip_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="portConfig")
-    def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]]:
+    def port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]]:
         """
         Property key is the port name or range (e.g. "ge-0/0/0-10")
         """
         return pulumi.get(self, "port_config")
 
     @port_config.setter
-    def port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]]):
+    def port_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]]]):
         pulumi.set(self, "port_config", value)
 
     @_builtins.property
     @pulumi.getter(name="portConfigOverwrite")
-    def port_config_overwrite(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]:
+    def port_config_overwrite(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]:
         """
         Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the port_usage without having to create a new port_usage.
         """
         return pulumi.get(self, "port_config_overwrite")
 
     @port_config_overwrite.setter
-    def port_config_overwrite(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]):
+    def port_config_overwrite(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortConfigOverwriteArgs']]]]):
         pulumi.set(self, "port_config_overwrite", value)
 
     @_builtins.property
     @pulumi.getter(name="portMirroring")
-    def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
+    def port_mirroring(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
         """
         Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
         """
         return pulumi.get(self, "port_mirroring")
 
     @port_mirroring.setter
-    def port_mirroring(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]):
+    def port_mirroring(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]):
         pulumi.set(self, "port_mirroring", value)
 
     @_builtins.property
     @pulumi.getter(name="portUsages")
-    def port_usages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]]:
+    def port_usages(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]]:
         """
         Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         """
         return pulumi.get(self, "port_usages")
 
     @port_usages.setter
-    def port_usages(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]]):
+    def port_usages(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchPortUsagesArgs']]]]):
         pulumi.set(self, "port_usages", value)
 
     @_builtins.property
     @pulumi.getter(name="radiusConfig")
-    def radius_config(self) -> Optional[pulumi.Input['SwitchRadiusConfigArgs']]:
+    def radius_config(self) -> pulumi.Input[Optional['SwitchRadiusConfigArgs']]:
         """
         Junos Radius config
         """
         return pulumi.get(self, "radius_config")
 
     @radius_config.setter
-    def radius_config(self, value: Optional[pulumi.Input['SwitchRadiusConfigArgs']]):
+    def radius_config(self, value: pulumi.Input[Optional['SwitchRadiusConfigArgs']]):
         pulumi.set(self, "radius_config", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteSyslog")
-    def remote_syslog(self) -> Optional[pulumi.Input['SwitchRemoteSyslogArgs']]:
+    def remote_syslog(self) -> pulumi.Input[Optional['SwitchRemoteSyslogArgs']]:
         return pulumi.get(self, "remote_syslog")
 
     @remote_syslog.setter
-    def remote_syslog(self, value: Optional[pulumi.Input['SwitchRemoteSyslogArgs']]):
+    def remote_syslog(self, value: pulumi.Input[Optional['SwitchRemoteSyslogArgs']]):
         pulumi.set(self, "remote_syslog", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used for OSPF / BGP / EVPN
         """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routingPolicies")
-    def routing_policies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]]:
+    def routing_policies(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]]:
         """
         Property key is the routing policy name
         """
         return pulumi.get(self, "routing_policies")
 
     @routing_policies.setter
-    def routing_policies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]]):
+    def routing_policies(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]]]):
         pulumi.set(self, "routing_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def serial(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serial(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Device Serial
         """
         return pulumi.get(self, "serial")
 
     @serial.setter
-    def serial(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serial(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serial", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snmpConfig")
-    def snmp_config(self) -> Optional[pulumi.Input['SwitchSnmpConfigArgs']]:
+    def snmp_config(self) -> pulumi.Input[Optional['SwitchSnmpConfigArgs']]:
         return pulumi.get(self, "snmp_config")
 
     @snmp_config.setter
-    def snmp_config(self, value: Optional[pulumi.Input['SwitchSnmpConfigArgs']]):
+    def snmp_config(self, value: pulumi.Input[Optional['SwitchSnmpConfigArgs']]):
         pulumi.set(self, "snmp_config", value)
 
     @_builtins.property
     @pulumi.getter(name="stpConfig")
-    def stp_config(self) -> Optional[pulumi.Input['SwitchStpConfigArgs']]:
+    def stp_config(self) -> pulumi.Input[Optional['SwitchStpConfigArgs']]:
         return pulumi.get(self, "stp_config")
 
     @stp_config.setter
-    def stp_config(self, value: Optional[pulumi.Input['SwitchStpConfigArgs']]):
+    def stp_config(self, value: pulumi.Input[Optional['SwitchStpConfigArgs']]):
         pulumi.set(self, "stp_config", value)
 
     @_builtins.property
     @pulumi.getter(name="switchMgmt")
-    def switch_mgmt(self) -> Optional[pulumi.Input['SwitchSwitchMgmtArgs']]:
+    def switch_mgmt(self) -> pulumi.Input[Optional['SwitchSwitchMgmtArgs']]:
         """
         Switch settings
         """
         return pulumi.get(self, "switch_mgmt")
 
     @switch_mgmt.setter
-    def switch_mgmt(self, value: Optional[pulumi.Input['SwitchSwitchMgmtArgs']]):
+    def switch_mgmt(self, value: pulumi.Input[Optional['SwitchSwitchMgmtArgs']]):
         pulumi.set(self, "switch_mgmt", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Device Type. enum: `switch`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="useRouterIdAsSourceIp")
-    def use_router_id_as_source_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_router_id_as_source_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use it for snmp / syslog / tacplus / radius
         """
         return pulumi.get(self, "use_router_id_as_source_ip")
 
     @use_router_id_as_source_ip.setter
-    def use_router_id_as_source_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_router_id_as_source_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_router_id_as_source_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
     @vars.setter
-    def vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def vars(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vars", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualChassis")
-    def virtual_chassis(self) -> Optional[pulumi.Input['SwitchVirtualChassisArgs']]:
+    def virtual_chassis(self) -> pulumi.Input[Optional['SwitchVirtualChassisArgs']]:
         """
         Required for preprovisioned Virtual Chassis
         """
         return pulumi.get(self, "virtual_chassis")
 
     @virtual_chassis.setter
-    def virtual_chassis(self, value: Optional[pulumi.Input['SwitchVirtualChassisArgs']]):
+    def virtual_chassis(self, value: pulumi.Input[Optional['SwitchVirtualChassisArgs']]):
         pulumi.set(self, "virtual_chassis", value)
 
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
-    def vrf_config(self) -> Optional[pulumi.Input['SwitchVrfConfigArgs']]:
+    def vrf_config(self) -> pulumi.Input[Optional['SwitchVrfConfigArgs']]:
         return pulumi.get(self, "vrf_config")
 
     @vrf_config.setter
-    def vrf_config(self, value: Optional[pulumi.Input['SwitchVrfConfigArgs']]):
+    def vrf_config(self, value: pulumi.Input[Optional['SwitchVrfConfigArgs']]):
         pulumi.set(self, "vrf_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vrfInstances")
-    def vrf_instances(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]]:
+    def vrf_instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]]:
         """
         Property key is the network name
         """
         return pulumi.get(self, "vrf_instances")
 
     @vrf_instances.setter
-    def vrf_instances(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]]):
+    def vrf_instances(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SwitchVrfInstancesArgs']]]]):
         pulumi.set(self, "vrf_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="vrrpConfig")
-    def vrrp_config(self) -> Optional[pulumi.Input['SwitchVrrpConfigArgs']]:
+    def vrrp_config(self) -> pulumi.Input[Optional['SwitchVrrpConfigArgs']]:
         """
         Junos VRRP config
         """
         return pulumi.get(self, "vrrp_config")
 
     @vrrp_config.setter
-    def vrrp_config(self, value: Optional[pulumi.Input['SwitchVrrpConfigArgs']]):
+    def vrrp_config(self, value: pulumi.Input[Optional['SwitchVrrpConfigArgs']]):
         pulumi.set(self, "vrrp_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def x(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def x(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         X in pixel
         """
         return pulumi.get(self, "x")
 
     @x.setter
-    def x(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def x(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "x", value)
 
     @_builtins.property
     @pulumi.getter
-    def y(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def y(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Y in pixel
         """
         return pulumi.get(self, "y")
 
     @y.setter
-    def y(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def y(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "y", value)
 
 
@@ -1600,54 +1600,54 @@ class Switch(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]]] = None,
-                 acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]]] = None,
-                 additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]]] = None,
-                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_snooping: Optional[pulumi.Input[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']]] = None,
-                 dhcpd_config: Optional[pulumi.Input[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']]] = None,
-                 disable_auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]]] = None,
-                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]]] = None,
-                 ip_config: Optional[pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']]] = None,
-                 local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
-                 managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 map_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mist_nac: Optional[pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']]] = None,
-                 ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]]] = None,
-                 ospf_config: Optional[pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
-                 other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
-                 port_config_overwrite: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]]] = None,
-                 port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
-                 port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]]] = None,
-                 radius_config: Optional[pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']]] = None,
-                 remote_syslog: Optional[pulumi.Input[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snmp_config: Optional[pulumi.Input[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']]] = None,
-                 stp_config: Optional[pulumi.Input[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']]] = None,
-                 switch_mgmt: Optional[pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']]] = None,
-                 use_router_id_as_source_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 virtual_chassis: Optional[pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']]] = None,
-                 vrf_config: Optional[pulumi.Input[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']]] = None,
-                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]]] = None,
-                 vrrp_config: Optional[pulumi.Input[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']]] = None,
-                 x: Optional[pulumi.Input[_builtins.float]] = None,
-                 y: Optional[pulumi.Input[_builtins.float]] = None,
+                 acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]]] = None,
+                 acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]]] = None,
+                 additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]]] = None,
+                 default_port_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_snooping: pulumi.Input[Optional[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']]] = None,
+                 dhcpd_config: pulumi.Input[Optional[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']]] = None,
+                 disable_auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]]] = None,
+                 ip_config: pulumi.Input[Optional[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']]] = None,
+                 local_port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
+                 managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mist_nac: pulumi.Input[Optional[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']]] = None,
+                 ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]]] = None,
+                 ospf_config: pulumi.Input[Optional[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
+                 other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
+                 port_config_overwrite: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]]] = None,
+                 port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
+                 port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]]] = None,
+                 radius_config: pulumi.Input[Optional[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']]] = None,
+                 remote_syslog: pulumi.Input[Optional[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snmp_config: pulumi.Input[Optional[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']]] = None,
+                 stp_config: pulumi.Input[Optional[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']]] = None,
+                 switch_mgmt: pulumi.Input[Optional[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']]] = None,
+                 use_router_id_as_source_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 virtual_chassis: pulumi.Input[Optional[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']]] = None,
+                 vrf_config: pulumi.Input[Optional[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']]] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]]] = None,
+                 vrrp_config: pulumi.Input[Optional[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']]] = None,
+                 x: pulumi.Input[Optional[_builtins.float]] = None,
+                 y: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         """
         This resource manages the Switch configuration.
@@ -1743,54 +1743,54 @@ class Switch(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]]] = None,
-                 acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]]] = None,
-                 additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]]] = None,
-                 default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_snooping: Optional[pulumi.Input[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']]] = None,
-                 dhcpd_config: Optional[pulumi.Input[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']]] = None,
-                 disable_auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]]] = None,
-                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]]] = None,
-                 ip_config: Optional[pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']]] = None,
-                 local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
-                 managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 map_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mist_nac: Optional[pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']]] = None,
-                 ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]]] = None,
-                 ospf_config: Optional[pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
-                 other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
-                 port_config_overwrite: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]]] = None,
-                 port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
-                 port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]]] = None,
-                 radius_config: Optional[pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']]] = None,
-                 remote_syslog: Optional[pulumi.Input[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snmp_config: Optional[pulumi.Input[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']]] = None,
-                 stp_config: Optional[pulumi.Input[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']]] = None,
-                 switch_mgmt: Optional[pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']]] = None,
-                 use_router_id_as_source_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 virtual_chassis: Optional[pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']]] = None,
-                 vrf_config: Optional[pulumi.Input[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']]] = None,
-                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]]] = None,
-                 vrrp_config: Optional[pulumi.Input[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']]] = None,
-                 x: Optional[pulumi.Input[_builtins.float]] = None,
-                 y: Optional[pulumi.Input[_builtins.float]] = None,
+                 acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]]] = None,
+                 acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]]] = None,
+                 additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]]] = None,
+                 default_port_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_snooping: pulumi.Input[Optional[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']]] = None,
+                 dhcpd_config: pulumi.Input[Optional[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']]] = None,
+                 disable_auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]]] = None,
+                 ip_config: pulumi.Input[Optional[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']]] = None,
+                 local_port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
+                 managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mist_nac: pulumi.Input[Optional[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']]] = None,
+                 ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]]] = None,
+                 ospf_config: pulumi.Input[Optional[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
+                 other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
+                 port_config_overwrite: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]]] = None,
+                 port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
+                 port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]]] = None,
+                 radius_config: pulumi.Input[Optional[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']]] = None,
+                 remote_syslog: pulumi.Input[Optional[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snmp_config: pulumi.Input[Optional[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']]] = None,
+                 stp_config: pulumi.Input[Optional[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']]] = None,
+                 switch_mgmt: pulumi.Input[Optional[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']]] = None,
+                 use_router_id_as_source_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 virtual_chassis: pulumi.Input[Optional[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']]] = None,
+                 vrf_config: pulumi.Input[Optional[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']]] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]]] = None,
+                 vrrp_config: pulumi.Input[Optional[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']]] = None,
+                 x: pulumi.Input[Optional[_builtins.float]] = None,
+                 y: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1870,62 +1870,62 @@ class Switch(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]]] = None,
-            acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]]] = None,
-            additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]]] = None,
-            default_port_usage: Optional[pulumi.Input[_builtins.str]] = None,
-            device_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dhcp_snooping: Optional[pulumi.Input[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']]] = None,
-            dhcpd_config: Optional[pulumi.Input[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']]] = None,
-            disable_auto_config: Optional[pulumi.Input[_builtins.bool]] = None,
-            dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]]] = None,
-            extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]]] = None,
-            image1_url: Optional[pulumi.Input[_builtins.str]] = None,
-            image2_url: Optional[pulumi.Input[_builtins.str]] = None,
-            image3_url: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_config: Optional[pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']]] = None,
-            local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
-            mac: Optional[pulumi.Input[_builtins.str]] = None,
-            managed: Optional[pulumi.Input[_builtins.bool]] = None,
-            map_id: Optional[pulumi.Input[_builtins.str]] = None,
-            mist_configured: Optional[pulumi.Input[_builtins.bool]] = None,
-            mist_nac: Optional[pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
-            model: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]]] = None,
-            notes: Optional[pulumi.Input[_builtins.str]] = None,
-            ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            oob_ip_config: Optional[pulumi.Input[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]]] = None,
-            ospf_config: Optional[pulumi.Input[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
-            other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
-            port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
-            port_config_overwrite: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]]] = None,
-            port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
-            port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]]] = None,
-            radius_config: Optional[pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']]] = None,
-            remote_syslog: Optional[pulumi.Input[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]]] = None,
-            serial: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            snmp_config: Optional[pulumi.Input[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']]] = None,
-            stp_config: Optional[pulumi.Input[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']]] = None,
-            switch_mgmt: Optional[pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            use_router_id_as_source_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            virtual_chassis: Optional[pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']]] = None,
-            vrf_config: Optional[pulumi.Input[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']]] = None,
-            vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]]] = None,
-            vrrp_config: Optional[pulumi.Input[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']]] = None,
-            x: Optional[pulumi.Input[_builtins.float]] = None,
-            y: Optional[pulumi.Input[_builtins.float]] = None) -> 'Switch':
+            acl_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SwitchAclPolicyArgs', 'SwitchAclPolicyArgsDict']]]]] = None,
+            acl_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]]] = None,
+            additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchBgpConfigArgs', 'SwitchBgpConfigArgsDict']]]]] = None,
+            default_port_usage: pulumi.Input[Optional[_builtins.str]] = None,
+            device_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dhcp_snooping: pulumi.Input[Optional[Union['SwitchDhcpSnoopingArgs', 'SwitchDhcpSnoopingArgsDict']]] = None,
+            dhcpd_config: pulumi.Input[Optional[Union['SwitchDhcpdConfigArgs', 'SwitchDhcpdConfigArgsDict']]] = None,
+            disable_auto_config: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]]] = None,
+            extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]]] = None,
+            image1_url: pulumi.Input[Optional[_builtins.str]] = None,
+            image2_url: pulumi.Input[Optional[_builtins.str]] = None,
+            image3_url: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_config: pulumi.Input[Optional[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']]] = None,
+            local_port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            map_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mist_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+            mist_nac: pulumi.Input[Optional[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
+            model: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchNetworksArgs', 'SwitchNetworksArgsDict']]]]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            oob_ip_config: pulumi.Input[Optional[Union['SwitchOobIpConfigArgs', 'SwitchOobIpConfigArgsDict']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ospf_areas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]]] = None,
+            ospf_config: pulumi.Input[Optional[Union['SwitchOspfConfigArgs', 'SwitchOspfConfigArgsDict']]] = None,
+            other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]]] = None,
+            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]]] = None,
+            port_config_overwrite: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortConfigOverwriteArgs', 'SwitchPortConfigOverwriteArgsDict']]]]] = None,
+            port_mirroring: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]]] = None,
+            port_usages: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchPortUsagesArgs', 'SwitchPortUsagesArgsDict']]]]] = None,
+            radius_config: pulumi.Input[Optional[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']]] = None,
+            remote_syslog: pulumi.Input[Optional[Union['SwitchRemoteSyslogArgs', 'SwitchRemoteSyslogArgsDict']]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]]] = None,
+            serial: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snmp_config: pulumi.Input[Optional[Union['SwitchSnmpConfigArgs', 'SwitchSnmpConfigArgsDict']]] = None,
+            stp_config: pulumi.Input[Optional[Union['SwitchStpConfigArgs', 'SwitchStpConfigArgsDict']]] = None,
+            switch_mgmt: pulumi.Input[Optional[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            use_router_id_as_source_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            virtual_chassis: pulumi.Input[Optional[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']]] = None,
+            vrf_config: pulumi.Input[Optional[Union['SwitchVrfConfigArgs', 'SwitchVrfConfigArgsDict']]] = None,
+            vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SwitchVrfInstancesArgs', 'SwitchVrfInstancesArgsDict']]]]] = None,
+            vrrp_config: pulumi.Input[Optional[Union['SwitchVrrpConfigArgs', 'SwitchVrrpConfigArgsDict']]] = None,
+            x: pulumi.Input[Optional[_builtins.float]] = None,
+            y: pulumi.Input[Optional[_builtins.float]] = None) -> 'Switch':
         """
         Get an existing Switch resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

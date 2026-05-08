@@ -152,27 +152,27 @@ export interface NacruleState {
     /**
      * enum: `allow`, `block`
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * All optional, this goes into Access-Accept
      */
-    applyTags?: pulumi.Input<pulumi.Input<string>[]>;
+    applyTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enabled or not
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Guest portal authorization state. enum: `authorized`, `unknown`
      */
-    guestAuthState?: pulumi.Input<string>;
-    matching?: pulumi.Input<inputs.org.NacruleMatching>;
-    name?: pulumi.Input<string>;
-    notMatching?: pulumi.Input<inputs.org.NacruleNotMatching>;
+    guestAuthState?: pulumi.Input<string | undefined>;
+    matching?: pulumi.Input<inputs.org.NacruleMatching | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    notMatching?: pulumi.Input<inputs.org.NacruleNotMatching | undefined>;
     /**
      * Order of the rule, lower value implies higher priority
      */
-    order?: pulumi.Input<number>;
-    orgId?: pulumi.Input<string>;
+    order?: pulumi.Input<number | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -186,18 +186,18 @@ export interface NacruleArgs {
     /**
      * All optional, this goes into Access-Accept
      */
-    applyTags?: pulumi.Input<pulumi.Input<string>[]>;
+    applyTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enabled or not
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Guest portal authorization state. enum: `authorized`, `unknown`
      */
-    guestAuthState?: pulumi.Input<string>;
-    matching?: pulumi.Input<inputs.org.NacruleMatching>;
-    name?: pulumi.Input<string>;
-    notMatching?: pulumi.Input<inputs.org.NacruleNotMatching>;
+    guestAuthState?: pulumi.Input<string | undefined>;
+    matching?: pulumi.Input<inputs.org.NacruleMatching | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    notMatching?: pulumi.Input<inputs.org.NacruleNotMatching | undefined>;
     /**
      * Order of the rule, lower value implies higher priority
      */

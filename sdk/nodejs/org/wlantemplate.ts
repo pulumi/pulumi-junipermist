@@ -127,21 +127,21 @@ export interface WlantemplateState {
     /**
      * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
      */
-    applies?: pulumi.Input<inputs.org.WlantemplateApplies>;
+    applies?: pulumi.Input<inputs.org.WlantemplateApplies | undefined>;
     /**
      * List of Device Profile ids
      */
-    deviceprofileIds?: pulumi.Input<pulumi.Input<string>[]>;
+    deviceprofileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Where this template should not be applied to (takes precedence)
      */
-    exceptions?: pulumi.Input<inputs.org.WlantemplateExceptions>;
+    exceptions?: pulumi.Input<inputs.org.WlantemplateExceptions | undefined>;
     /**
      * Whether to further filter by Device Profile
      */
-    filterByDeviceprofile?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    filterByDeviceprofile?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -151,19 +151,19 @@ export interface WlantemplateArgs {
     /**
      * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
      */
-    applies?: pulumi.Input<inputs.org.WlantemplateApplies>;
+    applies?: pulumi.Input<inputs.org.WlantemplateApplies | undefined>;
     /**
      * List of Device Profile ids
      */
-    deviceprofileIds?: pulumi.Input<pulumi.Input<string>[]>;
+    deviceprofileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Where this template should not be applied to (takes precedence)
      */
-    exceptions?: pulumi.Input<inputs.org.WlantemplateExceptions>;
+    exceptions?: pulumi.Input<inputs.org.WlantemplateExceptions | undefined>;
     /**
      * Whether to further filter by Device Profile
      */
-    filterByDeviceprofile?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
+    filterByDeviceprofile?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
 }

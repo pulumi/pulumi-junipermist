@@ -127,8 +127,8 @@ export interface InventoryState {
      *
      *     >
      */
-    inventory?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.InventoryInventory>}>;
-    orgId?: pulumi.Input<string>;
+    inventory?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.InventoryInventory>} | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -142,6 +142,6 @@ export interface InventoryArgs {
      *
      *     >
      */
-    inventory?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.InventoryInventory>}>;
+    inventory?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.InventoryInventory>} | undefined>;
     orgId: pulumi.Input<string>;
 }

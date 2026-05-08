@@ -22,26 +22,26 @@ __all__ = ['MxedgeArgs', 'Mxedge']
 class MxedgeArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
-                 claim_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 mxcluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mxedge_mgmt: Optional[pulumi.Input['MxedgeMxedgeMgmtArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input['MxedgeOobIpConfigArgs']] = None,
-                 proxy: Optional[pulumi.Input['MxedgeProxyArgs']] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunterm_dhcpd_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]] = None,
-                 tunterm_extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]] = None,
-                 tunterm_igmp_snooping_config: Optional[pulumi.Input['MxedgeTuntermIgmpSnoopingConfigArgs']] = None,
-                 tunterm_ip_config: Optional[pulumi.Input['MxedgeTuntermIpConfigArgs']] = None,
-                 tunterm_monitorings: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]] = None,
-                 tunterm_multicast_config: Optional[pulumi.Input['MxedgeTuntermMulticastConfigArgs']] = None,
-                 tunterm_other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]]] = None,
-                 tunterm_port_config: Optional[pulumi.Input['MxedgeTuntermPortConfigArgs']] = None,
-                 tunterm_switch_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]] = None,
-                 versions: Optional[pulumi.Input['MxedgeVersionsArgs']] = None):
+                 claim_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 mxcluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mxedge_mgmt: pulumi.Input[Optional['MxedgeMxedgeMgmtArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oob_ip_config: pulumi.Input[Optional['MxedgeOobIpConfigArgs']] = None,
+                 proxy: pulumi.Input[Optional['MxedgeProxyArgs']] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]] = None,
+                 tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]] = None,
+                 tunterm_igmp_snooping_config: pulumi.Input[Optional['MxedgeTuntermIgmpSnoopingConfigArgs']] = None,
+                 tunterm_ip_config: pulumi.Input[Optional['MxedgeTuntermIpConfigArgs']] = None,
+                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]] = None,
+                 tunterm_multicast_config: pulumi.Input[Optional['MxedgeTuntermMulticastConfigArgs']] = None,
+                 tunterm_other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]]] = None,
+                 tunterm_port_config: pulumi.Input[Optional['MxedgeTuntermPortConfigArgs']] = None,
+                 tunterm_switch_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]] = None,
+                 versions: pulumi.Input[Optional['MxedgeVersionsArgs']] = None):
         """
         The set of arguments for constructing a Mxedge resource.
 
@@ -108,241 +108,241 @@ class MxedgeArgs:
 
     @_builtins.property
     @pulumi.getter(name="claimCode")
-    def claim_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def claim_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "claim_code")
 
     @claim_code.setter
-    def claim_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def claim_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "claim_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "model")
 
     @model.setter
-    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
 
     @_builtins.property
     @pulumi.getter(name="mxclusterId")
-    def mxcluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mxcluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MxCluster this MxEdge belongs to
         """
         return pulumi.get(self, "mxcluster_id")
 
     @mxcluster_id.setter
-    def mxcluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mxcluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mxcluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mxedgeMgmt")
-    def mxedge_mgmt(self) -> Optional[pulumi.Input['MxedgeMxedgeMgmtArgs']]:
+    def mxedge_mgmt(self) -> pulumi.Input[Optional['MxedgeMxedgeMgmtArgs']]:
         return pulumi.get(self, "mxedge_mgmt")
 
     @mxedge_mgmt.setter
-    def mxedge_mgmt(self, value: Optional[pulumi.Input['MxedgeMxedgeMgmtArgs']]):
+    def mxedge_mgmt(self, value: pulumi.Input[Optional['MxedgeMxedgeMgmtArgs']]):
         pulumi.set(self, "mxedge_mgmt", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
-    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ntp_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ntp_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="oobIpConfig")
-    def oob_ip_config(self) -> Optional[pulumi.Input['MxedgeOobIpConfigArgs']]:
+    def oob_ip_config(self) -> pulumi.Input[Optional['MxedgeOobIpConfigArgs']]:
         """
         IPconfiguration of the Mist Edge out-of*band management interface
         """
         return pulumi.get(self, "oob_ip_config")
 
     @oob_ip_config.setter
-    def oob_ip_config(self, value: Optional[pulumi.Input['MxedgeOobIpConfigArgs']]):
+    def oob_ip_config(self, value: pulumi.Input[Optional['MxedgeOobIpConfigArgs']]):
         pulumi.set(self, "oob_ip_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxy(self) -> Optional[pulumi.Input['MxedgeProxyArgs']]:
+    def proxy(self) -> pulumi.Input[Optional['MxedgeProxyArgs']]:
         """
         Proxy Configuration to talk to Mist
         """
         return pulumi.get(self, "proxy")
 
     @proxy.setter
-    def proxy(self, value: Optional[pulumi.Input['MxedgeProxyArgs']]):
+    def proxy(self, value: pulumi.Input[Optional['MxedgeProxyArgs']]):
         pulumi.set(self, "proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermDhcpdConfig")
-    def tunterm_dhcpd_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]]:
+    def tunterm_dhcpd_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]]:
         """
         Global and per-VLAN. Property key is the VLAN ID
         """
         return pulumi.get(self, "tunterm_dhcpd_config")
 
     @tunterm_dhcpd_config.setter
-    def tunterm_dhcpd_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]]):
+    def tunterm_dhcpd_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]]):
         pulumi.set(self, "tunterm_dhcpd_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermExtraRoutes")
-    def tunterm_extra_routes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]]:
+    def tunterm_extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]]:
         """
         Property key is a CIDR
         """
         return pulumi.get(self, "tunterm_extra_routes")
 
     @tunterm_extra_routes.setter
-    def tunterm_extra_routes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]]):
+    def tunterm_extra_routes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]]):
         pulumi.set(self, "tunterm_extra_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermIgmpSnoopingConfig")
-    def tunterm_igmp_snooping_config(self) -> Optional[pulumi.Input['MxedgeTuntermIgmpSnoopingConfigArgs']]:
+    def tunterm_igmp_snooping_config(self) -> pulumi.Input[Optional['MxedgeTuntermIgmpSnoopingConfigArgs']]:
         return pulumi.get(self, "tunterm_igmp_snooping_config")
 
     @tunterm_igmp_snooping_config.setter
-    def tunterm_igmp_snooping_config(self, value: Optional[pulumi.Input['MxedgeTuntermIgmpSnoopingConfigArgs']]):
+    def tunterm_igmp_snooping_config(self, value: pulumi.Input[Optional['MxedgeTuntermIgmpSnoopingConfigArgs']]):
         pulumi.set(self, "tunterm_igmp_snooping_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermIpConfig")
-    def tunterm_ip_config(self) -> Optional[pulumi.Input['MxedgeTuntermIpConfigArgs']]:
+    def tunterm_ip_config(self) -> pulumi.Input[Optional['MxedgeTuntermIpConfigArgs']]:
         """
         IPconfiguration of the Mist Tunnel interface
         """
         return pulumi.get(self, "tunterm_ip_config")
 
     @tunterm_ip_config.setter
-    def tunterm_ip_config(self, value: Optional[pulumi.Input['MxedgeTuntermIpConfigArgs']]):
+    def tunterm_ip_config(self, value: pulumi.Input[Optional['MxedgeTuntermIpConfigArgs']]):
         pulumi.set(self, "tunterm_ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermMonitorings")
-    def tunterm_monitorings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]]:
+    def tunterm_monitorings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]]:
         return pulumi.get(self, "tunterm_monitorings")
 
     @tunterm_monitorings.setter
-    def tunterm_monitorings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]]):
+    def tunterm_monitorings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]]):
         pulumi.set(self, "tunterm_monitorings", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermMulticastConfig")
-    def tunterm_multicast_config(self) -> Optional[pulumi.Input['MxedgeTuntermMulticastConfigArgs']]:
+    def tunterm_multicast_config(self) -> pulumi.Input[Optional['MxedgeTuntermMulticastConfigArgs']]:
         return pulumi.get(self, "tunterm_multicast_config")
 
     @tunterm_multicast_config.setter
-    def tunterm_multicast_config(self, value: Optional[pulumi.Input['MxedgeTuntermMulticastConfigArgs']]):
+    def tunterm_multicast_config(self, value: pulumi.Input[Optional['MxedgeTuntermMulticastConfigArgs']]):
         pulumi.set(self, "tunterm_multicast_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermOtherIpConfigs")
-    def tunterm_other_ip_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]]]:
+    def tunterm_other_ip_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]]]:
         """
         IPconfigs by VLAN ID. Property key is the VLAN ID
         """
         return pulumi.get(self, "tunterm_other_ip_configs")
 
     @tunterm_other_ip_configs.setter
-    def tunterm_other_ip_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]]]):
+    def tunterm_other_ip_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]]]):
         pulumi.set(self, "tunterm_other_ip_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermPortConfig")
-    def tunterm_port_config(self) -> Optional[pulumi.Input['MxedgeTuntermPortConfigArgs']]:
+    def tunterm_port_config(self) -> pulumi.Input[Optional['MxedgeTuntermPortConfigArgs']]:
         """
         Ethernet port configurations
         """
         return pulumi.get(self, "tunterm_port_config")
 
     @tunterm_port_config.setter
-    def tunterm_port_config(self, value: Optional[pulumi.Input['MxedgeTuntermPortConfigArgs']]):
+    def tunterm_port_config(self, value: pulumi.Input[Optional['MxedgeTuntermPortConfigArgs']]):
         pulumi.set(self, "tunterm_port_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermSwitchConfig")
-    def tunterm_switch_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]]:
+    def tunterm_switch_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]]:
         """
         If custom vlan settings are desired
         """
         return pulumi.get(self, "tunterm_switch_config")
 
     @tunterm_switch_config.setter
-    def tunterm_switch_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]]):
+    def tunterm_switch_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]]):
         pulumi.set(self, "tunterm_switch_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input['MxedgeVersionsArgs']]:
+    def versions(self) -> pulumi.Input[Optional['MxedgeVersionsArgs']]:
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input['MxedgeVersionsArgs']]):
+    def versions(self, value: pulumi.Input[Optional['MxedgeVersionsArgs']]):
         pulumi.set(self, "versions", value)
 
 
 @pulumi.input_type
 class _MxedgeState:
     def __init__(__self__, *,
-                 claim_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 mxagent_registered: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mxcluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mxedge_mgmt: Optional[pulumi.Input['MxedgeMxedgeMgmtArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input['MxedgeOobIpConfigArgs']] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input['MxedgeProxyArgs']] = None,
-                 registration_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunterm_dhcpd_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]] = None,
-                 tunterm_extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]] = None,
-                 tunterm_igmp_snooping_config: Optional[pulumi.Input['MxedgeTuntermIgmpSnoopingConfigArgs']] = None,
-                 tunterm_ip_config: Optional[pulumi.Input['MxedgeTuntermIpConfigArgs']] = None,
-                 tunterm_monitorings: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]] = None,
-                 tunterm_multicast_config: Optional[pulumi.Input['MxedgeTuntermMulticastConfigArgs']] = None,
-                 tunterm_other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]]] = None,
-                 tunterm_port_config: Optional[pulumi.Input['MxedgeTuntermPortConfigArgs']] = None,
-                 tunterm_registered: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tunterm_switch_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]] = None,
-                 versions: Optional[pulumi.Input['MxedgeVersionsArgs']] = None):
+                 claim_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 mxagent_registered: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mxcluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mxedge_mgmt: pulumi.Input[Optional['MxedgeMxedgeMgmtArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oob_ip_config: pulumi.Input[Optional['MxedgeOobIpConfigArgs']] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional['MxedgeProxyArgs']] = None,
+                 registration_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]] = None,
+                 tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]] = None,
+                 tunterm_igmp_snooping_config: pulumi.Input[Optional['MxedgeTuntermIgmpSnoopingConfigArgs']] = None,
+                 tunterm_ip_config: pulumi.Input[Optional['MxedgeTuntermIpConfigArgs']] = None,
+                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]] = None,
+                 tunterm_multicast_config: pulumi.Input[Optional['MxedgeTuntermMulticastConfigArgs']] = None,
+                 tunterm_other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]]] = None,
+                 tunterm_port_config: pulumi.Input[Optional['MxedgeTuntermPortConfigArgs']] = None,
+                 tunterm_registered: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tunterm_switch_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]] = None,
+                 versions: pulumi.Input[Optional['MxedgeVersionsArgs']] = None):
         """
         Input properties used for looking up and filtering Mxedge resources.
 
@@ -413,269 +413,269 @@ class _MxedgeState:
 
     @_builtins.property
     @pulumi.getter(name="claimCode")
-    def claim_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def claim_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "claim_code")
 
     @claim_code.setter
-    def claim_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def claim_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "claim_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def mac(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mac")
 
     @mac.setter
-    def mac(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac", value)
 
     @_builtins.property
     @pulumi.getter
-    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "model")
 
     @model.setter
-    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
 
     @_builtins.property
     @pulumi.getter(name="mxagentRegistered")
-    def mxagent_registered(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mxagent_registered(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "mxagent_registered")
 
     @mxagent_registered.setter
-    def mxagent_registered(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mxagent_registered(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mxagent_registered", value)
 
     @_builtins.property
     @pulumi.getter(name="mxclusterId")
-    def mxcluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mxcluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MxCluster this MxEdge belongs to
         """
         return pulumi.get(self, "mxcluster_id")
 
     @mxcluster_id.setter
-    def mxcluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mxcluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mxcluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mxedgeMgmt")
-    def mxedge_mgmt(self) -> Optional[pulumi.Input['MxedgeMxedgeMgmtArgs']]:
+    def mxedge_mgmt(self) -> pulumi.Input[Optional['MxedgeMxedgeMgmtArgs']]:
         return pulumi.get(self, "mxedge_mgmt")
 
     @mxedge_mgmt.setter
-    def mxedge_mgmt(self, value: Optional[pulumi.Input['MxedgeMxedgeMgmtArgs']]):
+    def mxedge_mgmt(self, value: pulumi.Input[Optional['MxedgeMxedgeMgmtArgs']]):
         pulumi.set(self, "mxedge_mgmt", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
-    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ntp_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ntp_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="oobIpConfig")
-    def oob_ip_config(self) -> Optional[pulumi.Input['MxedgeOobIpConfigArgs']]:
+    def oob_ip_config(self) -> pulumi.Input[Optional['MxedgeOobIpConfigArgs']]:
         """
         IPconfiguration of the Mist Edge out-of*band management interface
         """
         return pulumi.get(self, "oob_ip_config")
 
     @oob_ip_config.setter
-    def oob_ip_config(self, value: Optional[pulumi.Input['MxedgeOobIpConfigArgs']]):
+    def oob_ip_config(self, value: pulumi.Input[Optional['MxedgeOobIpConfigArgs']]):
         pulumi.set(self, "oob_ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxy(self) -> Optional[pulumi.Input['MxedgeProxyArgs']]:
+    def proxy(self) -> pulumi.Input[Optional['MxedgeProxyArgs']]:
         """
         Proxy Configuration to talk to Mist
         """
         return pulumi.get(self, "proxy")
 
     @proxy.setter
-    def proxy(self, value: Optional[pulumi.Input['MxedgeProxyArgs']]):
+    def proxy(self, value: pulumi.Input[Optional['MxedgeProxyArgs']]):
         pulumi.set(self, "proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="registrationCode")
-    def registration_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registration_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Registration code for the MxEdge
         """
         return pulumi.get(self, "registration_code")
 
     @registration_code.setter
-    def registration_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registration_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registration_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of services to run, tunterm only for now
         """
         return pulumi.get(self, "services")
 
     @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "services", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermDhcpdConfig")
-    def tunterm_dhcpd_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]]:
+    def tunterm_dhcpd_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]]:
         """
         Global and per-VLAN. Property key is the VLAN ID
         """
         return pulumi.get(self, "tunterm_dhcpd_config")
 
     @tunterm_dhcpd_config.setter
-    def tunterm_dhcpd_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]]):
+    def tunterm_dhcpd_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]]):
         pulumi.set(self, "tunterm_dhcpd_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermExtraRoutes")
-    def tunterm_extra_routes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]]:
+    def tunterm_extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]]:
         """
         Property key is a CIDR
         """
         return pulumi.get(self, "tunterm_extra_routes")
 
     @tunterm_extra_routes.setter
-    def tunterm_extra_routes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]]):
+    def tunterm_extra_routes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]]):
         pulumi.set(self, "tunterm_extra_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermIgmpSnoopingConfig")
-    def tunterm_igmp_snooping_config(self) -> Optional[pulumi.Input['MxedgeTuntermIgmpSnoopingConfigArgs']]:
+    def tunterm_igmp_snooping_config(self) -> pulumi.Input[Optional['MxedgeTuntermIgmpSnoopingConfigArgs']]:
         return pulumi.get(self, "tunterm_igmp_snooping_config")
 
     @tunterm_igmp_snooping_config.setter
-    def tunterm_igmp_snooping_config(self, value: Optional[pulumi.Input['MxedgeTuntermIgmpSnoopingConfigArgs']]):
+    def tunterm_igmp_snooping_config(self, value: pulumi.Input[Optional['MxedgeTuntermIgmpSnoopingConfigArgs']]):
         pulumi.set(self, "tunterm_igmp_snooping_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermIpConfig")
-    def tunterm_ip_config(self) -> Optional[pulumi.Input['MxedgeTuntermIpConfigArgs']]:
+    def tunterm_ip_config(self) -> pulumi.Input[Optional['MxedgeTuntermIpConfigArgs']]:
         """
         IPconfiguration of the Mist Tunnel interface
         """
         return pulumi.get(self, "tunterm_ip_config")
 
     @tunterm_ip_config.setter
-    def tunterm_ip_config(self, value: Optional[pulumi.Input['MxedgeTuntermIpConfigArgs']]):
+    def tunterm_ip_config(self, value: pulumi.Input[Optional['MxedgeTuntermIpConfigArgs']]):
         pulumi.set(self, "tunterm_ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermMonitorings")
-    def tunterm_monitorings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]]:
+    def tunterm_monitorings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]]:
         return pulumi.get(self, "tunterm_monitorings")
 
     @tunterm_monitorings.setter
-    def tunterm_monitorings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]]):
+    def tunterm_monitorings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]]):
         pulumi.set(self, "tunterm_monitorings", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermMulticastConfig")
-    def tunterm_multicast_config(self) -> Optional[pulumi.Input['MxedgeTuntermMulticastConfigArgs']]:
+    def tunterm_multicast_config(self) -> pulumi.Input[Optional['MxedgeTuntermMulticastConfigArgs']]:
         return pulumi.get(self, "tunterm_multicast_config")
 
     @tunterm_multicast_config.setter
-    def tunterm_multicast_config(self, value: Optional[pulumi.Input['MxedgeTuntermMulticastConfigArgs']]):
+    def tunterm_multicast_config(self, value: pulumi.Input[Optional['MxedgeTuntermMulticastConfigArgs']]):
         pulumi.set(self, "tunterm_multicast_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermOtherIpConfigs")
-    def tunterm_other_ip_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]]]:
+    def tunterm_other_ip_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]]]:
         """
         IPconfigs by VLAN ID. Property key is the VLAN ID
         """
         return pulumi.get(self, "tunterm_other_ip_configs")
 
     @tunterm_other_ip_configs.setter
-    def tunterm_other_ip_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]]]):
+    def tunterm_other_ip_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]]]):
         pulumi.set(self, "tunterm_other_ip_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermPortConfig")
-    def tunterm_port_config(self) -> Optional[pulumi.Input['MxedgeTuntermPortConfigArgs']]:
+    def tunterm_port_config(self) -> pulumi.Input[Optional['MxedgeTuntermPortConfigArgs']]:
         """
         Ethernet port configurations
         """
         return pulumi.get(self, "tunterm_port_config")
 
     @tunterm_port_config.setter
-    def tunterm_port_config(self, value: Optional[pulumi.Input['MxedgeTuntermPortConfigArgs']]):
+    def tunterm_port_config(self, value: pulumi.Input[Optional['MxedgeTuntermPortConfigArgs']]):
         pulumi.set(self, "tunterm_port_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermRegistered")
-    def tunterm_registered(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tunterm_registered(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "tunterm_registered")
 
     @tunterm_registered.setter
-    def tunterm_registered(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tunterm_registered(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tunterm_registered", value)
 
     @_builtins.property
     @pulumi.getter(name="tuntermSwitchConfig")
-    def tunterm_switch_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]]:
+    def tunterm_switch_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]]:
         """
         If custom vlan settings are desired
         """
         return pulumi.get(self, "tunterm_switch_config")
 
     @tunterm_switch_config.setter
-    def tunterm_switch_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]]):
+    def tunterm_switch_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]]):
         pulumi.set(self, "tunterm_switch_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input['MxedgeVersionsArgs']]:
+    def versions(self) -> pulumi.Input[Optional['MxedgeVersionsArgs']]:
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input['MxedgeVersionsArgs']]):
+    def versions(self, value: pulumi.Input[Optional['MxedgeVersionsArgs']]):
         pulumi.set(self, "versions", value)
 
 
@@ -685,27 +685,27 @@ class Mxedge(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 claim_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 mxcluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mxedge_mgmt: Optional[pulumi.Input[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunterm_dhcpd_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]]] = None,
-                 tunterm_extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]]] = None,
-                 tunterm_igmp_snooping_config: Optional[pulumi.Input[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']]] = None,
-                 tunterm_ip_config: Optional[pulumi.Input[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']]] = None,
-                 tunterm_monitorings: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]]] = None,
-                 tunterm_multicast_config: Optional[pulumi.Input[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']]] = None,
-                 tunterm_other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]]] = None,
-                 tunterm_port_config: Optional[pulumi.Input[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']]] = None,
-                 tunterm_switch_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]]] = None,
-                 versions: Optional[pulumi.Input[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']]] = None,
+                 claim_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 mxcluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mxedge_mgmt: pulumi.Input[Optional[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]]] = None,
+                 tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]]] = None,
+                 tunterm_igmp_snooping_config: pulumi.Input[Optional[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']]] = None,
+                 tunterm_ip_config: pulumi.Input[Optional[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']]] = None,
+                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]]] = None,
+                 tunterm_multicast_config: pulumi.Input[Optional[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']]] = None,
+                 tunterm_other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]]] = None,
+                 tunterm_port_config: pulumi.Input[Optional[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']]] = None,
+                 tunterm_switch_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]]] = None,
+                 versions: pulumi.Input[Optional[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']]] = None,
                  __props__=None):
         """
         This resource manages MxEdge devices in the Mist Organization.
@@ -770,27 +770,27 @@ class Mxedge(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 claim_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 mxcluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mxedge_mgmt: Optional[pulumi.Input[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunterm_dhcpd_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]]] = None,
-                 tunterm_extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]]] = None,
-                 tunterm_igmp_snooping_config: Optional[pulumi.Input[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']]] = None,
-                 tunterm_ip_config: Optional[pulumi.Input[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']]] = None,
-                 tunterm_monitorings: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]]] = None,
-                 tunterm_multicast_config: Optional[pulumi.Input[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']]] = None,
-                 tunterm_other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]]] = None,
-                 tunterm_port_config: Optional[pulumi.Input[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']]] = None,
-                 tunterm_switch_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]]] = None,
-                 versions: Optional[pulumi.Input[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']]] = None,
+                 claim_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 mxcluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mxedge_mgmt: pulumi.Input[Optional[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]]] = None,
+                 tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]]] = None,
+                 tunterm_igmp_snooping_config: pulumi.Input[Optional[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']]] = None,
+                 tunterm_ip_config: pulumi.Input[Optional[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']]] = None,
+                 tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]]] = None,
+                 tunterm_multicast_config: pulumi.Input[Optional[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']]] = None,
+                 tunterm_other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]]] = None,
+                 tunterm_port_config: pulumi.Input[Optional[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']]] = None,
+                 tunterm_switch_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]]] = None,
+                 versions: pulumi.Input[Optional[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -838,32 +838,32 @@ class Mxedge(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            claim_code: Optional[pulumi.Input[_builtins.str]] = None,
-            mac: Optional[pulumi.Input[_builtins.str]] = None,
-            model: Optional[pulumi.Input[_builtins.str]] = None,
-            mxagent_registered: Optional[pulumi.Input[_builtins.bool]] = None,
-            mxcluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            mxedge_mgmt: Optional[pulumi.Input[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notes: Optional[pulumi.Input[_builtins.str]] = None,
-            ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            oob_ip_config: Optional[pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy: Optional[pulumi.Input[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']]] = None,
-            registration_code: Optional[pulumi.Input[_builtins.str]] = None,
-            services: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tunterm_dhcpd_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]]] = None,
-            tunterm_extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]]] = None,
-            tunterm_igmp_snooping_config: Optional[pulumi.Input[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']]] = None,
-            tunterm_ip_config: Optional[pulumi.Input[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']]] = None,
-            tunterm_monitorings: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]]] = None,
-            tunterm_multicast_config: Optional[pulumi.Input[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']]] = None,
-            tunterm_other_ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]]] = None,
-            tunterm_port_config: Optional[pulumi.Input[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']]] = None,
-            tunterm_registered: Optional[pulumi.Input[_builtins.bool]] = None,
-            tunterm_switch_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]]] = None,
-            versions: Optional[pulumi.Input[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']]] = None) -> 'Mxedge':
+            claim_code: pulumi.Input[Optional[_builtins.str]] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            model: pulumi.Input[Optional[_builtins.str]] = None,
+            mxagent_registered: pulumi.Input[Optional[_builtins.bool]] = None,
+            mxcluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mxedge_mgmt: pulumi.Input[Optional[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            oob_ip_config: pulumi.Input[Optional[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy: pulumi.Input[Optional[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']]] = None,
+            registration_code: pulumi.Input[Optional[_builtins.str]] = None,
+            services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]]] = None,
+            tunterm_extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]]] = None,
+            tunterm_igmp_snooping_config: pulumi.Input[Optional[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']]] = None,
+            tunterm_ip_config: pulumi.Input[Optional[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']]] = None,
+            tunterm_monitorings: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]]] = None,
+            tunterm_multicast_config: pulumi.Input[Optional[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']]] = None,
+            tunterm_other_ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]]] = None,
+            tunterm_port_config: pulumi.Input[Optional[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']]] = None,
+            tunterm_registered: pulumi.Input[Optional[_builtins.bool]] = None,
+            tunterm_switch_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]]] = None,
+            versions: pulumi.Input[Optional[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']]] = None) -> 'Mxedge':
         """
         Get an existing Mxedge resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

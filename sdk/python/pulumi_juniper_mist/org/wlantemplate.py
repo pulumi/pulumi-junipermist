@@ -22,11 +22,11 @@ __all__ = ['WlantemplateArgs', 'Wlantemplate']
 class WlantemplateArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
-                 applies: Optional[pulumi.Input['WlantemplateAppliesArgs']] = None,
-                 deviceprofile_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exceptions: Optional[pulumi.Input['WlantemplateExceptionsArgs']] = None,
-                 filter_by_deviceprofile: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 applies: pulumi.Input[Optional['WlantemplateAppliesArgs']] = None,
+                 deviceprofile_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exceptions: pulumi.Input[Optional['WlantemplateExceptionsArgs']] = None,
+                 filter_by_deviceprofile: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Wlantemplate resource.
 
@@ -58,71 +58,71 @@ class WlantemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def applies(self) -> Optional[pulumi.Input['WlantemplateAppliesArgs']]:
+    def applies(self) -> pulumi.Input[Optional['WlantemplateAppliesArgs']]:
         """
         Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
         """
         return pulumi.get(self, "applies")
 
     @applies.setter
-    def applies(self, value: Optional[pulumi.Input['WlantemplateAppliesArgs']]):
+    def applies(self, value: pulumi.Input[Optional['WlantemplateAppliesArgs']]):
         pulumi.set(self, "applies", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceprofileIds")
-    def deviceprofile_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def deviceprofile_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of Device Profile ids
         """
         return pulumi.get(self, "deviceprofile_ids")
 
     @deviceprofile_ids.setter
-    def deviceprofile_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def deviceprofile_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "deviceprofile_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def exceptions(self) -> Optional[pulumi.Input['WlantemplateExceptionsArgs']]:
+    def exceptions(self) -> pulumi.Input[Optional['WlantemplateExceptionsArgs']]:
         """
         Where this template should not be applied to (takes precedence)
         """
         return pulumi.get(self, "exceptions")
 
     @exceptions.setter
-    def exceptions(self, value: Optional[pulumi.Input['WlantemplateExceptionsArgs']]):
+    def exceptions(self, value: pulumi.Input[Optional['WlantemplateExceptionsArgs']]):
         pulumi.set(self, "exceptions", value)
 
     @_builtins.property
     @pulumi.getter(name="filterByDeviceprofile")
-    def filter_by_deviceprofile(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def filter_by_deviceprofile(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to further filter by Device Profile
         """
         return pulumi.get(self, "filter_by_deviceprofile")
 
     @filter_by_deviceprofile.setter
-    def filter_by_deviceprofile(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def filter_by_deviceprofile(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "filter_by_deviceprofile", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _WlantemplateState:
     def __init__(__self__, *,
-                 applies: Optional[pulumi.Input['WlantemplateAppliesArgs']] = None,
-                 deviceprofile_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exceptions: Optional[pulumi.Input['WlantemplateExceptionsArgs']] = None,
-                 filter_by_deviceprofile: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 applies: pulumi.Input[Optional['WlantemplateAppliesArgs']] = None,
+                 deviceprofile_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exceptions: pulumi.Input[Optional['WlantemplateExceptionsArgs']] = None,
+                 filter_by_deviceprofile: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Wlantemplate resources.
 
@@ -146,68 +146,68 @@ class _WlantemplateState:
 
     @_builtins.property
     @pulumi.getter
-    def applies(self) -> Optional[pulumi.Input['WlantemplateAppliesArgs']]:
+    def applies(self) -> pulumi.Input[Optional['WlantemplateAppliesArgs']]:
         """
         Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
         """
         return pulumi.get(self, "applies")
 
     @applies.setter
-    def applies(self, value: Optional[pulumi.Input['WlantemplateAppliesArgs']]):
+    def applies(self, value: pulumi.Input[Optional['WlantemplateAppliesArgs']]):
         pulumi.set(self, "applies", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceprofileIds")
-    def deviceprofile_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def deviceprofile_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of Device Profile ids
         """
         return pulumi.get(self, "deviceprofile_ids")
 
     @deviceprofile_ids.setter
-    def deviceprofile_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def deviceprofile_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "deviceprofile_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def exceptions(self) -> Optional[pulumi.Input['WlantemplateExceptionsArgs']]:
+    def exceptions(self) -> pulumi.Input[Optional['WlantemplateExceptionsArgs']]:
         """
         Where this template should not be applied to (takes precedence)
         """
         return pulumi.get(self, "exceptions")
 
     @exceptions.setter
-    def exceptions(self, value: Optional[pulumi.Input['WlantemplateExceptionsArgs']]):
+    def exceptions(self, value: pulumi.Input[Optional['WlantemplateExceptionsArgs']]):
         pulumi.set(self, "exceptions", value)
 
     @_builtins.property
     @pulumi.getter(name="filterByDeviceprofile")
-    def filter_by_deviceprofile(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def filter_by_deviceprofile(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to further filter by Device Profile
         """
         return pulumi.get(self, "filter_by_deviceprofile")
 
     @filter_by_deviceprofile.setter
-    def filter_by_deviceprofile(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def filter_by_deviceprofile(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "filter_by_deviceprofile", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
 
@@ -217,12 +217,12 @@ class Wlantemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 applies: Optional[pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']]] = None,
-                 deviceprofile_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exceptions: Optional[pulumi.Input[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']]] = None,
-                 filter_by_deviceprofile: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 applies: pulumi.Input[Optional[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']]] = None,
+                 deviceprofile_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exceptions: pulumi.Input[Optional[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']]] = None,
+                 filter_by_deviceprofile: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource manages the Org WLAN Templates.
@@ -314,12 +314,12 @@ class Wlantemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 applies: Optional[pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']]] = None,
-                 deviceprofile_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exceptions: Optional[pulumi.Input[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']]] = None,
-                 filter_by_deviceprofile: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 applies: pulumi.Input[Optional[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']]] = None,
+                 deviceprofile_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exceptions: pulumi.Input[Optional[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']]] = None,
+                 filter_by_deviceprofile: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -347,12 +347,12 @@ class Wlantemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            applies: Optional[pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']]] = None,
-            deviceprofile_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            exceptions: Optional[pulumi.Input[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']]] = None,
-            filter_by_deviceprofile: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Wlantemplate':
+            applies: pulumi.Input[Optional[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']]] = None,
+            deviceprofile_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            exceptions: pulumi.Input[Optional[Union['WlantemplateExceptionsArgs', 'WlantemplateExceptionsArgsDict']]] = None,
+            filter_by_deviceprofile: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Wlantemplate':
         """
         Get an existing Wlantemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

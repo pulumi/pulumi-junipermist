@@ -308,94 +308,94 @@ export interface SettingState {
     /**
      * whether to allow Mist to look at this org
      */
-    allowMist?: pulumi.Input<boolean>;
+    allowMist?: pulumi.Input<boolean | undefined>;
     /**
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
-    apUpdownThreshold?: pulumi.Input<number>;
-    apiPolicy?: pulumi.Input<inputs.org.SettingApiPolicy>;
+    apUpdownThreshold?: pulumi.Input<number | undefined>;
+    apiPolicy?: pulumi.Input<inputs.org.SettingApiPolicy | undefined>;
     /**
      * RADSec certificates for AP
      */
-    cacerts?: pulumi.Input<pulumi.Input<string>[]>;
-    celona?: pulumi.Input<inputs.org.SettingCelona>;
-    cloudshark?: pulumi.Input<inputs.org.SettingCloudshark>;
-    cradlepoint?: pulumi.Input<inputs.org.SettingCradlepoint>;
+    cacerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    celona?: pulumi.Input<inputs.org.SettingCelona | undefined>;
+    cloudshark?: pulumi.Input<inputs.org.SettingCloudshark | undefined>;
+    cradlepoint?: pulumi.Input<inputs.org.SettingCradlepoint | undefined>;
     /**
      * common device cert, optional
      */
-    deviceCert?: pulumi.Input<inputs.org.SettingDeviceCert>;
+    deviceCert?: pulumi.Input<inputs.org.SettingDeviceCert | undefined>;
     /**
      * Enable threshold-based device down delivery via
      *   * device-updowns webhooks topic, 
      *   * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
      */
-    deviceUpdownThreshold?: pulumi.Input<number>;
+    deviceUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
      * Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      */
-    disablePcap?: pulumi.Input<boolean>;
+    disablePcap?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable remote shell access for an entire org
      */
-    disableRemoteShell?: pulumi.Input<boolean>;
+    disableRemoteShell?: pulumi.Input<boolean | undefined>;
     /**
      * enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
      */
-    gatewayTunnelUpdownThreshold?: pulumi.Input<number>;
+    gatewayTunnelUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
-    gatewayUpdownThreshold?: pulumi.Input<number>;
-    installer?: pulumi.Input<inputs.org.SettingInstaller>;
-    jcloud?: pulumi.Input<inputs.org.SettingJcloud>;
+    gatewayUpdownThreshold?: pulumi.Input<number | undefined>;
+    installer?: pulumi.Input<inputs.org.SettingInstaller | undefined>;
+    jcloud?: pulumi.Input<inputs.org.SettingJcloud | undefined>;
     /**
      * JCloud Routing Assurance connexion
      */
-    jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
-    juniper?: pulumi.Input<inputs.org.SettingJuniper>;
-    juniperSrx?: pulumi.Input<inputs.org.SettingJuniperSrx>;
+    jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa | undefined>;
+    juniper?: pulumi.Input<inputs.org.SettingJuniper | undefined>;
+    juniperSrx?: pulumi.Input<inputs.org.SettingJuniperSrx | undefined>;
     /**
      * junos_shell_access: Manages role-based web-shell access.  
      * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
      * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
      */
-    junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess>;
-    marvis?: pulumi.Input<inputs.org.SettingMarvis>;
+    junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess | undefined>;
+    marvis?: pulumi.Input<inputs.org.SettingMarvis | undefined>;
     /**
      * management-related properties
      */
-    mgmt?: pulumi.Input<inputs.org.SettingMgmt>;
-    mistNac?: pulumi.Input<inputs.org.SettingMistNac>;
-    mxedgeMgmt?: pulumi.Input<inputs.org.SettingMxedgeMgmt>;
+    mgmt?: pulumi.Input<inputs.org.SettingMgmt | undefined>;
+    mistNac?: pulumi.Input<inputs.org.SettingMistNac | undefined>;
+    mxedgeMgmt?: pulumi.Input<inputs.org.SettingMxedgeMgmt | undefined>;
     /**
      * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
      */
-    opticPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.SettingOpticPortConfig>}>;
-    orgId?: pulumi.Input<string>;
+    opticPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.SettingOpticPortConfig>} | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * password policy
      */
-    passwordPolicy?: pulumi.Input<inputs.org.SettingPasswordPolicy>;
-    pcap?: pulumi.Input<inputs.org.SettingPcap>;
-    security?: pulumi.Input<inputs.org.SettingSecurity>;
-    ssr?: pulumi.Input<inputs.org.SettingSsr>;
-    switch?: pulumi.Input<inputs.org.SettingSwitch>;
-    switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt>;
+    passwordPolicy?: pulumi.Input<inputs.org.SettingPasswordPolicy | undefined>;
+    pcap?: pulumi.Input<inputs.org.SettingPcap | undefined>;
+    security?: pulumi.Input<inputs.org.SettingSecurity | undefined>;
+    ssr?: pulumi.Input<inputs.org.SettingSsr | undefined>;
+    switch?: pulumi.Input<inputs.org.SettingSwitch | undefined>;
+    switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt | undefined>;
     /**
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      */
-    switchUpdownThreshold?: pulumi.Input<number>;
-    syntheticTest?: pulumi.Input<inputs.org.SettingSyntheticTest>;
+    switchUpdownThreshold?: pulumi.Input<number | undefined>;
+    syntheticTest?: pulumi.Input<inputs.org.SettingSyntheticTest | undefined>;
     /**
      * Automatically logout the user when UI session is inactive. `0` means disabled
      */
-    uiIdleTimeout?: pulumi.Input<number>;
-    uiNoTracking?: pulumi.Input<boolean>;
-    vpnOptions?: pulumi.Input<inputs.org.SettingVpnOptions>;
-    wanPma?: pulumi.Input<inputs.org.SettingWanPma>;
-    wiredPma?: pulumi.Input<inputs.org.SettingWiredPma>;
-    wirelessPma?: pulumi.Input<inputs.org.SettingWirelessPma>;
+    uiIdleTimeout?: pulumi.Input<number | undefined>;
+    uiNoTracking?: pulumi.Input<boolean | undefined>;
+    vpnOptions?: pulumi.Input<inputs.org.SettingVpnOptions | undefined>;
+    wanPma?: pulumi.Input<inputs.org.SettingWanPma | undefined>;
+    wiredPma?: pulumi.Input<inputs.org.SettingWiredPma | undefined>;
+    wirelessPma?: pulumi.Input<inputs.org.SettingWirelessPma | undefined>;
 }
 
 /**
@@ -405,85 +405,85 @@ export interface SettingArgs {
     /**
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
-    apUpdownThreshold?: pulumi.Input<number>;
-    apiPolicy?: pulumi.Input<inputs.org.SettingApiPolicy>;
+    apUpdownThreshold?: pulumi.Input<number | undefined>;
+    apiPolicy?: pulumi.Input<inputs.org.SettingApiPolicy | undefined>;
     /**
      * RADSec certificates for AP
      */
-    cacerts?: pulumi.Input<pulumi.Input<string>[]>;
-    celona?: pulumi.Input<inputs.org.SettingCelona>;
-    cloudshark?: pulumi.Input<inputs.org.SettingCloudshark>;
+    cacerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    celona?: pulumi.Input<inputs.org.SettingCelona | undefined>;
+    cloudshark?: pulumi.Input<inputs.org.SettingCloudshark | undefined>;
     /**
      * common device cert, optional
      */
-    deviceCert?: pulumi.Input<inputs.org.SettingDeviceCert>;
+    deviceCert?: pulumi.Input<inputs.org.SettingDeviceCert | undefined>;
     /**
      * Enable threshold-based device down delivery via
      *   * device-updowns webhooks topic, 
      *   * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
      */
-    deviceUpdownThreshold?: pulumi.Input<number>;
+    deviceUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
      * Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      */
-    disablePcap?: pulumi.Input<boolean>;
+    disablePcap?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable remote shell access for an entire org
      */
-    disableRemoteShell?: pulumi.Input<boolean>;
+    disableRemoteShell?: pulumi.Input<boolean | undefined>;
     /**
      * enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
      */
-    gatewayTunnelUpdownThreshold?: pulumi.Input<number>;
+    gatewayTunnelUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
-    gatewayUpdownThreshold?: pulumi.Input<number>;
-    installer?: pulumi.Input<inputs.org.SettingInstaller>;
-    jcloud?: pulumi.Input<inputs.org.SettingJcloud>;
+    gatewayUpdownThreshold?: pulumi.Input<number | undefined>;
+    installer?: pulumi.Input<inputs.org.SettingInstaller | undefined>;
+    jcloud?: pulumi.Input<inputs.org.SettingJcloud | undefined>;
     /**
      * JCloud Routing Assurance connexion
      */
-    jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
-    juniperSrx?: pulumi.Input<inputs.org.SettingJuniperSrx>;
+    jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa | undefined>;
+    juniperSrx?: pulumi.Input<inputs.org.SettingJuniperSrx | undefined>;
     /**
      * junos_shell_access: Manages role-based web-shell access.  
      * When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
      * When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
      */
-    junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess>;
-    marvis?: pulumi.Input<inputs.org.SettingMarvis>;
+    junosShellAccess?: pulumi.Input<inputs.org.SettingJunosShellAccess | undefined>;
+    marvis?: pulumi.Input<inputs.org.SettingMarvis | undefined>;
     /**
      * management-related properties
      */
-    mgmt?: pulumi.Input<inputs.org.SettingMgmt>;
-    mistNac?: pulumi.Input<inputs.org.SettingMistNac>;
-    mxedgeMgmt?: pulumi.Input<inputs.org.SettingMxedgeMgmt>;
+    mgmt?: pulumi.Input<inputs.org.SettingMgmt | undefined>;
+    mistNac?: pulumi.Input<inputs.org.SettingMistNac | undefined>;
+    mxedgeMgmt?: pulumi.Input<inputs.org.SettingMxedgeMgmt | undefined>;
     /**
      * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
      */
-    opticPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.SettingOpticPortConfig>}>;
+    opticPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.SettingOpticPortConfig>} | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * password policy
      */
-    passwordPolicy?: pulumi.Input<inputs.org.SettingPasswordPolicy>;
-    security?: pulumi.Input<inputs.org.SettingSecurity>;
-    ssr?: pulumi.Input<inputs.org.SettingSsr>;
-    switch?: pulumi.Input<inputs.org.SettingSwitch>;
-    switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt>;
+    passwordPolicy?: pulumi.Input<inputs.org.SettingPasswordPolicy | undefined>;
+    security?: pulumi.Input<inputs.org.SettingSecurity | undefined>;
+    ssr?: pulumi.Input<inputs.org.SettingSsr | undefined>;
+    switch?: pulumi.Input<inputs.org.SettingSwitch | undefined>;
+    switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt | undefined>;
     /**
      * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
      */
-    switchUpdownThreshold?: pulumi.Input<number>;
-    syntheticTest?: pulumi.Input<inputs.org.SettingSyntheticTest>;
+    switchUpdownThreshold?: pulumi.Input<number | undefined>;
+    syntheticTest?: pulumi.Input<inputs.org.SettingSyntheticTest | undefined>;
     /**
      * Automatically logout the user when UI session is inactive. `0` means disabled
      */
-    uiIdleTimeout?: pulumi.Input<number>;
-    uiNoTracking?: pulumi.Input<boolean>;
-    vpnOptions?: pulumi.Input<inputs.org.SettingVpnOptions>;
-    wanPma?: pulumi.Input<inputs.org.SettingWanPma>;
-    wiredPma?: pulumi.Input<inputs.org.SettingWiredPma>;
-    wirelessPma?: pulumi.Input<inputs.org.SettingWirelessPma>;
+    uiIdleTimeout?: pulumi.Input<number | undefined>;
+    uiNoTracking?: pulumi.Input<boolean | undefined>;
+    vpnOptions?: pulumi.Input<inputs.org.SettingVpnOptions | undefined>;
+    wanPma?: pulumi.Input<inputs.org.SettingWanPma | undefined>;
+    wiredPma?: pulumi.Input<inputs.org.SettingWiredPma | undefined>;
+    wirelessPma?: pulumi.Input<inputs.org.SettingWirelessPma | undefined>;
 }

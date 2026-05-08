@@ -88,12 +88,12 @@ export interface NacPortalImageState {
     /**
      * path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
      */
-    file?: pulumi.Input<string>;
+    file?: pulumi.Input<string | undefined>;
     /**
      * Org NAC Portal ID
      */
-    nacportalId?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    nacportalId?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
 }
 
 /**

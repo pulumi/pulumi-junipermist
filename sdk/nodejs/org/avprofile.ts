@@ -140,19 +140,19 @@ export interface AvprofileState {
     /**
      * enum: `block`, `log-and-permit`, `permit`
      */
-    fallbackAction?: pulumi.Input<string>;
+    fallbackAction?: pulumi.Input<string | undefined>;
     /**
      * In KB
      */
-    maxFilesize?: pulumi.Input<number>;
-    mimeWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    maxFilesize?: pulumi.Input<number | undefined>;
+    mimeWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
      */
-    protocols?: pulumi.Input<pulumi.Input<string>[]>;
-    urlWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    protocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    urlWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -162,17 +162,17 @@ export interface AvprofileArgs {
     /**
      * enum: `block`, `log-and-permit`, `permit`
      */
-    fallbackAction?: pulumi.Input<string>;
+    fallbackAction?: pulumi.Input<string | undefined>;
     /**
      * In KB
      */
-    maxFilesize?: pulumi.Input<number>;
-    mimeWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
+    maxFilesize?: pulumi.Input<number | undefined>;
+    mimeWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
      */
     protocols: pulumi.Input<pulumi.Input<string>[]>;
-    urlWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    urlWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

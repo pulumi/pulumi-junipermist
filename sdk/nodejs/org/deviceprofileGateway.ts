@@ -304,85 +304,85 @@ export interface DeviceprofileGatewayState {
     /**
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
-    additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
-    bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayBgpConfig>}>;
-    dhcpdConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfig>;
-    dnsOverride?: pulumi.Input<boolean>;
+    additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayBgpConfig>} | undefined>;
+    dhcpdConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfig | undefined>;
+    dnsOverride?: pulumi.Input<boolean | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
-    extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes>}>;
+    extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes>} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
-    extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes6>}>;
+    extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes6>} | undefined>;
     /**
      * Property key is the profile name
      */
-    idpProfiles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayIdpProfiles>}>;
+    idpProfiles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayIdpProfiles>} | undefined>;
     /**
      * Property key is the network name
      */
-    ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayIpConfigs>}>;
-    name?: pulumi.Input<string>;
-    networks?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayNetwork>[]>;
-    ntpOverride?: pulumi.Input<boolean>;
+    ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayIpConfigs>} | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    networks?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayNetwork>[] | undefined>;
+    ntpOverride?: pulumi.Input<boolean | undefined>;
     /**
      * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Out-of-band (vme/em0/fxp0) IP config
      */
-    oobIpConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayOobIpConfig>;
-    orgId?: pulumi.Input<string>;
+    oobIpConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayOobIpConfig | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Property key is the path name
      */
-    pathPreferences?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPathPreferences>}>;
+    pathPreferences?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPathPreferences>} | undefined>;
     /**
      * Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
      */
-    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfig>}>;
+    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfig>} | undefined>;
     /**
      * Auto assigned if not set
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * Property key is the routing policy name
      */
-    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayRoutingPolicies>}>;
-    servicePolicies?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicy>[]>;
+    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayRoutingPolicies>} | undefined>;
+    servicePolicies?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicy>[] | undefined>;
     /**
      * additional CLI commands to append to the generated SSR config. **Note**: no check is done
      */
-    ssrAdditionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
+    ssrAdditionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Property key is the tunnel name
      */
-    tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigs>}>;
-    tunnelProviderOptions?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelProviderOptions>;
+    tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigs>} | undefined>;
+    tunnelProviderOptions?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelProviderOptions | undefined>;
     /**
      * Device Type. enum: `gateway`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * When a service policy denies a app_category, what message to show in user's browser
      */
-    urlFilteringDenyMsg?: pulumi.Input<string>;
-    vrfConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayVrfConfig>;
+    urlFilteringDenyMsg?: pulumi.Input<string | undefined>;
+    vrfConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayVrfConfig | undefined>;
     /**
      * Property key is the network name
      */
-    vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayVrfInstances>}>;
+    vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayVrfInstances>} | undefined>;
 }
 
 /**
@@ -392,79 +392,79 @@ export interface DeviceprofileGatewayArgs {
     /**
      * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
-    additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
-    bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayBgpConfig>}>;
-    dhcpdConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfig>;
-    dnsOverride?: pulumi.Input<boolean>;
+    additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayBgpConfig>} | undefined>;
+    dhcpdConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfig | undefined>;
+    dnsOverride?: pulumi.Input<boolean | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
-    dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
-    extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes>}>;
+    extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes>} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
-    extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes6>}>;
+    extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayExtraRoutes6>} | undefined>;
     /**
      * Property key is the profile name
      */
-    idpProfiles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayIdpProfiles>}>;
+    idpProfiles?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayIdpProfiles>} | undefined>;
     /**
      * Property key is the network name
      */
-    ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayIpConfigs>}>;
-    name?: pulumi.Input<string>;
-    networks?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayNetwork>[]>;
-    ntpOverride?: pulumi.Input<boolean>;
+    ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayIpConfigs>} | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    networks?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayNetwork>[] | undefined>;
+    ntpOverride?: pulumi.Input<boolean | undefined>;
     /**
      * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Out-of-band (vme/em0/fxp0) IP config
      */
-    oobIpConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayOobIpConfig>;
+    oobIpConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayOobIpConfig | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * Property key is the path name
      */
-    pathPreferences?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPathPreferences>}>;
+    pathPreferences?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPathPreferences>} | undefined>;
     /**
      * Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
      */
-    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfig>}>;
+    portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfig>} | undefined>;
     /**
      * Auto assigned if not set
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * Property key is the routing policy name
      */
-    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayRoutingPolicies>}>;
-    servicePolicies?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicy>[]>;
+    routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayRoutingPolicies>} | undefined>;
+    servicePolicies?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayServicePolicy>[] | undefined>;
     /**
      * additional CLI commands to append to the generated SSR config. **Note**: no check is done
      */
-    ssrAdditionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
+    ssrAdditionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Property key is the tunnel name
      */
-    tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigs>}>;
-    tunnelProviderOptions?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelProviderOptions>;
+    tunnelConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigs>} | undefined>;
+    tunnelProviderOptions?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelProviderOptions | undefined>;
     /**
      * When a service policy denies a app_category, what message to show in user's browser
      */
-    urlFilteringDenyMsg?: pulumi.Input<string>;
-    vrfConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayVrfConfig>;
+    urlFilteringDenyMsg?: pulumi.Input<string | undefined>;
+    vrfConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayVrfConfig | undefined>;
     /**
      * Property key is the network name
      */
-    vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayVrfInstances>}>;
+    vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayVrfInstances>} | undefined>;
 }

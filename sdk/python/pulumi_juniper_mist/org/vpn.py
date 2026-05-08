@@ -22,10 +22,10 @@ __all__ = ['VpnArgs', 'Vpn']
 class VpnArgs:
     def __init__(__self__, *,
                  paths: pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_selection: Optional[pulumi.Input['VpnPathSelectionArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_selection: pulumi.Input[Optional['VpnPathSelectionArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Vpn resource.
 
@@ -57,55 +57,55 @@ class VpnArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pathSelection")
-    def path_selection(self) -> Optional[pulumi.Input['VpnPathSelectionArgs']]:
+    def path_selection(self) -> pulumi.Input[Optional['VpnPathSelectionArgs']]:
         """
         Only if `type`==`hub_spoke`
         """
         return pulumi.get(self, "path_selection")
 
     @path_selection.setter
-    def path_selection(self, value: Optional[pulumi.Input['VpnPathSelectionArgs']]):
+    def path_selection(self, value: pulumi.Input[Optional['VpnPathSelectionArgs']]):
         pulumi.set(self, "path_selection", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `hub_spoke`, `mesh`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _VpnState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_selection: Optional[pulumi.Input['VpnPathSelectionArgs']] = None,
-                 paths: Optional[pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_selection: pulumi.Input[Optional['VpnPathSelectionArgs']] = None,
+                 paths: pulumi.Input[Optional[Mapping[str, pulumi.Input['VpnPathsArgs']]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vpn resources.
 
@@ -126,56 +126,56 @@ class _VpnState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pathSelection")
-    def path_selection(self) -> Optional[pulumi.Input['VpnPathSelectionArgs']]:
+    def path_selection(self) -> pulumi.Input[Optional['VpnPathSelectionArgs']]:
         """
         Only if `type`==`hub_spoke`
         """
         return pulumi.get(self, "path_selection")
 
     @path_selection.setter
-    def path_selection(self, value: Optional[pulumi.Input['VpnPathSelectionArgs']]):
+    def path_selection(self, value: pulumi.Input[Optional['VpnPathSelectionArgs']]):
         pulumi.set(self, "path_selection", value)
 
     @_builtins.property
     @pulumi.getter
-    def paths(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]]]:
+    def paths(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['VpnPathsArgs']]]]:
         """
         For `type`==`hub_spoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
         """
         return pulumi.get(self, "paths")
 
     @paths.setter
-    def paths(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['VpnPathsArgs']]]]):
+    def paths(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['VpnPathsArgs']]]]):
         pulumi.set(self, "paths", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `hub_spoke`, `mesh`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -185,11 +185,11 @@ class Vpn(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_selection: Optional[pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']]] = None,
-                 paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_selection: pulumi.Input[Optional[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']]] = None,
+                 paths: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource manages the Org VPN.
@@ -308,11 +308,11 @@ class Vpn(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_selection: Optional[pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']]] = None,
-                 paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_selection: pulumi.Input[Optional[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']]] = None,
+                 paths: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -339,11 +339,11 @@ class Vpn(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            path_selection: Optional[pulumi.Input[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']]] = None,
-            paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Vpn':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            path_selection: pulumi.Input[Optional[Union['VpnPathSelectionArgs', 'VpnPathSelectionArgsDict']]] = None,
+            paths: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Vpn':
         """
         Get an existing Vpn resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

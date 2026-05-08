@@ -24,7 +24,7 @@ class AlarmtemplateArgs:
                  delivery: pulumi.Input['AlarmtemplateDeliveryArgs'],
                  org_id: pulumi.Input[_builtins.str],
                  rules: pulumi.Input[Mapping[str, pulumi.Input['AlarmtemplateRulesArgs']]],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Alarmtemplate resource.
 
@@ -73,24 +73,24 @@ class AlarmtemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Some string to name the alarm template
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _AlarmtemplateState:
     def __init__(__self__, *,
-                 delivery: Optional[pulumi.Input['AlarmtemplateDeliveryArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Mapping[str, pulumi.Input['AlarmtemplateRulesArgs']]]] = None):
+                 delivery: pulumi.Input[Optional['AlarmtemplateDeliveryArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Mapping[str, pulumi.Input['AlarmtemplateRulesArgs']]]] = None):
         """
         Input properties used for looking up and filtering Alarmtemplate resources.
 
@@ -109,47 +109,47 @@ class _AlarmtemplateState:
 
     @_builtins.property
     @pulumi.getter
-    def delivery(self) -> Optional[pulumi.Input['AlarmtemplateDeliveryArgs']]:
+    def delivery(self) -> pulumi.Input[Optional['AlarmtemplateDeliveryArgs']]:
         """
         Delivery object to configure the alarm delivery
         """
         return pulumi.get(self, "delivery")
 
     @delivery.setter
-    def delivery(self, value: Optional[pulumi.Input['AlarmtemplateDeliveryArgs']]):
+    def delivery(self, value: pulumi.Input[Optional['AlarmtemplateDeliveryArgs']]):
         pulumi.set(self, "delivery", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Some string to name the alarm template
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['AlarmtemplateRulesArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['AlarmtemplateRulesArgs']]]]:
         """
         Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `get_const_alarms` data source).
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['AlarmtemplateRulesArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['AlarmtemplateRulesArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
@@ -159,10 +159,10 @@ class Alarmtemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery: Optional[pulumi.Input[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]]] = None,
+                 delivery: pulumi.Input[Optional[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource manages Alarm Templates.
@@ -299,10 +299,10 @@ class Alarmtemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery: Optional[pulumi.Input[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]]] = None,
+                 delivery: pulumi.Input[Optional[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -332,10 +332,10 @@ class Alarmtemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delivery: Optional[pulumi.Input[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]]] = None) -> 'Alarmtemplate':
+            delivery: pulumi.Input[Optional[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]]] = None) -> 'Alarmtemplate':
         """
         Get an existing Alarmtemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

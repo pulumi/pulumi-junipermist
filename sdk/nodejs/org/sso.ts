@@ -193,58 +193,58 @@ export interface SsoState {
     /**
      * a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
      */
-    customLogoutUrl?: pulumi.Input<string>;
+    customLogoutUrl?: pulumi.Input<string | undefined>;
     /**
      * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      */
-    defaultRole?: pulumi.Input<string>;
+    defaultRole?: pulumi.Input<string | undefined>;
     /**
      * Random string generated during the SSO creation and used to generate the SAML URLs:
      *   * ACS URL = `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`)
      *   * Single Logout URL = `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * IDP Cert (used to verify the signed response)
      */
-    idpCert?: pulumi.Input<string>;
+    idpCert?: pulumi.Input<string | undefined>;
     /**
      * Signing algorithm for SAML Assertion. enum `sha1`, `sha256`, `sha384`, `sha512`
      */
-    idpSignAlgo?: pulumi.Input<string>;
+    idpSignAlgo?: pulumi.Input<string | undefined>;
     /**
      * IDP Single-Sign-On URL
      */
-    idpSsoUrl?: pulumi.Input<string>;
+    idpSsoUrl?: pulumi.Input<string | undefined>;
     /**
      * ignore any unmatched roles provided in assertion. By default, an assertion is treated as invalid for any unmatched role
      */
-    ignoreUnmatchedRoles?: pulumi.Input<boolean>;
+    ignoreUnmatchedRoles?: pulumi.Input<boolean | undefined>;
     /**
      * IDP issuer URL
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * Name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * enum: `email`, `unspecified`
      */
-    nameidFormat?: pulumi.Input<string>;
+    nameidFormat?: pulumi.Input<string | undefined>;
     /**
      * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
      */
-    oauthProviderDomain?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    oauthProviderDomain?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
      */
-    roleAttrExtraction?: pulumi.Input<string>;
+    roleAttrExtraction?: pulumi.Input<string | undefined>;
     /**
      * name of the attribute in SAML Assertion to extract role from. Default: `Role`
      */
-    roleAttrFrom?: pulumi.Input<string>;
+    roleAttrFrom?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -254,11 +254,11 @@ export interface SsoArgs {
     /**
      * a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
      */
-    customLogoutUrl?: pulumi.Input<string>;
+    customLogoutUrl?: pulumi.Input<string | undefined>;
     /**
      * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      */
-    defaultRole?: pulumi.Input<string>;
+    defaultRole?: pulumi.Input<string | undefined>;
     /**
      * IDP Cert (used to verify the signed response)
      */
@@ -274,7 +274,7 @@ export interface SsoArgs {
     /**
      * ignore any unmatched roles provided in assertion. By default, an assertion is treated as invalid for any unmatched role
      */
-    ignoreUnmatchedRoles?: pulumi.Input<boolean>;
+    ignoreUnmatchedRoles?: pulumi.Input<boolean | undefined>;
     /**
      * IDP issuer URL
      */
@@ -282,22 +282,22 @@ export interface SsoArgs {
     /**
      * Name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * enum: `email`, `unspecified`
      */
-    nameidFormat?: pulumi.Input<string>;
+    nameidFormat?: pulumi.Input<string | undefined>;
     /**
      * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
      */
-    oauthProviderDomain?: pulumi.Input<string>;
+    oauthProviderDomain?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
      */
-    roleAttrExtraction?: pulumi.Input<string>;
+    roleAttrExtraction?: pulumi.Input<string | undefined>;
     /**
      * name of the attribute in SAML Assertion to extract role from. Default: `Role`
      */
-    roleAttrFrom?: pulumi.Input<string>;
+    roleAttrFrom?: pulumi.Input<string | undefined>;
 }

@@ -102,7 +102,7 @@ def get_wxtags(org_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_wxtags=pulumi.get(__ret__, 'org_wxtags'))
-def get_wxtags_output(org_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_wxtags_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWxtagsResult]:
     """
     This resource provides the list of Org WxLan tags (labels).

@@ -164,37 +164,37 @@ export interface ServicepolicyState {
     /**
      * SRX only
      */
-    aamw?: pulumi.Input<inputs.org.ServicepolicyAamw>;
+    aamw?: pulumi.Input<inputs.org.ServicepolicyAamw | undefined>;
     /**
      * enum: `allow`, `deny`
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * For SRX-only
      */
-    antivirus?: pulumi.Input<inputs.org.ServicepolicyAntivirus>;
+    antivirus?: pulumi.Input<inputs.org.ServicepolicyAntivirus | undefined>;
     /**
      * SRX only
      */
-    appqoe?: pulumi.Input<inputs.org.ServicepolicyAppqoe>;
-    ewfs?: pulumi.Input<pulumi.Input<inputs.org.ServicepolicyEwf>[]>;
-    idp?: pulumi.Input<inputs.org.ServicepolicyIdp>;
+    appqoe?: pulumi.Input<inputs.org.ServicepolicyAppqoe | undefined>;
+    ewfs?: pulumi.Input<pulumi.Input<inputs.org.ServicepolicyEwf>[] | undefined>;
+    idp?: pulumi.Input<inputs.org.ServicepolicyIdp | undefined>;
     /**
      * access within the same VRF
      */
-    localRouting?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    localRouting?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      */
-    pathPreference?: pulumi.Input<string>;
-    services?: pulumi.Input<pulumi.Input<string>[]>;
+    pathPreference?: pulumi.Input<string | undefined>;
+    services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * For SRX-only
      */
-    sslProxy?: pulumi.Input<inputs.org.ServicepolicySslProxy>;
-    tenants?: pulumi.Input<pulumi.Input<string>[]>;
+    sslProxy?: pulumi.Input<inputs.org.ServicepolicySslProxy | undefined>;
+    tenants?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -204,35 +204,35 @@ export interface ServicepolicyArgs {
     /**
      * SRX only
      */
-    aamw?: pulumi.Input<inputs.org.ServicepolicyAamw>;
+    aamw?: pulumi.Input<inputs.org.ServicepolicyAamw | undefined>;
     /**
      * enum: `allow`, `deny`
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * For SRX-only
      */
-    antivirus?: pulumi.Input<inputs.org.ServicepolicyAntivirus>;
+    antivirus?: pulumi.Input<inputs.org.ServicepolicyAntivirus | undefined>;
     /**
      * SRX only
      */
-    appqoe?: pulumi.Input<inputs.org.ServicepolicyAppqoe>;
-    ewfs?: pulumi.Input<pulumi.Input<inputs.org.ServicepolicyEwf>[]>;
-    idp?: pulumi.Input<inputs.org.ServicepolicyIdp>;
+    appqoe?: pulumi.Input<inputs.org.ServicepolicyAppqoe | undefined>;
+    ewfs?: pulumi.Input<pulumi.Input<inputs.org.ServicepolicyEwf>[] | undefined>;
+    idp?: pulumi.Input<inputs.org.ServicepolicyIdp | undefined>;
     /**
      * access within the same VRF
      */
-    localRouting?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
+    localRouting?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      */
-    pathPreference?: pulumi.Input<string>;
-    services?: pulumi.Input<pulumi.Input<string>[]>;
+    pathPreference?: pulumi.Input<string | undefined>;
+    services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * For SRX-only
      */
-    sslProxy?: pulumi.Input<inputs.org.ServicepolicySslProxy>;
-    tenants?: pulumi.Input<pulumi.Input<string>[]>;
+    sslProxy?: pulumi.Input<inputs.org.ServicepolicySslProxy | undefined>;
+    tenants?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

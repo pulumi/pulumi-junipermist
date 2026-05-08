@@ -93,7 +93,7 @@ def get_evpn_topologies(org_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_evpn_topologies=pulumi.get(__ret__, 'org_evpn_topologies'),
         org_id=pulumi.get(__ret__, 'org_id'))
-def get_evpn_topologies_output(org_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_evpn_topologies_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEvpnTopologiesResult]:
     """
     This data source provides the list of Org Evpn Topologies

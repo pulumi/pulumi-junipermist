@@ -22,33 +22,33 @@ __all__ = ['GatewaytemplateArgs', 'Gatewaytemplate']
 class GatewaytemplateArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
-                 additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]] = None,
-                 dhcpd_config: Optional[pulumi.Input['GatewaytemplateDhcpdConfigArgs']] = None,
-                 dns_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]] = None,
-                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]] = None,
-                 idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]] = None,
-                 ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]] = None,
-                 ntp_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input['GatewaytemplateOobIpConfigArgs']] = None,
-                 path_preferences: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]] = None,
-                 service_policies: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]] = None,
-                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]] = None,
-                 tunnel_provider_options: Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 vrf_config: Optional[pulumi.Input['GatewaytemplateVrfConfigArgs']] = None,
-                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]] = None):
+                 additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]] = None,
+                 dhcpd_config: pulumi.Input[Optional['GatewaytemplateDhcpdConfigArgs']] = None,
+                 dns_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]] = None,
+                 idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]] = None,
+                 ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]] = None,
+                 ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oob_ip_config: pulumi.Input[Optional['GatewaytemplateOobIpConfigArgs']] = None,
+                 path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]] = None,
+                 service_policies: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]] = None,
+                 ssr_additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]] = None,
+                 tunnel_provider_options: pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_filtering_deny_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 vrf_config: pulumi.Input[Optional['GatewaytemplateVrfConfigArgs']] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]] = None):
         """
         The set of arguments for constructing a Gatewaytemplate resource.
 
@@ -138,333 +138,333 @@ class GatewaytemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalConfigCmds")
-    def additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         additional CLI commands to append to the generated Junos config. **Note**: no check is done
         """
         return pulumi.get(self, "additional_config_cmds")
 
     @additional_config_cmds.setter
-    def additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_config_cmds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_config_cmds", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
-    def bgp_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]]:
+    def bgp_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]]:
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
-    def bgp_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]]):
+    def bgp_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]]):
         pulumi.set(self, "bgp_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
-    def dhcpd_config(self) -> Optional[pulumi.Input['GatewaytemplateDhcpdConfigArgs']]:
+    def dhcpd_config(self) -> pulumi.Input[Optional['GatewaytemplateDhcpdConfigArgs']]:
         return pulumi.get(self, "dhcpd_config")
 
     @dhcpd_config.setter
-    def dhcpd_config(self, value: Optional[pulumi.Input['GatewaytemplateDhcpdConfigArgs']]):
+    def dhcpd_config(self, value: pulumi.Input[Optional['GatewaytemplateDhcpdConfigArgs']]):
         pulumi.set(self, "dhcpd_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsOverride")
-    def dns_override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dns_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "dns_override")
 
     @dns_override.setter
-    def dns_override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dns_override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dns_override", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         """
         return pulumi.get(self, "dns_servers")
 
     @dns_servers.setter
-    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsSuffixes")
-    def dns_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         """
         return pulumi.get(self, "dns_suffixes")
 
     @dns_suffixes.setter
-    def dns_suffixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_suffixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_suffixes", value)
 
     @_builtins.property
     @pulumi.getter(name="extraRoutes")
-    def extra_routes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]]:
+    def extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]]:
         """
         Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         """
         return pulumi.get(self, "extra_routes")
 
     @extra_routes.setter
-    def extra_routes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]]):
+    def extra_routes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]]):
         pulumi.set(self, "extra_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="extraRoutes6")
-    def extra_routes6(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]:
+    def extra_routes6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]:
         """
         Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         """
         return pulumi.get(self, "extra_routes6")
 
     @extra_routes6.setter
-    def extra_routes6(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]):
+    def extra_routes6(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]):
         pulumi.set(self, "extra_routes6", value)
 
     @_builtins.property
     @pulumi.getter(name="idpProfiles")
-    def idp_profiles(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]]:
+    def idp_profiles(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]]:
         """
         Property key is the profile name
         """
         return pulumi.get(self, "idp_profiles")
 
     @idp_profiles.setter
-    def idp_profiles(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]]):
+    def idp_profiles(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]]):
         pulumi.set(self, "idp_profiles", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfigs")
-    def ip_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]]:
+    def ip_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]]:
         """
         Property key is the network name
         """
         return pulumi.get(self, "ip_configs")
 
     @ip_configs.setter
-    def ip_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]]):
+    def ip_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]]):
         pulumi.set(self, "ip_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]]:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpOverride")
-    def ntp_override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ntp_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "ntp_override")
 
     @ntp_override.setter
-    def ntp_override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ntp_override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ntp_override", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of NTP servers specific to this device. By default, those in Site Settings will be used
         """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
-    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ntp_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ntp_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="oobIpConfig")
-    def oob_ip_config(self) -> Optional[pulumi.Input['GatewaytemplateOobIpConfigArgs']]:
+    def oob_ip_config(self) -> pulumi.Input[Optional['GatewaytemplateOobIpConfigArgs']]:
         """
         Out-of-band (vme/em0/fxp0) IP config
         """
         return pulumi.get(self, "oob_ip_config")
 
     @oob_ip_config.setter
-    def oob_ip_config(self, value: Optional[pulumi.Input['GatewaytemplateOobIpConfigArgs']]):
+    def oob_ip_config(self, value: pulumi.Input[Optional['GatewaytemplateOobIpConfigArgs']]):
         pulumi.set(self, "oob_ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pathPreferences")
-    def path_preferences(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]]]:
+    def path_preferences(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]]]:
         """
         Property key is the path name
         """
         return pulumi.get(self, "path_preferences")
 
     @path_preferences.setter
-    def path_preferences(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]]]):
+    def path_preferences(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]]]):
         pulumi.set(self, "path_preferences", value)
 
     @_builtins.property
     @pulumi.getter(name="portConfig")
-    def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]]:
+    def port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]]:
         """
         Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         """
         return pulumi.get(self, "port_config")
 
     @port_config.setter
-    def port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]]):
+    def port_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]]):
         pulumi.set(self, "port_config", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Auto assigned if not set
         """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routingPolicies")
-    def routing_policies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]]:
+    def routing_policies(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]]:
         """
         Property key is the routing policy name
         """
         return pulumi.get(self, "routing_policies")
 
     @routing_policies.setter
-    def routing_policies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]]):
+    def routing_policies(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]]):
         pulumi.set(self, "routing_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePolicies")
-    def service_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]]:
+    def service_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]]:
         return pulumi.get(self, "service_policies")
 
     @service_policies.setter
-    def service_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]]):
+    def service_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]]):
         pulumi.set(self, "service_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="ssrAdditionalConfigCmds")
-    def ssr_additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ssr_additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         additional CLI commands to append to the generated SSR config. **Note**: no check is done
         """
         return pulumi.get(self, "ssr_additional_config_cmds")
 
     @ssr_additional_config_cmds.setter
-    def ssr_additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ssr_additional_config_cmds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ssr_additional_config_cmds", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelConfigs")
-    def tunnel_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]]:
+    def tunnel_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]]:
         """
         Property key is the tunnel name
         """
         return pulumi.get(self, "tunnel_configs")
 
     @tunnel_configs.setter
-    def tunnel_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]]):
+    def tunnel_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]]):
         pulumi.set(self, "tunnel_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelProviderOptions")
-    def tunnel_provider_options(self) -> Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs']]:
+    def tunnel_provider_options(self) -> pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsArgs']]:
         return pulumi.get(self, "tunnel_provider_options")
 
     @tunnel_provider_options.setter
-    def tunnel_provider_options(self, value: Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs']]):
+    def tunnel_provider_options(self, value: pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsArgs']]):
         pulumi.set(self, "tunnel_provider_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `spoke`, `standalone`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="urlFilteringDenyMsg")
-    def url_filtering_deny_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_filtering_deny_msg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When a service policy denies a app_category, what message to show in user's browser
         """
         return pulumi.get(self, "url_filtering_deny_msg")
 
     @url_filtering_deny_msg.setter
-    def url_filtering_deny_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_filtering_deny_msg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_filtering_deny_msg", value)
 
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
-    def vrf_config(self) -> Optional[pulumi.Input['GatewaytemplateVrfConfigArgs']]:
+    def vrf_config(self) -> pulumi.Input[Optional['GatewaytemplateVrfConfigArgs']]:
         return pulumi.get(self, "vrf_config")
 
     @vrf_config.setter
-    def vrf_config(self, value: Optional[pulumi.Input['GatewaytemplateVrfConfigArgs']]):
+    def vrf_config(self, value: pulumi.Input[Optional['GatewaytemplateVrfConfigArgs']]):
         pulumi.set(self, "vrf_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vrfInstances")
-    def vrf_instances(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]]:
+    def vrf_instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]]:
         """
         Property key is the network name
         """
         return pulumi.get(self, "vrf_instances")
 
     @vrf_instances.setter
-    def vrf_instances(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]]):
+    def vrf_instances(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]]):
         pulumi.set(self, "vrf_instances", value)
 
 
 @pulumi.input_type
 class _GatewaytemplateState:
     def __init__(__self__, *,
-                 additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]] = None,
-                 dhcpd_config: Optional[pulumi.Input['GatewaytemplateDhcpdConfigArgs']] = None,
-                 dns_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]] = None,
-                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]] = None,
-                 idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]] = None,
-                 ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]] = None,
-                 ntp_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input['GatewaytemplateOobIpConfigArgs']] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_preferences: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]] = None,
-                 service_policies: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]] = None,
-                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]] = None,
-                 tunnel_provider_options: Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 vrf_config: Optional[pulumi.Input['GatewaytemplateVrfConfigArgs']] = None,
-                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]] = None):
+                 additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]] = None,
+                 dhcpd_config: pulumi.Input[Optional['GatewaytemplateDhcpdConfigArgs']] = None,
+                 dns_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]] = None,
+                 idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]] = None,
+                 ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]] = None,
+                 ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oob_ip_config: pulumi.Input[Optional['GatewaytemplateOobIpConfigArgs']] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]] = None,
+                 service_policies: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]] = None,
+                 ssr_additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]] = None,
+                 tunnel_provider_options: pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_filtering_deny_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 vrf_config: pulumi.Input[Optional['GatewaytemplateVrfConfigArgs']] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]] = None):
         """
         Input properties used for looking up and filtering Gatewaytemplate resources.
 
@@ -546,308 +546,308 @@ class _GatewaytemplateState:
 
     @_builtins.property
     @pulumi.getter(name="additionalConfigCmds")
-    def additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         additional CLI commands to append to the generated Junos config. **Note**: no check is done
         """
         return pulumi.get(self, "additional_config_cmds")
 
     @additional_config_cmds.setter
-    def additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_config_cmds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_config_cmds", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
-    def bgp_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]]:
+    def bgp_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]]:
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
-    def bgp_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]]):
+    def bgp_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]]):
         pulumi.set(self, "bgp_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
-    def dhcpd_config(self) -> Optional[pulumi.Input['GatewaytemplateDhcpdConfigArgs']]:
+    def dhcpd_config(self) -> pulumi.Input[Optional['GatewaytemplateDhcpdConfigArgs']]:
         return pulumi.get(self, "dhcpd_config")
 
     @dhcpd_config.setter
-    def dhcpd_config(self, value: Optional[pulumi.Input['GatewaytemplateDhcpdConfigArgs']]):
+    def dhcpd_config(self, value: pulumi.Input[Optional['GatewaytemplateDhcpdConfigArgs']]):
         pulumi.set(self, "dhcpd_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsOverride")
-    def dns_override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dns_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "dns_override")
 
     @dns_override.setter
-    def dns_override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dns_override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dns_override", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsServers")
-    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         """
         return pulumi.get(self, "dns_servers")
 
     @dns_servers.setter
-    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsSuffixes")
-    def dns_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         """
         return pulumi.get(self, "dns_suffixes")
 
     @dns_suffixes.setter
-    def dns_suffixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_suffixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_suffixes", value)
 
     @_builtins.property
     @pulumi.getter(name="extraRoutes")
-    def extra_routes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]]:
+    def extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]]:
         """
         Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         """
         return pulumi.get(self, "extra_routes")
 
     @extra_routes.setter
-    def extra_routes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]]):
+    def extra_routes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]]):
         pulumi.set(self, "extra_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="extraRoutes6")
-    def extra_routes6(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]:
+    def extra_routes6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]:
         """
         Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         """
         return pulumi.get(self, "extra_routes6")
 
     @extra_routes6.setter
-    def extra_routes6(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]):
+    def extra_routes6(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]):
         pulumi.set(self, "extra_routes6", value)
 
     @_builtins.property
     @pulumi.getter(name="idpProfiles")
-    def idp_profiles(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]]:
+    def idp_profiles(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]]:
         """
         Property key is the profile name
         """
         return pulumi.get(self, "idp_profiles")
 
     @idp_profiles.setter
-    def idp_profiles(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]]):
+    def idp_profiles(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]]):
         pulumi.set(self, "idp_profiles", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfigs")
-    def ip_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]]:
+    def ip_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]]:
         """
         Property key is the network name
         """
         return pulumi.get(self, "ip_configs")
 
     @ip_configs.setter
-    def ip_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]]):
+    def ip_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]]):
         pulumi.set(self, "ip_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]]:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpOverride")
-    def ntp_override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ntp_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "ntp_override")
 
     @ntp_override.setter
-    def ntp_override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ntp_override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ntp_override", value)
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
-    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of NTP servers specific to this device. By default, those in Site Settings will be used
         """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
-    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ntp_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ntp_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="oobIpConfig")
-    def oob_ip_config(self) -> Optional[pulumi.Input['GatewaytemplateOobIpConfigArgs']]:
+    def oob_ip_config(self) -> pulumi.Input[Optional['GatewaytemplateOobIpConfigArgs']]:
         """
         Out-of-band (vme/em0/fxp0) IP config
         """
         return pulumi.get(self, "oob_ip_config")
 
     @oob_ip_config.setter
-    def oob_ip_config(self, value: Optional[pulumi.Input['GatewaytemplateOobIpConfigArgs']]):
+    def oob_ip_config(self, value: pulumi.Input[Optional['GatewaytemplateOobIpConfigArgs']]):
         pulumi.set(self, "oob_ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pathPreferences")
-    def path_preferences(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]]]:
+    def path_preferences(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]]]:
         """
         Property key is the path name
         """
         return pulumi.get(self, "path_preferences")
 
     @path_preferences.setter
-    def path_preferences(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]]]):
+    def path_preferences(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]]]):
         pulumi.set(self, "path_preferences", value)
 
     @_builtins.property
     @pulumi.getter(name="portConfig")
-    def port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]]:
+    def port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]]:
         """
         Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         """
         return pulumi.get(self, "port_config")
 
     @port_config.setter
-    def port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]]):
+    def port_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]]]):
         pulumi.set(self, "port_config", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Auto assigned if not set
         """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routingPolicies")
-    def routing_policies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]]:
+    def routing_policies(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]]:
         """
         Property key is the routing policy name
         """
         return pulumi.get(self, "routing_policies")
 
     @routing_policies.setter
-    def routing_policies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]]):
+    def routing_policies(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]]):
         pulumi.set(self, "routing_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePolicies")
-    def service_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]]:
+    def service_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]]:
         return pulumi.get(self, "service_policies")
 
     @service_policies.setter
-    def service_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]]):
+    def service_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]]):
         pulumi.set(self, "service_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="ssrAdditionalConfigCmds")
-    def ssr_additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ssr_additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         additional CLI commands to append to the generated SSR config. **Note**: no check is done
         """
         return pulumi.get(self, "ssr_additional_config_cmds")
 
     @ssr_additional_config_cmds.setter
-    def ssr_additional_config_cmds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ssr_additional_config_cmds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ssr_additional_config_cmds", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelConfigs")
-    def tunnel_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]]:
+    def tunnel_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]]:
         """
         Property key is the tunnel name
         """
         return pulumi.get(self, "tunnel_configs")
 
     @tunnel_configs.setter
-    def tunnel_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]]):
+    def tunnel_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]]]):
         pulumi.set(self, "tunnel_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelProviderOptions")
-    def tunnel_provider_options(self) -> Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs']]:
+    def tunnel_provider_options(self) -> pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsArgs']]:
         return pulumi.get(self, "tunnel_provider_options")
 
     @tunnel_provider_options.setter
-    def tunnel_provider_options(self, value: Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs']]):
+    def tunnel_provider_options(self, value: pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsArgs']]):
         pulumi.set(self, "tunnel_provider_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `spoke`, `standalone`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="urlFilteringDenyMsg")
-    def url_filtering_deny_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_filtering_deny_msg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When a service policy denies a app_category, what message to show in user's browser
         """
         return pulumi.get(self, "url_filtering_deny_msg")
 
     @url_filtering_deny_msg.setter
-    def url_filtering_deny_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_filtering_deny_msg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_filtering_deny_msg", value)
 
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
-    def vrf_config(self) -> Optional[pulumi.Input['GatewaytemplateVrfConfigArgs']]:
+    def vrf_config(self) -> pulumi.Input[Optional['GatewaytemplateVrfConfigArgs']]:
         return pulumi.get(self, "vrf_config")
 
     @vrf_config.setter
-    def vrf_config(self, value: Optional[pulumi.Input['GatewaytemplateVrfConfigArgs']]):
+    def vrf_config(self, value: pulumi.Input[Optional['GatewaytemplateVrfConfigArgs']]):
         pulumi.set(self, "vrf_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vrfInstances")
-    def vrf_instances(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]]:
+    def vrf_instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]]:
         """
         Property key is the network name
         """
         return pulumi.get(self, "vrf_instances")
 
     @vrf_instances.setter
-    def vrf_instances(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]]):
+    def vrf_instances(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]]):
         pulumi.set(self, "vrf_instances", value)
 
 
@@ -857,34 +857,34 @@ class Gatewaytemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]]] = None,
-                 dhcpd_config: Optional[pulumi.Input[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']]] = None,
-                 dns_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]]] = None,
-                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]]] = None,
-                 idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
-                 ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]]] = None,
-                 ntp_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_preferences: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]]] = None,
-                 service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]]] = None,
-                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
-                 tunnel_provider_options: Optional[pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 vrf_config: Optional[pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']]] = None,
-                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]]] = None,
+                 additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]]] = None,
+                 dhcpd_config: pulumi.Input[Optional[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']]] = None,
+                 dns_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]]] = None,
+                 idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
+                 ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]]] = None,
+                 ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]]] = None,
+                 service_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]]] = None,
+                 ssr_additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
+                 tunnel_provider_options: pulumi.Input[Optional[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_filtering_deny_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 vrf_config: pulumi.Input[Optional[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']]] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource manages the Gateway Templates.
@@ -1126,34 +1126,34 @@ class Gatewaytemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]]] = None,
-                 dhcpd_config: Optional[pulumi.Input[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']]] = None,
-                 dns_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]]] = None,
-                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]]] = None,
-                 idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
-                 ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]]] = None,
-                 ntp_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_preferences: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]]] = None,
-                 service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]]] = None,
-                 ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
-                 tunnel_provider_options: Optional[pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 vrf_config: Optional[pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']]] = None,
-                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]]] = None,
+                 additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]]] = None,
+                 dhcpd_config: pulumi.Input[Optional[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']]] = None,
+                 dns_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]]] = None,
+                 extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]]] = None,
+                 idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
+                 ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]]] = None,
+                 ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oob_ip_config: pulumi.Input[Optional[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]]] = None,
+                 port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]]] = None,
+                 service_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]]] = None,
+                 ssr_additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
+                 tunnel_provider_options: pulumi.Input[Optional[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_filtering_deny_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 vrf_config: pulumi.Input[Optional[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']]] = None,
+                 vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1203,34 +1203,34 @@ class Gatewaytemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]]] = None,
-            dhcpd_config: Optional[pulumi.Input[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']]] = None,
-            dns_override: Optional[pulumi.Input[_builtins.bool]] = None,
-            dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]]] = None,
-            extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]]] = None,
-            idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
-            ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]]] = None,
-            ntp_override: Optional[pulumi.Input[_builtins.bool]] = None,
-            ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            oob_ip_config: Optional[pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            path_preferences: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]]] = None,
-            port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]]] = None,
-            router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]]] = None,
-            service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]]] = None,
-            ssr_additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
-            tunnel_provider_options: Optional[pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            url_filtering_deny_msg: Optional[pulumi.Input[_builtins.str]] = None,
-            vrf_config: Optional[pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']]] = None,
-            vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]]] = None) -> 'Gatewaytemplate':
+            additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            bgp_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]]] = None,
+            dhcpd_config: pulumi.Input[Optional[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']]] = None,
+            dns_override: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]]] = None,
+            extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]]] = None,
+            idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
+            ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]]] = None,
+            ntp_override: pulumi.Input[Optional[_builtins.bool]] = None,
+            ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            oob_ip_config: pulumi.Input[Optional[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            path_preferences: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]]] = None,
+            port_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_policies: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]]] = None,
+            service_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]]] = None,
+            ssr_additional_config_cmds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tunnel_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]]] = None,
+            tunnel_provider_options: pulumi.Input[Optional[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            url_filtering_deny_msg: pulumi.Input[Optional[_builtins.str]] = None,
+            vrf_config: pulumi.Input[Optional[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']]] = None,
+            vrf_instances: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]]] = None) -> 'Gatewaytemplate':
         """
         Get an existing Gatewaytemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

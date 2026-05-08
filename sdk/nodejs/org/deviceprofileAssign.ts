@@ -97,9 +97,9 @@ export class DeviceprofileAssign extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DeviceprofileAssign resources.
  */
 export interface DeviceprofileAssignState {
-    deviceprofileId?: pulumi.Input<string>;
-    macs?: pulumi.Input<pulumi.Input<string>[]>;
-    orgId?: pulumi.Input<string>;
+    deviceprofileId?: pulumi.Input<string | undefined>;
+    macs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
 }
 
 /**

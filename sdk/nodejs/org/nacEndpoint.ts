@@ -126,30 +126,30 @@ export class NacEndpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NacEndpoint resources.
  */
 export interface NacEndpointState {
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Only non-local-admin MAC is accepted
      */
-    mac?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    notes?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
-    radiusGroup?: pulumi.Input<string>;
-    vlan?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    notes?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
+    radiusGroup?: pulumi.Input<string | undefined>;
+    vlan?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a NacEndpoint resource.
  */
 export interface NacEndpointArgs {
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Only non-local-admin MAC is accepted
      */
     mac: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    notes?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    notes?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
-    radiusGroup?: pulumi.Input<string>;
-    vlan?: pulumi.Input<string>;
+    radiusGroup?: pulumi.Input<string | undefined>;
+    vlan?: pulumi.Input<string | undefined>;
 }

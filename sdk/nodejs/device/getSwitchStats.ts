@@ -157,28 +157,28 @@ export interface GetSwitchStatsOutputArgs {
     /**
      * Duration like 7d, 2w
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * End time (epoch timestamp in seconds, or relative string like "-1d", "-2h", "now")
      */
-    end?: pulumi.Input<string>;
+    end?: pulumi.Input<string | undefined>;
     /**
      * If `evpnUnused`==`true`, find EVPN eligible switches which don’t belong to any EVPN Topology yet
      */
-    evpnUnused?: pulumi.Input<string>;
+    evpnUnused?: pulumi.Input<string | undefined>;
     /**
      * EVPN Topology ID
      */
-    evpntopoId?: pulumi.Input<string>;
-    mac?: pulumi.Input<string>;
+    evpntopoId?: pulumi.Input<string | undefined>;
+    mac?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Start time (epoch timestamp in seconds, or relative string like "-1d", "-1w")
      */
-    start?: pulumi.Input<string>;
+    start?: pulumi.Input<string | undefined>;
     /**
      * enum: `all`, `connected`, `disconnected`
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

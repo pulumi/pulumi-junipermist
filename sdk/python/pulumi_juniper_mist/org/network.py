@@ -23,19 +23,19 @@ class NetworkArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
                  subnet: pulumi.Input[_builtins.str],
-                 disallow_mist_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_access: Optional[pulumi.Input['NetworkInternalAccessArgs']] = None,
-                 internet_access: Optional[pulumi.Input['NetworkInternetAccessArgs']] = None,
-                 isolation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multicast: Optional[pulumi.Input['NetworkMulticastArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet6: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenants: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]] = None):
+                 disallow_mist_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_access: pulumi.Input[Optional['NetworkInternalAccessArgs']] = None,
+                 internet_access: pulumi.Input[Optional['NetworkInternetAccessArgs']] = None,
+                 isolation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multicast: pulumi.Input[Optional['NetworkMulticastArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 routed_for_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet6: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]] = None):
         """
         The set of arguments for constructing a Network resource.
 
@@ -96,161 +96,161 @@ class NetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="disallowMistServices")
-    def disallow_mist_services(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disallow_mist_services(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disallow Mist Devices in the network
         """
         return pulumi.get(self, "disallow_mist_services")
 
     @disallow_mist_services.setter
-    def disallow_mist_services(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disallow_mist_services(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disallow_mist_services", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway6(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gateway6")
 
     @gateway6.setter
-    def gateway6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway6", value)
 
     @_builtins.property
     @pulumi.getter(name="internalAccess")
-    def internal_access(self) -> Optional[pulumi.Input['NetworkInternalAccessArgs']]:
+    def internal_access(self) -> pulumi.Input[Optional['NetworkInternalAccessArgs']]:
         return pulumi.get(self, "internal_access")
 
     @internal_access.setter
-    def internal_access(self, value: Optional[pulumi.Input['NetworkInternalAccessArgs']]):
+    def internal_access(self, value: pulumi.Input[Optional['NetworkInternalAccessArgs']]):
         pulumi.set(self, "internal_access", value)
 
     @_builtins.property
     @pulumi.getter(name="internetAccess")
-    def internet_access(self) -> Optional[pulumi.Input['NetworkInternetAccessArgs']]:
+    def internet_access(self) -> pulumi.Input[Optional['NetworkInternetAccessArgs']]:
         """
         Whether this network has direct internet access
         """
         return pulumi.get(self, "internet_access")
 
     @internet_access.setter
-    def internet_access(self, value: Optional[pulumi.Input['NetworkInternetAccessArgs']]):
+    def internet_access(self, value: pulumi.Input[Optional['NetworkInternetAccessArgs']]):
         pulumi.set(self, "internet_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def isolation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def isolation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow clients in the network to talk to each other
         """
         return pulumi.get(self, "isolation")
 
     @isolation.setter
-    def isolation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def isolation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "isolation", value)
 
     @_builtins.property
     @pulumi.getter
-    def multicast(self) -> Optional[pulumi.Input['NetworkMulticastArgs']]:
+    def multicast(self) -> pulumi.Input[Optional['NetworkMulticastArgs']]:
         """
         Whether to enable multicast support (only PIM-sparse mode is supported)
         """
         return pulumi.get(self, "multicast")
 
     @multicast.setter
-    def multicast(self, value: Optional[pulumi.Input['NetworkMulticastArgs']]):
+    def multicast(self, value: pulumi.Input[Optional['NetworkMulticastArgs']]):
         pulumi.set(self, "multicast", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="routedForNetworks")
-    def routed_for_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def routed_for_networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         """
         return pulumi.get(self, "routed_for_networks")
 
     @routed_for_networks.setter
-    def routed_for_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def routed_for_networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "routed_for_networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet6(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "subnet6")
 
     @subnet6.setter
-    def subnet6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet6", value)
 
     @_builtins.property
     @pulumi.getter
-    def tenants(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]]:
+    def tenants(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]]:
         """
         Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "tenants")
 
     @tenants.setter
-    def tenants(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]]):
+    def tenants(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]]):
         pulumi.set(self, "tenants", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vlan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
-    def vlan_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vlan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vlan_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnAccess")
-    def vpn_access(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]]:
+    def vpn_access(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]]:
         """
         Property key is the VPN name. Whether this network can be accessed from vpn
         """
         return pulumi.get(self, "vpn_access")
 
     @vpn_access.setter
-    def vpn_access(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]]):
+    def vpn_access(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]]):
         pulumi.set(self, "vpn_access", value)
 
 
 @pulumi.input_type
 class _NetworkState:
     def __init__(__self__, *,
-                 disallow_mist_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_access: Optional[pulumi.Input['NetworkInternalAccessArgs']] = None,
-                 internet_access: Optional[pulumi.Input['NetworkInternetAccessArgs']] = None,
-                 isolation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multicast: Optional[pulumi.Input['NetworkMulticastArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet6: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenants: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]] = None):
+                 disallow_mist_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_access: pulumi.Input[Optional['NetworkInternalAccessArgs']] = None,
+                 internet_access: pulumi.Input[Optional['NetworkInternetAccessArgs']] = None,
+                 isolation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multicast: pulumi.Input[Optional['NetworkMulticastArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routed_for_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet6: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]] = None):
         """
         Input properties used for looking up and filtering Network resources.
 
@@ -295,158 +295,158 @@ class _NetworkState:
 
     @_builtins.property
     @pulumi.getter(name="disallowMistServices")
-    def disallow_mist_services(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disallow_mist_services(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disallow Mist Devices in the network
         """
         return pulumi.get(self, "disallow_mist_services")
 
     @disallow_mist_services.setter
-    def disallow_mist_services(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disallow_mist_services(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disallow_mist_services", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway6(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gateway6")
 
     @gateway6.setter
-    def gateway6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway6", value)
 
     @_builtins.property
     @pulumi.getter(name="internalAccess")
-    def internal_access(self) -> Optional[pulumi.Input['NetworkInternalAccessArgs']]:
+    def internal_access(self) -> pulumi.Input[Optional['NetworkInternalAccessArgs']]:
         return pulumi.get(self, "internal_access")
 
     @internal_access.setter
-    def internal_access(self, value: Optional[pulumi.Input['NetworkInternalAccessArgs']]):
+    def internal_access(self, value: pulumi.Input[Optional['NetworkInternalAccessArgs']]):
         pulumi.set(self, "internal_access", value)
 
     @_builtins.property
     @pulumi.getter(name="internetAccess")
-    def internet_access(self) -> Optional[pulumi.Input['NetworkInternetAccessArgs']]:
+    def internet_access(self) -> pulumi.Input[Optional['NetworkInternetAccessArgs']]:
         """
         Whether this network has direct internet access
         """
         return pulumi.get(self, "internet_access")
 
     @internet_access.setter
-    def internet_access(self, value: Optional[pulumi.Input['NetworkInternetAccessArgs']]):
+    def internet_access(self, value: pulumi.Input[Optional['NetworkInternetAccessArgs']]):
         pulumi.set(self, "internet_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def isolation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def isolation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow clients in the network to talk to each other
         """
         return pulumi.get(self, "isolation")
 
     @isolation.setter
-    def isolation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def isolation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "isolation", value)
 
     @_builtins.property
     @pulumi.getter
-    def multicast(self) -> Optional[pulumi.Input['NetworkMulticastArgs']]:
+    def multicast(self) -> pulumi.Input[Optional['NetworkMulticastArgs']]:
         """
         Whether to enable multicast support (only PIM-sparse mode is supported)
         """
         return pulumi.get(self, "multicast")
 
     @multicast.setter
-    def multicast(self, value: Optional[pulumi.Input['NetworkMulticastArgs']]):
+    def multicast(self, value: pulumi.Input[Optional['NetworkMulticastArgs']]):
         pulumi.set(self, "multicast", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routedForNetworks")
-    def routed_for_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def routed_for_networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         """
         return pulumi.get(self, "routed_for_networks")
 
     @routed_for_networks.setter
-    def routed_for_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def routed_for_networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "routed_for_networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet6(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "subnet6")
 
     @subnet6.setter
-    def subnet6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet6", value)
 
     @_builtins.property
     @pulumi.getter
-    def tenants(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]]:
+    def tenants(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]]:
         """
         Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "tenants")
 
     @tenants.setter
-    def tenants(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]]):
+    def tenants(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]]):
         pulumi.set(self, "tenants", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vlan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
-    def vlan_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vlan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vlan_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnAccess")
-    def vpn_access(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]]:
+    def vpn_access(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]]:
         """
         Property key is the VPN name. Whether this network can be accessed from vpn
         """
         return pulumi.get(self, "vpn_access")
 
     @vpn_access.setter
-    def vpn_access(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]]):
+    def vpn_access(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]]):
         pulumi.set(self, "vpn_access", value)
 
 
@@ -456,21 +456,21 @@ class Network(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disallow_mist_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_access: Optional[pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
-                 internet_access: Optional[pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
-                 isolation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multicast: Optional[pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet6: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenants: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
+                 disallow_mist_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_access: pulumi.Input[Optional[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
+                 internet_access: pulumi.Input[Optional[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
+                 isolation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multicast: pulumi.Input[Optional[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routed_for_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet6: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource manages the WAN Assurance Networks.
@@ -559,21 +559,21 @@ class Network(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disallow_mist_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_access: Optional[pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
-                 internet_access: Optional[pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
-                 isolation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multicast: Optional[pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet6: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenants: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
+                 disallow_mist_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_access: pulumi.Input[Optional[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
+                 internet_access: pulumi.Input[Optional[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
+                 isolation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multicast: pulumi.Input[Optional[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routed_for_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet6: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -612,21 +612,21 @@ class Network(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disallow_mist_services: Optional[pulumi.Input[_builtins.bool]] = None,
-            gateway: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-            internal_access: Optional[pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
-            internet_access: Optional[pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
-            isolation: Optional[pulumi.Input[_builtins.bool]] = None,
-            multicast: Optional[pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            subnet: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet6: Optional[pulumi.Input[_builtins.str]] = None,
-            tenants: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
-            vlan_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None) -> 'Network':
+            disallow_mist_services: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_access: pulumi.Input[Optional[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
+            internet_access: pulumi.Input[Optional[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
+            isolation: pulumi.Input[Optional[_builtins.bool]] = None,
+            multicast: pulumi.Input[Optional[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routed_for_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet6: pulumi.Input[Optional[_builtins.str]] = None,
+            tenants: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
+            vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_access: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

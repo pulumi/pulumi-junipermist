@@ -188,117 +188,117 @@ export class Mxedge extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Mxedge resources.
  */
 export interface MxedgeState {
-    claimCode?: pulumi.Input<string>;
-    mac?: pulumi.Input<string>;
-    model?: pulumi.Input<string>;
-    mxagentRegistered?: pulumi.Input<boolean>;
+    claimCode?: pulumi.Input<string | undefined>;
+    mac?: pulumi.Input<string | undefined>;
+    model?: pulumi.Input<string | undefined>;
+    mxagentRegistered?: pulumi.Input<boolean | undefined>;
     /**
      * MxCluster this MxEdge belongs to
      */
-    mxclusterId?: pulumi.Input<string>;
-    mxedgeMgmt?: pulumi.Input<inputs.org.MxedgeMxedgeMgmt>;
-    name?: pulumi.Input<string>;
-    notes?: pulumi.Input<string>;
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    mxclusterId?: pulumi.Input<string | undefined>;
+    mxedgeMgmt?: pulumi.Input<inputs.org.MxedgeMxedgeMgmt | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    notes?: pulumi.Input<string | undefined>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IPconfiguration of the Mist Edge out-of*band management interface
      */
-    oobIpConfig?: pulumi.Input<inputs.org.MxedgeOobIpConfig>;
-    orgId?: pulumi.Input<string>;
+    oobIpConfig?: pulumi.Input<inputs.org.MxedgeOobIpConfig | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Proxy Configuration to talk to Mist
      */
-    proxy?: pulumi.Input<inputs.org.MxedgeProxy>;
+    proxy?: pulumi.Input<inputs.org.MxedgeProxy | undefined>;
     /**
      * Registration code for the MxEdge
      */
-    registrationCode?: pulumi.Input<string>;
+    registrationCode?: pulumi.Input<string | undefined>;
     /**
      * List of services to run, tunterm only for now
      */
-    services?: pulumi.Input<pulumi.Input<string>[]>;
-    siteId?: pulumi.Input<string>;
+    services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Global and per-VLAN. Property key is the VLAN ID
      */
-    tuntermDhcpdConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermDhcpdConfig>}>;
+    tuntermDhcpdConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermDhcpdConfig>} | undefined>;
     /**
      * Property key is a CIDR
      */
-    tuntermExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermExtraRoutes>}>;
-    tuntermIgmpSnoopingConfig?: pulumi.Input<inputs.org.MxedgeTuntermIgmpSnoopingConfig>;
+    tuntermExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermExtraRoutes>} | undefined>;
+    tuntermIgmpSnoopingConfig?: pulumi.Input<inputs.org.MxedgeTuntermIgmpSnoopingConfig | undefined>;
     /**
      * IPconfiguration of the Mist Tunnel interface
      */
-    tuntermIpConfig?: pulumi.Input<inputs.org.MxedgeTuntermIpConfig>;
-    tuntermMonitorings?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.org.MxedgeTuntermMonitoring>[]>[]>;
-    tuntermMulticastConfig?: pulumi.Input<inputs.org.MxedgeTuntermMulticastConfig>;
+    tuntermIpConfig?: pulumi.Input<inputs.org.MxedgeTuntermIpConfig | undefined>;
+    tuntermMonitorings?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.org.MxedgeTuntermMonitoring>[]>[] | undefined>;
+    tuntermMulticastConfig?: pulumi.Input<inputs.org.MxedgeTuntermMulticastConfig | undefined>;
     /**
      * IPconfigs by VLAN ID. Property key is the VLAN ID
      */
-    tuntermOtherIpConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermOtherIpConfigs>}>;
+    tuntermOtherIpConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermOtherIpConfigs>} | undefined>;
     /**
      * Ethernet port configurations
      */
-    tuntermPortConfig?: pulumi.Input<inputs.org.MxedgeTuntermPortConfig>;
-    tuntermRegistered?: pulumi.Input<boolean>;
+    tuntermPortConfig?: pulumi.Input<inputs.org.MxedgeTuntermPortConfig | undefined>;
+    tuntermRegistered?: pulumi.Input<boolean | undefined>;
     /**
      * If custom vlan settings are desired
      */
-    tuntermSwitchConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermSwitchConfig>}>;
-    versions?: pulumi.Input<inputs.org.MxedgeVersions>;
+    tuntermSwitchConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermSwitchConfig>} | undefined>;
+    versions?: pulumi.Input<inputs.org.MxedgeVersions | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Mxedge resource.
  */
 export interface MxedgeArgs {
-    claimCode?: pulumi.Input<string>;
-    model?: pulumi.Input<string>;
+    claimCode?: pulumi.Input<string | undefined>;
+    model?: pulumi.Input<string | undefined>;
     /**
      * MxCluster this MxEdge belongs to
      */
-    mxclusterId?: pulumi.Input<string>;
-    mxedgeMgmt?: pulumi.Input<inputs.org.MxedgeMxedgeMgmt>;
-    name?: pulumi.Input<string>;
-    notes?: pulumi.Input<string>;
-    ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    mxclusterId?: pulumi.Input<string | undefined>;
+    mxedgeMgmt?: pulumi.Input<inputs.org.MxedgeMxedgeMgmt | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    notes?: pulumi.Input<string | undefined>;
+    ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IPconfiguration of the Mist Edge out-of*band management interface
      */
-    oobIpConfig?: pulumi.Input<inputs.org.MxedgeOobIpConfig>;
+    oobIpConfig?: pulumi.Input<inputs.org.MxedgeOobIpConfig | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * Proxy Configuration to talk to Mist
      */
-    proxy?: pulumi.Input<inputs.org.MxedgeProxy>;
-    siteId?: pulumi.Input<string>;
+    proxy?: pulumi.Input<inputs.org.MxedgeProxy | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Global and per-VLAN. Property key is the VLAN ID
      */
-    tuntermDhcpdConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermDhcpdConfig>}>;
+    tuntermDhcpdConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermDhcpdConfig>} | undefined>;
     /**
      * Property key is a CIDR
      */
-    tuntermExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermExtraRoutes>}>;
-    tuntermIgmpSnoopingConfig?: pulumi.Input<inputs.org.MxedgeTuntermIgmpSnoopingConfig>;
+    tuntermExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermExtraRoutes>} | undefined>;
+    tuntermIgmpSnoopingConfig?: pulumi.Input<inputs.org.MxedgeTuntermIgmpSnoopingConfig | undefined>;
     /**
      * IPconfiguration of the Mist Tunnel interface
      */
-    tuntermIpConfig?: pulumi.Input<inputs.org.MxedgeTuntermIpConfig>;
-    tuntermMonitorings?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.org.MxedgeTuntermMonitoring>[]>[]>;
-    tuntermMulticastConfig?: pulumi.Input<inputs.org.MxedgeTuntermMulticastConfig>;
+    tuntermIpConfig?: pulumi.Input<inputs.org.MxedgeTuntermIpConfig | undefined>;
+    tuntermMonitorings?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.org.MxedgeTuntermMonitoring>[]>[] | undefined>;
+    tuntermMulticastConfig?: pulumi.Input<inputs.org.MxedgeTuntermMulticastConfig | undefined>;
     /**
      * IPconfigs by VLAN ID. Property key is the VLAN ID
      */
-    tuntermOtherIpConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermOtherIpConfigs>}>;
+    tuntermOtherIpConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermOtherIpConfigs>} | undefined>;
     /**
      * Ethernet port configurations
      */
-    tuntermPortConfig?: pulumi.Input<inputs.org.MxedgeTuntermPortConfig>;
+    tuntermPortConfig?: pulumi.Input<inputs.org.MxedgeTuntermPortConfig | undefined>;
     /**
      * If custom vlan settings are desired
      */
-    tuntermSwitchConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermSwitchConfig>}>;
-    versions?: pulumi.Input<inputs.org.MxedgeVersions>;
+    tuntermSwitchConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.MxedgeTuntermSwitchConfig>} | undefined>;
+    versions?: pulumi.Input<inputs.org.MxedgeVersions | undefined>;
 }

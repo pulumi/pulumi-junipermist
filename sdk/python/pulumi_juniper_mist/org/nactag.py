@@ -21,20 +21,20 @@ class NactagArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 allow_usermac_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_vlan_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 gbp_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 radius_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 radius_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 radius_vendor_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 username_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vlan: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_usermac_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_vlan_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 gbp_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 radius_attrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 radius_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 radius_vendor_attrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 username_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vlan: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Nactag resource.
 
@@ -115,52 +115,52 @@ class NactagArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowUsermacOverride")
-    def allow_usermac_override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_usermac_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Can be set to true to allow the override by usermac result
         """
         return pulumi.get(self, "allow_usermac_override")
 
     @allow_usermac_override.setter
-    def allow_usermac_override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_usermac_override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_usermac_override", value)
 
     @_builtins.property
     @pulumi.getter(name="egressVlanNames")
-    def egress_vlan_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def egress_vlan_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`egress_vlan_names`, list of egress vlans to return
         """
         return pulumi.get(self, "egress_vlan_names")
 
     @egress_vlan_names.setter
-    def egress_vlan_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def egress_vlan_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "egress_vlan_names", value)
 
     @_builtins.property
     @pulumi.getter(name="gbpTag")
-    def gbp_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gbp_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gbp_tag")
 
     @gbp_tag.setter
-    def gbp_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gbp_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gbp_tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         """
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match", value)
 
     @_builtins.property
     @pulumi.getter(name="matchAll")
-    def match_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def match_all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This field is applicable only when `type`==`match`
           * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -172,33 +172,33 @@ class NactagArgs:
         return pulumi.get(self, "match_all")
 
     @match_all.setter
-    def match_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def match_all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "match_all", value)
 
     @_builtins.property
     @pulumi.getter(name="nacportalId")
-    def nacportal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nacportal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `type`==`redirect_nacportal_id`, the ID of the NAC portal to redirect to
         """
         return pulumi.get(self, "nacportal_id")
 
     @nacportal_id.setter
-    def nacportal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nacportal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nacportal_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="radiusAttrs")
-    def radius_attrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def radius_attrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
         It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
@@ -207,24 +207,24 @@ class NactagArgs:
         return pulumi.get(self, "radius_attrs")
 
     @radius_attrs.setter
-    def radius_attrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def radius_attrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "radius_attrs", value)
 
     @_builtins.property
     @pulumi.getter(name="radiusGroup")
-    def radius_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def radius_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `type`==`radius_group`
         """
         return pulumi.get(self, "radius_group")
 
     @radius_group.setter
-    def radius_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def radius_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "radius_group", value)
 
     @_builtins.property
     @pulumi.getter(name="radiusVendorAttrs")
-    def radius_vendor_attrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def radius_vendor_attrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
         It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
@@ -233,77 +233,77 @@ class NactagArgs:
         return pulumi.get(self, "radius_vendor_attrs")
 
     @radius_vendor_attrs.setter
-    def radius_vendor_attrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def radius_vendor_attrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "radius_vendor_attrs", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionTimeout")
-    def session_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If `type`==`session_timeout, in seconds
         """
         return pulumi.get(self, "session_timeout")
 
     @session_timeout.setter
-    def session_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="usernameAttr")
-    def username_attr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username_attr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `automatic`, `cn`, `dns`, `email`, `upn`
         """
         return pulumi.get(self, "username_attr")
 
     @username_attr.setter
-    def username_attr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username_attr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username_attr", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`match`
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "values", value)
 
     @_builtins.property
     @pulumi.getter
-    def vlan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vlan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `type`==`vlan`
         """
         return pulumi.get(self, "vlan")
 
     @vlan.setter
-    def vlan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vlan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vlan", value)
 
 
 @pulumi.input_type
 class _NactagState:
     def __init__(__self__, *,
-                 allow_usermac_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_vlan_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 gbp_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 radius_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 radius_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 radius_vendor_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vlan: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_usermac_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_vlan_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 gbp_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 radius_attrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 radius_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 radius_vendor_attrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vlan: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Nactag resources.
 
@@ -365,52 +365,52 @@ class _NactagState:
 
     @_builtins.property
     @pulumi.getter(name="allowUsermacOverride")
-    def allow_usermac_override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_usermac_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Can be set to true to allow the override by usermac result
         """
         return pulumi.get(self, "allow_usermac_override")
 
     @allow_usermac_override.setter
-    def allow_usermac_override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_usermac_override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_usermac_override", value)
 
     @_builtins.property
     @pulumi.getter(name="egressVlanNames")
-    def egress_vlan_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def egress_vlan_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`egress_vlan_names`, list of egress vlans to return
         """
         return pulumi.get(self, "egress_vlan_names")
 
     @egress_vlan_names.setter
-    def egress_vlan_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def egress_vlan_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "egress_vlan_names", value)
 
     @_builtins.property
     @pulumi.getter(name="gbpTag")
-    def gbp_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gbp_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gbp_tag")
 
     @gbp_tag.setter
-    def gbp_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gbp_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gbp_tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         if `type`==`match`. enum: `cert_cn`, `cert_eku`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `edr_status`, `gbp_tag`, `hostname`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         """
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match", value)
 
     @_builtins.property
     @pulumi.getter(name="matchAll")
-    def match_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def match_all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This field is applicable only when `type`==`match`
           * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
@@ -422,42 +422,42 @@ class _NactagState:
         return pulumi.get(self, "match_all")
 
     @match_all.setter
-    def match_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def match_all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "match_all", value)
 
     @_builtins.property
     @pulumi.getter(name="nacportalId")
-    def nacportal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nacportal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `type`==`redirect_nacportal_id`, the ID of the NAC portal to redirect to
         """
         return pulumi.get(self, "nacportal_id")
 
     @nacportal_id.setter
-    def nacportal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nacportal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nacportal_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="radiusAttrs")
-    def radius_attrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def radius_attrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`radius_attrs`, user can specify a list of one or more standard attributes in the field "radius_attrs". 
         It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
@@ -466,24 +466,24 @@ class _NactagState:
         return pulumi.get(self, "radius_attrs")
 
     @radius_attrs.setter
-    def radius_attrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def radius_attrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "radius_attrs", value)
 
     @_builtins.property
     @pulumi.getter(name="radiusGroup")
-    def radius_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def radius_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `type`==`radius_group`
         """
         return pulumi.get(self, "radius_group")
 
     @radius_group.setter
-    def radius_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def radius_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "radius_group", value)
 
     @_builtins.property
     @pulumi.getter(name="radiusVendorAttrs")
-    def radius_vendor_attrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def radius_vendor_attrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`radius_vendor_attrs`, user can specify a list of one or more vendor-specific attributes in the field "radius_vendor_attrs". 
         It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
@@ -492,67 +492,67 @@ class _NactagState:
         return pulumi.get(self, "radius_vendor_attrs")
 
     @radius_vendor_attrs.setter
-    def radius_vendor_attrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def radius_vendor_attrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "radius_vendor_attrs", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionTimeout")
-    def session_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If `type`==`session_timeout, in seconds
         """
         return pulumi.get(self, "session_timeout")
 
     @session_timeout.setter
-    def session_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `redirect_nacportal_id`, `session_timeout`, `username_attr`, `vlan`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="usernameAttr")
-    def username_attr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username_attr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `automatic`, `cn`, `dns`, `email`, `upn`
         """
         return pulumi.get(self, "username_attr")
 
     @username_attr.setter
-    def username_attr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username_attr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username_attr", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `type`==`match`
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "values", value)
 
     @_builtins.property
     @pulumi.getter
-    def vlan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vlan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `type`==`vlan`
         """
         return pulumi.get(self, "vlan")
 
     @vlan.setter
-    def vlan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vlan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vlan", value)
 
 
@@ -562,22 +562,22 @@ class Nactag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_usermac_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_vlan_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 gbp_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 radius_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 radius_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 radius_vendor_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vlan: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_usermac_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_vlan_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 gbp_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 radius_attrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 radius_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 radius_vendor_attrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vlan: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource manages NAC Tags (Auth Policy Labels).
@@ -683,22 +683,22 @@ class Nactag(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_usermac_override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 egress_vlan_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 gbp_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 radius_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 radius_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 radius_vendor_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vlan: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_usermac_override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_vlan_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 gbp_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 radius_attrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 radius_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 radius_vendor_attrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vlan: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -738,22 +738,22 @@ class Nactag(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_usermac_override: Optional[pulumi.Input[_builtins.bool]] = None,
-            egress_vlan_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            gbp_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            match: Optional[pulumi.Input[_builtins.str]] = None,
-            match_all: Optional[pulumi.Input[_builtins.bool]] = None,
-            nacportal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            radius_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            radius_group: Optional[pulumi.Input[_builtins.str]] = None,
-            radius_vendor_attrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            username_attr: Optional[pulumi.Input[_builtins.str]] = None,
-            values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vlan: Optional[pulumi.Input[_builtins.str]] = None) -> 'Nactag':
+            allow_usermac_override: pulumi.Input[Optional[_builtins.bool]] = None,
+            egress_vlan_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            gbp_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            match: pulumi.Input[Optional[_builtins.str]] = None,
+            match_all: pulumi.Input[Optional[_builtins.bool]] = None,
+            nacportal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            radius_attrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            radius_group: pulumi.Input[Optional[_builtins.str]] = None,
+            radius_vendor_attrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            username_attr: pulumi.Input[Optional[_builtins.str]] = None,
+            values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vlan: pulumi.Input[Optional[_builtins.str]] = None) -> 'Nactag':
         """
         Get an existing Nactag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

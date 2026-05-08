@@ -114,28 +114,28 @@ export class Base extends pulumi.CustomResource {
  * Input properties used for looking up and filtering base resources.
  */
 export interface BaseState {
-    alarmtemplateId?: pulumi.Input<string>;
-    allowMist?: pulumi.Input<boolean>;
-    mspId?: pulumi.Input<string>;
+    alarmtemplateId?: pulumi.Input<string | undefined>;
+    allowMist?: pulumi.Input<boolean | undefined>;
+    mspId?: pulumi.Input<string | undefined>;
     /**
      * logo uploaded by the MSP with advanced tier, only present if provided
      */
-    mspLogoUrl?: pulumi.Input<string>;
+    mspLogoUrl?: pulumi.Input<string | undefined>;
     /**
      * Name of the msp the org belongs to
      */
-    mspName?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    orggroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    sessionExpiry?: pulumi.Input<number>;
+    mspName?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    orggroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sessionExpiry?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Base resource.
  */
 export interface BaseArgs {
-    alarmtemplateId?: pulumi.Input<string>;
-    allowMist?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    sessionExpiry?: pulumi.Input<number>;
+    alarmtemplateId?: pulumi.Input<string | undefined>;
+    allowMist?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    sessionExpiry?: pulumi.Input<number | undefined>;
 }

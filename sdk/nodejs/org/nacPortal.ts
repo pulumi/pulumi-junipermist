@@ -224,37 +224,37 @@ export interface NacPortalState {
     /**
      * if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * Optional list of additional CA certificates to be used
      */
-    additionalCacerts?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalCacerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Optional list of additional NAC server names
      */
-    additionalNacServerNames?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalNacServerNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * In days
      */
-    certExpireTime?: pulumi.Input<number>;
+    certExpireTime?: pulumi.Input<number | undefined>;
     /**
      * enum: `wpa2`, `wpa3`
      */
-    eapType?: pulumi.Input<string>;
+    eapType?: pulumi.Input<string | undefined>;
     /**
      * Model, version, fingering, events (connecting, disconnect, roaming), which ap
      */
-    enableTelemetry?: pulumi.Input<boolean>;
+    enableTelemetry?: pulumi.Input<boolean | undefined>;
     /**
      * In days
      */
-    expiryNotificationTime?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
+    expiryNotificationTime?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * phase 2
      */
-    notifyExpiry?: pulumi.Input<boolean>;
-    orgId?: pulumi.Input<string>;
+    notifyExpiry?: pulumi.Input<boolean | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Guest portal configuration when `type`==`guestPortal`. If 
      *   * `auth`==`none`, the user is presented with a terms of service and can click and continue.
@@ -267,17 +267,17 @@ export interface NacPortalState {
      *     - sso
      *     - userpass: pre created guest list
      */
-    portal?: pulumi.Input<inputs.org.NacPortalPortal>;
-    ssid?: pulumi.Input<string>;
-    sso?: pulumi.Input<inputs.org.NacPortalSso>;
-    tos?: pulumi.Input<string>;
+    portal?: pulumi.Input<inputs.org.NacPortalPortal | undefined>;
+    ssid?: pulumi.Input<string | undefined>;
+    sso?: pulumi.Input<inputs.org.NacPortalSso | undefined>;
+    tos?: pulumi.Input<string | undefined>;
     /**
      * enum: 
      *   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
      *   * `guestPortal`: NAC-Based Guest Portal
      *   * `marvisClient`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -287,36 +287,36 @@ export interface NacPortalArgs {
     /**
      * if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * Optional list of additional CA certificates to be used
      */
-    additionalCacerts?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalCacerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Optional list of additional NAC server names
      */
-    additionalNacServerNames?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalNacServerNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * In days
      */
-    certExpireTime?: pulumi.Input<number>;
+    certExpireTime?: pulumi.Input<number | undefined>;
     /**
      * enum: `wpa2`, `wpa3`
      */
-    eapType?: pulumi.Input<string>;
+    eapType?: pulumi.Input<string | undefined>;
     /**
      * Model, version, fingering, events (connecting, disconnect, roaming), which ap
      */
-    enableTelemetry?: pulumi.Input<boolean>;
+    enableTelemetry?: pulumi.Input<boolean | undefined>;
     /**
      * In days
      */
-    expiryNotificationTime?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
+    expiryNotificationTime?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * phase 2
      */
-    notifyExpiry?: pulumi.Input<boolean>;
+    notifyExpiry?: pulumi.Input<boolean | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * Guest portal configuration when `type`==`guestPortal`. If 
@@ -330,15 +330,15 @@ export interface NacPortalArgs {
      *     - sso
      *     - userpass: pre created guest list
      */
-    portal?: pulumi.Input<inputs.org.NacPortalPortal>;
-    ssid?: pulumi.Input<string>;
-    sso?: pulumi.Input<inputs.org.NacPortalSso>;
-    tos?: pulumi.Input<string>;
+    portal?: pulumi.Input<inputs.org.NacPortalPortal | undefined>;
+    ssid?: pulumi.Input<string | undefined>;
+    sso?: pulumi.Input<inputs.org.NacPortalSso | undefined>;
+    tos?: pulumi.Input<string | undefined>;
     /**
      * enum: 
      *   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
      *   * `guestPortal`: NAC-Based Guest Portal
      *   * `marvisClient`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

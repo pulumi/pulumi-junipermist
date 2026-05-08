@@ -23,20 +23,20 @@ class BaseArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
-                 alarmtemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aptemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 gatewaytemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 latlng: Optional[pulumi.Input['BaseLatlngArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networktemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 rftemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routertemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sitegroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sitetemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None):
+                 alarmtemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aptemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 gatewaytemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 latlng: pulumi.Input[Optional['BaseLatlngArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networktemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 rftemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routertemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secpolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sitegroup_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sitetemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Base resource.
 
@@ -108,187 +108,187 @@ class BaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="alarmtemplateId")
-    def alarmtemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alarmtemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alarm Template ID, this takes precedence over the Org-level alarmtemplate_id
         """
         return pulumi.get(self, "alarmtemplate_id")
 
     @alarmtemplate_id.setter
-    def alarmtemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alarmtemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alarmtemplate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aptemplateId")
-    def aptemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aptemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AP Template ID, used by APs
         """
         return pulumi.get(self, "aptemplate_id")
 
     @aptemplate_id.setter
-    def aptemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aptemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aptemplate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def country_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Country code for the site (for AP config generation), in two-character
         """
         return pulumi.get(self, "country_code")
 
     @country_code.setter
-    def country_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def country_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "country_code", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewaytemplateId")
-    def gatewaytemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gatewaytemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Gateway Template ID, used by gateways
         """
         return pulumi.get(self, "gatewaytemplate_id")
 
     @gatewaytemplate_id.setter
-    def gatewaytemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gatewaytemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gatewaytemplate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def latlng(self) -> Optional[pulumi.Input['BaseLatlngArgs']]:
+    def latlng(self) -> pulumi.Input[Optional['BaseLatlngArgs']]:
         return pulumi.get(self, "latlng")
 
     @latlng.setter
-    def latlng(self, value: Optional[pulumi.Input['BaseLatlngArgs']]):
+    def latlng(self, value: pulumi.Input[Optional['BaseLatlngArgs']]):
         pulumi.set(self, "latlng", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networktemplateId")
-    def networktemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def networktemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network Template ID, this takes precedence over Site Settings
         """
         return pulumi.get(self, "networktemplate_id")
 
     @networktemplate_id.setter
-    def networktemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def networktemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "networktemplate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional, any notes about the site
         """
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="rftemplateId")
-    def rftemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rftemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RF Template ID, this takes precedence over Site Settings
         """
         return pulumi.get(self, "rftemplate_id")
 
     @rftemplate_id.setter
-    def rftemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rftemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rftemplate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routertemplateId")
-    def routertemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def routertemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Router Template ID, used by gateways
         """
         return pulumi.get(self, "routertemplate_id")
 
     @routertemplate_id.setter
-    def routertemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def routertemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "routertemplate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secpolicyId")
-    def secpolicy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secpolicy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SecPolicy ID
         """
         return pulumi.get(self, "secpolicy_id")
 
     @secpolicy_id.setter
-    def secpolicy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secpolicy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secpolicy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sitegroupIds")
-    def sitegroup_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sitegroup_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Sitegroups this site belongs to
         """
         return pulumi.get(self, "sitegroup_ids")
 
     @sitegroup_ids.setter
-    def sitegroup_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sitegroup_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sitegroup_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="sitetemplateId")
-    def sitetemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sitetemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Site Template ID
         """
         return pulumi.get(self, "sitetemplate_id")
 
     @sitetemplate_id.setter
-    def sitetemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sitetemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sitetemplate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timezone the site is at
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
 
 @pulumi.input_type
 class _BaseState:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alarmtemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aptemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 gatewaytemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 latlng: Optional[pulumi.Input['BaseLatlngArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networktemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rftemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routertemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sitegroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sitetemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tzoffset: Optional[pulumi.Input[_builtins.int]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alarmtemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aptemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 gatewaytemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 latlng: pulumi.Input[Optional['BaseLatlngArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networktemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rftemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routertemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secpolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sitegroup_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sitetemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 tzoffset: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Base resources.
 
@@ -343,194 +343,194 @@ class _BaseState:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         full address of the site
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="alarmtemplateId")
-    def alarmtemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alarmtemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alarm Template ID, this takes precedence over the Org-level alarmtemplate_id
         """
         return pulumi.get(self, "alarmtemplate_id")
 
     @alarmtemplate_id.setter
-    def alarmtemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alarmtemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alarmtemplate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aptemplateId")
-    def aptemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aptemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AP Template ID, used by APs
         """
         return pulumi.get(self, "aptemplate_id")
 
     @aptemplate_id.setter
-    def aptemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aptemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aptemplate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def country_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Country code for the site (for AP config generation), in two-character
         """
         return pulumi.get(self, "country_code")
 
     @country_code.setter
-    def country_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def country_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "country_code", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewaytemplateId")
-    def gatewaytemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gatewaytemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Gateway Template ID, used by gateways
         """
         return pulumi.get(self, "gatewaytemplate_id")
 
     @gatewaytemplate_id.setter
-    def gatewaytemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gatewaytemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gatewaytemplate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def latlng(self) -> Optional[pulumi.Input['BaseLatlngArgs']]:
+    def latlng(self) -> pulumi.Input[Optional['BaseLatlngArgs']]:
         return pulumi.get(self, "latlng")
 
     @latlng.setter
-    def latlng(self, value: Optional[pulumi.Input['BaseLatlngArgs']]):
+    def latlng(self, value: pulumi.Input[Optional['BaseLatlngArgs']]):
         pulumi.set(self, "latlng", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networktemplateId")
-    def networktemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def networktemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network Template ID, this takes precedence over Site Settings
         """
         return pulumi.get(self, "networktemplate_id")
 
     @networktemplate_id.setter
-    def networktemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def networktemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "networktemplate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional, any notes about the site
         """
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rftemplateId")
-    def rftemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rftemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RF Template ID, this takes precedence over Site Settings
         """
         return pulumi.get(self, "rftemplate_id")
 
     @rftemplate_id.setter
-    def rftemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rftemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rftemplate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routertemplateId")
-    def routertemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def routertemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Router Template ID, used by gateways
         """
         return pulumi.get(self, "routertemplate_id")
 
     @routertemplate_id.setter
-    def routertemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def routertemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "routertemplate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secpolicyId")
-    def secpolicy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secpolicy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SecPolicy ID
         """
         return pulumi.get(self, "secpolicy_id")
 
     @secpolicy_id.setter
-    def secpolicy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secpolicy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secpolicy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sitegroupIds")
-    def sitegroup_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sitegroup_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Sitegroups this site belongs to
         """
         return pulumi.get(self, "sitegroup_ids")
 
     @sitegroup_ids.setter
-    def sitegroup_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sitegroup_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sitegroup_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="sitetemplateId")
-    def sitetemplate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sitetemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Site Template ID
         """
         return pulumi.get(self, "sitetemplate_id")
 
     @sitetemplate_id.setter
-    def sitetemplate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sitetemplate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sitetemplate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timezone the site is at
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter
-    def tzoffset(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tzoffset(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "tzoffset")
 
     @tzoffset.setter
-    def tzoffset(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tzoffset(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tzoffset", value)
 
 
@@ -545,22 +545,22 @@ class Base(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alarmtemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aptemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 gatewaytemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 latlng: Optional[pulumi.Input[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networktemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rftemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routertemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sitegroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sitetemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alarmtemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aptemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 gatewaytemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 latlng: pulumi.Input[Optional[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networktemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rftemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routertemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secpolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sitegroup_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sitetemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource manages the Site basic information.
@@ -683,22 +683,22 @@ class Base(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 alarmtemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aptemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 gatewaytemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 latlng: Optional[pulumi.Input[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networktemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rftemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routertemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sitegroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sitetemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 alarmtemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aptemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 gatewaytemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 latlng: pulumi.Input[Optional[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networktemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rftemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routertemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secpolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sitegroup_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sitetemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""Base is deprecated: junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -740,23 +740,23 @@ class Base(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            alarmtemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aptemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            country_code: Optional[pulumi.Input[_builtins.str]] = None,
-            gatewaytemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            latlng: Optional[pulumi.Input[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            networktemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            notes: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rftemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            routertemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            secpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sitegroup_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            sitetemplate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timezone: Optional[pulumi.Input[_builtins.str]] = None,
-            tzoffset: Optional[pulumi.Input[_builtins.int]] = None) -> 'Base':
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            alarmtemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aptemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            gatewaytemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            latlng: pulumi.Input[Optional[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networktemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rftemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routertemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secpolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sitegroup_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sitetemplate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            tzoffset: pulumi.Input[Optional[_builtins.int]] = None) -> 'Base':
         """
         Get an existing Base resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

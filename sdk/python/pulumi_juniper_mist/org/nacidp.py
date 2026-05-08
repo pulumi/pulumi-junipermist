@@ -21,32 +21,32 @@ class NacidpArgs:
     def __init__(__self__, *,
                  idp_type: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
-                 group_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_base_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_bind_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_bind_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ldap_client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_group_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_group_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_resolve_groups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ldap_server_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ldap_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_user_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_cc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_cc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_ping_identity_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_ropc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_ropc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scim_secret_token: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_base_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_bind_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_bind_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ldap_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_group_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_resolve_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ldap_server_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ldap_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_user_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_cc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_cc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_ping_identity_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_ropc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_ropc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scim_secret_token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Nacidp resource.
 
@@ -156,348 +156,348 @@ class NacidpArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupFilter")
-    def group_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
         """
         return pulumi.get(self, "group_filter")
 
     @group_filter.setter
-    def group_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapBaseDn")
-    def ldap_base_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_base_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
         """
         return pulumi.get(self, "ldap_base_dn")
 
     @ldap_base_dn.setter
-    def ldap_base_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_base_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_base_dn", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapBindDn")
-    def ldap_bind_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_bind_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
         """
         return pulumi.get(self, "ldap_bind_dn")
 
     @ldap_bind_dn.setter
-    def ldap_bind_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_bind_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_bind_dn", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapBindPassword")
-    def ldap_bind_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_bind_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
         """
         return pulumi.get(self, "ldap_bind_password")
 
     @ldap_bind_password.setter
-    def ldap_bind_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_bind_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_bind_password", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapCacerts")
-    def ldap_cacerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ldap_cacerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
         """
         return pulumi.get(self, "ldap_cacerts")
 
     @ldap_cacerts.setter
-    def ldap_cacerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ldap_cacerts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ldap_cacerts", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapClientCert")
-    def ldap_client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `idp_type`==`ldap`, LDAPS Client certificate
         """
         return pulumi.get(self, "ldap_client_cert")
 
     @ldap_client_cert.setter
-    def ldap_client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapClientKey")
-    def ldap_client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `idp_type`==`ldap`, Key for the `ldap_client_cert`
         """
         return pulumi.get(self, "ldap_client_key")
 
     @ldap_client_key.setter
-    def ldap_client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapGroupAttr")
-    def ldap_group_attr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_group_attr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_attr")
 
     @ldap_group_attr.setter
-    def ldap_group_attr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_group_attr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_group_attr", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapGroupDn")
-    def ldap_group_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_group_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_dn")
 
     @ldap_group_dn.setter
-    def ldap_group_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_group_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_group_dn", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapResolveGroups")
-    def ldap_resolve_groups(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ldap_resolve_groups(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
         """
         return pulumi.get(self, "ldap_resolve_groups")
 
     @ldap_resolve_groups.setter
-    def ldap_resolve_groups(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ldap_resolve_groups(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ldap_resolve_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapServerHosts")
-    def ldap_server_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ldap_server_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
         """
         return pulumi.get(self, "ldap_server_hosts")
 
     @ldap_server_hosts.setter
-    def ldap_server_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ldap_server_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ldap_server_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapType")
-    def ldap_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
         """
         return pulumi.get(self, "ldap_type")
 
     @ldap_type.setter
-    def ldap_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapUserFilter")
-    def ldap_user_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_user_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
         """
         return pulumi.get(self, "ldap_user_filter")
 
     @ldap_user_filter.setter
-    def ldap_user_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_user_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_user_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="memberFilter")
-    def member_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
         """
         return pulumi.get(self, "member_filter")
 
     @member_filter.setter
-    def member_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthCcClientId")
-    def oauth_cc_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_cc_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `idp_type`==`oauth`, Client Credentials
         """
         return pulumi.get(self, "oauth_cc_client_id")
 
     @oauth_cc_client_id.setter
-    def oauth_cc_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_cc_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_cc_client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthCcClientSecret")
-    def oauth_cc_client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_cc_client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         """
         return pulumi.get(self, "oauth_cc_client_secret")
 
     @oauth_cc_client_secret.setter
-    def oauth_cc_client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_cc_client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_cc_client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthDiscoveryUrl")
-    def oauth_discovery_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_discovery_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `idp_type`==`oauth`
         """
         return pulumi.get(self, "oauth_discovery_url")
 
     @oauth_discovery_url.setter
-    def oauth_discovery_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_discovery_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_discovery_url", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthPingIdentityRegion")
-    def oauth_ping_identity_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_ping_identity_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
         """
         return pulumi.get(self, "oauth_ping_identity_region")
 
     @oauth_ping_identity_region.setter
-    def oauth_ping_identity_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_ping_identity_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_ping_identity_region", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthProviderDomain")
-    def oauth_provider_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_provider_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
         """
         return pulumi.get(self, "oauth_provider_domain")
 
     @oauth_provider_domain.setter
-    def oauth_provider_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_provider_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_provider_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthRopcClientId")
-    def oauth_ropc_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_ropc_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         """
         return pulumi.get(self, "oauth_ropc_client_id")
 
     @oauth_ropc_client_id.setter
-    def oauth_ropc_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_ropc_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_ropc_client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthRopcClientSecret")
-    def oauth_ropc_client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_ropc_client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         """
         return pulumi.get(self, "oauth_ropc_client_secret")
 
     @oauth_ropc_client_secret.setter
-    def oauth_ropc_client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_ropc_client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_ropc_client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthTenantId")
-    def oauth_tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `idp_type`==`oauth`, oauth*tenant*id
         """
         return pulumi.get(self, "oauth_tenant_id")
 
     @oauth_tenant_id.setter
-    def oauth_tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthType")
-    def oauth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
         """
         return pulumi.get(self, "oauth_type")
 
     @oauth_type.setter
-    def oauth_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="scimEnabled")
-    def scim_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scim_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
         """
         return pulumi.get(self, "scim_enabled")
 
     @scim_enabled.setter
-    def scim_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scim_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scim_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="scimSecretToken")
-    def scim_secret_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scim_secret_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         return pulumi.get(self, "scim_secret_token")
 
     @scim_secret_token.setter
-    def scim_secret_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scim_secret_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scim_secret_token", value)
 
 
 @pulumi.input_type
 class _NacidpState:
     def __init__(__self__, *,
-                 group_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_base_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_bind_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_bind_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ldap_client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_group_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_group_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_resolve_groups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ldap_server_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ldap_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_user_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_cc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_cc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_ping_identity_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_ropc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_ropc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scim_secret_token: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_base_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_bind_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_bind_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ldap_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_group_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_resolve_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ldap_server_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ldap_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_user_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_cc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_cc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_ping_identity_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_ropc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_ropc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scim_secret_token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Nacidp resources.
 
@@ -588,335 +588,335 @@ class _NacidpState:
 
     @_builtins.property
     @pulumi.getter(name="groupFilter")
-    def group_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
         """
         return pulumi.get(self, "group_filter")
 
     @group_filter.setter
-    def group_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="idpType")
-    def idp_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def idp_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `ldap`, `mxedge_proxy`, `oauth`
         """
         return pulumi.get(self, "idp_type")
 
     @idp_type.setter
-    def idp_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def idp_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "idp_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapBaseDn")
-    def ldap_base_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_base_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `idp_type`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
         """
         return pulumi.get(self, "ldap_base_dn")
 
     @ldap_base_dn.setter
-    def ldap_base_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_base_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_base_dn", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapBindDn")
-    def ldap_bind_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_bind_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `idp_type`==`ldap`, the account used to authenticate against the LDAP
         """
         return pulumi.get(self, "ldap_bind_dn")
 
     @ldap_bind_dn.setter
-    def ldap_bind_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_bind_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_bind_dn", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapBindPassword")
-    def ldap_bind_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_bind_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `idp_type`==`ldap`, the password used to authenticate against the LDAP
         """
         return pulumi.get(self, "ldap_bind_password")
 
     @ldap_bind_password.setter
-    def ldap_bind_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_bind_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_bind_password", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapCacerts")
-    def ldap_cacerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ldap_cacerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Required if `idp_type`==`ldap`, list of CA certificates to validate the LDAP certificate
         """
         return pulumi.get(self, "ldap_cacerts")
 
     @ldap_cacerts.setter
-    def ldap_cacerts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ldap_cacerts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ldap_cacerts", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapClientCert")
-    def ldap_client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `idp_type`==`ldap`, LDAPS Client certificate
         """
         return pulumi.get(self, "ldap_client_cert")
 
     @ldap_client_cert.setter
-    def ldap_client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapClientKey")
-    def ldap_client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `idp_type`==`ldap`, Key for the `ldap_client_cert`
         """
         return pulumi.get(self, "ldap_client_key")
 
     @ldap_client_key.setter
-    def ldap_client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapGroupAttr")
-    def ldap_group_attr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_group_attr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_attr")
 
     @ldap_group_attr.setter
-    def ldap_group_attr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_group_attr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_group_attr", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapGroupDn")
-    def ldap_group_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_group_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `ldap_type`==`custom`
         """
         return pulumi.get(self, "ldap_group_dn")
 
     @ldap_group_dn.setter
-    def ldap_group_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_group_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_group_dn", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapResolveGroups")
-    def ldap_resolve_groups(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ldap_resolve_groups(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `idp_type`==`ldap`, whether to recursively resolve LDAP groups
         """
         return pulumi.get(self, "ldap_resolve_groups")
 
     @ldap_resolve_groups.setter
-    def ldap_resolve_groups(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ldap_resolve_groups(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ldap_resolve_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapServerHosts")
-    def ldap_server_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ldap_server_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If `idp_type`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
         """
         return pulumi.get(self, "ldap_server_hosts")
 
     @ldap_server_hosts.setter
-    def ldap_server_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ldap_server_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ldap_server_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapType")
-    def ldap_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         if `idp_type`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `ping_identity`
         """
         return pulumi.get(self, "ldap_type")
 
     @ldap_type.setter
-    def ldap_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapUserFilter")
-    def ldap_user_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_user_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `ldap_type`==`custom`, LDAP filter that will identify the type of user
         """
         return pulumi.get(self, "ldap_user_filter")
 
     @ldap_user_filter.setter
-    def ldap_user_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_user_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_user_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="memberFilter")
-    def member_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `ldap_type`==`custom`,LDAP filter that will identify the type of member
         """
         return pulumi.get(self, "member_filter")
 
     @member_filter.setter
-    def member_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthCcClientId")
-    def oauth_cc_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_cc_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `idp_type`==`oauth`, Client Credentials
         """
         return pulumi.get(self, "oauth_cc_client_id")
 
     @oauth_cc_client_id.setter
-    def oauth_cc_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_cc_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_cc_client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthCcClientSecret")
-    def oauth_cc_client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_cc_client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         """
         return pulumi.get(self, "oauth_cc_client_secret")
 
     @oauth_cc_client_secret.setter
-    def oauth_cc_client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_cc_client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_cc_client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthDiscoveryUrl")
-    def oauth_discovery_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_discovery_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `idp_type`==`oauth`
         """
         return pulumi.get(self, "oauth_discovery_url")
 
     @oauth_discovery_url.setter
-    def oauth_discovery_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_discovery_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_discovery_url", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthPingIdentityRegion")
-    def oauth_ping_identity_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_ping_identity_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
         """
         return pulumi.get(self, "oauth_ping_identity_region")
 
     @oauth_ping_identity_region.setter
-    def oauth_ping_identity_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_ping_identity_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_ping_identity_region", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthProviderDomain")
-    def oauth_provider_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_provider_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
         """
         return pulumi.get(self, "oauth_provider_domain")
 
     @oauth_provider_domain.setter
-    def oauth_provider_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_provider_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_provider_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthRopcClientId")
-    def oauth_ropc_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_ropc_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         """
         return pulumi.get(self, "oauth_ropc_client_id")
 
     @oauth_ropc_client_id.setter
-    def oauth_ropc_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_ropc_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_ropc_client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthRopcClientSecret")
-    def oauth_ropc_client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_ropc_client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         """
         return pulumi.get(self, "oauth_ropc_client_secret")
 
     @oauth_ropc_client_secret.setter
-    def oauth_ropc_client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_ropc_client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_ropc_client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthTenantId")
-    def oauth_tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required if `idp_type`==`oauth`, oauth*tenant*id
         """
         return pulumi.get(self, "oauth_tenant_id")
 
     @oauth_tenant_id.setter
-    def oauth_tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthType")
-    def oauth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
         """
         return pulumi.get(self, "oauth_type")
 
     @oauth_type.setter
-    def oauth_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scimEnabled")
-    def scim_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scim_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
         """
         return pulumi.get(self, "scim_enabled")
 
     @scim_enabled.setter
-    def scim_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scim_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scim_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="scimSecretToken")
-    def scim_secret_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scim_secret_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         return pulumi.get(self, "scim_secret_token")
 
     @scim_secret_token.setter
-    def scim_secret_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scim_secret_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scim_secret_token", value)
 
 
@@ -926,34 +926,34 @@ class Nacidp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_base_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_bind_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_bind_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ldap_client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_group_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_group_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_resolve_groups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ldap_server_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ldap_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_user_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_cc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_cc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_ping_identity_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_ropc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_ropc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scim_secret_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_base_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_bind_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_bind_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ldap_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_group_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_resolve_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ldap_server_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ldap_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_user_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_cc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_cc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_ping_identity_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_ropc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_ropc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scim_secret_token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource manages NAC IDPs (Identity Providers).
@@ -1144,34 +1144,34 @@ class Nacidp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_base_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_bind_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_bind_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ldap_client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_group_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_group_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_resolve_groups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ldap_server_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ldap_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_user_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_cc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_cc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_ping_identity_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_ropc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_ropc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scim_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scim_secret_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_base_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_bind_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_bind_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ldap_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_group_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_resolve_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ldap_server_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ldap_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_user_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_cc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_cc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_ping_identity_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_ropc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_ropc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scim_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scim_secret_token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1223,34 +1223,34 @@ class Nacidp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_filter: Optional[pulumi.Input[_builtins.str]] = None,
-            idp_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ldap_base_dn: Optional[pulumi.Input[_builtins.str]] = None,
-            ldap_bind_dn: Optional[pulumi.Input[_builtins.str]] = None,
-            ldap_bind_password: Optional[pulumi.Input[_builtins.str]] = None,
-            ldap_cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ldap_client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            ldap_client_key: Optional[pulumi.Input[_builtins.str]] = None,
-            ldap_group_attr: Optional[pulumi.Input[_builtins.str]] = None,
-            ldap_group_dn: Optional[pulumi.Input[_builtins.str]] = None,
-            ldap_resolve_groups: Optional[pulumi.Input[_builtins.bool]] = None,
-            ldap_server_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ldap_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ldap_user_filter: Optional[pulumi.Input[_builtins.str]] = None,
-            member_filter: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_cc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_cc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_ping_identity_region: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_provider_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_ropc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_ropc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth_type: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scim_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            scim_secret_token: Optional[pulumi.Input[_builtins.str]] = None) -> 'Nacidp':
+            group_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            idp_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_base_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_bind_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_bind_password: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ldap_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_group_attr: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_resolve_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+            ldap_server_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ldap_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_user_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            member_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_cc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_cc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_ping_identity_region: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_ropc_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_ropc_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scim_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            scim_secret_token: pulumi.Input[Optional[_builtins.str]] = None) -> 'Nacidp':
         """
         Get an existing Nacidp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

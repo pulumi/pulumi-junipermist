@@ -186,49 +186,49 @@ export interface PskState {
     /**
      * email to send psk expiring notifications to
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
      */
-    expireTime?: pulumi.Input<number>;
+    expireTime?: pulumi.Input<number | undefined>;
     /**
      * Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
      */
-    expiryNotificationTime?: pulumi.Input<number>;
+    expiryNotificationTime?: pulumi.Input<number | undefined>;
     /**
      * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      */
-    mac?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    note?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * If set to true, reminder notification will be sent when psk is about to expire
      */
-    notifyExpiry?: pulumi.Input<boolean>;
+    notifyExpiry?: pulumi.Input<boolean | undefined>;
     /**
      * If set to true, notification will be sent when psk is created or edited
      */
-    notifyOnCreateOrEdit?: pulumi.Input<boolean>;
+    notifyOnCreateOrEdit?: pulumi.Input<boolean | undefined>;
     /**
      * previous passphrase of the PSK if it has been rotated
      */
-    oldPassphrase?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    oldPassphrase?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * passphrase of the PSK (8-63 character or 64 in hex)
      */
-    passphrase?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
-    siteId?: pulumi.Input<string>;
+    passphrase?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * SSID this PSK should be applicable to
      */
-    ssid?: pulumi.Input<string>;
+    ssid?: pulumi.Input<string | undefined>;
     /**
      * enum: `multi`, `single`
      */
-    usage?: pulumi.Input<string>;
-    vlanId?: pulumi.Input<string>;
+    usage?: pulumi.Input<string | undefined>;
+    vlanId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -238,38 +238,38 @@ export interface PskArgs {
     /**
      * email to send psk expiring notifications to
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
      */
-    expireTime?: pulumi.Input<number>;
+    expireTime?: pulumi.Input<number | undefined>;
     /**
      * Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
      */
-    expiryNotificationTime?: pulumi.Input<number>;
+    expiryNotificationTime?: pulumi.Input<number | undefined>;
     /**
      * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      */
-    mac?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    note?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * If set to true, reminder notification will be sent when psk is about to expire
      */
-    notifyExpiry?: pulumi.Input<boolean>;
+    notifyExpiry?: pulumi.Input<boolean | undefined>;
     /**
      * If set to true, notification will be sent when psk is created or edited
      */
-    notifyOnCreateOrEdit?: pulumi.Input<boolean>;
+    notifyOnCreateOrEdit?: pulumi.Input<boolean | undefined>;
     /**
      * previous passphrase of the PSK if it has been rotated
      */
-    oldPassphrase?: pulumi.Input<string>;
+    oldPassphrase?: pulumi.Input<string | undefined>;
     /**
      * passphrase of the PSK (8-63 character or 64 in hex)
      */
     passphrase: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     siteId: pulumi.Input<string>;
     /**
      * SSID this PSK should be applicable to
@@ -278,6 +278,6 @@ export interface PskArgs {
     /**
      * enum: `multi`, `single`
      */
-    usage?: pulumi.Input<string>;
-    vlanId?: pulumi.Input<string>;
+    usage?: pulumi.Input<string | undefined>;
+    vlanId?: pulumi.Input<string | undefined>;
 }

@@ -105,8 +105,8 @@ def get_rftemplates(org_id: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         org_rftemplates=pulumi.get(__ret__, 'org_rftemplates'),
         page=pulumi.get(__ret__, 'page'))
-def get_rftemplates_output(org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                           page: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_rftemplates_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                           page: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRftemplatesResult]:
     """
     This data source provides the list of RF Templates.

@@ -108,16 +108,16 @@ export class SsoRole extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SsoRole resources.
  */
 export interface SsoRoleState {
-    name?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
-    privileges?: pulumi.Input<pulumi.Input<inputs.org.SsoRolePrivilege>[]>;
+    name?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
+    privileges?: pulumi.Input<pulumi.Input<inputs.org.SsoRolePrivilege>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a SsoRole resource.
  */
 export interface SsoRoleArgs {
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     privileges: pulumi.Input<pulumi.Input<inputs.org.SsoRolePrivilege>[]>;
 }

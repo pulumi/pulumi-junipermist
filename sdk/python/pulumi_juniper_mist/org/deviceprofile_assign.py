@@ -60,9 +60,9 @@ class DeviceprofileAssignArgs:
 @pulumi.input_type
 class _DeviceprofileAssignState:
     def __init__(__self__, *,
-                 deviceprofile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 macs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 deviceprofile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 macs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeviceprofileAssign resources.
         """
@@ -75,29 +75,29 @@ class _DeviceprofileAssignState:
 
     @_builtins.property
     @pulumi.getter(name="deviceprofileId")
-    def deviceprofile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deviceprofile_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "deviceprofile_id")
 
     @deviceprofile_id.setter
-    def deviceprofile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deviceprofile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deviceprofile_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def macs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def macs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "macs")
 
     @macs.setter
-    def macs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def macs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "macs", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
 
@@ -107,9 +107,9 @@ class DeviceprofileAssign(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deviceprofile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 macs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 deviceprofile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 macs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource is used to assign/unassign a device profile to one or multiple devices.
@@ -177,9 +177,9 @@ class DeviceprofileAssign(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deviceprofile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 macs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 deviceprofile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 macs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -208,9 +208,9 @@ class DeviceprofileAssign(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deviceprofile_id: Optional[pulumi.Input[_builtins.str]] = None,
-            macs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DeviceprofileAssign':
+            deviceprofile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            macs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DeviceprofileAssign':
         """
         Get an existing DeviceprofileAssign resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

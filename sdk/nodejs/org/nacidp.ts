@@ -302,112 +302,112 @@ export interface NacidpState {
     /**
      * Required if `ldapType`==`custom`, LDAP filter that will identify the type of group
      */
-    groupFilter?: pulumi.Input<string>;
+    groupFilter?: pulumi.Input<string | undefined>;
     /**
      * enum: `ldap`, `mxedgeProxy`, `oauth`
      */
-    idpType?: pulumi.Input<string>;
+    idpType?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
      */
-    ldapBaseDn?: pulumi.Input<string>;
+    ldapBaseDn?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`ldap`, the account used to authenticate against the LDAP
      */
-    ldapBindDn?: pulumi.Input<string>;
+    ldapBindDn?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`ldap`, the password used to authenticate against the LDAP
      */
-    ldapBindPassword?: pulumi.Input<string>;
+    ldapBindPassword?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
      */
-    ldapCacerts?: pulumi.Input<pulumi.Input<string>[]>;
+    ldapCacerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If `idpType`==`ldap`, LDAPS Client certificate
      */
-    ldapClientCert?: pulumi.Input<string>;
+    ldapClientCert?: pulumi.Input<string | undefined>;
     /**
      * If `idpType`==`ldap`, Key for the `ldapClientCert`
      */
-    ldapClientKey?: pulumi.Input<string>;
+    ldapClientKey?: pulumi.Input<string | undefined>;
     /**
      * If `ldapType`==`custom`
      */
-    ldapGroupAttr?: pulumi.Input<string>;
+    ldapGroupAttr?: pulumi.Input<string | undefined>;
     /**
      * If `ldapType`==`custom`
      */
-    ldapGroupDn?: pulumi.Input<string>;
+    ldapGroupDn?: pulumi.Input<string | undefined>;
     /**
      * If `idpType`==`ldap`, whether to recursively resolve LDAP groups
      */
-    ldapResolveGroups?: pulumi.Input<boolean>;
+    ldapResolveGroups?: pulumi.Input<boolean | undefined>;
     /**
      * If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
      */
-    ldapServerHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    ldapServerHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
      */
-    ldapType?: pulumi.Input<string>;
+    ldapType?: pulumi.Input<string | undefined>;
     /**
      * Required if `ldapType`==`custom`, LDAP filter that will identify the type of user
      */
-    ldapUserFilter?: pulumi.Input<string>;
+    ldapUserFilter?: pulumi.Input<string | undefined>;
     /**
      * Required if `ldapType`==`custom`,LDAP filter that will identify the type of member
      */
-    memberFilter?: pulumi.Input<string>;
+    memberFilter?: pulumi.Input<string | undefined>;
     /**
      * Name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`oauth`, Client Credentials
      */
-    oauthCcClientId?: pulumi.Input<string>;
+    oauthCcClientId?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
      */
-    oauthCcClientSecret?: pulumi.Input<string>;
+    oauthCcClientSecret?: pulumi.Input<string | undefined>;
     /**
      * If `idpType`==`oauth`
      */
-    oauthDiscoveryUrl?: pulumi.Input<string>;
+    oauthDiscoveryUrl?: pulumi.Input<string | undefined>;
     /**
      * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
      */
-    oauthPingIdentityRegion?: pulumi.Input<string>;
+    oauthPingIdentityRegion?: pulumi.Input<string | undefined>;
     /**
      * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
      */
-    oauthProviderDomain?: pulumi.Input<string>;
+    oauthProviderDomain?: pulumi.Input<string | undefined>;
     /**
      * If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      */
-    oauthRopcClientId?: pulumi.Input<string>;
+    oauthRopcClientId?: pulumi.Input<string | undefined>;
     /**
      * If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
      */
-    oauthRopcClientSecret?: pulumi.Input<string>;
+    oauthRopcClientSecret?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`oauth`, oauth*tenant*id
      */
-    oauthTenantId?: pulumi.Input<string>;
+    oauthTenantId?: pulumi.Input<string | undefined>;
     /**
      * if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
      */
-    oauthType?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
+    oauthType?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
      */
-    scimEnabled?: pulumi.Input<boolean>;
+    scimEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * If `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
      */
-    scimSecretToken?: pulumi.Input<string>;
+    scimSecretToken?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -417,7 +417,7 @@ export interface NacidpArgs {
     /**
      * Required if `ldapType`==`custom`, LDAP filter that will identify the type of group
      */
-    groupFilter?: pulumi.Input<string>;
+    groupFilter?: pulumi.Input<string | undefined>;
     /**
      * enum: `ldap`, `mxedgeProxy`, `oauth`
      */
@@ -425,102 +425,102 @@ export interface NacidpArgs {
     /**
      * Required if `idpType`==`ldap`, whole domain or a specific organization unit (container) in Search base to specify where users and groups are found in the LDAP tree
      */
-    ldapBaseDn?: pulumi.Input<string>;
+    ldapBaseDn?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`ldap`, the account used to authenticate against the LDAP
      */
-    ldapBindDn?: pulumi.Input<string>;
+    ldapBindDn?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`ldap`, the password used to authenticate against the LDAP
      */
-    ldapBindPassword?: pulumi.Input<string>;
+    ldapBindPassword?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
      */
-    ldapCacerts?: pulumi.Input<pulumi.Input<string>[]>;
+    ldapCacerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If `idpType`==`ldap`, LDAPS Client certificate
      */
-    ldapClientCert?: pulumi.Input<string>;
+    ldapClientCert?: pulumi.Input<string | undefined>;
     /**
      * If `idpType`==`ldap`, Key for the `ldapClientCert`
      */
-    ldapClientKey?: pulumi.Input<string>;
+    ldapClientKey?: pulumi.Input<string | undefined>;
     /**
      * If `ldapType`==`custom`
      */
-    ldapGroupAttr?: pulumi.Input<string>;
+    ldapGroupAttr?: pulumi.Input<string | undefined>;
     /**
      * If `ldapType`==`custom`
      */
-    ldapGroupDn?: pulumi.Input<string>;
+    ldapGroupDn?: pulumi.Input<string | undefined>;
     /**
      * If `idpType`==`ldap`, whether to recursively resolve LDAP groups
      */
-    ldapResolveGroups?: pulumi.Input<boolean>;
+    ldapResolveGroups?: pulumi.Input<boolean | undefined>;
     /**
      * If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
      */
-    ldapServerHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    ldapServerHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
      */
-    ldapType?: pulumi.Input<string>;
+    ldapType?: pulumi.Input<string | undefined>;
     /**
      * Required if `ldapType`==`custom`, LDAP filter that will identify the type of user
      */
-    ldapUserFilter?: pulumi.Input<string>;
+    ldapUserFilter?: pulumi.Input<string | undefined>;
     /**
      * Required if `ldapType`==`custom`,LDAP filter that will identify the type of member
      */
-    memberFilter?: pulumi.Input<string>;
+    memberFilter?: pulumi.Input<string | undefined>;
     /**
      * Name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`oauth`, Client Credentials
      */
-    oauthCcClientId?: pulumi.Input<string>;
+    oauthCcClientId?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
      */
-    oauthCcClientSecret?: pulumi.Input<string>;
+    oauthCcClientSecret?: pulumi.Input<string | undefined>;
     /**
      * If `idpType`==`oauth`
      */
-    oauthDiscoveryUrl?: pulumi.Input<string>;
+    oauthDiscoveryUrl?: pulumi.Input<string | undefined>;
     /**
      * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
      */
-    oauthPingIdentityRegion?: pulumi.Input<string>;
+    oauthPingIdentityRegion?: pulumi.Input<string | undefined>;
     /**
      * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
      */
-    oauthProviderDomain?: pulumi.Input<string>;
+    oauthProviderDomain?: pulumi.Input<string | undefined>;
     /**
      * If `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      */
-    oauthRopcClientId?: pulumi.Input<string>;
+    oauthRopcClientId?: pulumi.Input<string | undefined>;
     /**
      * If `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
      */
-    oauthRopcClientSecret?: pulumi.Input<string>;
+    oauthRopcClientSecret?: pulumi.Input<string | undefined>;
     /**
      * Required if `idpType`==`oauth`, oauth*tenant*id
      */
-    oauthTenantId?: pulumi.Input<string>;
+    oauthTenantId?: pulumi.Input<string | undefined>;
     /**
      * if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
      */
-    oauthType?: pulumi.Input<string>;
+    oauthType?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
     /**
      * If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
      */
-    scimEnabled?: pulumi.Input<boolean>;
+    scimEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * If `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
      */
-    scimSecretToken?: pulumi.Input<string>;
+    scimSecretToken?: pulumi.Input<string | undefined>;
 }
