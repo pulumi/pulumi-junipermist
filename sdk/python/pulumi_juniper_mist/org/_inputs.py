@@ -888,7 +888,7 @@ class AlarmtemplateDeliveryArgs:
 
 
 class AlarmtemplateRulesArgsDict(TypedDict):
-    delivery: NotRequired[pulumi.Input[Optional['AlarmtemplateRulesDeliveryArgs']]]
+    delivery: NotRequired[pulumi.Input[Optional['AlarmtemplateRulesDeliveryArgsDict']]]
     """
     Delivery object to configure the alarm delivery
     """
@@ -2310,7 +2310,7 @@ class DeviceprofileApMeshArgs:
 
 class DeviceprofileApPortConfigArgsDict(TypedDict):
     disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    dynamic_vlan: NotRequired[pulumi.Input[Optional['DeviceprofileApPortConfigDynamicVlanArgs']]]
+    dynamic_vlan: NotRequired[pulumi.Input[Optional['DeviceprofileApPortConfigDynamicVlanArgsDict']]]
     """
     Optional dynamic vlan
     """
@@ -2332,7 +2332,7 @@ class DeviceprofileApPortConfigArgsDict(TypedDict):
     """
     if `enable_mac_auth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
     """
-    mist_nac: NotRequired[pulumi.Input[Optional['DeviceprofileApPortConfigMistNacArgs']]]
+    mist_nac: NotRequired[pulumi.Input[Optional['DeviceprofileApPortConfigMistNacArgsDict']]]
     mx_tunnel_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If `forwarding`==`mxtunnel`, vlan_ids comes from mxtunnel
@@ -2349,11 +2349,11 @@ class DeviceprofileApPortConfigArgsDict(TypedDict):
     """
     If `forwarding`==`limited`
     """
-    radius_config: NotRequired[pulumi.Input[Optional['DeviceprofileApPortConfigRadiusConfigArgs']]]
+    radius_config: NotRequired[pulumi.Input[Optional['DeviceprofileApPortConfigRadiusConfigArgsDict']]]
     """
     Junos Radius config
     """
-    radsec: NotRequired[pulumi.Input[Optional['DeviceprofileApPortConfigRadsecArgs']]]
+    radsec: NotRequired[pulumi.Input[Optional['DeviceprofileApPortConfigRadsecArgsDict']]]
     """
     RadSec settings
     """
@@ -2928,8 +2928,8 @@ class DeviceprofileApPortConfigRadiusConfigArgsDict(TypedDict):
     """
     How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
     """
-    acct_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileApPortConfigRadiusConfigAcctServerArgs']]]]]
-    auth_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileApPortConfigRadiusConfigAuthServerArgs']]]]]
+    acct_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileApPortConfigRadiusConfigAcctServerArgsDict']]]]]
+    auth_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileApPortConfigRadiusConfigAuthServerArgsDict']]]]]
     auth_servers_retries: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     radius auth session retries
@@ -3358,7 +3358,7 @@ class DeviceprofileApPortConfigRadsecArgsDict(TypedDict):
     """
     Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
     """
-    servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileApPortConfigRadsecServerArgs']]]]]
+    servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileApPortConfigRadsecServerArgsDict']]]]]
     """
     List of RadSec Servers. Only if not Mist Edge.
     """
@@ -3614,7 +3614,7 @@ class DeviceprofileApRadioConfigArgsDict(TypedDict):
     """
     Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `external`, `internal`
     """
-    band24: NotRequired[pulumi.Input[Optional['DeviceprofileApRadioConfigBand24Args']]]
+    band24: NotRequired[pulumi.Input[Optional['DeviceprofileApRadioConfigBand24ArgsDict']]]
     """
     Radio Band AP settings
     """
@@ -3622,15 +3622,15 @@ class DeviceprofileApRadioConfigArgsDict(TypedDict):
     """
     enum: `24`, `5`, `6`, `auto`
     """
-    band5: NotRequired[pulumi.Input[Optional['DeviceprofileApRadioConfigBand5Args']]]
+    band5: NotRequired[pulumi.Input[Optional['DeviceprofileApRadioConfigBand5ArgsDict']]]
     """
     Radio Band AP settings
     """
-    band5_on24_radio: NotRequired[pulumi.Input[Optional['DeviceprofileApRadioConfigBand5On24RadioArgs']]]
+    band5_on24_radio: NotRequired[pulumi.Input[Optional['DeviceprofileApRadioConfigBand5On24RadioArgsDict']]]
     """
     Radio Band AP settings
     """
-    band6: NotRequired[pulumi.Input[Optional['DeviceprofileApRadioConfigBand6Args']]]
+    band6: NotRequired[pulumi.Input[Optional['DeviceprofileApRadioConfigBand6ArgsDict']]]
     """
     Radio Band AP settings
     """
@@ -5105,7 +5105,7 @@ class DeviceprofileGatewayBgpConfigArgsDict(TypedDict):
     """
     Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
     """
-    neighbors: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigNeighborsArgs']]]]]
+    neighbors: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigNeighborsArgsDict']]]]]
     """
     Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
     """
@@ -5600,7 +5600,7 @@ class DeviceprofileGatewayBgpConfigNeighborsArgs:
 
 
 class DeviceprofileGatewayDhcpdConfigArgsDict(TypedDict):
-    config: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigArgs']]]]]
+    config: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigArgsDict']]]]]
     """
     Property key is the network name
     """
@@ -5657,7 +5657,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgsDict(TypedDict):
     """
     If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
     """
-    fixed_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs']]]]]
+    fixed_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgsDict']]]]]
     """
     If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
     """
@@ -5685,7 +5685,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgsDict(TypedDict):
     """
     In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
     """
-    options: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigOptionsArgs']]]]]
+    options: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigOptionsArgsDict']]]]]
     """
     If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
     """
@@ -5710,7 +5710,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgsDict(TypedDict):
     """
     enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
     """
-    vendor_encapsulated: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs']]]]]
+    vendor_encapsulated: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgsDict']]]]]
     """
     If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
       * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
@@ -6165,7 +6165,7 @@ class DeviceprofileGatewayIdpProfilesArgsDict(TypedDict):
     """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     org_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    overwrites: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayIdpProfilesOverwriteArgs']]]]]
+    overwrites: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayIdpProfilesOverwriteArgsDict']]]]]
 
 @pulumi.input_type
 class DeviceprofileGatewayIdpProfilesArgs:
@@ -6234,7 +6234,7 @@ class DeviceprofileGatewayIdpProfilesOverwriteArgsDict(TypedDict):
       * drop: silently dropping packets
       * close: notify client/server to close connection
     """
-    matching: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayIdpProfilesOverwriteMatchingArgs']]]
+    matching: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayIdpProfilesOverwriteMatchingArgsDict']]]
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
@@ -6466,8 +6466,8 @@ class DeviceprofileGatewayNetworkArgsDict(TypedDict):
     """
     gateway: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     gateway6: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    internal_access: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayNetworkInternalAccessArgs']]]
-    internet_access: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayNetworkInternetAccessArgs']]]
+    internal_access: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayNetworkInternalAccessArgsDict']]]
+    internet_access: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayNetworkInternetAccessArgsDict']]]
     """
     Whether this network has direct internet access
     """
@@ -6475,7 +6475,7 @@ class DeviceprofileGatewayNetworkArgsDict(TypedDict):
     """
     Whether to allow clients in the network to talk to each other
     """
-    multicast: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayNetworkMulticastArgs']]]
+    multicast: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayNetworkMulticastArgsDict']]]
     """
     Whether to enable multicast support (only PIM-sparse mode is supported)
     """
@@ -6484,12 +6484,12 @@ class DeviceprofileGatewayNetworkArgsDict(TypedDict):
     For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
     """
     subnet6: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    tenants: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkTenantsArgs']]]]]
+    tenants: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkTenantsArgsDict']]]]]
     """
     Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
     """
     vlan_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    vpn_access: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkVpnAccessArgs']]]]]
+    vpn_access: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkVpnAccessArgsDict']]]]]
     """
     Property key is the VPN name. Whether this network can be accessed from vpn
     """
@@ -6717,7 +6717,7 @@ class DeviceprofileGatewayNetworkInternalAccessArgs:
 
 class DeviceprofileGatewayNetworkInternetAccessArgsDict(TypedDict):
     create_simple_service_policy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    destination_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkInternetAccessDestinationNatArgs']]]]]
+    destination_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkInternetAccessDestinationNatArgsDict']]]]]
     """
     Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
     """
@@ -6726,7 +6726,7 @@ class DeviceprofileGatewayNetworkInternetAccessArgsDict(TypedDict):
     """
     By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
     """
-    static_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkInternetAccessStaticNatArgs']]]]]
+    static_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkInternetAccessStaticNatArgsDict']]]]]
     """
     Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
     """
@@ -6958,7 +6958,7 @@ class DeviceprofileGatewayNetworkMulticastArgsDict(TypedDict):
     If the network will only be the source of the multicast traffic, IGMP can be disabled
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    groups: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkMulticastGroupsArgs']]]]]
+    groups: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkMulticastGroupsArgsDict']]]]]
     """
     Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
     """
@@ -7072,7 +7072,7 @@ class DeviceprofileGatewayNetworkVpnAccessArgsDict(TypedDict):
     """
     Whether to allow ping from vpn into this routed network
     """
-    destination_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkVpnAccessDestinationNatArgs']]]]]
+    destination_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkVpnAccessDestinationNatArgsDict']]]]]
     """
     Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
     """
@@ -7100,11 +7100,11 @@ class DeviceprofileGatewayNetworkVpnAccessArgsDict(TypedDict):
     """
     Whether this network is routable
     """
-    source_nat: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayNetworkVpnAccessSourceNatArgs']]]
+    source_nat: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayNetworkVpnAccessSourceNatArgsDict']]]
     """
     If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
     """
-    static_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkVpnAccessStaticNatArgs']]]]]
+    static_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkVpnAccessStaticNatArgsDict']]]]]
     """
     Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
     """
@@ -7480,7 +7480,7 @@ class DeviceprofileGatewayOobIpConfigArgsDict(TypedDict):
     """
     If `type`==`static`
     """
-    node1: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayOobIpConfigNode1Args']]]
+    node1: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayOobIpConfigNode1ArgsDict']]]
     """
     For HA Cluster, node1 can have different IP Config
     """
@@ -7765,7 +7765,7 @@ class DeviceprofileGatewayOobIpConfigNode1Args:
 
 
 class DeviceprofileGatewayPathPreferencesArgsDict(TypedDict):
-    paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayPathPreferencesPathArgs']]]]]
+    paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayPathPreferencesPathArgsDict']]]]]
     strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     enum: `ecmp`, `ordered`, `weighted`
@@ -8040,7 +8040,7 @@ class DeviceprofileGatewayPortConfigArgsDict(TypedDict):
     """
     enum: `auto`, `full`, `half`
     """
-    ip_config: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayPortConfigIpConfigArgs']]]
+    ip_config: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayPortConfigIpConfigArgsDict']]]
     """
     Junos IP Config
     """
@@ -8112,9 +8112,9 @@ class DeviceprofileGatewayPortConfigArgsDict(TypedDict):
     """
     For SSR only
     """
-    traffic_shaping: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayPortConfigTrafficShapingArgs']]]
+    traffic_shaping: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayPortConfigTrafficShapingArgsDict']]]
     vlan_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    vpn_paths: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigVpnPathsArgs']]]]]
+    vpn_paths: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigVpnPathsArgsDict']]]]]
     """
     Property key is the VPN name
     """
@@ -8130,11 +8130,11 @@ class DeviceprofileGatewayPortConfigArgsDict(TypedDict):
     """
     Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
     """
-    wan_extra_routes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigWanExtraRoutesArgs']]]]]
+    wan_extra_routes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigWanExtraRoutesArgsDict']]]]]
     """
     Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
     """
-    wan_extra_routes6: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigWanExtraRoutes6Args']]]]]
+    wan_extra_routes6: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigWanExtraRoutes6ArgsDict']]]]]
     """
     Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
     """
@@ -8142,11 +8142,11 @@ class DeviceprofileGatewayPortConfigArgsDict(TypedDict):
     """
     Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
     """
-    wan_probe_override: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayPortConfigWanProbeOverrideArgs']]]
+    wan_probe_override: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayPortConfigWanProbeOverrideArgsDict']]]
     """
     Only if `usage`==`wan`
     """
-    wan_source_nat: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayPortConfigWanSourceNatArgs']]]
+    wan_source_nat: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayPortConfigWanSourceNatArgsDict']]]
     """
     Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
     """
@@ -9253,7 +9253,7 @@ class DeviceprofileGatewayPortConfigVpnPathsArgsDict(TypedDict):
     """
     If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
     """
-    traffic_shaping: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayPortConfigVpnPathsTrafficShapingArgs']]]
+    traffic_shaping: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayPortConfigVpnPathsTrafficShapingArgsDict']]]
 
 @pulumi.input_type
 class DeviceprofileGatewayPortConfigVpnPathsArgs:
@@ -9565,7 +9565,7 @@ class DeviceprofileGatewayPortConfigWanSourceNatArgs:
 
 
 class DeviceprofileGatewayRoutingPoliciesArgsDict(TypedDict):
-    terms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermArgs']]]]]
+    terms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermArgsDict']]]]]
     """
     zero or more criteria/filter can be specified to match the term, all criteria have to be met
     """
@@ -9594,11 +9594,11 @@ class DeviceprofileGatewayRoutingPoliciesArgs:
 
 
 class DeviceprofileGatewayRoutingPoliciesTermArgsDict(TypedDict):
-    actions: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayRoutingPoliciesTermActionsArgs']]]
+    actions: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayRoutingPoliciesTermActionsArgsDict']]]
     """
     When used as import policy
     """
-    matching: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayRoutingPoliciesTermMatchingArgs']]]
+    matching: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayRoutingPoliciesTermMatchingArgsDict']]]
     """
     zero or more criteria/filter can be specified to match the term, all criteria have to be met
     """
@@ -9825,12 +9825,12 @@ class DeviceprofileGatewayRoutingPoliciesTermMatchingArgsDict(TypedDict):
     """
     enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
     """
-    route_exists: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExistsArgs']]]
+    route_exists: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExistsArgsDict']]]
     vpn_neighbor_macs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     overlay-facing criteria (used for bgp_config where via=vpn)
     """
-    vpn_path_sla: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSlaArgs']]]
+    vpn_path_sla: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSlaArgsDict']]]
     vpn_paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     overlay-facing criteria (used for bgp_config where via=vpn). ordered-
@@ -10064,16 +10064,16 @@ class DeviceprofileGatewayServicePolicyArgsDict(TypedDict):
     """
     Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
     """
-    antivirus: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicyAntivirusArgs']]]
+    antivirus: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicyAntivirusArgsDict']]]
     """
     For SRX-only
     """
-    appqoe: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicyAppqoeArgs']]]
+    appqoe: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicyAppqoeArgsDict']]]
     """
     SRX only
     """
-    ewfs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayServicePolicyEwfArgs']]]]]
-    idp: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicyIdpArgs']]]
+    ewfs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayServicePolicyEwfArgsDict']]]]]
+    idp: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicyIdpArgsDict']]]
     local_routing: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     access within the same VRF
@@ -10094,15 +10094,15 @@ class DeviceprofileGatewayServicePolicyArgsDict(TypedDict):
     """
     Required when `servicepolicy_id` is not defined. List of Applications / Destinations
     """
-    skyatp: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySkyatpArgs']]]
+    skyatp: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySkyatpArgsDict']]]
     """
     SRX only
     """
-    ssl_proxy: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySslProxyArgs']]]
+    ssl_proxy: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySslProxyArgsDict']]]
     """
     For SRX-only
     """
-    syslog: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySyslogArgs']]]
+    syslog: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySyslogArgsDict']]]
     """
     Required for syslog logging
     """
@@ -10560,10 +10560,10 @@ class DeviceprofileGatewayServicePolicyIdpArgs:
 
 
 class DeviceprofileGatewayServicePolicySkyatpArgsDict(TypedDict):
-    dns_dga_detection: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgs']]]
-    dns_tunnel_detection: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgs']]]
-    http_inspection: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgs']]]
-    iot_device_policy: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs']]]
+    dns_dga_detection: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySkyatpDnsDgaDetectionArgsDict']]]
+    dns_tunnel_detection: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetectionArgsDict']]]
+    http_inspection: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySkyatpHttpInspectionArgsDict']]]
+    iot_device_policy: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgsDict']]]
 
 @pulumi.input_type
 class DeviceprofileGatewayServicePolicySkyatpArgs:
@@ -10840,7 +10840,7 @@ class DeviceprofileGatewayServicePolicySyslogArgs:
 
 
 class DeviceprofileGatewayTunnelConfigsArgsDict(TypedDict):
-    auto_provision: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsAutoProvisionArgs']]]
+    auto_provision: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsAutoProvisionArgsDict']]]
     """
     Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
     """
@@ -10852,7 +10852,7 @@ class DeviceprofileGatewayTunnelConfigsArgsDict(TypedDict):
     """
     Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
     """
-    ike_proposals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayTunnelConfigsIkeProposalArgs']]]]]
+    ike_proposals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayTunnelConfigsIkeProposalArgsDict']]]]]
     """
     If `provider`==`custom-ipsec`
     """
@@ -10860,7 +10860,7 @@ class DeviceprofileGatewayTunnelConfigsArgsDict(TypedDict):
     """
     Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
     """
-    ipsec_proposals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayTunnelConfigsIpsecProposalArgs']]]]]
+    ipsec_proposals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayTunnelConfigsIpsecProposalArgsDict']]]]]
     """
     Only if  `provider`==`custom-ipsec`
     """
@@ -10880,11 +10880,11 @@ class DeviceprofileGatewayTunnelConfigsArgsDict(TypedDict):
     """
     If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
     """
-    primary: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsPrimaryArgs']]]
+    primary: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsPrimaryArgsDict']]]
     """
     Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
     """
-    probe: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsProbeArgs']]]
+    probe: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsProbeArgsDict']]]
     """
     Only if `provider`==`custom-ipsec`
     """
@@ -10904,7 +10904,7 @@ class DeviceprofileGatewayTunnelConfigsArgsDict(TypedDict):
     """
     List of Remote protected subnet for policy-based IPSec negotiation
     """
-    secondary: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsSecondaryArgs']]]
+    secondary: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsSecondaryArgsDict']]]
     """
     Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
     """
@@ -11217,16 +11217,16 @@ class DeviceprofileGatewayTunnelConfigsAutoProvisionArgsDict(TypedDict):
     """
     Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
     """
-    latlng: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsAutoProvisionLatlngArgs']]]
+    latlng: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsAutoProvisionLatlngArgsDict']]]
     """
     API override for POP selection
     """
-    primary: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryArgs']]]
+    primary: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryArgsDict']]]
     region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
     """
-    secondary: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryArgs']]]
+    secondary: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryArgsDict']]]
     service_connection: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we'll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
@@ -11917,12 +11917,12 @@ class DeviceprofileGatewayTunnelConfigsSecondaryArgs:
 
 
 class DeviceprofileGatewayTunnelProviderOptionsArgsDict(TypedDict):
-    jse: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelProviderOptionsJseArgs']]]
+    jse: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelProviderOptionsJseArgsDict']]]
     """
     For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
     """
-    prisma: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelProviderOptionsPrismaArgs']]]
-    zscaler: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelProviderOptionsZscalerArgs']]]
+    prisma: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelProviderOptionsPrismaArgsDict']]]
+    zscaler: NotRequired[pulumi.Input[Optional['DeviceprofileGatewayTunnelProviderOptionsZscalerArgsDict']]]
     """
     For zscaler-ipsec and zscaler-gre
     """
@@ -12083,7 +12083,7 @@ class DeviceprofileGatewayTunnelProviderOptionsZscalerArgsDict(TypedDict):
     """
     If `true`, enable the firewall control option
     """
-    sub_locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgs']]]]]
+    sub_locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgsDict']]]]]
     """
     `sub-locations` can be used for specific uses cases to define different configuration based on the user network
     """
@@ -12707,7 +12707,7 @@ class EvpnTopologyEvpnOptionsArgsDict(TypedDict):
     """
     if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
     """
-    overlay: NotRequired[pulumi.Input[Optional['EvpnTopologyEvpnOptionsOverlayArgs']]]
+    overlay: NotRequired[pulumi.Input[Optional['EvpnTopologyEvpnOptionsOverlayArgsDict']]]
     per_vlan_vga_v4_mac: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
@@ -12720,8 +12720,8 @@ class EvpnTopologyEvpnOptionsArgsDict(TypedDict):
     """
     optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
     """
-    underlay: NotRequired[pulumi.Input[Optional['EvpnTopologyEvpnOptionsUnderlayArgs']]]
-    vs_instances: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['EvpnTopologyEvpnOptionsVsInstancesArgs']]]]]
+    underlay: NotRequired[pulumi.Input[Optional['EvpnTopologyEvpnOptionsUnderlayArgsDict']]]
+    vs_instances: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['EvpnTopologyEvpnOptionsVsInstancesArgsDict']]]]]
     """
     Optional, for EX9200 only to segregate virtual-switches
     """
@@ -13347,7 +13347,7 @@ class GatewaytemplateBgpConfigArgsDict(TypedDict):
     """
     Neighbor AS. If `type`==`internal`, must be equal to `local_as`. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
     """
-    neighbors: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigNeighborsArgs']]]]]
+    neighbors: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigNeighborsArgsDict']]]]]
     """
     Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. If per-neighbor as is desired. Property key is the neighbor address
     """
@@ -13842,7 +13842,7 @@ class GatewaytemplateBgpConfigNeighborsArgs:
 
 
 class GatewaytemplateDhcpdConfigArgsDict(TypedDict):
-    config: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigArgs']]]]]
+    config: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigArgsDict']]]]]
     """
     Property key is the network name
     """
@@ -13899,7 +13899,7 @@ class GatewaytemplateDhcpdConfigConfigArgsDict(TypedDict):
     """
     If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
     """
-    fixed_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigFixedBindingsArgs']]]]]
+    fixed_bindings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigFixedBindingsArgsDict']]]]]
     """
     If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
     """
@@ -13927,7 +13927,7 @@ class GatewaytemplateDhcpdConfigConfigArgsDict(TypedDict):
     """
     In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
     """
-    options: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigOptionsArgs']]]]]
+    options: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigOptionsArgsDict']]]]]
     """
     If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
     """
@@ -13952,7 +13952,7 @@ class GatewaytemplateDhcpdConfigConfigArgsDict(TypedDict):
     """
     enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
     """
-    vendor_encapsulated: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs']]]]]
+    vendor_encapsulated: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgsDict']]]]]
     """
     If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
       * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
@@ -14407,7 +14407,7 @@ class GatewaytemplateIdpProfilesArgsDict(TypedDict):
     """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     org_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    overwrites: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateIdpProfilesOverwriteArgs']]]]]
+    overwrites: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateIdpProfilesOverwriteArgsDict']]]]]
 
 @pulumi.input_type
 class GatewaytemplateIdpProfilesArgs:
@@ -14476,7 +14476,7 @@ class GatewaytemplateIdpProfilesOverwriteArgsDict(TypedDict):
       * drop: silently dropping packets
       * close: notify client/server to close connection
     """
-    matching: NotRequired[pulumi.Input[Optional['GatewaytemplateIdpProfilesOverwriteMatchingArgs']]]
+    matching: NotRequired[pulumi.Input[Optional['GatewaytemplateIdpProfilesOverwriteMatchingArgsDict']]]
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
@@ -14708,8 +14708,8 @@ class GatewaytemplateNetworkArgsDict(TypedDict):
     """
     gateway: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     gateway6: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    internal_access: NotRequired[pulumi.Input[Optional['GatewaytemplateNetworkInternalAccessArgs']]]
-    internet_access: NotRequired[pulumi.Input[Optional['GatewaytemplateNetworkInternetAccessArgs']]]
+    internal_access: NotRequired[pulumi.Input[Optional['GatewaytemplateNetworkInternalAccessArgsDict']]]
+    internet_access: NotRequired[pulumi.Input[Optional['GatewaytemplateNetworkInternetAccessArgsDict']]]
     """
     Whether this network has direct internet access
     """
@@ -14717,7 +14717,7 @@ class GatewaytemplateNetworkArgsDict(TypedDict):
     """
     Whether to allow clients in the network to talk to each other
     """
-    multicast: NotRequired[pulumi.Input[Optional['GatewaytemplateNetworkMulticastArgs']]]
+    multicast: NotRequired[pulumi.Input[Optional['GatewaytemplateNetworkMulticastArgsDict']]]
     """
     Whether to enable multicast support (only PIM-sparse mode is supported)
     """
@@ -14726,12 +14726,12 @@ class GatewaytemplateNetworkArgsDict(TypedDict):
     For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
     """
     subnet6: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    tenants: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkTenantsArgs']]]]]
+    tenants: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkTenantsArgsDict']]]]]
     """
     Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
     """
     vlan_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    vpn_access: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkVpnAccessArgs']]]]]
+    vpn_access: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkVpnAccessArgsDict']]]]]
     """
     Property key is the VPN name. Whether this network can be accessed from vpn
     """
@@ -14959,7 +14959,7 @@ class GatewaytemplateNetworkInternalAccessArgs:
 
 class GatewaytemplateNetworkInternetAccessArgsDict(TypedDict):
     create_simple_service_policy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    destination_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkInternetAccessDestinationNatArgs']]]]]
+    destination_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkInternetAccessDestinationNatArgsDict']]]]]
     """
     Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
     """
@@ -14968,7 +14968,7 @@ class GatewaytemplateNetworkInternetAccessArgsDict(TypedDict):
     """
     By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
     """
-    static_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkInternetAccessStaticNatArgs']]]]]
+    static_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkInternetAccessStaticNatArgsDict']]]]]
     """
     Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
     """
@@ -15200,7 +15200,7 @@ class GatewaytemplateNetworkMulticastArgsDict(TypedDict):
     If the network will only be the source of the multicast traffic, IGMP can be disabled
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    groups: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkMulticastGroupsArgs']]]]]
+    groups: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkMulticastGroupsArgsDict']]]]]
     """
     Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
     """
@@ -15314,7 +15314,7 @@ class GatewaytemplateNetworkVpnAccessArgsDict(TypedDict):
     """
     Whether to allow ping from vpn into this routed network
     """
-    destination_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkVpnAccessDestinationNatArgs']]]]]
+    destination_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkVpnAccessDestinationNatArgsDict']]]]]
     """
     Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
     """
@@ -15342,11 +15342,11 @@ class GatewaytemplateNetworkVpnAccessArgsDict(TypedDict):
     """
     Whether this network is routable
     """
-    source_nat: NotRequired[pulumi.Input[Optional['GatewaytemplateNetworkVpnAccessSourceNatArgs']]]
+    source_nat: NotRequired[pulumi.Input[Optional['GatewaytemplateNetworkVpnAccessSourceNatArgsDict']]]
     """
     If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
     """
-    static_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkVpnAccessStaticNatArgs']]]]]
+    static_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateNetworkVpnAccessStaticNatArgsDict']]]]]
     """
     Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
     """
@@ -15722,7 +15722,7 @@ class GatewaytemplateOobIpConfigArgsDict(TypedDict):
     """
     If `type`==`static`
     """
-    node1: NotRequired[pulumi.Input[Optional['GatewaytemplateOobIpConfigNode1Args']]]
+    node1: NotRequired[pulumi.Input[Optional['GatewaytemplateOobIpConfigNode1ArgsDict']]]
     """
     For HA Cluster, node1 can have different IP Config
     """
@@ -16007,7 +16007,7 @@ class GatewaytemplateOobIpConfigNode1Args:
 
 
 class GatewaytemplatePathPreferencesArgsDict(TypedDict):
-    paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplatePathPreferencesPathArgs']]]]]
+    paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplatePathPreferencesPathArgsDict']]]]]
     strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     enum: `ecmp`, `ordered`, `weighted`
@@ -16282,7 +16282,7 @@ class GatewaytemplatePortConfigArgsDict(TypedDict):
     """
     enum: `auto`, `full`, `half`
     """
-    ip_config: NotRequired[pulumi.Input[Optional['GatewaytemplatePortConfigIpConfigArgs']]]
+    ip_config: NotRequired[pulumi.Input[Optional['GatewaytemplatePortConfigIpConfigArgsDict']]]
     """
     Junos IP Config
     """
@@ -16354,9 +16354,9 @@ class GatewaytemplatePortConfigArgsDict(TypedDict):
     """
     For SSR only
     """
-    traffic_shaping: NotRequired[pulumi.Input[Optional['GatewaytemplatePortConfigTrafficShapingArgs']]]
+    traffic_shaping: NotRequired[pulumi.Input[Optional['GatewaytemplatePortConfigTrafficShapingArgsDict']]]
     vlan_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    vpn_paths: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePortConfigVpnPathsArgs']]]]]
+    vpn_paths: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePortConfigVpnPathsArgsDict']]]]]
     """
     Property key is the VPN name
     """
@@ -16372,11 +16372,11 @@ class GatewaytemplatePortConfigArgsDict(TypedDict):
     """
     Only if `usage`==`wan`, optional. If spoke should reach this port by a different IPv6
     """
-    wan_extra_routes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePortConfigWanExtraRoutesArgs']]]]]
+    wan_extra_routes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePortConfigWanExtraRoutesArgsDict']]]]]
     """
     Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "100.100.100.0/24")
     """
-    wan_extra_routes6: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePortConfigWanExtraRoutes6Args']]]]]
+    wan_extra_routes6: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplatePortConfigWanExtraRoutes6ArgsDict']]]]]
     """
     Only if `usage`==`wan`. Property Key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
     """
@@ -16384,11 +16384,11 @@ class GatewaytemplatePortConfigArgsDict(TypedDict):
     """
     Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
     """
-    wan_probe_override: NotRequired[pulumi.Input[Optional['GatewaytemplatePortConfigWanProbeOverrideArgs']]]
+    wan_probe_override: NotRequired[pulumi.Input[Optional['GatewaytemplatePortConfigWanProbeOverrideArgsDict']]]
     """
     Only if `usage`==`wan`
     """
-    wan_source_nat: NotRequired[pulumi.Input[Optional['GatewaytemplatePortConfigWanSourceNatArgs']]]
+    wan_source_nat: NotRequired[pulumi.Input[Optional['GatewaytemplatePortConfigWanSourceNatArgsDict']]]
     """
     Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
     """
@@ -17495,7 +17495,7 @@ class GatewaytemplatePortConfigVpnPathsArgsDict(TypedDict):
     """
     If the VPN `type`==`hub_spoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
     """
-    traffic_shaping: NotRequired[pulumi.Input[Optional['GatewaytemplatePortConfigVpnPathsTrafficShapingArgs']]]
+    traffic_shaping: NotRequired[pulumi.Input[Optional['GatewaytemplatePortConfigVpnPathsTrafficShapingArgsDict']]]
 
 @pulumi.input_type
 class GatewaytemplatePortConfigVpnPathsArgs:
@@ -17807,7 +17807,7 @@ class GatewaytemplatePortConfigWanSourceNatArgs:
 
 
 class GatewaytemplateRoutingPoliciesArgsDict(TypedDict):
-    terms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateRoutingPoliciesTermArgs']]]]]
+    terms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateRoutingPoliciesTermArgsDict']]]]]
     """
     zero or more criteria/filter can be specified to match the term, all criteria have to be met
     """
@@ -17836,11 +17836,11 @@ class GatewaytemplateRoutingPoliciesArgs:
 
 
 class GatewaytemplateRoutingPoliciesTermArgsDict(TypedDict):
-    actions: NotRequired[pulumi.Input[Optional['GatewaytemplateRoutingPoliciesTermActionsArgs']]]
+    actions: NotRequired[pulumi.Input[Optional['GatewaytemplateRoutingPoliciesTermActionsArgsDict']]]
     """
     When used as import policy
     """
-    matching: NotRequired[pulumi.Input[Optional['GatewaytemplateRoutingPoliciesTermMatchingArgs']]]
+    matching: NotRequired[pulumi.Input[Optional['GatewaytemplateRoutingPoliciesTermMatchingArgsDict']]]
     """
     zero or more criteria/filter can be specified to match the term, all criteria have to be met
     """
@@ -18067,12 +18067,12 @@ class GatewaytemplateRoutingPoliciesTermMatchingArgsDict(TypedDict):
     """
     enum: `aggregate`, `bgp`, `direct`, `ospf`, `static` (SRX Only)
     """
-    route_exists: NotRequired[pulumi.Input[Optional['GatewaytemplateRoutingPoliciesTermMatchingRouteExistsArgs']]]
+    route_exists: NotRequired[pulumi.Input[Optional['GatewaytemplateRoutingPoliciesTermMatchingRouteExistsArgsDict']]]
     vpn_neighbor_macs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     overlay-facing criteria (used for bgp_config where via=vpn)
     """
-    vpn_path_sla: NotRequired[pulumi.Input[Optional['GatewaytemplateRoutingPoliciesTermMatchingVpnPathSlaArgs']]]
+    vpn_path_sla: NotRequired[pulumi.Input[Optional['GatewaytemplateRoutingPoliciesTermMatchingVpnPathSlaArgsDict']]]
     vpn_paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     overlay-facing criteria (used for bgp_config where via=vpn). ordered-
@@ -18306,16 +18306,16 @@ class GatewaytemplateServicePolicyArgsDict(TypedDict):
     """
     Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
     """
-    antivirus: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicyAntivirusArgs']]]
+    antivirus: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicyAntivirusArgsDict']]]
     """
     For SRX-only
     """
-    appqoe: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicyAppqoeArgs']]]
+    appqoe: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicyAppqoeArgsDict']]]
     """
     SRX only
     """
-    ewfs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateServicePolicyEwfArgs']]]]]
-    idp: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicyIdpArgs']]]
+    ewfs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateServicePolicyEwfArgsDict']]]]]
+    idp: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicyIdpArgsDict']]]
     local_routing: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     access within the same VRF
@@ -18336,15 +18336,15 @@ class GatewaytemplateServicePolicyArgsDict(TypedDict):
     """
     Required when `servicepolicy_id` is not defined. List of Applications / Destinations
     """
-    skyatp: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySkyatpArgs']]]
+    skyatp: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySkyatpArgsDict']]]
     """
     SRX only
     """
-    ssl_proxy: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySslProxyArgs']]]
+    ssl_proxy: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySslProxyArgsDict']]]
     """
     For SRX-only
     """
-    syslog: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySyslogArgs']]]
+    syslog: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySyslogArgsDict']]]
     """
     Required for syslog logging
     """
@@ -18802,10 +18802,10 @@ class GatewaytemplateServicePolicyIdpArgs:
 
 
 class GatewaytemplateServicePolicySkyatpArgsDict(TypedDict):
-    dns_dga_detection: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs']]]
-    dns_tunnel_detection: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgs']]]
-    http_inspection: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySkyatpHttpInspectionArgs']]]
-    iot_device_policy: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySkyatpIotDevicePolicyArgs']]]
+    dns_dga_detection: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgsDict']]]
+    dns_tunnel_detection: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySkyatpDnsTunnelDetectionArgsDict']]]
+    http_inspection: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySkyatpHttpInspectionArgsDict']]]
+    iot_device_policy: NotRequired[pulumi.Input[Optional['GatewaytemplateServicePolicySkyatpIotDevicePolicyArgsDict']]]
 
 @pulumi.input_type
 class GatewaytemplateServicePolicySkyatpArgs:
@@ -19082,7 +19082,7 @@ class GatewaytemplateServicePolicySyslogArgs:
 
 
 class GatewaytemplateTunnelConfigsArgsDict(TypedDict):
-    auto_provision: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsAutoProvisionArgs']]]
+    auto_provision: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsAutoProvisionArgsDict']]]
     """
     Auto Provisioning configuration for the tunne. This takes precedence over the `primary` and `secondary` nodes.
     """
@@ -19094,7 +19094,7 @@ class GatewaytemplateTunnelConfigsArgsDict(TypedDict):
     """
     Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
     """
-    ike_proposals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateTunnelConfigsIkeProposalArgs']]]]]
+    ike_proposals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateTunnelConfigsIkeProposalArgsDict']]]]]
     """
     If `provider`==`custom-ipsec`
     """
@@ -19102,7 +19102,7 @@ class GatewaytemplateTunnelConfigsArgsDict(TypedDict):
     """
     Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
     """
-    ipsec_proposals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateTunnelConfigsIpsecProposalArgs']]]]]
+    ipsec_proposals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateTunnelConfigsIpsecProposalArgsDict']]]]]
     """
     Only if  `provider`==`custom-ipsec`
     """
@@ -19122,11 +19122,11 @@ class GatewaytemplateTunnelConfigsArgsDict(TypedDict):
     """
     If `provider`==`custom-ipsec` or `provider`==`prisma-ipsec`, networks reachable via this tunnel
     """
-    primary: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsPrimaryArgs']]]
+    primary: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsPrimaryArgsDict']]]
     """
     Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
     """
-    probe: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsProbeArgs']]]
+    probe: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsProbeArgsDict']]]
     """
     Only if `provider`==`custom-ipsec`
     """
@@ -19146,7 +19146,7 @@ class GatewaytemplateTunnelConfigsArgsDict(TypedDict):
     """
     List of Remote protected subnet for policy-based IPSec negotiation
     """
-    secondary: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsSecondaryArgs']]]
+    secondary: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsSecondaryArgsDict']]]
     """
     Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
     """
@@ -19459,16 +19459,16 @@ class GatewaytemplateTunnelConfigsAutoProvisionArgsDict(TypedDict):
     """
     Enable auto provisioning for the tunnel. If enabled, the `primary` and `secondary` nodes will be ignored.
     """
-    latlng: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsAutoProvisionLatlngArgs']]]
+    latlng: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsAutoProvisionLatlngArgsDict']]]
     """
     API override for POP selection
     """
-    primary: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs']]]
+    primary: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgsDict']]]
     region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API override for POP selection in the case user wants to override the auto discovery of remote network location and force the tunnel to use the specified peer location.
     """
-    secondary: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgs']]]
+    secondary: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgsDict']]]
     service_connection: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     if `provider`==`prisma-ipsec`. By default, we'll use the location of the site to determine the optimal Remote Network location, optionally, service_connection can be considered, then we'll also consider this along with the site location. Define service_connection if the traffic is to be routed to a specific service connection. This field takes a service connection name that is configured in the Prisma cloud, Prisma Access Setup > Service Connections.
@@ -20159,12 +20159,12 @@ class GatewaytemplateTunnelConfigsSecondaryArgs:
 
 
 class GatewaytemplateTunnelProviderOptionsArgsDict(TypedDict):
-    jse: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsJseArgs']]]
+    jse: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsJseArgsDict']]]
     """
     For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
     """
-    prisma: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsPrismaArgs']]]
-    zscaler: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsZscalerArgs']]]
+    prisma: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsPrismaArgsDict']]]
+    zscaler: NotRequired[pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsZscalerArgsDict']]]
     """
     For zscaler-ipsec and zscaler-gre
     """
@@ -20325,7 +20325,7 @@ class GatewaytemplateTunnelProviderOptionsZscalerArgsDict(TypedDict):
     """
     If `true`, enable the firewall control option
     """
-    sub_locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs']]]]]
+    sub_locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgsDict']]]]]
     """
     `sub-locations` can be used for specific uses cases to define different configuration based on the user network
     """
@@ -20933,7 +20933,7 @@ class IdpprofileOverwriteArgsDict(TypedDict):
       * drop: silently dropping packets
       * close: notify client/server to close connection
     """
-    matching: NotRequired[pulumi.Input[Optional['IdpprofileOverwriteMatchingArgs']]]
+    matching: NotRequired[pulumi.Input[Optional['IdpprofileOverwriteMatchingArgsDict']]]
 
 @pulumi.input_type
 class IdpprofileOverwriteArgs:
@@ -21276,7 +21276,7 @@ class InventoryInventoryArgs:
 
 
 class MxclusterMistDasArgsDict(TypedDict):
-    coa_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MxclusterMistDasCoaServerArgs']]]]]
+    coa_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MxclusterMistDasCoaServerArgsDict']]]]]
     """
     Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
     """
@@ -21435,7 +21435,7 @@ class MxclusterMistDasCoaServerArgs:
 class MxclusterMistNacArgsDict(TypedDict):
     acct_server_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     auth_server_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    client_ips: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['MxclusterMistNacClientIpsArgs']]]]]
+    client_ips: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['MxclusterMistNacClientIpsArgsDict']]]]]
     """
     Property key is the RADIUS Client IP/Subnet.
     """
@@ -21657,11 +21657,11 @@ class MxclusterProxyArgs:
 
 
 class MxclusterRadsecArgsDict(TypedDict):
-    acct_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MxclusterRadsecAcctServerArgs']]]]]
+    acct_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MxclusterRadsecAcctServerArgsDict']]]]]
     """
     List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
     """
-    auth_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MxclusterRadsecAuthServerArgs']]]]]
+    auth_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MxclusterRadsecAuthServerArgsDict']]]]]
     """
     List of RADIUS authentication servers, order matters where the first one is treated as primary
     """
@@ -22737,7 +22737,7 @@ class MxedgeTuntermExtraRoutesArgs:
 
 class MxedgeTuntermIgmpSnoopingConfigArgsDict(TypedDict):
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    querier: NotRequired[pulumi.Input[Optional['MxedgeTuntermIgmpSnoopingConfigQuerierArgs']]]
+    querier: NotRequired[pulumi.Input[Optional['MxedgeTuntermIgmpSnoopingConfigQuerierArgsDict']]]
     vlan_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     List of vlans on which tunterm performs IGMP snooping
@@ -23058,8 +23058,8 @@ class MxedgeTuntermMonitoringArgs:
 
 
 class MxedgeTuntermMulticastConfigArgsDict(TypedDict):
-    mdns: NotRequired[pulumi.Input[Optional['MxedgeTuntermMulticastConfigMdnsArgs']]]
-    ssdp: NotRequired[pulumi.Input[Optional['MxedgeTuntermMulticastConfigSsdpArgs']]]
+    mdns: NotRequired[pulumi.Input[Optional['MxedgeTuntermMulticastConfigMdnsArgsDict']]]
+    ssdp: NotRequired[pulumi.Input[Optional['MxedgeTuntermMulticastConfigSsdpArgsDict']]]
 
 @pulumi.input_type
 class MxedgeTuntermMulticastConfigArgs:
@@ -23513,7 +23513,7 @@ class NacPortalSsoArgsDict(TypedDict):
     idp_sso_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     nameid_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    sso_role_matchings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NacPortalSsoSsoRoleMatchingArgs']]]]]
+    sso_role_matchings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NacPortalSsoSsoRoleMatchingArgsDict']]]]]
     use_sso_role_for_cert: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If it's desired to inject a role into Cert's Subject (so it can be used later on in policy)
@@ -24063,7 +24063,7 @@ class NetworkInternalAccessArgs:
 
 class NetworkInternetAccessArgsDict(TypedDict):
     create_simple_service_policy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    destination_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkInternetAccessDestinationNatArgs']]]]]
+    destination_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkInternetAccessDestinationNatArgsDict']]]]]
     """
     Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
     """
@@ -24072,7 +24072,7 @@ class NetworkInternetAccessArgsDict(TypedDict):
     """
     By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
     """
-    static_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkInternetAccessStaticNatArgs']]]]]
+    static_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkInternetAccessStaticNatArgsDict']]]]]
     """
     Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
     """
@@ -24304,7 +24304,7 @@ class NetworkMulticastArgsDict(TypedDict):
     If the network will only be the source of the multicast traffic, IGMP can be disabled
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    groups: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkMulticastGroupsArgs']]]]]
+    groups: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkMulticastGroupsArgsDict']]]]]
     """
     Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
     """
@@ -24418,7 +24418,7 @@ class NetworkVpnAccessArgsDict(TypedDict):
     """
     Whether to allow ping from vpn into this routed network
     """
-    destination_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessDestinationNatArgs']]]]]
+    destination_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessDestinationNatArgsDict']]]]]
     """
     Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
     """
@@ -24446,11 +24446,11 @@ class NetworkVpnAccessArgsDict(TypedDict):
     """
     Whether this network is routable
     """
-    source_nat: NotRequired[pulumi.Input[Optional['NetworkVpnAccessSourceNatArgs']]]
+    source_nat: NotRequired[pulumi.Input[Optional['NetworkVpnAccessSourceNatArgsDict']]]
     """
     If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
     """
-    static_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessStaticNatArgs']]]]]
+    static_nat: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessStaticNatArgsDict']]]]]
     """
     Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
     """
@@ -24814,7 +24814,7 @@ class NetworkVpnAccessStaticNatArgs:
 
 
 class NetworktemplateAclPolicyArgsDict(TypedDict):
-    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateAclPolicyActionArgs']]]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateAclPolicyActionArgsDict']]]]]
     """
     ACL Policy Actions:
       - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
@@ -24980,7 +24980,7 @@ class NetworktemplateAclTagsArgsDict(TypedDict):
       * `type`==`static_gbp`
     if from matching radius_group
     """
-    specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgs']]]]]
+    specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgsDict']]]]]
     """
     If `type`==`resource`, `type`==`radius_group`, `type`==`port_usage` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
     """
@@ -25266,7 +25266,7 @@ class NetworktemplateBgpConfigArgsDict(TypedDict):
     """
     Import policy must match one of the policy names defined in the `routing_policies` property.
     """
-    neighbors: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateBgpConfigNeighborsArgs']]]]]
+    neighbors: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateBgpConfigNeighborsArgsDict']]]]]
     """
     Property key is the BGP Neighbor IP Address.
     """
@@ -25622,7 +25622,7 @@ class NetworktemplateExtraRoutes6ArgsDict(TypedDict):
     This takes precedence
     """
     metric: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    next_qualified: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateExtraRoutes6NextQualifiedArgs']]]]]
+    next_qualified: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateExtraRoutes6NextQualifiedArgsDict']]]]]
     no_resolve: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     preference: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
@@ -25755,7 +25755,7 @@ class NetworktemplateExtraRoutesArgsDict(TypedDict):
     This takes precedence
     """
     metric: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    next_qualified: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesNextQualifiedArgs']]]]]
+    next_qualified: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesNextQualifiedArgsDict']]]]]
     no_resolve: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     preference: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
@@ -26560,7 +26560,7 @@ class NetworktemplatePortUsagesArgsDict(TypedDict):
     """
     Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
     """
-    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplatePortUsagesRuleArgs']]]]]
+    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplatePortUsagesRuleArgsDict']]]]]
     """
     Only if `mode`==`dynamic`
     """
@@ -26576,7 +26576,7 @@ class NetworktemplatePortUsagesArgsDict(TypedDict):
     """
     Only if `mode`!=`dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
     """
-    storm_control: NotRequired[pulumi.Input[Optional['NetworktemplatePortUsagesStormControlArgs']]]
+    storm_control: NotRequired[pulumi.Input[Optional['NetworktemplatePortUsagesStormControlArgsDict']]]
     """
     Switch storm control. Only if `mode`!=`dynamic`
     """
@@ -27586,12 +27586,12 @@ class NetworktemplateRadiusConfigArgsDict(TypedDict):
     """
     How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
     """
-    acct_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRadiusConfigAcctServerArgs']]]]]
+    acct_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRadiusConfigAcctServerArgsDict']]]]]
     auth_server_selection: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     enum: `ordered`, `unordered`
     """
-    auth_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRadiusConfigAuthServerArgs']]]]]
+    auth_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRadiusConfigAuthServerArgsDict']]]]]
     auth_servers_retries: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Radius auth session retries
@@ -28046,22 +28046,22 @@ class NetworktemplateRadiusConfigAuthServerArgs:
 
 
 class NetworktemplateRemoteSyslogArgsDict(TypedDict):
-    archive: NotRequired[pulumi.Input[Optional['NetworktemplateRemoteSyslogArchiveArgs']]]
+    archive: NotRequired[pulumi.Input[Optional['NetworktemplateRemoteSyslogArchiveArgsDict']]]
     cacerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
-    console: NotRequired[pulumi.Input[Optional['NetworktemplateRemoteSyslogConsoleArgs']]]
+    console: NotRequired[pulumi.Input[Optional['NetworktemplateRemoteSyslogConsoleArgsDict']]]
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogFileArgs']]]]]
+    files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogFileArgsDict']]]]]
     network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If source_address is configured, will use the vlan firstly otherwise use source_ip
     """
     send_to_all_servers: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogServerArgs']]]]]
+    servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogServerArgsDict']]]]]
     time_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     enum: `millisecond`, `year`, `year millisecond`
     """
-    users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogUserArgs']]]]]
+    users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogUserArgsDict']]]]]
 
 @pulumi.input_type
 class NetworktemplateRemoteSyslogArgs:
@@ -28232,7 +28232,7 @@ class NetworktemplateRemoteSyslogArchiveArgs:
 
 
 class NetworktemplateRemoteSyslogConsoleArgsDict(TypedDict):
-    contents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogConsoleContentArgs']]]]]
+    contents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogConsoleContentArgsDict']]]]]
 
 @pulumi.input_type
 class NetworktemplateRemoteSyslogConsoleArgs:
@@ -28301,8 +28301,8 @@ class NetworktemplateRemoteSyslogConsoleContentArgs:
 
 
 class NetworktemplateRemoteSyslogFileArgsDict(TypedDict):
-    archive: NotRequired[pulumi.Input[Optional['NetworktemplateRemoteSyslogFileArchiveArgs']]]
-    contents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogFileContentArgs']]]]]
+    archive: NotRequired[pulumi.Input[Optional['NetworktemplateRemoteSyslogFileArchiveArgsDict']]]
+    contents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogFileContentArgsDict']]]]]
     enable_tls: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Only if `protocol`==`tcp`
@@ -28490,7 +28490,7 @@ class NetworktemplateRemoteSyslogFileContentArgs:
 
 
 class NetworktemplateRemoteSyslogServerArgsDict(TypedDict):
-    contents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogServerContentArgs']]]]]
+    contents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogServerContentArgsDict']]]]]
     explicit_priority: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     facility: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -28752,7 +28752,7 @@ class NetworktemplateRemoteSyslogServerContentArgs:
 
 
 class NetworktemplateRemoteSyslogUserArgsDict(TypedDict):
-    contents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogUserContentArgs']]]]]
+    contents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRemoteSyslogUserContentArgsDict']]]]]
     match: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
@@ -28847,7 +28847,7 @@ class NetworktemplateRemoteSyslogUserContentArgs:
 
 
 class NetworktemplateRoutingPoliciesArgsDict(TypedDict):
-    terms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRoutingPoliciesTermArgs']]]]]
+    terms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateRoutingPoliciesTermArgsDict']]]]]
     """
     at least criteria/filter must be specified to match the term, all criteria have to be met
     """
@@ -28877,11 +28877,11 @@ class NetworktemplateRoutingPoliciesArgs:
 
 class NetworktemplateRoutingPoliciesTermArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
-    actions: NotRequired[pulumi.Input[Optional['NetworktemplateRoutingPoliciesTermActionsArgs']]]
+    actions: NotRequired[pulumi.Input[Optional['NetworktemplateRoutingPoliciesTermActionsArgsDict']]]
     """
     When used as import policy
     """
-    matching: NotRequired[pulumi.Input[Optional['NetworktemplateRoutingPoliciesTermMatchingArgs']]]
+    matching: NotRequired[pulumi.Input[Optional['NetworktemplateRoutingPoliciesTermMatchingArgsDict']]]
     """
     zero or more criteria/filter can be specified to match the term, all criteria have to be met
     """
@@ -29101,7 +29101,7 @@ class NetworktemplateRoutingPoliciesTermMatchingArgs:
 
 
 class NetworktemplateSnmpConfigArgsDict(TypedDict):
-    client_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigClientListArgs']]]]]
+    client_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigClientListArgsDict']]]]]
     contact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
@@ -29113,10 +29113,10 @@ class NetworktemplateSnmpConfigArgsDict(TypedDict):
     location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    trap_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigTrapGroupArgs']]]]]
-    v2c_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV2cConfigArgs']]]]]
-    v3_config: NotRequired[pulumi.Input[Optional['NetworktemplateSnmpConfigV3ConfigArgs']]]
-    views: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigViewArgs']]]]]
+    trap_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigTrapGroupArgsDict']]]]]
+    v2c_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV2cConfigArgsDict']]]]]
+    v3_config: NotRequired[pulumi.Input[Optional['NetworktemplateSnmpConfigV3ConfigArgsDict']]]
+    views: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigViewArgsDict']]]]]
 
 @pulumi.input_type
 class NetworktemplateSnmpConfigArgs:
@@ -29469,12 +29469,12 @@ class NetworktemplateSnmpConfigV2cConfigArgs:
 
 
 class NetworktemplateSnmpConfigV3ConfigArgsDict(TypedDict):
-    notifies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigNotifyArgs']]]]]
-    notify_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs']]]]]
-    target_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigTargetAddressArgs']]]]]
-    target_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigTargetParameterArgs']]]]]
-    usms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmArgs']]]]]
-    vacm: NotRequired[pulumi.Input[Optional['NetworktemplateSnmpConfigV3ConfigVacmArgs']]]
+    notifies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigNotifyArgsDict']]]]]
+    notify_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigNotifyFilterArgsDict']]]]]
+    target_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigTargetAddressArgsDict']]]]]
+    target_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigTargetParameterArgsDict']]]]]
+    usms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmArgsDict']]]]]
+    vacm: NotRequired[pulumi.Input[Optional['NetworktemplateSnmpConfigV3ConfigVacmArgsDict']]]
 
 @pulumi.input_type
 class NetworktemplateSnmpConfigV3ConfigArgs:
@@ -29606,7 +29606,7 @@ class NetworktemplateSnmpConfigV3ConfigNotifyArgs:
 
 
 class NetworktemplateSnmpConfigV3ConfigNotifyFilterArgsDict(TypedDict):
-    contents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs']]]]]
+    contents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgsDict']]]]]
     profile_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
@@ -29897,7 +29897,7 @@ class NetworktemplateSnmpConfigV3ConfigUsmArgsDict(TypedDict):
     """
     Required only if `engine_type`==`remote_engine`
     """
-    users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmUserArgs']]]]]
+    users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmUserArgsDict']]]]]
 
 @pulumi.input_type
 class NetworktemplateSnmpConfigV3ConfigUsmArgs:
@@ -30052,8 +30052,8 @@ class NetworktemplateSnmpConfigV3ConfigUsmUserArgs:
 
 
 class NetworktemplateSnmpConfigV3ConfigVacmArgsDict(TypedDict):
-    accesses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigVacmAccessArgs']]]]]
-    security_to_group: NotRequired[pulumi.Input[Optional['NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupArgs']]]
+    accesses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigVacmAccessArgsDict']]]]]
+    security_to_group: NotRequired[pulumi.Input[Optional['NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupArgsDict']]]
 
 @pulumi.input_type
 class NetworktemplateSnmpConfigV3ConfigVacmArgs:
@@ -30086,7 +30086,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmArgs:
 
 class NetworktemplateSnmpConfigV3ConfigVacmAccessArgsDict(TypedDict):
     group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    prefix_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs']]]]]
+    prefix_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgsDict']]]]]
 
 @pulumi.input_type
 class NetworktemplateSnmpConfigV3ConfigVacmAccessArgs:
@@ -30267,7 +30267,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs:
 
 
 class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupArgsDict(TypedDict):
-    contents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgs']]]]]
+    contents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgsDict']]]]]
     security_model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     enum: `usm`, `v1`, `v2c`
@@ -30407,7 +30407,7 @@ class NetworktemplateSnmpConfigViewArgs:
 
 class NetworktemplateSwitchMatchingArgsDict(TypedDict):
     enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSwitchMatchingRuleArgs']]]]]
+    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSwitchMatchingRuleArgsDict']]]]]
     """
     list of rules to define custom switch configuration based on different criteria. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
     """
@@ -30456,7 +30456,7 @@ class NetworktemplateSwitchMatchingRuleArgsDict(TypedDict):
     """
     Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
     """
-    ip_config: NotRequired[pulumi.Input[Optional['NetworktemplateSwitchMatchingRuleIpConfigArgs']]]
+    ip_config: NotRequired[pulumi.Input[Optional['NetworktemplateSwitchMatchingRuleIpConfigArgsDict']]]
     """
     In-Band Management interface configuration
     """
@@ -30480,19 +30480,19 @@ class NetworktemplateSwitchMatchingRuleArgsDict(TypedDict):
     """
     Rule name. WARNING: the name `default` is reserved and can only be used for the last rule in the list
     """
-    oob_ip_config: NotRequired[pulumi.Input[Optional['NetworktemplateSwitchMatchingRuleOobIpConfigArgs']]]
+    oob_ip_config: NotRequired[pulumi.Input[Optional['NetworktemplateSwitchMatchingRuleOobIpConfigArgsDict']]]
     """
     Out-of-Band Management interface configuration
     """
-    port_config: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortConfigArgs']]]]]
+    port_config: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortConfigArgsDict']]]]]
     """
     Property key is the port name or range (e.g. "ge-0/0/0-10")
     """
-    port_mirroring: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortMirroringArgs']]]]]
+    port_mirroring: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortMirroringArgsDict']]]]]
     """
     Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
     """
-    stp_config: NotRequired[pulumi.Input[Optional['NetworktemplateSwitchMatchingRuleStpConfigArgs']]]
+    stp_config: NotRequired[pulumi.Input[Optional['NetworktemplateSwitchMatchingRuleStpConfigArgsDict']]]
 
 @pulumi.input_type
 class NetworktemplateSwitchMatchingRuleArgs:
@@ -31308,7 +31308,7 @@ class NetworktemplateSwitchMgmtArgsDict(TypedDict):
     """
     disable_oob_down_alarm: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     fips_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    local_accounts: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateSwitchMgmtLocalAccountsArgs']]]]]
+    local_accounts: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateSwitchMgmtLocalAccountsArgsDict']]]]]
     """
     Property key is the user name. For Local user authentication
     """
@@ -31320,7 +31320,7 @@ class NetworktemplateSwitchMgmtArgsDict(TypedDict):
     """
     Mist Edge port used to proxy the switch management traffic to the Mist Cloud. Value in range 1-65535
     """
-    protect_re: NotRequired[pulumi.Input[Optional['NetworktemplateSwitchMgmtProtectReArgs']]]
+    protect_re: NotRequired[pulumi.Input[Optional['NetworktemplateSwitchMgmtProtectReArgsDict']]]
     """
     Restrict inbound-traffic to host
     when enabled, all traffic that is not essential to our operation will be dropped 
@@ -31331,7 +31331,7 @@ class NetworktemplateSwitchMgmtArgsDict(TypedDict):
     By default, only the configuration generated by Mist is cleaned up during the configuration process. If `true`, all the existing configuration will be removed.
     """
     root_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    tacacs: NotRequired[pulumi.Input[Optional['NetworktemplateSwitchMgmtTacacsArgs']]]
+    tacacs: NotRequired[pulumi.Input[Optional['NetworktemplateSwitchMgmtTacacsArgsDict']]]
     use_mxedge_proxy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     To use mxedge as proxy
@@ -31619,7 +31619,7 @@ class NetworktemplateSwitchMgmtProtectReArgsDict(TypedDict):
     """
     optionally, services we'll allow. enum: `icmp`, `ssh`
     """
-    customs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSwitchMgmtProtectReCustomArgs']]]]]
+    customs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSwitchMgmtProtectReCustomArgsDict']]]]]
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When enabled, all traffic that is not essential to our operation will be dropped
@@ -31784,7 +31784,7 @@ class NetworktemplateSwitchMgmtProtectReCustomArgs:
 
 
 class NetworktemplateSwitchMgmtTacacsArgsDict(TypedDict):
-    acct_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSwitchMgmtTacacsAcctServerArgs']]]]]
+    acct_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSwitchMgmtTacacsAcctServerArgsDict']]]]]
     default_role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     enum: `admin`, `helpdesk`, `none`, `read`
@@ -31794,7 +31794,7 @@ class NetworktemplateSwitchMgmtTacacsArgsDict(TypedDict):
     """
     Which network the TACACS server resides
     """
-    tacplus_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSwitchMgmtTacacsTacplusServerArgs']]]]]
+    tacplus_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NetworktemplateSwitchMgmtTacacsTacplusServerArgsDict']]]]]
 
 @pulumi.input_type
 class NetworktemplateSwitchMgmtTacacsArgs:
@@ -32021,11 +32021,11 @@ class NetworktemplateVrfConfigArgs:
 class NetworktemplateVrfInstancesArgsDict(TypedDict):
     evpn_auto_loopback_subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     evpn_auto_loopback_subnet6: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    extra_routes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesExtraRoutesArgs']]]]]
+    extra_routes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesExtraRoutesArgsDict']]]]]
     """
     Property key is the destination CIDR (e.g. "10.0.0.0/8")
     """
-    extra_routes6: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesExtraRoutes6Args']]]]]
+    extra_routes6: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesExtraRoutes6ArgsDict']]]]]
     """
     Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
     """
@@ -32967,7 +32967,7 @@ class RftemplateModelSpecificArgsDict(TypedDict):
     ant_gain24: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     ant_gain5: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     ant_gain6: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    band24: NotRequired[pulumi.Input[Optional['RftemplateModelSpecificBand24Args']]]
+    band24: NotRequired[pulumi.Input[Optional['RftemplateModelSpecificBand24ArgsDict']]]
     """
     Radio Band AP settings
     """
@@ -32975,15 +32975,15 @@ class RftemplateModelSpecificArgsDict(TypedDict):
     """
     enum: `24`, `5`, `6`, `auto`
     """
-    band5: NotRequired[pulumi.Input[Optional['RftemplateModelSpecificBand5Args']]]
+    band5: NotRequired[pulumi.Input[Optional['RftemplateModelSpecificBand5ArgsDict']]]
     """
     Radio Band AP settings
     """
-    band5_on24_radio: NotRequired[pulumi.Input[Optional['RftemplateModelSpecificBand5On24RadioArgs']]]
+    band5_on24_radio: NotRequired[pulumi.Input[Optional['RftemplateModelSpecificBand5On24RadioArgsDict']]]
     """
     Radio Band AP settings
     """
-    band6: NotRequired[pulumi.Input[Optional['RftemplateModelSpecificBand6Args']]]
+    band6: NotRequired[pulumi.Input[Optional['RftemplateModelSpecificBand6ArgsDict']]]
     """
     Radio Band AP settings
     """
@@ -34695,7 +34695,7 @@ class SettingJcloudRaArgs:
 
 
 class SettingJuniperArgsDict(TypedDict):
-    accounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingJuniperAccountArgs']]]]]
+    accounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingJuniperAccountArgsDict']]]]]
 
 @pulumi.input_type
 class SettingJuniperArgs:
@@ -34748,7 +34748,7 @@ class SettingJuniperAccountArgs:
 
 
 class SettingJuniperSrxArgsDict(TypedDict):
-    auto_upgrade: NotRequired[pulumi.Input[Optional['SettingJuniperSrxAutoUpgradeArgs']]]
+    auto_upgrade: NotRequired[pulumi.Input[Optional['SettingJuniperSrxAutoUpgradeArgsDict']]]
     """
     auto_upgrade device first time it is onboarded
     """
@@ -34941,7 +34941,7 @@ class SettingJunosShellAccessArgs:
 
 
 class SettingMarvisArgsDict(TypedDict):
-    auto_operations: NotRequired[pulumi.Input[Optional['SettingMarvisAutoOperationsArgs']]]
+    auto_operations: NotRequired[pulumi.Input[Optional['SettingMarvisAutoOperationsArgsDict']]]
 
 @pulumi.input_type
 class SettingMarvisArgs:
@@ -35174,7 +35174,7 @@ class SettingMistNacArgsDict(TypedDict):
     """
     By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
     """
-    fingerprinting: NotRequired[pulumi.Input[Optional['SettingMistNacFingerprintingArgs']]]
+    fingerprinting: NotRequired[pulumi.Input[Optional['SettingMistNacFingerprintingArgsDict']]]
     """
     Allows customer to enable client fingerprinting for policy enforcement
     """
@@ -35186,8 +35186,8 @@ class SettingMistNacArgsDict(TypedDict):
     """
     allow customer to choose the EAP-TLS client certificate's field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
     """
-    idps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMistNacIdpArgs']]]]]
-    server_cert: NotRequired[pulumi.Input[Optional['SettingMistNacServerCertArgs']]]
+    idps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingMistNacIdpArgsDict']]]]]
+    server_cert: NotRequired[pulumi.Input[Optional['SettingMistNacServerCertArgsDict']]]
     """
     radius server cert to be presented in EAP TLS
     """
@@ -36003,7 +36003,7 @@ class SettingSecurityArgs:
 
 
 class SettingSsrArgsDict(TypedDict):
-    auto_upgrade: NotRequired[pulumi.Input[Optional['SettingSsrAutoUpgradeArgs']]]
+    auto_upgrade: NotRequired[pulumi.Input[Optional['SettingSsrAutoUpgradeArgsDict']]]
     """
     auto_upgrade device first time it is onboarded
     """
@@ -36019,7 +36019,7 @@ class SettingSsrArgsDict(TypedDict):
     """
     Disable stats collection on SSR devices
     """
-    proxy: NotRequired[pulumi.Input[Optional['SettingSsrProxyArgs']]]
+    proxy: NotRequired[pulumi.Input[Optional['SettingSsrProxyArgsDict']]]
     """
     SSR proxy configuration to talk to Mist
     """
@@ -36227,7 +36227,7 @@ class SettingSsrProxyArgs:
 
 
 class SettingSwitchArgsDict(TypedDict):
-    auto_upgrade: NotRequired[pulumi.Input[Optional['SettingSwitchAutoUpgradeArgs']]]
+    auto_upgrade: NotRequired[pulumi.Input[Optional['SettingSwitchAutoUpgradeArgsDict']]]
 
 @pulumi.input_type
 class SettingSwitchArgs:
@@ -36349,17 +36349,17 @@ class SettingSyntheticTestArgsDict(TypedDict):
     """
     enum: `auto`, `high`, `low`
     """
-    custom_probes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingSyntheticTestCustomProbesArgs']]]]]
+    custom_probes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingSyntheticTestCustomProbesArgsDict']]]]]
     """
     Custom probes to be used for synthetic tests
     """
     disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    lan_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingSyntheticTestLanNetworkArgs']]]]]
+    lan_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingSyntheticTestLanNetworkArgsDict']]]]]
     """
     List of networks to be used for synthetic tests
     """
-    vlans: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingSyntheticTestVlanArgs']]]]]
-    wan_speedtest: NotRequired[pulumi.Input[Optional['SettingSyntheticTestWanSpeedtestArgs']]]
+    vlans: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SettingSyntheticTestVlanArgsDict']]]]]
+    wan_speedtest: NotRequired[pulumi.Input[Optional['SettingSyntheticTestWanSpeedtestArgsDict']]]
 
 @pulumi.input_type
 class SettingSyntheticTestArgs:
@@ -37018,12 +37018,12 @@ class VpnPathsArgsDict(TypedDict):
     """
     If different from the wan port
     """
-    peer_paths: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['VpnPathsPeerPathsArgs']]]]]
+    peer_paths: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['VpnPathsPeerPathsArgsDict']]]]]
     """
     If `type`==`mesh`, Property key is the Peer Interface name
     """
     pod: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    traffic_shaping: NotRequired[pulumi.Input[Optional['VpnPathsTrafficShapingArgs']]]
+    traffic_shaping: NotRequired[pulumi.Input[Optional['VpnPathsTrafficShapingArgsDict']]]
 
 @pulumi.input_type
 class VpnPathsArgs:
@@ -37482,9 +37482,9 @@ class WlanAppLimitArgs:
 
 
 class WlanAppQosArgsDict(TypedDict):
-    apps: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanAppQosAppsArgs']]]]]
+    apps: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanAppQosAppsArgsDict']]]]]
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    others: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WlanAppQosOtherArgs']]]]]
+    others: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WlanAppQosOtherArgsDict']]]]]
 
 @pulumi.input_type
 class WlanAppQosArgs:
@@ -38065,7 +38065,7 @@ class WlanBonjourArgsDict(TypedDict):
     """
     Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
     """
-    services: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]]]]
+    services: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanBonjourServicesArgsDict']]]]]
     """
     What services are allowed. 
     Property key is the service name
@@ -40688,7 +40688,7 @@ class WlanPortalTemplatePortalTemplateArgsDict(TypedDict):
     """
     Whether field4 is required field
     """
-    locales: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanPortalTemplatePortalTemplateLocalesArgs']]]]]
+    locales: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['WlanPortalTemplatePortalTemplateLocalesArgsDict']]]]]
     """
     Can be used to localize the portal based on the User Agent. Allowed property key values are:
       `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
@@ -44614,7 +44614,7 @@ class WlanRadsecArgsDict(TypedDict):
     """
     Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
     """
-    servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WlanRadsecServerArgs']]]]]
+    servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WlanRadsecServerArgsDict']]]]]
     """
     List of RadSec Servers. Only if not Mist Edge.
     """
@@ -44965,7 +44965,7 @@ class WlanRatesetArgs:
 
 class WlanScheduleArgsDict(TypedDict):
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    hours: NotRequired[pulumi.Input[Optional['WlanScheduleHoursArgs']]]
+    hours: NotRequired[pulumi.Input[Optional['WlanScheduleHoursArgsDict']]]
     """
     Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
     """
