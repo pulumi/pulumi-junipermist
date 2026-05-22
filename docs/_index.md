@@ -53,7 +53,7 @@ This provider supports the following Mist Clouds:
 ## Configuration
 ### Provider configuration example
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -197,6 +197,12 @@ public class App {
     public static void stack(Context ctx) {
     }
 }
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+Example currently unavailable in this language
 ```
 
 {{% /choosable %}}
