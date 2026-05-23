@@ -27,10 +27,10 @@ import (
 type Mxedge struct {
 	pulumi.CustomResourceState
 
-	ClaimCode         pulumi.StringPtrOutput `pulumi:"claimCode"`
-	Mac               pulumi.StringOutput    `pulumi:"mac"`
-	Model             pulumi.StringOutput    `pulumi:"model"`
-	MxagentRegistered pulumi.BoolOutput      `pulumi:"mxagentRegistered"`
+	ClaimCode         pulumi.StringOutput `pulumi:"claimCode"`
+	Mac               pulumi.StringOutput `pulumi:"mac"`
+	Model             pulumi.StringOutput `pulumi:"model"`
+	MxagentRegistered pulumi.BoolOutput   `pulumi:"mxagentRegistered"`
 	// MxCluster this MxEdge belongs to
 	MxclusterId pulumi.StringPtrOutput    `pulumi:"mxclusterId"`
 	MxedgeMgmt  MxedgeMxedgeMgmtPtrOutput `pulumi:"mxedgeMgmt"`
@@ -42,8 +42,6 @@ type Mxedge struct {
 	OrgId       pulumi.StringOutput        `pulumi:"orgId"`
 	// Proxy Configuration to talk to Mist
 	Proxy MxedgeProxyPtrOutput `pulumi:"proxy"`
-	// Registration code for the MxEdge
-	RegistrationCode pulumi.StringOutput `pulumi:"registrationCode"`
 	// List of services to run, tunterm only for now
 	Services pulumi.StringArrayOutput `pulumi:"services"`
 	SiteId   pulumi.StringPtrOutput   `pulumi:"siteId"`
@@ -114,8 +112,6 @@ type mxedgeState struct {
 	OrgId       *string            `pulumi:"orgId"`
 	// Proxy Configuration to talk to Mist
 	Proxy *MxedgeProxy `pulumi:"proxy"`
-	// Registration code for the MxEdge
-	RegistrationCode *string `pulumi:"registrationCode"`
 	// List of services to run, tunterm only for now
 	Services []string `pulumi:"services"`
 	SiteId   *string  `pulumi:"siteId"`
@@ -154,8 +150,6 @@ type MxedgeState struct {
 	OrgId       pulumi.StringPtrInput
 	// Proxy Configuration to talk to Mist
 	Proxy MxedgeProxyPtrInput
-	// Registration code for the MxEdge
-	RegistrationCode pulumi.StringPtrInput
 	// List of services to run, tunterm only for now
 	Services pulumi.StringArrayInput
 	SiteId   pulumi.StringPtrInput
@@ -336,8 +330,8 @@ func (o MxedgeOutput) ToMxedgeOutputWithContext(ctx context.Context) MxedgeOutpu
 	return o
 }
 
-func (o MxedgeOutput) ClaimCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Mxedge) pulumi.StringPtrOutput { return v.ClaimCode }).(pulumi.StringPtrOutput)
+func (o MxedgeOutput) ClaimCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Mxedge) pulumi.StringOutput { return v.ClaimCode }).(pulumi.StringOutput)
 }
 
 func (o MxedgeOutput) Mac() pulumi.StringOutput {
@@ -385,11 +379,6 @@ func (o MxedgeOutput) OrgId() pulumi.StringOutput {
 // Proxy Configuration to talk to Mist
 func (o MxedgeOutput) Proxy() MxedgeProxyPtrOutput {
 	return o.ApplyT(func(v *Mxedge) MxedgeProxyPtrOutput { return v.Proxy }).(MxedgeProxyPtrOutput)
-}
-
-// Registration code for the MxEdge
-func (o MxedgeOutput) RegistrationCode() pulumi.StringOutput {
-	return o.ApplyT(func(v *Mxedge) pulumi.StringOutput { return v.RegistrationCode }).(pulumi.StringOutput)
 }
 
 // List of services to run, tunterm only for now

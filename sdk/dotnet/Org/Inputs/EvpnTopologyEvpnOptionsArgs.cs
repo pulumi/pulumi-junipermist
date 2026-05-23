@@ -43,6 +43,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? CoreAsBorder { get; set; }
 
         /// <summary>
+        /// Whether to route management traffic inband; routes will be propagated to downstream switches
+        /// </summary>
+        [Input("enableInbandMgmt")]
+        public Input<bool>? EnableInbandMgmt { get; set; }
+
+        /// <summary>
         /// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
         /// </summary>
         [Input("enableInbandZtp")]

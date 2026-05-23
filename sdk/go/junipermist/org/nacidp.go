@@ -166,6 +166,21 @@ func NewNacidp(ctx *pulumi.Context,
 	if args.OrgId == nil {
 		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
+	if args.OauthCcClientSecret != nil {
+		args.OauthCcClientSecret = pulumi.ToSecret(args.OauthCcClientSecret).(pulumi.StringPtrInput)
+	}
+	if args.OauthRopcClientSecret != nil {
+		args.OauthRopcClientSecret = pulumi.ToSecret(args.OauthRopcClientSecret).(pulumi.StringPtrInput)
+	}
+	if args.ScimSecretToken != nil {
+		args.ScimSecretToken = pulumi.ToSecret(args.ScimSecretToken).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"oauthCcClientSecret",
+		"oauthRopcClientSecret",
+		"scimSecretToken",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Nacidp
 	err := ctx.RegisterResource("junipermist:org/nacidp:Nacidp", name, args, &resource, opts...)

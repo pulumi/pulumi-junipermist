@@ -32,6 +32,11 @@ public final class GatewayBgpConfigNeighbors {
      * 
      */
     private String neighborAs;
+    /**
+     * @return If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+     * 
+     */
+    private @Nullable String tunnelVia;
 
     private GatewayBgpConfigNeighbors() {}
     /**
@@ -64,6 +69,13 @@ public final class GatewayBgpConfigNeighbors {
     public String neighborAs() {
         return this.neighborAs;
     }
+    /**
+     * @return If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+     * 
+     */
+    public Optional<String> tunnelVia() {
+        return Optional.ofNullable(this.tunnelVia);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -80,6 +92,7 @@ public final class GatewayBgpConfigNeighbors {
         private @Nullable String importPolicy;
         private @Nullable Integer multihopTtl;
         private String neighborAs;
+        private @Nullable String tunnelVia;
         public Builder() {}
         public Builder(GatewayBgpConfigNeighbors defaults) {
     	      Objects.requireNonNull(defaults);
@@ -89,6 +102,7 @@ public final class GatewayBgpConfigNeighbors {
     	      this.importPolicy = defaults.importPolicy;
     	      this.multihopTtl = defaults.multihopTtl;
     	      this.neighborAs = defaults.neighborAs;
+    	      this.tunnelVia = defaults.tunnelVia;
         }
 
         @CustomType.Setter
@@ -129,6 +143,12 @@ public final class GatewayBgpConfigNeighbors {
             this.neighborAs = neighborAs;
             return this;
         }
+        @CustomType.Setter
+        public Builder tunnelVia(@Nullable String tunnelVia) {
+
+            this.tunnelVia = tunnelVia;
+            return this;
+        }
         public GatewayBgpConfigNeighbors build() {
             final var _resultValue = new GatewayBgpConfigNeighbors();
             _resultValue.disabled = disabled;
@@ -137,6 +157,7 @@ public final class GatewayBgpConfigNeighbors {
             _resultValue.importPolicy = importPolicy;
             _resultValue.multihopTtl = multihopTtl;
             _resultValue.neighborAs = neighborAs;
+            _resultValue.tunnelVia = tunnelVia;
             return _resultValue;
         }
     }

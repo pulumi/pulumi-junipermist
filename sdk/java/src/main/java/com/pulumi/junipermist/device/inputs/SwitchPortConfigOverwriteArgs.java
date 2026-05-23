@@ -76,6 +76,21 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Whether Perpetual PoE is enabled; keeps PoE state across reboots
+     * 
+     */
+    @Import(name="poeKeepStateWhenReboot")
+    private @Nullable Output<Boolean> poeKeepStateWhenReboot;
+
+    /**
+     * @return Whether Perpetual PoE is enabled; keeps PoE state across reboots
+     * 
+     */
+    public Optional<Output<Boolean>> poeKeepStateWhenReboot() {
+        return Optional.ofNullable(this.poeKeepStateWhenReboot);
+    }
+
+    /**
      * Native network/vlan for untagged traffic
      * 
      */
@@ -113,6 +128,7 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
         this.duplex = $.duplex;
         this.macLimit = $.macLimit;
         this.poeDisabled = $.poeDisabled;
+        this.poeKeepStateWhenReboot = $.poeKeepStateWhenReboot;
         this.portNetwork = $.portNetwork;
         this.speed = $.speed;
     }
@@ -214,6 +230,27 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
          */
         public Builder poeDisabled(Boolean poeDisabled) {
             return poeDisabled(Output.of(poeDisabled));
+        }
+
+        /**
+         * @param poeKeepStateWhenReboot Whether Perpetual PoE is enabled; keeps PoE state across reboots
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poeKeepStateWhenReboot(@Nullable Output<Boolean> poeKeepStateWhenReboot) {
+            $.poeKeepStateWhenReboot = poeKeepStateWhenReboot;
+            return this;
+        }
+
+        /**
+         * @param poeKeepStateWhenReboot Whether Perpetual PoE is enabled; keeps PoE state across reboots
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poeKeepStateWhenReboot(Boolean poeKeepStateWhenReboot) {
+            return poeKeepStateWhenReboot(Output.of(poeKeepStateWhenReboot));
         }
 
         /**

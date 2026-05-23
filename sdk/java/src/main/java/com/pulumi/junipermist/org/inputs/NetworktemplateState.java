@@ -327,14 +327,14 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Switch settings
+     * Switch Management settings
      * 
      */
     @Import(name="switchMgmt")
     private @Nullable Output<NetworktemplateSwitchMgmtArgs> switchMgmt;
 
     /**
-     * @return Switch settings
+     * @return Switch Management settings
      * 
      */
     public Optional<Output<NetworktemplateSwitchMgmtArgs>> switchMgmt() {
@@ -856,7 +856,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param switchMgmt Switch settings
+         * @param switchMgmt Switch Management settings
          * 
          * @return builder
          * 
@@ -867,7 +867,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param switchMgmt Switch settings
+         * @param switchMgmt Switch Management settings
          * 
          * @return builder
          * 

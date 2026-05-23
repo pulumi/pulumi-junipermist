@@ -25,6 +25,16 @@ public final class WlanAuth {
      */
     private @Nullable Boolean eapReauth;
     /**
+     * @return Enable Beacon Protection; default is false for better compatibility
+     * 
+     */
+    private @Nullable Boolean enableBeaconProtection;
+    /**
+     * @return Enable GCMP-256 encryption suite; default is false for better compatibility
+     * 
+     */
+    private @Nullable Boolean enableGcmp256;
+    /**
      * @return Whether to enable MAC Auth, uses the same auth_servers
      * 
      */
@@ -89,6 +99,20 @@ public final class WlanAuth {
      */
     public Optional<Boolean> eapReauth() {
         return Optional.ofNullable(this.eapReauth);
+    }
+    /**
+     * @return Enable Beacon Protection; default is false for better compatibility
+     * 
+     */
+    public Optional<Boolean> enableBeaconProtection() {
+        return Optional.ofNullable(this.enableBeaconProtection);
+    }
+    /**
+     * @return Enable GCMP-256 encryption suite; default is false for better compatibility
+     * 
+     */
+    public Optional<Boolean> enableGcmp256() {
+        return Optional.ofNullable(this.enableGcmp256);
     }
     /**
      * @return Whether to enable MAC Auth, uses the same auth_servers
@@ -172,6 +196,8 @@ public final class WlanAuth {
     public static final class Builder {
         private @Nullable Integer anticlogThreshold;
         private @Nullable Boolean eapReauth;
+        private @Nullable Boolean enableBeaconProtection;
+        private @Nullable Boolean enableGcmp256;
         private @Nullable Boolean enableMacAuth;
         private @Nullable Integer keyIdx;
         private @Nullable List<String> keys;
@@ -187,6 +213,8 @@ public final class WlanAuth {
     	      Objects.requireNonNull(defaults);
     	      this.anticlogThreshold = defaults.anticlogThreshold;
     	      this.eapReauth = defaults.eapReauth;
+    	      this.enableBeaconProtection = defaults.enableBeaconProtection;
+    	      this.enableGcmp256 = defaults.enableGcmp256;
     	      this.enableMacAuth = defaults.enableMacAuth;
     	      this.keyIdx = defaults.keyIdx;
     	      this.keys = defaults.keys;
@@ -209,6 +237,18 @@ public final class WlanAuth {
         public Builder eapReauth(@Nullable Boolean eapReauth) {
 
             this.eapReauth = eapReauth;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableBeaconProtection(@Nullable Boolean enableBeaconProtection) {
+
+            this.enableBeaconProtection = enableBeaconProtection;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableGcmp256(@Nullable Boolean enableGcmp256) {
+
+            this.enableGcmp256 = enableGcmp256;
             return this;
         }
         @CustomType.Setter
@@ -281,6 +321,8 @@ public final class WlanAuth {
             final var _resultValue = new WlanAuth();
             _resultValue.anticlogThreshold = anticlogThreshold;
             _resultValue.eapReauth = eapReauth;
+            _resultValue.enableBeaconProtection = enableBeaconProtection;
+            _resultValue.enableGcmp256 = enableGcmp256;
             _resultValue.enableMacAuth = enableMacAuth;
             _resultValue.keyIdx = keyIdx;
             _resultValue.keys = keys;

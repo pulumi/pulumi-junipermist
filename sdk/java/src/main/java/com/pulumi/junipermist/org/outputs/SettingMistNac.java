@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.org.outputs.SettingMistNacFingerprinting;
 import com.pulumi.junipermist.org.outputs.SettingMistNacIdp;
+import com.pulumi.junipermist.org.outputs.SettingMistNacMdm;
 import com.pulumi.junipermist.org.outputs.SettingMistNacServerCert;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -17,6 +18,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingMistNac {
+    /**
+     * @return allow clients to connect even when the user cert failed. TEAP authenticates both Machine Cert and User Cert. When enabled, clients who only succeed Machine Cert authentication will be accepted.
+     * 
+     */
+    private @Nullable Boolean allowTeapMachineAuthOnly;
     /**
      * @return List of PEM-encoded ca certs
      * 
@@ -59,6 +65,11 @@ public final class SettingMistNac {
     private @Nullable String idpUserCertLookupField;
     private @Nullable List<SettingMistNacIdp> idps;
     /**
+     * @return MDM (Mobile Device Management) CoA configuration
+     * 
+     */
+    private @Nullable SettingMistNacMdm mdm;
+    /**
      * @return radius server cert to be presented in EAP TLS
      * 
      */
@@ -80,6 +91,13 @@ public final class SettingMistNac {
     private @Nullable Integer usermacExpiry;
 
     private SettingMistNac() {}
+    /**
+     * @return allow clients to connect even when the user cert failed. TEAP authenticates both Machine Cert and User Cert. When enabled, clients who only succeed Machine Cert authentication will be accepted.
+     * 
+     */
+    public Optional<Boolean> allowTeapMachineAuthOnly() {
+        return Optional.ofNullable(this.allowTeapMachineAuthOnly);
+    }
     /**
      * @return List of PEM-encoded ca certs
      * 
@@ -140,6 +158,13 @@ public final class SettingMistNac {
         return this.idps == null ? List.of() : this.idps;
     }
     /**
+     * @return MDM (Mobile Device Management) CoA configuration
+     * 
+     */
+    public Optional<SettingMistNacMdm> mdm() {
+        return Optional.ofNullable(this.mdm);
+    }
+    /**
      * @return radius server cert to be presented in EAP TLS
      * 
      */
@@ -177,6 +202,7 @@ public final class SettingMistNac {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean allowTeapMachineAuthOnly;
         private @Nullable List<String> cacerts;
         private @Nullable String defaultIdpId;
         private @Nullable Boolean disableRsaeAlgorithms;
@@ -186,6 +212,7 @@ public final class SettingMistNac {
         private @Nullable String idpMachineCertLookupField;
         private @Nullable String idpUserCertLookupField;
         private @Nullable List<SettingMistNacIdp> idps;
+        private @Nullable SettingMistNacMdm mdm;
         private @Nullable SettingMistNacServerCert serverCert;
         private @Nullable String useIpVersion;
         private @Nullable Boolean useSslPort;
@@ -193,6 +220,7 @@ public final class SettingMistNac {
         public Builder() {}
         public Builder(SettingMistNac defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowTeapMachineAuthOnly = defaults.allowTeapMachineAuthOnly;
     	      this.cacerts = defaults.cacerts;
     	      this.defaultIdpId = defaults.defaultIdpId;
     	      this.disableRsaeAlgorithms = defaults.disableRsaeAlgorithms;
@@ -202,12 +230,19 @@ public final class SettingMistNac {
     	      this.idpMachineCertLookupField = defaults.idpMachineCertLookupField;
     	      this.idpUserCertLookupField = defaults.idpUserCertLookupField;
     	      this.idps = defaults.idps;
+    	      this.mdm = defaults.mdm;
     	      this.serverCert = defaults.serverCert;
     	      this.useIpVersion = defaults.useIpVersion;
     	      this.useSslPort = defaults.useSslPort;
     	      this.usermacExpiry = defaults.usermacExpiry;
         }
 
+        @CustomType.Setter
+        public Builder allowTeapMachineAuthOnly(@Nullable Boolean allowTeapMachineAuthOnly) {
+
+            this.allowTeapMachineAuthOnly = allowTeapMachineAuthOnly;
+            return this;
+        }
         @CustomType.Setter
         public Builder cacerts(@Nullable List<String> cacerts) {
 
@@ -269,6 +304,12 @@ public final class SettingMistNac {
             return idps(List.of(idps));
         }
         @CustomType.Setter
+        public Builder mdm(@Nullable SettingMistNacMdm mdm) {
+
+            this.mdm = mdm;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serverCert(@Nullable SettingMistNacServerCert serverCert) {
 
             this.serverCert = serverCert;
@@ -294,6 +335,7 @@ public final class SettingMistNac {
         }
         public SettingMistNac build() {
             final var _resultValue = new SettingMistNac();
+            _resultValue.allowTeapMachineAuthOnly = allowTeapMachineAuthOnly;
             _resultValue.cacerts = cacerts;
             _resultValue.defaultIdpId = defaultIdpId;
             _resultValue.disableRsaeAlgorithms = disableRsaeAlgorithms;
@@ -303,6 +345,7 @@ public final class SettingMistNac {
             _resultValue.idpMachineCertLookupField = idpMachineCertLookupField;
             _resultValue.idpUserCertLookupField = idpUserCertLookupField;
             _resultValue.idps = idps;
+            _resultValue.mdm = mdm;
             _resultValue.serverCert = serverCert;
             _resultValue.useIpVersion = useIpVersion;
             _resultValue.useSslPort = useSslPort;

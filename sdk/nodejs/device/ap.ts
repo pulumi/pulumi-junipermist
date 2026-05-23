@@ -175,6 +175,10 @@ export class Ap extends pulumi.CustomResource {
      * Y in pixel
      */
     declare public readonly y: pulumi.Output<number | undefined>;
+    /**
+     * Zigbee AP settings
+     */
+    declare public readonly zigbeeConfig: pulumi.Output<outputs.device.ApZigbeeConfig | undefined>;
 
     /**
      * Create a Ap resource with the given unique name, arguments, and options.
@@ -230,6 +234,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["vars"] = state?.vars;
             resourceInputs["x"] = state?.x;
             resourceInputs["y"] = state?.y;
+            resourceInputs["zigbeeConfig"] = state?.zigbeeConfig;
         } else {
             const args = argsOrState as ApArgs | undefined;
             if (args?.deviceId === undefined && !opts.urn) {
@@ -271,6 +276,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["vars"] = args?.vars;
             resourceInputs["x"] = args?.x;
             resourceInputs["y"] = args?.y;
+            resourceInputs["zigbeeConfig"] = args?.zigbeeConfig;
             resourceInputs["image1Url"] = undefined /*out*/;
             resourceInputs["image2Url"] = undefined /*out*/;
             resourceInputs["image3Url"] = undefined /*out*/;
@@ -416,6 +422,10 @@ export interface ApState {
      * Y in pixel
      */
     y?: pulumi.Input<number | undefined>;
+    /**
+     * Zigbee AP settings
+     */
+    zigbeeConfig?: pulumi.Input<inputs.device.ApZigbeeConfig | undefined>;
 }
 
 /**
@@ -529,4 +539,8 @@ export interface ApArgs {
      * Y in pixel
      */
     y?: pulumi.Input<number | undefined>;
+    /**
+     * Zigbee AP settings
+     */
+    zigbeeConfig?: pulumi.Input<inputs.device.ApZigbeeConfig | undefined>;
 }

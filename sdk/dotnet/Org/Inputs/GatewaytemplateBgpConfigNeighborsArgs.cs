@@ -39,6 +39,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("neighborAs", required: true)]
         public Input<string> NeighborAs { get; set; } = null!;
 
+        /// <summary>
+        /// If `Via`==`Tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `Primary`, `Secondary`
+        /// </summary>
+        [Input("tunnelVia")]
+        public Input<string>? TunnelVia { get; set; }
+
         public GatewaytemplateBgpConfigNeighborsArgs()
         {
         }

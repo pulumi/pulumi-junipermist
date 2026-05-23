@@ -21,6 +21,7 @@ import com.pulumi.junipermist.device.inputs.ApPwrConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApRadioConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApUplinkPortConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApUsbConfigArgs;
+import com.pulumi.junipermist.device.inputs.ApZigbeeConfigArgs;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -463,6 +464,21 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.y);
     }
 
+    /**
+     * Zigbee AP settings
+     * 
+     */
+    @Import(name="zigbeeConfig")
+    private @Nullable Output<ApZigbeeConfigArgs> zigbeeConfig;
+
+    /**
+     * @return Zigbee AP settings
+     * 
+     */
+    public Optional<Output<ApZigbeeConfigArgs>> zigbeeConfig() {
+        return Optional.ofNullable(this.zigbeeConfig);
+    }
+
     private ApArgs() {}
 
     private ApArgs(ApArgs $) {
@@ -499,6 +515,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         this.vars = $.vars;
         this.x = $.x;
         this.y = $.y;
+        this.zigbeeConfig = $.zigbeeConfig;
     }
 
     public static Builder builder() {
@@ -1110,6 +1127,27 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder y(Double y) {
             return y(Output.of(y));
+        }
+
+        /**
+         * @param zigbeeConfig Zigbee AP settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zigbeeConfig(@Nullable Output<ApZigbeeConfigArgs> zigbeeConfig) {
+            $.zigbeeConfig = zigbeeConfig;
+            return this;
+        }
+
+        /**
+         * @param zigbeeConfig Zigbee AP settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zigbeeConfig(ApZigbeeConfigArgs zigbeeConfig) {
+            return zigbeeConfig(Output.of(zigbeeConfig));
         }
 
         public ApArgs build() {

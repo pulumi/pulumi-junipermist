@@ -81,7 +81,15 @@ export class Setting extends pulumi.CustomResource {
         return obj['__pulumiType'] === Setting.__pulumiType;
     }
 
+    /**
+     * whether to allow Mist to look at this org
+     */
+    declare public readonly allowMist: pulumi.Output<boolean>;
     declare public readonly analytic: pulumi.Output<outputs.site.SettingAnalytic>;
+    /**
+     * AP Synthetic Test configuration
+     */
+    declare public readonly apSyntheticTest: pulumi.Output<outputs.site.SettingApSyntheticTest | undefined>;
     /**
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
@@ -125,13 +133,21 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly engagement: pulumi.Output<outputs.site.SettingEngagement>;
     /**
-     * Gateway Site settings
+     * Gateway Management settings
      */
     declare public readonly gatewayMgmt: pulumi.Output<outputs.site.SettingGatewayMgmt>;
+    /**
+     * enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     */
+    declare public readonly gatewayTunnelUpdownThreshold: pulumi.Output<number | undefined>;
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
     declare public readonly gatewayUpdownThreshold: pulumi.Output<number | undefined>;
+    /**
+     * IoT proxy configuration for the site
+     */
+    declare public readonly iotproxy: pulumi.Output<outputs.site.SettingIotproxy | undefined>;
     declare public readonly juniperSrx: pulumi.Output<outputs.site.SettingJuniperSrx | undefined>;
     /**
      * LED AP settings
@@ -193,13 +209,13 @@ export class Setting extends pulumi.CustomResource {
      */
     declare public readonly uplinkPortConfig: pulumi.Output<outputs.site.SettingUplinkPortConfig>;
     /**
-     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-     */
-    declare public readonly usesDescriptionFromPortUsage: pulumi.Output<boolean>;
-    /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     */
+    declare public readonly varsAnnotations: pulumi.Output<{[key: string]: outputs.site.SettingVarsAnnotations} | undefined>;
     declare public readonly vna: pulumi.Output<outputs.site.SettingVna | undefined>;
     /**
      * enable threshold-based vpn path down delivery.
@@ -243,7 +259,9 @@ export class Setting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SettingState | undefined;
+            resourceInputs["allowMist"] = state?.allowMist;
             resourceInputs["analytic"] = state?.analytic;
+            resourceInputs["apSyntheticTest"] = state?.apSyntheticTest;
             resourceInputs["apUpdownThreshold"] = state?.apUpdownThreshold;
             resourceInputs["autoUpgrade"] = state?.autoUpgrade;
             resourceInputs["autoUpgradeEsl"] = state?.autoUpgradeEsl;
@@ -257,7 +275,9 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["enableUnii4"] = state?.enableUnii4;
             resourceInputs["engagement"] = state?.engagement;
             resourceInputs["gatewayMgmt"] = state?.gatewayMgmt;
+            resourceInputs["gatewayTunnelUpdownThreshold"] = state?.gatewayTunnelUpdownThreshold;
             resourceInputs["gatewayUpdownThreshold"] = state?.gatewayUpdownThreshold;
+            resourceInputs["iotproxy"] = state?.iotproxy;
             resourceInputs["juniperSrx"] = state?.juniperSrx;
             resourceInputs["led"] = state?.led;
             resourceInputs["marvis"] = state?.marvis;
@@ -279,8 +299,8 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["syntheticTest"] = state?.syntheticTest;
             resourceInputs["trackAnonymousDevices"] = state?.trackAnonymousDevices;
             resourceInputs["uplinkPortConfig"] = state?.uplinkPortConfig;
-            resourceInputs["usesDescriptionFromPortUsage"] = state?.usesDescriptionFromPortUsage;
             resourceInputs["vars"] = state?.vars;
+            resourceInputs["varsAnnotations"] = state?.varsAnnotations;
             resourceInputs["vna"] = state?.vna;
             resourceInputs["vpnPathUpdownThreshold"] = state?.vpnPathUpdownThreshold;
             resourceInputs["vpnPeerUpdownThreshold"] = state?.vpnPeerUpdownThreshold;
@@ -297,7 +317,9 @@ export class Setting extends pulumi.CustomResource {
             if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
+            resourceInputs["allowMist"] = args?.allowMist;
             resourceInputs["analytic"] = args?.analytic;
+            resourceInputs["apSyntheticTest"] = args?.apSyntheticTest;
             resourceInputs["apUpdownThreshold"] = args?.apUpdownThreshold;
             resourceInputs["autoUpgrade"] = args?.autoUpgrade;
             resourceInputs["autoUpgradeEsl"] = args?.autoUpgradeEsl;
@@ -310,7 +332,9 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["enableUnii4"] = args?.enableUnii4;
             resourceInputs["engagement"] = args?.engagement;
             resourceInputs["gatewayMgmt"] = args?.gatewayMgmt;
+            resourceInputs["gatewayTunnelUpdownThreshold"] = args?.gatewayTunnelUpdownThreshold;
             resourceInputs["gatewayUpdownThreshold"] = args?.gatewayUpdownThreshold;
+            resourceInputs["iotproxy"] = args?.iotproxy;
             resourceInputs["juniperSrx"] = args?.juniperSrx;
             resourceInputs["led"] = args?.led;
             resourceInputs["marvis"] = args?.marvis;
@@ -332,8 +356,8 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["syntheticTest"] = args?.syntheticTest;
             resourceInputs["trackAnonymousDevices"] = args?.trackAnonymousDevices;
             resourceInputs["uplinkPortConfig"] = args?.uplinkPortConfig;
-            resourceInputs["usesDescriptionFromPortUsage"] = args?.usesDescriptionFromPortUsage;
             resourceInputs["vars"] = args?.vars;
+            resourceInputs["varsAnnotations"] = args?.varsAnnotations;
             resourceInputs["vna"] = args?.vna;
             resourceInputs["vpnPathUpdownThreshold"] = args?.vpnPathUpdownThreshold;
             resourceInputs["vpnPeerUpdownThreshold"] = args?.vpnPeerUpdownThreshold;
@@ -356,7 +380,15 @@ export class Setting extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Setting resources.
  */
 export interface SettingState {
+    /**
+     * whether to allow Mist to look at this org
+     */
+    allowMist?: pulumi.Input<boolean | undefined>;
     analytic?: pulumi.Input<inputs.site.SettingAnalytic | undefined>;
+    /**
+     * AP Synthetic Test configuration
+     */
+    apSyntheticTest?: pulumi.Input<inputs.site.SettingApSyntheticTest | undefined>;
     /**
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
@@ -400,13 +432,21 @@ export interface SettingState {
      */
     engagement?: pulumi.Input<inputs.site.SettingEngagement | undefined>;
     /**
-     * Gateway Site settings
+     * Gateway Management settings
      */
     gatewayMgmt?: pulumi.Input<inputs.site.SettingGatewayMgmt | undefined>;
+    /**
+     * enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     */
+    gatewayTunnelUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
     gatewayUpdownThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * IoT proxy configuration for the site
+     */
+    iotproxy?: pulumi.Input<inputs.site.SettingIotproxy | undefined>;
     juniperSrx?: pulumi.Input<inputs.site.SettingJuniperSrx | undefined>;
     /**
      * LED AP settings
@@ -468,13 +508,13 @@ export interface SettingState {
      */
     uplinkPortConfig?: pulumi.Input<inputs.site.SettingUplinkPortConfig | undefined>;
     /**
-     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-     */
-    usesDescriptionFromPortUsage?: pulumi.Input<boolean | undefined>;
-    /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     */
+    varsAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingVarsAnnotations>} | undefined>;
     vna?: pulumi.Input<inputs.site.SettingVna | undefined>;
     /**
      * enable threshold-based vpn path down delivery.
@@ -510,7 +550,15 @@ export interface SettingState {
  * The set of arguments for constructing a Setting resource.
  */
 export interface SettingArgs {
+    /**
+     * whether to allow Mist to look at this org
+     */
+    allowMist?: pulumi.Input<boolean | undefined>;
     analytic?: pulumi.Input<inputs.site.SettingAnalytic | undefined>;
+    /**
+     * AP Synthetic Test configuration
+     */
+    apSyntheticTest?: pulumi.Input<inputs.site.SettingApSyntheticTest | undefined>;
     /**
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
      */
@@ -553,13 +601,21 @@ export interface SettingArgs {
      */
     engagement?: pulumi.Input<inputs.site.SettingEngagement | undefined>;
     /**
-     * Gateway Site settings
+     * Gateway Management settings
      */
     gatewayMgmt?: pulumi.Input<inputs.site.SettingGatewayMgmt | undefined>;
+    /**
+     * enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     */
+    gatewayTunnelUpdownThreshold?: pulumi.Input<number | undefined>;
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
      */
     gatewayUpdownThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * IoT proxy configuration for the site
+     */
+    iotproxy?: pulumi.Input<inputs.site.SettingIotproxy | undefined>;
     juniperSrx?: pulumi.Input<inputs.site.SettingJuniperSrx | undefined>;
     /**
      * LED AP settings
@@ -621,13 +677,13 @@ export interface SettingArgs {
      */
     uplinkPortConfig?: pulumi.Input<inputs.site.SettingUplinkPortConfig | undefined>;
     /**
-     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-     */
-    usesDescriptionFromPortUsage?: pulumi.Input<boolean | undefined>;
-    /**
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     */
+    varsAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.SettingVarsAnnotations>} | undefined>;
     vna?: pulumi.Input<inputs.site.SettingVna | undefined>;
     /**
      * enable threshold-based vpn path down delivery.

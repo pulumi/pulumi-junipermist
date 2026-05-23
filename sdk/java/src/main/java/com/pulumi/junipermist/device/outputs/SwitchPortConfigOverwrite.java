@@ -30,6 +30,11 @@ public final class SwitchPortConfigOverwrite {
      */
     private @Nullable Boolean poeDisabled;
     /**
+     * @return Whether Perpetual PoE is enabled; keeps PoE state across reboots
+     * 
+     */
+    private @Nullable Boolean poeKeepStateWhenReboot;
+    /**
      * @return Native network/vlan for untagged traffic
      * 
      */
@@ -69,6 +74,13 @@ public final class SwitchPortConfigOverwrite {
         return Optional.ofNullable(this.poeDisabled);
     }
     /**
+     * @return Whether Perpetual PoE is enabled; keeps PoE state across reboots
+     * 
+     */
+    public Optional<Boolean> poeKeepStateWhenReboot() {
+        return Optional.ofNullable(this.poeKeepStateWhenReboot);
+    }
+    /**
      * @return Native network/vlan for untagged traffic
      * 
      */
@@ -97,6 +109,7 @@ public final class SwitchPortConfigOverwrite {
         private @Nullable String duplex;
         private @Nullable String macLimit;
         private @Nullable Boolean poeDisabled;
+        private @Nullable Boolean poeKeepStateWhenReboot;
         private @Nullable String portNetwork;
         private @Nullable String speed;
         public Builder() {}
@@ -107,6 +120,7 @@ public final class SwitchPortConfigOverwrite {
     	      this.duplex = defaults.duplex;
     	      this.macLimit = defaults.macLimit;
     	      this.poeDisabled = defaults.poeDisabled;
+    	      this.poeKeepStateWhenReboot = defaults.poeKeepStateWhenReboot;
     	      this.portNetwork = defaults.portNetwork;
     	      this.speed = defaults.speed;
         }
@@ -142,6 +156,12 @@ public final class SwitchPortConfigOverwrite {
             return this;
         }
         @CustomType.Setter
+        public Builder poeKeepStateWhenReboot(@Nullable Boolean poeKeepStateWhenReboot) {
+
+            this.poeKeepStateWhenReboot = poeKeepStateWhenReboot;
+            return this;
+        }
+        @CustomType.Setter
         public Builder portNetwork(@Nullable String portNetwork) {
 
             this.portNetwork = portNetwork;
@@ -160,6 +180,7 @@ public final class SwitchPortConfigOverwrite {
             _resultValue.duplex = duplex;
             _resultValue.macLimit = macLimit;
             _resultValue.poeDisabled = poeDisabled;
+            _resultValue.poeKeepStateWhenReboot = poeKeepStateWhenReboot;
             _resultValue.portNetwork = portNetwork;
             _resultValue.speed = speed;
             return _resultValue;

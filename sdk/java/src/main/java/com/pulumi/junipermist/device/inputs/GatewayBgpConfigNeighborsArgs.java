@@ -84,6 +84,21 @@ public final class GatewayBgpConfigNeighborsArgs extends com.pulumi.resources.Re
         return this.neighborAs;
     }
 
+    /**
+     * If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+     * 
+     */
+    @Import(name="tunnelVia")
+    private @Nullable Output<String> tunnelVia;
+
+    /**
+     * @return If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+     * 
+     */
+    public Optional<Output<String>> tunnelVia() {
+        return Optional.ofNullable(this.tunnelVia);
+    }
+
     private GatewayBgpConfigNeighborsArgs() {}
 
     private GatewayBgpConfigNeighborsArgs(GatewayBgpConfigNeighborsArgs $) {
@@ -93,6 +108,7 @@ public final class GatewayBgpConfigNeighborsArgs extends com.pulumi.resources.Re
         this.importPolicy = $.importPolicy;
         this.multihopTtl = $.multihopTtl;
         this.neighborAs = $.neighborAs;
+        this.tunnelVia = $.tunnelVia;
     }
 
     public static Builder builder() {
@@ -201,6 +217,27 @@ public final class GatewayBgpConfigNeighborsArgs extends com.pulumi.resources.Re
          */
         public Builder neighborAs(String neighborAs) {
             return neighborAs(Output.of(neighborAs));
+        }
+
+        /**
+         * @param tunnelVia If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelVia(@Nullable Output<String> tunnelVia) {
+            $.tunnelVia = tunnelVia;
+            return this;
+        }
+
+        /**
+         * @param tunnelVia If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelVia(String tunnelVia) {
+            return tunnelVia(Output.of(tunnelVia));
         }
 
         public GatewayBgpConfigNeighborsArgs build() {

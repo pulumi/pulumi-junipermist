@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingMistNac
     {
         /// <summary>
+        /// allow clients to connect even when the user cert failed. TEAP authenticates both Machine Cert and User Cert. When enabled, clients who only succeed Machine Cert authentication will be accepted.
+        /// </summary>
+        public readonly bool? AllowTeapMachineAuthOnly;
+        /// <summary>
         /// List of PEM-encoded ca certs
         /// </summary>
         public readonly ImmutableArray<string> Cacerts;
@@ -47,6 +51,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? IdpUserCertLookupField;
         public readonly ImmutableArray<Outputs.SettingMistNacIdp> Idps;
         /// <summary>
+        /// MDM (Mobile Device Management) CoA configuration
+        /// </summary>
+        public readonly Outputs.SettingMistNacMdm? Mdm;
+        /// <summary>
         /// radius server cert to be presented in EAP TLS
         /// </summary>
         public readonly Outputs.SettingMistNacServerCert? ServerCert;
@@ -65,6 +73,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
         [OutputConstructor]
         private SettingMistNac(
+            bool? allowTeapMachineAuthOnly,
+
             ImmutableArray<string> cacerts,
 
             string? defaultIdpId,
@@ -83,6 +93,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             ImmutableArray<Outputs.SettingMistNacIdp> idps,
 
+            Outputs.SettingMistNacMdm? mdm,
+
             Outputs.SettingMistNacServerCert? serverCert,
 
             string? useIpVersion,
@@ -91,6 +103,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             int? usermacExpiry)
         {
+            AllowTeapMachineAuthOnly = allowTeapMachineAuthOnly;
             Cacerts = cacerts;
             DefaultIdpId = defaultIdpId;
             DisableRsaeAlgorithms = disableRsaeAlgorithms;
@@ -100,6 +113,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             IdpMachineCertLookupField = idpMachineCertLookupField;
             IdpUserCertLookupField = idpUserCertLookupField;
             Idps = idps;
+            Mdm = mdm;
             ServerCert = serverCert;
             UseIpVersion = useIpVersion;
             UseSslPort = useSslPort;

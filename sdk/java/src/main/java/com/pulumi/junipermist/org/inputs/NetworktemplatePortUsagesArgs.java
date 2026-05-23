@@ -411,6 +411,21 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+     * 
+     */
+    @Import(name="poeKeepStateWhenReboot")
+    private @Nullable Output<Boolean> poeKeepStateWhenReboot;
+
+    /**
+     * @return Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+     * 
+     */
+    public Optional<Output<Boolean>> poeKeepStateWhenReboot() {
+        return Optional.ofNullable(this.poeKeepStateWhenReboot);
+    }
+
+    /**
      * PoE priority. enum: `low`, `high`
      * 
      */
@@ -709,6 +724,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         this.networks = $.networks;
         this.persistMac = $.persistMac;
         this.poeDisabled = $.poeDisabled;
+        this.poeKeepStateWhenReboot = $.poeKeepStateWhenReboot;
         this.poePriority = $.poePriority;
         this.portAuth = $.portAuth;
         this.portNetwork = $.portNetwork;
@@ -1311,6 +1327,27 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
          */
         public Builder poeDisabled(Boolean poeDisabled) {
             return poeDisabled(Output.of(poeDisabled));
+        }
+
+        /**
+         * @param poeKeepStateWhenReboot Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poeKeepStateWhenReboot(@Nullable Output<Boolean> poeKeepStateWhenReboot) {
+            $.poeKeepStateWhenReboot = poeKeepStateWhenReboot;
+            return this;
+        }
+
+        /**
+         * @param poeKeepStateWhenReboot Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poeKeepStateWhenReboot(Boolean poeKeepStateWhenReboot) {
+            return poeKeepStateWhenReboot(Output.of(poeKeepStateWhenReboot));
         }
 
         /**

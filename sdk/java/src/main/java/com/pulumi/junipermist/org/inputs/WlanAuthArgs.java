@@ -49,6 +49,36 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable Beacon Protection; default is false for better compatibility
+     * 
+     */
+    @Import(name="enableBeaconProtection")
+    private @Nullable Output<Boolean> enableBeaconProtection;
+
+    /**
+     * @return Enable Beacon Protection; default is false for better compatibility
+     * 
+     */
+    public Optional<Output<Boolean>> enableBeaconProtection() {
+        return Optional.ofNullable(this.enableBeaconProtection);
+    }
+
+    /**
+     * Enable GCMP-256 encryption suite; default is false for better compatibility
+     * 
+     */
+    @Import(name="enableGcmp256")
+    private @Nullable Output<Boolean> enableGcmp256;
+
+    /**
+     * @return Enable GCMP-256 encryption suite; default is false for better compatibility
+     * 
+     */
+    public Optional<Output<Boolean>> enableGcmp256() {
+        return Optional.ofNullable(this.enableGcmp256);
+    }
+
+    /**
      * Whether to enable MAC Auth, uses the same auth_servers
      * 
      */
@@ -203,6 +233,8 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     private WlanAuthArgs(WlanAuthArgs $) {
         this.anticlogThreshold = $.anticlogThreshold;
         this.eapReauth = $.eapReauth;
+        this.enableBeaconProtection = $.enableBeaconProtection;
+        this.enableGcmp256 = $.enableGcmp256;
         this.enableMacAuth = $.enableMacAuth;
         this.keyIdx = $.keyIdx;
         this.keys = $.keys;
@@ -273,6 +305,48 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder eapReauth(Boolean eapReauth) {
             return eapReauth(Output.of(eapReauth));
+        }
+
+        /**
+         * @param enableBeaconProtection Enable Beacon Protection; default is false for better compatibility
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableBeaconProtection(@Nullable Output<Boolean> enableBeaconProtection) {
+            $.enableBeaconProtection = enableBeaconProtection;
+            return this;
+        }
+
+        /**
+         * @param enableBeaconProtection Enable Beacon Protection; default is false for better compatibility
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableBeaconProtection(Boolean enableBeaconProtection) {
+            return enableBeaconProtection(Output.of(enableBeaconProtection));
+        }
+
+        /**
+         * @param enableGcmp256 Enable GCMP-256 encryption suite; default is false for better compatibility
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableGcmp256(@Nullable Output<Boolean> enableGcmp256) {
+            $.enableGcmp256 = enableGcmp256;
+            return this;
+        }
+
+        /**
+         * @param enableGcmp256 Enable GCMP-256 encryption suite; default is false for better compatibility
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableGcmp256(Boolean enableGcmp256) {
+            return enableGcmp256(Output.of(enableGcmp256));
         }
 
         /**

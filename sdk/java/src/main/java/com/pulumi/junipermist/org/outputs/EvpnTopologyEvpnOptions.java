@@ -42,6 +42,11 @@ public final class EvpnTopologyEvpnOptions {
      */
     private @Nullable Boolean coreAsBorder;
     /**
+     * @return Whether to route management traffic inband; routes will be propagated to downstream switches
+     * 
+     */
+    private @Nullable Boolean enableInbandMgmt;
+    /**
      * @return if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
      * 
      */
@@ -106,6 +111,13 @@ public final class EvpnTopologyEvpnOptions {
         return Optional.ofNullable(this.coreAsBorder);
     }
     /**
+     * @return Whether to route management traffic inband; routes will be propagated to downstream switches
+     * 
+     */
+    public Optional<Boolean> enableInbandMgmt() {
+        return Optional.ofNullable(this.enableInbandMgmt);
+    }
+    /**
      * @return if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
      * 
      */
@@ -161,6 +173,7 @@ public final class EvpnTopologyEvpnOptions {
         private @Nullable String autoRouterIdSubnet;
         private @Nullable String autoRouterIdSubnet6;
         private @Nullable Boolean coreAsBorder;
+        private @Nullable Boolean enableInbandMgmt;
         private @Nullable Boolean enableInbandZtp;
         private @Nullable EvpnTopologyEvpnOptionsOverlay overlay;
         private @Nullable Boolean perVlanVgaV4Mac;
@@ -176,6 +189,7 @@ public final class EvpnTopologyEvpnOptions {
     	      this.autoRouterIdSubnet = defaults.autoRouterIdSubnet;
     	      this.autoRouterIdSubnet6 = defaults.autoRouterIdSubnet6;
     	      this.coreAsBorder = defaults.coreAsBorder;
+    	      this.enableInbandMgmt = defaults.enableInbandMgmt;
     	      this.enableInbandZtp = defaults.enableInbandZtp;
     	      this.overlay = defaults.overlay;
     	      this.perVlanVgaV4Mac = defaults.perVlanVgaV4Mac;
@@ -213,6 +227,12 @@ public final class EvpnTopologyEvpnOptions {
         public Builder coreAsBorder(@Nullable Boolean coreAsBorder) {
 
             this.coreAsBorder = coreAsBorder;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableInbandMgmt(@Nullable Boolean enableInbandMgmt) {
+
+            this.enableInbandMgmt = enableInbandMgmt;
             return this;
         }
         @CustomType.Setter
@@ -264,6 +284,7 @@ public final class EvpnTopologyEvpnOptions {
             _resultValue.autoRouterIdSubnet = autoRouterIdSubnet;
             _resultValue.autoRouterIdSubnet6 = autoRouterIdSubnet6;
             _resultValue.coreAsBorder = coreAsBorder;
+            _resultValue.enableInbandMgmt = enableInbandMgmt;
             _resultValue.enableInbandZtp = enableInbandZtp;
             _resultValue.overlay = overlay;
             _resultValue.perVlanVgaV4Mac = perVlanVgaV4Mac;

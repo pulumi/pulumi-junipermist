@@ -155,7 +155,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<string?> SplunkToken { get; private set; } = null!;
 
         /// <summary>
-        /// enum:  `Alarms`, `asset-raw`, `asset-raw-rssi`, `Audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `Location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `Rssizone`, `sdkclient-scan-data`, `Vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `Zone`
+        /// enum: `Alarms`, `asset-raw`, `asset-raw-rssi`, `Audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `Location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `Rssizone`, `sdkclient-scan-data`, `Vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `Zone`
         /// </summary>
         [Output("topics")]
         public Output<ImmutableArray<string>> Topics { get; private set; } = null!;
@@ -378,7 +378,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _topics;
 
         /// <summary>
-        /// enum:  `Alarms`, `asset-raw`, `asset-raw-rssi`, `Audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `Location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `Rssizone`, `sdkclient-scan-data`, `Vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `Zone`
+        /// enum: `Alarms`, `asset-raw`, `asset-raw-rssi`, `Audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `Location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `Rssizone`, `sdkclient-scan-data`, `Vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `Zone`
         /// </summary>
         public InputList<string> Topics
         {
@@ -561,7 +561,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _topics;
 
         /// <summary>
-        /// enum:  `Alarms`, `asset-raw`, `asset-raw-rssi`, `Audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `Location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `Rssizone`, `sdkclient-scan-data`, `Vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `Zone`
+        /// enum: `Alarms`, `asset-raw`, `asset-raw-rssi`, `Audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `Location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `Rssizone`, `sdkclient-scan-data`, `Vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `Zone`
         /// </summary>
         public InputList<string> Topics
         {

@@ -27,7 +27,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Mxedge : global::Pulumi.CustomResource
     {
         [Output("claimCode")]
-        public Output<string?> ClaimCode { get; private set; } = null!;
+        public Output<string> ClaimCode { get; private set; } = null!;
 
         [Output("mac")]
         public Output<string> Mac { get; private set; } = null!;
@@ -70,12 +70,6 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Output("proxy")]
         public Output<Outputs.MxedgeProxy?> Proxy { get; private set; } = null!;
-
-        /// <summary>
-        /// Registration code for the MxEdge
-        /// </summary>
-        [Output("registrationCode")]
-        public Output<string> RegistrationCode { get; private set; } = null!;
 
         /// <summary>
         /// List of services to run, tunterm only for now
@@ -365,12 +359,6 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.MxedgeProxyGetArgs>? Proxy { get; set; }
-
-        /// <summary>
-        /// Registration code for the MxEdge
-        /// </summary>
-        [Input("registrationCode")]
-        public Input<string>? RegistrationCode { get; set; }
 
         [Input("services")]
         private InputList<string>? _services;

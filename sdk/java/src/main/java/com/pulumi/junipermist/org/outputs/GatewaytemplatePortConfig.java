@@ -119,6 +119,11 @@ public final class GatewaytemplatePortConfig {
     private @Nullable Integer outerVlanId;
     private @Nullable Boolean poeDisabled;
     /**
+     * @return Whether Perpetual PoE capabilities are enabled for a port
+     * 
+     */
+    private @Nullable Boolean poeKeepStateWhenReboot;
+    /**
      * @return Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
      * 
      */
@@ -370,6 +375,13 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.poeDisabled);
     }
     /**
+     * @return Whether Perpetual PoE capabilities are enabled for a port
+     * 
+     */
+    public Optional<Boolean> poeKeepStateWhenReboot() {
+        return Optional.ofNullable(this.poeKeepStateWhenReboot);
+    }
+    /**
      * @return Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
      * 
      */
@@ -558,6 +570,7 @@ public final class GatewaytemplatePortConfig {
         private @Nullable List<String> networks;
         private @Nullable Integer outerVlanId;
         private @Nullable Boolean poeDisabled;
+        private @Nullable Boolean poeKeepStateWhenReboot;
         private @Nullable String portNetwork;
         private @Nullable Boolean preserveDscp;
         private @Nullable Boolean redundant;
@@ -608,6 +621,7 @@ public final class GatewaytemplatePortConfig {
     	      this.networks = defaults.networks;
     	      this.outerVlanId = defaults.outerVlanId;
     	      this.poeDisabled = defaults.poeDisabled;
+    	      this.poeKeepStateWhenReboot = defaults.poeKeepStateWhenReboot;
     	      this.portNetwork = defaults.portNetwork;
     	      this.preserveDscp = defaults.preserveDscp;
     	      this.redundant = defaults.redundant;
@@ -773,6 +787,12 @@ public final class GatewaytemplatePortConfig {
         public Builder poeDisabled(@Nullable Boolean poeDisabled) {
 
             this.poeDisabled = poeDisabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder poeKeepStateWhenReboot(@Nullable Boolean poeKeepStateWhenReboot) {
+
+            this.poeKeepStateWhenReboot = poeKeepStateWhenReboot;
             return this;
         }
         @CustomType.Setter
@@ -952,6 +972,7 @@ public final class GatewaytemplatePortConfig {
             _resultValue.networks = networks;
             _resultValue.outerVlanId = outerVlanId;
             _resultValue.poeDisabled = poeDisabled;
+            _resultValue.poeKeepStateWhenReboot = poeKeepStateWhenReboot;
             _resultValue.portNetwork = portNetwork;
             _resultValue.preserveDscp = preserveDscp;
             _resultValue.redundant = redundant;

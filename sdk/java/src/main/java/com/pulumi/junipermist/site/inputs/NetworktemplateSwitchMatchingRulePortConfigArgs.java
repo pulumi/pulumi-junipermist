@@ -50,14 +50,29 @@ public final class NetworktemplateSwitchMatchingRulePortConfigArgs extends com.p
     }
 
     /**
-     * To use fast timeout
+     * If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+     * 
+     */
+    @Import(name="aeLacpForceUp")
+    private @Nullable Output<Boolean> aeLacpForceUp;
+
+    /**
+     * @return If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+     * 
+     */
+    public Optional<Output<Boolean>> aeLacpForceUp() {
+        return Optional.ofNullable(this.aeLacpForceUp);
+    }
+
+    /**
+     * To use slow timeout
      * 
      */
     @Import(name="aeLacpSlow")
     private @Nullable Output<Boolean> aeLacpSlow;
 
     /**
-     * @return To use fast timeout
+     * @return To use slow timeout
      * 
      */
     public Optional<Output<Boolean>> aeLacpSlow() {
@@ -247,6 +262,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfigArgs extends com.p
     private NetworktemplateSwitchMatchingRulePortConfigArgs(NetworktemplateSwitchMatchingRulePortConfigArgs $) {
         this.aeDisableLacp = $.aeDisableLacp;
         this.aeIdx = $.aeIdx;
+        this.aeLacpForceUp = $.aeLacpForceUp;
         this.aeLacpSlow = $.aeLacpSlow;
         this.aggregated = $.aggregated;
         this.critical = $.critical;
@@ -325,7 +341,28 @@ public final class NetworktemplateSwitchMatchingRulePortConfigArgs extends com.p
         }
 
         /**
-         * @param aeLacpSlow To use fast timeout
+         * @param aeLacpForceUp If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aeLacpForceUp(@Nullable Output<Boolean> aeLacpForceUp) {
+            $.aeLacpForceUp = aeLacpForceUp;
+            return this;
+        }
+
+        /**
+         * @param aeLacpForceUp If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aeLacpForceUp(Boolean aeLacpForceUp) {
+            return aeLacpForceUp(Output.of(aeLacpForceUp));
+        }
+
+        /**
+         * @param aeLacpSlow To use slow timeout
          * 
          * @return builder
          * 
@@ -336,7 +373,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfigArgs extends com.p
         }
 
         /**
-         * @param aeLacpSlow To use fast timeout
+         * @param aeLacpSlow To use slow timeout
          * 
          * @return builder
          * 

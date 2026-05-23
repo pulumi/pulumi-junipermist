@@ -34,6 +34,11 @@ public final class DeviceprofileApMesh {
      * 
      */
     private @Nullable String role;
+    /**
+     * @return Whether to use WPA3 on the 5 GHz band for mesh links
+     * 
+     */
+    private @Nullable Boolean useWpa3On5;
 
     private DeviceprofileApMesh() {}
     /**
@@ -64,6 +69,13 @@ public final class DeviceprofileApMesh {
     public Optional<String> role() {
         return Optional.ofNullable(this.role);
     }
+    /**
+     * @return Whether to use WPA3 on the 5 GHz band for mesh links
+     * 
+     */
+    public Optional<Boolean> useWpa3On5() {
+        return Optional.ofNullable(this.useWpa3On5);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -78,6 +90,7 @@ public final class DeviceprofileApMesh {
         private @Nullable Boolean enabled;
         private @Nullable Integer group;
         private @Nullable String role;
+        private @Nullable Boolean useWpa3On5;
         public Builder() {}
         public Builder(DeviceprofileApMesh defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,6 +98,7 @@ public final class DeviceprofileApMesh {
     	      this.enabled = defaults.enabled;
     	      this.group = defaults.group;
     	      this.role = defaults.role;
+    	      this.useWpa3On5 = defaults.useWpa3On5;
         }
 
         @CustomType.Setter
@@ -114,12 +128,19 @@ public final class DeviceprofileApMesh {
             this.role = role;
             return this;
         }
+        @CustomType.Setter
+        public Builder useWpa3On5(@Nullable Boolean useWpa3On5) {
+
+            this.useWpa3On5 = useWpa3On5;
+            return this;
+        }
         public DeviceprofileApMesh build() {
             final var _resultValue = new DeviceprofileApMesh();
             _resultValue.bands = bands;
             _resultValue.enabled = enabled;
             _resultValue.group = group;
             _resultValue.role = role;
+            _resultValue.useWpa3On5 = useWpa3On5;
             return _resultValue;
         }
     }

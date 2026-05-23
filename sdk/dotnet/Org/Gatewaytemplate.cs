@@ -181,6 +181,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplateExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
 
         /// <summary>
+        /// Gateway Management settings
+        /// </summary>
+        [Output("gatewayMgmt")]
+        public Output<Outputs.GatewaytemplateGatewayMgmt?> GatewayMgmt { get; private set; } = null!;
+
+        /// <summary>
         /// Property key is the profile name
         /// </summary>
         [Output("idpProfiles")]
@@ -399,6 +405,12 @@ namespace Pulumi.JuniperMist.Org
             get => _extraRoutes6 ?? (_extraRoutes6 = new InputMap<Inputs.GatewaytemplateExtraRoutes6Args>());
             set => _extraRoutes6 = value;
         }
+
+        /// <summary>
+        /// Gateway Management settings
+        /// </summary>
+        [Input("gatewayMgmt")]
+        public Input<Inputs.GatewaytemplateGatewayMgmtArgs>? GatewayMgmt { get; set; }
 
         [Input("idpProfiles")]
         private InputMap<Inputs.GatewaytemplateIdpProfilesArgs>? _idpProfiles;
@@ -644,6 +656,12 @@ namespace Pulumi.JuniperMist.Org
             get => _extraRoutes6 ?? (_extraRoutes6 = new InputMap<Inputs.GatewaytemplateExtraRoutes6GetArgs>());
             set => _extraRoutes6 = value;
         }
+
+        /// <summary>
+        /// Gateway Management settings
+        /// </summary>
+        [Input("gatewayMgmt")]
+        public Input<Inputs.GatewaytemplateGatewayMgmtGetArgs>? GatewayMgmt { get; set; }
 
         [Input("idpProfiles")]
         private InputMap<Inputs.GatewaytemplateIdpProfilesGetArgs>? _idpProfiles;

@@ -295,14 +295,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      * 
      */
     @Import(name="authServersRetries")
     private @Nullable Output<Integer> authServersRetries;
 
     /**
-     * @return Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * @return Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      * 
      */
     public Optional<Output<Integer>> authServersRetries() {
@@ -1904,7 +1904,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
          * 
          * @return builder
          * 
@@ -1915,7 +1915,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
          * 
          * @return builder
          * 

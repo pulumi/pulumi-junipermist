@@ -40,7 +40,7 @@ class WebhookArgs:
         """
         The set of arguments for constructing a Webhook resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         :param pulumi.Input[_builtins.str] name: Name of the webhook
@@ -104,7 +104,7 @@ class WebhookArgs:
     @pulumi.getter
     def topics(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+        enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
         """
         return pulumi.get(self, "topics")
 
@@ -339,7 +339,7 @@ class _WebhookState:
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
         :param pulumi.Input[_builtins.str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
@@ -549,7 +549,7 @@ class _WebhookState:
     @pulumi.getter
     def topics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+        enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
         """
         return pulumi.get(self, "topics")
 
@@ -675,7 +675,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
         :param pulumi.Input[_builtins.str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
@@ -845,7 +845,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
         :param pulumi.Input[_builtins.str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
@@ -986,7 +986,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter
     def topics(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+        enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
         """
         return pulumi.get(self, "topics")
 

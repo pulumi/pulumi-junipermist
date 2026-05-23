@@ -130,7 +130,7 @@ export class Webhook extends pulumi.CustomResource {
      */
     declare public readonly splunkToken: pulumi.Output<string | undefined>;
     /**
-     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
      */
     declare public readonly topics: pulumi.Output<string[]>;
     /**
@@ -269,7 +269,7 @@ export interface WebhookState {
      */
     splunkToken?: pulumi.Input<string | undefined>;
     /**
-     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
      */
     topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -341,7 +341,7 @@ export interface WebhookArgs {
      */
     splunkToken?: pulumi.Input<string | undefined>;
     /**
-     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
      */
     topics: pulumi.Input<pulumi.Input<string>[]>;
     /**

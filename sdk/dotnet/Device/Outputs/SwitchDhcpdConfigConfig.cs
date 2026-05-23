@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.SwitchDhcpdConfigConfigFixedBindings>? FixedBindings;
         /// <summary>
-        /// If `Type`==`Server`  - optional, `Ip` will be used if not provided
+        /// If `Type`==`Server` - optional, `Ip` will be used if not provided
         /// </summary>
         public readonly string? Gateway;
         /// <summary>

@@ -103,6 +103,8 @@ type DeviceprofileAp struct {
 	UsbConfig DeviceprofileApUsbConfigPtrOutput `pulumi:"usbConfig"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
+	// Zigbee AP settings
+	ZigbeeConfig DeviceprofileApZigbeeConfigPtrOutput `pulumi:"zigbeeConfig"`
 }
 
 // NewDeviceprofileAp registers a new resource with the given unique name, arguments, and options.
@@ -181,6 +183,8 @@ type deviceprofileApState struct {
 	UsbConfig *DeviceprofileApUsbConfig `pulumi:"usbConfig"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
+	// Zigbee AP settings
+	ZigbeeConfig *DeviceprofileApZigbeeConfig `pulumi:"zigbeeConfig"`
 }
 
 type DeviceprofileApState struct {
@@ -227,6 +231,8 @@ type DeviceprofileApState struct {
 	UsbConfig DeviceprofileApUsbConfigPtrInput
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
+	// Zigbee AP settings
+	ZigbeeConfig DeviceprofileApZigbeeConfigPtrInput
 }
 
 func (DeviceprofileApState) ElementType() reflect.Type {
@@ -275,6 +281,8 @@ type deviceprofileApArgs struct {
 	UsbConfig *DeviceprofileApUsbConfig `pulumi:"usbConfig"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
+	// Zigbee AP settings
+	ZigbeeConfig *DeviceprofileApZigbeeConfig `pulumi:"zigbeeConfig"`
 }
 
 // The set of arguments for constructing a DeviceprofileAp resource.
@@ -320,6 +328,8 @@ type DeviceprofileApArgs struct {
 	UsbConfig DeviceprofileApUsbConfigPtrInput
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
+	// Zigbee AP settings
+	ZigbeeConfig DeviceprofileApZigbeeConfigPtrInput
 }
 
 func (DeviceprofileApArgs) ElementType() reflect.Type {
@@ -522,6 +532,11 @@ func (o DeviceprofileApOutput) UsbConfig() DeviceprofileApUsbConfigPtrOutput {
 // Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 func (o DeviceprofileApOutput) Vars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) pulumi.StringMapOutput { return v.Vars }).(pulumi.StringMapOutput)
+}
+
+// Zigbee AP settings
+func (o DeviceprofileApOutput) ZigbeeConfig() DeviceprofileApZigbeeConfigPtrOutput {
+	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApZigbeeConfigPtrOutput { return v.ZigbeeConfig }).(DeviceprofileApZigbeeConfigPtrOutput)
 }
 
 type DeviceprofileApArrayOutput struct{ *pulumi.OutputState }

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.SettingMistNacFingerprintingArgs;
 import com.pulumi.junipermist.org.inputs.SettingMistNacIdpArgs;
+import com.pulumi.junipermist.org.inputs.SettingMistNacMdmArgs;
 import com.pulumi.junipermist.org.inputs.SettingMistNacServerCertArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -20,6 +21,21 @@ import javax.annotation.Nullable;
 public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingMistNacArgs Empty = new SettingMistNacArgs();
+
+    /**
+     * allow clients to connect even when the user cert failed. TEAP authenticates both Machine Cert and User Cert. When enabled, clients who only succeed Machine Cert authentication will be accepted.
+     * 
+     */
+    @Import(name="allowTeapMachineAuthOnly")
+    private @Nullable Output<Boolean> allowTeapMachineAuthOnly;
+
+    /**
+     * @return allow clients to connect even when the user cert failed. TEAP authenticates both Machine Cert and User Cert. When enabled, clients who only succeed Machine Cert authentication will be accepted.
+     * 
+     */
+    public Optional<Output<Boolean>> allowTeapMachineAuthOnly() {
+        return Optional.ofNullable(this.allowTeapMachineAuthOnly);
+    }
 
     /**
      * List of PEM-encoded ca certs
@@ -149,6 +165,21 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * MDM (Mobile Device Management) CoA configuration
+     * 
+     */
+    @Import(name="mdm")
+    private @Nullable Output<SettingMistNacMdmArgs> mdm;
+
+    /**
+     * @return MDM (Mobile Device Management) CoA configuration
+     * 
+     */
+    public Optional<Output<SettingMistNacMdmArgs>> mdm() {
+        return Optional.ofNullable(this.mdm);
+    }
+
+    /**
      * radius server cert to be presented in EAP TLS
      * 
      */
@@ -211,6 +242,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     private SettingMistNacArgs() {}
 
     private SettingMistNacArgs(SettingMistNacArgs $) {
+        this.allowTeapMachineAuthOnly = $.allowTeapMachineAuthOnly;
         this.cacerts = $.cacerts;
         this.defaultIdpId = $.defaultIdpId;
         this.disableRsaeAlgorithms = $.disableRsaeAlgorithms;
@@ -220,6 +252,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         this.idpMachineCertLookupField = $.idpMachineCertLookupField;
         this.idpUserCertLookupField = $.idpUserCertLookupField;
         this.idps = $.idps;
+        this.mdm = $.mdm;
         this.serverCert = $.serverCert;
         this.useIpVersion = $.useIpVersion;
         this.useSslPort = $.useSslPort;
@@ -242,6 +275,27 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(SettingMistNacArgs defaults) {
             $ = new SettingMistNacArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowTeapMachineAuthOnly allow clients to connect even when the user cert failed. TEAP authenticates both Machine Cert and User Cert. When enabled, clients who only succeed Machine Cert authentication will be accepted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowTeapMachineAuthOnly(@Nullable Output<Boolean> allowTeapMachineAuthOnly) {
+            $.allowTeapMachineAuthOnly = allowTeapMachineAuthOnly;
+            return this;
+        }
+
+        /**
+         * @param allowTeapMachineAuthOnly allow clients to connect even when the user cert failed. TEAP authenticates both Machine Cert and User Cert. When enabled, clients who only succeed Machine Cert authentication will be accepted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowTeapMachineAuthOnly(Boolean allowTeapMachineAuthOnly) {
+            return allowTeapMachineAuthOnly(Output.of(allowTeapMachineAuthOnly));
         }
 
         /**
@@ -433,6 +487,27 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder idps(SettingMistNacIdpArgs... idps) {
             return idps(List.of(idps));
+        }
+
+        /**
+         * @param mdm MDM (Mobile Device Management) CoA configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mdm(@Nullable Output<SettingMistNacMdmArgs> mdm) {
+            $.mdm = mdm;
+            return this;
+        }
+
+        /**
+         * @param mdm MDM (Mobile Device Management) CoA configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mdm(SettingMistNacMdmArgs mdm) {
+            return mdm(Output.of(mdm));
         }
 
         /**

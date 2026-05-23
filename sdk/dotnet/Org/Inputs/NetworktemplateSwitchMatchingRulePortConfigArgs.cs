@@ -25,7 +25,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? AeIdx { get; set; }
 
         /// <summary>
-        /// To use fast timeout
+        /// If `Aggregated`==`True`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+        /// </summary>
+        [Input("aeLacpForceUp")]
+        public Input<bool>? AeLacpForceUp { get; set; }
+
+        /// <summary>
+        /// To use slow timeout
         /// </summary>
         [Input("aeLacpSlow")]
         public Input<bool>? AeLacpSlow { get; set; }

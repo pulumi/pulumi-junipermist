@@ -5,7 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.junipermist.org.inputs.SettingMarvisAutoOperationsArgs;
+import com.pulumi.junipermist.org.inputs.SettingMarvisSelfDrivingArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,17 +15,25 @@ public final class SettingMarvisArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingMarvisArgs Empty = new SettingMarvisArgs();
 
-    @Import(name="autoOperations")
-    private @Nullable Output<SettingMarvisAutoOperationsArgs> autoOperations;
+    /**
+     * Self-driving network automation settings per domain
+     * 
+     */
+    @Import(name="selfDriving")
+    private @Nullable Output<SettingMarvisSelfDrivingArgs> selfDriving;
 
-    public Optional<Output<SettingMarvisAutoOperationsArgs>> autoOperations() {
-        return Optional.ofNullable(this.autoOperations);
+    /**
+     * @return Self-driving network automation settings per domain
+     * 
+     */
+    public Optional<Output<SettingMarvisSelfDrivingArgs>> selfDriving() {
+        return Optional.ofNullable(this.selfDriving);
     }
 
     private SettingMarvisArgs() {}
 
     private SettingMarvisArgs(SettingMarvisArgs $) {
-        this.autoOperations = $.autoOperations;
+        this.selfDriving = $.selfDriving;
     }
 
     public static Builder builder() {
@@ -46,13 +54,25 @@ public final class SettingMarvisArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingMarvisArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder autoOperations(@Nullable Output<SettingMarvisAutoOperationsArgs> autoOperations) {
-            $.autoOperations = autoOperations;
+        /**
+         * @param selfDriving Self-driving network automation settings per domain
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfDriving(@Nullable Output<SettingMarvisSelfDrivingArgs> selfDriving) {
+            $.selfDriving = selfDriving;
             return this;
         }
 
-        public Builder autoOperations(SettingMarvisAutoOperationsArgs autoOperations) {
-            return autoOperations(Output.of(autoOperations));
+        /**
+         * @param selfDriving Self-driving network automation settings per domain
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfDriving(SettingMarvisSelfDrivingArgs selfDriving) {
+            return selfDriving(Output.of(selfDriving));
         }
 
         public SettingMarvisArgs build() {

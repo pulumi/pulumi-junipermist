@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly ImmutableArray<string> InternalIps;
         public readonly ImmutableArray<string> ProbeIps;
         /// <summary>
-        /// Only if  `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
+        /// Only if `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
         /// </summary>
         public readonly ImmutableArray<string> RemoteIds;
         public readonly ImmutableArray<string> WanNames;

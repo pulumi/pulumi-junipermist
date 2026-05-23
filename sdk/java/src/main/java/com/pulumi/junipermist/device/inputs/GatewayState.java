@@ -134,14 +134,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Gateway settings
+     * Gateway Management settings
      * 
      */
     @Import(name="gatewayMgmt")
     private @Nullable Output<GatewayGatewayMgmtArgs> gatewayMgmt;
 
     /**
-     * @return Gateway settings
+     * @return Gateway Management settings
      * 
      */
     public Optional<Output<GatewayGatewayMgmtArgs>> gatewayMgmt() {
@@ -799,7 +799,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayMgmt Gateway settings
+         * @param gatewayMgmt Gateway Management settings
          * 
          * @return builder
          * 
@@ -810,7 +810,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayMgmt Gateway settings
+         * @param gatewayMgmt Gateway Management settings
          * 
          * @return builder
          * 

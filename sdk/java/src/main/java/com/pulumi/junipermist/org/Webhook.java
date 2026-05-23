@@ -274,14 +274,14 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.splunkToken);
     }
     /**
-     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+     * enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
      * 
      */
     @Export(name="topics", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> topics;
 
     /**
-     * @return enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+     * @return enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
      * 
      */
     public Output<List<String>> topics() {

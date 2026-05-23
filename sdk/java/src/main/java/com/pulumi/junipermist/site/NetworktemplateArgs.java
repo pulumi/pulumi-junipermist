@@ -328,18 +328,33 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Switch settings
+     * Switch Management settings
      * 
      */
     @Import(name="switchMgmt")
     private @Nullable Output<NetworktemplateSwitchMgmtArgs> switchMgmt;
 
     /**
-     * @return Switch settings
+     * @return Switch Management settings
      * 
      */
     public Optional<Output<NetworktemplateSwitchMgmtArgs>> switchMgmt() {
         return Optional.ofNullable(this.switchMgmt);
+    }
+
+    /**
+     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+     * 
+     */
+    @Import(name="usesDescriptionFromPortUsage")
+    private @Nullable Output<Boolean> usesDescriptionFromPortUsage;
+
+    /**
+     * @return by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+     * 
+     */
+    public Optional<Output<Boolean>> usesDescriptionFromPortUsage() {
+        return Optional.ofNullable(this.usesDescriptionFromPortUsage);
     }
 
     @Import(name="vrfConfig")
@@ -390,6 +405,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         this.snmpConfig = $.snmpConfig;
         this.switchMatching = $.switchMatching;
         this.switchMgmt = $.switchMgmt;
+        this.usesDescriptionFromPortUsage = $.usesDescriptionFromPortUsage;
         this.vrfConfig = $.vrfConfig;
         this.vrfInstances = $.vrfInstances;
     }
@@ -869,7 +885,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param switchMgmt Switch settings
+         * @param switchMgmt Switch Management settings
          * 
          * @return builder
          * 
@@ -880,13 +896,34 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param switchMgmt Switch settings
+         * @param switchMgmt Switch Management settings
          * 
          * @return builder
          * 
          */
         public Builder switchMgmt(NetworktemplateSwitchMgmtArgs switchMgmt) {
             return switchMgmt(Output.of(switchMgmt));
+        }
+
+        /**
+         * @param usesDescriptionFromPortUsage by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usesDescriptionFromPortUsage(@Nullable Output<Boolean> usesDescriptionFromPortUsage) {
+            $.usesDescriptionFromPortUsage = usesDescriptionFromPortUsage;
+            return this;
+        }
+
+        /**
+         * @param usesDescriptionFromPortUsage by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usesDescriptionFromPortUsage(Boolean usesDescriptionFromPortUsage) {
+            return usesDescriptionFromPortUsage(Output.of(usesDescriptionFromPortUsage));
         }
 
         public Builder vrfConfig(@Nullable Output<NetworktemplateVrfConfigArgs> vrfConfig) {

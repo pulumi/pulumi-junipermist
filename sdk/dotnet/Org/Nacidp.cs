@@ -282,6 +282,12 @@ namespace Pulumi.JuniperMist.Org
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumi/pulumi-junipermist",
+                AdditionalSecretOutputs =
+                {
+                    "oauthCcClientSecret",
+                    "oauthRopcClientSecret",
+                    "scimSecretToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -419,11 +425,21 @@ namespace Pulumi.JuniperMist.Org
         [Input("oauthCcClientId")]
         public Input<string>? OauthCcClientId { get; set; }
 
+        [Input("oauthCcClientSecret")]
+        private Input<string>? _oauthCcClientSecret;
+
         /// <summary>
         /// Required if `IdpType`==`Oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         /// </summary>
-        [Input("oauthCcClientSecret")]
-        public Input<string>? OauthCcClientSecret { get; set; }
+        public Input<string>? OauthCcClientSecret
+        {
+            get => _oauthCcClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauthCcClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// If `IdpType`==`Oauth`
@@ -449,11 +465,21 @@ namespace Pulumi.JuniperMist.Org
         [Input("oauthRopcClientId")]
         public Input<string>? OauthRopcClientId { get; set; }
 
+        [Input("oauthRopcClientSecret")]
+        private Input<string>? _oauthRopcClientSecret;
+
         /// <summary>
         /// If `OauthType`==`Azure` or `OauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
         /// </summary>
-        [Input("oauthRopcClientSecret")]
-        public Input<string>? OauthRopcClientSecret { get; set; }
+        public Input<string>? OauthRopcClientSecret
+        {
+            get => _oauthRopcClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauthRopcClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Required if `IdpType`==`Oauth`, oauth*tenant*id
@@ -476,11 +502,21 @@ namespace Pulumi.JuniperMist.Org
         [Input("scimEnabled")]
         public Input<bool>? ScimEnabled { get; set; }
 
+        [Input("scimSecretToken")]
+        private Input<string>? _scimSecretToken;
+
         /// <summary>
         /// If `IdpType`==`Oauth`, scim*secret*token (auto-generated when not provided by caller and `ScimEnabled`==`True`, empty string when `ScimEnabled`==`False`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         /// </summary>
-        [Input("scimSecretToken")]
-        public Input<string>? ScimSecretToken { get; set; }
+        public Input<string>? ScimSecretToken
+        {
+            get => _scimSecretToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _scimSecretToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public NacidpArgs()
         {
@@ -604,11 +640,21 @@ namespace Pulumi.JuniperMist.Org
         [Input("oauthCcClientId")]
         public Input<string>? OauthCcClientId { get; set; }
 
+        [Input("oauthCcClientSecret")]
+        private Input<string>? _oauthCcClientSecret;
+
         /// <summary>
         /// Required if `IdpType`==`Oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         /// </summary>
-        [Input("oauthCcClientSecret")]
-        public Input<string>? OauthCcClientSecret { get; set; }
+        public Input<string>? OauthCcClientSecret
+        {
+            get => _oauthCcClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauthCcClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// If `IdpType`==`Oauth`
@@ -634,11 +680,21 @@ namespace Pulumi.JuniperMist.Org
         [Input("oauthRopcClientId")]
         public Input<string>? OauthRopcClientId { get; set; }
 
+        [Input("oauthRopcClientSecret")]
+        private Input<string>? _oauthRopcClientSecret;
+
         /// <summary>
         /// If `OauthType`==`Azure` or `OauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
         /// </summary>
-        [Input("oauthRopcClientSecret")]
-        public Input<string>? OauthRopcClientSecret { get; set; }
+        public Input<string>? OauthRopcClientSecret
+        {
+            get => _oauthRopcClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauthRopcClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Required if `IdpType`==`Oauth`, oauth*tenant*id
@@ -661,11 +717,21 @@ namespace Pulumi.JuniperMist.Org
         [Input("scimEnabled")]
         public Input<bool>? ScimEnabled { get; set; }
 
+        [Input("scimSecretToken")]
+        private Input<string>? _scimSecretToken;
+
         /// <summary>
         /// If `IdpType`==`Oauth`, scim*secret*token (auto-generated when not provided by caller and `ScimEnabled`==`True`, empty string when `ScimEnabled`==`False`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         /// </summary>
-        [Input("scimSecretToken")]
-        public Input<string>? ScimSecretToken { get; set; }
+        public Input<string>? ScimSecretToken
+        {
+            get => _scimSecretToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _scimSecretToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public NacidpState()
         {

@@ -20,7 +20,7 @@ public final class GatewaytemplateTunnelConfigsPrimary {
     private @Nullable List<String> internalIps;
     private @Nullable List<String> probeIps;
     /**
-     * @return Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * @return Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     private @Nullable List<String> remoteIds;
@@ -41,7 +41,7 @@ public final class GatewaytemplateTunnelConfigsPrimary {
         return this.probeIps == null ? List.of() : this.probeIps;
     }
     /**
-     * @return Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * @return Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     public List<String> remoteIds() {

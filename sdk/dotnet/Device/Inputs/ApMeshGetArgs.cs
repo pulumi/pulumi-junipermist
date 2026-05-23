@@ -42,6 +42,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// Whether to use WPA3 on the 5 GHz band for mesh links
+        /// </summary>
+        [Input("useWpa3On5")]
+        public Input<bool>? UseWpa3On5 { get; set; }
+
         public ApMeshGetArgs()
         {
         }

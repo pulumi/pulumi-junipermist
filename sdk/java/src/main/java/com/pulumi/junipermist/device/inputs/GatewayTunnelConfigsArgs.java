@@ -99,14 +99,14 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Only if  `provider`==`custom-ipsec`
+     * Only if `provider`==`custom-ipsec`
      * 
      */
     @Import(name="ipsecProposals")
     private @Nullable Output<List<GatewayTunnelConfigsIpsecProposalArgs>> ipsecProposals;
 
     /**
-     * @return Only if  `provider`==`custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`
      * 
      */
     public Optional<Output<List<GatewayTunnelConfigsIpsecProposalArgs>>> ipsecProposals() {
@@ -450,7 +450,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipsecProposals Only if  `provider`==`custom-ipsec`
+         * @param ipsecProposals Only if `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipsecProposals Only if  `provider`==`custom-ipsec`
+         * @param ipsecProposals Only if `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipsecProposals Only if  `provider`==`custom-ipsec`
+         * @param ipsecProposals Only if `provider`==`custom-ipsec`
          * 
          * @return builder
          * 

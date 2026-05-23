@@ -13,12 +13,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingMarvis
     {
-        public readonly Outputs.SettingMarvisAutoOperations? AutoOperations;
+        /// <summary>
+        /// Self-driving network automation settings per domain
+        /// </summary>
+        public readonly Outputs.SettingMarvisSelfDriving? SelfDriving;
 
         [OutputConstructor]
-        private SettingMarvis(Outputs.SettingMarvisAutoOperations? autoOperations)
+        private SettingMarvis(Outputs.SettingMarvisSelfDriving? selfDriving)
         {
-            AutoOperations = autoOperations;
+            SelfDriving = selfDriving;
         }
     }
 }

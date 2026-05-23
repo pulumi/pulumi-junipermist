@@ -143,6 +143,10 @@ export class DeviceprofileAp extends pulumi.CustomResource {
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Zigbee AP settings
+     */
+    declare public readonly zigbeeConfig: pulumi.Output<outputs.org.DeviceprofileApZigbeeConfig | undefined>;
 
     /**
      * Create a DeviceprofileAp resource with the given unique name, arguments, and options.
@@ -181,6 +185,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
             resourceInputs["uplinkPortConfig"] = state?.uplinkPortConfig;
             resourceInputs["usbConfig"] = state?.usbConfig;
             resourceInputs["vars"] = state?.vars;
+            resourceInputs["zigbeeConfig"] = state?.zigbeeConfig;
         } else {
             const args = argsOrState as DeviceprofileApArgs | undefined;
             if (args?.orgId === undefined && !opts.urn) {
@@ -209,6 +214,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
             resourceInputs["uplinkPortConfig"] = args?.uplinkPortConfig;
             resourceInputs["usbConfig"] = args?.usbConfig;
             resourceInputs["vars"] = args?.vars;
+            resourceInputs["zigbeeConfig"] = args?.zigbeeConfig;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -297,6 +303,10 @@ export interface DeviceprofileApState {
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Zigbee AP settings
+     */
+    zigbeeConfig?: pulumi.Input<inputs.org.DeviceprofileApZigbeeConfig | undefined>;
 }
 
 /**
@@ -376,4 +386,8 @@ export interface DeviceprofileApArgs {
      * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Zigbee AP settings
+     */
+    zigbeeConfig?: pulumi.Input<inputs.org.DeviceprofileApZigbeeConfig | undefined>;
 }

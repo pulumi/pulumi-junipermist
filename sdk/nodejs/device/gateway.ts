@@ -99,7 +99,7 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public readonly extraRoutes6: pulumi.Output<{[key: string]: outputs.device.GatewayExtraRoutes6} | undefined>;
     /**
-     * Gateway settings
+     * Gateway Management settings
      */
     declare public readonly gatewayMgmt: pulumi.Output<outputs.device.GatewayGatewayMgmt | undefined>;
     /**
@@ -346,7 +346,7 @@ export interface GatewayState {
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes6>} | undefined>;
     /**
-     * Gateway settings
+     * Gateway Management settings
      */
     gatewayMgmt?: pulumi.Input<inputs.device.GatewayGatewayMgmt | undefined>;
     /**
@@ -479,7 +479,7 @@ export interface GatewayArgs {
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayExtraRoutes6>} | undefined>;
     /**
-     * Gateway settings
+     * Gateway Management settings
      */
     gatewayMgmt?: pulumi.Input<inputs.device.GatewayGatewayMgmt | undefined>;
     /**

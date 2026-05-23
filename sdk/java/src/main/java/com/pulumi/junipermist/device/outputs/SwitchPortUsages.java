@@ -147,6 +147,11 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean poeDisabled;
     /**
+     * @return Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+     * 
+     */
+    private @Nullable Boolean poeKeepStateWhenReboot;
+    /**
      * @return PoE priority. enum: `low`, `high`
      * 
      */
@@ -416,6 +421,13 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.poeDisabled);
     }
     /**
+     * @return Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+     * 
+     */
+    public Optional<Boolean> poeKeepStateWhenReboot() {
+        return Optional.ofNullable(this.poeKeepStateWhenReboot);
+    }
+    /**
      * @return PoE priority. enum: `low`, `high`
      * 
      */
@@ -570,6 +582,7 @@ public final class SwitchPortUsages {
         private @Nullable List<String> networks;
         private @Nullable Boolean persistMac;
         private @Nullable Boolean poeDisabled;
+        private @Nullable Boolean poeKeepStateWhenReboot;
         private @Nullable String poePriority;
         private @Nullable String portAuth;
         private @Nullable String portNetwork;
@@ -616,6 +629,7 @@ public final class SwitchPortUsages {
     	      this.networks = defaults.networks;
     	      this.persistMac = defaults.persistMac;
     	      this.poeDisabled = defaults.poeDisabled;
+    	      this.poeKeepStateWhenReboot = defaults.poeKeepStateWhenReboot;
     	      this.poePriority = defaults.poePriority;
     	      this.portAuth = defaults.portAuth;
     	      this.portNetwork = defaults.portNetwork;
@@ -798,6 +812,12 @@ public final class SwitchPortUsages {
             return this;
         }
         @CustomType.Setter
+        public Builder poeKeepStateWhenReboot(@Nullable Boolean poeKeepStateWhenReboot) {
+
+            this.poeKeepStateWhenReboot = poeKeepStateWhenReboot;
+            return this;
+        }
+        @CustomType.Setter
         public Builder poePriority(@Nullable String poePriority) {
 
             this.poePriority = poePriority;
@@ -930,6 +950,7 @@ public final class SwitchPortUsages {
             _resultValue.networks = networks;
             _resultValue.persistMac = persistMac;
             _resultValue.poeDisabled = poeDisabled;
+            _resultValue.poeKeepStateWhenReboot = poeKeepStateWhenReboot;
             _resultValue.poePriority = poePriority;
             _resultValue.portAuth = portAuth;
             _resultValue.portNetwork = portNetwork;

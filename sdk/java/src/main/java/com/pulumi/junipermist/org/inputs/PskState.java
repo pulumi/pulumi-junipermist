@@ -233,6 +233,21 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vlanId);
     }
 
+    /**
+     * VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+     * 
+     */
+    @Import(name="vlanName")
+    private @Nullable Output<String> vlanName;
+
+    /**
+     * @return VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+     * 
+     */
+    public Optional<Output<String>> vlanName() {
+        return Optional.ofNullable(this.vlanName);
+    }
+
     private PskState() {}
 
     private PskState(PskState $) {
@@ -253,6 +268,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         this.ssid = $.ssid;
         this.usage = $.usage;
         this.vlanId = $.vlanId;
+        this.vlanName = $.vlanName;
     }
 
     public static Builder builder() {
@@ -578,6 +594,27 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
 
         public Builder vlanId(String vlanId) {
             return vlanId(Output.of(vlanId));
+        }
+
+        /**
+         * @param vlanName VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vlanName(@Nullable Output<String> vlanName) {
+            $.vlanName = vlanName;
+            return this;
+        }
+
+        /**
+         * @param vlanName VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vlanName(String vlanName) {
+            return vlanName(Output.of(vlanName));
         }
 
         public PskState build() {

@@ -24,6 +24,8 @@ type EvpnTopologyEvpnOptions struct {
 	AutoRouterIdSubnet6 *string `pulumi:"autoRouterIdSubnet6"`
 	// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
 	CoreAsBorder *bool `pulumi:"coreAsBorder"`
+	// Whether to route management traffic inband; routes will be propagated to downstream switches
+	EnableInbandMgmt *bool `pulumi:"enableInbandMgmt"`
 	// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
 	EnableInbandZtp *bool                           `pulumi:"enableInbandZtp"`
 	Overlay         *EvpnTopologyEvpnOptionsOverlay `pulumi:"overlay"`
@@ -60,6 +62,8 @@ type EvpnTopologyEvpnOptionsArgs struct {
 	AutoRouterIdSubnet6 pulumi.StringPtrInput `pulumi:"autoRouterIdSubnet6"`
 	// Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
 	CoreAsBorder pulumi.BoolPtrInput `pulumi:"coreAsBorder"`
+	// Whether to route management traffic inband; routes will be propagated to downstream switches
+	EnableInbandMgmt pulumi.BoolPtrInput `pulumi:"enableInbandMgmt"`
 	// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
 	EnableInbandZtp pulumi.BoolPtrInput                    `pulumi:"enableInbandZtp"`
 	Overlay         EvpnTopologyEvpnOptionsOverlayPtrInput `pulumi:"overlay"`
@@ -176,6 +180,11 @@ func (o EvpnTopologyEvpnOptionsOutput) CoreAsBorder() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EvpnTopologyEvpnOptions) *bool { return v.CoreAsBorder }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to route management traffic inband; routes will be propagated to downstream switches
+func (o EvpnTopologyEvpnOptionsOutput) EnableInbandMgmt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EvpnTopologyEvpnOptions) *bool { return v.EnableInbandMgmt }).(pulumi.BoolPtrOutput)
+}
+
 // if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
 func (o EvpnTopologyEvpnOptionsOutput) EnableInbandZtp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EvpnTopologyEvpnOptions) *bool { return v.EnableInbandZtp }).(pulumi.BoolPtrOutput)
@@ -280,6 +289,16 @@ func (o EvpnTopologyEvpnOptionsPtrOutput) CoreAsBorder() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.CoreAsBorder
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to route management traffic inband; routes will be propagated to downstream switches
+func (o EvpnTopologyEvpnOptionsPtrOutput) EnableInbandMgmt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EvpnTopologyEvpnOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInbandMgmt
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -1766,7 +1785,7 @@ type NetworktemplateExtraRoutes6 struct {
 	NextQualified map[string]NetworktemplateExtraRoutes6NextQualified `pulumi:"nextQualified"`
 	NoResolve     *bool                                               `pulumi:"noResolve"`
 	Preference    *int                                                `pulumi:"preference"`
-	// Next-hop IP Address
+	// Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
 	Via string `pulumi:"via"`
 }
 
@@ -1788,7 +1807,7 @@ type NetworktemplateExtraRoutes6Args struct {
 	NextQualified NetworktemplateExtraRoutes6NextQualifiedMapInput `pulumi:"nextQualified"`
 	NoResolve     pulumi.BoolPtrInput                              `pulumi:"noResolve"`
 	Preference    pulumi.IntPtrInput                               `pulumi:"preference"`
-	// Next-hop IP Address
+	// Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
 	Via pulumi.StringInput `pulumi:"via"`
 }
 
@@ -1866,7 +1885,7 @@ func (o NetworktemplateExtraRoutes6Output) Preference() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateExtraRoutes6) *int { return v.Preference }).(pulumi.IntPtrOutput)
 }
 
-// Next-hop IP Address
+// Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
 func (o NetworktemplateExtraRoutes6Output) Via() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworktemplateExtraRoutes6) string { return v.Via }).(pulumi.StringOutput)
 }
@@ -1998,7 +2017,7 @@ type NetworktemplateExtraRoutes struct {
 	NextQualified map[string]NetworktemplateExtraRoutesNextQualified `pulumi:"nextQualified"`
 	NoResolve     *bool                                              `pulumi:"noResolve"`
 	Preference    *int                                               `pulumi:"preference"`
-	// Next-hop IP Address
+	// Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
 	Via string `pulumi:"via"`
 }
 
@@ -2020,7 +2039,7 @@ type NetworktemplateExtraRoutesArgs struct {
 	NextQualified NetworktemplateExtraRoutesNextQualifiedMapInput `pulumi:"nextQualified"`
 	NoResolve     pulumi.BoolPtrInput                             `pulumi:"noResolve"`
 	Preference    pulumi.IntPtrInput                              `pulumi:"preference"`
-	// Next-hop IP Address
+	// Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
 	Via pulumi.StringInput `pulumi:"via"`
 }
 
@@ -2098,7 +2117,7 @@ func (o NetworktemplateExtraRoutesOutput) Preference() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateExtraRoutes) *int { return v.Preference }).(pulumi.IntPtrOutput)
 }
 
-// Next-hop IP Address
+// Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
 func (o NetworktemplateExtraRoutesOutput) Via() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworktemplateExtraRoutes) string { return v.Via }).(pulumi.StringOutput)
 }
@@ -2998,6 +3017,8 @@ type NetworktemplatePortUsages struct {
 	PersistMac *bool `pulumi:"persistMac"`
 	// Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
 	PoeDisabled *bool `pulumi:"poeDisabled"`
+	// Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+	PoeKeepStateWhenReboot *bool `pulumi:"poeKeepStateWhenReboot"`
 	// PoE priority. enum: `low`, `high`
 	PoePriority *string `pulumi:"poePriority"`
 	// Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
@@ -3100,6 +3121,8 @@ type NetworktemplatePortUsagesArgs struct {
 	PersistMac pulumi.BoolPtrInput `pulumi:"persistMac"`
 	// Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
 	PoeDisabled pulumi.BoolPtrInput `pulumi:"poeDisabled"`
+	// Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+	PoeKeepStateWhenReboot pulumi.BoolPtrInput `pulumi:"poeKeepStateWhenReboot"`
 	// PoE priority. enum: `low`, `high`
 	PoePriority pulumi.StringPtrInput `pulumi:"poePriority"`
 	// Only if `mode`!=`dynamic`. If dot1x is desired, set to dot1x. enum: `dot1x`
@@ -3317,6 +3340,11 @@ func (o NetworktemplatePortUsagesOutput) PersistMac() pulumi.BoolPtrOutput {
 // Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
 func (o NetworktemplatePortUsagesOutput) PoeDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.PoeDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+func (o NetworktemplatePortUsagesOutput) PoeKeepStateWhenReboot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.PoeKeepStateWhenReboot }).(pulumi.BoolPtrOutput)
 }
 
 // PoE priority. enum: `low`, `high`
@@ -9714,7 +9742,9 @@ type NetworktemplateSwitchMatchingRulePortConfig struct {
 	AeDisableLacp *bool `pulumi:"aeDisableLacp"`
 	// Users could force to use the designated AE name
 	AeIdx *int `pulumi:"aeIdx"`
-	// To use fast timeout
+	// If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+	AeLacpForceUp *bool `pulumi:"aeLacpForceUp"`
+	// To use slow timeout
 	AeLacpSlow *bool `pulumi:"aeLacpSlow"`
 	Aggregated *bool `pulumi:"aggregated"`
 	// To generate port up/down alarm
@@ -9758,7 +9788,9 @@ type NetworktemplateSwitchMatchingRulePortConfigArgs struct {
 	AeDisableLacp pulumi.BoolPtrInput `pulumi:"aeDisableLacp"`
 	// Users could force to use the designated AE name
 	AeIdx pulumi.IntPtrInput `pulumi:"aeIdx"`
-	// To use fast timeout
+	// If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+	AeLacpForceUp pulumi.BoolPtrInput `pulumi:"aeLacpForceUp"`
+	// To use slow timeout
 	AeLacpSlow pulumi.BoolPtrInput `pulumi:"aeLacpSlow"`
 	Aggregated pulumi.BoolPtrInput `pulumi:"aggregated"`
 	// To generate port up/down alarm
@@ -9847,7 +9879,12 @@ func (o NetworktemplateSwitchMatchingRulePortConfigOutput) AeIdx() pulumi.IntPtr
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *int { return v.AeIdx }).(pulumi.IntPtrOutput)
 }
 
-// To use fast timeout
+// If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+func (o NetworktemplateSwitchMatchingRulePortConfigOutput) AeLacpForceUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *bool { return v.AeLacpForceUp }).(pulumi.BoolPtrOutput)
+}
+
+// To use slow timeout
 func (o NetworktemplateSwitchMatchingRulePortConfigOutput) AeLacpSlow() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRulePortConfig) *bool { return v.AeLacpSlow }).(pulumi.BoolPtrOutput)
 }
@@ -12073,6 +12110,143 @@ func (o SettingAnalyticPtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type SettingApSyntheticTest struct {
+	// List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+	AdditionalVlanIds []string `pulumi:"additionalVlanIds"`
+}
+
+// SettingApSyntheticTestInput is an input type that accepts SettingApSyntheticTestArgs and SettingApSyntheticTestOutput values.
+// You can construct a concrete instance of `SettingApSyntheticTestInput` via:
+//
+//	SettingApSyntheticTestArgs{...}
+type SettingApSyntheticTestInput interface {
+	pulumi.Input
+
+	ToSettingApSyntheticTestOutput() SettingApSyntheticTestOutput
+	ToSettingApSyntheticTestOutputWithContext(context.Context) SettingApSyntheticTestOutput
+}
+
+type SettingApSyntheticTestArgs struct {
+	// List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+	AdditionalVlanIds pulumi.StringArrayInput `pulumi:"additionalVlanIds"`
+}
+
+func (SettingApSyntheticTestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingApSyntheticTest)(nil)).Elem()
+}
+
+func (i SettingApSyntheticTestArgs) ToSettingApSyntheticTestOutput() SettingApSyntheticTestOutput {
+	return i.ToSettingApSyntheticTestOutputWithContext(context.Background())
+}
+
+func (i SettingApSyntheticTestArgs) ToSettingApSyntheticTestOutputWithContext(ctx context.Context) SettingApSyntheticTestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingApSyntheticTestOutput)
+}
+
+func (i SettingApSyntheticTestArgs) ToSettingApSyntheticTestPtrOutput() SettingApSyntheticTestPtrOutput {
+	return i.ToSettingApSyntheticTestPtrOutputWithContext(context.Background())
+}
+
+func (i SettingApSyntheticTestArgs) ToSettingApSyntheticTestPtrOutputWithContext(ctx context.Context) SettingApSyntheticTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingApSyntheticTestOutput).ToSettingApSyntheticTestPtrOutputWithContext(ctx)
+}
+
+// SettingApSyntheticTestPtrInput is an input type that accepts SettingApSyntheticTestArgs, SettingApSyntheticTestPtr and SettingApSyntheticTestPtrOutput values.
+// You can construct a concrete instance of `SettingApSyntheticTestPtrInput` via:
+//
+//	        SettingApSyntheticTestArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingApSyntheticTestPtrInput interface {
+	pulumi.Input
+
+	ToSettingApSyntheticTestPtrOutput() SettingApSyntheticTestPtrOutput
+	ToSettingApSyntheticTestPtrOutputWithContext(context.Context) SettingApSyntheticTestPtrOutput
+}
+
+type settingApSyntheticTestPtrType SettingApSyntheticTestArgs
+
+func SettingApSyntheticTestPtr(v *SettingApSyntheticTestArgs) SettingApSyntheticTestPtrInput {
+	return (*settingApSyntheticTestPtrType)(v)
+}
+
+func (*settingApSyntheticTestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingApSyntheticTest)(nil)).Elem()
+}
+
+func (i *settingApSyntheticTestPtrType) ToSettingApSyntheticTestPtrOutput() SettingApSyntheticTestPtrOutput {
+	return i.ToSettingApSyntheticTestPtrOutputWithContext(context.Background())
+}
+
+func (i *settingApSyntheticTestPtrType) ToSettingApSyntheticTestPtrOutputWithContext(ctx context.Context) SettingApSyntheticTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingApSyntheticTestPtrOutput)
+}
+
+type SettingApSyntheticTestOutput struct{ *pulumi.OutputState }
+
+func (SettingApSyntheticTestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingApSyntheticTest)(nil)).Elem()
+}
+
+func (o SettingApSyntheticTestOutput) ToSettingApSyntheticTestOutput() SettingApSyntheticTestOutput {
+	return o
+}
+
+func (o SettingApSyntheticTestOutput) ToSettingApSyntheticTestOutputWithContext(ctx context.Context) SettingApSyntheticTestOutput {
+	return o
+}
+
+func (o SettingApSyntheticTestOutput) ToSettingApSyntheticTestPtrOutput() SettingApSyntheticTestPtrOutput {
+	return o.ToSettingApSyntheticTestPtrOutputWithContext(context.Background())
+}
+
+func (o SettingApSyntheticTestOutput) ToSettingApSyntheticTestPtrOutputWithContext(ctx context.Context) SettingApSyntheticTestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingApSyntheticTest) *SettingApSyntheticTest {
+		return &v
+	}).(SettingApSyntheticTestPtrOutput)
+}
+
+// List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+func (o SettingApSyntheticTestOutput) AdditionalVlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingApSyntheticTest) []string { return v.AdditionalVlanIds }).(pulumi.StringArrayOutput)
+}
+
+type SettingApSyntheticTestPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingApSyntheticTestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingApSyntheticTest)(nil)).Elem()
+}
+
+func (o SettingApSyntheticTestPtrOutput) ToSettingApSyntheticTestPtrOutput() SettingApSyntheticTestPtrOutput {
+	return o
+}
+
+func (o SettingApSyntheticTestPtrOutput) ToSettingApSyntheticTestPtrOutputWithContext(ctx context.Context) SettingApSyntheticTestPtrOutput {
+	return o
+}
+
+func (o SettingApSyntheticTestPtrOutput) Elem() SettingApSyntheticTestOutput {
+	return o.ApplyT(func(v *SettingApSyntheticTest) SettingApSyntheticTest {
+		if v != nil {
+			return *v
+		}
+		var ret SettingApSyntheticTest
+		return ret
+	}).(SettingApSyntheticTestOutput)
+}
+
+// List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+func (o SettingApSyntheticTestPtrOutput) AdditionalVlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingApSyntheticTest) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalVlanIds
+	}).(pulumi.StringArrayOutput)
 }
 
 type SettingAutoUpgrade struct {
@@ -16007,6 +16181,386 @@ func (o SettingGatewayMgmtProtectReCustomArrayOutput) Index(i pulumi.IntInput) S
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingGatewayMgmtProtectReCustom {
 		return vs[0].([]SettingGatewayMgmtProtectReCustom)[vs[1].(int)]
 	}).(SettingGatewayMgmtProtectReCustomOutput)
+}
+
+type SettingIotproxy struct {
+	Enabled *bool `pulumi:"enabled"`
+	// Visionline integration settings for IoT proxy
+	Visionline *SettingIotproxyVisionline `pulumi:"visionline"`
+}
+
+// SettingIotproxyInput is an input type that accepts SettingIotproxyArgs and SettingIotproxyOutput values.
+// You can construct a concrete instance of `SettingIotproxyInput` via:
+//
+//	SettingIotproxyArgs{...}
+type SettingIotproxyInput interface {
+	pulumi.Input
+
+	ToSettingIotproxyOutput() SettingIotproxyOutput
+	ToSettingIotproxyOutputWithContext(context.Context) SettingIotproxyOutput
+}
+
+type SettingIotproxyArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Visionline integration settings for IoT proxy
+	Visionline SettingIotproxyVisionlinePtrInput `pulumi:"visionline"`
+}
+
+func (SettingIotproxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingIotproxy)(nil)).Elem()
+}
+
+func (i SettingIotproxyArgs) ToSettingIotproxyOutput() SettingIotproxyOutput {
+	return i.ToSettingIotproxyOutputWithContext(context.Background())
+}
+
+func (i SettingIotproxyArgs) ToSettingIotproxyOutputWithContext(ctx context.Context) SettingIotproxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingIotproxyOutput)
+}
+
+func (i SettingIotproxyArgs) ToSettingIotproxyPtrOutput() SettingIotproxyPtrOutput {
+	return i.ToSettingIotproxyPtrOutputWithContext(context.Background())
+}
+
+func (i SettingIotproxyArgs) ToSettingIotproxyPtrOutputWithContext(ctx context.Context) SettingIotproxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingIotproxyOutput).ToSettingIotproxyPtrOutputWithContext(ctx)
+}
+
+// SettingIotproxyPtrInput is an input type that accepts SettingIotproxyArgs, SettingIotproxyPtr and SettingIotproxyPtrOutput values.
+// You can construct a concrete instance of `SettingIotproxyPtrInput` via:
+//
+//	        SettingIotproxyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingIotproxyPtrInput interface {
+	pulumi.Input
+
+	ToSettingIotproxyPtrOutput() SettingIotproxyPtrOutput
+	ToSettingIotproxyPtrOutputWithContext(context.Context) SettingIotproxyPtrOutput
+}
+
+type settingIotproxyPtrType SettingIotproxyArgs
+
+func SettingIotproxyPtr(v *SettingIotproxyArgs) SettingIotproxyPtrInput {
+	return (*settingIotproxyPtrType)(v)
+}
+
+func (*settingIotproxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingIotproxy)(nil)).Elem()
+}
+
+func (i *settingIotproxyPtrType) ToSettingIotproxyPtrOutput() SettingIotproxyPtrOutput {
+	return i.ToSettingIotproxyPtrOutputWithContext(context.Background())
+}
+
+func (i *settingIotproxyPtrType) ToSettingIotproxyPtrOutputWithContext(ctx context.Context) SettingIotproxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingIotproxyPtrOutput)
+}
+
+type SettingIotproxyOutput struct{ *pulumi.OutputState }
+
+func (SettingIotproxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingIotproxy)(nil)).Elem()
+}
+
+func (o SettingIotproxyOutput) ToSettingIotproxyOutput() SettingIotproxyOutput {
+	return o
+}
+
+func (o SettingIotproxyOutput) ToSettingIotproxyOutputWithContext(ctx context.Context) SettingIotproxyOutput {
+	return o
+}
+
+func (o SettingIotproxyOutput) ToSettingIotproxyPtrOutput() SettingIotproxyPtrOutput {
+	return o.ToSettingIotproxyPtrOutputWithContext(context.Background())
+}
+
+func (o SettingIotproxyOutput) ToSettingIotproxyPtrOutputWithContext(ctx context.Context) SettingIotproxyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingIotproxy) *SettingIotproxy {
+		return &v
+	}).(SettingIotproxyPtrOutput)
+}
+
+func (o SettingIotproxyOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingIotproxy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Visionline integration settings for IoT proxy
+func (o SettingIotproxyOutput) Visionline() SettingIotproxyVisionlinePtrOutput {
+	return o.ApplyT(func(v SettingIotproxy) *SettingIotproxyVisionline { return v.Visionline }).(SettingIotproxyVisionlinePtrOutput)
+}
+
+type SettingIotproxyPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingIotproxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingIotproxy)(nil)).Elem()
+}
+
+func (o SettingIotproxyPtrOutput) ToSettingIotproxyPtrOutput() SettingIotproxyPtrOutput {
+	return o
+}
+
+func (o SettingIotproxyPtrOutput) ToSettingIotproxyPtrOutputWithContext(ctx context.Context) SettingIotproxyPtrOutput {
+	return o
+}
+
+func (o SettingIotproxyPtrOutput) Elem() SettingIotproxyOutput {
+	return o.ApplyT(func(v *SettingIotproxy) SettingIotproxy {
+		if v != nil {
+			return *v
+		}
+		var ret SettingIotproxy
+		return ret
+	}).(SettingIotproxyOutput)
+}
+
+func (o SettingIotproxyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingIotproxy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Visionline integration settings for IoT proxy
+func (o SettingIotproxyPtrOutput) Visionline() SettingIotproxyVisionlinePtrOutput {
+	return o.ApplyT(func(v *SettingIotproxy) *SettingIotproxyVisionline {
+		if v == nil {
+			return nil
+		}
+		return v.Visionline
+	}).(SettingIotproxyVisionlinePtrOutput)
+}
+
+type SettingIotproxyVisionline struct {
+	// Access ID for the Visionline service
+	AccessId *string `pulumi:"accessId"`
+	Enabled  *bool   `pulumi:"enabled"`
+	// Hostname or IP of the Visionline collector
+	Host *string `pulumi:"host"`
+	// Password for the Visionline service
+	Password *string `pulumi:"password"`
+	// TCP port of the Visionline collector
+	Port *int `pulumi:"port"`
+	// Username for the Visionline service
+	Username *string `pulumi:"username"`
+}
+
+// SettingIotproxyVisionlineInput is an input type that accepts SettingIotproxyVisionlineArgs and SettingIotproxyVisionlineOutput values.
+// You can construct a concrete instance of `SettingIotproxyVisionlineInput` via:
+//
+//	SettingIotproxyVisionlineArgs{...}
+type SettingIotproxyVisionlineInput interface {
+	pulumi.Input
+
+	ToSettingIotproxyVisionlineOutput() SettingIotproxyVisionlineOutput
+	ToSettingIotproxyVisionlineOutputWithContext(context.Context) SettingIotproxyVisionlineOutput
+}
+
+type SettingIotproxyVisionlineArgs struct {
+	// Access ID for the Visionline service
+	AccessId pulumi.StringPtrInput `pulumi:"accessId"`
+	Enabled  pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// Hostname or IP of the Visionline collector
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Password for the Visionline service
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// TCP port of the Visionline collector
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Username for the Visionline service
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (SettingIotproxyVisionlineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingIotproxyVisionline)(nil)).Elem()
+}
+
+func (i SettingIotproxyVisionlineArgs) ToSettingIotproxyVisionlineOutput() SettingIotproxyVisionlineOutput {
+	return i.ToSettingIotproxyVisionlineOutputWithContext(context.Background())
+}
+
+func (i SettingIotproxyVisionlineArgs) ToSettingIotproxyVisionlineOutputWithContext(ctx context.Context) SettingIotproxyVisionlineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingIotproxyVisionlineOutput)
+}
+
+func (i SettingIotproxyVisionlineArgs) ToSettingIotproxyVisionlinePtrOutput() SettingIotproxyVisionlinePtrOutput {
+	return i.ToSettingIotproxyVisionlinePtrOutputWithContext(context.Background())
+}
+
+func (i SettingIotproxyVisionlineArgs) ToSettingIotproxyVisionlinePtrOutputWithContext(ctx context.Context) SettingIotproxyVisionlinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingIotproxyVisionlineOutput).ToSettingIotproxyVisionlinePtrOutputWithContext(ctx)
+}
+
+// SettingIotproxyVisionlinePtrInput is an input type that accepts SettingIotproxyVisionlineArgs, SettingIotproxyVisionlinePtr and SettingIotproxyVisionlinePtrOutput values.
+// You can construct a concrete instance of `SettingIotproxyVisionlinePtrInput` via:
+//
+//	        SettingIotproxyVisionlineArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingIotproxyVisionlinePtrInput interface {
+	pulumi.Input
+
+	ToSettingIotproxyVisionlinePtrOutput() SettingIotproxyVisionlinePtrOutput
+	ToSettingIotproxyVisionlinePtrOutputWithContext(context.Context) SettingIotproxyVisionlinePtrOutput
+}
+
+type settingIotproxyVisionlinePtrType SettingIotproxyVisionlineArgs
+
+func SettingIotproxyVisionlinePtr(v *SettingIotproxyVisionlineArgs) SettingIotproxyVisionlinePtrInput {
+	return (*settingIotproxyVisionlinePtrType)(v)
+}
+
+func (*settingIotproxyVisionlinePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingIotproxyVisionline)(nil)).Elem()
+}
+
+func (i *settingIotproxyVisionlinePtrType) ToSettingIotproxyVisionlinePtrOutput() SettingIotproxyVisionlinePtrOutput {
+	return i.ToSettingIotproxyVisionlinePtrOutputWithContext(context.Background())
+}
+
+func (i *settingIotproxyVisionlinePtrType) ToSettingIotproxyVisionlinePtrOutputWithContext(ctx context.Context) SettingIotproxyVisionlinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingIotproxyVisionlinePtrOutput)
+}
+
+type SettingIotproxyVisionlineOutput struct{ *pulumi.OutputState }
+
+func (SettingIotproxyVisionlineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingIotproxyVisionline)(nil)).Elem()
+}
+
+func (o SettingIotproxyVisionlineOutput) ToSettingIotproxyVisionlineOutput() SettingIotproxyVisionlineOutput {
+	return o
+}
+
+func (o SettingIotproxyVisionlineOutput) ToSettingIotproxyVisionlineOutputWithContext(ctx context.Context) SettingIotproxyVisionlineOutput {
+	return o
+}
+
+func (o SettingIotproxyVisionlineOutput) ToSettingIotproxyVisionlinePtrOutput() SettingIotproxyVisionlinePtrOutput {
+	return o.ToSettingIotproxyVisionlinePtrOutputWithContext(context.Background())
+}
+
+func (o SettingIotproxyVisionlineOutput) ToSettingIotproxyVisionlinePtrOutputWithContext(ctx context.Context) SettingIotproxyVisionlinePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingIotproxyVisionline) *SettingIotproxyVisionline {
+		return &v
+	}).(SettingIotproxyVisionlinePtrOutput)
+}
+
+// Access ID for the Visionline service
+func (o SettingIotproxyVisionlineOutput) AccessId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingIotproxyVisionline) *string { return v.AccessId }).(pulumi.StringPtrOutput)
+}
+
+func (o SettingIotproxyVisionlineOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingIotproxyVisionline) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Hostname or IP of the Visionline collector
+func (o SettingIotproxyVisionlineOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingIotproxyVisionline) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Password for the Visionline service
+func (o SettingIotproxyVisionlineOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingIotproxyVisionline) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// TCP port of the Visionline collector
+func (o SettingIotproxyVisionlineOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingIotproxyVisionline) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Username for the Visionline service
+func (o SettingIotproxyVisionlineOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingIotproxyVisionline) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type SettingIotproxyVisionlinePtrOutput struct{ *pulumi.OutputState }
+
+func (SettingIotproxyVisionlinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingIotproxyVisionline)(nil)).Elem()
+}
+
+func (o SettingIotproxyVisionlinePtrOutput) ToSettingIotproxyVisionlinePtrOutput() SettingIotproxyVisionlinePtrOutput {
+	return o
+}
+
+func (o SettingIotproxyVisionlinePtrOutput) ToSettingIotproxyVisionlinePtrOutputWithContext(ctx context.Context) SettingIotproxyVisionlinePtrOutput {
+	return o
+}
+
+func (o SettingIotproxyVisionlinePtrOutput) Elem() SettingIotproxyVisionlineOutput {
+	return o.ApplyT(func(v *SettingIotproxyVisionline) SettingIotproxyVisionline {
+		if v != nil {
+			return *v
+		}
+		var ret SettingIotproxyVisionline
+		return ret
+	}).(SettingIotproxyVisionlineOutput)
+}
+
+// Access ID for the Visionline service
+func (o SettingIotproxyVisionlinePtrOutput) AccessId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingIotproxyVisionline) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SettingIotproxyVisionlinePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingIotproxyVisionline) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Hostname or IP of the Visionline collector
+func (o SettingIotproxyVisionlinePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingIotproxyVisionline) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password for the Visionline service
+func (o SettingIotproxyVisionlinePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingIotproxyVisionline) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// TCP port of the Visionline collector
+func (o SettingIotproxyVisionlinePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SettingIotproxyVisionline) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Username for the Visionline service
+func (o SettingIotproxyVisionlinePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingIotproxyVisionline) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 type SettingJuniperSrx struct {
@@ -20426,6 +20980,118 @@ func (o SettingUplinkPortConfigPtrOutput) KeepWlansUpIfDown() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+type SettingVarsAnnotations struct {
+	// User-provided note to describe what this var was created for
+	Note *string `pulumi:"note"`
+	// Used to identify where to enumerate / auto-complete the field from. Default is `generic` (plain string, no special handling).
+	//
+	// enum: `generic`, `mxtunnelId`
+	Type *string `pulumi:"type"`
+}
+
+// SettingVarsAnnotationsInput is an input type that accepts SettingVarsAnnotationsArgs and SettingVarsAnnotationsOutput values.
+// You can construct a concrete instance of `SettingVarsAnnotationsInput` via:
+//
+//	SettingVarsAnnotationsArgs{...}
+type SettingVarsAnnotationsInput interface {
+	pulumi.Input
+
+	ToSettingVarsAnnotationsOutput() SettingVarsAnnotationsOutput
+	ToSettingVarsAnnotationsOutputWithContext(context.Context) SettingVarsAnnotationsOutput
+}
+
+type SettingVarsAnnotationsArgs struct {
+	// User-provided note to describe what this var was created for
+	Note pulumi.StringPtrInput `pulumi:"note"`
+	// Used to identify where to enumerate / auto-complete the field from. Default is `generic` (plain string, no special handling).
+	//
+	// enum: `generic`, `mxtunnelId`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (SettingVarsAnnotationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingVarsAnnotations)(nil)).Elem()
+}
+
+func (i SettingVarsAnnotationsArgs) ToSettingVarsAnnotationsOutput() SettingVarsAnnotationsOutput {
+	return i.ToSettingVarsAnnotationsOutputWithContext(context.Background())
+}
+
+func (i SettingVarsAnnotationsArgs) ToSettingVarsAnnotationsOutputWithContext(ctx context.Context) SettingVarsAnnotationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingVarsAnnotationsOutput)
+}
+
+// SettingVarsAnnotationsMapInput is an input type that accepts SettingVarsAnnotationsMap and SettingVarsAnnotationsMapOutput values.
+// You can construct a concrete instance of `SettingVarsAnnotationsMapInput` via:
+//
+//	SettingVarsAnnotationsMap{ "key": SettingVarsAnnotationsArgs{...} }
+type SettingVarsAnnotationsMapInput interface {
+	pulumi.Input
+
+	ToSettingVarsAnnotationsMapOutput() SettingVarsAnnotationsMapOutput
+	ToSettingVarsAnnotationsMapOutputWithContext(context.Context) SettingVarsAnnotationsMapOutput
+}
+
+type SettingVarsAnnotationsMap map[string]SettingVarsAnnotationsInput
+
+func (SettingVarsAnnotationsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SettingVarsAnnotations)(nil)).Elem()
+}
+
+func (i SettingVarsAnnotationsMap) ToSettingVarsAnnotationsMapOutput() SettingVarsAnnotationsMapOutput {
+	return i.ToSettingVarsAnnotationsMapOutputWithContext(context.Background())
+}
+
+func (i SettingVarsAnnotationsMap) ToSettingVarsAnnotationsMapOutputWithContext(ctx context.Context) SettingVarsAnnotationsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingVarsAnnotationsMapOutput)
+}
+
+type SettingVarsAnnotationsOutput struct{ *pulumi.OutputState }
+
+func (SettingVarsAnnotationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingVarsAnnotations)(nil)).Elem()
+}
+
+func (o SettingVarsAnnotationsOutput) ToSettingVarsAnnotationsOutput() SettingVarsAnnotationsOutput {
+	return o
+}
+
+func (o SettingVarsAnnotationsOutput) ToSettingVarsAnnotationsOutputWithContext(ctx context.Context) SettingVarsAnnotationsOutput {
+	return o
+}
+
+// User-provided note to describe what this var was created for
+func (o SettingVarsAnnotationsOutput) Note() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingVarsAnnotations) *string { return v.Note }).(pulumi.StringPtrOutput)
+}
+
+// Used to identify where to enumerate / auto-complete the field from. Default is `generic` (plain string, no special handling).
+//
+// enum: `generic`, `mxtunnelId`
+func (o SettingVarsAnnotationsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingVarsAnnotations) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SettingVarsAnnotationsMapOutput struct{ *pulumi.OutputState }
+
+func (SettingVarsAnnotationsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SettingVarsAnnotations)(nil)).Elem()
+}
+
+func (o SettingVarsAnnotationsMapOutput) ToSettingVarsAnnotationsMapOutput() SettingVarsAnnotationsMapOutput {
+	return o
+}
+
+func (o SettingVarsAnnotationsMapOutput) ToSettingVarsAnnotationsMapOutputWithContext(ctx context.Context) SettingVarsAnnotationsMapOutput {
+	return o
+}
+
+func (o SettingVarsAnnotationsMapOutput) MapIndex(k pulumi.StringInput) SettingVarsAnnotationsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SettingVarsAnnotations {
+		return vs[0].(map[string]SettingVarsAnnotations)[vs[1].(string)]
+	}).(SettingVarsAnnotationsOutput)
+}
+
 type SettingVna struct {
 	// Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
 	Enabled *bool `pulumi:"enabled"`
@@ -22683,6 +23349,10 @@ type WlanAuth struct {
 	AnticlogThreshold *int `pulumi:"anticlogThreshold"`
 	// Whether to trigger EAP reauth when the session ends
 	EapReauth *bool `pulumi:"eapReauth"`
+	// Enable Beacon Protection; default is false for better compatibility
+	EnableBeaconProtection *bool `pulumi:"enableBeaconProtection"`
+	// Enable GCMP-256 encryption suite; default is false for better compatibility
+	EnableGcmp256 *bool `pulumi:"enableGcmp256"`
 	// Whether to enable MAC Auth, uses the same auth_servers
 	EnableMacAuth *bool `pulumi:"enableMacAuth"`
 	// When `type`==`wep`
@@ -22721,6 +23391,10 @@ type WlanAuthArgs struct {
 	AnticlogThreshold pulumi.IntPtrInput `pulumi:"anticlogThreshold"`
 	// Whether to trigger EAP reauth when the session ends
 	EapReauth pulumi.BoolPtrInput `pulumi:"eapReauth"`
+	// Enable Beacon Protection; default is false for better compatibility
+	EnableBeaconProtection pulumi.BoolPtrInput `pulumi:"enableBeaconProtection"`
+	// Enable GCMP-256 encryption suite; default is false for better compatibility
+	EnableGcmp256 pulumi.BoolPtrInput `pulumi:"enableGcmp256"`
 	// Whether to enable MAC Auth, uses the same auth_servers
 	EnableMacAuth pulumi.BoolPtrInput `pulumi:"enableMacAuth"`
 	// When `type`==`wep`
@@ -22830,6 +23504,16 @@ func (o WlanAuthOutput) EapReauth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *bool { return v.EapReauth }).(pulumi.BoolPtrOutput)
 }
 
+// Enable Beacon Protection; default is false for better compatibility
+func (o WlanAuthOutput) EnableBeaconProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanAuth) *bool { return v.EnableBeaconProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Enable GCMP-256 encryption suite; default is false for better compatibility
+func (o WlanAuthOutput) EnableGcmp256() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanAuth) *bool { return v.EnableGcmp256 }).(pulumi.BoolPtrOutput)
+}
+
 // Whether to enable MAC Auth, uses the same auth_servers
 func (o WlanAuthOutput) EnableMacAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAuth) *bool { return v.EnableMacAuth }).(pulumi.BoolPtrOutput)
@@ -22921,6 +23605,26 @@ func (o WlanAuthPtrOutput) EapReauth() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.EapReauth
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable Beacon Protection; default is false for better compatibility
+func (o WlanAuthPtrOutput) EnableBeaconProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanAuth) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableBeaconProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable GCMP-256 encryption suite; default is false for better compatibility
+func (o WlanAuthPtrOutput) EnableGcmp256() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanAuth) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableGcmp256
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -36608,6 +37312,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfInstancesExtraRoutesMapInput)(nil)).Elem(), NetworktemplateVrfInstancesExtraRoutesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAnalyticInput)(nil)).Elem(), SettingAnalyticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAnalyticPtrInput)(nil)).Elem(), SettingAnalyticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingApSyntheticTestInput)(nil)).Elem(), SettingApSyntheticTestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingApSyntheticTestPtrInput)(nil)).Elem(), SettingApSyntheticTestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAutoUpgradeInput)(nil)).Elem(), SettingAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAutoUpgradePtrInput)(nil)).Elem(), SettingAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAutoUpgradeEslInput)(nil)).Elem(), SettingAutoUpgradeEslArgs{})
@@ -36644,6 +37350,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtProtectRePtrInput)(nil)).Elem(), SettingGatewayMgmtProtectReArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtProtectReCustomInput)(nil)).Elem(), SettingGatewayMgmtProtectReCustomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtProtectReCustomArrayInput)(nil)).Elem(), SettingGatewayMgmtProtectReCustomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingIotproxyInput)(nil)).Elem(), SettingIotproxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingIotproxyPtrInput)(nil)).Elem(), SettingIotproxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingIotproxyVisionlineInput)(nil)).Elem(), SettingIotproxyVisionlineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingIotproxyVisionlinePtrInput)(nil)).Elem(), SettingIotproxyVisionlineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingJuniperSrxInput)(nil)).Elem(), SettingJuniperSrxArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingJuniperSrxPtrInput)(nil)).Elem(), SettingJuniperSrxArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingJuniperSrxAutoUpgradeInput)(nil)).Elem(), SettingJuniperSrxAutoUpgradeArgs{})
@@ -36696,6 +37406,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingSyntheticTestWanSpeedtestPtrInput)(nil)).Elem(), SettingSyntheticTestWanSpeedtestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingUplinkPortConfigInput)(nil)).Elem(), SettingUplinkPortConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingUplinkPortConfigPtrInput)(nil)).Elem(), SettingUplinkPortConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingVarsAnnotationsInput)(nil)).Elem(), SettingVarsAnnotationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingVarsAnnotationsMapInput)(nil)).Elem(), SettingVarsAnnotationsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingVnaInput)(nil)).Elem(), SettingVnaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingVnaPtrInput)(nil)).Elem(), SettingVnaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingVsInstanceInput)(nil)).Elem(), SettingVsInstanceArgs{})
@@ -36970,6 +37682,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworktemplateVrfInstancesExtraRoutesMapOutput{})
 	pulumi.RegisterOutputType(SettingAnalyticOutput{})
 	pulumi.RegisterOutputType(SettingAnalyticPtrOutput{})
+	pulumi.RegisterOutputType(SettingApSyntheticTestOutput{})
+	pulumi.RegisterOutputType(SettingApSyntheticTestPtrOutput{})
 	pulumi.RegisterOutputType(SettingAutoUpgradeOutput{})
 	pulumi.RegisterOutputType(SettingAutoUpgradePtrOutput{})
 	pulumi.RegisterOutputType(SettingAutoUpgradeEslOutput{})
@@ -37006,6 +37720,10 @@ func init() {
 	pulumi.RegisterOutputType(SettingGatewayMgmtProtectRePtrOutput{})
 	pulumi.RegisterOutputType(SettingGatewayMgmtProtectReCustomOutput{})
 	pulumi.RegisterOutputType(SettingGatewayMgmtProtectReCustomArrayOutput{})
+	pulumi.RegisterOutputType(SettingIotproxyOutput{})
+	pulumi.RegisterOutputType(SettingIotproxyPtrOutput{})
+	pulumi.RegisterOutputType(SettingIotproxyVisionlineOutput{})
+	pulumi.RegisterOutputType(SettingIotproxyVisionlinePtrOutput{})
 	pulumi.RegisterOutputType(SettingJuniperSrxOutput{})
 	pulumi.RegisterOutputType(SettingJuniperSrxPtrOutput{})
 	pulumi.RegisterOutputType(SettingJuniperSrxAutoUpgradeOutput{})
@@ -37058,6 +37776,8 @@ func init() {
 	pulumi.RegisterOutputType(SettingSyntheticTestWanSpeedtestPtrOutput{})
 	pulumi.RegisterOutputType(SettingUplinkPortConfigOutput{})
 	pulumi.RegisterOutputType(SettingUplinkPortConfigPtrOutput{})
+	pulumi.RegisterOutputType(SettingVarsAnnotationsOutput{})
+	pulumi.RegisterOutputType(SettingVarsAnnotationsMapOutput{})
 	pulumi.RegisterOutputType(SettingVnaOutput{})
 	pulumi.RegisterOutputType(SettingVnaPtrOutput{})
 	pulumi.RegisterOutputType(SettingVsInstanceOutput{})

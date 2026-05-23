@@ -34,7 +34,7 @@ public final class SwitchDhcpdConfigConfig {
      */
     private @Nullable Map<String,SwitchDhcpdConfigConfigFixedBindings> fixedBindings;
     /**
-     * @return If `type`==`server`  - optional, `ip` will be used if not provided
+     * @return If `type`==`server` - optional, `ip` will be used if not provided
      * 
      */
     private @Nullable String gateway;
@@ -125,7 +125,7 @@ public final class SwitchDhcpdConfigConfig {
         return this.fixedBindings == null ? Map.of() : this.fixedBindings;
     }
     /**
-     * @return If `type`==`server`  - optional, `ip` will be used if not provided
+     * @return If `type`==`server` - optional, `ip` will be used if not provided
      * 
      */
     public Optional<String> gateway() {

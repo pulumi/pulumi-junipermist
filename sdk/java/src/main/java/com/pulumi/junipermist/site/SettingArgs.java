@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.site.inputs.SettingAnalyticArgs;
+import com.pulumi.junipermist.site.inputs.SettingApSyntheticTestArgs;
 import com.pulumi.junipermist.site.inputs.SettingAutoUpgradeArgs;
 import com.pulumi.junipermist.site.inputs.SettingAutoUpgradeEslArgs;
 import com.pulumi.junipermist.site.inputs.SettingBleConfigArgs;
@@ -14,6 +15,7 @@ import com.pulumi.junipermist.site.inputs.SettingConfigPushPolicyArgs;
 import com.pulumi.junipermist.site.inputs.SettingCriticalUrlMonitoringArgs;
 import com.pulumi.junipermist.site.inputs.SettingEngagementArgs;
 import com.pulumi.junipermist.site.inputs.SettingGatewayMgmtArgs;
+import com.pulumi.junipermist.site.inputs.SettingIotproxyArgs;
 import com.pulumi.junipermist.site.inputs.SettingJuniperSrxArgs;
 import com.pulumi.junipermist.site.inputs.SettingLedArgs;
 import com.pulumi.junipermist.site.inputs.SettingMarvisArgs;
@@ -28,6 +30,7 @@ import com.pulumi.junipermist.site.inputs.SettingSrxAppArgs;
 import com.pulumi.junipermist.site.inputs.SettingSsrArgs;
 import com.pulumi.junipermist.site.inputs.SettingSyntheticTestArgs;
 import com.pulumi.junipermist.site.inputs.SettingUplinkPortConfigArgs;
+import com.pulumi.junipermist.site.inputs.SettingVarsAnnotationsArgs;
 import com.pulumi.junipermist.site.inputs.SettingVnaArgs;
 import com.pulumi.junipermist.site.inputs.SettingVsInstanceArgs;
 import com.pulumi.junipermist.site.inputs.SettingWanVnaArgs;
@@ -49,11 +52,41 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingArgs Empty = new SettingArgs();
 
+    /**
+     * whether to allow Mist to look at this org
+     * 
+     */
+    @Import(name="allowMist")
+    private @Nullable Output<Boolean> allowMist;
+
+    /**
+     * @return whether to allow Mist to look at this org
+     * 
+     */
+    public Optional<Output<Boolean>> allowMist() {
+        return Optional.ofNullable(this.allowMist);
+    }
+
     @Import(name="analytic")
     private @Nullable Output<SettingAnalyticArgs> analytic;
 
     public Optional<Output<SettingAnalyticArgs>> analytic() {
         return Optional.ofNullable(this.analytic);
+    }
+
+    /**
+     * AP Synthetic Test configuration
+     * 
+     */
+    @Import(name="apSyntheticTest")
+    private @Nullable Output<SettingApSyntheticTestArgs> apSyntheticTest;
+
+    /**
+     * @return AP Synthetic Test configuration
+     * 
+     */
+    public Optional<Output<SettingApSyntheticTestArgs>> apSyntheticTest() {
+        return Optional.ofNullable(this.apSyntheticTest);
     }
 
     /**
@@ -214,18 +247,33 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Gateway Site settings
+     * Gateway Management settings
      * 
      */
     @Import(name="gatewayMgmt")
     private @Nullable Output<SettingGatewayMgmtArgs> gatewayMgmt;
 
     /**
-     * @return Gateway Site settings
+     * @return Gateway Management settings
      * 
      */
     public Optional<Output<SettingGatewayMgmtArgs>> gatewayMgmt() {
         return Optional.ofNullable(this.gatewayMgmt);
+    }
+
+    /**
+     * enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     * 
+     */
+    @Import(name="gatewayTunnelUpdownThreshold")
+    private @Nullable Output<Integer> gatewayTunnelUpdownThreshold;
+
+    /**
+     * @return enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     * 
+     */
+    public Optional<Output<Integer>> gatewayTunnelUpdownThreshold() {
+        return Optional.ofNullable(this.gatewayTunnelUpdownThreshold);
     }
 
     /**
@@ -241,6 +289,21 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> gatewayUpdownThreshold() {
         return Optional.ofNullable(this.gatewayUpdownThreshold);
+    }
+
+    /**
+     * IoT proxy configuration for the site
+     * 
+     */
+    @Import(name="iotproxy")
+    private @Nullable Output<SettingIotproxyArgs> iotproxy;
+
+    /**
+     * @return IoT proxy configuration for the site
+     * 
+     */
+    public Optional<Output<SettingIotproxyArgs>> iotproxy() {
+        return Optional.ofNullable(this.iotproxy);
     }
 
     @Import(name="juniperSrx")
@@ -495,21 +558,6 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-     * 
-     */
-    @Import(name="usesDescriptionFromPortUsage")
-    private @Nullable Output<Boolean> usesDescriptionFromPortUsage;
-
-    /**
-     * @return by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-     * 
-     */
-    public Optional<Output<Boolean>> usesDescriptionFromPortUsage() {
-        return Optional.ofNullable(this.usesDescriptionFromPortUsage);
-    }
-
-    /**
      * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
@@ -522,6 +570,21 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> vars() {
         return Optional.ofNullable(this.vars);
+    }
+
+    /**
+     * Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     * 
+     */
+    @Import(name="varsAnnotations")
+    private @Nullable Output<Map<String,SettingVarsAnnotationsArgs>> varsAnnotations;
+
+    /**
+     * @return Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     * 
+     */
+    public Optional<Output<Map<String,SettingVarsAnnotationsArgs>>> varsAnnotations() {
+        return Optional.ofNullable(this.varsAnnotations);
     }
 
     @Import(name="vna")
@@ -638,7 +701,9 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     private SettingArgs() {}
 
     private SettingArgs(SettingArgs $) {
+        this.allowMist = $.allowMist;
         this.analytic = $.analytic;
+        this.apSyntheticTest = $.apSyntheticTest;
         this.apUpdownThreshold = $.apUpdownThreshold;
         this.autoUpgrade = $.autoUpgrade;
         this.autoUpgradeEsl = $.autoUpgradeEsl;
@@ -651,7 +716,9 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.enableUnii4 = $.enableUnii4;
         this.engagement = $.engagement;
         this.gatewayMgmt = $.gatewayMgmt;
+        this.gatewayTunnelUpdownThreshold = $.gatewayTunnelUpdownThreshold;
         this.gatewayUpdownThreshold = $.gatewayUpdownThreshold;
+        this.iotproxy = $.iotproxy;
         this.juniperSrx = $.juniperSrx;
         this.led = $.led;
         this.marvis = $.marvis;
@@ -673,8 +740,8 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.syntheticTest = $.syntheticTest;
         this.trackAnonymousDevices = $.trackAnonymousDevices;
         this.uplinkPortConfig = $.uplinkPortConfig;
-        this.usesDescriptionFromPortUsage = $.usesDescriptionFromPortUsage;
         this.vars = $.vars;
+        this.varsAnnotations = $.varsAnnotations;
         this.vna = $.vna;
         this.vpnPathUpdownThreshold = $.vpnPathUpdownThreshold;
         this.vpnPeerUpdownThreshold = $.vpnPeerUpdownThreshold;
@@ -704,6 +771,27 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowMist whether to allow Mist to look at this org
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowMist(@Nullable Output<Boolean> allowMist) {
+            $.allowMist = allowMist;
+            return this;
+        }
+
+        /**
+         * @param allowMist whether to allow Mist to look at this org
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowMist(Boolean allowMist) {
+            return allowMist(Output.of(allowMist));
+        }
+
         public Builder analytic(@Nullable Output<SettingAnalyticArgs> analytic) {
             $.analytic = analytic;
             return this;
@@ -711,6 +799,27 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder analytic(SettingAnalyticArgs analytic) {
             return analytic(Output.of(analytic));
+        }
+
+        /**
+         * @param apSyntheticTest AP Synthetic Test configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apSyntheticTest(@Nullable Output<SettingApSyntheticTestArgs> apSyntheticTest) {
+            $.apSyntheticTest = apSyntheticTest;
+            return this;
+        }
+
+        /**
+         * @param apSyntheticTest AP Synthetic Test configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apSyntheticTest(SettingApSyntheticTestArgs apSyntheticTest) {
+            return apSyntheticTest(Output.of(apSyntheticTest));
         }
 
         /**
@@ -933,7 +1042,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayMgmt Gateway Site settings
+         * @param gatewayMgmt Gateway Management settings
          * 
          * @return builder
          * 
@@ -944,13 +1053,34 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayMgmt Gateway Site settings
+         * @param gatewayMgmt Gateway Management settings
          * 
          * @return builder
          * 
          */
         public Builder gatewayMgmt(SettingGatewayMgmtArgs gatewayMgmt) {
             return gatewayMgmt(Output.of(gatewayMgmt));
+        }
+
+        /**
+         * @param gatewayTunnelUpdownThreshold enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayTunnelUpdownThreshold(@Nullable Output<Integer> gatewayTunnelUpdownThreshold) {
+            $.gatewayTunnelUpdownThreshold = gatewayTunnelUpdownThreshold;
+            return this;
+        }
+
+        /**
+         * @param gatewayTunnelUpdownThreshold enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayTunnelUpdownThreshold(Integer gatewayTunnelUpdownThreshold) {
+            return gatewayTunnelUpdownThreshold(Output.of(gatewayTunnelUpdownThreshold));
         }
 
         /**
@@ -972,6 +1102,27 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gatewayUpdownThreshold(Integer gatewayUpdownThreshold) {
             return gatewayUpdownThreshold(Output.of(gatewayUpdownThreshold));
+        }
+
+        /**
+         * @param iotproxy IoT proxy configuration for the site
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iotproxy(@Nullable Output<SettingIotproxyArgs> iotproxy) {
+            $.iotproxy = iotproxy;
+            return this;
+        }
+
+        /**
+         * @param iotproxy IoT proxy configuration for the site
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iotproxy(SettingIotproxyArgs iotproxy) {
+            return iotproxy(Output.of(iotproxy));
         }
 
         public Builder juniperSrx(@Nullable Output<SettingJuniperSrxArgs> juniperSrx) {
@@ -1330,27 +1481,6 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usesDescriptionFromPortUsage by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-         * 
-         * @return builder
-         * 
-         */
-        public Builder usesDescriptionFromPortUsage(@Nullable Output<Boolean> usesDescriptionFromPortUsage) {
-            $.usesDescriptionFromPortUsage = usesDescriptionFromPortUsage;
-            return this;
-        }
-
-        /**
-         * @param usesDescriptionFromPortUsage by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-         * 
-         * @return builder
-         * 
-         */
-        public Builder usesDescriptionFromPortUsage(Boolean usesDescriptionFromPortUsage) {
-            return usesDescriptionFromPortUsage(Output.of(usesDescriptionFromPortUsage));
-        }
-
-        /**
          * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
          * 
          * @return builder
@@ -1369,6 +1499,27 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vars(Map<String,String> vars) {
             return vars(Output.of(vars));
+        }
+
+        /**
+         * @param varsAnnotations Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder varsAnnotations(@Nullable Output<Map<String,SettingVarsAnnotationsArgs>> varsAnnotations) {
+            $.varsAnnotations = varsAnnotations;
+            return this;
+        }
+
+        /**
+         * @param varsAnnotations Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder varsAnnotations(Map<String,SettingVarsAnnotationsArgs> varsAnnotations) {
+            return varsAnnotations(Output.of(varsAnnotations));
         }
 
         public Builder vna(@Nullable Output<SettingVnaArgs> vna) {

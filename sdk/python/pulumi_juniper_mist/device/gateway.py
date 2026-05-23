@@ -65,7 +65,7 @@ class GatewayArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input['GatewayGatewayMgmtArgs'] gateway_mgmt: Gateway settings
+        :param pulumi.Input['GatewayGatewayMgmtArgs'] gateway_mgmt: Gateway Management settings
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
@@ -258,7 +258,7 @@ class GatewayArgs:
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Input[Optional['GatewayGatewayMgmtArgs']]:
         """
-        Gateway settings
+        Gateway Management settings
         """
         return pulumi.get(self, "gateway_mgmt")
 
@@ -608,7 +608,7 @@ class _GatewayState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input['GatewayGatewayMgmtArgs'] gateway_mgmt: Gateway settings
+        :param pulumi.Input['GatewayGatewayMgmtArgs'] gateway_mgmt: Gateway Management settings
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.str] mac: Device MAC address
@@ -814,7 +814,7 @@ class _GatewayState:
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Input[Optional['GatewayGatewayMgmtArgs']]:
         """
-        Gateway settings
+        Gateway Management settings
         """
         return pulumi.get(self, "gateway_mgmt")
 
@@ -1293,7 +1293,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']] gateway_mgmt: Gateway settings
+        :param pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']] gateway_mgmt: Gateway Management settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
@@ -1533,7 +1533,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']] gateway_mgmt: Gateway settings
+        :param pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']] gateway_mgmt: Gateway Management settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[_builtins.str] mac: Device MAC address
@@ -1665,7 +1665,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Output[Optional['outputs.GatewayGatewayMgmt']]:
         """
-        Gateway settings
+        Gateway Management settings
         """
         return pulumi.get(self, "gateway_mgmt")
 

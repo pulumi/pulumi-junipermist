@@ -342,14 +342,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.authServersNasIp;
     }
     /**
-     * Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      * 
      */
     @Export(name="authServersRetries", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> authServersRetries;
 
     /**
-     * @return Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * @return Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      * 
      */
     public Output<Optional<Integer>> authServersRetries() {
@@ -554,14 +554,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="disableMessageAuthenticatorCheck", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> disableMessageAuthenticatorCheck;
+    private Output</* @Nullable */ Boolean> disableMessageAuthenticatorCheck;
 
     /**
      * @return whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
      * 
      */
-    public Output<Boolean> disableMessageAuthenticatorCheck() {
-        return this.disableMessageAuthenticatorCheck;
+    public Output<Optional<Boolean>> disableMessageAuthenticatorCheck() {
+        return Codegen.optional(this.disableMessageAuthenticatorCheck);
     }
     /**
      * Whether to disable U-APSD

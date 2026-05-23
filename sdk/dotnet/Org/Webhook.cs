@@ -146,7 +146,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> SplunkToken { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `Alarms`, `Audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+        /// enum: `Alarms`, `Audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
         /// </summary>
         [Output("topics")]
         public Output<ImmutableArray<string>> Topics { get; private set; } = null!;
@@ -357,7 +357,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _topics;
 
         /// <summary>
-        /// enum: `Alarms`, `Audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+        /// enum: `Alarms`, `Audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
         /// </summary>
         public InputList<string> Topics
         {
@@ -525,7 +525,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _topics;
 
         /// <summary>
-        /// enum: `Alarms`, `Audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+        /// enum: `Alarms`, `Audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
         /// </summary>
         public InputList<string> Topics
         {

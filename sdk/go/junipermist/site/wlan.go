@@ -102,7 +102,7 @@ type Wlan struct {
 	AuthServersNasId pulumi.StringOutput `pulumi:"authServersNasId"`
 	// Optional, NAS-IP-ADDRESS to use
 	AuthServersNasIp pulumi.StringOutput `pulumi:"authServersNasIp"`
-	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 	AuthServersRetries pulumi.IntPtrOutput `pulumi:"authServersRetries"`
 	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 	AuthServersTimeout pulumi.IntPtrOutput `pulumi:"authServersTimeout"`
@@ -133,7 +133,7 @@ type Wlan struct {
 	// To disable ht or vht rates
 	DisableHtVhtRates pulumi.BoolPtrOutput `pulumi:"disableHtVhtRates"`
 	// whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
-	DisableMessageAuthenticatorCheck pulumi.BoolOutput `pulumi:"disableMessageAuthenticatorCheck"`
+	DisableMessageAuthenticatorCheck pulumi.BoolPtrOutput `pulumi:"disableMessageAuthenticatorCheck"`
 	// Whether to disable U-APSD
 	DisableUapsd pulumi.BoolOutput `pulumi:"disableUapsd"`
 	// Disable sending v2 roam notification messages
@@ -330,7 +330,7 @@ type wlanState struct {
 	AuthServersNasId *string `pulumi:"authServersNasId"`
 	// Optional, NAS-IP-ADDRESS to use
 	AuthServersNasIp *string `pulumi:"authServersNasIp"`
-	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 	AuthServersRetries *int `pulumi:"authServersRetries"`
 	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 	AuthServersTimeout *int `pulumi:"authServersTimeout"`
@@ -523,7 +523,7 @@ type WlanState struct {
 	AuthServersNasId pulumi.StringPtrInput
 	// Optional, NAS-IP-ADDRESS to use
 	AuthServersNasIp pulumi.StringPtrInput
-	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 	AuthServersRetries pulumi.IntPtrInput
 	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 	AuthServersTimeout pulumi.IntPtrInput
@@ -720,7 +720,7 @@ type wlanArgs struct {
 	AuthServersNasId *string `pulumi:"authServersNasId"`
 	// Optional, NAS-IP-ADDRESS to use
 	AuthServersNasIp *string `pulumi:"authServersNasIp"`
-	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 	AuthServersRetries *int `pulumi:"authServersRetries"`
 	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 	AuthServersTimeout *int `pulumi:"authServersTimeout"`
@@ -750,6 +750,8 @@ type wlanArgs struct {
 	Disable11be *bool `pulumi:"disable11be"`
 	// To disable ht or vht rates
 	DisableHtVhtRates *bool `pulumi:"disableHtVhtRates"`
+	// whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+	DisableMessageAuthenticatorCheck *bool `pulumi:"disableMessageAuthenticatorCheck"`
 	// Whether to disable U-APSD
 	DisableUapsd *bool `pulumi:"disableUapsd"`
 	// Disable sending v2 roam notification messages
@@ -904,7 +906,7 @@ type WlanArgs struct {
 	AuthServersNasId pulumi.StringPtrInput
 	// Optional, NAS-IP-ADDRESS to use
 	AuthServersNasIp pulumi.StringPtrInput
-	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 	AuthServersRetries pulumi.IntPtrInput
 	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 	AuthServersTimeout pulumi.IntPtrInput
@@ -934,6 +936,8 @@ type WlanArgs struct {
 	Disable11be pulumi.BoolPtrInput
 	// To disable ht or vht rates
 	DisableHtVhtRates pulumi.BoolPtrInput
+	// whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+	DisableMessageAuthenticatorCheck pulumi.BoolPtrInput
 	// Whether to disable U-APSD
 	DisableUapsd pulumi.BoolPtrInput
 	// Disable sending v2 roam notification messages
@@ -1224,7 +1228,7 @@ func (o WlanOutput) AuthServersNasIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.AuthServersNasIp }).(pulumi.StringOutput)
 }
 
-// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 func (o WlanOutput) AuthServersRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.IntPtrOutput { return v.AuthServersRetries }).(pulumi.IntPtrOutput)
 }
@@ -1303,8 +1307,8 @@ func (o WlanOutput) DisableHtVhtRates() pulumi.BoolPtrOutput {
 }
 
 // whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
-func (o WlanOutput) DisableMessageAuthenticatorCheck() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.DisableMessageAuthenticatorCheck }).(pulumi.BoolOutput)
+func (o WlanOutput) DisableMessageAuthenticatorCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.DisableMessageAuthenticatorCheck }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to disable U-APSD

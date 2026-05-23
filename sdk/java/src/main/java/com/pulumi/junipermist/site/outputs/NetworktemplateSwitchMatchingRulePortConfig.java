@@ -26,7 +26,12 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
      */
     private @Nullable Integer aeIdx;
     /**
-     * @return To use fast timeout
+     * @return If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+     * 
+     */
+    private @Nullable Boolean aeLacpForceUp;
+    /**
+     * @return To use slow timeout
      * 
      */
     private @Nullable Boolean aeLacpSlow;
@@ -101,7 +106,14 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
         return Optional.ofNullable(this.aeIdx);
     }
     /**
-     * @return To use fast timeout
+     * @return If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+     * 
+     */
+    public Optional<Boolean> aeLacpForceUp() {
+        return Optional.ofNullable(this.aeLacpForceUp);
+    }
+    /**
+     * @return To use slow timeout
      * 
      */
     public Optional<Boolean> aeLacpSlow() {
@@ -201,6 +213,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
     public static final class Builder {
         private @Nullable Boolean aeDisableLacp;
         private @Nullable Integer aeIdx;
+        private @Nullable Boolean aeLacpForceUp;
         private @Nullable Boolean aeLacpSlow;
         private @Nullable Boolean aggregated;
         private @Nullable Boolean critical;
@@ -221,6 +234,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
     	      Objects.requireNonNull(defaults);
     	      this.aeDisableLacp = defaults.aeDisableLacp;
     	      this.aeIdx = defaults.aeIdx;
+    	      this.aeLacpForceUp = defaults.aeLacpForceUp;
     	      this.aeLacpSlow = defaults.aeLacpSlow;
     	      this.aggregated = defaults.aggregated;
     	      this.critical = defaults.critical;
@@ -248,6 +262,12 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
         public Builder aeIdx(@Nullable Integer aeIdx) {
 
             this.aeIdx = aeIdx;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder aeLacpForceUp(@Nullable Boolean aeLacpForceUp) {
+
+            this.aeLacpForceUp = aeLacpForceUp;
             return this;
         }
         @CustomType.Setter
@@ -349,6 +369,7 @@ public final class NetworktemplateSwitchMatchingRulePortConfig {
             final var _resultValue = new NetworktemplateSwitchMatchingRulePortConfig();
             _resultValue.aeDisableLacp = aeDisableLacp;
             _resultValue.aeIdx = aeIdx;
+            _resultValue.aeLacpForceUp = aeLacpForceUp;
             _resultValue.aeLacpSlow = aeLacpSlow;
             _resultValue.aggregated = aggregated;
             _resultValue.critical = critical;

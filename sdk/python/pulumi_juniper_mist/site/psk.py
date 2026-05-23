@@ -33,7 +33,8 @@ class PskArgs:
                  old_passphrase: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  usage: pulumi.Input[Optional[_builtins.str]] = None,
-                 vlan_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Psk resource.
 
@@ -47,6 +48,7 @@ class PskArgs:
         :param pulumi.Input[_builtins.bool] notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
         :param pulumi.Input[_builtins.str] old_passphrase: previous passphrase of the PSK if it has been rotated
         :param pulumi.Input[_builtins.str] usage: enum: `multi`, `single`
+        :param pulumi.Input[_builtins.str] vlan_name: VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
         """
         pulumi.set(__self__, "passphrase", passphrase)
         pulumi.set(__self__, "site_id", site_id)
@@ -75,6 +77,8 @@ class PskArgs:
             pulumi.set(__self__, "usage", usage)
         if vlan_id is not None:
             pulumi.set(__self__, "vlan_id", vlan_id)
+        if vlan_name is not None:
+            pulumi.set(__self__, "vlan_name", vlan_name)
 
     @_builtins.property
     @pulumi.getter
@@ -241,6 +245,18 @@ class PskArgs:
     def vlan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vlan_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vlanName")
+    def vlan_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
+        """
+        return pulumi.get(self, "vlan_name")
+
+    @vlan_name.setter
+    def vlan_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vlan_name", value)
+
 
 @pulumi.input_type
 class _PskState:
@@ -260,7 +276,8 @@ class _PskState:
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ssid: pulumi.Input[Optional[_builtins.str]] = None,
                  usage: pulumi.Input[Optional[_builtins.str]] = None,
-                 vlan_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Psk resources.
 
@@ -274,6 +291,7 @@ class _PskState:
         :param pulumi.Input[_builtins.str] passphrase: passphrase of the PSK (8-63 character or 64 in hex)
         :param pulumi.Input[_builtins.str] ssid: SSID this PSK should be applicable to
         :param pulumi.Input[_builtins.str] usage: enum: `multi`, `single`
+        :param pulumi.Input[_builtins.str] vlan_name: VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -307,6 +325,8 @@ class _PskState:
             pulumi.set(__self__, "usage", usage)
         if vlan_id is not None:
             pulumi.set(__self__, "vlan_id", vlan_id)
+        if vlan_name is not None:
+            pulumi.set(__self__, "vlan_name", vlan_name)
 
     @_builtins.property
     @pulumi.getter
@@ -482,6 +502,18 @@ class _PskState:
     def vlan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vlan_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vlanName")
+    def vlan_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
+        """
+        return pulumi.get(self, "vlan_name")
+
+    @vlan_name.setter
+    def vlan_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vlan_name", value)
+
 
 @pulumi.type_token("junipermist:site/psk:Psk")
 class Psk(pulumi.CustomResource):
@@ -504,6 +536,7 @@ class Psk(pulumi.CustomResource):
                  ssid: pulumi.Input[Optional[_builtins.str]] = None,
                  usage: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This data source provides the list of Site PSKs.
@@ -553,6 +586,7 @@ class Psk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] passphrase: passphrase of the PSK (8-63 character or 64 in hex)
         :param pulumi.Input[_builtins.str] ssid: SSID this PSK should be applicable to
         :param pulumi.Input[_builtins.str] usage: enum: `multi`, `single`
+        :param pulumi.Input[_builtins.str] vlan_name: VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
         """
         ...
     @overload
@@ -626,6 +660,7 @@ class Psk(pulumi.CustomResource):
                  ssid: pulumi.Input[Optional[_builtins.str]] = None,
                  usage: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -656,6 +691,7 @@ class Psk(pulumi.CustomResource):
             __props__.__dict__["ssid"] = ssid
             __props__.__dict__["usage"] = usage
             __props__.__dict__["vlan_id"] = vlan_id
+            __props__.__dict__["vlan_name"] = vlan_name
             __props__.__dict__["org_id"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["oldPassphrase", "passphrase"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -684,7 +720,8 @@ class Psk(pulumi.CustomResource):
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             ssid: pulumi.Input[Optional[_builtins.str]] = None,
             usage: pulumi.Input[Optional[_builtins.str]] = None,
-            vlan_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Psk':
+            vlan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Psk':
         """
         Get an existing Psk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -702,6 +739,7 @@ class Psk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] passphrase: passphrase of the PSK (8-63 character or 64 in hex)
         :param pulumi.Input[_builtins.str] ssid: SSID this PSK should be applicable to
         :param pulumi.Input[_builtins.str] usage: enum: `multi`, `single`
+        :param pulumi.Input[_builtins.str] vlan_name: VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -723,6 +761,7 @@ class Psk(pulumi.CustomResource):
         __props__.__dict__["ssid"] = ssid
         __props__.__dict__["usage"] = usage
         __props__.__dict__["vlan_id"] = vlan_id
+        __props__.__dict__["vlan_name"] = vlan_name
         return Psk(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -834,4 +873,12 @@ class Psk(pulumi.CustomResource):
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "vlan_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanName")
+    def vlan_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        VLAN name to be assigned. Optional, `vlan_id` takes precedence if both are provided
+        """
+        return pulumi.get(self, "vlan_name")
 

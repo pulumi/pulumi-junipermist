@@ -98,6 +98,8 @@ type Ap struct {
 	X pulumi.Float64PtrOutput `pulumi:"x"`
 	// Y in pixel
 	Y pulumi.Float64PtrOutput `pulumi:"y"`
+	// Zigbee AP settings
+	ZigbeeConfig ApZigbeeConfigPtrOutput `pulumi:"zigbeeConfig"`
 }
 
 // NewAp registers a new resource with the given unique name, arguments, and options.
@@ -207,6 +209,8 @@ type apState struct {
 	X *float64 `pulumi:"x"`
 	// Y in pixel
 	Y *float64 `pulumi:"y"`
+	// Zigbee AP settings
+	ZigbeeConfig *ApZigbeeConfig `pulumi:"zigbeeConfig"`
 }
 
 type ApState struct {
@@ -281,6 +285,8 @@ type ApState struct {
 	X pulumi.Float64PtrInput
 	// Y in pixel
 	Y pulumi.Float64PtrInput
+	// Zigbee AP settings
+	ZigbeeConfig ApZigbeeConfigPtrInput
 }
 
 func (ApState) ElementType() reflect.Type {
@@ -347,6 +353,8 @@ type apArgs struct {
 	X *float64 `pulumi:"x"`
 	// Y in pixel
 	Y *float64 `pulumi:"y"`
+	// Zigbee AP settings
+	ZigbeeConfig *ApZigbeeConfig `pulumi:"zigbeeConfig"`
 }
 
 // The set of arguments for constructing a Ap resource.
@@ -410,6 +418,8 @@ type ApArgs struct {
 	X pulumi.Float64PtrInput
 	// Y in pixel
 	Y pulumi.Float64PtrInput
+	// Zigbee AP settings
+	ZigbeeConfig ApZigbeeConfigPtrInput
 }
 
 func (ApArgs) ElementType() reflect.Type {
@@ -691,6 +701,11 @@ func (o ApOutput) X() pulumi.Float64PtrOutput {
 // Y in pixel
 func (o ApOutput) Y() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.Float64PtrOutput { return v.Y }).(pulumi.Float64PtrOutput)
+}
+
+// Zigbee AP settings
+func (o ApOutput) ZigbeeConfig() ApZigbeeConfigPtrOutput {
+	return o.ApplyT(func(v *Ap) ApZigbeeConfigPtrOutput { return v.ZigbeeConfig }).(ApZigbeeConfigPtrOutput)
 }
 
 type ApArrayOutput struct{ *pulumi.OutputState }

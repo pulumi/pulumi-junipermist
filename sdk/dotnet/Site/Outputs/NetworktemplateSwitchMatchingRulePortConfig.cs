@@ -22,7 +22,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? AeIdx;
         /// <summary>
-        /// To use fast timeout
+        /// If `Aggregated`==`True`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+        /// </summary>
+        public readonly bool? AeLacpForceUp;
+        /// <summary>
+        /// To use slow timeout
         /// </summary>
         public readonly bool? AeLacpSlow;
         public readonly bool? Aggregated;
@@ -76,6 +80,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             int? aeIdx,
 
+            bool? aeLacpForceUp,
+
             bool? aeLacpSlow,
 
             bool? aggregated,
@@ -108,6 +114,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         {
             AeDisableLacp = aeDisableLacp;
             AeIdx = aeIdx;
+            AeLacpForceUp = aeLacpForceUp;
             AeLacpSlow = aeLacpSlow;
             Aggregated = aggregated;
             Critical = critical;

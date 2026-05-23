@@ -12,6 +12,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingMistNacArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// allow clients to connect even when the user cert failed. TEAP authenticates both Machine Cert and User Cert. When enabled, clients who only succeed Machine Cert authentication will be accepted.
+        /// </summary>
+        [Input("allowTeapMachineAuthOnly")]
+        public Input<bool>? AllowTeapMachineAuthOnly { get; set; }
+
         [Input("cacerts")]
         private InputList<string>? _cacerts;
 
@@ -73,6 +79,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
             get => _idps ?? (_idps = new InputList<Inputs.SettingMistNacIdpArgs>());
             set => _idps = value;
         }
+
+        /// <summary>
+        /// MDM (Mobile Device Management) CoA configuration
+        /// </summary>
+        [Input("mdm")]
+        public Input<Inputs.SettingMistNacMdmArgs>? Mdm { get; set; }
 
         /// <summary>
         /// radius server cert to be presented in EAP TLS

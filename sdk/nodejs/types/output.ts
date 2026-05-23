@@ -453,6 +453,10 @@ export namespace device {
          * enum: `base`, `remote`
          */
         role?: string;
+        /**
+         * Whether to use WPA3 on the 5 GHz band for mesh links
+         */
+        useWpa3On5?: boolean;
     }
 
     export interface ApPortConfig {
@@ -977,6 +981,29 @@ export namespace device {
         vlanId?: number;
     }
 
+    export interface ApZigbeeConfig {
+        /**
+         * Controls whether new Zigbee devices are allowed to join the network. enum: `always`, `manual`
+         */
+        allowJoin?: string;
+        /**
+         * Zigbee channel (2.4 GHz). `0` means auto; valid fixed values are 11–26
+         */
+        channel?: number;
+        /**
+         * Whether to enable Zigbee on this AP
+         */
+        enabled?: boolean;
+        /**
+         * Extended PAN ID in hex string format; only applicable when `panId` is also specified
+         */
+        extendedPanId?: string;
+        /**
+         * PAN ID in hex string format; if not specified, assigned automatically
+         */
+        panId?: string;
+    }
+
     export interface BaseLatlng {
         lat: number;
         lng: number;
@@ -1085,6 +1112,10 @@ export namespace device {
          * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         neighborAs: string;
+        /**
+         * If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+         */
+        tunnelVia?: string;
     }
 
     export interface GatewayClusterNode {
@@ -1209,9 +1240,129 @@ export namespace device {
 
     export interface GatewayGatewayMgmt {
         /**
+         * For SSR only, as direct root access is not allowed
+         */
+        adminSshkeys?: string[];
+        appProbing?: outputs.device.GatewayGatewayMgmtAppProbing;
+        /**
+         * Consumes uplink bandwidth, requires WA license
+         */
+        appUsage?: boolean;
+        autoSignatureUpdate?: outputs.device.GatewayGatewayMgmtAutoSignatureUpdate;
+        /**
          * Rollback timer for commit confirmed
          */
         configRevertTimer?: number;
+        /**
+         * For SSR and SRX, disable console port
+         */
+        disableConsole?: boolean;
+        /**
+         * For SSR and SRX, disable management interface
+         */
+        disableOob?: boolean;
+        /**
+         * For SSR and SRX, disable usb interface
+         */
+        disableUsb?: boolean;
+        fipsEnabled?: boolean;
+        probeHosts?: string[];
+        probeHostsv6s?: string[];
+        /**
+         * Restrict inbound-traffic to host
+         * when enabled, all traffic that is not essential to our operation will be dropped 
+         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+         */
+        protectRe?: outputs.device.GatewayGatewayMgmtProtectRe;
+        /**
+         * SRX only
+         */
+        rootPassword?: string;
+        securityLogSourceAddress?: string;
+        securityLogSourceInterface?: string;
+    }
+
+    export interface GatewayGatewayMgmtAppProbing {
+        /**
+         * APp-keys from List Applications
+         */
+        apps?: string[];
+        customApps?: outputs.device.GatewayGatewayMgmtAppProbingCustomApp[];
+        enabled?: boolean;
+    }
+
+    export interface GatewayGatewayMgmtAppProbingCustomApp {
+        /**
+         * Required if `protocol`==`icmp`
+         */
+        address?: string;
+        appType?: string;
+        /**
+         * If `protocol`==`http`
+         */
+        hostnames?: string[];
+        key?: string;
+        name?: string;
+        network?: string;
+        /**
+         * If `protocol`==`icmp`
+         */
+        packetSize?: number;
+        /**
+         * enum: `http`, `icmp`
+         */
+        protocol?: string;
+        /**
+         * If `protocol`==`http`
+         */
+        url?: string;
+        vrf?: string;
+    }
+
+    export interface GatewayGatewayMgmtAutoSignatureUpdate {
+        /**
+         * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         */
+        dayOfWeek?: string;
+        enable?: boolean;
+        /**
+         * Optional, Mist will decide the timing
+         */
+        timeOfDay?: string;
+    }
+
+    export interface GatewayGatewayMgmtProtectRe {
+        /**
+         * Optionally, services we'll allow
+         */
+        allowedServices?: string[];
+        customs?: outputs.device.GatewayGatewayMgmtProtectReCustom[];
+        /**
+         * When enabled, all traffic that is not essential to our operation will be dropped
+         * e.g. ntp / dns / traffic to mist will be allowed by default
+         *      if dhcpd is enabled, we'll make sure it works
+         */
+        enabled?: boolean;
+        /**
+         * Whether to enable hit count for Protect_RE policy
+         */
+        hitCount?: boolean;
+        /**
+         * host/subnets we'll allow traffic to/from
+         */
+        trustedHosts?: string[];
+    }
+
+    export interface GatewayGatewayMgmtProtectReCustom {
+        /**
+         * Matched dst port, "0" means any
+         */
+        portRange?: string;
+        /**
+         * enum: `any`, `icmp`, `tcp`, `udp`
+         */
+        protocol?: string;
+        subnets?: string[];
     }
 
     export interface GatewayIdpProfiles {
@@ -1475,7 +1626,7 @@ export namespace device {
         /**
          * enum: `dhcp`, `static`
          */
-        type: string;
+        type?: string;
         /**
          * If supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
@@ -1500,7 +1651,7 @@ export namespace device {
         /**
          * enum: `dhcp`, `static`
          */
-        type: string;
+        type?: string;
         /**
          * If supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
@@ -1636,6 +1787,10 @@ export namespace device {
          */
         outerVlanId?: number;
         poeDisabled?: boolean;
+        /**
+         * Whether Perpetual PoE capabilities are enabled for a port
+         */
+        poeKeepStateWhenReboot?: boolean;
         /**
          * Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
          */
@@ -2123,7 +2278,7 @@ export namespace device {
          */
         ipsecLifetime?: number;
         /**
-         * Only if  `provider`==`custom-ipsec`
+         * Only if `provider`==`custom-ipsec`
          */
         ipsecProposals?: outputs.device.GatewayTunnelConfigsIpsecProposal[];
         /**
@@ -2280,7 +2435,7 @@ export namespace device {
         internalIps?: string[];
         probeIps?: string[];
         /**
-         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: string[];
         wanNames: string[];
@@ -2313,7 +2468,7 @@ export namespace device {
         internalIps?: string[];
         probeIps?: string[];
         /**
-         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: string[];
         wanNames: string[];
@@ -5246,7 +5401,7 @@ export namespace device {
          */
         fixedBindings?: {[key: string]: outputs.device.SwitchDhcpdConfigConfigFixedBindings};
         /**
-         * If `type`==`server`  - optional, `ip` will be used if not provided
+         * If `type`==`server` - optional, `ip` will be used if not provided
          */
         gateway?: string;
         /**
@@ -5334,7 +5489,7 @@ export namespace device {
         noResolve?: boolean;
         preference?: number;
         /**
-         * Next-hop IP Address
+         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          */
         via: string;
     }
@@ -5349,7 +5504,7 @@ export namespace device {
         noResolve?: boolean;
         preference?: number;
         /**
-         * Next-hop IP Address
+         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          */
         via: string;
     }
@@ -5714,7 +5869,11 @@ export namespace device {
          */
         aeIdx?: number;
         /**
-         * To use fast timeout
+         * If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         */
+        aeLacpForceUp?: boolean;
+        /**
+         * To use slow timeout
          */
         aeLacpSlow?: boolean;
         aggregated?: boolean;
@@ -5778,6 +5937,10 @@ export namespace device {
          * Whether PoE capabilities are disabled for a port
          */
         poeDisabled: boolean;
+        /**
+         * Whether Perpetual PoE is enabled; keeps PoE state across reboots
+         */
+        poeKeepStateWhenReboot?: boolean;
         /**
          * Native network/vlan for untagged traffic
          */
@@ -5920,6 +6083,10 @@ export namespace device {
          * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+         */
+        poeKeepStateWhenReboot?: boolean;
         /**
          * PoE priority. enum: `low`, `high`
          */
@@ -7013,6 +7180,10 @@ export namespace org {
          * enum: `base`, `remote`
          */
         role?: string;
+        /**
+         * Whether to use WPA3 on the 5 GHz band for mesh links
+         */
+        useWpa3On5?: boolean;
     }
 
     export interface DeviceprofileApPortConfig {
@@ -7537,6 +7708,29 @@ export namespace org {
         vlanId?: number;
     }
 
+    export interface DeviceprofileApZigbeeConfig {
+        /**
+         * Controls whether new Zigbee devices are allowed to join the network. enum: `always`, `manual`
+         */
+        allowJoin?: string;
+        /**
+         * Zigbee channel (2.4 GHz). `0` means auto; valid fixed values are 11–26
+         */
+        channel?: number;
+        /**
+         * Whether to enable Zigbee on this AP
+         */
+        enabled?: boolean;
+        /**
+         * Extended PAN ID in hex string format; only applicable when `panId` is also specified
+         */
+        extendedPanId?: string;
+        /**
+         * PAN ID in hex string format; if not specified, assigned automatically
+         */
+        panId?: string;
+    }
+
     export interface DeviceprofileGatewayBgpConfig {
         /**
          * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
@@ -7640,6 +7834,10 @@ export namespace org {
          * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         neighborAs: string;
+        /**
+         * If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+         */
+        tunnelVia?: string;
     }
 
     export interface DeviceprofileGatewayDhcpdConfig {
@@ -8012,7 +8210,7 @@ export namespace org {
         /**
          * enum: `dhcp`, `static`
          */
-        type: string;
+        type?: string;
         /**
          * If supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
@@ -8037,7 +8235,7 @@ export namespace org {
         /**
          * enum: `dhcp`, `static`
          */
-        type: string;
+        type?: string;
         /**
          * If supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
@@ -8173,6 +8371,10 @@ export namespace org {
          */
         outerVlanId?: number;
         poeDisabled?: boolean;
+        /**
+         * Whether Perpetual PoE capabilities are enabled for a port
+         */
+        poeKeepStateWhenReboot?: boolean;
         /**
          * Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
          */
@@ -8648,7 +8850,7 @@ export namespace org {
          */
         ipsecLifetime?: number;
         /**
-         * Only if  `provider`==`custom-ipsec`
+         * Only if `provider`==`custom-ipsec`
          */
         ipsecProposals?: outputs.org.DeviceprofileGatewayTunnelConfigsIpsecProposal[];
         /**
@@ -8805,7 +9007,7 @@ export namespace org {
         internalIps?: string[];
         probeIps?: string[];
         /**
-         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: string[];
         wanNames: string[];
@@ -8838,7 +9040,7 @@ export namespace org {
         internalIps?: string[];
         probeIps?: string[];
         /**
-         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: string[];
         wanNames: string[];
@@ -9019,6 +9221,10 @@ export namespace org {
          * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          */
         coreAsBorder: boolean;
+        /**
+         * Whether to route management traffic inband; routes will be propagated to downstream switches
+         */
+        enableInbandMgmt?: boolean;
         /**
          * if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
          */
@@ -9204,6 +9410,10 @@ export namespace org {
          * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         neighborAs: string;
+        /**
+         * If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+         */
+        tunnelVia?: string;
     }
 
     export interface GatewaytemplateDhcpdConfig {
@@ -9317,6 +9527,133 @@ export namespace org {
 
     export interface GatewaytemplateExtraRoutes6 {
         via: string;
+    }
+
+    export interface GatewaytemplateGatewayMgmt {
+        /**
+         * For SSR only, as direct root access is not allowed
+         */
+        adminSshkeys?: string[];
+        appProbing?: outputs.org.GatewaytemplateGatewayMgmtAppProbing;
+        /**
+         * Consumes uplink bandwidth, requires WA license
+         */
+        appUsage?: boolean;
+        autoSignatureUpdate?: outputs.org.GatewaytemplateGatewayMgmtAutoSignatureUpdate;
+        /**
+         * Rollback timer for commit confirmed
+         */
+        configRevertTimer: number;
+        /**
+         * For SSR and SRX, disable console port
+         */
+        disableConsole?: boolean;
+        /**
+         * For SSR and SRX, disable management interface
+         */
+        disableOob?: boolean;
+        /**
+         * For SSR and SRX, disable usb interface
+         */
+        disableUsb?: boolean;
+        fipsEnabled?: boolean;
+        probeHosts?: string[];
+        probeHostsv6s?: string[];
+        /**
+         * Restrict inbound-traffic to host
+         * when enabled, all traffic that is not essential to our operation will be dropped 
+         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+         */
+        protectRe?: outputs.org.GatewaytemplateGatewayMgmtProtectRe;
+        /**
+         * SRX only
+         */
+        rootPassword?: string;
+        securityLogSourceAddress?: string;
+        securityLogSourceInterface?: string;
+    }
+
+    export interface GatewaytemplateGatewayMgmtAppProbing {
+        /**
+         * APp-keys from List Applications
+         */
+        apps?: string[];
+        customApps?: outputs.org.GatewaytemplateGatewayMgmtAppProbingCustomApp[];
+        enabled?: boolean;
+    }
+
+    export interface GatewaytemplateGatewayMgmtAppProbingCustomApp {
+        /**
+         * Required if `protocol`==`icmp`
+         */
+        address?: string;
+        appType?: string;
+        /**
+         * If `protocol`==`http`
+         */
+        hostnames?: string[];
+        key?: string;
+        name?: string;
+        network?: string;
+        /**
+         * If `protocol`==`icmp`
+         */
+        packetSize?: number;
+        /**
+         * enum: `http`, `icmp`
+         */
+        protocol?: string;
+        /**
+         * If `protocol`==`http`
+         */
+        url?: string;
+        vrf?: string;
+    }
+
+    export interface GatewaytemplateGatewayMgmtAutoSignatureUpdate {
+        /**
+         * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         */
+        dayOfWeek?: string;
+        enable?: boolean;
+        /**
+         * Optional, Mist will decide the timing
+         */
+        timeOfDay?: string;
+    }
+
+    export interface GatewaytemplateGatewayMgmtProtectRe {
+        /**
+         * Optionally, services we'll allow
+         */
+        allowedServices?: string[];
+        customs?: outputs.org.GatewaytemplateGatewayMgmtProtectReCustom[];
+        /**
+         * When enabled, all traffic that is not essential to our operation will be dropped
+         * e.g. ntp / dns / traffic to mist will be allowed by default
+         *      if dhcpd is enabled, we'll make sure it works
+         */
+        enabled?: boolean;
+        /**
+         * Whether to enable hit count for Protect_RE policy
+         */
+        hitCount?: boolean;
+        /**
+         * host/subnets we'll allow traffic to/from
+         */
+        trustedHosts?: string[];
+    }
+
+    export interface GatewaytemplateGatewayMgmtProtectReCustom {
+        /**
+         * Matched dst port, "0" means any
+         */
+        portRange?: string;
+        /**
+         * enum: `any`, `icmp`, `tcp`, `udp`
+         */
+        protocol?: string;
+        subnets?: string[];
     }
 
     export interface GatewaytemplateIdpProfiles {
@@ -9576,7 +9913,7 @@ export namespace org {
         /**
          * enum: `dhcp`, `static`
          */
-        type: string;
+        type?: string;
         /**
          * If supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
@@ -9601,7 +9938,7 @@ export namespace org {
         /**
          * enum: `dhcp`, `static`
          */
-        type: string;
+        type?: string;
         /**
          * If supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
@@ -9737,6 +10074,10 @@ export namespace org {
          */
         outerVlanId?: number;
         poeDisabled?: boolean;
+        /**
+         * Whether Perpetual PoE capabilities are enabled for a port
+         */
+        poeKeepStateWhenReboot?: boolean;
         /**
          * Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
          */
@@ -10212,7 +10553,7 @@ export namespace org {
          */
         ipsecLifetime?: number;
         /**
-         * Only if  `provider`==`custom-ipsec`
+         * Only if `provider`==`custom-ipsec`
          */
         ipsecProposals?: outputs.org.GatewaytemplateTunnelConfigsIpsecProposal[];
         /**
@@ -10369,7 +10710,7 @@ export namespace org {
         internalIps?: string[];
         probeIps?: string[];
         /**
-         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: string[];
         wanNames: string[];
@@ -10402,7 +10743,7 @@ export namespace org {
         internalIps?: string[];
         probeIps?: string[];
         /**
-         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: string[];
         wanNames: string[];
@@ -13896,7 +14237,7 @@ export namespace org {
         noResolve?: boolean;
         preference?: number;
         /**
-         * Next-hop IP Address
+         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          */
         via: string;
     }
@@ -13911,7 +14252,7 @@ export namespace org {
         noResolve?: boolean;
         preference?: number;
         /**
-         * Next-hop IP Address
+         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          */
         via: string;
     }
@@ -14130,6 +14471,10 @@ export namespace org {
          * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+         */
+        poeKeepStateWhenReboot?: boolean;
         /**
          * PoE priority. enum: `low`, `high`
          */
@@ -14817,7 +15162,11 @@ export namespace org {
          */
         aeIdx?: number;
         /**
-         * To use fast timeout
+         * If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         */
+        aeLacpForceUp?: boolean;
+        /**
+         * To use slow timeout
          */
         aeLacpSlow?: boolean;
         aggregated?: boolean;
@@ -15579,19 +15928,28 @@ export namespace org {
     }
 
     export interface SettingMarvis {
-        autoOperations?: outputs.org.SettingMarvisAutoOperations;
+        /**
+         * Self-driving network automation settings per domain
+         */
+        selfDriving?: outputs.org.SettingMarvisSelfDriving;
     }
 
-    export interface SettingMarvisAutoOperations {
-        apInsufficientCapacity: boolean;
-        apLoop: boolean;
-        apNonCompliant: boolean;
-        bouncePortForAbnormalPoeClient: boolean;
-        disablePortWhenDdosProtocolViolation: boolean;
-        disablePortWhenRogueDhcpServerDetected: boolean;
-        gatewayNonCompliant: boolean;
-        switchMisconfiguredPort: boolean;
-        switchPortStuck: boolean;
+    export interface SettingMarvisSelfDriving {
+        wan?: outputs.org.SettingMarvisSelfDrivingWan;
+        wired?: outputs.org.SettingMarvisSelfDrivingWired;
+        wireless?: outputs.org.SettingMarvisSelfDrivingWireless;
+    }
+
+    export interface SettingMarvisSelfDrivingWan {
+        enabled?: boolean;
+    }
+
+    export interface SettingMarvisSelfDrivingWired {
+        enabled?: boolean;
+    }
+
+    export interface SettingMarvisSelfDrivingWireless {
+        enabled?: boolean;
     }
 
     export interface SettingMgmt {
@@ -15602,14 +15960,18 @@ export namespace org {
         /**
          * Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
          */
-        useMxtunnel: boolean;
+        useMxtunnel?: boolean;
         /**
          * Whether to use wxtunnel for mgmt connectivity
          */
-        useWxtunnel: boolean;
+        useWxtunnel?: boolean;
     }
 
     export interface SettingMistNac {
+        /**
+         * allow clients to connect even when the user cert failed. TEAP authenticates both Machine Cert and User Cert. When enabled, clients who only succeed Machine Cert authentication will be accepted.
+         */
+        allowTeapMachineAuthOnly?: boolean;
         /**
          * List of PEM-encoded ca certs
          */
@@ -15629,7 +15991,7 @@ export namespace org {
         /**
          * By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
          */
-        euOnly: boolean;
+        euOnly?: boolean;
         /**
          * Allows customer to enable client fingerprinting for policy enforcement
          */
@@ -15643,6 +16005,10 @@ export namespace org {
          */
         idpUserCertLookupField?: string;
         idps: outputs.org.SettingMistNacIdp[];
+        /**
+         * MDM (Mobile Device Management) CoA configuration
+         */
+        mdm?: outputs.org.SettingMistNacMdm;
         /**
          * radius server cert to be presented in EAP TLS
          */
@@ -15665,15 +16031,15 @@ export namespace org {
         /**
          * enable/disable writes to NAC DDB fingerprint table
          */
-        enabled: boolean;
+        enabled?: boolean;
         /**
          * enable/disable CoA triggers on fingerprint change for wired clients, always port-bounce
          */
-        generateCoa: boolean;
+        generateCoa?: boolean;
         /**
          * enable/disable CoA triggers on fingerprint change for wireless clients
          */
-        generateWirelessCoa: boolean;
+        generateWirelessCoa?: boolean;
         /**
          * enum: `reauth`, `disconnect`
          */
@@ -15695,6 +16061,13 @@ export namespace org {
          *   * Cert CN
          */
         userRealms: string[];
+    }
+
+    export interface SettingMistNacMdm {
+        /**
+         * CoA type to send. enum: `reauth`, `disconnect`
+         */
+        coaType?: string;
     }
 
     export interface SettingMistNacServerCert {
@@ -15725,7 +16098,7 @@ export namespace org {
         /**
          * Enable channelization
          */
-        channelized: boolean;
+        channelized?: boolean;
         /**
          * Interface speed (e.g. `25g`, `50g`), use the chassis speed by default
          */
@@ -16111,6 +16484,14 @@ export namespace org {
          * Whether to trigger EAP reauth when the session ends
          */
         eapReauth: boolean;
+        /**
+         * Enable Beacon Protection; default is false for better compatibility
+         */
+        enableBeaconProtection?: boolean;
+        /**
+         * Enable GCMP-256 encryption suite; default is false for better compatibility
+         */
+        enableGcmp256?: boolean;
         /**
          * Whether to enable MAC Auth, uses the same auth_servers
          */
@@ -17555,6 +17936,10 @@ export namespace site {
          * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          */
         coreAsBorder: boolean;
+        /**
+         * Whether to route management traffic inband; routes will be propagated to downstream switches
+         */
+        enableInbandMgmt?: boolean;
         /**
          * if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
          */
@@ -19144,7 +19529,7 @@ export namespace site {
         noResolve?: boolean;
         preference?: number;
         /**
-         * Next-hop IP Address
+         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          */
         via: string;
     }
@@ -19159,7 +19544,7 @@ export namespace site {
         noResolve?: boolean;
         preference?: number;
         /**
-         * Next-hop IP Address
+         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          */
         via: string;
     }
@@ -19378,6 +19763,10 @@ export namespace site {
          * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: boolean;
+        /**
+         * Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+         */
+        poeKeepStateWhenReboot?: boolean;
         /**
          * PoE priority. enum: `low`, `high`
          */
@@ -20065,7 +20454,11 @@ export namespace site {
          */
         aeIdx?: number;
         /**
-         * To use fast timeout
+         * If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         */
+        aeLacpForceUp?: boolean;
+        /**
+         * To use slow timeout
          */
         aeLacpSlow?: boolean;
         aggregated?: boolean;
@@ -20311,6 +20704,13 @@ export namespace site {
          * Enable Advanced Analytic feature (using SUB-ANA license)
          */
         enabled: boolean;
+    }
+
+    export interface SettingApSyntheticTest {
+        /**
+         * List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+         */
+        additionalVlanIds?: string[];
     }
 
     export interface SettingAutoUpgrade {
@@ -20737,6 +21137,38 @@ export namespace site {
         subnets: string[];
     }
 
+    export interface SettingIotproxy {
+        enabled: boolean;
+        /**
+         * Visionline integration settings for IoT proxy
+         */
+        visionline?: outputs.site.SettingIotproxyVisionline;
+    }
+
+    export interface SettingIotproxyVisionline {
+        /**
+         * Access ID for the Visionline service
+         */
+        accessId?: string;
+        enabled: boolean;
+        /**
+         * Hostname or IP of the Visionline collector
+         */
+        host?: string;
+        /**
+         * Password for the Visionline service
+         */
+        password?: string;
+        /**
+         * TCP port of the Visionline collector
+         */
+        port: number;
+        /**
+         * Username for the Visionline service
+         */
+        username?: string;
+    }
+
     export interface SettingJuniperSrx {
         /**
          * auto_upgrade device first time it is onboarded
@@ -21058,6 +21490,19 @@ export namespace site {
         keepWlansUpIfDown: boolean;
     }
 
+    export interface SettingVarsAnnotations {
+        /**
+         * User-provided note to describe what this var was created for
+         */
+        note?: string;
+        /**
+         * Used to identify where to enumerate / auto-complete the field from. Default is `generic` (plain string, no special handling).
+         *
+         * enum: `generic`, `mxtunnelId`
+         */
+        type: string;
+    }
+
     export interface SettingVna {
         /**
          * Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
@@ -21247,6 +21692,14 @@ export namespace site {
          * Whether to trigger EAP reauth when the session ends
          */
         eapReauth: boolean;
+        /**
+         * Enable Beacon Protection; default is false for better compatibility
+         */
+        enableBeaconProtection?: boolean;
+        /**
+         * Enable GCMP-256 encryption suite; default is false for better compatibility
+         */
+        enableGcmp256?: boolean;
         /**
          * Whether to enable MAC Auth, uses the same auth_servers
          */

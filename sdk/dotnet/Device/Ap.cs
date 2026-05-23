@@ -235,6 +235,12 @@ namespace Pulumi.JuniperMist.Device
         [Output("y")]
         public Output<double?> Y { get; private set; } = null!;
 
+        /// <summary>
+        /// Zigbee AP settings
+        /// </summary>
+        [Output("zigbeeConfig")]
+        public Output<Outputs.ApZigbeeConfig?> ZigbeeConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Ap resource with the given unique name, arguments, and options.
@@ -472,6 +478,12 @@ namespace Pulumi.JuniperMist.Device
         [Input("y")]
         public Input<double>? Y { get; set; }
 
+        /// <summary>
+        /// Zigbee AP settings
+        /// </summary>
+        [Input("zigbeeConfig")]
+        public Input<Inputs.ApZigbeeConfigArgs>? ZigbeeConfig { get; set; }
+
         public ApArgs()
         {
         }
@@ -705,6 +717,12 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Input("y")]
         public Input<double>? Y { get; set; }
+
+        /// <summary>
+        /// Zigbee AP settings
+        /// </summary>
+        [Input("zigbeeConfig")]
+        public Input<Inputs.ApZigbeeConfigGetArgs>? ZigbeeConfig { get; set; }
 
         public ApState()
         {

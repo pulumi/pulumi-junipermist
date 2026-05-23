@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// If `Type`==`Server`  - optional, `Ip` will be used if not provided
+        /// If `Type`==`Server` - optional, `Ip` will be used if not provided
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }

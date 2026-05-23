@@ -190,7 +190,7 @@ export class Switch extends pulumi.CustomResource {
     declare public readonly snmpConfig: pulumi.Output<outputs.device.SwitchSnmpConfig | undefined>;
     declare public readonly stpConfig: pulumi.Output<outputs.device.SwitchStpConfig | undefined>;
     /**
-     * Switch settings
+     * Switch Management settings
      */
     declare public readonly switchMgmt: pulumi.Output<outputs.device.SwitchSwitchMgmt | undefined>;
     /**
@@ -510,7 +510,7 @@ export interface SwitchState {
     snmpConfig?: pulumi.Input<inputs.device.SwitchSnmpConfig | undefined>;
     stpConfig?: pulumi.Input<inputs.device.SwitchStpConfig | undefined>;
     /**
-     * Switch settings
+     * Switch Management settings
      */
     switchMgmt?: pulumi.Input<inputs.device.SwitchSwitchMgmt | undefined>;
     /**
@@ -676,7 +676,7 @@ export interface SwitchArgs {
     snmpConfig?: pulumi.Input<inputs.device.SwitchSnmpConfig | undefined>;
     stpConfig?: pulumi.Input<inputs.device.SwitchStpConfig | undefined>;
     /**
-     * Switch settings
+     * Switch Management settings
      */
     switchMgmt?: pulumi.Input<inputs.device.SwitchSwitchMgmt | undefined>;
     /**
