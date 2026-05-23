@@ -91,6 +91,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly int? OuterVlanId;
         public readonly bool? PoeDisabled;
         /// <summary>
+        /// Whether Perpetual PoE capabilities are enabled for a port
+        /// </summary>
+        public readonly bool? PoeKeepStateWhenReboot;
+        /// <summary>
         /// Only for SRX and if `Usage`==`Lan`, the name of the Network to be used as the Untagged VLAN
         /// </summary>
         public readonly string? PortNetwork;
@@ -226,6 +230,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool? poeDisabled,
 
+            bool? poeKeepStateWhenReboot,
+
             string? portNetwork,
 
             bool? preserveDscp,
@@ -297,6 +303,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Networks = networks;
             OuterVlanId = outerVlanId;
             PoeDisabled = poeDisabled;
+            PoeKeepStateWhenReboot = poeKeepStateWhenReboot;
             PortNetwork = portNetwork;
             PreserveDscp = preserveDscp;
             Redundant = redundant;

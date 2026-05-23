@@ -37,6 +37,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? PoeDisabled { get; set; }
 
         /// <summary>
+        /// Whether Perpetual PoE is enabled; keeps PoE state across reboots
+        /// </summary>
+        [Input("poeKeepStateWhenReboot")]
+        public Input<bool>? PoeKeepStateWhenReboot { get; set; }
+
+        /// <summary>
         /// Native network/vlan for untagged traffic
         /// </summary>
         [Input("portNetwork")]

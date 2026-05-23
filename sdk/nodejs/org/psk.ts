@@ -122,6 +122,10 @@ export class Psk extends pulumi.CustomResource {
      */
     declare public readonly usage: pulumi.Output<string>;
     declare public readonly vlanId: pulumi.Output<string | undefined>;
+    /**
+     * VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+     */
+    declare public readonly vlanName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Psk resource with the given unique name, arguments, and options.
@@ -153,6 +157,7 @@ export class Psk extends pulumi.CustomResource {
             resourceInputs["ssid"] = state?.ssid;
             resourceInputs["usage"] = state?.usage;
             resourceInputs["vlanId"] = state?.vlanId;
+            resourceInputs["vlanName"] = state?.vlanName;
         } else {
             const args = argsOrState as PskArgs | undefined;
             if (args?.orgId === undefined && !opts.urn) {
@@ -181,6 +186,7 @@ export class Psk extends pulumi.CustomResource {
             resourceInputs["ssid"] = args?.ssid;
             resourceInputs["usage"] = args?.usage;
             resourceInputs["vlanId"] = args?.vlanId;
+            resourceInputs["vlanName"] = args?.vlanName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["oldPassphrase", "passphrase"] };
@@ -246,6 +252,10 @@ export interface PskState {
      */
     usage?: pulumi.Input<string | undefined>;
     vlanId?: pulumi.Input<string | undefined>;
+    /**
+     * VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+     */
+    vlanName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -305,4 +315,8 @@ export interface PskArgs {
      */
     usage?: pulumi.Input<string | undefined>;
     vlanId?: pulumi.Input<string | undefined>;
+    /**
+     * VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+     */
+    vlanName?: pulumi.Input<string | undefined>;
 }

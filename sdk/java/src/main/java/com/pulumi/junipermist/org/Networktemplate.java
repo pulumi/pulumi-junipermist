@@ -404,14 +404,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.switchMatching);
     }
     /**
-     * Switch settings
+     * Switch Management settings
      * 
      */
     @Export(name="switchMgmt", refs={NetworktemplateSwitchMgmt.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMgmt> switchMgmt;
 
     /**
-     * @return Switch settings
+     * @return Switch Management settings
      * 
      */
     public Output<Optional<NetworktemplateSwitchMgmt>> switchMgmt() {

@@ -34,6 +34,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? CoreAsBorder;
         /// <summary>
+        /// Whether to route management traffic inband; routes will be propagated to downstream switches
+        /// </summary>
+        public readonly bool? EnableInbandMgmt;
+        /// <summary>
         /// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
         /// </summary>
         public readonly bool? EnableInbandZtp;
@@ -68,6 +72,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool? coreAsBorder,
 
+            bool? enableInbandMgmt,
+
             bool? enableInbandZtp,
 
             Outputs.EvpnTopologyEvpnOptionsOverlay? overlay,
@@ -87,6 +93,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             AutoRouterIdSubnet = autoRouterIdSubnet;
             AutoRouterIdSubnet6 = autoRouterIdSubnet6;
             CoreAsBorder = coreAsBorder;
+            EnableInbandMgmt = enableInbandMgmt;
             EnableInbandZtp = enableInbandZtp;
             Overlay = overlay;
             PerVlanVgaV4Mac = perVlanVgaV4Mac;

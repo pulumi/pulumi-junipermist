@@ -30,6 +30,7 @@ class GatewaytemplateArgs:
                  dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]] = None,
                  extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]] = None,
+                 gateway_mgmt: pulumi.Input[Optional['GatewaytemplateGatewayMgmtArgs']] = None,
                  idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]] = None,
                  ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -57,6 +58,7 @@ class GatewaytemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        :param pulumi.Input['GatewaytemplateGatewayMgmtArgs'] gateway_mgmt: Gateway Management settings
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]] ip_configs: Property key is the network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
@@ -88,6 +90,8 @@ class GatewaytemplateArgs:
             pulumi.set(__self__, "extra_routes", extra_routes)
         if extra_routes6 is not None:
             pulumi.set(__self__, "extra_routes6", extra_routes6)
+        if gateway_mgmt is not None:
+            pulumi.set(__self__, "gateway_mgmt", gateway_mgmt)
         if idp_profiles is not None:
             pulumi.set(__self__, "idp_profiles", idp_profiles)
         if ip_configs is not None:
@@ -222,6 +226,18 @@ class GatewaytemplateArgs:
     @extra_routes6.setter
     def extra_routes6(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]):
         pulumi.set(self, "extra_routes6", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayMgmt")
+    def gateway_mgmt(self) -> pulumi.Input[Optional['GatewaytemplateGatewayMgmtArgs']]:
+        """
+        Gateway Management settings
+        """
+        return pulumi.get(self, "gateway_mgmt")
+
+    @gateway_mgmt.setter
+    def gateway_mgmt(self, value: pulumi.Input[Optional['GatewaytemplateGatewayMgmtArgs']]):
+        pulumi.set(self, "gateway_mgmt", value)
 
     @_builtins.property
     @pulumi.getter(name="idpProfiles")
@@ -445,6 +461,7 @@ class _GatewaytemplateState:
                  dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]] = None,
                  extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]] = None,
+                 gateway_mgmt: pulumi.Input[Optional['GatewaytemplateGatewayMgmtArgs']] = None,
                  idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]] = None,
                  ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -473,6 +490,7 @@ class _GatewaytemplateState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        :param pulumi.Input['GatewaytemplateGatewayMgmtArgs'] gateway_mgmt: Gateway Management settings
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]] ip_configs: Property key is the network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
@@ -503,6 +521,8 @@ class _GatewaytemplateState:
             pulumi.set(__self__, "extra_routes", extra_routes)
         if extra_routes6 is not None:
             pulumi.set(__self__, "extra_routes6", extra_routes6)
+        if gateway_mgmt is not None:
+            pulumi.set(__self__, "gateway_mgmt", gateway_mgmt)
         if idp_profiles is not None:
             pulumi.set(__self__, "idp_profiles", idp_profiles)
         if ip_configs is not None:
@@ -630,6 +650,18 @@ class _GatewaytemplateState:
     @extra_routes6.setter
     def extra_routes6(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]):
         pulumi.set(self, "extra_routes6", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayMgmt")
+    def gateway_mgmt(self) -> pulumi.Input[Optional['GatewaytemplateGatewayMgmtArgs']]:
+        """
+        Gateway Management settings
+        """
+        return pulumi.get(self, "gateway_mgmt")
+
+    @gateway_mgmt.setter
+    def gateway_mgmt(self, value: pulumi.Input[Optional['GatewaytemplateGatewayMgmtArgs']]):
+        pulumi.set(self, "gateway_mgmt", value)
 
     @_builtins.property
     @pulumi.getter(name="idpProfiles")
@@ -865,6 +897,7 @@ class Gatewaytemplate(pulumi.CustomResource):
                  dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]]] = None,
                  extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]]] = None,
+                 gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']]] = None,
                  idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
                  ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -992,6 +1025,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        :param pulumi.Input[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']] gateway_mgmt: Gateway Management settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
@@ -1134,6 +1168,7 @@ class Gatewaytemplate(pulumi.CustomResource):
                  dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]]] = None,
                  extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]]] = None,
+                 gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']]] = None,
                  idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
                  ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1171,6 +1206,7 @@ class Gatewaytemplate(pulumi.CustomResource):
             __props__.__dict__["dns_suffixes"] = dns_suffixes
             __props__.__dict__["extra_routes"] = extra_routes
             __props__.__dict__["extra_routes6"] = extra_routes6
+            __props__.__dict__["gateway_mgmt"] = gateway_mgmt
             __props__.__dict__["idp_profiles"] = idp_profiles
             __props__.__dict__["ip_configs"] = ip_configs
             __props__.__dict__["name"] = name
@@ -1211,6 +1247,7 @@ class Gatewaytemplate(pulumi.CustomResource):
             dns_suffixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             extra_routes: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]]] = None,
             extra_routes6: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]]] = None,
+            gateway_mgmt: pulumi.Input[Optional[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']]] = None,
             idp_profiles: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]]] = None,
             ip_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1243,6 +1280,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        :param pulumi.Input[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']] gateway_mgmt: Gateway Management settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
@@ -1269,6 +1307,7 @@ class Gatewaytemplate(pulumi.CustomResource):
         __props__.__dict__["dns_suffixes"] = dns_suffixes
         __props__.__dict__["extra_routes"] = extra_routes
         __props__.__dict__["extra_routes6"] = extra_routes6
+        __props__.__dict__["gateway_mgmt"] = gateway_mgmt
         __props__.__dict__["idp_profiles"] = idp_profiles
         __props__.__dict__["ip_configs"] = ip_configs
         __props__.__dict__["name"] = name
@@ -1345,6 +1384,14 @@ class Gatewaytemplate(pulumi.CustomResource):
         Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
         """
         return pulumi.get(self, "extra_routes6")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayMgmt")
+    def gateway_mgmt(self) -> pulumi.Output[Optional['outputs.GatewaytemplateGatewayMgmt']]:
+        """
+        Gateway Management settings
+        """
+        return pulumi.get(self, "gateway_mgmt")
 
     @_builtins.property
     @pulumi.getter(name="idpProfiles")

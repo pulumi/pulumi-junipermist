@@ -47,14 +47,14 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
     }
 
     /**
-     * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     @Import(name="remoteIds")
     private @Nullable Output<List<String>> remoteIds;
 
     /**
-     * @return Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * @return Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     public Optional<Output<List<String>>> remoteIds() {
@@ -154,7 +154,7 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
         }
 
         /**
-         * @param remoteIds Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * @param remoteIds Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
         }
 
         /**
-         * @param remoteIds Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * @param remoteIds Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
         }
 
         /**
-         * @param remoteIds Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * @param remoteIds Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          * 
          * @return builder
          * 

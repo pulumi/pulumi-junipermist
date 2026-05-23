@@ -10,6 +10,7 @@ import com.pulumi.junipermist.org.inputs.GatewaytemplateBgpConfigArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateDhcpdConfigArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateExtraRoutes6Args;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateExtraRoutesArgs;
+import com.pulumi.junipermist.org.inputs.GatewaytemplateGatewayMgmtArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateIdpProfilesArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateIpConfigsArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateNetworkArgs;
@@ -129,6 +130,21 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<Map<String,GatewaytemplateExtraRoutes6Args>>> extraRoutes6() {
         return Optional.ofNullable(this.extraRoutes6);
+    }
+
+    /**
+     * Gateway Management settings
+     * 
+     */
+    @Import(name="gatewayMgmt")
+    private @Nullable Output<GatewaytemplateGatewayMgmtArgs> gatewayMgmt;
+
+    /**
+     * @return Gateway Management settings
+     * 
+     */
+    public Optional<Output<GatewaytemplateGatewayMgmtArgs>> gatewayMgmt() {
+        return Optional.ofNullable(this.gatewayMgmt);
     }
 
     /**
@@ -386,6 +402,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         this.dnsSuffixes = $.dnsSuffixes;
         this.extraRoutes = $.extraRoutes;
         this.extraRoutes6 = $.extraRoutes6;
+        this.gatewayMgmt = $.gatewayMgmt;
         this.idpProfiles = $.idpProfiles;
         this.ipConfigs = $.ipConfigs;
         this.name = $.name;
@@ -586,6 +603,27 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder extraRoutes6(Map<String,GatewaytemplateExtraRoutes6Args> extraRoutes6) {
             return extraRoutes6(Output.of(extraRoutes6));
+        }
+
+        /**
+         * @param gatewayMgmt Gateway Management settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayMgmt(@Nullable Output<GatewaytemplateGatewayMgmtArgs> gatewayMgmt) {
+            $.gatewayMgmt = gatewayMgmt;
+            return this;
+        }
+
+        /**
+         * @param gatewayMgmt Gateway Management settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayMgmt(GatewaytemplateGatewayMgmtArgs gatewayMgmt) {
+            return gatewayMgmt(Output.of(gatewayMgmt));
         }
 
         /**

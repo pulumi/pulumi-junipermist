@@ -44,7 +44,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _remoteIds;
 
         /// <summary>
-        /// Only if  `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
+        /// Only if `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
         /// </summary>
         public InputList<string> RemoteIds
         {

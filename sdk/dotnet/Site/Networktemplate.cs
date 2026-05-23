@@ -248,7 +248,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.NetworktemplateSwitchMatching?> SwitchMatching { get; private set; } = null!;
 
         /// <summary>
-        /// Switch settings
+        /// Switch Management settings
         /// </summary>
         [Output("switchMgmt")]
         public Output<Outputs.NetworktemplateSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.JuniperMist.Site
         /// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
         /// </summary>
         [Output("usesDescriptionFromPortUsage")]
-        public Output<bool> UsesDescriptionFromPortUsage { get; private set; } = null!;
+        public Output<bool?> UsesDescriptionFromPortUsage { get; private set; } = null!;
 
         [Output("vrfConfig")]
         public Output<Outputs.NetworktemplateVrfConfig?> VrfConfig { get; private set; } = null!;
@@ -516,10 +516,16 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.NetworktemplateSwitchMatchingArgs>? SwitchMatching { get; set; }
 
         /// <summary>
-        /// Switch settings
+        /// Switch Management settings
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtArgs>? SwitchMgmt { get; set; }
+
+        /// <summary>
+        /// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
+        /// </summary>
+        [Input("usesDescriptionFromPortUsage")]
+        public Input<bool>? UsesDescriptionFromPortUsage { get; set; }
 
         [Input("vrfConfig")]
         public Input<Inputs.NetworktemplateVrfConfigArgs>? VrfConfig { get; set; }
@@ -745,7 +751,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.NetworktemplateSwitchMatchingGetArgs>? SwitchMatching { get; set; }
 
         /// <summary>
-        /// Switch settings
+        /// Switch Management settings
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtGetArgs>? SwitchMgmt { get; set; }

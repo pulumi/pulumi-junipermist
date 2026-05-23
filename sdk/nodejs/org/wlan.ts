@@ -145,7 +145,7 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly authServersNasIp: pulumi.Output<string>;
     /**
-     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      */
     declare public readonly authServersRetries: pulumi.Output<number | undefined>;
     /**
@@ -205,7 +205,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
      */
-    declare public /*out*/ readonly disableMessageAuthenticatorCheck: pulumi.Output<boolean>;
+    declare public readonly disableMessageAuthenticatorCheck: pulumi.Output<boolean | undefined>;
     /**
      * Whether to disable U-APSD
      */
@@ -586,6 +586,7 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["disable11ax"] = args?.disable11ax;
             resourceInputs["disable11be"] = args?.disable11be;
             resourceInputs["disableHtVhtRates"] = args?.disableHtVhtRates;
+            resourceInputs["disableMessageAuthenticatorCheck"] = args?.disableMessageAuthenticatorCheck;
             resourceInputs["disableUapsd"] = args?.disableUapsd;
             resourceInputs["disableV1RoamNotify"] = args?.disableV1RoamNotify;
             resourceInputs["disableV2RoamNotify"] = args?.disableV2RoamNotify;
@@ -644,7 +645,6 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["wxtagIds"] = args?.wxtagIds;
             resourceInputs["wxtunnelId"] = args?.wxtunnelId;
             resourceInputs["wxtunnelRemoteId"] = args?.wxtunnelRemoteId;
-            resourceInputs["disableMessageAuthenticatorCheck"] = undefined /*out*/;
             resourceInputs["mspId"] = undefined /*out*/;
             resourceInputs["portalApiSecret"] = undefined /*out*/;
             resourceInputs["portalImage"] = undefined /*out*/;
@@ -728,7 +728,7 @@ export interface WlanState {
      */
     authServersNasIp?: pulumi.Input<string | undefined>;
     /**
-     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      */
     authServersRetries?: pulumi.Input<number | undefined>;
     /**
@@ -1090,7 +1090,7 @@ export interface WlanArgs {
      */
     authServersNasIp?: pulumi.Input<string | undefined>;
     /**
-     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      */
     authServersRetries?: pulumi.Input<number | undefined>;
     /**
@@ -1147,6 +1147,10 @@ export interface WlanArgs {
      * To disable ht or vht rates
      */
     disableHtVhtRates?: pulumi.Input<boolean | undefined>;
+    /**
+     * whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+     */
+    disableMessageAuthenticatorCheck?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable U-APSD
      */

@@ -191,14 +191,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.extraRoutes6);
     }
     /**
-     * Gateway settings
+     * Gateway Management settings
      * 
      */
     @Export(name="gatewayMgmt", refs={GatewayGatewayMgmt.class}, tree="[0]")
     private Output</* @Nullable */ GatewayGatewayMgmt> gatewayMgmt;
 
     /**
-     * @return Gateway settings
+     * @return Gateway Management settings
      * 
      */
     public Output<Optional<GatewayGatewayMgmt>> gatewayMgmt() {

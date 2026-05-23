@@ -22,6 +22,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? EapReauth;
         /// <summary>
+        /// Enable Beacon Protection; default is false for better compatibility
+        /// </summary>
+        public readonly bool? EnableBeaconProtection;
+        /// <summary>
+        /// Enable GCMP-256 encryption suite; default is false for better compatibility
+        /// </summary>
+        public readonly bool? EnableGcmp256;
+        /// <summary>
         /// Whether to enable MAC Auth, uses the same auth_servers
         /// </summary>
         public readonly bool? EnableMacAuth;
@@ -68,6 +76,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool? eapReauth,
 
+            bool? enableBeaconProtection,
+
+            bool? enableGcmp256,
+
             bool? enableMacAuth,
 
             int? keyIdx,
@@ -90,6 +102,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
         {
             AnticlogThreshold = anticlogThreshold;
             EapReauth = eapReauth;
+            EnableBeaconProtection = enableBeaconProtection;
+            EnableGcmp256 = enableGcmp256;
             EnableMacAuth = enableMacAuth;
             KeyIdx = keyIdx;
             Keys = keys;

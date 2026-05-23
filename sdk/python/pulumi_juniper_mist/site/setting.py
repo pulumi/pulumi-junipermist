@@ -22,7 +22,9 @@ __all__ = ['SettingArgs', 'Setting']
 class SettingArgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[_builtins.str],
+                 allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
                  analytic: pulumi.Input[Optional['SettingAnalyticArgs']] = None,
+                 ap_synthetic_test: pulumi.Input[Optional['SettingApSyntheticTestArgs']] = None,
                  ap_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_upgrade: pulumi.Input[Optional['SettingAutoUpgradeArgs']] = None,
                  auto_upgrade_esl: pulumi.Input[Optional['SettingAutoUpgradeEslArgs']] = None,
@@ -35,7 +37,9 @@ class SettingArgs:
                  enable_unii4: pulumi.Input[Optional[_builtins.bool]] = None,
                  engagement: pulumi.Input[Optional['SettingEngagementArgs']] = None,
                  gateway_mgmt: pulumi.Input[Optional['SettingGatewayMgmtArgs']] = None,
+                 gateway_tunnel_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  gateway_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 iotproxy: pulumi.Input[Optional['SettingIotproxyArgs']] = None,
                  juniper_srx: pulumi.Input[Optional['SettingJuniperSrxArgs']] = None,
                  led: pulumi.Input[Optional['SettingLedArgs']] = None,
                  marvis: pulumi.Input[Optional['SettingMarvisArgs']] = None,
@@ -56,8 +60,8 @@ class SettingArgs:
                  synthetic_test: pulumi.Input[Optional['SettingSyntheticTestArgs']] = None,
                  track_anonymous_devices: pulumi.Input[Optional[_builtins.bool]] = None,
                  uplink_port_config: pulumi.Input[Optional['SettingUplinkPortConfigArgs']] = None,
-                 uses_description_from_port_usage: pulumi.Input[Optional[_builtins.bool]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]]] = None,
                  vna: pulumi.Input[Optional['SettingVnaArgs']] = None,
                  vpn_path_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  vpn_peer_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
@@ -70,6 +74,8 @@ class SettingArgs:
         """
         The set of arguments for constructing a Setting resource.
 
+        :param pulumi.Input[_builtins.bool] allow_mist: whether to allow Mist to look at this org
+        :param pulumi.Input['SettingApSyntheticTestArgs'] ap_synthetic_test: AP Synthetic Test configuration
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input['SettingAutoUpgradeEslArgs'] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
@@ -80,8 +86,10 @@ class SettingArgs:
         :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
         :param pulumi.Input[_builtins.int] device_updown_threshold: By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
-        :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Site settings
+        :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Management settings
+        :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input['SettingIotproxyArgs'] iotproxy: IoT proxy configuration for the site
         :param pulumi.Input['SettingLedArgs'] led: LED AP settings
         :param pulumi.Input['SettingOccupancyArgs'] occupancy: Occupancy Analytics settings
         :param pulumi.Input[_builtins.bool] persist_config_on_device: Whether to store the config on AP
@@ -95,8 +103,8 @@ class SettingArgs:
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
         :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[_builtins.bool] uses_description_from_port_usage: by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]] vars_annotations: Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
         :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
         :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
@@ -105,8 +113,12 @@ class SettingArgs:
         :param pulumi.Input['SettingZoneOccupancyAlertArgs'] zone_occupancy_alert: Zone Occupancy alert site settings
         """
         pulumi.set(__self__, "site_id", site_id)
+        if allow_mist is not None:
+            pulumi.set(__self__, "allow_mist", allow_mist)
         if analytic is not None:
             pulumi.set(__self__, "analytic", analytic)
+        if ap_synthetic_test is not None:
+            pulumi.set(__self__, "ap_synthetic_test", ap_synthetic_test)
         if ap_updown_threshold is not None:
             pulumi.set(__self__, "ap_updown_threshold", ap_updown_threshold)
         if auto_upgrade is not None:
@@ -131,8 +143,12 @@ class SettingArgs:
             pulumi.set(__self__, "engagement", engagement)
         if gateway_mgmt is not None:
             pulumi.set(__self__, "gateway_mgmt", gateway_mgmt)
+        if gateway_tunnel_updown_threshold is not None:
+            pulumi.set(__self__, "gateway_tunnel_updown_threshold", gateway_tunnel_updown_threshold)
         if gateway_updown_threshold is not None:
             pulumi.set(__self__, "gateway_updown_threshold", gateway_updown_threshold)
+        if iotproxy is not None:
+            pulumi.set(__self__, "iotproxy", iotproxy)
         if juniper_srx is not None:
             pulumi.set(__self__, "juniper_srx", juniper_srx)
         if led is not None:
@@ -173,10 +189,10 @@ class SettingArgs:
             pulumi.set(__self__, "track_anonymous_devices", track_anonymous_devices)
         if uplink_port_config is not None:
             pulumi.set(__self__, "uplink_port_config", uplink_port_config)
-        if uses_description_from_port_usage is not None:
-            pulumi.set(__self__, "uses_description_from_port_usage", uses_description_from_port_usage)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
+        if vars_annotations is not None:
+            pulumi.set(__self__, "vars_annotations", vars_annotations)
         if vna is not None:
             pulumi.set(__self__, "vna", vna)
         if vpn_path_updown_threshold is not None:
@@ -206,6 +222,18 @@ class SettingArgs:
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="allowMist")
+    def allow_mist(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        whether to allow Mist to look at this org
+        """
+        return pulumi.get(self, "allow_mist")
+
+    @allow_mist.setter
+    def allow_mist(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_mist", value)
+
+    @_builtins.property
     @pulumi.getter
     def analytic(self) -> pulumi.Input[Optional['SettingAnalyticArgs']]:
         return pulumi.get(self, "analytic")
@@ -213,6 +241,18 @@ class SettingArgs:
     @analytic.setter
     def analytic(self, value: pulumi.Input[Optional['SettingAnalyticArgs']]):
         pulumi.set(self, "analytic", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apSyntheticTest")
+    def ap_synthetic_test(self) -> pulumi.Input[Optional['SettingApSyntheticTestArgs']]:
+        """
+        AP Synthetic Test configuration
+        """
+        return pulumi.get(self, "ap_synthetic_test")
+
+    @ap_synthetic_test.setter
+    def ap_synthetic_test(self, value: pulumi.Input[Optional['SettingApSyntheticTestArgs']]):
+        pulumi.set(self, "ap_synthetic_test", value)
 
     @_builtins.property
     @pulumi.getter(name="apUpdownThreshold")
@@ -347,13 +387,25 @@ class SettingArgs:
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Input[Optional['SettingGatewayMgmtArgs']]:
         """
-        Gateway Site settings
+        Gateway Management settings
         """
         return pulumi.get(self, "gateway_mgmt")
 
     @gateway_mgmt.setter
     def gateway_mgmt(self, value: pulumi.Input[Optional['SettingGatewayMgmtArgs']]):
         pulumi.set(self, "gateway_mgmt", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayTunnelUpdownThreshold")
+    def gateway_tunnel_updown_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+        """
+        return pulumi.get(self, "gateway_tunnel_updown_threshold")
+
+    @gateway_tunnel_updown_threshold.setter
+    def gateway_tunnel_updown_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "gateway_tunnel_updown_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayUpdownThreshold")
@@ -366,6 +418,18 @@ class SettingArgs:
     @gateway_updown_threshold.setter
     def gateway_updown_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gateway_updown_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def iotproxy(self) -> pulumi.Input[Optional['SettingIotproxyArgs']]:
+        """
+        IoT proxy configuration for the site
+        """
+        return pulumi.get(self, "iotproxy")
+
+    @iotproxy.setter
+    def iotproxy(self, value: pulumi.Input[Optional['SettingIotproxyArgs']]):
+        pulumi.set(self, "iotproxy", value)
 
     @_builtins.property
     @pulumi.getter(name="juniperSrx")
@@ -587,18 +651,6 @@ class SettingArgs:
         pulumi.set(self, "uplink_port_config", value)
 
     @_builtins.property
-    @pulumi.getter(name="usesDescriptionFromPortUsage")
-    def uses_description_from_port_usage(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-        """
-        return pulumi.get(self, "uses_description_from_port_usage")
-
-    @uses_description_from_port_usage.setter
-    def uses_description_from_port_usage(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "uses_description_from_port_usage", value)
-
-    @_builtins.property
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -609,6 +661,18 @@ class SettingArgs:
     @vars.setter
     def vars(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vars", value)
+
+    @_builtins.property
+    @pulumi.getter(name="varsAnnotations")
+    def vars_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]]]:
+        """
+        Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        """
+        return pulumi.get(self, "vars_annotations")
+
+    @vars_annotations.setter
+    def vars_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]]]):
+        pulumi.set(self, "vars_annotations", value)
 
     @_builtins.property
     @pulumi.getter
@@ -713,7 +777,9 @@ class SettingArgs:
 @pulumi.input_type
 class _SettingState:
     def __init__(__self__, *,
+                 allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
                  analytic: pulumi.Input[Optional['SettingAnalyticArgs']] = None,
+                 ap_synthetic_test: pulumi.Input[Optional['SettingApSyntheticTestArgs']] = None,
                  ap_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_upgrade: pulumi.Input[Optional['SettingAutoUpgradeArgs']] = None,
                  auto_upgrade_esl: pulumi.Input[Optional['SettingAutoUpgradeEslArgs']] = None,
@@ -727,7 +793,9 @@ class _SettingState:
                  enable_unii4: pulumi.Input[Optional[_builtins.bool]] = None,
                  engagement: pulumi.Input[Optional['SettingEngagementArgs']] = None,
                  gateway_mgmt: pulumi.Input[Optional['SettingGatewayMgmtArgs']] = None,
+                 gateway_tunnel_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  gateway_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 iotproxy: pulumi.Input[Optional['SettingIotproxyArgs']] = None,
                  juniper_srx: pulumi.Input[Optional['SettingJuniperSrxArgs']] = None,
                  led: pulumi.Input[Optional['SettingLedArgs']] = None,
                  marvis: pulumi.Input[Optional['SettingMarvisArgs']] = None,
@@ -749,8 +817,8 @@ class _SettingState:
                  synthetic_test: pulumi.Input[Optional['SettingSyntheticTestArgs']] = None,
                  track_anonymous_devices: pulumi.Input[Optional[_builtins.bool]] = None,
                  uplink_port_config: pulumi.Input[Optional['SettingUplinkPortConfigArgs']] = None,
-                 uses_description_from_port_usage: pulumi.Input[Optional[_builtins.bool]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]]] = None,
                  vna: pulumi.Input[Optional['SettingVnaArgs']] = None,
                  vpn_path_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  vpn_peer_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
@@ -765,6 +833,8 @@ class _SettingState:
         """
         Input properties used for looking up and filtering Setting resources.
 
+        :param pulumi.Input[_builtins.bool] allow_mist: whether to allow Mist to look at this org
+        :param pulumi.Input['SettingApSyntheticTestArgs'] ap_synthetic_test: AP Synthetic Test configuration
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input['SettingAutoUpgradeEslArgs'] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
@@ -775,8 +845,10 @@ class _SettingState:
         :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
         :param pulumi.Input[_builtins.int] device_updown_threshold: By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
-        :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Site settings
+        :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Management settings
+        :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input['SettingIotproxyArgs'] iotproxy: IoT proxy configuration for the site
         :param pulumi.Input['SettingLedArgs'] led: LED AP settings
         :param pulumi.Input['SettingOccupancyArgs'] occupancy: Occupancy Analytics settings
         :param pulumi.Input[_builtins.bool] persist_config_on_device: Whether to store the config on AP
@@ -790,8 +862,8 @@ class _SettingState:
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
         :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[_builtins.bool] uses_description_from_port_usage: by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]] vars_annotations: Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
         :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
         :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
@@ -799,8 +871,12 @@ class _SettingState:
         :param pulumi.Input['SettingWifiArgs'] wifi: Wi-Fi site settings
         :param pulumi.Input['SettingZoneOccupancyAlertArgs'] zone_occupancy_alert: Zone Occupancy alert site settings
         """
+        if allow_mist is not None:
+            pulumi.set(__self__, "allow_mist", allow_mist)
         if analytic is not None:
             pulumi.set(__self__, "analytic", analytic)
+        if ap_synthetic_test is not None:
+            pulumi.set(__self__, "ap_synthetic_test", ap_synthetic_test)
         if ap_updown_threshold is not None:
             pulumi.set(__self__, "ap_updown_threshold", ap_updown_threshold)
         if auto_upgrade is not None:
@@ -827,8 +903,12 @@ class _SettingState:
             pulumi.set(__self__, "engagement", engagement)
         if gateway_mgmt is not None:
             pulumi.set(__self__, "gateway_mgmt", gateway_mgmt)
+        if gateway_tunnel_updown_threshold is not None:
+            pulumi.set(__self__, "gateway_tunnel_updown_threshold", gateway_tunnel_updown_threshold)
         if gateway_updown_threshold is not None:
             pulumi.set(__self__, "gateway_updown_threshold", gateway_updown_threshold)
+        if iotproxy is not None:
+            pulumi.set(__self__, "iotproxy", iotproxy)
         if juniper_srx is not None:
             pulumi.set(__self__, "juniper_srx", juniper_srx)
         if led is not None:
@@ -871,10 +951,10 @@ class _SettingState:
             pulumi.set(__self__, "track_anonymous_devices", track_anonymous_devices)
         if uplink_port_config is not None:
             pulumi.set(__self__, "uplink_port_config", uplink_port_config)
-        if uses_description_from_port_usage is not None:
-            pulumi.set(__self__, "uses_description_from_port_usage", uses_description_from_port_usage)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
+        if vars_annotations is not None:
+            pulumi.set(__self__, "vars_annotations", vars_annotations)
         if vna is not None:
             pulumi.set(__self__, "vna", vna)
         if vpn_path_updown_threshold is not None:
@@ -899,6 +979,18 @@ class _SettingState:
             pulumi.set(__self__, "zone_occupancy_alert", zone_occupancy_alert)
 
     @_builtins.property
+    @pulumi.getter(name="allowMist")
+    def allow_mist(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        whether to allow Mist to look at this org
+        """
+        return pulumi.get(self, "allow_mist")
+
+    @allow_mist.setter
+    def allow_mist(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_mist", value)
+
+    @_builtins.property
     @pulumi.getter
     def analytic(self) -> pulumi.Input[Optional['SettingAnalyticArgs']]:
         return pulumi.get(self, "analytic")
@@ -906,6 +998,18 @@ class _SettingState:
     @analytic.setter
     def analytic(self, value: pulumi.Input[Optional['SettingAnalyticArgs']]):
         pulumi.set(self, "analytic", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apSyntheticTest")
+    def ap_synthetic_test(self) -> pulumi.Input[Optional['SettingApSyntheticTestArgs']]:
+        """
+        AP Synthetic Test configuration
+        """
+        return pulumi.get(self, "ap_synthetic_test")
+
+    @ap_synthetic_test.setter
+    def ap_synthetic_test(self, value: pulumi.Input[Optional['SettingApSyntheticTestArgs']]):
+        pulumi.set(self, "ap_synthetic_test", value)
 
     @_builtins.property
     @pulumi.getter(name="apUpdownThreshold")
@@ -1049,13 +1153,25 @@ class _SettingState:
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Input[Optional['SettingGatewayMgmtArgs']]:
         """
-        Gateway Site settings
+        Gateway Management settings
         """
         return pulumi.get(self, "gateway_mgmt")
 
     @gateway_mgmt.setter
     def gateway_mgmt(self, value: pulumi.Input[Optional['SettingGatewayMgmtArgs']]):
         pulumi.set(self, "gateway_mgmt", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayTunnelUpdownThreshold")
+    def gateway_tunnel_updown_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+        """
+        return pulumi.get(self, "gateway_tunnel_updown_threshold")
+
+    @gateway_tunnel_updown_threshold.setter
+    def gateway_tunnel_updown_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "gateway_tunnel_updown_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayUpdownThreshold")
@@ -1068,6 +1184,18 @@ class _SettingState:
     @gateway_updown_threshold.setter
     def gateway_updown_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gateway_updown_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def iotproxy(self) -> pulumi.Input[Optional['SettingIotproxyArgs']]:
+        """
+        IoT proxy configuration for the site
+        """
+        return pulumi.get(self, "iotproxy")
+
+    @iotproxy.setter
+    def iotproxy(self, value: pulumi.Input[Optional['SettingIotproxyArgs']]):
+        pulumi.set(self, "iotproxy", value)
 
     @_builtins.property
     @pulumi.getter(name="juniperSrx")
@@ -1298,18 +1426,6 @@ class _SettingState:
         pulumi.set(self, "uplink_port_config", value)
 
     @_builtins.property
-    @pulumi.getter(name="usesDescriptionFromPortUsage")
-    def uses_description_from_port_usage(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-        """
-        return pulumi.get(self, "uses_description_from_port_usage")
-
-    @uses_description_from_port_usage.setter
-    def uses_description_from_port_usage(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "uses_description_from_port_usage", value)
-
-    @_builtins.property
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -1320,6 +1436,18 @@ class _SettingState:
     @vars.setter
     def vars(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vars", value)
+
+    @_builtins.property
+    @pulumi.getter(name="varsAnnotations")
+    def vars_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]]]:
+        """
+        Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        """
+        return pulumi.get(self, "vars_annotations")
+
+    @vars_annotations.setter
+    def vars_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingVarsAnnotationsArgs']]]]):
+        pulumi.set(self, "vars_annotations", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1445,7 +1573,9 @@ class Setting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
                  analytic: pulumi.Input[Optional[Union['SettingAnalyticArgs', 'SettingAnalyticArgsDict']]] = None,
+                 ap_synthetic_test: pulumi.Input[Optional[Union['SettingApSyntheticTestArgs', 'SettingApSyntheticTestArgsDict']]] = None,
                  ap_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_upgrade: pulumi.Input[Optional[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
                  auto_upgrade_esl: pulumi.Input[Optional[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']]] = None,
@@ -1458,7 +1588,9 @@ class Setting(pulumi.CustomResource):
                  enable_unii4: pulumi.Input[Optional[_builtins.bool]] = None,
                  engagement: pulumi.Input[Optional[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
                  gateway_mgmt: pulumi.Input[Optional[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']]] = None,
+                 gateway_tunnel_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  gateway_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 iotproxy: pulumi.Input[Optional[Union['SettingIotproxyArgs', 'SettingIotproxyArgsDict']]] = None,
                  juniper_srx: pulumi.Input[Optional[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']]] = None,
                  led: pulumi.Input[Optional[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
                  marvis: pulumi.Input[Optional[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
@@ -1480,8 +1612,8 @@ class Setting(pulumi.CustomResource):
                  synthetic_test: pulumi.Input[Optional[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  track_anonymous_devices: pulumi.Input[Optional[_builtins.bool]] = None,
                  uplink_port_config: pulumi.Input[Optional[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
-                 uses_description_from_port_usage: pulumi.Input[Optional[_builtins.bool]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]]] = None,
                  vna: pulumi.Input[Optional[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
                  vpn_path_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  vpn_peer_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1541,6 +1673,8 @@ class Setting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_mist: whether to allow Mist to look at this org
+        :param pulumi.Input[Union['SettingApSyntheticTestArgs', 'SettingApSyntheticTestArgsDict']] ap_synthetic_test: AP Synthetic Test configuration
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
@@ -1551,8 +1685,10 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
         :param pulumi.Input[_builtins.int] device_updown_threshold: By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
-        :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
+        :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Management settings
+        :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input[Union['SettingIotproxyArgs', 'SettingIotproxyArgsDict']] iotproxy: IoT proxy configuration for the site
         :param pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']] led: LED AP settings
         :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Occupancy Analytics settings
         :param pulumi.Input[_builtins.bool] persist_config_on_device: Whether to store the config on AP
@@ -1566,8 +1702,8 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
         :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[_builtins.bool] uses_description_from_port_usage: by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]] vars_annotations: Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
         :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
         :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
@@ -1643,7 +1779,9 @@ class Setting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
                  analytic: pulumi.Input[Optional[Union['SettingAnalyticArgs', 'SettingAnalyticArgsDict']]] = None,
+                 ap_synthetic_test: pulumi.Input[Optional[Union['SettingApSyntheticTestArgs', 'SettingApSyntheticTestArgsDict']]] = None,
                  ap_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_upgrade: pulumi.Input[Optional[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
                  auto_upgrade_esl: pulumi.Input[Optional[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']]] = None,
@@ -1656,7 +1794,9 @@ class Setting(pulumi.CustomResource):
                  enable_unii4: pulumi.Input[Optional[_builtins.bool]] = None,
                  engagement: pulumi.Input[Optional[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
                  gateway_mgmt: pulumi.Input[Optional[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']]] = None,
+                 gateway_tunnel_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  gateway_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 iotproxy: pulumi.Input[Optional[Union['SettingIotproxyArgs', 'SettingIotproxyArgsDict']]] = None,
                  juniper_srx: pulumi.Input[Optional[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']]] = None,
                  led: pulumi.Input[Optional[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
                  marvis: pulumi.Input[Optional[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
@@ -1678,8 +1818,8 @@ class Setting(pulumi.CustomResource):
                  synthetic_test: pulumi.Input[Optional[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  track_anonymous_devices: pulumi.Input[Optional[_builtins.bool]] = None,
                  uplink_port_config: pulumi.Input[Optional[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
-                 uses_description_from_port_usage: pulumi.Input[Optional[_builtins.bool]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]]] = None,
                  vna: pulumi.Input[Optional[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
                  vpn_path_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  vpn_peer_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1698,7 +1838,9 @@ class Setting(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SettingArgs.__new__(SettingArgs)
 
+            __props__.__dict__["allow_mist"] = allow_mist
             __props__.__dict__["analytic"] = analytic
+            __props__.__dict__["ap_synthetic_test"] = ap_synthetic_test
             __props__.__dict__["ap_updown_threshold"] = ap_updown_threshold
             __props__.__dict__["auto_upgrade"] = auto_upgrade
             __props__.__dict__["auto_upgrade_esl"] = auto_upgrade_esl
@@ -1711,7 +1853,9 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["enable_unii4"] = enable_unii4
             __props__.__dict__["engagement"] = engagement
             __props__.__dict__["gateway_mgmt"] = gateway_mgmt
+            __props__.__dict__["gateway_tunnel_updown_threshold"] = gateway_tunnel_updown_threshold
             __props__.__dict__["gateway_updown_threshold"] = gateway_updown_threshold
+            __props__.__dict__["iotproxy"] = iotproxy
             __props__.__dict__["juniper_srx"] = juniper_srx
             __props__.__dict__["led"] = led
             __props__.__dict__["marvis"] = marvis
@@ -1735,8 +1879,8 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["synthetic_test"] = synthetic_test
             __props__.__dict__["track_anonymous_devices"] = track_anonymous_devices
             __props__.__dict__["uplink_port_config"] = uplink_port_config
-            __props__.__dict__["uses_description_from_port_usage"] = uses_description_from_port_usage
             __props__.__dict__["vars"] = vars
+            __props__.__dict__["vars_annotations"] = vars_annotations
             __props__.__dict__["vna"] = vna
             __props__.__dict__["vpn_path_updown_threshold"] = vpn_path_updown_threshold
             __props__.__dict__["vpn_peer_updown_threshold"] = vpn_peer_updown_threshold
@@ -1759,7 +1903,9 @@ class Setting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
             analytic: pulumi.Input[Optional[Union['SettingAnalyticArgs', 'SettingAnalyticArgsDict']]] = None,
+            ap_synthetic_test: pulumi.Input[Optional[Union['SettingApSyntheticTestArgs', 'SettingApSyntheticTestArgsDict']]] = None,
             ap_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             auto_upgrade: pulumi.Input[Optional[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
             auto_upgrade_esl: pulumi.Input[Optional[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']]] = None,
@@ -1773,7 +1919,9 @@ class Setting(pulumi.CustomResource):
             enable_unii4: pulumi.Input[Optional[_builtins.bool]] = None,
             engagement: pulumi.Input[Optional[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
             gateway_mgmt: pulumi.Input[Optional[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']]] = None,
+            gateway_tunnel_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             gateway_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            iotproxy: pulumi.Input[Optional[Union['SettingIotproxyArgs', 'SettingIotproxyArgsDict']]] = None,
             juniper_srx: pulumi.Input[Optional[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']]] = None,
             led: pulumi.Input[Optional[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
             marvis: pulumi.Input[Optional[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']]] = None,
@@ -1795,8 +1943,8 @@ class Setting(pulumi.CustomResource):
             synthetic_test: pulumi.Input[Optional[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
             track_anonymous_devices: pulumi.Input[Optional[_builtins.bool]] = None,
             uplink_port_config: pulumi.Input[Optional[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
-            uses_description_from_port_usage: pulumi.Input[Optional[_builtins.bool]] = None,
             vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vars_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]]] = None,
             vna: pulumi.Input[Optional[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
             vpn_path_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             vpn_peer_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1815,6 +1963,8 @@ class Setting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_mist: whether to allow Mist to look at this org
+        :param pulumi.Input[Union['SettingApSyntheticTestArgs', 'SettingApSyntheticTestArgsDict']] ap_synthetic_test: AP Synthetic Test configuration
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input[Union['SettingAutoUpgradeEslArgs', 'SettingAutoUpgradeEslArgsDict']] auto_upgrade_esl: auto upgrade AP ESL. When both firmware and ESL auto-upgrade are enabled, ESL upgrade will be done only after firmware upgrade
@@ -1825,8 +1975,10 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
         :param pulumi.Input[_builtins.int] device_updown_threshold: By default, device_updown_threshold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
-        :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
+        :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Management settings
+        :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input[Union['SettingIotproxyArgs', 'SettingIotproxyArgsDict']] iotproxy: IoT proxy configuration for the site
         :param pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']] led: LED AP settings
         :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Occupancy Analytics settings
         :param pulumi.Input[_builtins.bool] persist_config_on_device: Whether to store the config on AP
@@ -1840,8 +1992,8 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
         :param pulumi.Input[_builtins.bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’  enabled)
         :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[_builtins.bool] uses_description_from_port_usage: by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVarsAnnotationsArgs', 'SettingVarsAnnotationsArgsDict']]]] vars_annotations: Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
         :param pulumi.Input[_builtins.int] vpn_path_updown_threshold: enable threshold-based vpn path down delivery.
         :param pulumi.Input[_builtins.int] vpn_peer_updown_threshold: enable threshold-based vpn peer down delivery.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: Optional, for EX9200 only to segregate virtual-switches. Property key is the instance name
@@ -1853,7 +2005,9 @@ class Setting(pulumi.CustomResource):
 
         __props__ = _SettingState.__new__(_SettingState)
 
+        __props__.__dict__["allow_mist"] = allow_mist
         __props__.__dict__["analytic"] = analytic
+        __props__.__dict__["ap_synthetic_test"] = ap_synthetic_test
         __props__.__dict__["ap_updown_threshold"] = ap_updown_threshold
         __props__.__dict__["auto_upgrade"] = auto_upgrade
         __props__.__dict__["auto_upgrade_esl"] = auto_upgrade_esl
@@ -1867,7 +2021,9 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["enable_unii4"] = enable_unii4
         __props__.__dict__["engagement"] = engagement
         __props__.__dict__["gateway_mgmt"] = gateway_mgmt
+        __props__.__dict__["gateway_tunnel_updown_threshold"] = gateway_tunnel_updown_threshold
         __props__.__dict__["gateway_updown_threshold"] = gateway_updown_threshold
+        __props__.__dict__["iotproxy"] = iotproxy
         __props__.__dict__["juniper_srx"] = juniper_srx
         __props__.__dict__["led"] = led
         __props__.__dict__["marvis"] = marvis
@@ -1889,8 +2045,8 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["synthetic_test"] = synthetic_test
         __props__.__dict__["track_anonymous_devices"] = track_anonymous_devices
         __props__.__dict__["uplink_port_config"] = uplink_port_config
-        __props__.__dict__["uses_description_from_port_usage"] = uses_description_from_port_usage
         __props__.__dict__["vars"] = vars
+        __props__.__dict__["vars_annotations"] = vars_annotations
         __props__.__dict__["vna"] = vna
         __props__.__dict__["vpn_path_updown_threshold"] = vpn_path_updown_threshold
         __props__.__dict__["vpn_peer_updown_threshold"] = vpn_peer_updown_threshold
@@ -1905,9 +2061,25 @@ class Setting(pulumi.CustomResource):
         return Setting(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="allowMist")
+    def allow_mist(self) -> pulumi.Output[_builtins.bool]:
+        """
+        whether to allow Mist to look at this org
+        """
+        return pulumi.get(self, "allow_mist")
+
+    @_builtins.property
     @pulumi.getter
     def analytic(self) -> pulumi.Output['outputs.SettingAnalytic']:
         return pulumi.get(self, "analytic")
+
+    @_builtins.property
+    @pulumi.getter(name="apSyntheticTest")
+    def ap_synthetic_test(self) -> pulumi.Output[Optional['outputs.SettingApSyntheticTest']]:
+        """
+        AP Synthetic Test configuration
+        """
+        return pulumi.get(self, "ap_synthetic_test")
 
     @_builtins.property
     @pulumi.getter(name="apUpdownThreshold")
@@ -2003,9 +2175,17 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Output['outputs.SettingGatewayMgmt']:
         """
-        Gateway Site settings
+        Gateway Management settings
         """
         return pulumi.get(self, "gateway_mgmt")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayTunnelUpdownThreshold")
+    def gateway_tunnel_updown_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+        """
+        return pulumi.get(self, "gateway_tunnel_updown_threshold")
 
     @_builtins.property
     @pulumi.getter(name="gatewayUpdownThreshold")
@@ -2014,6 +2194,14 @@ class Setting(pulumi.CustomResource):
         Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "gateway_updown_threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def iotproxy(self) -> pulumi.Output[Optional['outputs.SettingIotproxy']]:
+        """
+        IoT proxy configuration for the site
+        """
+        return pulumi.get(self, "iotproxy")
 
     @_builtins.property
     @pulumi.getter(name="juniperSrx")
@@ -2160,20 +2348,20 @@ class Setting(pulumi.CustomResource):
         return pulumi.get(self, "uplink_port_config")
 
     @_builtins.property
-    @pulumi.getter(name="usesDescriptionFromPortUsage")
-    def uses_description_from_port_usage(self) -> pulumi.Output[_builtins.bool]:
-        """
-        by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-        """
-        return pulumi.get(self, "uses_description_from_port_usage")
-
-    @_builtins.property
     @pulumi.getter
     def vars(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
+
+    @_builtins.property
+    @pulumi.getter(name="varsAnnotations")
+    def vars_annotations(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SettingVarsAnnotations']]]:
+        """
+        Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        """
+        return pulumi.get(self, "vars_annotations")
 
     @_builtins.property
     @pulumi.getter

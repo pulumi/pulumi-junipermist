@@ -140,21 +140,6 @@ public final class MxedgeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Registration code for the MxEdge
-     * 
-     */
-    @Import(name="registrationCode")
-    private @Nullable Output<String> registrationCode;
-
-    /**
-     * @return Registration code for the MxEdge
-     * 
-     */
-    public Optional<Output<String>> registrationCode() {
-        return Optional.ofNullable(this.registrationCode);
-    }
-
-    /**
      * List of services to run, tunterm only for now
      * 
      */
@@ -316,7 +301,6 @@ public final class MxedgeState extends com.pulumi.resources.ResourceArgs {
         this.oobIpConfig = $.oobIpConfig;
         this.orgId = $.orgId;
         this.proxy = $.proxy;
-        this.registrationCode = $.registrationCode;
         this.services = $.services;
         this.siteId = $.siteId;
         this.tuntermDhcpdConfig = $.tuntermDhcpdConfig;
@@ -496,27 +480,6 @@ public final class MxedgeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder proxy(MxedgeProxyArgs proxy) {
             return proxy(Output.of(proxy));
-        }
-
-        /**
-         * @param registrationCode Registration code for the MxEdge
-         * 
-         * @return builder
-         * 
-         */
-        public Builder registrationCode(@Nullable Output<String> registrationCode) {
-            $.registrationCode = registrationCode;
-            return this;
-        }
-
-        /**
-         * @param registrationCode Registration code for the MxEdge
-         * 
-         * @return builder
-         * 
-         */
-        public Builder registrationCode(String registrationCode) {
-            return registrationCode(Output.of(registrationCode));
         }
 
         /**

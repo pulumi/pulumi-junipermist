@@ -181,6 +181,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? PoeDisabled { get; set; }
 
         /// <summary>
+        /// Only if `Mode`!=`Dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+        /// </summary>
+        [Input("poeKeepStateWhenReboot")]
+        public Input<bool>? PoeKeepStateWhenReboot { get; set; }
+
+        /// <summary>
         /// PoE priority. enum: `Low`, `High`
         /// </summary>
         [Input("poePriority")]

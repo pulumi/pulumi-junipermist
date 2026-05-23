@@ -100,7 +100,7 @@ class SwitchArgs:
         :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
-        :param pulumi.Input['SwitchSwitchMgmtArgs'] switch_mgmt: Switch settings
+        :param pulumi.Input['SwitchSwitchMgmtArgs'] switch_mgmt: Switch Management settings
         :param pulumi.Input[_builtins.bool] use_router_id_as_source_ip: Whether to use it for snmp / syslog / tacplus / radius
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input['SwitchVirtualChassisArgs'] virtual_chassis: Required for preprovisioned Virtual Chassis
@@ -647,7 +647,7 @@ class SwitchArgs:
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> pulumi.Input[Optional['SwitchSwitchMgmtArgs']]:
         """
-        Switch settings
+        Switch Management settings
         """
         return pulumi.get(self, "switch_mgmt")
 
@@ -842,7 +842,7 @@ class _SwitchState:
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[_builtins.str] serial: Device Serial
-        :param pulumi.Input['SwitchSwitchMgmtArgs'] switch_mgmt: Switch settings
+        :param pulumi.Input['SwitchSwitchMgmtArgs'] switch_mgmt: Switch Management settings
         :param pulumi.Input[_builtins.str] type: Device Type. enum: `switch`
         :param pulumi.Input[_builtins.bool] use_router_id_as_source_ip: Whether to use it for snmp / syslog / tacplus / radius
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
@@ -1480,7 +1480,7 @@ class _SwitchState:
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> pulumi.Input[Optional['SwitchSwitchMgmtArgs']]:
         """
-        Switch settings
+        Switch Management settings
         """
         return pulumi.get(self, "switch_mgmt")
 
@@ -1696,7 +1696,7 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
-        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Switch settings
+        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Switch Management settings
         :param pulumi.Input[_builtins.bool] use_router_id_as_source_ip: Whether to use it for snmp / syslog / tacplus / radius
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']] virtual_chassis: Required for preprovisioned Virtual Chassis
@@ -1964,7 +1964,7 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] router_id: Used for OSPF / BGP / EVPN
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchRoutingPoliciesArgs', 'SwitchRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[_builtins.str] serial: Device Serial
-        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Switch settings
+        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Switch Management settings
         :param pulumi.Input[_builtins.str] type: Device Type. enum: `switch`
         :param pulumi.Input[_builtins.bool] use_router_id_as_source_ip: Whether to use it for snmp / syslog / tacplus / radius
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
@@ -2361,7 +2361,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> pulumi.Output[Optional['outputs.SwitchSwitchMgmt']]:
         """
-        Switch settings
+        Switch Management settings
         """
         return pulumi.get(self, "switch_mgmt")
 

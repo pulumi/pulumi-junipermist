@@ -28,6 +28,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? PoeDisabled;
         /// <summary>
+        /// Whether Perpetual PoE is enabled; keeps PoE state across reboots
+        /// </summary>
+        public readonly bool? PoeKeepStateWhenReboot;
+        /// <summary>
         /// Native network/vlan for untagged traffic
         /// </summary>
         public readonly string? PortNetwork;
@@ -48,6 +52,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? poeDisabled,
 
+            bool? poeKeepStateWhenReboot,
+
             string? portNetwork,
 
             string? speed)
@@ -57,6 +63,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Duplex = duplex;
             MacLimit = macLimit;
             PoeDisabled = poeDisabled;
+            PoeKeepStateWhenReboot = poeKeepStateWhenReboot;
             PortNetwork = portNetwork;
             Speed = speed;
         }

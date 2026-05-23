@@ -48,7 +48,7 @@ export class Mxedge extends pulumi.CustomResource {
         return obj['__pulumiType'] === Mxedge.__pulumiType;
     }
 
-    declare public readonly claimCode: pulumi.Output<string | undefined>;
+    declare public readonly claimCode: pulumi.Output<string>;
     declare public /*out*/ readonly mac: pulumi.Output<string>;
     declare public readonly model: pulumi.Output<string>;
     declare public /*out*/ readonly mxagentRegistered: pulumi.Output<boolean>;
@@ -69,10 +69,6 @@ export class Mxedge extends pulumi.CustomResource {
      * Proxy Configuration to talk to Mist
      */
     declare public readonly proxy: pulumi.Output<outputs.org.MxedgeProxy | undefined>;
-    /**
-     * Registration code for the MxEdge
-     */
-    declare public /*out*/ readonly registrationCode: pulumi.Output<string>;
     /**
      * List of services to run, tunterm only for now
      */
@@ -133,7 +129,6 @@ export class Mxedge extends pulumi.CustomResource {
             resourceInputs["oobIpConfig"] = state?.oobIpConfig;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["proxy"] = state?.proxy;
-            resourceInputs["registrationCode"] = state?.registrationCode;
             resourceInputs["services"] = state?.services;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["tuntermDhcpdConfig"] = state?.tuntermDhcpdConfig;
@@ -175,7 +170,6 @@ export class Mxedge extends pulumi.CustomResource {
             resourceInputs["versions"] = args?.versions;
             resourceInputs["mac"] = undefined /*out*/;
             resourceInputs["mxagentRegistered"] = undefined /*out*/;
-            resourceInputs["registrationCode"] = undefined /*out*/;
             resourceInputs["services"] = undefined /*out*/;
             resourceInputs["tuntermRegistered"] = undefined /*out*/;
         }
@@ -209,10 +203,6 @@ export interface MxedgeState {
      * Proxy Configuration to talk to Mist
      */
     proxy?: pulumi.Input<inputs.org.MxedgeProxy | undefined>;
-    /**
-     * Registration code for the MxEdge
-     */
-    registrationCode?: pulumi.Input<string | undefined>;
     /**
      * List of services to run, tunterm only for now
      */

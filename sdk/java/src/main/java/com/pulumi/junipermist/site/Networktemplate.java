@@ -407,14 +407,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.switchMatching);
     }
     /**
-     * Switch settings
+     * Switch Management settings
      * 
      */
     @Export(name="switchMgmt", refs={NetworktemplateSwitchMgmt.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMgmt> switchMgmt;
 
     /**
-     * @return Switch settings
+     * @return Switch Management settings
      * 
      */
     public Output<Optional<NetworktemplateSwitchMgmt>> switchMgmt() {
@@ -425,14 +425,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="usesDescriptionFromPortUsage", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> usesDescriptionFromPortUsage;
+    private Output</* @Nullable */ Boolean> usesDescriptionFromPortUsage;
 
     /**
      * @return by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
      * 
      */
-    public Output<Boolean> usesDescriptionFromPortUsage() {
-        return this.usesDescriptionFromPortUsage;
+    public Output<Optional<Boolean>> usesDescriptionFromPortUsage() {
+        return Codegen.optional(this.usesDescriptionFromPortUsage);
     }
     @Export(name="vrfConfig", refs={NetworktemplateVrfConfig.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateVrfConfig> vrfConfig;

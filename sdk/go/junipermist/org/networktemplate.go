@@ -157,7 +157,7 @@ type Networktemplate struct {
 	SnmpConfig      NetworktemplateSnmpConfigPtrOutput      `pulumi:"snmpConfig"`
 	// Defines custom switch configuration based on different criteria
 	SwitchMatching NetworktemplateSwitchMatchingPtrOutput `pulumi:"switchMatching"`
-	// Switch settings
+	// Switch Management settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrOutput `pulumi:"switchMgmt"`
 	VrfConfig  NetworktemplateVrfConfigPtrOutput  `pulumi:"vrfConfig"`
 	// Property key is the network name
@@ -236,7 +236,7 @@ type networktemplateState struct {
 	SnmpConfig      *NetworktemplateSnmpConfig                `pulumi:"snmpConfig"`
 	// Defines custom switch configuration based on different criteria
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
-	// Switch settings
+	// Switch Management settings
 	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
 	VrfConfig  *NetworktemplateVrfConfig  `pulumi:"vrfConfig"`
 	// Property key is the network name
@@ -283,7 +283,7 @@ type NetworktemplateState struct {
 	SnmpConfig      NetworktemplateSnmpConfigPtrInput
 	// Defines custom switch configuration based on different criteria
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
-	// Switch settings
+	// Switch Management settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
 	VrfConfig  NetworktemplateVrfConfigPtrInput
 	// Property key is the network name
@@ -334,7 +334,7 @@ type networktemplateArgs struct {
 	SnmpConfig      *NetworktemplateSnmpConfig                `pulumi:"snmpConfig"`
 	// Defines custom switch configuration based on different criteria
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
-	// Switch settings
+	// Switch Management settings
 	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
 	VrfConfig  *NetworktemplateVrfConfig  `pulumi:"vrfConfig"`
 	// Property key is the network name
@@ -382,7 +382,7 @@ type NetworktemplateArgs struct {
 	SnmpConfig      NetworktemplateSnmpConfigPtrInput
 	// Defines custom switch configuration based on different criteria
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
-	// Switch settings
+	// Switch Management settings
 	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
 	VrfConfig  NetworktemplateVrfConfigPtrInput
 	// Property key is the network name
@@ -584,7 +584,7 @@ func (o NetworktemplateOutput) SwitchMatching() NetworktemplateSwitchMatchingPtr
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSwitchMatchingPtrOutput { return v.SwitchMatching }).(NetworktemplateSwitchMatchingPtrOutput)
 }
 
-// Switch settings
+// Switch Management settings
 func (o NetworktemplateOutput) SwitchMgmt() NetworktemplateSwitchMgmtPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSwitchMgmtPtrOutput { return v.SwitchMgmt }).(NetworktemplateSwitchMgmtPtrOutput)
 }

@@ -276,6 +276,10 @@ export namespace device {
          * enum: `base`, `remote`
          */
         role?: pulumi.Input<string | undefined>;
+        /**
+         * Whether to use WPA3 on the 5 GHz band for mesh links
+         */
+        useWpa3On5?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ApPortConfig {
@@ -800,6 +804,29 @@ export namespace device {
         vlanId?: pulumi.Input<number | undefined>;
     }
 
+    export interface ApZigbeeConfig {
+        /**
+         * Controls whether new Zigbee devices are allowed to join the network. enum: `always`, `manual`
+         */
+        allowJoin?: pulumi.Input<string | undefined>;
+        /**
+         * Zigbee channel (2.4 GHz). `0` means auto; valid fixed values are 11–26
+         */
+        channel?: pulumi.Input<number | undefined>;
+        /**
+         * Whether to enable Zigbee on this AP
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Extended PAN ID in hex string format; only applicable when `panId` is also specified
+         */
+        extendedPanId?: pulumi.Input<string | undefined>;
+        /**
+         * PAN ID in hex string format; if not specified, assigned automatically
+         */
+        panId?: pulumi.Input<string | undefined>;
+    }
+
     export interface BaseLatlng {
         lat: pulumi.Input<number>;
         lng: pulumi.Input<number>;
@@ -908,6 +935,10 @@ export namespace device {
          * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         neighborAs: pulumi.Input<string>;
+        /**
+         * If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+         */
+        tunnelVia?: pulumi.Input<string | undefined>;
     }
 
     export interface GatewayClusterNode {
@@ -1032,9 +1063,129 @@ export namespace device {
 
     export interface GatewayGatewayMgmt {
         /**
+         * For SSR only, as direct root access is not allowed
+         */
+        adminSshkeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        appProbing?: pulumi.Input<inputs.device.GatewayGatewayMgmtAppProbing | undefined>;
+        /**
+         * Consumes uplink bandwidth, requires WA license
+         */
+        appUsage?: pulumi.Input<boolean | undefined>;
+        autoSignatureUpdate?: pulumi.Input<inputs.device.GatewayGatewayMgmtAutoSignatureUpdate | undefined>;
+        /**
          * Rollback timer for commit confirmed
          */
         configRevertTimer?: pulumi.Input<number | undefined>;
+        /**
+         * For SSR and SRX, disable console port
+         */
+        disableConsole?: pulumi.Input<boolean | undefined>;
+        /**
+         * For SSR and SRX, disable management interface
+         */
+        disableOob?: pulumi.Input<boolean | undefined>;
+        /**
+         * For SSR and SRX, disable usb interface
+         */
+        disableUsb?: pulumi.Input<boolean | undefined>;
+        fipsEnabled?: pulumi.Input<boolean | undefined>;
+        probeHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        probeHostsv6s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Restrict inbound-traffic to host
+         * when enabled, all traffic that is not essential to our operation will be dropped 
+         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+         */
+        protectRe?: pulumi.Input<inputs.device.GatewayGatewayMgmtProtectRe | undefined>;
+        /**
+         * SRX only
+         */
+        rootPassword?: pulumi.Input<string | undefined>;
+        securityLogSourceAddress?: pulumi.Input<string | undefined>;
+        securityLogSourceInterface?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewayGatewayMgmtAppProbing {
+        /**
+         * APp-keys from List Applications
+         */
+        apps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        customApps?: pulumi.Input<pulumi.Input<inputs.device.GatewayGatewayMgmtAppProbingCustomApp>[] | undefined>;
+        enabled?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface GatewayGatewayMgmtAppProbingCustomApp {
+        /**
+         * Required if `protocol`==`icmp`
+         */
+        address?: pulumi.Input<string | undefined>;
+        appType?: pulumi.Input<string | undefined>;
+        /**
+         * If `protocol`==`http`
+         */
+        hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        key?: pulumi.Input<string | undefined>;
+        name?: pulumi.Input<string | undefined>;
+        network?: pulumi.Input<string | undefined>;
+        /**
+         * If `protocol`==`icmp`
+         */
+        packetSize?: pulumi.Input<number | undefined>;
+        /**
+         * enum: `http`, `icmp`
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        /**
+         * If `protocol`==`http`
+         */
+        url?: pulumi.Input<string | undefined>;
+        vrf?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewayGatewayMgmtAutoSignatureUpdate {
+        /**
+         * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         */
+        dayOfWeek?: pulumi.Input<string | undefined>;
+        enable?: pulumi.Input<boolean | undefined>;
+        /**
+         * Optional, Mist will decide the timing
+         */
+        timeOfDay?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewayGatewayMgmtProtectRe {
+        /**
+         * Optionally, services we'll allow
+         */
+        allowedServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        customs?: pulumi.Input<pulumi.Input<inputs.device.GatewayGatewayMgmtProtectReCustom>[] | undefined>;
+        /**
+         * When enabled, all traffic that is not essential to our operation will be dropped
+         * e.g. ntp / dns / traffic to mist will be allowed by default
+         *      if dhcpd is enabled, we'll make sure it works
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to enable hit count for Protect_RE policy
+         */
+        hitCount?: pulumi.Input<boolean | undefined>;
+        /**
+         * host/subnets we'll allow traffic to/from
+         */
+        trustedHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface GatewayGatewayMgmtProtectReCustom {
+        /**
+         * Matched dst port, "0" means any
+         */
+        portRange?: pulumi.Input<string | undefined>;
+        /**
+         * enum: `any`, `icmp`, `tcp`, `udp`
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        subnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface GatewayIdpProfiles {
@@ -1459,6 +1610,10 @@ export namespace device {
          */
         outerVlanId?: pulumi.Input<number | undefined>;
         poeDisabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether Perpetual PoE capabilities are enabled for a port
+         */
+        poeKeepStateWhenReboot?: pulumi.Input<boolean | undefined>;
         /**
          * Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
          */
@@ -1946,7 +2101,7 @@ export namespace device {
          */
         ipsecLifetime?: pulumi.Input<number | undefined>;
         /**
-         * Only if  `provider`==`custom-ipsec`
+         * Only if `provider`==`custom-ipsec`
          */
         ipsecProposals?: pulumi.Input<pulumi.Input<inputs.device.GatewayTunnelConfigsIpsecProposal>[] | undefined>;
         /**
@@ -2103,7 +2258,7 @@ export namespace device {
         internalIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         probeIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
-         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         wanNames: pulumi.Input<pulumi.Input<string>[]>;
@@ -2136,7 +2291,7 @@ export namespace device {
         internalIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         probeIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
-         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         wanNames: pulumi.Input<pulumi.Input<string>[]>;
@@ -2491,7 +2646,7 @@ export namespace device {
          */
         fixedBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchDhcpdConfigConfigFixedBindings>} | undefined>;
         /**
-         * If `type`==`server`  - optional, `ip` will be used if not provided
+         * If `type`==`server` - optional, `ip` will be used if not provided
          */
         gateway?: pulumi.Input<string | undefined>;
         /**
@@ -2579,7 +2734,7 @@ export namespace device {
         noResolve?: pulumi.Input<boolean | undefined>;
         preference?: pulumi.Input<number | undefined>;
         /**
-         * Next-hop IP Address
+         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          */
         via: pulumi.Input<string>;
     }
@@ -2594,7 +2749,7 @@ export namespace device {
         noResolve?: pulumi.Input<boolean | undefined>;
         preference?: pulumi.Input<number | undefined>;
         /**
-         * Next-hop IP Address
+         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          */
         via: pulumi.Input<string>;
     }
@@ -2959,7 +3114,11 @@ export namespace device {
          */
         aeIdx?: pulumi.Input<number | undefined>;
         /**
-         * To use fast timeout
+         * If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         */
+        aeLacpForceUp?: pulumi.Input<boolean | undefined>;
+        /**
+         * To use slow timeout
          */
         aeLacpSlow?: pulumi.Input<boolean | undefined>;
         aggregated?: pulumi.Input<boolean | undefined>;
@@ -3023,6 +3182,10 @@ export namespace device {
          * Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether Perpetual PoE is enabled; keeps PoE state across reboots
+         */
+        poeKeepStateWhenReboot?: pulumi.Input<boolean | undefined>;
         /**
          * Native network/vlan for untagged traffic
          */
@@ -3165,6 +3328,10 @@ export namespace device {
          * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+         */
+        poeKeepStateWhenReboot?: pulumi.Input<boolean | undefined>;
         /**
          * PoE priority. enum: `low`, `high`
          */
@@ -4257,6 +4424,10 @@ export namespace org {
          * enum: `base`, `remote`
          */
         role?: pulumi.Input<string | undefined>;
+        /**
+         * Whether to use WPA3 on the 5 GHz band for mesh links
+         */
+        useWpa3On5?: pulumi.Input<boolean | undefined>;
     }
 
     export interface DeviceprofileApPortConfig {
@@ -4781,6 +4952,29 @@ export namespace org {
         vlanId?: pulumi.Input<number | undefined>;
     }
 
+    export interface DeviceprofileApZigbeeConfig {
+        /**
+         * Controls whether new Zigbee devices are allowed to join the network. enum: `always`, `manual`
+         */
+        allowJoin?: pulumi.Input<string | undefined>;
+        /**
+         * Zigbee channel (2.4 GHz). `0` means auto; valid fixed values are 11–26
+         */
+        channel?: pulumi.Input<number | undefined>;
+        /**
+         * Whether to enable Zigbee on this AP
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Extended PAN ID in hex string format; only applicable when `panId` is also specified
+         */
+        extendedPanId?: pulumi.Input<string | undefined>;
+        /**
+         * PAN ID in hex string format; if not specified, assigned automatically
+         */
+        panId?: pulumi.Input<string | undefined>;
+    }
+
     export interface DeviceprofileGatewayBgpConfig {
         /**
          * Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`
@@ -4884,6 +5078,10 @@ export namespace org {
          * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         neighborAs: pulumi.Input<string>;
+        /**
+         * If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+         */
+        tunnelVia?: pulumi.Input<string | undefined>;
     }
 
     export interface DeviceprofileGatewayDhcpdConfig {
@@ -5418,6 +5616,10 @@ export namespace org {
         outerVlanId?: pulumi.Input<number | undefined>;
         poeDisabled?: pulumi.Input<boolean | undefined>;
         /**
+         * Whether Perpetual PoE capabilities are enabled for a port
+         */
+        poeKeepStateWhenReboot?: pulumi.Input<boolean | undefined>;
+        /**
          * Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
          */
         portNetwork?: pulumi.Input<string | undefined>;
@@ -5892,7 +6094,7 @@ export namespace org {
          */
         ipsecLifetime?: pulumi.Input<number | undefined>;
         /**
-         * Only if  `provider`==`custom-ipsec`
+         * Only if `provider`==`custom-ipsec`
          */
         ipsecProposals?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsIpsecProposal>[] | undefined>;
         /**
@@ -6049,7 +6251,7 @@ export namespace org {
         internalIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         probeIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
-         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         wanNames: pulumi.Input<pulumi.Input<string>[]>;
@@ -6082,7 +6284,7 @@ export namespace org {
         internalIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         probeIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
-         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         wanNames: pulumi.Input<pulumi.Input<string>[]>;
@@ -6263,6 +6465,10 @@ export namespace org {
          * Optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
          */
         coreAsBorder?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to route management traffic inband; routes will be propagated to downstream switches
+         */
+        enableInbandMgmt?: pulumi.Input<boolean | undefined>;
         /**
          * if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
          */
@@ -6448,6 +6654,10 @@ export namespace org {
          * Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
          */
         neighborAs: pulumi.Input<string>;
+        /**
+         * If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+         */
+        tunnelVia?: pulumi.Input<string | undefined>;
     }
 
     export interface GatewaytemplateDhcpdConfig {
@@ -6561,6 +6771,133 @@ export namespace org {
 
     export interface GatewaytemplateExtraRoutes6 {
         via: pulumi.Input<string>;
+    }
+
+    export interface GatewaytemplateGatewayMgmt {
+        /**
+         * For SSR only, as direct root access is not allowed
+         */
+        adminSshkeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        appProbing?: pulumi.Input<inputs.org.GatewaytemplateGatewayMgmtAppProbing | undefined>;
+        /**
+         * Consumes uplink bandwidth, requires WA license
+         */
+        appUsage?: pulumi.Input<boolean | undefined>;
+        autoSignatureUpdate?: pulumi.Input<inputs.org.GatewaytemplateGatewayMgmtAutoSignatureUpdate | undefined>;
+        /**
+         * Rollback timer for commit confirmed
+         */
+        configRevertTimer?: pulumi.Input<number | undefined>;
+        /**
+         * For SSR and SRX, disable console port
+         */
+        disableConsole?: pulumi.Input<boolean | undefined>;
+        /**
+         * For SSR and SRX, disable management interface
+         */
+        disableOob?: pulumi.Input<boolean | undefined>;
+        /**
+         * For SSR and SRX, disable usb interface
+         */
+        disableUsb?: pulumi.Input<boolean | undefined>;
+        fipsEnabled?: pulumi.Input<boolean | undefined>;
+        probeHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        probeHostsv6s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Restrict inbound-traffic to host
+         * when enabled, all traffic that is not essential to our operation will be dropped 
+         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+         */
+        protectRe?: pulumi.Input<inputs.org.GatewaytemplateGatewayMgmtProtectRe | undefined>;
+        /**
+         * SRX only
+         */
+        rootPassword?: pulumi.Input<string | undefined>;
+        securityLogSourceAddress?: pulumi.Input<string | undefined>;
+        securityLogSourceInterface?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewaytemplateGatewayMgmtAppProbing {
+        /**
+         * APp-keys from List Applications
+         */
+        apps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        customApps?: pulumi.Input<pulumi.Input<inputs.org.GatewaytemplateGatewayMgmtAppProbingCustomApp>[] | undefined>;
+        enabled?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface GatewaytemplateGatewayMgmtAppProbingCustomApp {
+        /**
+         * Required if `protocol`==`icmp`
+         */
+        address?: pulumi.Input<string | undefined>;
+        appType?: pulumi.Input<string | undefined>;
+        /**
+         * If `protocol`==`http`
+         */
+        hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        key?: pulumi.Input<string | undefined>;
+        name?: pulumi.Input<string | undefined>;
+        network?: pulumi.Input<string | undefined>;
+        /**
+         * If `protocol`==`icmp`
+         */
+        packetSize?: pulumi.Input<number | undefined>;
+        /**
+         * enum: `http`, `icmp`
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        /**
+         * If `protocol`==`http`
+         */
+        url?: pulumi.Input<string | undefined>;
+        vrf?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewaytemplateGatewayMgmtAutoSignatureUpdate {
+        /**
+         * enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+         */
+        dayOfWeek?: pulumi.Input<string | undefined>;
+        enable?: pulumi.Input<boolean | undefined>;
+        /**
+         * Optional, Mist will decide the timing
+         */
+        timeOfDay?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewaytemplateGatewayMgmtProtectRe {
+        /**
+         * Optionally, services we'll allow
+         */
+        allowedServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        customs?: pulumi.Input<pulumi.Input<inputs.org.GatewaytemplateGatewayMgmtProtectReCustom>[] | undefined>;
+        /**
+         * When enabled, all traffic that is not essential to our operation will be dropped
+         * e.g. ntp / dns / traffic to mist will be allowed by default
+         *      if dhcpd is enabled, we'll make sure it works
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to enable hit count for Protect_RE policy
+         */
+        hitCount?: pulumi.Input<boolean | undefined>;
+        /**
+         * host/subnets we'll allow traffic to/from
+         */
+        trustedHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface GatewaytemplateGatewayMgmtProtectReCustom {
+        /**
+         * Matched dst port, "0" means any
+         */
+        portRange?: pulumi.Input<string | undefined>;
+        /**
+         * enum: `any`, `icmp`, `tcp`, `udp`
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        subnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface GatewaytemplateIdpProfiles {
@@ -6981,6 +7318,10 @@ export namespace org {
          */
         outerVlanId?: pulumi.Input<number | undefined>;
         poeDisabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether Perpetual PoE capabilities are enabled for a port
+         */
+        poeKeepStateWhenReboot?: pulumi.Input<boolean | undefined>;
         /**
          * Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
          */
@@ -7456,7 +7797,7 @@ export namespace org {
          */
         ipsecLifetime?: pulumi.Input<number | undefined>;
         /**
-         * Only if  `provider`==`custom-ipsec`
+         * Only if `provider`==`custom-ipsec`
          */
         ipsecProposals?: pulumi.Input<pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsIpsecProposal>[] | undefined>;
         /**
@@ -7613,7 +7954,7 @@ export namespace org {
         internalIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         probeIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
-         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         wanNames: pulumi.Input<pulumi.Input<string>[]>;
@@ -7646,7 +7987,7 @@ export namespace org {
         internalIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         probeIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
-         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * Only if `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         wanNames: pulumi.Input<pulumi.Input<string>[]>;
@@ -8693,7 +9034,7 @@ export namespace org {
         noResolve?: pulumi.Input<boolean | undefined>;
         preference?: pulumi.Input<number | undefined>;
         /**
-         * Next-hop IP Address
+         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          */
         via: pulumi.Input<string>;
     }
@@ -8708,7 +9049,7 @@ export namespace org {
         noResolve?: pulumi.Input<boolean | undefined>;
         preference?: pulumi.Input<number | undefined>;
         /**
-         * Next-hop IP Address
+         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          */
         via: pulumi.Input<string>;
     }
@@ -8927,6 +9268,10 @@ export namespace org {
          * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+         */
+        poeKeepStateWhenReboot?: pulumi.Input<boolean | undefined>;
         /**
          * PoE priority. enum: `low`, `high`
          */
@@ -9614,7 +9959,11 @@ export namespace org {
          */
         aeIdx?: pulumi.Input<number | undefined>;
         /**
-         * To use fast timeout
+         * If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         */
+        aeLacpForceUp?: pulumi.Input<boolean | undefined>;
+        /**
+         * To use slow timeout
          */
         aeLacpSlow?: pulumi.Input<boolean | undefined>;
         aggregated?: pulumi.Input<boolean | undefined>;
@@ -10376,19 +10725,28 @@ export namespace org {
     }
 
     export interface SettingMarvis {
-        autoOperations?: pulumi.Input<inputs.org.SettingMarvisAutoOperations | undefined>;
+        /**
+         * Self-driving network automation settings per domain
+         */
+        selfDriving?: pulumi.Input<inputs.org.SettingMarvisSelfDriving | undefined>;
     }
 
-    export interface SettingMarvisAutoOperations {
-        apInsufficientCapacity?: pulumi.Input<boolean | undefined>;
-        apLoop?: pulumi.Input<boolean | undefined>;
-        apNonCompliant?: pulumi.Input<boolean | undefined>;
-        bouncePortForAbnormalPoeClient?: pulumi.Input<boolean | undefined>;
-        disablePortWhenDdosProtocolViolation?: pulumi.Input<boolean | undefined>;
-        disablePortWhenRogueDhcpServerDetected?: pulumi.Input<boolean | undefined>;
-        gatewayNonCompliant?: pulumi.Input<boolean | undefined>;
-        switchMisconfiguredPort?: pulumi.Input<boolean | undefined>;
-        switchPortStuck?: pulumi.Input<boolean | undefined>;
+    export interface SettingMarvisSelfDriving {
+        wan?: pulumi.Input<inputs.org.SettingMarvisSelfDrivingWan | undefined>;
+        wired?: pulumi.Input<inputs.org.SettingMarvisSelfDrivingWired | undefined>;
+        wireless?: pulumi.Input<inputs.org.SettingMarvisSelfDrivingWireless | undefined>;
+    }
+
+    export interface SettingMarvisSelfDrivingWan {
+        enabled?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface SettingMarvisSelfDrivingWired {
+        enabled?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface SettingMarvisSelfDrivingWireless {
+        enabled?: pulumi.Input<boolean | undefined>;
     }
 
     export interface SettingMgmt {
@@ -10407,6 +10765,10 @@ export namespace org {
     }
 
     export interface SettingMistNac {
+        /**
+         * allow clients to connect even when the user cert failed. TEAP authenticates both Machine Cert and User Cert. When enabled, clients who only succeed Machine Cert authentication will be accepted.
+         */
+        allowTeapMachineAuthOnly?: pulumi.Input<boolean | undefined>;
         /**
          * List of PEM-encoded ca certs
          */
@@ -10440,6 +10802,10 @@ export namespace org {
          */
         idpUserCertLookupField?: pulumi.Input<string | undefined>;
         idps?: pulumi.Input<pulumi.Input<inputs.org.SettingMistNacIdp>[] | undefined>;
+        /**
+         * MDM (Mobile Device Management) CoA configuration
+         */
+        mdm?: pulumi.Input<inputs.org.SettingMistNacMdm | undefined>;
         /**
          * radius server cert to be presented in EAP TLS
          */
@@ -10492,6 +10858,13 @@ export namespace org {
          *   * Cert CN
          */
         userRealms: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SettingMistNacMdm {
+        /**
+         * CoA type to send. enum: `reauth`, `disconnect`
+         */
+        coaType?: pulumi.Input<string | undefined>;
     }
 
     export interface SettingMistNacServerCert {
@@ -10908,6 +11281,14 @@ export namespace org {
          * Whether to trigger EAP reauth when the session ends
          */
         eapReauth?: pulumi.Input<boolean | undefined>;
+        /**
+         * Enable Beacon Protection; default is false for better compatibility
+         */
+        enableBeaconProtection?: pulumi.Input<boolean | undefined>;
+        /**
+         * Enable GCMP-256 encryption suite; default is false for better compatibility
+         */
+        enableGcmp256?: pulumi.Input<boolean | undefined>;
         /**
          * Whether to enable MAC Auth, uses the same auth_servers
          */
@@ -12352,6 +12733,10 @@ export namespace site {
          */
         coreAsBorder?: pulumi.Input<boolean | undefined>;
         /**
+         * Whether to route management traffic inband; routes will be propagated to downstream switches
+         */
+        enableInbandMgmt?: pulumi.Input<boolean | undefined>;
+        /**
          * if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
          */
         enableInbandZtp?: pulumi.Input<boolean | undefined>;
@@ -12560,7 +12945,7 @@ export namespace site {
         noResolve?: pulumi.Input<boolean | undefined>;
         preference?: pulumi.Input<number | undefined>;
         /**
-         * Next-hop IP Address
+         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          */
         via: pulumi.Input<string>;
     }
@@ -12575,7 +12960,7 @@ export namespace site {
         noResolve?: pulumi.Input<boolean | undefined>;
         preference?: pulumi.Input<number | undefined>;
         /**
-         * Next-hop IP Address
+         * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          */
         via: pulumi.Input<string>;
     }
@@ -12794,6 +13179,10 @@ export namespace site {
          * Only if `mode`!=`dynamic`. Whether PoE capabilities are disabled for a port
          */
         poeDisabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Only if `mode`!=`dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+         */
+        poeKeepStateWhenReboot?: pulumi.Input<boolean | undefined>;
         /**
          * PoE priority. enum: `low`, `high`
          */
@@ -13481,7 +13870,11 @@ export namespace site {
          */
         aeIdx?: pulumi.Input<number | undefined>;
         /**
-         * To use fast timeout
+         * If `aggregated`==`true`, sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
+         */
+        aeLacpForceUp?: pulumi.Input<boolean | undefined>;
+        /**
+         * To use slow timeout
          */
         aeLacpSlow?: pulumi.Input<boolean | undefined>;
         aggregated?: pulumi.Input<boolean | undefined>;
@@ -13727,6 +14120,13 @@ export namespace site {
          * Enable Advanced Analytic feature (using SUB-ANA license)
          */
         enabled?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface SettingApSyntheticTest {
+        /**
+         * List or Comma separated list of additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+         */
+        additionalVlanIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface SettingAutoUpgrade {
@@ -14153,6 +14553,38 @@ export namespace site {
         subnets: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface SettingIotproxy {
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Visionline integration settings for IoT proxy
+         */
+        visionline?: pulumi.Input<inputs.site.SettingIotproxyVisionline | undefined>;
+    }
+
+    export interface SettingIotproxyVisionline {
+        /**
+         * Access ID for the Visionline service
+         */
+        accessId?: pulumi.Input<string | undefined>;
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Hostname or IP of the Visionline collector
+         */
+        host?: pulumi.Input<string | undefined>;
+        /**
+         * Password for the Visionline service
+         */
+        password?: pulumi.Input<string | undefined>;
+        /**
+         * TCP port of the Visionline collector
+         */
+        port?: pulumi.Input<number | undefined>;
+        /**
+         * Username for the Visionline service
+         */
+        username?: pulumi.Input<string | undefined>;
+    }
+
     export interface SettingJuniperSrx {
         /**
          * auto_upgrade device first time it is onboarded
@@ -14474,6 +14906,19 @@ export namespace site {
         keepWlansUpIfDown?: pulumi.Input<boolean | undefined>;
     }
 
+    export interface SettingVarsAnnotations {
+        /**
+         * User-provided note to describe what this var was created for
+         */
+        note?: pulumi.Input<string | undefined>;
+        /**
+         * Used to identify where to enumerate / auto-complete the field from. Default is `generic` (plain string, no special handling).
+         *
+         * enum: `generic`, `mxtunnelId`
+         */
+        type?: pulumi.Input<string | undefined>;
+    }
+
     export interface SettingVna {
         /**
          * Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
@@ -14663,6 +15108,14 @@ export namespace site {
          * Whether to trigger EAP reauth when the session ends
          */
         eapReauth?: pulumi.Input<boolean | undefined>;
+        /**
+         * Enable Beacon Protection; default is false for better compatibility
+         */
+        enableBeaconProtection?: pulumi.Input<boolean | undefined>;
+        /**
+         * Enable GCMP-256 encryption suite; default is false for better compatibility
+         */
+        enableGcmp256?: pulumi.Input<boolean | undefined>;
         /**
          * Whether to enable MAC Auth, uses the same auth_servers
          */

@@ -84,7 +84,7 @@ type Gateway struct {
 	ExtraRoutes GatewayExtraRoutesMapOutput `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 GatewayExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
-	// Gateway settings
+	// Gateway Management settings
 	GatewayMgmt GatewayGatewayMgmtPtrOutput `pulumi:"gatewayMgmt"`
 	// Property key is the profile name
 	IdpProfiles GatewayIdpProfilesMapOutput `pulumi:"idpProfiles"`
@@ -195,7 +195,7 @@ type gatewayState struct {
 	ExtraRoutes map[string]GatewayExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 map[string]GatewayExtraRoutes6 `pulumi:"extraRoutes6"`
-	// Gateway settings
+	// Gateway Management settings
 	GatewayMgmt *GatewayGatewayMgmt `pulumi:"gatewayMgmt"`
 	// Property key is the profile name
 	IdpProfiles map[string]GatewayIdpProfiles `pulumi:"idpProfiles"`
@@ -271,7 +271,7 @@ type GatewayState struct {
 	ExtraRoutes GatewayExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 GatewayExtraRoutes6MapInput
-	// Gateway settings
+	// Gateway Management settings
 	GatewayMgmt GatewayGatewayMgmtPtrInput
 	// Property key is the profile name
 	IdpProfiles GatewayIdpProfilesMapInput
@@ -351,7 +351,7 @@ type gatewayArgs struct {
 	ExtraRoutes map[string]GatewayExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 map[string]GatewayExtraRoutes6 `pulumi:"extraRoutes6"`
-	// Gateway settings
+	// Gateway Management settings
 	GatewayMgmt *GatewayGatewayMgmt `pulumi:"gatewayMgmt"`
 	// Property key is the profile name
 	IdpProfiles map[string]GatewayIdpProfiles `pulumi:"idpProfiles"`
@@ -416,7 +416,7 @@ type GatewayArgs struct {
 	ExtraRoutes GatewayExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
 	ExtraRoutes6 GatewayExtraRoutes6MapInput
-	// Gateway settings
+	// Gateway Management settings
 	GatewayMgmt GatewayGatewayMgmtPtrInput
 	// Property key is the profile name
 	IdpProfiles GatewayIdpProfilesMapInput
@@ -590,7 +590,7 @@ func (o GatewayOutput) ExtraRoutes6() GatewayExtraRoutes6MapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayExtraRoutes6MapOutput { return v.ExtraRoutes6 }).(GatewayExtraRoutes6MapOutput)
 }
 
-// Gateway settings
+// Gateway Management settings
 func (o GatewayOutput) GatewayMgmt() GatewayGatewayMgmtPtrOutput {
 	return o.ApplyT(func(v *Gateway) GatewayGatewayMgmtPtrOutput { return v.GatewayMgmt }).(GatewayGatewayMgmtPtrOutput)
 }

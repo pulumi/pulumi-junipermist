@@ -57,6 +57,7 @@ class WlanArgs:
                  disable11ax: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable11be: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_ht_vht_rates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_message_authenticator_check: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_uapsd: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_v1_roam_notify: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_v2_roam_notify: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -133,7 +134,7 @@ class WlanArgs:
         :param pulumi.Input[Sequence[pulumi.Input['WlanAuthServerArgs']]] auth_servers: List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
         :param pulumi.Input[_builtins.str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         :param pulumi.Input[_builtins.str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
-        :param pulumi.Input[_builtins.int] auth_servers_retries: Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+        :param pulumi.Input[_builtins.int] auth_servers_retries: Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
         :param pulumi.Input[_builtins.int] auth_servers_timeout: Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
         :param pulumi.Input[_builtins.bool] band_steer: Whether to enable band_steering, this works only when band==both
         :param pulumi.Input[_builtins.bool] band_steer_force_band5: Force dual_band capable client to connect to 5G
@@ -147,6 +148,7 @@ class WlanArgs:
         :param pulumi.Input[_builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
         :param pulumi.Input[_builtins.bool] disable11be: To disable Wi-Fi 7 EHT IEs
         :param pulumi.Input[_builtins.bool] disable_ht_vht_rates: To disable ht or vht rates
+        :param pulumi.Input[_builtins.bool] disable_message_authenticator_check: whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
         :param pulumi.Input[_builtins.bool] disable_uapsd: Whether to disable U-APSD
         :param pulumi.Input[_builtins.bool] disable_v1_roam_notify: Disable sending v2 roam notification messages
         :param pulumi.Input[_builtins.bool] disable_v2_roam_notify: Disable sending v2 roam notification messages
@@ -275,6 +277,8 @@ class WlanArgs:
             pulumi.set(__self__, "disable11be", disable11be)
         if disable_ht_vht_rates is not None:
             pulumi.set(__self__, "disable_ht_vht_rates", disable_ht_vht_rates)
+        if disable_message_authenticator_check is not None:
+            pulumi.set(__self__, "disable_message_authenticator_check", disable_message_authenticator_check)
         if disable_uapsd is not None:
             pulumi.set(__self__, "disable_uapsd", disable_uapsd)
         if disable_v1_roam_notify is not None:
@@ -624,7 +628,7 @@ class WlanArgs:
     @pulumi.getter(name="authServersRetries")
     def auth_servers_retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+        Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
         """
         return pulumi.get(self, "auth_servers_retries")
 
@@ -805,6 +809,18 @@ class WlanArgs:
     @disable_ht_vht_rates.setter
     def disable_ht_vht_rates(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_ht_vht_rates", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableMessageAuthenticatorCheck")
+    def disable_message_authenticator_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+        """
+        return pulumi.get(self, "disable_message_authenticator_check")
+
+    @disable_message_authenticator_check.setter
+    def disable_message_authenticator_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disable_message_authenticator_check", value)
 
     @_builtins.property
     @pulumi.getter(name="disableUapsd")
@@ -1573,7 +1589,7 @@ class _WlanState:
         :param pulumi.Input[Sequence[pulumi.Input['WlanAuthServerArgs']]] auth_servers: List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
         :param pulumi.Input[_builtins.str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         :param pulumi.Input[_builtins.str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
-        :param pulumi.Input[_builtins.int] auth_servers_retries: Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+        :param pulumi.Input[_builtins.int] auth_servers_retries: Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
         :param pulumi.Input[_builtins.int] auth_servers_timeout: Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
         :param pulumi.Input[_builtins.bool] band_steer: Whether to enable band_steering, this works only when band==both
         :param pulumi.Input[_builtins.bool] band_steer_force_band5: Force dual_band capable client to connect to 5G
@@ -2052,7 +2068,7 @@ class _WlanState:
     @pulumi.getter(name="authServersRetries")
     def auth_servers_retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+        Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
         """
         return pulumi.get(self, "auth_servers_retries")
 
@@ -3008,6 +3024,7 @@ class Wlan(pulumi.CustomResource):
                  disable11ax: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable11be: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_ht_vht_rates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_message_authenticator_check: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_uapsd: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_v1_roam_notify: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_v2_roam_notify: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3128,7 +3145,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]] auth_servers: List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
         :param pulumi.Input[_builtins.str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         :param pulumi.Input[_builtins.str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
-        :param pulumi.Input[_builtins.int] auth_servers_retries: Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+        :param pulumi.Input[_builtins.int] auth_servers_retries: Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
         :param pulumi.Input[_builtins.int] auth_servers_timeout: Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
         :param pulumi.Input[_builtins.bool] band_steer: Whether to enable band_steering, this works only when band==both
         :param pulumi.Input[_builtins.bool] band_steer_force_band5: Force dual_band capable client to connect to 5G
@@ -3142,6 +3159,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disable11ax: Some old WLAN drivers may not be compatible
         :param pulumi.Input[_builtins.bool] disable11be: To disable Wi-Fi 7 EHT IEs
         :param pulumi.Input[_builtins.bool] disable_ht_vht_rates: To disable ht or vht rates
+        :param pulumi.Input[_builtins.bool] disable_message_authenticator_check: whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
         :param pulumi.Input[_builtins.bool] disable_uapsd: Whether to disable U-APSD
         :param pulumi.Input[_builtins.bool] disable_v1_roam_notify: Disable sending v2 roam notification messages
         :param pulumi.Input[_builtins.bool] disable_v2_roam_notify: Disable sending v2 roam notification messages
@@ -3298,6 +3316,7 @@ class Wlan(pulumi.CustomResource):
                  disable11ax: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable11be: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_ht_vht_rates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_message_authenticator_check: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_uapsd: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_v1_roam_notify: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_v2_roam_notify: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3398,6 +3417,7 @@ class Wlan(pulumi.CustomResource):
             __props__.__dict__["disable11ax"] = disable11ax
             __props__.__dict__["disable11be"] = disable11be
             __props__.__dict__["disable_ht_vht_rates"] = disable_ht_vht_rates
+            __props__.__dict__["disable_message_authenticator_check"] = disable_message_authenticator_check
             __props__.__dict__["disable_uapsd"] = disable_uapsd
             __props__.__dict__["disable_v1_roam_notify"] = disable_v1_roam_notify
             __props__.__dict__["disable_v2_roam_notify"] = disable_v2_roam_notify
@@ -3462,7 +3482,6 @@ class Wlan(pulumi.CustomResource):
             __props__.__dict__["wxtag_ids"] = wxtag_ids
             __props__.__dict__["wxtunnel_id"] = wxtunnel_id
             __props__.__dict__["wxtunnel_remote_id"] = wxtunnel_remote_id
-            __props__.__dict__["disable_message_authenticator_check"] = None
             __props__.__dict__["msp_id"] = None
             __props__.__dict__["portal_api_secret"] = None
             __props__.__dict__["portal_image"] = None
@@ -3597,7 +3616,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['WlanAuthServerArgs', 'WlanAuthServerArgsDict']]]] auth_servers: List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
         :param pulumi.Input[_builtins.str] auth_servers_nas_id: Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         :param pulumi.Input[_builtins.str] auth_servers_nas_ip: Optional, NAS-IP-ADDRESS to use
-        :param pulumi.Input[_builtins.int] auth_servers_retries: Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+        :param pulumi.Input[_builtins.int] auth_servers_retries: Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
         :param pulumi.Input[_builtins.int] auth_servers_timeout: Radius auth session timeout. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
         :param pulumi.Input[_builtins.bool] band_steer: Whether to enable band_steering, this works only when band==both
         :param pulumi.Input[_builtins.bool] band_steer_force_band5: Force dual_band capable client to connect to 5G
@@ -3917,7 +3936,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="authServersRetries")
     def auth_servers_retries(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+        Radius auth session retries. Following fast timers are set if "fast_dot1x_timers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
         """
         return pulumi.get(self, "auth_servers_retries")
 
@@ -4037,7 +4056,7 @@ class Wlan(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="disableMessageAuthenticatorCheck")
-    def disable_message_authenticator_check(self) -> pulumi.Output[_builtins.bool]:
+    def disable_message_authenticator_check(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
         """

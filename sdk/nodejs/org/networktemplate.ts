@@ -186,7 +186,7 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     declare public readonly switchMatching: pulumi.Output<outputs.org.NetworktemplateSwitchMatching | undefined>;
     /**
-     * Switch settings
+     * Switch Management settings
      */
     declare public readonly switchMgmt: pulumi.Output<outputs.org.NetworktemplateSwitchMgmt | undefined>;
     declare public readonly vrfConfig: pulumi.Output<outputs.org.NetworktemplateVrfConfig | undefined>;
@@ -347,7 +347,7 @@ export interface NetworktemplateState {
      */
     switchMatching?: pulumi.Input<inputs.org.NetworktemplateSwitchMatching | undefined>;
     /**
-     * Switch settings
+     * Switch Management settings
      */
     switchMgmt?: pulumi.Input<inputs.org.NetworktemplateSwitchMgmt | undefined>;
     vrfConfig?: pulumi.Input<inputs.org.NetworktemplateVrfConfig | undefined>;
@@ -433,7 +433,7 @@ export interface NetworktemplateArgs {
      */
     switchMatching?: pulumi.Input<inputs.org.NetworktemplateSwitchMatching | undefined>;
     /**
-     * Switch settings
+     * Switch Management settings
      */
     switchMgmt?: pulumi.Input<inputs.org.NetworktemplateSwitchMgmt | undefined>;
     vrfConfig?: pulumi.Input<inputs.org.NetworktemplateVrfConfig | undefined>;

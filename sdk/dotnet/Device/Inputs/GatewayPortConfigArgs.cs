@@ -152,6 +152,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? PoeDisabled { get; set; }
 
         /// <summary>
+        /// Whether Perpetual PoE capabilities are enabled for a port
+        /// </summary>
+        [Input("poeKeepStateWhenReboot")]
+        public Input<bool>? PoeKeepStateWhenReboot { get; set; }
+
+        /// <summary>
         /// Only for SRX and if `Usage`==`Lan`, the name of the Network to be used as the Untagged VLAN
         /// </summary>
         [Input("portNetwork")]

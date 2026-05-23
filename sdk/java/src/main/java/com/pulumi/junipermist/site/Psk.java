@@ -254,6 +254,20 @@ public class Psk extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> vlanId() {
         return Codegen.optional(this.vlanId);
     }
+    /**
+     * VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+     * 
+     */
+    @Export(name="vlanName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vlanName;
+
+    /**
+     * @return VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+     * 
+     */
+    public Output<Optional<String>> vlanName() {
+        return Codegen.optional(this.vlanName);
+    }
 
     /**
      *

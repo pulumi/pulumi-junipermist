@@ -296,14 +296,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      * 
      */
     @Import(name="authServersRetries")
     private @Nullable Output<Integer> authServersRetries;
 
     /**
-     * @return Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * @return Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      * 
      */
     public Optional<Output<Integer>> authServersRetries() {
@@ -517,6 +517,21 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> disableHtVhtRates() {
         return Optional.ofNullable(this.disableHtVhtRates);
+    }
+
+    /**
+     * whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+     * 
+     */
+    @Import(name="disableMessageAuthenticatorCheck")
+    private @Nullable Output<Boolean> disableMessageAuthenticatorCheck;
+
+    /**
+     * @return whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+     * 
+     */
+    public Optional<Output<Boolean>> disableMessageAuthenticatorCheck() {
+        return Optional.ofNullable(this.disableMessageAuthenticatorCheck);
     }
 
     /**
@@ -1360,6 +1375,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         this.disable11ax = $.disable11ax;
         this.disable11be = $.disable11be;
         this.disableHtVhtRates = $.disableHtVhtRates;
+        this.disableMessageAuthenticatorCheck = $.disableMessageAuthenticatorCheck;
         this.disableUapsd = $.disableUapsd;
         this.disableV1RoamNotify = $.disableV1RoamNotify;
         this.disableV2RoamNotify = $.disableV2RoamNotify;
@@ -1825,7 +1841,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
          * 
          * @return builder
          * 
@@ -1836,7 +1852,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
          * 
          * @return builder
          * 
@@ -2154,6 +2170,27 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disableHtVhtRates(Boolean disableHtVhtRates) {
             return disableHtVhtRates(Output.of(disableHtVhtRates));
+        }
+
+        /**
+         * @param disableMessageAuthenticatorCheck whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableMessageAuthenticatorCheck(@Nullable Output<Boolean> disableMessageAuthenticatorCheck) {
+            $.disableMessageAuthenticatorCheck = disableMessageAuthenticatorCheck;
+            return this;
+        }
+
+        /**
+         * @param disableMessageAuthenticatorCheck whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableMessageAuthenticatorCheck(Boolean disableMessageAuthenticatorCheck) {
+            return disableMessageAuthenticatorCheck(Output.of(disableMessageAuthenticatorCheck));
         }
 
         /**

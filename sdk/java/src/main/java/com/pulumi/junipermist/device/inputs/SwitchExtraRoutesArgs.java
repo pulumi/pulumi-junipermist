@@ -64,14 +64,14 @@ public final class SwitchExtraRoutesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Next-hop IP Address
+     * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
      * 
      */
     @Import(name="via", required=true)
     private Output<String> via;
 
     /**
-     * @return Next-hop IP Address
+     * @return Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
      * 
      */
     public Output<String> via() {
@@ -165,7 +165,7 @@ public final class SwitchExtraRoutesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param via Next-hop IP Address
+         * @param via Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class SwitchExtraRoutesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param via Next-hop IP Address
+         * @param via Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
          * 
          * @return builder
          * 

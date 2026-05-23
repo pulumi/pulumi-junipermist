@@ -48,10 +48,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/mxedge:Mxedge")
 public class Mxedge extends com.pulumi.resources.CustomResource {
     @Export(name="claimCode", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> claimCode;
+    private Output<String> claimCode;
 
-    public Output<Optional<String>> claimCode() {
-        return Codegen.optional(this.claimCode);
+    public Output<String> claimCode() {
+        return this.claimCode;
     }
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
@@ -142,20 +142,6 @@ public class Mxedge extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<MxedgeProxy>> proxy() {
         return Codegen.optional(this.proxy);
-    }
-    /**
-     * Registration code for the MxEdge
-     * 
-     */
-    @Export(name="registrationCode", refs={String.class}, tree="[0]")
-    private Output<String> registrationCode;
-
-    /**
-     * @return Registration code for the MxEdge
-     * 
-     */
-    public Output<String> registrationCode() {
-        return this.registrationCode;
     }
     /**
      * List of services to run, tunterm only for now

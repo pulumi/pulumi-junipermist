@@ -12,8 +12,11 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingMarvisGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("autoOperations")]
-        public Input<Inputs.SettingMarvisAutoOperationsGetArgs>? AutoOperations { get; set; }
+        /// <summary>
+        /// Self-driving network automation settings per domain
+        /// </summary>
+        [Input("selfDriving")]
+        public Input<Inputs.SettingMarvisSelfDrivingGetArgs>? SelfDriving { get; set; }
 
         public SettingMarvisGetArgs()
         {

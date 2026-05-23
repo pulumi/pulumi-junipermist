@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool? NoResolve;
         public readonly int? Preference;
         /// <summary>
-        /// Next-hop IP Address
+        /// Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
         /// </summary>
         public readonly string Via;
 

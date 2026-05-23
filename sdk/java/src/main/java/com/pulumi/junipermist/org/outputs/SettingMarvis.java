@@ -4,18 +4,26 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.junipermist.org.outputs.SettingMarvisAutoOperations;
+import com.pulumi.junipermist.org.outputs.SettingMarvisSelfDriving;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingMarvis {
-    private @Nullable SettingMarvisAutoOperations autoOperations;
+    /**
+     * @return Self-driving network automation settings per domain
+     * 
+     */
+    private @Nullable SettingMarvisSelfDriving selfDriving;
 
     private SettingMarvis() {}
-    public Optional<SettingMarvisAutoOperations> autoOperations() {
-        return Optional.ofNullable(this.autoOperations);
+    /**
+     * @return Self-driving network automation settings per domain
+     * 
+     */
+    public Optional<SettingMarvisSelfDriving> selfDriving() {
+        return Optional.ofNullable(this.selfDriving);
     }
 
     public static Builder builder() {
@@ -27,22 +35,22 @@ public final class SettingMarvis {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable SettingMarvisAutoOperations autoOperations;
+        private @Nullable SettingMarvisSelfDriving selfDriving;
         public Builder() {}
         public Builder(SettingMarvis defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.autoOperations = defaults.autoOperations;
+    	      this.selfDriving = defaults.selfDriving;
         }
 
         @CustomType.Setter
-        public Builder autoOperations(@Nullable SettingMarvisAutoOperations autoOperations) {
+        public Builder selfDriving(@Nullable SettingMarvisSelfDriving selfDriving) {
 
-            this.autoOperations = autoOperations;
+            this.selfDriving = selfDriving;
             return this;
         }
         public SettingMarvis build() {
             final var _resultValue = new SettingMarvis();
-            _resultValue.autoOperations = autoOperations;
+            _resultValue.selfDriving = selfDriving;
             return _resultValue;
         }
     }

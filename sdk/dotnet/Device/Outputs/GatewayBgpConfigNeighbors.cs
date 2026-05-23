@@ -28,6 +28,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// Neighbor AS. Value must be in range 1-4294967295 or a variable (e.g. `{{as_variable}}`)
         /// </summary>
         public readonly string NeighborAs;
+        /// <summary>
+        /// If `Via`==`Tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `Primary`, `Secondary`
+        /// </summary>
+        public readonly string? TunnelVia;
 
         [OutputConstructor]
         private GatewayBgpConfigNeighbors(
@@ -41,7 +45,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int? multihopTtl,
 
-            string neighborAs)
+            string neighborAs,
+
+            string? tunnelVia)
         {
             Disabled = disabled;
             ExportPolicy = exportPolicy;
@@ -49,6 +55,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             ImportPolicy = importPolicy;
             MultihopTtl = multihopTtl;
             NeighborAs = neighborAs;
+            TunnelVia = tunnelVia;
         }
     }
 }

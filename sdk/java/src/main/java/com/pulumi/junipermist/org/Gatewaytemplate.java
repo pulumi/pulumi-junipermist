@@ -14,6 +14,7 @@ import com.pulumi.junipermist.org.outputs.GatewaytemplateBgpConfig;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateDhcpdConfig;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateExtraRoutes6;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateExtraRoutes;
+import com.pulumi.junipermist.org.outputs.GatewaytemplateGatewayMgmt;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateIdpProfiles;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateIpConfigs;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateNetwork;
@@ -243,6 +244,20 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,GatewaytemplateExtraRoutes6>>> extraRoutes6() {
         return Codegen.optional(this.extraRoutes6);
+    }
+    /**
+     * Gateway Management settings
+     * 
+     */
+    @Export(name="gatewayMgmt", refs={GatewaytemplateGatewayMgmt.class}, tree="[0]")
+    private Output</* @Nullable */ GatewaytemplateGatewayMgmt> gatewayMgmt;
+
+    /**
+     * @return Gateway Management settings
+     * 
+     */
+    public Output<Optional<GatewaytemplateGatewayMgmt>> gatewayMgmt() {
+        return Codegen.optional(this.gatewayMgmt);
     }
     /**
      * Property key is the profile name

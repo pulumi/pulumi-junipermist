@@ -25,6 +25,7 @@ import com.pulumi.junipermist.device.outputs.ApPwrConfig;
 import com.pulumi.junipermist.device.outputs.ApRadioConfig;
 import com.pulumi.junipermist.device.outputs.ApUplinkPortConfig;
 import com.pulumi.junipermist.device.outputs.ApUsbConfig;
+import com.pulumi.junipermist.device.outputs.ApZigbeeConfig;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -524,6 +525,20 @@ public class Ap extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Double>> y() {
         return Codegen.optional(this.y);
+    }
+    /**
+     * Zigbee AP settings
+     * 
+     */
+    @Export(name="zigbeeConfig", refs={ApZigbeeConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ApZigbeeConfig> zigbeeConfig;
+
+    /**
+     * @return Zigbee AP settings
+     * 
+     */
+    public Output<Optional<ApZigbeeConfig>> zigbeeConfig() {
+        return Codegen.optional(this.zigbeeConfig);
     }
 
     /**

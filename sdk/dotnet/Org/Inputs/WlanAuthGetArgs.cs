@@ -25,6 +25,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? EapReauth { get; set; }
 
         /// <summary>
+        /// Enable Beacon Protection; default is false for better compatibility
+        /// </summary>
+        [Input("enableBeaconProtection")]
+        public Input<bool>? EnableBeaconProtection { get; set; }
+
+        /// <summary>
+        /// Enable GCMP-256 encryption suite; default is false for better compatibility
+        /// </summary>
+        [Input("enableGcmp256")]
+        public Input<bool>? EnableGcmp256 { get; set; }
+
+        /// <summary>
         /// Whether to enable MAC Auth, uses the same auth_servers
         /// </summary>
         [Input("enableMacAuth")]

@@ -333,6 +333,21 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Whether Perpetual PoE capabilities are enabled for a port
+     * 
+     */
+    @Import(name="poeKeepStateWhenReboot")
+    private @Nullable Output<Boolean> poeKeepStateWhenReboot;
+
+    /**
+     * @return Whether Perpetual PoE capabilities are enabled for a port
+     * 
+     */
+    public Optional<Output<Boolean>> poeKeepStateWhenReboot() {
+        return Optional.ofNullable(this.poeKeepStateWhenReboot);
+    }
+
+    /**
      * Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
      * 
      */
@@ -694,6 +709,7 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
         this.networks = $.networks;
         this.outerVlanId = $.outerVlanId;
         this.poeDisabled = $.poeDisabled;
+        this.poeKeepStateWhenReboot = $.poeKeepStateWhenReboot;
         this.portNetwork = $.portNetwork;
         this.preserveDscp = $.preserveDscp;
         this.redundant = $.redundant;
@@ -1169,6 +1185,27 @@ public final class DeviceprofileGatewayPortConfigArgs extends com.pulumi.resourc
 
         public Builder poeDisabled(Boolean poeDisabled) {
             return poeDisabled(Output.of(poeDisabled));
+        }
+
+        /**
+         * @param poeKeepStateWhenReboot Whether Perpetual PoE capabilities are enabled for a port
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poeKeepStateWhenReboot(@Nullable Output<Boolean> poeKeepStateWhenReboot) {
+            $.poeKeepStateWhenReboot = poeKeepStateWhenReboot;
+            return this;
+        }
+
+        /**
+         * @param poeKeepStateWhenReboot Whether Perpetual PoE capabilities are enabled for a port
+         * 
+         * @return builder
+         * 
+         */
+        public Builder poeKeepStateWhenReboot(Boolean poeKeepStateWhenReboot) {
+            return poeKeepStateWhenReboot(Output.of(poeKeepStateWhenReboot));
         }
 
         /**

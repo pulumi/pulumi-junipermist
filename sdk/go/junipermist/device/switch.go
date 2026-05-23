@@ -110,7 +110,7 @@ type Switch struct {
 	SiteId     pulumi.StringOutput       `pulumi:"siteId"`
 	SnmpConfig SwitchSnmpConfigPtrOutput `pulumi:"snmpConfig"`
 	StpConfig  SwitchStpConfigPtrOutput  `pulumi:"stpConfig"`
-	// Switch settings
+	// Switch Management settings
 	SwitchMgmt SwitchSwitchMgmtPtrOutput `pulumi:"switchMgmt"`
 	// Device Type. enum: `switch`
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -248,7 +248,7 @@ type switchState struct {
 	SiteId     *string           `pulumi:"siteId"`
 	SnmpConfig *SwitchSnmpConfig `pulumi:"snmpConfig"`
 	StpConfig  *SwitchStpConfig  `pulumi:"stpConfig"`
-	// Switch settings
+	// Switch Management settings
 	SwitchMgmt *SwitchSwitchMgmt `pulumi:"switchMgmt"`
 	// Device Type. enum: `switch`
 	Type *string `pulumi:"type"`
@@ -351,7 +351,7 @@ type SwitchState struct {
 	SiteId     pulumi.StringPtrInput
 	SnmpConfig SwitchSnmpConfigPtrInput
 	StpConfig  SwitchStpConfigPtrInput
-	// Switch settings
+	// Switch Management settings
 	SwitchMgmt SwitchSwitchMgmtPtrInput
 	// Device Type. enum: `switch`
 	Type pulumi.StringPtrInput
@@ -448,7 +448,7 @@ type switchArgs struct {
 	SiteId          string                           `pulumi:"siteId"`
 	SnmpConfig      *SwitchSnmpConfig                `pulumi:"snmpConfig"`
 	StpConfig       *SwitchStpConfig                 `pulumi:"stpConfig"`
-	// Switch settings
+	// Switch Management settings
 	SwitchMgmt *SwitchSwitchMgmt `pulumi:"switchMgmt"`
 	// Whether to use it for snmp / syslog / tacplus / radius
 	UseRouterIdAsSourceIp *bool `pulumi:"useRouterIdAsSourceIp"`
@@ -540,7 +540,7 @@ type SwitchArgs struct {
 	SiteId          pulumi.StringInput
 	SnmpConfig      SwitchSnmpConfigPtrInput
 	StpConfig       SwitchStpConfigPtrInput
-	// Switch settings
+	// Switch Management settings
 	SwitchMgmt SwitchSwitchMgmtPtrInput
 	// Whether to use it for snmp / syslog / tacplus / radius
 	UseRouterIdAsSourceIp pulumi.BoolPtrInput
@@ -865,7 +865,7 @@ func (o SwitchOutput) StpConfig() SwitchStpConfigPtrOutput {
 	return o.ApplyT(func(v *Switch) SwitchStpConfigPtrOutput { return v.StpConfig }).(SwitchStpConfigPtrOutput)
 }
 
-// Switch settings
+// Switch Management settings
 func (o SwitchOutput) SwitchMgmt() SwitchSwitchMgmtPtrOutput {
 	return o.ApplyT(func(v *Switch) SwitchSwitchMgmtPtrOutput { return v.SwitchMgmt }).(SwitchSwitchMgmtPtrOutput)
 }

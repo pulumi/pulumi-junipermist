@@ -53,7 +53,8 @@ class ApArgs:
                  usb_config: pulumi.Input[Optional['ApUsbConfigArgs']] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  x: pulumi.Input[Optional[_builtins.float]] = None,
-                 y: pulumi.Input[Optional[_builtins.float]] = None):
+                 y: pulumi.Input[Optional[_builtins.float]] = None,
+                 zigbee_config: pulumi.Input[Optional['ApZigbeeConfigArgs']] = None):
         """
         The set of arguments for constructing a Ap resource.
 
@@ -83,6 +84,7 @@ class ApArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[_builtins.float] x: X in pixel
         :param pulumi.Input[_builtins.float] y: Y in pixel
+        :param pulumi.Input['ApZigbeeConfigArgs'] zigbee_config: Zigbee AP settings
         """
         pulumi.set(__self__, "device_id", device_id)
         pulumi.set(__self__, "site_id", site_id)
@@ -148,6 +150,8 @@ class ApArgs:
             pulumi.set(__self__, "x", x)
         if y is not None:
             pulumi.set(__self__, "y", y)
+        if zigbee_config is not None:
+            pulumi.set(__self__, "zigbee_config", zigbee_config)
 
     @_builtins.property
     @pulumi.getter(name="deviceId")
@@ -520,6 +524,18 @@ class ApArgs:
     def y(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "y", value)
 
+    @_builtins.property
+    @pulumi.getter(name="zigbeeConfig")
+    def zigbee_config(self) -> pulumi.Input[Optional['ApZigbeeConfigArgs']]:
+        """
+        Zigbee AP settings
+        """
+        return pulumi.get(self, "zigbee_config")
+
+    @zigbee_config.setter
+    def zigbee_config(self, value: pulumi.Input[Optional['ApZigbeeConfigArgs']]):
+        pulumi.set(self, "zigbee_config", value)
+
 
 @pulumi.input_type
 class _ApState:
@@ -564,7 +580,8 @@ class _ApState:
                  usb_config: pulumi.Input[Optional['ApUsbConfigArgs']] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  x: pulumi.Input[Optional[_builtins.float]] = None,
-                 y: pulumi.Input[Optional[_builtins.float]] = None):
+                 y: pulumi.Input[Optional[_builtins.float]] = None,
+                 zigbee_config: pulumi.Input[Optional['ApZigbeeConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Ap resources.
 
@@ -598,6 +615,7 @@ class _ApState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[_builtins.float] x: X in pixel
         :param pulumi.Input[_builtins.float] y: Y in pixel
+        :param pulumi.Input['ApZigbeeConfigArgs'] zigbee_config: Zigbee AP settings
         """
         if aeroscout is not None:
             pulumi.set(__self__, "aeroscout", aeroscout)
@@ -681,6 +699,8 @@ class _ApState:
             pulumi.set(__self__, "x", x)
         if y is not None:
             pulumi.set(__self__, "y", y)
+        if zigbee_config is not None:
+            pulumi.set(__self__, "zigbee_config", zigbee_config)
 
     @_builtins.property
     @pulumi.getter
@@ -1137,6 +1157,18 @@ class _ApState:
     def y(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "y", value)
 
+    @_builtins.property
+    @pulumi.getter(name="zigbeeConfig")
+    def zigbee_config(self) -> pulumi.Input[Optional['ApZigbeeConfigArgs']]:
+        """
+        Zigbee AP settings
+        """
+        return pulumi.get(self, "zigbee_config")
+
+    @zigbee_config.setter
+    def zigbee_config(self, value: pulumi.Input[Optional['ApZigbeeConfigArgs']]):
+        pulumi.set(self, "zigbee_config", value)
+
 
 @pulumi.type_token("junipermist:device/ap:Ap")
 class Ap(pulumi.CustomResource):
@@ -1177,6 +1209,7 @@ class Ap(pulumi.CustomResource):
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  x: pulumi.Input[Optional[_builtins.float]] = None,
                  y: pulumi.Input[Optional[_builtins.float]] = None,
+                 zigbee_config: pulumi.Input[Optional[Union['ApZigbeeConfigArgs', 'ApZigbeeConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource manages the Wireless Access Point configuration.
@@ -1221,6 +1254,7 @@ class Ap(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[_builtins.float] x: X in pixel
         :param pulumi.Input[_builtins.float] y: Y in pixel
+        :param pulumi.Input[Union['ApZigbeeConfigArgs', 'ApZigbeeConfigArgsDict']] zigbee_config: Zigbee AP settings
         """
         ...
     @overload
@@ -1291,6 +1325,7 @@ class Ap(pulumi.CustomResource):
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  x: pulumi.Input[Optional[_builtins.float]] = None,
                  y: pulumi.Input[Optional[_builtins.float]] = None,
+                 zigbee_config: pulumi.Input[Optional[Union['ApZigbeeConfigArgs', 'ApZigbeeConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1337,6 +1372,7 @@ class Ap(pulumi.CustomResource):
             __props__.__dict__["vars"] = vars
             __props__.__dict__["x"] = x
             __props__.__dict__["y"] = y
+            __props__.__dict__["zigbee_config"] = zigbee_config
             __props__.__dict__["image1_url"] = None
             __props__.__dict__["image2_url"] = None
             __props__.__dict__["image3_url"] = None
@@ -1395,7 +1431,8 @@ class Ap(pulumi.CustomResource):
             usb_config: pulumi.Input[Optional[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']]] = None,
             vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             x: pulumi.Input[Optional[_builtins.float]] = None,
-            y: pulumi.Input[Optional[_builtins.float]] = None) -> 'Ap':
+            y: pulumi.Input[Optional[_builtins.float]] = None,
+            zigbee_config: pulumi.Input[Optional[Union['ApZigbeeConfigArgs', 'ApZigbeeConfigArgsDict']]] = None) -> 'Ap':
         """
         Get an existing Ap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1433,6 +1470,7 @@ class Ap(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[_builtins.float] x: X in pixel
         :param pulumi.Input[_builtins.float] y: Y in pixel
+        :param pulumi.Input[Union['ApZigbeeConfigArgs', 'ApZigbeeConfigArgsDict']] zigbee_config: Zigbee AP settings
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1479,6 +1517,7 @@ class Ap(pulumi.CustomResource):
         __props__.__dict__["vars"] = vars
         __props__.__dict__["x"] = x
         __props__.__dict__["y"] = y
+        __props__.__dict__["zigbee_config"] = zigbee_config
         return Ap(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1771,4 +1810,12 @@ class Ap(pulumi.CustomResource):
         Y in pixel
         """
         return pulumi.get(self, "y")
+
+    @_builtins.property
+    @pulumi.getter(name="zigbeeConfig")
+    def zigbee_config(self) -> pulumi.Output[Optional['outputs.ApZigbeeConfig']]:
+        """
+        Zigbee AP settings
+        """
+        return pulumi.get(self, "zigbee_config")
 

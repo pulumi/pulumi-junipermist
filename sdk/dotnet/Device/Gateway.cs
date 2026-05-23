@@ -105,7 +105,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.GatewayExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
 
         /// <summary>
-        /// Gateway settings
+        /// Gateway Management settings
         /// </summary>
         [Output("gatewayMgmt")]
         public Output<Outputs.GatewayGatewayMgmt?> GatewayMgmt { get; private set; } = null!;
@@ -400,7 +400,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Gateway settings
+        /// Gateway Management settings
         /// </summary>
         [Input("gatewayMgmt")]
         public Input<Inputs.GatewayGatewayMgmtArgs>? GatewayMgmt { get; set; }
@@ -689,7 +689,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Gateway settings
+        /// Gateway Management settings
         /// </summary>
         [Input("gatewayMgmt")]
         public Input<Inputs.GatewayGatewayMgmtGetArgs>? GatewayMgmt { get; set; }

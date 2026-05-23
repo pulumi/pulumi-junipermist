@@ -157,6 +157,10 @@ export class Gatewaytemplate extends pulumi.CustomResource {
      */
     declare public readonly extraRoutes6: pulumi.Output<{[key: string]: outputs.org.GatewaytemplateExtraRoutes6} | undefined>;
     /**
+     * Gateway Management settings
+     */
+    declare public readonly gatewayMgmt: pulumi.Output<outputs.org.GatewaytemplateGatewayMgmt | undefined>;
+    /**
      * Property key is the profile name
      */
     declare public readonly idpProfiles: pulumi.Output<{[key: string]: outputs.org.GatewaytemplateIdpProfiles} | undefined>;
@@ -237,6 +241,7 @@ export class Gatewaytemplate extends pulumi.CustomResource {
             resourceInputs["dnsSuffixes"] = state?.dnsSuffixes;
             resourceInputs["extraRoutes"] = state?.extraRoutes;
             resourceInputs["extraRoutes6"] = state?.extraRoutes6;
+            resourceInputs["gatewayMgmt"] = state?.gatewayMgmt;
             resourceInputs["idpProfiles"] = state?.idpProfiles;
             resourceInputs["ipConfigs"] = state?.ipConfigs;
             resourceInputs["name"] = state?.name;
@@ -270,6 +275,7 @@ export class Gatewaytemplate extends pulumi.CustomResource {
             resourceInputs["dnsSuffixes"] = args?.dnsSuffixes;
             resourceInputs["extraRoutes"] = args?.extraRoutes;
             resourceInputs["extraRoutes6"] = args?.extraRoutes6;
+            resourceInputs["gatewayMgmt"] = args?.gatewayMgmt;
             resourceInputs["idpProfiles"] = args?.idpProfiles;
             resourceInputs["ipConfigs"] = args?.ipConfigs;
             resourceInputs["name"] = args?.name;
@@ -323,6 +329,10 @@ export interface GatewaytemplateState {
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateExtraRoutes6>} | undefined>;
+    /**
+     * Gateway Management settings
+     */
+    gatewayMgmt?: pulumi.Input<inputs.org.GatewaytemplateGatewayMgmt | undefined>;
     /**
      * Property key is the profile name
      */
@@ -411,6 +421,10 @@ export interface GatewaytemplateArgs {
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateExtraRoutes6>} | undefined>;
+    /**
+     * Gateway Management settings
+     */
+    gatewayMgmt?: pulumi.Input<inputs.org.GatewaytemplateGatewayMgmt | undefined>;
     /**
      * Property key is the profile name
      */

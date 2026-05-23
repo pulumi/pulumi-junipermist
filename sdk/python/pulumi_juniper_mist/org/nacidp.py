@@ -1200,19 +1200,21 @@ class Nacidp(pulumi.CustomResource):
             __props__.__dict__["member_filter"] = member_filter
             __props__.__dict__["name"] = name
             __props__.__dict__["oauth_cc_client_id"] = oauth_cc_client_id
-            __props__.__dict__["oauth_cc_client_secret"] = oauth_cc_client_secret
+            __props__.__dict__["oauth_cc_client_secret"] = None if oauth_cc_client_secret is None else pulumi.Output.secret(oauth_cc_client_secret)
             __props__.__dict__["oauth_discovery_url"] = oauth_discovery_url
             __props__.__dict__["oauth_ping_identity_region"] = oauth_ping_identity_region
             __props__.__dict__["oauth_provider_domain"] = oauth_provider_domain
             __props__.__dict__["oauth_ropc_client_id"] = oauth_ropc_client_id
-            __props__.__dict__["oauth_ropc_client_secret"] = oauth_ropc_client_secret
+            __props__.__dict__["oauth_ropc_client_secret"] = None if oauth_ropc_client_secret is None else pulumi.Output.secret(oauth_ropc_client_secret)
             __props__.__dict__["oauth_tenant_id"] = oauth_tenant_id
             __props__.__dict__["oauth_type"] = oauth_type
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["scim_enabled"] = scim_enabled
-            __props__.__dict__["scim_secret_token"] = scim_secret_token
+            __props__.__dict__["scim_secret_token"] = None if scim_secret_token is None else pulumi.Output.secret(scim_secret_token)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["oauthCcClientSecret", "oauthRopcClientSecret", "scimSecretToken"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Nacidp, __self__).__init__(
             'junipermist:org/nacidp:Nacidp',
             resource_name,

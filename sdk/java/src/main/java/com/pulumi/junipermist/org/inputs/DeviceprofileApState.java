@@ -18,6 +18,7 @@ import com.pulumi.junipermist.org.inputs.DeviceprofileApPwrConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApRadioConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApUplinkPortConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileApUsbConfigArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileApZigbeeConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -339,6 +340,21 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.vars);
     }
 
+    /**
+     * Zigbee AP settings
+     * 
+     */
+    @Import(name="zigbeeConfig")
+    private @Nullable Output<DeviceprofileApZigbeeConfigArgs> zigbeeConfig;
+
+    /**
+     * @return Zigbee AP settings
+     * 
+     */
+    public Optional<Output<DeviceprofileApZigbeeConfigArgs>> zigbeeConfig() {
+        return Optional.ofNullable(this.zigbeeConfig);
+    }
+
     private DeviceprofileApState() {}
 
     private DeviceprofileApState(DeviceprofileApState $) {
@@ -366,6 +382,7 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
         this.uplinkPortConfig = $.uplinkPortConfig;
         this.usbConfig = $.usbConfig;
         this.vars = $.vars;
+        this.zigbeeConfig = $.zigbeeConfig;
     }
 
     public static Builder builder() {
@@ -812,6 +829,27 @@ public final class DeviceprofileApState extends com.pulumi.resources.ResourceArg
          */
         public Builder vars(Map<String,String> vars) {
             return vars(Output.of(vars));
+        }
+
+        /**
+         * @param zigbeeConfig Zigbee AP settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zigbeeConfig(@Nullable Output<DeviceprofileApZigbeeConfigArgs> zigbeeConfig) {
+            $.zigbeeConfig = zigbeeConfig;
+            return this;
+        }
+
+        /**
+         * @param zigbeeConfig Zigbee AP settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zigbeeConfig(DeviceprofileApZigbeeConfigArgs zigbeeConfig) {
+            return zigbeeConfig(Output.of(zigbeeConfig));
         }
 
         public DeviceprofileApState build() {

@@ -75,7 +75,11 @@ import (
 type Setting struct {
 	pulumi.CustomResourceState
 
-	Analytic SettingAnalyticOutput `pulumi:"analytic"`
+	// whether to allow Mist to look at this org
+	AllowMist pulumi.BoolOutput     `pulumi:"allowMist"`
+	Analytic  SettingAnalyticOutput `pulumi:"analytic"`
+	// AP Synthetic Test configuration
+	ApSyntheticTest SettingApSyntheticTestPtrOutput `pulumi:"apSyntheticTest"`
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrOutput `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
@@ -98,11 +102,15 @@ type Setting struct {
 	EnableUnii4           pulumi.BoolOutput   `pulumi:"enableUnii4"`
 	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
 	Engagement SettingEngagementOutput `pulumi:"engagement"`
-	// Gateway Site settings
+	// Gateway Management settings
 	GatewayMgmt SettingGatewayMgmtOutput `pulumi:"gatewayMgmt"`
+	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+	GatewayTunnelUpdownThreshold pulumi.IntPtrOutput `pulumi:"gatewayTunnelUpdownThreshold"`
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
-	GatewayUpdownThreshold pulumi.IntPtrOutput        `pulumi:"gatewayUpdownThreshold"`
-	JuniperSrx             SettingJuniperSrxPtrOutput `pulumi:"juniperSrx"`
+	GatewayUpdownThreshold pulumi.IntPtrOutput `pulumi:"gatewayUpdownThreshold"`
+	// IoT proxy configuration for the site
+	Iotproxy   SettingIotproxyPtrOutput   `pulumi:"iotproxy"`
+	JuniperSrx SettingJuniperSrxPtrOutput `pulumi:"juniperSrx"`
 	// LED AP settings
 	Led    SettingLedOutput       `pulumi:"led"`
 	Marvis SettingMarvisPtrOutput `pulumi:"marvis"`
@@ -136,11 +144,11 @@ type Setting struct {
 	TrackAnonymousDevices pulumi.BoolPtrOutput `pulumi:"trackAnonymousDevices"`
 	// AP Uplink port configuration
 	UplinkPortConfig SettingUplinkPortConfigOutput `pulumi:"uplinkPortConfig"`
-	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-	UsesDescriptionFromPortUsage pulumi.BoolOutput `pulumi:"usesDescriptionFromPortUsage"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
-	Vna  SettingVnaPtrOutput    `pulumi:"vna"`
+	// Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+	VarsAnnotations SettingVarsAnnotationsMapOutput `pulumi:"varsAnnotations"`
+	Vna             SettingVnaPtrOutput             `pulumi:"vna"`
 	// enable threshold-based vpn path down delivery.
 	VpnPathUpdownThreshold pulumi.IntPtrOutput `pulumi:"vpnPathUpdownThreshold"`
 	// enable threshold-based vpn peer down delivery.
@@ -192,7 +200,11 @@ func GetSetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Setting resources.
 type settingState struct {
-	Analytic *SettingAnalytic `pulumi:"analytic"`
+	// whether to allow Mist to look at this org
+	AllowMist *bool            `pulumi:"allowMist"`
+	Analytic  *SettingAnalytic `pulumi:"analytic"`
+	// AP Synthetic Test configuration
+	ApSyntheticTest *SettingApSyntheticTest `pulumi:"apSyntheticTest"`
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
@@ -215,11 +227,15 @@ type settingState struct {
 	EnableUnii4           *bool `pulumi:"enableUnii4"`
 	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
 	Engagement *SettingEngagement `pulumi:"engagement"`
-	// Gateway Site settings
+	// Gateway Management settings
 	GatewayMgmt *SettingGatewayMgmt `pulumi:"gatewayMgmt"`
+	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+	GatewayTunnelUpdownThreshold *int `pulumi:"gatewayTunnelUpdownThreshold"`
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
-	GatewayUpdownThreshold *int               `pulumi:"gatewayUpdownThreshold"`
-	JuniperSrx             *SettingJuniperSrx `pulumi:"juniperSrx"`
+	GatewayUpdownThreshold *int `pulumi:"gatewayUpdownThreshold"`
+	// IoT proxy configuration for the site
+	Iotproxy   *SettingIotproxy   `pulumi:"iotproxy"`
+	JuniperSrx *SettingJuniperSrx `pulumi:"juniperSrx"`
 	// LED AP settings
 	Led    *SettingLed    `pulumi:"led"`
 	Marvis *SettingMarvis `pulumi:"marvis"`
@@ -253,11 +269,11 @@ type settingState struct {
 	TrackAnonymousDevices *bool `pulumi:"trackAnonymousDevices"`
 	// AP Uplink port configuration
 	UplinkPortConfig *SettingUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-	UsesDescriptionFromPortUsage *bool `pulumi:"usesDescriptionFromPortUsage"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
-	Vna  *SettingVna       `pulumi:"vna"`
+	// Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+	VarsAnnotations map[string]SettingVarsAnnotations `pulumi:"varsAnnotations"`
+	Vna             *SettingVna                       `pulumi:"vna"`
 	// enable threshold-based vpn path down delivery.
 	VpnPathUpdownThreshold *int `pulumi:"vpnPathUpdownThreshold"`
 	// enable threshold-based vpn peer down delivery.
@@ -277,7 +293,11 @@ type settingState struct {
 }
 
 type SettingState struct {
-	Analytic SettingAnalyticPtrInput
+	// whether to allow Mist to look at this org
+	AllowMist pulumi.BoolPtrInput
+	Analytic  SettingAnalyticPtrInput
+	// AP Synthetic Test configuration
+	ApSyntheticTest SettingApSyntheticTestPtrInput
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
 	// Auto Upgrade Settings
@@ -300,11 +320,15 @@ type SettingState struct {
 	EnableUnii4           pulumi.BoolPtrInput
 	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
 	Engagement SettingEngagementPtrInput
-	// Gateway Site settings
+	// Gateway Management settings
 	GatewayMgmt SettingGatewayMgmtPtrInput
+	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+	GatewayTunnelUpdownThreshold pulumi.IntPtrInput
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrInput
-	JuniperSrx             SettingJuniperSrxPtrInput
+	// IoT proxy configuration for the site
+	Iotproxy   SettingIotproxyPtrInput
+	JuniperSrx SettingJuniperSrxPtrInput
 	// LED AP settings
 	Led    SettingLedPtrInput
 	Marvis SettingMarvisPtrInput
@@ -338,11 +362,11 @@ type SettingState struct {
 	TrackAnonymousDevices pulumi.BoolPtrInput
 	// AP Uplink port configuration
 	UplinkPortConfig SettingUplinkPortConfigPtrInput
-	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-	UsesDescriptionFromPortUsage pulumi.BoolPtrInput
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
-	Vna  SettingVnaPtrInput
+	// Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+	VarsAnnotations SettingVarsAnnotationsMapInput
+	Vna             SettingVnaPtrInput
 	// enable threshold-based vpn path down delivery.
 	VpnPathUpdownThreshold pulumi.IntPtrInput
 	// enable threshold-based vpn peer down delivery.
@@ -366,7 +390,11 @@ func (SettingState) ElementType() reflect.Type {
 }
 
 type settingArgs struct {
-	Analytic *SettingAnalytic `pulumi:"analytic"`
+	// whether to allow Mist to look at this org
+	AllowMist *bool            `pulumi:"allowMist"`
+	Analytic  *SettingAnalytic `pulumi:"analytic"`
+	// AP Synthetic Test configuration
+	ApSyntheticTest *SettingApSyntheticTest `pulumi:"apSyntheticTest"`
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
@@ -388,11 +416,15 @@ type settingArgs struct {
 	EnableUnii4           *bool `pulumi:"enableUnii4"`
 	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
 	Engagement *SettingEngagement `pulumi:"engagement"`
-	// Gateway Site settings
+	// Gateway Management settings
 	GatewayMgmt *SettingGatewayMgmt `pulumi:"gatewayMgmt"`
+	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+	GatewayTunnelUpdownThreshold *int `pulumi:"gatewayTunnelUpdownThreshold"`
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
-	GatewayUpdownThreshold *int               `pulumi:"gatewayUpdownThreshold"`
-	JuniperSrx             *SettingJuniperSrx `pulumi:"juniperSrx"`
+	GatewayUpdownThreshold *int `pulumi:"gatewayUpdownThreshold"`
+	// IoT proxy configuration for the site
+	Iotproxy   *SettingIotproxy   `pulumi:"iotproxy"`
+	JuniperSrx *SettingJuniperSrx `pulumi:"juniperSrx"`
 	// LED AP settings
 	Led    *SettingLed    `pulumi:"led"`
 	Marvis *SettingMarvis `pulumi:"marvis"`
@@ -426,11 +458,11 @@ type settingArgs struct {
 	TrackAnonymousDevices *bool `pulumi:"trackAnonymousDevices"`
 	// AP Uplink port configuration
 	UplinkPortConfig *SettingUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-	UsesDescriptionFromPortUsage *bool `pulumi:"usesDescriptionFromPortUsage"`
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
-	Vna  *SettingVna       `pulumi:"vna"`
+	// Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+	VarsAnnotations map[string]SettingVarsAnnotations `pulumi:"varsAnnotations"`
+	Vna             *SettingVna                       `pulumi:"vna"`
 	// enable threshold-based vpn path down delivery.
 	VpnPathUpdownThreshold *int `pulumi:"vpnPathUpdownThreshold"`
 	// enable threshold-based vpn peer down delivery.
@@ -449,7 +481,11 @@ type settingArgs struct {
 
 // The set of arguments for constructing a Setting resource.
 type SettingArgs struct {
-	Analytic SettingAnalyticPtrInput
+	// whether to allow Mist to look at this org
+	AllowMist pulumi.BoolPtrInput
+	Analytic  SettingAnalyticPtrInput
+	// AP Synthetic Test configuration
+	ApSyntheticTest SettingApSyntheticTestPtrInput
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
 	// Auto Upgrade Settings
@@ -471,11 +507,15 @@ type SettingArgs struct {
 	EnableUnii4           pulumi.BoolPtrInput
 	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple ranges for the same day
 	Engagement SettingEngagementPtrInput
-	// Gateway Site settings
+	// Gateway Management settings
 	GatewayMgmt SettingGatewayMgmtPtrInput
+	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+	GatewayTunnelUpdownThreshold pulumi.IntPtrInput
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrInput
-	JuniperSrx             SettingJuniperSrxPtrInput
+	// IoT proxy configuration for the site
+	Iotproxy   SettingIotproxyPtrInput
+	JuniperSrx SettingJuniperSrxPtrInput
 	// LED AP settings
 	Led    SettingLedPtrInput
 	Marvis SettingMarvisPtrInput
@@ -509,11 +549,11 @@ type SettingArgs struct {
 	TrackAnonymousDevices pulumi.BoolPtrInput
 	// AP Uplink port configuration
 	UplinkPortConfig SettingUplinkPortConfigPtrInput
-	// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-	UsesDescriptionFromPortUsage pulumi.BoolPtrInput
 	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
-	Vna  SettingVnaPtrInput
+	// Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+	VarsAnnotations SettingVarsAnnotationsMapInput
+	Vna             SettingVnaPtrInput
 	// enable threshold-based vpn path down delivery.
 	VpnPathUpdownThreshold pulumi.IntPtrInput
 	// enable threshold-based vpn peer down delivery.
@@ -617,8 +657,18 @@ func (o SettingOutput) ToSettingOutputWithContext(ctx context.Context) SettingOu
 	return o
 }
 
+// whether to allow Mist to look at this org
+func (o SettingOutput) AllowMist() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.AllowMist }).(pulumi.BoolOutput)
+}
+
 func (o SettingOutput) Analytic() SettingAnalyticOutput {
 	return o.ApplyT(func(v *Setting) SettingAnalyticOutput { return v.Analytic }).(SettingAnalyticOutput)
+}
+
+// AP Synthetic Test configuration
+func (o SettingOutput) ApSyntheticTest() SettingApSyntheticTestPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingApSyntheticTestPtrOutput { return v.ApSyntheticTest }).(SettingApSyntheticTestPtrOutput)
 }
 
 // Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
@@ -679,14 +729,24 @@ func (o SettingOutput) Engagement() SettingEngagementOutput {
 	return o.ApplyT(func(v *Setting) SettingEngagementOutput { return v.Engagement }).(SettingEngagementOutput)
 }
 
-// Gateway Site settings
+// Gateway Management settings
 func (o SettingOutput) GatewayMgmt() SettingGatewayMgmtOutput {
 	return o.ApplyT(func(v *Setting) SettingGatewayMgmtOutput { return v.GatewayMgmt }).(SettingGatewayMgmtOutput)
+}
+
+// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+func (o SettingOutput) GatewayTunnelUpdownThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.GatewayTunnelUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
 // Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
 func (o SettingOutput) GatewayUpdownThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.GatewayUpdownThreshold }).(pulumi.IntPtrOutput)
+}
+
+// IoT proxy configuration for the site
+func (o SettingOutput) Iotproxy() SettingIotproxyPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingIotproxyPtrOutput { return v.Iotproxy }).(SettingIotproxyPtrOutput)
 }
 
 func (o SettingOutput) JuniperSrx() SettingJuniperSrxPtrOutput {
@@ -786,14 +846,14 @@ func (o SettingOutput) UplinkPortConfig() SettingUplinkPortConfigOutput {
 	return o.ApplyT(func(v *Setting) SettingUplinkPortConfigOutput { return v.UplinkPortConfig }).(SettingUplinkPortConfigOutput)
 }
 
-// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-func (o SettingOutput) UsesDescriptionFromPortUsage() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.UsesDescriptionFromPortUsage }).(pulumi.BoolOutput)
-}
-
 // Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 func (o SettingOutput) Vars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Setting) pulumi.StringMapOutput { return v.Vars }).(pulumi.StringMapOutput)
+}
+
+// Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+func (o SettingOutput) VarsAnnotations() SettingVarsAnnotationsMapOutput {
+	return o.ApplyT(func(v *Setting) SettingVarsAnnotationsMapOutput { return v.VarsAnnotations }).(SettingVarsAnnotationsMapOutput)
 }
 
 func (o SettingOutput) Vna() SettingVnaPtrOutput {

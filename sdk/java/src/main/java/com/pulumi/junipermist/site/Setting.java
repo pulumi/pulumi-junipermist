@@ -11,6 +11,7 @@ import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.site.SettingArgs;
 import com.pulumi.junipermist.site.inputs.SettingState;
 import com.pulumi.junipermist.site.outputs.SettingAnalytic;
+import com.pulumi.junipermist.site.outputs.SettingApSyntheticTest;
 import com.pulumi.junipermist.site.outputs.SettingAutoUpgrade;
 import com.pulumi.junipermist.site.outputs.SettingAutoUpgradeEsl;
 import com.pulumi.junipermist.site.outputs.SettingBleConfig;
@@ -18,6 +19,7 @@ import com.pulumi.junipermist.site.outputs.SettingConfigPushPolicy;
 import com.pulumi.junipermist.site.outputs.SettingCriticalUrlMonitoring;
 import com.pulumi.junipermist.site.outputs.SettingEngagement;
 import com.pulumi.junipermist.site.outputs.SettingGatewayMgmt;
+import com.pulumi.junipermist.site.outputs.SettingIotproxy;
 import com.pulumi.junipermist.site.outputs.SettingJuniperSrx;
 import com.pulumi.junipermist.site.outputs.SettingLed;
 import com.pulumi.junipermist.site.outputs.SettingMarvis;
@@ -32,6 +34,7 @@ import com.pulumi.junipermist.site.outputs.SettingSrxApp;
 import com.pulumi.junipermist.site.outputs.SettingSsr;
 import com.pulumi.junipermist.site.outputs.SettingSyntheticTest;
 import com.pulumi.junipermist.site.outputs.SettingUplinkPortConfig;
+import com.pulumi.junipermist.site.outputs.SettingVarsAnnotations;
 import com.pulumi.junipermist.site.outputs.SettingVna;
 import com.pulumi.junipermist.site.outputs.SettingVsInstance;
 import com.pulumi.junipermist.site.outputs.SettingWanVna;
@@ -122,11 +125,39 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:site/setting:Setting")
 public class Setting extends com.pulumi.resources.CustomResource {
+    /**
+     * whether to allow Mist to look at this org
+     * 
+     */
+    @Export(name="allowMist", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> allowMist;
+
+    /**
+     * @return whether to allow Mist to look at this org
+     * 
+     */
+    public Output<Boolean> allowMist() {
+        return this.allowMist;
+    }
     @Export(name="analytic", refs={SettingAnalytic.class}, tree="[0]")
     private Output<SettingAnalytic> analytic;
 
     public Output<SettingAnalytic> analytic() {
         return this.analytic;
+    }
+    /**
+     * AP Synthetic Test configuration
+     * 
+     */
+    @Export(name="apSyntheticTest", refs={SettingApSyntheticTest.class}, tree="[0]")
+    private Output</* @Nullable */ SettingApSyntheticTest> apSyntheticTest;
+
+    /**
+     * @return AP Synthetic Test configuration
+     * 
+     */
+    public Output<Optional<SettingApSyntheticTest>> apSyntheticTest() {
+        return Codegen.optional(this.apSyntheticTest);
     }
     /**
      * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
@@ -281,18 +312,32 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.engagement;
     }
     /**
-     * Gateway Site settings
+     * Gateway Management settings
      * 
      */
     @Export(name="gatewayMgmt", refs={SettingGatewayMgmt.class}, tree="[0]")
     private Output<SettingGatewayMgmt> gatewayMgmt;
 
     /**
-     * @return Gateway Site settings
+     * @return Gateway Management settings
      * 
      */
     public Output<SettingGatewayMgmt> gatewayMgmt() {
         return this.gatewayMgmt;
+    }
+    /**
+     * enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     * 
+     */
+    @Export(name="gatewayTunnelUpdownThreshold", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> gatewayTunnelUpdownThreshold;
+
+    /**
+     * @return enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+     * 
+     */
+    public Output<Optional<Integer>> gatewayTunnelUpdownThreshold() {
+        return Codegen.optional(this.gatewayTunnelUpdownThreshold);
     }
     /**
      * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
@@ -307,6 +352,20 @@ public class Setting extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> gatewayUpdownThreshold() {
         return Codegen.optional(this.gatewayUpdownThreshold);
+    }
+    /**
+     * IoT proxy configuration for the site
+     * 
+     */
+    @Export(name="iotproxy", refs={SettingIotproxy.class}, tree="[0]")
+    private Output</* @Nullable */ SettingIotproxy> iotproxy;
+
+    /**
+     * @return IoT proxy configuration for the site
+     * 
+     */
+    public Output<Optional<SettingIotproxy>> iotproxy() {
+        return Codegen.optional(this.iotproxy);
     }
     @Export(name="juniperSrx", refs={SettingJuniperSrx.class}, tree="[0]")
     private Output</* @Nullable */ SettingJuniperSrx> juniperSrx;
@@ -539,20 +598,6 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.uplinkPortConfig;
     }
     /**
-     * by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-     * 
-     */
-    @Export(name="usesDescriptionFromPortUsage", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> usesDescriptionFromPortUsage;
-
-    /**
-     * @return by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-     * 
-     */
-    public Output<Boolean> usesDescriptionFromPortUsage() {
-        return this.usesDescriptionFromPortUsage;
-    }
-    /**
      * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
@@ -565,6 +610,20 @@ public class Setting extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> vars() {
         return Codegen.optional(this.vars);
+    }
+    /**
+     * Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     * 
+     */
+    @Export(name="varsAnnotations", refs={Map.class,String.class,SettingVarsAnnotations.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,SettingVarsAnnotations>> varsAnnotations;
+
+    /**
+     * @return Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+     * 
+     */
+    public Output<Optional<Map<String,SettingVarsAnnotations>>> varsAnnotations() {
+        return Codegen.optional(this.varsAnnotations);
     }
     @Export(name="vna", refs={SettingVna.class}, tree="[0]")
     private Output</* @Nullable */ SettingVna> vna;

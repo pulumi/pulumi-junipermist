@@ -246,7 +246,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.NetworktemplateSwitchMatching?> SwitchMatching { get; private set; } = null!;
 
         /// <summary>
-        /// Switch settings
+        /// Switch Management settings
         /// </summary>
         [Output("switchMgmt")]
         public Output<Outputs.NetworktemplateSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
@@ -507,7 +507,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.NetworktemplateSwitchMatchingArgs>? SwitchMatching { get; set; }
 
         /// <summary>
-        /// Switch settings
+        /// Switch Management settings
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtArgs>? SwitchMgmt { get; set; }
@@ -735,7 +735,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.NetworktemplateSwitchMatchingGetArgs>? SwitchMatching { get; set; }
 
         /// <summary>
-        /// Switch settings
+        /// Switch Management settings
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtGetArgs>? SwitchMgmt { get; set; }

@@ -45,7 +45,7 @@ public final class GatewaytemplateTunnelConfigs {
      */
     private @Nullable Integer ipsecLifetime;
     /**
-     * @return Only if  `provider`==`custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`
      * 
      */
     private @Nullable List<GatewaytemplateTunnelConfigsIpsecProposal> ipsecProposals;
@@ -147,7 +147,7 @@ public final class GatewaytemplateTunnelConfigs {
         return Optional.ofNullable(this.ipsecLifetime);
     }
     /**
-     * @return Only if  `provider`==`custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`
      * 
      */
     public List<GatewaytemplateTunnelConfigsIpsecProposal> ipsecProposals() {

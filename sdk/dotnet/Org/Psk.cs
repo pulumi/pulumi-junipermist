@@ -143,6 +143,12 @@ namespace Pulumi.JuniperMist.Org
         [Output("vlanId")]
         public Output<string?> VlanId { get; private set; } = null!;
 
+        /// <summary>
+        /// VLAN name to be assigned. Optional, `VlanId` takes precedence if both are provided
+        /// </summary>
+        [Output("vlanName")]
+        public Output<string?> VlanName { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Psk resource with the given unique name, arguments, and options.
@@ -308,6 +314,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 
+        /// <summary>
+        /// VLAN name to be assigned. Optional, `VlanId` takes precedence if both are provided
+        /// </summary>
+        [Input("vlanName")]
+        public Input<string>? VlanName { get; set; }
+
         public PskArgs()
         {
         }
@@ -428,6 +440,12 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
+
+        /// <summary>
+        /// VLAN name to be assigned. Optional, `VlanId` takes precedence if both are provided
+        /// </summary>
+        [Input("vlanName")]
+        public Input<string>? VlanName { get; set; }
 
         public PskState()
         {

@@ -52,7 +52,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.GatewaytemplateTunnelConfigsIpsecProposalGetArgs>? _ipsecProposals;
 
         /// <summary>
-        /// Only if  `Provider`==`custom-ipsec`
+        /// Only if `Provider`==`custom-ipsec`
         /// </summary>
         public InputList<Inputs.GatewaytemplateTunnelConfigsIpsecProposalGetArgs> IpsecProposals
         {

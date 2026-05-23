@@ -278,19 +278,21 @@ export class Nacidp extends pulumi.CustomResource {
             resourceInputs["memberFilter"] = args?.memberFilter;
             resourceInputs["name"] = args?.name;
             resourceInputs["oauthCcClientId"] = args?.oauthCcClientId;
-            resourceInputs["oauthCcClientSecret"] = args?.oauthCcClientSecret;
+            resourceInputs["oauthCcClientSecret"] = args?.oauthCcClientSecret ? pulumi.secret(args.oauthCcClientSecret) : undefined;
             resourceInputs["oauthDiscoveryUrl"] = args?.oauthDiscoveryUrl;
             resourceInputs["oauthPingIdentityRegion"] = args?.oauthPingIdentityRegion;
             resourceInputs["oauthProviderDomain"] = args?.oauthProviderDomain;
             resourceInputs["oauthRopcClientId"] = args?.oauthRopcClientId;
-            resourceInputs["oauthRopcClientSecret"] = args?.oauthRopcClientSecret;
+            resourceInputs["oauthRopcClientSecret"] = args?.oauthRopcClientSecret ? pulumi.secret(args.oauthRopcClientSecret) : undefined;
             resourceInputs["oauthTenantId"] = args?.oauthTenantId;
             resourceInputs["oauthType"] = args?.oauthType;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["scimEnabled"] = args?.scimEnabled;
-            resourceInputs["scimSecretToken"] = args?.scimSecretToken;
+            resourceInputs["scimSecretToken"] = args?.scimSecretToken ? pulumi.secret(args.scimSecretToken) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["oauthCcClientSecret", "oauthRopcClientSecret", "scimSecretToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Nacidp.__pulumiType, name, resourceInputs, opts);
     }
 }

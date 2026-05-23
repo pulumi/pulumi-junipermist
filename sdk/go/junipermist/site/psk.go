@@ -90,6 +90,8 @@ type Psk struct {
 	// enum: `multi`, `single`
 	Usage  pulumi.StringOutput    `pulumi:"usage"`
 	VlanId pulumi.StringPtrOutput `pulumi:"vlanId"`
+	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+	VlanName pulumi.StringPtrOutput `pulumi:"vlanName"`
 }
 
 // NewPsk registers a new resource with the given unique name, arguments, and options.
@@ -168,6 +170,8 @@ type pskState struct {
 	// enum: `multi`, `single`
 	Usage  *string `pulumi:"usage"`
 	VlanId *string `pulumi:"vlanId"`
+	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+	VlanName *string `pulumi:"vlanName"`
 }
 
 type PskState struct {
@@ -197,6 +201,8 @@ type PskState struct {
 	// enum: `multi`, `single`
 	Usage  pulumi.StringPtrInput
 	VlanId pulumi.StringPtrInput
+	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+	VlanName pulumi.StringPtrInput
 }
 
 func (PskState) ElementType() reflect.Type {
@@ -229,6 +235,8 @@ type pskArgs struct {
 	// enum: `multi`, `single`
 	Usage  *string `pulumi:"usage"`
 	VlanId *string `pulumi:"vlanId"`
+	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+	VlanName *string `pulumi:"vlanName"`
 }
 
 // The set of arguments for constructing a Psk resource.
@@ -258,6 +266,8 @@ type PskArgs struct {
 	// enum: `multi`, `single`
 	Usage  pulumi.StringPtrInput
 	VlanId pulumi.StringPtrInput
+	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+	VlanName pulumi.StringPtrInput
 }
 
 func (PskArgs) ElementType() reflect.Type {
@@ -419,6 +429,11 @@ func (o PskOutput) Usage() pulumi.StringOutput {
 
 func (o PskOutput) VlanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringPtrOutput { return v.VlanId }).(pulumi.StringPtrOutput)
+}
+
+// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
+func (o PskOutput) VlanName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Psk) pulumi.StringPtrOutput { return v.VlanName }).(pulumi.StringPtrOutput)
 }
 
 type PskArrayOutput struct{ *pulumi.OutputState }

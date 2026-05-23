@@ -137,6 +137,56 @@
                     "dns_suffix": {
                         "maxItemsOne": false
                     },
+                    "gateway_mgmt": {
+                        "fields": {
+                            "admin_sshkeys": {
+                                "maxItemsOne": false
+                            },
+                            "app_probing": {
+                                "fields": {
+                                    "apps": {
+                                        "maxItemsOne": false
+                                    },
+                                    "custom_apps": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "hostnames": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "probe_hosts": {
+                                "maxItemsOne": false
+                            },
+                            "probe_hostsv6": {
+                                "maxItemsOne": false
+                            },
+                            "protect_re": {
+                                "fields": {
+                                    "allowed_services": {
+                                        "maxItemsOne": false
+                                    },
+                                    "custom": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "subnets": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "trusted_hosts": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "idp_profiles": {
                         "elem": {
                             "fields": {
@@ -1503,6 +1553,56 @@
                     },
                     "dns_suffix": {
                         "maxItemsOne": false
+                    },
+                    "gateway_mgmt": {
+                        "fields": {
+                            "admin_sshkeys": {
+                                "maxItemsOne": false
+                            },
+                            "app_probing": {
+                                "fields": {
+                                    "apps": {
+                                        "maxItemsOne": false
+                                    },
+                                    "custom_apps": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "hostnames": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "probe_hosts": {
+                                "maxItemsOne": false
+                            },
+                            "probe_hostsv6": {
+                                "maxItemsOne": false
+                            },
+                            "protect_re": {
+                                "fields": {
+                                    "allowed_services": {
+                                        "maxItemsOne": false
+                                    },
+                                    "custom": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "subnets": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "trusted_hosts": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
                     },
                     "idp_profiles": {
                         "elem": {
@@ -3432,6 +3532,13 @@
             "mist_site_setting": {
                 "current": "junipermist:site/setting:Setting",
                 "fields": {
+                    "ap_synthetic_test": {
+                        "fields": {
+                            "additional_vlan_ids": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "ble_config": {
                         "fields": {
                             "beam_disabled": {

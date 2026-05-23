@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? IpsecLifetime;
         /// <summary>
-        /// Only if  `Provider`==`custom-ipsec`
+        /// Only if `Provider`==`custom-ipsec`
         /// </summary>
         public readonly ImmutableArray<Outputs.GatewayTunnelConfigsIpsecProposal> IpsecProposals;
         /// <summary>

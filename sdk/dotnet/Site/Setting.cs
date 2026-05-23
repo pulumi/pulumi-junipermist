@@ -69,8 +69,20 @@ namespace Pulumi.JuniperMist.Site
     [JuniperMistResourceType("junipermist:site/setting:Setting")]
     public partial class Setting : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// whether to allow Mist to look at this org
+        /// </summary>
+        [Output("allowMist")]
+        public Output<bool> AllowMist { get; private set; } = null!;
+
         [Output("analytic")]
         public Output<Outputs.SettingAnalytic> Analytic { get; private set; } = null!;
+
+        /// <summary>
+        /// AP Synthetic Test configuration
+        /// </summary>
+        [Output("apSyntheticTest")]
+        public Output<Outputs.SettingApSyntheticTest?> ApSyntheticTest { get; private set; } = null!;
 
         /// <summary>
         /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `DeviceUpdownThreshold` is ignored.
@@ -139,16 +151,28 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingEngagement> Engagement { get; private set; } = null!;
 
         /// <summary>
-        /// Gateway Site settings
+        /// Gateway Management settings
         /// </summary>
         [Output("gatewayMgmt")]
         public Output<Outputs.SettingGatewayMgmt> GatewayMgmt { get; private set; } = null!;
+
+        /// <summary>
+        /// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+        /// </summary>
+        [Output("gatewayTunnelUpdownThreshold")]
+        public Output<int?> GatewayTunnelUpdownThreshold { get; private set; } = null!;
 
         /// <summary>
         /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Output("gatewayUpdownThreshold")]
         public Output<int?> GatewayUpdownThreshold { get; private set; } = null!;
+
+        /// <summary>
+        /// IoT proxy configuration for the site
+        /// </summary>
+        [Output("iotproxy")]
+        public Output<Outputs.SettingIotproxy?> Iotproxy { get; private set; } = null!;
 
         [Output("juniperSrx")]
         public Output<Outputs.SettingJuniperSrx?> JuniperSrx { get; private set; } = null!;
@@ -253,16 +277,16 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingUplinkPortConfig> UplinkPortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-        /// </summary>
-        [Output("usesDescriptionFromPortUsage")]
-        public Output<bool> UsesDescriptionFromPortUsage { get; private set; } = null!;
-
-        /// <summary>
         /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         [Output("vars")]
         public Output<ImmutableDictionary<string, string>?> Vars { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        /// </summary>
+        [Output("varsAnnotations")]
+        public Output<ImmutableDictionary<string, Outputs.SettingVarsAnnotations>?> VarsAnnotations { get; private set; } = null!;
 
         [Output("vna")]
         public Output<Outputs.SettingVna?> Vna { get; private set; } = null!;
@@ -362,8 +386,20 @@ namespace Pulumi.JuniperMist.Site
 
     public sealed class SettingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// whether to allow Mist to look at this org
+        /// </summary>
+        [Input("allowMist")]
+        public Input<bool>? AllowMist { get; set; }
+
         [Input("analytic")]
         public Input<Inputs.SettingAnalyticArgs>? Analytic { get; set; }
+
+        /// <summary>
+        /// AP Synthetic Test configuration
+        /// </summary>
+        [Input("apSyntheticTest")]
+        public Input<Inputs.SettingApSyntheticTestArgs>? ApSyntheticTest { get; set; }
 
         /// <summary>
         /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `DeviceUpdownThreshold` is ignored.
@@ -429,16 +465,28 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingEngagementArgs>? Engagement { get; set; }
 
         /// <summary>
-        /// Gateway Site settings
+        /// Gateway Management settings
         /// </summary>
         [Input("gatewayMgmt")]
         public Input<Inputs.SettingGatewayMgmtArgs>? GatewayMgmt { get; set; }
+
+        /// <summary>
+        /// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+        /// </summary>
+        [Input("gatewayTunnelUpdownThreshold")]
+        public Input<int>? GatewayTunnelUpdownThreshold { get; set; }
 
         /// <summary>
         /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Input("gatewayUpdownThreshold")]
         public Input<int>? GatewayUpdownThreshold { get; set; }
+
+        /// <summary>
+        /// IoT proxy configuration for the site
+        /// </summary>
+        [Input("iotproxy")]
+        public Input<Inputs.SettingIotproxyArgs>? Iotproxy { get; set; }
 
         [Input("juniperSrx")]
         public Input<Inputs.SettingJuniperSrxArgs>? JuniperSrx { get; set; }
@@ -548,12 +596,6 @@ namespace Pulumi.JuniperMist.Site
         [Input("uplinkPortConfig")]
         public Input<Inputs.SettingUplinkPortConfigArgs>? UplinkPortConfig { get; set; }
 
-        /// <summary>
-        /// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-        /// </summary>
-        [Input("usesDescriptionFromPortUsage")]
-        public Input<bool>? UsesDescriptionFromPortUsage { get; set; }
-
         [Input("vars")]
         private InputMap<string>? _vars;
 
@@ -564,6 +606,18 @@ namespace Pulumi.JuniperMist.Site
         {
             get => _vars ?? (_vars = new InputMap<string>());
             set => _vars = value;
+        }
+
+        [Input("varsAnnotations")]
+        private InputMap<Inputs.SettingVarsAnnotationsArgs>? _varsAnnotations;
+
+        /// <summary>
+        /// Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        /// </summary>
+        public InputMap<Inputs.SettingVarsAnnotationsArgs> VarsAnnotations
+        {
+            get => _varsAnnotations ?? (_varsAnnotations = new InputMap<Inputs.SettingVarsAnnotationsArgs>());
+            set => _varsAnnotations = value;
         }
 
         [Input("vna")]
@@ -625,8 +679,20 @@ namespace Pulumi.JuniperMist.Site
 
     public sealed class SettingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// whether to allow Mist to look at this org
+        /// </summary>
+        [Input("allowMist")]
+        public Input<bool>? AllowMist { get; set; }
+
         [Input("analytic")]
         public Input<Inputs.SettingAnalyticGetArgs>? Analytic { get; set; }
+
+        /// <summary>
+        /// AP Synthetic Test configuration
+        /// </summary>
+        [Input("apSyntheticTest")]
+        public Input<Inputs.SettingApSyntheticTestGetArgs>? ApSyntheticTest { get; set; }
 
         /// <summary>
         /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `DeviceUpdownThreshold` is ignored.
@@ -695,16 +761,28 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingEngagementGetArgs>? Engagement { get; set; }
 
         /// <summary>
-        /// Gateway Site settings
+        /// Gateway Management settings
         /// </summary>
         [Input("gatewayMgmt")]
         public Input<Inputs.SettingGatewayMgmtGetArgs>? GatewayMgmt { get; set; }
+
+        /// <summary>
+        /// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
+        /// </summary>
+        [Input("gatewayTunnelUpdownThreshold")]
+        public Input<int>? GatewayTunnelUpdownThreshold { get; set; }
 
         /// <summary>
         /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `DeviceUpdownThreshold` is ignored.
         /// </summary>
         [Input("gatewayUpdownThreshold")]
         public Input<int>? GatewayUpdownThreshold { get; set; }
+
+        /// <summary>
+        /// IoT proxy configuration for the site
+        /// </summary>
+        [Input("iotproxy")]
+        public Input<Inputs.SettingIotproxyGetArgs>? Iotproxy { get; set; }
 
         [Input("juniperSrx")]
         public Input<Inputs.SettingJuniperSrxGetArgs>? JuniperSrx { get; set; }
@@ -814,12 +892,6 @@ namespace Pulumi.JuniperMist.Site
         [Input("uplinkPortConfig")]
         public Input<Inputs.SettingUplinkPortConfigGetArgs>? UplinkPortConfig { get; set; }
 
-        /// <summary>
-        /// by default, we only honor description provided in port_config. This allows fallback to those defined in port_usages
-        /// </summary>
-        [Input("usesDescriptionFromPortUsage")]
-        public Input<bool>? UsesDescriptionFromPortUsage { get; set; }
-
         [Input("vars")]
         private InputMap<string>? _vars;
 
@@ -830,6 +902,18 @@ namespace Pulumi.JuniperMist.Site
         {
             get => _vars ?? (_vars = new InputMap<string>());
             set => _vars = value;
+        }
+
+        [Input("varsAnnotations")]
+        private InputMap<Inputs.SettingVarsAnnotationsGetArgs>? _varsAnnotations;
+
+        /// <summary>
+        /// Optional annotations for vars defined in this site. Keys match var names; values describe the var purpose and type for UI auto-complete.
+        /// </summary>
+        public InputMap<Inputs.SettingVarsAnnotationsGetArgs> VarsAnnotations
+        {
+            get => _varsAnnotations ?? (_varsAnnotations = new InputMap<Inputs.SettingVarsAnnotationsGetArgs>());
+            set => _varsAnnotations = value;
         }
 
         [Input("vna")]

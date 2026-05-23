@@ -403,11 +403,21 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("smsglobalApiKey")]
         public Input<string>? SmsglobalApiKey { get; set; }
 
+        [Input("smsglobalApiSecret")]
+        private Input<string>? _smsglobalApiSecret;
+
         /// <summary>
         /// Required if `SmsProvider`==`Smsglobal`, Client secret
         /// </summary>
-        [Input("smsglobalApiSecret")]
-        public Input<string>? SmsglobalApiSecret { get; set; }
+        public Input<string>? SmsglobalApiSecret
+        {
+            get => _smsglobalApiSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _smsglobalApiSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Optional if `SponsorEnabled`==`True`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs PredefinedSponsorsEnabled enabled and SponsorNotifyAll disabled
@@ -520,11 +530,21 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("telstraClientId")]
         public Input<string>? TelstraClientId { get; set; }
 
+        [Input("telstraClientSecret")]
+        private Input<string>? _telstraClientSecret;
+
         /// <summary>
         /// Required if `SmsProvider`==`Telstra`, Client secret provided by Telstra
         /// </summary>
-        [Input("telstraClientSecret")]
-        public Input<string>? TelstraClientSecret { get; set; }
+        public Input<string>? TelstraClientSecret
+        {
+            get => _telstraClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _telstraClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Required if `SmsProvider`==`Twilio`, Auth token account with twilio account

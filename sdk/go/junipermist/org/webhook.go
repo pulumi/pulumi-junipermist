@@ -99,7 +99,7 @@ type Webhook struct {
 	SingleEventPerMessage pulumi.BoolPtrOutput `pulumi:"singleEventPerMessage"`
 	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken pulumi.StringPtrOutput `pulumi:"splunkToken"`
-	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
 	Topics pulumi.StringArrayOutput `pulumi:"topics"`
 	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -193,7 +193,7 @@ type webhookState struct {
 	SingleEventPerMessage *bool `pulumi:"singleEventPerMessage"`
 	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken *string `pulumi:"splunkToken"`
-	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
 	Topics []string `pulumi:"topics"`
 	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
 	Type *string `pulumi:"type"`
@@ -230,7 +230,7 @@ type WebhookState struct {
 	SingleEventPerMessage pulumi.BoolPtrInput
 	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken pulumi.StringPtrInput
-	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
 	Topics pulumi.StringArrayInput
 	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
 	Type pulumi.StringPtrInput
@@ -271,7 +271,7 @@ type webhookArgs struct {
 	SingleEventPerMessage *bool `pulumi:"singleEventPerMessage"`
 	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken *string `pulumi:"splunkToken"`
-	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
 	Topics []string `pulumi:"topics"`
 	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
 	Type *string `pulumi:"type"`
@@ -309,7 +309,7 @@ type WebhookArgs struct {
 	SingleEventPerMessage pulumi.BoolPtrInput
 	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken pulumi.StringPtrInput
-	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+	// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
 	Topics pulumi.StringArrayInput
 	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
 	Type pulumi.StringPtrInput
@@ -474,7 +474,7 @@ func (o WebhookOutput) SplunkToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.SplunkToken }).(pulumi.StringPtrOutput)
 }
 
-// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `nac-accounting`, `nac-events`
+// enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
 func (o WebhookOutput) Topics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringArrayOutput { return v.Topics }).(pulumi.StringArrayOutput)
 }

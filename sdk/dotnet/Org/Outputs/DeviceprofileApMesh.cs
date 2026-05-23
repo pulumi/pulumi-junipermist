@@ -29,6 +29,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// enum: `Base`, `Remote`
         /// </summary>
         public readonly string? Role;
+        /// <summary>
+        /// Whether to use WPA3 on the 5 GHz band for mesh links
+        /// </summary>
+        public readonly bool? UseWpa3On5;
 
         [OutputConstructor]
         private DeviceprofileApMesh(
@@ -38,12 +42,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             int? group,
 
-            string? role)
+            string? role,
+
+            bool? useWpa3On5)
         {
             Bands = bands;
             Enabled = enabled;
             Group = group;
             Role = role;
+            UseWpa3On5 = useWpa3On5;
         }
     }
 }

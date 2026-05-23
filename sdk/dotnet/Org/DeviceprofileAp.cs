@@ -177,6 +177,12 @@ namespace Pulumi.JuniperMist.Org
         [Output("vars")]
         public Output<ImmutableDictionary<string, string>?> Vars { get; private set; } = null!;
 
+        /// <summary>
+        /// Zigbee AP settings
+        /// </summary>
+        [Output("zigbeeConfig")]
+        public Output<Outputs.DeviceprofileApZigbeeConfig?> ZigbeeConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a DeviceprofileAp resource with the given unique name, arguments, and options.
@@ -360,6 +366,12 @@ namespace Pulumi.JuniperMist.Org
             set => _vars = value;
         }
 
+        /// <summary>
+        /// Zigbee AP settings
+        /// </summary>
+        [Input("zigbeeConfig")]
+        public Input<Inputs.DeviceprofileApZigbeeConfigArgs>? ZigbeeConfig { get; set; }
+
         public DeviceprofileApArgs()
         {
         }
@@ -509,6 +521,12 @@ namespace Pulumi.JuniperMist.Org
             get => _vars ?? (_vars = new InputMap<string>());
             set => _vars = value;
         }
+
+        /// <summary>
+        /// Zigbee AP settings
+        /// </summary>
+        [Input("zigbeeConfig")]
+        public Input<Inputs.DeviceprofileApZigbeeConfigGetArgs>? ZigbeeConfig { get; set; }
 
         public DeviceprofileApState()
         {

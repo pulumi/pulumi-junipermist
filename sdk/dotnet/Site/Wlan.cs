@@ -164,7 +164,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<string> AuthServersNasIp { get; private set; } = null!;
 
         /// <summary>
-        /// Radius auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
+        /// Radius auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
         /// </summary>
         [Output("authServersRetries")]
         public Output<int?> AuthServersRetries { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.JuniperMist.Site
         /// whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
         /// </summary>
         [Output("disableMessageAuthenticatorCheck")]
-        public Output<bool> DisableMessageAuthenticatorCheck { get; private set; } = null!;
+        public Output<bool?> DisableMessageAuthenticatorCheck { get; private set; } = null!;
 
         /// <summary>
         /// Whether to disable U-APSD
@@ -777,7 +777,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? AuthServersNasIp { get; set; }
 
         /// <summary>
-        /// Radius auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
+        /// Radius auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
         /// </summary>
         [Input("authServersRetries")]
         public Input<int>? AuthServersRetries { get; set; }
@@ -877,6 +877,12 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("disableHtVhtRates")]
         public Input<bool>? DisableHtVhtRates { get; set; }
+
+        /// <summary>
+        /// whether to disable Message-Authenticator Check, which is used to verify the integrity of RADIUS messages, default is false (i.e. for better security)
+        /// </summary>
+        [Input("disableMessageAuthenticatorCheck")]
+        public Input<bool>? DisableMessageAuthenticatorCheck { get; set; }
 
         /// <summary>
         /// Whether to disable U-APSD
@@ -1381,7 +1387,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? AuthServersNasIp { get; set; }
 
         /// <summary>
-        /// Radius auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
+        /// Radius auth session retries. Following fast timers are set if "FastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting AuthServersRetries and is set to default value to 3.
         /// </summary>
         [Input("authServersRetries")]
         public Input<int>? AuthServersRetries { get; set; }

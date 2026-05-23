@@ -26,7 +26,7 @@ public final class SwitchExtraRoutes6 {
     private @Nullable Boolean noResolve;
     private @Nullable Integer preference;
     /**
-     * @return Next-hop IP Address
+     * @return Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
      * 
      */
     private String via;
@@ -52,7 +52,7 @@ public final class SwitchExtraRoutes6 {
         return Optional.ofNullable(this.preference);
     }
     /**
-     * @return Next-hop IP Address
+     * @return Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
      * 
      */
     public String via() {

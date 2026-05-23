@@ -43,7 +43,8 @@ class DeviceprofileApArgs:
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  uplink_port_config: pulumi.Input[Optional['DeviceprofileApUplinkPortConfigArgs']] = None,
                  usb_config: pulumi.Input[Optional['DeviceprofileApUsbConfigArgs']] = None,
-                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zigbee_config: pulumi.Input[Optional['DeviceprofileApZigbeeConfigArgs']] = None):
         """
         The set of arguments for constructing a DeviceprofileAp resource.
 
@@ -65,6 +66,7 @@ class DeviceprofileApArgs:
                  - Note: if native imagotag is enabled, BLE will be disabled automatically
                  - Note: legacy, new config moved to ESL Config.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input['DeviceprofileApZigbeeConfigArgs'] zigbee_config: Zigbee AP settings
         """
         pulumi.set(__self__, "org_id", org_id)
         if aeroscout is not None:
@@ -111,6 +113,8 @@ class DeviceprofileApArgs:
             pulumi.set(__self__, "usb_config", usb_config)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
+        if zigbee_config is not None:
+            pulumi.set(__self__, "zigbee_config", zigbee_config)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
@@ -369,6 +373,18 @@ class DeviceprofileApArgs:
     def vars(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vars", value)
 
+    @_builtins.property
+    @pulumi.getter(name="zigbeeConfig")
+    def zigbee_config(self) -> pulumi.Input[Optional['DeviceprofileApZigbeeConfigArgs']]:
+        """
+        Zigbee AP settings
+        """
+        return pulumi.get(self, "zigbee_config")
+
+    @zigbee_config.setter
+    def zigbee_config(self, value: pulumi.Input[Optional['DeviceprofileApZigbeeConfigArgs']]):
+        pulumi.set(self, "zigbee_config", value)
+
 
 @pulumi.input_type
 class _DeviceprofileApState:
@@ -396,7 +412,8 @@ class _DeviceprofileApState:
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  uplink_port_config: pulumi.Input[Optional['DeviceprofileApUplinkPortConfigArgs']] = None,
                  usb_config: pulumi.Input[Optional['DeviceprofileApUsbConfigArgs']] = None,
-                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zigbee_config: pulumi.Input[Optional['DeviceprofileApZigbeeConfigArgs']] = None):
         """
         Input properties used for looking up and filtering DeviceprofileAp resources.
 
@@ -419,6 +436,7 @@ class _DeviceprofileApState:
                  - Note: if native imagotag is enabled, BLE will be disabled automatically
                  - Note: legacy, new config moved to ESL Config.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input['DeviceprofileApZigbeeConfigArgs'] zigbee_config: Zigbee AP settings
         """
         if aeroscout is not None:
             pulumi.set(__self__, "aeroscout", aeroscout)
@@ -468,6 +486,8 @@ class _DeviceprofileApState:
             pulumi.set(__self__, "usb_config", usb_config)
         if vars is not None:
             pulumi.set(__self__, "vars", vars)
+        if zigbee_config is not None:
+            pulumi.set(__self__, "zigbee_config", zigbee_config)
 
     @_builtins.property
     @pulumi.getter
@@ -738,6 +758,18 @@ class _DeviceprofileApState:
     def vars(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vars", value)
 
+    @_builtins.property
+    @pulumi.getter(name="zigbeeConfig")
+    def zigbee_config(self) -> pulumi.Input[Optional['DeviceprofileApZigbeeConfigArgs']]:
+        """
+        Zigbee AP settings
+        """
+        return pulumi.get(self, "zigbee_config")
+
+    @zigbee_config.setter
+    def zigbee_config(self, value: pulumi.Input[Optional['DeviceprofileApZigbeeConfigArgs']]):
+        pulumi.set(self, "zigbee_config", value)
+
 
 @pulumi.type_token("junipermist:org/deviceprofileAp:DeviceprofileAp")
 class DeviceprofileAp(pulumi.CustomResource):
@@ -768,6 +800,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                  uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']]] = None,
                  usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource manages the AP Device Profiles.
@@ -821,6 +854,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                  - Note: if native imagotag is enabled, BLE will be disabled automatically
                  - Note: legacy, new config moved to ESL Config.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']] zigbee_config: Zigbee AP settings
         """
         ...
     @overload
@@ -898,6 +932,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                  uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']]] = None,
                  usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']]] = None,
                  vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -932,6 +967,7 @@ class DeviceprofileAp(pulumi.CustomResource):
             __props__.__dict__["uplink_port_config"] = uplink_port_config
             __props__.__dict__["usb_config"] = usb_config
             __props__.__dict__["vars"] = vars
+            __props__.__dict__["zigbee_config"] = zigbee_config
             __props__.__dict__["type"] = None
         super(DeviceprofileAp, __self__).__init__(
             'junipermist:org/deviceprofileAp:DeviceprofileAp',
@@ -966,7 +1002,8 @@ class DeviceprofileAp(pulumi.CustomResource):
             type: pulumi.Input[Optional[_builtins.str]] = None,
             uplink_port_config: pulumi.Input[Optional[Union['DeviceprofileApUplinkPortConfigArgs', 'DeviceprofileApUplinkPortConfigArgsDict']]] = None,
             usb_config: pulumi.Input[Optional[Union['DeviceprofileApUsbConfigArgs', 'DeviceprofileApUsbConfigArgsDict']]] = None,
-            vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DeviceprofileAp':
+            vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zigbee_config: pulumi.Input[Optional[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']]] = None) -> 'DeviceprofileAp':
         """
         Get an existing DeviceprofileAp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -993,6 +1030,7 @@ class DeviceprofileAp(pulumi.CustomResource):
                  - Note: if native imagotag is enabled, BLE will be disabled automatically
                  - Note: legacy, new config moved to ESL Config.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Union['DeviceprofileApZigbeeConfigArgs', 'DeviceprofileApZigbeeConfigArgsDict']] zigbee_config: Zigbee AP settings
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1022,6 +1060,7 @@ class DeviceprofileAp(pulumi.CustomResource):
         __props__.__dict__["uplink_port_config"] = uplink_port_config
         __props__.__dict__["usb_config"] = usb_config
         __props__.__dict__["vars"] = vars
+        __props__.__dict__["zigbee_config"] = zigbee_config
         return DeviceprofileAp(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1196,4 +1235,12 @@ class DeviceprofileAp(pulumi.CustomResource):
         Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
+
+    @_builtins.property
+    @pulumi.getter(name="zigbeeConfig")
+    def zigbee_config(self) -> pulumi.Output[Optional['outputs.DeviceprofileApZigbeeConfig']]:
+        """
+        Zigbee AP settings
+        """
+        return pulumi.get(self, "zigbee_config")
 

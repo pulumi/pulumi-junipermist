@@ -78,6 +78,21 @@ public final class DeviceprofileApMeshArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.role);
     }
 
+    /**
+     * Whether to use WPA3 on the 5 GHz band for mesh links
+     * 
+     */
+    @Import(name="useWpa3On5")
+    private @Nullable Output<Boolean> useWpa3On5;
+
+    /**
+     * @return Whether to use WPA3 on the 5 GHz band for mesh links
+     * 
+     */
+    public Optional<Output<Boolean>> useWpa3On5() {
+        return Optional.ofNullable(this.useWpa3On5);
+    }
+
     private DeviceprofileApMeshArgs() {}
 
     private DeviceprofileApMeshArgs(DeviceprofileApMeshArgs $) {
@@ -85,6 +100,7 @@ public final class DeviceprofileApMeshArgs extends com.pulumi.resources.Resource
         this.enabled = $.enabled;
         this.group = $.group;
         this.role = $.role;
+        this.useWpa3On5 = $.useWpa3On5;
     }
 
     public static Builder builder() {
@@ -197,6 +213,27 @@ public final class DeviceprofileApMeshArgs extends com.pulumi.resources.Resource
          */
         public Builder role(String role) {
             return role(Output.of(role));
+        }
+
+        /**
+         * @param useWpa3On5 Whether to use WPA3 on the 5 GHz band for mesh links
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useWpa3On5(@Nullable Output<Boolean> useWpa3On5) {
+            $.useWpa3On5 = useWpa3On5;
+            return this;
+        }
+
+        /**
+         * @param useWpa3On5 Whether to use WPA3 on the 5 GHz band for mesh links
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useWpa3On5(Boolean useWpa3On5) {
+            return useWpa3On5(Output.of(useWpa3On5));
         }
 
         public DeviceprofileApMeshArgs build() {

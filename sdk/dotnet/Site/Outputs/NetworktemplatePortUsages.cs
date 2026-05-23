@@ -118,6 +118,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? PoeDisabled;
         /// <summary>
+        /// Only if `Mode`!=`Dynamic`. Whether Perpetual PoE is enabled; keeps PoE state across reboots
+        /// </summary>
+        public readonly bool? PoeKeepStateWhenReboot;
+        /// <summary>
         /// PoE priority. enum: `Low`, `High`
         /// </summary>
         public readonly string? PoePriority;
@@ -244,6 +248,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             bool? poeDisabled,
 
+            bool? poeKeepStateWhenReboot,
+
             string? poePriority,
 
             string? portAuth,
@@ -306,6 +312,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             Networks = networks;
             PersistMac = persistMac;
             PoeDisabled = poeDisabled;
+            PoeKeepStateWhenReboot = poeKeepStateWhenReboot;
             PoePriority = poePriority;
             PortAuth = portAuth;
             PortNetwork = portNetwork;

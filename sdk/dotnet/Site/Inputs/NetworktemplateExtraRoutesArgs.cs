@@ -36,7 +36,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? Preference { get; set; }
 
         /// <summary>
-        /// Next-hop IP Address
+        /// Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
         /// </summary>
         [Input("via", required: true)]
         public Input<string> Via { get; set; } = null!;

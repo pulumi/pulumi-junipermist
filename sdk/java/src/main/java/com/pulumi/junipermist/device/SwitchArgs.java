@@ -551,14 +551,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Switch settings
+     * Switch Management settings
      * 
      */
     @Import(name="switchMgmt")
     private @Nullable Output<SwitchSwitchMgmtArgs> switchMgmt;
 
     /**
-     * @return Switch settings
+     * @return Switch Management settings
      * 
      */
     public Optional<Output<SwitchSwitchMgmtArgs>> switchMgmt() {
@@ -1476,7 +1476,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchMgmt Switch settings
+         * @param switchMgmt Switch Management settings
          * 
          * @return builder
          * 
@@ -1487,7 +1487,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchMgmt Switch settings
+         * @param switchMgmt Switch Management settings
          * 
          * @return builder
          * 

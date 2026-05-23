@@ -256,7 +256,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.SwitchStpConfig?> StpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Switch settings
+        /// Switch Management settings
         /// </summary>
         [Output("switchMgmt")]
         public Output<Outputs.SwitchSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
@@ -663,7 +663,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.SwitchStpConfigArgs>? StpConfig { get; set; }
 
         /// <summary>
-        /// Switch settings
+        /// Switch Management settings
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.SwitchSwitchMgmtArgs>? SwitchMgmt { get; set; }
@@ -1067,7 +1067,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.SwitchStpConfigGetArgs>? StpConfig { get; set; }
 
         /// <summary>
-        /// Switch settings
+        /// Switch Management settings
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.SwitchSwitchMgmtGetArgs>? SwitchMgmt { get; set; }

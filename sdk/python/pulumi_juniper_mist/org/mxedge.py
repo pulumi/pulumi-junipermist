@@ -329,7 +329,6 @@ class _MxedgeState:
                  oob_ip_config: pulumi.Input[Optional['MxedgeOobIpConfigArgs']] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy: pulumi.Input[Optional['MxedgeProxyArgs']] = None,
-                 registration_code: pulumi.Input[Optional[_builtins.str]] = None,
                  services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]] = None,
@@ -349,7 +348,6 @@ class _MxedgeState:
         :param pulumi.Input[_builtins.str] mxcluster_id: MxCluster this MxEdge belongs to
         :param pulumi.Input['MxedgeOobIpConfigArgs'] oob_ip_config: IPconfiguration of the Mist Edge out-of*band management interface
         :param pulumi.Input['MxedgeProxyArgs'] proxy: Proxy Configuration to talk to Mist
-        :param pulumi.Input[_builtins.str] registration_code: Registration code for the MxEdge
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: List of services to run, tunterm only for now
         :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]] tunterm_dhcpd_config: Global and per-VLAN. Property key is the VLAN ID
         :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]] tunterm_extra_routes: Property key is a CIDR
@@ -382,8 +380,6 @@ class _MxedgeState:
             pulumi.set(__self__, "org_id", org_id)
         if proxy is not None:
             pulumi.set(__self__, "proxy", proxy)
-        if registration_code is not None:
-            pulumi.set(__self__, "registration_code", registration_code)
         if services is not None:
             pulumi.set(__self__, "services", services)
         if site_id is not None:
@@ -527,18 +523,6 @@ class _MxedgeState:
     @proxy.setter
     def proxy(self, value: pulumi.Input[Optional['MxedgeProxyArgs']]):
         pulumi.set(self, "proxy", value)
-
-    @_builtins.property
-    @pulumi.getter(name="registrationCode")
-    def registration_code(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Registration code for the MxEdge
-        """
-        return pulumi.get(self, "registration_code")
-
-    @registration_code.setter
-    def registration_code(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "registration_code", value)
 
     @_builtins.property
     @pulumi.getter
@@ -825,7 +809,6 @@ class Mxedge(pulumi.CustomResource):
             __props__.__dict__["versions"] = versions
             __props__.__dict__["mac"] = None
             __props__.__dict__["mxagent_registered"] = None
-            __props__.__dict__["registration_code"] = None
             __props__.__dict__["services"] = None
             __props__.__dict__["tunterm_registered"] = None
         super(Mxedge, __self__).__init__(
@@ -850,7 +833,6 @@ class Mxedge(pulumi.CustomResource):
             oob_ip_config: pulumi.Input[Optional[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             proxy: pulumi.Input[Optional[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']]] = None,
-            registration_code: pulumi.Input[Optional[_builtins.str]] = None,
             services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             tunterm_dhcpd_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]]] = None,
@@ -874,7 +856,6 @@ class Mxedge(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mxcluster_id: MxCluster this MxEdge belongs to
         :param pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']] oob_ip_config: IPconfiguration of the Mist Edge out-of*band management interface
         :param pulumi.Input[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']] proxy: Proxy Configuration to talk to Mist
-        :param pulumi.Input[_builtins.str] registration_code: Registration code for the MxEdge
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: List of services to run, tunterm only for now
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]] tunterm_dhcpd_config: Global and per-VLAN. Property key is the VLAN ID
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]] tunterm_extra_routes: Property key is a CIDR
@@ -899,7 +880,6 @@ class Mxedge(pulumi.CustomResource):
         __props__.__dict__["oob_ip_config"] = oob_ip_config
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["proxy"] = proxy
-        __props__.__dict__["registration_code"] = registration_code
         __props__.__dict__["services"] = services
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["tunterm_dhcpd_config"] = tunterm_dhcpd_config
@@ -917,7 +897,7 @@ class Mxedge(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="claimCode")
-    def claim_code(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def claim_code(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "claim_code")
 
     @_builtins.property
@@ -983,14 +963,6 @@ class Mxedge(pulumi.CustomResource):
         Proxy Configuration to talk to Mist
         """
         return pulumi.get(self, "proxy")
-
-    @_builtins.property
-    @pulumi.getter(name="registrationCode")
-    def registration_code(self) -> pulumi.Output[_builtins.str]:
-        """
-        Registration code for the MxEdge
-        """
-        return pulumi.get(self, "registration_code")
 
     @_builtins.property
     @pulumi.getter

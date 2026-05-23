@@ -68,14 +68,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If `type`==`server`  - optional, `ip` will be used if not provided
+     * If `type`==`server` - optional, `ip` will be used if not provided
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return If `type`==`server`  - optional, `ip` will be used if not provided
+     * @return If `type`==`server` - optional, `ip` will be used if not provided
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -391,7 +391,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param gateway If `type`==`server`  - optional, `ip` will be used if not provided
+         * @param gateway If `type`==`server` - optional, `ip` will be used if not provided
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param gateway If `type`==`server`  - optional, `ip` will be used if not provided
+         * @param gateway If `type`==`server` - optional, `ip` will be used if not provided
          * 
          * @return builder
          * 
