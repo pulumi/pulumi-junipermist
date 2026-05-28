@@ -123,7 +123,7 @@ class Inventory(pulumi.CustomResource):
 
         ->Removing a device from the `devices` list or `inventory` map will NOT release it unless `unclaim_when_destroyed` is set to `true`
 
-        !> The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happens, it is required to force a refresh of the state to synchronise the new list.\\
+        > The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happens, it is required to force a refresh of the state to synchronise the new list.\\
         The `devices` attribute will generate inconsistent result after apply when a device other than the last one is removed from the list or when a device is added somewhere other than the end of the list
 
         ## Example Usage
@@ -181,7 +181,7 @@ class Inventory(pulumi.CustomResource):
 
         ->Removing a device from the `devices` list or `inventory` map will NOT release it unless `unclaim_when_destroyed` is set to `true`
 
-        !> The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happens, it is required to force a refresh of the state to synchronise the new list.\\
+        > The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happens, it is required to force a refresh of the state to synchronise the new list.\\
         The `devices` attribute will generate inconsistent result after apply when a device other than the last one is removed from the list or when a device is added somewhere other than the end of the list
 
         ## Example Usage

@@ -1631,7 +1631,7 @@ class Setting(pulumi.CustomResource):
 
         > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
 
-        !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
+        > Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
 
         ## Example Usage
 
@@ -1724,7 +1724,7 @@ class Setting(pulumi.CustomResource):
 
         > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
 
-        !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
+        > Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
 
         ## Example Usage
 
