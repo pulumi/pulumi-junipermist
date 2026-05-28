@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `junipermist.site.Networktemplate` resource has been created to centralize all the site level switches related settings.
  *
- * !> Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
+ * > Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be successfully deployed to Mist
  *
  * ## Example Usage
  *
