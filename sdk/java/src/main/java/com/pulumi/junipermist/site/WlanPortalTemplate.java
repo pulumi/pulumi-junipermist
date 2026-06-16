@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.junipermist.site.WlanPortalTemplate;
  * import com.pulumi.junipermist.site.WlanPortalTemplateArgs;
  * import com.pulumi.junipermist.site.inputs.WlanPortalTemplatePortalTemplateArgs;
+ * import com.pulumi.junipermist.site.inputs.WlanPortalTemplatePortalTemplateLocalesArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

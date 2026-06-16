@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.junipermist.org.Inventory;
  * import com.pulumi.junipermist.org.InventoryArgs;
+ * import com.pulumi.junipermist.org.inputs.InventoryInventoryArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
