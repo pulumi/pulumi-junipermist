@@ -71,27 +71,27 @@ import javax.annotation.Nullable;
  *                 .autoRouterIdSubnet("172.16.254.0/23")
  *                 .build())
  *             .switches(            
- *                 EvpnTopologySwitchesArgs.builder()
+ *                 com.pulumi.junipermist.org.inputs.EvpnTopologySwitchesArgs.builder()
  *                     .mac("020004000001")
  *                     .role("core")
  *                     .build(),
- *                 EvpnTopologySwitchesArgs.builder()
+ *                 com.pulumi.junipermist.org.inputs.EvpnTopologySwitchesArgs.builder()
  *                     .mac("02000400002")
  *                     .role("core")
  *                     .build(),
- *                 EvpnTopologySwitchesArgs.builder()
+ *                 com.pulumi.junipermist.org.inputs.EvpnTopologySwitchesArgs.builder()
  *                     .mac("02000400003")
  *                     .role("distribution")
  *                     .build(),
- *                 EvpnTopologySwitchesArgs.builder()
+ *                 com.pulumi.junipermist.org.inputs.EvpnTopologySwitchesArgs.builder()
  *                     .mac("02000400004")
  *                     .role("distribution")
  *                     .build(),
- *                 EvpnTopologySwitchesArgs.builder()
+ *                 com.pulumi.junipermist.org.inputs.EvpnTopologySwitchesArgs.builder()
  *                     .mac("02000400005")
  *                     .role("access")
  *                     .build(),
- *                 EvpnTopologySwitchesArgs.builder()
+ *                 com.pulumi.junipermist.org.inputs.EvpnTopologySwitchesArgs.builder()
  *                     .mac("02000400006")
  *                     .role("access")
  *                     .build())

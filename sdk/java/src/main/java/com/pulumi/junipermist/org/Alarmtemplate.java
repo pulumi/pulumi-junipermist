@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.junipermist.org.Alarmtemplate;
  * import com.pulumi.junipermist.org.AlarmtemplateArgs;
  * import com.pulumi.junipermist.org.inputs.AlarmtemplateDeliveryArgs;
+ * import com.pulumi.junipermist.org.inputs.AlarmtemplateRulesArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

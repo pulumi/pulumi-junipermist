@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;
  * import com.pulumi.junipermist.org.inputs.SettingSecurityArgs;
  * import com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingSyntheticTestVlanArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

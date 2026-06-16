@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;
  * import com.pulumi.junipermist.org.inputs.SettingMistNacArgs;
  * import com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingSyntheticTestVlanArgs;
  * import com.pulumi.junipermist.org.inputs.SettingApiPolicyArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
