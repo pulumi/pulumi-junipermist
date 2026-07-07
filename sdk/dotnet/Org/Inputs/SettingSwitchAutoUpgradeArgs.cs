@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<string>? _customVersions;
 
         /// <summary>
-        /// Custom version to be used. The Property Key is the switch hardware and the property value is the firmware version
+        /// Per-model switch firmware versions to use for auto-upgrade
         /// </summary>
         public InputMap<string> CustomVersions
         {
@@ -25,13 +25,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Enable auto upgrade for the switch
+        /// Whether switch auto-upgrade is enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Enable snapshot during the upgrade process
+        /// Whether to create a recovery snapshot during the upgrade process
         /// </summary>
         [Input("snapshot")]
         public Input<bool>? Snapshot { get; set; }

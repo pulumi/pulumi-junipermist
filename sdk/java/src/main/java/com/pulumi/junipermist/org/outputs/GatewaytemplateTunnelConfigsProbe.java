@@ -28,7 +28,7 @@ public final class GatewaytemplateTunnelConfigsProbe {
      */
     private @Nullable Integer timeout;
     /**
-     * @return enum: `http`, `icmp`
+     * @return Protocol used by the custom IPsec tunnel health probe
      * 
      */
     private @Nullable String type;
@@ -56,7 +56,7 @@ public final class GatewaytemplateTunnelConfigsProbe {
         return Optional.ofNullable(this.timeout);
     }
     /**
-     * @return enum: `http`, `icmp`
+     * @return Protocol used by the custom IPsec tunnel health probe
      * 
      */
     public Optional<String> type() {

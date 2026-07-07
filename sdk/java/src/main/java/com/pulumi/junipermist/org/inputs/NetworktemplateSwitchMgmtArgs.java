@@ -22,14 +22,14 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
     public static final NetworktemplateSwitchMgmtArgs Empty = new NetworktemplateSwitchMgmtArgs();
 
     /**
-     * AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * AP affinity threshold for switch management. If set in both site settings and organization settings, the site setting value is used.
      * 
      */
     @Import(name="apAffinityThreshold")
     private @Nullable Output<Integer> apAffinityThreshold;
 
     /**
-     * @return AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * @return AP affinity threshold for switch management. If set in both site settings and organization settings, the site setting value is used.
      * 
      */
     public Optional<Output<Integer>> apAffinityThreshold() {
@@ -96,29 +96,45 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.dhcpOptionFqdn);
     }
 
+    /**
+     * Whether to suppress alarms when the switch out-of-band management interface is down
+     * 
+     */
     @Import(name="disableOobDownAlarm")
     private @Nullable Output<Boolean> disableOobDownAlarm;
 
+    /**
+     * @return Whether to suppress alarms when the switch out-of-band management interface is down
+     * 
+     */
     public Optional<Output<Boolean>> disableOobDownAlarm() {
         return Optional.ofNullable(this.disableOobDownAlarm);
     }
 
+    /**
+     * Whether FIPS mode is enabled on the switch
+     * 
+     */
     @Import(name="fipsEnabled")
     private @Nullable Output<Boolean> fipsEnabled;
 
+    /**
+     * @return Whether FIPS mode is enabled on the switch
+     * 
+     */
     public Optional<Output<Boolean>> fipsEnabled() {
         return Optional.ofNullable(this.fipsEnabled);
     }
 
     /**
-     * Property key is the user name. For Local user authentication
+     * Local switch user accounts keyed by username
      * 
      */
     @Import(name="localAccounts")
     private @Nullable Output<Map<String,NetworktemplateSwitchMgmtLocalAccountsArgs>> localAccounts;
 
     /**
-     * @return Property key is the user name. For Local user authentication
+     * @return Local switch user accounts keyed by username
      * 
      */
     public Optional<Output<Map<String,NetworktemplateSwitchMgmtLocalAccountsArgs>>> localAccounts() {
@@ -126,14 +142,14 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+     * IP address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
      * 
      */
     @Import(name="mxedgeProxyHost")
     private @Nullable Output<String> mxedgeProxyHost;
 
     /**
-     * @return IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+     * @return IP address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
      * 
      */
     public Optional<Output<String>> mxedgeProxyHost() {
@@ -156,18 +172,14 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Restrict inbound-traffic to host
-     * when enabled, all traffic that is not essential to our operation will be dropped
-     * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+     * Control-plane protection settings for the switch
      * 
      */
     @Import(name="protectRe")
     private @Nullable Output<NetworktemplateSwitchMgmtProtectReArgs> protectRe;
 
     /**
-     * @return Restrict inbound-traffic to host
-     * when enabled, all traffic that is not essential to our operation will be dropped
-     * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+     * @return Control-plane protection settings for the switch
      * 
      */
     public Optional<Output<NetworktemplateSwitchMgmtProtectReArgs>> protectRe() {
@@ -189,29 +201,45 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.removeExistingConfigs);
     }
 
+    /**
+     * Root password for local switch access
+     * 
+     */
     @Import(name="rootPassword")
     private @Nullable Output<String> rootPassword;
 
+    /**
+     * @return Root password for local switch access
+     * 
+     */
     public Optional<Output<String>> rootPassword() {
         return Optional.ofNullable(this.rootPassword);
     }
 
+    /**
+     * Management authentication settings using TACACS+
+     * 
+     */
     @Import(name="tacacs")
     private @Nullable Output<NetworktemplateSwitchMgmtTacacsArgs> tacacs;
 
+    /**
+     * @return Management authentication settings using TACACS+
+     * 
+     */
     public Optional<Output<NetworktemplateSwitchMgmtTacacsArgs>> tacacs() {
         return Optional.ofNullable(this.tacacs);
     }
 
     /**
-     * To use mxedge as proxy
+     * Whether to use Mist Edge as a proxy for switch management traffic
      * 
      */
     @Import(name="useMxedgeProxy")
     private @Nullable Output<Boolean> useMxedgeProxy;
 
     /**
-     * @return To use mxedge as proxy
+     * @return Whether to use Mist Edge as a proxy for switch management traffic
      * 
      */
     public Optional<Output<Boolean>> useMxedgeProxy() {
@@ -257,7 +285,7 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param apAffinityThreshold AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         * @param apAffinityThreshold AP affinity threshold for switch management. If set in both site settings and organization settings, the site setting value is used.
          * 
          * @return builder
          * 
@@ -268,7 +296,7 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param apAffinityThreshold AP_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         * @param apAffinityThreshold AP affinity threshold for switch management. If set in both site settings and organization settings, the site setting value is used.
          * 
          * @return builder
          * 
@@ -361,26 +389,50 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
             return dhcpOptionFqdn(Output.of(dhcpOptionFqdn));
         }
 
+        /**
+         * @param disableOobDownAlarm Whether to suppress alarms when the switch out-of-band management interface is down
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableOobDownAlarm(@Nullable Output<Boolean> disableOobDownAlarm) {
             $.disableOobDownAlarm = disableOobDownAlarm;
             return this;
         }
 
+        /**
+         * @param disableOobDownAlarm Whether to suppress alarms when the switch out-of-band management interface is down
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableOobDownAlarm(Boolean disableOobDownAlarm) {
             return disableOobDownAlarm(Output.of(disableOobDownAlarm));
         }
 
+        /**
+         * @param fipsEnabled Whether FIPS mode is enabled on the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder fipsEnabled(@Nullable Output<Boolean> fipsEnabled) {
             $.fipsEnabled = fipsEnabled;
             return this;
         }
 
+        /**
+         * @param fipsEnabled Whether FIPS mode is enabled on the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder fipsEnabled(Boolean fipsEnabled) {
             return fipsEnabled(Output.of(fipsEnabled));
         }
 
         /**
-         * @param localAccounts Property key is the user name. For Local user authentication
+         * @param localAccounts Local switch user accounts keyed by username
          * 
          * @return builder
          * 
@@ -391,7 +443,7 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param localAccounts Property key is the user name. For Local user authentication
+         * @param localAccounts Local switch user accounts keyed by username
          * 
          * @return builder
          * 
@@ -401,7 +453,7 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param mxedgeProxyHost IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+         * @param mxedgeProxyHost IP address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
          * 
          * @return builder
          * 
@@ -412,7 +464,7 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param mxedgeProxyHost IP Address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
+         * @param mxedgeProxyHost IP address or FQDN of the Mist Edge used to proxy the switch management traffic to the Mist Cloud
          * 
          * @return builder
          * 
@@ -443,9 +495,7 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param protectRe Restrict inbound-traffic to host
-         * when enabled, all traffic that is not essential to our operation will be dropped
-         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+         * @param protectRe Control-plane protection settings for the switch
          * 
          * @return builder
          * 
@@ -456,9 +506,7 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param protectRe Restrict inbound-traffic to host
-         * when enabled, all traffic that is not essential to our operation will be dropped
-         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+         * @param protectRe Control-plane protection settings for the switch
          * 
          * @return builder
          * 
@@ -488,26 +536,50 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
             return removeExistingConfigs(Output.of(removeExistingConfigs));
         }
 
+        /**
+         * @param rootPassword Root password for local switch access
+         * 
+         * @return builder
+         * 
+         */
         public Builder rootPassword(@Nullable Output<String> rootPassword) {
             $.rootPassword = rootPassword;
             return this;
         }
 
+        /**
+         * @param rootPassword Root password for local switch access
+         * 
+         * @return builder
+         * 
+         */
         public Builder rootPassword(String rootPassword) {
             return rootPassword(Output.of(rootPassword));
         }
 
+        /**
+         * @param tacacs Management authentication settings using TACACS+
+         * 
+         * @return builder
+         * 
+         */
         public Builder tacacs(@Nullable Output<NetworktemplateSwitchMgmtTacacsArgs> tacacs) {
             $.tacacs = tacacs;
             return this;
         }
 
+        /**
+         * @param tacacs Management authentication settings using TACACS+
+         * 
+         * @return builder
+         * 
+         */
         public Builder tacacs(NetworktemplateSwitchMgmtTacacsArgs tacacs) {
             return tacacs(Output.of(tacacs));
         }
 
         /**
-         * @param useMxedgeProxy To use mxedge as proxy
+         * @param useMxedgeProxy Whether to use Mist Edge as a proxy for switch management traffic
          * 
          * @return builder
          * 
@@ -518,7 +590,7 @@ public final class NetworktemplateSwitchMgmtArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param useMxedgeProxy To use mxedge as proxy
+         * @param useMxedgeProxy Whether to use Mist Edge as a proxy for switch management traffic
          * 
          * @return builder
          * 

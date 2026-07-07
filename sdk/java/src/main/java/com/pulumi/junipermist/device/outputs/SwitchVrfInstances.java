@@ -15,41 +15,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchVrfInstances {
+    /**
+     * @return IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     private @Nullable String evpnAutoLoopbackSubnet;
+    /**
+     * @return IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     private @Nullable String evpnAutoLoopbackSubnet6;
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Additional IPv4 static routes configured for this VRF instance
      * 
      */
     private @Nullable Map<String,SwitchVrfInstancesExtraRoutes> extraRoutes;
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Additional IPv6 static routes configured for this VRF instance
      * 
      */
     private @Nullable Map<String,SwitchVrfInstancesExtraRoutes6> extraRoutes6;
+    /**
+     * @return Names of switch networks included in this VRF instance
+     * 
+     */
     private @Nullable List<String> networks;
 
     private SwitchVrfInstances() {}
+    /**
+     * @return IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     public Optional<String> evpnAutoLoopbackSubnet() {
         return Optional.ofNullable(this.evpnAutoLoopbackSubnet);
     }
+    /**
+     * @return IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     public Optional<String> evpnAutoLoopbackSubnet6() {
         return Optional.ofNullable(this.evpnAutoLoopbackSubnet6);
     }
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Additional IPv4 static routes configured for this VRF instance
      * 
      */
     public Map<String,SwitchVrfInstancesExtraRoutes> extraRoutes() {
         return this.extraRoutes == null ? Map.of() : this.extraRoutes;
     }
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Additional IPv6 static routes configured for this VRF instance
      * 
      */
     public Map<String,SwitchVrfInstancesExtraRoutes6> extraRoutes6() {
         return this.extraRoutes6 == null ? Map.of() : this.extraRoutes6;
     }
+    /**
+     * @return Names of switch networks included in this VRF instance
+     * 
+     */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }

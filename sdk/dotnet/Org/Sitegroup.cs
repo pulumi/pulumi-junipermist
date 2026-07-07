@@ -46,9 +46,15 @@ namespace Pulumi.JuniperMist.Org
     [JuniperMistResourceType("junipermist:org/sitegroup:Sitegroup")]
     public partial class Sitegroup : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Display name of the site group
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the org that owns the site group
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -99,9 +105,15 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class SitegroupArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Display name of the site group
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Identifier of the org that owns the site group
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -113,9 +125,15 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class SitegroupState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Display name of the site group
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Identifier of the org that owns the site group
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 

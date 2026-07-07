@@ -26,84 +26,129 @@ namespace Pulumi.JuniperMist.Org
     [JuniperMistResourceType("junipermist:org/mxedge:Mxedge")]
     public partial class Mxedge : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Registration claim code for the Mist Edge
+        /// </summary>
         [Output("claimCode")]
         public Output<string> ClaimCode { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether this Mist Edge is scoped to a site
+        /// </summary>
+        [Output("forSite")]
+        public Output<bool> ForSite { get; private set; } = null!;
+
+        /// <summary>
+        /// Mist Edge MAC address
+        /// </summary>
         [Output("mac")]
         public Output<string> Mac { get; private set; } = null!;
 
+        /// <summary>
+        /// Mist Edge hardware or virtual appliance model
+        /// </summary>
         [Output("model")]
         public Output<string> Model { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the Mist Edge agent has registered with Mist cloud
+        /// </summary>
         [Output("mxagentRegistered")]
         public Output<bool> MxagentRegistered { get; private set; } = null!;
 
         /// <summary>
-        /// MxCluster this MxEdge belongs to
+        /// Mist Edge cluster identifier that this appliance belongs to
         /// </summary>
         [Output("mxclusterId")]
         public Output<string?> MxclusterId { get; private set; } = null!;
 
+        /// <summary>
+        /// Management credentials and settings for the Mist Edge
+        /// </summary>
         [Output("mxedgeMgmt")]
         public Output<Outputs.MxedgeMxedgeMgmt?> MxedgeMgmt { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the Mist Edge
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Free-form notes for the Mist Edge
+        /// </summary>
         [Output("notes")]
         public Output<string?> Notes { get; private set; } = null!;
 
+        /// <summary>
+        /// Time synchronization servers used by the Mist Edge
+        /// </summary>
         [Output("ntpServers")]
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
         /// <summary>
-        /// IPconfiguration of the Mist Edge out-of*band management interface
+        /// Out-of-band management IP configuration for the Mist Edge
         /// </summary>
         [Output("oobIpConfig")]
         public Output<Outputs.MxedgeOobIpConfig?> OobIpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the org that owns the Mist Edge
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Proxy Configuration to talk to Mist
+        /// Network proxy settings used by the Mist Edge
         /// </summary>
         [Output("proxy")]
         public Output<Outputs.MxedgeProxy?> Proxy { get; private set; } = null!;
 
         /// <summary>
-        /// List of services to run, tunterm only for now
+        /// List of services enabled to run on the Mist Edge
         /// </summary>
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the site when the Mist Edge is site-scoped
+        /// </summary>
         [Output("siteId")]
         public Output<string?> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Global and per-VLAN. Property key is the VLAN ID
+        /// DHCP relay or server settings for Mist Tunneled VLANs
         /// </summary>
         [Output("tuntermDhcpdConfig")]
         public Output<ImmutableDictionary<string, Outputs.MxedgeTuntermDhcpdConfig>?> TuntermDhcpdConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is a CIDR
+        /// Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
         /// </summary>
         [Output("tuntermExtraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.MxedgeTuntermExtraRoutes>?> TuntermExtraRoutes { get; private set; } = null!;
 
+        /// <summary>
+        /// IGMP snooping settings for Mist Tunneled VLANs
+        /// </summary>
         [Output("tuntermIgmpSnoopingConfig")]
         public Output<Outputs.MxedgeTuntermIgmpSnoopingConfig?> TuntermIgmpSnoopingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// IPconfiguration of the Mist Tunnel interface
+        /// Tunnel termination IP configuration for the Mist Edge
         /// </summary>
         [Output("tuntermIpConfig")]
         public Output<Outputs.MxedgeTuntermIpConfig?> TuntermIpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Monitoring checks for tunnel termination reachability
+        /// </summary>
         [Output("tuntermMonitorings")]
         public Output<ImmutableArray<ImmutableArray<Outputs.MxedgeTuntermMonitoring>>> TuntermMonitorings { get; private set; } = null!;
 
+        /// <summary>
+        /// Multicast forwarding settings for tunnel termination
+        /// </summary>
         [Output("tuntermMulticastConfig")]
         public Output<Outputs.MxedgeTuntermMulticastConfig?> TuntermMulticastConfig { get; private set; } = null!;
 
@@ -114,20 +159,26 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.MxedgeTuntermOtherIpConfigs>?> TuntermOtherIpConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Ethernet port configurations
+        /// Port configuration for tunnel termination traffic
         /// </summary>
         [Output("tuntermPortConfig")]
         public Output<Outputs.MxedgeTuntermPortConfig?> TuntermPortConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the tunnel termination service has registered with Mist cloud
+        /// </summary>
         [Output("tuntermRegistered")]
         public Output<bool> TuntermRegistered { get; private set; } = null!;
 
         /// <summary>
-        /// If custom vlan settings are desired
+        /// Switch VLAN settings for tunnel termination
         /// </summary>
         [Output("tuntermSwitchConfig")]
         public Output<ImmutableDictionary<string, Outputs.MxedgeTuntermSwitchConfig>?> TuntermSwitchConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Service version information reported by the Mist Edge
+        /// </summary>
         [Output("versions")]
         public Output<Outputs.MxedgeVersions?> Versions { get; private set; } = null!;
 
@@ -178,29 +229,48 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class MxedgeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Registration claim code for the Mist Edge
+        /// </summary>
         [Input("claimCode")]
         public Input<string>? ClaimCode { get; set; }
 
+        /// <summary>
+        /// Mist Edge hardware or virtual appliance model
+        /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
 
         /// <summary>
-        /// MxCluster this MxEdge belongs to
+        /// Mist Edge cluster identifier that this appliance belongs to
         /// </summary>
         [Input("mxclusterId")]
         public Input<string>? MxclusterId { get; set; }
 
+        /// <summary>
+        /// Management credentials and settings for the Mist Edge
+        /// </summary>
         [Input("mxedgeMgmt")]
         public Input<Inputs.MxedgeMxedgeMgmtArgs>? MxedgeMgmt { get; set; }
 
+        /// <summary>
+        /// Display name of the Mist Edge
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Free-form notes for the Mist Edge
+        /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
         [Input("ntpServers")]
         private InputList<string>? _ntpServers;
+
+        /// <summary>
+        /// Time synchronization servers used by the Mist Edge
+        /// </summary>
         public InputList<string> NtpServers
         {
             get => _ntpServers ?? (_ntpServers = new InputList<string>());
@@ -208,20 +278,26 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// IPconfiguration of the Mist Edge out-of*band management interface
+        /// Out-of-band management IP configuration for the Mist Edge
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.MxedgeOobIpConfigArgs>? OobIpConfig { get; set; }
 
+        /// <summary>
+        /// Identifier of the org that owns the Mist Edge
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Proxy Configuration to talk to Mist
+        /// Network proxy settings used by the Mist Edge
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.MxedgeProxyArgs>? Proxy { get; set; }
 
+        /// <summary>
+        /// Identifier of the site when the Mist Edge is site-scoped
+        /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
@@ -229,7 +305,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.MxedgeTuntermDhcpdConfigArgs>? _tuntermDhcpdConfig;
 
         /// <summary>
-        /// Global and per-VLAN. Property key is the VLAN ID
+        /// DHCP relay or server settings for Mist Tunneled VLANs
         /// </summary>
         public InputMap<Inputs.MxedgeTuntermDhcpdConfigArgs> TuntermDhcpdConfig
         {
@@ -241,7 +317,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.MxedgeTuntermExtraRoutesArgs>? _tuntermExtraRoutes;
 
         /// <summary>
-        /// Property key is a CIDR
+        /// Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
         /// </summary>
         public InputMap<Inputs.MxedgeTuntermExtraRoutesArgs> TuntermExtraRoutes
         {
@@ -249,23 +325,33 @@ namespace Pulumi.JuniperMist.Org
             set => _tuntermExtraRoutes = value;
         }
 
+        /// <summary>
+        /// IGMP snooping settings for Mist Tunneled VLANs
+        /// </summary>
         [Input("tuntermIgmpSnoopingConfig")]
         public Input<Inputs.MxedgeTuntermIgmpSnoopingConfigArgs>? TuntermIgmpSnoopingConfig { get; set; }
 
         /// <summary>
-        /// IPconfiguration of the Mist Tunnel interface
+        /// Tunnel termination IP configuration for the Mist Edge
         /// </summary>
         [Input("tuntermIpConfig")]
         public Input<Inputs.MxedgeTuntermIpConfigArgs>? TuntermIpConfig { get; set; }
 
         [Input("tuntermMonitorings")]
         private InputList<ImmutableArray<Inputs.MxedgeTuntermMonitoringArgs>>? _tuntermMonitorings;
+
+        /// <summary>
+        /// Monitoring checks for tunnel termination reachability
+        /// </summary>
         public InputList<ImmutableArray<Inputs.MxedgeTuntermMonitoringArgs>> TuntermMonitorings
         {
             get => _tuntermMonitorings ?? (_tuntermMonitorings = new InputList<ImmutableArray<Inputs.MxedgeTuntermMonitoringArgs>>());
             set => _tuntermMonitorings = value;
         }
 
+        /// <summary>
+        /// Multicast forwarding settings for tunnel termination
+        /// </summary>
         [Input("tuntermMulticastConfig")]
         public Input<Inputs.MxedgeTuntermMulticastConfigArgs>? TuntermMulticastConfig { get; set; }
 
@@ -282,7 +368,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Ethernet port configurations
+        /// Port configuration for tunnel termination traffic
         /// </summary>
         [Input("tuntermPortConfig")]
         public Input<Inputs.MxedgeTuntermPortConfigArgs>? TuntermPortConfig { get; set; }
@@ -291,7 +377,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.MxedgeTuntermSwitchConfigArgs>? _tuntermSwitchConfig;
 
         /// <summary>
-        /// If custom vlan settings are desired
+        /// Switch VLAN settings for tunnel termination
         /// </summary>
         public InputMap<Inputs.MxedgeTuntermSwitchConfigArgs> TuntermSwitchConfig
         {
@@ -299,6 +385,9 @@ namespace Pulumi.JuniperMist.Org
             set => _tuntermSwitchConfig = value;
         }
 
+        /// <summary>
+        /// Service version information reported by the Mist Edge
+        /// </summary>
         [Input("versions")]
         public Input<Inputs.MxedgeVersionsArgs>? Versions { get; set; }
 
@@ -310,35 +399,66 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class MxedgeState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Registration claim code for the Mist Edge
+        /// </summary>
         [Input("claimCode")]
         public Input<string>? ClaimCode { get; set; }
 
+        /// <summary>
+        /// Whether this Mist Edge is scoped to a site
+        /// </summary>
+        [Input("forSite")]
+        public Input<bool>? ForSite { get; set; }
+
+        /// <summary>
+        /// Mist Edge MAC address
+        /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 
+        /// <summary>
+        /// Mist Edge hardware or virtual appliance model
+        /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
 
+        /// <summary>
+        /// Whether the Mist Edge agent has registered with Mist cloud
+        /// </summary>
         [Input("mxagentRegistered")]
         public Input<bool>? MxagentRegistered { get; set; }
 
         /// <summary>
-        /// MxCluster this MxEdge belongs to
+        /// Mist Edge cluster identifier that this appliance belongs to
         /// </summary>
         [Input("mxclusterId")]
         public Input<string>? MxclusterId { get; set; }
 
+        /// <summary>
+        /// Management credentials and settings for the Mist Edge
+        /// </summary>
         [Input("mxedgeMgmt")]
         public Input<Inputs.MxedgeMxedgeMgmtGetArgs>? MxedgeMgmt { get; set; }
 
+        /// <summary>
+        /// Display name of the Mist Edge
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Free-form notes for the Mist Edge
+        /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
         [Input("ntpServers")]
         private InputList<string>? _ntpServers;
+
+        /// <summary>
+        /// Time synchronization servers used by the Mist Edge
+        /// </summary>
         public InputList<string> NtpServers
         {
             get => _ntpServers ?? (_ntpServers = new InputList<string>());
@@ -346,16 +466,19 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// IPconfiguration of the Mist Edge out-of*band management interface
+        /// Out-of-band management IP configuration for the Mist Edge
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.MxedgeOobIpConfigGetArgs>? OobIpConfig { get; set; }
 
+        /// <summary>
+        /// Identifier of the org that owns the Mist Edge
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Proxy Configuration to talk to Mist
+        /// Network proxy settings used by the Mist Edge
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.MxedgeProxyGetArgs>? Proxy { get; set; }
@@ -364,7 +487,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _services;
 
         /// <summary>
-        /// List of services to run, tunterm only for now
+        /// List of services enabled to run on the Mist Edge
         /// </summary>
         public InputList<string> Services
         {
@@ -372,6 +495,9 @@ namespace Pulumi.JuniperMist.Org
             set => _services = value;
         }
 
+        /// <summary>
+        /// Identifier of the site when the Mist Edge is site-scoped
+        /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
@@ -379,7 +505,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.MxedgeTuntermDhcpdConfigGetArgs>? _tuntermDhcpdConfig;
 
         /// <summary>
-        /// Global and per-VLAN. Property key is the VLAN ID
+        /// DHCP relay or server settings for Mist Tunneled VLANs
         /// </summary>
         public InputMap<Inputs.MxedgeTuntermDhcpdConfigGetArgs> TuntermDhcpdConfig
         {
@@ -391,7 +517,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.MxedgeTuntermExtraRoutesGetArgs>? _tuntermExtraRoutes;
 
         /// <summary>
-        /// Property key is a CIDR
+        /// Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
         /// </summary>
         public InputMap<Inputs.MxedgeTuntermExtraRoutesGetArgs> TuntermExtraRoutes
         {
@@ -399,23 +525,33 @@ namespace Pulumi.JuniperMist.Org
             set => _tuntermExtraRoutes = value;
         }
 
+        /// <summary>
+        /// IGMP snooping settings for Mist Tunneled VLANs
+        /// </summary>
         [Input("tuntermIgmpSnoopingConfig")]
         public Input<Inputs.MxedgeTuntermIgmpSnoopingConfigGetArgs>? TuntermIgmpSnoopingConfig { get; set; }
 
         /// <summary>
-        /// IPconfiguration of the Mist Tunnel interface
+        /// Tunnel termination IP configuration for the Mist Edge
         /// </summary>
         [Input("tuntermIpConfig")]
         public Input<Inputs.MxedgeTuntermIpConfigGetArgs>? TuntermIpConfig { get; set; }
 
         [Input("tuntermMonitorings")]
         private InputList<ImmutableArray<Inputs.MxedgeTuntermMonitoringGetArgs>>? _tuntermMonitorings;
+
+        /// <summary>
+        /// Monitoring checks for tunnel termination reachability
+        /// </summary>
         public InputList<ImmutableArray<Inputs.MxedgeTuntermMonitoringGetArgs>> TuntermMonitorings
         {
             get => _tuntermMonitorings ?? (_tuntermMonitorings = new InputList<ImmutableArray<Inputs.MxedgeTuntermMonitoringGetArgs>>());
             set => _tuntermMonitorings = value;
         }
 
+        /// <summary>
+        /// Multicast forwarding settings for tunnel termination
+        /// </summary>
         [Input("tuntermMulticastConfig")]
         public Input<Inputs.MxedgeTuntermMulticastConfigGetArgs>? TuntermMulticastConfig { get; set; }
 
@@ -432,11 +568,14 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Ethernet port configurations
+        /// Port configuration for tunnel termination traffic
         /// </summary>
         [Input("tuntermPortConfig")]
         public Input<Inputs.MxedgeTuntermPortConfigGetArgs>? TuntermPortConfig { get; set; }
 
+        /// <summary>
+        /// Whether the tunnel termination service has registered with Mist cloud
+        /// </summary>
         [Input("tuntermRegistered")]
         public Input<bool>? TuntermRegistered { get; set; }
 
@@ -444,7 +583,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.MxedgeTuntermSwitchConfigGetArgs>? _tuntermSwitchConfig;
 
         /// <summary>
-        /// If custom vlan settings are desired
+        /// Switch VLAN settings for tunnel termination
         /// </summary>
         public InputMap<Inputs.MxedgeTuntermSwitchConfigGetArgs> TuntermSwitchConfig
         {
@@ -452,6 +591,9 @@ namespace Pulumi.JuniperMist.Org
             set => _tuntermSwitchConfig = value;
         }
 
+        /// <summary>
+        /// Service version information reported by the Mist Edge
+        /// </summary>
         [Input("versions")]
         public Input<Inputs.MxedgeVersionsGetArgs>? Versions { get; set; }
 

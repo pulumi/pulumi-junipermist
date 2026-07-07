@@ -19,12 +19,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayDhcpdConfigConfig {
     /**
-     * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+     * @return If `type`==`local` or `type6`==`local`, DNS servers advertised to DHCP clients
      * 
      */
     private @Nullable List<String> dnsServers;
     /**
-     * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+     * @return If `type`==`local` or `type6`==`local`, DNS search suffixes advertised to DHCP clients
      * 
      * @deprecated
      * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
@@ -33,7 +33,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
     @Deprecated /* Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead */
     private @Nullable List<String> dnsSuffixes;
     /**
-     * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
+     * @return If `type`==`local` or `type6`==`local`, fixed client bindings for local DHCP service
      * 
      */
     private @Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfigFixedBindings> fixedBindings;
@@ -43,22 +43,22 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
      */
     private @Nullable String gateway;
     /**
-     * @return If `type6`==`local`
+     * @return If `type6`==`local`, ending IPv6 address for the DHCP lease pool
      * 
      */
     private @Nullable String ip6End;
     /**
-     * @return If `type6`==`local`
+     * @return If `type6`==`local`, starting IPv6 address for the DHCP lease pool
      * 
      */
     private @Nullable String ip6Start;
     /**
-     * @return If `type`==`local`
+     * @return If `type`==`local`, ending IPv4 address for the DHCP lease pool
      * 
      */
     private @Nullable String ipEnd;
     /**
-     * @return If `type`==`local`
+     * @return If `type`==`local`, starting IPv4 address for the DHCP lease pool
      * 
      */
     private @Nullable String ipStart;
@@ -68,7 +68,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
      */
     private @Nullable Integer leaseTime;
     /**
-     * @return If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+     * @return If `type`==`local` or `type6`==`local`, custom DHCP options advertised to clients
      * 
      */
     private @Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfigOptions> options;
@@ -79,43 +79,41 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
      */
     private @Nullable Boolean serverIdOverride;
     /**
-     * @return If `type`==`relay`
+     * @return If `type`==`relay`, upstream IPv4 DHCP servers
      * 
      */
     private @Nullable List<String> servers;
     /**
-     * @return If `type6`==`relay`
+     * @return If `type6`==`relay`, upstream IPv6 DHCP servers
      * 
      */
     private @Nullable List<String> serversv6s;
     /**
-     * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * @return IPv4 DHCP mode for this network
      * 
      */
     private @Nullable String type;
     /**
-     * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * @return IPv6 DHCP mode for this network
      * 
      */
     private @Nullable String type6;
     /**
-     * @return If `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-     *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-     *   * sub option code: 1-255, sub-option code
+     * @return If `type`==`local` or `type6`==`local`, vendor-encapsulated DHCP options advertised to clients
      * 
      */
     private @Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated;
 
     private DeviceprofileGatewayDhcpdConfigConfig() {}
     /**
-     * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+     * @return If `type`==`local` or `type6`==`local`, DNS servers advertised to DHCP clients
      * 
      */
     public List<String> dnsServers() {
         return this.dnsServers == null ? List.of() : this.dnsServers;
     }
     /**
-     * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+     * @return If `type`==`local` or `type6`==`local`, DNS search suffixes advertised to DHCP clients
      * 
      * @deprecated
      * Configuring `dnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `options` instead
@@ -126,7 +124,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
     /**
-     * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
+     * @return If `type`==`local` or `type6`==`local`, fixed client bindings for local DHCP service
      * 
      */
     public Map<String,DeviceprofileGatewayDhcpdConfigConfigFixedBindings> fixedBindings() {
@@ -140,28 +138,28 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
         return Optional.ofNullable(this.gateway);
     }
     /**
-     * @return If `type6`==`local`
+     * @return If `type6`==`local`, ending IPv6 address for the DHCP lease pool
      * 
      */
     public Optional<String> ip6End() {
         return Optional.ofNullable(this.ip6End);
     }
     /**
-     * @return If `type6`==`local`
+     * @return If `type6`==`local`, starting IPv6 address for the DHCP lease pool
      * 
      */
     public Optional<String> ip6Start() {
         return Optional.ofNullable(this.ip6Start);
     }
     /**
-     * @return If `type`==`local`
+     * @return If `type`==`local`, ending IPv4 address for the DHCP lease pool
      * 
      */
     public Optional<String> ipEnd() {
         return Optional.ofNullable(this.ipEnd);
     }
     /**
-     * @return If `type`==`local`
+     * @return If `type`==`local`, starting IPv4 address for the DHCP lease pool
      * 
      */
     public Optional<String> ipStart() {
@@ -175,7 +173,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
         return Optional.ofNullable(this.leaseTime);
     }
     /**
-     * @return If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+     * @return If `type`==`local` or `type6`==`local`, custom DHCP options advertised to clients
      * 
      */
     public Map<String,DeviceprofileGatewayDhcpdConfigConfigOptions> options() {
@@ -190,37 +188,35 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
         return Optional.ofNullable(this.serverIdOverride);
     }
     /**
-     * @return If `type`==`relay`
+     * @return If `type`==`relay`, upstream IPv4 DHCP servers
      * 
      */
     public List<String> servers() {
         return this.servers == null ? List.of() : this.servers;
     }
     /**
-     * @return If `type6`==`relay`
+     * @return If `type6`==`relay`, upstream IPv6 DHCP servers
      * 
      */
     public List<String> serversv6s() {
         return this.serversv6s == null ? List.of() : this.serversv6s;
     }
     /**
-     * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * @return IPv4 DHCP mode for this network
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * @return IPv6 DHCP mode for this network
      * 
      */
     public Optional<String> type6() {
         return Optional.ofNullable(this.type6);
     }
     /**
-     * @return If `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-     *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-     *   * sub option code: 1-255, sub-option code
+     * @return If `type`==`local` or `type6`==`local`, vendor-encapsulated DHCP options advertised to clients
      * 
      */
     public Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated() {

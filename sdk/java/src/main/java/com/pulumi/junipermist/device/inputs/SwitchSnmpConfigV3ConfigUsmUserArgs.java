@@ -31,14 +31,14 @@ public final class SwitchSnmpConfigV3ConfigUsmUserArgs extends com.pulumi.resour
     }
 
     /**
-     * sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
+     * Authentication protocol used by this SNMPv3 USM user
      * 
      */
     @Import(name="authenticationType")
     private @Nullable Output<String> authenticationType;
 
     /**
-     * @return sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
+     * @return Authentication protocol used by this SNMPv3 USM user
      * 
      */
     public Optional<Output<String>> authenticationType() {
@@ -61,23 +61,31 @@ public final class SwitchSnmpConfigV3ConfigUsmUserArgs extends com.pulumi.resour
     }
 
     /**
-     * enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
+     * Privacy protocol used by this SNMPv3 USM user
      * 
      */
     @Import(name="encryptionType")
     private @Nullable Output<String> encryptionType;
 
     /**
-     * @return enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
+     * @return Privacy protocol used by this SNMPv3 USM user
      * 
      */
     public Optional<Output<String>> encryptionType() {
         return Optional.ofNullable(this.encryptionType);
     }
 
+    /**
+     * Username for the SNMPv3 USM user
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Username for the SNMPv3 USM user
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -132,7 +140,7 @@ public final class SwitchSnmpConfigV3ConfigUsmUserArgs extends com.pulumi.resour
         }
 
         /**
-         * @param authenticationType sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
+         * @param authenticationType Authentication protocol used by this SNMPv3 USM user
          * 
          * @return builder
          * 
@@ -143,7 +151,7 @@ public final class SwitchSnmpConfigV3ConfigUsmUserArgs extends com.pulumi.resour
         }
 
         /**
-         * @param authenticationType sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
+         * @param authenticationType Authentication protocol used by this SNMPv3 USM user
          * 
          * @return builder
          * 
@@ -174,7 +182,7 @@ public final class SwitchSnmpConfigV3ConfigUsmUserArgs extends com.pulumi.resour
         }
 
         /**
-         * @param encryptionType enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
+         * @param encryptionType Privacy protocol used by this SNMPv3 USM user
          * 
          * @return builder
          * 
@@ -185,7 +193,7 @@ public final class SwitchSnmpConfigV3ConfigUsmUserArgs extends com.pulumi.resour
         }
 
         /**
-         * @param encryptionType enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
+         * @param encryptionType Privacy protocol used by this SNMPv3 USM user
          * 
          * @return builder
          * 
@@ -194,11 +202,23 @@ public final class SwitchSnmpConfigV3ConfigUsmUserArgs extends com.pulumi.resour
             return encryptionType(Output.of(encryptionType));
         }
 
+        /**
+         * @param name Username for the SNMPv3 USM user
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Username for the SNMPv3 USM user
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

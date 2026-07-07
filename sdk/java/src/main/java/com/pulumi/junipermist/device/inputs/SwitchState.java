@@ -48,22 +48,30 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
 
     public static final SwitchState Empty = new SwitchState();
 
+    /**
+     * ACL policies applied to traffic handled by this switch
+     * 
+     */
     @Import(name="aclPolicies")
     private @Nullable Output<List<SwitchAclPolicyArgs>> aclPolicies;
 
+    /**
+     * @return ACL policies applied to traffic handled by this switch
+     * 
+     */
     public Optional<Output<List<SwitchAclPolicyArgs>>> aclPolicies() {
         return Optional.ofNullable(this.aclPolicies);
     }
 
     /**
-     * ACL Tags to identify traffic source or destination. Key name is the tag name
+     * ACL tags used by switch access policies
      * 
      */
     @Import(name="aclTags")
     private @Nullable Output<Map<String,SwitchAclTagsArgs>> aclTags;
 
     /**
-     * @return ACL Tags to identify traffic source or destination. Key name is the tag name
+     * @return ACL tags used by switch access policies
      * 
      */
     public Optional<Output<Map<String,SwitchAclTagsArgs>>> aclTags() {
@@ -71,23 +79,31 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands to apply to this switch
      * 
      */
     @Import(name="additionalConfigCmds")
     private @Nullable Output<List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * @return Additional CLI configuration commands to apply to this switch
      * 
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
         return Optional.ofNullable(this.additionalConfigCmds);
     }
 
+    /**
+     * BGP routing configuration for this switch. Property key is the BGP session name
+     * 
+     */
     @Import(name="bgpConfig")
     private @Nullable Output<Map<String,SwitchBgpConfigArgs>> bgpConfig;
 
+    /**
+     * @return BGP routing configuration for this switch. Property key is the BGP session name
+     * 
+     */
     public Optional<Output<Map<String,SwitchBgpConfigArgs>>> bgpConfig() {
         return Optional.ofNullable(this.bgpConfig);
     }
@@ -114,16 +130,32 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deviceId);
     }
 
+    /**
+     * DHCP snooping configuration for this switch
+     * 
+     */
     @Import(name="dhcpSnooping")
     private @Nullable Output<SwitchDhcpSnoopingArgs> dhcpSnooping;
 
+    /**
+     * @return DHCP snooping configuration for this switch
+     * 
+     */
     public Optional<Output<SwitchDhcpSnoopingArgs>> dhcpSnooping() {
         return Optional.ofNullable(this.dhcpSnooping);
     }
 
+    /**
+     * DHCP server configuration served by this switch
+     * 
+     */
     @Import(name="dhcpdConfig")
     private @Nullable Output<SwitchDhcpdConfigArgs> dhcpdConfig;
 
+    /**
+     * @return DHCP server configuration served by this switch
+     * 
+     */
     public Optional<Output<SwitchDhcpdConfigArgs>> dhcpdConfig() {
         return Optional.ofNullable(this.dhcpdConfig);
     }
@@ -152,14 +184,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers configured for this switch
      * 
      */
     @Import(name="dnsServers")
     private @Nullable Output<List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS servers configured for this switch
      * 
      */
     public Optional<Output<List<String>>> dnsServers() {
@@ -167,14 +199,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes configured for this switch
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS search suffixes configured for this switch
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -182,14 +214,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * Additional IPv4 routes configured on this switch
      * 
      */
     @Import(name="extraRoutes")
     private @Nullable Output<Map<String,SwitchExtraRoutesArgs>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Additional IPv4 routes configured on this switch
      * 
      */
     public Optional<Output<Map<String,SwitchExtraRoutesArgs>>> extraRoutes() {
@@ -197,50 +229,74 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * Additional IPv6 routes configured on this switch
      * 
      */
     @Import(name="extraRoutes6")
     private @Nullable Output<Map<String,SwitchExtraRoutes6Args>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Additional IPv6 routes configured on this switch
      * 
      */
     public Optional<Output<Map<String,SwitchExtraRoutes6Args>>> extraRoutes6() {
         return Optional.ofNullable(this.extraRoutes6);
     }
 
+    /**
+     * First custom image URL associated with the switch
+     * 
+     */
     @Import(name="image1Url")
     private @Nullable Output<String> image1Url;
 
+    /**
+     * @return First custom image URL associated with the switch
+     * 
+     */
     public Optional<Output<String>> image1Url() {
         return Optional.ofNullable(this.image1Url);
     }
 
+    /**
+     * Second custom image URL associated with the switch
+     * 
+     */
     @Import(name="image2Url")
     private @Nullable Output<String> image2Url;
 
+    /**
+     * @return Second custom image URL associated with the switch
+     * 
+     */
     public Optional<Output<String>> image2Url() {
         return Optional.ofNullable(this.image2Url);
     }
 
+    /**
+     * Third custom image URL associated with the switch
+     * 
+     */
     @Import(name="image3Url")
     private @Nullable Output<String> image3Url;
 
+    /**
+     * @return Third custom image URL associated with the switch
+     * 
+     */
     public Optional<Output<String>> image3Url() {
         return Optional.ofNullable(this.image3Url);
     }
 
     /**
-     * Junos IP Config
+     * Management IP addressing settings for this switch
      * 
      */
     @Import(name="ipConfig")
     private @Nullable Output<SwitchIpConfigArgs> ipConfig;
 
     /**
-     * @return Junos IP Config
+     * @return Management IP addressing settings for this switch
      * 
      */
     public Optional<Output<SwitchIpConfigArgs>> ipConfig() {
@@ -248,14 +304,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * Local port configuration settings for this switch
      * 
      */
     @Import(name="localPortConfig")
     private @Nullable Output<Map<String,SwitchLocalPortConfigArgs>> localPortConfig;
 
     /**
-     * @return Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * @return Local port configuration settings for this switch
      * 
      */
     public Optional<Output<Map<String,SwitchLocalPortConfigArgs>>> localPortConfig() {
@@ -263,14 +319,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Device MAC address
+     * Switch MAC address used to identify the device
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return Device MAC address
+     * @return Switch MAC address used to identify the device
      * 
      */
     public Optional<Output<String>> mac() {
@@ -331,14 +387,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable mistNac to use RadSec
+     * Mist NAC settings applied to this switch
      * 
      */
     @Import(name="mistNac")
     private @Nullable Output<SwitchMistNacArgs> mistNac;
 
     /**
-     * @return Enable mistNac to use RadSec
+     * @return Mist NAC settings applied to this switch
      * 
      */
     public Optional<Output<SwitchMistNacArgs>> mistNac() {
@@ -346,58 +402,74 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Device Model
+     * Switch model reported for the device
      * 
      */
     @Import(name="model")
     private @Nullable Output<String> model;
 
     /**
-     * @return Device Model
+     * @return Switch model reported for the device
      * 
      */
     public Optional<Output<String>> model() {
         return Optional.ofNullable(this.model);
     }
 
+    /**
+     * Friendly display name assigned to the switch
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Friendly display name assigned to the switch
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * Property key is network name
+     * Layer 3 networks configured for use by this switch
      * 
      */
     @Import(name="networks")
     private @Nullable Output<Map<String,SwitchNetworksArgs>> networks;
 
     /**
-     * @return Property key is network name
+     * @return Layer 3 networks configured for use by this switch
      * 
      */
     public Optional<Output<Map<String,SwitchNetworksArgs>>> networks() {
         return Optional.ofNullable(this.networks);
     }
 
+    /**
+     * Free-form administrative notes for this switch
+     * 
+     */
     @Import(name="notes")
     private @Nullable Output<String> notes;
 
+    /**
+     * @return Free-form administrative notes for this switch
+     * 
+     */
     public Optional<Output<String>> notes() {
         return Optional.ofNullable(this.notes);
     }
 
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers used by this switch
      * 
      */
     @Import(name="ntpServers")
     private @Nullable Output<List<String>> ntpServers;
 
     /**
-     * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * @return NTP servers used by this switch
      * 
      */
     public Optional<Output<List<String>>> ntpServers() {
@@ -405,49 +477,61 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Switch OOB IP Config:
-     *   - If HA configuration: key parameter will be nodeX (eg: node1)
-     *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+     * Out-of-band management IP configuration for this switch
      * 
      */
     @Import(name="oobIpConfig")
     private @Nullable Output<SwitchOobIpConfigArgs> oobIpConfig;
 
     /**
-     * @return Switch OOB IP Config:
-     *   - If HA configuration: key parameter will be nodeX (eg: node1)
-     *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+     * @return Out-of-band management IP configuration for this switch
      * 
      */
     public Optional<Output<SwitchOobIpConfigArgs>> oobIpConfig() {
         return Optional.ofNullable(this.oobIpConfig);
     }
 
+    /**
+     * Organization that owns this switch
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization that owns this switch
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
     /**
-     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * OSPF area configuration for this switch
      * 
      */
     @Import(name="ospfAreas")
     private @Nullable Output<Map<String,SwitchOspfAreasArgs>> ospfAreas;
 
     /**
-     * @return Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * @return OSPF area configuration for this switch
      * 
      */
     public Optional<Output<Map<String,SwitchOspfAreasArgs>>> ospfAreas() {
         return Optional.ofNullable(this.ospfAreas);
     }
 
+    /**
+     * OSPF routing configuration for this switch
+     * 
+     */
     @Import(name="ospfConfig")
     private @Nullable Output<SwitchOspfConfigArgs> ospfConfig;
 
+    /**
+     * @return OSPF routing configuration for this switch
+     * 
+     */
     public Optional<Output<SwitchOspfConfigArgs>> ospfConfig() {
         return Optional.ofNullable(this.ospfConfig);
     }
@@ -468,14 +552,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * Per-port wired configuration for this switch
      * 
      */
     @Import(name="portConfig")
     private @Nullable Output<Map<String,SwitchPortConfigArgs>> portConfig;
 
     /**
-     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * @return Per-port wired configuration for this switch
      * 
      */
     public Optional<Output<Map<String,SwitchPortConfigArgs>>> portConfig() {
@@ -483,14 +567,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the portUsage without having to create a new port_usage.
+     * Per-port overrides for switch port usage attributes
      * 
      */
     @Import(name="portConfigOverwrite")
     private @Nullable Output<Map<String,SwitchPortConfigOverwriteArgs>> portConfigOverwrite;
 
     /**
-     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the portUsage without having to create a new port_usage.
+     * @return Per-port overrides for switch port usage attributes
      * 
      */
     public Optional<Output<Map<String,SwitchPortConfigOverwriteArgs>>> portConfigOverwrite() {
@@ -498,14 +582,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Port mirroring configuration for this switch
      * 
      */
     @Import(name="portMirroring")
     private @Nullable Output<Map<String,SwitchPortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Port mirroring configuration for this switch
      * 
      */
     public Optional<Output<Map<String,SwitchPortMirroringArgs>>> portMirroring() {
@@ -513,14 +597,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * Reusable switch port usage profiles available on this switch
      * 
      */
     @Import(name="portUsages")
     private @Nullable Output<Map<String,SwitchPortUsagesArgs>> portUsages;
 
     /**
-     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * @return Reusable switch port usage profiles available on this switch
      * 
      */
     public Optional<Output<Map<String,SwitchPortUsagesArgs>>> portUsages() {
@@ -528,30 +612,46 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Junos Radius config
+     * RADIUS authentication and accounting settings for this switch
      * 
      */
     @Import(name="radiusConfig")
     private @Nullable Output<SwitchRadiusConfigArgs> radiusConfig;
 
     /**
-     * @return Junos Radius config
+     * @return RADIUS authentication and accounting settings for this switch
      * 
      */
     public Optional<Output<SwitchRadiusConfigArgs>> radiusConfig() {
         return Optional.ofNullable(this.radiusConfig);
     }
 
+    /**
+     * Remote syslog settings for this switch
+     * 
+     */
     @Import(name="remoteSyslog")
     private @Nullable Output<SwitchRemoteSyslogArgs> remoteSyslog;
 
+    /**
+     * @return Remote syslog settings for this switch
+     * 
+     */
     public Optional<Output<SwitchRemoteSyslogArgs>> remoteSyslog() {
         return Optional.ofNullable(this.remoteSyslog);
     }
 
+    /**
+     * Deployment role label for this switch
+     * 
+     */
     @Import(name="role")
     private @Nullable Output<String> role;
 
+    /**
+     * @return Deployment role label for this switch
+     * 
+     */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
@@ -572,14 +672,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the routing policy name
+     * Routing policies applied by this switch
      * 
      */
     @Import(name="routingPolicies")
     private @Nullable Output<Map<String,SwitchRoutingPoliciesArgs>> routingPolicies;
 
     /**
-     * @return Property key is the routing policy name
+     * @return Routing policies applied by this switch
      * 
      */
     public Optional<Output<Map<String,SwitchRoutingPoliciesArgs>>> routingPolicies() {
@@ -587,50 +687,74 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Device Serial
+     * Manufacturer serial number for the switch
      * 
      */
     @Import(name="serial")
     private @Nullable Output<String> serial;
 
     /**
-     * @return Device Serial
+     * @return Manufacturer serial number for the switch
      * 
      */
     public Optional<Output<String>> serial() {
         return Optional.ofNullable(this.serial);
     }
 
+    /**
+     * Site where this switch is assigned
+     * 
+     */
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
+    /**
+     * @return Site where this switch is assigned
+     * 
+     */
     public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
+    /**
+     * SNMP configuration for this switch
+     * 
+     */
     @Import(name="snmpConfig")
     private @Nullable Output<SwitchSnmpConfigArgs> snmpConfig;
 
+    /**
+     * @return SNMP configuration for this switch
+     * 
+     */
     public Optional<Output<SwitchSnmpConfigArgs>> snmpConfig() {
         return Optional.ofNullable(this.snmpConfig);
     }
 
+    /**
+     * Spanning Tree Protocol configuration for this switch
+     * 
+     */
     @Import(name="stpConfig")
     private @Nullable Output<SwitchStpConfigArgs> stpConfig;
 
+    /**
+     * @return Spanning Tree Protocol configuration for this switch
+     * 
+     */
     public Optional<Output<SwitchStpConfigArgs>> stpConfig() {
         return Optional.ofNullable(this.stpConfig);
     }
 
     /**
-     * Switch Management settings
+     * Management-plane settings for this switch
      * 
      */
     @Import(name="switchMgmt")
     private @Nullable Output<SwitchSwitchMgmtArgs> switchMgmt;
 
     /**
-     * @return Switch Management settings
+     * @return Management-plane settings for this switch
      * 
      */
     public Optional<Output<SwitchSwitchMgmtArgs>> switchMgmt() {
@@ -638,14 +762,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Device Type. enum: `switch`
+     * Device type discriminator for switch records
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Device Type. enum: `switch`
+     * @return Device type discriminator for switch records
      * 
      */
     public Optional<Output<String>> type() {
@@ -668,14 +792,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this switch
      * 
      */
     @Import(name="vars")
     private @Nullable Output<Map<String,String>> vars;
 
     /**
-     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Variable values that override site variables for this switch
      * 
      */
     public Optional<Output<Map<String,String>>> vars() {
@@ -683,36 +807,44 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required for preprovisioned Virtual Chassis
+     * Virtual Chassis membership and provisioning settings for this switch
      * 
      */
     @Import(name="virtualChassis")
     private @Nullable Output<SwitchVirtualChassisArgs> virtualChassis;
 
     /**
-     * @return Required for preprovisioned Virtual Chassis
+     * @return Virtual Chassis membership and provisioning settings for this switch
      * 
      */
     public Optional<Output<SwitchVirtualChassisArgs>> virtualChassis() {
         return Optional.ofNullable(this.virtualChassis);
     }
 
+    /**
+     * VRF configuration applied to this switch
+     * 
+     */
     @Import(name="vrfConfig")
     private @Nullable Output<SwitchVrfConfigArgs> vrfConfig;
 
+    /**
+     * @return VRF configuration applied to this switch
+     * 
+     */
     public Optional<Output<SwitchVrfConfigArgs>> vrfConfig() {
         return Optional.ofNullable(this.vrfConfig);
     }
 
     /**
-     * Property key is the network name
+     * VRF instances configured on this switch
      * 
      */
     @Import(name="vrfInstances")
     private @Nullable Output<Map<String,SwitchVrfInstancesArgs>> vrfInstances;
 
     /**
-     * @return Property key is the network name
+     * @return VRF instances configured on this switch
      * 
      */
     public Optional<Output<Map<String,SwitchVrfInstancesArgs>>> vrfInstances() {
@@ -720,14 +852,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Junos VRRP config
+     * VRRP configuration applied to this switch
      * 
      */
     @Import(name="vrrpConfig")
     private @Nullable Output<SwitchVrrpConfigArgs> vrrpConfig;
 
     /**
-     * @return Junos VRRP config
+     * @return VRRP configuration applied to this switch
      * 
      */
     public Optional<Output<SwitchVrrpConfigArgs>> vrrpConfig() {
@@ -735,14 +867,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * X in pixel
+     * Horizontal map position of the switch, in pixels
      * 
      */
     @Import(name="x")
     private @Nullable Output<Double> x;
 
     /**
-     * @return X in pixel
+     * @return Horizontal map position of the switch, in pixels
      * 
      */
     public Optional<Output<Double>> x() {
@@ -750,14 +882,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Y in pixel
+     * Vertical map position of the switch, in pixels
      * 
      */
     @Import(name="y")
     private @Nullable Output<Double> y;
 
     /**
-     * @return Y in pixel
+     * @return Vertical map position of the switch, in pixels
      * 
      */
     public Optional<Output<Double>> y() {
@@ -843,21 +975,39 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
             $ = new SwitchState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aclPolicies ACL policies applied to traffic handled by this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder aclPolicies(@Nullable Output<List<SwitchAclPolicyArgs>> aclPolicies) {
             $.aclPolicies = aclPolicies;
             return this;
         }
 
+        /**
+         * @param aclPolicies ACL policies applied to traffic handled by this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder aclPolicies(List<SwitchAclPolicyArgs> aclPolicies) {
             return aclPolicies(Output.of(aclPolicies));
         }
 
+        /**
+         * @param aclPolicies ACL policies applied to traffic handled by this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder aclPolicies(SwitchAclPolicyArgs... aclPolicies) {
             return aclPolicies(List.of(aclPolicies));
         }
 
         /**
-         * @param aclTags ACL Tags to identify traffic source or destination. Key name is the tag name
+         * @param aclTags ACL tags used by switch access policies
          * 
          * @return builder
          * 
@@ -868,7 +1018,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclTags ACL Tags to identify traffic source or destination. Key name is the tag name
+         * @param aclTags ACL tags used by switch access policies
          * 
          * @return builder
          * 
@@ -878,7 +1028,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional CLI configuration commands to apply to this switch
          * 
          * @return builder
          * 
@@ -889,7 +1039,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional CLI configuration commands to apply to this switch
          * 
          * @return builder
          * 
@@ -899,7 +1049,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
+         * @param additionalConfigCmds Additional CLI configuration commands to apply to this switch
          * 
          * @return builder
          * 
@@ -908,11 +1058,23 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
             return additionalConfigCmds(List.of(additionalConfigCmds));
         }
 
+        /**
+         * @param bgpConfig BGP routing configuration for this switch. Property key is the BGP session name
+         * 
+         * @return builder
+         * 
+         */
         public Builder bgpConfig(@Nullable Output<Map<String,SwitchBgpConfigArgs>> bgpConfig) {
             $.bgpConfig = bgpConfig;
             return this;
         }
 
+        /**
+         * @param bgpConfig BGP routing configuration for this switch. Property key is the BGP session name
+         * 
+         * @return builder
+         * 
+         */
         public Builder bgpConfig(Map<String,SwitchBgpConfigArgs> bgpConfig) {
             return bgpConfig(Output.of(bgpConfig));
         }
@@ -947,20 +1109,44 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
             return deviceId(Output.of(deviceId));
         }
 
+        /**
+         * @param dhcpSnooping DHCP snooping configuration for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcpSnooping(@Nullable Output<SwitchDhcpSnoopingArgs> dhcpSnooping) {
             $.dhcpSnooping = dhcpSnooping;
             return this;
         }
 
+        /**
+         * @param dhcpSnooping DHCP snooping configuration for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcpSnooping(SwitchDhcpSnoopingArgs dhcpSnooping) {
             return dhcpSnooping(Output.of(dhcpSnooping));
         }
 
+        /**
+         * @param dhcpdConfig DHCP server configuration served by this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcpdConfig(@Nullable Output<SwitchDhcpdConfigArgs> dhcpdConfig) {
             $.dhcpdConfig = dhcpdConfig;
             return this;
         }
 
+        /**
+         * @param dhcpdConfig DHCP server configuration served by this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcpdConfig(SwitchDhcpdConfigArgs dhcpdConfig) {
             return dhcpdConfig(Output.of(dhcpdConfig));
         }
@@ -995,7 +1181,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsServers DNS servers configured for this switch
          * 
          * @return builder
          * 
@@ -1006,7 +1192,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsServers DNS servers configured for this switch
          * 
          * @return builder
          * 
@@ -1016,7 +1202,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServers Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsServers DNS servers configured for this switch
          * 
          * @return builder
          * 
@@ -1026,7 +1212,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsSuffixes DNS search suffixes configured for this switch
          * 
          * @return builder
          * 
@@ -1037,7 +1223,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsSuffixes DNS search suffixes configured for this switch
          * 
          * @return builder
          * 
@@ -1047,7 +1233,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsSuffixes Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+         * @param dnsSuffixes DNS search suffixes configured for this switch
          * 
          * @return builder
          * 
@@ -1057,7 +1243,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * @param extraRoutes Additional IPv4 routes configured on this switch
          * 
          * @return builder
          * 
@@ -1068,7 +1254,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * @param extraRoutes Additional IPv4 routes configured on this switch
          * 
          * @return builder
          * 
@@ -1078,7 +1264,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * @param extraRoutes6 Additional IPv6 routes configured on this switch
          * 
          * @return builder
          * 
@@ -1089,7 +1275,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * @param extraRoutes6 Additional IPv6 routes configured on this switch
          * 
          * @return builder
          * 
@@ -1098,35 +1284,71 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
             return extraRoutes6(Output.of(extraRoutes6));
         }
 
+        /**
+         * @param image1Url First custom image URL associated with the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder image1Url(@Nullable Output<String> image1Url) {
             $.image1Url = image1Url;
             return this;
         }
 
+        /**
+         * @param image1Url First custom image URL associated with the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder image1Url(String image1Url) {
             return image1Url(Output.of(image1Url));
         }
 
+        /**
+         * @param image2Url Second custom image URL associated with the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder image2Url(@Nullable Output<String> image2Url) {
             $.image2Url = image2Url;
             return this;
         }
 
+        /**
+         * @param image2Url Second custom image URL associated with the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder image2Url(String image2Url) {
             return image2Url(Output.of(image2Url));
         }
 
+        /**
+         * @param image3Url Third custom image URL associated with the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder image3Url(@Nullable Output<String> image3Url) {
             $.image3Url = image3Url;
             return this;
         }
 
+        /**
+         * @param image3Url Third custom image URL associated with the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder image3Url(String image3Url) {
             return image3Url(Output.of(image3Url));
         }
 
         /**
-         * @param ipConfig Junos IP Config
+         * @param ipConfig Management IP addressing settings for this switch
          * 
          * @return builder
          * 
@@ -1137,7 +1359,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipConfig Junos IP Config
+         * @param ipConfig Management IP addressing settings for this switch
          * 
          * @return builder
          * 
@@ -1147,7 +1369,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localPortConfig Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+         * @param localPortConfig Local port configuration settings for this switch
          * 
          * @return builder
          * 
@@ -1158,7 +1380,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localPortConfig Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+         * @param localPortConfig Local port configuration settings for this switch
          * 
          * @return builder
          * 
@@ -1168,7 +1390,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac Device MAC address
+         * @param mac Switch MAC address used to identify the device
          * 
          * @return builder
          * 
@@ -1179,7 +1401,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac Device MAC address
+         * @param mac Switch MAC address used to identify the device
          * 
          * @return builder
          * 
@@ -1260,7 +1482,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mistNac Enable mistNac to use RadSec
+         * @param mistNac Mist NAC settings applied to this switch
          * 
          * @return builder
          * 
@@ -1271,7 +1493,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mistNac Enable mistNac to use RadSec
+         * @param mistNac Mist NAC settings applied to this switch
          * 
          * @return builder
          * 
@@ -1281,7 +1503,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param model Device Model
+         * @param model Switch model reported for the device
          * 
          * @return builder
          * 
@@ -1292,7 +1514,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param model Device Model
+         * @param model Switch model reported for the device
          * 
          * @return builder
          * 
@@ -1301,17 +1523,29 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
             return model(Output.of(model));
         }
 
+        /**
+         * @param name Friendly display name assigned to the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Friendly display name assigned to the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param networks Property key is network name
+         * @param networks Layer 3 networks configured for use by this switch
          * 
          * @return builder
          * 
@@ -1322,7 +1556,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networks Property key is network name
+         * @param networks Layer 3 networks configured for use by this switch
          * 
          * @return builder
          * 
@@ -1331,17 +1565,29 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
             return networks(Output.of(networks));
         }
 
+        /**
+         * @param notes Free-form administrative notes for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder notes(@Nullable Output<String> notes) {
             $.notes = notes;
             return this;
         }
 
+        /**
+         * @param notes Free-form administrative notes for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder notes(String notes) {
             return notes(Output.of(notes));
         }
 
         /**
-         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers NTP servers used by this switch
          * 
          * @return builder
          * 
@@ -1352,7 +1598,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers NTP servers used by this switch
          * 
          * @return builder
          * 
@@ -1362,7 +1608,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers NTP servers used by this switch
          * 
          * @return builder
          * 
@@ -1372,9 +1618,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oobIpConfig Switch OOB IP Config:
-         *   - If HA configuration: key parameter will be nodeX (eg: node1)
-         *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+         * @param oobIpConfig Out-of-band management IP configuration for this switch
          * 
          * @return builder
          * 
@@ -1385,9 +1629,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oobIpConfig Switch OOB IP Config:
-         *   - If HA configuration: key parameter will be nodeX (eg: node1)
-         *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+         * @param oobIpConfig Out-of-band management IP configuration for this switch
          * 
          * @return builder
          * 
@@ -1396,17 +1638,29 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
             return oobIpConfig(Output.of(oobIpConfig));
         }
 
+        /**
+         * @param orgId Organization that owns this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param ospfAreas Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+         * @param ospfAreas OSPF area configuration for this switch
          * 
          * @return builder
          * 
@@ -1417,7 +1671,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ospfAreas Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+         * @param ospfAreas OSPF area configuration for this switch
          * 
          * @return builder
          * 
@@ -1426,11 +1680,23 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
             return ospfAreas(Output.of(ospfAreas));
         }
 
+        /**
+         * @param ospfConfig OSPF routing configuration for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder ospfConfig(@Nullable Output<SwitchOspfConfigArgs> ospfConfig) {
             $.ospfConfig = ospfConfig;
             return this;
         }
 
+        /**
+         * @param ospfConfig OSPF routing configuration for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder ospfConfig(SwitchOspfConfigArgs ospfConfig) {
             return ospfConfig(Output.of(ospfConfig));
         }
@@ -1457,7 +1723,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfig Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+         * @param portConfig Per-port wired configuration for this switch
          * 
          * @return builder
          * 
@@ -1468,7 +1734,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfig Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+         * @param portConfig Per-port wired configuration for this switch
          * 
          * @return builder
          * 
@@ -1478,7 +1744,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfigOverwrite Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the portUsage without having to create a new port_usage.
+         * @param portConfigOverwrite Per-port overrides for switch port usage attributes
          * 
          * @return builder
          * 
@@ -1489,7 +1755,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portConfigOverwrite Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the portUsage without having to create a new port_usage.
+         * @param portConfigOverwrite Per-port overrides for switch port usage attributes
          * 
          * @return builder
          * 
@@ -1499,7 +1765,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+         * @param portMirroring Port mirroring configuration for this switch
          * 
          * @return builder
          * 
@@ -1510,7 +1776,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+         * @param portMirroring Port mirroring configuration for this switch
          * 
          * @return builder
          * 
@@ -1520,7 +1786,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * @param portUsages Reusable switch port usage profiles available on this switch
          * 
          * @return builder
          * 
@@ -1531,7 +1797,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * @param portUsages Reusable switch port usage profiles available on this switch
          * 
          * @return builder
          * 
@@ -1541,7 +1807,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusConfig Junos Radius config
+         * @param radiusConfig RADIUS authentication and accounting settings for this switch
          * 
          * @return builder
          * 
@@ -1552,7 +1818,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radiusConfig Junos Radius config
+         * @param radiusConfig RADIUS authentication and accounting settings for this switch
          * 
          * @return builder
          * 
@@ -1561,20 +1827,44 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
             return radiusConfig(Output.of(radiusConfig));
         }
 
+        /**
+         * @param remoteSyslog Remote syslog settings for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder remoteSyslog(@Nullable Output<SwitchRemoteSyslogArgs> remoteSyslog) {
             $.remoteSyslog = remoteSyslog;
             return this;
         }
 
+        /**
+         * @param remoteSyslog Remote syslog settings for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder remoteSyslog(SwitchRemoteSyslogArgs remoteSyslog) {
             return remoteSyslog(Output.of(remoteSyslog));
         }
 
+        /**
+         * @param role Deployment role label for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(@Nullable Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role Deployment role label for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }
@@ -1601,7 +1891,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routingPolicies Property key is the routing policy name
+         * @param routingPolicies Routing policies applied by this switch
          * 
          * @return builder
          * 
@@ -1612,7 +1902,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routingPolicies Property key is the routing policy name
+         * @param routingPolicies Routing policies applied by this switch
          * 
          * @return builder
          * 
@@ -1622,7 +1912,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serial Device Serial
+         * @param serial Manufacturer serial number for the switch
          * 
          * @return builder
          * 
@@ -1633,7 +1923,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serial Device Serial
+         * @param serial Manufacturer serial number for the switch
          * 
          * @return builder
          * 
@@ -1642,35 +1932,71 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
             return serial(Output.of(serial));
         }
 
+        /**
+         * @param siteId Site where this switch is assigned
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Site where this switch is assigned
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
+        /**
+         * @param snmpConfig SNMP configuration for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder snmpConfig(@Nullable Output<SwitchSnmpConfigArgs> snmpConfig) {
             $.snmpConfig = snmpConfig;
             return this;
         }
 
+        /**
+         * @param snmpConfig SNMP configuration for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder snmpConfig(SwitchSnmpConfigArgs snmpConfig) {
             return snmpConfig(Output.of(snmpConfig));
         }
 
+        /**
+         * @param stpConfig Spanning Tree Protocol configuration for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder stpConfig(@Nullable Output<SwitchStpConfigArgs> stpConfig) {
             $.stpConfig = stpConfig;
             return this;
         }
 
+        /**
+         * @param stpConfig Spanning Tree Protocol configuration for this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder stpConfig(SwitchStpConfigArgs stpConfig) {
             return stpConfig(Output.of(stpConfig));
         }
 
         /**
-         * @param switchMgmt Switch Management settings
+         * @param switchMgmt Management-plane settings for this switch
          * 
          * @return builder
          * 
@@ -1681,7 +2007,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchMgmt Switch Management settings
+         * @param switchMgmt Management-plane settings for this switch
          * 
          * @return builder
          * 
@@ -1691,7 +2017,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Device Type. enum: `switch`
+         * @param type Device type discriminator for switch records
          * 
          * @return builder
          * 
@@ -1702,7 +2028,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Device Type. enum: `switch`
+         * @param type Device type discriminator for switch records
          * 
          * @return builder
          * 
@@ -1733,7 +2059,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Variable values that override site variables for this switch
          * 
          * @return builder
          * 
@@ -1744,7 +2070,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Variable values that override site variables for this switch
          * 
          * @return builder
          * 
@@ -1754,7 +2080,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualChassis Required for preprovisioned Virtual Chassis
+         * @param virtualChassis Virtual Chassis membership and provisioning settings for this switch
          * 
          * @return builder
          * 
@@ -1765,7 +2091,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualChassis Required for preprovisioned Virtual Chassis
+         * @param virtualChassis Virtual Chassis membership and provisioning settings for this switch
          * 
          * @return builder
          * 
@@ -1774,17 +2100,29 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
             return virtualChassis(Output.of(virtualChassis));
         }
 
+        /**
+         * @param vrfConfig VRF configuration applied to this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrfConfig(@Nullable Output<SwitchVrfConfigArgs> vrfConfig) {
             $.vrfConfig = vrfConfig;
             return this;
         }
 
+        /**
+         * @param vrfConfig VRF configuration applied to this switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder vrfConfig(SwitchVrfConfigArgs vrfConfig) {
             return vrfConfig(Output.of(vrfConfig));
         }
 
         /**
-         * @param vrfInstances Property key is the network name
+         * @param vrfInstances VRF instances configured on this switch
          * 
          * @return builder
          * 
@@ -1795,7 +2133,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vrfInstances Property key is the network name
+         * @param vrfInstances VRF instances configured on this switch
          * 
          * @return builder
          * 
@@ -1805,7 +2143,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vrrpConfig Junos VRRP config
+         * @param vrrpConfig VRRP configuration applied to this switch
          * 
          * @return builder
          * 
@@ -1816,7 +2154,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vrrpConfig Junos VRRP config
+         * @param vrrpConfig VRRP configuration applied to this switch
          * 
          * @return builder
          * 
@@ -1826,7 +2164,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param x X in pixel
+         * @param x Horizontal map position of the switch, in pixels
          * 
          * @return builder
          * 
@@ -1837,7 +2175,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param x X in pixel
+         * @param x Horizontal map position of the switch, in pixels
          * 
          * @return builder
          * 
@@ -1847,7 +2185,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param y Y in pixel
+         * @param y Vertical map position of the switch, in pixels
          * 
          * @return builder
          * 
@@ -1858,7 +2196,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param y Y in pixel
+         * @param y Vertical map position of the switch, in pixels
          * 
          * @return builder
          * 

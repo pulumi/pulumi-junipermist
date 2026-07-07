@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchRemoteSyslogUserContent {
     /**
-     * @return enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+     * @return Syslog facility to match for this selector
      * 
      */
     private @Nullable String facility;
     /**
-     * @return enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+     * @return Syslog severity to match for this selector
      * 
      */
     private @Nullable String severity;
 
     private SwitchRemoteSyslogUserContent() {}
     /**
-     * @return enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+     * @return Syslog facility to match for this selector
      * 
      */
     public Optional<String> facility() {
         return Optional.ofNullable(this.facility);
     }
     /**
-     * @return enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+     * @return Syslog severity to match for this selector
      * 
      */
     public Optional<String> severity() {

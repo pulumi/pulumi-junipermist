@@ -34,14 +34,14 @@ public final class SwitchDhcpdConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If set to `true`, enable the DHCP server
+     * Whether switch DHCP server or relay configuration is enabled
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return If set to `true`, enable the DHCP server
+     * @return Whether switch DHCP server or relay configuration is enabled
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -95,7 +95,7 @@ public final class SwitchDhcpdConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled If set to `true`, enable the DHCP server
+         * @param enabled Whether switch DHCP server or relay configuration is enabled
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class SwitchDhcpdConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled If set to `true`, enable the DHCP server
+         * @param enabled Whether switch DHCP server or relay configuration is enabled
          * 
          * @return builder
          * 

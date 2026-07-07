@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         [Input("acctServers")]
         private InputList<Inputs.SwitchSwitchMgmtTacacsAcctServerGetArgs>? _acctServers;
+
+        /// <summary>
+        /// TACACS+ accounting servers used for switch management sessions
+        /// </summary>
         public InputList<Inputs.SwitchSwitchMgmtTacacsAcctServerGetArgs> AcctServers
         {
             get => _acctServers ?? (_acctServers = new InputList<Inputs.SwitchSwitchMgmtTacacsAcctServerGetArgs>());
@@ -21,22 +25,29 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `Admin`, `Helpdesk`, `None`, `Read`
+        /// Default switch-management role to use for TACACS+ logins
         /// </summary>
         [Input("defaultRole")]
         public Input<string>? DefaultRole { get; set; }
 
+        /// <summary>
+        /// Whether TACACS+ is enabled for switch management authentication
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Which network the TACACS server resides
+        /// Source network used for connectivity to the TACACS+ servers
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         [Input("tacplusServers")]
         private InputList<Inputs.SwitchSwitchMgmtTacacsTacplusServerGetArgs>? _tacplusServers;
+
+        /// <summary>
+        /// TACACS+ authentication servers used for switch management logins
+        /// </summary>
         public InputList<Inputs.SwitchSwitchMgmtTacacsTacplusServerGetArgs> TacplusServers
         {
             get => _tacplusServers ?? (_tacplusServers = new InputList<Inputs.SwitchSwitchMgmtTacacsTacplusServerGetArgs>());

@@ -17,16 +17,32 @@ public final class MxedgeTuntermSwitchConfigArgs extends com.pulumi.resources.Re
 
     public static final MxedgeTuntermSwitchConfigArgs Empty = new MxedgeTuntermSwitchConfigArgs();
 
+    /**
+     * Untagged VLAN ID for this tunnel termination switch port
+     * 
+     */
     @Import(name="portVlanId")
     private @Nullable Output<Integer> portVlanId;
 
+    /**
+     * @return Untagged VLAN ID for this tunnel termination switch port
+     * 
+     */
     public Optional<Output<Integer>> portVlanId() {
         return Optional.ofNullable(this.portVlanId);
     }
 
+    /**
+     * List of tagged VLAN IDs allowed on this tunnel termination switch port
+     * 
+     */
     @Import(name="vlanIds")
     private @Nullable Output<List<String>> vlanIds;
 
+    /**
+     * @return List of tagged VLAN IDs allowed on this tunnel termination switch port
+     * 
+     */
     public Optional<Output<List<String>>> vlanIds() {
         return Optional.ofNullable(this.vlanIds);
     }
@@ -56,24 +72,54 @@ public final class MxedgeTuntermSwitchConfigArgs extends com.pulumi.resources.Re
             $ = new MxedgeTuntermSwitchConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param portVlanId Untagged VLAN ID for this tunnel termination switch port
+         * 
+         * @return builder
+         * 
+         */
         public Builder portVlanId(@Nullable Output<Integer> portVlanId) {
             $.portVlanId = portVlanId;
             return this;
         }
 
+        /**
+         * @param portVlanId Untagged VLAN ID for this tunnel termination switch port
+         * 
+         * @return builder
+         * 
+         */
         public Builder portVlanId(Integer portVlanId) {
             return portVlanId(Output.of(portVlanId));
         }
 
+        /**
+         * @param vlanIds List of tagged VLAN IDs allowed on this tunnel termination switch port
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanIds(@Nullable Output<List<String>> vlanIds) {
             $.vlanIds = vlanIds;
             return this;
         }
 
+        /**
+         * @param vlanIds List of tagged VLAN IDs allowed on this tunnel termination switch port
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanIds(List<String> vlanIds) {
             return vlanIds(Output.of(vlanIds));
         }
 
+        /**
+         * @param vlanIds List of tagged VLAN IDs allowed on this tunnel termination switch port
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanIds(String... vlanIds) {
             return vlanIds(List.of(vlanIds));
         }

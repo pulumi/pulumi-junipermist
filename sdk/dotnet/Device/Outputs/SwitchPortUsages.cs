@@ -54,11 +54,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. Link connection mode. enum: `Auto`, `Full`, `Half`
+        /// Only if `Mode`!=`Dynamic`. Link duplex mode for this port usage
         /// </summary>
         public readonly string? Duplex;
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. Networks or VLANs that RADIUS can return for dynamic VLAN assignment
         /// </summary>
         public readonly ImmutableArray<string> DynamicVlanNetworks;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? MacAuthPreferred;
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `EnableMacAuth` ==`True`. This type is ignored if MistNac is enabled. enum: `eap-md5`, `eap-peap`, `Pap`
+        /// Only if `Mode`!=`Dynamic` and `EnableMacAuth`==`True`. MAC authentication protocol to use; ignored if Mist NAC is enabled
         /// </summary>
         public readonly string? MacAuthProtocol;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? MacLimit;
         /// <summary>
-        /// `Mode`==`Dynamic` must only be used if the port usage name is `Dynamic`. enum: `Access`, `Dynamic`, `Inet`, `Trunk`
+        /// Switching mode for this port usage
         /// </summary>
         public readonly string? Mode;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Mtu;
         /// <summary>
-        /// Only if `Mode`==`Trunk`, the list of network/vlans
+        /// Only if `Mode`==`Trunk`. Network or VLAN names to trunk
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
@@ -122,11 +122,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? PoeKeepStateWhenReboot;
         /// <summary>
-        /// PoE priority. enum: `Low`, `High`
+        /// Only if `Mode`!=`Dynamic`. PoE priority for ports using this port usage
         /// </summary>
         public readonly string? PoePriority;
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`. If dot1x is desired, set to dot1x. enum: `Dot1x`
+        /// Only if `Mode`!=`Dynamic`. 802.1X authentication mode for this port usage
         /// </summary>
         public readonly string? PortAuth;
         /// <summary>
@@ -138,11 +138,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ReauthInterval;
         /// <summary>
-        /// Only if `Mode`==`Dynamic` Control when the DPC port should be changed to the default port usage. enum: `LinkDown`, `None` (let the DPC port keep at the current port usage)
+        /// Only if `Mode`==`Dynamic`. Condition that resets a dynamic port to the default port usage
         /// </summary>
         public readonly string? ResetDefaultWhen;
         /// <summary>
-        /// Only if `Mode`==`Dynamic`
+        /// Only if `Mode`==`Dynamic`. Dynamic matching rules that select the port usage to apply
         /// </summary>
         public readonly ImmutableArray<Outputs.SwitchPortUsagesRule> Rules;
         /// <summary>
@@ -150,15 +150,19 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ServerFailNetwork;
         /// <summary>
-        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. When radius server reject / fails
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. Interval, in seconds. Sets the wait time before retrying authentication after RADIUS failure to reduce client flapping. Range 120-65535
+        /// </summary>
+        public readonly int? ServerFailRetryInterval;
+        /// <summary>
+        /// Only if `Mode`!=`Dynamic` and `PortAuth`==`Dot1x`. When RADIUS server reject / fails
         /// </summary>
         public readonly string? ServerRejectNetwork;
         /// <summary>
-        /// Only if `Mode`!=`Dynamic`, Port speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`Auto`
+        /// Only if `Mode`!=`Dynamic`. Link speed for this port usage
         /// </summary>
         public readonly string? Speed;
         /// <summary>
-        /// Switch storm control. Only if `Mode`!=`Dynamic`
+        /// Only if `Mode`!=`Dynamic`. Storm-control settings for this port usage
         /// </summary>
         public readonly Outputs.SwitchPortUsagesStormControl? StormControl;
         /// <summary>
@@ -260,6 +264,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? serverFailNetwork,
 
+            int? serverFailRetryInterval,
+
             string? serverRejectNetwork,
 
             string? speed,
@@ -314,6 +320,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             ResetDefaultWhen = resetDefaultWhen;
             Rules = rules;
             ServerFailNetwork = serverFailNetwork;
+            ServerFailRetryInterval = serverFailRetryInterval;
             ServerRejectNetwork = serverRejectNetwork;
             Speed = speed;
             StormControl = stormControl;

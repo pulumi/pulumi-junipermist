@@ -18,29 +18,45 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
 
     public static final DeviceprofileApRadioConfigBand6Args Empty = new DeviceprofileApRadioConfigBand6Args();
 
+    /**
+     * Whether RRM may disable the 6 GHz radio when optimizing RF settings
+     * 
+     */
     @Import(name="allowRrmDisable")
     private @Nullable Output<Boolean> allowRrmDisable;
 
+    /**
+     * @return Whether RRM may disable the 6 GHz radio when optimizing RF settings
+     * 
+     */
     public Optional<Output<Boolean>> allowRrmDisable() {
         return Optional.ofNullable(this.allowRrmDisable);
     }
 
+    /**
+     * External antenna gain for the 6 GHz radio
+     * 
+     */
     @Import(name="antGain")
     private @Nullable Output<Integer> antGain;
 
+    /**
+     * @return External antenna gain for the 6 GHz radio
+     * 
+     */
     public Optional<Output<Integer>> antGain() {
         return Optional.ofNullable(this.antGain);
     }
 
     /**
-     * enum: `narrow`, `medium`, `wide`
+     * Beam pattern used by the 6 GHz radio antenna
      * 
      */
     @Import(name="antennaBeamPattern")
     private @Nullable Output<String> antennaBeamPattern;
 
     /**
-     * @return enum: `narrow`, `medium`, `wide`
+     * @return Beam pattern used by the 6 GHz radio antenna
      * 
      */
     public Optional<Output<String>> antennaBeamPattern() {
@@ -48,14 +64,14 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
     }
 
     /**
-     * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+     * Radio chain mode for the 6 GHz radio
      * 
      */
     @Import(name="antennaMode")
     private @Nullable Output<String> antennaMode;
 
     /**
-     * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+     * @return Radio chain mode for the 6 GHz radio
      * 
      */
     public Optional<Output<String>> antennaMode() {
@@ -63,14 +79,14 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
     }
 
     /**
-     * channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
+     * Channel width configured for the 6 GHz radio
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
+     * @return Channel width configured for the 6 GHz radio
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -93,14 +109,14 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
     }
 
     /**
-     * For RFTemplates. List of channels, null or empty array means auto
+     * Allowed channel list for the 6 GHz radio; null or an empty array uses automatic selection
      * 
      */
     @Import(name="channels")
     private @Nullable Output<List<Integer>> channels;
 
     /**
-     * @return For RFTemplates. List of channels, null or empty array means auto
+     * @return Allowed channel list for the 6 GHz radio; null or an empty array uses automatic selection
      * 
      */
     public Optional<Output<List<Integer>>> channels() {
@@ -123,14 +139,14 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
     }
 
     /**
-     * TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+     * Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
      * 
      */
     @Import(name="power")
     private @Nullable Output<Integer> power;
 
     /**
-     * @return TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+     * @return Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
      * 
      */
     public Optional<Output<Integer>> power() {
@@ -138,14 +154,14 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
     }
 
     /**
-     * When power=0, max tx power to use, HW-specific values will be used if not set
+     * When power=null/unset, max tx power to use, HW-specific values will be used if not set
      * 
      */
     @Import(name="powerMax")
     private @Nullable Output<Integer> powerMax;
 
     /**
-     * @return When power=0, max tx power to use, HW-specific values will be used if not set
+     * @return When power=null/unset, max tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Output<Integer>> powerMax() {
@@ -153,14 +169,14 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
     }
 
     /**
-     * When power=0, min tx power to use, HW-specific values will be used if not set
+     * When power=null/unset, min tx power to use, HW-specific values will be used if not set
      * 
      */
     @Import(name="powerMin")
     private @Nullable Output<Integer> powerMin;
 
     /**
-     * @return When power=0, min tx power to use, HW-specific values will be used if not set
+     * @return When power=null/unset, min tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Output<Integer>> powerMin() {
@@ -168,14 +184,14 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
     }
 
     /**
-     * enum: `auto`, `long`, `short`
+     * 802.11 preamble mode used by the 6 GHz radio
      * 
      */
     @Import(name="preamble")
     private @Nullable Output<String> preamble;
 
     /**
-     * @return enum: `auto`, `long`, `short`
+     * @return 802.11 preamble mode used by the 6 GHz radio
      * 
      */
     public Optional<Output<String>> preamble() {
@@ -233,26 +249,50 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
             $ = new DeviceprofileApRadioConfigBand6Args(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowRrmDisable Whether RRM may disable the 6 GHz radio when optimizing RF settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowRrmDisable(@Nullable Output<Boolean> allowRrmDisable) {
             $.allowRrmDisable = allowRrmDisable;
             return this;
         }
 
+        /**
+         * @param allowRrmDisable Whether RRM may disable the 6 GHz radio when optimizing RF settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowRrmDisable(Boolean allowRrmDisable) {
             return allowRrmDisable(Output.of(allowRrmDisable));
         }
 
+        /**
+         * @param antGain External antenna gain for the 6 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain(@Nullable Output<Integer> antGain) {
             $.antGain = antGain;
             return this;
         }
 
+        /**
+         * @param antGain External antenna gain for the 6 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain(Integer antGain) {
             return antGain(Output.of(antGain));
         }
 
         /**
-         * @param antennaBeamPattern enum: `narrow`, `medium`, `wide`
+         * @param antennaBeamPattern Beam pattern used by the 6 GHz radio antenna
          * 
          * @return builder
          * 
@@ -263,7 +303,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param antennaBeamPattern enum: `narrow`, `medium`, `wide`
+         * @param antennaBeamPattern Beam pattern used by the 6 GHz radio antenna
          * 
          * @return builder
          * 
@@ -273,7 +313,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param antennaMode enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+         * @param antennaMode Radio chain mode for the 6 GHz radio
          * 
          * @return builder
          * 
@@ -284,7 +324,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param antennaMode enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+         * @param antennaMode Radio chain mode for the 6 GHz radio
          * 
          * @return builder
          * 
@@ -294,7 +334,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param bandwidth channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
+         * @param bandwidth Channel width configured for the 6 GHz radio
          * 
          * @return builder
          * 
@@ -305,7 +345,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param bandwidth channel width for the 6GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`, `160`
+         * @param bandwidth Channel width configured for the 6 GHz radio
          * 
          * @return builder
          * 
@@ -336,7 +376,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param channels For RFTemplates. List of channels, null or empty array means auto
+         * @param channels Allowed channel list for the 6 GHz radio; null or an empty array uses automatic selection
          * 
          * @return builder
          * 
@@ -347,7 +387,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param channels For RFTemplates. List of channels, null or empty array means auto
+         * @param channels Allowed channel list for the 6 GHz radio; null or an empty array uses automatic selection
          * 
          * @return builder
          * 
@@ -357,7 +397,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param channels For RFTemplates. List of channels, null or empty array means auto
+         * @param channels Allowed channel list for the 6 GHz radio; null or an empty array uses automatic selection
          * 
          * @return builder
          * 
@@ -388,7 +428,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param power TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+         * @param power Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
          * 
          * @return builder
          * 
@@ -399,7 +439,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param power TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+         * @param power Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
          * 
          * @return builder
          * 
@@ -409,7 +449,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param powerMax When power=0, max tx power to use, HW-specific values will be used if not set
+         * @param powerMax When power=null/unset, max tx power to use, HW-specific values will be used if not set
          * 
          * @return builder
          * 
@@ -420,7 +460,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param powerMax When power=0, max tx power to use, HW-specific values will be used if not set
+         * @param powerMax When power=null/unset, max tx power to use, HW-specific values will be used if not set
          * 
          * @return builder
          * 
@@ -430,7 +470,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param powerMin When power=0, min tx power to use, HW-specific values will be used if not set
+         * @param powerMin When power=null/unset, min tx power to use, HW-specific values will be used if not set
          * 
          * @return builder
          * 
@@ -441,7 +481,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param powerMin When power=0, min tx power to use, HW-specific values will be used if not set
+         * @param powerMin When power=null/unset, min tx power to use, HW-specific values will be used if not set
          * 
          * @return builder
          * 
@@ -451,7 +491,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param preamble enum: `auto`, `long`, `short`
+         * @param preamble 802.11 preamble mode used by the 6 GHz radio
          * 
          * @return builder
          * 
@@ -462,7 +502,7 @@ public final class DeviceprofileApRadioConfigBand6Args extends com.pulumi.resour
         }
 
         /**
-         * @param preamble enum: `auto`, `long`, `short`
+         * @param preamble 802.11 preamble mode used by the 6 GHz radio
          * 
          * @return builder
          * 

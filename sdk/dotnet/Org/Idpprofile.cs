@@ -81,17 +81,26 @@ namespace Pulumi.JuniperMist.Org
     public partial class Idpprofile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// enum: `Critical`, `Standard`, `Strict`
+        /// Built-in IDP baseline profile inherited before applying overwrites
         /// </summary>
         [Output("baseProfile")]
         public Output<string> BaseProfile { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the IDP profile
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Owning organization for the IDP profile
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
+        /// <summary>
+        /// IDP signature override rules applied on top of the base profile
+        /// </summary>
         [Output("overwrites")]
         public Output<ImmutableArray<Outputs.IdpprofileOverwrite>> Overwrites { get; private set; } = null!;
 
@@ -143,19 +152,29 @@ namespace Pulumi.JuniperMist.Org
     public sealed class IdpprofileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Critical`, `Standard`, `Strict`
+        /// Built-in IDP baseline profile inherited before applying overwrites
         /// </summary>
         [Input("baseProfile", required: true)]
         public Input<string> BaseProfile { get; set; } = null!;
 
+        /// <summary>
+        /// Display name of the IDP profile
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Owning organization for the IDP profile
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         [Input("overwrites")]
         private InputList<Inputs.IdpprofileOverwriteArgs>? _overwrites;
+
+        /// <summary>
+        /// IDP signature override rules applied on top of the base profile
+        /// </summary>
         public InputList<Inputs.IdpprofileOverwriteArgs> Overwrites
         {
             get => _overwrites ?? (_overwrites = new InputList<Inputs.IdpprofileOverwriteArgs>());
@@ -171,19 +190,29 @@ namespace Pulumi.JuniperMist.Org
     public sealed class IdpprofileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Critical`, `Standard`, `Strict`
+        /// Built-in IDP baseline profile inherited before applying overwrites
         /// </summary>
         [Input("baseProfile")]
         public Input<string>? BaseProfile { get; set; }
 
+        /// <summary>
+        /// Display name of the IDP profile
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Owning organization for the IDP profile
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         [Input("overwrites")]
         private InputList<Inputs.IdpprofileOverwriteGetArgs>? _overwrites;
+
+        /// <summary>
+        /// IDP signature override rules applied on top of the base profile
+        /// </summary>
         public InputList<Inputs.IdpprofileOverwriteGetArgs> Overwrites
         {
             get => _overwrites ?? (_overwrites = new InputList<Inputs.IdpprofileOverwriteGetArgs>());

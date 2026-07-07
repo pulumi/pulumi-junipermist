@@ -16,29 +16,45 @@ public final class GatewayPortConfigWanProbeOverrideArgs extends com.pulumi.reso
 
     public static final GatewayPortConfigWanProbeOverrideArgs Empty = new GatewayPortConfigWanProbeOverrideArgs();
 
+    /**
+     * List of IPv6 probe host addresses used by this WAN override
+     * 
+     */
     @Import(name="ip6s")
     private @Nullable Output<List<String>> ip6s;
 
+    /**
+     * @return List of IPv6 probe host addresses used by this WAN override
+     * 
+     */
     public Optional<Output<List<String>>> ip6s() {
         return Optional.ofNullable(this.ip6s);
     }
 
+    /**
+     * List of IPv4 probe host addresses used by this WAN override
+     * 
+     */
     @Import(name="ips")
     private @Nullable Output<List<String>> ips;
 
+    /**
+     * @return List of IPv4 probe host addresses used by this WAN override
+     * 
+     */
     public Optional<Output<List<String>>> ips() {
         return Optional.ofNullable(this.ips);
     }
 
     /**
-     * enum: `broadband`, `lte`
+     * WAN probe profile used for health checks on this port
      * 
      */
     @Import(name="probeProfile")
     private @Nullable Output<String> probeProfile;
 
     /**
-     * @return enum: `broadband`, `lte`
+     * @return WAN probe profile used for health checks on this port
      * 
      */
     public Optional<Output<String>> probeProfile() {
@@ -71,34 +87,70 @@ public final class GatewayPortConfigWanProbeOverrideArgs extends com.pulumi.reso
             $ = new GatewayPortConfigWanProbeOverrideArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ip6s List of IPv6 probe host addresses used by this WAN override
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6s(@Nullable Output<List<String>> ip6s) {
             $.ip6s = ip6s;
             return this;
         }
 
+        /**
+         * @param ip6s List of IPv6 probe host addresses used by this WAN override
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6s(List<String> ip6s) {
             return ip6s(Output.of(ip6s));
         }
 
+        /**
+         * @param ip6s List of IPv6 probe host addresses used by this WAN override
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6s(String... ip6s) {
             return ip6s(List.of(ip6s));
         }
 
+        /**
+         * @param ips List of IPv4 probe host addresses used by this WAN override
+         * 
+         * @return builder
+         * 
+         */
         public Builder ips(@Nullable Output<List<String>> ips) {
             $.ips = ips;
             return this;
         }
 
+        /**
+         * @param ips List of IPv4 probe host addresses used by this WAN override
+         * 
+         * @return builder
+         * 
+         */
         public Builder ips(List<String> ips) {
             return ips(Output.of(ips));
         }
 
+        /**
+         * @param ips List of IPv4 probe host addresses used by this WAN override
+         * 
+         * @return builder
+         * 
+         */
         public Builder ips(String... ips) {
             return ips(List.of(ips));
         }
 
         /**
-         * @param probeProfile enum: `broadband`, `lte`
+         * @param probeProfile WAN probe profile used for health checks on this port
          * 
          * @return builder
          * 
@@ -109,7 +161,7 @@ public final class GatewayPortConfigWanProbeOverrideArgs extends com.pulumi.reso
         }
 
         /**
-         * @param probeProfile enum: `broadband`, `lte`
+         * @param probeProfile WAN probe profile used for health checks on this port
          * 
          * @return builder
          * 

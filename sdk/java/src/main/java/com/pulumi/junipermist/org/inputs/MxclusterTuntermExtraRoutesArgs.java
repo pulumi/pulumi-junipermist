@@ -15,9 +15,17 @@ public final class MxclusterTuntermExtraRoutesArgs extends com.pulumi.resources.
 
     public static final MxclusterTuntermExtraRoutesArgs Empty = new MxclusterTuntermExtraRoutesArgs();
 
+    /**
+     * Next-hop IP address for this extra route
+     * 
+     */
     @Import(name="via")
     private @Nullable Output<String> via;
 
+    /**
+     * @return Next-hop IP address for this extra route
+     * 
+     */
     public Optional<Output<String>> via() {
         return Optional.ofNullable(this.via);
     }
@@ -46,11 +54,23 @@ public final class MxclusterTuntermExtraRoutesArgs extends com.pulumi.resources.
             $ = new MxclusterTuntermExtraRoutesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param via Next-hop IP address for this extra route
+         * 
+         * @return builder
+         * 
+         */
         public Builder via(@Nullable Output<String> via) {
             $.via = via;
             return this;
         }
 
+        /**
+         * @param via Next-hop IP address for this extra route
+         * 
+         * @return builder
+         * 
+         */
         public Builder via(String via) {
             return via(Output.of(via));
         }

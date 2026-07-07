@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WlanRadsecServer {
+    /**
+     * @return Address or hostname of the RadSec server
+     * 
+     */
     private @Nullable String host;
+    /**
+     * @return TCP port used by the RadSec server
+     * 
+     */
     private @Nullable Integer port;
 
     private WlanRadsecServer() {}
+    /**
+     * @return Address or hostname of the RadSec server
+     * 
+     */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
+    /**
+     * @return TCP port used by the RadSec server
+     * 
+     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }

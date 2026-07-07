@@ -22,18 +22,36 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? AuthPassword;
         /// <summary>
-        /// auth type. enum: `Md5`, `None`, `Password`
+        /// Authentication method used by this OSPF network
         /// </summary>
         public readonly string? AuthType;
+        /// <summary>
+        /// Minimum BFD interval for this OSPF network, in milliseconds
+        /// </summary>
         public readonly int? BfdMinimumInterval;
+        /// <summary>
+        /// OSPF dead interval for this network, in seconds
+        /// </summary>
         public readonly int? DeadInterval;
+        /// <summary>
+        /// Routing policy used to export routes from this OSPF network
+        /// </summary>
         public readonly string? ExportPolicy;
+        /// <summary>
+        /// OSPF hello interval for this network, in seconds
+        /// </summary>
         public readonly int? HelloInterval;
+        /// <summary>
+        /// Routing policy used to import routes for this OSPF network
+        /// </summary>
         public readonly string? ImportPolicy;
         /// <summary>
-        /// interface type (nbma = non-broadcast multi-access). enum: `Broadcast`, `Nbma`, `P2mp`, `P2p`
+        /// OSPF interface type used for this network
         /// </summary>
         public readonly string? InterfaceType;
+        /// <summary>
+        /// OSPF metric assigned to this network
+        /// </summary>
         public readonly int? Metric;
         /// <summary>
         /// By default, we'll re-advertise all learned OSPF routes toward overlay

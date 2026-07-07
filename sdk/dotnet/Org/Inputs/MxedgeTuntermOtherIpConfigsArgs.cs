@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxedgeTuntermOtherIpConfigsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Address for the additional Mist Tunnel interface, in IPv4 format
+        /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
+        /// <summary>
+        /// Subnet mask for the additional Mist Tunnel IPv4 address
+        /// </summary>
         [Input("netmask", required: true)]
         public Input<string> Netmask { get; set; } = null!;
 

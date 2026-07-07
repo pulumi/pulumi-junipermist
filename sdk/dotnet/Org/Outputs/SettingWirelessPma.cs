@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingWirelessPma
     {
+        /// <summary>
+        /// Whether PMA is enabled for Wireless Assurance
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

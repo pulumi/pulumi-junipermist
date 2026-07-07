@@ -13,10 +13,25 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayPortMirroringPortMirror
     {
+        /// <summary>
+        /// Packet family used for this port mirroring rule
+        /// </summary>
         public readonly string? FamilyType;
+        /// <summary>
+        /// Source gateway port IDs whose ingress traffic is mirrored
+        /// </summary>
         public readonly ImmutableArray<string> IngressPortIds;
+        /// <summary>
+        /// Destination gateway port ID that receives mirrored traffic
+        /// </summary>
         public readonly string? OutputPortId;
+        /// <summary>
+        /// Sampling rate applied to mirrored traffic
+        /// </summary>
         public readonly int? Rate;
+        /// <summary>
+        /// Number of bytes copied from each mirrored packet
+        /// </summary>
         public readonly int? RunLength;
 
         [OutputConstructor]

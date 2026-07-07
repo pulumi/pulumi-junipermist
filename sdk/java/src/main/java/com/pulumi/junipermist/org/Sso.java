@@ -12,6 +12,7 @@ import com.pulumi.junipermist.org.SsoArgs;
 import com.pulumi.junipermist.org.inputs.SsoState;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -191,14 +192,14 @@ public class Sso extends com.pulumi.resources.CustomResource {
         return this.issuer;
     }
     /**
-     * Name
+     * Display name of the SSO configuration
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name
+     * @return Display name of the SSO configuration
      * 
      */
     public Output<String> name() {
@@ -219,22 +220,72 @@ public class Sso extends com.pulumi.resources.CustomResource {
         return this.nameidFormat;
     }
     /**
-     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
      * 
      */
     @Export(name="oauthProviderDomain", refs={String.class}, tree="[0]")
     private Output<String> oauthProviderDomain;
 
     /**
-     * @return If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * @return Provider domain for Okta OAuth SSO when `oauthType`==`okta`
      * 
      */
     public Output<String> oauthProviderDomain() {
         return this.oauthProviderDomain;
     }
+    /**
+     * SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+     * 
+     */
+    @Export(name="openroamingSsids", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> openroamingSsids;
+
+    /**
+     * @return SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+     * 
+     */
+    public Output<Optional<List<String>>> openroamingSsids() {
+        return Codegen.optional(this.openroamingSsids);
+    }
+    /**
+     * Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+     * 
+     */
+    @Export(name="openroamingWbaClientCert", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> openroamingWbaClientCert;
+
+    /**
+     * @return Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+     * 
+     */
+    public Output<Optional<String>> openroamingWbaClientCert() {
+        return Codegen.optional(this.openroamingWbaClientCert);
+    }
+    /**
+     * Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+     * 
+     */
+    @Export(name="openroamingWbaClientKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> openroamingWbaClientKey;
+
+    /**
+     * @return Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+     * 
+     */
+    public Output<Optional<String>> openroamingWbaClientKey() {
+        return Codegen.optional(this.openroamingWbaClientKey);
+    }
+    /**
+     * Owning organization identifier for this SSO configuration
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Owning organization identifier for this SSO configuration
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -307,6 +358,10 @@ public class Sso extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .pluginDownloadURL("github://api.github.com/pulumi/pulumi-junipermist")
+            .additionalSecretOutputs(List.of(
+                "openroamingWbaClientCert",
+                "openroamingWbaClientKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

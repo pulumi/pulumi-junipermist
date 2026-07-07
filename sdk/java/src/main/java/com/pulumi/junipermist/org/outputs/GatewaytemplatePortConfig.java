@@ -38,6 +38,10 @@ public final class GatewaytemplatePortConfig {
      * 
      */
     private @Nullable Boolean aeLacpForceUp;
+    /**
+     * @return Whether the port participates in an aggregated Ethernet interface
+     * 
+     */
     private @Nullable Boolean aggregated;
     /**
      * @return To generate port up/down alarm, set it to true
@@ -49,6 +53,10 @@ public final class GatewaytemplatePortConfig {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Whether Ethernet autonegotiation is disabled on the port
+     * 
+     */
     private @Nullable Boolean disableAutoneg;
     /**
      * @return Port admin up (true) / down (false)
@@ -56,7 +64,7 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return if `wanType`==`dsl`. enum: `adsl`, `vdsl`
+     * @return If `wanType`==`dsl`. DSL technology used by the WAN port
      * 
      */
     private @Nullable String dslType;
@@ -71,39 +79,47 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable Integer dslVpi;
     /**
-     * @return enum: `auto`, `full`, `half`
+     * @return Ethernet duplex mode configured on the port
      * 
      */
     private @Nullable String duplex;
     /**
-     * @return Junos IP Config
+     * @return Layer 3 IP configuration for the port
      * 
      */
     private @Nullable GatewaytemplatePortConfigIpConfig ipConfig;
     /**
-     * @return If `wanType`==`lte`
+     * @return If `wanType`==`lte`. APN used by the LTE uplink
      * 
      */
     private @Nullable String lteApn;
     /**
-     * @return if `wanType`==`lte`. enum: `chap`, `none`, `pap`
+     * @return If `wanType`==`lte`. Authentication method used by the LTE uplink
      * 
      */
     private @Nullable String lteAuth;
+    /**
+     * @return Whether the LTE uplink is used as a backup WAN connection
+     * 
+     */
     private @Nullable Boolean lteBackup;
     /**
-     * @return If `wanType`==`lte`
+     * @return If `wanType`==`lte`. Password used for LTE uplink authentication
      * 
      */
     private @Nullable String ltePassword;
     /**
-     * @return If `wanType`==`lte`
+     * @return If `wanType`==`lte`. Username used for LTE uplink authentication
      * 
      */
     private @Nullable String lteUsername;
+    /**
+     * @return Layer 3 MTU configured on the port
+     * 
+     */
     private @Nullable Integer mtu;
     /**
-     * @return Name that we&#39;ll use to derive config
+     * @return Interface name used to derive device configuration
      * 
      */
     private @Nullable String name;
@@ -113,10 +129,14 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable List<String> networks;
     /**
-     * @return For Q-in-Q
+     * @return For Q-in-Q. Outer VLAN ID used for QinQ encapsulation
      * 
      */
     private @Nullable Integer outerVlanId;
+    /**
+     * @return Whether PoE output is disabled on the port
+     * 
+     */
     private @Nullable Boolean poeDisabled;
     /**
      * @return Whether Perpetual PoE capabilities are enabled for a port
@@ -134,7 +154,7 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable Boolean preserveDscp;
     /**
-     * @return If HA mode
+     * @return If HA mode. Whether the port participates in the redundant Ethernet configuration
      * 
      */
     private @Nullable Boolean redundant;
@@ -149,15 +169,19 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable String rethIdx;
     /**
-     * @return If HA mode
+     * @return If HA mode. Node associated with the redundant Ethernet interface
      * 
      */
     private @Nullable String rethNode;
     /**
-     * @return SSR only - supporting vlan-based redundancy (matching the size of `networks`)
+     * @return If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
      * 
      */
     private @Nullable List<String> rethNodes;
+    /**
+     * @return Link speed configured on the port
+     * 
+     */
     private @Nullable String speed;
     /**
      * @return When SSR is running as VM, this is required on certain hosting platforms
@@ -165,24 +189,32 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable Boolean ssrNoVirtualMac;
     /**
-     * @return For SSR only
+     * @return For SSR only. Port range configured on the interface
      * 
      */
     private @Nullable String svrPortRange;
+    /**
+     * @return Traffic shaping settings applied to the port
+     * 
+     */
     private @Nullable GatewaytemplatePortConfigTrafficShaping trafficShaping;
     /**
-     * @return port usage name. enum: `haControl`, `haData`, `lan`, `wan`
+     * @return Logical usage assigned to the port
      * 
      */
     private String usage;
+    /**
+     * @return VLAN ID or variable used when the WAN interface is carried on a VLAN
+     * 
+     */
     private @Nullable String vlanId;
     /**
-     * @return Property key is the VPN name
+     * @return Per-VPN path settings for traffic that uses this port
      * 
      */
     private @Nullable Map<String,GatewaytemplatePortConfigVpnPaths> vpnPaths;
     /**
-     * @return Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+     * @return Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
      * 
      */
     private @Nullable String wanArpPolicer;
@@ -207,27 +239,27 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable Map<String,GatewaytemplatePortConfigWanExtraRoutes6> wanExtraRoutes6;
     /**
-     * @return Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+     * @return Only if `usage`==`wan`. Networks reachable through this WAN port for policy definition
      * 
      */
     private @Nullable List<String> wanNetworks;
     /**
-     * @return Only if `usage`==`wan`
+     * @return Optional WAN health probe override settings for this port
      * 
      */
     private @Nullable GatewaytemplatePortConfigWanProbeOverride wanProbeOverride;
     /**
-     * @return Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+     * @return Source NAT settings applied to traffic leaving this WAN port
      * 
      */
     private @Nullable GatewaytemplatePortConfigWanSourceNat wanSourceNat;
     /**
-     * @return Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+     * @return Controls whether Marvis or the scheduler can run speed tests on this WAN port
      * 
      */
     private @Nullable String wanSpeedtestMode;
     /**
-     * @return Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+     * @return Only if `usage`==`wan`. WAN uplink type configured on the port
      * 
      */
     private @Nullable String wanType;
@@ -254,6 +286,10 @@ public final class GatewaytemplatePortConfig {
     public Optional<Boolean> aeLacpForceUp() {
         return Optional.ofNullable(this.aeLacpForceUp);
     }
+    /**
+     * @return Whether the port participates in an aggregated Ethernet interface
+     * 
+     */
     public Optional<Boolean> aggregated() {
         return Optional.ofNullable(this.aggregated);
     }
@@ -271,6 +307,10 @@ public final class GatewaytemplatePortConfig {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Whether Ethernet autonegotiation is disabled on the port
+     * 
+     */
     public Optional<Boolean> disableAutoneg() {
         return Optional.ofNullable(this.disableAutoneg);
     }
@@ -282,7 +322,7 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return if `wanType`==`dsl`. enum: `adsl`, `vdsl`
+     * @return If `wanType`==`dsl`. DSL technology used by the WAN port
      * 
      */
     public Optional<String> dslType() {
@@ -303,55 +343,63 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.dslVpi);
     }
     /**
-     * @return enum: `auto`, `full`, `half`
+     * @return Ethernet duplex mode configured on the port
      * 
      */
     public Optional<String> duplex() {
         return Optional.ofNullable(this.duplex);
     }
     /**
-     * @return Junos IP Config
+     * @return Layer 3 IP configuration for the port
      * 
      */
     public Optional<GatewaytemplatePortConfigIpConfig> ipConfig() {
         return Optional.ofNullable(this.ipConfig);
     }
     /**
-     * @return If `wanType`==`lte`
+     * @return If `wanType`==`lte`. APN used by the LTE uplink
      * 
      */
     public Optional<String> lteApn() {
         return Optional.ofNullable(this.lteApn);
     }
     /**
-     * @return if `wanType`==`lte`. enum: `chap`, `none`, `pap`
+     * @return If `wanType`==`lte`. Authentication method used by the LTE uplink
      * 
      */
     public Optional<String> lteAuth() {
         return Optional.ofNullable(this.lteAuth);
     }
+    /**
+     * @return Whether the LTE uplink is used as a backup WAN connection
+     * 
+     */
     public Optional<Boolean> lteBackup() {
         return Optional.ofNullable(this.lteBackup);
     }
     /**
-     * @return If `wanType`==`lte`
+     * @return If `wanType`==`lte`. Password used for LTE uplink authentication
      * 
      */
     public Optional<String> ltePassword() {
         return Optional.ofNullable(this.ltePassword);
     }
     /**
-     * @return If `wanType`==`lte`
+     * @return If `wanType`==`lte`. Username used for LTE uplink authentication
      * 
      */
     public Optional<String> lteUsername() {
         return Optional.ofNullable(this.lteUsername);
     }
+    /**
+     * @return Layer 3 MTU configured on the port
+     * 
+     */
     public Optional<Integer> mtu() {
         return Optional.ofNullable(this.mtu);
     }
     /**
-     * @return Name that we&#39;ll use to derive config
+     * @return Interface name used to derive device configuration
      * 
      */
     public Optional<String> name() {
@@ -365,12 +413,16 @@ public final class GatewaytemplatePortConfig {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return For Q-in-Q
+     * @return For Q-in-Q. Outer VLAN ID used for QinQ encapsulation
      * 
      */
     public Optional<Integer> outerVlanId() {
         return Optional.ofNullable(this.outerVlanId);
     }
+    /**
+     * @return Whether PoE output is disabled on the port
+     * 
+     */
     public Optional<Boolean> poeDisabled() {
         return Optional.ofNullable(this.poeDisabled);
     }
@@ -396,7 +448,7 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.preserveDscp);
     }
     /**
-     * @return If HA mode
+     * @return If HA mode. Whether the port participates in the redundant Ethernet configuration
      * 
      */
     public Optional<Boolean> redundant() {
@@ -417,19 +469,23 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.rethIdx);
     }
     /**
-     * @return If HA mode
+     * @return If HA mode. Node associated with the redundant Ethernet interface
      * 
      */
     public Optional<String> rethNode() {
         return Optional.ofNullable(this.rethNode);
     }
     /**
-     * @return SSR only - supporting vlan-based redundancy (matching the size of `networks`)
+     * @return If HA mode and for SSR only. Per-network node assignment used for VLAN-based redundancy
      * 
      */
     public List<String> rethNodes() {
         return this.rethNodes == null ? List.of() : this.rethNodes;
     }
+    /**
+     * @return Link speed configured on the port
+     * 
+     */
     public Optional<String> speed() {
         return Optional.ofNullable(this.speed);
     }
@@ -441,34 +497,42 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.ssrNoVirtualMac);
     }
     /**
-     * @return For SSR only
+     * @return For SSR only. Port range configured on the interface
      * 
      */
     public Optional<String> svrPortRange() {
         return Optional.ofNullable(this.svrPortRange);
     }
+    /**
+     * @return Traffic shaping settings applied to the port
+     * 
+     */
     public Optional<GatewaytemplatePortConfigTrafficShaping> trafficShaping() {
         return Optional.ofNullable(this.trafficShaping);
     }
     /**
-     * @return port usage name. enum: `haControl`, `haData`, `lan`, `wan`
+     * @return Logical usage assigned to the port
      * 
      */
     public String usage() {
         return this.usage;
     }
+    /**
+     * @return VLAN ID or variable used when the WAN interface is carried on a VLAN
+     * 
+     */
     public Optional<String> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
     /**
-     * @return Property key is the VPN name
+     * @return Per-VPN path settings for traffic that uses this port
      * 
      */
     public Map<String,GatewaytemplatePortConfigVpnPaths> vpnPaths() {
         return this.vpnPaths == null ? Map.of() : this.vpnPaths;
     }
     /**
-     * @return Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+     * @return Only when `wanType`==`broadband`. ARP policer profile applied to the WAN port
      * 
      */
     public Optional<String> wanArpPolicer() {
@@ -503,35 +567,35 @@ public final class GatewaytemplatePortConfig {
         return this.wanExtraRoutes6 == null ? Map.of() : this.wanExtraRoutes6;
     }
     /**
-     * @return Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+     * @return Only if `usage`==`wan`. Networks reachable through this WAN port for policy definition
      * 
      */
     public List<String> wanNetworks() {
         return this.wanNetworks == null ? List.of() : this.wanNetworks;
     }
     /**
-     * @return Only if `usage`==`wan`
+     * @return Optional WAN health probe override settings for this port
      * 
      */
     public Optional<GatewaytemplatePortConfigWanProbeOverride> wanProbeOverride() {
         return Optional.ofNullable(this.wanProbeOverride);
     }
     /**
-     * @return Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+     * @return Source NAT settings applied to traffic leaving this WAN port
      * 
      */
     public Optional<GatewaytemplatePortConfigWanSourceNat> wanSourceNat() {
         return Optional.ofNullable(this.wanSourceNat);
     }
     /**
-     * @return Controls whether Marvis/scheduler can run speedtest on this port. enum: `auto`, `enabled`, `disabled`
+     * @return Controls whether Marvis or the scheduler can run speed tests on this WAN port
      * 
      */
     public Optional<String> wanSpeedtestMode() {
         return Optional.ofNullable(this.wanSpeedtestMode);
     }
     /**
-     * @return Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+     * @return Only if `usage`==`wan`. WAN uplink type configured on the port
      * 
      */
     public Optional<String> wanType() {

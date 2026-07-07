@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VpnPathsPeerPaths {
+    /**
+     * @return Lower numeric value makes this outgoing WAN path more preferred
+     * 
+     */
     private @Nullable Integer preference;
 
     private VpnPathsPeerPaths() {}
+    /**
+     * @return Lower numeric value makes this outgoing WAN path more preferred
+     * 
+     */
     public Optional<Integer> preference() {
         return Optional.ofNullable(this.preference);
     }

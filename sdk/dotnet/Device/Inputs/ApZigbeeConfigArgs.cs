@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class ApZigbeeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Controls whether new Zigbee devices are allowed to join the network. enum: `Always`, `Manual`
+        /// Join policy for new Zigbee devices on this AP
         /// </summary>
         [Input("allowJoin")]
         public Input<string>? AllowJoin { get; set; }

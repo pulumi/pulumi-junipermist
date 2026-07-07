@@ -73,26 +73,32 @@ namespace Pulumi.JuniperMist.Org
     [JuniperMistResourceType("junipermist:org/vpn:Vpn")]
     public partial class Vpn : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Display name of the VPN configuration
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns the VPN configuration
+        /// </summary>
         [Output("orgId")]
         public Output<string?> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Only if `Type`==`HubSpoke`
+        /// Path selection settings used when `Type`==`HubSpoke`
         /// </summary>
         [Output("pathSelection")]
         public Output<Outputs.VpnPathSelection?> PathSelection { get; private set; } = null!;
 
         /// <summary>
-        /// For `Type`==`HubSpoke`, Property key is the VPN name. For `Type`==`Mesh`, Property key is the Interface name
+        /// VPN path definitions keyed by VPN name for `HubSpoke` mode or interface name for `Mesh` mode
         /// </summary>
         [Output("paths")]
         public Output<ImmutableDictionary<string, Outputs.VpnPaths>> Paths { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `HubSpoke`, `Mesh`
+        /// VPN topology mode for this configuration
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -144,14 +150,20 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class VpnArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Display name of the VPN configuration
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns the VPN configuration
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Only if `Type`==`HubSpoke`
+        /// Path selection settings used when `Type`==`HubSpoke`
         /// </summary>
         [Input("pathSelection")]
         public Input<Inputs.VpnPathSelectionArgs>? PathSelection { get; set; }
@@ -160,7 +172,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.VpnPathsArgs>? _paths;
 
         /// <summary>
-        /// For `Type`==`HubSpoke`, Property key is the VPN name. For `Type`==`Mesh`, Property key is the Interface name
+        /// VPN path definitions keyed by VPN name for `HubSpoke` mode or interface name for `Mesh` mode
         /// </summary>
         public InputMap<Inputs.VpnPathsArgs> Paths
         {
@@ -169,7 +181,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// enum: `HubSpoke`, `Mesh`
+        /// VPN topology mode for this configuration
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -182,14 +194,20 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class VpnState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Display name of the VPN configuration
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns the VPN configuration
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Only if `Type`==`HubSpoke`
+        /// Path selection settings used when `Type`==`HubSpoke`
         /// </summary>
         [Input("pathSelection")]
         public Input<Inputs.VpnPathSelectionGetArgs>? PathSelection { get; set; }
@@ -198,7 +216,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.VpnPathsGetArgs>? _paths;
 
         /// <summary>
-        /// For `Type`==`HubSpoke`, Property key is the VPN name. For `Type`==`Mesh`, Property key is the Interface name
+        /// VPN path definitions keyed by VPN name for `HubSpoke` mode or interface name for `Mesh` mode
         /// </summary>
         public InputMap<Inputs.VpnPathsGetArgs> Paths
         {
@@ -207,7 +225,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// enum: `HubSpoke`, `Mesh`
+        /// VPN topology mode for this configuration
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -66,22 +66,28 @@ export class Wlantemplate extends pulumi.CustomResource {
     }
 
     /**
-     * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * Organizations, sites, or site groups targeted by this WLAN template
      */
     declare public readonly applies: pulumi.Output<outputs.org.WlantemplateApplies>;
     /**
-     * List of Device Profile ids
+     * Device profile IDs that further limit where this WLAN template applies
      */
     declare public readonly deviceprofileIds: pulumi.Output<string[]>;
     /**
-     * Where this template should not be applied to (takes precedence)
+     * Sites or site groups excluded from this WLAN template even when included by the application scope
      */
     declare public readonly exceptions: pulumi.Output<outputs.org.WlantemplateExceptions>;
     /**
      * Whether to further filter by Device Profile
      */
     declare public readonly filterByDeviceprofile: pulumi.Output<boolean>;
+    /**
+     * Display name of the WLAN template
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Organization that owns this WLAN template
+     */
     declare public readonly orgId: pulumi.Output<string>;
 
     /**
@@ -125,22 +131,28 @@ export class Wlantemplate extends pulumi.CustomResource {
  */
 export interface WlantemplateState {
     /**
-     * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * Organizations, sites, or site groups targeted by this WLAN template
      */
     applies?: pulumi.Input<inputs.org.WlantemplateApplies | undefined>;
     /**
-     * List of Device Profile ids
+     * Device profile IDs that further limit where this WLAN template applies
      */
     deviceprofileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Where this template should not be applied to (takes precedence)
+     * Sites or site groups excluded from this WLAN template even when included by the application scope
      */
     exceptions?: pulumi.Input<inputs.org.WlantemplateExceptions | undefined>;
     /**
      * Whether to further filter by Device Profile
      */
     filterByDeviceprofile?: pulumi.Input<boolean | undefined>;
+    /**
+     * Display name of the WLAN template
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns this WLAN template
+     */
     orgId?: pulumi.Input<string | undefined>;
 }
 
@@ -149,21 +161,27 @@ export interface WlantemplateState {
  */
 export interface WlantemplateArgs {
     /**
-     * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * Organizations, sites, or site groups targeted by this WLAN template
      */
     applies?: pulumi.Input<inputs.org.WlantemplateApplies | undefined>;
     /**
-     * List of Device Profile ids
+     * Device profile IDs that further limit where this WLAN template applies
      */
     deviceprofileIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Where this template should not be applied to (takes precedence)
+     * Sites or site groups excluded from this WLAN template even when included by the application scope
      */
     exceptions?: pulumi.Input<inputs.org.WlantemplateExceptions | undefined>;
     /**
      * Whether to further filter by Device Profile
      */
     filterByDeviceprofile?: pulumi.Input<boolean | undefined>;
+    /**
+     * Display name of the WLAN template
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns this WLAN template
+     */
     orgId: pulumi.Input<string>;
 }

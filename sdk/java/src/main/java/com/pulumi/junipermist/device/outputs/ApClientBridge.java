@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApClientBridge {
+    /**
+     * @return Credentials and security mode used when the AP connects as a wireless client bridge
+     * 
+     */
     private @Nullable ApClientBridgeAuth auth;
     /**
      * @return When acted as client bridge:
@@ -21,9 +25,17 @@ public final class ApClientBridge {
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return Uplink SSID used by the AP when client bridge mode is enabled
+     * 
+     */
     private @Nullable String ssid;
 
     private ApClientBridge() {}
+    /**
+     * @return Credentials and security mode used when the AP connects as a wireless client bridge
+     * 
+     */
     public Optional<ApClientBridgeAuth> auth() {
         return Optional.ofNullable(this.auth);
     }
@@ -36,6 +48,10 @@ public final class ApClientBridge {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Uplink SSID used by the AP when client bridge mode is enabled
+     * 
+     */
     public Optional<String> ssid() {
         return Optional.ofNullable(this.ssid);
     }

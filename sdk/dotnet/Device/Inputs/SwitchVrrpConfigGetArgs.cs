@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchVrrpConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether VRRP configuration is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -19,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchVrrpConfigGroupsGetArgs>? _groups;
 
         /// <summary>
-        /// Property key is the VRRP name
+        /// VRRP groups keyed by group name
         /// </summary>
         public InputMap<Inputs.SwitchVrrpConfigGroupsGetArgs> Groups
         {

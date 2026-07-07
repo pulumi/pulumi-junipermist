@@ -73,38 +73,56 @@ export class Servicepolicy extends pulumi.CustomResource {
     }
 
     /**
-     * SRX only
+     * Advanced anti-malware settings applied by this service policy
      */
     declare public readonly aamw: pulumi.Output<outputs.org.ServicepolicyAamw | undefined>;
     /**
-     * enum: `allow`, `deny`
+     * Allow or deny action for traffic matched by this service policy
      */
     declare public readonly action: pulumi.Output<string>;
     /**
-     * For SRX-only
+     * Malware and virus inspection settings applied by this service policy
      */
     declare public readonly antivirus: pulumi.Output<outputs.org.ServicepolicyAntivirus | undefined>;
     /**
-     * SRX only
+     * Application QoE settings applied by this service policy
      */
     declare public readonly appqoe: pulumi.Output<outputs.org.ServicepolicyAppqoe | undefined>;
+    /**
+     * Enhanced web filtering rules applied by this service policy
+     */
     declare public readonly ewfs: pulumi.Output<outputs.org.ServicepolicyEwf[] | undefined>;
+    /**
+     * Intrusion detection and prevention settings applied by this service policy
+     */
     declare public readonly idp: pulumi.Output<outputs.org.ServicepolicyIdp | undefined>;
     /**
-     * access within the same VRF
+     * Whether the policy permits access within the same VRF
      */
     declare public readonly localRouting: pulumi.Output<boolean | undefined>;
+    /**
+     * Display name of the service policy
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Organization that owns this service policy
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
      * By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      */
     declare public readonly pathPreference: pulumi.Output<string | undefined>;
+    /**
+     * Application services or groups matched by this policy
+     */
     declare public readonly services: pulumi.Output<string[] | undefined>;
     /**
-     * For SRX-only
+     * SSL proxy inspection settings applied by this service policy
      */
     declare public readonly sslProxy: pulumi.Output<outputs.org.ServicepolicySslProxy | undefined>;
+    /**
+     * Tenant names matched by this service policy
+     */
     declare public readonly tenants: pulumi.Output<string[] | undefined>;
 
     /**
@@ -162,38 +180,56 @@ export class Servicepolicy extends pulumi.CustomResource {
  */
 export interface ServicepolicyState {
     /**
-     * SRX only
+     * Advanced anti-malware settings applied by this service policy
      */
     aamw?: pulumi.Input<inputs.org.ServicepolicyAamw | undefined>;
     /**
-     * enum: `allow`, `deny`
+     * Allow or deny action for traffic matched by this service policy
      */
     action?: pulumi.Input<string | undefined>;
     /**
-     * For SRX-only
+     * Malware and virus inspection settings applied by this service policy
      */
     antivirus?: pulumi.Input<inputs.org.ServicepolicyAntivirus | undefined>;
     /**
-     * SRX only
+     * Application QoE settings applied by this service policy
      */
     appqoe?: pulumi.Input<inputs.org.ServicepolicyAppqoe | undefined>;
+    /**
+     * Enhanced web filtering rules applied by this service policy
+     */
     ewfs?: pulumi.Input<pulumi.Input<inputs.org.ServicepolicyEwf>[] | undefined>;
+    /**
+     * Intrusion detection and prevention settings applied by this service policy
+     */
     idp?: pulumi.Input<inputs.org.ServicepolicyIdp | undefined>;
     /**
-     * access within the same VRF
+     * Whether the policy permits access within the same VRF
      */
     localRouting?: pulumi.Input<boolean | undefined>;
+    /**
+     * Display name of the service policy
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns this service policy
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
      * By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      */
     pathPreference?: pulumi.Input<string | undefined>;
+    /**
+     * Application services or groups matched by this policy
+     */
     services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * For SRX-only
+     * SSL proxy inspection settings applied by this service policy
      */
     sslProxy?: pulumi.Input<inputs.org.ServicepolicySslProxy | undefined>;
+    /**
+     * Tenant names matched by this service policy
+     */
     tenants?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
@@ -202,37 +238,55 @@ export interface ServicepolicyState {
  */
 export interface ServicepolicyArgs {
     /**
-     * SRX only
+     * Advanced anti-malware settings applied by this service policy
      */
     aamw?: pulumi.Input<inputs.org.ServicepolicyAamw | undefined>;
     /**
-     * enum: `allow`, `deny`
+     * Allow or deny action for traffic matched by this service policy
      */
     action?: pulumi.Input<string | undefined>;
     /**
-     * For SRX-only
+     * Malware and virus inspection settings applied by this service policy
      */
     antivirus?: pulumi.Input<inputs.org.ServicepolicyAntivirus | undefined>;
     /**
-     * SRX only
+     * Application QoE settings applied by this service policy
      */
     appqoe?: pulumi.Input<inputs.org.ServicepolicyAppqoe | undefined>;
+    /**
+     * Enhanced web filtering rules applied by this service policy
+     */
     ewfs?: pulumi.Input<pulumi.Input<inputs.org.ServicepolicyEwf>[] | undefined>;
+    /**
+     * Intrusion detection and prevention settings applied by this service policy
+     */
     idp?: pulumi.Input<inputs.org.ServicepolicyIdp | undefined>;
     /**
-     * access within the same VRF
+     * Whether the policy permits access within the same VRF
      */
     localRouting?: pulumi.Input<boolean | undefined>;
+    /**
+     * Display name of the service policy
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns this service policy
+     */
     orgId: pulumi.Input<string>;
     /**
      * By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
      */
     pathPreference?: pulumi.Input<string | undefined>;
+    /**
+     * Application services or groups matched by this policy
+     */
     services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * For SRX-only
+     * SSL proxy inspection settings applied by this service policy
      */
     sslProxy?: pulumi.Input<inputs.org.ServicepolicySslProxy | undefined>;
+    /**
+     * Tenant names matched by this service policy
+     */
     tenants?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

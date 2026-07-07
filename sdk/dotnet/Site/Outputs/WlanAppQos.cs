@@ -13,8 +13,17 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class WlanAppQos
     {
+        /// <summary>
+        /// Map of application keys to QoS rewrite settings
+        /// </summary>
         public readonly ImmutableDictionary<string, Outputs.WlanAppQosApps>? Apps;
+        /// <summary>
+        /// Whether application QoS rewrite rules are enabled for this WLAN
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Custom traffic QoS rules that are not tied to named applications
+        /// </summary>
         public readonly ImmutableArray<Outputs.WlanAppQosOther> Others;
 
         [OutputConstructor]

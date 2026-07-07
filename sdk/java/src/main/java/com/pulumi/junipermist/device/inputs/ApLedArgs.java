@@ -16,16 +16,32 @@ public final class ApLedArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ApLedArgs Empty = new ApLedArgs();
 
+    /**
+     * Indicator LED brightness level from 0 to 255
+     * 
+     */
     @Import(name="brightness")
     private @Nullable Output<Integer> brightness;
 
+    /**
+     * @return Indicator LED brightness level from 0 to 255
+     * 
+     */
     public Optional<Output<Integer>> brightness() {
         return Optional.ofNullable(this.brightness);
     }
 
+    /**
+     * Whether the AP indicator LED is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether the AP indicator LED is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -55,20 +71,44 @@ public final class ApLedArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ApLedArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param brightness Indicator LED brightness level from 0 to 255
+         * 
+         * @return builder
+         * 
+         */
         public Builder brightness(@Nullable Output<Integer> brightness) {
             $.brightness = brightness;
             return this;
         }
 
+        /**
+         * @param brightness Indicator LED brightness level from 0 to 255
+         * 
+         * @return builder
+         * 
+         */
         public Builder brightness(Integer brightness) {
             return brightness(Output.of(brightness));
         }
 
+        /**
+         * @param enabled Whether the AP indicator LED is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether the AP indicator LED is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

@@ -13,30 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServicepolicyAntivirus {
     /**
-     * @return org-level AV Profile can be used, this takes precedence over &#39;profile&#39;
+     * @return Organization-level antivirus profile ID; takes precedence over inline `profile` settings
      * 
      */
     private @Nullable String avprofileId;
+    /**
+     * @return Whether antivirus inspection is enabled for the service policy
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return Default / noftp / httponly / or keys from av_profiles
+     * @return Antivirus profile name to apply, such as `default`, `noftp`, `httponly`, or an AV profile key
      * 
      */
     private @Nullable String profile;
 
     private ServicepolicyAntivirus() {}
     /**
-     * @return org-level AV Profile can be used, this takes precedence over &#39;profile&#39;
+     * @return Organization-level antivirus profile ID; takes precedence over inline `profile` settings
      * 
      */
     public Optional<String> avprofileId() {
         return Optional.ofNullable(this.avprofileId);
     }
+    /**
+     * @return Whether antivirus inspection is enabled for the service policy
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Default / noftp / httponly / or keys from av_profiles
+     * @return Antivirus profile name to apply, such as `default`, `noftp`, `httponly`, or an AV profile key
      * 
      */
     public Optional<String> profile() {

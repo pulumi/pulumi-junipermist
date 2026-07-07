@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.NetworktemplateRoutingPoliciesTermGetArgs>? _terms;
 
         /// <summary>
-        /// at least criteria/filter must be specified to match the term, all criteria have to be met
+        /// Ordered terms evaluated by this switch routing policy
         /// </summary>
         public InputList<Inputs.NetworktemplateRoutingPoliciesTermGetArgs> Terms
         {

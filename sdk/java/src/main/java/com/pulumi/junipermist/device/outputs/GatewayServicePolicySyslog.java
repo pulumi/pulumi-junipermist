@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayServicePolicySyslog {
+    /**
+     * @return Whether syslog logging is enabled for the service policy
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Names of syslog servers that receive logs for this service policy
+     * 
+     */
     private @Nullable List<String> serverNames;
 
     private GatewayServicePolicySyslog() {}
+    /**
+     * @return Whether syslog logging is enabled for the service policy
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Names of syslog servers that receive logs for this service policy
+     * 
+     */
     public List<String> serverNames() {
         return this.serverNames == null ? List.of() : this.serverNames;
     }

@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.SettingMarvisSelfDrivingArgs;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +17,29 @@ public final class SettingMarvisArgs extends com.pulumi.resources.ResourceArgs {
     public static final SettingMarvisArgs Empty = new SettingMarvisArgs();
 
     /**
-     * Self-driving network automation settings per domain
+     * Disable proactive monitoring in Marvis. NOTE: support access must be enabled for the org (`allowMist`=`true`) for proactive monitoring to function.
+     * 
+     */
+    @Import(name="disableProactiveMonitoring")
+    private @Nullable Output<Boolean> disableProactiveMonitoring;
+
+    /**
+     * @return Disable proactive monitoring in Marvis. NOTE: support access must be enabled for the org (`allowMist`=`true`) for proactive monitoring to function.
+     * 
+     */
+    public Optional<Output<Boolean>> disableProactiveMonitoring() {
+        return Optional.ofNullable(this.disableProactiveMonitoring);
+    }
+
+    /**
+     * Self-driving network automation settings by domain
      * 
      */
     @Import(name="selfDriving")
     private @Nullable Output<SettingMarvisSelfDrivingArgs> selfDriving;
 
     /**
-     * @return Self-driving network automation settings per domain
+     * @return Self-driving network automation settings by domain
      * 
      */
     public Optional<Output<SettingMarvisSelfDrivingArgs>> selfDriving() {
@@ -33,6 +49,7 @@ public final class SettingMarvisArgs extends com.pulumi.resources.ResourceArgs {
     private SettingMarvisArgs() {}
 
     private SettingMarvisArgs(SettingMarvisArgs $) {
+        this.disableProactiveMonitoring = $.disableProactiveMonitoring;
         this.selfDriving = $.selfDriving;
     }
 
@@ -55,7 +72,28 @@ public final class SettingMarvisArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param selfDriving Self-driving network automation settings per domain
+         * @param disableProactiveMonitoring Disable proactive monitoring in Marvis. NOTE: support access must be enabled for the org (`allowMist`=`true`) for proactive monitoring to function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableProactiveMonitoring(@Nullable Output<Boolean> disableProactiveMonitoring) {
+            $.disableProactiveMonitoring = disableProactiveMonitoring;
+            return this;
+        }
+
+        /**
+         * @param disableProactiveMonitoring Disable proactive monitoring in Marvis. NOTE: support access must be enabled for the org (`allowMist`=`true`) for proactive monitoring to function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableProactiveMonitoring(Boolean disableProactiveMonitoring) {
+            return disableProactiveMonitoring(Output.of(disableProactiveMonitoring));
+        }
+
+        /**
+         * @param selfDriving Self-driving network automation settings by domain
          * 
          * @return builder
          * 
@@ -66,7 +104,7 @@ public final class SettingMarvisArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param selfDriving Self-driving network automation settings per domain
+         * @param selfDriving Self-driving network automation settings by domain
          * 
          * @return builder
          * 

@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? QueryInterval;
         /// <summary>
-        /// Querier's robustness
+        /// IGMP querier robustness variable
         /// </summary>
         public readonly int? Robustness;
         /// <summary>

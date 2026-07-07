@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayTunnelProviderOptionsJse {
+    /**
+     * @return User capacity to provision on Juniper Secure Edge
+     * 
+     */
     private @Nullable Integer numUsers;
     /**
      * @return JSE Organization name
@@ -20,6 +24,10 @@ public final class GatewayTunnelProviderOptionsJse {
     private @Nullable String orgName;
 
     private GatewayTunnelProviderOptionsJse() {}
+    /**
+     * @return User capacity to provision on Juniper Secure Edge
+     * 
+     */
     public Optional<Integer> numUsers() {
         return Optional.ofNullable(this.numUsers);
     }

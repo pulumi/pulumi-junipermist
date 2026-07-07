@@ -65,6 +65,21 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * If `aggregated`==`true`, sets LACP to passive mode on this AE interface; by default, active (fast) mode is used
+     * 
+     */
+    @Import(name="aeLacpPassive")
+    private @Nullable Output<Boolean> aeLacpPassive;
+
+    /**
+     * @return If `aggregated`==`true`, sets LACP to passive mode on this AE interface; by default, active (fast) mode is used
+     * 
+     */
+    public Optional<Output<Boolean>> aeLacpPassive() {
+        return Optional.ofNullable(this.aeLacpPassive);
+    }
+
+    /**
      * To use slow timeout
      * 
      */
@@ -79,9 +94,17 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.aeLacpSlow);
     }
 
+    /**
+     * Whether this port is configured as an aggregated Ethernet member
+     * 
+     */
     @Import(name="aggregated")
     private @Nullable Output<Boolean> aggregated;
 
+    /**
+     * @return Whether this port is configured as an aggregated Ethernet member
+     * 
+     */
     public Optional<Output<Boolean>> aggregated() {
         return Optional.ofNullable(this.aggregated);
     }
@@ -101,9 +124,17 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.critical);
     }
 
+    /**
+     * Human-readable description for this Junos port
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Human-readable description for this Junos port
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -124,14 +155,14 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * enum: `auto`, `full`, `half`
+     * Link duplex mode for this Junos port
      * 
      */
     @Import(name="duplex")
     private @Nullable Output<String> duplex;
 
     /**
-     * @return enum: `auto`, `full`, `half`
+     * @return Link duplex mode for this Junos port
      * 
      */
     public Optional<Output<String>> duplex() {
@@ -153,9 +184,17 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.dynamicUsage);
     }
 
+    /**
+     * Whether this Junos port participates in an ESI-LAG
+     * 
+     */
     @Import(name="esilag")
     private @Nullable Output<Boolean> esilag;
 
+    /**
+     * @return Whether this Junos port participates in an ESI-LAG
+     * 
+     */
     public Optional<Output<Boolean>> esilag() {
         return Optional.ofNullable(this.esilag);
     }
@@ -205,9 +244,17 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.noLocalOverwrite);
     }
 
+    /**
+     * Whether PoE capabilities are disabled for this Junos port
+     * 
+     */
     @Import(name="poeDisabled")
     private @Nullable Output<Boolean> poeDisabled;
 
+    /**
+     * @return Whether PoE capabilities are disabled for this Junos port
+     * 
+     */
     public Optional<Output<Boolean>> poeDisabled() {
         return Optional.ofNullable(this.poeDisabled);
     }
@@ -228,14 +275,14 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * Link speed for this Junos port
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Link speed for this Junos port
      * 
      */
     public Optional<Output<String>> speed() {
@@ -263,6 +310,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         this.aeDisableLacp = $.aeDisableLacp;
         this.aeIdx = $.aeIdx;
         this.aeLacpForceUp = $.aeLacpForceUp;
+        this.aeLacpPassive = $.aeLacpPassive;
         this.aeLacpSlow = $.aeLacpSlow;
         this.aggregated = $.aggregated;
         this.critical = $.critical;
@@ -362,6 +410,27 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param aeLacpPassive If `aggregated`==`true`, sets LACP to passive mode on this AE interface; by default, active (fast) mode is used
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aeLacpPassive(@Nullable Output<Boolean> aeLacpPassive) {
+            $.aeLacpPassive = aeLacpPassive;
+            return this;
+        }
+
+        /**
+         * @param aeLacpPassive If `aggregated`==`true`, sets LACP to passive mode on this AE interface; by default, active (fast) mode is used
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aeLacpPassive(Boolean aeLacpPassive) {
+            return aeLacpPassive(Output.of(aeLacpPassive));
+        }
+
+        /**
          * @param aeLacpSlow To use slow timeout
          * 
          * @return builder
@@ -382,11 +451,23 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
             return aeLacpSlow(Output.of(aeLacpSlow));
         }
 
+        /**
+         * @param aggregated Whether this port is configured as an aggregated Ethernet member
+         * 
+         * @return builder
+         * 
+         */
         public Builder aggregated(@Nullable Output<Boolean> aggregated) {
             $.aggregated = aggregated;
             return this;
         }
 
+        /**
+         * @param aggregated Whether this port is configured as an aggregated Ethernet member
+         * 
+         * @return builder
+         * 
+         */
         public Builder aggregated(Boolean aggregated) {
             return aggregated(Output.of(aggregated));
         }
@@ -412,11 +493,23 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
             return critical(Output.of(critical));
         }
 
+        /**
+         * @param description Human-readable description for this Junos port
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Human-readable description for this Junos port
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -443,7 +536,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param duplex enum: `auto`, `full`, `half`
+         * @param duplex Link duplex mode for this Junos port
          * 
          * @return builder
          * 
@@ -454,7 +547,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param duplex enum: `auto`, `full`, `half`
+         * @param duplex Link duplex mode for this Junos port
          * 
          * @return builder
          * 
@@ -484,11 +577,23 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
             return dynamicUsage(Output.of(dynamicUsage));
         }
 
+        /**
+         * @param esilag Whether this Junos port participates in an ESI-LAG
+         * 
+         * @return builder
+         * 
+         */
         public Builder esilag(@Nullable Output<Boolean> esilag) {
             $.esilag = esilag;
             return this;
         }
 
+        /**
+         * @param esilag Whether this Junos port participates in an ESI-LAG
+         * 
+         * @return builder
+         * 
+         */
         public Builder esilag(Boolean esilag) {
             return esilag(Output.of(esilag));
         }
@@ -566,11 +671,23 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
             return noLocalOverwrite(Output.of(noLocalOverwrite));
         }
 
+        /**
+         * @param poeDisabled Whether PoE capabilities are disabled for this Junos port
+         * 
+         * @return builder
+         * 
+         */
         public Builder poeDisabled(@Nullable Output<Boolean> poeDisabled) {
             $.poeDisabled = poeDisabled;
             return this;
         }
 
+        /**
+         * @param poeDisabled Whether PoE capabilities are disabled for this Junos port
+         * 
+         * @return builder
+         * 
+         */
         public Builder poeDisabled(Boolean poeDisabled) {
             return poeDisabled(Output.of(poeDisabled));
         }
@@ -597,7 +714,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * @param speed Link speed for this Junos port
          * 
          * @return builder
          * 
@@ -608,7 +725,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * @param speed Link speed for this Junos port
          * 
          * @return builder
          * 

@@ -13,6 +13,7 @@ from .base import *
 from .deviceprofile_ap import *
 from .deviceprofile_assign import *
 from .deviceprofile_gateway import *
+from .deviceprofile_switch import *
 from .evpn_topology import *
 from .gatewaytemplate import *
 from .get_alarmtemplates import *

@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxedgeTuntermSwitchConfig
     {
+        /// <summary>
+        /// Untagged VLAN ID for this tunnel termination switch port
+        /// </summary>
         public readonly int? PortVlanId;
+        /// <summary>
+        /// List of tagged VLAN IDs allowed on this tunnel termination switch port
+        /// </summary>
         public readonly ImmutableArray<string> VlanIds;
 
         [OutputConstructor]

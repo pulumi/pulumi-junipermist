@@ -17,6 +17,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Underlay BGP Base AS Number
         /// </summary>
         public readonly int? AsBase;
+        /// <summary>
+        /// Prefix length used for automatically derived underlay router identifiers
+        /// </summary>
         public readonly string? RoutedIdPrefix;
         /// <summary>
         /// Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6

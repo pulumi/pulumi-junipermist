@@ -115,28 +115,44 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/evpnTopology:EvpnTopology")
 public class EvpnTopology extends com.pulumi.resources.CustomResource {
     /**
-     * EVPN Options
+     * Generation options applied to the EVPN topology
      * 
      */
     @Export(name="evpnOptions", refs={EvpnTopologyEvpnOptions.class}, tree="[0]")
     private Output</* @Nullable */ EvpnTopologyEvpnOptions> evpnOptions;
 
     /**
-     * @return EVPN Options
+     * @return Generation options applied to the EVPN topology
      * 
      */
     public Output<Optional<EvpnTopologyEvpnOptions>> evpnOptions() {
         return Codegen.optional(this.evpnOptions);
     }
+    /**
+     * Display name for the EVPN topology
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name for the EVPN topology
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Organization that owns the EVPN topology
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns the EVPN topology
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -155,14 +171,14 @@ public class EvpnTopology extends com.pulumi.resources.CustomResource {
         return this.podNames;
     }
     /**
-     * Property key can be the switch MAC Address
+     * Topology member switches, roles, and links
      * 
      */
     @Export(name="switches", refs={Map.class,String.class,EvpnTopologySwitches.class}, tree="[0,1,2]")
     private Output<Map<String,EvpnTopologySwitches>> switches;
 
     /**
-     * @return Property key can be the switch MAC Address
+     * @return Topology member switches, roles, and links
      * 
      */
     public Output<Map<String,EvpnTopologySwitches>> switches() {

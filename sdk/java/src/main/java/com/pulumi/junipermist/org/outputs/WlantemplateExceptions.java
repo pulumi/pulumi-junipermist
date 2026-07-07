@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlantemplateExceptions {
     /**
-     * @return List of site ids
+     * @return Sites excluded from the WLAN template application scope
      * 
      */
     private @Nullable List<String> siteIds;
     /**
-     * @return List of sitegroup ids
+     * @return Site groups excluded from the WLAN template application scope
      * 
      */
     private @Nullable List<String> sitegroupIds;
 
     private WlantemplateExceptions() {}
     /**
-     * @return List of site ids
+     * @return Sites excluded from the WLAN template application scope
      * 
      */
     public List<String> siteIds() {
         return this.siteIds == null ? List.of() : this.siteIds;
     }
     /**
-     * @return List of sitegroup ids
+     * @return Site groups excluded from the WLAN template application scope
      * 
      */
     public List<String> sitegroupIds() {

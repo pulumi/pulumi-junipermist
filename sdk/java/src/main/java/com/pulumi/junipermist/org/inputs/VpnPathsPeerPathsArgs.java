@@ -15,9 +15,17 @@ public final class VpnPathsPeerPathsArgs extends com.pulumi.resources.ResourceAr
 
     public static final VpnPathsPeerPathsArgs Empty = new VpnPathsPeerPathsArgs();
 
+    /**
+     * Lower numeric value makes this outgoing WAN path more preferred
+     * 
+     */
     @Import(name="preference")
     private @Nullable Output<Integer> preference;
 
+    /**
+     * @return Lower numeric value makes this outgoing WAN path more preferred
+     * 
+     */
     public Optional<Output<Integer>> preference() {
         return Optional.ofNullable(this.preference);
     }
@@ -46,11 +54,23 @@ public final class VpnPathsPeerPathsArgs extends com.pulumi.resources.ResourceAr
             $ = new VpnPathsPeerPathsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param preference Lower numeric value makes this outgoing WAN path more preferred
+         * 
+         * @return builder
+         * 
+         */
         public Builder preference(@Nullable Output<Integer> preference) {
             $.preference = preference;
             return this;
         }
 
+        /**
+         * @param preference Lower numeric value makes this outgoing WAN path more preferred
+         * 
+         * @return builder
+         * 
+         */
         public Builder preference(Integer preference) {
             return preference(Output.of(preference));
         }

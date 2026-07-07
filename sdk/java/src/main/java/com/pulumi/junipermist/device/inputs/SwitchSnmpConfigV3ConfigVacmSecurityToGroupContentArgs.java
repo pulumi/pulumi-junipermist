@@ -16,23 +16,31 @@ public final class SwitchSnmpConfigV3ConfigVacmSecurityToGroupContentArgs extend
     public static final SwitchSnmpConfigV3ConfigVacmSecurityToGroupContentArgs Empty = new SwitchSnmpConfigV3ConfigVacmSecurityToGroupContentArgs();
 
     /**
-     * Refer to groupName under access
+     * VACM group name referenced by this mapping
      * 
      */
     @Import(name="group")
     private @Nullable Output<String> group;
 
     /**
-     * @return Refer to groupName under access
+     * @return VACM group name referenced by this mapping
      * 
      */
     public Optional<Output<String>> group() {
         return Optional.ofNullable(this.group);
     }
 
+    /**
+     * Name of the SNMP security principal mapped to a VACM group
+     * 
+     */
     @Import(name="securityName")
     private @Nullable Output<String> securityName;
 
+    /**
+     * @return Name of the SNMP security principal mapped to a VACM group
+     * 
+     */
     public Optional<Output<String>> securityName() {
         return Optional.ofNullable(this.securityName);
     }
@@ -63,7 +71,7 @@ public final class SwitchSnmpConfigV3ConfigVacmSecurityToGroupContentArgs extend
         }
 
         /**
-         * @param group Refer to groupName under access
+         * @param group VACM group name referenced by this mapping
          * 
          * @return builder
          * 
@@ -74,7 +82,7 @@ public final class SwitchSnmpConfigV3ConfigVacmSecurityToGroupContentArgs extend
         }
 
         /**
-         * @param group Refer to groupName under access
+         * @param group VACM group name referenced by this mapping
          * 
          * @return builder
          * 
@@ -83,11 +91,23 @@ public final class SwitchSnmpConfigV3ConfigVacmSecurityToGroupContentArgs extend
             return group(Output.of(group));
         }
 
+        /**
+         * @param securityName Name of the SNMP security principal mapped to a VACM group
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityName(@Nullable Output<String> securityName) {
             $.securityName = securityName;
             return this;
         }
 
+        /**
+         * @param securityName Name of the SNMP security principal mapped to a VACM group
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityName(String securityName) {
             return securityName(Output.of(securityName));
         }

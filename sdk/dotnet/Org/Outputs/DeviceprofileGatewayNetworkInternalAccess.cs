@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileGatewayNetworkInternalAccess
     {
+        /// <summary>
+        /// Whether internal access is enabled for this network
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

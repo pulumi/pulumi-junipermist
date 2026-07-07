@@ -86,27 +86,36 @@ export class Rftemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === Rftemplate.__pulumiType;
     }
 
+    /**
+     * External antenna gain for the 2.4 GHz radio
+     */
     declare public readonly antGain24: pulumi.Output<number>;
+    /**
+     * External antenna gain for the 5 GHz radio
+     */
     declare public readonly antGain5: pulumi.Output<number>;
+    /**
+     * External antenna gain for the 6 GHz radio
+     */
     declare public readonly antGain6: pulumi.Output<number>;
     /**
-     * Radio Band AP settings
+     * 2.4 GHz radio settings in this RF template
      */
     declare public readonly band24: pulumi.Output<outputs.org.RftemplateBand24 | undefined>;
     /**
-     * enum: `24`, `5`, `6`, `auto`
+     * Radio usage mode for the 2.4 GHz-capable radio in this RF template
      */
     declare public readonly band24Usage: pulumi.Output<string | undefined>;
     /**
-     * Radio Band AP settings
+     * 5 GHz radio settings in this RF template
      */
     declare public readonly band5: pulumi.Output<outputs.org.RftemplateBand5 | undefined>;
     /**
-     * Radio Band AP settings
+     * 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      */
     declare public readonly band5On24Radio: pulumi.Output<outputs.org.RftemplateBand5On24Radio | undefined>;
     /**
-     * Radio Band AP settings
+     * 6 GHz radio settings in this RF template
      */
     declare public readonly band6: pulumi.Output<outputs.org.RftemplateBand6 | undefined>;
     /**
@@ -121,6 +130,9 @@ export class Rftemplate extends pulumi.CustomResource {
      * The name of the RF template
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Organization that owns this RF template
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
      * Whether scanning radio is enabled
@@ -181,27 +193,36 @@ export class Rftemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Rftemplate resources.
  */
 export interface RftemplateState {
+    /**
+     * External antenna gain for the 2.4 GHz radio
+     */
     antGain24?: pulumi.Input<number | undefined>;
+    /**
+     * External antenna gain for the 5 GHz radio
+     */
     antGain5?: pulumi.Input<number | undefined>;
+    /**
+     * External antenna gain for the 6 GHz radio
+     */
     antGain6?: pulumi.Input<number | undefined>;
     /**
-     * Radio Band AP settings
+     * 2.4 GHz radio settings in this RF template
      */
     band24?: pulumi.Input<inputs.org.RftemplateBand24 | undefined>;
     /**
-     * enum: `24`, `5`, `6`, `auto`
+     * Radio usage mode for the 2.4 GHz-capable radio in this RF template
      */
     band24Usage?: pulumi.Input<string | undefined>;
     /**
-     * Radio Band AP settings
+     * 5 GHz radio settings in this RF template
      */
     band5?: pulumi.Input<inputs.org.RftemplateBand5 | undefined>;
     /**
-     * Radio Band AP settings
+     * 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      */
     band5On24Radio?: pulumi.Input<inputs.org.RftemplateBand5On24Radio | undefined>;
     /**
-     * Radio Band AP settings
+     * 6 GHz radio settings in this RF template
      */
     band6?: pulumi.Input<inputs.org.RftemplateBand6 | undefined>;
     /**
@@ -216,6 +237,9 @@ export interface RftemplateState {
      * The name of the RF template
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns this RF template
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
      * Whether scanning radio is enabled
@@ -227,27 +251,36 @@ export interface RftemplateState {
  * The set of arguments for constructing a Rftemplate resource.
  */
 export interface RftemplateArgs {
+    /**
+     * External antenna gain for the 2.4 GHz radio
+     */
     antGain24?: pulumi.Input<number | undefined>;
+    /**
+     * External antenna gain for the 5 GHz radio
+     */
     antGain5?: pulumi.Input<number | undefined>;
+    /**
+     * External antenna gain for the 6 GHz radio
+     */
     antGain6?: pulumi.Input<number | undefined>;
     /**
-     * Radio Band AP settings
+     * 2.4 GHz radio settings in this RF template
      */
     band24?: pulumi.Input<inputs.org.RftemplateBand24 | undefined>;
     /**
-     * enum: `24`, `5`, `6`, `auto`
+     * Radio usage mode for the 2.4 GHz-capable radio in this RF template
      */
     band24Usage?: pulumi.Input<string | undefined>;
     /**
-     * Radio Band AP settings
+     * 5 GHz radio settings in this RF template
      */
     band5?: pulumi.Input<inputs.org.RftemplateBand5 | undefined>;
     /**
-     * Radio Band AP settings
+     * 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      */
     band5On24Radio?: pulumi.Input<inputs.org.RftemplateBand5On24Radio | undefined>;
     /**
-     * Radio Band AP settings
+     * 6 GHz radio settings in this RF template
      */
     band6?: pulumi.Input<inputs.org.RftemplateBand6 | undefined>;
     /**
@@ -262,6 +295,9 @@ export interface RftemplateArgs {
      * The name of the RF template
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns this RF template
+     */
     orgId: pulumi.Input<string>;
     /**
      * Whether scanning radio is enabled

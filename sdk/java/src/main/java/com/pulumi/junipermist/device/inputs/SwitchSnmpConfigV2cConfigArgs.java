@@ -15,44 +15,60 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
 
     public static final SwitchSnmpConfigV2cConfigArgs Empty = new SwitchSnmpConfigV2cConfigArgs();
 
+    /**
+     * Access level for the SNMPv2c community
+     * 
+     */
     @Import(name="authorization")
     private @Nullable Output<String> authorization;
 
+    /**
+     * @return Access level for the SNMPv2c community
+     * 
+     */
     public Optional<Output<String>> authorization() {
         return Optional.ofNullable(this.authorization);
     }
 
     /**
-     * Client_list_name here should refer to clientList above
+     * SNMP client list name referenced by this community
      * 
      */
     @Import(name="clientListName")
     private @Nullable Output<String> clientListName;
 
     /**
-     * @return Client_list_name here should refer to clientList above
+     * @return SNMP client list name referenced by this community
      * 
      */
     public Optional<Output<String>> clientListName() {
         return Optional.ofNullable(this.clientListName);
     }
 
+    /**
+     * SNMPv2c community string name
+     * 
+     */
     @Import(name="communityName")
     private @Nullable Output<String> communityName;
 
+    /**
+     * @return SNMPv2c community string name
+     * 
+     */
     public Optional<Output<String>> communityName() {
         return Optional.ofNullable(this.communityName);
     }
 
     /**
-     * View name here should be defined in views above
+     * SNMP view name that must be defined in the views list
      * 
      */
     @Import(name="view")
     private @Nullable Output<String> view;
 
     /**
-     * @return View name here should be defined in views above
+     * @return SNMP view name that must be defined in the views list
      * 
      */
     public Optional<Output<String>> view() {
@@ -86,17 +102,29 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
             $ = new SwitchSnmpConfigV2cConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param authorization Access level for the SNMPv2c community
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorization(@Nullable Output<String> authorization) {
             $.authorization = authorization;
             return this;
         }
 
+        /**
+         * @param authorization Access level for the SNMPv2c community
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorization(String authorization) {
             return authorization(Output.of(authorization));
         }
 
         /**
-         * @param clientListName Client_list_name here should refer to clientList above
+         * @param clientListName SNMP client list name referenced by this community
          * 
          * @return builder
          * 
@@ -107,7 +135,7 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clientListName Client_list_name here should refer to clientList above
+         * @param clientListName SNMP client list name referenced by this community
          * 
          * @return builder
          * 
@@ -116,17 +144,29 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
             return clientListName(Output.of(clientListName));
         }
 
+        /**
+         * @param communityName SNMPv2c community string name
+         * 
+         * @return builder
+         * 
+         */
         public Builder communityName(@Nullable Output<String> communityName) {
             $.communityName = communityName;
             return this;
         }
 
+        /**
+         * @param communityName SNMPv2c community string name
+         * 
+         * @return builder
+         * 
+         */
         public Builder communityName(String communityName) {
             return communityName(Output.of(communityName));
         }
 
         /**
-         * @param view View name here should be defined in views above
+         * @param view SNMP view name that must be defined in the views list
          * 
          * @return builder
          * 
@@ -137,7 +177,7 @@ public final class SwitchSnmpConfigV2cConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param view View name here should be defined in views above
+         * @param view SNMP view name that must be defined in the views list
          * 
          * @return builder
          * 

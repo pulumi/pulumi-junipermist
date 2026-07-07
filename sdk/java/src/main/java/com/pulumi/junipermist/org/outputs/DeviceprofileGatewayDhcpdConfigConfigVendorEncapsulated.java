@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated {
     /**
-     * @return enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+     * @return Data type used to encode this vendor option value
      * 
      */
     private @Nullable String type;
+    /**
+     * @return Option value to send for this vendor option
+     * 
+     */
     private @Nullable String value;
 
     private DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated() {}
     /**
-     * @return enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+     * @return Data type used to encode this vendor option value
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Option value to send for this vendor option
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

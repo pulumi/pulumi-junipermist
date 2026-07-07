@@ -19,7 +19,7 @@ public final class SwitchBgpConfigNeighbors {
      */
     private @Nullable String exportPolicy;
     /**
-     * @return Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+     * @return BGP hold time for this neighbor
      * 
      */
     private @Nullable Integer holdTime;
@@ -28,6 +28,10 @@ public final class SwitchBgpConfigNeighbors {
      * 
      */
     private @Nullable String importPolicy;
+    /**
+     * @return Time-to-live value for multihop BGP sessions to this neighbor
+     * 
+     */
     private @Nullable Integer multihopTtl;
     /**
      * @return Autonomous System (AS) number of the BGP neighbor. For internal BGP, this must match `localAs`. For external BGP, this must differ from `localAs`.
@@ -44,7 +48,7 @@ public final class SwitchBgpConfigNeighbors {
         return Optional.ofNullable(this.exportPolicy);
     }
     /**
-     * @return Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+     * @return BGP hold time for this neighbor
      * 
      */
     public Optional<Integer> holdTime() {
@@ -57,6 +61,10 @@ public final class SwitchBgpConfigNeighbors {
     public Optional<String> importPolicy() {
         return Optional.ofNullable(this.importPolicy);
     }
+    /**
+     * @return Time-to-live value for multihop BGP sessions to this neighbor
+     * 
+     */
     public Optional<Integer> multihopTtl() {
         return Optional.ofNullable(this.multihopTtl);
     }

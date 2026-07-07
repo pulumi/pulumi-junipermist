@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
     {
         [Input("hosts", required: true)]
         private InputList<string>? _hosts;
+
+        /// <summary>
+        /// Remote gateway host addresses for this tunnel node
+        /// </summary>
         public InputList<string> Hosts
         {
             get => _hosts ?? (_hosts = new InputList<string>());
@@ -24,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _internalIps;
 
         /// <summary>
-        /// Only if `Provider`==`zscaler-gre`, `Provider`==`jse-ipsec`, `Provider`==`custom-ipsec` or `Provider`==`custom-gre`
+        /// Internal IP addresses configured on this tunnel node
         /// </summary>
         public InputList<string> InternalIps
         {
@@ -34,6 +38,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("probeIps")]
         private InputList<string>? _probeIps;
+
+        /// <summary>
+        /// Health-check IP addresses used to monitor this tunnel node
+        /// </summary>
         public InputList<string> ProbeIps
         {
             get => _probeIps ?? (_probeIps = new InputList<string>());
@@ -44,7 +52,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _remoteIds;
 
         /// <summary>
-        /// Only if `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
+        /// IKE identities expected from this tunnel node
         /// </summary>
         public InputList<string> RemoteIds
         {
@@ -54,6 +62,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("wanNames", required: true)]
         private InputList<string>? _wanNames;
+
+        /// <summary>
+        /// Interface names that source tunnel traffic for this node
+        /// </summary>
         public InputList<string> WanNames
         {
             get => _wanNames ?? (_wanNames = new InputList<string>());

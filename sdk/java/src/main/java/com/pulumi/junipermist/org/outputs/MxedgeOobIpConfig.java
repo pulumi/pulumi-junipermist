@@ -13,95 +13,135 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxedgeOobIpConfig {
+    /**
+     * @return Whether IPv6 autoconfiguration is enabled on the out-of-band management interface
+     * 
+     */
     private @Nullable Boolean autoconf6;
+    /**
+     * @return Whether DHCPv6 is enabled on the out-of-band management interface
+     * 
+     */
     private @Nullable Boolean dhcp6;
     /**
-     * @return IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+     * @return Name server addresses for out-of-band management
      * 
      */
     private @Nullable List<String> dns;
     /**
-     * @return If `type`=`static`
+     * @return If `type`=`static`, IPv4 default gateway for the out-of-band management interface
      * 
      */
     private @Nullable String gateway;
+    /**
+     * @return If `type6`=`static`, IPv6 default gateway for the out-of-band management interface
+     * 
+     */
     private @Nullable String gateway6;
     /**
-     * @return If `type`=`static`
+     * @return If `type`=`static`, IPv4 address for the out-of-band management interface
      * 
      */
     private @Nullable String ip;
+    /**
+     * @return If `type6`=`static`, IPv6 address for the out-of-band management interface
+     * 
+     */
     private @Nullable String ip6;
     /**
-     * @return If `type`=`static`
+     * @return If `type`=`static`, IPv4 netmask for the out-of-band management interface
      * 
      */
     private @Nullable String netmask;
+    /**
+     * @return If `type6`=`static`, IPv6 prefix length for the out-of-band management interface
+     * 
+     */
     private @Nullable String netmask6;
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv4 address assignment mode for out-of-band management
      * 
      */
     private @Nullable String type;
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv6 address assignment mode for out-of-band management
      * 
      */
     private @Nullable String type6;
 
     private MxedgeOobIpConfig() {}
+    /**
+     * @return Whether IPv6 autoconfiguration is enabled on the out-of-band management interface
+     * 
+     */
     public Optional<Boolean> autoconf6() {
         return Optional.ofNullable(this.autoconf6);
     }
+    /**
+     * @return Whether DHCPv6 is enabled on the out-of-band management interface
+     * 
+     */
     public Optional<Boolean> dhcp6() {
         return Optional.ofNullable(this.dhcp6);
     }
     /**
-     * @return IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+     * @return Name server addresses for out-of-band management
      * 
      */
     public List<String> dns() {
         return this.dns == null ? List.of() : this.dns;
     }
     /**
-     * @return If `type`=`static`
+     * @return If `type`=`static`, IPv4 default gateway for the out-of-band management interface
      * 
      */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
+    /**
+     * @return If `type6`=`static`, IPv6 default gateway for the out-of-band management interface
+     * 
+     */
     public Optional<String> gateway6() {
         return Optional.ofNullable(this.gateway6);
     }
     /**
-     * @return If `type`=`static`
+     * @return If `type`=`static`, IPv4 address for the out-of-band management interface
      * 
      */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
+    /**
+     * @return If `type6`=`static`, IPv6 address for the out-of-band management interface
+     * 
+     */
     public Optional<String> ip6() {
         return Optional.ofNullable(this.ip6);
     }
     /**
-     * @return If `type`=`static`
+     * @return If `type`=`static`, IPv4 netmask for the out-of-band management interface
      * 
      */
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
     }
+    /**
+     * @return If `type6`=`static`, IPv6 prefix length for the out-of-band management interface
+     * 
+     */
     public Optional<String> netmask6() {
         return Optional.ofNullable(this.netmask6);
     }
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv4 address assignment mode for out-of-band management
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv6 address assignment mode for out-of-band management
      * 
      */
     public Optional<String> type6() {

@@ -13,16 +13,25 @@ namespace Pulumi.JuniperMist.Outputs
     [OutputType]
     public sealed class UpgradeDeviceFwupdate
     {
+        /// <summary>
+        /// Firmware update progress percentage, or null when unavailable
+        /// </summary>
         public readonly int? Progress;
         /// <summary>
-        /// enum: `Inprogress`, `Failed`, `Upgraded`, `Success`, `Scheduled`, `Error`
+        /// Current firmware update status
         /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// Numeric firmware update status identifier
+        /// </summary>
         public readonly int? StatusId;
         /// <summary>
-        /// Epoch (seconds)
+        /// Time when the firmware update status was last updated
         /// </summary>
         public readonly double? Timestamp;
+        /// <summary>
+        /// Whether the firmware update process will retry after the current status
+        /// </summary>
         public readonly bool? WillRetry;
 
         [OutputConstructor]

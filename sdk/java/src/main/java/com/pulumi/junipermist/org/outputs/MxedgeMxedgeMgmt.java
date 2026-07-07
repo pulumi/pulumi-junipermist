@@ -12,45 +12,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxedgeMxedgeMgmt {
+    /**
+     * @return Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+     * 
+     */
     private @Nullable Boolean configAutoRevert;
+    /**
+     * @return Whether FIPS mode is enabled on the Mist Edge
+     * 
+     */
     private @Nullable Boolean fipsEnabled;
+    /**
+     * @return Password for the Mist service account on the Mist Edge
+     * 
+     */
     private @Nullable String mistPassword;
     /**
-     * @return enum: `dhcp`, `disabled`, `static`
+     * @return IPv4 address assignment mode for out-of-band management
      * 
      */
     private @Nullable String oobIpType;
     /**
-     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * @return IPv6 address assignment mode for out-of-band management
      * 
      */
     private @Nullable String oobIpType6;
+    /**
+     * @return Root account password for the Mist Edge
+     * 
+     */
     private @Nullable String rootPassword;
 
     private MxedgeMxedgeMgmt() {}
+    /**
+     * @return Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+     * 
+     */
     public Optional<Boolean> configAutoRevert() {
         return Optional.ofNullable(this.configAutoRevert);
     }
+    /**
+     * @return Whether FIPS mode is enabled on the Mist Edge
+     * 
+     */
     public Optional<Boolean> fipsEnabled() {
         return Optional.ofNullable(this.fipsEnabled);
     }
+    /**
+     * @return Password for the Mist service account on the Mist Edge
+     * 
+     */
     public Optional<String> mistPassword() {
         return Optional.ofNullable(this.mistPassword);
     }
     /**
-     * @return enum: `dhcp`, `disabled`, `static`
+     * @return IPv4 address assignment mode for out-of-band management
      * 
      */
     public Optional<String> oobIpType() {
         return Optional.ofNullable(this.oobIpType);
     }
     /**
-     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * @return IPv6 address assignment mode for out-of-band management
      * 
      */
     public Optional<String> oobIpType6() {
         return Optional.ofNullable(this.oobIpType6);
     }
+    /**
+     * @return Root account password for the Mist Edge
+     * 
+     */
     public Optional<String> rootPassword() {
         return Optional.ofNullable(this.rootPassword);
     }

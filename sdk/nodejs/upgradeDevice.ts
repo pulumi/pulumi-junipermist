@@ -64,15 +64,30 @@ export class UpgradeDevice extends pulumi.CustomResource {
         return obj['__pulumiType'] === UpgradeDevice.__pulumiType;
     }
 
+    /**
+     * Automatic firmware upgrade status for the switch
+     */
     declare public /*out*/ readonly autoUpgradeStat: pulumi.Output<outputs.UpgradeDeviceAutoUpgradeStat>;
+    /**
+     * Time when the switch configuration status was last updated, in epoch seconds
+     */
     declare public /*out*/ readonly configTimestamp: pulumi.Output<number>;
+    /**
+     * Currently applied configuration version for the switch
+     */
     declare public /*out*/ readonly configVersion: pulumi.Output<number>;
     declare public readonly deviceId: pulumi.Output<string>;
     /**
      * current device firmware version
      */
     declare public /*out*/ readonly deviceVersion: pulumi.Output<string>;
+    /**
+     * Public IP address observed for the switch
+     */
     declare public /*out*/ readonly extIp: pulumi.Output<string>;
+    /**
+     * Firmware update status for the switch
+     */
     declare public /*out*/ readonly fwupdate: pulumi.Output<outputs.UpgradeDeviceFwupdate>;
     /**
      * For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
@@ -82,6 +97,9 @@ export class UpgradeDevice extends pulumi.CustomResource {
      * For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
      */
     declare public readonly rebootAt: pulumi.Output<number | undefined>;
+    /**
+     * Associated site identifier for the switch statistics record
+     */
     declare public readonly siteId: pulumi.Output<string>;
     /**
      * For Junos devices only. Perform recovery snapshot after device is rebooted
@@ -92,7 +110,7 @@ export class UpgradeDevice extends pulumi.CustomResource {
      */
     declare public readonly startTime: pulumi.Output<number | undefined>;
     /**
-     * enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+     * Current status of the requested device upgrade
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -111,14 +129,20 @@ export class UpgradeDevice extends pulumi.CustomResource {
      * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
      */
     declare public readonly syncUpgradeTimeout: pulumi.Output<number>;
+    /**
+     * Numeric inventory tag identifier associated with the switch
+     */
     declare public /*out*/ readonly tagId: pulumi.Output<number>;
+    /**
+     * Inventory tag UUID associated with the switch
+     */
     declare public /*out*/ readonly tagUuid: pulumi.Output<string>;
     /**
      * firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions
      */
     declare public readonly targetVersion: pulumi.Output<string>;
     /**
-     * Epoch (seconds)
+     * Epoch timestamp when the device upgrade status was reported
      */
     declare public /*out*/ readonly timestamp: pulumi.Output<number>;
 
@@ -198,15 +222,30 @@ export class UpgradeDevice extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UpgradeDevice resources.
  */
 export interface UpgradeDeviceState {
+    /**
+     * Automatic firmware upgrade status for the switch
+     */
     autoUpgradeStat?: pulumi.Input<inputs.UpgradeDeviceAutoUpgradeStat | undefined>;
+    /**
+     * Time when the switch configuration status was last updated, in epoch seconds
+     */
     configTimestamp?: pulumi.Input<number | undefined>;
+    /**
+     * Currently applied configuration version for the switch
+     */
     configVersion?: pulumi.Input<number | undefined>;
     deviceId?: pulumi.Input<string | undefined>;
     /**
      * current device firmware version
      */
     deviceVersion?: pulumi.Input<string | undefined>;
+    /**
+     * Public IP address observed for the switch
+     */
     extIp?: pulumi.Input<string | undefined>;
+    /**
+     * Firmware update status for the switch
+     */
     fwupdate?: pulumi.Input<inputs.UpgradeDeviceFwupdate | undefined>;
     /**
      * For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed
@@ -216,6 +255,9 @@ export interface UpgradeDeviceState {
      * For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
      */
     rebootAt?: pulumi.Input<number | undefined>;
+    /**
+     * Associated site identifier for the switch statistics record
+     */
     siteId?: pulumi.Input<string | undefined>;
     /**
      * For Junos devices only. Perform recovery snapshot after device is rebooted
@@ -226,7 +268,7 @@ export interface UpgradeDeviceState {
      */
     startTime?: pulumi.Input<number | undefined>;
     /**
-     * enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+     * Current status of the requested device upgrade
      */
     status?: pulumi.Input<string | undefined>;
     /**
@@ -245,14 +287,20 @@ export interface UpgradeDeviceState {
      * if set to `syncUpgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800
      */
     syncUpgradeTimeout?: pulumi.Input<number | undefined>;
+    /**
+     * Numeric inventory tag identifier associated with the switch
+     */
     tagId?: pulumi.Input<number | undefined>;
+    /**
+     * Inventory tag UUID associated with the switch
+     */
     tagUuid?: pulumi.Input<string | undefined>;
     /**
      * firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions
      */
     targetVersion?: pulumi.Input<string | undefined>;
     /**
-     * Epoch (seconds)
+     * Epoch timestamp when the device upgrade status was reported
      */
     timestamp?: pulumi.Input<number | undefined>;
 }
@@ -270,6 +318,9 @@ export interface UpgradeDeviceArgs {
      * For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `startTime`
      */
     rebootAt?: pulumi.Input<number | undefined>;
+    /**
+     * Associated site identifier for the switch statistics record
+     */
     siteId: pulumi.Input<string>;
     /**
      * For Junos devices only. Perform recovery snapshot after device is rebooted

@@ -29,7 +29,12 @@ class NacEndpointArgs:
         """
         The set of arguments for constructing a NacEndpoint resource.
 
-        :param pulumi.Input[_builtins.str] mac: Only non-local-admin MAC is accepted
+        :param pulumi.Input[_builtins.str] mac: Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: Applied labels for this user MAC entry
+        :param pulumi.Input[_builtins.str] name: Display name for this user MAC entry
+        :param pulumi.Input[_builtins.str] notes: Free-form notes about this user MAC entry
+        :param pulumi.Input[_builtins.str] radius_group: RADIUS group associated with this user MAC entry
+        :param pulumi.Input[_builtins.str] vlan: Network VLAN value associated with this user MAC entry
         """
         pulumi.set(__self__, "mac", mac)
         pulumi.set(__self__, "org_id", org_id)
@@ -48,7 +53,7 @@ class NacEndpointArgs:
     @pulumi.getter
     def mac(self) -> pulumi.Input[_builtins.str]:
         """
-        Only non-local-admin MAC is accepted
+        Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
         """
         return pulumi.get(self, "mac")
 
@@ -68,6 +73,9 @@ class NacEndpointArgs:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Applied labels for this user MAC entry
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -77,6 +85,9 @@ class NacEndpointArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name for this user MAC entry
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -86,6 +97,9 @@ class NacEndpointArgs:
     @_builtins.property
     @pulumi.getter
     def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Free-form notes about this user MAC entry
+        """
         return pulumi.get(self, "notes")
 
     @notes.setter
@@ -95,6 +109,9 @@ class NacEndpointArgs:
     @_builtins.property
     @pulumi.getter(name="radiusGroup")
     def radius_group(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        RADIUS group associated with this user MAC entry
+        """
         return pulumi.get(self, "radius_group")
 
     @radius_group.setter
@@ -104,6 +121,9 @@ class NacEndpointArgs:
     @_builtins.property
     @pulumi.getter
     def vlan(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Network VLAN value associated with this user MAC entry
+        """
         return pulumi.get(self, "vlan")
 
     @vlan.setter
@@ -124,7 +144,12 @@ class _NacEndpointState:
         """
         Input properties used for looking up and filtering NacEndpoint resources.
 
-        :param pulumi.Input[_builtins.str] mac: Only non-local-admin MAC is accepted
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: Applied labels for this user MAC entry
+        :param pulumi.Input[_builtins.str] mac: Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
+        :param pulumi.Input[_builtins.str] name: Display name for this user MAC entry
+        :param pulumi.Input[_builtins.str] notes: Free-form notes about this user MAC entry
+        :param pulumi.Input[_builtins.str] radius_group: RADIUS group associated with this user MAC entry
+        :param pulumi.Input[_builtins.str] vlan: Network VLAN value associated with this user MAC entry
         """
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -144,6 +169,9 @@ class _NacEndpointState:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Applied labels for this user MAC entry
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -154,7 +182,7 @@ class _NacEndpointState:
     @pulumi.getter
     def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Only non-local-admin MAC is accepted
+        Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
         """
         return pulumi.get(self, "mac")
 
@@ -165,6 +193,9 @@ class _NacEndpointState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name for this user MAC entry
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -174,6 +205,9 @@ class _NacEndpointState:
     @_builtins.property
     @pulumi.getter
     def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Free-form notes about this user MAC entry
+        """
         return pulumi.get(self, "notes")
 
     @notes.setter
@@ -192,6 +226,9 @@ class _NacEndpointState:
     @_builtins.property
     @pulumi.getter(name="radiusGroup")
     def radius_group(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        RADIUS group associated with this user MAC entry
+        """
         return pulumi.get(self, "radius_group")
 
     @radius_group.setter
@@ -201,6 +238,9 @@ class _NacEndpointState:
     @_builtins.property
     @pulumi.getter
     def vlan(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Network VLAN value associated with this user MAC entry
+        """
         return pulumi.get(self, "vlan")
 
     @vlan.setter
@@ -262,7 +302,12 @@ class NacEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] mac: Only non-local-admin MAC is accepted
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: Applied labels for this user MAC entry
+        :param pulumi.Input[_builtins.str] mac: Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
+        :param pulumi.Input[_builtins.str] name: Display name for this user MAC entry
+        :param pulumi.Input[_builtins.str] notes: Free-form notes about this user MAC entry
+        :param pulumi.Input[_builtins.str] radius_group: RADIUS group associated with this user MAC entry
+        :param pulumi.Input[_builtins.str] vlan: Network VLAN value associated with this user MAC entry
         """
         ...
     @overload
@@ -374,7 +419,12 @@ class NacEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] mac: Only non-local-admin MAC is accepted
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: Applied labels for this user MAC entry
+        :param pulumi.Input[_builtins.str] mac: Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
+        :param pulumi.Input[_builtins.str] name: Display name for this user MAC entry
+        :param pulumi.Input[_builtins.str] notes: Free-form notes about this user MAC entry
+        :param pulumi.Input[_builtins.str] radius_group: RADIUS group associated with this user MAC entry
+        :param pulumi.Input[_builtins.str] vlan: Network VLAN value associated with this user MAC entry
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -392,24 +442,33 @@ class NacEndpoint(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        Applied labels for this user MAC entry
+        """
         return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter
     def mac(self) -> pulumi.Output[_builtins.str]:
         """
-        Only non-local-admin MAC is accepted
+        Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
         """
         return pulumi.get(self, "mac")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name for this user MAC entry
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def notes(self) -> pulumi.Output[_builtins.str]:
+        """
+        Free-form notes about this user MAC entry
+        """
         return pulumi.get(self, "notes")
 
     @_builtins.property
@@ -420,10 +479,16 @@ class NacEndpoint(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="radiusGroup")
     def radius_group(self) -> pulumi.Output[_builtins.str]:
+        """
+        RADIUS group associated with this user MAC entry
+        """
         return pulumi.get(self, "radius_group")
 
     @_builtins.property
     @pulumi.getter
     def vlan(self) -> pulumi.Output[_builtins.str]:
+        """
+        Network VLAN value associated with this user MAC entry
+        """
         return pulumi.get(self, "vlan")
 

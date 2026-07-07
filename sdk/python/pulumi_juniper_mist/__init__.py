@@ -153,6 +153,14 @@ _utilities.register(
  },
  {
   "pkg": "junipermist",
+  "mod": "org/deviceprofileSwitch",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/deviceprofileSwitch:DeviceprofileSwitch": "DeviceprofileSwitch"
+  }
+ },
+ {
+  "pkg": "junipermist",
   "mod": "org/evpnTopology",
   "fqn": "pulumi_juniper_mist.org",
   "classes": {

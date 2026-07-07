@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxedgeTuntermMulticastConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Settings for mDNS forwarding on tunnel termination VLANs
+        /// </summary>
         [Input("mdns")]
         public Input<Inputs.MxedgeTuntermMulticastConfigMdnsArgs>? Mdns { get; set; }
 
+        /// <summary>
+        /// Settings for SSDP forwarding on tunnel termination VLANs
+        /// </summary>
         [Input("ssdp")]
         public Input<Inputs.MxedgeTuntermMulticastConfigSsdpArgs>? Ssdp { get; set; }
 

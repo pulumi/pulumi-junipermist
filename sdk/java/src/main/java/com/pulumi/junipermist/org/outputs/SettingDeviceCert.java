@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class SettingDeviceCert {
+    /**
+     * @return PEM-encoded common device certificate used by organization settings
+     * 
+     */
     private String cert;
+    /**
+     * @return Private key paired with the common device certificate
+     * 
+     */
     private String key;
 
     private SettingDeviceCert() {}
+    /**
+     * @return PEM-encoded common device certificate used by organization settings
+     * 
+     */
     public String cert() {
         return this.cert;
     }
+    /**
+     * @return Private key paired with the common device certificate
+     * 
+     */
     public String key() {
         return this.key;
     }

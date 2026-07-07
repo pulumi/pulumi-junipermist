@@ -18,14 +18,14 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
     public static final GatewayOobIpConfigArgs Empty = new GatewayOobIpConfigArgs();
 
     /**
-     * If `type`==`static`
+     * Default gateway for the out-of-band management interface when `type`==`static`
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return If `type`==`static`
+     * @return Default gateway for the out-of-band management interface when `type`==`static`
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -33,14 +33,14 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * If `type`==`static`
+     * Static IPv4 address for the out-of-band management interface when `type`==`static`
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return If `type`==`static`
+     * @return Static IPv4 address for the out-of-band management interface when `type`==`static`
      * 
      */
     public Optional<Output<String>> ip() {
@@ -48,14 +48,14 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * If `type`==`static`
+     * IPv4 netmask or prefix length for the out-of-band management interface when `type`==`static`
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return If `type`==`static`
+     * @return IPv4 netmask or prefix length for the out-of-band management interface when `type`==`static`
      * 
      */
     public Optional<Output<String>> netmask() {
@@ -63,14 +63,14 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * For HA Cluster, node1 can have different IP Config
+     * Out-of-band management IP configuration override for node1 in an HA cluster
      * 
      */
     @Import(name="node1")
     private @Nullable Output<GatewayOobIpConfigNode1Args> node1;
 
     /**
-     * @return For HA Cluster, node1 can have different IP Config
+     * @return Out-of-band management IP configuration override for node1 in an HA cluster
      * 
      */
     public Optional<Output<GatewayOobIpConfigNode1Args>> node1() {
@@ -78,14 +78,14 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * enum: `dhcp`, `static`
+     * IP assignment mode for the out-of-band management interface
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for the out-of-band management interface
      * 
      */
     public Optional<Output<String>> type() {
@@ -122,9 +122,17 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.useMgmtVrfForHostOut);
     }
 
+    /**
+     * VLAN ID used for out-of-band management traffic
+     * 
+     */
     @Import(name="vlanId")
     private @Nullable Output<String> vlanId;
 
+    /**
+     * @return VLAN ID used for out-of-band management traffic
+     * 
+     */
     public Optional<Output<String>> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
@@ -161,7 +169,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param gateway If `type`==`static`
+         * @param gateway Default gateway for the out-of-band management interface when `type`==`static`
          * 
          * @return builder
          * 
@@ -172,7 +180,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param gateway If `type`==`static`
+         * @param gateway Default gateway for the out-of-band management interface when `type`==`static`
          * 
          * @return builder
          * 
@@ -182,7 +190,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ip If `type`==`static`
+         * @param ip Static IPv4 address for the out-of-band management interface when `type`==`static`
          * 
          * @return builder
          * 
@@ -193,7 +201,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ip If `type`==`static`
+         * @param ip Static IPv4 address for the out-of-band management interface when `type`==`static`
          * 
          * @return builder
          * 
@@ -203,7 +211,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param netmask If `type`==`static`
+         * @param netmask IPv4 netmask or prefix length for the out-of-band management interface when `type`==`static`
          * 
          * @return builder
          * 
@@ -214,7 +222,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param netmask If `type`==`static`
+         * @param netmask IPv4 netmask or prefix length for the out-of-band management interface when `type`==`static`
          * 
          * @return builder
          * 
@@ -224,7 +232,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param node1 For HA Cluster, node1 can have different IP Config
+         * @param node1 Out-of-band management IP configuration override for node1 in an HA cluster
          * 
          * @return builder
          * 
@@ -235,7 +243,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param node1 For HA Cluster, node1 can have different IP Config
+         * @param node1 Out-of-band management IP configuration override for node1 in an HA cluster
          * 
          * @return builder
          * 
@@ -245,7 +253,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IP assignment mode for the out-of-band management interface
          * 
          * @return builder
          * 
@@ -256,7 +264,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IP assignment mode for the out-of-band management interface
          * 
          * @return builder
          * 
@@ -307,11 +315,23 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
             return useMgmtVrfForHostOut(Output.of(useMgmtVrfForHostOut));
         }
 
+        /**
+         * @param vlanId VLAN ID used for out-of-band management traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(@Nullable Output<String> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
+        /**
+         * @param vlanId VLAN ID used for out-of-band management traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(String vlanId) {
             return vlanId(Output.of(vlanId));
         }

@@ -15,20 +15,44 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxclusterMistNac {
+    /**
+     * @return RADIUS accounting port used by Mist NAC on the cluster
+     * 
+     */
     private @Nullable Integer acctServerPort;
+    /**
+     * @return RADIUS authentication port used by Mist NAC on the cluster
+     * 
+     */
     private @Nullable Integer authServerPort;
     /**
      * @return Property key is the RADIUS Client IP/Subnet.
      * 
      */
     private @Nullable Map<String,MxclusterMistNacClientIps> clientIps;
+    /**
+     * @return Whether Mist NAC is enabled on the cluster
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Shared RADIUS secret used by Mist NAC clients
+     * 
+     */
     private @Nullable String secret;
 
     private MxclusterMistNac() {}
+    /**
+     * @return RADIUS accounting port used by Mist NAC on the cluster
+     * 
+     */
     public Optional<Integer> acctServerPort() {
         return Optional.ofNullable(this.acctServerPort);
     }
+    /**
+     * @return RADIUS authentication port used by Mist NAC on the cluster
+     * 
+     */
     public Optional<Integer> authServerPort() {
         return Optional.ofNullable(this.authServerPort);
     }
@@ -39,9 +63,17 @@ public final class MxclusterMistNac {
     public Map<String,MxclusterMistNacClientIps> clientIps() {
         return this.clientIps == null ? Map.of() : this.clientIps;
     }
+    /**
+     * @return Whether Mist NAC is enabled on the cluster
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Shared RADIUS secret used by Mist NAC clients
+     * 
+     */
     public Optional<String> secret() {
         return Optional.ofNullable(this.secret);
     }

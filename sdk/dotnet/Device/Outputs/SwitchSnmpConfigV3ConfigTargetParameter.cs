@@ -14,24 +14,27 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchSnmpConfigV3ConfigTargetParameter
     {
         /// <summary>
-        /// enum: `V1`, `V2c`, `V3`
+        /// SNMP message processing model used by this target parameter profile
         /// </summary>
         public readonly string MessageProcessingModel;
+        /// <summary>
+        /// Target parameter profile name
+        /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Refer to profile-name in notify_filter
+        /// Notification filter profile referenced by this target parameter profile
         /// </summary>
         public readonly string? NotifyFilter;
         /// <summary>
-        /// enum: `Authentication`, `None`, `Privacy`
+        /// Required security level for this target parameter profile
         /// </summary>
         public readonly string? SecurityLevel;
         /// <summary>
-        /// enum: `Usm`, `V1`, `V2c`
+        /// Required security model for this target parameter profile
         /// </summary>
         public readonly string? SecurityModel;
         /// <summary>
-        /// Refer to SecurityName in usm
+        /// USM security name referenced by this target parameter profile
         /// </summary>
         public readonly string? SecurityName;
 

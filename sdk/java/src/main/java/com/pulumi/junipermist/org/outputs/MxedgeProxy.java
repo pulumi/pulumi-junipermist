@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxedgeProxy {
+    /**
+     * @return Whether this proxy configuration is disabled
+     * 
+     */
     private @Nullable Boolean disabled;
+    /**
+     * @return Proxy URL used to reach Mist
+     * 
+     */
     private @Nullable String url;
 
     private MxedgeProxy() {}
+    /**
+     * @return Whether this proxy configuration is disabled
+     * 
+     */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
+    /**
+     * @return Proxy URL used to reach Mist
+     * 
+     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }

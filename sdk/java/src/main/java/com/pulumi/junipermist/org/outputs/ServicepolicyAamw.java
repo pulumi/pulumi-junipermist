@@ -13,30 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServicepolicyAamw {
     /**
-     * @return org-level Advanced Advance Anti Malware Profile (SkyAtp) Profile can be used, this takes precedence over &#39;profile&#39;
+     * @return Organization-level advanced anti-malware profile ID; takes precedence over inline `profile` settings
      * 
      */
     private @Nullable String aamwprofileId;
+    /**
+     * @return Whether advanced anti-malware inspection is enabled for the service policy
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return enum: `docsonly`, `executables`, `standard`
+     * @return Built-in advanced anti-malware inspection profile to apply
      * 
      */
     private @Nullable String profile;
 
     private ServicepolicyAamw() {}
     /**
-     * @return org-level Advanced Advance Anti Malware Profile (SkyAtp) Profile can be used, this takes precedence over &#39;profile&#39;
+     * @return Organization-level advanced anti-malware profile ID; takes precedence over inline `profile` settings
      * 
      */
     public Optional<String> aamwprofileId() {
         return Optional.ofNullable(this.aamwprofileId);
     }
+    /**
+     * @return Whether advanced anti-malware inspection is enabled for the service policy
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return enum: `docsonly`, `executables`, `standard`
+     * @return Built-in advanced anti-malware inspection profile to apply
      * 
      */
     public Optional<String> profile() {

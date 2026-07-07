@@ -27,83 +27,110 @@ namespace Pulumi.JuniperMist.Org
     public partial class Mxcluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Configure cloud-assisted dynamic authorization service on this cluster of mist edges
+        /// Dynamic authorization service settings for the cluster
         /// </summary>
         [Output("mistDas")]
         public Output<Outputs.MxclusterMistDas?> MistDas { get; private set; } = null!;
 
+        /// <summary>
+        /// NAC settings for the Mist Edge cluster
+        /// </summary>
         [Output("mistNac")]
         public Output<Outputs.MxclusterMistNac?> MistNac { get; private set; } = null!;
 
+        /// <summary>
+        /// NAC Edge survivability settings for the cluster; requires `MistNac` to be enabled
+        /// </summary>
+        [Output("mistNacedge")]
+        public Output<Outputs.MxclusterMistNacedge?> MistNacedge { get; private set; } = null!;
+
+        /// <summary>
+        /// Out-of-band management settings for Mist Edges in the cluster
+        /// </summary>
         [Output("mxedgeMgmt")]
         public Output<Outputs.MxclusterMxedgeMgmt?> MxedgeMgmt { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the Mist Edge cluster
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the org that owns the Mist Edge cluster
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Proxy Configuration to talk to Mist
+        /// Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
         /// </summary>
         [Output("proxy")]
         public Output<Outputs.MxclusterProxy?> Proxy { get; private set; } = null!;
 
         /// <summary>
-        /// MxEdge RadSec Configuration
+        /// TLS RADIUS proxy settings for the Mist Edge cluster
         /// </summary>
         [Output("radsec")]
         public Output<Outputs.MxclusterRadsec?> Radsec { get; private set; } = null!;
 
+        /// <summary>
+        /// TLS keypair settings for RadSec on the Mist Edge cluster
+        /// </summary>
         [Output("radsecTls")]
         public Output<Outputs.MxclusterRadsecTls> RadsecTls { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier of the site when the Mist Edge cluster is site-scoped
+        /// </summary>
         [Output("siteId")]
         public Output<string?> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// List of subnets where we allow AP to establish Mist Tunnels from
+        /// AP source subnets allowed to establish Mist tunnels
         /// </summary>
         [Output("tuntermApSubnets")]
         public Output<ImmutableArray<string>> TuntermApSubnets { get; private set; } = null!;
 
         /// <summary>
-        /// DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+        /// DHCP relay or server settings for tunneled VLANs
         /// </summary>
         [Output("tuntermDhcpdConfig")]
         public Output<ImmutableDictionary<string, Outputs.MxclusterTuntermDhcpdConfig>?> TuntermDhcpdConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+        /// Extra routes for Mist Tunnel VLAN traffic
         /// </summary>
         [Output("tuntermExtraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.MxclusterTuntermExtraRoutes>?> TuntermExtraRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+        /// Hostnames or IP addresses used as Mist Tunnel peers
         /// </summary>
         [Output("tuntermHosts")]
         public Output<ImmutableArray<string>> TuntermHosts { get; private set; } = null!;
 
         /// <summary>
-        /// List of index of tunterm_hosts
+        /// Explicit host ordering indexes used when ordered selection is configured
         /// </summary>
         [Output("tuntermHostsOrders")]
         public Output<ImmutableArray<int>> TuntermHostsOrders { get; private set; } = null!;
 
         /// <summary>
-        /// Ordering of TuntermHosts for mxedge within the same mxcluster. enum:
-        ///   * `Shuffle`: the ordering of TuntermHosts is randomized by the device''s MAC
-        ///   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-        ///   * `Ordered`: order decided by tunterm_hosts_order
+        /// Selection strategy for ordering tunnel termination hosts
         /// </summary>
         [Output("tuntermHostsSelection")]
         public Output<string> TuntermHostsSelection { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether tunnel termination monitoring is disabled for the cluster
+        /// </summary>
         [Output("tuntermMonitoringDisabled")]
         public Output<bool?> TuntermMonitoringDisabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Monitoring checks for tunnel termination reachability
+        /// </summary>
         [Output("tuntermMonitorings")]
         public Output<ImmutableArray<ImmutableArray<Outputs.MxclusterTuntermMonitoring>>> TuntermMonitorings { get; private set; } = null!;
 
@@ -155,35 +182,56 @@ namespace Pulumi.JuniperMist.Org
     public sealed class MxclusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure cloud-assisted dynamic authorization service on this cluster of mist edges
+        /// Dynamic authorization service settings for the cluster
         /// </summary>
         [Input("mistDas")]
         public Input<Inputs.MxclusterMistDasArgs>? MistDas { get; set; }
 
+        /// <summary>
+        /// NAC settings for the Mist Edge cluster
+        /// </summary>
         [Input("mistNac")]
         public Input<Inputs.MxclusterMistNacArgs>? MistNac { get; set; }
 
+        /// <summary>
+        /// NAC Edge survivability settings for the cluster; requires `MistNac` to be enabled
+        /// </summary>
+        [Input("mistNacedge")]
+        public Input<Inputs.MxclusterMistNacedgeArgs>? MistNacedge { get; set; }
+
+        /// <summary>
+        /// Out-of-band management settings for Mist Edges in the cluster
+        /// </summary>
         [Input("mxedgeMgmt")]
         public Input<Inputs.MxclusterMxedgeMgmtArgs>? MxedgeMgmt { get; set; }
 
+        /// <summary>
+        /// Display name of the Mist Edge cluster
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Identifier of the org that owns the Mist Edge cluster
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Proxy Configuration to talk to Mist
+        /// Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.MxclusterProxyArgs>? Proxy { get; set; }
 
         /// <summary>
-        /// MxEdge RadSec Configuration
+        /// TLS RADIUS proxy settings for the Mist Edge cluster
         /// </summary>
         [Input("radsec")]
         public Input<Inputs.MxclusterRadsecArgs>? Radsec { get; set; }
 
+        /// <summary>
+        /// Identifier of the site when the Mist Edge cluster is site-scoped
+        /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
@@ -191,7 +239,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _tuntermApSubnets;
 
         /// <summary>
-        /// List of subnets where we allow AP to establish Mist Tunnels from
+        /// AP source subnets allowed to establish Mist tunnels
         /// </summary>
         public InputList<string> TuntermApSubnets
         {
@@ -203,7 +251,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.MxclusterTuntermDhcpdConfigArgs>? _tuntermDhcpdConfig;
 
         /// <summary>
-        /// DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+        /// DHCP relay or server settings for tunneled VLANs
         /// </summary>
         public InputMap<Inputs.MxclusterTuntermDhcpdConfigArgs> TuntermDhcpdConfig
         {
@@ -215,7 +263,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.MxclusterTuntermExtraRoutesArgs>? _tuntermExtraRoutes;
 
         /// <summary>
-        /// Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+        /// Extra routes for Mist Tunnel VLAN traffic
         /// </summary>
         public InputMap<Inputs.MxclusterTuntermExtraRoutesArgs> TuntermExtraRoutes
         {
@@ -227,7 +275,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _tuntermHosts;
 
         /// <summary>
-        /// Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+        /// Hostnames or IP addresses used as Mist Tunnel peers
         /// </summary>
         public InputList<string> TuntermHosts
         {
@@ -239,7 +287,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<int>? _tuntermHostsOrders;
 
         /// <summary>
-        /// List of index of tunterm_hosts
+        /// Explicit host ordering indexes used when ordered selection is configured
         /// </summary>
         public InputList<int> TuntermHostsOrders
         {
@@ -248,19 +296,23 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Ordering of TuntermHosts for mxedge within the same mxcluster. enum:
-        ///   * `Shuffle`: the ordering of TuntermHosts is randomized by the device''s MAC
-        ///   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-        ///   * `Ordered`: order decided by tunterm_hosts_order
+        /// Selection strategy for ordering tunnel termination hosts
         /// </summary>
         [Input("tuntermHostsSelection")]
         public Input<string>? TuntermHostsSelection { get; set; }
 
+        /// <summary>
+        /// Whether tunnel termination monitoring is disabled for the cluster
+        /// </summary>
         [Input("tuntermMonitoringDisabled")]
         public Input<bool>? TuntermMonitoringDisabled { get; set; }
 
         [Input("tuntermMonitorings")]
         private InputList<ImmutableArray<Inputs.MxclusterTuntermMonitoringArgs>>? _tuntermMonitorings;
+
+        /// <summary>
+        /// Monitoring checks for tunnel termination reachability
+        /// </summary>
         public InputList<ImmutableArray<Inputs.MxclusterTuntermMonitoringArgs>> TuntermMonitorings
         {
             get => _tuntermMonitorings ?? (_tuntermMonitorings = new InputList<ImmutableArray<Inputs.MxclusterTuntermMonitoringArgs>>());
@@ -276,38 +328,62 @@ namespace Pulumi.JuniperMist.Org
     public sealed class MxclusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure cloud-assisted dynamic authorization service on this cluster of mist edges
+        /// Dynamic authorization service settings for the cluster
         /// </summary>
         [Input("mistDas")]
         public Input<Inputs.MxclusterMistDasGetArgs>? MistDas { get; set; }
 
+        /// <summary>
+        /// NAC settings for the Mist Edge cluster
+        /// </summary>
         [Input("mistNac")]
         public Input<Inputs.MxclusterMistNacGetArgs>? MistNac { get; set; }
 
+        /// <summary>
+        /// NAC Edge survivability settings for the cluster; requires `MistNac` to be enabled
+        /// </summary>
+        [Input("mistNacedge")]
+        public Input<Inputs.MxclusterMistNacedgeGetArgs>? MistNacedge { get; set; }
+
+        /// <summary>
+        /// Out-of-band management settings for Mist Edges in the cluster
+        /// </summary>
         [Input("mxedgeMgmt")]
         public Input<Inputs.MxclusterMxedgeMgmtGetArgs>? MxedgeMgmt { get; set; }
 
+        /// <summary>
+        /// Display name of the Mist Edge cluster
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Identifier of the org that owns the Mist Edge cluster
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Proxy Configuration to talk to Mist
+        /// Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.MxclusterProxyGetArgs>? Proxy { get; set; }
 
         /// <summary>
-        /// MxEdge RadSec Configuration
+        /// TLS RADIUS proxy settings for the Mist Edge cluster
         /// </summary>
         [Input("radsec")]
         public Input<Inputs.MxclusterRadsecGetArgs>? Radsec { get; set; }
 
+        /// <summary>
+        /// TLS keypair settings for RadSec on the Mist Edge cluster
+        /// </summary>
         [Input("radsecTls")]
         public Input<Inputs.MxclusterRadsecTlsGetArgs>? RadsecTls { get; set; }
 
+        /// <summary>
+        /// Identifier of the site when the Mist Edge cluster is site-scoped
+        /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
@@ -315,7 +391,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _tuntermApSubnets;
 
         /// <summary>
-        /// List of subnets where we allow AP to establish Mist Tunnels from
+        /// AP source subnets allowed to establish Mist tunnels
         /// </summary>
         public InputList<string> TuntermApSubnets
         {
@@ -327,7 +403,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.MxclusterTuntermDhcpdConfigGetArgs>? _tuntermDhcpdConfig;
 
         /// <summary>
-        /// DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+        /// DHCP relay or server settings for tunneled VLANs
         /// </summary>
         public InputMap<Inputs.MxclusterTuntermDhcpdConfigGetArgs> TuntermDhcpdConfig
         {
@@ -339,7 +415,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.MxclusterTuntermExtraRoutesGetArgs>? _tuntermExtraRoutes;
 
         /// <summary>
-        /// Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+        /// Extra routes for Mist Tunnel VLAN traffic
         /// </summary>
         public InputMap<Inputs.MxclusterTuntermExtraRoutesGetArgs> TuntermExtraRoutes
         {
@@ -351,7 +427,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _tuntermHosts;
 
         /// <summary>
-        /// Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+        /// Hostnames or IP addresses used as Mist Tunnel peers
         /// </summary>
         public InputList<string> TuntermHosts
         {
@@ -363,7 +439,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<int>? _tuntermHostsOrders;
 
         /// <summary>
-        /// List of index of tunterm_hosts
+        /// Explicit host ordering indexes used when ordered selection is configured
         /// </summary>
         public InputList<int> TuntermHostsOrders
         {
@@ -372,19 +448,23 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Ordering of TuntermHosts for mxedge within the same mxcluster. enum:
-        ///   * `Shuffle`: the ordering of TuntermHosts is randomized by the device''s MAC
-        ///   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-        ///   * `Ordered`: order decided by tunterm_hosts_order
+        /// Selection strategy for ordering tunnel termination hosts
         /// </summary>
         [Input("tuntermHostsSelection")]
         public Input<string>? TuntermHostsSelection { get; set; }
 
+        /// <summary>
+        /// Whether tunnel termination monitoring is disabled for the cluster
+        /// </summary>
         [Input("tuntermMonitoringDisabled")]
         public Input<bool>? TuntermMonitoringDisabled { get; set; }
 
         [Input("tuntermMonitorings")]
         private InputList<ImmutableArray<Inputs.MxclusterTuntermMonitoringGetArgs>>? _tuntermMonitorings;
+
+        /// <summary>
+        /// Monitoring checks for tunnel termination reachability
+        /// </summary>
         public InputList<ImmutableArray<Inputs.MxclusterTuntermMonitoringGetArgs>> TuntermMonitorings
         {
             get => _tuntermMonitorings ?? (_tuntermMonitorings = new InputList<ImmutableArray<Inputs.MxclusterTuntermMonitoringGetArgs>>());

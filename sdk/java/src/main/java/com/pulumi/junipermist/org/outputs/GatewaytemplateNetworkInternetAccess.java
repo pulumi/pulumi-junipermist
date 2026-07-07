@@ -15,12 +15,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateNetworkInternetAccess {
+    /**
+     * @return Whether Mist should create simple service policies for restricted internet access
+     * 
+     */
     private @Nullable Boolean createSimpleServicePolicy;
     /**
-     * @return Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internalIp` or `port` must be defined
+     * @return Destination NAT rules for direct internet access
      * 
      */
     private @Nullable Map<String,GatewaytemplateNetworkInternetAccessDestinationNat> destinationNat;
+    /**
+     * @return Whether direct internet access is enabled for this network
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
      * @return By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
@@ -28,22 +36,30 @@ public final class GatewaytemplateNetworkInternetAccess {
      */
     private @Nullable Boolean restricted;
     /**
-     * @return Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Static NAT rules for direct internet access
      * 
      */
     private @Nullable Map<String,GatewaytemplateNetworkInternetAccessStaticNat> staticNat;
 
     private GatewaytemplateNetworkInternetAccess() {}
+    /**
+     * @return Whether Mist should create simple service policies for restricted internet access
+     * 
+     */
     public Optional<Boolean> createSimpleServicePolicy() {
         return Optional.ofNullable(this.createSimpleServicePolicy);
     }
     /**
-     * @return Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internalIp` or `port` must be defined
+     * @return Destination NAT rules for direct internet access
      * 
      */
     public Map<String,GatewaytemplateNetworkInternetAccessDestinationNat> destinationNat() {
         return this.destinationNat == null ? Map.of() : this.destinationNat;
     }
+    /**
+     * @return Whether direct internet access is enabled for this network
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -55,7 +71,7 @@ public final class GatewaytemplateNetworkInternetAccess {
         return Optional.ofNullable(this.restricted);
     }
     /**
-     * @return Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Static NAT rules for direct internet access
      * 
      */
     public Map<String,GatewaytemplateNetworkInternetAccessStaticNat> staticNat() {

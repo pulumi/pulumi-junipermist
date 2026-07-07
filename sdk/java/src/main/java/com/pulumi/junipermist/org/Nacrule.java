@@ -83,96 +83,142 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/nacrule:Nacrule")
 public class Nacrule extends com.pulumi.resources.CustomResource {
     /**
-     * enum: `allow`, `block`
+     * Allow or block decision applied when the NAC rule matches
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
-     * @return enum: `allow`, `block`
+     * @return Allow or block decision applied when the NAC rule matches
      * 
      */
     public Output<String> action() {
         return this.action;
     }
     /**
-     * All optional, this goes into Access-Accept
+     * NAC tag IDs to include in the Access-Accept when the rule allows access
      * 
      */
     @Export(name="applyTags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> applyTags;
 
     /**
-     * @return All optional, this goes into Access-Accept
+     * @return NAC tag IDs to include in the Access-Accept when the rule allows access
      * 
      */
     public Output<List<String>> applyTags() {
         return this.applyTags;
     }
     /**
-     * Enabled or not
+     * Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+     * 
+     */
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dryRun;
+
+    /**
+     * @return Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+     * 
+     */
+    public Output<Optional<Boolean>> dryRun() {
+        return Codegen.optional(this.dryRun);
+    }
+    /**
+     * Whether the NAC rule is evaluated during policy matching
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Enabled or not
+     * @return Whether the NAC rule is evaluated during policy matching
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * Guest portal authorization state. enum: `authorized`, `unknown`
+     * Guest portal authorization state condition for the rule
      * 
      */
     @Export(name="guestAuthState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> guestAuthState;
 
     /**
-     * @return Guest portal authorization state. enum: `authorized`, `unknown`
+     * @return Guest portal authorization state condition for the rule
      * 
      */
     public Output<Optional<String>> guestAuthState() {
         return Codegen.optional(this.guestAuthState);
     }
+    /**
+     * Criteria that must match for the NAC rule to apply
+     * 
+     */
     @Export(name="matching", refs={NacruleMatching.class}, tree="[0]")
     private Output</* @Nullable */ NacruleMatching> matching;
 
+    /**
+     * @return Criteria that must match for the NAC rule to apply
+     * 
+     */
     public Output<Optional<NacruleMatching>> matching() {
         return Codegen.optional(this.matching);
     }
+    /**
+     * Human-readable name of the NAC rule
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Human-readable name of the NAC rule
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Criteria that must not match for the NAC rule to apply
+     * 
+     */
     @Export(name="notMatching", refs={NacruleNotMatching.class}, tree="[0]")
     private Output</* @Nullable */ NacruleNotMatching> notMatching;
 
+    /**
+     * @return Criteria that must not match for the NAC rule to apply
+     * 
+     */
     public Output<Optional<NacruleNotMatching>> notMatching() {
         return Codegen.optional(this.notMatching);
     }
     /**
-     * Order of the rule, lower value implies higher priority
+     * Rule priority; lower values are evaluated with higher priority
      * 
      */
     @Export(name="order", refs={Integer.class}, tree="[0]")
     private Output<Integer> order;
 
     /**
-     * @return Order of the rule, lower value implies higher priority
+     * @return Rule priority; lower values are evaluated with higher priority
      * 
      */
     public Output<Integer> order() {
         return this.order;
     }
+    /**
+     * Org identifier that owns the NAC rule
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Org identifier that owns the NAC rule
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }

@@ -32,9 +32,17 @@ public final class EvpnTopologyEvpnOptionsUnderlayArgs extends com.pulumi.resour
         return Optional.ofNullable(this.asBase);
     }
 
+    /**
+     * Prefix length used for automatically derived underlay router identifiers
+     * 
+     */
     @Import(name="routedIdPrefix")
     private @Nullable Output<String> routedIdPrefix;
 
+    /**
+     * @return Prefix length used for automatically derived underlay router identifiers
+     * 
+     */
     public Optional<Output<String>> routedIdPrefix() {
         return Optional.ofNullable(this.routedIdPrefix);
     }
@@ -117,11 +125,23 @@ public final class EvpnTopologyEvpnOptionsUnderlayArgs extends com.pulumi.resour
             return asBase(Output.of(asBase));
         }
 
+        /**
+         * @param routedIdPrefix Prefix length used for automatically derived underlay router identifiers
+         * 
+         * @return builder
+         * 
+         */
         public Builder routedIdPrefix(@Nullable Output<String> routedIdPrefix) {
             $.routedIdPrefix = routedIdPrefix;
             return this;
         }
 
+        /**
+         * @param routedIdPrefix Prefix length used for automatically derived underlay router identifiers
+         * 
+         * @return builder
+         * 
+         */
         public Builder routedIdPrefix(String routedIdPrefix) {
             return routedIdPrefix(Output.of(routedIdPrefix));
         }

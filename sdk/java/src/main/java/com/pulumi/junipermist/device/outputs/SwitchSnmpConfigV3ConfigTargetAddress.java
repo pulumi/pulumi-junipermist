@@ -12,43 +12,75 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchSnmpConfigV3ConfigTargetAddress {
+    /**
+     * @return IP address or hostname of the SNMP target
+     * 
+     */
     private String address;
+    /**
+     * @return Mask applied to the SNMP target address
+     * 
+     */
     private String addressMask;
+    /**
+     * @return UDP port used by the SNMP target
+     * 
+     */
     private @Nullable String port;
     /**
-     * @return Refer to notify tag, can be multiple with blank
+     * @return Set of notification tags for this target address; use spaces between multiple tags
      * 
      */
     private @Nullable String tagList;
+    /**
+     * @return Name of the SNMP target address entry
+     * 
+     */
     private String targetAddressName;
     /**
-     * @return Refer to notify target parameters name
+     * @return Target parameter profile referenced by this target address
      * 
      */
     private @Nullable String targetParameters;
 
     private SwitchSnmpConfigV3ConfigTargetAddress() {}
+    /**
+     * @return IP address or hostname of the SNMP target
+     * 
+     */
     public String address() {
         return this.address;
     }
+    /**
+     * @return Mask applied to the SNMP target address
+     * 
+     */
     public String addressMask() {
         return this.addressMask;
     }
+    /**
+     * @return UDP port used by the SNMP target
+     * 
+     */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Refer to notify tag, can be multiple with blank
+     * @return Set of notification tags for this target address; use spaces between multiple tags
      * 
      */
     public Optional<String> tagList() {
         return Optional.ofNullable(this.tagList);
     }
+    /**
+     * @return Name of the SNMP target address entry
+     * 
+     */
     public String targetAddressName() {
         return this.targetAddressName;
     }
     /**
-     * @return Refer to notify target parameters name
+     * @return Target parameter profile referenced by this target address
      * 
      */
     public Optional<String> targetParameters() {

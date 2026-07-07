@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.DeviceprofileGatewayRoutingPoliciesTermGetArgs>? _terms;
 
         /// <summary>
-        /// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        /// Ordered terms evaluated by this gateway routing policy
         /// </summary>
         public InputList<Inputs.DeviceprofileGatewayRoutingPoliciesTermGetArgs> Terms
         {

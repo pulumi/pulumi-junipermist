@@ -117,26 +117,44 @@ namespace Pulumi.JuniperMist.Org
         [Output("apUpdownThreshold")]
         public Output<int?> ApUpdownThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// Policy for hiding API secrets and passwords in responses
+        /// </summary>
         [Output("apiPolicy")]
         public Output<Outputs.SettingApiPolicy?> ApiPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// RADSec certificates for AP
+        /// AP automatic firmware upgrade policy for the organization
+        /// </summary>
+        [Output("autoUpgrade")]
+        public Output<Outputs.SettingAutoUpgrade?> AutoUpgrade { get; private set; } = null!;
+
+        /// <summary>
+        /// CA certificates used by organization-level RADIUS and RADSec settings
         /// </summary>
         [Output("cacerts")]
         public Output<ImmutableArray<string>> Cacerts { get; private set; } = null!;
 
+        /// <summary>
+        /// Integration settings for Celona
+        /// </summary>
         [Output("celona")]
         public Output<Outputs.SettingCelona?> Celona { get; private set; } = null!;
 
+        /// <summary>
+        /// Packet capture integration settings for CloudShark
+        /// </summary>
         [Output("cloudshark")]
         public Output<Outputs.SettingCloudshark?> Cloudshark { get; private set; } = null!;
 
+        /// <summary>
+        /// Integration settings for Cradlepoint devices
+        /// </summary>
         [Output("cradlepoint")]
         public Output<Outputs.SettingCradlepoint> Cradlepoint { get; private set; } = null!;
 
         /// <summary>
-        /// common device cert, optional
+        /// Common device certificate used by organization settings
         /// </summary>
         [Output("deviceCert")]
         public Output<Outputs.SettingDeviceCert?> DeviceCert { get; private set; } = null!;
@@ -173,74 +191,111 @@ namespace Pulumi.JuniperMist.Org
         [Output("gatewayUpdownThreshold")]
         public Output<int?> GatewayUpdownThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// Access settings for organization installer workflows
+        /// </summary>
         [Output("installer")]
         public Output<Outputs.SettingInstaller?> Installer { get; private set; } = null!;
 
+        /// <summary>
+        /// Integration settings for JCloud
+        /// </summary>
         [Output("jcloud")]
         public Output<Outputs.SettingJcloud?> Jcloud { get; private set; } = null!;
 
         /// <summary>
-        /// JCloud Routing Assurance connexion
+        /// Routing Assurance integration settings for JCloud
         /// </summary>
         [Output("jcloudRa")]
         public Output<Outputs.SettingJcloudRa?> JcloudRa { get; private set; } = null!;
 
+        /// <summary>
+        /// Linked Juniper account information for this organization
+        /// </summary>
         [Output("juniper")]
         public Output<Outputs.SettingJuniper> Juniper { get; private set; } = null!;
 
+        /// <summary>
+        /// SRX integration settings for Juniper devices
+        /// </summary>
         [Output("juniperSrx")]
         public Output<Outputs.SettingJuniperSrx?> JuniperSrx { get; private set; } = null!;
 
         /// <summary>
-        /// junos_shell_access: Manages role-based web-shell access.  
-        /// When JunosShell access is not defined (Default) - No additional users are configured and web-shell uses default `Mist` user to login.  
-        /// When JunosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+        /// Role-based Junos web-shell access settings
         /// </summary>
         [Output("junosShellAccess")]
         public Output<Outputs.SettingJunosShellAccess?> JunosShellAccess { get; private set; } = null!;
 
+        /// <summary>
+        /// AI assistant and self-driving feature settings for Marvis
+        /// </summary>
         [Output("marvis")]
         public Output<Outputs.SettingMarvis?> Marvis { get; private set; } = null!;
 
         /// <summary>
-        /// management-related properties
+        /// Tunnel settings for organization management connectivity
         /// </summary>
         [Output("mgmt")]
         public Output<Outputs.SettingMgmt?> Mgmt { get; private set; } = null!;
 
+        /// <summary>
+        /// NAC settings for Mist Access Assurance
+        /// </summary>
         [Output("mistNac")]
         public Output<Outputs.SettingMistNac?> MistNac { get; private set; } = null!;
 
+        /// <summary>
+        /// Management settings for Mist Edge devices
+        /// </summary>
         [Output("mxedgeMgmt")]
         public Output<Outputs.SettingMxedgeMgmt?> MxedgeMgmt { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+        /// Configuration defaults for optic ports
         /// </summary>
         [Output("opticPortConfig")]
         public Output<ImmutableDictionary<string, Outputs.SettingOpticPortConfig>?> OpticPortConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns these settings
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// password policy
+        /// Admin credential policy settings for the organization
         /// </summary>
         [Output("passwordPolicy")]
         public Output<Outputs.SettingPasswordPolicy?> PasswordPolicy { get; private set; } = null!;
 
+        /// <summary>
+        /// Packet capture settings for the organization
+        /// </summary>
         [Output("pcap")]
         public Output<Outputs.SettingPcap> Pcap { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization security controls such as local SSH restrictions
+        /// </summary>
         [Output("security")]
         public Output<Outputs.SettingSecurity?> Security { get; private set; } = null!;
 
+        /// <summary>
+        /// Session Smart Router settings for the organization
+        /// </summary>
         [Output("ssr")]
         public Output<Outputs.SettingSsr?> Ssr { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration defaults for switches in this organization
+        /// </summary>
         [Output("switch")]
         public Output<Outputs.SettingSwitch?> Switch { get; private set; } = null!;
 
+        /// <summary>
+        /// Management settings for switches in this organization
+        /// </summary>
         [Output("switchMgmt")]
         public Output<Outputs.SettingSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
 
@@ -250,6 +305,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("switchUpdownThreshold")]
         public Output<int?> SwitchUpdownThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration for organization synthetic tests
+        /// </summary>
         [Output("syntheticTest")]
         public Output<Outputs.SettingSyntheticTest?> SyntheticTest { get; private set; } = null!;
 
@@ -259,18 +317,33 @@ namespace Pulumi.JuniperMist.Org
         [Output("uiIdleTimeout")]
         public Output<int> UiIdleTimeout { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether UI usage tracking is disabled for the organization
+        /// </summary>
         [Output("uiNoTracking")]
         public Output<bool?> UiNoTracking { get; private set; } = null!;
 
+        /// <summary>
+        /// Options for organization VPN behavior
+        /// </summary>
         [Output("vpnOptions")]
         public Output<Outputs.SettingVpnOptions?> VpnOptions { get; private set; } = null!;
 
+        /// <summary>
+        /// PMA feature settings for WAN Assurance
+        /// </summary>
         [Output("wanPma")]
         public Output<Outputs.SettingWanPma?> WanPma { get; private set; } = null!;
 
+        /// <summary>
+        /// PMA feature settings for Wired Assurance
+        /// </summary>
         [Output("wiredPma")]
         public Output<Outputs.SettingWiredPma?> WiredPma { get; private set; } = null!;
 
+        /// <summary>
+        /// PMA feature settings for Wireless Assurance
+        /// </summary>
         [Output("wirelessPma")]
         public Output<Outputs.SettingWirelessPma?> WirelessPma { get; private set; } = null!;
 
@@ -327,14 +400,23 @@ namespace Pulumi.JuniperMist.Org
         [Input("apUpdownThreshold")]
         public Input<int>? ApUpdownThreshold { get; set; }
 
+        /// <summary>
+        /// Policy for hiding API secrets and passwords in responses
+        /// </summary>
         [Input("apiPolicy")]
         public Input<Inputs.SettingApiPolicyArgs>? ApiPolicy { get; set; }
+
+        /// <summary>
+        /// AP automatic firmware upgrade policy for the organization
+        /// </summary>
+        [Input("autoUpgrade")]
+        public Input<Inputs.SettingAutoUpgradeArgs>? AutoUpgrade { get; set; }
 
         [Input("cacerts")]
         private InputList<string>? _cacerts;
 
         /// <summary>
-        /// RADSec certificates for AP
+        /// CA certificates used by organization-level RADIUS and RADSec settings
         /// </summary>
         public InputList<string> Cacerts
         {
@@ -342,14 +424,20 @@ namespace Pulumi.JuniperMist.Org
             set => _cacerts = value;
         }
 
+        /// <summary>
+        /// Integration settings for Celona
+        /// </summary>
         [Input("celona")]
         public Input<Inputs.SettingCelonaArgs>? Celona { get; set; }
 
+        /// <summary>
+        /// Packet capture integration settings for CloudShark
+        /// </summary>
         [Input("cloudshark")]
         public Input<Inputs.SettingCloudsharkArgs>? Cloudshark { get; set; }
 
         /// <summary>
-        /// common device cert, optional
+        /// Common device certificate used by organization settings
         /// </summary>
         [Input("deviceCert")]
         public Input<Inputs.SettingDeviceCertArgs>? DeviceCert { get; set; }
@@ -386,41 +474,57 @@ namespace Pulumi.JuniperMist.Org
         [Input("gatewayUpdownThreshold")]
         public Input<int>? GatewayUpdownThreshold { get; set; }
 
+        /// <summary>
+        /// Access settings for organization installer workflows
+        /// </summary>
         [Input("installer")]
         public Input<Inputs.SettingInstallerArgs>? Installer { get; set; }
 
+        /// <summary>
+        /// Integration settings for JCloud
+        /// </summary>
         [Input("jcloud")]
         public Input<Inputs.SettingJcloudArgs>? Jcloud { get; set; }
 
         /// <summary>
-        /// JCloud Routing Assurance connexion
+        /// Routing Assurance integration settings for JCloud
         /// </summary>
         [Input("jcloudRa")]
         public Input<Inputs.SettingJcloudRaArgs>? JcloudRa { get; set; }
 
+        /// <summary>
+        /// SRX integration settings for Juniper devices
+        /// </summary>
         [Input("juniperSrx")]
         public Input<Inputs.SettingJuniperSrxArgs>? JuniperSrx { get; set; }
 
         /// <summary>
-        /// junos_shell_access: Manages role-based web-shell access.  
-        /// When JunosShell access is not defined (Default) - No additional users are configured and web-shell uses default `Mist` user to login.  
-        /// When JunosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+        /// Role-based Junos web-shell access settings
         /// </summary>
         [Input("junosShellAccess")]
         public Input<Inputs.SettingJunosShellAccessArgs>? JunosShellAccess { get; set; }
 
+        /// <summary>
+        /// AI assistant and self-driving feature settings for Marvis
+        /// </summary>
         [Input("marvis")]
         public Input<Inputs.SettingMarvisArgs>? Marvis { get; set; }
 
         /// <summary>
-        /// management-related properties
+        /// Tunnel settings for organization management connectivity
         /// </summary>
         [Input("mgmt")]
         public Input<Inputs.SettingMgmtArgs>? Mgmt { get; set; }
 
+        /// <summary>
+        /// NAC settings for Mist Access Assurance
+        /// </summary>
         [Input("mistNac")]
         public Input<Inputs.SettingMistNacArgs>? MistNac { get; set; }
 
+        /// <summary>
+        /// Management settings for Mist Edge devices
+        /// </summary>
         [Input("mxedgeMgmt")]
         public Input<Inputs.SettingMxedgeMgmtArgs>? MxedgeMgmt { get; set; }
 
@@ -428,7 +532,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.SettingOpticPortConfigArgs>? _opticPortConfig;
 
         /// <summary>
-        /// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+        /// Configuration defaults for optic ports
         /// </summary>
         public InputMap<Inputs.SettingOpticPortConfigArgs> OpticPortConfig
         {
@@ -436,24 +540,39 @@ namespace Pulumi.JuniperMist.Org
             set => _opticPortConfig = value;
         }
 
+        /// <summary>
+        /// Organization that owns these settings
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// password policy
+        /// Admin credential policy settings for the organization
         /// </summary>
         [Input("passwordPolicy")]
         public Input<Inputs.SettingPasswordPolicyArgs>? PasswordPolicy { get; set; }
 
+        /// <summary>
+        /// Organization security controls such as local SSH restrictions
+        /// </summary>
         [Input("security")]
         public Input<Inputs.SettingSecurityArgs>? Security { get; set; }
 
+        /// <summary>
+        /// Session Smart Router settings for the organization
+        /// </summary>
         [Input("ssr")]
         public Input<Inputs.SettingSsrArgs>? Ssr { get; set; }
 
+        /// <summary>
+        /// Configuration defaults for switches in this organization
+        /// </summary>
         [Input("switch")]
         public Input<Inputs.SettingSwitchArgs>? Switch { get; set; }
 
+        /// <summary>
+        /// Management settings for switches in this organization
+        /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.SettingSwitchMgmtArgs>? SwitchMgmt { get; set; }
 
@@ -463,6 +582,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("switchUpdownThreshold")]
         public Input<int>? SwitchUpdownThreshold { get; set; }
 
+        /// <summary>
+        /// Configuration for organization synthetic tests
+        /// </summary>
         [Input("syntheticTest")]
         public Input<Inputs.SettingSyntheticTestArgs>? SyntheticTest { get; set; }
 
@@ -472,18 +594,33 @@ namespace Pulumi.JuniperMist.Org
         [Input("uiIdleTimeout")]
         public Input<int>? UiIdleTimeout { get; set; }
 
+        /// <summary>
+        /// Whether UI usage tracking is disabled for the organization
+        /// </summary>
         [Input("uiNoTracking")]
         public Input<bool>? UiNoTracking { get; set; }
 
+        /// <summary>
+        /// Options for organization VPN behavior
+        /// </summary>
         [Input("vpnOptions")]
         public Input<Inputs.SettingVpnOptionsArgs>? VpnOptions { get; set; }
 
+        /// <summary>
+        /// PMA feature settings for WAN Assurance
+        /// </summary>
         [Input("wanPma")]
         public Input<Inputs.SettingWanPmaArgs>? WanPma { get; set; }
 
+        /// <summary>
+        /// PMA feature settings for Wired Assurance
+        /// </summary>
         [Input("wiredPma")]
         public Input<Inputs.SettingWiredPmaArgs>? WiredPma { get; set; }
 
+        /// <summary>
+        /// PMA feature settings for Wireless Assurance
+        /// </summary>
         [Input("wirelessPma")]
         public Input<Inputs.SettingWirelessPmaArgs>? WirelessPma { get; set; }
 
@@ -507,14 +644,23 @@ namespace Pulumi.JuniperMist.Org
         [Input("apUpdownThreshold")]
         public Input<int>? ApUpdownThreshold { get; set; }
 
+        /// <summary>
+        /// Policy for hiding API secrets and passwords in responses
+        /// </summary>
         [Input("apiPolicy")]
         public Input<Inputs.SettingApiPolicyGetArgs>? ApiPolicy { get; set; }
+
+        /// <summary>
+        /// AP automatic firmware upgrade policy for the organization
+        /// </summary>
+        [Input("autoUpgrade")]
+        public Input<Inputs.SettingAutoUpgradeGetArgs>? AutoUpgrade { get; set; }
 
         [Input("cacerts")]
         private InputList<string>? _cacerts;
 
         /// <summary>
-        /// RADSec certificates for AP
+        /// CA certificates used by organization-level RADIUS and RADSec settings
         /// </summary>
         public InputList<string> Cacerts
         {
@@ -522,17 +668,26 @@ namespace Pulumi.JuniperMist.Org
             set => _cacerts = value;
         }
 
+        /// <summary>
+        /// Integration settings for Celona
+        /// </summary>
         [Input("celona")]
         public Input<Inputs.SettingCelonaGetArgs>? Celona { get; set; }
 
+        /// <summary>
+        /// Packet capture integration settings for CloudShark
+        /// </summary>
         [Input("cloudshark")]
         public Input<Inputs.SettingCloudsharkGetArgs>? Cloudshark { get; set; }
 
+        /// <summary>
+        /// Integration settings for Cradlepoint devices
+        /// </summary>
         [Input("cradlepoint")]
         public Input<Inputs.SettingCradlepointGetArgs>? Cradlepoint { get; set; }
 
         /// <summary>
-        /// common device cert, optional
+        /// Common device certificate used by organization settings
         /// </summary>
         [Input("deviceCert")]
         public Input<Inputs.SettingDeviceCertGetArgs>? DeviceCert { get; set; }
@@ -569,44 +724,63 @@ namespace Pulumi.JuniperMist.Org
         [Input("gatewayUpdownThreshold")]
         public Input<int>? GatewayUpdownThreshold { get; set; }
 
+        /// <summary>
+        /// Access settings for organization installer workflows
+        /// </summary>
         [Input("installer")]
         public Input<Inputs.SettingInstallerGetArgs>? Installer { get; set; }
 
+        /// <summary>
+        /// Integration settings for JCloud
+        /// </summary>
         [Input("jcloud")]
         public Input<Inputs.SettingJcloudGetArgs>? Jcloud { get; set; }
 
         /// <summary>
-        /// JCloud Routing Assurance connexion
+        /// Routing Assurance integration settings for JCloud
         /// </summary>
         [Input("jcloudRa")]
         public Input<Inputs.SettingJcloudRaGetArgs>? JcloudRa { get; set; }
 
+        /// <summary>
+        /// Linked Juniper account information for this organization
+        /// </summary>
         [Input("juniper")]
         public Input<Inputs.SettingJuniperGetArgs>? Juniper { get; set; }
 
+        /// <summary>
+        /// SRX integration settings for Juniper devices
+        /// </summary>
         [Input("juniperSrx")]
         public Input<Inputs.SettingJuniperSrxGetArgs>? JuniperSrx { get; set; }
 
         /// <summary>
-        /// junos_shell_access: Manages role-based web-shell access.  
-        /// When JunosShell access is not defined (Default) - No additional users are configured and web-shell uses default `Mist` user to login.  
-        /// When JunosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+        /// Role-based Junos web-shell access settings
         /// </summary>
         [Input("junosShellAccess")]
         public Input<Inputs.SettingJunosShellAccessGetArgs>? JunosShellAccess { get; set; }
 
+        /// <summary>
+        /// AI assistant and self-driving feature settings for Marvis
+        /// </summary>
         [Input("marvis")]
         public Input<Inputs.SettingMarvisGetArgs>? Marvis { get; set; }
 
         /// <summary>
-        /// management-related properties
+        /// Tunnel settings for organization management connectivity
         /// </summary>
         [Input("mgmt")]
         public Input<Inputs.SettingMgmtGetArgs>? Mgmt { get; set; }
 
+        /// <summary>
+        /// NAC settings for Mist Access Assurance
+        /// </summary>
         [Input("mistNac")]
         public Input<Inputs.SettingMistNacGetArgs>? MistNac { get; set; }
 
+        /// <summary>
+        /// Management settings for Mist Edge devices
+        /// </summary>
         [Input("mxedgeMgmt")]
         public Input<Inputs.SettingMxedgeMgmtGetArgs>? MxedgeMgmt { get; set; }
 
@@ -614,7 +788,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.SettingOpticPortConfigGetArgs>? _opticPortConfig;
 
         /// <summary>
-        /// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+        /// Configuration defaults for optic ports
         /// </summary>
         public InputMap<Inputs.SettingOpticPortConfigGetArgs> OpticPortConfig
         {
@@ -622,27 +796,45 @@ namespace Pulumi.JuniperMist.Org
             set => _opticPortConfig = value;
         }
 
+        /// <summary>
+        /// Organization that owns these settings
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// password policy
+        /// Admin credential policy settings for the organization
         /// </summary>
         [Input("passwordPolicy")]
         public Input<Inputs.SettingPasswordPolicyGetArgs>? PasswordPolicy { get; set; }
 
+        /// <summary>
+        /// Packet capture settings for the organization
+        /// </summary>
         [Input("pcap")]
         public Input<Inputs.SettingPcapGetArgs>? Pcap { get; set; }
 
+        /// <summary>
+        /// Organization security controls such as local SSH restrictions
+        /// </summary>
         [Input("security")]
         public Input<Inputs.SettingSecurityGetArgs>? Security { get; set; }
 
+        /// <summary>
+        /// Session Smart Router settings for the organization
+        /// </summary>
         [Input("ssr")]
         public Input<Inputs.SettingSsrGetArgs>? Ssr { get; set; }
 
+        /// <summary>
+        /// Configuration defaults for switches in this organization
+        /// </summary>
         [Input("switch")]
         public Input<Inputs.SettingSwitchGetArgs>? Switch { get; set; }
 
+        /// <summary>
+        /// Management settings for switches in this organization
+        /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.SettingSwitchMgmtGetArgs>? SwitchMgmt { get; set; }
 
@@ -652,6 +844,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("switchUpdownThreshold")]
         public Input<int>? SwitchUpdownThreshold { get; set; }
 
+        /// <summary>
+        /// Configuration for organization synthetic tests
+        /// </summary>
         [Input("syntheticTest")]
         public Input<Inputs.SettingSyntheticTestGetArgs>? SyntheticTest { get; set; }
 
@@ -661,18 +856,33 @@ namespace Pulumi.JuniperMist.Org
         [Input("uiIdleTimeout")]
         public Input<int>? UiIdleTimeout { get; set; }
 
+        /// <summary>
+        /// Whether UI usage tracking is disabled for the organization
+        /// </summary>
         [Input("uiNoTracking")]
         public Input<bool>? UiNoTracking { get; set; }
 
+        /// <summary>
+        /// Options for organization VPN behavior
+        /// </summary>
         [Input("vpnOptions")]
         public Input<Inputs.SettingVpnOptionsGetArgs>? VpnOptions { get; set; }
 
+        /// <summary>
+        /// PMA feature settings for WAN Assurance
+        /// </summary>
         [Input("wanPma")]
         public Input<Inputs.SettingWanPmaGetArgs>? WanPma { get; set; }
 
+        /// <summary>
+        /// PMA feature settings for Wired Assurance
+        /// </summary>
         [Input("wiredPma")]
         public Input<Inputs.SettingWiredPmaGetArgs>? WiredPma { get; set; }
 
+        /// <summary>
+        /// PMA feature settings for Wireless Assurance
+        /// </summary>
         [Input("wirelessPma")]
         public Input<Inputs.SettingWirelessPmaGetArgs>? WirelessPma { get; set; }
 

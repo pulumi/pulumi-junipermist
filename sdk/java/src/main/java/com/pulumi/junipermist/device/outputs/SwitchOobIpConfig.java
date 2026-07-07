@@ -12,7 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchOobIpConfig {
+    /**
+     * @return Default gateway for the out-of-band management interface when `type`==`static`
+     * 
+     */
     private @Nullable String gateway;
+    /**
+     * @return Static IPv4 address for the out-of-band management interface when `type`==`static`
+     * 
+     */
     private @Nullable String ip;
     /**
      * @return Used only if `subnet` is not specified in `networks`
@@ -25,7 +33,7 @@ public final class SwitchOobIpConfig {
      */
     private @Nullable String network;
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for the out-of-band management interface
      * 
      */
     private @Nullable String type;
@@ -41,9 +49,17 @@ public final class SwitchOobIpConfig {
     private @Nullable Boolean useMgmtVrfForHostOut;
 
     private SwitchOobIpConfig() {}
+    /**
+     * @return Default gateway for the out-of-band management interface when `type`==`static`
+     * 
+     */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
+    /**
+     * @return Static IPv4 address for the out-of-band management interface when `type`==`static`
+     * 
+     */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
@@ -62,7 +78,7 @@ public final class SwitchOobIpConfig {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for the out-of-band management interface
      * 
      */
     public Optional<String> type() {

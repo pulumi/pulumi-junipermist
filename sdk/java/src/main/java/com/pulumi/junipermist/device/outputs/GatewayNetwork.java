@@ -25,11 +25,23 @@ public final class GatewayNetwork {
      * 
      */
     private @Nullable Boolean disallowMistServices;
+    /**
+     * @return IPv4 gateway address for this network
+     * 
+     */
     private @Nullable String gateway;
+    /**
+     * @return IPv6 gateway address for this network
+     * 
+     */
     private @Nullable String gateway6;
+    /**
+     * @return Internal access settings for this network
+     * 
+     */
     private @Nullable GatewayNetworkInternalAccess internalAccess;
     /**
-     * @return Whether this network has direct internet access
+     * @return Direct internet access and NAT settings for this network
      * 
      */
     private @Nullable GatewayNetworkInternetAccess internetAccess;
@@ -39,26 +51,42 @@ public final class GatewayNetwork {
      */
     private @Nullable Boolean isolation;
     /**
-     * @return Whether to enable multicast support (only PIM-sparse mode is supported)
+     * @return Settings for multicast routing on this network
      * 
      */
     private @Nullable GatewayNetworkMulticast multicast;
+    /**
+     * @return Display name of the organization network
+     * 
+     */
     private String name;
     /**
-     * @return For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * @return Other network names this network can route to, for example through BGP, OSPF or static routes
      * 
      */
     private @Nullable List<String> routedForNetworks;
+    /**
+     * @return IPv4 subnet CIDR for this network
+     * 
+     */
     private String subnet;
+    /**
+     * @return IPv6 subnet CIDR for this network
+     * 
+     */
     private @Nullable String subnet6;
     /**
-     * @return Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Tenant address mappings associated with this network
      * 
      */
     private @Nullable Map<String,GatewayNetworkTenants> tenants;
+    /**
+     * @return VLAN ID or variable associated with this network
+     * 
+     */
     private @Nullable String vlanId;
     /**
-     * @return Property key is the VPN name. Whether this network can be accessed from vpn
+     * @return VPN access settings keyed by VPN name for this network
      * 
      */
     private @Nullable Map<String,GatewayNetworkVpnAccess> vpnAccess;
@@ -71,17 +99,29 @@ public final class GatewayNetwork {
     public Optional<Boolean> disallowMistServices() {
         return Optional.ofNullable(this.disallowMistServices);
     }
+    /**
+     * @return IPv4 gateway address for this network
+     * 
+     */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
+    /**
+     * @return IPv6 gateway address for this network
+     * 
+     */
     public Optional<String> gateway6() {
         return Optional.ofNullable(this.gateway6);
     }
+    /**
+     * @return Internal access settings for this network
+     * 
+     */
     public Optional<GatewayNetworkInternalAccess> internalAccess() {
         return Optional.ofNullable(this.internalAccess);
     }
     /**
-     * @return Whether this network has direct internet access
+     * @return Direct internet access and NAT settings for this network
      * 
      */
     public Optional<GatewayNetworkInternetAccess> internetAccess() {
@@ -95,40 +135,56 @@ public final class GatewayNetwork {
         return Optional.ofNullable(this.isolation);
     }
     /**
-     * @return Whether to enable multicast support (only PIM-sparse mode is supported)
+     * @return Settings for multicast routing on this network
      * 
      */
     public Optional<GatewayNetworkMulticast> multicast() {
         return Optional.ofNullable(this.multicast);
     }
+    /**
+     * @return Display name of the organization network
+     * 
+     */
     public String name() {
         return this.name;
     }
     /**
-     * @return For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * @return Other network names this network can route to, for example through BGP, OSPF or static routes
      * 
      */
     public List<String> routedForNetworks() {
         return this.routedForNetworks == null ? List.of() : this.routedForNetworks;
     }
+    /**
+     * @return IPv4 subnet CIDR for this network
+     * 
+     */
     public String subnet() {
         return this.subnet;
     }
+    /**
+     * @return IPv6 subnet CIDR for this network
+     * 
+     */
     public Optional<String> subnet6() {
         return Optional.ofNullable(this.subnet6);
     }
     /**
-     * @return Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Tenant address mappings associated with this network
      * 
      */
     public Map<String,GatewayNetworkTenants> tenants() {
         return this.tenants == null ? Map.of() : this.tenants;
     }
+    /**
+     * @return VLAN ID or variable associated with this network
+     * 
+     */
     public Optional<String> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
     /**
-     * @return Property key is the VPN name. Whether this network can be accessed from vpn
+     * @return VPN access settings keyed by VPN name for this network
      * 
      */
     public Map<String,GatewayNetworkVpnAccess> vpnAccess() {

@@ -18,14 +18,14 @@ public final class NacPortalPortalArgs extends com.pulumi.resources.ResourceArgs
     public static final NacPortalPortalArgs Empty = new NacPortalPortalArgs();
 
     /**
-     * Guest portal authentication type. enum: `external`, `multi`, `none`
+     * Mode presented by the NAC guest portal for user authentication
      * 
      */
     @Import(name="auth")
     private @Nullable Output<String> auth;
 
     /**
-     * @return Guest portal authentication type. enum: `external`, `multi`, `none`
+     * @return Mode presented by the NAC guest portal for user authentication
      * 
      */
     public Optional<Output<String>> auth() {
@@ -169,7 +169,7 @@ public final class NacPortalPortalArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param auth Guest portal authentication type. enum: `external`, `multi`, `none`
+         * @param auth Mode presented by the NAC guest portal for user authentication
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class NacPortalPortalArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param auth Guest portal authentication type. enum: `external`, `multi`, `none`
+         * @param auth Mode presented by the NAC guest portal for user authentication
          * 
          * @return builder
          * 

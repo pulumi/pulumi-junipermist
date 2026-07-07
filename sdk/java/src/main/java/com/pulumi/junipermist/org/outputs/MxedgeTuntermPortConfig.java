@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MxedgeTuntermPortConfig {
     /**
-     * @return List of ports to be used for downstream (to AP) purpose
+     * @return Ports connected downstream toward APs for tunnel termination
      * 
      */
     private @Nullable List<String> downstreamPorts;
@@ -23,16 +23,20 @@ public final class MxedgeTuntermPortConfig {
      * 
      */
     private @Nullable Boolean separateUpstreamDownstream;
+    /**
+     * @return Native VLAN ID applied to upstream tunnel termination ports
+     * 
+     */
     private @Nullable String upstreamPortVlanId;
     /**
-     * @return List of ports to be used for upstream purpose (to LAN)
+     * @return Ports connected upstream toward the LAN for tunnel termination
      * 
      */
     private @Nullable List<String> upstreamPorts;
 
     private MxedgeTuntermPortConfig() {}
     /**
-     * @return List of ports to be used for downstream (to AP) purpose
+     * @return Ports connected downstream toward APs for tunnel termination
      * 
      */
     public List<String> downstreamPorts() {
@@ -45,11 +49,15 @@ public final class MxedgeTuntermPortConfig {
     public Optional<Boolean> separateUpstreamDownstream() {
         return Optional.ofNullable(this.separateUpstreamDownstream);
     }
+    /**
+     * @return Native VLAN ID applied to upstream tunnel termination ports
+     * 
+     */
     public Optional<String> upstreamPortVlanId() {
         return Optional.ofNullable(this.upstreamPortVlanId);
     }
     /**
-     * @return List of ports to be used for upstream purpose (to LAN)
+     * @return Ports connected upstream toward the LAN for tunnel termination
      * 
      */
     public List<String> upstreamPorts() {

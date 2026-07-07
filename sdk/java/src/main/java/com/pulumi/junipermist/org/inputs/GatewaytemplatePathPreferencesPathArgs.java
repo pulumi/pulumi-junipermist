@@ -19,9 +19,17 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
 
     public static final GatewaytemplatePathPreferencesPathArgs Empty = new GatewaytemplatePathPreferencesPathArgs();
 
+    /**
+     * Relative cost assigned to this path for gateway path selection
+     * 
+     */
     @Import(name="cost")
     private @Nullable Output<Integer> cost;
 
+    /**
+     * @return Relative cost assigned to this path for gateway path selection
+     * 
+     */
     public Optional<Output<Integer>> cost() {
         return Optional.ofNullable(this.cost);
     }
@@ -91,14 +99,14 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
     }
 
     /**
-     * Required when `type`==`local`
+     * List of network names used when `type`==`local`
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return Required when `type`==`local`
+     * @return List of network names used when `type`==`local`
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -106,14 +114,14 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
     }
 
     /**
-     * If `type`==`local`, if destination IP is to be replaced
+     * List of destination IP addresses to replace when `type`==`local`
      * 
      */
     @Import(name="targetIps")
     private @Nullable Output<List<String>> targetIps;
 
     /**
-     * @return If `type`==`local`, if destination IP is to be replaced
+     * @return List of destination IP addresses to replace when `type`==`local`
      * 
      */
     public Optional<Output<List<String>>> targetIps() {
@@ -121,14 +129,14 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
     }
 
     /**
-     * enum: `local`, `tunnel`, `vpn`, `wan`
+     * Gateway path source type, such as local network, WAN interface, VPN path, or tunnel
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return enum: `local`, `tunnel`, `vpn`, `wan`
+     * @return Gateway path source type, such as local network, WAN interface, VPN path, or tunnel
      * 
      */
     public Output<String> type() {
@@ -136,14 +144,14 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
     }
 
     /**
-     * Optional if `type`==`vpn`
+     * Optional if `type`==`vpn`; WAN interface name associated with the VPN path
      * 
      */
     @Import(name="wanName")
     private @Nullable Output<String> wanName;
 
     /**
-     * @return Optional if `type`==`vpn`
+     * @return Optional if `type`==`vpn`; WAN interface name associated with the VPN path
      * 
      */
     public Optional<Output<String>> wanName() {
@@ -182,11 +190,23 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
             $ = new GatewaytemplatePathPreferencesPathArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cost Relative cost assigned to this path for gateway path selection
+         * 
+         * @return builder
+         * 
+         */
         public Builder cost(@Nullable Output<Integer> cost) {
             $.cost = cost;
             return this;
         }
 
+        /**
+         * @param cost Relative cost assigned to this path for gateway path selection
+         * 
+         * @return builder
+         * 
+         */
         public Builder cost(Integer cost) {
             return cost(Output.of(cost));
         }
@@ -280,7 +300,7 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param networks Required when `type`==`local`
+         * @param networks List of network names used when `type`==`local`
          * 
          * @return builder
          * 
@@ -291,7 +311,7 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param networks Required when `type`==`local`
+         * @param networks List of network names used when `type`==`local`
          * 
          * @return builder
          * 
@@ -301,7 +321,7 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param networks Required when `type`==`local`
+         * @param networks List of network names used when `type`==`local`
          * 
          * @return builder
          * 
@@ -311,7 +331,7 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param targetIps If `type`==`local`, if destination IP is to be replaced
+         * @param targetIps List of destination IP addresses to replace when `type`==`local`
          * 
          * @return builder
          * 
@@ -322,7 +342,7 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param targetIps If `type`==`local`, if destination IP is to be replaced
+         * @param targetIps List of destination IP addresses to replace when `type`==`local`
          * 
          * @return builder
          * 
@@ -332,7 +352,7 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param targetIps If `type`==`local`, if destination IP is to be replaced
+         * @param targetIps List of destination IP addresses to replace when `type`==`local`
          * 
          * @return builder
          * 
@@ -342,7 +362,7 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param type enum: `local`, `tunnel`, `vpn`, `wan`
+         * @param type Gateway path source type, such as local network, WAN interface, VPN path, or tunnel
          * 
          * @return builder
          * 
@@ -353,7 +373,7 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param type enum: `local`, `tunnel`, `vpn`, `wan`
+         * @param type Gateway path source type, such as local network, WAN interface, VPN path, or tunnel
          * 
          * @return builder
          * 
@@ -363,7 +383,7 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param wanName Optional if `type`==`vpn`
+         * @param wanName Optional if `type`==`vpn`; WAN interface name associated with the VPN path
          * 
          * @return builder
          * 
@@ -374,7 +394,7 @@ public final class GatewaytemplatePathPreferencesPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param wanName Optional if `type`==`vpn`
+         * @param wanName Optional if `type`==`vpn`; WAN interface name associated with the VPN path
          * 
          * @return builder
          * 

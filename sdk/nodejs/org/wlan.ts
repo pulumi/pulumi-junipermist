@@ -81,15 +81,15 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly acctImmediateUpdate: pulumi.Output<boolean>;
     /**
-     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      */
     declare public readonly acctInterimInterval: pulumi.Output<number>;
     /**
-     * List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * RADIUS accounting servers used by this WLAN
      */
     declare public readonly acctServers: pulumi.Output<outputs.org.WlanAcctServer[]>;
     /**
-     * Airwatch wlan settings
+     * Integration settings for AirWatch device compliance on this WLAN
      */
     declare public readonly airwatch: pulumi.Output<outputs.org.WlanAirwatch>;
     /**
@@ -105,19 +105,19 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly allowSsdp: pulumi.Output<boolean>;
     /**
-     * List of device ids
+     * Access point identifiers used when `applyTo`==`aps`
      */
     declare public readonly apIds: pulumi.Output<string[]>;
     /**
-     * Bandwidth limiting for apps (applies to up/down)
+     * Bandwidth limits for applications on this WLAN
      */
     declare public readonly appLimit: pulumi.Output<outputs.org.WlanAppLimit | undefined>;
     /**
-     * APP qos wlan settings
+     * QoS rules for application traffic on this WLAN
      */
     declare public readonly appQos: pulumi.Output<outputs.org.WlanAppQos>;
     /**
-     * enum: `aps`, `site`, `wxtags`
+     * Scope that determines where this WLAN is applied
      */
     declare public readonly applyTo: pulumi.Output<string>;
     /**
@@ -125,15 +125,15 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly arpFilter: pulumi.Output<boolean>;
     /**
-     * Authentication wlan settings
+     * Settings that control client authentication for this WLAN
      */
     declare public readonly auth: pulumi.Output<outputs.org.WlanAuth | undefined>;
     /**
-     * When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+     * RADIUS authentication server selection behavior for this WLAN
      */
     declare public readonly authServerSelection: pulumi.Output<string>;
     /**
-     * List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+     * RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
      */
     declare public readonly authServers: pulumi.Output<outputs.org.WlanAuthServer[]>;
     /**
@@ -145,11 +145,11 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly authServersNasIp: pulumi.Output<string>;
     /**
-     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * RADIUS auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      */
     declare public readonly authServersRetries: pulumi.Output<number | undefined>;
     /**
-     * Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+     * RADIUS auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
      */
     declare public readonly authServersTimeout: pulumi.Output<number | undefined>;
     /**
@@ -169,25 +169,31 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly blockBlacklistClients: pulumi.Output<boolean | undefined>;
     /**
-     * Bonjour gateway wlan settings
+     * Service discovery gateway settings for Bonjour traffic on this WLAN
      */
     declare public readonly bonjour: pulumi.Output<outputs.org.WlanBonjour | undefined>;
     /**
-     * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+     * Central web authentication settings for Cisco CWA on this WLAN
      */
     declare public readonly ciscoCwa: pulumi.Output<outputs.org.WlanCiscoCwa>;
+    /**
+     * Downlink bandwidth limit applied per client
+     */
     declare public readonly clientLimitDown: pulumi.Output<string>;
     /**
      * If downlink limiting per-client is enabled
      */
     declare public readonly clientLimitDownEnabled: pulumi.Output<boolean | undefined>;
+    /**
+     * Uplink bandwidth limit applied per client
+     */
     declare public readonly clientLimitUp: pulumi.Output<string>;
     /**
      * If uplink limiting per-client is enabled
      */
     declare public readonly clientLimitUpEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * List of COA (change of authorization) servers, optional
+     * RADIUS Change of Authorization servers available to this WLAN
      */
     declare public readonly coaServers: pulumi.Output<outputs.org.WlanCoaServer[] | undefined>;
     /**
@@ -225,32 +231,34 @@ export class Wlan extends pulumi.CustomResource {
      *    * cannot reach default gateway
      */
     declare public readonly disableWhenGatewayUnreachable: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether to disable this WLAN when the configured Mist tunnel is down
+     */
     declare public readonly disableWhenMxtunnelDown: pulumi.Output<boolean | undefined>;
     /**
      * Whether to disable WMM
      */
     declare public readonly disableWmm: pulumi.Output<boolean>;
     /**
-     * For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+     * RADIUS group based DNS server rewrite settings for this WLAN
      */
     declare public readonly dnsServerRewrite: pulumi.Output<outputs.org.WlanDnsServerRewrite | undefined>;
+    /**
+     * Delivery Traffic Indication Message interval for this WLAN
+     */
     declare public readonly dtim: pulumi.Output<number>;
     /**
-     * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-     *   * PSK will come from RADIUS server
-     *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-     *   * AP sends BSSID:SSID as Caller-Station-ID
-     *   * `authServers` is required
-     *   * PSK will come from cloud WLC if source is cloudPsks
-     *   * defaultPsk will be used if cloud WLC is not available
-     *   * `multiPskOnly` and `psk` is ignored
-     *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+     * Per-user PSK selection settings for this WLAN
      */
     declare public readonly dynamicPsk: pulumi.Output<outputs.org.WlanDynamicPsk | undefined>;
     /**
-     * For 802.1x
+     * VLAN assignment settings for 802.1X dynamic VLANs
      */
     declare public readonly dynamicVlan: pulumi.Output<outputs.org.WlanDynamicVlan | undefined>;
+    /**
+     * Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+     */
+    declare public readonly enableFtm: pulumi.Output<boolean>;
     /**
      * Enable AP-AP keycaching via multicast
      */
@@ -280,12 +288,15 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly hostnameIe: pulumi.Output<boolean>;
     /**
-     * Hostspot 2.0 wlan settings
+     * Passpoint and Hotspot 2.0 settings for this WLAN
      */
     declare public readonly hotspot20: pulumi.Output<outputs.org.WlanHotspot20 | undefined>;
+    /**
+     * DHCP Option 82 insertion settings for this WLAN
+     */
     declare public readonly injectDhcpOption82: pulumi.Output<outputs.org.WlanInjectDhcpOption82 | undefined>;
     /**
-     * where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+     * Network interface or tunnel where this WLAN bridges client traffic
      */
     declare public readonly interface: pulumi.Output<string>;
     /**
@@ -316,14 +327,20 @@ export class Wlan extends pulumi.CustomResource {
      * Maximum number of client connected to the SSID. `0` means unlimited
      */
     declare public readonly maxNumClients: pulumi.Output<number | undefined>;
+    /**
+     * Juniper Mist NAC settings used by this WLAN
+     */
     declare public readonly mistNac: pulumi.Output<outputs.org.WlanMistNac>;
+    /**
+     * Managed service provider identifier associated with this WLAN
+     */
     declare public /*out*/ readonly mspId: pulumi.Output<string>;
     /**
-     * When `interface`=`mxtunnel`, id of the Mist Tunnel
+     * Mist Tunnel identifiers used when `interface`==`mxtunnel`
      */
     declare public readonly mxtunnelIds: pulumi.Output<string[]>;
     /**
-     * When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * Mist Tunnel names used when `interface`==`siteMxedge`
      */
     declare public readonly mxtunnelNames: pulumi.Output<string[]>;
     /**
@@ -334,17 +351,20 @@ export class Wlan extends pulumi.CustomResource {
      * Whether to only allow client that we’ve learned from DHCP exchange to talk
      */
     declare public readonly noStaticIp: pulumi.Output<boolean>;
+    /**
+     * Owning organization associated with this WLAN
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
-     * Portal wlan settings
+     * Guest portal settings for this WLAN
      */
     declare public readonly portal: pulumi.Output<outputs.org.WlanPortal>;
     /**
-     * List of hostnames without http(s):// (matched by substring)
+     * Guest portal hostnames that clients may reach before authorization
      */
     declare public readonly portalAllowedHostnames: pulumi.Output<string[]>;
     /**
-     * List of CIDRs
+     * Guest portal CIDR subnets that clients may reach before authorization
      */
     declare public readonly portalAllowedSubnets: pulumi.Output<string[]>;
     /**
@@ -352,7 +372,7 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly portalApiSecret: pulumi.Output<string>;
     /**
-     * List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+     * Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
      */
     declare public readonly portalDeniedHostnames: pulumi.Output<string[]>;
     /**
@@ -363,13 +383,16 @@ export class Wlan extends pulumi.CustomResource {
      * URL used in the SSO process, auto-generated when auth is set to `sso`
      */
     declare public /*out*/ readonly portalSsoUrl: pulumi.Output<string>;
+    /**
+     * Quality-of-service settings for WLAN client traffic
+     */
     declare public readonly qos: pulumi.Output<outputs.org.WlanQos>;
     /**
-     * RadSec settings
+     * TLS-secured RADIUS transport settings for this WLAN
      */
     declare public readonly radsec: pulumi.Output<outputs.org.WlanRadsec>;
     /**
-     * Property key is the RF band. enum: `24`, `5`, `6`
+     * Data rate settings by RF band for this WLAN
      */
     declare public readonly rateset: pulumi.Output<{[key: string]: outputs.org.WlanRateset}>;
     /**
@@ -377,11 +400,11 @@ export class Wlan extends pulumi.CustomResource {
      */
     declare public readonly reconnectClientsWhenRoamingMxcluster: pulumi.Output<boolean | undefined>;
     /**
-     * enum: `11r`, `OKC`, `NONE`
+     * Fast roaming mode configured for this WLAN
      */
     declare public readonly roamMode: pulumi.Output<string | undefined>;
     /**
-     * WLAN operating schedule, default is disabled
+     * Operating schedule controlling when this WLAN is active
      */
     declare public readonly schedule: pulumi.Output<outputs.org.WlanSchedule>;
     /**
@@ -392,6 +415,9 @@ export class Wlan extends pulumi.CustomResource {
      * Name of the SSID
      */
     declare public readonly ssid: pulumi.Output<string>;
+    /**
+     * Identifier of the WLAN template associated with this WLAN
+     */
     declare public readonly templateId: pulumi.Output<string>;
     /**
      * If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
@@ -401,27 +427,36 @@ export class Wlan extends pulumi.CustomResource {
      * If vlan tagging is enabled
      */
     declare public readonly vlanEnabled: pulumi.Output<boolean>;
+    /**
+     * Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+     */
     declare public readonly vlanId: pulumi.Output<string | undefined>;
     /**
-     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+     * Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
      */
     declare public readonly vlanIds: pulumi.Output<string[]>;
     /**
      * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
      */
     declare public readonly vlanPooling: pulumi.Output<boolean>;
+    /**
+     * Downlink bandwidth limit applied to the whole WLAN
+     */
     declare public readonly wlanLimitDown: pulumi.Output<string>;
     /**
      * If downlink limiting for whole wlan is enabled
      */
     declare public readonly wlanLimitDownEnabled: pulumi.Output<boolean | undefined>;
+    /**
+     * Uplink bandwidth limit applied to the whole WLAN
+     */
     declare public readonly wlanLimitUp: pulumi.Output<string>;
     /**
      * If uplink limiting for whole wlan is enabled
      */
     declare public readonly wlanLimitUpEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * List of wxtag_ids
+     * Identifiers of WxLAN tags used when `applyTo`==`wxtags`
      */
     declare public readonly wxtagIds: pulumi.Output<string[]>;
     /**
@@ -490,6 +525,7 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["dtim"] = state?.dtim;
             resourceInputs["dynamicPsk"] = state?.dynamicPsk;
             resourceInputs["dynamicVlan"] = state?.dynamicVlan;
+            resourceInputs["enableFtm"] = state?.enableFtm;
             resourceInputs["enableLocalKeycaching"] = state?.enableLocalKeycaching;
             resourceInputs["enableWirelessBridging"] = state?.enableWirelessBridging;
             resourceInputs["enableWirelessBridgingDhcpTracking"] = state?.enableWirelessBridgingDhcpTracking;
@@ -597,6 +633,7 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["dtim"] = args?.dtim;
             resourceInputs["dynamicPsk"] = args?.dynamicPsk;
             resourceInputs["dynamicVlan"] = args?.dynamicVlan;
+            resourceInputs["enableFtm"] = args?.enableFtm;
             resourceInputs["enableLocalKeycaching"] = args?.enableLocalKeycaching;
             resourceInputs["enableWirelessBridging"] = args?.enableWirelessBridging;
             resourceInputs["enableWirelessBridgingDhcpTracking"] = args?.enableWirelessBridgingDhcpTracking;
@@ -664,15 +701,15 @@ export interface WlanState {
      */
     acctImmediateUpdate?: pulumi.Input<boolean | undefined>;
     /**
-     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      */
     acctInterimInterval?: pulumi.Input<number | undefined>;
     /**
-     * List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * RADIUS accounting servers used by this WLAN
      */
     acctServers?: pulumi.Input<pulumi.Input<inputs.org.WlanAcctServer>[] | undefined>;
     /**
-     * Airwatch wlan settings
+     * Integration settings for AirWatch device compliance on this WLAN
      */
     airwatch?: pulumi.Input<inputs.org.WlanAirwatch | undefined>;
     /**
@@ -688,19 +725,19 @@ export interface WlanState {
      */
     allowSsdp?: pulumi.Input<boolean | undefined>;
     /**
-     * List of device ids
+     * Access point identifiers used when `applyTo`==`aps`
      */
     apIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Bandwidth limiting for apps (applies to up/down)
+     * Bandwidth limits for applications on this WLAN
      */
     appLimit?: pulumi.Input<inputs.org.WlanAppLimit | undefined>;
     /**
-     * APP qos wlan settings
+     * QoS rules for application traffic on this WLAN
      */
     appQos?: pulumi.Input<inputs.org.WlanAppQos | undefined>;
     /**
-     * enum: `aps`, `site`, `wxtags`
+     * Scope that determines where this WLAN is applied
      */
     applyTo?: pulumi.Input<string | undefined>;
     /**
@@ -708,15 +745,15 @@ export interface WlanState {
      */
     arpFilter?: pulumi.Input<boolean | undefined>;
     /**
-     * Authentication wlan settings
+     * Settings that control client authentication for this WLAN
      */
     auth?: pulumi.Input<inputs.org.WlanAuth | undefined>;
     /**
-     * When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+     * RADIUS authentication server selection behavior for this WLAN
      */
     authServerSelection?: pulumi.Input<string | undefined>;
     /**
-     * List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+     * RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
      */
     authServers?: pulumi.Input<pulumi.Input<inputs.org.WlanAuthServer>[] | undefined>;
     /**
@@ -728,11 +765,11 @@ export interface WlanState {
      */
     authServersNasIp?: pulumi.Input<string | undefined>;
     /**
-     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * RADIUS auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      */
     authServersRetries?: pulumi.Input<number | undefined>;
     /**
-     * Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+     * RADIUS auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
      */
     authServersTimeout?: pulumi.Input<number | undefined>;
     /**
@@ -752,25 +789,31 @@ export interface WlanState {
      */
     blockBlacklistClients?: pulumi.Input<boolean | undefined>;
     /**
-     * Bonjour gateway wlan settings
+     * Service discovery gateway settings for Bonjour traffic on this WLAN
      */
     bonjour?: pulumi.Input<inputs.org.WlanBonjour | undefined>;
     /**
-     * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+     * Central web authentication settings for Cisco CWA on this WLAN
      */
     ciscoCwa?: pulumi.Input<inputs.org.WlanCiscoCwa | undefined>;
+    /**
+     * Downlink bandwidth limit applied per client
+     */
     clientLimitDown?: pulumi.Input<string | undefined>;
     /**
      * If downlink limiting per-client is enabled
      */
     clientLimitDownEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Uplink bandwidth limit applied per client
+     */
     clientLimitUp?: pulumi.Input<string | undefined>;
     /**
      * If uplink limiting per-client is enabled
      */
     clientLimitUpEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * List of COA (change of authorization) servers, optional
+     * RADIUS Change of Authorization servers available to this WLAN
      */
     coaServers?: pulumi.Input<pulumi.Input<inputs.org.WlanCoaServer>[] | undefined>;
     /**
@@ -808,32 +851,34 @@ export interface WlanState {
      *    * cannot reach default gateway
      */
     disableWhenGatewayUnreachable?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to disable this WLAN when the configured Mist tunnel is down
+     */
     disableWhenMxtunnelDown?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable WMM
      */
     disableWmm?: pulumi.Input<boolean | undefined>;
     /**
-     * For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+     * RADIUS group based DNS server rewrite settings for this WLAN
      */
     dnsServerRewrite?: pulumi.Input<inputs.org.WlanDnsServerRewrite | undefined>;
+    /**
+     * Delivery Traffic Indication Message interval for this WLAN
+     */
     dtim?: pulumi.Input<number | undefined>;
     /**
-     * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-     *   * PSK will come from RADIUS server
-     *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-     *   * AP sends BSSID:SSID as Caller-Station-ID
-     *   * `authServers` is required
-     *   * PSK will come from cloud WLC if source is cloudPsks
-     *   * defaultPsk will be used if cloud WLC is not available
-     *   * `multiPskOnly` and `psk` is ignored
-     *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+     * Per-user PSK selection settings for this WLAN
      */
     dynamicPsk?: pulumi.Input<inputs.org.WlanDynamicPsk | undefined>;
     /**
-     * For 802.1x
+     * VLAN assignment settings for 802.1X dynamic VLANs
      */
     dynamicVlan?: pulumi.Input<inputs.org.WlanDynamicVlan | undefined>;
+    /**
+     * Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+     */
+    enableFtm?: pulumi.Input<boolean | undefined>;
     /**
      * Enable AP-AP keycaching via multicast
      */
@@ -863,12 +908,15 @@ export interface WlanState {
      */
     hostnameIe?: pulumi.Input<boolean | undefined>;
     /**
-     * Hostspot 2.0 wlan settings
+     * Passpoint and Hotspot 2.0 settings for this WLAN
      */
     hotspot20?: pulumi.Input<inputs.org.WlanHotspot20 | undefined>;
+    /**
+     * DHCP Option 82 insertion settings for this WLAN
+     */
     injectDhcpOption82?: pulumi.Input<inputs.org.WlanInjectDhcpOption82 | undefined>;
     /**
-     * where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+     * Network interface or tunnel where this WLAN bridges client traffic
      */
     interface?: pulumi.Input<string | undefined>;
     /**
@@ -899,14 +947,20 @@ export interface WlanState {
      * Maximum number of client connected to the SSID. `0` means unlimited
      */
     maxNumClients?: pulumi.Input<number | undefined>;
+    /**
+     * Juniper Mist NAC settings used by this WLAN
+     */
     mistNac?: pulumi.Input<inputs.org.WlanMistNac | undefined>;
+    /**
+     * Managed service provider identifier associated with this WLAN
+     */
     mspId?: pulumi.Input<string | undefined>;
     /**
-     * When `interface`=`mxtunnel`, id of the Mist Tunnel
+     * Mist Tunnel identifiers used when `interface`==`mxtunnel`
      */
     mxtunnelIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * Mist Tunnel names used when `interface`==`siteMxedge`
      */
     mxtunnelNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -917,17 +971,20 @@ export interface WlanState {
      * Whether to only allow client that we’ve learned from DHCP exchange to talk
      */
     noStaticIp?: pulumi.Input<boolean | undefined>;
+    /**
+     * Owning organization associated with this WLAN
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * Portal wlan settings
+     * Guest portal settings for this WLAN
      */
     portal?: pulumi.Input<inputs.org.WlanPortal | undefined>;
     /**
-     * List of hostnames without http(s):// (matched by substring)
+     * Guest portal hostnames that clients may reach before authorization
      */
     portalAllowedHostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * List of CIDRs
+     * Guest portal CIDR subnets that clients may reach before authorization
      */
     portalAllowedSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -935,7 +992,7 @@ export interface WlanState {
      */
     portalApiSecret?: pulumi.Input<string | undefined>;
     /**
-     * List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+     * Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
      */
     portalDeniedHostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -946,13 +1003,16 @@ export interface WlanState {
      * URL used in the SSO process, auto-generated when auth is set to `sso`
      */
     portalSsoUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Quality-of-service settings for WLAN client traffic
+     */
     qos?: pulumi.Input<inputs.org.WlanQos | undefined>;
     /**
-     * RadSec settings
+     * TLS-secured RADIUS transport settings for this WLAN
      */
     radsec?: pulumi.Input<inputs.org.WlanRadsec | undefined>;
     /**
-     * Property key is the RF band. enum: `24`, `5`, `6`
+     * Data rate settings by RF band for this WLAN
      */
     rateset?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.WlanRateset>} | undefined>;
     /**
@@ -960,11 +1020,11 @@ export interface WlanState {
      */
     reconnectClientsWhenRoamingMxcluster?: pulumi.Input<boolean | undefined>;
     /**
-     * enum: `11r`, `OKC`, `NONE`
+     * Fast roaming mode configured for this WLAN
      */
     roamMode?: pulumi.Input<string | undefined>;
     /**
-     * WLAN operating schedule, default is disabled
+     * Operating schedule controlling when this WLAN is active
      */
     schedule?: pulumi.Input<inputs.org.WlanSchedule | undefined>;
     /**
@@ -975,6 +1035,9 @@ export interface WlanState {
      * Name of the SSID
      */
     ssid?: pulumi.Input<string | undefined>;
+    /**
+     * Identifier of the WLAN template associated with this WLAN
+     */
     templateId?: pulumi.Input<string | undefined>;
     /**
      * If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
@@ -984,27 +1047,36 @@ export interface WlanState {
      * If vlan tagging is enabled
      */
     vlanEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+     */
     vlanId?: pulumi.Input<string | undefined>;
     /**
-     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+     * Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
      */
     vlanIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
      */
     vlanPooling?: pulumi.Input<boolean | undefined>;
+    /**
+     * Downlink bandwidth limit applied to the whole WLAN
+     */
     wlanLimitDown?: pulumi.Input<string | undefined>;
     /**
      * If downlink limiting for whole wlan is enabled
      */
     wlanLimitDownEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Uplink bandwidth limit applied to the whole WLAN
+     */
     wlanLimitUp?: pulumi.Input<string | undefined>;
     /**
      * If uplink limiting for whole wlan is enabled
      */
     wlanLimitUpEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * List of wxtag_ids
+     * Identifiers of WxLAN tags used when `applyTo`==`wxtags`
      */
     wxtagIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -1026,15 +1098,15 @@ export interface WlanArgs {
      */
     acctImmediateUpdate?: pulumi.Input<boolean | undefined>;
     /**
-     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      */
     acctInterimInterval?: pulumi.Input<number | undefined>;
     /**
-     * List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * RADIUS accounting servers used by this WLAN
      */
     acctServers?: pulumi.Input<pulumi.Input<inputs.org.WlanAcctServer>[] | undefined>;
     /**
-     * Airwatch wlan settings
+     * Integration settings for AirWatch device compliance on this WLAN
      */
     airwatch?: pulumi.Input<inputs.org.WlanAirwatch | undefined>;
     /**
@@ -1050,19 +1122,19 @@ export interface WlanArgs {
      */
     allowSsdp?: pulumi.Input<boolean | undefined>;
     /**
-     * List of device ids
+     * Access point identifiers used when `applyTo`==`aps`
      */
     apIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Bandwidth limiting for apps (applies to up/down)
+     * Bandwidth limits for applications on this WLAN
      */
     appLimit?: pulumi.Input<inputs.org.WlanAppLimit | undefined>;
     /**
-     * APP qos wlan settings
+     * QoS rules for application traffic on this WLAN
      */
     appQos?: pulumi.Input<inputs.org.WlanAppQos | undefined>;
     /**
-     * enum: `aps`, `site`, `wxtags`
+     * Scope that determines where this WLAN is applied
      */
     applyTo?: pulumi.Input<string | undefined>;
     /**
@@ -1070,15 +1142,15 @@ export interface WlanArgs {
      */
     arpFilter?: pulumi.Input<boolean | undefined>;
     /**
-     * Authentication wlan settings
+     * Settings that control client authentication for this WLAN
      */
     auth?: pulumi.Input<inputs.org.WlanAuth | undefined>;
     /**
-     * When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+     * RADIUS authentication server selection behavior for this WLAN
      */
     authServerSelection?: pulumi.Input<string | undefined>;
     /**
-     * List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+     * RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
      */
     authServers?: pulumi.Input<pulumi.Input<inputs.org.WlanAuthServer>[] | undefined>;
     /**
@@ -1090,11 +1162,11 @@ export interface WlanArgs {
      */
     authServersNasIp?: pulumi.Input<string | undefined>;
     /**
-     * Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * RADIUS auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      */
     authServersRetries?: pulumi.Input<number | undefined>;
     /**
-     * Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+     * RADIUS auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
      */
     authServersTimeout?: pulumi.Input<number | undefined>;
     /**
@@ -1114,25 +1186,31 @@ export interface WlanArgs {
      */
     blockBlacklistClients?: pulumi.Input<boolean | undefined>;
     /**
-     * Bonjour gateway wlan settings
+     * Service discovery gateway settings for Bonjour traffic on this WLAN
      */
     bonjour?: pulumi.Input<inputs.org.WlanBonjour | undefined>;
     /**
-     * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+     * Central web authentication settings for Cisco CWA on this WLAN
      */
     ciscoCwa?: pulumi.Input<inputs.org.WlanCiscoCwa | undefined>;
+    /**
+     * Downlink bandwidth limit applied per client
+     */
     clientLimitDown?: pulumi.Input<string | undefined>;
     /**
      * If downlink limiting per-client is enabled
      */
     clientLimitDownEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Uplink bandwidth limit applied per client
+     */
     clientLimitUp?: pulumi.Input<string | undefined>;
     /**
      * If uplink limiting per-client is enabled
      */
     clientLimitUpEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * List of COA (change of authorization) servers, optional
+     * RADIUS Change of Authorization servers available to this WLAN
      */
     coaServers?: pulumi.Input<pulumi.Input<inputs.org.WlanCoaServer>[] | undefined>;
     /**
@@ -1170,32 +1248,34 @@ export interface WlanArgs {
      *    * cannot reach default gateway
      */
     disableWhenGatewayUnreachable?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to disable this WLAN when the configured Mist tunnel is down
+     */
     disableWhenMxtunnelDown?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable WMM
      */
     disableWmm?: pulumi.Input<boolean | undefined>;
     /**
-     * For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+     * RADIUS group based DNS server rewrite settings for this WLAN
      */
     dnsServerRewrite?: pulumi.Input<inputs.org.WlanDnsServerRewrite | undefined>;
+    /**
+     * Delivery Traffic Indication Message interval for this WLAN
+     */
     dtim?: pulumi.Input<number | undefined>;
     /**
-     * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-     *   * PSK will come from RADIUS server
-     *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-     *   * AP sends BSSID:SSID as Caller-Station-ID
-     *   * `authServers` is required
-     *   * PSK will come from cloud WLC if source is cloudPsks
-     *   * defaultPsk will be used if cloud WLC is not available
-     *   * `multiPskOnly` and `psk` is ignored
-     *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+     * Per-user PSK selection settings for this WLAN
      */
     dynamicPsk?: pulumi.Input<inputs.org.WlanDynamicPsk | undefined>;
     /**
-     * For 802.1x
+     * VLAN assignment settings for 802.1X dynamic VLANs
      */
     dynamicVlan?: pulumi.Input<inputs.org.WlanDynamicVlan | undefined>;
+    /**
+     * Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+     */
+    enableFtm?: pulumi.Input<boolean | undefined>;
     /**
      * Enable AP-AP keycaching via multicast
      */
@@ -1225,12 +1305,15 @@ export interface WlanArgs {
      */
     hostnameIe?: pulumi.Input<boolean | undefined>;
     /**
-     * Hostspot 2.0 wlan settings
+     * Passpoint and Hotspot 2.0 settings for this WLAN
      */
     hotspot20?: pulumi.Input<inputs.org.WlanHotspot20 | undefined>;
+    /**
+     * DHCP Option 82 insertion settings for this WLAN
+     */
     injectDhcpOption82?: pulumi.Input<inputs.org.WlanInjectDhcpOption82 | undefined>;
     /**
-     * where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+     * Network interface or tunnel where this WLAN bridges client traffic
      */
     interface?: pulumi.Input<string | undefined>;
     /**
@@ -1261,13 +1344,16 @@ export interface WlanArgs {
      * Maximum number of client connected to the SSID. `0` means unlimited
      */
     maxNumClients?: pulumi.Input<number | undefined>;
+    /**
+     * Juniper Mist NAC settings used by this WLAN
+     */
     mistNac?: pulumi.Input<inputs.org.WlanMistNac | undefined>;
     /**
-     * When `interface`=`mxtunnel`, id of the Mist Tunnel
+     * Mist Tunnel identifiers used when `interface`==`mxtunnel`
      */
     mxtunnelIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * Mist Tunnel names used when `interface`==`siteMxedge`
      */
     mxtunnelNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -1278,30 +1364,36 @@ export interface WlanArgs {
      * Whether to only allow client that we’ve learned from DHCP exchange to talk
      */
     noStaticIp?: pulumi.Input<boolean | undefined>;
+    /**
+     * Owning organization associated with this WLAN
+     */
     orgId: pulumi.Input<string>;
     /**
-     * Portal wlan settings
+     * Guest portal settings for this WLAN
      */
     portal?: pulumi.Input<inputs.org.WlanPortal | undefined>;
     /**
-     * List of hostnames without http(s):// (matched by substring)
+     * Guest portal hostnames that clients may reach before authorization
      */
     portalAllowedHostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * List of CIDRs
+     * Guest portal CIDR subnets that clients may reach before authorization
      */
     portalAllowedSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+     * Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
      */
     portalDeniedHostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Quality-of-service settings for WLAN client traffic
+     */
     qos?: pulumi.Input<inputs.org.WlanQos | undefined>;
     /**
-     * RadSec settings
+     * TLS-secured RADIUS transport settings for this WLAN
      */
     radsec?: pulumi.Input<inputs.org.WlanRadsec | undefined>;
     /**
-     * Property key is the RF band. enum: `24`, `5`, `6`
+     * Data rate settings by RF band for this WLAN
      */
     rateset?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.WlanRateset>} | undefined>;
     /**
@@ -1309,11 +1401,11 @@ export interface WlanArgs {
      */
     reconnectClientsWhenRoamingMxcluster?: pulumi.Input<boolean | undefined>;
     /**
-     * enum: `11r`, `OKC`, `NONE`
+     * Fast roaming mode configured for this WLAN
      */
     roamMode?: pulumi.Input<string | undefined>;
     /**
-     * WLAN operating schedule, default is disabled
+     * Operating schedule controlling when this WLAN is active
      */
     schedule?: pulumi.Input<inputs.org.WlanSchedule | undefined>;
     /**
@@ -1324,6 +1416,9 @@ export interface WlanArgs {
      * Name of the SSID
      */
     ssid: pulumi.Input<string>;
+    /**
+     * Identifier of the WLAN template associated with this WLAN
+     */
     templateId: pulumi.Input<string>;
     /**
      * If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
@@ -1333,27 +1428,36 @@ export interface WlanArgs {
      * If vlan tagging is enabled
      */
     vlanEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+     */
     vlanId?: pulumi.Input<string | undefined>;
     /**
-     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+     * Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
      */
     vlanIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
      */
     vlanPooling?: pulumi.Input<boolean | undefined>;
+    /**
+     * Downlink bandwidth limit applied to the whole WLAN
+     */
     wlanLimitDown?: pulumi.Input<string | undefined>;
     /**
      * If downlink limiting for whole wlan is enabled
      */
     wlanLimitDownEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Uplink bandwidth limit applied to the whole WLAN
+     */
     wlanLimitUp?: pulumi.Input<string | undefined>;
     /**
      * If uplink limiting for whole wlan is enabled
      */
     wlanLimitUpEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * List of wxtag_ids
+     * Identifiers of WxLAN tags used when `applyTo`==`wxtags`
      */
     wxtagIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

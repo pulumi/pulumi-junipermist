@@ -93,14 +93,14 @@ public final class DeviceprofileApEslConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+     * ESL integration type to enable on the AP
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+     * @return ESL integration type to enable on the AP
      * 
      */
     public Optional<Output<String>> type() {
@@ -274,7 +274,7 @@ public final class DeviceprofileApEslConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+         * @param type ESL integration type to enable on the AP
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class DeviceprofileApEslConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type note: bleConfig will be ignored if eslConfig is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+         * @param type ESL integration type to enable on the AP
          * 
          * @return builder
          * 

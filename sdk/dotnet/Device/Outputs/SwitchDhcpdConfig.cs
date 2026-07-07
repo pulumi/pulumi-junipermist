@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.SwitchDhcpdConfigConfig>? Config;
         /// <summary>
-        /// If set to `True`, enable the DHCP server
+        /// Whether switch DHCP server or relay configuration is enabled
         /// </summary>
         public readonly bool? Enabled;
 

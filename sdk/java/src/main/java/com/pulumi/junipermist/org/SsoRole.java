@@ -74,21 +74,45 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/ssoRole:SsoRole")
 public class SsoRole extends com.pulumi.resources.CustomResource {
+    /**
+     * Display name of the organization SSO role
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the organization SSO role
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Owning organization identifier for this SSO role
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Owning organization identifier for this SSO role
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
+    /**
+     * Access privileges granted by this organization SSO role
+     * 
+     */
     @Export(name="privileges", refs={List.class,SsoRolePrivilege.class}, tree="[0,1]")
     private Output<List<SsoRolePrivilege>> privileges;
 
+    /**
+     * @return Access privileges granted by this organization SSO role
+     * 
+     */
     public Output<List<SsoRolePrivilege>> privileges() {
         return this.privileges;
     }

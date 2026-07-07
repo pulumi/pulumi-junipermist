@@ -12,18 +12,33 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class WlanAppQosOtherGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Differentiated Services Code Point value applied to matching traffic
+        /// </summary>
         [Input("dscp")]
         public Input<string>? Dscp { get; set; }
 
+        /// <summary>
+        /// Destination subnet filter for this custom QoS rule
+        /// </summary>
         [Input("dstSubnet")]
         public Input<string>? DstSubnet { get; set; }
 
+        /// <summary>
+        /// TCP or UDP port ranges matched by this custom QoS rule
+        /// </summary>
         [Input("portRanges")]
         public Input<string>? PortRanges { get; set; }
 
+        /// <summary>
+        /// IP protocol matched by this custom QoS rule
+        /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
+        /// <summary>
+        /// Source subnet filter for this custom QoS rule
+        /// </summary>
         [Input("srcSubnet")]
         public Input<string>? SrcSubnet { get; set; }
 

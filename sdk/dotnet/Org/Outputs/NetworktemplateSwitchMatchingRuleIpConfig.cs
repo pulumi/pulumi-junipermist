@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IP assignment mode for in-band switch management
         /// </summary>
         public readonly string? Type;
 

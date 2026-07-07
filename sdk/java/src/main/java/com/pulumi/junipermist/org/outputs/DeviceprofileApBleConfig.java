@@ -25,12 +25,12 @@ public final class DeviceprofileApBleConfig {
      */
     private @Nullable Integer beaconRate;
     /**
-     * @return enum: `custom`, `default`
+     * @return Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
      * 
      */
     private @Nullable String beaconRateMode;
     /**
-     * @return List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+     * @return AP BLE beam numbers disabled for location advertisements
      * 
      */
     private @Nullable List<Integer> beamDisableds;
@@ -54,6 +54,10 @@ public final class DeviceprofileApBleConfig {
      * 
      */
     private @Nullable Integer eddystoneUidAdvPower;
+    /**
+     * @return BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+     * 
+     */
     private @Nullable String eddystoneUidBeams;
     /**
      * @return Only if `beaconEnabled`==`false`, Whether Eddystone-UID beacon is enabled
@@ -71,7 +75,7 @@ public final class DeviceprofileApBleConfig {
      */
     private @Nullable String eddystoneUidInstance;
     /**
-     * @return Eddystone-UID namespace
+     * @return Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
      * 
      */
     private @Nullable String eddystoneUidNamespace;
@@ -80,6 +84,10 @@ public final class DeviceprofileApBleConfig {
      * 
      */
     private @Nullable Integer eddystoneUrlAdvPower;
+    /**
+     * @return BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+     * 
+     */
     private @Nullable String eddystoneUrlBeams;
     /**
      * @return Only if `beaconEnabled`==`false`, Whether Eddystone-URL beacon is enabled
@@ -87,7 +95,7 @@ public final class DeviceprofileApBleConfig {
      */
     private @Nullable Boolean eddystoneUrlEnabled;
     /**
-     * @return Frequency (msec) of data emit by Eddystone-UID beacon
+     * @return Frequency (msec) of data emitted by Eddystone-URL beacon
      * 
      */
     private @Nullable Integer eddystoneUrlFreqMsec;
@@ -101,6 +109,10 @@ public final class DeviceprofileApBleConfig {
      * 
      */
     private @Nullable Integer ibeaconAdvPower;
+    /**
+     * @return BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+     * 
+     */
     private @Nullable String ibeaconBeams;
     /**
      * @return Can be enabled if `beaconEnabled`==`true`, whether to send iBeacon
@@ -113,12 +125,12 @@ public final class DeviceprofileApBleConfig {
      */
     private @Nullable Integer ibeaconFreqMsec;
     /**
-     * @return Major number for iBeacon
+     * @return iBeacon major value broadcast by the AP
      * 
      */
     private @Nullable Integer ibeaconMajor;
     /**
-     * @return Minor number for iBeacon
+     * @return iBeacon minor value broadcast by the AP
      * 
      */
     private @Nullable Integer ibeaconMinor;
@@ -133,7 +145,7 @@ public final class DeviceprofileApBleConfig {
      */
     private @Nullable Integer power;
     /**
-     * @return enum: `custom`, `default`
+     * @return Transmit power mode for BLE beacons; use custom to set `power`
      * 
      */
     private @Nullable String powerMode;
@@ -154,14 +166,14 @@ public final class DeviceprofileApBleConfig {
         return Optional.ofNullable(this.beaconRate);
     }
     /**
-     * @return enum: `custom`, `default`
+     * @return Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
      * 
      */
     public Optional<String> beaconRateMode() {
         return Optional.ofNullable(this.beaconRateMode);
     }
     /**
-     * @return List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+     * @return AP BLE beam numbers disabled for location advertisements
      * 
      */
     public List<Integer> beamDisableds() {
@@ -195,6 +207,10 @@ public final class DeviceprofileApBleConfig {
     public Optional<Integer> eddystoneUidAdvPower() {
         return Optional.ofNullable(this.eddystoneUidAdvPower);
     }
+    /**
+     * @return BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+     * 
+     */
     public Optional<String> eddystoneUidBeams() {
         return Optional.ofNullable(this.eddystoneUidBeams);
     }
@@ -220,7 +236,7 @@ public final class DeviceprofileApBleConfig {
         return Optional.ofNullable(this.eddystoneUidInstance);
     }
     /**
-     * @return Eddystone-UID namespace
+     * @return Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
      * 
      */
     public Optional<String> eddystoneUidNamespace() {
@@ -233,6 +249,10 @@ public final class DeviceprofileApBleConfig {
     public Optional<Integer> eddystoneUrlAdvPower() {
         return Optional.ofNullable(this.eddystoneUrlAdvPower);
     }
+    /**
+     * @return BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+     * 
+     */
     public Optional<String> eddystoneUrlBeams() {
         return Optional.ofNullable(this.eddystoneUrlBeams);
     }
@@ -244,7 +264,7 @@ public final class DeviceprofileApBleConfig {
         return Optional.ofNullable(this.eddystoneUrlEnabled);
     }
     /**
-     * @return Frequency (msec) of data emit by Eddystone-UID beacon
+     * @return Frequency (msec) of data emitted by Eddystone-URL beacon
      * 
      */
     public Optional<Integer> eddystoneUrlFreqMsec() {
@@ -264,6 +284,10 @@ public final class DeviceprofileApBleConfig {
     public Optional<Integer> ibeaconAdvPower() {
         return Optional.ofNullable(this.ibeaconAdvPower);
     }
+    /**
+     * @return BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+     * 
+     */
     public Optional<String> ibeaconBeams() {
         return Optional.ofNullable(this.ibeaconBeams);
     }
@@ -282,14 +306,14 @@ public final class DeviceprofileApBleConfig {
         return Optional.ofNullable(this.ibeaconFreqMsec);
     }
     /**
-     * @return Major number for iBeacon
+     * @return iBeacon major value broadcast by the AP
      * 
      */
     public Optional<Integer> ibeaconMajor() {
         return Optional.ofNullable(this.ibeaconMajor);
     }
     /**
-     * @return Minor number for iBeacon
+     * @return iBeacon minor value broadcast by the AP
      * 
      */
     public Optional<Integer> ibeaconMinor() {
@@ -310,7 +334,7 @@ public final class DeviceprofileApBleConfig {
         return Optional.ofNullable(this.power);
     }
     /**
-     * @return enum: `custom`, `default`
+     * @return Transmit power mode for BLE beacons; use custom to set `power`
      * 
      */
     public Optional<String> powerMode() {

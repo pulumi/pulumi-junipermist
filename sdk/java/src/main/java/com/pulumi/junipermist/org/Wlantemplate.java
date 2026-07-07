@@ -75,42 +75,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/wlantemplate:Wlantemplate")
 public class Wlantemplate extends com.pulumi.resources.CustomResource {
     /**
-     * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * Organizations, sites, or site groups targeted by this WLAN template
      * 
      */
     @Export(name="applies", refs={WlantemplateApplies.class}, tree="[0]")
     private Output<WlantemplateApplies> applies;
 
     /**
-     * @return Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * @return Organizations, sites, or site groups targeted by this WLAN template
      * 
      */
     public Output<WlantemplateApplies> applies() {
         return this.applies;
     }
     /**
-     * List of Device Profile ids
+     * Device profile IDs that further limit where this WLAN template applies
      * 
      */
     @Export(name="deviceprofileIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> deviceprofileIds;
 
     /**
-     * @return List of Device Profile ids
+     * @return Device profile IDs that further limit where this WLAN template applies
      * 
      */
     public Output<List<String>> deviceprofileIds() {
         return this.deviceprofileIds;
     }
     /**
-     * Where this template should not be applied to (takes precedence)
+     * Sites or site groups excluded from this WLAN template even when included by the application scope
      * 
      */
     @Export(name="exceptions", refs={WlantemplateExceptions.class}, tree="[0]")
     private Output<WlantemplateExceptions> exceptions;
 
     /**
-     * @return Where this template should not be applied to (takes precedence)
+     * @return Sites or site groups excluded from this WLAN template even when included by the application scope
      * 
      */
     public Output<WlantemplateExceptions> exceptions() {
@@ -130,15 +130,31 @@ public class Wlantemplate extends com.pulumi.resources.CustomResource {
     public Output<Boolean> filterByDeviceprofile() {
         return this.filterByDeviceprofile;
     }
+    /**
+     * Display name of the WLAN template
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the WLAN template
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Organization that owns this WLAN template
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this WLAN template
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }

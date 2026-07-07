@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NetworkVpnAccessSourceNat
     {
+        /// <summary>
+        /// External source NAT IP or subnet used when spoke hosts must be reachable from the hub
+        /// </summary>
         public readonly string? ExternalIp;
 
         [OutputConstructor]

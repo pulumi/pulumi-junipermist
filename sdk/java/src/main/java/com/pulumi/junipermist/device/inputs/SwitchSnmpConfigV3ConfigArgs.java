@@ -21,44 +21,92 @@ public final class SwitchSnmpConfigV3ConfigArgs extends com.pulumi.resources.Res
 
     public static final SwitchSnmpConfigV3ConfigArgs Empty = new SwitchSnmpConfigV3ConfigArgs();
 
+    /**
+     * SNMPv3 notification definitions used for traps and informs
+     * 
+     */
     @Import(name="notifies")
     private @Nullable Output<List<SwitchSnmpConfigV3ConfigNotifyArgs>> notifies;
 
+    /**
+     * @return SNMPv3 notification definitions used for traps and informs
+     * 
+     */
     public Optional<Output<List<SwitchSnmpConfigV3ConfigNotifyArgs>>> notifies() {
         return Optional.ofNullable(this.notifies);
     }
 
+    /**
+     * SNMPv3 notification filter profiles
+     * 
+     */
     @Import(name="notifyFilters")
     private @Nullable Output<List<SwitchSnmpConfigV3ConfigNotifyFilterArgs>> notifyFilters;
 
+    /**
+     * @return SNMPv3 notification filter profiles
+     * 
+     */
     public Optional<Output<List<SwitchSnmpConfigV3ConfigNotifyFilterArgs>>> notifyFilters() {
         return Optional.ofNullable(this.notifyFilters);
     }
 
+    /**
+     * SNMPv3 notification target addresses
+     * 
+     */
     @Import(name="targetAddresses")
     private @Nullable Output<List<SwitchSnmpConfigV3ConfigTargetAddressArgs>> targetAddresses;
 
+    /**
+     * @return SNMPv3 notification target addresses
+     * 
+     */
     public Optional<Output<List<SwitchSnmpConfigV3ConfigTargetAddressArgs>>> targetAddresses() {
         return Optional.ofNullable(this.targetAddresses);
     }
 
+    /**
+     * SNMPv3 target parameter profiles
+     * 
+     */
     @Import(name="targetParameters")
     private @Nullable Output<List<SwitchSnmpConfigV3ConfigTargetParameterArgs>> targetParameters;
 
+    /**
+     * @return SNMPv3 target parameter profiles
+     * 
+     */
     public Optional<Output<List<SwitchSnmpConfigV3ConfigTargetParameterArgs>>> targetParameters() {
         return Optional.ofNullable(this.targetParameters);
     }
 
+    /**
+     * SNMPv3 USM engine configurations
+     * 
+     */
     @Import(name="usms")
     private @Nullable Output<List<SwitchSnmpConfigV3ConfigUsmArgs>> usms;
 
+    /**
+     * @return SNMPv3 USM engine configurations
+     * 
+     */
     public Optional<Output<List<SwitchSnmpConfigV3ConfigUsmArgs>>> usms() {
         return Optional.ofNullable(this.usms);
     }
 
+    /**
+     * SNMPv3 VACM access control configuration
+     * 
+     */
     @Import(name="vacm")
     private @Nullable Output<SwitchSnmpConfigV3ConfigVacmArgs> vacm;
 
+    /**
+     * @return SNMPv3 VACM access control configuration
+     * 
+     */
     public Optional<Output<SwitchSnmpConfigV3ConfigVacmArgs>> vacm() {
         return Optional.ofNullable(this.vacm);
     }
@@ -92,76 +140,178 @@ public final class SwitchSnmpConfigV3ConfigArgs extends com.pulumi.resources.Res
             $ = new SwitchSnmpConfigV3ConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param notifies SNMPv3 notification definitions used for traps and informs
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifies(@Nullable Output<List<SwitchSnmpConfigV3ConfigNotifyArgs>> notifies) {
             $.notifies = notifies;
             return this;
         }
 
+        /**
+         * @param notifies SNMPv3 notification definitions used for traps and informs
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifies(List<SwitchSnmpConfigV3ConfigNotifyArgs> notifies) {
             return notifies(Output.of(notifies));
         }
 
+        /**
+         * @param notifies SNMPv3 notification definitions used for traps and informs
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifies(SwitchSnmpConfigV3ConfigNotifyArgs... notifies) {
             return notifies(List.of(notifies));
         }
 
+        /**
+         * @param notifyFilters SNMPv3 notification filter profiles
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifyFilters(@Nullable Output<List<SwitchSnmpConfigV3ConfigNotifyFilterArgs>> notifyFilters) {
             $.notifyFilters = notifyFilters;
             return this;
         }
 
+        /**
+         * @param notifyFilters SNMPv3 notification filter profiles
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifyFilters(List<SwitchSnmpConfigV3ConfigNotifyFilterArgs> notifyFilters) {
             return notifyFilters(Output.of(notifyFilters));
         }
 
+        /**
+         * @param notifyFilters SNMPv3 notification filter profiles
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifyFilters(SwitchSnmpConfigV3ConfigNotifyFilterArgs... notifyFilters) {
             return notifyFilters(List.of(notifyFilters));
         }
 
+        /**
+         * @param targetAddresses SNMPv3 notification target addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetAddresses(@Nullable Output<List<SwitchSnmpConfigV3ConfigTargetAddressArgs>> targetAddresses) {
             $.targetAddresses = targetAddresses;
             return this;
         }
 
+        /**
+         * @param targetAddresses SNMPv3 notification target addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetAddresses(List<SwitchSnmpConfigV3ConfigTargetAddressArgs> targetAddresses) {
             return targetAddresses(Output.of(targetAddresses));
         }
 
+        /**
+         * @param targetAddresses SNMPv3 notification target addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetAddresses(SwitchSnmpConfigV3ConfigTargetAddressArgs... targetAddresses) {
             return targetAddresses(List.of(targetAddresses));
         }
 
+        /**
+         * @param targetParameters SNMPv3 target parameter profiles
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetParameters(@Nullable Output<List<SwitchSnmpConfigV3ConfigTargetParameterArgs>> targetParameters) {
             $.targetParameters = targetParameters;
             return this;
         }
 
+        /**
+         * @param targetParameters SNMPv3 target parameter profiles
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetParameters(List<SwitchSnmpConfigV3ConfigTargetParameterArgs> targetParameters) {
             return targetParameters(Output.of(targetParameters));
         }
 
+        /**
+         * @param targetParameters SNMPv3 target parameter profiles
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetParameters(SwitchSnmpConfigV3ConfigTargetParameterArgs... targetParameters) {
             return targetParameters(List.of(targetParameters));
         }
 
+        /**
+         * @param usms SNMPv3 USM engine configurations
+         * 
+         * @return builder
+         * 
+         */
         public Builder usms(@Nullable Output<List<SwitchSnmpConfigV3ConfigUsmArgs>> usms) {
             $.usms = usms;
             return this;
         }
 
+        /**
+         * @param usms SNMPv3 USM engine configurations
+         * 
+         * @return builder
+         * 
+         */
         public Builder usms(List<SwitchSnmpConfigV3ConfigUsmArgs> usms) {
             return usms(Output.of(usms));
         }
 
+        /**
+         * @param usms SNMPv3 USM engine configurations
+         * 
+         * @return builder
+         * 
+         */
         public Builder usms(SwitchSnmpConfigV3ConfigUsmArgs... usms) {
             return usms(List.of(usms));
         }
 
+        /**
+         * @param vacm SNMPv3 VACM access control configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder vacm(@Nullable Output<SwitchSnmpConfigV3ConfigVacmArgs> vacm) {
             $.vacm = vacm;
             return this;
         }
 
+        /**
+         * @param vacm SNMPv3 VACM access control configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder vacm(SwitchSnmpConfigV3ConfigVacmArgs vacm) {
             return vacm(Output.of(vacm));
         }

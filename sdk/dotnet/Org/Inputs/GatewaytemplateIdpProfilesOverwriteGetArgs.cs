@@ -13,17 +13,20 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateIdpProfilesOverwriteGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum:
-        ///   * alert (default)
-        ///   * drop: silently dropping packets
-        ///   * close: notify client/server to close connection
+        /// Enforcement action applied when this overwrite rule matches
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
+        /// <summary>
+        /// Criteria that select signatures for this overwrite rule
+        /// </summary>
         [Input("matching")]
         public Input<Inputs.GatewaytemplateIdpProfilesOverwriteMatchingGetArgs>? Matching { get; set; }
 
+        /// <summary>
+        /// Display name for this IDP profile overwrite rule
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

@@ -13,18 +13,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayOobIpConfigNode1 {
     /**
-     * @return If `type`==`static`
+     * @return Default gateway for the node1 out-of-band management interface when `type`==`static`
      * 
      */
     private @Nullable String gateway;
+    /**
+     * @return Static IPv4 address for the node1 out-of-band management interface when `type`==`static`
+     * 
+     */
     private @Nullable String ip;
     /**
-     * @return Used only if `subnet` is not specified in `networks`
+     * @return IPv4 netmask or prefix length for the node1 out-of-band management interface when `type`==`static`; used only if `subnet` is not specified in `networks`
      * 
      */
     private @Nullable String netmask;
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for the node1 out-of-band management interface
      * 
      */
     private @Nullable String type;
@@ -38,28 +42,36 @@ public final class DeviceprofileGatewayOobIpConfigNode1 {
      * 
      */
     private @Nullable Boolean useMgmtVrfForHostOut;
+    /**
+     * @return VLAN ID used for node1 out-of-band management traffic
+     * 
+     */
     private @Nullable String vlanId;
 
     private DeviceprofileGatewayOobIpConfigNode1() {}
     /**
-     * @return If `type`==`static`
+     * @return Default gateway for the node1 out-of-band management interface when `type`==`static`
      * 
      */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
+    /**
+     * @return Static IPv4 address for the node1 out-of-band management interface when `type`==`static`
+     * 
+     */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return Used only if `subnet` is not specified in `networks`
+     * @return IPv4 netmask or prefix length for the node1 out-of-band management interface when `type`==`static`; used only if `subnet` is not specified in `networks`
      * 
      */
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
     }
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for the node1 out-of-band management interface
      * 
      */
     public Optional<String> type() {
@@ -79,6 +91,10 @@ public final class DeviceprofileGatewayOobIpConfigNode1 {
     public Optional<Boolean> useMgmtVrfForHostOut() {
         return Optional.ofNullable(this.useMgmtVrfForHostOut);
     }
+    /**
+     * @return VLAN ID used for node1 out-of-band management traffic
+     * 
+     */
     public Optional<String> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }

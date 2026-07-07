@@ -163,170 +163,226 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/deviceprofileGateway:DeviceprofileGateway")
 public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands provided by this gateway profile
      * 
      */
     @Export(name="additionalConfigCmds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * @return Additional CLI configuration commands provided by this gateway profile
      * 
      */
     public Output<Optional<List<String>>> additionalConfigCmds() {
         return Codegen.optional(this.additionalConfigCmds);
     }
+    /**
+     * BGP routing defaults for this gateway profile. Property key is the BGP session name
+     * 
+     */
     @Export(name="bgpConfig", refs={Map.class,String.class,DeviceprofileGatewayBgpConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,DeviceprofileGatewayBgpConfig>> bgpConfig;
 
+    /**
+     * @return BGP routing defaults for this gateway profile. Property key is the BGP session name
+     * 
+     */
     public Output<Optional<Map<String,DeviceprofileGatewayBgpConfig>>> bgpConfig() {
         return Codegen.optional(this.bgpConfig);
     }
+    /**
+     * DHCP server defaults provided by this gateway profile
+     * 
+     */
     @Export(name="dhcpdConfig", refs={DeviceprofileGatewayDhcpdConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileGatewayDhcpdConfig> dhcpdConfig;
 
+    /**
+     * @return DHCP server defaults provided by this gateway profile
+     * 
+     */
     public Output<Optional<DeviceprofileGatewayDhcpdConfig>> dhcpdConfig() {
         return Codegen.optional(this.dhcpdConfig);
     }
+    /**
+     * Whether DNS server and suffix settings in this profile override inherited values
+     * 
+     */
     @Export(name="dnsOverride", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dnsOverride;
 
+    /**
+     * @return Whether DNS server and suffix settings in this profile override inherited values
+     * 
+     */
     public Output<Optional<Boolean>> dnsOverride() {
         return Codegen.optional(this.dnsOverride);
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers provided by this gateway profile
      * 
      */
     @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS servers provided by this gateway profile
      * 
      */
     public Output<Optional<List<String>>> dnsServers() {
         return Codegen.optional(this.dnsServers);
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes provided by this gateway profile
      * 
      */
     @Export(name="dnsSuffixes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS search suffixes provided by this gateway profile
      * 
      */
     public Output<Optional<List<String>>> dnsSuffixes() {
         return Codegen.optional(this.dnsSuffixes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * Additional IPv4 route defaults in this gateway profile
      * 
      */
     @Export(name="extraRoutes", refs={Map.class,String.class,DeviceprofileGatewayExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,DeviceprofileGatewayExtraRoutes>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * @return Additional IPv4 route defaults in this gateway profile
      * 
      */
     public Output<Optional<Map<String,DeviceprofileGatewayExtraRoutes>>> extraRoutes() {
         return Codegen.optional(this.extraRoutes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * Additional IPv6 route defaults in this gateway profile
      * 
      */
     @Export(name="extraRoutes6", refs={Map.class,String.class,DeviceprofileGatewayExtraRoutes6.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,DeviceprofileGatewayExtraRoutes6>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;), the destination Network name or a variable (e.g. &#34;{{myvar}}&#34;)
+     * @return Additional IPv6 route defaults in this gateway profile
      * 
      */
     public Output<Optional<Map<String,DeviceprofileGatewayExtraRoutes6>>> extraRoutes6() {
         return Codegen.optional(this.extraRoutes6);
     }
     /**
-     * Property key is the profile name
+     * Intrusion detection and prevention profile defaults in this gateway profile
      * 
      */
     @Export(name="idpProfiles", refs={Map.class,String.class,DeviceprofileGatewayIdpProfiles.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,DeviceprofileGatewayIdpProfiles>> idpProfiles;
 
     /**
-     * @return Property key is the profile name
+     * @return Intrusion detection and prevention profile defaults in this gateway profile
      * 
      */
     public Output<Optional<Map<String,DeviceprofileGatewayIdpProfiles>>> idpProfiles() {
         return Codegen.optional(this.idpProfiles);
     }
     /**
-     * Property key is the network name
+     * Gateway interface IP configuration defaults by network name
      * 
      */
     @Export(name="ipConfigs", refs={Map.class,String.class,DeviceprofileGatewayIpConfigs.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,DeviceprofileGatewayIpConfigs>> ipConfigs;
 
     /**
-     * @return Property key is the network name
+     * @return Gateway interface IP configuration defaults by network name
      * 
      */
     public Output<Optional<Map<String,DeviceprofileGatewayIpConfigs>>> ipConfigs() {
         return Codegen.optional(this.ipConfigs);
     }
+    /**
+     * Display name of the gateway profile
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the gateway profile
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Layer 3 networks configured by this gateway profile
+     * 
+     */
     @Export(name="networks", refs={List.class,DeviceprofileGatewayNetwork.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DeviceprofileGatewayNetwork>> networks;
 
+    /**
+     * @return Layer 3 networks configured by this gateway profile
+     * 
+     */
     public Output<Optional<List<DeviceprofileGatewayNetwork>>> networks() {
         return Codegen.optional(this.networks);
     }
+    /**
+     * Whether NTP servers in this profile override inherited values
+     * 
+     */
     @Export(name="ntpOverride", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ntpOverride;
 
+    /**
+     * @return Whether NTP servers in this profile override inherited values
+     * 
+     */
     public Output<Optional<Boolean>> ntpOverride() {
         return Codegen.optional(this.ntpOverride);
     }
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers provided by this gateway profile
      * 
      */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ntpServers;
 
     /**
-     * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * @return NTP servers provided by this gateway profile
      * 
      */
     public Output<Optional<List<String>>> ntpServers() {
         return Codegen.optional(this.ntpServers);
     }
     /**
-     * Out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band management IP defaults in this gateway profile
      * 
      */
     @Export(name="oobIpConfig", refs={DeviceprofileGatewayOobIpConfig.class}, tree="[0]")
     private Output<DeviceprofileGatewayOobIpConfig> oobIpConfig;
 
     /**
-     * @return Out-of-band (vme/em0/fxp0) IP config
+     * @return Out-of-band management IP defaults in this gateway profile
      * 
      */
     public Output<DeviceprofileGatewayOobIpConfig> oobIpConfig() {
         return this.oobIpConfig;
     }
+    /**
+     * Organization that owns this gateway profile
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this gateway profile
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -373,22 +429,30 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.routerId);
     }
     /**
-     * Property key is the routing policy name
+     * Routing policy defaults applied by this gateway profile
      * 
      */
     @Export(name="routingPolicies", refs={Map.class,String.class,DeviceprofileGatewayRoutingPolicies.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,DeviceprofileGatewayRoutingPolicies>> routingPolicies;
 
     /**
-     * @return Property key is the routing policy name
+     * @return Routing policy defaults applied by this gateway profile
      * 
      */
     public Output<Optional<Map<String,DeviceprofileGatewayRoutingPolicies>>> routingPolicies() {
         return Codegen.optional(this.routingPolicies);
     }
+    /**
+     * Traffic service policy defaults enforced by this gateway profile
+     * 
+     */
     @Export(name="servicePolicies", refs={List.class,DeviceprofileGatewayServicePolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DeviceprofileGatewayServicePolicy>> servicePolicies;
 
+    /**
+     * @return Traffic service policy defaults enforced by this gateway profile
+     * 
+     */
     public Output<Optional<List<DeviceprofileGatewayServicePolicy>>> servicePolicies() {
         return Codegen.optional(this.servicePolicies);
     }
@@ -420,21 +484,29 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,DeviceprofileGatewayTunnelConfigs>>> tunnelConfigs() {
         return Codegen.optional(this.tunnelConfigs);
     }
+    /**
+     * Provider-specific tunnel options defined by this gateway profile
+     * 
+     */
     @Export(name="tunnelProviderOptions", refs={DeviceprofileGatewayTunnelProviderOptions.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileGatewayTunnelProviderOptions> tunnelProviderOptions;
 
+    /**
+     * @return Provider-specific tunnel options defined by this gateway profile
+     * 
+     */
     public Output<Optional<DeviceprofileGatewayTunnelProviderOptions>> tunnelProviderOptions() {
         return Codegen.optional(this.tunnelProviderOptions);
     }
     /**
-     * Device Type. enum: `gateway`
+     * Device type discriminator for gateway profiles
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Device Type. enum: `gateway`
+     * @return Device type discriminator for gateway profiles
      * 
      */
     public Output<String> type() {
@@ -454,21 +526,29 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> urlFilteringDenyMsg() {
         return Codegen.optional(this.urlFilteringDenyMsg);
     }
+    /**
+     * VRF defaults applied by this gateway profile
+     * 
+     */
     @Export(name="vrfConfig", refs={DeviceprofileGatewayVrfConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileGatewayVrfConfig> vrfConfig;
 
+    /**
+     * @return VRF defaults applied by this gateway profile
+     * 
+     */
     public Output<Optional<DeviceprofileGatewayVrfConfig>> vrfConfig() {
         return Codegen.optional(this.vrfConfig);
     }
     /**
-     * Property key is the network name
+     * VRF instances configured by this gateway profile
      * 
      */
     @Export(name="vrfInstances", refs={Map.class,String.class,DeviceprofileGatewayVrfInstances.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,DeviceprofileGatewayVrfInstances>> vrfInstances;
 
     /**
-     * @return Property key is the network name
+     * @return VRF instances configured by this gateway profile
      * 
      */
     public Output<Optional<Map<String,DeviceprofileGatewayVrfInstances>>> vrfInstances() {

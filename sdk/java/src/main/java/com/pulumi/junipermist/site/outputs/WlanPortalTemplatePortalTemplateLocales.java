@@ -57,6 +57,10 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      * 
      */
     private @Nullable String authButtonSponsor;
+    /**
+     * @return Localized heading text displayed above portal authentication options
+     * 
+     */
     private @Nullable String authLabel;
     /**
      * @return Label of the link to go back to /logon
@@ -69,7 +73,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String companyError;
     /**
-     * @return Label of company field
+     * @return Localized label displayed for the company input field
      * 
      */
     private @Nullable String companyLabel;
@@ -83,23 +87,55 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      * 
      */
     private @Nullable String emailCancel;
+    /**
+     * @return Localized link text for requesting help when the email access code was not received
+     * 
+     */
     private @Nullable String emailCodeCancel;
+    /**
+     * @return Localized error message shown when the alternate email address for access-code delivery is invalid
+     * 
+     */
     private @Nullable String emailCodeError;
+    /**
+     * @return Localized label for the email access-code input field
+     * 
+     */
     private @Nullable String emailCodeFieldLabel;
+    /**
+     * @return Localized instructional text shown before entering the email access code
+     * 
+     */
     private @Nullable String emailCodeMessage;
+    /**
+     * @return Localized button label for submitting the email access code
+     * 
+     */
     private @Nullable String emailCodeSubmit;
+    /**
+     * @return Localized title shown on the email access-code entry page
+     * 
+     */
     private @Nullable String emailCodeTitle;
     /**
      * @return Error message when email not provided
      * 
      */
     private @Nullable String emailError;
+    /**
+     * @return Localized label for the email address input field
+     * 
+     */
     private @Nullable String emailFieldLabel;
     /**
-     * @return Label of email field
+     * @return Localized label displayed for the email input field
      * 
      */
     private @Nullable String emailLabel;
+    /**
+     * @return Localized instructional text explaining email access-code delivery
+     * 
+     */
     private @Nullable String emailMessage;
     /**
      * @return Label for confirmation code submit button using email auth
@@ -117,7 +153,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String field1error;
     /**
-     * @return Label of field1
+     * @return Localized label for custom field 1 input
      * 
      */
     private @Nullable String field1label;
@@ -127,7 +163,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String field2error;
     /**
-     * @return Label of field2
+     * @return Localized label for custom field 2 input
      * 
      */
     private @Nullable String field2label;
@@ -137,7 +173,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String field3error;
     /**
-     * @return Label of field3
+     * @return Localized label for custom field 3 input
      * 
      */
     private @Nullable String field3label;
@@ -147,7 +183,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String field4error;
     /**
-     * @return Label of field4
+     * @return Localized label for custom field 4 input
      * 
      */
     private @Nullable String field4label;
@@ -167,10 +203,14 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String marketingPolicyOptInLabel;
     /**
-     * @return marketing policy text
+     * @return Localized text of the marketing policy opt-in content
      * 
      */
     private @Nullable String marketingPolicyOptInText;
+    /**
+     * @return Localized main message displayed on the guest portal sign-in page
+     * 
+     */
     private @Nullable String message;
     /**
      * @return Error message when name not provided
@@ -178,7 +218,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String nameError;
     /**
-     * @return Label of name field
+     * @return Localized label displayed for the name input field
      * 
      */
     private @Nullable String nameLabel;
@@ -187,6 +227,10 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      * 
      */
     private @Nullable String optoutLabel;
+    /**
+     * @return Localized browser or page title shown for the guest portal
+     * 
+     */
     private @Nullable String pageTitle;
     /**
      * @return Label for the Passphrase cancel button
@@ -199,10 +243,14 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String passphraseError;
     /**
-     * @return Passphrase
+     * @return Localized label for the passphrase input field
      * 
      */
     private @Nullable String passphraseLabel;
+    /**
+     * @return Localized instructional text shown on the passphrase sign-in page
+     * 
+     */
     private @Nullable String passphraseMessage;
     /**
      * @return Label for the Passphrase submit button
@@ -235,7 +283,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      */
     private @Nullable String privacyPolicyText;
     /**
-     * @return Label to denote required field
+     * @return Localized text used to mark a form field as required
      * 
      */
     private @Nullable String requiredFieldLabel;
@@ -244,7 +292,15 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      * 
      */
     private @Nullable String signInLabel;
+    /**
+     * @return Localized default option text shown in the SMS carrier selector
+     * 
+     */
     private @Nullable String smsCarrierDefault;
+    /**
+     * @return Localized error message shown when no mobile carrier is selected
+     * 
+     */
     private @Nullable String smsCarrierError;
     /**
      * @return Label for mobile carrier drop-down list
@@ -261,15 +317,35 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      * 
      */
     private @Nullable String smsCodeError;
+    /**
+     * @return Localized label for the SMS confirmation-code input field
+     * 
+     */
     private @Nullable String smsCodeFieldLabel;
+    /**
+     * @return Localized instructional text shown before entering the SMS access code
+     * 
+     */
     private @Nullable String smsCodeMessage;
     /**
      * @return Label for confirmation code submit button
      * 
      */
     private @Nullable String smsCodeSubmit;
+    /**
+     * @return Localized title shown on the SMS access-code entry page
+     * 
+     */
     private @Nullable String smsCodeTitle;
+    /**
+     * @return Localized label for the SMS country-code input field
+     * 
+     */
     private @Nullable String smsCountryFieldLabel;
+    /**
+     * @return Localized example country code format shown for SMS authentication
+     * 
+     */
     private @Nullable String smsCountryFormat;
     /**
      * @return Label for checkbox to specify that the user has access code
@@ -286,13 +362,25 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      * 
      */
     private @Nullable String smsNumberCancel;
+    /**
+     * @return Localized error message shown when the mobile number is invalid
+     * 
+     */
     private @Nullable String smsNumberError;
     /**
      * @return Label for field to provide mobile number
      * 
      */
     private @Nullable String smsNumberFieldLabel;
+    /**
+     * @return Localized example mobile number format shown for SMS authentication
+     * 
+     */
     private @Nullable String smsNumberFormat;
+    /**
+     * @return Localized instructional text explaining SMS access-code delivery
+     * 
+     */
     private @Nullable String smsNumberMessage;
     /**
      * @return Label for submit button for code generation
@@ -304,24 +392,60 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      * 
      */
     private @Nullable String smsNumberTitle;
+    /**
+     * @return Localized example username format shown for SMS authentication
+     * 
+     */
     private @Nullable String smsUsernameFormat;
+    /**
+     * @return Localized link text for returning to edit the sponsor request form
+     * 
+     */
     private @Nullable String sponsorBackLink;
+    /**
+     * @return Localized button label for canceling sponsor authentication
+     * 
+     */
     private @Nullable String sponsorCancel;
     /**
      * @return Label for Sponsor Email
      * 
      */
     private @Nullable String sponsorEmail;
+    /**
+     * @return Localized error message shown when the sponsor email address is invalid
+     * 
+     */
     private @Nullable String sponsorEmailError;
+    /**
+     * @return Localized status message prefix shown when a sponsor approves the request
+     * 
+     */
     private @Nullable String sponsorInfoApproved;
+    /**
+     * @return Localized status message prefix shown when a sponsor denies the request
+     * 
+     */
     private @Nullable String sponsorInfoDenied;
+    /**
+     * @return Localized status message prefix shown after a sponsor notification is sent
+     * 
+     */
     private @Nullable String sponsorInfoPending;
     /**
      * @return Label for Sponsor Name
      * 
      */
     private @Nullable String sponsorName;
+    /**
+     * @return Localized error message shown when the sponsor name is missing
+     * 
+     */
     private @Nullable String sponsorNameError;
+    /**
+     * @return Localized additional status text shown while sponsor approval is pending
+     * 
+     */
     private @Nullable String sponsorNotePending;
     /**
      * @return Submit button label request Wifi Access and notify sponsor about guest request
@@ -348,7 +472,15 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      * 
      */
     private @Nullable String sponsorSubmit;
+    /**
+     * @return Localized error message shown when no sponsor is selected
+     * 
+     */
     private @Nullable String sponsorsError;
+    /**
+     * @return Localized label for the sponsor selection field
+     * 
+     */
     private @Nullable String sponsorsFieldLabel;
     /**
      * @return Prefix of the label of the link to go to tos
@@ -435,6 +567,10 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> authButtonSponsor() {
         return Optional.ofNullable(this.authButtonSponsor);
     }
+    /**
+     * @return Localized heading text displayed above portal authentication options
+     * 
+     */
     public Optional<String> authLabel() {
         return Optional.ofNullable(this.authLabel);
     }
@@ -453,7 +589,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.companyError);
     }
     /**
-     * @return Label of company field
+     * @return Localized label displayed for the company input field
      * 
      */
     public Optional<String> companyLabel() {
@@ -473,21 +609,45 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> emailCancel() {
         return Optional.ofNullable(this.emailCancel);
     }
+    /**
+     * @return Localized link text for requesting help when the email access code was not received
+     * 
+     */
     public Optional<String> emailCodeCancel() {
         return Optional.ofNullable(this.emailCodeCancel);
     }
+    /**
+     * @return Localized error message shown when the alternate email address for access-code delivery is invalid
+     * 
+     */
     public Optional<String> emailCodeError() {
         return Optional.ofNullable(this.emailCodeError);
     }
+    /**
+     * @return Localized label for the email access-code input field
+     * 
+     */
     public Optional<String> emailCodeFieldLabel() {
         return Optional.ofNullable(this.emailCodeFieldLabel);
     }
+    /**
+     * @return Localized instructional text shown before entering the email access code
+     * 
+     */
     public Optional<String> emailCodeMessage() {
         return Optional.ofNullable(this.emailCodeMessage);
     }
+    /**
+     * @return Localized button label for submitting the email access code
+     * 
+     */
     public Optional<String> emailCodeSubmit() {
         return Optional.ofNullable(this.emailCodeSubmit);
     }
+    /**
+     * @return Localized title shown on the email access-code entry page
+     * 
+     */
     public Optional<String> emailCodeTitle() {
         return Optional.ofNullable(this.emailCodeTitle);
     }
@@ -498,16 +658,24 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> emailError() {
         return Optional.ofNullable(this.emailError);
     }
+    /**
+     * @return Localized label for the email address input field
+     * 
+     */
     public Optional<String> emailFieldLabel() {
         return Optional.ofNullable(this.emailFieldLabel);
     }
     /**
-     * @return Label of email field
+     * @return Localized label displayed for the email input field
      * 
      */
     public Optional<String> emailLabel() {
         return Optional.ofNullable(this.emailLabel);
     }
+    /**
+     * @return Localized instructional text explaining email access-code delivery
+     * 
+     */
     public Optional<String> emailMessage() {
         return Optional.ofNullable(this.emailMessage);
     }
@@ -533,7 +701,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.field1error);
     }
     /**
-     * @return Label of field1
+     * @return Localized label for custom field 1 input
      * 
      */
     public Optional<String> field1label() {
@@ -547,7 +715,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.field2error);
     }
     /**
-     * @return Label of field2
+     * @return Localized label for custom field 2 input
      * 
      */
     public Optional<String> field2label() {
@@ -561,7 +729,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.field3error);
     }
     /**
-     * @return Label of field3
+     * @return Localized label for custom field 3 input
      * 
      */
     public Optional<String> field3label() {
@@ -575,7 +743,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.field4error);
     }
     /**
-     * @return Label of field4
+     * @return Localized label for custom field 4 input
      * 
      */
     public Optional<String> field4label() {
@@ -603,12 +771,16 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.marketingPolicyOptInLabel);
     }
     /**
-     * @return marketing policy text
+     * @return Localized text of the marketing policy opt-in content
      * 
      */
     public Optional<String> marketingPolicyOptInText() {
         return Optional.ofNullable(this.marketingPolicyOptInText);
     }
+    /**
+     * @return Localized main message displayed on the guest portal sign-in page
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
@@ -620,7 +792,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.nameError);
     }
     /**
-     * @return Label of name field
+     * @return Localized label displayed for the name input field
      * 
      */
     public Optional<String> nameLabel() {
@@ -633,6 +805,10 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> optoutLabel() {
         return Optional.ofNullable(this.optoutLabel);
     }
+    /**
+     * @return Localized browser or page title shown for the guest portal
+     * 
+     */
     public Optional<String> pageTitle() {
         return Optional.ofNullable(this.pageTitle);
     }
@@ -651,12 +827,16 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.passphraseError);
     }
     /**
-     * @return Passphrase
+     * @return Localized label for the passphrase input field
      * 
      */
     public Optional<String> passphraseLabel() {
         return Optional.ofNullable(this.passphraseLabel);
     }
+    /**
+     * @return Localized instructional text shown on the passphrase sign-in page
+     * 
+     */
     public Optional<String> passphraseMessage() {
         return Optional.ofNullable(this.passphraseMessage);
     }
@@ -703,7 +883,7 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         return Optional.ofNullable(this.privacyPolicyText);
     }
     /**
-     * @return Label to denote required field
+     * @return Localized text used to mark a form field as required
      * 
      */
     public Optional<String> requiredFieldLabel() {
@@ -716,9 +896,17 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> signInLabel() {
         return Optional.ofNullable(this.signInLabel);
     }
+    /**
+     * @return Localized default option text shown in the SMS carrier selector
+     * 
+     */
     public Optional<String> smsCarrierDefault() {
         return Optional.ofNullable(this.smsCarrierDefault);
     }
+    /**
+     * @return Localized error message shown when no mobile carrier is selected
+     * 
+     */
     public Optional<String> smsCarrierError() {
         return Optional.ofNullable(this.smsCarrierError);
     }
@@ -743,9 +931,17 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> smsCodeError() {
         return Optional.ofNullable(this.smsCodeError);
     }
+    /**
+     * @return Localized label for the SMS confirmation-code input field
+     * 
+     */
     public Optional<String> smsCodeFieldLabel() {
         return Optional.ofNullable(this.smsCodeFieldLabel);
     }
+    /**
+     * @return Localized instructional text shown before entering the SMS access code
+     * 
+     */
     public Optional<String> smsCodeMessage() {
         return Optional.ofNullable(this.smsCodeMessage);
     }
@@ -756,12 +952,24 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> smsCodeSubmit() {
         return Optional.ofNullable(this.smsCodeSubmit);
     }
+    /**
+     * @return Localized title shown on the SMS access-code entry page
+     * 
+     */
     public Optional<String> smsCodeTitle() {
         return Optional.ofNullable(this.smsCodeTitle);
     }
+    /**
+     * @return Localized label for the SMS country-code input field
+     * 
+     */
     public Optional<String> smsCountryFieldLabel() {
         return Optional.ofNullable(this.smsCountryFieldLabel);
     }
+    /**
+     * @return Localized example country code format shown for SMS authentication
+     * 
+     */
     public Optional<String> smsCountryFormat() {
         return Optional.ofNullable(this.smsCountryFormat);
     }
@@ -786,6 +994,10 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> smsNumberCancel() {
         return Optional.ofNullable(this.smsNumberCancel);
     }
+    /**
+     * @return Localized error message shown when the mobile number is invalid
+     * 
+     */
     public Optional<String> smsNumberError() {
         return Optional.ofNullable(this.smsNumberError);
     }
@@ -796,9 +1008,17 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> smsNumberFieldLabel() {
         return Optional.ofNullable(this.smsNumberFieldLabel);
     }
+    /**
+     * @return Localized example mobile number format shown for SMS authentication
+     * 
+     */
     public Optional<String> smsNumberFormat() {
         return Optional.ofNullable(this.smsNumberFormat);
     }
+    /**
+     * @return Localized instructional text explaining SMS access-code delivery
+     * 
+     */
     public Optional<String> smsNumberMessage() {
         return Optional.ofNullable(this.smsNumberMessage);
     }
@@ -816,12 +1036,24 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> smsNumberTitle() {
         return Optional.ofNullable(this.smsNumberTitle);
     }
+    /**
+     * @return Localized example username format shown for SMS authentication
+     * 
+     */
     public Optional<String> smsUsernameFormat() {
         return Optional.ofNullable(this.smsUsernameFormat);
     }
+    /**
+     * @return Localized link text for returning to edit the sponsor request form
+     * 
+     */
     public Optional<String> sponsorBackLink() {
         return Optional.ofNullable(this.sponsorBackLink);
     }
+    /**
+     * @return Localized button label for canceling sponsor authentication
+     * 
+     */
     public Optional<String> sponsorCancel() {
         return Optional.ofNullable(this.sponsorCancel);
     }
@@ -832,15 +1064,31 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> sponsorEmail() {
         return Optional.ofNullable(this.sponsorEmail);
     }
+    /**
+     * @return Localized error message shown when the sponsor email address is invalid
+     * 
+     */
     public Optional<String> sponsorEmailError() {
         return Optional.ofNullable(this.sponsorEmailError);
     }
+    /**
+     * @return Localized status message prefix shown when a sponsor approves the request
+     * 
+     */
     public Optional<String> sponsorInfoApproved() {
         return Optional.ofNullable(this.sponsorInfoApproved);
     }
+    /**
+     * @return Localized status message prefix shown when a sponsor denies the request
+     * 
+     */
     public Optional<String> sponsorInfoDenied() {
         return Optional.ofNullable(this.sponsorInfoDenied);
     }
+    /**
+     * @return Localized status message prefix shown after a sponsor notification is sent
+     * 
+     */
     public Optional<String> sponsorInfoPending() {
         return Optional.ofNullable(this.sponsorInfoPending);
     }
@@ -851,9 +1099,17 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> sponsorName() {
         return Optional.ofNullable(this.sponsorName);
     }
+    /**
+     * @return Localized error message shown when the sponsor name is missing
+     * 
+     */
     public Optional<String> sponsorNameError() {
         return Optional.ofNullable(this.sponsorNameError);
     }
+    /**
+     * @return Localized additional status text shown while sponsor approval is pending
+     * 
+     */
     public Optional<String> sponsorNotePending() {
         return Optional.ofNullable(this.sponsorNotePending);
     }
@@ -892,9 +1148,17 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> sponsorSubmit() {
         return Optional.ofNullable(this.sponsorSubmit);
     }
+    /**
+     * @return Localized error message shown when no sponsor is selected
+     * 
+     */
     public Optional<String> sponsorsError() {
         return Optional.ofNullable(this.sponsorsError);
     }
+    /**
+     * @return Localized label for the sponsor selection field
+     * 
+     */
     public Optional<String> sponsorsFieldLabel() {
         return Optional.ofNullable(this.sponsorsFieldLabel);
     }

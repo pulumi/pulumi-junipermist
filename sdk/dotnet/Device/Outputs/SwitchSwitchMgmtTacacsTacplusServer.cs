@@ -13,9 +13,21 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchSwitchMgmtTacacsTacplusServer
     {
+        /// <summary>
+        /// Address or hostname of the TACACS+ authentication server
+        /// </summary>
         public readonly string? Host;
+        /// <summary>
+        /// TCP port used by the TACACS+ authentication server
+        /// </summary>
         public readonly string? Port;
+        /// <summary>
+        /// Shared secret used with this TACACS+ authentication server
+        /// </summary>
         public readonly string? Secret;
+        /// <summary>
+        /// TACACS+ authentication server timeout, in seconds
+        /// </summary>
         public readonly int? Timeout;
 
         [OutputConstructor]

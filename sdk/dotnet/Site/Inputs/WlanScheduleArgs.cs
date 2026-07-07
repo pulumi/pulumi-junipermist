@@ -12,11 +12,14 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class WlanScheduleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the WLAN operating schedule is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+        /// Time ranges when the WLAN is scheduled to operate
         /// </summary>
         [Input("hours")]
         public Input<Inputs.WlanScheduleHoursArgs>? Hours { get; set; }

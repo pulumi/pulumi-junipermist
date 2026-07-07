@@ -24,17 +24,27 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("amazonClientId")]
         public Input<string>? AmazonClientId { get; set; }
 
+        [Input("amazonClientSecret")]
+        private Input<string>? _amazonClientSecret;
+
         /// <summary>
         /// Optional if `AmazonEnabled`==`True`. Amazon OAuth2 client secret. If AmazonClientId was provided, provide a corresponding value. Else leave blank.
         /// </summary>
-        [Input("amazonClientSecret")]
-        public Input<string>? AmazonClientSecret { get; set; }
+        public Input<string>? AmazonClientSecret
+        {
+            get => _amazonClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _amazonClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("amazonEmailDomains")]
         private InputList<string>? _amazonEmailDomains;
 
         /// <summary>
-        /// Optional if `AmazonEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `AmazonEnabled`==`True`. Email domains allowed for Amazon-authenticated guest users. If null or empty, any authenticated Amazon email domain is allowed.
         /// </summary>
         public InputList<string> AmazonEmailDomains
         {
@@ -55,7 +65,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? AmazonExpire { get; set; }
 
         /// <summary>
-        /// authentication scheme. enum: `Amazon`, `Azure`, `Email`, `External`, `Facebook`, `Google`, `Microsoft`, `Multi`, `None`, `Password`, `Sms`, `Sponsor`, `Sso`
+        /// Guest portal login scheme used by the WLAN
         /// </summary>
         [Input("auth")]
         public Input<string>? Auth { get; set; }
@@ -66,11 +76,21 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("azureClientId")]
         public Input<string>? AzureClientId { get; set; }
 
+        [Input("azureClientSecret")]
+        private Input<string>? _azureClientSecret;
+
         /// <summary>
         /// Required if `AzureEnabled`==`True`. Azure active directory app client secret
         /// </summary>
-        [Input("azureClientSecret")]
-        public Input<string>? AzureClientSecret { get; set; }
+        public Input<string>? AzureClientSecret
+        {
+            get => _azureClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _azureClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether Azure Active Directory is enabled as a login method
@@ -94,7 +114,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _broadnetPassword;
 
         /// <summary>
-        /// Required if `SmsProvider`==`Broadnet`
+        /// Required if `SmsProvider`==`Broadnet`. Password for the Broadnet SMS provider account
         /// </summary>
         public Input<string>? BroadnetPassword
         {
@@ -107,13 +127,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Required if `SmsProvider`==`Broadnet`
+        /// Required if `SmsProvider`==`Broadnet`. SID for the Broadnet SMS provider account
         /// </summary>
         [Input("broadnetSid")]
         public Input<string>? BroadnetSid { get; set; }
 
         /// <summary>
-        /// Required if `SmsProvider`==`Broadnet`
+        /// Required if `SmsProvider`==`Broadnet`. User ID for the Broadnet SMS provider account
         /// </summary>
         [Input("broadnetUserId")]
         public Input<string>? BroadnetUserId { get; set; }
@@ -125,7 +145,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? BypassWhenCloudDown { get; set; }
 
         /// <summary>
-        /// Required if `SmsProvider`==`Clickatell`
+        /// Required if `SmsProvider`==`Clickatell`. API key for the Clickatell SMS provider account
         /// </summary>
         [Input("clickatellApiKey")]
         public Input<string>? ClickatellApiKey { get; set; }
@@ -166,17 +186,27 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("facebookClientId")]
         public Input<string>? FacebookClientId { get; set; }
 
+        [Input("facebookClientSecret")]
+        private Input<string>? _facebookClientSecret;
+
         /// <summary>
         /// Required if `FacebookEnabled`==`True`. Facebook OAuth2 app secret. If FacebookClientId was provided, provide a corresponding value. Else leave blank.
         /// </summary>
-        [Input("facebookClientSecret")]
-        public Input<string>? FacebookClientSecret { get; set; }
+        public Input<string>? FacebookClientSecret
+        {
+            get => _facebookClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _facebookClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("facebookEmailDomains")]
         private InputList<string>? _facebookEmailDomains;
 
         /// <summary>
-        /// Optional if `FacebookEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `FacebookEnabled`==`True`. Email domains allowed for Facebook-authenticated guest users. If null or empty, any authenticated Facebook email domain is allowed.
         /// </summary>
         public InputList<string> FacebookEmailDomains
         {
@@ -214,17 +244,27 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("googleClientId")]
         public Input<string>? GoogleClientId { get; set; }
 
+        [Input("googleClientSecret")]
+        private Input<string>? _googleClientSecret;
+
         /// <summary>
         /// Optional if `GoogleEnabled`==`True`. Google OAuth2 app secret. If GoogleClientId was provided, provide a corresponding value. Else leave blank.
         /// </summary>
-        [Input("googleClientSecret")]
-        public Input<string>? GoogleClientSecret { get; set; }
+        public Input<string>? GoogleClientSecret
+        {
+            get => _googleClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _googleClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("googleEmailDomains")]
         private InputList<string>? _googleEmailDomains;
 
         /// <summary>
-        /// Optional if `GoogleEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `GoogleEnabled`==`True`. Email domains allowed for Google-authenticated guest users. If null or empty, any authenticated Google email domain is allowed.
         /// </summary>
         public InputList<string> GoogleEmailDomains
         {
@@ -248,7 +288,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _gupshupPassword;
 
         /// <summary>
-        /// Required if `SmsProvider`==`Gupshup`
+        /// Required if `SmsProvider`==`Gupshup`. Password for the Gupshup SMS provider account
         /// </summary>
         public Input<string>? GupshupPassword
         {
@@ -261,7 +301,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Required if `SmsProvider`==`Gupshup`
+        /// Required if `SmsProvider`==`Gupshup`. User ID for the Gupshup SMS provider account
         /// </summary>
         [Input("gupshupUserid")]
         public Input<string>? GupshupUserid { get; set; }
@@ -272,17 +312,27 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("microsoftClientId")]
         public Input<string>? MicrosoftClientId { get; set; }
 
+        [Input("microsoftClientSecret")]
+        private Input<string>? _microsoftClientSecret;
+
         /// <summary>
         /// Optional if `MicrosoftEnabled`==`True`. Microsoft 365 OAuth2 client secret. If MicrosoftClientId was provided, provide a corresponding value. Else leave blank.
         /// </summary>
-        [Input("microsoftClientSecret")]
-        public Input<string>? MicrosoftClientSecret { get; set; }
+        public Input<string>? MicrosoftClientSecret
+        {
+            get => _microsoftClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _microsoftClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("microsoftEmailDomains")]
         private InputList<string>? _microsoftEmailDomains;
 
         /// <summary>
-        /// Optional if `MicrosoftEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `MicrosoftEnabled`==`True`. Email domains allowed for Microsoft 365-authenticated guest users. If null or empty, any authenticated Microsoft 365 email domain is allowed.
         /// </summary>
         public InputList<string> MicrosoftEmailDomains
         {
@@ -318,7 +368,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// Required if `PassphraseEnabled`==`True`.
+        /// Required if `PassphraseEnabled`==`True`. Passphrase guests must enter when passphrase authentication is enabled
         /// </summary>
         public Input<string>? Password
         {
@@ -342,6 +392,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("predefinedSponsorsHideEmail")]
         public Input<bool>? PredefinedSponsorsHideEmail { get; set; }
 
+        /// <summary>
+        /// Whether to show the privacy policy in the WLAN guest portal
+        /// </summary>
         [Input("privacy")]
         public Input<bool>? Privacy { get; set; }
 
@@ -349,7 +402,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _puzzelPassword;
 
         /// <summary>
-        /// Required if `SmsProvider`==`Puzzel`
+        /// Required if `SmsProvider`==`Puzzel`. Password for the Puzzel SMS provider account
         /// </summary>
         public Input<string>? PuzzelPassword
         {
@@ -362,13 +415,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Required if `SmsProvider`==`Puzzel`
+        /// Required if `SmsProvider`==`Puzzel`. Service ID for the Puzzel SMS provider account
         /// </summary>
         [Input("puzzelServiceId")]
         public Input<string>? PuzzelServiceId { get; set; }
 
         /// <summary>
-        /// Required if `SmsProvider`==`Puzzel`
+        /// Required if `SmsProvider`==`Puzzel`. Username for the Puzzel SMS provider account
         /// </summary>
         [Input("puzzelUsername")]
         public Input<string>? PuzzelUsername { get; set; }
@@ -392,7 +445,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? SmsMessageFormat { get; set; }
 
         /// <summary>
-        /// Optional if `SmsEnabled`==`True`. enum: `Broadnet`, `Clickatell`, `Gupshup`, `Manual`, `Puzzel`, `Smsglobal`, `Telstra`, `Twilio`
+        /// Optional if `SmsEnabled`==`True`. SMS provider used to deliver guest portal access codes
         /// </summary>
         [Input("smsProvider")]
         public Input<string>? SmsProvider { get; set; }
@@ -420,6 +473,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
+        /// Optional sender's number or sender ID for SMSGlobal. If not provided, uses the default number associated with the account
+        /// </summary>
+        [Input("smsglobalSender")]
+        public Input<string>? SmsglobalSender { get; set; }
+
+        /// <summary>
         /// Optional if `SponsorEnabled`==`True`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs PredefinedSponsorsEnabled enabled and SponsorNotifyAll disabled
         /// </summary>
         [Input("sponsorAutoApprove")]
@@ -429,7 +488,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _sponsorEmailDomains;
 
         /// <summary>
-        /// List of domain allowed for sponsor email. Required if `SponsorEnabled` is `True` and `Sponsors` is empty.
+        /// Email domains allowed for sponsor email addresses. Required if `SponsorEnabled` is `True` and `Sponsors` is empty.
         /// </summary>
         public InputList<string> SponsorEmailDomains
         {
@@ -489,7 +548,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? SsoDefaultRole { get; set; }
 
         /// <summary>
-        /// Optional if `WlanPortalAuth`==`Sso`
+        /// Optional if `WlanPortalAuth`==`Sso`. Role assigned to authenticated users when guest SSO is used
         /// </summary>
         [Input("ssoForcedRole")]
         public Input<string>? SsoForcedRole { get; set; }
@@ -501,7 +560,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? SsoIdpCert { get; set; }
 
         /// <summary>
-        /// Optional if `WlanPortalAuth`==`Sso`, Signing algorithm for SAML Assertion. enum: `Sha1`, `Sha256`, `Sha384`, `Sha512`
+        /// Optional if `WlanPortalAuth`==`Sso`. Signing algorithm used for SAML assertions from the identity provider
         /// </summary>
         [Input("ssoIdpSignAlgo")]
         public Input<string>? SsoIdpSignAlgo { get; set; }
@@ -519,7 +578,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? SsoIssuer { get; set; }
 
         /// <summary>
-        /// Optional if `WlanPortalAuth`==`Sso`. enum: `Email`, `Unspecified`
+        /// Optional if `WlanPortalAuth`==`Sso`. SAML NameID format expected from the identity provider
         /// </summary>
         [Input("ssoNameidFormat")]
         public Input<string>? SsoNameidFormat { get; set; }
@@ -546,11 +605,21 @@ namespace Pulumi.JuniperMist.Site.Inputs
             }
         }
 
+        [Input("twilioAuthToken")]
+        private Input<string>? _twilioAuthToken;
+
         /// <summary>
         /// Required if `SmsProvider`==`Twilio`, Auth token account with twilio account
         /// </summary>
-        [Input("twilioAuthToken")]
-        public Input<string>? TwilioAuthToken { get; set; }
+        public Input<string>? TwilioAuthToken
+        {
+            get => _twilioAuthToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _twilioAuthToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Required if `SmsProvider`==`Twilio`, Twilio phone number associated with the account. See example for accepted format.

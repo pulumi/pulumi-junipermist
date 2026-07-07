@@ -25,6 +25,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
         /// </summary>
         public readonly bool? LocateConnected;
+        /// <summary>
+        /// Optional if enabled, Aeroscout server port. Defaults to 1144
+        /// </summary>
         public readonly int? Port;
 
         [OutputConstructor]

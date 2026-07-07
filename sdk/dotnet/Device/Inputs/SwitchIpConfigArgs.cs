@@ -26,15 +26,25 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         [Input("dnsSuffixes")]
         private InputList<string>? _dnsSuffixes;
+
+        /// <summary>
+        /// DNS search suffixes configured for Junos management traffic
+        /// </summary>
         public InputList<string> DnsSuffixes
         {
             get => _dnsSuffixes ?? (_dnsSuffixes = new InputList<string>());
             set => _dnsSuffixes = value;
         }
 
+        /// <summary>
+        /// Default gateway IPv4 address for this Junos IP configuration
+        /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
+        /// <summary>
+        /// Configured IPv4 address for this Junos IP configuration
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
@@ -45,13 +55,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+        /// Management network for this IP configuration; used as the default source network for outbound SSH, DNS, NTP, TACACS+, RADIUS, syslog, and SNMP
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IP assignment mode for this Junos IP configuration
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

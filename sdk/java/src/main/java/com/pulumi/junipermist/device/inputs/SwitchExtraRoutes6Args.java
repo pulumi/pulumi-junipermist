@@ -21,57 +21,89 @@ public final class SwitchExtraRoutes6Args extends com.pulumi.resources.ResourceA
     public static final SwitchExtraRoutes6Args Empty = new SwitchExtraRoutes6Args();
 
     /**
-     * This takes precedence
+     * Whether to install a discard route; this takes precedence over next-hop settings
      * 
      */
     @Import(name="discard")
     private @Nullable Output<Boolean> discard;
 
     /**
-     * @return This takes precedence
+     * @return Whether to install a discard route; this takes precedence over next-hop settings
      * 
      */
     public Optional<Output<Boolean>> discard() {
         return Optional.ofNullable(this.discard);
     }
 
+    /**
+     * Route metric for the IPv6 static route
+     * 
+     */
     @Import(name="metric")
     private @Nullable Output<Integer> metric;
 
+    /**
+     * @return Route metric for the IPv6 static route
+     * 
+     */
     public Optional<Output<Integer>> metric() {
         return Optional.ofNullable(this.metric);
     }
 
+    /**
+     * Qualified next-hop settings keyed by IPv6 next-hop address
+     * 
+     */
     @Import(name="nextQualified")
     private @Nullable Output<Map<String,SwitchExtraRoutes6NextQualifiedArgs>> nextQualified;
 
+    /**
+     * @return Qualified next-hop settings keyed by IPv6 next-hop address
+     * 
+     */
     public Optional<Output<Map<String,SwitchExtraRoutes6NextQualifiedArgs>>> nextQualified() {
         return Optional.ofNullable(this.nextQualified);
     }
 
+    /**
+     * Whether to prevent recursive next-hop resolution for the IPv6 static route
+     * 
+     */
     @Import(name="noResolve")
     private @Nullable Output<Boolean> noResolve;
 
+    /**
+     * @return Whether to prevent recursive next-hop resolution for the IPv6 static route
+     * 
+     */
     public Optional<Output<Boolean>> noResolve() {
         return Optional.ofNullable(this.noResolve);
     }
 
+    /**
+     * Route preference for the IPv6 static route
+     * 
+     */
     @Import(name="preference")
     private @Nullable Output<Integer> preference;
 
+    /**
+     * @return Route preference for the IPv6 static route
+     * 
+     */
     public Optional<Output<Integer>> preference() {
         return Optional.ofNullable(this.preference);
     }
 
     /**
-     * Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
+     * Next-hop IPv6 address or ECMP next-hop IPv6 addresses for the route
      * 
      */
     @Import(name="via", required=true)
     private Output<String> via;
 
     /**
-     * @return Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
+     * @return Next-hop IPv6 address or ECMP next-hop IPv6 addresses for the route
      * 
      */
     public Output<String> via() {
@@ -108,7 +140,7 @@ public final class SwitchExtraRoutes6Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param discard This takes precedence
+         * @param discard Whether to install a discard route; this takes precedence over next-hop settings
          * 
          * @return builder
          * 
@@ -119,7 +151,7 @@ public final class SwitchExtraRoutes6Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param discard This takes precedence
+         * @param discard Whether to install a discard route; this takes precedence over next-hop settings
          * 
          * @return builder
          * 
@@ -128,44 +160,92 @@ public final class SwitchExtraRoutes6Args extends com.pulumi.resources.ResourceA
             return discard(Output.of(discard));
         }
 
+        /**
+         * @param metric Route metric for the IPv6 static route
+         * 
+         * @return builder
+         * 
+         */
         public Builder metric(@Nullable Output<Integer> metric) {
             $.metric = metric;
             return this;
         }
 
+        /**
+         * @param metric Route metric for the IPv6 static route
+         * 
+         * @return builder
+         * 
+         */
         public Builder metric(Integer metric) {
             return metric(Output.of(metric));
         }
 
+        /**
+         * @param nextQualified Qualified next-hop settings keyed by IPv6 next-hop address
+         * 
+         * @return builder
+         * 
+         */
         public Builder nextQualified(@Nullable Output<Map<String,SwitchExtraRoutes6NextQualifiedArgs>> nextQualified) {
             $.nextQualified = nextQualified;
             return this;
         }
 
+        /**
+         * @param nextQualified Qualified next-hop settings keyed by IPv6 next-hop address
+         * 
+         * @return builder
+         * 
+         */
         public Builder nextQualified(Map<String,SwitchExtraRoutes6NextQualifiedArgs> nextQualified) {
             return nextQualified(Output.of(nextQualified));
         }
 
+        /**
+         * @param noResolve Whether to prevent recursive next-hop resolution for the IPv6 static route
+         * 
+         * @return builder
+         * 
+         */
         public Builder noResolve(@Nullable Output<Boolean> noResolve) {
             $.noResolve = noResolve;
             return this;
         }
 
+        /**
+         * @param noResolve Whether to prevent recursive next-hop resolution for the IPv6 static route
+         * 
+         * @return builder
+         * 
+         */
         public Builder noResolve(Boolean noResolve) {
             return noResolve(Output.of(noResolve));
         }
 
+        /**
+         * @param preference Route preference for the IPv6 static route
+         * 
+         * @return builder
+         * 
+         */
         public Builder preference(@Nullable Output<Integer> preference) {
             $.preference = preference;
             return this;
         }
 
+        /**
+         * @param preference Route preference for the IPv6 static route
+         * 
+         * @return builder
+         * 
+         */
         public Builder preference(Integer preference) {
             return preference(Output.of(preference));
         }
 
         /**
-         * @param via Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
+         * @param via Next-hop IPv6 address or ECMP next-hop IPv6 addresses for the route
          * 
          * @return builder
          * 
@@ -176,7 +256,7 @@ public final class SwitchExtraRoutes6Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param via Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
+         * @param via Next-hop IPv6 address or ECMP next-hop IPv6 addresses for the route
          * 
          * @return builder
          * 

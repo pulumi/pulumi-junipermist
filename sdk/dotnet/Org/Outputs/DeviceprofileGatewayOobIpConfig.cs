@@ -14,23 +14,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayOobIpConfig
     {
         /// <summary>
-        /// If `Type`==`Static`
+        /// Default gateway for the out-of-band management interface when `Type`==`Static`
         /// </summary>
         public readonly string? Gateway;
         /// <summary>
-        /// If `Type`==`Static`
+        /// Static IPv4 address for the out-of-band management interface when `Type`==`Static`
         /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// If `Type`==`Static`
+        /// IPv4 netmask or prefix length for the out-of-band management interface when `Type`==`Static`
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
-        /// For HA Cluster, node1 can have different IP Config
+        /// Out-of-band management IP configuration override for node1 in an HA cluster
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayOobIpConfigNode1? Node1;
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IP assignment mode for the out-of-band management interface
         /// </summary>
         public readonly string? Type;
         /// <summary>
@@ -41,6 +41,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         /// </summary>
         public readonly bool? UseMgmtVrfForHostOut;
+        /// <summary>
+        /// VLAN ID used for out-of-band management traffic
+        /// </summary>
         public readonly string? VlanId;
 
         [OutputConstructor]

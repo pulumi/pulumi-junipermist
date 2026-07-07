@@ -38,14 +38,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * List of PEM-encoded ca certs
+     * CA certificates trusted by Mist NAC for certificate-based authentication
      * 
      */
     @Import(name="cacerts")
     private @Nullable Output<List<String>> cacerts;
 
     /**
-     * @return List of PEM-encoded ca certs
+     * @return CA certificates trusted by Mist NAC for certificate-based authentication
      * 
      */
     public Optional<Output<List<String>>> cacerts() {
@@ -98,14 +98,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
+     * By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
      * 
      */
     @Import(name="euOnly")
     private @Nullable Output<Boolean> euOnly;
 
     /**
-     * @return By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
+     * @return By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
      * 
      */
     public Optional<Output<Boolean>> euOnly() {
@@ -113,14 +113,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Allows customer to enable client fingerprinting for policy enforcement
+     * Client fingerprinting settings used by Mist NAC
      * 
      */
     @Import(name="fingerprinting")
     private @Nullable Output<SettingMistNacFingerprintingArgs> fingerprinting;
 
     /**
-     * @return Allows customer to enable client fingerprinting for policy enforcement
+     * @return Client fingerprinting settings used by Mist NAC
      * 
      */
     public Optional<Output<SettingMistNacFingerprintingArgs>> fingerprinting() {
@@ -128,14 +128,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
+     * Client certificate field used to look up machine groups in identity providers
      * 
      */
     @Import(name="idpMachineCertLookupField")
     private @Nullable Output<String> idpMachineCertLookupField;
 
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
+     * @return Client certificate field used to look up machine groups in identity providers
      * 
      */
     public Optional<Output<String>> idpMachineCertLookupField() {
@@ -143,36 +143,44 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * allow customer to choose the EAP-TLS client certificate&#39;s field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+     * Client certificate field used to look up user groups in identity providers
      * 
      */
     @Import(name="idpUserCertLookupField")
     private @Nullable Output<String> idpUserCertLookupField;
 
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+     * @return Client certificate field used to look up user groups in identity providers
      * 
      */
     public Optional<Output<String>> idpUserCertLookupField() {
         return Optional.ofNullable(this.idpUserCertLookupField);
     }
 
+    /**
+     * Identity provider mappings used by Mist NAC realm matching
+     * 
+     */
     @Import(name="idps")
     private @Nullable Output<List<SettingMistNacIdpArgs>> idps;
 
+    /**
+     * @return Identity provider mappings used by Mist NAC realm matching
+     * 
+     */
     public Optional<Output<List<SettingMistNacIdpArgs>>> idps() {
         return Optional.ofNullable(this.idps);
     }
 
     /**
-     * MDM (Mobile Device Management) CoA configuration
+     * Mobile Device Management CoA settings for Mist NAC
      * 
      */
     @Import(name="mdm")
     private @Nullable Output<SettingMistNacMdmArgs> mdm;
 
     /**
-     * @return MDM (Mobile Device Management) CoA configuration
+     * @return Mobile Device Management CoA settings for Mist NAC
      * 
      */
     public Optional<Output<SettingMistNacMdmArgs>> mdm() {
@@ -180,14 +188,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * radius server cert to be presented in EAP TLS
+     * RADIUS server certificate presented by Mist NAC during EAP-TLS
      * 
      */
     @Import(name="serverCert")
     private @Nullable Output<SettingMistNacServerCertArgs> serverCert;
 
     /**
-     * @return radius server cert to be presented in EAP TLS
+     * @return RADIUS server certificate presented by Mist NAC during EAP-TLS
      * 
      */
     public Optional<Output<SettingMistNacServerCertArgs>> serverCert() {
@@ -195,14 +203,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+     * IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
      * 
      */
     @Import(name="useIpVersion")
     private @Nullable Output<String> useIpVersion;
 
     /**
-     * @return by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+     * @return IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
      * 
      */
     public Optional<Output<String>> useIpVersion() {
@@ -299,7 +307,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cacerts List of PEM-encoded ca certs
+         * @param cacerts CA certificates trusted by Mist NAC for certificate-based authentication
          * 
          * @return builder
          * 
@@ -310,7 +318,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cacerts List of PEM-encoded ca certs
+         * @param cacerts CA certificates trusted by Mist NAC for certificate-based authentication
          * 
          * @return builder
          * 
@@ -320,7 +328,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cacerts List of PEM-encoded ca certs
+         * @param cacerts CA certificates trusted by Mist NAC for certificate-based authentication
          * 
          * @return builder
          * 
@@ -393,7 +401,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param euOnly By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
+         * @param euOnly By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
          * 
          * @return builder
          * 
@@ -404,7 +412,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param euOnly By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
+         * @param euOnly By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
          * 
          * @return builder
          * 
@@ -414,7 +422,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param fingerprinting Allows customer to enable client fingerprinting for policy enforcement
+         * @param fingerprinting Client fingerprinting settings used by Mist NAC
          * 
          * @return builder
          * 
@@ -425,7 +433,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param fingerprinting Allows customer to enable client fingerprinting for policy enforcement
+         * @param fingerprinting Client fingerprinting settings used by Mist NAC
          * 
          * @return builder
          * 
@@ -435,7 +443,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpMachineCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
+         * @param idpMachineCertLookupField Client certificate field used to look up machine groups in identity providers
          * 
          * @return builder
          * 
@@ -446,7 +454,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpMachineCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
+         * @param idpMachineCertLookupField Client certificate field used to look up machine groups in identity providers
          * 
          * @return builder
          * 
@@ -456,7 +464,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpUserCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+         * @param idpUserCertLookupField Client certificate field used to look up user groups in identity providers
          * 
          * @return builder
          * 
@@ -467,7 +475,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpUserCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+         * @param idpUserCertLookupField Client certificate field used to look up user groups in identity providers
          * 
          * @return builder
          * 
@@ -476,21 +484,39 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
             return idpUserCertLookupField(Output.of(idpUserCertLookupField));
         }
 
+        /**
+         * @param idps Identity provider mappings used by Mist NAC realm matching
+         * 
+         * @return builder
+         * 
+         */
         public Builder idps(@Nullable Output<List<SettingMistNacIdpArgs>> idps) {
             $.idps = idps;
             return this;
         }
 
+        /**
+         * @param idps Identity provider mappings used by Mist NAC realm matching
+         * 
+         * @return builder
+         * 
+         */
         public Builder idps(List<SettingMistNacIdpArgs> idps) {
             return idps(Output.of(idps));
         }
 
+        /**
+         * @param idps Identity provider mappings used by Mist NAC realm matching
+         * 
+         * @return builder
+         * 
+         */
         public Builder idps(SettingMistNacIdpArgs... idps) {
             return idps(List.of(idps));
         }
 
         /**
-         * @param mdm MDM (Mobile Device Management) CoA configuration
+         * @param mdm Mobile Device Management CoA settings for Mist NAC
          * 
          * @return builder
          * 
@@ -501,7 +527,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param mdm MDM (Mobile Device Management) CoA configuration
+         * @param mdm Mobile Device Management CoA settings for Mist NAC
          * 
          * @return builder
          * 
@@ -511,7 +537,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serverCert radius server cert to be presented in EAP TLS
+         * @param serverCert RADIUS server certificate presented by Mist NAC during EAP-TLS
          * 
          * @return builder
          * 
@@ -522,7 +548,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serverCert radius server cert to be presented in EAP TLS
+         * @param serverCert RADIUS server certificate presented by Mist NAC during EAP-TLS
          * 
          * @return builder
          * 
@@ -532,7 +558,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param useIpVersion by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+         * @param useIpVersion IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
          * 
          * @return builder
          * 
@@ -543,7 +569,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param useIpVersion by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+         * @param useIpVersion IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
          * 
          * @return builder
          * 

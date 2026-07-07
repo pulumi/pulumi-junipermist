@@ -45,15 +45,27 @@ class MxedgeArgs:
         """
         The set of arguments for constructing a Mxedge resource.
 
-        :param pulumi.Input[_builtins.str] mxcluster_id: MxCluster this MxEdge belongs to
-        :param pulumi.Input['MxedgeOobIpConfigArgs'] oob_ip_config: IPconfiguration of the Mist Edge out-of*band management interface
-        :param pulumi.Input['MxedgeProxyArgs'] proxy: Proxy Configuration to talk to Mist
-        :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]] tunterm_dhcpd_config: Global and per-VLAN. Property key is the VLAN ID
-        :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]] tunterm_extra_routes: Property key is a CIDR
-        :param pulumi.Input['MxedgeTuntermIpConfigArgs'] tunterm_ip_config: IPconfiguration of the Mist Tunnel interface
+        :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the Mist Edge
+        :param pulumi.Input[_builtins.str] claim_code: Registration claim code for the Mist Edge
+        :param pulumi.Input[_builtins.str] model: Mist Edge hardware or virtual appliance model
+        :param pulumi.Input[_builtins.str] mxcluster_id: Mist Edge cluster identifier that this appliance belongs to
+        :param pulumi.Input['MxedgeMxedgeMgmtArgs'] mxedge_mgmt: Management credentials and settings for the Mist Edge
+        :param pulumi.Input[_builtins.str] name: Display name of the Mist Edge
+        :param pulumi.Input[_builtins.str] notes: Free-form notes for the Mist Edge
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: Time synchronization servers used by the Mist Edge
+        :param pulumi.Input['MxedgeOobIpConfigArgs'] oob_ip_config: Out-of-band management IP configuration for the Mist Edge
+        :param pulumi.Input['MxedgeProxyArgs'] proxy: Network proxy settings used by the Mist Edge
+        :param pulumi.Input[_builtins.str] site_id: Identifier of the site when the Mist Edge is site-scoped
+        :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]] tunterm_dhcpd_config: DHCP relay or server settings for Mist Tunneled VLANs
+        :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]] tunterm_extra_routes: Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
+        :param pulumi.Input['MxedgeTuntermIgmpSnoopingConfigArgs'] tunterm_igmp_snooping_config: IGMP snooping settings for Mist Tunneled VLANs
+        :param pulumi.Input['MxedgeTuntermIpConfigArgs'] tunterm_ip_config: Tunnel termination IP configuration for the Mist Edge
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability
+        :param pulumi.Input['MxedgeTuntermMulticastConfigArgs'] tunterm_multicast_config: Multicast forwarding settings for tunnel termination
         :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]] tunterm_other_ip_configs: IPconfigs by VLAN ID. Property key is the VLAN ID
-        :param pulumi.Input['MxedgeTuntermPortConfigArgs'] tunterm_port_config: Ethernet port configurations
-        :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]] tunterm_switch_config: If custom vlan settings are desired
+        :param pulumi.Input['MxedgeTuntermPortConfigArgs'] tunterm_port_config: Port configuration for tunnel termination traffic
+        :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]] tunterm_switch_config: Switch VLAN settings for tunnel termination
+        :param pulumi.Input['MxedgeVersionsArgs'] versions: Service version information reported by the Mist Edge
         """
         pulumi.set(__self__, "org_id", org_id)
         if claim_code is not None:
@@ -100,6 +112,9 @@ class MxedgeArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier of the org that owns the Mist Edge
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -109,6 +124,9 @@ class MxedgeArgs:
     @_builtins.property
     @pulumi.getter(name="claimCode")
     def claim_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Registration claim code for the Mist Edge
+        """
         return pulumi.get(self, "claim_code")
 
     @claim_code.setter
@@ -118,6 +136,9 @@ class MxedgeArgs:
     @_builtins.property
     @pulumi.getter
     def model(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Mist Edge hardware or virtual appliance model
+        """
         return pulumi.get(self, "model")
 
     @model.setter
@@ -128,7 +149,7 @@ class MxedgeArgs:
     @pulumi.getter(name="mxclusterId")
     def mxcluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        MxCluster this MxEdge belongs to
+        Mist Edge cluster identifier that this appliance belongs to
         """
         return pulumi.get(self, "mxcluster_id")
 
@@ -139,6 +160,9 @@ class MxedgeArgs:
     @_builtins.property
     @pulumi.getter(name="mxedgeMgmt")
     def mxedge_mgmt(self) -> pulumi.Input[Optional['MxedgeMxedgeMgmtArgs']]:
+        """
+        Management credentials and settings for the Mist Edge
+        """
         return pulumi.get(self, "mxedge_mgmt")
 
     @mxedge_mgmt.setter
@@ -148,6 +172,9 @@ class MxedgeArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the Mist Edge
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -157,6 +184,9 @@ class MxedgeArgs:
     @_builtins.property
     @pulumi.getter
     def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Free-form notes for the Mist Edge
+        """
         return pulumi.get(self, "notes")
 
     @notes.setter
@@ -166,6 +196,9 @@ class MxedgeArgs:
     @_builtins.property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Time synchronization servers used by the Mist Edge
+        """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
@@ -176,7 +209,7 @@ class MxedgeArgs:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Input[Optional['MxedgeOobIpConfigArgs']]:
         """
-        IPconfiguration of the Mist Edge out-of*band management interface
+        Out-of-band management IP configuration for the Mist Edge
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -188,7 +221,7 @@ class MxedgeArgs:
     @pulumi.getter
     def proxy(self) -> pulumi.Input[Optional['MxedgeProxyArgs']]:
         """
-        Proxy Configuration to talk to Mist
+        Network proxy settings used by the Mist Edge
         """
         return pulumi.get(self, "proxy")
 
@@ -199,6 +232,9 @@ class MxedgeArgs:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier of the site when the Mist Edge is site-scoped
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -209,7 +245,7 @@ class MxedgeArgs:
     @pulumi.getter(name="tuntermDhcpdConfig")
     def tunterm_dhcpd_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]]:
         """
-        Global and per-VLAN. Property key is the VLAN ID
+        DHCP relay or server settings for Mist Tunneled VLANs
         """
         return pulumi.get(self, "tunterm_dhcpd_config")
 
@@ -221,7 +257,7 @@ class MxedgeArgs:
     @pulumi.getter(name="tuntermExtraRoutes")
     def tunterm_extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]]:
         """
-        Property key is a CIDR
+        Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
         """
         return pulumi.get(self, "tunterm_extra_routes")
 
@@ -232,6 +268,9 @@ class MxedgeArgs:
     @_builtins.property
     @pulumi.getter(name="tuntermIgmpSnoopingConfig")
     def tunterm_igmp_snooping_config(self) -> pulumi.Input[Optional['MxedgeTuntermIgmpSnoopingConfigArgs']]:
+        """
+        IGMP snooping settings for Mist Tunneled VLANs
+        """
         return pulumi.get(self, "tunterm_igmp_snooping_config")
 
     @tunterm_igmp_snooping_config.setter
@@ -242,7 +281,7 @@ class MxedgeArgs:
     @pulumi.getter(name="tuntermIpConfig")
     def tunterm_ip_config(self) -> pulumi.Input[Optional['MxedgeTuntermIpConfigArgs']]:
         """
-        IPconfiguration of the Mist Tunnel interface
+        Tunnel termination IP configuration for the Mist Edge
         """
         return pulumi.get(self, "tunterm_ip_config")
 
@@ -253,6 +292,9 @@ class MxedgeArgs:
     @_builtins.property
     @pulumi.getter(name="tuntermMonitorings")
     def tunterm_monitorings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]]:
+        """
+        Monitoring checks for tunnel termination reachability
+        """
         return pulumi.get(self, "tunterm_monitorings")
 
     @tunterm_monitorings.setter
@@ -262,6 +304,9 @@ class MxedgeArgs:
     @_builtins.property
     @pulumi.getter(name="tuntermMulticastConfig")
     def tunterm_multicast_config(self) -> pulumi.Input[Optional['MxedgeTuntermMulticastConfigArgs']]:
+        """
+        Multicast forwarding settings for tunnel termination
+        """
         return pulumi.get(self, "tunterm_multicast_config")
 
     @tunterm_multicast_config.setter
@@ -284,7 +329,7 @@ class MxedgeArgs:
     @pulumi.getter(name="tuntermPortConfig")
     def tunterm_port_config(self) -> pulumi.Input[Optional['MxedgeTuntermPortConfigArgs']]:
         """
-        Ethernet port configurations
+        Port configuration for tunnel termination traffic
         """
         return pulumi.get(self, "tunterm_port_config")
 
@@ -296,7 +341,7 @@ class MxedgeArgs:
     @pulumi.getter(name="tuntermSwitchConfig")
     def tunterm_switch_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]]:
         """
-        If custom vlan settings are desired
+        Switch VLAN settings for tunnel termination
         """
         return pulumi.get(self, "tunterm_switch_config")
 
@@ -307,6 +352,9 @@ class MxedgeArgs:
     @_builtins.property
     @pulumi.getter
     def versions(self) -> pulumi.Input[Optional['MxedgeVersionsArgs']]:
+        """
+        Service version information reported by the Mist Edge
+        """
         return pulumi.get(self, "versions")
 
     @versions.setter
@@ -318,6 +366,7 @@ class MxedgeArgs:
 class _MxedgeState:
     def __init__(__self__, *,
                  claim_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 for_site: pulumi.Input[Optional[_builtins.bool]] = None,
                  mac: pulumi.Input[Optional[_builtins.str]] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
                  mxagent_registered: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -345,19 +394,37 @@ class _MxedgeState:
         """
         Input properties used for looking up and filtering Mxedge resources.
 
-        :param pulumi.Input[_builtins.str] mxcluster_id: MxCluster this MxEdge belongs to
-        :param pulumi.Input['MxedgeOobIpConfigArgs'] oob_ip_config: IPconfiguration of the Mist Edge out-of*band management interface
-        :param pulumi.Input['MxedgeProxyArgs'] proxy: Proxy Configuration to talk to Mist
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: List of services to run, tunterm only for now
-        :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]] tunterm_dhcpd_config: Global and per-VLAN. Property key is the VLAN ID
-        :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]] tunterm_extra_routes: Property key is a CIDR
-        :param pulumi.Input['MxedgeTuntermIpConfigArgs'] tunterm_ip_config: IPconfiguration of the Mist Tunnel interface
+        :param pulumi.Input[_builtins.str] claim_code: Registration claim code for the Mist Edge
+        :param pulumi.Input[_builtins.bool] for_site: Whether this Mist Edge is scoped to a site
+        :param pulumi.Input[_builtins.str] mac: Mist Edge MAC address
+        :param pulumi.Input[_builtins.str] model: Mist Edge hardware or virtual appliance model
+        :param pulumi.Input[_builtins.bool] mxagent_registered: Whether the Mist Edge agent has registered with Mist cloud
+        :param pulumi.Input[_builtins.str] mxcluster_id: Mist Edge cluster identifier that this appliance belongs to
+        :param pulumi.Input['MxedgeMxedgeMgmtArgs'] mxedge_mgmt: Management credentials and settings for the Mist Edge
+        :param pulumi.Input[_builtins.str] name: Display name of the Mist Edge
+        :param pulumi.Input[_builtins.str] notes: Free-form notes for the Mist Edge
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: Time synchronization servers used by the Mist Edge
+        :param pulumi.Input['MxedgeOobIpConfigArgs'] oob_ip_config: Out-of-band management IP configuration for the Mist Edge
+        :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the Mist Edge
+        :param pulumi.Input['MxedgeProxyArgs'] proxy: Network proxy settings used by the Mist Edge
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: List of services enabled to run on the Mist Edge
+        :param pulumi.Input[_builtins.str] site_id: Identifier of the site when the Mist Edge is site-scoped
+        :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]] tunterm_dhcpd_config: DHCP relay or server settings for Mist Tunneled VLANs
+        :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]] tunterm_extra_routes: Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
+        :param pulumi.Input['MxedgeTuntermIgmpSnoopingConfigArgs'] tunterm_igmp_snooping_config: IGMP snooping settings for Mist Tunneled VLANs
+        :param pulumi.Input['MxedgeTuntermIpConfigArgs'] tunterm_ip_config: Tunnel termination IP configuration for the Mist Edge
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability
+        :param pulumi.Input['MxedgeTuntermMulticastConfigArgs'] tunterm_multicast_config: Multicast forwarding settings for tunnel termination
         :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermOtherIpConfigsArgs']]] tunterm_other_ip_configs: IPconfigs by VLAN ID. Property key is the VLAN ID
-        :param pulumi.Input['MxedgeTuntermPortConfigArgs'] tunterm_port_config: Ethernet port configurations
-        :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]] tunterm_switch_config: If custom vlan settings are desired
+        :param pulumi.Input['MxedgeTuntermPortConfigArgs'] tunterm_port_config: Port configuration for tunnel termination traffic
+        :param pulumi.Input[_builtins.bool] tunterm_registered: Whether the tunnel termination service has registered with Mist cloud
+        :param pulumi.Input[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]] tunterm_switch_config: Switch VLAN settings for tunnel termination
+        :param pulumi.Input['MxedgeVersionsArgs'] versions: Service version information reported by the Mist Edge
         """
         if claim_code is not None:
             pulumi.set(__self__, "claim_code", claim_code)
+        if for_site is not None:
+            pulumi.set(__self__, "for_site", for_site)
         if mac is not None:
             pulumi.set(__self__, "mac", mac)
         if model is not None:
@@ -410,6 +477,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter(name="claimCode")
     def claim_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Registration claim code for the Mist Edge
+        """
         return pulumi.get(self, "claim_code")
 
     @claim_code.setter
@@ -417,8 +487,23 @@ class _MxedgeState:
         pulumi.set(self, "claim_code", value)
 
     @_builtins.property
+    @pulumi.getter(name="forSite")
+    def for_site(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether this Mist Edge is scoped to a site
+        """
+        return pulumi.get(self, "for_site")
+
+    @for_site.setter
+    def for_site(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "for_site", value)
+
+    @_builtins.property
     @pulumi.getter
     def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Mist Edge MAC address
+        """
         return pulumi.get(self, "mac")
 
     @mac.setter
@@ -428,6 +513,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter
     def model(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Mist Edge hardware or virtual appliance model
+        """
         return pulumi.get(self, "model")
 
     @model.setter
@@ -437,6 +525,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter(name="mxagentRegistered")
     def mxagent_registered(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the Mist Edge agent has registered with Mist cloud
+        """
         return pulumi.get(self, "mxagent_registered")
 
     @mxagent_registered.setter
@@ -447,7 +538,7 @@ class _MxedgeState:
     @pulumi.getter(name="mxclusterId")
     def mxcluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        MxCluster this MxEdge belongs to
+        Mist Edge cluster identifier that this appliance belongs to
         """
         return pulumi.get(self, "mxcluster_id")
 
@@ -458,6 +549,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter(name="mxedgeMgmt")
     def mxedge_mgmt(self) -> pulumi.Input[Optional['MxedgeMxedgeMgmtArgs']]:
+        """
+        Management credentials and settings for the Mist Edge
+        """
         return pulumi.get(self, "mxedge_mgmt")
 
     @mxedge_mgmt.setter
@@ -467,6 +561,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the Mist Edge
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -476,6 +573,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter
     def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Free-form notes for the Mist Edge
+        """
         return pulumi.get(self, "notes")
 
     @notes.setter
@@ -485,6 +585,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Time synchronization servers used by the Mist Edge
+        """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
@@ -495,7 +598,7 @@ class _MxedgeState:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Input[Optional['MxedgeOobIpConfigArgs']]:
         """
-        IPconfiguration of the Mist Edge out-of*band management interface
+        Out-of-band management IP configuration for the Mist Edge
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -506,6 +609,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier of the org that owns the Mist Edge
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -516,7 +622,7 @@ class _MxedgeState:
     @pulumi.getter
     def proxy(self) -> pulumi.Input[Optional['MxedgeProxyArgs']]:
         """
-        Proxy Configuration to talk to Mist
+        Network proxy settings used by the Mist Edge
         """
         return pulumi.get(self, "proxy")
 
@@ -528,7 +634,7 @@ class _MxedgeState:
     @pulumi.getter
     def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of services to run, tunterm only for now
+        List of services enabled to run on the Mist Edge
         """
         return pulumi.get(self, "services")
 
@@ -539,6 +645,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier of the site when the Mist Edge is site-scoped
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -549,7 +658,7 @@ class _MxedgeState:
     @pulumi.getter(name="tuntermDhcpdConfig")
     def tunterm_dhcpd_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermDhcpdConfigArgs']]]]:
         """
-        Global and per-VLAN. Property key is the VLAN ID
+        DHCP relay or server settings for Mist Tunneled VLANs
         """
         return pulumi.get(self, "tunterm_dhcpd_config")
 
@@ -561,7 +670,7 @@ class _MxedgeState:
     @pulumi.getter(name="tuntermExtraRoutes")
     def tunterm_extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermExtraRoutesArgs']]]]:
         """
-        Property key is a CIDR
+        Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
         """
         return pulumi.get(self, "tunterm_extra_routes")
 
@@ -572,6 +681,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter(name="tuntermIgmpSnoopingConfig")
     def tunterm_igmp_snooping_config(self) -> pulumi.Input[Optional['MxedgeTuntermIgmpSnoopingConfigArgs']]:
+        """
+        IGMP snooping settings for Mist Tunneled VLANs
+        """
         return pulumi.get(self, "tunterm_igmp_snooping_config")
 
     @tunterm_igmp_snooping_config.setter
@@ -582,7 +694,7 @@ class _MxedgeState:
     @pulumi.getter(name="tuntermIpConfig")
     def tunterm_ip_config(self) -> pulumi.Input[Optional['MxedgeTuntermIpConfigArgs']]:
         """
-        IPconfiguration of the Mist Tunnel interface
+        Tunnel termination IP configuration for the Mist Edge
         """
         return pulumi.get(self, "tunterm_ip_config")
 
@@ -593,6 +705,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter(name="tuntermMonitorings")
     def tunterm_monitorings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['MxedgeTuntermMonitoringArgs']]]]]]:
+        """
+        Monitoring checks for tunnel termination reachability
+        """
         return pulumi.get(self, "tunterm_monitorings")
 
     @tunterm_monitorings.setter
@@ -602,6 +717,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter(name="tuntermMulticastConfig")
     def tunterm_multicast_config(self) -> pulumi.Input[Optional['MxedgeTuntermMulticastConfigArgs']]:
+        """
+        Multicast forwarding settings for tunnel termination
+        """
         return pulumi.get(self, "tunterm_multicast_config")
 
     @tunterm_multicast_config.setter
@@ -624,7 +742,7 @@ class _MxedgeState:
     @pulumi.getter(name="tuntermPortConfig")
     def tunterm_port_config(self) -> pulumi.Input[Optional['MxedgeTuntermPortConfigArgs']]:
         """
-        Ethernet port configurations
+        Port configuration for tunnel termination traffic
         """
         return pulumi.get(self, "tunterm_port_config")
 
@@ -635,6 +753,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter(name="tuntermRegistered")
     def tunterm_registered(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the tunnel termination service has registered with Mist cloud
+        """
         return pulumi.get(self, "tunterm_registered")
 
     @tunterm_registered.setter
@@ -645,7 +766,7 @@ class _MxedgeState:
     @pulumi.getter(name="tuntermSwitchConfig")
     def tunterm_switch_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['MxedgeTuntermSwitchConfigArgs']]]]:
         """
-        If custom vlan settings are desired
+        Switch VLAN settings for tunnel termination
         """
         return pulumi.get(self, "tunterm_switch_config")
 
@@ -656,6 +777,9 @@ class _MxedgeState:
     @_builtins.property
     @pulumi.getter
     def versions(self) -> pulumi.Input[Optional['MxedgeVersionsArgs']]:
+        """
+        Service version information reported by the Mist Edge
+        """
         return pulumi.get(self, "versions")
 
     @versions.setter
@@ -708,15 +832,27 @@ class Mxedge(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] mxcluster_id: MxCluster this MxEdge belongs to
-        :param pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']] oob_ip_config: IPconfiguration of the Mist Edge out-of*band management interface
-        :param pulumi.Input[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']] proxy: Proxy Configuration to talk to Mist
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]] tunterm_dhcpd_config: Global and per-VLAN. Property key is the VLAN ID
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]] tunterm_extra_routes: Property key is a CIDR
-        :param pulumi.Input[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']] tunterm_ip_config: IPconfiguration of the Mist Tunnel interface
+        :param pulumi.Input[_builtins.str] claim_code: Registration claim code for the Mist Edge
+        :param pulumi.Input[_builtins.str] model: Mist Edge hardware or virtual appliance model
+        :param pulumi.Input[_builtins.str] mxcluster_id: Mist Edge cluster identifier that this appliance belongs to
+        :param pulumi.Input[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']] mxedge_mgmt: Management credentials and settings for the Mist Edge
+        :param pulumi.Input[_builtins.str] name: Display name of the Mist Edge
+        :param pulumi.Input[_builtins.str] notes: Free-form notes for the Mist Edge
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: Time synchronization servers used by the Mist Edge
+        :param pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP configuration for the Mist Edge
+        :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the Mist Edge
+        :param pulumi.Input[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']] proxy: Network proxy settings used by the Mist Edge
+        :param pulumi.Input[_builtins.str] site_id: Identifier of the site when the Mist Edge is site-scoped
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]] tunterm_dhcpd_config: DHCP relay or server settings for Mist Tunneled VLANs
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]] tunterm_extra_routes: Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
+        :param pulumi.Input[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']] tunterm_igmp_snooping_config: IGMP snooping settings for Mist Tunneled VLANs
+        :param pulumi.Input[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']] tunterm_ip_config: Tunnel termination IP configuration for the Mist Edge
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability
+        :param pulumi.Input[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']] tunterm_multicast_config: Multicast forwarding settings for tunnel termination
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]] tunterm_other_ip_configs: IPconfigs by VLAN ID. Property key is the VLAN ID
-        :param pulumi.Input[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']] tunterm_port_config: Ethernet port configurations
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]] tunterm_switch_config: If custom vlan settings are desired
+        :param pulumi.Input[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']] tunterm_port_config: Port configuration for tunnel termination traffic
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]] tunterm_switch_config: Switch VLAN settings for tunnel termination
+        :param pulumi.Input[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']] versions: Service version information reported by the Mist Edge
         """
         ...
     @overload
@@ -807,6 +943,7 @@ class Mxedge(pulumi.CustomResource):
             __props__.__dict__["tunterm_port_config"] = tunterm_port_config
             __props__.__dict__["tunterm_switch_config"] = tunterm_switch_config
             __props__.__dict__["versions"] = versions
+            __props__.__dict__["for_site"] = None
             __props__.__dict__["mac"] = None
             __props__.__dict__["mxagent_registered"] = None
             __props__.__dict__["services"] = None
@@ -822,6 +959,7 @@ class Mxedge(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             claim_code: pulumi.Input[Optional[_builtins.str]] = None,
+            for_site: pulumi.Input[Optional[_builtins.bool]] = None,
             mac: pulumi.Input[Optional[_builtins.str]] = None,
             model: pulumi.Input[Optional[_builtins.str]] = None,
             mxagent_registered: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -853,22 +991,39 @@ class Mxedge(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] mxcluster_id: MxCluster this MxEdge belongs to
-        :param pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']] oob_ip_config: IPconfiguration of the Mist Edge out-of*band management interface
-        :param pulumi.Input[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']] proxy: Proxy Configuration to talk to Mist
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: List of services to run, tunterm only for now
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]] tunterm_dhcpd_config: Global and per-VLAN. Property key is the VLAN ID
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]] tunterm_extra_routes: Property key is a CIDR
-        :param pulumi.Input[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']] tunterm_ip_config: IPconfiguration of the Mist Tunnel interface
+        :param pulumi.Input[_builtins.str] claim_code: Registration claim code for the Mist Edge
+        :param pulumi.Input[_builtins.bool] for_site: Whether this Mist Edge is scoped to a site
+        :param pulumi.Input[_builtins.str] mac: Mist Edge MAC address
+        :param pulumi.Input[_builtins.str] model: Mist Edge hardware or virtual appliance model
+        :param pulumi.Input[_builtins.bool] mxagent_registered: Whether the Mist Edge agent has registered with Mist cloud
+        :param pulumi.Input[_builtins.str] mxcluster_id: Mist Edge cluster identifier that this appliance belongs to
+        :param pulumi.Input[Union['MxedgeMxedgeMgmtArgs', 'MxedgeMxedgeMgmtArgsDict']] mxedge_mgmt: Management credentials and settings for the Mist Edge
+        :param pulumi.Input[_builtins.str] name: Display name of the Mist Edge
+        :param pulumi.Input[_builtins.str] notes: Free-form notes for the Mist Edge
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: Time synchronization servers used by the Mist Edge
+        :param pulumi.Input[Union['MxedgeOobIpConfigArgs', 'MxedgeOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP configuration for the Mist Edge
+        :param pulumi.Input[_builtins.str] org_id: Identifier of the org that owns the Mist Edge
+        :param pulumi.Input[Union['MxedgeProxyArgs', 'MxedgeProxyArgsDict']] proxy: Network proxy settings used by the Mist Edge
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: List of services enabled to run on the Mist Edge
+        :param pulumi.Input[_builtins.str] site_id: Identifier of the site when the Mist Edge is site-scoped
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermDhcpdConfigArgs', 'MxedgeTuntermDhcpdConfigArgsDict']]]] tunterm_dhcpd_config: DHCP relay or server settings for Mist Tunneled VLANs
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermExtraRoutesArgs', 'MxedgeTuntermExtraRoutesArgsDict']]]] tunterm_extra_routes: Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
+        :param pulumi.Input[Union['MxedgeTuntermIgmpSnoopingConfigArgs', 'MxedgeTuntermIgmpSnoopingConfigArgsDict']] tunterm_igmp_snooping_config: IGMP snooping settings for Mist Tunneled VLANs
+        :param pulumi.Input[Union['MxedgeTuntermIpConfigArgs', 'MxedgeTuntermIpConfigArgsDict']] tunterm_ip_config: Tunnel termination IP configuration for the Mist Edge
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['MxedgeTuntermMonitoringArgs', 'MxedgeTuntermMonitoringArgsDict']]]]]] tunterm_monitorings: Monitoring checks for tunnel termination reachability
+        :param pulumi.Input[Union['MxedgeTuntermMulticastConfigArgs', 'MxedgeTuntermMulticastConfigArgsDict']] tunterm_multicast_config: Multicast forwarding settings for tunnel termination
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermOtherIpConfigsArgs', 'MxedgeTuntermOtherIpConfigsArgsDict']]]] tunterm_other_ip_configs: IPconfigs by VLAN ID. Property key is the VLAN ID
-        :param pulumi.Input[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']] tunterm_port_config: Ethernet port configurations
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]] tunterm_switch_config: If custom vlan settings are desired
+        :param pulumi.Input[Union['MxedgeTuntermPortConfigArgs', 'MxedgeTuntermPortConfigArgsDict']] tunterm_port_config: Port configuration for tunnel termination traffic
+        :param pulumi.Input[_builtins.bool] tunterm_registered: Whether the tunnel termination service has registered with Mist cloud
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['MxedgeTuntermSwitchConfigArgs', 'MxedgeTuntermSwitchConfigArgsDict']]]] tunterm_switch_config: Switch VLAN settings for tunnel termination
+        :param pulumi.Input[Union['MxedgeVersionsArgs', 'MxedgeVersionsArgsDict']] versions: Service version information reported by the Mist Edge
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _MxedgeState.__new__(_MxedgeState)
 
         __props__.__dict__["claim_code"] = claim_code
+        __props__.__dict__["for_site"] = for_site
         __props__.__dict__["mac"] = mac
         __props__.__dict__["model"] = model
         __props__.__dict__["mxagent_registered"] = mxagent_registered
@@ -898,69 +1053,104 @@ class Mxedge(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="claimCode")
     def claim_code(self) -> pulumi.Output[_builtins.str]:
+        """
+        Registration claim code for the Mist Edge
+        """
         return pulumi.get(self, "claim_code")
+
+    @_builtins.property
+    @pulumi.getter(name="forSite")
+    def for_site(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether this Mist Edge is scoped to a site
+        """
+        return pulumi.get(self, "for_site")
 
     @_builtins.property
     @pulumi.getter
     def mac(self) -> pulumi.Output[_builtins.str]:
+        """
+        Mist Edge MAC address
+        """
         return pulumi.get(self, "mac")
 
     @_builtins.property
     @pulumi.getter
     def model(self) -> pulumi.Output[_builtins.str]:
+        """
+        Mist Edge hardware or virtual appliance model
+        """
         return pulumi.get(self, "model")
 
     @_builtins.property
     @pulumi.getter(name="mxagentRegistered")
     def mxagent_registered(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the Mist Edge agent has registered with Mist cloud
+        """
         return pulumi.get(self, "mxagent_registered")
 
     @_builtins.property
     @pulumi.getter(name="mxclusterId")
     def mxcluster_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        MxCluster this MxEdge belongs to
+        Mist Edge cluster identifier that this appliance belongs to
         """
         return pulumi.get(self, "mxcluster_id")
 
     @_builtins.property
     @pulumi.getter(name="mxedgeMgmt")
     def mxedge_mgmt(self) -> pulumi.Output[Optional['outputs.MxedgeMxedgeMgmt']]:
+        """
+        Management credentials and settings for the Mist Edge
+        """
         return pulumi.get(self, "mxedge_mgmt")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the Mist Edge
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def notes(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Free-form notes for the Mist Edge
+        """
         return pulumi.get(self, "notes")
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Time synchronization servers used by the Mist Edge
+        """
         return pulumi.get(self, "ntp_servers")
 
     @_builtins.property
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Output[Optional['outputs.MxedgeOobIpConfig']]:
         """
-        IPconfiguration of the Mist Edge out-of*band management interface
+        Out-of-band management IP configuration for the Mist Edge
         """
         return pulumi.get(self, "oob_ip_config")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Identifier of the org that owns the Mist Edge
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter
     def proxy(self) -> pulumi.Output[Optional['outputs.MxedgeProxy']]:
         """
-        Proxy Configuration to talk to Mist
+        Network proxy settings used by the Mist Edge
         """
         return pulumi.get(self, "proxy")
 
@@ -968,20 +1158,23 @@ class Mxedge(pulumi.CustomResource):
     @pulumi.getter
     def services(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        List of services to run, tunterm only for now
+        List of services enabled to run on the Mist Edge
         """
         return pulumi.get(self, "services")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Identifier of the site when the Mist Edge is site-scoped
+        """
         return pulumi.get(self, "site_id")
 
     @_builtins.property
     @pulumi.getter(name="tuntermDhcpdConfig")
     def tunterm_dhcpd_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.MxedgeTuntermDhcpdConfig']]]:
         """
-        Global and per-VLAN. Property key is the VLAN ID
+        DHCP relay or server settings for Mist Tunneled VLANs
         """
         return pulumi.get(self, "tunterm_dhcpd_config")
 
@@ -989,31 +1182,40 @@ class Mxedge(pulumi.CustomResource):
     @pulumi.getter(name="tuntermExtraRoutes")
     def tunterm_extra_routes(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.MxedgeTuntermExtraRoutes']]]:
         """
-        Property key is a CIDR
+        Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
         """
         return pulumi.get(self, "tunterm_extra_routes")
 
     @_builtins.property
     @pulumi.getter(name="tuntermIgmpSnoopingConfig")
     def tunterm_igmp_snooping_config(self) -> pulumi.Output[Optional['outputs.MxedgeTuntermIgmpSnoopingConfig']]:
+        """
+        IGMP snooping settings for Mist Tunneled VLANs
+        """
         return pulumi.get(self, "tunterm_igmp_snooping_config")
 
     @_builtins.property
     @pulumi.getter(name="tuntermIpConfig")
     def tunterm_ip_config(self) -> pulumi.Output[Optional['outputs.MxedgeTuntermIpConfig']]:
         """
-        IPconfiguration of the Mist Tunnel interface
+        Tunnel termination IP configuration for the Mist Edge
         """
         return pulumi.get(self, "tunterm_ip_config")
 
     @_builtins.property
     @pulumi.getter(name="tuntermMonitorings")
     def tunterm_monitorings(self) -> pulumi.Output[Optional[Sequence[Sequence['outputs.MxedgeTuntermMonitoring']]]]:
+        """
+        Monitoring checks for tunnel termination reachability
+        """
         return pulumi.get(self, "tunterm_monitorings")
 
     @_builtins.property
     @pulumi.getter(name="tuntermMulticastConfig")
     def tunterm_multicast_config(self) -> pulumi.Output[Optional['outputs.MxedgeTuntermMulticastConfig']]:
+        """
+        Multicast forwarding settings for tunnel termination
+        """
         return pulumi.get(self, "tunterm_multicast_config")
 
     @_builtins.property
@@ -1028,25 +1230,31 @@ class Mxedge(pulumi.CustomResource):
     @pulumi.getter(name="tuntermPortConfig")
     def tunterm_port_config(self) -> pulumi.Output[Optional['outputs.MxedgeTuntermPortConfig']]:
         """
-        Ethernet port configurations
+        Port configuration for tunnel termination traffic
         """
         return pulumi.get(self, "tunterm_port_config")
 
     @_builtins.property
     @pulumi.getter(name="tuntermRegistered")
     def tunterm_registered(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the tunnel termination service has registered with Mist cloud
+        """
         return pulumi.get(self, "tunterm_registered")
 
     @_builtins.property
     @pulumi.getter(name="tuntermSwitchConfig")
     def tunterm_switch_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.MxedgeTuntermSwitchConfig']]]:
         """
-        If custom vlan settings are desired
+        Switch VLAN settings for tunnel termination
         """
         return pulumi.get(self, "tunterm_switch_config")
 
     @_builtins.property
     @pulumi.getter
     def versions(self) -> pulumi.Output[Optional['outputs.MxedgeVersions']]:
+        """
+        Service version information reported by the Mist Edge
+        """
         return pulumi.get(self, "versions")
 

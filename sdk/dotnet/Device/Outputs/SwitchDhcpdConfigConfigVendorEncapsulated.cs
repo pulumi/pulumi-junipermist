@@ -14,9 +14,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchDhcpdConfigConfigVendorEncapsulated
     {
         /// <summary>
-        /// enum: `Boolean`, `Hex`, `Int16`, `Int32`, `Ip`, `String`, `Uint16`, `Uint32`
+        /// Data type used to encode this vendor option value
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Option value to send for this vendor option
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

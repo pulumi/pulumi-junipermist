@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxedgeTuntermExtraRoutesArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Next-hop IP address for this Mist Tunnel extra route
+        /// </summary>
         [Input("via")]
         public Input<string>? Via { get; set; }
 

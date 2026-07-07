@@ -12,11 +12,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExistsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Prefix that must exist for this condition to match
+        /// </summary>
         [Input("route")]
         public Input<string>? Route { get; set; }
 
         /// <summary>
-        /// Name of the vrf instance, it can also be the name of the VPN or wan if they
+        /// Name of the VRF instance where the route is checked; can also be a VPN or WAN name when applicable
         /// </summary>
         [Input("vrfName")]
         public Input<string>? VrfName { get; set; }

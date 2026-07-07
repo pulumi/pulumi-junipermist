@@ -25,20 +25,44 @@ public final class NetworktemplateOspfAreasNetworks {
      */
     private @Nullable String authPassword;
     /**
-     * @return auth type. enum: `md5`, `none`, `password`
+     * @return Authentication method used by this OSPF network
      * 
      */
     private @Nullable String authType;
+    /**
+     * @return Minimum BFD interval for this OSPF network, in milliseconds
+     * 
+     */
     private @Nullable Integer bfdMinimumInterval;
+    /**
+     * @return OSPF dead interval for this network, in seconds
+     * 
+     */
     private @Nullable Integer deadInterval;
+    /**
+     * @return Routing policy used to export routes from this OSPF network
+     * 
+     */
     private @Nullable String exportPolicy;
+    /**
+     * @return OSPF hello interval for this network, in seconds
+     * 
+     */
     private @Nullable Integer helloInterval;
+    /**
+     * @return Routing policy used to import routes for this OSPF network
+     * 
+     */
     private @Nullable String importPolicy;
     /**
-     * @return interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+     * @return OSPF interface type used for this network
      * 
      */
     private @Nullable String interfaceType;
+    /**
+     * @return OSPF metric assigned to this network
+     * 
+     */
     private @Nullable Integer metric;
     /**
      * @return By default, we&#39;ll re-advertise all learned OSPF routes toward overlay
@@ -67,34 +91,58 @@ public final class NetworktemplateOspfAreasNetworks {
         return Optional.ofNullable(this.authPassword);
     }
     /**
-     * @return auth type. enum: `md5`, `none`, `password`
+     * @return Authentication method used by this OSPF network
      * 
      */
     public Optional<String> authType() {
         return Optional.ofNullable(this.authType);
     }
+    /**
+     * @return Minimum BFD interval for this OSPF network, in milliseconds
+     * 
+     */
     public Optional<Integer> bfdMinimumInterval() {
         return Optional.ofNullable(this.bfdMinimumInterval);
     }
+    /**
+     * @return OSPF dead interval for this network, in seconds
+     * 
+     */
     public Optional<Integer> deadInterval() {
         return Optional.ofNullable(this.deadInterval);
     }
+    /**
+     * @return Routing policy used to export routes from this OSPF network
+     * 
+     */
     public Optional<String> exportPolicy() {
         return Optional.ofNullable(this.exportPolicy);
     }
+    /**
+     * @return OSPF hello interval for this network, in seconds
+     * 
+     */
     public Optional<Integer> helloInterval() {
         return Optional.ofNullable(this.helloInterval);
     }
+    /**
+     * @return Routing policy used to import routes for this OSPF network
+     * 
+     */
     public Optional<String> importPolicy() {
         return Optional.ofNullable(this.importPolicy);
     }
     /**
-     * @return interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+     * @return OSPF interface type used for this network
      * 
      */
     public Optional<String> interfaceType() {
         return Optional.ofNullable(this.interfaceType);
     }
+    /**
+     * @return OSPF metric assigned to this network
+     * 
+     */
     public Optional<Integer> metric() {
         return Optional.ofNullable(this.metric);
     }

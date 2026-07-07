@@ -62,9 +62,17 @@ public final class NetworktemplateNetworksArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.isolation);
     }
 
+    /**
+     * Required when `isolation`==`true`. Unique VLAN ID used for client isolation
+     * 
+     */
     @Import(name="isolationVlanId")
     private @Nullable Output<String> isolationVlanId;
 
+    /**
+     * @return Required when `isolation`==`true`. Unique VLAN ID used for client isolation
+     * 
+     */
     public Optional<Output<String>> isolationVlanId() {
         return Optional.ofNullable(this.isolationVlanId);
     }
@@ -99,9 +107,17 @@ public final class NetworktemplateNetworksArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.subnet6);
     }
 
+    /**
+     * VLAN identifier for this switch network
+     * 
+     */
     @Import(name="vlanId", required=true)
     private Output<String> vlanId;
 
+    /**
+     * @return VLAN identifier for this switch network
+     * 
+     */
     public Output<String> vlanId() {
         return this.vlanId;
     }
@@ -199,11 +215,23 @@ public final class NetworktemplateNetworksArgs extends com.pulumi.resources.Reso
             return isolation(Output.of(isolation));
         }
 
+        /**
+         * @param isolationVlanId Required when `isolation`==`true`. Unique VLAN ID used for client isolation
+         * 
+         * @return builder
+         * 
+         */
         public Builder isolationVlanId(@Nullable Output<String> isolationVlanId) {
             $.isolationVlanId = isolationVlanId;
             return this;
         }
 
+        /**
+         * @param isolationVlanId Required when `isolation`==`true`. Unique VLAN ID used for client isolation
+         * 
+         * @return builder
+         * 
+         */
         public Builder isolationVlanId(String isolationVlanId) {
             return isolationVlanId(Output.of(isolationVlanId));
         }
@@ -250,11 +278,23 @@ public final class NetworktemplateNetworksArgs extends com.pulumi.resources.Reso
             return subnet6(Output.of(subnet6));
         }
 
+        /**
+         * @param vlanId VLAN identifier for this switch network
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(Output<String> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
+        /**
+         * @param vlanId VLAN identifier for this switch network
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(String vlanId) {
             return vlanId(Output.of(vlanId));
         }

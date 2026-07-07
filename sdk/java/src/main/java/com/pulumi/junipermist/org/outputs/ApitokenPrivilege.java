@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApitokenPrivilege {
     /**
-     * @return access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+     * @return Access role granted by this organization privilege
      * 
      */
     private String role;
     /**
-     * @return enum: `org`, `site`, `sitegroup`, `orgsites`
+     * @return Organization hierarchy level where this privilege applies
      * 
      */
     private String scope;
@@ -35,14 +35,14 @@ public final class ApitokenPrivilege {
 
     private ApitokenPrivilege() {}
     /**
-     * @return access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+     * @return Access role granted by this organization privilege
      * 
      */
     public String role() {
         return this.role;
     }
     /**
-     * @return enum: `org`, `site`, `sitegroup`, `orgsites`
+     * @return Organization hierarchy level where this privilege applies
      * 
      */
     public String scope() {

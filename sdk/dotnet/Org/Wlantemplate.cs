@@ -55,19 +55,19 @@ namespace Pulumi.JuniperMist.Org
     public partial class Wlantemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        /// Organizations, sites, or site groups targeted by this WLAN template
         /// </summary>
         [Output("applies")]
         public Output<Outputs.WlantemplateApplies> Applies { get; private set; } = null!;
 
         /// <summary>
-        /// List of Device Profile ids
+        /// Device profile IDs that further limit where this WLAN template applies
         /// </summary>
         [Output("deviceprofileIds")]
         public Output<ImmutableArray<string>> DeviceprofileIds { get; private set; } = null!;
 
         /// <summary>
-        /// Where this template should not be applied to (takes precedence)
+        /// Sites or site groups excluded from this WLAN template even when included by the application scope
         /// </summary>
         [Output("exceptions")]
         public Output<Outputs.WlantemplateExceptions> Exceptions { get; private set; } = null!;
@@ -78,9 +78,15 @@ namespace Pulumi.JuniperMist.Org
         [Output("filterByDeviceprofile")]
         public Output<bool> FilterByDeviceprofile { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the WLAN template
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns this WLAN template
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -132,7 +138,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WlantemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        /// Organizations, sites, or site groups targeted by this WLAN template
         /// </summary>
         [Input("applies")]
         public Input<Inputs.WlantemplateAppliesArgs>? Applies { get; set; }
@@ -141,7 +147,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _deviceprofileIds;
 
         /// <summary>
-        /// List of Device Profile ids
+        /// Device profile IDs that further limit where this WLAN template applies
         /// </summary>
         public InputList<string> DeviceprofileIds
         {
@@ -150,7 +156,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Where this template should not be applied to (takes precedence)
+        /// Sites or site groups excluded from this WLAN template even when included by the application scope
         /// </summary>
         [Input("exceptions")]
         public Input<Inputs.WlantemplateExceptionsArgs>? Exceptions { get; set; }
@@ -161,9 +167,15 @@ namespace Pulumi.JuniperMist.Org
         [Input("filterByDeviceprofile")]
         public Input<bool>? FilterByDeviceprofile { get; set; }
 
+        /// <summary>
+        /// Display name of the WLAN template
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns this WLAN template
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -176,7 +188,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WlantemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+        /// Organizations, sites, or site groups targeted by this WLAN template
         /// </summary>
         [Input("applies")]
         public Input<Inputs.WlantemplateAppliesGetArgs>? Applies { get; set; }
@@ -185,7 +197,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _deviceprofileIds;
 
         /// <summary>
-        /// List of Device Profile ids
+        /// Device profile IDs that further limit where this WLAN template applies
         /// </summary>
         public InputList<string> DeviceprofileIds
         {
@@ -194,7 +206,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Where this template should not be applied to (takes precedence)
+        /// Sites or site groups excluded from this WLAN template even when included by the application scope
         /// </summary>
         [Input("exceptions")]
         public Input<Inputs.WlantemplateExceptionsGetArgs>? Exceptions { get; set; }
@@ -205,9 +217,15 @@ namespace Pulumi.JuniperMist.Org
         [Input("filterByDeviceprofile")]
         public Input<bool>? FilterByDeviceprofile { get; set; }
 
+        /// <summary>
+        /// Display name of the WLAN template
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns this WLAN template
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 

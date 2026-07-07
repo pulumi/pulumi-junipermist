@@ -67,8 +67,17 @@ export class SsoRole extends pulumi.CustomResource {
         return obj['__pulumiType'] === SsoRole.__pulumiType;
     }
 
+    /**
+     * Display name of the organization SSO role
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Owning organization identifier for this SSO role
+     */
     declare public readonly orgId: pulumi.Output<string>;
+    /**
+     * Access privileges granted by this organization SSO role
+     */
     declare public readonly privileges: pulumi.Output<outputs.org.SsoRolePrivilege[]>;
 
     /**
@@ -108,8 +117,17 @@ export class SsoRole extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SsoRole resources.
  */
 export interface SsoRoleState {
+    /**
+     * Display name of the organization SSO role
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Owning organization identifier for this SSO role
+     */
     orgId?: pulumi.Input<string | undefined>;
+    /**
+     * Access privileges granted by this organization SSO role
+     */
     privileges?: pulumi.Input<pulumi.Input<inputs.org.SsoRolePrivilege>[] | undefined>;
 }
 
@@ -117,7 +135,16 @@ export interface SsoRoleState {
  * The set of arguments for constructing a SsoRole resource.
  */
 export interface SsoRoleArgs {
+    /**
+     * Display name of the organization SSO role
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Owning organization identifier for this SSO role
+     */
     orgId: pulumi.Input<string>;
+    /**
+     * Access privileges granted by this organization SSO role
+     */
     privileges: pulumi.Input<pulumi.Input<inputs.org.SsoRolePrivilege>[]>;
 }

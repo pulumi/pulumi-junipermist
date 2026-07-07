@@ -18,51 +18,107 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
 
     public static final EvpnTopologySwitchesArgs Empty = new EvpnTopologySwitchesArgs();
 
+    /**
+     * Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
+     * 
+     */
     @Import(name="deviceprofileId")
     private @Nullable Output<String> deviceprofileId;
 
+    /**
+     * @return Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
+     * 
+     */
     public Optional<Output<String>> deviceprofileId() {
         return Optional.ofNullable(this.deviceprofileId);
     }
 
+    /**
+     * IP addresses used by this switch for EVPN downlinks
+     * 
+     */
     @Import(name="downlinkIps")
     private @Nullable Output<List<String>> downlinkIps;
 
+    /**
+     * @return IP addresses used by this switch for EVPN downlinks
+     * 
+     */
     public Optional<Output<List<String>>> downlinkIps() {
         return Optional.ofNullable(this.downlinkIps);
     }
 
+    /**
+     * Switch MAC addresses connected as downlinks from this topology member
+     * 
+     */
     @Import(name="downlinks")
     private @Nullable Output<List<String>> downlinks;
 
+    /**
+     * @return Switch MAC addresses connected as downlinks from this topology member
+     * 
+     */
     public Optional<Output<List<String>>> downlinks() {
         return Optional.ofNullable(this.downlinks);
     }
 
+    /**
+     * Switch MAC addresses connected through ESI-LAG from this topology member
+     * 
+     */
     @Import(name="esilaglinks")
     private @Nullable Output<List<String>> esilaglinks;
 
+    /**
+     * @return Switch MAC addresses connected through ESI-LAG from this topology member
+     * 
+     */
     public Optional<Output<List<String>>> esilaglinks() {
         return Optional.ofNullable(this.esilaglinks);
     }
 
+    /**
+     * Topology identifier number for this EVPN switch member
+     * 
+     */
     @Import(name="evpnId")
     private @Nullable Output<Integer> evpnId;
 
+    /**
+     * @return Topology identifier number for this EVPN switch member
+     * 
+     */
     public Optional<Output<Integer>> evpnId() {
         return Optional.ofNullable(this.evpnId);
     }
 
+    /**
+     * Switch MAC address used to identify the topology member
+     * 
+     */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
+    /**
+     * @return Switch MAC address used to identify the topology member
+     * 
+     */
     public Optional<Output<String>> mac() {
         return Optional.ofNullable(this.mac);
     }
 
+    /**
+     * Switch model for this topology member
+     * 
+     */
     @Import(name="model")
     private @Nullable Output<String> model;
 
+    /**
+     * @return Switch model for this topology member
+     * 
+     */
     public Optional<Output<String>> model() {
         return Optional.ofNullable(this.model);
     }
@@ -87,16 +143,14 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * By default, core switches are assumed to be connecting all pods.
-     * if you want to limit the pods, you can specify pods.
+     * List of pod numbers this switch participates in
      * 
      */
     @Import(name="pods")
     private @Nullable Output<List<Integer>> pods;
 
     /**
-     * @return By default, core switches are assumed to be connecting all pods.
-     * if you want to limit the pods, you can specify pods.
+     * @return List of pod numbers this switch participates in
      * 
      */
     public Optional<Output<List<Integer>>> pods() {
@@ -104,58 +158,106 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+     * EVPN topology role for this switch
      * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
 
     /**
-     * @return use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+     * @return EVPN topology role for this switch
      * 
      */
     public Output<String> role() {
         return this.role;
     }
 
+    /**
+     * Routing identifier used by this switch for EVPN routing
+     * 
+     */
     @Import(name="routerId")
     private @Nullable Output<String> routerId;
 
+    /**
+     * @return Routing identifier used by this switch for EVPN routing
+     * 
+     */
     public Optional<Output<String>> routerId() {
         return Optional.ofNullable(this.routerId);
     }
 
+    /**
+     * Associated site for this EVPN topology switch
+     * 
+     */
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
+    /**
+     * @return Associated site for this EVPN topology switch
+     * 
+     */
     public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
+    /**
+     * Builder-suggested downlink switch MAC addresses
+     * 
+     */
     @Import(name="suggestedDownlinks")
     private @Nullable Output<List<String>> suggestedDownlinks;
 
+    /**
+     * @return Builder-suggested downlink switch MAC addresses
+     * 
+     */
     public Optional<Output<List<String>>> suggestedDownlinks() {
         return Optional.ofNullable(this.suggestedDownlinks);
     }
 
+    /**
+     * Builder-suggested ESI-LAG switch MAC addresses
+     * 
+     */
     @Import(name="suggestedEsilaglinks")
     private @Nullable Output<List<String>> suggestedEsilaglinks;
 
+    /**
+     * @return Builder-suggested ESI-LAG switch MAC addresses
+     * 
+     */
     public Optional<Output<List<String>>> suggestedEsilaglinks() {
         return Optional.ofNullable(this.suggestedEsilaglinks);
     }
 
+    /**
+     * Builder-suggested uplink switch MAC addresses
+     * 
+     */
     @Import(name="suggestedUplinks")
     private @Nullable Output<List<String>> suggestedUplinks;
 
+    /**
+     * @return Builder-suggested uplink switch MAC addresses
+     * 
+     */
     public Optional<Output<List<String>>> suggestedUplinks() {
         return Optional.ofNullable(this.suggestedUplinks);
     }
 
+    /**
+     * Switch MAC addresses connected as uplinks from this topology member
+     * 
+     */
     @Import(name="uplinks")
     private @Nullable Output<List<String>> uplinks;
 
+    /**
+     * @return Switch MAC addresses connected as uplinks from this topology member
+     * 
+     */
     public Optional<Output<List<String>>> uplinks() {
         return Optional.ofNullable(this.uplinks);
     }
@@ -199,77 +301,179 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
             $ = new EvpnTopologySwitchesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deviceprofileId Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceprofileId(@Nullable Output<String> deviceprofileId) {
             $.deviceprofileId = deviceprofileId;
             return this;
         }
 
+        /**
+         * @param deviceprofileId Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceprofileId(String deviceprofileId) {
             return deviceprofileId(Output.of(deviceprofileId));
         }
 
+        /**
+         * @param downlinkIps IP addresses used by this switch for EVPN downlinks
+         * 
+         * @return builder
+         * 
+         */
         public Builder downlinkIps(@Nullable Output<List<String>> downlinkIps) {
             $.downlinkIps = downlinkIps;
             return this;
         }
 
+        /**
+         * @param downlinkIps IP addresses used by this switch for EVPN downlinks
+         * 
+         * @return builder
+         * 
+         */
         public Builder downlinkIps(List<String> downlinkIps) {
             return downlinkIps(Output.of(downlinkIps));
         }
 
+        /**
+         * @param downlinkIps IP addresses used by this switch for EVPN downlinks
+         * 
+         * @return builder
+         * 
+         */
         public Builder downlinkIps(String... downlinkIps) {
             return downlinkIps(List.of(downlinkIps));
         }
 
+        /**
+         * @param downlinks Switch MAC addresses connected as downlinks from this topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder downlinks(@Nullable Output<List<String>> downlinks) {
             $.downlinks = downlinks;
             return this;
         }
 
+        /**
+         * @param downlinks Switch MAC addresses connected as downlinks from this topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder downlinks(List<String> downlinks) {
             return downlinks(Output.of(downlinks));
         }
 
+        /**
+         * @param downlinks Switch MAC addresses connected as downlinks from this topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder downlinks(String... downlinks) {
             return downlinks(List.of(downlinks));
         }
 
+        /**
+         * @param esilaglinks Switch MAC addresses connected through ESI-LAG from this topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder esilaglinks(@Nullable Output<List<String>> esilaglinks) {
             $.esilaglinks = esilaglinks;
             return this;
         }
 
+        /**
+         * @param esilaglinks Switch MAC addresses connected through ESI-LAG from this topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder esilaglinks(List<String> esilaglinks) {
             return esilaglinks(Output.of(esilaglinks));
         }
 
+        /**
+         * @param esilaglinks Switch MAC addresses connected through ESI-LAG from this topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder esilaglinks(String... esilaglinks) {
             return esilaglinks(List.of(esilaglinks));
         }
 
+        /**
+         * @param evpnId Topology identifier number for this EVPN switch member
+         * 
+         * @return builder
+         * 
+         */
         public Builder evpnId(@Nullable Output<Integer> evpnId) {
             $.evpnId = evpnId;
             return this;
         }
 
+        /**
+         * @param evpnId Topology identifier number for this EVPN switch member
+         * 
+         * @return builder
+         * 
+         */
         public Builder evpnId(Integer evpnId) {
             return evpnId(Output.of(evpnId));
         }
 
+        /**
+         * @param mac Switch MAC address used to identify the topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder mac(@Nullable Output<String> mac) {
             $.mac = mac;
             return this;
         }
 
+        /**
+         * @param mac Switch MAC address used to identify the topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder mac(String mac) {
             return mac(Output.of(mac));
         }
 
+        /**
+         * @param model Switch model for this topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder model(@Nullable Output<String> model) {
             $.model = model;
             return this;
         }
 
+        /**
+         * @param model Switch model for this topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder model(String model) {
             return model(Output.of(model));
         }
@@ -300,8 +504,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pods By default, core switches are assumed to be connecting all pods.
-         * if you want to limit the pods, you can specify pods.
+         * @param pods List of pod numbers this switch participates in
          * 
          * @return builder
          * 
@@ -312,8 +515,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pods By default, core switches are assumed to be connecting all pods.
-         * if you want to limit the pods, you can specify pods.
+         * @param pods List of pod numbers this switch participates in
          * 
          * @return builder
          * 
@@ -323,8 +525,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pods By default, core switches are assumed to be connecting all pods.
-         * if you want to limit the pods, you can specify pods.
+         * @param pods List of pod numbers this switch participates in
          * 
          * @return builder
          * 
@@ -334,7 +535,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param role use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+         * @param role EVPN topology role for this switch
          * 
          * @return builder
          * 
@@ -345,7 +546,7 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param role use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+         * @param role EVPN topology role for this switch
          * 
          * @return builder
          * 
@@ -354,72 +555,168 @@ public final class EvpnTopologySwitchesArgs extends com.pulumi.resources.Resourc
             return role(Output.of(role));
         }
 
+        /**
+         * @param routerId Routing identifier used by this switch for EVPN routing
+         * 
+         * @return builder
+         * 
+         */
         public Builder routerId(@Nullable Output<String> routerId) {
             $.routerId = routerId;
             return this;
         }
 
+        /**
+         * @param routerId Routing identifier used by this switch for EVPN routing
+         * 
+         * @return builder
+         * 
+         */
         public Builder routerId(String routerId) {
             return routerId(Output.of(routerId));
         }
 
+        /**
+         * @param siteId Associated site for this EVPN topology switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Associated site for this EVPN topology switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
+        /**
+         * @param suggestedDownlinks Builder-suggested downlink switch MAC addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder suggestedDownlinks(@Nullable Output<List<String>> suggestedDownlinks) {
             $.suggestedDownlinks = suggestedDownlinks;
             return this;
         }
 
+        /**
+         * @param suggestedDownlinks Builder-suggested downlink switch MAC addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder suggestedDownlinks(List<String> suggestedDownlinks) {
             return suggestedDownlinks(Output.of(suggestedDownlinks));
         }
 
+        /**
+         * @param suggestedDownlinks Builder-suggested downlink switch MAC addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder suggestedDownlinks(String... suggestedDownlinks) {
             return suggestedDownlinks(List.of(suggestedDownlinks));
         }
 
+        /**
+         * @param suggestedEsilaglinks Builder-suggested ESI-LAG switch MAC addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder suggestedEsilaglinks(@Nullable Output<List<String>> suggestedEsilaglinks) {
             $.suggestedEsilaglinks = suggestedEsilaglinks;
             return this;
         }
 
+        /**
+         * @param suggestedEsilaglinks Builder-suggested ESI-LAG switch MAC addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder suggestedEsilaglinks(List<String> suggestedEsilaglinks) {
             return suggestedEsilaglinks(Output.of(suggestedEsilaglinks));
         }
 
+        /**
+         * @param suggestedEsilaglinks Builder-suggested ESI-LAG switch MAC addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder suggestedEsilaglinks(String... suggestedEsilaglinks) {
             return suggestedEsilaglinks(List.of(suggestedEsilaglinks));
         }
 
+        /**
+         * @param suggestedUplinks Builder-suggested uplink switch MAC addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder suggestedUplinks(@Nullable Output<List<String>> suggestedUplinks) {
             $.suggestedUplinks = suggestedUplinks;
             return this;
         }
 
+        /**
+         * @param suggestedUplinks Builder-suggested uplink switch MAC addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder suggestedUplinks(List<String> suggestedUplinks) {
             return suggestedUplinks(Output.of(suggestedUplinks));
         }
 
+        /**
+         * @param suggestedUplinks Builder-suggested uplink switch MAC addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder suggestedUplinks(String... suggestedUplinks) {
             return suggestedUplinks(List.of(suggestedUplinks));
         }
 
+        /**
+         * @param uplinks Switch MAC addresses connected as uplinks from this topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder uplinks(@Nullable Output<List<String>> uplinks) {
             $.uplinks = uplinks;
             return this;
         }
 
+        /**
+         * @param uplinks Switch MAC addresses connected as uplinks from this topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder uplinks(List<String> uplinks) {
             return uplinks(Output.of(uplinks));
         }
 
+        /**
+         * @param uplinks Switch MAC addresses connected as uplinks from this topology member
+         * 
+         * @return builder
+         * 
+         */
         public Builder uplinks(String... uplinks) {
             return uplinks(List.of(uplinks));
         }

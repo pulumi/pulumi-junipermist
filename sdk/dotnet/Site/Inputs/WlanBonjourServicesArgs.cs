@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _radiusGroups;
 
         /// <summary>
-        /// Optional, if the service is further restricted for certain RADIUS groups
+        /// RADIUS groups allowed to discover this Bonjour service, when restricted
         /// </summary>
         public InputList<string> RadiusGroups
         {
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// how bonjour services should be discovered for the same WLAN. enum: `SameAp`, `SameMap`, `SameSite`
+        /// Discovery scope for this Bonjour service on the WLAN
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

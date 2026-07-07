@@ -13,8 +13,17 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GatewaytemplateRoutingPoliciesTermMatchingVpnPathSla
     {
+        /// <summary>
+        /// Maximum jitter threshold allowed for the VPN path
+        /// </summary>
         public readonly int? MaxJitter;
+        /// <summary>
+        /// Maximum latency threshold allowed for the VPN path
+        /// </summary>
         public readonly int? MaxLatency;
+        /// <summary>
+        /// Maximum packet-loss threshold allowed for the VPN path
+        /// </summary>
         public readonly int? MaxLoss;
 
         [OutputConstructor]

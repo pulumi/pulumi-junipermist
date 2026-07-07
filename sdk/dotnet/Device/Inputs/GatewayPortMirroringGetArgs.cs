@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayPortMirroringGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Mirroring rule that copies ingress traffic from source ports to an output port
+        /// </summary>
         [Input("portMirror")]
         public Input<Inputs.GatewayPortMirroringPortMirrorGetArgs>? PortMirror { get; set; }
 

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileGatewayTunnelConfigsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto Provisioning configuration for the tunne. This takes precedence over the `Primary` and `Secondary` nodes.
+        /// Provider auto-provisioning settings for tunnel endpoints
         /// </summary>
         [Input("autoProvision")]
         public Input<Inputs.DeviceprofileGatewayTunnelConfigsAutoProvisionGetArgs>? AutoProvision { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? IkeLifetime { get; set; }
 
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`. enum: `Aggressive`, `Main`
+        /// Only if `Provider`==`custom-ipsec`. IKE negotiation mode for the tunnel
         /// </summary>
         [Input("ikeMode")]
         public Input<string>? IkeMode { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.DeviceprofileGatewayTunnelConfigsIkeProposalGetArgs>? _ikeProposals;
 
         /// <summary>
-        /// If `Provider`==`custom-ipsec`
+        /// If `Provider`==`custom-ipsec`, IKE proposals used for custom IPsec negotiation
         /// </summary>
         public InputList<Inputs.DeviceprofileGatewayTunnelConfigsIkeProposalGetArgs> IkeProposals
         {
@@ -52,7 +52,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.DeviceprofileGatewayTunnelConfigsIpsecProposalGetArgs>? _ipsecProposals;
 
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`
+        /// Only if `Provider`==`custom-ipsec`. IPsec proposals used for custom IPsec negotiation
         /// </summary>
         public InputList<Inputs.DeviceprofileGatewayTunnelConfigsIpsecProposalGetArgs> IpsecProposals
         {
@@ -70,7 +70,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _localSubnets;
 
         /// <summary>
-        /// List of Local protected subnet for policy-based IPSec negotiation
+        /// Local protected subnets advertised by this tunnel
         /// </summary>
         public InputList<string> LocalSubnets
         {
@@ -79,7 +79,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Required if `Provider`==`zscaler-gre`, `Provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
+        /// Tunnel failover mode used for primary and secondary endpoints
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// If `Provider`==`custom-ipsec` or `Provider`==`prisma-ipsec`, networks reachable via this tunnel
+        /// Destination networks reachable through this tunnel
         /// </summary>
         public InputList<string> Networks
         {
@@ -97,25 +97,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Only if `Provider`==`zscaler-ipsec`, `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
+        /// Main remote tunnel endpoint settings
         /// </summary>
         [Input("primary")]
         public Input<Inputs.DeviceprofileGatewayTunnelConfigsPrimaryGetArgs>? Primary { get; set; }
 
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`
+        /// Tunnel health probe settings
         /// </summary>
         [Input("probe")]
         public Input<Inputs.DeviceprofileGatewayTunnelConfigsProbeGetArgs>? Probe { get; set; }
 
         /// <summary>
-        /// Only if `Provider`==`custom-ipsec`. enum: `Gre`, `Ipsec`
+        /// Only if `Provider`==`custom-ipsec`. Tunnel protocol for custom tunnel negotiation
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// Only if `auto_provision.enabled`==`False`. enum: `custom-ipsec`, `custom-gre`, `jse-ipsec`, `prisma-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        /// Tunnel provider used when auto provisioning is disabled
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
@@ -140,7 +140,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _remoteSubnets;
 
         /// <summary>
-        /// List of Remote protected subnet for policy-based IPSec negotiation
+        /// Remote protected subnets reached through policy-based IPsec
         /// </summary>
         public InputList<string> RemoteSubnets
         {
@@ -149,13 +149,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Only if `Provider`==`zscaler-ipsec`, `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
+        /// Backup remote tunnel endpoint settings
         /// </summary>
         [Input("secondary")]
         public Input<Inputs.DeviceprofileGatewayTunnelConfigsSecondaryGetArgs>? Secondary { get; set; }
 
         /// <summary>
-        /// Only if `Provider`==`custom-gre` or `Provider`==`custom-ipsec`. enum: `1`, `2`
+        /// Only if `Provider`==`custom-gre` or `Provider`==`custom-ipsec`. Tunnel version value for custom tunnel configuration
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

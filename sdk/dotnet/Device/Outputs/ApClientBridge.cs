@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class ApClientBridge
     {
+        /// <summary>
+        /// Credentials and security mode used when the AP connects as a wireless client bridge
+        /// </summary>
         public readonly Outputs.ApClientBridgeAuth? Auth;
         /// <summary>
         /// When acted as client bridge:
@@ -20,6 +23,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
         ///   * will not serve as AP on any radios
         /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Uplink SSID used by the AP when client bridge mode is enabled
+        /// </summary>
         public readonly string? Ssid;
 
         [OutputConstructor]

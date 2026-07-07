@@ -16,30 +16,46 @@ public final class GatewayNetworkVpnAccessDestinationNatArgs extends com.pulumi.
     public static final GatewayNetworkVpnAccessDestinationNatArgs Empty = new GatewayNetworkVpnAccessDestinationNatArgs();
 
     /**
-     * The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * The Destination NAT destination IP address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     @Import(name="internalIp")
     private @Nullable Output<String> internalIp;
 
     /**
-     * @return The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return The Destination NAT destination IP address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<Output<String>> internalIp() {
         return Optional.ofNullable(this.internalIp);
     }
 
+    /**
+     * Label for this VPN destination NAT rule
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Label for this VPN destination NAT rule
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Destination port or variable for this VPN destination NAT rule
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<String> port;
 
+    /**
+     * @return Destination port or variable for this VPN destination NAT rule
+     * 
+     */
     public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
@@ -71,7 +87,7 @@ public final class GatewayNetworkVpnAccessDestinationNatArgs extends com.pulumi.
         }
 
         /**
-         * @param internalIp The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param internalIp The Destination NAT destination IP address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -82,7 +98,7 @@ public final class GatewayNetworkVpnAccessDestinationNatArgs extends com.pulumi.
         }
 
         /**
-         * @param internalIp The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param internalIp The Destination NAT destination IP address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -91,20 +107,44 @@ public final class GatewayNetworkVpnAccessDestinationNatArgs extends com.pulumi.
             return internalIp(Output.of(internalIp));
         }
 
+        /**
+         * @param name Label for this VPN destination NAT rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Label for this VPN destination NAT rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param port Destination port or variable for this VPN destination NAT rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port Destination port or variable for this VPN destination NAT rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(String port) {
             return port(Output.of(port));
         }

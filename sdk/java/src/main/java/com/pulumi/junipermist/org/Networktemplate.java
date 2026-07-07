@@ -143,221 +143,269 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/networktemplate:Networktemplate")
 public class Networktemplate extends com.pulumi.resources.CustomResource {
+    /**
+     * ACL policy defaults provided by this network template
+     * 
+     */
     @Export(name="aclPolicies", refs={List.class,NetworktemplateAclPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NetworktemplateAclPolicy>> aclPolicies;
 
+    /**
+     * @return ACL policy defaults provided by this network template
+     * 
+     */
     public Output<Optional<List<NetworktemplateAclPolicy>>> aclPolicies() {
         return Codegen.optional(this.aclPolicies);
     }
     /**
-     * ACL Tags to identify traffic source or destination. Key name is the tag name
+     * ACL tags available to access policies in this network template
      * 
      */
     @Export(name="aclTags", refs={Map.class,String.class,NetworktemplateAclTags.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateAclTags>> aclTags;
 
     /**
-     * @return ACL Tags to identify traffic source or destination. Key name is the tag name
+     * @return ACL tags available to access policies in this network template
      * 
      */
     public Output<Optional<Map<String,NetworktemplateAclTags>>> aclTags() {
         return Codegen.optional(this.aclTags);
     }
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands provided by this network template
      * 
      */
     @Export(name="additionalConfigCmds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * @return Additional CLI configuration commands provided by this network template
      * 
      */
     public Output<Optional<List<String>>> additionalConfigCmds() {
         return Codegen.optional(this.additionalConfigCmds);
     }
+    /**
+     * BGP routing defaults for this network template. Property key is the BGP session name
+     * 
+     */
     @Export(name="bgpConfig", refs={Map.class,String.class,NetworktemplateBgpConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateBgpConfig>> bgpConfig;
 
+    /**
+     * @return BGP routing defaults for this network template. Property key is the BGP session name
+     * 
+     */
     public Output<Optional<Map<String,NetworktemplateBgpConfig>>> bgpConfig() {
         return Codegen.optional(this.bgpConfig);
     }
+    /**
+     * DHCP snooping defaults provided by this network template
+     * 
+     */
     @Export(name="dhcpSnooping", refs={NetworktemplateDhcpSnooping.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateDhcpSnooping> dhcpSnooping;
 
+    /**
+     * @return DHCP snooping defaults provided by this network template
+     * 
+     */
     public Output<Optional<NetworktemplateDhcpSnooping>> dhcpSnooping() {
         return Codegen.optional(this.dhcpSnooping);
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers provided by this network template
      * 
      */
     @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS servers provided by this network template
      * 
      */
     public Output<List<String>> dnsServers() {
         return this.dnsServers;
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes provided by this network template
      * 
      */
     @Export(name="dnsSuffixes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS search suffixes provided by this network template
      * 
      */
     public Output<List<String>> dnsSuffixes() {
         return this.dnsSuffixes;
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * Additional IPv4 route defaults in this network template
      * 
      */
     @Export(name="extraRoutes", refs={Map.class,String.class,NetworktemplateExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateExtraRoutes>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Additional IPv4 route defaults in this network template
      * 
      */
     public Output<Optional<Map<String,NetworktemplateExtraRoutes>>> extraRoutes() {
         return Codegen.optional(this.extraRoutes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * Additional IPv6 route defaults in this network template
      * 
      */
     @Export(name="extraRoutes6", refs={Map.class,String.class,NetworktemplateExtraRoutes6.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateExtraRoutes6>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Additional IPv6 route defaults in this network template
      * 
      */
     public Output<Optional<Map<String,NetworktemplateExtraRoutes6>>> extraRoutes6() {
         return Codegen.optional(this.extraRoutes6);
     }
     /**
-     * Enable mistNac to use RadSec
+     * Mist NAC defaults applied by this network template
      * 
      */
     @Export(name="mistNac", refs={NetworktemplateMistNac.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateMistNac> mistNac;
 
     /**
-     * @return Enable mistNac to use RadSec
+     * @return Mist NAC defaults applied by this network template
      * 
      */
     public Output<Optional<NetworktemplateMistNac>> mistNac() {
         return Codegen.optional(this.mistNac);
     }
+    /**
+     * Display name of the network template
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the network template
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Property key is network name
+     * Layer 3 networks configured by this network template
      * 
      */
     @Export(name="networks", refs={Map.class,String.class,NetworktemplateNetworks.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateNetworks>> networks;
 
     /**
-     * @return Property key is network name
+     * @return Layer 3 networks configured by this network template
      * 
      */
     public Output<Optional<Map<String,NetworktemplateNetworks>>> networks() {
         return Codegen.optional(this.networks);
     }
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers provided by this network template
      * 
      */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ntpServers;
 
     /**
-     * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * @return NTP servers provided by this network template
      * 
      */
     public Output<List<String>> ntpServers() {
         return this.ntpServers;
     }
+    /**
+     * Organization that owns this network template
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this network template
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * OSPF area defaults provided by this network template
      * 
      */
     @Export(name="ospfAreas", refs={Map.class,String.class,NetworktemplateOspfAreas.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateOspfAreas>> ospfAreas;
 
     /**
-     * @return Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * @return OSPF area defaults provided by this network template
      * 
      */
     public Output<Optional<Map<String,NetworktemplateOspfAreas>>> ospfAreas() {
         return Codegen.optional(this.ospfAreas);
     }
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Port mirroring defaults provided by this network template
      * 
      */
     @Export(name="portMirroring", refs={Map.class,String.class,NetworktemplatePortMirroring.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplatePortMirroring>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Port mirroring defaults provided by this network template
      * 
      */
     public Output<Optional<Map<String,NetworktemplatePortMirroring>>> portMirroring() {
         return Codegen.optional(this.portMirroring);
     }
     /**
-     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * Reusable switch port usage profiles provided by this network template
      * 
      */
     @Export(name="portUsages", refs={Map.class,String.class,NetworktemplatePortUsages.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplatePortUsages>> portUsages;
 
     /**
-     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * @return Reusable switch port usage profiles provided by this network template
      * 
      */
     public Output<Optional<Map<String,NetworktemplatePortUsages>>> portUsages() {
         return Codegen.optional(this.portUsages);
     }
     /**
-     * Junos Radius config
+     * RADIUS authentication and accounting defaults in this network template
      * 
      */
     @Export(name="radiusConfig", refs={NetworktemplateRadiusConfig.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateRadiusConfig> radiusConfig;
 
     /**
-     * @return Junos Radius config
+     * @return RADIUS authentication and accounting defaults in this network template
      * 
      */
     public Output<Optional<NetworktemplateRadiusConfig>> radiusConfig() {
         return Codegen.optional(this.radiusConfig);
     }
+    /**
+     * Remote syslog defaults provided by this network template
+     * 
+     */
     @Export(name="remoteSyslog", refs={NetworktemplateRemoteSyslog.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateRemoteSyslog> remoteSyslog;
 
+    /**
+     * @return Remote syslog defaults provided by this network template
+     * 
+     */
     public Output<Optional<NetworktemplateRemoteSyslog>> remoteSyslog() {
         return Codegen.optional(this.remoteSyslog);
     }
@@ -376,68 +424,84 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.removeExistingConfigs);
     }
     /**
-     * Property key is the routing policy name
+     * Routing policy defaults applied by this network template
      * 
      */
     @Export(name="routingPolicies", refs={Map.class,String.class,NetworktemplateRoutingPolicies.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateRoutingPolicies>> routingPolicies;
 
     /**
-     * @return Property key is the routing policy name
+     * @return Routing policy defaults applied by this network template
      * 
      */
     public Output<Optional<Map<String,NetworktemplateRoutingPolicies>>> routingPolicies() {
         return Codegen.optional(this.routingPolicies);
     }
+    /**
+     * SNMP defaults provided by this network template
+     * 
+     */
     @Export(name="snmpConfig", refs={NetworktemplateSnmpConfig.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSnmpConfig> snmpConfig;
 
+    /**
+     * @return SNMP defaults provided by this network template
+     * 
+     */
     public Output<Optional<NetworktemplateSnmpConfig>> snmpConfig() {
         return Codegen.optional(this.snmpConfig);
     }
     /**
-     * Defines custom switch configuration based on different criteria
+     * Matching rules that select switches for this network template
      * 
      */
     @Export(name="switchMatching", refs={NetworktemplateSwitchMatching.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMatching> switchMatching;
 
     /**
-     * @return Defines custom switch configuration based on different criteria
+     * @return Matching rules that select switches for this network template
      * 
      */
     public Output<Optional<NetworktemplateSwitchMatching>> switchMatching() {
         return Codegen.optional(this.switchMatching);
     }
     /**
-     * Switch Management settings
+     * Management-plane defaults provided by this network template
      * 
      */
     @Export(name="switchMgmt", refs={NetworktemplateSwitchMgmt.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMgmt> switchMgmt;
 
     /**
-     * @return Switch Management settings
+     * @return Management-plane defaults provided by this network template
      * 
      */
     public Output<Optional<NetworktemplateSwitchMgmt>> switchMgmt() {
         return Codegen.optional(this.switchMgmt);
     }
+    /**
+     * VRF defaults applied by this network template
+     * 
+     */
     @Export(name="vrfConfig", refs={NetworktemplateVrfConfig.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateVrfConfig> vrfConfig;
 
+    /**
+     * @return VRF defaults applied by this network template
+     * 
+     */
     public Output<Optional<NetworktemplateVrfConfig>> vrfConfig() {
         return Codegen.optional(this.vrfConfig);
     }
     /**
-     * Property key is the network name
+     * VRF instances configured by this network template
      * 
      */
     @Export(name="vrfInstances", refs={Map.class,String.class,NetworktemplateVrfInstances.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplateVrfInstances>> vrfInstances;
 
     /**
-     * @return Property key is the network name
+     * @return VRF instances configured by this network template
      * 
      */
     public Output<Optional<Map<String,NetworktemplateVrfInstances>>> vrfInstances() {

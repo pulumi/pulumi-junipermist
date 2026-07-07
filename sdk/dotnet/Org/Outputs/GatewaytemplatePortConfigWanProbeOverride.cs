@@ -13,10 +13,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GatewaytemplatePortConfigWanProbeOverride
     {
+        /// <summary>
+        /// List of IPv6 probe host addresses used by this WAN override
+        /// </summary>
         public readonly ImmutableArray<string> Ip6s;
+        /// <summary>
+        /// List of IPv4 probe host addresses used by this WAN override
+        /// </summary>
         public readonly ImmutableArray<string> Ips;
         /// <summary>
-        /// enum: `Broadband`, `Lte`
+        /// WAN probe profile used for health checks on this port
         /// </summary>
         public readonly string? ProbeProfile;
 

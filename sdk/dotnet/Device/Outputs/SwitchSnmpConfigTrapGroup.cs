@@ -13,14 +13,20 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchSnmpConfigTrapGroup
     {
+        /// <summary>
+        /// Trap categories included in this SNMP trap group
+        /// </summary>
         public readonly ImmutableArray<string> Categories;
         /// <summary>
-        /// Categories list can refer to https://www.juniper.net/documentation/software/topics/task/configuration/snmp_trap-groups-configuring-junos-nm.html
+        /// Trap group name for this SNMP trap group
         /// </summary>
         public readonly string? GroupName;
+        /// <summary>
+        /// Trap target addresses for this SNMP trap group
+        /// </summary>
         public readonly ImmutableArray<string> Targets;
         /// <summary>
-        /// enum: `All`, `V1`, `V2`
+        /// SNMP trap protocol version used by this group
         /// </summary>
         public readonly string? Version;
 

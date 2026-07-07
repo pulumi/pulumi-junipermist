@@ -37,11 +37,15 @@ class RftemplateArgs:
         """
         The set of arguments for constructing a Rftemplate resource.
 
-        :param pulumi.Input['RftemplateBand24Args'] band24: Radio Band AP settings
-        :param pulumi.Input[_builtins.str] band24_usage: enum: `24`, `5`, `6`, `auto`
-        :param pulumi.Input['RftemplateBand5Args'] band5: Radio Band AP settings
-        :param pulumi.Input['RftemplateBand5On24RadioArgs'] band5_on24_radio: Radio Band AP settings
-        :param pulumi.Input['RftemplateBand6Args'] band6: Radio Band AP settings
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this RF template
+        :param pulumi.Input[_builtins.int] ant_gain24: External antenna gain for the 2.4 GHz radio
+        :param pulumi.Input[_builtins.int] ant_gain5: External antenna gain for the 5 GHz radio
+        :param pulumi.Input[_builtins.int] ant_gain6: External antenna gain for the 6 GHz radio
+        :param pulumi.Input['RftemplateBand24Args'] band24: 2.4 GHz radio settings in this RF template
+        :param pulumi.Input[_builtins.str] band24_usage: Radio usage mode for the 2.4 GHz-capable radio in this RF template
+        :param pulumi.Input['RftemplateBand5Args'] band5: 5 GHz radio settings in this RF template
+        :param pulumi.Input['RftemplateBand5On24RadioArgs'] band5_on24_radio: 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
+        :param pulumi.Input['RftemplateBand6Args'] band6: 6 GHz radio settings in this RF template
         :param pulumi.Input[_builtins.str] country_code: Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         :param pulumi.Input[Mapping[str, pulumi.Input['RftemplateModelSpecificArgs']]] model_specific: overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
         :param pulumi.Input[_builtins.str] name: The name of the RF template
@@ -76,6 +80,9 @@ class RftemplateArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization that owns this RF template
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -85,6 +92,9 @@ class RftemplateArgs:
     @_builtins.property
     @pulumi.getter(name="antGain24")
     def ant_gain24(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        External antenna gain for the 2.4 GHz radio
+        """
         return pulumi.get(self, "ant_gain24")
 
     @ant_gain24.setter
@@ -94,6 +104,9 @@ class RftemplateArgs:
     @_builtins.property
     @pulumi.getter(name="antGain5")
     def ant_gain5(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        External antenna gain for the 5 GHz radio
+        """
         return pulumi.get(self, "ant_gain5")
 
     @ant_gain5.setter
@@ -103,6 +116,9 @@ class RftemplateArgs:
     @_builtins.property
     @pulumi.getter(name="antGain6")
     def ant_gain6(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        External antenna gain for the 6 GHz radio
+        """
         return pulumi.get(self, "ant_gain6")
 
     @ant_gain6.setter
@@ -113,7 +129,7 @@ class RftemplateArgs:
     @pulumi.getter
     def band24(self) -> pulumi.Input[Optional['RftemplateBand24Args']]:
         """
-        Radio Band AP settings
+        2.4 GHz radio settings in this RF template
         """
         return pulumi.get(self, "band24")
 
@@ -125,7 +141,7 @@ class RftemplateArgs:
     @pulumi.getter(name="band24Usage")
     def band24_usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `24`, `5`, `6`, `auto`
+        Radio usage mode for the 2.4 GHz-capable radio in this RF template
         """
         return pulumi.get(self, "band24_usage")
 
@@ -137,7 +153,7 @@ class RftemplateArgs:
     @pulumi.getter
     def band5(self) -> pulumi.Input[Optional['RftemplateBand5Args']]:
         """
-        Radio Band AP settings
+        5 GHz radio settings in this RF template
         """
         return pulumi.get(self, "band5")
 
@@ -149,7 +165,7 @@ class RftemplateArgs:
     @pulumi.getter(name="band5On24Radio")
     def band5_on24_radio(self) -> pulumi.Input[Optional['RftemplateBand5On24RadioArgs']]:
         """
-        Radio Band AP settings
+        5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
         """
         return pulumi.get(self, "band5_on24_radio")
 
@@ -161,7 +177,7 @@ class RftemplateArgs:
     @pulumi.getter
     def band6(self) -> pulumi.Input[Optional['RftemplateBand6Args']]:
         """
-        Radio Band AP settings
+        6 GHz radio settings in this RF template
         """
         return pulumi.get(self, "band6")
 
@@ -237,14 +253,18 @@ class _RftemplateState:
         """
         Input properties used for looking up and filtering Rftemplate resources.
 
-        :param pulumi.Input['RftemplateBand24Args'] band24: Radio Band AP settings
-        :param pulumi.Input[_builtins.str] band24_usage: enum: `24`, `5`, `6`, `auto`
-        :param pulumi.Input['RftemplateBand5Args'] band5: Radio Band AP settings
-        :param pulumi.Input['RftemplateBand5On24RadioArgs'] band5_on24_radio: Radio Band AP settings
-        :param pulumi.Input['RftemplateBand6Args'] band6: Radio Band AP settings
+        :param pulumi.Input[_builtins.int] ant_gain24: External antenna gain for the 2.4 GHz radio
+        :param pulumi.Input[_builtins.int] ant_gain5: External antenna gain for the 5 GHz radio
+        :param pulumi.Input[_builtins.int] ant_gain6: External antenna gain for the 6 GHz radio
+        :param pulumi.Input['RftemplateBand24Args'] band24: 2.4 GHz radio settings in this RF template
+        :param pulumi.Input[_builtins.str] band24_usage: Radio usage mode for the 2.4 GHz-capable radio in this RF template
+        :param pulumi.Input['RftemplateBand5Args'] band5: 5 GHz radio settings in this RF template
+        :param pulumi.Input['RftemplateBand5On24RadioArgs'] band5_on24_radio: 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
+        :param pulumi.Input['RftemplateBand6Args'] band6: 6 GHz radio settings in this RF template
         :param pulumi.Input[_builtins.str] country_code: Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         :param pulumi.Input[Mapping[str, pulumi.Input['RftemplateModelSpecificArgs']]] model_specific: overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
         :param pulumi.Input[_builtins.str] name: The name of the RF template
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this RF template
         :param pulumi.Input[_builtins.bool] scanning_enabled: Whether scanning radio is enabled
         """
         if ant_gain24 is not None:
@@ -277,6 +297,9 @@ class _RftemplateState:
     @_builtins.property
     @pulumi.getter(name="antGain24")
     def ant_gain24(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        External antenna gain for the 2.4 GHz radio
+        """
         return pulumi.get(self, "ant_gain24")
 
     @ant_gain24.setter
@@ -286,6 +309,9 @@ class _RftemplateState:
     @_builtins.property
     @pulumi.getter(name="antGain5")
     def ant_gain5(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        External antenna gain for the 5 GHz radio
+        """
         return pulumi.get(self, "ant_gain5")
 
     @ant_gain5.setter
@@ -295,6 +321,9 @@ class _RftemplateState:
     @_builtins.property
     @pulumi.getter(name="antGain6")
     def ant_gain6(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        External antenna gain for the 6 GHz radio
+        """
         return pulumi.get(self, "ant_gain6")
 
     @ant_gain6.setter
@@ -305,7 +334,7 @@ class _RftemplateState:
     @pulumi.getter
     def band24(self) -> pulumi.Input[Optional['RftemplateBand24Args']]:
         """
-        Radio Band AP settings
+        2.4 GHz radio settings in this RF template
         """
         return pulumi.get(self, "band24")
 
@@ -317,7 +346,7 @@ class _RftemplateState:
     @pulumi.getter(name="band24Usage")
     def band24_usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `24`, `5`, `6`, `auto`
+        Radio usage mode for the 2.4 GHz-capable radio in this RF template
         """
         return pulumi.get(self, "band24_usage")
 
@@ -329,7 +358,7 @@ class _RftemplateState:
     @pulumi.getter
     def band5(self) -> pulumi.Input[Optional['RftemplateBand5Args']]:
         """
-        Radio Band AP settings
+        5 GHz radio settings in this RF template
         """
         return pulumi.get(self, "band5")
 
@@ -341,7 +370,7 @@ class _RftemplateState:
     @pulumi.getter(name="band5On24Radio")
     def band5_on24_radio(self) -> pulumi.Input[Optional['RftemplateBand5On24RadioArgs']]:
         """
-        Radio Band AP settings
+        5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
         """
         return pulumi.get(self, "band5_on24_radio")
 
@@ -353,7 +382,7 @@ class _RftemplateState:
     @pulumi.getter
     def band6(self) -> pulumi.Input[Optional['RftemplateBand6Args']]:
         """
-        Radio Band AP settings
+        6 GHz radio settings in this RF template
         """
         return pulumi.get(self, "band6")
 
@@ -400,6 +429,9 @@ class _RftemplateState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns this RF template
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -493,14 +525,18 @@ class Rftemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RftemplateBand24Args', 'RftemplateBand24ArgsDict']] band24: Radio Band AP settings
-        :param pulumi.Input[_builtins.str] band24_usage: enum: `24`, `5`, `6`, `auto`
-        :param pulumi.Input[Union['RftemplateBand5Args', 'RftemplateBand5ArgsDict']] band5: Radio Band AP settings
-        :param pulumi.Input[Union['RftemplateBand5On24RadioArgs', 'RftemplateBand5On24RadioArgsDict']] band5_on24_radio: Radio Band AP settings
-        :param pulumi.Input[Union['RftemplateBand6Args', 'RftemplateBand6ArgsDict']] band6: Radio Band AP settings
+        :param pulumi.Input[_builtins.int] ant_gain24: External antenna gain for the 2.4 GHz radio
+        :param pulumi.Input[_builtins.int] ant_gain5: External antenna gain for the 5 GHz radio
+        :param pulumi.Input[_builtins.int] ant_gain6: External antenna gain for the 6 GHz radio
+        :param pulumi.Input[Union['RftemplateBand24Args', 'RftemplateBand24ArgsDict']] band24: 2.4 GHz radio settings in this RF template
+        :param pulumi.Input[_builtins.str] band24_usage: Radio usage mode for the 2.4 GHz-capable radio in this RF template
+        :param pulumi.Input[Union['RftemplateBand5Args', 'RftemplateBand5ArgsDict']] band5: 5 GHz radio settings in this RF template
+        :param pulumi.Input[Union['RftemplateBand5On24RadioArgs', 'RftemplateBand5On24RadioArgsDict']] band5_on24_radio: 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
+        :param pulumi.Input[Union['RftemplateBand6Args', 'RftemplateBand6ArgsDict']] band6: 6 GHz radio settings in this RF template
         :param pulumi.Input[_builtins.str] country_code: Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['RftemplateModelSpecificArgs', 'RftemplateModelSpecificArgsDict']]]] model_specific: overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
         :param pulumi.Input[_builtins.str] name: The name of the RF template
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this RF template
         :param pulumi.Input[_builtins.bool] scanning_enabled: Whether scanning radio is enabled
         """
         ...
@@ -643,14 +679,18 @@ class Rftemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RftemplateBand24Args', 'RftemplateBand24ArgsDict']] band24: Radio Band AP settings
-        :param pulumi.Input[_builtins.str] band24_usage: enum: `24`, `5`, `6`, `auto`
-        :param pulumi.Input[Union['RftemplateBand5Args', 'RftemplateBand5ArgsDict']] band5: Radio Band AP settings
-        :param pulumi.Input[Union['RftemplateBand5On24RadioArgs', 'RftemplateBand5On24RadioArgsDict']] band5_on24_radio: Radio Band AP settings
-        :param pulumi.Input[Union['RftemplateBand6Args', 'RftemplateBand6ArgsDict']] band6: Radio Band AP settings
+        :param pulumi.Input[_builtins.int] ant_gain24: External antenna gain for the 2.4 GHz radio
+        :param pulumi.Input[_builtins.int] ant_gain5: External antenna gain for the 5 GHz radio
+        :param pulumi.Input[_builtins.int] ant_gain6: External antenna gain for the 6 GHz radio
+        :param pulumi.Input[Union['RftemplateBand24Args', 'RftemplateBand24ArgsDict']] band24: 2.4 GHz radio settings in this RF template
+        :param pulumi.Input[_builtins.str] band24_usage: Radio usage mode for the 2.4 GHz-capable radio in this RF template
+        :param pulumi.Input[Union['RftemplateBand5Args', 'RftemplateBand5ArgsDict']] band5: 5 GHz radio settings in this RF template
+        :param pulumi.Input[Union['RftemplateBand5On24RadioArgs', 'RftemplateBand5On24RadioArgsDict']] band5_on24_radio: 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
+        :param pulumi.Input[Union['RftemplateBand6Args', 'RftemplateBand6ArgsDict']] band6: 6 GHz radio settings in this RF template
         :param pulumi.Input[_builtins.str] country_code: Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['RftemplateModelSpecificArgs', 'RftemplateModelSpecificArgsDict']]]] model_specific: overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
         :param pulumi.Input[_builtins.str] name: The name of the RF template
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this RF template
         :param pulumi.Input[_builtins.bool] scanning_enabled: Whether scanning radio is enabled
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -675,23 +715,32 @@ class Rftemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="antGain24")
     def ant_gain24(self) -> pulumi.Output[_builtins.int]:
+        """
+        External antenna gain for the 2.4 GHz radio
+        """
         return pulumi.get(self, "ant_gain24")
 
     @_builtins.property
     @pulumi.getter(name="antGain5")
     def ant_gain5(self) -> pulumi.Output[_builtins.int]:
+        """
+        External antenna gain for the 5 GHz radio
+        """
         return pulumi.get(self, "ant_gain5")
 
     @_builtins.property
     @pulumi.getter(name="antGain6")
     def ant_gain6(self) -> pulumi.Output[_builtins.int]:
+        """
+        External antenna gain for the 6 GHz radio
+        """
         return pulumi.get(self, "ant_gain6")
 
     @_builtins.property
     @pulumi.getter
     def band24(self) -> pulumi.Output[Optional['outputs.RftemplateBand24']]:
         """
-        Radio Band AP settings
+        2.4 GHz radio settings in this RF template
         """
         return pulumi.get(self, "band24")
 
@@ -699,7 +748,7 @@ class Rftemplate(pulumi.CustomResource):
     @pulumi.getter(name="band24Usage")
     def band24_usage(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        enum: `24`, `5`, `6`, `auto`
+        Radio usage mode for the 2.4 GHz-capable radio in this RF template
         """
         return pulumi.get(self, "band24_usage")
 
@@ -707,7 +756,7 @@ class Rftemplate(pulumi.CustomResource):
     @pulumi.getter
     def band5(self) -> pulumi.Output[Optional['outputs.RftemplateBand5']]:
         """
-        Radio Band AP settings
+        5 GHz radio settings in this RF template
         """
         return pulumi.get(self, "band5")
 
@@ -715,7 +764,7 @@ class Rftemplate(pulumi.CustomResource):
     @pulumi.getter(name="band5On24Radio")
     def band5_on24_radio(self) -> pulumi.Output[Optional['outputs.RftemplateBand5On24Radio']]:
         """
-        Radio Band AP settings
+        5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
         """
         return pulumi.get(self, "band5_on24_radio")
 
@@ -723,7 +772,7 @@ class Rftemplate(pulumi.CustomResource):
     @pulumi.getter
     def band6(self) -> pulumi.Output[Optional['outputs.RftemplateBand6']]:
         """
-        Radio Band AP settings
+        6 GHz radio settings in this RF template
         """
         return pulumi.get(self, "band6")
 
@@ -754,6 +803,9 @@ class Rftemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns this RF template
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property

@@ -14,27 +14,39 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class ApPortConfigRadiusConfig
     {
         /// <summary>
-        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
         /// </summary>
         public readonly int? AcctInterimInterval;
+        /// <summary>
+        /// RADIUS accounting servers used by this Junos configuration
+        /// </summary>
         public readonly ImmutableArray<Outputs.ApPortConfigRadiusConfigAcctServer> AcctServers;
+        /// <summary>
+        /// RADIUS authentication servers used by this Junos configuration
+        /// </summary>
         public readonly ImmutableArray<Outputs.ApPortConfigRadiusConfigAuthServer> AuthServers;
         /// <summary>
-        /// radius auth session retries
+        /// Number of RADIUS authentication request retries before failover
         /// </summary>
         public readonly int? AuthServersRetries;
         /// <summary>
-        /// radius auth session timeout
+        /// RADIUS authentication server timeout, in seconds
         /// </summary>
         public readonly int? AuthServersTimeout;
+        /// <summary>
+        /// Whether RADIUS Change of Authorization (CoA) is enabled
+        /// </summary>
         public readonly bool? CoaEnabled;
+        /// <summary>
+        /// UDP port used for RADIUS Change of Authorization (CoA)
+        /// </summary>
         public readonly int? CoaPort;
         /// <summary>
-        /// use `Network`or `SourceIp`, which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        /// Use `Network` or `SourceIp`. Network where the RADIUS server resides; if the network has a static IP, Mist uses it as the source IP
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// use `Network`or `SourceIp`
+        /// Use `Network` or `SourceIp`. Explicit source IP address for RADIUS traffic
         /// </summary>
         public readonly string? SourceIp;
 

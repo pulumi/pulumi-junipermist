@@ -15,9 +15,17 @@ public final class GatewaytemplatePortConfigWanExtraRoutesArgs extends com.pulum
 
     public static final GatewaytemplatePortConfigWanExtraRoutesArgs Empty = new GatewaytemplatePortConfigWanExtraRoutesArgs();
 
+    /**
+     * IPv4 next-hop address for this WAN extra route
+     * 
+     */
     @Import(name="via")
     private @Nullable Output<String> via;
 
+    /**
+     * @return IPv4 next-hop address for this WAN extra route
+     * 
+     */
     public Optional<Output<String>> via() {
         return Optional.ofNullable(this.via);
     }
@@ -46,11 +54,23 @@ public final class GatewaytemplatePortConfigWanExtraRoutesArgs extends com.pulum
             $ = new GatewaytemplatePortConfigWanExtraRoutesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param via IPv4 next-hop address for this WAN extra route
+         * 
+         * @return builder
+         * 
+         */
         public Builder via(@Nullable Output<String> via) {
             $.via = via;
             return this;
         }
 
+        /**
+         * @param via IPv4 next-hop address for this WAN extra route
+         * 
+         * @return builder
+         * 
+         */
         public Builder via(String via) {
             return via(Output.of(via));
         }

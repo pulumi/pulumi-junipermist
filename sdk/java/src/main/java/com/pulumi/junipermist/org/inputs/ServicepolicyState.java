@@ -24,14 +24,14 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
     public static final ServicepolicyState Empty = new ServicepolicyState();
 
     /**
-     * SRX only
+     * Advanced anti-malware settings applied by this service policy
      * 
      */
     @Import(name="aamw")
     private @Nullable Output<ServicepolicyAamwArgs> aamw;
 
     /**
-     * @return SRX only
+     * @return Advanced anti-malware settings applied by this service policy
      * 
      */
     public Optional<Output<ServicepolicyAamwArgs>> aamw() {
@@ -39,14 +39,14 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * enum: `allow`, `deny`
+     * Allow or deny action for traffic matched by this service policy
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return enum: `allow`, `deny`
+     * @return Allow or deny action for traffic matched by this service policy
      * 
      */
     public Optional<Output<String>> action() {
@@ -54,14 +54,14 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * For SRX-only
+     * Malware and virus inspection settings applied by this service policy
      * 
      */
     @Import(name="antivirus")
     private @Nullable Output<ServicepolicyAntivirusArgs> antivirus;
 
     /**
-     * @return For SRX-only
+     * @return Malware and virus inspection settings applied by this service policy
      * 
      */
     public Optional<Output<ServicepolicyAntivirusArgs>> antivirus() {
@@ -69,59 +69,91 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * SRX only
+     * Application QoE settings applied by this service policy
      * 
      */
     @Import(name="appqoe")
     private @Nullable Output<ServicepolicyAppqoeArgs> appqoe;
 
     /**
-     * @return SRX only
+     * @return Application QoE settings applied by this service policy
      * 
      */
     public Optional<Output<ServicepolicyAppqoeArgs>> appqoe() {
         return Optional.ofNullable(this.appqoe);
     }
 
+    /**
+     * Enhanced web filtering rules applied by this service policy
+     * 
+     */
     @Import(name="ewfs")
     private @Nullable Output<List<ServicepolicyEwfArgs>> ewfs;
 
+    /**
+     * @return Enhanced web filtering rules applied by this service policy
+     * 
+     */
     public Optional<Output<List<ServicepolicyEwfArgs>>> ewfs() {
         return Optional.ofNullable(this.ewfs);
     }
 
+    /**
+     * Intrusion detection and prevention settings applied by this service policy
+     * 
+     */
     @Import(name="idp")
     private @Nullable Output<ServicepolicyIdpArgs> idp;
 
+    /**
+     * @return Intrusion detection and prevention settings applied by this service policy
+     * 
+     */
     public Optional<Output<ServicepolicyIdpArgs>> idp() {
         return Optional.ofNullable(this.idp);
     }
 
     /**
-     * access within the same VRF
+     * Whether the policy permits access within the same VRF
      * 
      */
     @Import(name="localRouting")
     private @Nullable Output<Boolean> localRouting;
 
     /**
-     * @return access within the same VRF
+     * @return Whether the policy permits access within the same VRF
      * 
      */
     public Optional<Output<Boolean>> localRouting() {
         return Optional.ofNullable(this.localRouting);
     }
 
+    /**
+     * Display name of the service policy
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the service policy
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Organization that owns this service policy
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization that owns this service policy
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
@@ -141,31 +173,47 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.pathPreference);
     }
 
+    /**
+     * Application services or groups matched by this policy
+     * 
+     */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
+    /**
+     * @return Application services or groups matched by this policy
+     * 
+     */
     public Optional<Output<List<String>>> services() {
         return Optional.ofNullable(this.services);
     }
 
     /**
-     * For SRX-only
+     * SSL proxy inspection settings applied by this service policy
      * 
      */
     @Import(name="sslProxy")
     private @Nullable Output<ServicepolicySslProxyArgs> sslProxy;
 
     /**
-     * @return For SRX-only
+     * @return SSL proxy inspection settings applied by this service policy
      * 
      */
     public Optional<Output<ServicepolicySslProxyArgs>> sslProxy() {
         return Optional.ofNullable(this.sslProxy);
     }
 
+    /**
+     * Tenant names matched by this service policy
+     * 
+     */
     @Import(name="tenants")
     private @Nullable Output<List<String>> tenants;
 
+    /**
+     * @return Tenant names matched by this service policy
+     * 
+     */
     public Optional<Output<List<String>>> tenants() {
         return Optional.ofNullable(this.tenants);
     }
@@ -207,7 +255,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param aamw SRX only
+         * @param aamw Advanced anti-malware settings applied by this service policy
          * 
          * @return builder
          * 
@@ -218,7 +266,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param aamw SRX only
+         * @param aamw Advanced anti-malware settings applied by this service policy
          * 
          * @return builder
          * 
@@ -228,7 +276,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param action enum: `allow`, `deny`
+         * @param action Allow or deny action for traffic matched by this service policy
          * 
          * @return builder
          * 
@@ -239,7 +287,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param action enum: `allow`, `deny`
+         * @param action Allow or deny action for traffic matched by this service policy
          * 
          * @return builder
          * 
@@ -249,7 +297,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param antivirus For SRX-only
+         * @param antivirus Malware and virus inspection settings applied by this service policy
          * 
          * @return builder
          * 
@@ -260,7 +308,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param antivirus For SRX-only
+         * @param antivirus Malware and virus inspection settings applied by this service policy
          * 
          * @return builder
          * 
@@ -270,7 +318,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param appqoe SRX only
+         * @param appqoe Application QoE settings applied by this service policy
          * 
          * @return builder
          * 
@@ -281,7 +329,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param appqoe SRX only
+         * @param appqoe Application QoE settings applied by this service policy
          * 
          * @return builder
          * 
@@ -290,30 +338,60 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
             return appqoe(Output.of(appqoe));
         }
 
+        /**
+         * @param ewfs Enhanced web filtering rules applied by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder ewfs(@Nullable Output<List<ServicepolicyEwfArgs>> ewfs) {
             $.ewfs = ewfs;
             return this;
         }
 
+        /**
+         * @param ewfs Enhanced web filtering rules applied by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder ewfs(List<ServicepolicyEwfArgs> ewfs) {
             return ewfs(Output.of(ewfs));
         }
 
+        /**
+         * @param ewfs Enhanced web filtering rules applied by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder ewfs(ServicepolicyEwfArgs... ewfs) {
             return ewfs(List.of(ewfs));
         }
 
+        /**
+         * @param idp Intrusion detection and prevention settings applied by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder idp(@Nullable Output<ServicepolicyIdpArgs> idp) {
             $.idp = idp;
             return this;
         }
 
+        /**
+         * @param idp Intrusion detection and prevention settings applied by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder idp(ServicepolicyIdpArgs idp) {
             return idp(Output.of(idp));
         }
 
         /**
-         * @param localRouting access within the same VRF
+         * @param localRouting Whether the policy permits access within the same VRF
          * 
          * @return builder
          * 
@@ -324,7 +402,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param localRouting access within the same VRF
+         * @param localRouting Whether the policy permits access within the same VRF
          * 
          * @return builder
          * 
@@ -333,20 +411,44 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
             return localRouting(Output.of(localRouting));
         }
 
+        /**
+         * @param name Display name of the service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Organization that owns this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
@@ -372,21 +474,39 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
             return pathPreference(Output.of(pathPreference));
         }
 
+        /**
+         * @param services Application services or groups matched by this policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(@Nullable Output<List<String>> services) {
             $.services = services;
             return this;
         }
 
+        /**
+         * @param services Application services or groups matched by this policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(List<String> services) {
             return services(Output.of(services));
         }
 
+        /**
+         * @param services Application services or groups matched by this policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(String... services) {
             return services(List.of(services));
         }
 
         /**
-         * @param sslProxy For SRX-only
+         * @param sslProxy SSL proxy inspection settings applied by this service policy
          * 
          * @return builder
          * 
@@ -397,7 +517,7 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param sslProxy For SRX-only
+         * @param sslProxy SSL proxy inspection settings applied by this service policy
          * 
          * @return builder
          * 
@@ -406,15 +526,33 @@ public final class ServicepolicyState extends com.pulumi.resources.ResourceArgs 
             return sslProxy(Output.of(sslProxy));
         }
 
+        /**
+         * @param tenants Tenant names matched by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenants(@Nullable Output<List<String>> tenants) {
             $.tenants = tenants;
             return this;
         }
 
+        /**
+         * @param tenants Tenant names matched by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenants(List<String> tenants) {
             return tenants(Output.of(tenants));
         }
 
+        /**
+         * @param tenants Tenant names matched by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenants(String... tenants) {
             return tenants(List.of(tenants));
         }

@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class WlanSchedule
     {
+        /// <summary>
+        /// Whether the WLAN operating schedule is enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+        /// Time ranges when the WLAN is scheduled to operate
         /// </summary>
         public readonly Outputs.WlanScheduleHours? Hours;
 

@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxclusterRadsecTlsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name or identifier of the TLS keypair used by RadSec
+        /// </summary>
         [Input("keypair")]
         public Input<string>? Keypair { get; set; }
 

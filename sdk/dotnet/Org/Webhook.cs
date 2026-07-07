@@ -77,53 +77,56 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, string>?> Headers { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the webhook
+        /// Display name of the webhook
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `Oauth2GrantType`==`ClientCredentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`; OAuth2 client identifier used to request an access token
         /// </summary>
         [Output("oauth2ClientId")]
         public Output<string?> Oauth2ClientId { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `Oauth2GrantType`==`ClientCredentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`; OAuth2 client secret used to request an access token
         /// </summary>
         [Output("oauth2ClientSecret")]
         public Output<string?> Oauth2ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// required when `Type`==`Oauth2`. enum: `ClientCredentials`, `Password`
+        /// OAuth2 grant type used when `Type`==`Oauth2`
         /// </summary>
         [Output("oauth2GrantType")]
         public Output<string?> Oauth2GrantType { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `Oauth2GrantType`==`Password`
+        /// Required when `Oauth2GrantType`==`Password`; password used for the OAuth2 token request
         /// </summary>
         [Output("oauth2Password")]
         public Output<string?> Oauth2Password { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `Type`==`Oauth2`, if provided, will be used in the token request
+        /// OAuth2 scopes included in the token request when `Type`==`Oauth2`
         /// </summary>
         [Output("oauth2Scopes")]
         public Output<ImmutableArray<string>> Oauth2Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `Type`==`Oauth2`
+        /// Required when `Type`==`Oauth2`; token endpoint URL used to obtain the OAuth2 access token
         /// </summary>
         [Output("oauth2TokenUrl")]
         public Output<string?> Oauth2TokenUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `Oauth2GrantType`==`Password`
+        /// Required when `Oauth2GrantType`==`Password`; username used for the OAuth2 token request
         /// </summary>
         [Output("oauth2Username")]
         public Output<string?> Oauth2Username { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns the webhook
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -152,11 +155,14 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> Topics { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `aws-sns`, `google-pubsub`, `http-post`, `Oauth2`, `Splunk`
+        /// Delivery mechanism used by this webhook
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// Destination URL that receives webhook deliveries
+        /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
@@ -239,13 +245,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Name of the webhook
+        /// Display name of the webhook
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required when `Oauth2GrantType`==`ClientCredentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`; OAuth2 client identifier used to request an access token
         /// </summary>
         [Input("oauth2ClientId")]
         public Input<string>? Oauth2ClientId { get; set; }
@@ -254,7 +260,7 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _oauth2ClientSecret;
 
         /// <summary>
-        /// Required when `Oauth2GrantType`==`ClientCredentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`; OAuth2 client secret used to request an access token
         /// </summary>
         public Input<string>? Oauth2ClientSecret
         {
@@ -267,7 +273,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// required when `Type`==`Oauth2`. enum: `ClientCredentials`, `Password`
+        /// OAuth2 grant type used when `Type`==`Oauth2`
         /// </summary>
         [Input("oauth2GrantType")]
         public Input<string>? Oauth2GrantType { get; set; }
@@ -276,7 +282,7 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _oauth2Password;
 
         /// <summary>
-        /// Required when `Oauth2GrantType`==`Password`
+        /// Required when `Oauth2GrantType`==`Password`; password used for the OAuth2 token request
         /// </summary>
         public Input<string>? Oauth2Password
         {
@@ -292,7 +298,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _oauth2Scopes;
 
         /// <summary>
-        /// Required when `Type`==`Oauth2`, if provided, will be used in the token request
+        /// OAuth2 scopes included in the token request when `Type`==`Oauth2`
         /// </summary>
         public InputList<string> Oauth2Scopes
         {
@@ -301,17 +307,20 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Required when `Type`==`Oauth2`
+        /// Required when `Type`==`Oauth2`; token endpoint URL used to obtain the OAuth2 access token
         /// </summary>
         [Input("oauth2TokenUrl")]
         public Input<string>? Oauth2TokenUrl { get; set; }
 
         /// <summary>
-        /// Required when `Oauth2GrantType`==`Password`
+        /// Required when `Oauth2GrantType`==`Password`; username used for the OAuth2 token request
         /// </summary>
         [Input("oauth2Username")]
         public Input<string>? Oauth2Username { get; set; }
 
+        /// <summary>
+        /// Organization that owns the webhook
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -366,11 +375,14 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// enum: `aws-sns`, `google-pubsub`, `http-post`, `Oauth2`, `Splunk`
+        /// Delivery mechanism used by this webhook
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Destination URL that receives webhook deliveries
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
@@ -407,13 +419,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Name of the webhook
+        /// Display name of the webhook
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required when `Oauth2GrantType`==`ClientCredentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`; OAuth2 client identifier used to request an access token
         /// </summary>
         [Input("oauth2ClientId")]
         public Input<string>? Oauth2ClientId { get; set; }
@@ -422,7 +434,7 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _oauth2ClientSecret;
 
         /// <summary>
-        /// Required when `Oauth2GrantType`==`ClientCredentials`
+        /// Required when `Oauth2GrantType`==`ClientCredentials`; OAuth2 client secret used to request an access token
         /// </summary>
         public Input<string>? Oauth2ClientSecret
         {
@@ -435,7 +447,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// required when `Type`==`Oauth2`. enum: `ClientCredentials`, `Password`
+        /// OAuth2 grant type used when `Type`==`Oauth2`
         /// </summary>
         [Input("oauth2GrantType")]
         public Input<string>? Oauth2GrantType { get; set; }
@@ -444,7 +456,7 @@ namespace Pulumi.JuniperMist.Org
         private Input<string>? _oauth2Password;
 
         /// <summary>
-        /// Required when `Oauth2GrantType`==`Password`
+        /// Required when `Oauth2GrantType`==`Password`; password used for the OAuth2 token request
         /// </summary>
         public Input<string>? Oauth2Password
         {
@@ -460,7 +472,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _oauth2Scopes;
 
         /// <summary>
-        /// Required when `Type`==`Oauth2`, if provided, will be used in the token request
+        /// OAuth2 scopes included in the token request when `Type`==`Oauth2`
         /// </summary>
         public InputList<string> Oauth2Scopes
         {
@@ -469,17 +481,20 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Required when `Type`==`Oauth2`
+        /// Required when `Type`==`Oauth2`; token endpoint URL used to obtain the OAuth2 access token
         /// </summary>
         [Input("oauth2TokenUrl")]
         public Input<string>? Oauth2TokenUrl { get; set; }
 
         /// <summary>
-        /// Required when `Oauth2GrantType`==`Password`
+        /// Required when `Oauth2GrantType`==`Password`; username used for the OAuth2 token request
         /// </summary>
         [Input("oauth2Username")]
         public Input<string>? Oauth2Username { get; set; }
 
+        /// <summary>
+        /// Organization that owns the webhook
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -534,11 +549,14 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// enum: `aws-sns`, `google-pubsub`, `http-post`, `Oauth2`, `Splunk`
+        /// Delivery mechanism used by this webhook
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Destination URL that receives webhook deliveries
+        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

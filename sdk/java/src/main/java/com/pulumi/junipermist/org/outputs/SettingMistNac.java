@@ -24,7 +24,7 @@ public final class SettingMistNac {
      */
     private @Nullable Boolean allowTeapMachineAuthOnly;
     /**
-     * @return List of PEM-encoded ca certs
+     * @return CA certificates trusted by Mist NAC for certificate-based authentication
      * 
      */
     private @Nullable List<String> cacerts;
@@ -44,38 +44,42 @@ public final class SettingMistNac {
      */
     private @Nullable Integer eapSslSecurityLevel;
     /**
-     * @return By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
+     * @return By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
      * 
      */
     private @Nullable Boolean euOnly;
     /**
-     * @return Allows customer to enable client fingerprinting for policy enforcement
+     * @return Client fingerprinting settings used by Mist NAC
      * 
      */
     private @Nullable SettingMistNacFingerprinting fingerprinting;
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
+     * @return Client certificate field used to look up machine groups in identity providers
      * 
      */
     private @Nullable String idpMachineCertLookupField;
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+     * @return Client certificate field used to look up user groups in identity providers
      * 
      */
     private @Nullable String idpUserCertLookupField;
+    /**
+     * @return Identity provider mappings used by Mist NAC realm matching
+     * 
+     */
     private @Nullable List<SettingMistNacIdp> idps;
     /**
-     * @return MDM (Mobile Device Management) CoA configuration
+     * @return Mobile Device Management CoA settings for Mist NAC
      * 
      */
     private @Nullable SettingMistNacMdm mdm;
     /**
-     * @return radius server cert to be presented in EAP TLS
+     * @return RADIUS server certificate presented by Mist NAC during EAP-TLS
      * 
      */
     private @Nullable SettingMistNacServerCert serverCert;
     /**
-     * @return by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+     * @return IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
      * 
      */
     private @Nullable String useIpVersion;
@@ -99,7 +103,7 @@ public final class SettingMistNac {
         return Optional.ofNullable(this.allowTeapMachineAuthOnly);
     }
     /**
-     * @return List of PEM-encoded ca certs
+     * @return CA certificates trusted by Mist NAC for certificate-based authentication
      * 
      */
     public List<String> cacerts() {
@@ -127,52 +131,56 @@ public final class SettingMistNac {
         return Optional.ofNullable(this.eapSslSecurityLevel);
     }
     /**
-     * @return By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
+     * @return By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliance NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, Mist Edge clusters that have mistNac enabled
      * 
      */
     public Optional<Boolean> euOnly() {
         return Optional.ofNullable(this.euOnly);
     }
     /**
-     * @return Allows customer to enable client fingerprinting for policy enforcement
+     * @return Client fingerprinting settings used by Mist NAC
      * 
      */
     public Optional<SettingMistNacFingerprinting> fingerprinting() {
         return Optional.ofNullable(this.fingerprinting);
     }
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
+     * @return Client certificate field used to look up machine groups in identity providers
      * 
      */
     public Optional<String> idpMachineCertLookupField() {
         return Optional.ofNullable(this.idpMachineCertLookupField);
     }
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+     * @return Client certificate field used to look up user groups in identity providers
      * 
      */
     public Optional<String> idpUserCertLookupField() {
         return Optional.ofNullable(this.idpUserCertLookupField);
     }
+    /**
+     * @return Identity provider mappings used by Mist NAC realm matching
+     * 
+     */
     public List<SettingMistNacIdp> idps() {
         return this.idps == null ? List.of() : this.idps;
     }
     /**
-     * @return MDM (Mobile Device Management) CoA configuration
+     * @return Mobile Device Management CoA settings for Mist NAC
      * 
      */
     public Optional<SettingMistNacMdm> mdm() {
         return Optional.ofNullable(this.mdm);
     }
     /**
-     * @return radius server cert to be presented in EAP TLS
+     * @return RADIUS server certificate presented by Mist NAC during EAP-TLS
      * 
      */
     public Optional<SettingMistNacServerCert> serverCert() {
         return Optional.ofNullable(this.serverCert);
     }
     /**
-     * @return by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+     * @return IP version used by NAS devices and Mist Edge proxies to reach Mist NAC
      * 
      */
     public Optional<String> useIpVersion() {

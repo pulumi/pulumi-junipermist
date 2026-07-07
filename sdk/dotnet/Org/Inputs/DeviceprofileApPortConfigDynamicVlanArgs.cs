@@ -12,17 +12,30 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class DeviceprofileApPortConfigDynamicVlanArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Fallback VLAN ID used when RADIUS does not return a dynamic VLAN match
+        /// </summary>
         [Input("defaultVlanId")]
         public Input<int>? DefaultVlanId { get; set; }
 
+        /// <summary>
+        /// Whether dynamic VLAN assignment is enabled for this AP port
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Mapping mode for interpreting dynamic VLAN attributes returned by RADIUS
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         [Input("vlans")]
         private InputMap<string>? _vlans;
+
+        /// <summary>
+        /// Mapping entries for RADIUS-assigned VLAN values on this AP port. For `Type`==`airespace-interface-name`, the property key is the Airespace interface name returned by RADIUS (e.g. "guest"), and the value is the corresponding VLAN ID (e.g. 100). For `Type`==`Standard`, the property key is the VLAN ID number returned by RADIUS, and the value is ignored.
+        /// </summary>
         public InputMap<string> Vlans
         {
             get => _vlans ?? (_vlans = new InputMap<string>());

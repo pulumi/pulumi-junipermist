@@ -19,9 +19,13 @@ public final class GatewayNetworkMulticast {
      * 
      */
     private @Nullable Boolean disableIgmp;
+    /**
+     * @return Whether multicast support is enabled for this network
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example &#34;225.1.0.3/32&#34;)
+     * @return Multicast group-to-RP mappings for this network
      * 
      */
     private @Nullable Map<String,GatewayNetworkMulticastGroups> groups;
@@ -34,11 +38,15 @@ public final class GatewayNetworkMulticast {
     public Optional<Boolean> disableIgmp() {
         return Optional.ofNullable(this.disableIgmp);
     }
+    /**
+     * @return Whether multicast support is enabled for this network
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example &#34;225.1.0.3/32&#34;)
+     * @return Multicast group-to-RP mappings for this network
      * 
      */
     public Map<String,GatewayNetworkMulticastGroups> groups() {

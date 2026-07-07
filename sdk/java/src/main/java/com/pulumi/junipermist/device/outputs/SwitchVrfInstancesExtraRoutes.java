@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class SwitchVrfInstancesExtraRoutes {
     /**
-     * @return Next-hop address
+     * @return IPv4 next-hop address for this VRF extra route
      * 
      */
     private String via;
 
     private SwitchVrfInstancesExtraRoutes() {}
     /**
-     * @return Next-hop address
+     * @return IPv4 next-hop address for this VRF extra route
      * 
      */
     public String via() {

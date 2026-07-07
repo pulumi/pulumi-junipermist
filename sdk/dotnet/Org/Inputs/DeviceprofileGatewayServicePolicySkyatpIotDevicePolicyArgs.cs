@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class DeviceprofileGatewayServicePolicySkyatpIotDevicePolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Sky ATP IoT device policy inspection is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

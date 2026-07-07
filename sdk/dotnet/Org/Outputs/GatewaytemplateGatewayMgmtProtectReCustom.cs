@@ -18,9 +18,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? PortRange;
         /// <summary>
-        /// enum: `Any`, `Icmp`, `Tcp`, `Udp`
+        /// Transport protocol matched by this custom Protect RE ACL
         /// </summary>
         public readonly string? Protocol;
+        /// <summary>
+        /// Source subnets matched by this custom Protect RE ACL
+        /// </summary>
         public readonly ImmutableArray<string> Subnets;
 
         [OutputConstructor]

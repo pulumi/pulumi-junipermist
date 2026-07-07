@@ -79,9 +79,12 @@ export class NacPortalTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * defines alignment on portal. enum: `center`, `left`, `right`
+     * Text and content alignment for the NAC portal page
      */
     declare public readonly alignment: pulumi.Output<string>;
+    /**
+     * Primary color used by the NAC portal template
+     */
     declare public readonly color: pulumi.Output<string>;
     /**
      * path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
@@ -141,9 +144,12 @@ export class NacPortalTemplate extends pulumi.CustomResource {
  */
 export interface NacPortalTemplateState {
     /**
-     * defines alignment on portal. enum: `center`, `left`, `right`
+     * Text and content alignment for the NAC portal page
      */
     alignment?: pulumi.Input<string | undefined>;
+    /**
+     * Primary color used by the NAC portal template
+     */
     color?: pulumi.Input<string | undefined>;
     /**
      * path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
@@ -165,9 +171,12 @@ export interface NacPortalTemplateState {
  */
 export interface NacPortalTemplateArgs {
     /**
-     * defines alignment on portal. enum: `center`, `left`, `right`
+     * Text and content alignment for the NAC portal page
      */
     alignment?: pulumi.Input<string | undefined>;
+    /**
+     * Primary color used by the NAC portal template
+     */
     color?: pulumi.Input<string | undefined>;
     /**
      * path to the logo image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).

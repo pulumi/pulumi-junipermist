@@ -18,87 +18,135 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
 
     public static final SwitchRemoteSyslogServerArgs Empty = new SwitchRemoteSyslogServerArgs();
 
+    /**
+     * Syslog facilities and severities sent to this server
+     * 
+     */
     @Import(name="contents")
     private @Nullable Output<List<SwitchRemoteSyslogServerContentArgs>> contents;
 
+    /**
+     * @return Syslog facilities and severities sent to this server
+     * 
+     */
     public Optional<Output<List<SwitchRemoteSyslogServerContentArgs>>> contents() {
         return Optional.ofNullable(this.contents);
     }
 
+    /**
+     * Whether to include explicit syslog priority values in messages sent to this server
+     * 
+     */
     @Import(name="explicitPriority")
     private @Nullable Output<Boolean> explicitPriority;
 
+    /**
+     * @return Whether to include explicit syslog priority values in messages sent to this server
+     * 
+     */
     public Optional<Output<Boolean>> explicitPriority() {
         return Optional.ofNullable(this.explicitPriority);
     }
 
     /**
-     * enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+     * Default syslog facility for messages sent to this server
      * 
      */
     @Import(name="facility")
     private @Nullable Output<String> facility;
 
     /**
-     * @return enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+     * @return Default syslog facility for messages sent to this server
      * 
      */
     public Optional<Output<String>> facility() {
         return Optional.ofNullable(this.facility);
     }
 
+    /**
+     * Address or hostname of the remote syslog server
+     * 
+     */
     @Import(name="host")
     private @Nullable Output<String> host;
 
+    /**
+     * @return Address or hostname of the remote syslog server
+     * 
+     */
     public Optional<Output<String>> host() {
         return Optional.ofNullable(this.host);
     }
 
+    /**
+     * Expression used to filter log messages sent to this server
+     * 
+     */
     @Import(name="match")
     private @Nullable Output<String> match;
 
+    /**
+     * @return Expression used to filter log messages sent to this server
+     * 
+     */
     public Optional<Output<String>> match() {
         return Optional.ofNullable(this.match);
     }
 
+    /**
+     * Network port used by the remote syslog server
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<String> port;
 
+    /**
+     * @return Network port used by the remote syslog server
+     * 
+     */
     public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
 
     /**
-     * enum: `tcp`, `udp`
+     * Transport protocol used for this remote syslog server
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return enum: `tcp`, `udp`
+     * @return Transport protocol used for this remote syslog server
      * 
      */
     public Optional<Output<String>> protocol() {
         return Optional.ofNullable(this.protocol);
     }
 
+    /**
+     * Routing instance used to reach this remote syslog server
+     * 
+     */
     @Import(name="routingInstance")
     private @Nullable Output<String> routingInstance;
 
+    /**
+     * @return Routing instance used to reach this remote syslog server
+     * 
+     */
     public Optional<Output<String>> routingInstance() {
         return Optional.ofNullable(this.routingInstance);
     }
 
     /**
-     * Name of the server
+     * TLS server name used when verifying the remote syslog server certificate
      * 
      */
     @Import(name="serverName")
     private @Nullable Output<String> serverName;
 
     /**
-     * @return Name of the server
+     * @return TLS server name used when verifying the remote syslog server certificate
      * 
      */
     public Optional<Output<String>> serverName() {
@@ -106,14 +154,14 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+     * Default syslog severity for messages sent to this server
      * 
      */
     @Import(name="severity")
     private @Nullable Output<String> severity;
 
     /**
-     * @return enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+     * @return Default syslog severity for messages sent to this server
      * 
      */
     public Optional<Output<String>> severity() {
@@ -121,30 +169,46 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+     * Source address for syslog traffic. If configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
      * 
      */
     @Import(name="sourceAddress")
     private @Nullable Output<String> sourceAddress;
 
     /**
-     * @return If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+     * @return Source address for syslog traffic. If configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
      * 
      */
     public Optional<Output<String>> sourceAddress() {
         return Optional.ofNullable(this.sourceAddress);
     }
 
+    /**
+     * Whether to include structured syslog data in messages sent to this server
+     * 
+     */
     @Import(name="structuredData")
     private @Nullable Output<Boolean> structuredData;
 
+    /**
+     * @return Whether to include structured syslog data in messages sent to this server
+     * 
+     */
     public Optional<Output<Boolean>> structuredData() {
         return Optional.ofNullable(this.structuredData);
     }
 
+    /**
+     * Syslog tag value added to messages sent to this server
+     * 
+     */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
+    /**
+     * @return Syslog tag value added to messages sent to this server
+     * 
+     */
     public Optional<Output<String>> tag() {
         return Optional.ofNullable(this.tag);
     }
@@ -185,30 +249,60 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
             $ = new SwitchRemoteSyslogServerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contents Syslog facilities and severities sent to this server
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(@Nullable Output<List<SwitchRemoteSyslogServerContentArgs>> contents) {
             $.contents = contents;
             return this;
         }
 
+        /**
+         * @param contents Syslog facilities and severities sent to this server
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(List<SwitchRemoteSyslogServerContentArgs> contents) {
             return contents(Output.of(contents));
         }
 
+        /**
+         * @param contents Syslog facilities and severities sent to this server
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(SwitchRemoteSyslogServerContentArgs... contents) {
             return contents(List.of(contents));
         }
 
+        /**
+         * @param explicitPriority Whether to include explicit syslog priority values in messages sent to this server
+         * 
+         * @return builder
+         * 
+         */
         public Builder explicitPriority(@Nullable Output<Boolean> explicitPriority) {
             $.explicitPriority = explicitPriority;
             return this;
         }
 
+        /**
+         * @param explicitPriority Whether to include explicit syslog priority values in messages sent to this server
+         * 
+         * @return builder
+         * 
+         */
         public Builder explicitPriority(Boolean explicitPriority) {
             return explicitPriority(Output.of(explicitPriority));
         }
 
         /**
-         * @param facility enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+         * @param facility Default syslog facility for messages sent to this server
          * 
          * @return builder
          * 
@@ -219,7 +313,7 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param facility enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
+         * @param facility Default syslog facility for messages sent to this server
          * 
          * @return builder
          * 
@@ -228,35 +322,71 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
             return facility(Output.of(facility));
         }
 
+        /**
+         * @param host Address or hostname of the remote syslog server
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
 
+        /**
+         * @param host Address or hostname of the remote syslog server
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(String host) {
             return host(Output.of(host));
         }
 
+        /**
+         * @param match Expression used to filter log messages sent to this server
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(@Nullable Output<String> match) {
             $.match = match;
             return this;
         }
 
+        /**
+         * @param match Expression used to filter log messages sent to this server
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(String match) {
             return match(Output.of(match));
         }
 
+        /**
+         * @param port Network port used by the remote syslog server
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port Network port used by the remote syslog server
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(String port) {
             return port(Output.of(port));
         }
 
         /**
-         * @param protocol enum: `tcp`, `udp`
+         * @param protocol Transport protocol used for this remote syslog server
          * 
          * @return builder
          * 
@@ -267,7 +397,7 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param protocol enum: `tcp`, `udp`
+         * @param protocol Transport protocol used for this remote syslog server
          * 
          * @return builder
          * 
@@ -276,17 +406,29 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
             return protocol(Output.of(protocol));
         }
 
+        /**
+         * @param routingInstance Routing instance used to reach this remote syslog server
+         * 
+         * @return builder
+         * 
+         */
         public Builder routingInstance(@Nullable Output<String> routingInstance) {
             $.routingInstance = routingInstance;
             return this;
         }
 
+        /**
+         * @param routingInstance Routing instance used to reach this remote syslog server
+         * 
+         * @return builder
+         * 
+         */
         public Builder routingInstance(String routingInstance) {
             return routingInstance(Output.of(routingInstance));
         }
 
         /**
-         * @param serverName Name of the server
+         * @param serverName TLS server name used when verifying the remote syslog server certificate
          * 
          * @return builder
          * 
@@ -297,7 +439,7 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param serverName Name of the server
+         * @param serverName TLS server name used when verifying the remote syslog server certificate
          * 
          * @return builder
          * 
@@ -307,7 +449,7 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param severity enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+         * @param severity Default syslog severity for messages sent to this server
          * 
          * @return builder
          * 
@@ -318,7 +460,7 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param severity enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
+         * @param severity Default syslog severity for messages sent to this server
          * 
          * @return builder
          * 
@@ -328,7 +470,7 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sourceAddress If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+         * @param sourceAddress Source address for syslog traffic. If configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
          * 
          * @return builder
          * 
@@ -339,7 +481,7 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sourceAddress If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+         * @param sourceAddress Source address for syslog traffic. If configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
          * 
          * @return builder
          * 
@@ -348,20 +490,44 @@ public final class SwitchRemoteSyslogServerArgs extends com.pulumi.resources.Res
             return sourceAddress(Output.of(sourceAddress));
         }
 
+        /**
+         * @param structuredData Whether to include structured syslog data in messages sent to this server
+         * 
+         * @return builder
+         * 
+         */
         public Builder structuredData(@Nullable Output<Boolean> structuredData) {
             $.structuredData = structuredData;
             return this;
         }
 
+        /**
+         * @param structuredData Whether to include structured syslog data in messages sent to this server
+         * 
+         * @return builder
+         * 
+         */
         public Builder structuredData(Boolean structuredData) {
             return structuredData(Output.of(structuredData));
         }
 
+        /**
+         * @param tag Syslog tag value added to messages sent to this server
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(@Nullable Output<String> tag) {
             $.tag = tag;
             return this;
         }
 
+        /**
+         * @param tag Syslog tag value added to messages sent to this server
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(String tag) {
             return tag(Output.of(tag));
         }

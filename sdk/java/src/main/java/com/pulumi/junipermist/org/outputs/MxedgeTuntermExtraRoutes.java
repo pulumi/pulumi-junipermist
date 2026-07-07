@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxedgeTuntermExtraRoutes {
+    /**
+     * @return Next-hop IP address for this Mist Tunnel extra route
+     * 
+     */
     private @Nullable String via;
 
     private MxedgeTuntermExtraRoutes() {}
+    /**
+     * @return Next-hop IP address for this Mist Tunnel extra route
+     * 
+     */
     public Optional<String> via() {
         return Optional.ofNullable(this.via);
     }

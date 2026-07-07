@@ -40,14 +40,14 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * For SRX-only
+     * Malware and virus inspection settings applied by this service policy
      * 
      */
     @Import(name="antivirus")
     private @Nullable Output<GatewayServicePolicyAntivirusArgs> antivirus;
 
     /**
-     * @return For SRX-only
+     * @return Malware and virus inspection settings applied by this service policy
      * 
      */
     public Optional<Output<GatewayServicePolicyAntivirusArgs>> antivirus() {
@@ -55,43 +55,59 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * SRX only
+     * Application QoE settings applied by this service policy
      * 
      */
     @Import(name="appqoe")
     private @Nullable Output<GatewayServicePolicyAppqoeArgs> appqoe;
 
     /**
-     * @return SRX only
+     * @return Application QoE settings applied by this service policy
      * 
      */
     public Optional<Output<GatewayServicePolicyAppqoeArgs>> appqoe() {
         return Optional.ofNullable(this.appqoe);
     }
 
+    /**
+     * Enhanced web filtering rules applied by this service policy
+     * 
+     */
     @Import(name="ewfs")
     private @Nullable Output<List<GatewayServicePolicyEwfArgs>> ewfs;
 
+    /**
+     * @return Enhanced web filtering rules applied by this service policy
+     * 
+     */
     public Optional<Output<List<GatewayServicePolicyEwfArgs>>> ewfs() {
         return Optional.ofNullable(this.ewfs);
     }
 
+    /**
+     * Intrusion detection and prevention settings applied by this service policy
+     * 
+     */
     @Import(name="idp")
     private @Nullable Output<GatewayServicePolicyIdpArgs> idp;
 
+    /**
+     * @return Intrusion detection and prevention settings applied by this service policy
+     * 
+     */
     public Optional<Output<GatewayServicePolicyIdpArgs>> idp() {
         return Optional.ofNullable(this.idp);
     }
 
     /**
-     * access within the same VRF
+     * Whether the policy permits access within the same VRF
      * 
      */
     @Import(name="localRouting")
     private @Nullable Output<Boolean> localRouting;
 
     /**
-     * @return access within the same VRF
+     * @return Whether the policy permits access within the same VRF
      * 
      */
     public Optional<Output<Boolean>> localRouting() {
@@ -129,14 +145,14 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Used to link servicepolicy defined at org level and overwrite some attributes
+     * Organization-level service policy identifier used to link and override selected attributes
      * 
      */
     @Import(name="servicepolicyId")
     private @Nullable Output<String> servicepolicyId;
 
     /**
-     * @return Used to link servicepolicy defined at org level and overwrite some attributes
+     * @return Organization-level service policy identifier used to link and override selected attributes
      * 
      */
     public Optional<Output<String>> servicepolicyId() {
@@ -159,14 +175,14 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * SRX only
+     * Threat inspection settings provided by Sky ATP for this service policy
      * 
      */
     @Import(name="skyatp")
     private @Nullable Output<GatewayServicePolicySkyatpArgs> skyatp;
 
     /**
-     * @return SRX only
+     * @return Threat inspection settings provided by Sky ATP for this service policy
      * 
      */
     public Optional<Output<GatewayServicePolicySkyatpArgs>> skyatp() {
@@ -174,14 +190,14 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * For SRX-only
+     * TLS inspection settings applied by this service policy
      * 
      */
     @Import(name="sslProxy")
     private @Nullable Output<GatewayServicePolicySslProxyArgs> sslProxy;
 
     /**
-     * @return For SRX-only
+     * @return TLS inspection settings applied by this service policy
      * 
      */
     public Optional<Output<GatewayServicePolicySslProxyArgs>> sslProxy() {
@@ -189,14 +205,14 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Required for syslog logging
+     * Remote logging settings applied by this service policy
      * 
      */
     @Import(name="syslog")
     private @Nullable Output<GatewayServicePolicySyslogArgs> syslog;
 
     /**
-     * @return Required for syslog logging
+     * @return Remote logging settings applied by this service policy
      * 
      */
     public Optional<Output<GatewayServicePolicySyslogArgs>> syslog() {
@@ -277,7 +293,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param antivirus For SRX-only
+         * @param antivirus Malware and virus inspection settings applied by this service policy
          * 
          * @return builder
          * 
@@ -288,7 +304,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param antivirus For SRX-only
+         * @param antivirus Malware and virus inspection settings applied by this service policy
          * 
          * @return builder
          * 
@@ -298,7 +314,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param appqoe SRX only
+         * @param appqoe Application QoE settings applied by this service policy
          * 
          * @return builder
          * 
@@ -309,7 +325,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param appqoe SRX only
+         * @param appqoe Application QoE settings applied by this service policy
          * 
          * @return builder
          * 
@@ -318,30 +334,60 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
             return appqoe(Output.of(appqoe));
         }
 
+        /**
+         * @param ewfs Enhanced web filtering rules applied by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder ewfs(@Nullable Output<List<GatewayServicePolicyEwfArgs>> ewfs) {
             $.ewfs = ewfs;
             return this;
         }
 
+        /**
+         * @param ewfs Enhanced web filtering rules applied by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder ewfs(List<GatewayServicePolicyEwfArgs> ewfs) {
             return ewfs(Output.of(ewfs));
         }
 
+        /**
+         * @param ewfs Enhanced web filtering rules applied by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder ewfs(GatewayServicePolicyEwfArgs... ewfs) {
             return ewfs(List.of(ewfs));
         }
 
+        /**
+         * @param idp Intrusion detection and prevention settings applied by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder idp(@Nullable Output<GatewayServicePolicyIdpArgs> idp) {
             $.idp = idp;
             return this;
         }
 
+        /**
+         * @param idp Intrusion detection and prevention settings applied by this service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder idp(GatewayServicePolicyIdpArgs idp) {
             return idp(Output.of(idp));
         }
 
         /**
-         * @param localRouting access within the same VRF
+         * @param localRouting Whether the policy permits access within the same VRF
          * 
          * @return builder
          * 
@@ -352,7 +398,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param localRouting access within the same VRF
+         * @param localRouting Whether the policy permits access within the same VRF
          * 
          * @return builder
          * 
@@ -404,7 +450,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param servicepolicyId Used to link servicepolicy defined at org level and overwrite some attributes
+         * @param servicepolicyId Organization-level service policy identifier used to link and override selected attributes
          * 
          * @return builder
          * 
@@ -415,7 +461,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param servicepolicyId Used to link servicepolicy defined at org level and overwrite some attributes
+         * @param servicepolicyId Organization-level service policy identifier used to link and override selected attributes
          * 
          * @return builder
          * 
@@ -456,7 +502,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param skyatp SRX only
+         * @param skyatp Threat inspection settings provided by Sky ATP for this service policy
          * 
          * @return builder
          * 
@@ -467,7 +513,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param skyatp SRX only
+         * @param skyatp Threat inspection settings provided by Sky ATP for this service policy
          * 
          * @return builder
          * 
@@ -477,7 +523,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sslProxy For SRX-only
+         * @param sslProxy TLS inspection settings applied by this service policy
          * 
          * @return builder
          * 
@@ -488,7 +534,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sslProxy For SRX-only
+         * @param sslProxy TLS inspection settings applied by this service policy
          * 
          * @return builder
          * 
@@ -498,7 +544,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param syslog Required for syslog logging
+         * @param syslog Remote logging settings applied by this service policy
          * 
          * @return builder
          * 
@@ -509,7 +555,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param syslog Required for syslog logging
+         * @param syslog Remote logging settings applied by this service policy
          * 
          * @return builder
          * 

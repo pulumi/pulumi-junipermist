@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class SettingJcloud {
     /**
-     * @return JCloud Org Token
+     * @return JCloud organization API token used by this Mist organization
      * 
      */
     private String orgApitoken;
     /**
-     * @return JCloud Org Token Name
+     * @return Display name for the JCloud organization API token
      * 
      */
     private String orgApitokenName;
     /**
-     * @return JCloud Org ID
+     * @return JCloud organization identifier linked to this Mist organization
      * 
      */
     private String orgId;
 
     private SettingJcloud() {}
     /**
-     * @return JCloud Org Token
+     * @return JCloud organization API token used by this Mist organization
      * 
      */
     public String orgApitoken() {
         return this.orgApitoken;
     }
     /**
-     * @return JCloud Org Token Name
+     * @return Display name for the JCloud organization API token
      * 
      */
     public String orgApitokenName() {
         return this.orgApitokenName;
     }
     /**
-     * @return JCloud Org ID
+     * @return JCloud organization identifier linked to this Mist organization
      * 
      */
     public String orgId() {

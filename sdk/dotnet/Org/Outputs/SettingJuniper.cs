@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingJuniper
     {
+        /// <summary>
+        /// List of linked Juniper account records
+        /// </summary>
         public readonly ImmutableArray<Outputs.SettingJuniperAccount> Accounts;
 
         [OutputConstructor]

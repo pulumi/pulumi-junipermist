@@ -106,14 +106,20 @@ type Setting struct {
 	// whether to allow Mist to look at this org
 	AllowMist pulumi.BoolOutput `pulumi:"allowMist"`
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
-	ApUpdownThreshold pulumi.IntPtrOutput       `pulumi:"apUpdownThreshold"`
-	ApiPolicy         SettingApiPolicyPtrOutput `pulumi:"apiPolicy"`
-	// RADSec certificates for AP
-	Cacerts     pulumi.StringArrayOutput   `pulumi:"cacerts"`
-	Celona      SettingCelonaPtrOutput     `pulumi:"celona"`
-	Cloudshark  SettingCloudsharkPtrOutput `pulumi:"cloudshark"`
-	Cradlepoint SettingCradlepointOutput   `pulumi:"cradlepoint"`
-	// common device cert, optional
+	ApUpdownThreshold pulumi.IntPtrOutput `pulumi:"apUpdownThreshold"`
+	// Policy for hiding API secrets and passwords in responses
+	ApiPolicy SettingApiPolicyPtrOutput `pulumi:"apiPolicy"`
+	// AP automatic firmware upgrade policy for the organization
+	AutoUpgrade SettingAutoUpgradePtrOutput `pulumi:"autoUpgrade"`
+	// CA certificates used by organization-level RADIUS and RADSec settings
+	Cacerts pulumi.StringArrayOutput `pulumi:"cacerts"`
+	// Integration settings for Celona
+	Celona SettingCelonaPtrOutput `pulumi:"celona"`
+	// Packet capture integration settings for CloudShark
+	Cloudshark SettingCloudsharkPtrOutput `pulumi:"cloudshark"`
+	// Integration settings for Cradlepoint devices
+	Cradlepoint SettingCradlepointOutput `pulumi:"cradlepoint"`
+	// Common device certificate used by organization settings
 	DeviceCert SettingDeviceCertPtrOutput `pulumi:"deviceCert"`
 	// Enable threshold-based device down delivery via
 	//   * device-updowns webhooks topic,
@@ -126,42 +132,59 @@ type Setting struct {
 	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
 	GatewayTunnelUpdownThreshold pulumi.IntPtrOutput `pulumi:"gatewayTunnelUpdownThreshold"`
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
-	GatewayUpdownThreshold pulumi.IntPtrOutput       `pulumi:"gatewayUpdownThreshold"`
-	Installer              SettingInstallerPtrOutput `pulumi:"installer"`
-	Jcloud                 SettingJcloudPtrOutput    `pulumi:"jcloud"`
-	// JCloud Routing Assurance connexion
-	JcloudRa   SettingJcloudRaPtrOutput   `pulumi:"jcloudRa"`
-	Juniper    SettingJuniperOutput       `pulumi:"juniper"`
+	GatewayUpdownThreshold pulumi.IntPtrOutput `pulumi:"gatewayUpdownThreshold"`
+	// Access settings for organization installer workflows
+	Installer SettingInstallerPtrOutput `pulumi:"installer"`
+	// Integration settings for JCloud
+	Jcloud SettingJcloudPtrOutput `pulumi:"jcloud"`
+	// Routing Assurance integration settings for JCloud
+	JcloudRa SettingJcloudRaPtrOutput `pulumi:"jcloudRa"`
+	// Linked Juniper account information for this organization
+	Juniper SettingJuniperOutput `pulumi:"juniper"`
+	// SRX integration settings for Juniper devices
 	JuniperSrx SettingJuniperSrxPtrOutput `pulumi:"juniperSrx"`
-	// junos_shell_access: Manages role-based web-shell access.\
-	// When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-	// When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+	// Role-based Junos web-shell access settings
 	JunosShellAccess SettingJunosShellAccessPtrOutput `pulumi:"junosShellAccess"`
-	Marvis           SettingMarvisPtrOutput           `pulumi:"marvis"`
-	// management-related properties
-	Mgmt       SettingMgmtPtrOutput       `pulumi:"mgmt"`
-	MistNac    SettingMistNacPtrOutput    `pulumi:"mistNac"`
+	// AI assistant and self-driving feature settings for Marvis
+	Marvis SettingMarvisPtrOutput `pulumi:"marvis"`
+	// Tunnel settings for organization management connectivity
+	Mgmt SettingMgmtPtrOutput `pulumi:"mgmt"`
+	// NAC settings for Mist Access Assurance
+	MistNac SettingMistNacPtrOutput `pulumi:"mistNac"`
+	// Management settings for Mist Edge devices
 	MxedgeMgmt SettingMxedgeMgmtPtrOutput `pulumi:"mxedgeMgmt"`
-	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+	// Configuration defaults for optic ports
 	OpticPortConfig SettingOpticPortConfigMapOutput `pulumi:"opticPortConfig"`
-	OrgId           pulumi.StringOutput             `pulumi:"orgId"`
-	// password policy
+	// Organization that owns these settings
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// Admin credential policy settings for the organization
 	PasswordPolicy SettingPasswordPolicyPtrOutput `pulumi:"passwordPolicy"`
-	Pcap           SettingPcapOutput              `pulumi:"pcap"`
-	Security       SettingSecurityPtrOutput       `pulumi:"security"`
-	Ssr            SettingSsrPtrOutput            `pulumi:"ssr"`
-	Switch         SettingSwitchPtrOutput         `pulumi:"switch"`
-	SwitchMgmt     SettingSwitchMgmtPtrOutput     `pulumi:"switchMgmt"`
+	// Packet capture settings for the organization
+	Pcap SettingPcapOutput `pulumi:"pcap"`
+	// Organization security controls such as local SSH restrictions
+	Security SettingSecurityPtrOutput `pulumi:"security"`
+	// Session Smart Router settings for the organization
+	Ssr SettingSsrPtrOutput `pulumi:"ssr"`
+	// Configuration defaults for switches in this organization
+	Switch SettingSwitchPtrOutput `pulumi:"switch"`
+	// Management settings for switches in this organization
+	SwitchMgmt SettingSwitchMgmtPtrOutput `pulumi:"switchMgmt"`
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
-	SwitchUpdownThreshold pulumi.IntPtrOutput           `pulumi:"switchUpdownThreshold"`
-	SyntheticTest         SettingSyntheticTestPtrOutput `pulumi:"syntheticTest"`
+	SwitchUpdownThreshold pulumi.IntPtrOutput `pulumi:"switchUpdownThreshold"`
+	// Configuration for organization synthetic tests
+	SyntheticTest SettingSyntheticTestPtrOutput `pulumi:"syntheticTest"`
 	// Automatically logout the user when UI session is inactive. `0` means disabled
-	UiIdleTimeout pulumi.IntOutput            `pulumi:"uiIdleTimeout"`
-	UiNoTracking  pulumi.BoolPtrOutput        `pulumi:"uiNoTracking"`
-	VpnOptions    SettingVpnOptionsPtrOutput  `pulumi:"vpnOptions"`
-	WanPma        SettingWanPmaPtrOutput      `pulumi:"wanPma"`
-	WiredPma      SettingWiredPmaPtrOutput    `pulumi:"wiredPma"`
-	WirelessPma   SettingWirelessPmaPtrOutput `pulumi:"wirelessPma"`
+	UiIdleTimeout pulumi.IntOutput `pulumi:"uiIdleTimeout"`
+	// Whether UI usage tracking is disabled for the organization
+	UiNoTracking pulumi.BoolPtrOutput `pulumi:"uiNoTracking"`
+	// Options for organization VPN behavior
+	VpnOptions SettingVpnOptionsPtrOutput `pulumi:"vpnOptions"`
+	// PMA feature settings for WAN Assurance
+	WanPma SettingWanPmaPtrOutput `pulumi:"wanPma"`
+	// PMA feature settings for Wired Assurance
+	WiredPma SettingWiredPmaPtrOutput `pulumi:"wiredPma"`
+	// PMA feature settings for Wireless Assurance
+	WirelessPma SettingWirelessPmaPtrOutput `pulumi:"wirelessPma"`
 }
 
 // NewSetting registers a new resource with the given unique name, arguments, and options.
@@ -200,14 +223,20 @@ type settingState struct {
 	// whether to allow Mist to look at this org
 	AllowMist *bool `pulumi:"allowMist"`
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
-	ApUpdownThreshold *int              `pulumi:"apUpdownThreshold"`
-	ApiPolicy         *SettingApiPolicy `pulumi:"apiPolicy"`
-	// RADSec certificates for AP
-	Cacerts     []string            `pulumi:"cacerts"`
-	Celona      *SettingCelona      `pulumi:"celona"`
-	Cloudshark  *SettingCloudshark  `pulumi:"cloudshark"`
+	ApUpdownThreshold *int `pulumi:"apUpdownThreshold"`
+	// Policy for hiding API secrets and passwords in responses
+	ApiPolicy *SettingApiPolicy `pulumi:"apiPolicy"`
+	// AP automatic firmware upgrade policy for the organization
+	AutoUpgrade *SettingAutoUpgrade `pulumi:"autoUpgrade"`
+	// CA certificates used by organization-level RADIUS and RADSec settings
+	Cacerts []string `pulumi:"cacerts"`
+	// Integration settings for Celona
+	Celona *SettingCelona `pulumi:"celona"`
+	// Packet capture integration settings for CloudShark
+	Cloudshark *SettingCloudshark `pulumi:"cloudshark"`
+	// Integration settings for Cradlepoint devices
 	Cradlepoint *SettingCradlepoint `pulumi:"cradlepoint"`
-	// common device cert, optional
+	// Common device certificate used by organization settings
 	DeviceCert *SettingDeviceCert `pulumi:"deviceCert"`
 	// Enable threshold-based device down delivery via
 	//   * device-updowns webhooks topic,
@@ -220,42 +249,59 @@ type settingState struct {
 	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
 	GatewayTunnelUpdownThreshold *int `pulumi:"gatewayTunnelUpdownThreshold"`
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
-	GatewayUpdownThreshold *int              `pulumi:"gatewayUpdownThreshold"`
-	Installer              *SettingInstaller `pulumi:"installer"`
-	Jcloud                 *SettingJcloud    `pulumi:"jcloud"`
-	// JCloud Routing Assurance connexion
-	JcloudRa   *SettingJcloudRa   `pulumi:"jcloudRa"`
-	Juniper    *SettingJuniper    `pulumi:"juniper"`
+	GatewayUpdownThreshold *int `pulumi:"gatewayUpdownThreshold"`
+	// Access settings for organization installer workflows
+	Installer *SettingInstaller `pulumi:"installer"`
+	// Integration settings for JCloud
+	Jcloud *SettingJcloud `pulumi:"jcloud"`
+	// Routing Assurance integration settings for JCloud
+	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
+	// Linked Juniper account information for this organization
+	Juniper *SettingJuniper `pulumi:"juniper"`
+	// SRX integration settings for Juniper devices
 	JuniperSrx *SettingJuniperSrx `pulumi:"juniperSrx"`
-	// junos_shell_access: Manages role-based web-shell access.\
-	// When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-	// When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+	// Role-based Junos web-shell access settings
 	JunosShellAccess *SettingJunosShellAccess `pulumi:"junosShellAccess"`
-	Marvis           *SettingMarvis           `pulumi:"marvis"`
-	// management-related properties
-	Mgmt       *SettingMgmt       `pulumi:"mgmt"`
-	MistNac    *SettingMistNac    `pulumi:"mistNac"`
+	// AI assistant and self-driving feature settings for Marvis
+	Marvis *SettingMarvis `pulumi:"marvis"`
+	// Tunnel settings for organization management connectivity
+	Mgmt *SettingMgmt `pulumi:"mgmt"`
+	// NAC settings for Mist Access Assurance
+	MistNac *SettingMistNac `pulumi:"mistNac"`
+	// Management settings for Mist Edge devices
 	MxedgeMgmt *SettingMxedgeMgmt `pulumi:"mxedgeMgmt"`
-	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+	// Configuration defaults for optic ports
 	OpticPortConfig map[string]SettingOpticPortConfig `pulumi:"opticPortConfig"`
-	OrgId           *string                           `pulumi:"orgId"`
-	// password policy
+	// Organization that owns these settings
+	OrgId *string `pulumi:"orgId"`
+	// Admin credential policy settings for the organization
 	PasswordPolicy *SettingPasswordPolicy `pulumi:"passwordPolicy"`
-	Pcap           *SettingPcap           `pulumi:"pcap"`
-	Security       *SettingSecurity       `pulumi:"security"`
-	Ssr            *SettingSsr            `pulumi:"ssr"`
-	Switch         *SettingSwitch         `pulumi:"switch"`
-	SwitchMgmt     *SettingSwitchMgmt     `pulumi:"switchMgmt"`
+	// Packet capture settings for the organization
+	Pcap *SettingPcap `pulumi:"pcap"`
+	// Organization security controls such as local SSH restrictions
+	Security *SettingSecurity `pulumi:"security"`
+	// Session Smart Router settings for the organization
+	Ssr *SettingSsr `pulumi:"ssr"`
+	// Configuration defaults for switches in this organization
+	Switch *SettingSwitch `pulumi:"switch"`
+	// Management settings for switches in this organization
+	SwitchMgmt *SettingSwitchMgmt `pulumi:"switchMgmt"`
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
-	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
-	SyntheticTest         *SettingSyntheticTest `pulumi:"syntheticTest"`
+	SwitchUpdownThreshold *int `pulumi:"switchUpdownThreshold"`
+	// Configuration for organization synthetic tests
+	SyntheticTest *SettingSyntheticTest `pulumi:"syntheticTest"`
 	// Automatically logout the user when UI session is inactive. `0` means disabled
-	UiIdleTimeout *int                `pulumi:"uiIdleTimeout"`
-	UiNoTracking  *bool               `pulumi:"uiNoTracking"`
-	VpnOptions    *SettingVpnOptions  `pulumi:"vpnOptions"`
-	WanPma        *SettingWanPma      `pulumi:"wanPma"`
-	WiredPma      *SettingWiredPma    `pulumi:"wiredPma"`
-	WirelessPma   *SettingWirelessPma `pulumi:"wirelessPma"`
+	UiIdleTimeout *int `pulumi:"uiIdleTimeout"`
+	// Whether UI usage tracking is disabled for the organization
+	UiNoTracking *bool `pulumi:"uiNoTracking"`
+	// Options for organization VPN behavior
+	VpnOptions *SettingVpnOptions `pulumi:"vpnOptions"`
+	// PMA feature settings for WAN Assurance
+	WanPma *SettingWanPma `pulumi:"wanPma"`
+	// PMA feature settings for Wired Assurance
+	WiredPma *SettingWiredPma `pulumi:"wiredPma"`
+	// PMA feature settings for Wireless Assurance
+	WirelessPma *SettingWirelessPma `pulumi:"wirelessPma"`
 }
 
 type SettingState struct {
@@ -263,13 +309,19 @@ type SettingState struct {
 	AllowMist pulumi.BoolPtrInput
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
-	ApiPolicy         SettingApiPolicyPtrInput
-	// RADSec certificates for AP
-	Cacerts     pulumi.StringArrayInput
-	Celona      SettingCelonaPtrInput
-	Cloudshark  SettingCloudsharkPtrInput
+	// Policy for hiding API secrets and passwords in responses
+	ApiPolicy SettingApiPolicyPtrInput
+	// AP automatic firmware upgrade policy for the organization
+	AutoUpgrade SettingAutoUpgradePtrInput
+	// CA certificates used by organization-level RADIUS and RADSec settings
+	Cacerts pulumi.StringArrayInput
+	// Integration settings for Celona
+	Celona SettingCelonaPtrInput
+	// Packet capture integration settings for CloudShark
+	Cloudshark SettingCloudsharkPtrInput
+	// Integration settings for Cradlepoint devices
 	Cradlepoint SettingCradlepointPtrInput
-	// common device cert, optional
+	// Common device certificate used by organization settings
 	DeviceCert SettingDeviceCertPtrInput
 	// Enable threshold-based device down delivery via
 	//   * device-updowns webhooks topic,
@@ -283,41 +335,58 @@ type SettingState struct {
 	GatewayTunnelUpdownThreshold pulumi.IntPtrInput
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrInput
-	Installer              SettingInstallerPtrInput
-	Jcloud                 SettingJcloudPtrInput
-	// JCloud Routing Assurance connexion
-	JcloudRa   SettingJcloudRaPtrInput
-	Juniper    SettingJuniperPtrInput
+	// Access settings for organization installer workflows
+	Installer SettingInstallerPtrInput
+	// Integration settings for JCloud
+	Jcloud SettingJcloudPtrInput
+	// Routing Assurance integration settings for JCloud
+	JcloudRa SettingJcloudRaPtrInput
+	// Linked Juniper account information for this organization
+	Juniper SettingJuniperPtrInput
+	// SRX integration settings for Juniper devices
 	JuniperSrx SettingJuniperSrxPtrInput
-	// junos_shell_access: Manages role-based web-shell access.\
-	// When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-	// When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+	// Role-based Junos web-shell access settings
 	JunosShellAccess SettingJunosShellAccessPtrInput
-	Marvis           SettingMarvisPtrInput
-	// management-related properties
-	Mgmt       SettingMgmtPtrInput
-	MistNac    SettingMistNacPtrInput
+	// AI assistant and self-driving feature settings for Marvis
+	Marvis SettingMarvisPtrInput
+	// Tunnel settings for organization management connectivity
+	Mgmt SettingMgmtPtrInput
+	// NAC settings for Mist Access Assurance
+	MistNac SettingMistNacPtrInput
+	// Management settings for Mist Edge devices
 	MxedgeMgmt SettingMxedgeMgmtPtrInput
-	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+	// Configuration defaults for optic ports
 	OpticPortConfig SettingOpticPortConfigMapInput
-	OrgId           pulumi.StringPtrInput
-	// password policy
+	// Organization that owns these settings
+	OrgId pulumi.StringPtrInput
+	// Admin credential policy settings for the organization
 	PasswordPolicy SettingPasswordPolicyPtrInput
-	Pcap           SettingPcapPtrInput
-	Security       SettingSecurityPtrInput
-	Ssr            SettingSsrPtrInput
-	Switch         SettingSwitchPtrInput
-	SwitchMgmt     SettingSwitchMgmtPtrInput
+	// Packet capture settings for the organization
+	Pcap SettingPcapPtrInput
+	// Organization security controls such as local SSH restrictions
+	Security SettingSecurityPtrInput
+	// Session Smart Router settings for the organization
+	Ssr SettingSsrPtrInput
+	// Configuration defaults for switches in this organization
+	Switch SettingSwitchPtrInput
+	// Management settings for switches in this organization
+	SwitchMgmt SettingSwitchMgmtPtrInput
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntPtrInput
-	SyntheticTest         SettingSyntheticTestPtrInput
+	// Configuration for organization synthetic tests
+	SyntheticTest SettingSyntheticTestPtrInput
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntPtrInput
-	UiNoTracking  pulumi.BoolPtrInput
-	VpnOptions    SettingVpnOptionsPtrInput
-	WanPma        SettingWanPmaPtrInput
-	WiredPma      SettingWiredPmaPtrInput
-	WirelessPma   SettingWirelessPmaPtrInput
+	// Whether UI usage tracking is disabled for the organization
+	UiNoTracking pulumi.BoolPtrInput
+	// Options for organization VPN behavior
+	VpnOptions SettingVpnOptionsPtrInput
+	// PMA feature settings for WAN Assurance
+	WanPma SettingWanPmaPtrInput
+	// PMA feature settings for Wired Assurance
+	WiredPma SettingWiredPmaPtrInput
+	// PMA feature settings for Wireless Assurance
+	WirelessPma SettingWirelessPmaPtrInput
 }
 
 func (SettingState) ElementType() reflect.Type {
@@ -326,13 +395,18 @@ func (SettingState) ElementType() reflect.Type {
 
 type settingArgs struct {
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
-	ApUpdownThreshold *int              `pulumi:"apUpdownThreshold"`
-	ApiPolicy         *SettingApiPolicy `pulumi:"apiPolicy"`
-	// RADSec certificates for AP
-	Cacerts    []string           `pulumi:"cacerts"`
-	Celona     *SettingCelona     `pulumi:"celona"`
+	ApUpdownThreshold *int `pulumi:"apUpdownThreshold"`
+	// Policy for hiding API secrets and passwords in responses
+	ApiPolicy *SettingApiPolicy `pulumi:"apiPolicy"`
+	// AP automatic firmware upgrade policy for the organization
+	AutoUpgrade *SettingAutoUpgrade `pulumi:"autoUpgrade"`
+	// CA certificates used by organization-level RADIUS and RADSec settings
+	Cacerts []string `pulumi:"cacerts"`
+	// Integration settings for Celona
+	Celona *SettingCelona `pulumi:"celona"`
+	// Packet capture integration settings for CloudShark
 	Cloudshark *SettingCloudshark `pulumi:"cloudshark"`
-	// common device cert, optional
+	// Common device certificate used by organization settings
 	DeviceCert *SettingDeviceCert `pulumi:"deviceCert"`
 	// Enable threshold-based device down delivery via
 	//   * device-updowns webhooks topic,
@@ -345,52 +419,72 @@ type settingArgs struct {
 	// enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
 	GatewayTunnelUpdownThreshold *int `pulumi:"gatewayTunnelUpdownThreshold"`
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
-	GatewayUpdownThreshold *int              `pulumi:"gatewayUpdownThreshold"`
-	Installer              *SettingInstaller `pulumi:"installer"`
-	Jcloud                 *SettingJcloud    `pulumi:"jcloud"`
-	// JCloud Routing Assurance connexion
-	JcloudRa   *SettingJcloudRa   `pulumi:"jcloudRa"`
+	GatewayUpdownThreshold *int `pulumi:"gatewayUpdownThreshold"`
+	// Access settings for organization installer workflows
+	Installer *SettingInstaller `pulumi:"installer"`
+	// Integration settings for JCloud
+	Jcloud *SettingJcloud `pulumi:"jcloud"`
+	// Routing Assurance integration settings for JCloud
+	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
+	// SRX integration settings for Juniper devices
 	JuniperSrx *SettingJuniperSrx `pulumi:"juniperSrx"`
-	// junos_shell_access: Manages role-based web-shell access.\
-	// When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-	// When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+	// Role-based Junos web-shell access settings
 	JunosShellAccess *SettingJunosShellAccess `pulumi:"junosShellAccess"`
-	Marvis           *SettingMarvis           `pulumi:"marvis"`
-	// management-related properties
-	Mgmt       *SettingMgmt       `pulumi:"mgmt"`
-	MistNac    *SettingMistNac    `pulumi:"mistNac"`
+	// AI assistant and self-driving feature settings for Marvis
+	Marvis *SettingMarvis `pulumi:"marvis"`
+	// Tunnel settings for organization management connectivity
+	Mgmt *SettingMgmt `pulumi:"mgmt"`
+	// NAC settings for Mist Access Assurance
+	MistNac *SettingMistNac `pulumi:"mistNac"`
+	// Management settings for Mist Edge devices
 	MxedgeMgmt *SettingMxedgeMgmt `pulumi:"mxedgeMgmt"`
-	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+	// Configuration defaults for optic ports
 	OpticPortConfig map[string]SettingOpticPortConfig `pulumi:"opticPortConfig"`
-	OrgId           string                            `pulumi:"orgId"`
-	// password policy
+	// Organization that owns these settings
+	OrgId string `pulumi:"orgId"`
+	// Admin credential policy settings for the organization
 	PasswordPolicy *SettingPasswordPolicy `pulumi:"passwordPolicy"`
-	Security       *SettingSecurity       `pulumi:"security"`
-	Ssr            *SettingSsr            `pulumi:"ssr"`
-	Switch         *SettingSwitch         `pulumi:"switch"`
-	SwitchMgmt     *SettingSwitchMgmt     `pulumi:"switchMgmt"`
+	// Organization security controls such as local SSH restrictions
+	Security *SettingSecurity `pulumi:"security"`
+	// Session Smart Router settings for the organization
+	Ssr *SettingSsr `pulumi:"ssr"`
+	// Configuration defaults for switches in this organization
+	Switch *SettingSwitch `pulumi:"switch"`
+	// Management settings for switches in this organization
+	SwitchMgmt *SettingSwitchMgmt `pulumi:"switchMgmt"`
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
-	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
-	SyntheticTest         *SettingSyntheticTest `pulumi:"syntheticTest"`
+	SwitchUpdownThreshold *int `pulumi:"switchUpdownThreshold"`
+	// Configuration for organization synthetic tests
+	SyntheticTest *SettingSyntheticTest `pulumi:"syntheticTest"`
 	// Automatically logout the user when UI session is inactive. `0` means disabled
-	UiIdleTimeout *int                `pulumi:"uiIdleTimeout"`
-	UiNoTracking  *bool               `pulumi:"uiNoTracking"`
-	VpnOptions    *SettingVpnOptions  `pulumi:"vpnOptions"`
-	WanPma        *SettingWanPma      `pulumi:"wanPma"`
-	WiredPma      *SettingWiredPma    `pulumi:"wiredPma"`
-	WirelessPma   *SettingWirelessPma `pulumi:"wirelessPma"`
+	UiIdleTimeout *int `pulumi:"uiIdleTimeout"`
+	// Whether UI usage tracking is disabled for the organization
+	UiNoTracking *bool `pulumi:"uiNoTracking"`
+	// Options for organization VPN behavior
+	VpnOptions *SettingVpnOptions `pulumi:"vpnOptions"`
+	// PMA feature settings for WAN Assurance
+	WanPma *SettingWanPma `pulumi:"wanPma"`
+	// PMA feature settings for Wired Assurance
+	WiredPma *SettingWiredPma `pulumi:"wiredPma"`
+	// PMA feature settings for Wireless Assurance
+	WirelessPma *SettingWirelessPma `pulumi:"wirelessPma"`
 }
 
 // The set of arguments for constructing a Setting resource.
 type SettingArgs struct {
 	// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
-	ApiPolicy         SettingApiPolicyPtrInput
-	// RADSec certificates for AP
-	Cacerts    pulumi.StringArrayInput
-	Celona     SettingCelonaPtrInput
+	// Policy for hiding API secrets and passwords in responses
+	ApiPolicy SettingApiPolicyPtrInput
+	// AP automatic firmware upgrade policy for the organization
+	AutoUpgrade SettingAutoUpgradePtrInput
+	// CA certificates used by organization-level RADIUS and RADSec settings
+	Cacerts pulumi.StringArrayInput
+	// Integration settings for Celona
+	Celona SettingCelonaPtrInput
+	// Packet capture integration settings for CloudShark
 	Cloudshark SettingCloudsharkPtrInput
-	// common device cert, optional
+	// Common device certificate used by organization settings
 	DeviceCert SettingDeviceCertPtrInput
 	// Enable threshold-based device down delivery via
 	//   * device-updowns webhooks topic,
@@ -404,39 +498,54 @@ type SettingArgs struct {
 	GatewayTunnelUpdownThreshold pulumi.IntPtrInput
 	// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrInput
-	Installer              SettingInstallerPtrInput
-	Jcloud                 SettingJcloudPtrInput
-	// JCloud Routing Assurance connexion
-	JcloudRa   SettingJcloudRaPtrInput
+	// Access settings for organization installer workflows
+	Installer SettingInstallerPtrInput
+	// Integration settings for JCloud
+	Jcloud SettingJcloudPtrInput
+	// Routing Assurance integration settings for JCloud
+	JcloudRa SettingJcloudRaPtrInput
+	// SRX integration settings for Juniper devices
 	JuniperSrx SettingJuniperSrxPtrInput
-	// junos_shell_access: Manages role-based web-shell access.\
-	// When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-	// When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+	// Role-based Junos web-shell access settings
 	JunosShellAccess SettingJunosShellAccessPtrInput
-	Marvis           SettingMarvisPtrInput
-	// management-related properties
-	Mgmt       SettingMgmtPtrInput
-	MistNac    SettingMistNacPtrInput
+	// AI assistant and self-driving feature settings for Marvis
+	Marvis SettingMarvisPtrInput
+	// Tunnel settings for organization management connectivity
+	Mgmt SettingMgmtPtrInput
+	// NAC settings for Mist Access Assurance
+	MistNac SettingMistNacPtrInput
+	// Management settings for Mist Edge devices
 	MxedgeMgmt SettingMxedgeMgmtPtrInput
-	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+	// Configuration defaults for optic ports
 	OpticPortConfig SettingOpticPortConfigMapInput
-	OrgId           pulumi.StringInput
-	// password policy
+	// Organization that owns these settings
+	OrgId pulumi.StringInput
+	// Admin credential policy settings for the organization
 	PasswordPolicy SettingPasswordPolicyPtrInput
-	Security       SettingSecurityPtrInput
-	Ssr            SettingSsrPtrInput
-	Switch         SettingSwitchPtrInput
-	SwitchMgmt     SettingSwitchMgmtPtrInput
+	// Organization security controls such as local SSH restrictions
+	Security SettingSecurityPtrInput
+	// Session Smart Router settings for the organization
+	Ssr SettingSsrPtrInput
+	// Configuration defaults for switches in this organization
+	Switch SettingSwitchPtrInput
+	// Management settings for switches in this organization
+	SwitchMgmt SettingSwitchMgmtPtrInput
 	// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntPtrInput
-	SyntheticTest         SettingSyntheticTestPtrInput
+	// Configuration for organization synthetic tests
+	SyntheticTest SettingSyntheticTestPtrInput
 	// Automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntPtrInput
-	UiNoTracking  pulumi.BoolPtrInput
-	VpnOptions    SettingVpnOptionsPtrInput
-	WanPma        SettingWanPmaPtrInput
-	WiredPma      SettingWiredPmaPtrInput
-	WirelessPma   SettingWirelessPmaPtrInput
+	// Whether UI usage tracking is disabled for the organization
+	UiNoTracking pulumi.BoolPtrInput
+	// Options for organization VPN behavior
+	VpnOptions SettingVpnOptionsPtrInput
+	// PMA feature settings for WAN Assurance
+	WanPma SettingWanPmaPtrInput
+	// PMA feature settings for Wired Assurance
+	WiredPma SettingWiredPmaPtrInput
+	// PMA feature settings for Wireless Assurance
+	WirelessPma SettingWirelessPmaPtrInput
 }
 
 func (SettingArgs) ElementType() reflect.Type {
@@ -536,28 +645,37 @@ func (o SettingOutput) ApUpdownThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.ApUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
+// Policy for hiding API secrets and passwords in responses
 func (o SettingOutput) ApiPolicy() SettingApiPolicyPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingApiPolicyPtrOutput { return v.ApiPolicy }).(SettingApiPolicyPtrOutput)
 }
 
-// RADSec certificates for AP
+// AP automatic firmware upgrade policy for the organization
+func (o SettingOutput) AutoUpgrade() SettingAutoUpgradePtrOutput {
+	return o.ApplyT(func(v *Setting) SettingAutoUpgradePtrOutput { return v.AutoUpgrade }).(SettingAutoUpgradePtrOutput)
+}
+
+// CA certificates used by organization-level RADIUS and RADSec settings
 func (o SettingOutput) Cacerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Setting) pulumi.StringArrayOutput { return v.Cacerts }).(pulumi.StringArrayOutput)
 }
 
+// Integration settings for Celona
 func (o SettingOutput) Celona() SettingCelonaPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingCelonaPtrOutput { return v.Celona }).(SettingCelonaPtrOutput)
 }
 
+// Packet capture integration settings for CloudShark
 func (o SettingOutput) Cloudshark() SettingCloudsharkPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingCloudsharkPtrOutput { return v.Cloudshark }).(SettingCloudsharkPtrOutput)
 }
 
+// Integration settings for Cradlepoint devices
 func (o SettingOutput) Cradlepoint() SettingCradlepointOutput {
 	return o.ApplyT(func(v *Setting) SettingCradlepointOutput { return v.Cradlepoint }).(SettingCradlepointOutput)
 }
 
-// common device cert, optional
+// Common device certificate used by organization settings
 func (o SettingOutput) DeviceCert() SettingDeviceCertPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingDeviceCertPtrOutput { return v.DeviceCert }).(SettingDeviceCertPtrOutput)
 }
@@ -589,81 +707,92 @@ func (o SettingOutput) GatewayUpdownThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.GatewayUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
+// Access settings for organization installer workflows
 func (o SettingOutput) Installer() SettingInstallerPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingInstallerPtrOutput { return v.Installer }).(SettingInstallerPtrOutput)
 }
 
+// Integration settings for JCloud
 func (o SettingOutput) Jcloud() SettingJcloudPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingJcloudPtrOutput { return v.Jcloud }).(SettingJcloudPtrOutput)
 }
 
-// JCloud Routing Assurance connexion
+// Routing Assurance integration settings for JCloud
 func (o SettingOutput) JcloudRa() SettingJcloudRaPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingJcloudRaPtrOutput { return v.JcloudRa }).(SettingJcloudRaPtrOutput)
 }
 
+// Linked Juniper account information for this organization
 func (o SettingOutput) Juniper() SettingJuniperOutput {
 	return o.ApplyT(func(v *Setting) SettingJuniperOutput { return v.Juniper }).(SettingJuniperOutput)
 }
 
+// SRX integration settings for Juniper devices
 func (o SettingOutput) JuniperSrx() SettingJuniperSrxPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingJuniperSrxPtrOutput { return v.JuniperSrx }).(SettingJuniperSrxPtrOutput)
 }
 
-// junos_shell_access: Manages role-based web-shell access.\
-// When junosShell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.\
-// When junosShellAccess is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+// Role-based Junos web-shell access settings
 func (o SettingOutput) JunosShellAccess() SettingJunosShellAccessPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingJunosShellAccessPtrOutput { return v.JunosShellAccess }).(SettingJunosShellAccessPtrOutput)
 }
 
+// AI assistant and self-driving feature settings for Marvis
 func (o SettingOutput) Marvis() SettingMarvisPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingMarvisPtrOutput { return v.Marvis }).(SettingMarvisPtrOutput)
 }
 
-// management-related properties
+// Tunnel settings for organization management connectivity
 func (o SettingOutput) Mgmt() SettingMgmtPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingMgmtPtrOutput { return v.Mgmt }).(SettingMgmtPtrOutput)
 }
 
+// NAC settings for Mist Access Assurance
 func (o SettingOutput) MistNac() SettingMistNacPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingMistNacPtrOutput { return v.MistNac }).(SettingMistNacPtrOutput)
 }
 
+// Management settings for Mist Edge devices
 func (o SettingOutput) MxedgeMgmt() SettingMxedgeMgmtPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingMxedgeMgmtPtrOutput { return v.MxedgeMgmt }).(SettingMxedgeMgmtPtrOutput)
 }
 
-// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+// Configuration defaults for optic ports
 func (o SettingOutput) OpticPortConfig() SettingOpticPortConfigMapOutput {
 	return o.ApplyT(func(v *Setting) SettingOpticPortConfigMapOutput { return v.OpticPortConfig }).(SettingOpticPortConfigMapOutput)
 }
 
+// Organization that owns these settings
 func (o SettingOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Setting) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// password policy
+// Admin credential policy settings for the organization
 func (o SettingOutput) PasswordPolicy() SettingPasswordPolicyPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingPasswordPolicyPtrOutput { return v.PasswordPolicy }).(SettingPasswordPolicyPtrOutput)
 }
 
+// Packet capture settings for the organization
 func (o SettingOutput) Pcap() SettingPcapOutput {
 	return o.ApplyT(func(v *Setting) SettingPcapOutput { return v.Pcap }).(SettingPcapOutput)
 }
 
+// Organization security controls such as local SSH restrictions
 func (o SettingOutput) Security() SettingSecurityPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingSecurityPtrOutput { return v.Security }).(SettingSecurityPtrOutput)
 }
 
+// Session Smart Router settings for the organization
 func (o SettingOutput) Ssr() SettingSsrPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingSsrPtrOutput { return v.Ssr }).(SettingSsrPtrOutput)
 }
 
+// Configuration defaults for switches in this organization
 func (o SettingOutput) Switch() SettingSwitchPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingSwitchPtrOutput { return v.Switch }).(SettingSwitchPtrOutput)
 }
 
+// Management settings for switches in this organization
 func (o SettingOutput) SwitchMgmt() SettingSwitchMgmtPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingSwitchMgmtPtrOutput { return v.SwitchMgmt }).(SettingSwitchMgmtPtrOutput)
 }
@@ -673,6 +802,7 @@ func (o SettingOutput) SwitchUpdownThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntPtrOutput { return v.SwitchUpdownThreshold }).(pulumi.IntPtrOutput)
 }
 
+// Configuration for organization synthetic tests
 func (o SettingOutput) SyntheticTest() SettingSyntheticTestPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingSyntheticTestPtrOutput { return v.SyntheticTest }).(SettingSyntheticTestPtrOutput)
 }
@@ -682,22 +812,27 @@ func (o SettingOutput) UiIdleTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.UiIdleTimeout }).(pulumi.IntOutput)
 }
 
+// Whether UI usage tracking is disabled for the organization
 func (o SettingOutput) UiNoTracking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Setting) pulumi.BoolPtrOutput { return v.UiNoTracking }).(pulumi.BoolPtrOutput)
 }
 
+// Options for organization VPN behavior
 func (o SettingOutput) VpnOptions() SettingVpnOptionsPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingVpnOptionsPtrOutput { return v.VpnOptions }).(SettingVpnOptionsPtrOutput)
 }
 
+// PMA feature settings for WAN Assurance
 func (o SettingOutput) WanPma() SettingWanPmaPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingWanPmaPtrOutput { return v.WanPma }).(SettingWanPmaPtrOutput)
 }
 
+// PMA feature settings for Wired Assurance
 func (o SettingOutput) WiredPma() SettingWiredPmaPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingWiredPmaPtrOutput { return v.WiredPma }).(SettingWiredPmaPtrOutput)
 }
 
+// PMA feature settings for Wireless Assurance
 func (o SettingOutput) WirelessPma() SettingWirelessPmaPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingWirelessPmaPtrOutput { return v.WirelessPma }).(SettingWirelessPmaPtrOutput)
 }

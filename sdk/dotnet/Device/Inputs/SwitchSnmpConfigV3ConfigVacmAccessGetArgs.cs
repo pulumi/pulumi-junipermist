@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchSnmpConfigV3ConfigVacmAccessGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// SNMP VACM group name
+        /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
         [Input("prefixLists")]
         private InputList<Inputs.SwitchSnmpConfigV3ConfigVacmAccessPrefixListGetArgs>? _prefixLists;
+
+        /// <summary>
+        /// Context prefix rules for this VACM group
+        /// </summary>
         public InputList<Inputs.SwitchSnmpConfigV3ConfigVacmAccessPrefixListGetArgs> PrefixLists
         {
             get => _prefixLists ?? (_prefixLists = new InputList<Inputs.SwitchSnmpConfigV3ConfigVacmAccessPrefixListGetArgs>());

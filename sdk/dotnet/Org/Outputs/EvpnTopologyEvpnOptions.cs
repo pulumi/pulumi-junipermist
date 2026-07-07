@@ -41,6 +41,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// if the mangement traffic goes inbnd, during installation, only the border/core switches are connected to the Internet to allow initial configuration to be pushed down and leave the downstream access switches stay in the Factory Default state enabling inband-ztp allows upstream switches to use LLDP to assign IP and gives Internet to downstream switches in that state
         /// </summary>
         public readonly bool? EnableInbandZtp;
+        /// <summary>
+        /// EVPN overlay BGP settings for the topology
+        /// </summary>
         public readonly Outputs.EvpnTopologyEvpnOptionsOverlay? Overlay;
         /// <summary>
         /// Only for by Core-Distribution architecture when `evpn_options.routed_at`==`Core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac. If enabled, 00-00-5e-00-0X-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
@@ -51,12 +54,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? PerVlanVgaV6Mac;
         /// <summary>
-        /// optional, where virtual-gateway should reside. enum: `Core`, `Distribution`, `Edge`
+        /// Topology tier where EVPN virtual gateway routing is placed
         /// </summary>
         public readonly string? RoutedAt;
+        /// <summary>
+        /// EVPN underlay BGP and subnet settings for the topology
+        /// </summary>
         public readonly Outputs.EvpnTopologyEvpnOptionsUnderlay? Underlay;
         /// <summary>
-        /// Optional, for EX9200 only to segregate virtual-switches
+        /// Virtual-switch instance mappings used to segregate EVPN networks
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.EvpnTopologyEvpnOptionsVsInstances>? VsInstances;
 

@@ -31,23 +31,47 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.dns);
     }
 
+    /**
+     * DNS search suffixes configured for Junos management traffic
+     * 
+     */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
+    /**
+     * @return DNS search suffixes configured for Junos management traffic
+     * 
+     */
     public Optional<Output<List<String>>> dnsSuffixes() {
         return Optional.ofNullable(this.dnsSuffixes);
     }
 
+    /**
+     * Default gateway IPv4 address for this Junos IP configuration
+     * 
+     */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
+    /**
+     * @return Default gateway IPv4 address for this Junos IP configuration
+     * 
+     */
     public Optional<Output<String>> gateway() {
         return Optional.ofNullable(this.gateway);
     }
 
+    /**
+     * Configured IPv4 address for this Junos IP configuration
+     * 
+     */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
+    /**
+     * @return Configured IPv4 address for this Junos IP configuration
+     * 
+     */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
     }
@@ -68,14 +92,14 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+     * Management network for this IP configuration; used as the default source network for outbound SSH, DNS, NTP, TACACS+, RADIUS, syslog, and SNMP
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+     * @return Management network for this IP configuration; used as the default source network for outbound SSH, DNS, NTP, TACACS+, RADIUS, syslog, and SNMP
      * 
      */
     public Optional<Output<String>> network() {
@@ -83,14 +107,14 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * enum: `dhcp`, `static`
+     * IP assignment mode for this Junos IP configuration
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for this Junos IP configuration
      * 
      */
     public Optional<Output<String>> type() {
@@ -158,33 +182,75 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
             return dns(List.of(dns));
         }
 
+        /**
+         * @param dnsSuffixes DNS search suffixes configured for Junos management traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsSuffixes(@Nullable Output<List<String>> dnsSuffixes) {
             $.dnsSuffixes = dnsSuffixes;
             return this;
         }
 
+        /**
+         * @param dnsSuffixes DNS search suffixes configured for Junos management traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsSuffixes(List<String> dnsSuffixes) {
             return dnsSuffixes(Output.of(dnsSuffixes));
         }
 
+        /**
+         * @param dnsSuffixes DNS search suffixes configured for Junos management traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsSuffixes(String... dnsSuffixes) {
             return dnsSuffixes(List.of(dnsSuffixes));
         }
 
+        /**
+         * @param gateway Default gateway IPv4 address for this Junos IP configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway(@Nullable Output<String> gateway) {
             $.gateway = gateway;
             return this;
         }
 
+        /**
+         * @param gateway Default gateway IPv4 address for this Junos IP configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway(String gateway) {
             return gateway(Output.of(gateway));
         }
 
+        /**
+         * @param ip Configured IPv4 address for this Junos IP configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(@Nullable Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
+        /**
+         * @param ip Configured IPv4 address for this Junos IP configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }
@@ -211,7 +277,7 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param network Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+         * @param network Management network for this IP configuration; used as the default source network for outbound SSH, DNS, NTP, TACACS+, RADIUS, syslog, and SNMP
          * 
          * @return builder
          * 
@@ -222,7 +288,7 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param network Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+         * @param network Management network for this IP configuration; used as the default source network for outbound SSH, DNS, NTP, TACACS+, RADIUS, syslog, and SNMP
          * 
          * @return builder
          * 
@@ -232,7 +298,7 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IP assignment mode for this Junos IP configuration
          * 
          * @return builder
          * 
@@ -243,7 +309,7 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IP assignment mode for this Junos IP configuration
          * 
          * @return builder
          * 

@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchVrrpConfig
     {
+        /// <summary>
+        /// Whether VRRP configuration is enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Property key is the VRRP name
+        /// VRRP groups keyed by group name
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.SwitchVrrpConfigGroups>? Groups;
 

@@ -55,9 +55,17 @@ public final class UpgradeDeviceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rebootAt);
     }
 
+    /**
+     * Associated site identifier for the switch statistics record
+     * 
+     */
     @Import(name="siteId", required=true)
     private Output<String> siteId;
 
+    /**
+     * @return Associated site identifier for the switch statistics record
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
@@ -252,11 +260,23 @@ public final class UpgradeDeviceArgs extends com.pulumi.resources.ResourceArgs {
             return rebootAt(Output.of(rebootAt));
         }
 
+        /**
+         * @param siteId Associated site identifier for the switch statistics record
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Associated site identifier for the switch statistics record
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }

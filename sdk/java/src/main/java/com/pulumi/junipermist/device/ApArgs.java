@@ -16,6 +16,7 @@ import com.pulumi.junipermist.device.inputs.ApIpConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApLacpConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApLedArgs;
 import com.pulumi.junipermist.device.inputs.ApMeshArgs;
+import com.pulumi.junipermist.device.inputs.ApMqttConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApPortConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApPwrConfigArgs;
 import com.pulumi.junipermist.device.inputs.ApRadioConfigArgs;
@@ -38,52 +39,76 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     public static final ApArgs Empty = new ApArgs();
 
     /**
-     * Aeroscout AP settings
+     * Location integration settings for AeroScout on this access point
      * 
      */
     @Import(name="aeroscout")
     private @Nullable Output<ApAeroscoutArgs> aeroscout;
 
     /**
-     * @return Aeroscout AP settings
+     * @return Location integration settings for AeroScout on this access point
      * 
      */
     public Optional<Output<ApAeroscoutArgs>> aeroscout() {
         return Optional.ofNullable(this.aeroscout);
     }
 
+    /**
+     * Location integration settings for Airista on this access point
+     * 
+     */
     @Import(name="airista")
     private @Nullable Output<ApAiristaArgs> airista;
 
+    /**
+     * @return Location integration settings for Airista on this access point
+     * 
+     */
     public Optional<Output<ApAiristaArgs>> airista() {
         return Optional.ofNullable(this.airista);
     }
 
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy beacon and asset settings for this access point
      * 
      */
     @Import(name="bleConfig")
     private @Nullable Output<ApBleConfigArgs> bleConfig;
 
     /**
-     * @return BLE AP settings
+     * @return Bluetooth Low Energy beacon and asset settings for this access point
      * 
      */
     public Optional<Output<ApBleConfigArgs>> bleConfig() {
         return Optional.ofNullable(this.bleConfig);
     }
 
+    /**
+     * Location integration settings for Centrak on this access point
+     * 
+     */
     @Import(name="centrak")
     private @Nullable Output<ApCentrakArgs> centrak;
 
+    /**
+     * @return Location integration settings for Centrak on this access point
+     * 
+     */
     public Optional<Output<ApCentrakArgs>> centrak() {
         return Optional.ofNullable(this.centrak);
     }
 
+    /**
+     * Wireless client bridge settings for this access point
+     * 
+     */
     @Import(name="clientBridge")
     private @Nullable Output<ApClientBridgeArgs> clientBridge;
 
+    /**
+     * @return Wireless client bridge settings for this access point
+     * 
+     */
     public Optional<Output<ApClientBridgeArgs>> clientBridge() {
         return Optional.ofNullable(this.clientBridge);
     }
@@ -155,9 +180,17 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.disableModule);
     }
 
+    /**
+     * Electronic shelf label integration settings for this access point
+     * 
+     */
     @Import(name="eslConfig")
     private @Nullable Output<ApEslConfigArgs> eslConfig;
 
+    /**
+     * @return Electronic shelf label integration settings for this access point
+     * 
+     */
     public Optional<Output<ApEslConfigArgs>> eslConfig() {
         return Optional.ofNullable(this.eslConfig);
     }
@@ -178,14 +211,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Height, in meters, optional
+     * Installation height of the AP, in meters
      * 
      */
     @Import(name="height")
     private @Nullable Output<Double> height;
 
     /**
-     * @return Height, in meters, optional
+     * @return Installation height of the AP, in meters
      * 
      */
     public Optional<Output<Double>> height() {
@@ -193,36 +226,44 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP AP settings
+     * Management IP addressing settings for this access point
      * 
      */
     @Import(name="ipConfig")
     private @Nullable Output<ApIpConfigArgs> ipConfig;
 
     /**
-     * @return IP AP settings
+     * @return Management IP addressing settings for this access point
      * 
      */
     public Optional<Output<ApIpConfigArgs>> ipConfig() {
         return Optional.ofNullable(this.ipConfig);
     }
 
+    /**
+     * Link aggregation settings for supported AP Ethernet uplinks
+     * 
+     */
     @Import(name="lacpConfig")
     private @Nullable Output<ApLacpConfigArgs> lacpConfig;
 
+    /**
+     * @return Link aggregation settings for supported AP Ethernet uplinks
+     * 
+     */
     public Optional<Output<ApLacpConfigArgs>> lacpConfig() {
         return Optional.ofNullable(this.lacpConfig);
     }
 
     /**
-     * LED AP settings
+     * Indicator light behavior settings for this access point
      * 
      */
     @Import(name="led")
     private @Nullable Output<ApLedArgs> led;
 
     /**
-     * @return LED AP settings
+     * @return Indicator light behavior settings for this access point
      * 
      */
     public Optional<Output<ApLedArgs>> led() {
@@ -260,23 +301,46 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Mesh AP settings
+     * Wireless mesh role and band settings for this access point
      * 
      */
     @Import(name="mesh")
     private @Nullable Output<ApMeshArgs> mesh;
 
     /**
-     * @return Mesh AP settings
+     * @return Wireless mesh role and band settings for this access point
      * 
      */
     public Optional<Output<ApMeshArgs>> mesh() {
         return Optional.ofNullable(this.mesh);
     }
 
+    /**
+     * MQTT broker publishing settings for this access point
+     * 
+     */
+    @Import(name="mqttConfig")
+    private @Nullable Output<ApMqttConfigArgs> mqttConfig;
+
+    /**
+     * @return MQTT broker publishing settings for this access point
+     * 
+     */
+    public Optional<Output<ApMqttConfigArgs>> mqttConfig() {
+        return Optional.ofNullable(this.mqttConfig);
+    }
+
+    /**
+     * Configured hostname assigned to the access point
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Configured hostname assigned to the access point
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -296,22 +360,30 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.notes);
     }
 
+    /**
+     * NTP servers used by this access point
+     * 
+     */
     @Import(name="ntpServers")
     private @Nullable Output<List<String>> ntpServers;
 
+    /**
+     * @return NTP servers used by this access point
+     * 
+     */
     public Optional<Output<List<String>>> ntpServers() {
         return Optional.ofNullable(this.ntpServers);
     }
 
     /**
-     * Orientation, 0-359, in degrees, up is 0, right is 90.
+     * AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
      * 
      */
     @Import(name="orientation")
     private @Nullable Output<Integer> orientation;
 
     /**
-     * @return Orientation, 0-359, in degrees, up is 0, right is 90.
+     * @return AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
      * 
      */
     public Optional<Output<Integer>> orientation() {
@@ -349,14 +421,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Power related configs
+     * Power negotiation and peripheral power settings for this access point
      * 
      */
     @Import(name="pwrConfig")
     private @Nullable Output<ApPwrConfigArgs> pwrConfig;
 
     /**
-     * @return Power related configs
+     * @return Power negotiation and peripheral power settings for this access point
      * 
      */
     public Optional<Output<ApPwrConfigArgs>> pwrConfig() {
@@ -364,36 +436,44 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radio AP settings
+     * Radio configuration overrides for this access point
      * 
      */
     @Import(name="radioConfig")
     private @Nullable Output<ApRadioConfigArgs> radioConfig;
 
     /**
-     * @return Radio AP settings
+     * @return Radio configuration overrides for this access point
      * 
      */
     public Optional<Output<ApRadioConfigArgs>> radioConfig() {
         return Optional.ofNullable(this.radioConfig);
     }
 
+    /**
+     * Site where this access point is assigned
+     * 
+     */
     @Import(name="siteId", required=true)
     private Output<String> siteId;
 
+    /**
+     * @return Site where this access point is assigned
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
 
     /**
-     * AP Uplink port configuration
+     * Authentication and failover behavior for AP uplink ports
      * 
      */
     @Import(name="uplinkPortConfig")
     private @Nullable Output<ApUplinkPortConfigArgs> uplinkPortConfig;
 
     /**
-     * @return AP Uplink port configuration
+     * @return Authentication and failover behavior for AP uplink ports
      * 
      */
     public Optional<Output<ApUplinkPortConfigArgs>> uplinkPortConfig() {
@@ -401,18 +481,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * Legacy USB integration settings for this access point
      * 
      */
     @Import(name="usbConfig")
     private @Nullable Output<ApUsbConfigArgs> usbConfig;
 
     /**
-     * @return USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * @return Legacy USB integration settings for this access point
      * 
      */
     public Optional<Output<ApUsbConfigArgs>> usbConfig() {
@@ -420,14 +496,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this access point
      * 
      */
     @Import(name="vars")
     private @Nullable Output<Map<String,String>> vars;
 
     /**
-     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Variable values that override site variables for this access point
      * 
      */
     public Optional<Output<Map<String,String>>> vars() {
@@ -435,14 +511,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * X in pixel
+     * Horizontal map position of the AP, in pixels
      * 
      */
     @Import(name="x")
     private @Nullable Output<Double> x;
 
     /**
-     * @return X in pixel
+     * @return Horizontal map position of the AP, in pixels
      * 
      */
     public Optional<Output<Double>> x() {
@@ -450,14 +526,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Y in pixel
+     * Vertical map position of the AP, in pixels
      * 
      */
     @Import(name="y")
     private @Nullable Output<Double> y;
 
     /**
-     * @return Y in pixel
+     * @return Vertical map position of the AP, in pixels
      * 
      */
     public Optional<Output<Double>> y() {
@@ -465,14 +541,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Zigbee AP settings
+     * Zigbee radio and network settings for this access point
      * 
      */
     @Import(name="zigbeeConfig")
     private @Nullable Output<ApZigbeeConfigArgs> zigbeeConfig;
 
     /**
-     * @return Zigbee AP settings
+     * @return Zigbee radio and network settings for this access point
      * 
      */
     public Optional<Output<ApZigbeeConfigArgs>> zigbeeConfig() {
@@ -501,6 +577,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         this.locked = $.locked;
         this.mapId = $.mapId;
         this.mesh = $.mesh;
+        this.mqttConfig = $.mqttConfig;
         this.name = $.name;
         this.notes = $.notes;
         this.ntpServers = $.ntpServers;
@@ -537,7 +614,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aeroscout Aeroscout AP settings
+         * @param aeroscout Location integration settings for AeroScout on this access point
          * 
          * @return builder
          * 
@@ -548,7 +625,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aeroscout Aeroscout AP settings
+         * @param aeroscout Location integration settings for AeroScout on this access point
          * 
          * @return builder
          * 
@@ -557,17 +634,29 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
             return aeroscout(Output.of(aeroscout));
         }
 
+        /**
+         * @param airista Location integration settings for Airista on this access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder airista(@Nullable Output<ApAiristaArgs> airista) {
             $.airista = airista;
             return this;
         }
 
+        /**
+         * @param airista Location integration settings for Airista on this access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder airista(ApAiristaArgs airista) {
             return airista(Output.of(airista));
         }
 
         /**
-         * @param bleConfig BLE AP settings
+         * @param bleConfig Bluetooth Low Energy beacon and asset settings for this access point
          * 
          * @return builder
          * 
@@ -578,7 +667,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bleConfig BLE AP settings
+         * @param bleConfig Bluetooth Low Energy beacon and asset settings for this access point
          * 
          * @return builder
          * 
@@ -587,20 +676,44 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
             return bleConfig(Output.of(bleConfig));
         }
 
+        /**
+         * @param centrak Location integration settings for Centrak on this access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder centrak(@Nullable Output<ApCentrakArgs> centrak) {
             $.centrak = centrak;
             return this;
         }
 
+        /**
+         * @param centrak Location integration settings for Centrak on this access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder centrak(ApCentrakArgs centrak) {
             return centrak(Output.of(centrak));
         }
 
+        /**
+         * @param clientBridge Wireless client bridge settings for this access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientBridge(@Nullable Output<ApClientBridgeArgs> clientBridge) {
             $.clientBridge = clientBridge;
             return this;
         }
 
+        /**
+         * @param clientBridge Wireless client bridge settings for this access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientBridge(ApClientBridgeArgs clientBridge) {
             return clientBridge(Output.of(clientBridge));
         }
@@ -698,11 +811,23 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
             return disableModule(Output.of(disableModule));
         }
 
+        /**
+         * @param eslConfig Electronic shelf label integration settings for this access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder eslConfig(@Nullable Output<ApEslConfigArgs> eslConfig) {
             $.eslConfig = eslConfig;
             return this;
         }
 
+        /**
+         * @param eslConfig Electronic shelf label integration settings for this access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder eslConfig(ApEslConfigArgs eslConfig) {
             return eslConfig(Output.of(eslConfig));
         }
@@ -729,7 +854,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param height Height, in meters, optional
+         * @param height Installation height of the AP, in meters
          * 
          * @return builder
          * 
@@ -740,7 +865,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param height Height, in meters, optional
+         * @param height Installation height of the AP, in meters
          * 
          * @return builder
          * 
@@ -750,7 +875,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipConfig IP AP settings
+         * @param ipConfig Management IP addressing settings for this access point
          * 
          * @return builder
          * 
@@ -761,7 +886,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipConfig IP AP settings
+         * @param ipConfig Management IP addressing settings for this access point
          * 
          * @return builder
          * 
@@ -770,17 +895,29 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
             return ipConfig(Output.of(ipConfig));
         }
 
+        /**
+         * @param lacpConfig Link aggregation settings for supported AP Ethernet uplinks
+         * 
+         * @return builder
+         * 
+         */
         public Builder lacpConfig(@Nullable Output<ApLacpConfigArgs> lacpConfig) {
             $.lacpConfig = lacpConfig;
             return this;
         }
 
+        /**
+         * @param lacpConfig Link aggregation settings for supported AP Ethernet uplinks
+         * 
+         * @return builder
+         * 
+         */
         public Builder lacpConfig(ApLacpConfigArgs lacpConfig) {
             return lacpConfig(Output.of(lacpConfig));
         }
 
         /**
-         * @param led LED AP settings
+         * @param led Indicator light behavior settings for this access point
          * 
          * @return builder
          * 
@@ -791,7 +928,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param led LED AP settings
+         * @param led Indicator light behavior settings for this access point
          * 
          * @return builder
          * 
@@ -843,7 +980,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mesh Mesh AP settings
+         * @param mesh Wireless mesh role and band settings for this access point
          * 
          * @return builder
          * 
@@ -854,7 +991,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mesh Mesh AP settings
+         * @param mesh Wireless mesh role and band settings for this access point
          * 
          * @return builder
          * 
@@ -863,11 +1000,44 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
             return mesh(Output.of(mesh));
         }
 
+        /**
+         * @param mqttConfig MQTT broker publishing settings for this access point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mqttConfig(@Nullable Output<ApMqttConfigArgs> mqttConfig) {
+            $.mqttConfig = mqttConfig;
+            return this;
+        }
+
+        /**
+         * @param mqttConfig MQTT broker publishing settings for this access point
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mqttConfig(ApMqttConfigArgs mqttConfig) {
+            return mqttConfig(Output.of(mqttConfig));
+        }
+
+        /**
+         * @param name Configured hostname assigned to the access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Configured hostname assigned to the access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -893,21 +1063,39 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
             return notes(Output.of(notes));
         }
 
+        /**
+         * @param ntpServers NTP servers used by this access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpServers(@Nullable Output<List<String>> ntpServers) {
             $.ntpServers = ntpServers;
             return this;
         }
 
+        /**
+         * @param ntpServers NTP servers used by this access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpServers(List<String> ntpServers) {
             return ntpServers(Output.of(ntpServers));
         }
 
+        /**
+         * @param ntpServers NTP servers used by this access point
+         * 
+         * @return builder
+         * 
+         */
         public Builder ntpServers(String... ntpServers) {
             return ntpServers(List.of(ntpServers));
         }
 
         /**
-         * @param orientation Orientation, 0-359, in degrees, up is 0, right is 90.
+         * @param orientation AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
          * 
          * @return builder
          * 
@@ -918,7 +1106,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orientation Orientation, 0-359, in degrees, up is 0, right is 90.
+         * @param orientation AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
          * 
          * @return builder
          * 
@@ -970,7 +1158,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pwrConfig Power related configs
+         * @param pwrConfig Power negotiation and peripheral power settings for this access point
          * 
          * @return builder
          * 
@@ -981,7 +1169,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pwrConfig Power related configs
+         * @param pwrConfig Power negotiation and peripheral power settings for this access point
          * 
          * @return builder
          * 
@@ -991,7 +1179,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radioConfig Radio AP settings
+         * @param radioConfig Radio configuration overrides for this access point
          * 
          * @return builder
          * 
@@ -1002,7 +1190,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radioConfig Radio AP settings
+         * @param radioConfig Radio configuration overrides for this access point
          * 
          * @return builder
          * 
@@ -1011,17 +1199,29 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
             return radioConfig(Output.of(radioConfig));
         }
 
+        /**
+         * @param siteId Site where this access point is assigned
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Site where this access point is assigned
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
-         * @param uplinkPortConfig AP Uplink port configuration
+         * @param uplinkPortConfig Authentication and failover behavior for AP uplink ports
          * 
          * @return builder
          * 
@@ -1032,7 +1232,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uplinkPortConfig AP Uplink port configuration
+         * @param uplinkPortConfig Authentication and failover behavior for AP uplink ports
          * 
          * @return builder
          * 
@@ -1042,9 +1242,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usbConfig USB AP settings
-         *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-         *   - Note: legacy, new config moved to ESL Config.
+         * @param usbConfig Legacy USB integration settings for this access point
          * 
          * @return builder
          * 
@@ -1055,9 +1253,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usbConfig USB AP settings
-         *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-         *   - Note: legacy, new config moved to ESL Config.
+         * @param usbConfig Legacy USB integration settings for this access point
          * 
          * @return builder
          * 
@@ -1067,7 +1263,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Variable values that override site variables for this access point
          * 
          * @return builder
          * 
@@ -1078,7 +1274,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Variable values that override site variables for this access point
          * 
          * @return builder
          * 
@@ -1088,7 +1284,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param x X in pixel
+         * @param x Horizontal map position of the AP, in pixels
          * 
          * @return builder
          * 
@@ -1099,7 +1295,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param x X in pixel
+         * @param x Horizontal map position of the AP, in pixels
          * 
          * @return builder
          * 
@@ -1109,7 +1305,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param y Y in pixel
+         * @param y Vertical map position of the AP, in pixels
          * 
          * @return builder
          * 
@@ -1120,7 +1316,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param y Y in pixel
+         * @param y Vertical map position of the AP, in pixels
          * 
          * @return builder
          * 
@@ -1130,7 +1326,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zigbeeConfig Zigbee AP settings
+         * @param zigbeeConfig Zigbee radio and network settings for this access point
          * 
          * @return builder
          * 
@@ -1141,7 +1337,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zigbeeConfig Zigbee AP settings
+         * @param zigbeeConfig Zigbee radio and network settings for this access point
          * 
          * @return builder
          * 

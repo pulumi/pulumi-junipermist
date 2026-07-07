@@ -31,6 +31,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. BFD provides faster path failure detection and is enabled by default
         /// </summary>
         public readonly bool? DisableBfd;
+        /// <summary>
+        /// Routing policy applied to routes exported by this BGP session
+        /// </summary>
         public readonly string? Export;
         /// <summary>
         /// Default export policies if no per-neighbor policies defined
@@ -48,6 +51,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. Default is 90.
         /// </summary>
         public readonly int? HoldTime;
+        /// <summary>
+        /// Routing policy applied to routes imported by this BGP session
+        /// </summary>
         public readonly string? Import;
         /// <summary>
         /// Optional if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. Default import policies if no per-neighbor policies defined
@@ -66,7 +72,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayBgpConfigNeighbors>? Neighbors;
         /// <summary>
-        /// Optional if `Via`==`Lan`. List of networks where we expect BGP neighbor to connect to/from
+        /// Optional if `Via`==`Lan`; networks where BGP neighbors can connect to or from
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
@@ -78,23 +84,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? NoReadvertiseToOverlay;
         /// <summary>
-        /// Optional if `Via`==`Tunnel`
+        /// Optional if `Via`==`Tunnel`; tunnel name used for this BGP session
         /// </summary>
         public readonly string? TunnelName;
         /// <summary>
-        /// Required if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`. enum: `External`, `Internal`
+        /// Required if `Via`==`Lan`, `Via`==`Tunnel` or `Via`==`Wan`; BGP session type, internal or external
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `Lan`, `Tunnel`, `Vpn`, `Wan`
+        /// Transport used for this BGP session, such as LAN, tunnel, VPN, or WAN
         /// </summary>
         public readonly string Via;
         /// <summary>
-        /// Optional if `Via`==`Vpn`
+        /// Optional if `Via`==`Vpn`; VPN name used for this BGP session
         /// </summary>
         public readonly string? VpnName;
         /// <summary>
-        /// Optional if `Via`==`Wan`
+        /// Optional if `Via`==`Wan`; WAN interface name used for this BGP session
         /// </summary>
         public readonly string? WanName;
 

@@ -11,23 +11,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingMistNacServerCert {
+    /**
+     * @return PEM-encoded RADIUS server certificate presented during EAP-TLS
+     * 
+     */
     private @Nullable String cert;
+    /**
+     * @return Private key paired with the Mist NAC RADIUS server certificate
+     * 
+     */
     private @Nullable String key;
     /**
-     * @return private key password (optional)
+     * @return Optional password for the private key
      * 
      */
     private @Nullable String password;
 
     private SettingMistNacServerCert() {}
+    /**
+     * @return PEM-encoded RADIUS server certificate presented during EAP-TLS
+     * 
+     */
     public Optional<String> cert() {
         return Optional.ofNullable(this.cert);
     }
+    /**
+     * @return Private key paired with the Mist NAC RADIUS server certificate
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return private key password (optional)
+     * @return Optional password for the private key
      * 
      */
     public Optional<String> password() {

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VpnPaths {
     /**
-     * @return enum: `broadband`, `lte`
+     * @return BFD profile used for this VPN path
      * 
      */
     private @Nullable String bfdProfile;
@@ -27,21 +27,29 @@ public final class VpnPaths {
      */
     private @Nullable Boolean bfdUseTunnelMode;
     /**
-     * @return If different from the wan port
+     * @return Source IP address for this VPN path, if different from the WAN port IP
      * 
      */
     private @Nullable String ip;
     /**
-     * @return If `type`==`mesh`, Property key is the Peer Interface name
+     * @return Peer path preferences used when `type`==`mesh`
      * 
      */
     private @Nullable Map<String,VpnPathsPeerPaths> peerPaths;
+    /**
+     * @return Grouping index used to place this VPN path into a pod
+     * 
+     */
     private @Nullable Integer pod;
+    /**
+     * @return Traffic shaping settings applied to this VPN path
+     * 
+     */
     private @Nullable VpnPathsTrafficShaping trafficShaping;
 
     private VpnPaths() {}
     /**
-     * @return enum: `broadband`, `lte`
+     * @return BFD profile used for this VPN path
      * 
      */
     public Optional<String> bfdProfile() {
@@ -55,22 +63,30 @@ public final class VpnPaths {
         return Optional.ofNullable(this.bfdUseTunnelMode);
     }
     /**
-     * @return If different from the wan port
+     * @return Source IP address for this VPN path, if different from the WAN port IP
      * 
      */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return If `type`==`mesh`, Property key is the Peer Interface name
+     * @return Peer path preferences used when `type`==`mesh`
      * 
      */
     public Map<String,VpnPathsPeerPaths> peerPaths() {
         return this.peerPaths == null ? Map.of() : this.peerPaths;
     }
+    /**
+     * @return Grouping index used to place this VPN path into a pod
+     * 
+     */
     public Optional<Integer> pod() {
         return Optional.ofNullable(this.pod);
     }
+    /**
+     * @return Traffic shaping settings applied to this VPN path
+     * 
+     */
     public Optional<VpnPathsTrafficShaping> trafficShaping() {
         return Optional.ofNullable(this.trafficShaping);
     }

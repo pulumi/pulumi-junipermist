@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayRoutingPoliciesTerm
     {
         /// <summary>
-        /// When used as import policy
+        /// Policy actions applied when this routing policy term matches
         /// </summary>
         public readonly Outputs.GatewayRoutingPoliciesTermActions? Actions;
         /// <summary>
-        /// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        /// Route match criteria that must be satisfied before actions are applied
         /// </summary>
         public readonly Outputs.GatewayRoutingPoliciesTermMatching? Matching;
 

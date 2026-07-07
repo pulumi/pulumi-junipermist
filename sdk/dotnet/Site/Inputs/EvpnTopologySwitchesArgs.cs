@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class EvpnTopologySwitchesArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Associated device profile identifier for the switch. Use the Assign Org Device Profile endpoint to assign a Device Profile to the switch.
+        /// </summary>
         [Input("deviceprofileId")]
         public Input<string>? DeviceprofileId { get; set; }
 
         [Input("downlinkIps")]
         private InputList<string>? _downlinkIps;
+
+        /// <summary>
+        /// IP addresses used by this switch for EVPN downlinks
+        /// </summary>
         public InputList<string> DownlinkIps
         {
             get => _downlinkIps ?? (_downlinkIps = new InputList<string>());
@@ -25,6 +32,10 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("downlinks")]
         private InputList<string>? _downlinks;
+
+        /// <summary>
+        /// Switch MAC addresses connected as downlinks from this topology member
+        /// </summary>
         public InputList<string> Downlinks
         {
             get => _downlinks ?? (_downlinks = new InputList<string>());
@@ -33,18 +44,31 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("esilaglinks")]
         private InputList<string>? _esilaglinks;
+
+        /// <summary>
+        /// Switch MAC addresses connected through ESI-LAG from this topology member
+        /// </summary>
         public InputList<string> Esilaglinks
         {
             get => _esilaglinks ?? (_esilaglinks = new InputList<string>());
             set => _esilaglinks = value;
         }
 
+        /// <summary>
+        /// Topology identifier number for this EVPN switch member
+        /// </summary>
         [Input("evpnId")]
         public Input<int>? EvpnId { get; set; }
 
+        /// <summary>
+        /// Switch MAC address used to identify the topology member
+        /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 
+        /// <summary>
+        /// Switch model for this topology member
+        /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
 
@@ -60,8 +84,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<int>? _pods;
 
         /// <summary>
-        /// By default, core switches are assumed to be connecting all pods. 
-        /// if you want to limit the pods, you can specify pods.
+        /// List of pod numbers this switch participates in
         /// </summary>
         public InputList<int> Pods
         {
@@ -70,19 +93,29 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// use `Role`==`None` to remove a switch from the topology. enum: `Access`, `collapsed-core`, `Core`, `Distribution`, `esilag-access`, `None`
+        /// EVPN topology role for this switch
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
+        /// <summary>
+        /// Routing identifier used by this switch for EVPN routing
+        /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
 
+        /// <summary>
+        /// Associated site for this EVPN topology switch
+        /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
         [Input("suggestedDownlinks")]
         private InputList<string>? _suggestedDownlinks;
+
+        /// <summary>
+        /// Builder-suggested downlink switch MAC addresses
+        /// </summary>
         public InputList<string> SuggestedDownlinks
         {
             get => _suggestedDownlinks ?? (_suggestedDownlinks = new InputList<string>());
@@ -91,6 +124,10 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("suggestedEsilaglinks")]
         private InputList<string>? _suggestedEsilaglinks;
+
+        /// <summary>
+        /// Builder-suggested ESI-LAG switch MAC addresses
+        /// </summary>
         public InputList<string> SuggestedEsilaglinks
         {
             get => _suggestedEsilaglinks ?? (_suggestedEsilaglinks = new InputList<string>());
@@ -99,6 +136,10 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("suggestedUplinks")]
         private InputList<string>? _suggestedUplinks;
+
+        /// <summary>
+        /// Builder-suggested uplink switch MAC addresses
+        /// </summary>
         public InputList<string> SuggestedUplinks
         {
             get => _suggestedUplinks ?? (_suggestedUplinks = new InputList<string>());
@@ -107,6 +148,10 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("uplinks")]
         private InputList<string>? _uplinks;
+
+        /// <summary>
+        /// Switch MAC addresses connected as uplinks from this topology member
+        /// </summary>
         public InputList<string> Uplinks
         {
             get => _uplinks ?? (_uplinks = new InputList<string>());

@@ -14,15 +14,25 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         [Input("contents")]
         private InputList<Inputs.SwitchRemoteSyslogUserContentGetArgs>? _contents;
+
+        /// <summary>
+        /// Syslog facilities and severities logged for this user rule
+        /// </summary>
         public InputList<Inputs.SwitchRemoteSyslogUserContentGetArgs> Contents
         {
             get => _contents ?? (_contents = new InputList<Inputs.SwitchRemoteSyslogUserContentGetArgs>());
             set => _contents = value;
         }
 
+        /// <summary>
+        /// Expression used to filter user log messages
+        /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
 
+        /// <summary>
+        /// Account name or wildcard matched by this syslog rule
+        /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
 

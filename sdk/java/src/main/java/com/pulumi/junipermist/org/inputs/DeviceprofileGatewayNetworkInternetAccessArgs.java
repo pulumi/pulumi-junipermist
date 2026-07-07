@@ -19,31 +19,47 @@ public final class DeviceprofileGatewayNetworkInternetAccessArgs extends com.pul
 
     public static final DeviceprofileGatewayNetworkInternetAccessArgs Empty = new DeviceprofileGatewayNetworkInternetAccessArgs();
 
+    /**
+     * Whether Mist should create simple service policies for restricted internet access
+     * 
+     */
     @Import(name="createSimpleServicePolicy")
     private @Nullable Output<Boolean> createSimpleServicePolicy;
 
+    /**
+     * @return Whether Mist should create simple service policies for restricted internet access
+     * 
+     */
     public Optional<Output<Boolean>> createSimpleServicePolicy() {
         return Optional.ofNullable(this.createSimpleServicePolicy);
     }
 
     /**
-     * Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internalIp` or `port` must be defined
+     * Destination NAT rules for direct internet access
      * 
      */
     @Import(name="destinationNat")
     private @Nullable Output<Map<String,DeviceprofileGatewayNetworkInternetAccessDestinationNatArgs>> destinationNat;
 
     /**
-     * @return Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internalIp` or `port` must be defined
+     * @return Destination NAT rules for direct internet access
      * 
      */
     public Optional<Output<Map<String,DeviceprofileGatewayNetworkInternetAccessDestinationNatArgs>>> destinationNat() {
         return Optional.ofNullable(this.destinationNat);
     }
 
+    /**
+     * Whether direct internet access is enabled for this network
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether direct internet access is enabled for this network
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -64,14 +80,14 @@ public final class DeviceprofileGatewayNetworkInternetAccessArgs extends com.pul
     }
 
     /**
-     * Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * Static NAT rules for direct internet access
      * 
      */
     @Import(name="staticNat")
     private @Nullable Output<Map<String,DeviceprofileGatewayNetworkInternetAccessStaticNatArgs>> staticNat;
 
     /**
-     * @return Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Static NAT rules for direct internet access
      * 
      */
     public Optional<Output<Map<String,DeviceprofileGatewayNetworkInternetAccessStaticNatArgs>>> staticNat() {
@@ -106,17 +122,29 @@ public final class DeviceprofileGatewayNetworkInternetAccessArgs extends com.pul
             $ = new DeviceprofileGatewayNetworkInternetAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param createSimpleServicePolicy Whether Mist should create simple service policies for restricted internet access
+         * 
+         * @return builder
+         * 
+         */
         public Builder createSimpleServicePolicy(@Nullable Output<Boolean> createSimpleServicePolicy) {
             $.createSimpleServicePolicy = createSimpleServicePolicy;
             return this;
         }
 
+        /**
+         * @param createSimpleServicePolicy Whether Mist should create simple service policies for restricted internet access
+         * 
+         * @return builder
+         * 
+         */
         public Builder createSimpleServicePolicy(Boolean createSimpleServicePolicy) {
             return createSimpleServicePolicy(Output.of(createSimpleServicePolicy));
         }
 
         /**
-         * @param destinationNat Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internalIp` or `port` must be defined
+         * @param destinationNat Destination NAT rules for direct internet access
          * 
          * @return builder
          * 
@@ -127,7 +155,7 @@ public final class DeviceprofileGatewayNetworkInternetAccessArgs extends com.pul
         }
 
         /**
-         * @param destinationNat Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internalIp` or `port` must be defined
+         * @param destinationNat Destination NAT rules for direct internet access
          * 
          * @return builder
          * 
@@ -136,11 +164,23 @@ public final class DeviceprofileGatewayNetworkInternetAccessArgs extends com.pul
             return destinationNat(Output.of(destinationNat));
         }
 
+        /**
+         * @param enabled Whether direct internet access is enabled for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether direct internet access is enabled for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
@@ -167,7 +207,7 @@ public final class DeviceprofileGatewayNetworkInternetAccessArgs extends com.pul
         }
 
         /**
-         * @param staticNat Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param staticNat Static NAT rules for direct internet access
          * 
          * @return builder
          * 
@@ -178,7 +218,7 @@ public final class DeviceprofileGatewayNetworkInternetAccessArgs extends com.pul
         }
 
         /**
-         * @param staticNat Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param staticNat Static NAT rules for direct internet access
          * 
          * @return builder
          * 

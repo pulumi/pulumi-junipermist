@@ -53,25 +53,35 @@ class GatewaytemplateArgs:
         """
         The set of arguments for constructing a Gatewaytemplate resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input['GatewaytemplateGatewayMgmtArgs'] gateway_mgmt: Gateway Management settings
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input['GatewaytemplateOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]] bgp_config: BGP routing defaults for this gateway template. Property key is the BGP session name
+        :param pulumi.Input['GatewaytemplateDhcpdConfigArgs'] dhcpd_config: DHCP server defaults provided by this gateway template
+        :param pulumi.Input[_builtins.bool] dns_override: Whether DNS server and suffix settings in this template override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers provided by this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]] extra_routes: Additional IPv4 route defaults in this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]] extra_routes6: Additional IPv6 route defaults in this gateway template
+        :param pulumi.Input['GatewaytemplateGatewayMgmtArgs'] gateway_mgmt: Management-plane defaults provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input[_builtins.str] name: Display name of the gateway template
+        :param pulumi.Input[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]] networks: Layer 3 networks configured by this gateway template
+        :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this template override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this gateway template
+        :param pulumi.Input['GatewaytemplateOobIpConfigArgs'] oob_ip_config: Out-of-band management IP defaults in this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]] routing_policies: Routing policy defaults applied by this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]] service_policies: Traffic service policy defaults enforced by this gateway template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[_builtins.str] type: enum: `spoke`, `standalone`
+        :param pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs'] tunnel_provider_options: Provider-specific tunnel options defined by this gateway template
+        :param pulumi.Input[_builtins.str] type: Gateway template deployment type
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
+        :param pulumi.Input['GatewaytemplateVrfConfigArgs'] vrf_config: VRF defaults applied by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]] vrf_instances: VRF instances configured by this gateway template
         """
         pulumi.set(__self__, "org_id", org_id)
         if additional_config_cmds is not None:
@@ -134,6 +144,9 @@ class GatewaytemplateArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization that owns this gateway template
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -144,7 +157,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional CLI configuration commands provided by this gateway template
         """
         return pulumi.get(self, "additional_config_cmds")
 
@@ -155,6 +168,9 @@ class GatewaytemplateArgs:
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]]:
+        """
+        BGP routing defaults for this gateway template. Property key is the BGP session name
+        """
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
@@ -164,6 +180,9 @@ class GatewaytemplateArgs:
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
     def dhcpd_config(self) -> pulumi.Input[Optional['GatewaytemplateDhcpdConfigArgs']]:
+        """
+        DHCP server defaults provided by this gateway template
+        """
         return pulumi.get(self, "dhcpd_config")
 
     @dhcpd_config.setter
@@ -173,6 +192,9 @@ class GatewaytemplateArgs:
     @_builtins.property
     @pulumi.getter(name="dnsOverride")
     def dns_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether DNS server and suffix settings in this template override inherited values
+        """
         return pulumi.get(self, "dns_override")
 
     @dns_override.setter
@@ -183,7 +205,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS servers provided by this gateway template
         """
         return pulumi.get(self, "dns_servers")
 
@@ -195,7 +217,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS search suffixes provided by this gateway template
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -207,7 +229,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv4 route defaults in this gateway template
         """
         return pulumi.get(self, "extra_routes")
 
@@ -219,7 +241,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv6 route defaults in this gateway template
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -231,7 +253,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Input[Optional['GatewaytemplateGatewayMgmtArgs']]:
         """
-        Gateway Management settings
+        Management-plane defaults provided by this gateway template
         """
         return pulumi.get(self, "gateway_mgmt")
 
@@ -243,7 +265,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="idpProfiles")
     def idp_profiles(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]]:
         """
-        Property key is the profile name
+        Intrusion detection and prevention profile defaults in this gateway template
         """
         return pulumi.get(self, "idp_profiles")
 
@@ -255,7 +277,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]]:
         """
-        Property key is the network name
+        Gateway interface IP configuration defaults by network name
         """
         return pulumi.get(self, "ip_configs")
 
@@ -266,6 +288,9 @@ class GatewaytemplateArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the gateway template
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -275,6 +300,9 @@ class GatewaytemplateArgs:
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]]:
+        """
+        Layer 3 networks configured by this gateway template
+        """
         return pulumi.get(self, "networks")
 
     @networks.setter
@@ -284,6 +312,9 @@ class GatewaytemplateArgs:
     @_builtins.property
     @pulumi.getter(name="ntpOverride")
     def ntp_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether NTP servers in this template override inherited values
+        """
         return pulumi.get(self, "ntp_override")
 
     @ntp_override.setter
@@ -294,7 +325,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of NTP servers specific to this device. By default, those in Site Settings will be used
+        NTP servers provided by this gateway template
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -306,7 +337,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Input[Optional['GatewaytemplateOobIpConfigArgs']]:
         """
-        Out-of-band (vme/em0/fxp0) IP config
+        Out-of-band management IP defaults in this gateway template
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -354,7 +385,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="routingPolicies")
     def routing_policies(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]]:
         """
-        Property key is the routing policy name
+        Routing policy defaults applied by this gateway template
         """
         return pulumi.get(self, "routing_policies")
 
@@ -365,6 +396,9 @@ class GatewaytemplateArgs:
     @_builtins.property
     @pulumi.getter(name="servicePolicies")
     def service_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]]:
+        """
+        Traffic service policy defaults enforced by this gateway template
+        """
         return pulumi.get(self, "service_policies")
 
     @service_policies.setter
@@ -398,6 +432,9 @@ class GatewaytemplateArgs:
     @_builtins.property
     @pulumi.getter(name="tunnelProviderOptions")
     def tunnel_provider_options(self) -> pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsArgs']]:
+        """
+        Provider-specific tunnel options defined by this gateway template
+        """
         return pulumi.get(self, "tunnel_provider_options")
 
     @tunnel_provider_options.setter
@@ -408,7 +445,7 @@ class GatewaytemplateArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `spoke`, `standalone`
+        Gateway template deployment type
         """
         return pulumi.get(self, "type")
 
@@ -431,6 +468,9 @@ class GatewaytemplateArgs:
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> pulumi.Input[Optional['GatewaytemplateVrfConfigArgs']]:
+        """
+        VRF defaults applied by this gateway template
+        """
         return pulumi.get(self, "vrf_config")
 
     @vrf_config.setter
@@ -441,7 +481,7 @@ class GatewaytemplateArgs:
     @pulumi.getter(name="vrfInstances")
     def vrf_instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]]:
         """
-        Property key is the network name
+        VRF instances configured by this gateway template
         """
         return pulumi.get(self, "vrf_instances")
 
@@ -485,25 +525,35 @@ class _GatewaytemplateState:
         """
         Input properties used for looking up and filtering Gatewaytemplate resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input['GatewaytemplateGatewayMgmtArgs'] gateway_mgmt: Gateway Management settings
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input['GatewaytemplateOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]] bgp_config: BGP routing defaults for this gateway template. Property key is the BGP session name
+        :param pulumi.Input['GatewaytemplateDhcpdConfigArgs'] dhcpd_config: DHCP server defaults provided by this gateway template
+        :param pulumi.Input[_builtins.bool] dns_override: Whether DNS server and suffix settings in this template override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers provided by this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]] extra_routes: Additional IPv4 route defaults in this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]] extra_routes6: Additional IPv6 route defaults in this gateway template
+        :param pulumi.Input['GatewaytemplateGatewayMgmtArgs'] gateway_mgmt: Management-plane defaults provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input[_builtins.str] name: Display name of the gateway template
+        :param pulumi.Input[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]] networks: Layer 3 networks configured by this gateway template
+        :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this template override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this gateway template
+        :param pulumi.Input['GatewaytemplateOobIpConfigArgs'] oob_ip_config: Out-of-band management IP defaults in this gateway template
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigArgs']]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]] routing_policies: Routing policy defaults applied by this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]] service_policies: Traffic service policy defaults enforced by this gateway template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[_builtins.str] type: enum: `spoke`, `standalone`
+        :param pulumi.Input['GatewaytemplateTunnelProviderOptionsArgs'] tunnel_provider_options: Provider-specific tunnel options defined by this gateway template
+        :param pulumi.Input[_builtins.str] type: Gateway template deployment type
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
+        :param pulumi.Input['GatewaytemplateVrfConfigArgs'] vrf_config: VRF defaults applied by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]] vrf_instances: VRF instances configured by this gateway template
         """
         if additional_config_cmds is not None:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
@@ -568,7 +618,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional CLI configuration commands provided by this gateway template
         """
         return pulumi.get(self, "additional_config_cmds")
 
@@ -579,6 +629,9 @@ class _GatewaytemplateState:
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigArgs']]]]:
+        """
+        BGP routing defaults for this gateway template. Property key is the BGP session name
+        """
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
@@ -588,6 +641,9 @@ class _GatewaytemplateState:
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
     def dhcpd_config(self) -> pulumi.Input[Optional['GatewaytemplateDhcpdConfigArgs']]:
+        """
+        DHCP server defaults provided by this gateway template
+        """
         return pulumi.get(self, "dhcpd_config")
 
     @dhcpd_config.setter
@@ -597,6 +653,9 @@ class _GatewaytemplateState:
     @_builtins.property
     @pulumi.getter(name="dnsOverride")
     def dns_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether DNS server and suffix settings in this template override inherited values
+        """
         return pulumi.get(self, "dns_override")
 
     @dns_override.setter
@@ -607,7 +666,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS servers provided by this gateway template
         """
         return pulumi.get(self, "dns_servers")
 
@@ -619,7 +678,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS search suffixes provided by this gateway template
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -631,7 +690,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutesArgs']]]]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv4 route defaults in this gateway template
         """
         return pulumi.get(self, "extra_routes")
 
@@ -643,7 +702,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateExtraRoutes6Args']]]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv6 route defaults in this gateway template
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -655,7 +714,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Input[Optional['GatewaytemplateGatewayMgmtArgs']]:
         """
-        Gateway Management settings
+        Management-plane defaults provided by this gateway template
         """
         return pulumi.get(self, "gateway_mgmt")
 
@@ -667,7 +726,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="idpProfiles")
     def idp_profiles(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIdpProfilesArgs']]]]:
         """
-        Property key is the profile name
+        Intrusion detection and prevention profile defaults in this gateway template
         """
         return pulumi.get(self, "idp_profiles")
 
@@ -679,7 +738,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateIpConfigsArgs']]]]:
         """
-        Property key is the network name
+        Gateway interface IP configuration defaults by network name
         """
         return pulumi.get(self, "ip_configs")
 
@@ -690,6 +749,9 @@ class _GatewaytemplateState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the gateway template
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -699,6 +761,9 @@ class _GatewaytemplateState:
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateNetworkArgs']]]]:
+        """
+        Layer 3 networks configured by this gateway template
+        """
         return pulumi.get(self, "networks")
 
     @networks.setter
@@ -708,6 +773,9 @@ class _GatewaytemplateState:
     @_builtins.property
     @pulumi.getter(name="ntpOverride")
     def ntp_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether NTP servers in this template override inherited values
+        """
         return pulumi.get(self, "ntp_override")
 
     @ntp_override.setter
@@ -718,7 +786,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of NTP servers specific to this device. By default, those in Site Settings will be used
+        NTP servers provided by this gateway template
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -730,7 +798,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Input[Optional['GatewaytemplateOobIpConfigArgs']]:
         """
-        Out-of-band (vme/em0/fxp0) IP config
+        Out-of-band management IP defaults in this gateway template
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -741,6 +809,9 @@ class _GatewaytemplateState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns this gateway template
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -787,7 +858,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="routingPolicies")
     def routing_policies(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateRoutingPoliciesArgs']]]]:
         """
-        Property key is the routing policy name
+        Routing policy defaults applied by this gateway template
         """
         return pulumi.get(self, "routing_policies")
 
@@ -798,6 +869,9 @@ class _GatewaytemplateState:
     @_builtins.property
     @pulumi.getter(name="servicePolicies")
     def service_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewaytemplateServicePolicyArgs']]]]:
+        """
+        Traffic service policy defaults enforced by this gateway template
+        """
         return pulumi.get(self, "service_policies")
 
     @service_policies.setter
@@ -831,6 +905,9 @@ class _GatewaytemplateState:
     @_builtins.property
     @pulumi.getter(name="tunnelProviderOptions")
     def tunnel_provider_options(self) -> pulumi.Input[Optional['GatewaytemplateTunnelProviderOptionsArgs']]:
+        """
+        Provider-specific tunnel options defined by this gateway template
+        """
         return pulumi.get(self, "tunnel_provider_options")
 
     @tunnel_provider_options.setter
@@ -841,7 +918,7 @@ class _GatewaytemplateState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `spoke`, `standalone`
+        Gateway template deployment type
         """
         return pulumi.get(self, "type")
 
@@ -864,6 +941,9 @@ class _GatewaytemplateState:
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> pulumi.Input[Optional['GatewaytemplateVrfConfigArgs']]:
+        """
+        VRF defaults applied by this gateway template
+        """
         return pulumi.get(self, "vrf_config")
 
     @vrf_config.setter
@@ -874,7 +954,7 @@ class _GatewaytemplateState:
     @pulumi.getter(name="vrfInstances")
     def vrf_instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewaytemplateVrfInstancesArgs']]]]:
         """
-        Property key is the network name
+        VRF instances configured by this gateway template
         """
         return pulumi.get(self, "vrf_instances")
 
@@ -1020,25 +1100,35 @@ class Gatewaytemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']] gateway_mgmt: Gateway Management settings
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]] bgp_config: BGP routing defaults for this gateway template. Property key is the BGP session name
+        :param pulumi.Input[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']] dhcpd_config: DHCP server defaults provided by this gateway template
+        :param pulumi.Input[_builtins.bool] dns_override: Whether DNS server and suffix settings in this template override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers provided by this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 route defaults in this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 route defaults in this gateway template
+        :param pulumi.Input[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']] gateway_mgmt: Management-plane defaults provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input[_builtins.str] name: Display name of the gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]] networks: Layer 3 networks configured by this gateway template
+        :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this template override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this gateway template
+        :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP defaults in this gateway template
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]] routing_policies: Routing policy defaults applied by this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]] service_policies: Traffic service policy defaults enforced by this gateway template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[_builtins.str] type: enum: `spoke`, `standalone`
+        :param pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']] tunnel_provider_options: Provider-specific tunnel options defined by this gateway template
+        :param pulumi.Input[_builtins.str] type: Gateway template deployment type
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
+        :param pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']] vrf_config: VRF defaults applied by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured by this gateway template
         """
         ...
     @overload
@@ -1275,25 +1365,35 @@ class Gatewaytemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']] gateway_mgmt: Gateway Management settings
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateBgpConfigArgs', 'GatewaytemplateBgpConfigArgsDict']]]] bgp_config: BGP routing defaults for this gateway template. Property key is the BGP session name
+        :param pulumi.Input[Union['GatewaytemplateDhcpdConfigArgs', 'GatewaytemplateDhcpdConfigArgsDict']] dhcpd_config: DHCP server defaults provided by this gateway template
+        :param pulumi.Input[_builtins.bool] dns_override: Whether DNS server and suffix settings in this template override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers provided by this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutesArgs', 'GatewaytemplateExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 route defaults in this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateExtraRoutes6Args', 'GatewaytemplateExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 route defaults in this gateway template
+        :param pulumi.Input[Union['GatewaytemplateGatewayMgmtArgs', 'GatewaytemplateGatewayMgmtArgsDict']] gateway_mgmt: Management-plane defaults provided by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIdpProfilesArgs', 'GatewaytemplateIdpProfilesArgsDict']]]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateIpConfigsArgs', 'GatewaytemplateIpConfigsArgsDict']]]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input[_builtins.str] name: Display name of the gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateNetworkArgs', 'GatewaytemplateNetworkArgsDict']]]] networks: Layer 3 networks configured by this gateway template
+        :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this template override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this gateway template
+        :param pulumi.Input[Union['GatewaytemplateOobIpConfigArgs', 'GatewaytemplateOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP defaults in this gateway template
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this gateway template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePathPreferencesArgs', 'GatewaytemplatePathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplatePortConfigArgs', 'GatewaytemplatePortConfigArgsDict']]]] port_config: Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e. "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateRoutingPoliciesArgs', 'GatewaytemplateRoutingPoliciesArgsDict']]]] routing_policies: Routing policy defaults applied by this gateway template
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaytemplateServicePolicyArgs', 'GatewaytemplateServicePolicyArgsDict']]]] service_policies: Traffic service policy defaults enforced by this gateway template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateTunnelConfigsArgs', 'GatewaytemplateTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[_builtins.str] type: enum: `spoke`, `standalone`
+        :param pulumi.Input[Union['GatewaytemplateTunnelProviderOptionsArgs', 'GatewaytemplateTunnelProviderOptionsArgsDict']] tunnel_provider_options: Provider-specific tunnel options defined by this gateway template
+        :param pulumi.Input[_builtins.str] type: Gateway template deployment type
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
+        :param pulumi.Input[Union['GatewaytemplateVrfConfigArgs', 'GatewaytemplateVrfConfigArgsDict']] vrf_config: VRF defaults applied by this gateway template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewaytemplateVrfInstancesArgs', 'GatewaytemplateVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured by this gateway template
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1334,30 +1434,39 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional CLI configuration commands provided by this gateway template
         """
         return pulumi.get(self, "additional_config_cmds")
 
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewaytemplateBgpConfig']]]:
+        """
+        BGP routing defaults for this gateway template. Property key is the BGP session name
+        """
         return pulumi.get(self, "bgp_config")
 
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
     def dhcpd_config(self) -> pulumi.Output[Optional['outputs.GatewaytemplateDhcpdConfig']]:
+        """
+        DHCP server defaults provided by this gateway template
+        """
         return pulumi.get(self, "dhcpd_config")
 
     @_builtins.property
     @pulumi.getter(name="dnsOverride")
     def dns_override(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether DNS server and suffix settings in this template override inherited values
+        """
         return pulumi.get(self, "dns_override")
 
     @_builtins.property
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS servers provided by this gateway template
         """
         return pulumi.get(self, "dns_servers")
 
@@ -1365,7 +1474,7 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS search suffixes provided by this gateway template
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -1373,7 +1482,7 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewaytemplateExtraRoutes']]]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv4 route defaults in this gateway template
         """
         return pulumi.get(self, "extra_routes")
 
@@ -1381,7 +1490,7 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewaytemplateExtraRoutes6']]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv6 route defaults in this gateway template
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -1389,7 +1498,7 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Output[Optional['outputs.GatewaytemplateGatewayMgmt']]:
         """
-        Gateway Management settings
+        Management-plane defaults provided by this gateway template
         """
         return pulumi.get(self, "gateway_mgmt")
 
@@ -1397,7 +1506,7 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="idpProfiles")
     def idp_profiles(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewaytemplateIdpProfiles']]]:
         """
-        Property key is the profile name
+        Intrusion detection and prevention profile defaults in this gateway template
         """
         return pulumi.get(self, "idp_profiles")
 
@@ -1405,30 +1514,39 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewaytemplateIpConfigs']]]:
         """
-        Property key is the network name
+        Gateway interface IP configuration defaults by network name
         """
         return pulumi.get(self, "ip_configs")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the gateway template
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Output[Optional[Sequence['outputs.GatewaytemplateNetwork']]]:
+        """
+        Layer 3 networks configured by this gateway template
+        """
         return pulumi.get(self, "networks")
 
     @_builtins.property
     @pulumi.getter(name="ntpOverride")
     def ntp_override(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether NTP servers in this template override inherited values
+        """
         return pulumi.get(self, "ntp_override")
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        List of NTP servers specific to this device. By default, those in Site Settings will be used
+        NTP servers provided by this gateway template
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -1436,13 +1554,16 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Output['outputs.GatewaytemplateOobIpConfig']:
         """
-        Out-of-band (vme/em0/fxp0) IP config
+        Out-of-band management IP defaults in this gateway template
         """
         return pulumi.get(self, "oob_ip_config")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns this gateway template
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
@@ -1473,13 +1594,16 @@ class Gatewaytemplate(pulumi.CustomResource):
     @pulumi.getter(name="routingPolicies")
     def routing_policies(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewaytemplateRoutingPolicies']]]:
         """
-        Property key is the routing policy name
+        Routing policy defaults applied by this gateway template
         """
         return pulumi.get(self, "routing_policies")
 
     @_builtins.property
     @pulumi.getter(name="servicePolicies")
     def service_policies(self) -> pulumi.Output[Optional[Sequence['outputs.GatewaytemplateServicePolicy']]]:
+        """
+        Traffic service policy defaults enforced by this gateway template
+        """
         return pulumi.get(self, "service_policies")
 
     @_builtins.property
@@ -1501,13 +1625,16 @@ class Gatewaytemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="tunnelProviderOptions")
     def tunnel_provider_options(self) -> pulumi.Output[Optional['outputs.GatewaytemplateTunnelProviderOptions']]:
+        """
+        Provider-specific tunnel options defined by this gateway template
+        """
         return pulumi.get(self, "tunnel_provider_options")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        enum: `spoke`, `standalone`
+        Gateway template deployment type
         """
         return pulumi.get(self, "type")
 
@@ -1522,13 +1649,16 @@ class Gatewaytemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> pulumi.Output[Optional['outputs.GatewaytemplateVrfConfig']]:
+        """
+        VRF defaults applied by this gateway template
+        """
         return pulumi.get(self, "vrf_config")
 
     @_builtins.property
     @pulumi.getter(name="vrfInstances")
     def vrf_instances(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewaytemplateVrfInstances']]]:
         """
-        Property key is the network name
+        VRF instances configured by this gateway template
         """
         return pulumi.get(self, "vrf_instances")
 

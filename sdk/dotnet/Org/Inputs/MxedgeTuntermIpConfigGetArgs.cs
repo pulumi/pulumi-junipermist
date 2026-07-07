@@ -12,24 +12,39 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxedgeTuntermIpConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// IPv4 gateway for the Mist Tunnel interface
+        /// </summary>
         [Input("gateway", required: true)]
         public Input<string> Gateway { get; set; } = null!;
 
+        /// <summary>
+        /// IPv6 gateway for the Mist Tunnel interface
+        /// </summary>
         [Input("gateway6")]
         public Input<string>? Gateway6 { get; set; }
 
         /// <summary>
-        /// Untagged VLAN
+        /// Address on the untagged Mist Tunnel interface, in IPv4 format
         /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
+        /// <summary>
+        /// Address on the Mist Tunnel interface, in IPv6 format
+        /// </summary>
         [Input("ip6")]
         public Input<string>? Ip6 { get; set; }
 
+        /// <summary>
+        /// Subnet mask for the Mist Tunnel IPv4 address
+        /// </summary>
         [Input("netmask", required: true)]
         public Input<string> Netmask { get; set; } = null!;
 
+        /// <summary>
+        /// Prefix length for the Mist Tunnel IPv6 address
+        /// </summary>
         [Input("netmask6")]
         public Input<string>? Netmask6 { get; set; }
 

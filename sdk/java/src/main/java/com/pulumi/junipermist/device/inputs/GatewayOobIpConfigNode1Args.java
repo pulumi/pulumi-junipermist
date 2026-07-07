@@ -17,36 +17,44 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
     public static final GatewayOobIpConfigNode1Args Empty = new GatewayOobIpConfigNode1Args();
 
     /**
-     * If `type`==`static`
+     * Default gateway for the node1 out-of-band management interface when `type`==`static`
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return If `type`==`static`
+     * @return Default gateway for the node1 out-of-band management interface when `type`==`static`
      * 
      */
     public Optional<Output<String>> gateway() {
         return Optional.ofNullable(this.gateway);
     }
 
+    /**
+     * Static IPv4 address for the node1 out-of-band management interface when `type`==`static`
+     * 
+     */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
+    /**
+     * @return Static IPv4 address for the node1 out-of-band management interface when `type`==`static`
+     * 
+     */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
     }
 
     /**
-     * Used only if `subnet` is not specified in `networks`
+     * IPv4 netmask or prefix length for the node1 out-of-band management interface when `type`==`static`; used only if `subnet` is not specified in `networks`
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return Used only if `subnet` is not specified in `networks`
+     * @return IPv4 netmask or prefix length for the node1 out-of-band management interface when `type`==`static`; used only if `subnet` is not specified in `networks`
      * 
      */
     public Optional<Output<String>> netmask() {
@@ -54,14 +62,14 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
     }
 
     /**
-     * enum: `dhcp`, `static`
+     * IP assignment mode for the node1 out-of-band management interface
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for the node1 out-of-band management interface
      * 
      */
     public Optional<Output<String>> type() {
@@ -98,9 +106,17 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.useMgmtVrfForHostOut);
     }
 
+    /**
+     * VLAN ID used for node1 out-of-band management traffic
+     * 
+     */
     @Import(name="vlanId")
     private @Nullable Output<String> vlanId;
 
+    /**
+     * @return VLAN ID used for node1 out-of-band management traffic
+     * 
+     */
     public Optional<Output<String>> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
@@ -136,7 +152,7 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param gateway If `type`==`static`
+         * @param gateway Default gateway for the node1 out-of-band management interface when `type`==`static`
          * 
          * @return builder
          * 
@@ -147,7 +163,7 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param gateway If `type`==`static`
+         * @param gateway Default gateway for the node1 out-of-band management interface when `type`==`static`
          * 
          * @return builder
          * 
@@ -156,17 +172,29 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
             return gateway(Output.of(gateway));
         }
 
+        /**
+         * @param ip Static IPv4 address for the node1 out-of-band management interface when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(@Nullable Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
+        /**
+         * @param ip Static IPv4 address for the node1 out-of-band management interface when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }
 
         /**
-         * @param netmask Used only if `subnet` is not specified in `networks`
+         * @param netmask IPv4 netmask or prefix length for the node1 out-of-band management interface when `type`==`static`; used only if `subnet` is not specified in `networks`
          * 
          * @return builder
          * 
@@ -177,7 +205,7 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param netmask Used only if `subnet` is not specified in `networks`
+         * @param netmask IPv4 netmask or prefix length for the node1 out-of-band management interface when `type`==`static`; used only if `subnet` is not specified in `networks`
          * 
          * @return builder
          * 
@@ -187,7 +215,7 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IP assignment mode for the node1 out-of-band management interface
          * 
          * @return builder
          * 
@@ -198,7 +226,7 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IP assignment mode for the node1 out-of-band management interface
          * 
          * @return builder
          * 
@@ -249,11 +277,23 @@ public final class GatewayOobIpConfigNode1Args extends com.pulumi.resources.Reso
             return useMgmtVrfForHostOut(Output.of(useMgmtVrfForHostOut));
         }
 
+        /**
+         * @param vlanId VLAN ID used for node1 out-of-band management traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(@Nullable Output<String> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
+        /**
+         * @param vlanId VLAN ID used for node1 out-of-band management traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(String vlanId) {
             return vlanId(Output.of(vlanId));
         }

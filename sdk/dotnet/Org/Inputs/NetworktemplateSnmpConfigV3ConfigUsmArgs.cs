@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplateSnmpConfigV3ConfigUsmArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `LocalEngine`, `RemoteEngine`
+        /// SNMP engine type used for this USM configuration
         /// </summary>
         [Input("engineType", required: true)]
         public Input<string> EngineType { get; set; } = null!;
@@ -26,6 +26,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("users")]
         private InputList<Inputs.NetworktemplateSnmpConfigV3ConfigUsmUserArgs>? _users;
+
+        /// <summary>
+        /// SNMPv3 USM users for this engine
+        /// </summary>
         public InputList<Inputs.NetworktemplateSnmpConfigV3ConfigUsmUserArgs> Users
         {
             get => _users ?? (_users = new InputList<Inputs.NetworktemplateSnmpConfigV3ConfigUsmUserArgs>());

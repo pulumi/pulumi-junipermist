@@ -52,14 +52,14 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internalIp` or `port` must be defined
+     * Destination NAT rules applied for VPN access to this network
      * 
      */
     @Import(name="destinationNat")
     private @Nullable Output<Map<String,NetworkVpnAccessDestinationNatArgs>> destinationNat;
 
     /**
-     * @return Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internalIp` or `port` must be defined
+     * @return Destination NAT rules applied for VPN access to this network
      * 
      */
     public Optional<Output<Map<String,NetworkVpnAccessDestinationNatArgs>>> destinationNat() {
@@ -127,14 +127,14 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+     * Other VRFs that can receive leaked routes from this spoke network
      * 
      */
     @Import(name="otherVrfs")
     private @Nullable Output<List<String>> otherVrfs;
 
     /**
-     * @return By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+     * @return Other VRFs that can receive leaked routes from this spoke network
      * 
      */
     public Optional<Output<List<String>>> otherVrfs() {
@@ -157,14 +157,14 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+     * Source NAT settings used when non-routed spoke hosts must be reachable from the hub
      * 
      */
     @Import(name="sourceNat")
     private @Nullable Output<NetworkVpnAccessSourceNatArgs> sourceNat;
 
     /**
-     * @return If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+     * @return Source NAT settings used when non-routed spoke hosts must be reachable from the hub
      * 
      */
     public Optional<Output<NetworkVpnAccessSourceNatArgs>> sourceNat() {
@@ -172,14 +172,14 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * Static NAT rules applied for VPN access to this network
      * 
      */
     @Import(name="staticNat")
     private @Nullable Output<Map<String,NetworkVpnAccessStaticNatArgs>> staticNat;
 
     /**
-     * @return Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Static NAT rules applied for VPN access to this network
      * 
      */
     public Optional<Output<Map<String,NetworkVpnAccessStaticNatArgs>>> staticNat() {
@@ -311,7 +311,7 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param destinationNat Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internalIp` or `port` must be defined
+         * @param destinationNat Destination NAT rules applied for VPN access to this network
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param destinationNat Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internalIp` or `port` must be defined
+         * @param destinationNat Destination NAT rules applied for VPN access to this network
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param otherVrfs By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+         * @param otherVrfs Other VRFs that can receive leaked routes from this spoke network
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param otherVrfs By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+         * @param otherVrfs Other VRFs that can receive leaked routes from this spoke network
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param otherVrfs By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+         * @param otherVrfs Other VRFs that can receive leaked routes from this spoke network
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sourceNat If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+         * @param sourceNat Source NAT settings used when non-routed spoke hosts must be reachable from the hub
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sourceNat If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+         * @param sourceNat Source NAT settings used when non-routed spoke hosts must be reachable from the hub
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param staticNat Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param staticNat Static NAT rules applied for VPN access to this network
          * 
          * @return builder
          * 
@@ -500,7 +500,7 @@ public final class NetworkVpnAccessArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param staticNat Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param staticNat Static NAT rules applied for VPN access to this network
          * 
          * @return builder
          * 

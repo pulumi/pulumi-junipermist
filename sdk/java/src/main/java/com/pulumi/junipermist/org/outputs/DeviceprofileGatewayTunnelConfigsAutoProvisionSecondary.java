@@ -11,19 +11,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary {
+    /**
+     * @return Probe IP addresses used to monitor auto-provisioned tunnel reachability
+     * 
+     */
     private @Nullable List<String> probeIps;
     /**
-     * @return Optional, only needed if `varsOnly`==`false`
+     * @return WAN interface names used by the auto-provisioned tunnel endpoint
      * 
      */
     private @Nullable List<String> wanNames;
 
     private DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary() {}
+    /**
+     * @return Probe IP addresses used to monitor auto-provisioned tunnel reachability
+     * 
+     */
     public List<String> probeIps() {
         return this.probeIps == null ? List.of() : this.probeIps;
     }
     /**
-     * @return Optional, only needed if `varsOnly`==`false`
+     * @return WAN interface names used by the auto-provisioned tunnel endpoint
      * 
      */
     public List<String> wanNames() {

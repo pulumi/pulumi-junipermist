@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingSyntheticTestGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Auto`, `High`, `Low`
+        /// Overall aggressiveness level for synthetic test probes
         /// </summary>
         [Input("aggressiveness")]
         public Input<string>? Aggressiveness { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.SettingSyntheticTestCustomProbesGetArgs>? _customProbes;
 
         /// <summary>
-        /// Custom probes to be used for synthetic tests
+        /// Custom synthetic probe definitions keyed by probe name
         /// </summary>
         public InputMap<Inputs.SettingSyntheticTestCustomProbesGetArgs> CustomProbes
         {
@@ -30,6 +30,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _customProbes = value;
         }
 
+        /// <summary>
+        /// Whether synthetic tests are disabled
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
@@ -37,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.SettingSyntheticTestLanNetworkGetArgs>? _lanNetworks;
 
         /// <summary>
-        /// List of networks to be used for synthetic tests
+        /// LAN network probe groups used by synthetic tests
         /// </summary>
         public InputList<Inputs.SettingSyntheticTestLanNetworkGetArgs> LanNetworks
         {
@@ -47,6 +50,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("vlans")]
         private InputList<Inputs.SettingSyntheticTestVlanGetArgs>? _vlans;
+
+        /// <summary>
+        /// Deprecated VLAN-based synthetic test settings
+        /// </summary>
         [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.SettingSyntheticTestVlanGetArgs> Vlans
         {
@@ -54,6 +61,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _vlans = value;
         }
 
+        /// <summary>
+        /// WAN speedtest settings for synthetic tests
+        /// </summary>
         [Input("wanSpeedtest")]
         public Input<Inputs.SettingSyntheticTestWanSpeedtestGetArgs>? WanSpeedtest { get; set; }
 

@@ -14,12 +14,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayTunnelProviderOptions
     {
         /// <summary>
-        /// For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
+        /// Juniper Secure Edge provisioning options for tunnel endpoints
         /// </summary>
         public readonly Outputs.GatewayTunnelProviderOptionsJse? Jse;
+        /// <summary>
+        /// Palo Alto Prisma Access provisioning options for tunnel endpoints
+        /// </summary>
         public readonly Outputs.GatewayTunnelProviderOptionsPrisma? Prisma;
         /// <summary>
-        /// For zscaler-ipsec and zscaler-gre
+        /// Provider settings for Zscaler tunnel endpoints
         /// </summary>
         public readonly Outputs.GatewayTunnelProviderOptionsZscaler? Zscaler;
 

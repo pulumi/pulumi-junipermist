@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? BeaconRate { get; set; }
 
         /// <summary>
-        /// enum: `Custom`, `Default`
+        /// Beacon rate mode for Mist BLE beacons; use custom to set beacon_rate
         /// </summary>
         [Input("beaconRateMode")]
         public Input<string>? BeaconRateMode { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<int>? _beamDisableds;
 
         /// <summary>
-        /// List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+        /// AP BLE beam numbers disabled for location advertisements
         /// </summary>
         public InputList<int> BeamDisableds
         {
@@ -66,6 +66,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("eddystoneUidAdvPower")]
         public Input<int>? EddystoneUidAdvPower { get; set; }
 
+        /// <summary>
+        /// BLE beams used to transmit Eddystone-UID advertisements, expressed as ranges such as `2-4,7`
+        /// </summary>
         [Input("eddystoneUidBeams")]
         public Input<string>? EddystoneUidBeams { get; set; }
 
@@ -88,7 +91,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? EddystoneUidInstance { get; set; }
 
         /// <summary>
-        /// Eddystone-UID namespace
+        /// Eddystone-UID namespace broadcast by the AP, as a 10-byte hex string
         /// </summary>
         [Input("eddystoneUidNamespace")]
         public Input<string>? EddystoneUidNamespace { get; set; }
@@ -99,6 +102,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("eddystoneUrlAdvPower")]
         public Input<int>? EddystoneUrlAdvPower { get; set; }
 
+        /// <summary>
+        /// BLE beams used to transmit Eddystone-URL advertisements, expressed as ranges such as `2-4,7`
+        /// </summary>
         [Input("eddystoneUrlBeams")]
         public Input<string>? EddystoneUrlBeams { get; set; }
 
@@ -109,7 +115,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? EddystoneUrlEnabled { get; set; }
 
         /// <summary>
-        /// Frequency (msec) of data emit by Eddystone-UID beacon
+        /// Frequency (msec) of data emitted by Eddystone-URL beacon
         /// </summary>
         [Input("eddystoneUrlFreqMsec")]
         public Input<int>? EddystoneUrlFreqMsec { get; set; }
@@ -126,6 +132,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("ibeaconAdvPower")]
         public Input<int>? IbeaconAdvPower { get; set; }
 
+        /// <summary>
+        /// BLE beams used to transmit iBeacon advertisements, expressed as ranges such as `2-4,7`
+        /// </summary>
         [Input("ibeaconBeams")]
         public Input<string>? IbeaconBeams { get; set; }
 
@@ -142,13 +151,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? IbeaconFreqMsec { get; set; }
 
         /// <summary>
-        /// Major number for iBeacon
+        /// iBeacon major value broadcast by the AP
         /// </summary>
         [Input("ibeaconMajor")]
         public Input<int>? IbeaconMajor { get; set; }
 
         /// <summary>
-        /// Minor number for iBeacon
+        /// iBeacon minor value broadcast by the AP
         /// </summary>
         [Input("ibeaconMinor")]
         public Input<int>? IbeaconMinor { get; set; }
@@ -166,7 +175,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? Power { get; set; }
 
         /// <summary>
-        /// enum: `Custom`, `Default`
+        /// Transmit power mode for BLE beacons; use custom to set `Power`
         /// </summary>
         [Input("powerMode")]
         public Input<string>? PowerMode { get; set; }

@@ -12,14 +12,24 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class NetworktemplateSwitchMgmtTacacsAcctServerArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Address or hostname of the TACACS+ accounting server
+        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        /// <summary>
+        /// TCP port used by the TACACS+ accounting server
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
         [Input("secret")]
         private Input<string>? _secret;
+
+        /// <summary>
+        /// Shared secret used with this TACACS+ accounting server
+        /// </summary>
         public Input<string>? Secret
         {
             get => _secret;
@@ -30,6 +40,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             }
         }
 
+        /// <summary>
+        /// TACACS+ accounting server timeout, in seconds
+        /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 

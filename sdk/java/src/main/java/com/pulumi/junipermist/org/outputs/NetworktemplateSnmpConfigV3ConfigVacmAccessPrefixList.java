@@ -12,86 +12,86 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList {
     /**
-     * @return Only required if `type`==`contextPrefix`
+     * @return Context prefix for this VACM access rule. Required only if `type`==`contextPrefix`
      * 
      */
     private @Nullable String contextPrefix;
     /**
-     * @return Refer to view name
+     * @return Notify view name referenced by this VACM access rule
      * 
      */
     private @Nullable String notifyView;
     /**
-     * @return Refer to view name
+     * @return Read view name referenced by this VACM access rule
      * 
      */
     private @Nullable String readView;
     /**
-     * @return enum: `authentication`, `none`, `privacy`
+     * @return Required security level for this VACM access rule
      * 
      */
     private @Nullable String securityLevel;
     /**
-     * @return enum: `any`, `usm`, `v1`, `v2c`
+     * @return Required security model for this VACM access rule
      * 
      */
     private @Nullable String securityModel;
     /**
-     * @return enum: `contextPrefix`, `defaultContextPrefix`
+     * @return VACM context matching type for this access rule
      * 
      */
     private @Nullable String type;
     /**
-     * @return Refer to view name
+     * @return Write view name referenced by this VACM access rule
      * 
      */
     private @Nullable String writeView;
 
     private NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixList() {}
     /**
-     * @return Only required if `type`==`contextPrefix`
+     * @return Context prefix for this VACM access rule. Required only if `type`==`contextPrefix`
      * 
      */
     public Optional<String> contextPrefix() {
         return Optional.ofNullable(this.contextPrefix);
     }
     /**
-     * @return Refer to view name
+     * @return Notify view name referenced by this VACM access rule
      * 
      */
     public Optional<String> notifyView() {
         return Optional.ofNullable(this.notifyView);
     }
     /**
-     * @return Refer to view name
+     * @return Read view name referenced by this VACM access rule
      * 
      */
     public Optional<String> readView() {
         return Optional.ofNullable(this.readView);
     }
     /**
-     * @return enum: `authentication`, `none`, `privacy`
+     * @return Required security level for this VACM access rule
      * 
      */
     public Optional<String> securityLevel() {
         return Optional.ofNullable(this.securityLevel);
     }
     /**
-     * @return enum: `any`, `usm`, `v1`, `v2c`
+     * @return Required security model for this VACM access rule
      * 
      */
     public Optional<String> securityModel() {
         return Optional.ofNullable(this.securityModel);
     }
     /**
-     * @return enum: `contextPrefix`, `defaultContextPrefix`
+     * @return VACM context matching type for this access rule
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Refer to view name
+     * @return Write view name referenced by this VACM access rule
      * 
      */
     public Optional<String> writeView() {

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayNetworkMulticastGroupsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// RP (rendezvous point) IP Address
+        /// RP (rendezvous point) IP address
         /// </summary>
         [Input("rpIp")]
         public Input<string>? RpIp { get; set; }

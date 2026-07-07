@@ -14,47 +14,87 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NacPortalSso {
+    /**
+     * @return Identity provider certificate used to verify signed SAML responses
+     * 
+     */
     private @Nullable String idpCert;
     /**
-     * @return Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+     * @return Signing algorithm expected for SAML assertions from the identity provider
      * 
      */
     private @Nullable String idpSignAlgo;
+    /**
+     * @return Identity provider Single Sign-On URL for SAML authentication
+     * 
+     */
     private @Nullable String idpSsoUrl;
+    /**
+     * @return Identity provider issuer URL for SAML authentication
+     * 
+     */
     private @Nullable String issuer;
+    /**
+     * @return SAML NameID format expected from the identity provider
+     * 
+     */
     private @Nullable String nameidFormat;
+    /**
+     * @return Rules that map SSO role values from the identity provider to NAC portal roles
+     * 
+     */
     private @Nullable List<NacPortalSsoSsoRoleMatching> ssoRoleMatchings;
     /**
-     * @return If it&#39;s desired to inject a role into Cert&#39;s Subject (so it can be used later on in policy)
+     * @return Whether to include the matched SSO role in the issued certificate subject for later policy matching
      * 
      */
     private @Nullable Boolean useSsoRoleForCert;
 
     private NacPortalSso() {}
+    /**
+     * @return Identity provider certificate used to verify signed SAML responses
+     * 
+     */
     public Optional<String> idpCert() {
         return Optional.ofNullable(this.idpCert);
     }
     /**
-     * @return Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`.
+     * @return Signing algorithm expected for SAML assertions from the identity provider
      * 
      */
     public Optional<String> idpSignAlgo() {
         return Optional.ofNullable(this.idpSignAlgo);
     }
+    /**
+     * @return Identity provider Single Sign-On URL for SAML authentication
+     * 
+     */
     public Optional<String> idpSsoUrl() {
         return Optional.ofNullable(this.idpSsoUrl);
     }
+    /**
+     * @return Identity provider issuer URL for SAML authentication
+     * 
+     */
     public Optional<String> issuer() {
         return Optional.ofNullable(this.issuer);
     }
+    /**
+     * @return SAML NameID format expected from the identity provider
+     * 
+     */
     public Optional<String> nameidFormat() {
         return Optional.ofNullable(this.nameidFormat);
     }
+    /**
+     * @return Rules that map SSO role values from the identity provider to NAC portal roles
+     * 
+     */
     public List<NacPortalSsoSsoRoleMatching> ssoRoleMatchings() {
         return this.ssoRoleMatchings == null ? List.of() : this.ssoRoleMatchings;
     }
     /**
-     * @return If it&#39;s desired to inject a role into Cert&#39;s Subject (so it can be used later on in policy)
+     * @return Whether to include the matched SSO role in the issued certificate subject for later policy matching
      * 
      */
     public Optional<Boolean> useSsoRoleForCert() {

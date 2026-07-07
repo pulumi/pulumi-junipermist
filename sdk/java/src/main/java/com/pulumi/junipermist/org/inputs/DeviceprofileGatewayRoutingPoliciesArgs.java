@@ -17,14 +17,14 @@ public final class DeviceprofileGatewayRoutingPoliciesArgs extends com.pulumi.re
     public static final DeviceprofileGatewayRoutingPoliciesArgs Empty = new DeviceprofileGatewayRoutingPoliciesArgs();
 
     /**
-     * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * Ordered terms evaluated by this gateway routing policy
      * 
      */
     @Import(name="terms")
     private @Nullable Output<List<DeviceprofileGatewayRoutingPoliciesTermArgs>> terms;
 
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Ordered terms evaluated by this gateway routing policy
      * 
      */
     public Optional<Output<List<DeviceprofileGatewayRoutingPoliciesTermArgs>>> terms() {
@@ -56,7 +56,7 @@ public final class DeviceprofileGatewayRoutingPoliciesArgs extends com.pulumi.re
         }
 
         /**
-         * @param terms zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param terms Ordered terms evaluated by this gateway routing policy
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class DeviceprofileGatewayRoutingPoliciesArgs extends com.pulumi.re
         }
 
         /**
-         * @param terms zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param terms Ordered terms evaluated by this gateway routing policy
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class DeviceprofileGatewayRoutingPoliciesArgs extends com.pulumi.re
         }
 
         /**
-         * @param terms zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param terms Ordered terms evaluated by this gateway routing policy
          * 
          * @return builder
          * 

@@ -106,9 +106,17 @@ public final class InventoryInventoryArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.model);
     }
 
+    /**
+     * Unique identifier of a Mist organization
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Unique identifier of a Mist organization
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
@@ -349,11 +357,23 @@ public final class InventoryInventoryArgs extends com.pulumi.resources.ResourceA
             return model(Output.of(model));
         }
 
+        /**
+         * @param orgId Unique identifier of a Mist organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Unique identifier of a Mist organization
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }

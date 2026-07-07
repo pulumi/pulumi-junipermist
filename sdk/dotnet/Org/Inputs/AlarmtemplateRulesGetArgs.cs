@@ -13,11 +13,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class AlarmtemplateRulesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Delivery object to configure the alarm delivery
+        /// Overrides for the alarm template delivery defaults for this alarm rule
         /// </summary>
         [Input("delivery")]
         public Input<Inputs.AlarmtemplateRulesDeliveryGetArgs>? Delivery { get; set; }
 
+        /// <summary>
+        /// Whether this alarm rule is enabled in the template
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

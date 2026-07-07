@@ -16,9 +16,17 @@ public final class NetworktemplateRemoteSyslogConsoleArgs extends com.pulumi.res
 
     public static final NetworktemplateRemoteSyslogConsoleArgs Empty = new NetworktemplateRemoteSyslogConsoleArgs();
 
+    /**
+     * Syslog facilities and severities forwarded from console logs
+     * 
+     */
     @Import(name="contents")
     private @Nullable Output<List<NetworktemplateRemoteSyslogConsoleContentArgs>> contents;
 
+    /**
+     * @return Syslog facilities and severities forwarded from console logs
+     * 
+     */
     public Optional<Output<List<NetworktemplateRemoteSyslogConsoleContentArgs>>> contents() {
         return Optional.ofNullable(this.contents);
     }
@@ -47,15 +55,33 @@ public final class NetworktemplateRemoteSyslogConsoleArgs extends com.pulumi.res
             $ = new NetworktemplateRemoteSyslogConsoleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contents Syslog facilities and severities forwarded from console logs
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(@Nullable Output<List<NetworktemplateRemoteSyslogConsoleContentArgs>> contents) {
             $.contents = contents;
             return this;
         }
 
+        /**
+         * @param contents Syslog facilities and severities forwarded from console logs
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(List<NetworktemplateRemoteSyslogConsoleContentArgs> contents) {
             return contents(Output.of(contents));
         }
 
+        /**
+         * @param contents Syslog facilities and severities forwarded from console logs
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(NetworktemplateRemoteSyslogConsoleContentArgs... contents) {
             return contents(List.of(contents));
         }

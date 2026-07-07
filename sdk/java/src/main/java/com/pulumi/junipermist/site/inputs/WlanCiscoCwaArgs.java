@@ -18,14 +18,14 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
     public static final WlanCiscoCwaArgs Empty = new WlanCiscoCwaArgs();
 
     /**
-     * List of hostnames without http(s):// (matched by substring)
+     * Hostnames allowed for Cisco CWA client access before authorization
      * 
      */
     @Import(name="allowedHostnames")
     private @Nullable Output<List<String>> allowedHostnames;
 
     /**
-     * @return List of hostnames without http(s):// (matched by substring)
+     * @return Hostnames allowed for Cisco CWA client access before authorization
      * 
      */
     public Optional<Output<List<String>>> allowedHostnames() {
@@ -33,14 +33,14 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of CIDRs
+     * CIDR subnets allowed for Cisco CWA client access before authorization
      * 
      */
     @Import(name="allowedSubnets")
     private @Nullable Output<List<String>> allowedSubnets;
 
     /**
-     * @return List of CIDRs
+     * @return CIDR subnets allowed for Cisco CWA client access before authorization
      * 
      */
     public Optional<Output<List<String>>> allowedSubnets() {
@@ -48,23 +48,31 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of blocked CIDRs
+     * CIDR subnets blocked for Cisco CWA client access
      * 
      */
     @Import(name="blockedSubnets")
     private @Nullable Output<List<String>> blockedSubnets;
 
     /**
-     * @return List of blocked CIDRs
+     * @return CIDR subnets blocked for Cisco CWA client access
      * 
      */
     public Optional<Output<List<String>>> blockedSubnets() {
         return Optional.ofNullable(this.blockedSubnets);
     }
 
+    /**
+     * Whether Cisco CWA is enabled for this WLAN
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether Cisco CWA is enabled for this WLAN
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -97,7 +105,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedHostnames List of hostnames without http(s):// (matched by substring)
+         * @param allowedHostnames Hostnames allowed for Cisco CWA client access before authorization
          * 
          * @return builder
          * 
@@ -108,7 +116,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedHostnames List of hostnames without http(s):// (matched by substring)
+         * @param allowedHostnames Hostnames allowed for Cisco CWA client access before authorization
          * 
          * @return builder
          * 
@@ -118,7 +126,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedHostnames List of hostnames without http(s):// (matched by substring)
+         * @param allowedHostnames Hostnames allowed for Cisco CWA client access before authorization
          * 
          * @return builder
          * 
@@ -128,7 +136,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedSubnets List of CIDRs
+         * @param allowedSubnets CIDR subnets allowed for Cisco CWA client access before authorization
          * 
          * @return builder
          * 
@@ -139,7 +147,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedSubnets List of CIDRs
+         * @param allowedSubnets CIDR subnets allowed for Cisco CWA client access before authorization
          * 
          * @return builder
          * 
@@ -149,7 +157,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedSubnets List of CIDRs
+         * @param allowedSubnets CIDR subnets allowed for Cisco CWA client access before authorization
          * 
          * @return builder
          * 
@@ -159,7 +167,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedSubnets List of blocked CIDRs
+         * @param blockedSubnets CIDR subnets blocked for Cisco CWA client access
          * 
          * @return builder
          * 
@@ -170,7 +178,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedSubnets List of blocked CIDRs
+         * @param blockedSubnets CIDR subnets blocked for Cisco CWA client access
          * 
          * @return builder
          * 
@@ -180,7 +188,7 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockedSubnets List of blocked CIDRs
+         * @param blockedSubnets CIDR subnets blocked for Cisco CWA client access
          * 
          * @return builder
          * 
@@ -189,11 +197,23 @@ public final class WlanCiscoCwaArgs extends com.pulumi.resources.ResourceArgs {
             return blockedSubnets(List.of(blockedSubnets));
         }
 
+        /**
+         * @param enabled Whether Cisco CWA is enabled for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether Cisco CWA is enabled for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

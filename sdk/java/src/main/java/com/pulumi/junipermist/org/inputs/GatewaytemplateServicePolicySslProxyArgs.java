@@ -17,23 +17,31 @@ public final class GatewaytemplateServicePolicySslProxyArgs extends com.pulumi.r
     public static final GatewaytemplateServicePolicySslProxyArgs Empty = new GatewaytemplateServicePolicySslProxyArgs();
 
     /**
-     * enum: `medium`, `strong`, `weak`
+     * Allowed cipher strength category for SSL proxy inspection
      * 
      */
     @Import(name="ciphersCategory")
     private @Nullable Output<String> ciphersCategory;
 
     /**
-     * @return enum: `medium`, `strong`, `weak`
+     * @return Allowed cipher strength category for SSL proxy inspection
      * 
      */
     public Optional<Output<String>> ciphersCategory() {
         return Optional.ofNullable(this.ciphersCategory);
     }
 
+    /**
+     * Whether SSL proxy inspection is enabled for the service policy
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether SSL proxy inspection is enabled for the service policy
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -64,7 +72,7 @@ public final class GatewaytemplateServicePolicySslProxyArgs extends com.pulumi.r
         }
 
         /**
-         * @param ciphersCategory enum: `medium`, `strong`, `weak`
+         * @param ciphersCategory Allowed cipher strength category for SSL proxy inspection
          * 
          * @return builder
          * 
@@ -75,7 +83,7 @@ public final class GatewaytemplateServicePolicySslProxyArgs extends com.pulumi.r
         }
 
         /**
-         * @param ciphersCategory enum: `medium`, `strong`, `weak`
+         * @param ciphersCategory Allowed cipher strength category for SSL proxy inspection
          * 
          * @return builder
          * 
@@ -84,11 +92,23 @@ public final class GatewaytemplateServicePolicySslProxyArgs extends com.pulumi.r
             return ciphersCategory(Output.of(ciphersCategory));
         }
 
+        /**
+         * @param enabled Whether SSL proxy inspection is enabled for the service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether SSL proxy inspection is enabled for the service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

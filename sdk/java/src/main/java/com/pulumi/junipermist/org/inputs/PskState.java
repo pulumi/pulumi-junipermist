@@ -19,14 +19,14 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
     public static final PskState Empty = new PskState();
 
     /**
-     * email to send psk expiring notifications to
+     * Notification recipient email address for PSK creation notification and expiration reminders
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return email to send psk expiring notifications to
+     * @return Notification recipient email address for PSK creation notification and expiration reminders
      * 
      */
     public Optional<Output<String>> email() {
@@ -64,14 +64,14 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * @return If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
      * 
      */
     public Optional<Output<String>> mac() {
@@ -79,14 +79,14 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+     * Client MAC addresses or MAC patterns allowed when `usage`==`macs`
      * 
      */
     @Import(name="macs")
     private @Nullable Output<List<String>> macs;
 
     /**
-     * @return If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+     * @return Client MAC addresses or MAC patterns allowed when `usage`==`macs`
      * 
      */
     public Optional<Output<List<String>>> macs() {
@@ -108,16 +108,32 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.maxUsage);
     }
 
+    /**
+     * Display name of the PSK
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the PSK
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Admin note or description stored with the PSK
+     * 
+     */
     @Import(name="note")
     private @Nullable Output<String> note;
 
+    /**
+     * @return Admin note or description stored with the PSK
+     * 
+     */
     public Optional<Output<String>> note() {
         return Optional.ofNullable(this.note);
     }
@@ -167,44 +183,60 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.oldPassphrase);
     }
 
+    /**
+     * Organization that owns the org-level PSK
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization that owns the org-level PSK
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
     /**
-     * passphrase of the PSK (8-63 character or 64 in hex)
+     * PSK passphrase, 8-63 characters or 64 hexadecimal characters
      * 
      */
     @Import(name="passphrase")
     private @Nullable Output<String> passphrase;
 
     /**
-     * @return passphrase of the PSK (8-63 character or 64 in hex)
+     * @return PSK passphrase, 8-63 characters or 64 hexadecimal characters
      * 
      */
     public Optional<Output<String>> passphrase() {
         return Optional.ofNullable(this.passphrase);
     }
 
+    /**
+     * Client role applied to users authenticated with this PSK
+     * 
+     */
     @Import(name="role")
     private @Nullable Output<String> role;
 
+    /**
+     * @return Client role applied to users authenticated with this PSK
+     * 
+     */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
 
     /**
-     * SSID this PSK should be applicable to
+     * WLAN SSID where this PSK can be used
      * 
      */
     @Import(name="ssid")
     private @Nullable Output<String> ssid;
 
     /**
-     * @return SSID this PSK should be applicable to
+     * @return WLAN SSID where this PSK can be used
      * 
      */
     public Optional<Output<String>> ssid() {
@@ -212,23 +244,31 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `macs`, `multi`, `single`
+     * Binding mode for this PSK, enum: `macs`, `multi`, `single`
      * 
      */
     @Import(name="usage")
     private @Nullable Output<String> usage;
 
     /**
-     * @return enum: `macs`, `multi`, `single`
+     * @return Binding mode for this PSK, enum: `macs`, `multi`, `single`
      * 
      */
     public Optional<Output<String>> usage() {
         return Optional.ofNullable(this.usage);
     }
 
+    /**
+     * VLAN ID returned for clients using this PSK
+     * 
+     */
     @Import(name="vlanId")
     private @Nullable Output<String> vlanId;
 
+    /**
+     * @return VLAN ID returned for clients using this PSK
+     * 
+     */
     public Optional<Output<String>> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
@@ -290,7 +330,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email email to send psk expiring notifications to
+         * @param email Notification recipient email address for PSK creation notification and expiration reminders
          * 
          * @return builder
          * 
@@ -301,7 +341,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email email to send psk expiring notifications to
+         * @param email Notification recipient email address for PSK creation notification and expiration reminders
          * 
          * @return builder
          * 
@@ -353,7 +393,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+         * @param mac If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
          * 
          * @return builder
          * 
@@ -364,7 +404,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mac If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+         * @param mac If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
          * 
          * @return builder
          * 
@@ -374,7 +414,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macs If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+         * @param macs Client MAC addresses or MAC patterns allowed when `usage`==`macs`
          * 
          * @return builder
          * 
@@ -385,7 +425,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macs If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+         * @param macs Client MAC addresses or MAC patterns allowed when `usage`==`macs`
          * 
          * @return builder
          * 
@@ -395,7 +435,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macs If `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(1122*) or both. This list is capped at 5000
+         * @param macs Client MAC addresses or MAC patterns allowed when `usage`==`macs`
          * 
          * @return builder
          * 
@@ -425,20 +465,44 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
             return maxUsage(Output.of(maxUsage));
         }
 
+        /**
+         * @param name Display name of the PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param note Admin note or description stored with the PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder note(@Nullable Output<String> note) {
             $.note = note;
             return this;
         }
 
+        /**
+         * @param note Admin note or description stored with the PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder note(String note) {
             return note(Output.of(note));
         }
@@ -506,17 +570,29 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
             return oldPassphrase(Output.of(oldPassphrase));
         }
 
+        /**
+         * @param orgId Organization that owns the org-level PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns the org-level PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param passphrase passphrase of the PSK (8-63 character or 64 in hex)
+         * @param passphrase PSK passphrase, 8-63 characters or 64 hexadecimal characters
          * 
          * @return builder
          * 
@@ -527,7 +603,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passphrase passphrase of the PSK (8-63 character or 64 in hex)
+         * @param passphrase PSK passphrase, 8-63 characters or 64 hexadecimal characters
          * 
          * @return builder
          * 
@@ -536,17 +612,29 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
             return passphrase(Output.of(passphrase));
         }
 
+        /**
+         * @param role Client role applied to users authenticated with this PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(@Nullable Output<String> role) {
             $.role = role;
             return this;
         }
 
+        /**
+         * @param role Client role applied to users authenticated with this PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder role(String role) {
             return role(Output.of(role));
         }
 
         /**
-         * @param ssid SSID this PSK should be applicable to
+         * @param ssid WLAN SSID where this PSK can be used
          * 
          * @return builder
          * 
@@ -557,7 +645,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssid SSID this PSK should be applicable to
+         * @param ssid WLAN SSID where this PSK can be used
          * 
          * @return builder
          * 
@@ -567,7 +655,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usage enum: `macs`, `multi`, `single`
+         * @param usage Binding mode for this PSK, enum: `macs`, `multi`, `single`
          * 
          * @return builder
          * 
@@ -578,7 +666,7 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usage enum: `macs`, `multi`, `single`
+         * @param usage Binding mode for this PSK, enum: `macs`, `multi`, `single`
          * 
          * @return builder
          * 
@@ -587,11 +675,23 @@ public final class PskState extends com.pulumi.resources.ResourceArgs {
             return usage(Output.of(usage));
         }
 
+        /**
+         * @param vlanId VLAN ID returned for clients using this PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(@Nullable Output<String> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
+        /**
+         * @param vlanId VLAN ID returned for clients using this PSK
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(String vlanId) {
             return vlanId(Output.of(vlanId));
         }

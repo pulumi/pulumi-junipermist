@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingMgmt
     {
         /// <summary>
-        /// List of Mist Tunnels
+        /// Mist Tunnel IDs selected for management connectivity
         /// </summary>
         public readonly ImmutableArray<string> MxtunnelIds;
         /// <summary>

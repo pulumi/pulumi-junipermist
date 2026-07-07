@@ -77,7 +77,7 @@ export class Webhook extends pulumi.CustomResource {
     }
 
     /**
-     * Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
      */
     declare public readonly assetfilterIds: pulumi.Output<string[] | undefined>;
     /**
@@ -89,37 +89,40 @@ export class Webhook extends pulumi.CustomResource {
      */
     declare public readonly headers: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Name of the webhook
+     * Display name of the webhook
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
      */
     declare public readonly oauth2ClientId: pulumi.Output<string | undefined>;
     /**
-     * Required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
      */
     declare public readonly oauth2ClientSecret: pulumi.Output<string | undefined>;
     /**
-     * required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+     * OAuth2 grant type used when `type`==`oauth2`
      */
     declare public readonly oauth2GrantType: pulumi.Output<string | undefined>;
     /**
-     * Required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
      */
     declare public readonly oauth2Password: pulumi.Output<string | undefined>;
     /**
-     * Required when `type`==`oauth2`, if provided, will be used in the token request
+     * OAuth2 scopes included in the token request when `type`==`oauth2`
      */
     declare public readonly oauth2Scopes: pulumi.Output<string[] | undefined>;
     /**
-     * Required when `type`==`oauth2`
+     * Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
      */
     declare public readonly oauth2TokenUrl: pulumi.Output<string | undefined>;
     /**
-     * Required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
      */
     declare public readonly oauth2Username: pulumi.Output<string | undefined>;
+    /**
+     * Organization that owns the webhook
+     */
     declare public /*out*/ readonly orgId: pulumi.Output<string>;
     /**
      * Only if `type`=`http-post`
@@ -129,6 +132,9 @@ export class Webhook extends pulumi.CustomResource {
      * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
      */
     declare public readonly singleEventPerMessage: pulumi.Output<boolean | undefined>;
+    /**
+     * Site associated with this webhook when it is site-scoped
+     */
     declare public readonly siteId: pulumi.Output<string>;
     /**
      * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
@@ -139,9 +145,12 @@ export class Webhook extends pulumi.CustomResource {
      */
     declare public readonly topics: pulumi.Output<string[]>;
     /**
-     * enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+     * Delivery mechanism used by this webhook
      */
     declare public readonly type: pulumi.Output<string>;
+    /**
+     * Destination URL that receives webhook deliveries
+     */
     declare public readonly url: pulumi.Output<string>;
     /**
      * When url uses HTTPS, whether to verify the certificate
@@ -225,7 +234,7 @@ export class Webhook extends pulumi.CustomResource {
  */
 export interface WebhookState {
     /**
-     * Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
      */
     assetfilterIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -237,37 +246,40 @@ export interface WebhookState {
      */
     headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Name of the webhook
+     * Display name of the webhook
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
      */
     oauth2ClientId?: pulumi.Input<string | undefined>;
     /**
-     * Required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
      */
     oauth2ClientSecret?: pulumi.Input<string | undefined>;
     /**
-     * required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+     * OAuth2 grant type used when `type`==`oauth2`
      */
     oauth2GrantType?: pulumi.Input<string | undefined>;
     /**
-     * Required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
      */
     oauth2Password?: pulumi.Input<string | undefined>;
     /**
-     * Required when `type`==`oauth2`, if provided, will be used in the token request
+     * OAuth2 scopes included in the token request when `type`==`oauth2`
      */
     oauth2Scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Required when `type`==`oauth2`
+     * Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
      */
     oauth2TokenUrl?: pulumi.Input<string | undefined>;
     /**
-     * Required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
      */
     oauth2Username?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns the webhook
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
      * Only if `type`=`http-post`
@@ -277,6 +289,9 @@ export interface WebhookState {
      * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
      */
     singleEventPerMessage?: pulumi.Input<boolean | undefined>;
+    /**
+     * Site associated with this webhook when it is site-scoped
+     */
     siteId?: pulumi.Input<string | undefined>;
     /**
      * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
@@ -287,9 +302,12 @@ export interface WebhookState {
      */
     topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+     * Delivery mechanism used by this webhook
      */
     type?: pulumi.Input<string | undefined>;
+    /**
+     * Destination URL that receives webhook deliveries
+     */
     url?: pulumi.Input<string | undefined>;
     /**
      * When url uses HTTPS, whether to verify the certificate
@@ -302,7 +320,7 @@ export interface WebhookState {
  */
 export interface WebhookArgs {
     /**
-     * Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
      */
     assetfilterIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -314,35 +332,35 @@ export interface WebhookArgs {
      */
     headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Name of the webhook
+     * Display name of the webhook
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
      */
     oauth2ClientId?: pulumi.Input<string | undefined>;
     /**
-     * Required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
      */
     oauth2ClientSecret?: pulumi.Input<string | undefined>;
     /**
-     * required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+     * OAuth2 grant type used when `type`==`oauth2`
      */
     oauth2GrantType?: pulumi.Input<string | undefined>;
     /**
-     * Required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
      */
     oauth2Password?: pulumi.Input<string | undefined>;
     /**
-     * Required when `type`==`oauth2`, if provided, will be used in the token request
+     * OAuth2 scopes included in the token request when `type`==`oauth2`
      */
     oauth2Scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Required when `type`==`oauth2`
+     * Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
      */
     oauth2TokenUrl?: pulumi.Input<string | undefined>;
     /**
-     * Required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
      */
     oauth2Username?: pulumi.Input<string | undefined>;
     /**
@@ -353,6 +371,9 @@ export interface WebhookArgs {
      * Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
      */
     singleEventPerMessage?: pulumi.Input<boolean | undefined>;
+    /**
+     * Site associated with this webhook when it is site-scoped
+     */
     siteId: pulumi.Input<string>;
     /**
      * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
@@ -363,9 +384,12 @@ export interface WebhookArgs {
      */
     topics: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+     * Delivery mechanism used by this webhook
      */
     type?: pulumi.Input<string | undefined>;
+    /**
+     * Destination URL that receives webhook deliveries
+     */
     url: pulumi.Input<string>;
     /**
      * When url uses HTTPS, whether to verify the certificate

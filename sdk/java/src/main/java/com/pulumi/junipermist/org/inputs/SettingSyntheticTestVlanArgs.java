@@ -18,6 +18,8 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
     public static final SettingSyntheticTestVlanArgs Empty = new SettingSyntheticTestVlanArgs();
 
     /**
+     * Deprecated custom URLs tested by VLAN-based synthetic probes
+     * 
      * @deprecated
      * This attribute is deprecated.
      * 
@@ -27,6 +29,8 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
     private @Nullable Output<List<String>> customTestUrls;
 
     /**
+     * @return Deprecated custom URLs tested by VLAN-based synthetic probes
+     * 
      * @deprecated
      * This attribute is deprecated.
      * 
@@ -52,23 +56,31 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * app name comes from `customProbes` above or /const/synthetic_test_probes
+     * Synthetic probe names to run for the listed VLANs
      * 
      */
     @Import(name="probes")
     private @Nullable Output<List<String>> probes;
 
     /**
-     * @return app name comes from `customProbes` above or /const/synthetic_test_probes
+     * @return Synthetic probe names to run for the listed VLANs
      * 
      */
     public Optional<Output<List<String>>> probes() {
         return Optional.ofNullable(this.probes);
     }
 
+    /**
+     * VLAN identifiers where synthetic probes are run
+     * 
+     */
     @Import(name="vlanIds")
     private @Nullable Output<List<String>> vlanIds;
 
+    /**
+     * @return VLAN identifiers where synthetic probes are run
+     * 
+     */
     public Optional<Output<List<String>>> vlanIds() {
         return Optional.ofNullable(this.vlanIds);
     }
@@ -101,6 +113,8 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param customTestUrls Deprecated custom URLs tested by VLAN-based synthetic probes
+         * 
          * @return builder
          * 
          * @deprecated
@@ -114,6 +128,8 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param customTestUrls Deprecated custom URLs tested by VLAN-based synthetic probes
+         * 
          * @return builder
          * 
          * @deprecated
@@ -126,6 +142,8 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param customTestUrls Deprecated custom URLs tested by VLAN-based synthetic probes
+         * 
          * @return builder
          * 
          * @deprecated
@@ -159,7 +177,7 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param probes app name comes from `customProbes` above or /const/synthetic_test_probes
+         * @param probes Synthetic probe names to run for the listed VLANs
          * 
          * @return builder
          * 
@@ -170,7 +188,7 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param probes app name comes from `customProbes` above or /const/synthetic_test_probes
+         * @param probes Synthetic probe names to run for the listed VLANs
          * 
          * @return builder
          * 
@@ -180,7 +198,7 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param probes app name comes from `customProbes` above or /const/synthetic_test_probes
+         * @param probes Synthetic probe names to run for the listed VLANs
          * 
          * @return builder
          * 
@@ -189,15 +207,33 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
             return probes(List.of(probes));
         }
 
+        /**
+         * @param vlanIds VLAN identifiers where synthetic probes are run
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanIds(@Nullable Output<List<String>> vlanIds) {
             $.vlanIds = vlanIds;
             return this;
         }
 
+        /**
+         * @param vlanIds VLAN identifiers where synthetic probes are run
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanIds(List<String> vlanIds) {
             return vlanIds(Output.of(vlanIds));
         }
 
+        /**
+         * @param vlanIds VLAN identifiers where synthetic probes are run
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanIds(String... vlanIds) {
             return vlanIds(List.of(vlanIds));
         }

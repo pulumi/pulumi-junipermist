@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxedgeTuntermMulticastConfigSsdp
     {
+        /// <summary>
+        /// Whether SSDP forwarding is enabled for the configured VLANs
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// List of VLAN IDs where SSDP forwarding is enabled
+        /// </summary>
         public readonly ImmutableArray<string> VlanIds;
 
         [OutputConstructor]

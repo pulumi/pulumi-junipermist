@@ -13,31 +13,31 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileGatewayOobIpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `Type`==`Static`
+        /// Default gateway for the out-of-band management interface when `Type`==`Static`
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// If `Type`==`Static`
+        /// Static IPv4 address for the out-of-band management interface when `Type`==`Static`
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// If `Type`==`Static`
+        /// IPv4 netmask or prefix length for the out-of-band management interface when `Type`==`Static`
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// For HA Cluster, node1 can have different IP Config
+        /// Out-of-band management IP configuration override for node1 in an HA cluster
         /// </summary>
         [Input("node1")]
         public Input<Inputs.DeviceprofileGatewayOobIpConfigNode1Args>? Node1 { get; set; }
 
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IP assignment mode for the out-of-band management interface
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -54,6 +54,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("useMgmtVrfForHostOut")]
         public Input<bool>? UseMgmtVrfForHostOut { get; set; }
 
+        /// <summary>
+        /// VLAN ID used for out-of-band management traffic
+        /// </summary>
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 

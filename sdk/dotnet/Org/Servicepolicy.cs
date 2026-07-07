@@ -65,44 +65,56 @@ namespace Pulumi.JuniperMist.Org
     public partial class Servicepolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// SRX only
+        /// Advanced anti-malware settings applied by this service policy
         /// </summary>
         [Output("aamw")]
         public Output<Outputs.ServicepolicyAamw?> Aamw { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `Allow`, `Deny`
+        /// Allow or deny action for traffic matched by this service policy
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
-        /// For SRX-only
+        /// Malware and virus inspection settings applied by this service policy
         /// </summary>
         [Output("antivirus")]
         public Output<Outputs.ServicepolicyAntivirus?> Antivirus { get; private set; } = null!;
 
         /// <summary>
-        /// SRX only
+        /// Application QoE settings applied by this service policy
         /// </summary>
         [Output("appqoe")]
         public Output<Outputs.ServicepolicyAppqoe?> Appqoe { get; private set; } = null!;
 
+        /// <summary>
+        /// Enhanced web filtering rules applied by this service policy
+        /// </summary>
         [Output("ewfs")]
         public Output<ImmutableArray<Outputs.ServicepolicyEwf>> Ewfs { get; private set; } = null!;
 
+        /// <summary>
+        /// Intrusion detection and prevention settings applied by this service policy
+        /// </summary>
         [Output("idp")]
         public Output<Outputs.ServicepolicyIdp?> Idp { get; private set; } = null!;
 
         /// <summary>
-        /// access within the same VRF
+        /// Whether the policy permits access within the same VRF
         /// </summary>
         [Output("localRouting")]
         public Output<bool?> LocalRouting { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the service policy
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns this service policy
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -112,15 +124,21 @@ namespace Pulumi.JuniperMist.Org
         [Output("pathPreference")]
         public Output<string?> PathPreference { get; private set; } = null!;
 
+        /// <summary>
+        /// Application services or groups matched by this policy
+        /// </summary>
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
 
         /// <summary>
-        /// For SRX-only
+        /// SSL proxy inspection settings applied by this service policy
         /// </summary>
         [Output("sslProxy")]
         public Output<Outputs.ServicepolicySslProxy?> SslProxy { get; private set; } = null!;
 
+        /// <summary>
+        /// Tenant names matched by this service policy
+        /// </summary>
         [Output("tenants")]
         public Output<ImmutableArray<string>> Tenants { get; private set; } = null!;
 
@@ -172,49 +190,62 @@ namespace Pulumi.JuniperMist.Org
     public sealed class ServicepolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// SRX only
+        /// Advanced anti-malware settings applied by this service policy
         /// </summary>
         [Input("aamw")]
         public Input<Inputs.ServicepolicyAamwArgs>? Aamw { get; set; }
 
         /// <summary>
-        /// enum: `Allow`, `Deny`
+        /// Allow or deny action for traffic matched by this service policy
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// For SRX-only
+        /// Malware and virus inspection settings applied by this service policy
         /// </summary>
         [Input("antivirus")]
         public Input<Inputs.ServicepolicyAntivirusArgs>? Antivirus { get; set; }
 
         /// <summary>
-        /// SRX only
+        /// Application QoE settings applied by this service policy
         /// </summary>
         [Input("appqoe")]
         public Input<Inputs.ServicepolicyAppqoeArgs>? Appqoe { get; set; }
 
         [Input("ewfs")]
         private InputList<Inputs.ServicepolicyEwfArgs>? _ewfs;
+
+        /// <summary>
+        /// Enhanced web filtering rules applied by this service policy
+        /// </summary>
         public InputList<Inputs.ServicepolicyEwfArgs> Ewfs
         {
             get => _ewfs ?? (_ewfs = new InputList<Inputs.ServicepolicyEwfArgs>());
             set => _ewfs = value;
         }
 
+        /// <summary>
+        /// Intrusion detection and prevention settings applied by this service policy
+        /// </summary>
         [Input("idp")]
         public Input<Inputs.ServicepolicyIdpArgs>? Idp { get; set; }
 
         /// <summary>
-        /// access within the same VRF
+        /// Whether the policy permits access within the same VRF
         /// </summary>
         [Input("localRouting")]
         public Input<bool>? LocalRouting { get; set; }
 
+        /// <summary>
+        /// Display name of the service policy
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns this service policy
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -226,6 +257,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("services")]
         private InputList<string>? _services;
+
+        /// <summary>
+        /// Application services or groups matched by this policy
+        /// </summary>
         public InputList<string> Services
         {
             get => _services ?? (_services = new InputList<string>());
@@ -233,13 +268,17 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// For SRX-only
+        /// SSL proxy inspection settings applied by this service policy
         /// </summary>
         [Input("sslProxy")]
         public Input<Inputs.ServicepolicySslProxyArgs>? SslProxy { get; set; }
 
         [Input("tenants")]
         private InputList<string>? _tenants;
+
+        /// <summary>
+        /// Tenant names matched by this service policy
+        /// </summary>
         public InputList<string> Tenants
         {
             get => _tenants ?? (_tenants = new InputList<string>());
@@ -255,49 +294,62 @@ namespace Pulumi.JuniperMist.Org
     public sealed class ServicepolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// SRX only
+        /// Advanced anti-malware settings applied by this service policy
         /// </summary>
         [Input("aamw")]
         public Input<Inputs.ServicepolicyAamwGetArgs>? Aamw { get; set; }
 
         /// <summary>
-        /// enum: `Allow`, `Deny`
+        /// Allow or deny action for traffic matched by this service policy
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// For SRX-only
+        /// Malware and virus inspection settings applied by this service policy
         /// </summary>
         [Input("antivirus")]
         public Input<Inputs.ServicepolicyAntivirusGetArgs>? Antivirus { get; set; }
 
         /// <summary>
-        /// SRX only
+        /// Application QoE settings applied by this service policy
         /// </summary>
         [Input("appqoe")]
         public Input<Inputs.ServicepolicyAppqoeGetArgs>? Appqoe { get; set; }
 
         [Input("ewfs")]
         private InputList<Inputs.ServicepolicyEwfGetArgs>? _ewfs;
+
+        /// <summary>
+        /// Enhanced web filtering rules applied by this service policy
+        /// </summary>
         public InputList<Inputs.ServicepolicyEwfGetArgs> Ewfs
         {
             get => _ewfs ?? (_ewfs = new InputList<Inputs.ServicepolicyEwfGetArgs>());
             set => _ewfs = value;
         }
 
+        /// <summary>
+        /// Intrusion detection and prevention settings applied by this service policy
+        /// </summary>
         [Input("idp")]
         public Input<Inputs.ServicepolicyIdpGetArgs>? Idp { get; set; }
 
         /// <summary>
-        /// access within the same VRF
+        /// Whether the policy permits access within the same VRF
         /// </summary>
         [Input("localRouting")]
         public Input<bool>? LocalRouting { get; set; }
 
+        /// <summary>
+        /// Display name of the service policy
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns this service policy
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -309,6 +361,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("services")]
         private InputList<string>? _services;
+
+        /// <summary>
+        /// Application services or groups matched by this policy
+        /// </summary>
         public InputList<string> Services
         {
             get => _services ?? (_services = new InputList<string>());
@@ -316,13 +372,17 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// For SRX-only
+        /// SSL proxy inspection settings applied by this service policy
         /// </summary>
         [Input("sslProxy")]
         public Input<Inputs.ServicepolicySslProxyGetArgs>? SslProxy { get; set; }
 
         [Input("tenants")]
         private InputList<string>? _tenants;
+
+        /// <summary>
+        /// Tenant names matched by this service policy
+        /// </summary>
         public InputList<string> Tenants
         {
             get => _tenants ?? (_tenants = new InputList<string>());

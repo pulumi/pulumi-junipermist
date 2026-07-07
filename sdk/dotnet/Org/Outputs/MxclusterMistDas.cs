@@ -14,9 +14,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class MxclusterMistDas
     {
         /// <summary>
-        /// Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+        /// Dynamic authorization clients allowed to send CoA or Disconnect-Message requests
         /// </summary>
         public readonly ImmutableArray<Outputs.MxclusterMistDasCoaServer> CoaServers;
+        /// <summary>
+        /// Whether cloud-assisted DAS is enabled for the Mist Edge cluster
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

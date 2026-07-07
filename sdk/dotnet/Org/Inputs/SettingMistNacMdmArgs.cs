@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingMistNacMdmArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CoA type to send. enum: `Reauth`, `Disconnect`
+        /// Change of Authorization action sent for MDM posture changes
         /// </summary>
         [Input("coaType")]
         public Input<string>? CoaType { get; set; }

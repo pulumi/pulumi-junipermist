@@ -13,16 +13,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateTunnelProviderOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
+        /// Juniper Secure Edge provisioning options for tunnel endpoints
         /// </summary>
         [Input("jse")]
         public Input<Inputs.GatewaytemplateTunnelProviderOptionsJseGetArgs>? Jse { get; set; }
 
+        /// <summary>
+        /// Palo Alto Prisma Access provisioning options for tunnel endpoints
+        /// </summary>
         [Input("prisma")]
         public Input<Inputs.GatewaytemplateTunnelProviderOptionsPrismaGetArgs>? Prisma { get; set; }
 
         /// <summary>
-        /// For zscaler-ipsec and zscaler-gre
+        /// Provider settings for Zscaler tunnel endpoints
         /// </summary>
         [Input("zscaler")]
         public Input<Inputs.GatewaytemplateTunnelProviderOptionsZscalerGetArgs>? Zscaler { get; set; }

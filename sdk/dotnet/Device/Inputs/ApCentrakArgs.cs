@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class ApCentrakArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to enable Centrak config
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

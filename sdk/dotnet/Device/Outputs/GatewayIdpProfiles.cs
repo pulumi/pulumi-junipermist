@@ -14,15 +14,24 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayIdpProfiles
     {
         /// <summary>
-        /// enum: `Critical`, `Standard`, `Strict`
+        /// Built-in IDP baseline profile inherited before applying overwrites
         /// </summary>
         public readonly string? BaseProfile;
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organization
+        /// Unique identifier of the IDP profile
         /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// Display name of the IDP profile
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Owning organization for the IDP profile
+        /// </summary>
         public readonly string? OrgId;
+        /// <summary>
+        /// IDP signature override rules applied on top of the base profile
+        /// </summary>
         public readonly ImmutableArray<Outputs.GatewayIdpProfilesOverwrite> Overwrites;
 
         [OutputConstructor]

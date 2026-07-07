@@ -80,13 +80,20 @@ type Sso struct {
 	IgnoreUnmatchedRoles pulumi.BoolPtrOutput `pulumi:"ignoreUnmatchedRoles"`
 	// IDP issuer URL
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
-	// Name
+	// Display name of the SSO configuration
 	Name pulumi.StringOutput `pulumi:"name"`
 	// enum: `email`, `unspecified`
 	NameidFormat pulumi.StringOutput `pulumi:"nameidFormat"`
-	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
 	OauthProviderDomain pulumi.StringOutput `pulumi:"oauthProviderDomain"`
-	OrgId               pulumi.StringOutput `pulumi:"orgId"`
+	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+	OpenroamingSsids pulumi.StringArrayOutput `pulumi:"openroamingSsids"`
+	// Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+	OpenroamingWbaClientCert pulumi.StringPtrOutput `pulumi:"openroamingWbaClientCert"`
+	// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+	OpenroamingWbaClientKey pulumi.StringPtrOutput `pulumi:"openroamingWbaClientKey"`
+	// Owning organization identifier for this SSO configuration
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction pulumi.StringPtrOutput `pulumi:"roleAttrExtraction"`
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
@@ -115,6 +122,17 @@ func NewSso(ctx *pulumi.Context,
 	if args.OrgId == nil {
 		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
+	if args.OpenroamingWbaClientCert != nil {
+		args.OpenroamingWbaClientCert = pulumi.ToSecret(args.OpenroamingWbaClientCert).(pulumi.StringPtrInput)
+	}
+	if args.OpenroamingWbaClientKey != nil {
+		args.OpenroamingWbaClientKey = pulumi.ToSecret(args.OpenroamingWbaClientKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"openroamingWbaClientCert",
+		"openroamingWbaClientKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Sso
 	err := ctx.RegisterResource("junipermist:org/sso:Sso", name, args, &resource, opts...)
@@ -156,13 +174,20 @@ type ssoState struct {
 	IgnoreUnmatchedRoles *bool `pulumi:"ignoreUnmatchedRoles"`
 	// IDP issuer URL
 	Issuer *string `pulumi:"issuer"`
-	// Name
+	// Display name of the SSO configuration
 	Name *string `pulumi:"name"`
 	// enum: `email`, `unspecified`
 	NameidFormat *string `pulumi:"nameidFormat"`
-	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
 	OauthProviderDomain *string `pulumi:"oauthProviderDomain"`
-	OrgId               *string `pulumi:"orgId"`
+	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+	OpenroamingSsids []string `pulumi:"openroamingSsids"`
+	// Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+	OpenroamingWbaClientCert *string `pulumi:"openroamingWbaClientCert"`
+	// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+	OpenroamingWbaClientKey *string `pulumi:"openroamingWbaClientKey"`
+	// Owning organization identifier for this SSO configuration
+	OrgId *string `pulumi:"orgId"`
 	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction *string `pulumi:"roleAttrExtraction"`
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
@@ -188,13 +213,20 @@ type SsoState struct {
 	IgnoreUnmatchedRoles pulumi.BoolPtrInput
 	// IDP issuer URL
 	Issuer pulumi.StringPtrInput
-	// Name
+	// Display name of the SSO configuration
 	Name pulumi.StringPtrInput
 	// enum: `email`, `unspecified`
 	NameidFormat pulumi.StringPtrInput
-	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
 	OauthProviderDomain pulumi.StringPtrInput
-	OrgId               pulumi.StringPtrInput
+	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+	OpenroamingSsids pulumi.StringArrayInput
+	// Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+	OpenroamingWbaClientCert pulumi.StringPtrInput
+	// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+	OpenroamingWbaClientKey pulumi.StringPtrInput
+	// Owning organization identifier for this SSO configuration
+	OrgId pulumi.StringPtrInput
 	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction pulumi.StringPtrInput
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
@@ -220,13 +252,20 @@ type ssoArgs struct {
 	IgnoreUnmatchedRoles *bool `pulumi:"ignoreUnmatchedRoles"`
 	// IDP issuer URL
 	Issuer string `pulumi:"issuer"`
-	// Name
+	// Display name of the SSO configuration
 	Name *string `pulumi:"name"`
 	// enum: `email`, `unspecified`
 	NameidFormat *string `pulumi:"nameidFormat"`
-	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
 	OauthProviderDomain *string `pulumi:"oauthProviderDomain"`
-	OrgId               string  `pulumi:"orgId"`
+	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+	OpenroamingSsids []string `pulumi:"openroamingSsids"`
+	// Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+	OpenroamingWbaClientCert *string `pulumi:"openroamingWbaClientCert"`
+	// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+	OpenroamingWbaClientKey *string `pulumi:"openroamingWbaClientKey"`
+	// Owning organization identifier for this SSO configuration
+	OrgId string `pulumi:"orgId"`
 	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction *string `pulumi:"roleAttrExtraction"`
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
@@ -249,13 +288,20 @@ type SsoArgs struct {
 	IgnoreUnmatchedRoles pulumi.BoolPtrInput
 	// IDP issuer URL
 	Issuer pulumi.StringInput
-	// Name
+	// Display name of the SSO configuration
 	Name pulumi.StringPtrInput
 	// enum: `email`, `unspecified`
 	NameidFormat pulumi.StringPtrInput
-	// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+	// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
 	OauthProviderDomain pulumi.StringPtrInput
-	OrgId               pulumi.StringInput
+	// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+	OpenroamingSsids pulumi.StringArrayInput
+	// Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+	OpenroamingWbaClientCert pulumi.StringPtrInput
+	// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+	OpenroamingWbaClientKey pulumi.StringPtrInput
+	// Owning organization identifier for this SSO configuration
+	OrgId pulumi.StringInput
 	// custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
 	RoleAttrExtraction pulumi.StringPtrInput
 	// name of the attribute in SAML Assertion to extract role from. Default: `Role`
@@ -391,7 +437,7 @@ func (o SsoOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
 }
 
-// Name
+// Display name of the SSO configuration
 func (o SsoOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -401,11 +447,27 @@ func (o SsoOutput) NameidFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringOutput { return v.NameidFormat }).(pulumi.StringOutput)
 }
 
-// If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+// Provider domain for Okta OAuth SSO when `oauthType`==`okta`
 func (o SsoOutput) OauthProviderDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringOutput { return v.OauthProviderDomain }).(pulumi.StringOutput)
 }
 
+// SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+func (o SsoOutput) OpenroamingSsids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Sso) pulumi.StringArrayOutput { return v.OpenroamingSsids }).(pulumi.StringArrayOutput)
+}
+
+// Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+func (o SsoOutput) OpenroamingWbaClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sso) pulumi.StringPtrOutput { return v.OpenroamingWbaClientCert }).(pulumi.StringPtrOutput)
+}
+
+// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+func (o SsoOutput) OpenroamingWbaClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sso) pulumi.StringPtrOutput { return v.OpenroamingWbaClientKey }).(pulumi.StringPtrOutput)
+}
+
+// Owning organization identifier for this SSO configuration
 func (o SsoOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sso) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

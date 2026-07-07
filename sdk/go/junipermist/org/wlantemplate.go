@@ -61,16 +61,18 @@ import (
 type Wlantemplate struct {
 	pulumi.CustomResourceState
 
-	// Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+	// Organizations, sites, or site groups targeted by this WLAN template
 	Applies WlantemplateAppliesOutput `pulumi:"applies"`
-	// List of Device Profile ids
+	// Device profile IDs that further limit where this WLAN template applies
 	DeviceprofileIds pulumi.StringArrayOutput `pulumi:"deviceprofileIds"`
-	// Where this template should not be applied to (takes precedence)
+	// Sites or site groups excluded from this WLAN template even when included by the application scope
 	Exceptions WlantemplateExceptionsOutput `pulumi:"exceptions"`
 	// Whether to further filter by Device Profile
-	FilterByDeviceprofile pulumi.BoolOutput   `pulumi:"filterByDeviceprofile"`
-	Name                  pulumi.StringOutput `pulumi:"name"`
-	OrgId                 pulumi.StringOutput `pulumi:"orgId"`
+	FilterByDeviceprofile pulumi.BoolOutput `pulumi:"filterByDeviceprofile"`
+	// Display name of the WLAN template
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Organization that owns this WLAN template
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
 }
 
 // NewWlantemplate registers a new resource with the given unique name, arguments, and options.
@@ -106,29 +108,33 @@ func GetWlantemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Wlantemplate resources.
 type wlantemplateState struct {
-	// Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+	// Organizations, sites, or site groups targeted by this WLAN template
 	Applies *WlantemplateApplies `pulumi:"applies"`
-	// List of Device Profile ids
+	// Device profile IDs that further limit where this WLAN template applies
 	DeviceprofileIds []string `pulumi:"deviceprofileIds"`
-	// Where this template should not be applied to (takes precedence)
+	// Sites or site groups excluded from this WLAN template even when included by the application scope
 	Exceptions *WlantemplateExceptions `pulumi:"exceptions"`
 	// Whether to further filter by Device Profile
-	FilterByDeviceprofile *bool   `pulumi:"filterByDeviceprofile"`
-	Name                  *string `pulumi:"name"`
-	OrgId                 *string `pulumi:"orgId"`
+	FilterByDeviceprofile *bool `pulumi:"filterByDeviceprofile"`
+	// Display name of the WLAN template
+	Name *string `pulumi:"name"`
+	// Organization that owns this WLAN template
+	OrgId *string `pulumi:"orgId"`
 }
 
 type WlantemplateState struct {
-	// Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+	// Organizations, sites, or site groups targeted by this WLAN template
 	Applies WlantemplateAppliesPtrInput
-	// List of Device Profile ids
+	// Device profile IDs that further limit where this WLAN template applies
 	DeviceprofileIds pulumi.StringArrayInput
-	// Where this template should not be applied to (takes precedence)
+	// Sites or site groups excluded from this WLAN template even when included by the application scope
 	Exceptions WlantemplateExceptionsPtrInput
 	// Whether to further filter by Device Profile
 	FilterByDeviceprofile pulumi.BoolPtrInput
-	Name                  pulumi.StringPtrInput
-	OrgId                 pulumi.StringPtrInput
+	// Display name of the WLAN template
+	Name pulumi.StringPtrInput
+	// Organization that owns this WLAN template
+	OrgId pulumi.StringPtrInput
 }
 
 func (WlantemplateState) ElementType() reflect.Type {
@@ -136,30 +142,34 @@ func (WlantemplateState) ElementType() reflect.Type {
 }
 
 type wlantemplateArgs struct {
-	// Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+	// Organizations, sites, or site groups targeted by this WLAN template
 	Applies *WlantemplateApplies `pulumi:"applies"`
-	// List of Device Profile ids
+	// Device profile IDs that further limit where this WLAN template applies
 	DeviceprofileIds []string `pulumi:"deviceprofileIds"`
-	// Where this template should not be applied to (takes precedence)
+	// Sites or site groups excluded from this WLAN template even when included by the application scope
 	Exceptions *WlantemplateExceptions `pulumi:"exceptions"`
 	// Whether to further filter by Device Profile
-	FilterByDeviceprofile *bool   `pulumi:"filterByDeviceprofile"`
-	Name                  *string `pulumi:"name"`
-	OrgId                 string  `pulumi:"orgId"`
+	FilterByDeviceprofile *bool `pulumi:"filterByDeviceprofile"`
+	// Display name of the WLAN template
+	Name *string `pulumi:"name"`
+	// Organization that owns this WLAN template
+	OrgId string `pulumi:"orgId"`
 }
 
 // The set of arguments for constructing a Wlantemplate resource.
 type WlantemplateArgs struct {
-	// Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+	// Organizations, sites, or site groups targeted by this WLAN template
 	Applies WlantemplateAppliesPtrInput
-	// List of Device Profile ids
+	// Device profile IDs that further limit where this WLAN template applies
 	DeviceprofileIds pulumi.StringArrayInput
-	// Where this template should not be applied to (takes precedence)
+	// Sites or site groups excluded from this WLAN template even when included by the application scope
 	Exceptions WlantemplateExceptionsPtrInput
 	// Whether to further filter by Device Profile
 	FilterByDeviceprofile pulumi.BoolPtrInput
-	Name                  pulumi.StringPtrInput
-	OrgId                 pulumi.StringInput
+	// Display name of the WLAN template
+	Name pulumi.StringPtrInput
+	// Organization that owns this WLAN template
+	OrgId pulumi.StringInput
 }
 
 func (WlantemplateArgs) ElementType() reflect.Type {
@@ -249,17 +259,17 @@ func (o WlantemplateOutput) ToWlantemplateOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+// Organizations, sites, or site groups targeted by this WLAN template
 func (o WlantemplateOutput) Applies() WlantemplateAppliesOutput {
 	return o.ApplyT(func(v *Wlantemplate) WlantemplateAppliesOutput { return v.Applies }).(WlantemplateAppliesOutput)
 }
 
-// List of Device Profile ids
+// Device profile IDs that further limit where this WLAN template applies
 func (o WlantemplateOutput) DeviceprofileIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlantemplate) pulumi.StringArrayOutput { return v.DeviceprofileIds }).(pulumi.StringArrayOutput)
 }
 
-// Where this template should not be applied to (takes precedence)
+// Sites or site groups excluded from this WLAN template even when included by the application scope
 func (o WlantemplateOutput) Exceptions() WlantemplateExceptionsOutput {
 	return o.ApplyT(func(v *Wlantemplate) WlantemplateExceptionsOutput { return v.Exceptions }).(WlantemplateExceptionsOutput)
 }
@@ -269,10 +279,12 @@ func (o WlantemplateOutput) FilterByDeviceprofile() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlantemplate) pulumi.BoolOutput { return v.FilterByDeviceprofile }).(pulumi.BoolOutput)
 }
 
+// Display name of the WLAN template
 func (o WlantemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlantemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Organization that owns this WLAN template
 func (o WlantemplateOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlantemplate) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

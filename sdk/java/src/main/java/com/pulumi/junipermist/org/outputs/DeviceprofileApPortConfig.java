@@ -17,20 +17,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileApPortConfig {
+    /**
+     * @return Whether this AP Ethernet port is disabled
+     * 
+     */
     private @Nullable Boolean disabled;
     /**
-     * @return Optional dynamic vlan
+     * @return RADIUS-assigned VLAN settings for AP port authentication
      * 
      */
     private @Nullable DeviceprofileApPortConfigDynamicVlan dynamicVlan;
+    /**
+     * @return Whether MAC authentication is enabled on this AP port
+     * 
+     */
     private @Nullable Boolean enableMacAuth;
     /**
-     * @return enum:
-     *   * `all`: local breakout, All VLANs
-     *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
-     *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
-     *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
-     *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnelId`)
+     * @return Traffic forwarding mode for this AP Ethernet port
      * 
      */
     private @Nullable String forwarding;
@@ -40,10 +43,14 @@ public final class DeviceprofileApPortConfig {
      */
     private @Nullable Boolean macAuthPreferred;
     /**
-     * @return if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return Protocol used for MAC authentication when `enableMacAuth` is `true`
      * 
      */
     private @Nullable String macAuthProtocol;
+    /**
+     * @return Juniper Mist NAC settings used by AP port authentication
+     * 
+     */
     private @Nullable DeviceprofileApPortConfigMistNac mistNac;
     /**
      * @return If `forwarding`==`mxtunnel`, vlanIds comes from mxtunnel
@@ -56,34 +63,34 @@ public final class DeviceprofileApPortConfig {
      */
     private @Nullable String mxtunnelName;
     /**
-     * @return When doing port auth. enum: `dot1x`, `none`
+     * @return Authentication mode for this AP Ethernet port
      * 
      */
     private @Nullable String portAuth;
     /**
-     * @return If `forwarding`==`limited`
+     * @return If `forwarding`==`limited`. VLAN ID allowed on this AP Ethernet port
      * 
      */
     private @Nullable Integer portVlanId;
     /**
-     * @return Junos Radius config
+     * @return RADIUS authentication and accounting settings for this AP port
      * 
      */
     private @Nullable DeviceprofileApPortConfigRadiusConfig radiusConfig;
     /**
-     * @return RadSec settings
+     * @return TLS-secured RADIUS settings for this AP port
      * 
      */
     private @Nullable DeviceprofileApPortConfigRadsec radsec;
     /**
-     * @return Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+     * @return Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
      *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
      *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
      * 
      */
     private @Nullable Integer vlanId;
     /**
-     * @return If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
+     * @return If `forwarding`==`limited`, comma separated list of additional VLAN IDs allowed on this port
      * 
      */
     private @Nullable String vlanIds;
@@ -99,26 +106,29 @@ public final class DeviceprofileApPortConfig {
     private @Nullable String wxtunnelRemoteId;
 
     private DeviceprofileApPortConfig() {}
+    /**
+     * @return Whether this AP Ethernet port is disabled
+     * 
+     */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Optional dynamic vlan
+     * @return RADIUS-assigned VLAN settings for AP port authentication
      * 
      */
     public Optional<DeviceprofileApPortConfigDynamicVlan> dynamicVlan() {
         return Optional.ofNullable(this.dynamicVlan);
     }
+    /**
+     * @return Whether MAC authentication is enabled on this AP port
+     * 
+     */
     public Optional<Boolean> enableMacAuth() {
         return Optional.ofNullable(this.enableMacAuth);
     }
     /**
-     * @return enum:
-     *   * `all`: local breakout, All VLANs
-     *   * `limited`: local breakout, only the VLANs configured in `portVlanId` and `vlanIds`
-     *   * `mxtunnel`: central breakout to an Org Mist Edge (requires `mxtunnelId`)
-     *   * `siteMxedge`: central breakout to a Site Mist Edge (requires `mxtunnelName`)
-     *   * `wxtunnel`&#39;: central breakout to an Org WxTunnel (requires `wxtunnelId`)
+     * @return Traffic forwarding mode for this AP Ethernet port
      * 
      */
     public Optional<String> forwarding() {
@@ -132,12 +142,16 @@ public final class DeviceprofileApPortConfig {
         return Optional.ofNullable(this.macAuthPreferred);
     }
     /**
-     * @return if `enableMacAuth`==`true`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `pap`
+     * @return Protocol used for MAC authentication when `enableMacAuth` is `true`
      * 
      */
     public Optional<String> macAuthProtocol() {
         return Optional.ofNullable(this.macAuthProtocol);
     }
+    /**
+     * @return Juniper Mist NAC settings used by AP port authentication
+     * 
+     */
     public Optional<DeviceprofileApPortConfigMistNac> mistNac() {
         return Optional.ofNullable(this.mistNac);
     }
@@ -156,35 +170,35 @@ public final class DeviceprofileApPortConfig {
         return Optional.ofNullable(this.mxtunnelName);
     }
     /**
-     * @return When doing port auth. enum: `dot1x`, `none`
+     * @return Authentication mode for this AP Ethernet port
      * 
      */
     public Optional<String> portAuth() {
         return Optional.ofNullable(this.portAuth);
     }
     /**
-     * @return If `forwarding`==`limited`
+     * @return If `forwarding`==`limited`. VLAN ID allowed on this AP Ethernet port
      * 
      */
     public Optional<Integer> portVlanId() {
         return Optional.ofNullable(this.portVlanId);
     }
     /**
-     * @return Junos Radius config
+     * @return RADIUS authentication and accounting settings for this AP port
      * 
      */
     public Optional<DeviceprofileApPortConfigRadiusConfig> radiusConfig() {
         return Optional.ofNullable(this.radiusConfig);
     }
     /**
-     * @return RadSec settings
+     * @return TLS-secured RADIUS settings for this AP port
      * 
      */
     public Optional<DeviceprofileApPortConfigRadsec> radsec() {
         return Optional.ofNullable(this.radsec);
     }
     /**
-     * @return Optional to specify the vlan id for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
+     * @return Optional to specify the VLAN ID for a tunnel if forwarding is for `wxtunnel`, `mxtunnel` or `siteMxedge`.
      *   * if vlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
      *   * if forwarding == site_mxedge, vlanIds comes from siteMxedge (`mxtunnels` under site setting)
      * 
@@ -193,7 +207,7 @@ public final class DeviceprofileApPortConfig {
         return Optional.ofNullable(this.vlanId);
     }
     /**
-     * @return If `forwarding`==`limited`, comma separated list of additional vlan ids allowed on this port
+     * @return If `forwarding`==`limited`, comma separated list of additional VLAN IDs allowed on this port
      * 
      */
     public Optional<String> vlanIds() {

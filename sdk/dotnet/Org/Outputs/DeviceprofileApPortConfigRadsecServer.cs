@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileApPortConfigRadsecServer
     {
+        /// <summary>
+        /// Address or hostname of the RadSec server
+        /// </summary>
         public readonly string? Host;
+        /// <summary>
+        /// TCP port used by the RadSec server
+        /// </summary>
         public readonly int? Port;
 
         [OutputConstructor]

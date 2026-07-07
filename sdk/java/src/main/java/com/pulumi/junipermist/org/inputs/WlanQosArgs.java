@@ -17,14 +17,14 @@ public final class WlanQosArgs extends com.pulumi.resources.ResourceArgs {
     public static final WlanQosArgs Empty = new WlanQosArgs();
 
     /**
-     * enum: `background`, `bestEffort`, `video`, `voice`
+     * QoS traffic class applied when WLAN QoS override is enabled
      * 
      */
     @Import(name="class")
     private @Nullable Output<String> class_;
 
     /**
-     * @return enum: `background`, `bestEffort`, `video`, `voice`
+     * @return QoS traffic class applied when WLAN QoS override is enabled
      * 
      */
     public Optional<Output<String>> class_() {
@@ -72,7 +72,7 @@ public final class WlanQosArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param class_ enum: `background`, `bestEffort`, `video`, `voice`
+         * @param class_ QoS traffic class applied when WLAN QoS override is enabled
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class WlanQosArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param class_ enum: `background`, `bestEffort`, `video`, `voice`
+         * @param class_ QoS traffic class applied when WLAN QoS override is enabled
          * 
          * @return builder
          * 

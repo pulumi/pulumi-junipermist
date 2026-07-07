@@ -13,29 +13,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileGatewayTunnelConfigsIkeProposalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Md5`, `Sha1`, `Sha2`
+        /// Integrity algorithm used by this IKE proposal
         /// </summary>
         [Input("authAlgo")]
         public Input<string>? AuthAlgo { get; set; }
 
         /// <summary>
-        /// enum:
-        ///   * 1
-        ///   * 2 (1024-bit)
-        ///   * 5
-        ///   * 14 (default, 2048-bit)
-        ///   * 15 (3072-bit)
-        ///   * 16 (4096-bit)
-        ///   * 19 (256-bit ECP)
-        ///   * 20 (384-bit ECP)
-        ///   * 21 (521-bit ECP)
-        ///   * 24 (2048-bit ECP)
+        /// Diffie-Hellman group used by this IKE proposal
         /// </summary>
         [Input("dhGroup")]
         public Input<string>? DhGroup { get; set; }
 
         /// <summary>
-        /// enum: `3des`, `Aes128`, `Aes256`, `AesGcm128`, `AesGcm256`
+        /// Cipher algorithm used by this IKE proposal
         /// </summary>
         [Input("encAlgo")]
         public Input<string>? EncAlgo { get; set; }

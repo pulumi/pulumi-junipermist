@@ -14,17 +14,20 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class WlanCiscoCwa
     {
         /// <summary>
-        /// List of hostnames without http(s):// (matched by substring)
+        /// Hostnames allowed for Cisco CWA client access before authorization
         /// </summary>
         public readonly ImmutableArray<string> AllowedHostnames;
         /// <summary>
-        /// List of CIDRs
+        /// CIDR subnets allowed for Cisco CWA client access before authorization
         /// </summary>
         public readonly ImmutableArray<string> AllowedSubnets;
         /// <summary>
-        /// List of blocked CIDRs
+        /// CIDR subnets blocked for Cisco CWA client access
         /// </summary>
         public readonly ImmutableArray<string> BlockedSubnets;
+        /// <summary>
+        /// Whether Cisco CWA is enabled for this WLAN
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

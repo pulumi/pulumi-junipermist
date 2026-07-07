@@ -5,6 +5,8 @@ package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +20,11 @@ public final class SettingApiPolicy {
      * 
      */
     private @Nullable Boolean noReveal;
+    /**
+     * @return Optional list of IP addresses or CIDR subnets from which org API access is allowed. At most 10 entries. The source IP of the request making this update must be within one of the specified subnets.
+     * 
+     */
+    private @Nullable List<String> srcIps;
 
     private SettingApiPolicy() {}
     /**
@@ -28,6 +35,13 @@ public final class SettingApiPolicy {
      */
     public Optional<Boolean> noReveal() {
         return Optional.ofNullable(this.noReveal);
+    }
+    /**
+     * @return Optional list of IP addresses or CIDR subnets from which org API access is allowed. At most 10 entries. The source IP of the request making this update must be within one of the specified subnets.
+     * 
+     */
+    public List<String> srcIps() {
+        return this.srcIps == null ? List.of() : this.srcIps;
     }
 
     public static Builder builder() {
@@ -40,10 +54,12 @@ public final class SettingApiPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean noReveal;
+        private @Nullable List<String> srcIps;
         public Builder() {}
         public Builder(SettingApiPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.noReveal = defaults.noReveal;
+    	      this.srcIps = defaults.srcIps;
         }
 
         @CustomType.Setter
@@ -52,9 +68,19 @@ public final class SettingApiPolicy {
             this.noReveal = noReveal;
             return this;
         }
+        @CustomType.Setter
+        public Builder srcIps(@Nullable List<String> srcIps) {
+
+            this.srcIps = srcIps;
+            return this;
+        }
+        public Builder srcIps(String... srcIps) {
+            return srcIps(List.of(srcIps));
+        }
         public SettingApiPolicy build() {
             final var _resultValue = new SettingApiPolicy();
             _resultValue.noReveal = noReveal;
+            _resultValue.srcIps = srcIps;
             return _resultValue;
         }
     }

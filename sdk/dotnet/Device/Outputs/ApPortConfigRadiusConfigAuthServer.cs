@@ -14,23 +14,35 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class ApPortConfigRadiusConfigAuthServer
     {
         /// <summary>
-        /// IP/ hostname of RADIUS server
+        /// Address or hostname of the RADIUS authentication server
         /// </summary>
         public readonly string Host;
+        /// <summary>
+        /// Whether RADIUS keywrap is enabled for messages sent to this authentication server
+        /// </summary>
         public readonly bool? KeywrapEnabled;
         /// <summary>
-        /// enum: `Ascii`, `Hex`
+        /// Encoding format for RADIUS keywrap KEK and MACK values
         /// </summary>
         public readonly string? KeywrapFormat;
+        /// <summary>
+        /// RADIUS keywrap key encryption key (KEK)
+        /// </summary>
         public readonly string? KeywrapKek;
+        /// <summary>
+        /// RADIUS keywrap message authentication code key (MACK)
+        /// </summary>
         public readonly string? KeywrapMack;
+        /// <summary>
+        /// UDP port used by the RADIUS authentication server
+        /// </summary>
         public readonly string? Port;
         /// <summary>
         /// Whether to require Message-Authenticator in requests
         /// </summary>
         public readonly bool? RequireMessageAuthenticator;
         /// <summary>
-        /// Secret of RADIUS server
+        /// Shared secret used with this RADIUS authentication server
         /// </summary>
         public readonly string Secret;
 

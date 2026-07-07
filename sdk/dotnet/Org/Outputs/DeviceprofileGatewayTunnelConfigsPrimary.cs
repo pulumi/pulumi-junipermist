@@ -13,16 +13,25 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileGatewayTunnelConfigsPrimary
     {
+        /// <summary>
+        /// Remote gateway host addresses for this tunnel node
+        /// </summary>
         public readonly ImmutableArray<string> Hosts;
         /// <summary>
-        /// Only if `Provider`==`zscaler-gre`, `Provider`==`jse-ipsec`, `Provider`==`custom-ipsec` or `Provider`==`custom-gre`
+        /// Internal IP addresses configured on this tunnel node
         /// </summary>
         public readonly ImmutableArray<string> InternalIps;
+        /// <summary>
+        /// Health-check IP addresses used to monitor this tunnel node
+        /// </summary>
         public readonly ImmutableArray<string> ProbeIps;
         /// <summary>
-        /// Only if `Provider`==`jse-ipsec` or `Provider`==`custom-ipsec`
+        /// IKE identities expected from this tunnel node
         /// </summary>
         public readonly ImmutableArray<string> RemoteIds;
+        /// <summary>
+        /// Interface names that source tunnel traffic for this node
+        /// </summary>
         public readonly ImmutableArray<string> WanNames;
 
         [OutputConstructor]

@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxedgeTuntermIgmpSnoopingConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether IGMP snooping is enabled for the configured VLANs
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// IGMP querier settings used with tunnel termination snooping
+        /// </summary>
         [Input("querier")]
         public Input<Inputs.MxedgeTuntermIgmpSnoopingConfigQuerierGetArgs>? Querier { get; set; }
 
@@ -22,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<int>? _vlanIds;
 
         /// <summary>
-        /// List of vlans on which tunterm performs IGMP snooping
+        /// List of VLAN IDs where tunnel termination performs IGMP snooping
         /// </summary>
         public InputList<int> VlanIds
         {

@@ -32,30 +32,62 @@ public final class WlanCoaServerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.disableEventTimestampCheck);
     }
 
+    /**
+     * Whether this RADIUS CoA server is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether this RADIUS CoA server is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Server IPv4 address for RADIUS CoA messages
+     * 
+     */
     @Import(name="ip", required=true)
     private Output<String> ip;
 
+    /**
+     * @return Server IPv4 address for RADIUS CoA messages
+     * 
+     */
     public Output<String> ip() {
         return this.ip;
     }
 
+    /**
+     * UDP port used to send RADIUS CoA messages to the server
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<String> port;
 
+    /**
+     * @return UDP port used to send RADIUS CoA messages to the server
+     * 
+     */
     public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
 
+    /**
+     * Shared secret used to authenticate RADIUS CoA messages
+     * 
+     */
     @Import(name="secret", required=true)
     private Output<String> secret;
 
+    /**
+     * @return Shared secret used to authenticate RADIUS CoA messages
+     * 
+     */
     public Output<String> secret() {
         return this.secret;
     }
@@ -109,38 +141,86 @@ public final class WlanCoaServerArgs extends com.pulumi.resources.ResourceArgs {
             return disableEventTimestampCheck(Output.of(disableEventTimestampCheck));
         }
 
+        /**
+         * @param enabled Whether this RADIUS CoA server is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether this RADIUS CoA server is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param ip Server IPv4 address for RADIUS CoA messages
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
+        /**
+         * @param ip Server IPv4 address for RADIUS CoA messages
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }
 
+        /**
+         * @param port UDP port used to send RADIUS CoA messages to the server
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port UDP port used to send RADIUS CoA messages to the server
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(String port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param secret Shared secret used to authenticate RADIUS CoA messages
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param secret Shared secret used to authenticate RADIUS CoA messages
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
         }

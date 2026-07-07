@@ -21,9 +21,17 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ApRadioConfigArgs Empty = new ApRadioConfigArgs();
 
+    /**
+     * Whether RRM can be disabled for individual radio-band settings
+     * 
+     */
     @Import(name="allowRrmDisable")
     private @Nullable Output<Boolean> allowRrmDisable;
 
+    /**
+     * @return Whether RRM can be disabled for individual radio-band settings
+     * 
+     */
     public Optional<Output<Boolean>> allowRrmDisable() {
         return Optional.ofNullable(this.allowRrmDisable);
     }
@@ -74,14 +82,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+     * Selected radio chain mode for AP models that support antenna mode control
      * 
      */
     @Import(name="antennaMode")
     private @Nullable Output<String> antennaMode;
 
     /**
-     * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+     * @return Selected radio chain mode for AP models that support antenna mode control
      * 
      */
     public Optional<Output<String>> antennaMode() {
@@ -89,14 +97,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
+     * Internal or external antenna selection for AP models with selectable antennas
      * 
      */
     @Import(name="antennaSelect")
     private @Nullable Output<String> antennaSelect;
 
     /**
-     * @return Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
+     * @return Internal or external antenna selection for AP models with selectable antennas
      * 
      */
     public Optional<Output<String>> antennaSelect() {
@@ -104,14 +112,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radio Band AP settings
+     * 2.4 GHz radio settings for this access point
      * 
      */
     @Import(name="band24")
     private @Nullable Output<ApRadioConfigBand24Args> band24;
 
     /**
-     * @return Radio Band AP settings
+     * @return 2.4 GHz radio settings for this access point
      * 
      */
     public Optional<Output<ApRadioConfigBand24Args>> band24() {
@@ -119,14 +127,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `24`, `5`, `6`, `auto`
+     * Radio usage mode for the 2.4 GHz-capable radio
      * 
      */
     @Import(name="band24Usage")
     private @Nullable Output<String> band24Usage;
 
     /**
-     * @return enum: `24`, `5`, `6`, `auto`
+     * @return Radio usage mode for the 2.4 GHz-capable radio
      * 
      */
     public Optional<Output<String>> band24Usage() {
@@ -134,14 +142,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radio Band AP settings
+     * 5 GHz radio settings for this access point
      * 
      */
     @Import(name="band5")
     private @Nullable Output<ApRadioConfigBand5Args> band5;
 
     /**
-     * @return Radio Band AP settings
+     * @return 5 GHz radio settings for this access point
      * 
      */
     public Optional<Output<ApRadioConfigBand5Args>> band5() {
@@ -149,14 +157,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radio Band AP settings
+     * 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      * 
      */
     @Import(name="band5On24Radio")
     private @Nullable Output<ApRadioConfigBand5On24RadioArgs> band5On24Radio;
 
     /**
-     * @return Radio Band AP settings
+     * @return 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      * 
      */
     public Optional<Output<ApRadioConfigBand5On24RadioArgs>> band5On24Radio() {
@@ -164,14 +172,14 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radio Band AP settings
+     * 6 GHz radio settings for this access point
      * 
      */
     @Import(name="band6")
     private @Nullable Output<ApRadioConfigBand6Args> band6;
 
     /**
-     * @return Radio Band AP settings
+     * @return 6 GHz radio settings for this access point
      * 
      */
     public Optional<Output<ApRadioConfigBand6Args>> band6() {
@@ -276,11 +284,23 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ApRadioConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowRrmDisable Whether RRM can be disabled for individual radio-band settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowRrmDisable(@Nullable Output<Boolean> allowRrmDisable) {
             $.allowRrmDisable = allowRrmDisable;
             return this;
         }
 
+        /**
+         * @param allowRrmDisable Whether RRM can be disabled for individual radio-band settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowRrmDisable(Boolean allowRrmDisable) {
             return allowRrmDisable(Output.of(allowRrmDisable));
         }
@@ -349,7 +369,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antennaMode enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+         * @param antennaMode Selected radio chain mode for AP models that support antenna mode control
          * 
          * @return builder
          * 
@@ -360,7 +380,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antennaMode enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+         * @param antennaMode Selected radio chain mode for AP models that support antenna mode control
          * 
          * @return builder
          * 
@@ -370,7 +390,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antennaSelect Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
+         * @param antennaSelect Internal or external antenna selection for AP models with selectable antennas
          * 
          * @return builder
          * 
@@ -381,7 +401,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param antennaSelect Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
+         * @param antennaSelect Internal or external antenna selection for AP models with selectable antennas
          * 
          * @return builder
          * 
@@ -391,7 +411,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band24 Radio Band AP settings
+         * @param band24 2.4 GHz radio settings for this access point
          * 
          * @return builder
          * 
@@ -402,7 +422,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band24 Radio Band AP settings
+         * @param band24 2.4 GHz radio settings for this access point
          * 
          * @return builder
          * 
@@ -412,7 +432,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band24Usage enum: `24`, `5`, `6`, `auto`
+         * @param band24Usage Radio usage mode for the 2.4 GHz-capable radio
          * 
          * @return builder
          * 
@@ -423,7 +443,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band24Usage enum: `24`, `5`, `6`, `auto`
+         * @param band24Usage Radio usage mode for the 2.4 GHz-capable radio
          * 
          * @return builder
          * 
@@ -433,7 +453,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band5 Radio Band AP settings
+         * @param band5 5 GHz radio settings for this access point
          * 
          * @return builder
          * 
@@ -444,7 +464,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band5 Radio Band AP settings
+         * @param band5 5 GHz radio settings for this access point
          * 
          * @return builder
          * 
@@ -454,7 +474,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band5On24Radio Radio Band AP settings
+         * @param band5On24Radio 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
          * 
          * @return builder
          * 
@@ -465,7 +485,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band5On24Radio Radio Band AP settings
+         * @param band5On24Radio 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
          * 
          * @return builder
          * 
@@ -475,7 +495,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band6 Radio Band AP settings
+         * @param band6 6 GHz radio settings for this access point
          * 
          * @return builder
          * 
@@ -486,7 +506,7 @@ public final class ApRadioConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band6 Radio Band AP settings
+         * @param band6 6 GHz radio settings for this access point
          * 
          * @return builder
          * 

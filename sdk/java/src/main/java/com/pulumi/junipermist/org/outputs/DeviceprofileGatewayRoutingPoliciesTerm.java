@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayRoutingPoliciesTerm {
     /**
-     * @return When used as import policy
+     * @return Policy actions applied when this routing policy term matches
      * 
      */
     private @Nullable DeviceprofileGatewayRoutingPoliciesTermActions actions;
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route match criteria that must be satisfied before actions are applied
      * 
      */
     private @Nullable DeviceprofileGatewayRoutingPoliciesTermMatching matching;
 
     private DeviceprofileGatewayRoutingPoliciesTerm() {}
     /**
-     * @return When used as import policy
+     * @return Policy actions applied when this routing policy term matches
      * 
      */
     public Optional<DeviceprofileGatewayRoutingPoliciesTermActions> actions() {
         return Optional.ofNullable(this.actions);
     }
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route match criteria that must be satisfied before actions are applied
      * 
      */
     public Optional<DeviceprofileGatewayRoutingPoliciesTermMatching> matching() {

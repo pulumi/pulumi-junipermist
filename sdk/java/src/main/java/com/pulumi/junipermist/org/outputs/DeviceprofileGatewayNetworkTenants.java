@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayNetworkTenants {
+    /**
+     * @return IP addresses or subnets assigned to this tenant in the network
+     * 
+     */
     private @Nullable List<String> addresses;
 
     private DeviceprofileGatewayNetworkTenants() {}
+    /**
+     * @return IP addresses or subnets assigned to this tenant in the network
+     * 
+     */
     public List<String> addresses() {
         return this.addresses == null ? List.of() : this.addresses;
     }

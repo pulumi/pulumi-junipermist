@@ -158,15 +158,31 @@ public class Base extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> gatewaytemplateId() {
         return Codegen.optional(this.gatewaytemplateId);
     }
+    /**
+     * Latitude and longitude for the site location
+     * 
+     */
     @Export(name="latlng", refs={BaseLatlng.class}, tree="[0]")
     private Output</* @Nullable */ BaseLatlng> latlng;
 
+    /**
+     * @return Latitude and longitude for the site location
+     * 
+     */
     public Output<Optional<BaseLatlng>> latlng() {
         return Codegen.optional(this.latlng);
     }
+    /**
+     * Display name of the site
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the site
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -198,9 +214,17 @@ public class Base extends com.pulumi.resources.CustomResource {
     public Output<String> notes() {
         return this.notes;
     }
+    /**
+     * Organization identifier associated with the site
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization identifier associated with the site
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -233,14 +257,14 @@ public class Base extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.routertemplateId);
     }
     /**
-     * SecPolicy ID
+     * Security policy identifier applied to this site
      * 
      */
     @Export(name="secpolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secpolicyId;
 
     /**
-     * @return SecPolicy ID
+     * @return Security policy identifier applied to this site
      * 
      */
     public Output<Optional<String>> secpolicyId() {
@@ -261,36 +285,44 @@ public class Base extends com.pulumi.resources.CustomResource {
         return this.sitegroupIds;
     }
     /**
-     * Site Template ID
+     * Site template identifier applied to this site
      * 
      */
     @Export(name="sitetemplateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sitetemplateId;
 
     /**
-     * @return Site Template ID
+     * @return Site template identifier applied to this site
      * 
      */
     public Output<Optional<String>> sitetemplateId() {
         return Codegen.optional(this.sitetemplateId);
     }
     /**
-     * Timezone the site is at
+     * IANA time zone name for the site
      * 
      */
     @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output<String> timezone;
 
     /**
-     * @return Timezone the site is at
+     * @return IANA time zone name for the site
      * 
      */
     public Output<String> timezone() {
         return this.timezone;
     }
+    /**
+     * Time zone offset value derived from the site&#39;s timezone
+     * 
+     */
     @Export(name="tzoffset", refs={Integer.class}, tree="[0]")
     private Output<Integer> tzoffset;
 
+    /**
+     * @return Time zone offset value derived from the site&#39;s timezone
+     * 
+     */
     public Output<Integer> tzoffset() {
         return this.tzoffset;
     }

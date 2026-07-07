@@ -16,36 +16,60 @@ public final class DeviceprofileGatewayServicePolicyEwfArgs extends com.pulumi.r
 
     public static final DeviceprofileGatewayServicePolicyEwfArgs Empty = new DeviceprofileGatewayServicePolicyEwfArgs();
 
+    /**
+     * Whether matching enhanced web filtering traffic is logged without being blocked
+     * 
+     */
     @Import(name="alertOnly")
     private @Nullable Output<Boolean> alertOnly;
 
+    /**
+     * @return Whether matching enhanced web filtering traffic is logged without being blocked
+     * 
+     */
     public Optional<Output<Boolean>> alertOnly() {
         return Optional.ofNullable(this.alertOnly);
     }
 
+    /**
+     * Message returned when enhanced web filtering blocks a request
+     * 
+     */
     @Import(name="blockMessage")
     private @Nullable Output<String> blockMessage;
 
+    /**
+     * @return Message returned when enhanced web filtering blocks a request
+     * 
+     */
     public Optional<Output<String>> blockMessage() {
         return Optional.ofNullable(this.blockMessage);
     }
 
+    /**
+     * Whether this enhanced web filtering rule is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether this enhanced web filtering rule is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * enum: `critical`, `standard`, `strict`
+     * Enhanced web filtering profile applied by this rule
      * 
      */
     @Import(name="profile")
     private @Nullable Output<String> profile;
 
     /**
-     * @return enum: `critical`, `standard`, `strict`
+     * @return Enhanced web filtering profile applied by this rule
      * 
      */
     public Optional<Output<String>> profile() {
@@ -79,35 +103,71 @@ public final class DeviceprofileGatewayServicePolicyEwfArgs extends com.pulumi.r
             $ = new DeviceprofileGatewayServicePolicyEwfArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alertOnly Whether matching enhanced web filtering traffic is logged without being blocked
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertOnly(@Nullable Output<Boolean> alertOnly) {
             $.alertOnly = alertOnly;
             return this;
         }
 
+        /**
+         * @param alertOnly Whether matching enhanced web filtering traffic is logged without being blocked
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertOnly(Boolean alertOnly) {
             return alertOnly(Output.of(alertOnly));
         }
 
+        /**
+         * @param blockMessage Message returned when enhanced web filtering blocks a request
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockMessage(@Nullable Output<String> blockMessage) {
             $.blockMessage = blockMessage;
             return this;
         }
 
+        /**
+         * @param blockMessage Message returned when enhanced web filtering blocks a request
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockMessage(String blockMessage) {
             return blockMessage(Output.of(blockMessage));
         }
 
+        /**
+         * @param enabled Whether this enhanced web filtering rule is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether this enhanced web filtering rule is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param profile enum: `critical`, `standard`, `strict`
+         * @param profile Enhanced web filtering profile applied by this rule
          * 
          * @return builder
          * 
@@ -118,7 +178,7 @@ public final class DeviceprofileGatewayServicePolicyEwfArgs extends com.pulumi.r
         }
 
         /**
-         * @param profile enum: `critical`, `standard`, `strict`
+         * @param profile Enhanced web filtering profile applied by this rule
          * 
          * @return builder
          * 

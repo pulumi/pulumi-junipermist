@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? KeywrapEnabled { get; set; }
 
         /// <summary>
-        /// if used for Mist APs. enum: `Ascii`, `Hex`
+        /// Encoding format for Mist AP RADIUS keywrap keys
         /// </summary>
         [Input("keywrapFormat")]
         public Input<string>? KeywrapFormat { get; set; }
@@ -61,7 +61,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Authentication request retry
+        /// Number of authentication request retries before failing over
         /// </summary>
         [Input("retry")]
         public Input<int>? Retry { get; set; }
@@ -70,7 +70,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _secret;
 
         /// <summary>
-        /// Secret of RADIUS server
+        /// Shared secret used with this RADIUS authentication server
         /// </summary>
         public Input<string>? Secret
         {
@@ -86,7 +86,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _ssids;
 
         /// <summary>
-        /// List of ssids that will use this server if MatchSsid is true and match is found
+        /// WLAN SSID filters that use this authentication server when matching is enabled
         /// </summary>
         public InputList<string> Ssids
         {

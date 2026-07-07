@@ -54,6 +54,9 @@ export class DeviceprofileAssign extends pulumi.CustomResource {
     }
 
     declare public readonly deviceprofileId: pulumi.Output<string>;
+    /**
+     * List of MAC addresses included in the request
+     */
     declare public readonly macs: pulumi.Output<string[]>;
     declare public readonly orgId: pulumi.Output<string>;
 
@@ -98,6 +101,9 @@ export class DeviceprofileAssign extends pulumi.CustomResource {
  */
 export interface DeviceprofileAssignState {
     deviceprofileId?: pulumi.Input<string | undefined>;
+    /**
+     * List of MAC addresses included in the request
+     */
     macs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     orgId?: pulumi.Input<string | undefined>;
 }
@@ -107,6 +113,9 @@ export interface DeviceprofileAssignState {
  */
 export interface DeviceprofileAssignArgs {
     deviceprofileId: pulumi.Input<string>;
+    /**
+     * List of MAC addresses included in the request
+     */
     macs: pulumi.Input<pulumi.Input<string>[]>;
     orgId: pulumi.Input<string>;
 }

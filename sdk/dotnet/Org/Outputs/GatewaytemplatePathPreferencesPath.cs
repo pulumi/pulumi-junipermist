@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GatewaytemplatePathPreferencesPath
     {
+        /// <summary>
+        /// Relative cost assigned to this path for gateway path selection
+        /// </summary>
         public readonly int? Cost;
         /// <summary>
         /// For SSR Only. `True`, if this specific path is undesired
@@ -33,19 +36,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Required when `Type`==`Local`
+        /// List of network names used when `Type`==`Local`
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// If `Type`==`Local`, if destination IP is to be replaced
+        /// List of destination IP addresses to replace when `Type`==`Local`
         /// </summary>
         public readonly ImmutableArray<string> TargetIps;
         /// <summary>
-        /// enum: `Local`, `Tunnel`, `Vpn`, `Wan`
+        /// Gateway path source type, such as local network, WAN interface, VPN path, or tunnel
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Optional if `Type`==`Vpn`
+        /// Optional if `Type`==`Vpn`; WAN interface name associated with the VPN path
         /// </summary>
         public readonly string? WanName;
 

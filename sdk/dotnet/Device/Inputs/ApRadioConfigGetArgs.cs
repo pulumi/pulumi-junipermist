@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class ApRadioConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether RRM can be disabled for individual radio-band settings
+        /// </summary>
         [Input("allowRrmDisable")]
         public Input<bool>? AllowRrmDisable { get; set; }
 
@@ -34,43 +37,43 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? AntGain6 { get; set; }
 
         /// <summary>
-        /// enum: `1x1`, `2x2`, `3x3`, `4x4`, `Default`
+        /// Selected radio chain mode for AP models that support antenna mode control
         /// </summary>
         [Input("antennaMode")]
         public Input<string>? AntennaMode { get; set; }
 
         /// <summary>
-        /// Antenna Mode for AP which supports selectable antennas. enum: `""` (default), `External`, `Internal`
+        /// Internal or external antenna selection for AP models with selectable antennas
         /// </summary>
         [Input("antennaSelect")]
         public Input<string>? AntennaSelect { get; set; }
 
         /// <summary>
-        /// Radio Band AP settings
+        /// 2.4 GHz radio settings for this access point
         /// </summary>
         [Input("band24")]
         public Input<Inputs.ApRadioConfigBand24GetArgs>? Band24 { get; set; }
 
         /// <summary>
-        /// enum: `24`, `5`, `6`, `Auto`
+        /// Radio usage mode for the 2.4 GHz-capable radio
         /// </summary>
         [Input("band24Usage")]
         public Input<string>? Band24Usage { get; set; }
 
         /// <summary>
-        /// Radio Band AP settings
+        /// 5 GHz radio settings for this access point
         /// </summary>
         [Input("band5")]
         public Input<Inputs.ApRadioConfigBand5GetArgs>? Band5 { get; set; }
 
         /// <summary>
-        /// Radio Band AP settings
+        /// 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
         /// </summary>
         [Input("band5On24Radio")]
         public Input<Inputs.ApRadioConfigBand5On24RadioGetArgs>? Band5On24Radio { get; set; }
 
         /// <summary>
-        /// Radio Band AP settings
+        /// 6 GHz radio settings for this access point
         /// </summary>
         [Input("band6")]
         public Input<Inputs.ApRadioConfigBand6GetArgs>? Band6 { get; set; }

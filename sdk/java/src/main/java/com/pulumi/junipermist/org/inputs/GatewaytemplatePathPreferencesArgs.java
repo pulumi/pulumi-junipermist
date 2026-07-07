@@ -17,22 +17,30 @@ public final class GatewaytemplatePathPreferencesArgs extends com.pulumi.resourc
 
     public static final GatewaytemplatePathPreferencesArgs Empty = new GatewaytemplatePathPreferencesArgs();
 
+    /**
+     * Candidate paths evaluated for this gateway path preference
+     * 
+     */
     @Import(name="paths")
     private @Nullable Output<List<GatewaytemplatePathPreferencesPathArgs>> paths;
 
+    /**
+     * @return Candidate paths evaluated for this gateway path preference
+     * 
+     */
     public Optional<Output<List<GatewaytemplatePathPreferencesPathArgs>>> paths() {
         return Optional.ofNullable(this.paths);
     }
 
     /**
-     * enum: `ecmp`, `ordered`, `weighted`
+     * Selection strategy used to evaluate the candidate paths
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return enum: `ecmp`, `ordered`, `weighted`
+     * @return Selection strategy used to evaluate the candidate paths
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -64,21 +72,39 @@ public final class GatewaytemplatePathPreferencesArgs extends com.pulumi.resourc
             $ = new GatewaytemplatePathPreferencesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param paths Candidate paths evaluated for this gateway path preference
+         * 
+         * @return builder
+         * 
+         */
         public Builder paths(@Nullable Output<List<GatewaytemplatePathPreferencesPathArgs>> paths) {
             $.paths = paths;
             return this;
         }
 
+        /**
+         * @param paths Candidate paths evaluated for this gateway path preference
+         * 
+         * @return builder
+         * 
+         */
         public Builder paths(List<GatewaytemplatePathPreferencesPathArgs> paths) {
             return paths(Output.of(paths));
         }
 
+        /**
+         * @param paths Candidate paths evaluated for this gateway path preference
+         * 
+         * @return builder
+         * 
+         */
         public Builder paths(GatewaytemplatePathPreferencesPathArgs... paths) {
             return paths(List.of(paths));
         }
 
         /**
-         * @param strategy enum: `ecmp`, `ordered`, `weighted`
+         * @param strategy Selection strategy used to evaluate the candidate paths
          * 
          * @return builder
          * 
@@ -89,7 +115,7 @@ public final class GatewaytemplatePathPreferencesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param strategy enum: `ecmp`, `ordered`, `weighted`
+         * @param strategy Selection strategy used to evaluate the candidate paths
          * 
          * @return builder
          * 

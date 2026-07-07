@@ -13,17 +13,29 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxclusterMxedgeMgmt
     {
+        /// <summary>
+        /// Whether the Mist Edge automatically reverts configuration changes if connectivity is lost
+        /// </summary>
         public readonly bool? ConfigAutoRevert;
+        /// <summary>
+        /// Whether FIPS mode is enabled on the Mist Edge
+        /// </summary>
         public readonly bool? FipsEnabled;
+        /// <summary>
+        /// Password for the Mist service account on the Mist Edge
+        /// </summary>
         public readonly string? MistPassword;
         /// <summary>
-        /// enum: `Dhcp`, `Disabled`, `Static`
+        /// IPv4 address assignment mode for out-of-band management
         /// </summary>
         public readonly string? OobIpType;
         /// <summary>
-        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
+        /// IPv6 address assignment mode for out-of-band management
         /// </summary>
         public readonly string? OobIpType6;
+        /// <summary>
+        /// Root account password for the Mist Edge
+        /// </summary>
         public readonly string? RootPassword;
 
         [OutputConstructor]

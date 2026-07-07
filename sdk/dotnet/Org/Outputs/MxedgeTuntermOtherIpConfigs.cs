@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxedgeTuntermOtherIpConfigs
     {
+        /// <summary>
+        /// Address for the additional Mist Tunnel interface, in IPv4 format
+        /// </summary>
         public readonly string Ip;
+        /// <summary>
+        /// Subnet mask for the additional Mist Tunnel IPv4 address
+        /// </summary>
         public readonly string Netmask;
 
         [OutputConstructor]

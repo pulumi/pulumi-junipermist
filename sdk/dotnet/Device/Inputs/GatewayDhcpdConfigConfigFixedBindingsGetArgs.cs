@@ -12,12 +12,21 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayDhcpdConfigConfigFixedBindingsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Reserved IPv4 address for this fixed DHCP binding
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
+        /// <summary>
+        /// Reserved IPv6 address for this fixed DHCP binding
+        /// </summary>
         [Input("ip6")]
         public Input<string>? Ip6 { get; set; }
 
+        /// <summary>
+        /// Friendly name for this fixed DHCP binding
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

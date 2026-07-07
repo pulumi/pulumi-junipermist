@@ -68,7 +68,7 @@ import (
 type GatewayCluster struct {
 	pulumi.CustomResourceState
 
-	// When replacing a node, either mac has to remain the same as existing cluster
+	// Gateway nodes that form the HA cluster
 	Nodes  GatewayClusterNodeArrayOutput `pulumi:"nodes"`
 	SiteId pulumi.StringOutput           `pulumi:"siteId"`
 }
@@ -109,13 +109,13 @@ func GetGatewayCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GatewayCluster resources.
 type gatewayClusterState struct {
-	// When replacing a node, either mac has to remain the same as existing cluster
+	// Gateway nodes that form the HA cluster
 	Nodes  []GatewayClusterNode `pulumi:"nodes"`
 	SiteId *string              `pulumi:"siteId"`
 }
 
 type GatewayClusterState struct {
-	// When replacing a node, either mac has to remain the same as existing cluster
+	// Gateway nodes that form the HA cluster
 	Nodes  GatewayClusterNodeArrayInput
 	SiteId pulumi.StringPtrInput
 }
@@ -125,14 +125,14 @@ func (GatewayClusterState) ElementType() reflect.Type {
 }
 
 type gatewayClusterArgs struct {
-	// When replacing a node, either mac has to remain the same as existing cluster
+	// Gateway nodes that form the HA cluster
 	Nodes  []GatewayClusterNode `pulumi:"nodes"`
 	SiteId string               `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a GatewayCluster resource.
 type GatewayClusterArgs struct {
-	// When replacing a node, either mac has to remain the same as existing cluster
+	// Gateway nodes that form the HA cluster
 	Nodes  GatewayClusterNodeArrayInput
 	SiteId pulumi.StringInput
 }
@@ -224,7 +224,7 @@ func (o GatewayClusterOutput) ToGatewayClusterOutputWithContext(ctx context.Cont
 	return o
 }
 
-// When replacing a node, either mac has to remain the same as existing cluster
+// Gateway nodes that form the HA cluster
 func (o GatewayClusterOutput) Nodes() GatewayClusterNodeArrayOutput {
 	return o.ApplyT(func(v *GatewayCluster) GatewayClusterNodeArrayOutput { return v.Nodes }).(GatewayClusterNodeArrayOutput)
 }

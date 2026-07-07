@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingJuniperAccount
     {
+        /// <summary>
+        /// User who linked this Juniper account
+        /// </summary>
         public readonly string? LinkedBy;
+        /// <summary>
+        /// Display name of the linked Juniper account
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

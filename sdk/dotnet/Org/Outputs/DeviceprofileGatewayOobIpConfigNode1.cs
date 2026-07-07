@@ -14,16 +14,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayOobIpConfigNode1
     {
         /// <summary>
-        /// If `Type`==`Static`
+        /// Default gateway for the node1 out-of-band management interface when `Type`==`Static`
         /// </summary>
         public readonly string? Gateway;
+        /// <summary>
+        /// Static IPv4 address for the node1 out-of-band management interface when `Type`==`Static`
+        /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// Used only if `Subnet` is not specified in `Networks`
+        /// IPv4 netmask or prefix length for the node1 out-of-band management interface when `Type`==`Static`; used only if `Subnet` is not specified in `Networks`
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IP assignment mode for the node1 out-of-band management interface
         /// </summary>
         public readonly string? Type;
         /// <summary>
@@ -34,6 +37,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Whether to use `MgmtJunos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         /// </summary>
         public readonly bool? UseMgmtVrfForHostOut;
+        /// <summary>
+        /// VLAN ID used for node1 out-of-band management traffic
+        /// </summary>
         public readonly string? VlanId;
 
         [OutputConstructor]

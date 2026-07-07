@@ -16,23 +16,31 @@ public final class GatewayDhcpdConfigConfigVendorEncapsulatedArgs extends com.pu
     public static final GatewayDhcpdConfigConfigVendorEncapsulatedArgs Empty = new GatewayDhcpdConfigConfigVendorEncapsulatedArgs();
 
     /**
-     * enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+     * Data type used to encode this vendor option value
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+     * @return Data type used to encode this vendor option value
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Option value to send for this vendor option
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return Option value to send for this vendor option
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -63,7 +71,7 @@ public final class GatewayDhcpdConfigConfigVendorEncapsulatedArgs extends com.pu
         }
 
         /**
-         * @param type enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+         * @param type Data type used to encode this vendor option value
          * 
          * @return builder
          * 
@@ -74,7 +82,7 @@ public final class GatewayDhcpdConfigConfigVendorEncapsulatedArgs extends com.pu
         }
 
         /**
-         * @param type enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+         * @param type Data type used to encode this vendor option value
          * 
          * @return builder
          * 
@@ -83,11 +91,23 @@ public final class GatewayDhcpdConfigConfigVendorEncapsulatedArgs extends com.pu
             return type(Output.of(type));
         }
 
+        /**
+         * @param value Option value to send for this vendor option
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Option value to send for this vendor option
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

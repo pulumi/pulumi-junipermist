@@ -66,43 +66,59 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:device/switch:Switch")
 public class Switch extends com.pulumi.resources.CustomResource {
+    /**
+     * ACL policies applied to traffic handled by this switch
+     * 
+     */
     @Export(name="aclPolicies", refs={List.class,SwitchAclPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SwitchAclPolicy>> aclPolicies;
 
+    /**
+     * @return ACL policies applied to traffic handled by this switch
+     * 
+     */
     public Output<Optional<List<SwitchAclPolicy>>> aclPolicies() {
         return Codegen.optional(this.aclPolicies);
     }
     /**
-     * ACL Tags to identify traffic source or destination. Key name is the tag name
+     * ACL tags used by switch access policies
      * 
      */
     @Export(name="aclTags", refs={Map.class,String.class,SwitchAclTags.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchAclTags>> aclTags;
 
     /**
-     * @return ACL Tags to identify traffic source or destination. Key name is the tag name
+     * @return ACL tags used by switch access policies
      * 
      */
     public Output<Optional<Map<String,SwitchAclTags>>> aclTags() {
         return Codegen.optional(this.aclTags);
     }
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands to apply to this switch
      * 
      */
     @Export(name="additionalConfigCmds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * @return Additional CLI configuration commands to apply to this switch
      * 
      */
     public Output<Optional<List<String>>> additionalConfigCmds() {
         return Codegen.optional(this.additionalConfigCmds);
     }
+    /**
+     * BGP routing configuration for this switch. Property key is the BGP session name
+     * 
+     */
     @Export(name="bgpConfig", refs={Map.class,String.class,SwitchBgpConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchBgpConfig>> bgpConfig;
 
+    /**
+     * @return BGP routing configuration for this switch. Property key is the BGP session name
+     * 
+     */
     public Output<Optional<Map<String,SwitchBgpConfig>>> bgpConfig() {
         return Codegen.optional(this.bgpConfig);
     }
@@ -126,15 +142,31 @@ public class Switch extends com.pulumi.resources.CustomResource {
     public Output<String> deviceId() {
         return this.deviceId;
     }
+    /**
+     * DHCP snooping configuration for this switch
+     * 
+     */
     @Export(name="dhcpSnooping", refs={SwitchDhcpSnooping.class}, tree="[0]")
     private Output</* @Nullable */ SwitchDhcpSnooping> dhcpSnooping;
 
+    /**
+     * @return DHCP snooping configuration for this switch
+     * 
+     */
     public Output<Optional<SwitchDhcpSnooping>> dhcpSnooping() {
         return Codegen.optional(this.dhcpSnooping);
     }
+    /**
+     * DHCP server configuration served by this switch
+     * 
+     */
     @Export(name="dhcpdConfig", refs={SwitchDhcpdConfig.class}, tree="[0]")
     private Output</* @Nullable */ SwitchDhcpdConfig> dhcpdConfig;
 
+    /**
+     * @return DHCP server configuration served by this switch
+     * 
+     */
     public Output<Optional<SwitchDhcpdConfig>> dhcpdConfig() {
         return Codegen.optional(this.dhcpdConfig);
     }
@@ -157,116 +189,140 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.disableAutoConfig;
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers configured for this switch
      * 
      */
     @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsServers;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS servers configured for this switch
      * 
      */
     public Output<List<String>> dnsServers() {
         return this.dnsServers;
     }
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes configured for this switch
      * 
      */
     @Export(name="dnsSuffixes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dnsSuffixes;
 
     /**
-     * @return Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * @return DNS search suffixes configured for this switch
      * 
      */
     public Output<List<String>> dnsSuffixes() {
         return this.dnsSuffixes;
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * Additional IPv4 routes configured on this switch
      * 
      */
     @Export(name="extraRoutes", refs={Map.class,String.class,SwitchExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchExtraRoutes>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Additional IPv4 routes configured on this switch
      * 
      */
     public Output<Optional<Map<String,SwitchExtraRoutes>>> extraRoutes() {
         return Codegen.optional(this.extraRoutes);
     }
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * Additional IPv6 routes configured on this switch
      * 
      */
     @Export(name="extraRoutes6", refs={Map.class,String.class,SwitchExtraRoutes6.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchExtraRoutes6>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Additional IPv6 routes configured on this switch
      * 
      */
     public Output<Optional<Map<String,SwitchExtraRoutes6>>> extraRoutes6() {
         return Codegen.optional(this.extraRoutes6);
     }
+    /**
+     * First custom image URL associated with the switch
+     * 
+     */
     @Export(name="image1Url", refs={String.class}, tree="[0]")
     private Output<String> image1Url;
 
+    /**
+     * @return First custom image URL associated with the switch
+     * 
+     */
     public Output<String> image1Url() {
         return this.image1Url;
     }
+    /**
+     * Second custom image URL associated with the switch
+     * 
+     */
     @Export(name="image2Url", refs={String.class}, tree="[0]")
     private Output<String> image2Url;
 
+    /**
+     * @return Second custom image URL associated with the switch
+     * 
+     */
     public Output<String> image2Url() {
         return this.image2Url;
     }
+    /**
+     * Third custom image URL associated with the switch
+     * 
+     */
     @Export(name="image3Url", refs={String.class}, tree="[0]")
     private Output<String> image3Url;
 
+    /**
+     * @return Third custom image URL associated with the switch
+     * 
+     */
     public Output<String> image3Url() {
         return this.image3Url;
     }
     /**
-     * Junos IP Config
+     * Management IP addressing settings for this switch
      * 
      */
     @Export(name="ipConfig", refs={SwitchIpConfig.class}, tree="[0]")
     private Output</* @Nullable */ SwitchIpConfig> ipConfig;
 
     /**
-     * @return Junos IP Config
+     * @return Management IP addressing settings for this switch
      * 
      */
     public Output<Optional<SwitchIpConfig>> ipConfig() {
         return Codegen.optional(this.ipConfig);
     }
     /**
-     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * Local port configuration settings for this switch
      * 
      */
     @Export(name="localPortConfig", refs={Map.class,String.class,SwitchLocalPortConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchLocalPortConfig>> localPortConfig;
 
     /**
-     * @return Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * @return Local port configuration settings for this switch
      * 
      */
     public Output<Optional<Map<String,SwitchLocalPortConfig>>> localPortConfig() {
         return Codegen.optional(this.localPortConfig);
     }
     /**
-     * Device MAC address
+     * Switch MAC address used to identify the device
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
     /**
-     * @return Device MAC address
+     * @return Switch MAC address used to identify the device
      * 
      */
     public Output<String> mac() {
@@ -319,114 +375,142 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.mistConfigured;
     }
     /**
-     * Enable mistNac to use RadSec
+     * Mist NAC settings applied to this switch
      * 
      */
     @Export(name="mistNac", refs={SwitchMistNac.class}, tree="[0]")
     private Output</* @Nullable */ SwitchMistNac> mistNac;
 
     /**
-     * @return Enable mistNac to use RadSec
+     * @return Mist NAC settings applied to this switch
      * 
      */
     public Output<Optional<SwitchMistNac>> mistNac() {
         return Codegen.optional(this.mistNac);
     }
     /**
-     * Device Model
+     * Switch model reported for the device
      * 
      */
     @Export(name="model", refs={String.class}, tree="[0]")
     private Output<String> model;
 
     /**
-     * @return Device Model
+     * @return Switch model reported for the device
      * 
      */
     public Output<String> model() {
         return this.model;
     }
+    /**
+     * Friendly display name assigned to the switch
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Friendly display name assigned to the switch
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Property key is network name
+     * Layer 3 networks configured for use by this switch
      * 
      */
     @Export(name="networks", refs={Map.class,String.class,SwitchNetworks.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchNetworks>> networks;
 
     /**
-     * @return Property key is network name
+     * @return Layer 3 networks configured for use by this switch
      * 
      */
     public Output<Optional<Map<String,SwitchNetworks>>> networks() {
         return Codegen.optional(this.networks);
     }
+    /**
+     * Free-form administrative notes for this switch
+     * 
+     */
     @Export(name="notes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notes;
 
+    /**
+     * @return Free-form administrative notes for this switch
+     * 
+     */
     public Output<Optional<String>> notes() {
         return Codegen.optional(this.notes);
     }
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers used by this switch
      * 
      */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ntpServers;
 
     /**
-     * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * @return NTP servers used by this switch
      * 
      */
     public Output<List<String>> ntpServers() {
         return this.ntpServers;
     }
     /**
-     * Switch OOB IP Config:
-     *   - If HA configuration: key parameter will be nodeX (eg: node1)
-     *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+     * Out-of-band management IP configuration for this switch
      * 
      */
     @Export(name="oobIpConfig", refs={SwitchOobIpConfig.class}, tree="[0]")
     private Output</* @Nullable */ SwitchOobIpConfig> oobIpConfig;
 
     /**
-     * @return Switch OOB IP Config:
-     *   - If HA configuration: key parameter will be nodeX (eg: node1)
-     *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+     * @return Out-of-band management IP configuration for this switch
      * 
      */
     public Output<Optional<SwitchOobIpConfig>> oobIpConfig() {
         return Codegen.optional(this.oobIpConfig);
     }
+    /**
+     * Organization that owns this switch
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this switch
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * OSPF area configuration for this switch
      * 
      */
     @Export(name="ospfAreas", refs={Map.class,String.class,SwitchOspfAreas.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchOspfAreas>> ospfAreas;
 
     /**
-     * @return Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * @return OSPF area configuration for this switch
      * 
      */
     public Output<Optional<Map<String,SwitchOspfAreas>>> ospfAreas() {
         return Codegen.optional(this.ospfAreas);
     }
+    /**
+     * OSPF routing configuration for this switch
+     * 
+     */
     @Export(name="ospfConfig", refs={SwitchOspfConfig.class}, tree="[0]")
     private Output</* @Nullable */ SwitchOspfConfig> ospfConfig;
 
+    /**
+     * @return OSPF routing configuration for this switch
+     * 
+     */
     public Output<Optional<SwitchOspfConfig>> ospfConfig() {
         return Codegen.optional(this.ospfConfig);
     }
@@ -445,84 +529,100 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.otherIpConfigs);
     }
     /**
-     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * Per-port wired configuration for this switch
      * 
      */
     @Export(name="portConfig", refs={Map.class,String.class,SwitchPortConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchPortConfig>> portConfig;
 
     /**
-     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * @return Per-port wired configuration for this switch
      * 
      */
     public Output<Optional<Map<String,SwitchPortConfig>>> portConfig() {
         return Codegen.optional(this.portConfig);
     }
     /**
-     * Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the portUsage without having to create a new port_usage.
+     * Per-port overrides for switch port usage attributes
      * 
      */
     @Export(name="portConfigOverwrite", refs={Map.class,String.class,SwitchPortConfigOverwrite.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchPortConfigOverwrite>> portConfigOverwrite;
 
     /**
-     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;). This can be used to override some attributes of the portUsage without having to create a new port_usage.
+     * @return Per-port overrides for switch port usage attributes
      * 
      */
     public Output<Optional<Map<String,SwitchPortConfigOverwrite>>> portConfigOverwrite() {
         return Codegen.optional(this.portConfigOverwrite);
     }
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Port mirroring configuration for this switch
      * 
      */
     @Export(name="portMirroring", refs={Map.class,String.class,SwitchPortMirroring.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchPortMirroring>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Port mirroring configuration for this switch
      * 
      */
     public Output<Optional<Map<String,SwitchPortMirroring>>> portMirroring() {
         return Codegen.optional(this.portMirroring);
     }
     /**
-     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * Reusable switch port usage profiles available on this switch
      * 
      */
     @Export(name="portUsages", refs={Map.class,String.class,SwitchPortUsages.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchPortUsages>> portUsages;
 
     /**
-     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * @return Reusable switch port usage profiles available on this switch
      * 
      */
     public Output<Optional<Map<String,SwitchPortUsages>>> portUsages() {
         return Codegen.optional(this.portUsages);
     }
     /**
-     * Junos Radius config
+     * RADIUS authentication and accounting settings for this switch
      * 
      */
     @Export(name="radiusConfig", refs={SwitchRadiusConfig.class}, tree="[0]")
     private Output</* @Nullable */ SwitchRadiusConfig> radiusConfig;
 
     /**
-     * @return Junos Radius config
+     * @return RADIUS authentication and accounting settings for this switch
      * 
      */
     public Output<Optional<SwitchRadiusConfig>> radiusConfig() {
         return Codegen.optional(this.radiusConfig);
     }
+    /**
+     * Remote syslog settings for this switch
+     * 
+     */
     @Export(name="remoteSyslog", refs={SwitchRemoteSyslog.class}, tree="[0]")
     private Output</* @Nullable */ SwitchRemoteSyslog> remoteSyslog;
 
+    /**
+     * @return Remote syslog settings for this switch
+     * 
+     */
     public Output<Optional<SwitchRemoteSyslog>> remoteSyslog() {
         return Codegen.optional(this.remoteSyslog);
     }
+    /**
+     * Deployment role label for this switch
+     * 
+     */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> role;
 
+    /**
+     * @return Deployment role label for this switch
+     * 
+     */
     public Output<Optional<String>> role() {
         return Codegen.optional(this.role);
     }
@@ -541,74 +641,98 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.routerId;
     }
     /**
-     * Property key is the routing policy name
+     * Routing policies applied by this switch
      * 
      */
     @Export(name="routingPolicies", refs={Map.class,String.class,SwitchRoutingPolicies.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchRoutingPolicies>> routingPolicies;
 
     /**
-     * @return Property key is the routing policy name
+     * @return Routing policies applied by this switch
      * 
      */
     public Output<Optional<Map<String,SwitchRoutingPolicies>>> routingPolicies() {
         return Codegen.optional(this.routingPolicies);
     }
     /**
-     * Device Serial
+     * Manufacturer serial number for the switch
      * 
      */
     @Export(name="serial", refs={String.class}, tree="[0]")
     private Output<String> serial;
 
     /**
-     * @return Device Serial
+     * @return Manufacturer serial number for the switch
      * 
      */
     public Output<String> serial() {
         return this.serial;
     }
+    /**
+     * Site where this switch is assigned
+     * 
+     */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
+    /**
+     * @return Site where this switch is assigned
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
+    /**
+     * SNMP configuration for this switch
+     * 
+     */
     @Export(name="snmpConfig", refs={SwitchSnmpConfig.class}, tree="[0]")
     private Output</* @Nullable */ SwitchSnmpConfig> snmpConfig;
 
+    /**
+     * @return SNMP configuration for this switch
+     * 
+     */
     public Output<Optional<SwitchSnmpConfig>> snmpConfig() {
         return Codegen.optional(this.snmpConfig);
     }
+    /**
+     * Spanning Tree Protocol configuration for this switch
+     * 
+     */
     @Export(name="stpConfig", refs={SwitchStpConfig.class}, tree="[0]")
     private Output</* @Nullable */ SwitchStpConfig> stpConfig;
 
+    /**
+     * @return Spanning Tree Protocol configuration for this switch
+     * 
+     */
     public Output<Optional<SwitchStpConfig>> stpConfig() {
         return Codegen.optional(this.stpConfig);
     }
     /**
-     * Switch Management settings
+     * Management-plane settings for this switch
      * 
      */
     @Export(name="switchMgmt", refs={SwitchSwitchMgmt.class}, tree="[0]")
     private Output</* @Nullable */ SwitchSwitchMgmt> switchMgmt;
 
     /**
-     * @return Switch Management settings
+     * @return Management-plane settings for this switch
      * 
      */
     public Output<Optional<SwitchSwitchMgmt>> switchMgmt() {
         return Codegen.optional(this.switchMgmt);
     }
     /**
-     * Device Type. enum: `switch`
+     * Device type discriminator for switch records
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Device Type. enum: `switch`
+     * @return Device type discriminator for switch records
      * 
      */
     public Output<String> type() {
@@ -629,90 +753,98 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.useRouterIdAsSourceIp;
     }
     /**
-     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this switch
      * 
      */
     @Export(name="vars", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> vars;
 
     /**
-     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Variable values that override site variables for this switch
      * 
      */
     public Output<Optional<Map<String,String>>> vars() {
         return Codegen.optional(this.vars);
     }
     /**
-     * Required for preprovisioned Virtual Chassis
+     * Virtual Chassis membership and provisioning settings for this switch
      * 
      */
     @Export(name="virtualChassis", refs={SwitchVirtualChassis.class}, tree="[0]")
     private Output</* @Nullable */ SwitchVirtualChassis> virtualChassis;
 
     /**
-     * @return Required for preprovisioned Virtual Chassis
+     * @return Virtual Chassis membership and provisioning settings for this switch
      * 
      */
     public Output<Optional<SwitchVirtualChassis>> virtualChassis() {
         return Codegen.optional(this.virtualChassis);
     }
+    /**
+     * VRF configuration applied to this switch
+     * 
+     */
     @Export(name="vrfConfig", refs={SwitchVrfConfig.class}, tree="[0]")
     private Output</* @Nullable */ SwitchVrfConfig> vrfConfig;
 
+    /**
+     * @return VRF configuration applied to this switch
+     * 
+     */
     public Output<Optional<SwitchVrfConfig>> vrfConfig() {
         return Codegen.optional(this.vrfConfig);
     }
     /**
-     * Property key is the network name
+     * VRF instances configured on this switch
      * 
      */
     @Export(name="vrfInstances", refs={Map.class,String.class,SwitchVrfInstances.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchVrfInstances>> vrfInstances;
 
     /**
-     * @return Property key is the network name
+     * @return VRF instances configured on this switch
      * 
      */
     public Output<Optional<Map<String,SwitchVrfInstances>>> vrfInstances() {
         return Codegen.optional(this.vrfInstances);
     }
     /**
-     * Junos VRRP config
+     * VRRP configuration applied to this switch
      * 
      */
     @Export(name="vrrpConfig", refs={SwitchVrrpConfig.class}, tree="[0]")
     private Output</* @Nullable */ SwitchVrrpConfig> vrrpConfig;
 
     /**
-     * @return Junos VRRP config
+     * @return VRRP configuration applied to this switch
      * 
      */
     public Output<Optional<SwitchVrrpConfig>> vrrpConfig() {
         return Codegen.optional(this.vrrpConfig);
     }
     /**
-     * X in pixel
+     * Horizontal map position of the switch, in pixels
      * 
      */
     @Export(name="x", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> x;
 
     /**
-     * @return X in pixel
+     * @return Horizontal map position of the switch, in pixels
      * 
      */
     public Output<Optional<Double>> x() {
         return Codegen.optional(this.x);
     }
     /**
-     * Y in pixel
+     * Vertical map position of the switch, in pixels
      * 
      */
     @Export(name="y", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> y;
 
     /**
-     * @return Y in pixel
+     * @return Vertical map position of the switch, in pixels
      * 
      */
     public Output<Optional<Double>> y() {

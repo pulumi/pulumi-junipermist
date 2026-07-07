@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingMistNacMdm
     {
         /// <summary>
-        /// CoA type to send. enum: `Reauth`, `Disconnect`
+        /// Change of Authorization action sent for MDM posture changes
         /// </summary>
         public readonly string? CoaType;
 

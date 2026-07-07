@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayNetworkInternalAccess {
+    /**
+     * @return Whether internal access is enabled for this network
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private DeviceprofileGatewayNetworkInternalAccess() {}
+    /**
+     * @return Whether internal access is enabled for this network
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

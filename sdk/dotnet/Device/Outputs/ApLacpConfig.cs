@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class ApLacpConfig
     {
+        /// <summary>
+        /// Whether to enable LACP on supported AP Ethernet uplinks
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

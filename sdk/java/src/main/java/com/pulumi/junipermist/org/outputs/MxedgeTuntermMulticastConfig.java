@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxedgeTuntermMulticastConfig {
+    /**
+     * @return Settings for mDNS forwarding on tunnel termination VLANs
+     * 
+     */
     private @Nullable MxedgeTuntermMulticastConfigMdns mdns;
+    /**
+     * @return Settings for SSDP forwarding on tunnel termination VLANs
+     * 
+     */
     private @Nullable MxedgeTuntermMulticastConfigSsdp ssdp;
 
     private MxedgeTuntermMulticastConfig() {}
+    /**
+     * @return Settings for mDNS forwarding on tunnel termination VLANs
+     * 
+     */
     public Optional<MxedgeTuntermMulticastConfigMdns> mdns() {
         return Optional.ofNullable(this.mdns);
     }
+    /**
+     * @return Settings for SSDP forwarding on tunnel termination VLANs
+     * 
+     */
     public Optional<MxedgeTuntermMulticastConfigSsdp> ssdp() {
         return Optional.ofNullable(this.ssdp);
     }

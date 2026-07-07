@@ -13,54 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanAirwatch {
     /**
-     * @return API Key
+     * @return API key used to authenticate to the AirWatch service
      * 
      */
     private @Nullable String apiKey;
     /**
-     * @return Console URL
+     * @return Base console URL of the AirWatch deployment
      * 
      */
     private @Nullable String consoleUrl;
+    /**
+     * @return Whether AirWatch integration is enabled for the WLAN
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return Password
+     * @return AirWatch integration account password for this WLAN
      * 
      */
     private @Nullable String password;
     /**
-     * @return Username
+     * @return AirWatch integration account username for this WLAN
      * 
      */
     private @Nullable String username;
 
     private WlanAirwatch() {}
     /**
-     * @return API Key
+     * @return API key used to authenticate to the AirWatch service
      * 
      */
     public Optional<String> apiKey() {
         return Optional.ofNullable(this.apiKey);
     }
     /**
-     * @return Console URL
+     * @return Base console URL of the AirWatch deployment
      * 
      */
     public Optional<String> consoleUrl() {
         return Optional.ofNullable(this.consoleUrl);
     }
+    /**
+     * @return Whether AirWatch integration is enabled for the WLAN
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Password
+     * @return AirWatch integration account password for this WLAN
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return Username
+     * @return AirWatch integration account username for this WLAN
      * 
      */
     public Optional<String> username() {

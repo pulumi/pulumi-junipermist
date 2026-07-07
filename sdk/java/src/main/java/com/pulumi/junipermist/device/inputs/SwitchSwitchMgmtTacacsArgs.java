@@ -19,53 +19,77 @@ public final class SwitchSwitchMgmtTacacsArgs extends com.pulumi.resources.Resou
 
     public static final SwitchSwitchMgmtTacacsArgs Empty = new SwitchSwitchMgmtTacacsArgs();
 
+    /**
+     * TACACS+ accounting servers used for switch management sessions
+     * 
+     */
     @Import(name="acctServers")
     private @Nullable Output<List<SwitchSwitchMgmtTacacsAcctServerArgs>> acctServers;
 
+    /**
+     * @return TACACS+ accounting servers used for switch management sessions
+     * 
+     */
     public Optional<Output<List<SwitchSwitchMgmtTacacsAcctServerArgs>>> acctServers() {
         return Optional.ofNullable(this.acctServers);
     }
 
     /**
-     * enum: `admin`, `helpdesk`, `none`, `read`
+     * Default switch-management role to use for TACACS+ logins
      * 
      */
     @Import(name="defaultRole")
     private @Nullable Output<String> defaultRole;
 
     /**
-     * @return enum: `admin`, `helpdesk`, `none`, `read`
+     * @return Default switch-management role to use for TACACS+ logins
      * 
      */
     public Optional<Output<String>> defaultRole() {
         return Optional.ofNullable(this.defaultRole);
     }
 
+    /**
+     * Whether TACACS+ is enabled for switch management authentication
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether TACACS+ is enabled for switch management authentication
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Which network the TACACS server resides
+     * Source network used for connectivity to the TACACS+ servers
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return Which network the TACACS server resides
+     * @return Source network used for connectivity to the TACACS+ servers
      * 
      */
     public Optional<Output<String>> network() {
         return Optional.ofNullable(this.network);
     }
 
+    /**
+     * TACACS+ authentication servers used for switch management logins
+     * 
+     */
     @Import(name="tacplusServers")
     private @Nullable Output<List<SwitchSwitchMgmtTacacsTacplusServerArgs>> tacplusServers;
 
+    /**
+     * @return TACACS+ authentication servers used for switch management logins
+     * 
+     */
     public Optional<Output<List<SwitchSwitchMgmtTacacsTacplusServerArgs>>> tacplusServers() {
         return Optional.ofNullable(this.tacplusServers);
     }
@@ -98,21 +122,39 @@ public final class SwitchSwitchMgmtTacacsArgs extends com.pulumi.resources.Resou
             $ = new SwitchSwitchMgmtTacacsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param acctServers TACACS+ accounting servers used for switch management sessions
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctServers(@Nullable Output<List<SwitchSwitchMgmtTacacsAcctServerArgs>> acctServers) {
             $.acctServers = acctServers;
             return this;
         }
 
+        /**
+         * @param acctServers TACACS+ accounting servers used for switch management sessions
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctServers(List<SwitchSwitchMgmtTacacsAcctServerArgs> acctServers) {
             return acctServers(Output.of(acctServers));
         }
 
+        /**
+         * @param acctServers TACACS+ accounting servers used for switch management sessions
+         * 
+         * @return builder
+         * 
+         */
         public Builder acctServers(SwitchSwitchMgmtTacacsAcctServerArgs... acctServers) {
             return acctServers(List.of(acctServers));
         }
 
         /**
-         * @param defaultRole enum: `admin`, `helpdesk`, `none`, `read`
+         * @param defaultRole Default switch-management role to use for TACACS+ logins
          * 
          * @return builder
          * 
@@ -123,7 +165,7 @@ public final class SwitchSwitchMgmtTacacsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param defaultRole enum: `admin`, `helpdesk`, `none`, `read`
+         * @param defaultRole Default switch-management role to use for TACACS+ logins
          * 
          * @return builder
          * 
@@ -132,17 +174,29 @@ public final class SwitchSwitchMgmtTacacsArgs extends com.pulumi.resources.Resou
             return defaultRole(Output.of(defaultRole));
         }
 
+        /**
+         * @param enabled Whether TACACS+ is enabled for switch management authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether TACACS+ is enabled for switch management authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param network Which network the TACACS server resides
+         * @param network Source network used for connectivity to the TACACS+ servers
          * 
          * @return builder
          * 
@@ -153,7 +207,7 @@ public final class SwitchSwitchMgmtTacacsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param network Which network the TACACS server resides
+         * @param network Source network used for connectivity to the TACACS+ servers
          * 
          * @return builder
          * 
@@ -162,15 +216,33 @@ public final class SwitchSwitchMgmtTacacsArgs extends com.pulumi.resources.Resou
             return network(Output.of(network));
         }
 
+        /**
+         * @param tacplusServers TACACS+ authentication servers used for switch management logins
+         * 
+         * @return builder
+         * 
+         */
         public Builder tacplusServers(@Nullable Output<List<SwitchSwitchMgmtTacacsTacplusServerArgs>> tacplusServers) {
             $.tacplusServers = tacplusServers;
             return this;
         }
 
+        /**
+         * @param tacplusServers TACACS+ authentication servers used for switch management logins
+         * 
+         * @return builder
+         * 
+         */
         public Builder tacplusServers(List<SwitchSwitchMgmtTacacsTacplusServerArgs> tacplusServers) {
             return tacplusServers(Output.of(tacplusServers));
         }
 
+        /**
+         * @param tacplusServers TACACS+ authentication servers used for switch management logins
+         * 
+         * @return builder
+         * 
+         */
         public Builder tacplusServers(SwitchSwitchMgmtTacacsTacplusServerArgs... tacplusServers) {
             return tacplusServers(List.of(tacplusServers));
         }

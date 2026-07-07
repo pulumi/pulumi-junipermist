@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSwitchAutoUpgrade {
     /**
-     * @return Custom version to be used. The Property Key is the switch hardware and the property value is the firmware version
+     * @return Per-model switch firmware versions to use for auto-upgrade
      * 
      */
     private @Nullable Map<String,String> customVersions;
     /**
-     * @return Enable auto upgrade for the switch
+     * @return Whether switch auto-upgrade is enabled
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Enable snapshot during the upgrade process
+     * @return Whether to create a recovery snapshot during the upgrade process
      * 
      */
     private @Nullable Boolean snapshot;
 
     private SettingSwitchAutoUpgrade() {}
     /**
-     * @return Custom version to be used. The Property Key is the switch hardware and the property value is the firmware version
+     * @return Per-model switch firmware versions to use for auto-upgrade
      * 
      */
     public Map<String,String> customVersions() {
         return this.customVersions == null ? Map.of() : this.customVersions;
     }
     /**
-     * @return Enable auto upgrade for the switch
+     * @return Whether switch auto-upgrade is enabled
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Enable snapshot during the upgrade process
+     * @return Whether to create a recovery snapshot during the upgrade process
      * 
      */
     public Optional<Boolean> snapshot() {

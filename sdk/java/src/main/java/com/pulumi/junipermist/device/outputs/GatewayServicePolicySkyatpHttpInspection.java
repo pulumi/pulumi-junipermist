@@ -12,19 +12,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayServicePolicySkyatpHttpInspection {
+    /**
+     * @return Whether Sky ATP HTTP inspection is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return enum: `standard`, `strict`
+     * @return Sky ATP HTTP inspection profile to apply
      * 
      */
     private @Nullable String profile;
 
     private GatewayServicePolicySkyatpHttpInspection() {}
+    /**
+     * @return Whether Sky ATP HTTP inspection is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return enum: `standard`, `strict`
+     * @return Sky ATP HTTP inspection profile to apply
      * 
      */
     public Optional<String> profile() {

@@ -18,30 +18,46 @@ public final class VpnPathsTrafficShapingArgs extends com.pulumi.resources.Resou
     public static final VpnPathsTrafficShapingArgs Empty = new VpnPathsTrafficShapingArgs();
 
     /**
-     * percentages for different class of traffic: high / medium / low / best-effort adding up to 100
+     * Bandwidth percentages for high, medium, low, and best-effort traffic classes
      * 
      */
     @Import(name="classPercentages")
     private @Nullable Output<List<Integer>> classPercentages;
 
     /**
-     * @return percentages for different class of traffic: high / medium / low / best-effort adding up to 100
+     * @return Bandwidth percentages for high, medium, low, and best-effort traffic classes
      * 
      */
     public Optional<Output<List<Integer>>> classPercentages() {
         return Optional.ofNullable(this.classPercentages);
     }
 
+    /**
+     * Whether traffic shaping is enabled for this VPN path
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether traffic shaping is enabled for this VPN path
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Maximum transmit rate for this VPN path, in Kbps; `null` means no explicit limit
+     * 
+     */
     @Import(name="maxTxKbps")
     private @Nullable Output<Integer> maxTxKbps;
 
+    /**
+     * @return Maximum transmit rate for this VPN path, in Kbps; `null` means no explicit limit
+     * 
+     */
     public Optional<Output<Integer>> maxTxKbps() {
         return Optional.ofNullable(this.maxTxKbps);
     }
@@ -73,7 +89,7 @@ public final class VpnPathsTrafficShapingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param classPercentages percentages for different class of traffic: high / medium / low / best-effort adding up to 100
+         * @param classPercentages Bandwidth percentages for high, medium, low, and best-effort traffic classes
          * 
          * @return builder
          * 
@@ -84,7 +100,7 @@ public final class VpnPathsTrafficShapingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param classPercentages percentages for different class of traffic: high / medium / low / best-effort adding up to 100
+         * @param classPercentages Bandwidth percentages for high, medium, low, and best-effort traffic classes
          * 
          * @return builder
          * 
@@ -94,7 +110,7 @@ public final class VpnPathsTrafficShapingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param classPercentages percentages for different class of traffic: high / medium / low / best-effort adding up to 100
+         * @param classPercentages Bandwidth percentages for high, medium, low, and best-effort traffic classes
          * 
          * @return builder
          * 
@@ -103,20 +119,44 @@ public final class VpnPathsTrafficShapingArgs extends com.pulumi.resources.Resou
             return classPercentages(List.of(classPercentages));
         }
 
+        /**
+         * @param enabled Whether traffic shaping is enabled for this VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether traffic shaping is enabled for this VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param maxTxKbps Maximum transmit rate for this VPN path, in Kbps; `null` means no explicit limit
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxTxKbps(@Nullable Output<Integer> maxTxKbps) {
             $.maxTxKbps = maxTxKbps;
             return this;
         }
 
+        /**
+         * @param maxTxKbps Maximum transmit rate for this VPN path, in Kbps; `null` means no explicit limit
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxTxKbps(Integer maxTxKbps) {
             return maxTxKbps(Output.of(maxTxKbps));
         }

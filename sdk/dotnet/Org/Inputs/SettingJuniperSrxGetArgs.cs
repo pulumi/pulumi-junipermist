@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingJuniperSrxGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// auto_upgrade device first time it is onboarded
+        /// SRX auto-upgrade settings applied when Juniper SRX devices are first onboarded
         /// </summary>
         [Input("autoUpgrade")]
         public Input<Inputs.SettingJuniperSrxAutoUpgradeGetArgs>? AutoUpgrade { get; set; }

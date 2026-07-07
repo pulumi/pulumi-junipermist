@@ -27,12 +27,15 @@ import (
 type Ap struct {
 	pulumi.CustomResourceState
 
-	// Aeroscout AP settings
+	// Location integration settings for AeroScout on this access point
 	Aeroscout ApAeroscoutPtrOutput `pulumi:"aeroscout"`
-	Airista   ApAiristaPtrOutput   `pulumi:"airista"`
-	// BLE AP settings
-	BleConfig    ApBleConfigPtrOutput    `pulumi:"bleConfig"`
-	Centrak      ApCentrakPtrOutput      `pulumi:"centrak"`
+	// Location integration settings for Airista on this access point
+	Airista ApAiristaPtrOutput `pulumi:"airista"`
+	// Bluetooth Low Energy beacon and asset settings for this access point
+	BleConfig ApBleConfigPtrOutput `pulumi:"bleConfig"`
+	// Location integration settings for Centrak on this access point
+	Centrak ApCentrakPtrOutput `pulumi:"centrak"`
+	// Wireless client bridge settings for this access point
 	ClientBridge ApClientBridgePtrOutput `pulumi:"clientBridge"`
 	DeviceId     pulumi.StringOutput     `pulumi:"deviceId"`
 	// Whether to disable eth1 port
@@ -42,63 +45,72 @@ type Ap struct {
 	// Whether to disable eth3 port
 	DisableEth3 pulumi.BoolOutput `pulumi:"disableEth3"`
 	// Whether to disable module port
-	DisableModule pulumi.BoolOutput    `pulumi:"disableModule"`
-	EslConfig     ApEslConfigPtrOutput `pulumi:"eslConfig"`
+	DisableModule pulumi.BoolOutput `pulumi:"disableModule"`
+	// Electronic shelf label integration settings for this access point
+	EslConfig ApEslConfigPtrOutput `pulumi:"eslConfig"`
 	// For some AP models, flowControl can be enabled to address some switch compatibility issue
 	FlowControl pulumi.BoolOutput `pulumi:"flowControl"`
-	// Height, in meters, optional
-	Height    pulumi.Float64PtrOutput `pulumi:"height"`
-	Image1Url pulumi.StringOutput     `pulumi:"image1Url"`
-	Image2Url pulumi.StringOutput     `pulumi:"image2Url"`
-	Image3Url pulumi.StringOutput     `pulumi:"image3Url"`
-	// IP AP settings
-	IpConfig   ApIpConfigPtrOutput   `pulumi:"ipConfig"`
+	// Installation height of the AP, in meters
+	Height pulumi.Float64PtrOutput `pulumi:"height"`
+	// First custom image URL associated with the access point
+	Image1Url pulumi.StringOutput `pulumi:"image1Url"`
+	// Second custom image URL associated with the access point
+	Image2Url pulumi.StringOutput `pulumi:"image2Url"`
+	// Third custom image URL associated with the access point
+	Image3Url pulumi.StringOutput `pulumi:"image3Url"`
+	// Management IP addressing settings for this access point
+	IpConfig ApIpConfigPtrOutput `pulumi:"ipConfig"`
+	// Link aggregation settings for supported AP Ethernet uplinks
 	LacpConfig ApLacpConfigPtrOutput `pulumi:"lacpConfig"`
-	// LED AP settings
+	// Indicator light behavior settings for this access point
 	Led ApLedPtrOutput `pulumi:"led"`
 	// Whether this map is considered locked down
 	Locked pulumi.BoolPtrOutput `pulumi:"locked"`
-	// Device MAC address
+	// Access point MAC address used to identify the device
 	Mac pulumi.StringOutput `pulumi:"mac"`
 	// Map where the device belongs to
 	MapId pulumi.StringPtrOutput `pulumi:"mapId"`
-	// Mesh AP settings
+	// Wireless mesh role and band settings for this access point
 	Mesh ApMeshPtrOutput `pulumi:"mesh"`
-	// Device Model
+	// Hardware model reported for the access point
 	Model pulumi.StringOutput `pulumi:"model"`
-	Name  pulumi.StringOutput `pulumi:"name"`
+	// MQTT broker publishing settings for this access point
+	MqttConfig ApMqttConfigPtrOutput `pulumi:"mqttConfig"`
+	// Configured hostname assigned to the access point
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Any notes about this AP
-	Notes      pulumi.StringPtrOutput   `pulumi:"notes"`
+	Notes pulumi.StringPtrOutput `pulumi:"notes"`
+	// NTP servers used by this access point
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
-	OrgId      pulumi.StringOutput      `pulumi:"orgId"`
-	// Orientation, 0-359, in degrees, up is 0, right is 90.
+	// Organization that owns this access point
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
 	Orientation pulumi.IntPtrOutput `pulumi:"orientation"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolOutput `pulumi:"poePassthrough"`
 	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
 	PortConfig ApPortConfigMapOutput `pulumi:"portConfig"`
-	// Power related configs
+	// Power negotiation and peripheral power settings for this access point
 	PwrConfig ApPwrConfigPtrOutput `pulumi:"pwrConfig"`
-	// Radio AP settings
+	// Radio configuration overrides for this access point
 	RadioConfig ApRadioConfigPtrOutput `pulumi:"radioConfig"`
-	// Device Serial
+	// Manufacturer serial number for the access point
 	Serial pulumi.StringOutput `pulumi:"serial"`
+	// Site where this access point is assigned
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
-	// Device Type. enum: `ap`
+	// Device type discriminator for access point records
 	Type pulumi.StringOutput `pulumi:"type"`
-	// AP Uplink port configuration
+	// Authentication and failover behavior for AP uplink ports
 	UplinkPortConfig ApUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
-	// USB AP settings
-	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
-	//   - Note: legacy, new config moved to ESL Config.
+	// Legacy USB integration settings for this access point
 	UsbConfig ApUsbConfigPtrOutput `pulumi:"usbConfig"`
-	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Variable values that override site variables for this access point
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
-	// X in pixel
+	// Horizontal map position of the AP, in pixels
 	X pulumi.Float64PtrOutput `pulumi:"x"`
-	// Y in pixel
+	// Vertical map position of the AP, in pixels
 	Y pulumi.Float64PtrOutput `pulumi:"y"`
-	// Zigbee AP settings
+	// Zigbee radio and network settings for this access point
 	ZigbeeConfig ApZigbeeConfigPtrOutput `pulumi:"zigbeeConfig"`
 }
 
@@ -138,12 +150,15 @@ func GetAp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ap resources.
 type apState struct {
-	// Aeroscout AP settings
+	// Location integration settings for AeroScout on this access point
 	Aeroscout *ApAeroscout `pulumi:"aeroscout"`
-	Airista   *ApAirista   `pulumi:"airista"`
-	// BLE AP settings
-	BleConfig    *ApBleConfig    `pulumi:"bleConfig"`
-	Centrak      *ApCentrak      `pulumi:"centrak"`
+	// Location integration settings for Airista on this access point
+	Airista *ApAirista `pulumi:"airista"`
+	// Bluetooth Low Energy beacon and asset settings for this access point
+	BleConfig *ApBleConfig `pulumi:"bleConfig"`
+	// Location integration settings for Centrak on this access point
+	Centrak *ApCentrak `pulumi:"centrak"`
+	// Wireless client bridge settings for this access point
 	ClientBridge *ApClientBridge `pulumi:"clientBridge"`
 	DeviceId     *string         `pulumi:"deviceId"`
 	// Whether to disable eth1 port
@@ -153,73 +168,85 @@ type apState struct {
 	// Whether to disable eth3 port
 	DisableEth3 *bool `pulumi:"disableEth3"`
 	// Whether to disable module port
-	DisableModule *bool        `pulumi:"disableModule"`
-	EslConfig     *ApEslConfig `pulumi:"eslConfig"`
+	DisableModule *bool `pulumi:"disableModule"`
+	// Electronic shelf label integration settings for this access point
+	EslConfig *ApEslConfig `pulumi:"eslConfig"`
 	// For some AP models, flowControl can be enabled to address some switch compatibility issue
 	FlowControl *bool `pulumi:"flowControl"`
-	// Height, in meters, optional
-	Height    *float64 `pulumi:"height"`
-	Image1Url *string  `pulumi:"image1Url"`
-	Image2Url *string  `pulumi:"image2Url"`
-	Image3Url *string  `pulumi:"image3Url"`
-	// IP AP settings
-	IpConfig   *ApIpConfig   `pulumi:"ipConfig"`
+	// Installation height of the AP, in meters
+	Height *float64 `pulumi:"height"`
+	// First custom image URL associated with the access point
+	Image1Url *string `pulumi:"image1Url"`
+	// Second custom image URL associated with the access point
+	Image2Url *string `pulumi:"image2Url"`
+	// Third custom image URL associated with the access point
+	Image3Url *string `pulumi:"image3Url"`
+	// Management IP addressing settings for this access point
+	IpConfig *ApIpConfig `pulumi:"ipConfig"`
+	// Link aggregation settings for supported AP Ethernet uplinks
 	LacpConfig *ApLacpConfig `pulumi:"lacpConfig"`
-	// LED AP settings
+	// Indicator light behavior settings for this access point
 	Led *ApLed `pulumi:"led"`
 	// Whether this map is considered locked down
 	Locked *bool `pulumi:"locked"`
-	// Device MAC address
+	// Access point MAC address used to identify the device
 	Mac *string `pulumi:"mac"`
 	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
-	// Mesh AP settings
+	// Wireless mesh role and band settings for this access point
 	Mesh *ApMesh `pulumi:"mesh"`
-	// Device Model
+	// Hardware model reported for the access point
 	Model *string `pulumi:"model"`
-	Name  *string `pulumi:"name"`
+	// MQTT broker publishing settings for this access point
+	MqttConfig *ApMqttConfig `pulumi:"mqttConfig"`
+	// Configured hostname assigned to the access point
+	Name *string `pulumi:"name"`
 	// Any notes about this AP
-	Notes      *string  `pulumi:"notes"`
+	Notes *string `pulumi:"notes"`
+	// NTP servers used by this access point
 	NtpServers []string `pulumi:"ntpServers"`
-	OrgId      *string  `pulumi:"orgId"`
-	// Orientation, 0-359, in degrees, up is 0, right is 90.
+	// Organization that owns this access point
+	OrgId *string `pulumi:"orgId"`
+	// AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
 	Orientation *int `pulumi:"orientation"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
 	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
 	PortConfig map[string]ApPortConfig `pulumi:"portConfig"`
-	// Power related configs
+	// Power negotiation and peripheral power settings for this access point
 	PwrConfig *ApPwrConfig `pulumi:"pwrConfig"`
-	// Radio AP settings
+	// Radio configuration overrides for this access point
 	RadioConfig *ApRadioConfig `pulumi:"radioConfig"`
-	// Device Serial
+	// Manufacturer serial number for the access point
 	Serial *string `pulumi:"serial"`
+	// Site where this access point is assigned
 	SiteId *string `pulumi:"siteId"`
-	// Device Type. enum: `ap`
+	// Device type discriminator for access point records
 	Type *string `pulumi:"type"`
-	// AP Uplink port configuration
+	// Authentication and failover behavior for AP uplink ports
 	UplinkPortConfig *ApUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// USB AP settings
-	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
-	//   - Note: legacy, new config moved to ESL Config.
+	// Legacy USB integration settings for this access point
 	UsbConfig *ApUsbConfig `pulumi:"usbConfig"`
-	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Variable values that override site variables for this access point
 	Vars map[string]string `pulumi:"vars"`
-	// X in pixel
+	// Horizontal map position of the AP, in pixels
 	X *float64 `pulumi:"x"`
-	// Y in pixel
+	// Vertical map position of the AP, in pixels
 	Y *float64 `pulumi:"y"`
-	// Zigbee AP settings
+	// Zigbee radio and network settings for this access point
 	ZigbeeConfig *ApZigbeeConfig `pulumi:"zigbeeConfig"`
 }
 
 type ApState struct {
-	// Aeroscout AP settings
+	// Location integration settings for AeroScout on this access point
 	Aeroscout ApAeroscoutPtrInput
-	Airista   ApAiristaPtrInput
-	// BLE AP settings
-	BleConfig    ApBleConfigPtrInput
-	Centrak      ApCentrakPtrInput
+	// Location integration settings for Airista on this access point
+	Airista ApAiristaPtrInput
+	// Bluetooth Low Energy beacon and asset settings for this access point
+	BleConfig ApBleConfigPtrInput
+	// Location integration settings for Centrak on this access point
+	Centrak ApCentrakPtrInput
+	// Wireless client bridge settings for this access point
 	ClientBridge ApClientBridgePtrInput
 	DeviceId     pulumi.StringPtrInput
 	// Whether to disable eth1 port
@@ -230,62 +257,71 @@ type ApState struct {
 	DisableEth3 pulumi.BoolPtrInput
 	// Whether to disable module port
 	DisableModule pulumi.BoolPtrInput
-	EslConfig     ApEslConfigPtrInput
+	// Electronic shelf label integration settings for this access point
+	EslConfig ApEslConfigPtrInput
 	// For some AP models, flowControl can be enabled to address some switch compatibility issue
 	FlowControl pulumi.BoolPtrInput
-	// Height, in meters, optional
-	Height    pulumi.Float64PtrInput
+	// Installation height of the AP, in meters
+	Height pulumi.Float64PtrInput
+	// First custom image URL associated with the access point
 	Image1Url pulumi.StringPtrInput
+	// Second custom image URL associated with the access point
 	Image2Url pulumi.StringPtrInput
+	// Third custom image URL associated with the access point
 	Image3Url pulumi.StringPtrInput
-	// IP AP settings
-	IpConfig   ApIpConfigPtrInput
+	// Management IP addressing settings for this access point
+	IpConfig ApIpConfigPtrInput
+	// Link aggregation settings for supported AP Ethernet uplinks
 	LacpConfig ApLacpConfigPtrInput
-	// LED AP settings
+	// Indicator light behavior settings for this access point
 	Led ApLedPtrInput
 	// Whether this map is considered locked down
 	Locked pulumi.BoolPtrInput
-	// Device MAC address
+	// Access point MAC address used to identify the device
 	Mac pulumi.StringPtrInput
 	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
-	// Mesh AP settings
+	// Wireless mesh role and band settings for this access point
 	Mesh ApMeshPtrInput
-	// Device Model
+	// Hardware model reported for the access point
 	Model pulumi.StringPtrInput
-	Name  pulumi.StringPtrInput
+	// MQTT broker publishing settings for this access point
+	MqttConfig ApMqttConfigPtrInput
+	// Configured hostname assigned to the access point
+	Name pulumi.StringPtrInput
 	// Any notes about this AP
-	Notes      pulumi.StringPtrInput
+	Notes pulumi.StringPtrInput
+	// NTP servers used by this access point
 	NtpServers pulumi.StringArrayInput
-	OrgId      pulumi.StringPtrInput
-	// Orientation, 0-359, in degrees, up is 0, right is 90.
+	// Organization that owns this access point
+	OrgId pulumi.StringPtrInput
+	// AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
 	Orientation pulumi.IntPtrInput
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
 	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
 	PortConfig ApPortConfigMapInput
-	// Power related configs
+	// Power negotiation and peripheral power settings for this access point
 	PwrConfig ApPwrConfigPtrInput
-	// Radio AP settings
+	// Radio configuration overrides for this access point
 	RadioConfig ApRadioConfigPtrInput
-	// Device Serial
+	// Manufacturer serial number for the access point
 	Serial pulumi.StringPtrInput
+	// Site where this access point is assigned
 	SiteId pulumi.StringPtrInput
-	// Device Type. enum: `ap`
+	// Device type discriminator for access point records
 	Type pulumi.StringPtrInput
-	// AP Uplink port configuration
+	// Authentication and failover behavior for AP uplink ports
 	UplinkPortConfig ApUplinkPortConfigPtrInput
-	// USB AP settings
-	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
-	//   - Note: legacy, new config moved to ESL Config.
+	// Legacy USB integration settings for this access point
 	UsbConfig ApUsbConfigPtrInput
-	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Variable values that override site variables for this access point
 	Vars pulumi.StringMapInput
-	// X in pixel
+	// Horizontal map position of the AP, in pixels
 	X pulumi.Float64PtrInput
-	// Y in pixel
+	// Vertical map position of the AP, in pixels
 	Y pulumi.Float64PtrInput
-	// Zigbee AP settings
+	// Zigbee radio and network settings for this access point
 	ZigbeeConfig ApZigbeeConfigPtrInput
 }
 
@@ -294,12 +330,15 @@ func (ApState) ElementType() reflect.Type {
 }
 
 type apArgs struct {
-	// Aeroscout AP settings
+	// Location integration settings for AeroScout on this access point
 	Aeroscout *ApAeroscout `pulumi:"aeroscout"`
-	Airista   *ApAirista   `pulumi:"airista"`
-	// BLE AP settings
-	BleConfig    *ApBleConfig    `pulumi:"bleConfig"`
-	Centrak      *ApCentrak      `pulumi:"centrak"`
+	// Location integration settings for Airista on this access point
+	Airista *ApAirista `pulumi:"airista"`
+	// Bluetooth Low Energy beacon and asset settings for this access point
+	BleConfig *ApBleConfig `pulumi:"bleConfig"`
+	// Location integration settings for Centrak on this access point
+	Centrak *ApCentrak `pulumi:"centrak"`
+	// Wireless client bridge settings for this access point
 	ClientBridge *ApClientBridge `pulumi:"clientBridge"`
 	DeviceId     string          `pulumi:"deviceId"`
 	// Whether to disable eth1 port
@@ -309,62 +348,70 @@ type apArgs struct {
 	// Whether to disable eth3 port
 	DisableEth3 *bool `pulumi:"disableEth3"`
 	// Whether to disable module port
-	DisableModule *bool        `pulumi:"disableModule"`
-	EslConfig     *ApEslConfig `pulumi:"eslConfig"`
+	DisableModule *bool `pulumi:"disableModule"`
+	// Electronic shelf label integration settings for this access point
+	EslConfig *ApEslConfig `pulumi:"eslConfig"`
 	// For some AP models, flowControl can be enabled to address some switch compatibility issue
 	FlowControl *bool `pulumi:"flowControl"`
-	// Height, in meters, optional
+	// Installation height of the AP, in meters
 	Height *float64 `pulumi:"height"`
-	// IP AP settings
-	IpConfig   *ApIpConfig   `pulumi:"ipConfig"`
+	// Management IP addressing settings for this access point
+	IpConfig *ApIpConfig `pulumi:"ipConfig"`
+	// Link aggregation settings for supported AP Ethernet uplinks
 	LacpConfig *ApLacpConfig `pulumi:"lacpConfig"`
-	// LED AP settings
+	// Indicator light behavior settings for this access point
 	Led *ApLed `pulumi:"led"`
 	// Whether this map is considered locked down
 	Locked *bool `pulumi:"locked"`
 	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
-	// Mesh AP settings
+	// Wireless mesh role and band settings for this access point
 	Mesh *ApMesh `pulumi:"mesh"`
+	// MQTT broker publishing settings for this access point
+	MqttConfig *ApMqttConfig `pulumi:"mqttConfig"`
+	// Configured hostname assigned to the access point
 	Name *string `pulumi:"name"`
 	// Any notes about this AP
-	Notes      *string  `pulumi:"notes"`
+	Notes *string `pulumi:"notes"`
+	// NTP servers used by this access point
 	NtpServers []string `pulumi:"ntpServers"`
-	// Orientation, 0-359, in degrees, up is 0, right is 90.
+	// AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
 	Orientation *int `pulumi:"orientation"`
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
 	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
 	PortConfig map[string]ApPortConfig `pulumi:"portConfig"`
-	// Power related configs
+	// Power negotiation and peripheral power settings for this access point
 	PwrConfig *ApPwrConfig `pulumi:"pwrConfig"`
-	// Radio AP settings
+	// Radio configuration overrides for this access point
 	RadioConfig *ApRadioConfig `pulumi:"radioConfig"`
-	SiteId      string         `pulumi:"siteId"`
-	// AP Uplink port configuration
+	// Site where this access point is assigned
+	SiteId string `pulumi:"siteId"`
+	// Authentication and failover behavior for AP uplink ports
 	UplinkPortConfig *ApUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// USB AP settings
-	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
-	//   - Note: legacy, new config moved to ESL Config.
+	// Legacy USB integration settings for this access point
 	UsbConfig *ApUsbConfig `pulumi:"usbConfig"`
-	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Variable values that override site variables for this access point
 	Vars map[string]string `pulumi:"vars"`
-	// X in pixel
+	// Horizontal map position of the AP, in pixels
 	X *float64 `pulumi:"x"`
-	// Y in pixel
+	// Vertical map position of the AP, in pixels
 	Y *float64 `pulumi:"y"`
-	// Zigbee AP settings
+	// Zigbee radio and network settings for this access point
 	ZigbeeConfig *ApZigbeeConfig `pulumi:"zigbeeConfig"`
 }
 
 // The set of arguments for constructing a Ap resource.
 type ApArgs struct {
-	// Aeroscout AP settings
+	// Location integration settings for AeroScout on this access point
 	Aeroscout ApAeroscoutPtrInput
-	Airista   ApAiristaPtrInput
-	// BLE AP settings
-	BleConfig    ApBleConfigPtrInput
-	Centrak      ApCentrakPtrInput
+	// Location integration settings for Airista on this access point
+	Airista ApAiristaPtrInput
+	// Bluetooth Low Energy beacon and asset settings for this access point
+	BleConfig ApBleConfigPtrInput
+	// Location integration settings for Centrak on this access point
+	Centrak ApCentrakPtrInput
+	// Wireless client bridge settings for this access point
 	ClientBridge ApClientBridgePtrInput
 	DeviceId     pulumi.StringInput
 	// Whether to disable eth1 port
@@ -375,50 +422,55 @@ type ApArgs struct {
 	DisableEth3 pulumi.BoolPtrInput
 	// Whether to disable module port
 	DisableModule pulumi.BoolPtrInput
-	EslConfig     ApEslConfigPtrInput
+	// Electronic shelf label integration settings for this access point
+	EslConfig ApEslConfigPtrInput
 	// For some AP models, flowControl can be enabled to address some switch compatibility issue
 	FlowControl pulumi.BoolPtrInput
-	// Height, in meters, optional
+	// Installation height of the AP, in meters
 	Height pulumi.Float64PtrInput
-	// IP AP settings
-	IpConfig   ApIpConfigPtrInput
+	// Management IP addressing settings for this access point
+	IpConfig ApIpConfigPtrInput
+	// Link aggregation settings for supported AP Ethernet uplinks
 	LacpConfig ApLacpConfigPtrInput
-	// LED AP settings
+	// Indicator light behavior settings for this access point
 	Led ApLedPtrInput
 	// Whether this map is considered locked down
 	Locked pulumi.BoolPtrInput
 	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
-	// Mesh AP settings
+	// Wireless mesh role and band settings for this access point
 	Mesh ApMeshPtrInput
+	// MQTT broker publishing settings for this access point
+	MqttConfig ApMqttConfigPtrInput
+	// Configured hostname assigned to the access point
 	Name pulumi.StringPtrInput
 	// Any notes about this AP
-	Notes      pulumi.StringPtrInput
+	Notes pulumi.StringPtrInput
+	// NTP servers used by this access point
 	NtpServers pulumi.StringArrayInput
-	// Orientation, 0-359, in degrees, up is 0, right is 90.
+	// AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
 	Orientation pulumi.IntPtrInput
 	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
 	// eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switchConfig (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
 	PortConfig ApPortConfigMapInput
-	// Power related configs
+	// Power negotiation and peripheral power settings for this access point
 	PwrConfig ApPwrConfigPtrInput
-	// Radio AP settings
+	// Radio configuration overrides for this access point
 	RadioConfig ApRadioConfigPtrInput
-	SiteId      pulumi.StringInput
-	// AP Uplink port configuration
+	// Site where this access point is assigned
+	SiteId pulumi.StringInput
+	// Authentication and failover behavior for AP uplink ports
 	UplinkPortConfig ApUplinkPortConfigPtrInput
-	// USB AP settings
-	//   - Note: if native imagotag is enabled, BLE will be disabled automatically
-	//   - Note: legacy, new config moved to ESL Config.
+	// Legacy USB integration settings for this access point
 	UsbConfig ApUsbConfigPtrInput
-	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Variable values that override site variables for this access point
 	Vars pulumi.StringMapInput
-	// X in pixel
+	// Horizontal map position of the AP, in pixels
 	X pulumi.Float64PtrInput
-	// Y in pixel
+	// Vertical map position of the AP, in pixels
 	Y pulumi.Float64PtrInput
-	// Zigbee AP settings
+	// Zigbee radio and network settings for this access point
 	ZigbeeConfig ApZigbeeConfigPtrInput
 }
 
@@ -509,24 +561,27 @@ func (o ApOutput) ToApOutputWithContext(ctx context.Context) ApOutput {
 	return o
 }
 
-// Aeroscout AP settings
+// Location integration settings for AeroScout on this access point
 func (o ApOutput) Aeroscout() ApAeroscoutPtrOutput {
 	return o.ApplyT(func(v *Ap) ApAeroscoutPtrOutput { return v.Aeroscout }).(ApAeroscoutPtrOutput)
 }
 
+// Location integration settings for Airista on this access point
 func (o ApOutput) Airista() ApAiristaPtrOutput {
 	return o.ApplyT(func(v *Ap) ApAiristaPtrOutput { return v.Airista }).(ApAiristaPtrOutput)
 }
 
-// BLE AP settings
+// Bluetooth Low Energy beacon and asset settings for this access point
 func (o ApOutput) BleConfig() ApBleConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApBleConfigPtrOutput { return v.BleConfig }).(ApBleConfigPtrOutput)
 }
 
+// Location integration settings for Centrak on this access point
 func (o ApOutput) Centrak() ApCentrakPtrOutput {
 	return o.ApplyT(func(v *Ap) ApCentrakPtrOutput { return v.Centrak }).(ApCentrakPtrOutput)
 }
 
+// Wireless client bridge settings for this access point
 func (o ApOutput) ClientBridge() ApClientBridgePtrOutput {
 	return o.ApplyT(func(v *Ap) ApClientBridgePtrOutput { return v.ClientBridge }).(ApClientBridgePtrOutput)
 }
@@ -555,6 +610,7 @@ func (o ApOutput) DisableModule() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolOutput { return v.DisableModule }).(pulumi.BoolOutput)
 }
 
+// Electronic shelf label integration settings for this access point
 func (o ApOutput) EslConfig() ApEslConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApEslConfigPtrOutput { return v.EslConfig }).(ApEslConfigPtrOutput)
 }
@@ -564,33 +620,37 @@ func (o ApOutput) FlowControl() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolOutput { return v.FlowControl }).(pulumi.BoolOutput)
 }
 
-// Height, in meters, optional
+// Installation height of the AP, in meters
 func (o ApOutput) Height() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.Float64PtrOutput { return v.Height }).(pulumi.Float64PtrOutput)
 }
 
+// First custom image URL associated with the access point
 func (o ApOutput) Image1Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Image1Url }).(pulumi.StringOutput)
 }
 
+// Second custom image URL associated with the access point
 func (o ApOutput) Image2Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Image2Url }).(pulumi.StringOutput)
 }
 
+// Third custom image URL associated with the access point
 func (o ApOutput) Image3Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Image3Url }).(pulumi.StringOutput)
 }
 
-// IP AP settings
+// Management IP addressing settings for this access point
 func (o ApOutput) IpConfig() ApIpConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApIpConfigPtrOutput { return v.IpConfig }).(ApIpConfigPtrOutput)
 }
 
+// Link aggregation settings for supported AP Ethernet uplinks
 func (o ApOutput) LacpConfig() ApLacpConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApLacpConfigPtrOutput { return v.LacpConfig }).(ApLacpConfigPtrOutput)
 }
 
-// LED AP settings
+// Indicator light behavior settings for this access point
 func (o ApOutput) Led() ApLedPtrOutput {
 	return o.ApplyT(func(v *Ap) ApLedPtrOutput { return v.Led }).(ApLedPtrOutput)
 }
@@ -600,7 +660,7 @@ func (o ApOutput) Locked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolPtrOutput { return v.Locked }).(pulumi.BoolPtrOutput)
 }
 
-// Device MAC address
+// Access point MAC address used to identify the device
 func (o ApOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }
@@ -610,16 +670,22 @@ func (o ApOutput) MapId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringPtrOutput { return v.MapId }).(pulumi.StringPtrOutput)
 }
 
-// Mesh AP settings
+// Wireless mesh role and band settings for this access point
 func (o ApOutput) Mesh() ApMeshPtrOutput {
 	return o.ApplyT(func(v *Ap) ApMeshPtrOutput { return v.Mesh }).(ApMeshPtrOutput)
 }
 
-// Device Model
+// Hardware model reported for the access point
 func (o ApOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Model }).(pulumi.StringOutput)
 }
 
+// MQTT broker publishing settings for this access point
+func (o ApOutput) MqttConfig() ApMqttConfigPtrOutput {
+	return o.ApplyT(func(v *Ap) ApMqttConfigPtrOutput { return v.MqttConfig }).(ApMqttConfigPtrOutput)
+}
+
+// Configured hostname assigned to the access point
 func (o ApOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -629,15 +695,17 @@ func (o ApOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
+// NTP servers used by this access point
 func (o ApOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
 
+// Organization that owns this access point
 func (o ApOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Orientation, 0-359, in degrees, up is 0, right is 90.
+// AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
 func (o ApOutput) Orientation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.IntPtrOutput { return v.Orientation }).(pulumi.IntPtrOutput)
 }
@@ -652,58 +720,57 @@ func (o ApOutput) PortConfig() ApPortConfigMapOutput {
 	return o.ApplyT(func(v *Ap) ApPortConfigMapOutput { return v.PortConfig }).(ApPortConfigMapOutput)
 }
 
-// Power related configs
+// Power negotiation and peripheral power settings for this access point
 func (o ApOutput) PwrConfig() ApPwrConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApPwrConfigPtrOutput { return v.PwrConfig }).(ApPwrConfigPtrOutput)
 }
 
-// Radio AP settings
+// Radio configuration overrides for this access point
 func (o ApOutput) RadioConfig() ApRadioConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApRadioConfigPtrOutput { return v.RadioConfig }).(ApRadioConfigPtrOutput)
 }
 
-// Device Serial
+// Manufacturer serial number for the access point
 func (o ApOutput) Serial() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Serial }).(pulumi.StringOutput)
 }
 
+// Site where this access point is assigned
 func (o ApOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// Device Type. enum: `ap`
+// Device type discriminator for access point records
 func (o ApOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// AP Uplink port configuration
+// Authentication and failover behavior for AP uplink ports
 func (o ApOutput) UplinkPortConfig() ApUplinkPortConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApUplinkPortConfigPtrOutput { return v.UplinkPortConfig }).(ApUplinkPortConfigPtrOutput)
 }
 
-// USB AP settings
-//   - Note: if native imagotag is enabled, BLE will be disabled automatically
-//   - Note: legacy, new config moved to ESL Config.
+// Legacy USB integration settings for this access point
 func (o ApOutput) UsbConfig() ApUsbConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApUsbConfigPtrOutput { return v.UsbConfig }).(ApUsbConfigPtrOutput)
 }
 
-// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+// Variable values that override site variables for this access point
 func (o ApOutput) Vars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringMapOutput { return v.Vars }).(pulumi.StringMapOutput)
 }
 
-// X in pixel
+// Horizontal map position of the AP, in pixels
 func (o ApOutput) X() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.Float64PtrOutput { return v.X }).(pulumi.Float64PtrOutput)
 }
 
-// Y in pixel
+// Vertical map position of the AP, in pixels
 func (o ApOutput) Y() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.Float64PtrOutput { return v.Y }).(pulumi.Float64PtrOutput)
 }
 
-// Zigbee AP settings
+// Zigbee radio and network settings for this access point
 func (o ApOutput) ZigbeeConfig() ApZigbeeConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApZigbeeConfigPtrOutput { return v.ZigbeeConfig }).(ApZigbeeConfigPtrOutput)
 }

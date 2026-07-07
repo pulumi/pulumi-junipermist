@@ -18,16 +18,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayGatewayMgmt {
     /**
-     * @return For SSR only, as direct root access is not allowed
+     * @return SSR-only SSH public keys for administrative access
      * 
      */
     private @Nullable List<String> adminSshkeys;
+    /**
+     * @return Application probing configuration for gateway monitoring
+     * 
+     */
     private @Nullable GatewayGatewayMgmtAppProbing appProbing;
     /**
      * @return Consumes uplink bandwidth, requires WA license
      * 
      */
     private @Nullable Boolean appUsage;
+    /**
+     * @return Schedule for automatic security signature updates
+     * 
+     */
     private @Nullable GatewayGatewayMgmtAutoSignatureUpdate autoSignatureUpdate;
     /**
      * @return Rollback timer for commit confirmed
@@ -49,32 +57,54 @@ public final class GatewayGatewayMgmt {
      * 
      */
     private @Nullable Boolean disableUsb;
+    /**
+     * @return Whether FIPS mode is enabled on the gateway
+     * 
+     */
     private @Nullable Boolean fipsEnabled;
+    /**
+     * @return IPv4 probe targets used for gateway connectivity checks
+     * 
+     */
     private @Nullable List<String> probeHosts;
+    /**
+     * @return IPv6 probe targets used for gateway connectivity checks
+     * 
+     */
     private @Nullable List<String> probeHostsv6s;
     /**
-     * @return Restrict inbound-traffic to host
-     * when enabled, all traffic that is not essential to our operation will be dropped
-     * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+     * @return Control-plane protection settings for the gateway
      * 
      */
     private @Nullable GatewayGatewayMgmtProtectRe protectRe;
     /**
-     * @return SRX only
+     * @return SRX only. Root password for local gateway access
      * 
      */
     private @Nullable String rootPassword;
+    /**
+     * @return IPv4 source address used for gateway security log traffic
+     * 
+     */
     private @Nullable String securityLogSourceAddress;
+    /**
+     * @return Source interface used for gateway security log traffic
+     * 
+     */
     private @Nullable String securityLogSourceInterface;
 
     private GatewayGatewayMgmt() {}
     /**
-     * @return For SSR only, as direct root access is not allowed
+     * @return SSR-only SSH public keys for administrative access
      * 
      */
     public List<String> adminSshkeys() {
         return this.adminSshkeys == null ? List.of() : this.adminSshkeys;
     }
+    /**
+     * @return Application probing configuration for gateway monitoring
+     * 
+     */
     public Optional<GatewayGatewayMgmtAppProbing> appProbing() {
         return Optional.ofNullable(this.appProbing);
     }
@@ -85,6 +115,10 @@ public final class GatewayGatewayMgmt {
     public Optional<Boolean> appUsage() {
         return Optional.ofNullable(this.appUsage);
     }
+    /**
+     * @return Schedule for automatic security signature updates
+     * 
+     */
     public Optional<GatewayGatewayMgmtAutoSignatureUpdate> autoSignatureUpdate() {
         return Optional.ofNullable(this.autoSignatureUpdate);
     }
@@ -116,34 +150,52 @@ public final class GatewayGatewayMgmt {
     public Optional<Boolean> disableUsb() {
         return Optional.ofNullable(this.disableUsb);
     }
+    /**
+     * @return Whether FIPS mode is enabled on the gateway
+     * 
+     */
     public Optional<Boolean> fipsEnabled() {
         return Optional.ofNullable(this.fipsEnabled);
     }
+    /**
+     * @return IPv4 probe targets used for gateway connectivity checks
+     * 
+     */
     public List<String> probeHosts() {
         return this.probeHosts == null ? List.of() : this.probeHosts;
     }
+    /**
+     * @return IPv6 probe targets used for gateway connectivity checks
+     * 
+     */
     public List<String> probeHostsv6s() {
         return this.probeHostsv6s == null ? List.of() : this.probeHostsv6s;
     }
     /**
-     * @return Restrict inbound-traffic to host
-     * when enabled, all traffic that is not essential to our operation will be dropped
-     * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+     * @return Control-plane protection settings for the gateway
      * 
      */
     public Optional<GatewayGatewayMgmtProtectRe> protectRe() {
         return Optional.ofNullable(this.protectRe);
     }
     /**
-     * @return SRX only
+     * @return SRX only. Root password for local gateway access
      * 
      */
     public Optional<String> rootPassword() {
         return Optional.ofNullable(this.rootPassword);
     }
+    /**
+     * @return IPv4 source address used for gateway security log traffic
+     * 
+     */
     public Optional<String> securityLogSourceAddress() {
         return Optional.ofNullable(this.securityLogSourceAddress);
     }
+    /**
+     * @return Source interface used for gateway security log traffic
+     * 
+     */
     public Optional<String> securityLogSourceInterface() {
         return Optional.ofNullable(this.securityLogSourceInterface);
     }

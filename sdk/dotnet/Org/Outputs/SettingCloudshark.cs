@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingCloudshark
     {
+        /// <summary>
+        /// Token used by Mist to access the CloudShark integration
+        /// </summary>
         public readonly string? Apitoken;
         /// <summary>
-        /// If using CS Enterprise
+        /// CloudShark Enterprise URL, if using a self-hosted CS Enterprise instance
         /// </summary>
         public readonly string? Url;
 

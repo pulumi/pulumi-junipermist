@@ -19,29 +19,45 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
 
     public static final SwitchVrfInstancesArgs Empty = new SwitchVrfInstancesArgs();
 
+    /**
+     * IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     @Import(name="evpnAutoLoopbackSubnet")
     private @Nullable Output<String> evpnAutoLoopbackSubnet;
 
+    /**
+     * @return IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     public Optional<Output<String>> evpnAutoLoopbackSubnet() {
         return Optional.ofNullable(this.evpnAutoLoopbackSubnet);
     }
 
+    /**
+     * IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     @Import(name="evpnAutoLoopbackSubnet6")
     private @Nullable Output<String> evpnAutoLoopbackSubnet6;
 
+    /**
+     * @return IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+     * 
+     */
     public Optional<Output<String>> evpnAutoLoopbackSubnet6() {
         return Optional.ofNullable(this.evpnAutoLoopbackSubnet6);
     }
 
     /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * Additional IPv4 static routes configured for this VRF instance
      * 
      */
     @Import(name="extraRoutes")
     private @Nullable Output<Map<String,SwitchVrfInstancesExtraRoutesArgs>> extraRoutes;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * @return Additional IPv4 static routes configured for this VRF instance
      * 
      */
     public Optional<Output<Map<String,SwitchVrfInstancesExtraRoutesArgs>>> extraRoutes() {
@@ -49,23 +65,31 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * Additional IPv6 static routes configured for this VRF instance
      * 
      */
     @Import(name="extraRoutes6")
     private @Nullable Output<Map<String,SwitchVrfInstancesExtraRoutes6Args>> extraRoutes6;
 
     /**
-     * @return Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+     * @return Additional IPv6 static routes configured for this VRF instance
      * 
      */
     public Optional<Output<Map<String,SwitchVrfInstancesExtraRoutes6Args>>> extraRoutes6() {
         return Optional.ofNullable(this.extraRoutes6);
     }
 
+    /**
+     * Names of switch networks included in this VRF instance
+     * 
+     */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
+    /**
+     * @return Names of switch networks included in this VRF instance
+     * 
+     */
     public Optional<Output<List<String>>> networks() {
         return Optional.ofNullable(this.networks);
     }
@@ -98,26 +122,50 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
             $ = new SwitchVrfInstancesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param evpnAutoLoopbackSubnet IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder evpnAutoLoopbackSubnet(@Nullable Output<String> evpnAutoLoopbackSubnet) {
             $.evpnAutoLoopbackSubnet = evpnAutoLoopbackSubnet;
             return this;
         }
 
+        /**
+         * @param evpnAutoLoopbackSubnet IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder evpnAutoLoopbackSubnet(String evpnAutoLoopbackSubnet) {
             return evpnAutoLoopbackSubnet(Output.of(evpnAutoLoopbackSubnet));
         }
 
+        /**
+         * @param evpnAutoLoopbackSubnet6 IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder evpnAutoLoopbackSubnet6(@Nullable Output<String> evpnAutoLoopbackSubnet6) {
             $.evpnAutoLoopbackSubnet6 = evpnAutoLoopbackSubnet6;
             return this;
         }
 
+        /**
+         * @param evpnAutoLoopbackSubnet6 IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder evpnAutoLoopbackSubnet6(String evpnAutoLoopbackSubnet6) {
             return evpnAutoLoopbackSubnet6(Output.of(evpnAutoLoopbackSubnet6));
         }
 
         /**
-         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * @param extraRoutes Additional IPv4 static routes configured for this VRF instance
          * 
          * @return builder
          * 
@@ -128,7 +176,7 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * @param extraRoutes Additional IPv4 static routes configured for this VRF instance
          * 
          * @return builder
          * 
@@ -138,7 +186,7 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * @param extraRoutes6 Additional IPv6 static routes configured for this VRF instance
          * 
          * @return builder
          * 
@@ -149,7 +197,7 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param extraRoutes6 Property key is the destination CIDR (e.g. &#34;2a02:1234:420a:10c9::/64&#34;)
+         * @param extraRoutes6 Additional IPv6 static routes configured for this VRF instance
          * 
          * @return builder
          * 
@@ -158,15 +206,33 @@ public final class SwitchVrfInstancesArgs extends com.pulumi.resources.ResourceA
             return extraRoutes6(Output.of(extraRoutes6));
         }
 
+        /**
+         * @param networks Names of switch networks included in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(@Nullable Output<List<String>> networks) {
             $.networks = networks;
             return this;
         }
 
+        /**
+         * @param networks Names of switch networks included in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(List<String> networks) {
             return networks(Output.of(networks));
         }
 
+        /**
+         * @param networks Names of switch networks included in this VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(String... networks) {
             return networks(List.of(networks));
         }

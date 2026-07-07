@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingCelonaArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Credential used by Mist for the Celona integration
+        /// </summary>
         [Input("apiKey", required: true)]
         public Input<string> ApiKey { get; set; } = null!;
 
+        /// <summary>
+        /// Celona API prefix configured for the integration
+        /// </summary>
         [Input("apiPrefix", required: true)]
         public Input<string> ApiPrefix { get; set; } = null!;
 

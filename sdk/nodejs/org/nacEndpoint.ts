@@ -70,15 +70,30 @@ export class NacEndpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === NacEndpoint.__pulumiType;
     }
 
+    /**
+     * Applied labels for this user MAC entry
+     */
     declare public readonly labels: pulumi.Output<string[]>;
     /**
-     * Only non-local-admin MAC is accepted
+     * Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
      */
     declare public readonly mac: pulumi.Output<string>;
+    /**
+     * Display name for this user MAC entry
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Free-form notes about this user MAC entry
+     */
     declare public readonly notes: pulumi.Output<string>;
     declare public readonly orgId: pulumi.Output<string>;
+    /**
+     * RADIUS group associated with this user MAC entry
+     */
     declare public readonly radiusGroup: pulumi.Output<string>;
+    /**
+     * Network VLAN value associated with this user MAC entry
+     */
     declare public readonly vlan: pulumi.Output<string>;
 
     /**
@@ -126,15 +141,30 @@ export class NacEndpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NacEndpoint resources.
  */
 export interface NacEndpointState {
+    /**
+     * Applied labels for this user MAC entry
+     */
     labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Only non-local-admin MAC is accepted
+     * Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
      */
     mac?: pulumi.Input<string | undefined>;
+    /**
+     * Display name for this user MAC entry
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Free-form notes about this user MAC entry
+     */
     notes?: pulumi.Input<string | undefined>;
     orgId?: pulumi.Input<string | undefined>;
+    /**
+     * RADIUS group associated with this user MAC entry
+     */
     radiusGroup?: pulumi.Input<string | undefined>;
+    /**
+     * Network VLAN value associated with this user MAC entry
+     */
     vlan?: pulumi.Input<string | undefined>;
 }
 
@@ -142,14 +172,29 @@ export interface NacEndpointState {
  * The set of arguments for constructing a NacEndpoint resource.
  */
 export interface NacEndpointArgs {
+    /**
+     * Applied labels for this user MAC entry
+     */
     labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Only non-local-admin MAC is accepted
+     * Client MAC address for this entry. Only non-local-admin MAC addresses are accepted
      */
     mac: pulumi.Input<string>;
+    /**
+     * Display name for this user MAC entry
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Free-form notes about this user MAC entry
+     */
     notes?: pulumi.Input<string | undefined>;
     orgId: pulumi.Input<string>;
+    /**
+     * RADIUS group associated with this user MAC entry
+     */
     radiusGroup?: pulumi.Input<string | undefined>;
+    /**
+     * Network VLAN value associated with this user MAC entry
+     */
     vlan?: pulumi.Input<string | undefined>;
 }

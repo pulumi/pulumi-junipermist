@@ -26,19 +26,27 @@ public final class DeviceprofileGatewayServicePolicy {
      */
     private @Nullable String action;
     /**
-     * @return For SRX-only
+     * @return Malware and virus inspection settings applied by this service policy
      * 
      */
     private @Nullable DeviceprofileGatewayServicePolicyAntivirus antivirus;
     /**
-     * @return SRX only
+     * @return Application QoE settings applied by this service policy
      * 
      */
     private @Nullable DeviceprofileGatewayServicePolicyAppqoe appqoe;
+    /**
+     * @return Enhanced web filtering rules applied by this service policy
+     * 
+     */
     private @Nullable List<DeviceprofileGatewayServicePolicyEwf> ewfs;
+    /**
+     * @return Intrusion detection and prevention settings applied by this service policy
+     * 
+     */
     private @Nullable DeviceprofileGatewayServicePolicyIdp idp;
     /**
-     * @return access within the same VRF
+     * @return Whether the policy permits access within the same VRF
      * 
      */
     private @Nullable Boolean localRouting;
@@ -53,7 +61,7 @@ public final class DeviceprofileGatewayServicePolicy {
      */
     private @Nullable String pathPreference;
     /**
-     * @return Used to link servicepolicy defined at org level and overwrite some attributes
+     * @return Organization-level service policy identifier used to link and override selected attributes
      * 
      */
     private @Nullable String servicepolicyId;
@@ -63,17 +71,17 @@ public final class DeviceprofileGatewayServicePolicy {
      */
     private @Nullable List<String> services;
     /**
-     * @return SRX only
+     * @return Threat inspection settings provided by Sky ATP for this service policy
      * 
      */
     private @Nullable DeviceprofileGatewayServicePolicySkyatp skyatp;
     /**
-     * @return For SRX-only
+     * @return TLS inspection settings applied by this service policy
      * 
      */
     private @Nullable DeviceprofileGatewayServicePolicySslProxy sslProxy;
     /**
-     * @return Required for syslog logging
+     * @return Remote logging settings applied by this service policy
      * 
      */
     private @Nullable DeviceprofileGatewayServicePolicySyslog syslog;
@@ -92,27 +100,35 @@ public final class DeviceprofileGatewayServicePolicy {
         return Optional.ofNullable(this.action);
     }
     /**
-     * @return For SRX-only
+     * @return Malware and virus inspection settings applied by this service policy
      * 
      */
     public Optional<DeviceprofileGatewayServicePolicyAntivirus> antivirus() {
         return Optional.ofNullable(this.antivirus);
     }
     /**
-     * @return SRX only
+     * @return Application QoE settings applied by this service policy
      * 
      */
     public Optional<DeviceprofileGatewayServicePolicyAppqoe> appqoe() {
         return Optional.ofNullable(this.appqoe);
     }
+    /**
+     * @return Enhanced web filtering rules applied by this service policy
+     * 
+     */
     public List<DeviceprofileGatewayServicePolicyEwf> ewfs() {
         return this.ewfs == null ? List.of() : this.ewfs;
     }
+    /**
+     * @return Intrusion detection and prevention settings applied by this service policy
+     * 
+     */
     public Optional<DeviceprofileGatewayServicePolicyIdp> idp() {
         return Optional.ofNullable(this.idp);
     }
     /**
-     * @return access within the same VRF
+     * @return Whether the policy permits access within the same VRF
      * 
      */
     public Optional<Boolean> localRouting() {
@@ -133,7 +149,7 @@ public final class DeviceprofileGatewayServicePolicy {
         return Optional.ofNullable(this.pathPreference);
     }
     /**
-     * @return Used to link servicepolicy defined at org level and overwrite some attributes
+     * @return Organization-level service policy identifier used to link and override selected attributes
      * 
      */
     public Optional<String> servicepolicyId() {
@@ -147,21 +163,21 @@ public final class DeviceprofileGatewayServicePolicy {
         return this.services == null ? List.of() : this.services;
     }
     /**
-     * @return SRX only
+     * @return Threat inspection settings provided by Sky ATP for this service policy
      * 
      */
     public Optional<DeviceprofileGatewayServicePolicySkyatp> skyatp() {
         return Optional.ofNullable(this.skyatp);
     }
     /**
-     * @return For SRX-only
+     * @return TLS inspection settings applied by this service policy
      * 
      */
     public Optional<DeviceprofileGatewayServicePolicySslProxy> sslProxy() {
         return Optional.ofNullable(this.sslProxy);
     }
     /**
-     * @return Required for syslog logging
+     * @return Remote logging settings applied by this service policy
      * 
      */
     public Optional<DeviceprofileGatewayServicePolicySyslog> syslog() {

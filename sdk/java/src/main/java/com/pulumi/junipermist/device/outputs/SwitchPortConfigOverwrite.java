@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchPortConfigOverwrite {
+    /**
+     * @return Administrative description applied to the switch port override
+     * 
+     */
     private @Nullable String description;
     /**
      * @return Whether the port is disabled
@@ -19,10 +23,14 @@ public final class SwitchPortConfigOverwrite {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return Link connection mode. enum: `auto`, `full`, `half`
+     * @return Link duplex mode override for the switch port
      * 
      */
     private @Nullable String duplex;
+    /**
+     * @return MAC address learning limit override for the switch port
+     * 
+     */
     private @Nullable String macLimit;
     /**
      * @return Whether PoE capabilities are disabled for a port
@@ -40,12 +48,16 @@ public final class SwitchPortConfigOverwrite {
      */
     private @Nullable String portNetwork;
     /**
-     * @return Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Link speed override for the switch port
      * 
      */
     private @Nullable String speed;
 
     private SwitchPortConfigOverwrite() {}
+    /**
+     * @return Administrative description applied to the switch port override
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -57,12 +69,16 @@ public final class SwitchPortConfigOverwrite {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Link connection mode. enum: `auto`, `full`, `half`
+     * @return Link duplex mode override for the switch port
      * 
      */
     public Optional<String> duplex() {
         return Optional.ofNullable(this.duplex);
     }
+    /**
+     * @return MAC address learning limit override for the switch port
+     * 
+     */
     public Optional<String> macLimit() {
         return Optional.ofNullable(this.macLimit);
     }
@@ -88,7 +104,7 @@ public final class SwitchPortConfigOverwrite {
         return Optional.ofNullable(this.portNetwork);
     }
     /**
-     * @return Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Link speed override for the switch port
      * 
      */
     public Optional<String> speed() {

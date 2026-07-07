@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingJuniperSrx
     {
         /// <summary>
-        /// auto_upgrade device first time it is onboarded
+        /// SRX auto-upgrade settings applied when Juniper SRX devices are first onboarded
         /// </summary>
         public readonly Outputs.SettingJuniperSrxAutoUpgrade? AutoUpgrade;
 

@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayServicePolicySyslog
     {
+        /// <summary>
+        /// Whether syslog logging is enabled for the service policy
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Names of syslog servers that receive logs for this service policy
+        /// </summary>
         public readonly ImmutableArray<string> ServerNames;
 
         [OutputConstructor]

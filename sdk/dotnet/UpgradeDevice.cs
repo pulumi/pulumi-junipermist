@@ -51,12 +51,21 @@ namespace Pulumi.JuniperMist
     [JuniperMistResourceType("junipermist:index/upgradeDevice:UpgradeDevice")]
     public partial class UpgradeDevice : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Automatic firmware upgrade status for the switch
+        /// </summary>
         [Output("autoUpgradeStat")]
         public Output<Outputs.UpgradeDeviceAutoUpgradeStat> AutoUpgradeStat { get; private set; } = null!;
 
+        /// <summary>
+        /// Time when the switch configuration status was last updated, in epoch seconds
+        /// </summary>
         [Output("configTimestamp")]
         public Output<int> ConfigTimestamp { get; private set; } = null!;
 
+        /// <summary>
+        /// Currently applied configuration version for the switch
+        /// </summary>
         [Output("configVersion")]
         public Output<int> ConfigVersion { get; private set; } = null!;
 
@@ -69,9 +78,15 @@ namespace Pulumi.JuniperMist
         [Output("deviceVersion")]
         public Output<string> DeviceVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// Public IP address observed for the switch
+        /// </summary>
         [Output("extIp")]
         public Output<string> ExtIp { get; private set; } = null!;
 
+        /// <summary>
+        /// Firmware update status for the switch
+        /// </summary>
         [Output("fwupdate")]
         public Output<Outputs.UpgradeDeviceFwupdate> Fwupdate { get; private set; } = null!;
 
@@ -87,6 +102,9 @@ namespace Pulumi.JuniperMist
         [Output("rebootAt")]
         public Output<int?> RebootAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Associated site identifier for the switch statistics record
+        /// </summary>
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
@@ -103,7 +121,7 @@ namespace Pulumi.JuniperMist
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `Error`, `Inprogress`, `Scheduled`, `Starting`, `Success`
+        /// Current status of the requested device upgrade
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -132,9 +150,15 @@ namespace Pulumi.JuniperMist
         [Output("syncUpgradeTimeout")]
         public Output<int> SyncUpgradeTimeout { get; private set; } = null!;
 
+        /// <summary>
+        /// Numeric inventory tag identifier associated with the switch
+        /// </summary>
         [Output("tagId")]
         public Output<int> TagId { get; private set; } = null!;
 
+        /// <summary>
+        /// Inventory tag UUID associated with the switch
+        /// </summary>
         [Output("tagUuid")]
         public Output<string> TagUuid { get; private set; } = null!;
 
@@ -145,7 +169,7 @@ namespace Pulumi.JuniperMist
         public Output<string> TargetVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Epoch (seconds)
+        /// Epoch timestamp when the device upgrade status was reported
         /// </summary>
         [Output("timestamp")]
         public Output<double> Timestamp { get; private set; } = null!;
@@ -212,6 +236,9 @@ namespace Pulumi.JuniperMist
         [Input("rebootAt")]
         public Input<int>? RebootAt { get; set; }
 
+        /// <summary>
+        /// Associated site identifier for the switch statistics record
+        /// </summary>
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
@@ -265,12 +292,21 @@ namespace Pulumi.JuniperMist
 
     public sealed class UpgradeDeviceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Automatic firmware upgrade status for the switch
+        /// </summary>
         [Input("autoUpgradeStat")]
         public Input<Inputs.UpgradeDeviceAutoUpgradeStatGetArgs>? AutoUpgradeStat { get; set; }
 
+        /// <summary>
+        /// Time when the switch configuration status was last updated, in epoch seconds
+        /// </summary>
         [Input("configTimestamp")]
         public Input<int>? ConfigTimestamp { get; set; }
 
+        /// <summary>
+        /// Currently applied configuration version for the switch
+        /// </summary>
         [Input("configVersion")]
         public Input<int>? ConfigVersion { get; set; }
 
@@ -283,9 +319,15 @@ namespace Pulumi.JuniperMist
         [Input("deviceVersion")]
         public Input<string>? DeviceVersion { get; set; }
 
+        /// <summary>
+        /// Public IP address observed for the switch
+        /// </summary>
         [Input("extIp")]
         public Input<string>? ExtIp { get; set; }
 
+        /// <summary>
+        /// Firmware update status for the switch
+        /// </summary>
         [Input("fwupdate")]
         public Input<Inputs.UpgradeDeviceFwupdateGetArgs>? Fwupdate { get; set; }
 
@@ -301,6 +343,9 @@ namespace Pulumi.JuniperMist
         [Input("rebootAt")]
         public Input<int>? RebootAt { get; set; }
 
+        /// <summary>
+        /// Associated site identifier for the switch statistics record
+        /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
@@ -317,7 +362,7 @@ namespace Pulumi.JuniperMist
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// enum: `Error`, `Inprogress`, `Scheduled`, `Starting`, `Success`
+        /// Current status of the requested device upgrade
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -346,9 +391,15 @@ namespace Pulumi.JuniperMist
         [Input("syncUpgradeTimeout")]
         public Input<int>? SyncUpgradeTimeout { get; set; }
 
+        /// <summary>
+        /// Numeric inventory tag identifier associated with the switch
+        /// </summary>
         [Input("tagId")]
         public Input<int>? TagId { get; set; }
 
+        /// <summary>
+        /// Inventory tag UUID associated with the switch
+        /// </summary>
         [Input("tagUuid")]
         public Input<string>? TagUuid { get; set; }
 
@@ -359,7 +410,7 @@ namespace Pulumi.JuniperMist
         public Input<string>? TargetVersion { get; set; }
 
         /// <summary>
-        /// Epoch (seconds)
+        /// Epoch timestamp when the device upgrade status was reported
         /// </summary>
         [Input("timestamp")]
         public Input<double>? Timestamp { get; set; }

@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingMarvisSelfDriving {
+    /**
+     * @return Self-driving automation settings for the WAN domain
+     * 
+     */
     private @Nullable SettingMarvisSelfDrivingWan wan;
+    /**
+     * @return Self-driving automation settings for the wired domain
+     * 
+     */
     private @Nullable SettingMarvisSelfDrivingWired wired;
+    /**
+     * @return Self-driving automation settings for the wireless domain
+     * 
+     */
     private @Nullable SettingMarvisSelfDrivingWireless wireless;
 
     private SettingMarvisSelfDriving() {}
+    /**
+     * @return Self-driving automation settings for the WAN domain
+     * 
+     */
     public Optional<SettingMarvisSelfDrivingWan> wan() {
         return Optional.ofNullable(this.wan);
     }
+    /**
+     * @return Self-driving automation settings for the wired domain
+     * 
+     */
     public Optional<SettingMarvisSelfDrivingWired> wired() {
         return Optional.ofNullable(this.wired);
     }
+    /**
+     * @return Self-driving automation settings for the wireless domain
+     * 
+     */
     public Optional<SettingMarvisSelfDrivingWireless> wireless() {
         return Optional.ofNullable(this.wireless);
     }

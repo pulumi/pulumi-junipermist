@@ -16,9 +16,17 @@ public final class SwitchRemoteSyslogConsoleArgs extends com.pulumi.resources.Re
 
     public static final SwitchRemoteSyslogConsoleArgs Empty = new SwitchRemoteSyslogConsoleArgs();
 
+    /**
+     * Syslog facilities and severities forwarded from console logs
+     * 
+     */
     @Import(name="contents")
     private @Nullable Output<List<SwitchRemoteSyslogConsoleContentArgs>> contents;
 
+    /**
+     * @return Syslog facilities and severities forwarded from console logs
+     * 
+     */
     public Optional<Output<List<SwitchRemoteSyslogConsoleContentArgs>>> contents() {
         return Optional.ofNullable(this.contents);
     }
@@ -47,15 +55,33 @@ public final class SwitchRemoteSyslogConsoleArgs extends com.pulumi.resources.Re
             $ = new SwitchRemoteSyslogConsoleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contents Syslog facilities and severities forwarded from console logs
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(@Nullable Output<List<SwitchRemoteSyslogConsoleContentArgs>> contents) {
             $.contents = contents;
             return this;
         }
 
+        /**
+         * @param contents Syslog facilities and severities forwarded from console logs
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(List<SwitchRemoteSyslogConsoleContentArgs> contents) {
             return contents(Output.of(contents));
         }
 
+        /**
+         * @param contents Syslog facilities and severities forwarded from console logs
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(SwitchRemoteSyslogConsoleContentArgs... contents) {
             return contents(List.of(contents));
         }

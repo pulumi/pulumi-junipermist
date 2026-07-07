@@ -105,18 +105,27 @@ export class EvpnTopology extends pulumi.CustomResource {
     }
 
     /**
-     * EVPN Options
+     * Generation options applied to the EVPN topology
      */
     declare public readonly evpnOptions: pulumi.Output<outputs.site.EvpnTopologyEvpnOptions | undefined>;
+    /**
+     * Display name for the EVPN topology
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Organization that owns the EVPN topology
+     */
     declare public /*out*/ readonly orgId: pulumi.Output<string>;
     /**
      * Property key is the pod number
      */
     declare public readonly podNames: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Site associated with the EVPN topology
+     */
     declare public readonly siteId: pulumi.Output<string>;
     /**
-     * Property key can be the switch MAC Address
+     * Topology member switches, roles, and links
      */
     declare public readonly switches: pulumi.Output<{[key: string]: outputs.site.EvpnTopologySwitches}>;
 
@@ -164,18 +173,27 @@ export class EvpnTopology extends pulumi.CustomResource {
  */
 export interface EvpnTopologyState {
     /**
-     * EVPN Options
+     * Generation options applied to the EVPN topology
      */
     evpnOptions?: pulumi.Input<inputs.site.EvpnTopologyEvpnOptions | undefined>;
+    /**
+     * Display name for the EVPN topology
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns the EVPN topology
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
      * Property key is the pod number
      */
     podNames?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Site associated with the EVPN topology
+     */
     siteId?: pulumi.Input<string | undefined>;
     /**
-     * Property key can be the switch MAC Address
+     * Topology member switches, roles, and links
      */
     switches?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.EvpnTopologySwitches>} | undefined>;
 }
@@ -185,17 +203,23 @@ export interface EvpnTopologyState {
  */
 export interface EvpnTopologyArgs {
     /**
-     * EVPN Options
+     * Generation options applied to the EVPN topology
      */
     evpnOptions?: pulumi.Input<inputs.site.EvpnTopologyEvpnOptions | undefined>;
+    /**
+     * Display name for the EVPN topology
+     */
     name?: pulumi.Input<string | undefined>;
     /**
      * Property key is the pod number
      */
     podNames?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Site associated with the EVPN topology
+     */
     siteId: pulumi.Input<string>;
     /**
-     * Property key can be the switch MAC Address
+     * Topology member switches, roles, and links
      */
     switches: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.EvpnTopologySwitches>}>;
 }

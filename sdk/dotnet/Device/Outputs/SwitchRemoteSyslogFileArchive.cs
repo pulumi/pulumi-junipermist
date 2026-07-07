@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchRemoteSyslogFileArchive
     {
+        /// <summary>
+        /// Number of archived syslog files to retain
+        /// </summary>
         public readonly string? Files;
+        /// <summary>
+        /// Maximum size of each archived syslog file, such as 5m
+        /// </summary>
         public readonly string? Size;
 
         [OutputConstructor]

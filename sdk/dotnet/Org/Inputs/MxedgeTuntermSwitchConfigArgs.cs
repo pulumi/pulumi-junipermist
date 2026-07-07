@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxedgeTuntermSwitchConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Untagged VLAN ID for this tunnel termination switch port
+        /// </summary>
         [Input("portVlanId")]
         public Input<int>? PortVlanId { get; set; }
 
         [Input("vlanIds")]
         private InputList<string>? _vlanIds;
+
+        /// <summary>
+        /// List of tagged VLAN IDs allowed on this tunnel termination switch port
+        /// </summary>
         public InputList<string> VlanIds
         {
             get => _vlanIds ?? (_vlanIds = new InputList<string>());

@@ -82,26 +82,30 @@ type Base struct {
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
 	// Gateway Template ID, used by gateways
 	GatewaytemplateId pulumi.StringPtrOutput `pulumi:"gatewaytemplateId"`
-	Latlng            BaseLatlngPtrOutput    `pulumi:"latlng"`
-	Name              pulumi.StringOutput    `pulumi:"name"`
+	// Latitude and longitude for the site location
+	Latlng BaseLatlngPtrOutput `pulumi:"latlng"`
+	// Display name of the site
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Network Template ID, this takes precedence over Site Settings
 	NetworktemplateId pulumi.StringPtrOutput `pulumi:"networktemplateId"`
 	// Optional, any notes about the site
 	Notes pulumi.StringOutput `pulumi:"notes"`
+	// Organization identifier associated with the site
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId pulumi.StringPtrOutput `pulumi:"rftemplateId"`
 	// Router Template ID, used by gateways
 	RoutertemplateId pulumi.StringPtrOutput `pulumi:"routertemplateId"`
-	// SecPolicy ID
+	// Security policy identifier applied to this site
 	SecpolicyId pulumi.StringPtrOutput `pulumi:"secpolicyId"`
 	// Sitegroups this site belongs to
 	SitegroupIds pulumi.StringArrayOutput `pulumi:"sitegroupIds"`
-	// Site Template ID
+	// Site template identifier applied to this site
 	SitetemplateId pulumi.StringPtrOutput `pulumi:"sitetemplateId"`
-	// Timezone the site is at
+	// IANA time zone name for the site
 	Timezone pulumi.StringOutput `pulumi:"timezone"`
-	Tzoffset pulumi.IntOutput    `pulumi:"tzoffset"`
+	// Time zone offset value derived from the site's timezone
+	Tzoffset pulumi.IntOutput `pulumi:"tzoffset"`
 }
 
 // NewBase registers a new resource with the given unique name, arguments, and options.
@@ -149,27 +153,31 @@ type baseState struct {
 	// Country code for the site (for AP config generation), in two-character
 	CountryCode *string `pulumi:"countryCode"`
 	// Gateway Template ID, used by gateways
-	GatewaytemplateId *string     `pulumi:"gatewaytemplateId"`
-	Latlng            *BaseLatlng `pulumi:"latlng"`
-	Name              *string     `pulumi:"name"`
+	GatewaytemplateId *string `pulumi:"gatewaytemplateId"`
+	// Latitude and longitude for the site location
+	Latlng *BaseLatlng `pulumi:"latlng"`
+	// Display name of the site
+	Name *string `pulumi:"name"`
 	// Network Template ID, this takes precedence over Site Settings
 	NetworktemplateId *string `pulumi:"networktemplateId"`
 	// Optional, any notes about the site
 	Notes *string `pulumi:"notes"`
+	// Organization identifier associated with the site
 	OrgId *string `pulumi:"orgId"`
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId *string `pulumi:"rftemplateId"`
 	// Router Template ID, used by gateways
 	RoutertemplateId *string `pulumi:"routertemplateId"`
-	// SecPolicy ID
+	// Security policy identifier applied to this site
 	SecpolicyId *string `pulumi:"secpolicyId"`
 	// Sitegroups this site belongs to
 	SitegroupIds []string `pulumi:"sitegroupIds"`
-	// Site Template ID
+	// Site template identifier applied to this site
 	SitetemplateId *string `pulumi:"sitetemplateId"`
-	// Timezone the site is at
+	// IANA time zone name for the site
 	Timezone *string `pulumi:"timezone"`
-	Tzoffset *int    `pulumi:"tzoffset"`
+	// Time zone offset value derived from the site's timezone
+	Tzoffset *int `pulumi:"tzoffset"`
 }
 
 type BaseState struct {
@@ -183,25 +191,29 @@ type BaseState struct {
 	CountryCode pulumi.StringPtrInput
 	// Gateway Template ID, used by gateways
 	GatewaytemplateId pulumi.StringPtrInput
-	Latlng            BaseLatlngPtrInput
-	Name              pulumi.StringPtrInput
+	// Latitude and longitude for the site location
+	Latlng BaseLatlngPtrInput
+	// Display name of the site
+	Name pulumi.StringPtrInput
 	// Network Template ID, this takes precedence over Site Settings
 	NetworktemplateId pulumi.StringPtrInput
 	// Optional, any notes about the site
 	Notes pulumi.StringPtrInput
+	// Organization identifier associated with the site
 	OrgId pulumi.StringPtrInput
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId pulumi.StringPtrInput
 	// Router Template ID, used by gateways
 	RoutertemplateId pulumi.StringPtrInput
-	// SecPolicy ID
+	// Security policy identifier applied to this site
 	SecpolicyId pulumi.StringPtrInput
 	// Sitegroups this site belongs to
 	SitegroupIds pulumi.StringArrayInput
-	// Site Template ID
+	// Site template identifier applied to this site
 	SitetemplateId pulumi.StringPtrInput
-	// Timezone the site is at
+	// IANA time zone name for the site
 	Timezone pulumi.StringPtrInput
+	// Time zone offset value derived from the site's timezone
 	Tzoffset pulumi.IntPtrInput
 }
 
@@ -219,25 +231,28 @@ type baseArgs struct {
 	// Country code for the site (for AP config generation), in two-character
 	CountryCode *string `pulumi:"countryCode"`
 	// Gateway Template ID, used by gateways
-	GatewaytemplateId *string     `pulumi:"gatewaytemplateId"`
-	Latlng            *BaseLatlng `pulumi:"latlng"`
-	Name              *string     `pulumi:"name"`
+	GatewaytemplateId *string `pulumi:"gatewaytemplateId"`
+	// Latitude and longitude for the site location
+	Latlng *BaseLatlng `pulumi:"latlng"`
+	// Display name of the site
+	Name *string `pulumi:"name"`
 	// Network Template ID, this takes precedence over Site Settings
 	NetworktemplateId *string `pulumi:"networktemplateId"`
 	// Optional, any notes about the site
 	Notes *string `pulumi:"notes"`
-	OrgId string  `pulumi:"orgId"`
+	// Organization identifier associated with the site
+	OrgId string `pulumi:"orgId"`
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId *string `pulumi:"rftemplateId"`
 	// Router Template ID, used by gateways
 	RoutertemplateId *string `pulumi:"routertemplateId"`
-	// SecPolicy ID
+	// Security policy identifier applied to this site
 	SecpolicyId *string `pulumi:"secpolicyId"`
 	// Sitegroups this site belongs to
 	SitegroupIds []string `pulumi:"sitegroupIds"`
-	// Site Template ID
+	// Site template identifier applied to this site
 	SitetemplateId *string `pulumi:"sitetemplateId"`
-	// Timezone the site is at
+	// IANA time zone name for the site
 	Timezone *string `pulumi:"timezone"`
 }
 
@@ -253,24 +268,27 @@ type BaseArgs struct {
 	CountryCode pulumi.StringPtrInput
 	// Gateway Template ID, used by gateways
 	GatewaytemplateId pulumi.StringPtrInput
-	Latlng            BaseLatlngPtrInput
-	Name              pulumi.StringPtrInput
+	// Latitude and longitude for the site location
+	Latlng BaseLatlngPtrInput
+	// Display name of the site
+	Name pulumi.StringPtrInput
 	// Network Template ID, this takes precedence over Site Settings
 	NetworktemplateId pulumi.StringPtrInput
 	// Optional, any notes about the site
 	Notes pulumi.StringPtrInput
+	// Organization identifier associated with the site
 	OrgId pulumi.StringInput
 	// RF Template ID, this takes precedence over Site Settings
 	RftemplateId pulumi.StringPtrInput
 	// Router Template ID, used by gateways
 	RoutertemplateId pulumi.StringPtrInput
-	// SecPolicy ID
+	// Security policy identifier applied to this site
 	SecpolicyId pulumi.StringPtrInput
 	// Sitegroups this site belongs to
 	SitegroupIds pulumi.StringArrayInput
-	// Site Template ID
+	// Site template identifier applied to this site
 	SitetemplateId pulumi.StringPtrInput
-	// Timezone the site is at
+	// IANA time zone name for the site
 	Timezone pulumi.StringPtrInput
 }
 
@@ -386,10 +404,12 @@ func (o BaseOutput) GatewaytemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.GatewaytemplateId }).(pulumi.StringPtrOutput)
 }
 
+// Latitude and longitude for the site location
 func (o BaseOutput) Latlng() BaseLatlngPtrOutput {
 	return o.ApplyT(func(v *Base) BaseLatlngPtrOutput { return v.Latlng }).(BaseLatlngPtrOutput)
 }
 
+// Display name of the site
 func (o BaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -404,6 +424,7 @@ func (o BaseOutput) Notes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.Notes }).(pulumi.StringOutput)
 }
 
+// Organization identifier associated with the site
 func (o BaseOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
@@ -418,7 +439,7 @@ func (o BaseOutput) RoutertemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.RoutertemplateId }).(pulumi.StringPtrOutput)
 }
 
-// SecPolicy ID
+// Security policy identifier applied to this site
 func (o BaseOutput) SecpolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.SecpolicyId }).(pulumi.StringPtrOutput)
 }
@@ -428,16 +449,17 @@ func (o BaseOutput) SitegroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringArrayOutput { return v.SitegroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Site Template ID
+// Site template identifier applied to this site
 func (o BaseOutput) SitetemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.SitetemplateId }).(pulumi.StringPtrOutput)
 }
 
-// Timezone the site is at
+// IANA time zone name for the site
 func (o BaseOutput) Timezone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
+// Time zone offset value derived from the site's timezone
 func (o BaseOutput) Tzoffset() pulumi.IntOutput {
 	return o.ApplyT(func(v *Base) pulumi.IntOutput { return v.Tzoffset }).(pulumi.IntOutput)
 }

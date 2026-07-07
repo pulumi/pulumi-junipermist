@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? Timeout;
         /// <summary>
-        /// enum: `Http`, `Icmp`
+        /// Protocol used by the custom IPsec tunnel health probe
         /// </summary>
         public readonly string? Type;
 

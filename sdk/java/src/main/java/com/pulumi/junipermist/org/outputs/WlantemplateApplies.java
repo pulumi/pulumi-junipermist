@@ -12,31 +12,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WlantemplateApplies {
+    /**
+     * @return Organization included in the WLAN template application scope
+     * 
+     */
     private @Nullable String orgId;
     /**
-     * @return List of site ids
+     * @return Sites included in the WLAN template application scope
      * 
      */
     private @Nullable List<String> siteIds;
     /**
-     * @return List of sitegroup ids
+     * @return Site groups included in the WLAN template application scope
      * 
      */
     private @Nullable List<String> sitegroupIds;
 
     private WlantemplateApplies() {}
+    /**
+     * @return Organization included in the WLAN template application scope
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return List of site ids
+     * @return Sites included in the WLAN template application scope
      * 
      */
     public List<String> siteIds() {
         return this.siteIds == null ? List.of() : this.siteIds;
     }
     /**
-     * @return List of sitegroup ids
+     * @return Site groups included in the WLAN template application scope
      * 
      */
     public List<String> sitegroupIds() {

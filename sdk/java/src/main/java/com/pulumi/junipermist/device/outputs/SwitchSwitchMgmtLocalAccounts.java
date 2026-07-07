@@ -11,19 +11,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchSwitchMgmtLocalAccounts {
+    /**
+     * @return Local password for the switch user account
+     * 
+     */
     private @Nullable String password;
     /**
-     * @return enum: `admin`, `helpdesk`, `none`, `read`
+     * @return Access role granted to the local switch user account
      * 
      */
     private @Nullable String role;
 
     private SwitchSwitchMgmtLocalAccounts() {}
+    /**
+     * @return Local password for the switch user account
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return enum: `admin`, `helpdesk`, `none`, `read`
+     * @return Access role granted to the local switch user account
      * 
      */
     public Optional<String> role() {

@@ -86,14 +86,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:site/webhook:Webhook")
 public class Webhook extends com.pulumi.resources.CustomResource {
     /**
-     * Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
      * 
      */
     @Export(name="assetfilterIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> assetfilterIds;
 
     /**
-     * @return Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+     * @return Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
      * 
      */
     public Output<Optional<List<String>>> assetfilterIds() {
@@ -128,120 +128,128 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.headers);
     }
     /**
-     * Name of the webhook
+     * Display name of the webhook
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the webhook
+     * @return Display name of the webhook
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
      * 
      */
     @Export(name="oauth2ClientId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2ClientId;
 
     /**
-     * @return Required when `oauth2GrantType`==`clientCredentials`
+     * @return Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
      * 
      */
     public Output<Optional<String>> oauth2ClientId() {
         return Codegen.optional(this.oauth2ClientId);
     }
     /**
-     * Required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
      * 
      */
     @Export(name="oauth2ClientSecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2ClientSecret;
 
     /**
-     * @return Required when `oauth2GrantType`==`clientCredentials`
+     * @return Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
      * 
      */
     public Output<Optional<String>> oauth2ClientSecret() {
         return Codegen.optional(this.oauth2ClientSecret);
     }
     /**
-     * required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+     * OAuth2 grant type used when `type`==`oauth2`
      * 
      */
     @Export(name="oauth2GrantType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2GrantType;
 
     /**
-     * @return required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+     * @return OAuth2 grant type used when `type`==`oauth2`
      * 
      */
     public Output<Optional<String>> oauth2GrantType() {
         return Codegen.optional(this.oauth2GrantType);
     }
     /**
-     * Required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
      * 
      */
     @Export(name="oauth2Password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2Password;
 
     /**
-     * @return Required when `oauth2GrantType`==`password`
+     * @return Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
      * 
      */
     public Output<Optional<String>> oauth2Password() {
         return Codegen.optional(this.oauth2Password);
     }
     /**
-     * Required when `type`==`oauth2`, if provided, will be used in the token request
+     * OAuth2 scopes included in the token request when `type`==`oauth2`
      * 
      */
     @Export(name="oauth2Scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> oauth2Scopes;
 
     /**
-     * @return Required when `type`==`oauth2`, if provided, will be used in the token request
+     * @return OAuth2 scopes included in the token request when `type`==`oauth2`
      * 
      */
     public Output<Optional<List<String>>> oauth2Scopes() {
         return Codegen.optional(this.oauth2Scopes);
     }
     /**
-     * Required when `type`==`oauth2`
+     * Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
      * 
      */
     @Export(name="oauth2TokenUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2TokenUrl;
 
     /**
-     * @return Required when `type`==`oauth2`
+     * @return Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
      * 
      */
     public Output<Optional<String>> oauth2TokenUrl() {
         return Codegen.optional(this.oauth2TokenUrl);
     }
     /**
-     * Required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
      * 
      */
     @Export(name="oauth2Username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oauth2Username;
 
     /**
-     * @return Required when `oauth2GrantType`==`password`
+     * @return Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
      * 
      */
     public Output<Optional<String>> oauth2Username() {
         return Codegen.optional(this.oauth2Username);
     }
+    /**
+     * Organization that owns the webhook
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns the webhook
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -273,9 +281,17 @@ public class Webhook extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> singleEventPerMessage() {
         return Codegen.optional(this.singleEventPerMessage);
     }
+    /**
+     * Site associated with this webhook when it is site-scoped
+     * 
+     */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
+    /**
+     * @return Site associated with this webhook when it is site-scoped
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
@@ -308,22 +324,30 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return this.topics;
     }
     /**
-     * enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+     * Delivery mechanism used by this webhook
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+     * @return Delivery mechanism used by this webhook
      * 
      */
     public Output<String> type() {
         return this.type;
     }
+    /**
+     * Destination URL that receives webhook deliveries
+     * 
+     */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
+    /**
+     * @return Destination URL that receives webhook deliveries
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }

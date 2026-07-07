@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// If `Type`==`Local` or `Type6`==`Local` - optional, if not defined, system one will be used
+        /// If `Type`==`Local` or `Type6`==`Local`, DNS servers advertised to DHCP clients
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// If `Type`==`Local` or `Type6`==`Local` - optional, if not defined, system one will be used
+        /// If `Type`==`Local` or `Type6`==`Local`, DNS search suffixes advertised to DHCP clients
         /// </summary>
         [Obsolete(@"Configuring `DnsSuffix` is deprecated and will not be supported in the future, please configure Code 15 or Code 119 in Server `Options` instead")]
         public InputList<string> DnsSuffixes
@@ -41,7 +41,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.GatewaytemplateDhcpdConfigConfigFixedBindingsGetArgs>? _fixedBindings;
 
         /// <summary>
-        /// If `Type`==`Local` or `Type6`==`Local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
+        /// If `Type`==`Local` or `Type6`==`Local`, fixed client bindings for local DHCP service
         /// </summary>
         public InputMap<Inputs.GatewaytemplateDhcpdConfigConfigFixedBindingsGetArgs> FixedBindings
         {
@@ -56,25 +56,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// If `Type6`==`Local`
+        /// If `Type6`==`Local`, ending IPv6 address for the DHCP lease pool
         /// </summary>
         [Input("ip6End")]
         public Input<string>? Ip6End { get; set; }
 
         /// <summary>
-        /// If `Type6`==`Local`
+        /// If `Type6`==`Local`, starting IPv6 address for the DHCP lease pool
         /// </summary>
         [Input("ip6Start")]
         public Input<string>? Ip6Start { get; set; }
 
         /// <summary>
-        /// If `Type`==`Local`
+        /// If `Type`==`Local`, ending IPv4 address for the DHCP lease pool
         /// </summary>
         [Input("ipEnd")]
         public Input<string>? IpEnd { get; set; }
 
         /// <summary>
-        /// If `Type`==`Local`
+        /// If `Type`==`Local`, starting IPv4 address for the DHCP lease pool
         /// </summary>
         [Input("ipStart")]
         public Input<string>? IpStart { get; set; }
@@ -89,7 +89,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.GatewaytemplateDhcpdConfigConfigOptionsGetArgs>? _options;
 
         /// <summary>
-        /// If `Type`==`Local` or `Type6`==`Local`. Property key is the DHCP option number
+        /// If `Type`==`Local` or `Type6`==`Local`, custom DHCP options advertised to clients
         /// </summary>
         public InputMap<Inputs.GatewaytemplateDhcpdConfigConfigOptionsGetArgs> Options
         {
@@ -108,7 +108,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _servers;
 
         /// <summary>
-        /// If `Type`==`Relay`
+        /// If `Type`==`Relay`, upstream IPv4 DHCP servers
         /// </summary>
         public InputList<string> Servers
         {
@@ -120,7 +120,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _serversv6s;
 
         /// <summary>
-        /// If `Type6`==`Relay`
+        /// If `Type6`==`Relay`, upstream IPv6 DHCP servers
         /// </summary>
         public InputList<string> Serversv6s
         {
@@ -129,13 +129,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// enum: `Local` (DHCP Server), `None`, `Relay` (DHCP Relay)
+        /// IPv4 DHCP mode for this network
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `Local` (DHCP Server), `None`, `Relay` (DHCP Relay)
+        /// IPv6 DHCP mode for this network
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }
@@ -144,9 +144,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.GatewaytemplateDhcpdConfigConfigVendorEncapsulatedGetArgs>? _vendorEncapsulated;
 
         /// <summary>
-        /// If `Type`==`Local` or `Type6`==`Local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-        ///   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-        ///   * sub option code: 1-255, sub-option code
+        /// If `Type`==`Local` or `Type6`==`Local`, vendor-encapsulated DHCP options advertised to clients
         /// </summary>
         public InputMap<Inputs.GatewaytemplateDhcpdConfigConfigVendorEncapsulatedGetArgs> VendorEncapsulated
         {

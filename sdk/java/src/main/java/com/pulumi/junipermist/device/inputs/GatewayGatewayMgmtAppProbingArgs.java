@@ -19,30 +19,46 @@ public final class GatewayGatewayMgmtAppProbingArgs extends com.pulumi.resources
     public static final GatewayGatewayMgmtAppProbingArgs Empty = new GatewayGatewayMgmtAppProbingArgs();
 
     /**
-     * APp-keys from List Applications
+     * Predefined application keys to probe
      * 
      */
     @Import(name="apps")
     private @Nullable Output<List<String>> apps;
 
     /**
-     * @return APp-keys from List Applications
+     * @return Predefined application keys to probe
      * 
      */
     public Optional<Output<List<String>>> apps() {
         return Optional.ofNullable(this.apps);
     }
 
+    /**
+     * User-defined application probe definitions
+     * 
+     */
     @Import(name="customApps")
     private @Nullable Output<List<GatewayGatewayMgmtAppProbingCustomAppArgs>> customApps;
 
+    /**
+     * @return User-defined application probe definitions
+     * 
+     */
     public Optional<Output<List<GatewayGatewayMgmtAppProbingCustomAppArgs>>> customApps() {
         return Optional.ofNullable(this.customApps);
     }
 
+    /**
+     * Whether gateway application probing is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether gateway application probing is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -74,7 +90,7 @@ public final class GatewayGatewayMgmtAppProbingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param apps APp-keys from List Applications
+         * @param apps Predefined application keys to probe
          * 
          * @return builder
          * 
@@ -85,7 +101,7 @@ public final class GatewayGatewayMgmtAppProbingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param apps APp-keys from List Applications
+         * @param apps Predefined application keys to probe
          * 
          * @return builder
          * 
@@ -95,7 +111,7 @@ public final class GatewayGatewayMgmtAppProbingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param apps APp-keys from List Applications
+         * @param apps Predefined application keys to probe
          * 
          * @return builder
          * 
@@ -104,24 +120,54 @@ public final class GatewayGatewayMgmtAppProbingArgs extends com.pulumi.resources
             return apps(List.of(apps));
         }
 
+        /**
+         * @param customApps User-defined application probe definitions
+         * 
+         * @return builder
+         * 
+         */
         public Builder customApps(@Nullable Output<List<GatewayGatewayMgmtAppProbingCustomAppArgs>> customApps) {
             $.customApps = customApps;
             return this;
         }
 
+        /**
+         * @param customApps User-defined application probe definitions
+         * 
+         * @return builder
+         * 
+         */
         public Builder customApps(List<GatewayGatewayMgmtAppProbingCustomAppArgs> customApps) {
             return customApps(Output.of(customApps));
         }
 
+        /**
+         * @param customApps User-defined application probe definitions
+         * 
+         * @return builder
+         * 
+         */
         public Builder customApps(GatewayGatewayMgmtAppProbingCustomAppArgs... customApps) {
             return customApps(List.of(customApps));
         }
 
+        /**
+         * @param enabled Whether gateway application probing is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether gateway application probing is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

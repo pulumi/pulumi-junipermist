@@ -24,12 +24,12 @@ public final class MxclusterRadsecAcctServer {
      */
     private @Nullable Integer port;
     /**
-     * @return Secret of RADIUS server
+     * @return Shared secret used with this RADIUS accounting server
      * 
      */
     private @Nullable String secret;
     /**
-     * @return List of ssids that will use this server if matchSsid is true and match is found
+     * @return WLAN SSID filters that use this accounting server when matching is enabled
      * 
      */
     private @Nullable List<String> ssids;
@@ -50,14 +50,14 @@ public final class MxclusterRadsecAcctServer {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Secret of RADIUS server
+     * @return Shared secret used with this RADIUS accounting server
      * 
      */
     public Optional<String> secret() {
         return Optional.ofNullable(this.secret);
     }
     /**
-     * @return List of ssids that will use this server if matchSsid is true and match is found
+     * @return WLAN SSID filters that use this accounting server when matching is enabled
      * 
      */
     public List<String> ssids() {

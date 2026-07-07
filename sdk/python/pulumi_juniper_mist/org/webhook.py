@@ -40,21 +40,23 @@ class WebhookArgs:
         """
         The set of arguments for constructing a Webhook resource.
 
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the webhook
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
+        :param pulumi.Input[_builtins.str] url: Destination URL that receives webhook deliveries
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
-        :param pulumi.Input[_builtins.str] name: Name of the webhook
-        :param pulumi.Input[_builtins.str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`
-        :param pulumi.Input[_builtins.str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`
-        :param pulumi.Input[_builtins.str] oauth2_grant_type: required when `type`==`oauth2`. enum: `client_credentials`, `password`
-        :param pulumi.Input[_builtins.str] oauth2_password: Required when `oauth2_grant_type`==`password`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: Required when `type`==`oauth2`, if provided, will be used in the token request
-        :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`
-        :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`
+        :param pulumi.Input[_builtins.str] name: Display name of the webhook
+        :param pulumi.Input[_builtins.str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client identifier used to request an access token
+        :param pulumi.Input[_builtins.str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client secret used to request an access token
+        :param pulumi.Input[_builtins.str] oauth2_grant_type: OAuth2 grant type used when `type`==`oauth2`
+        :param pulumi.Input[_builtins.str] oauth2_password: Required when `oauth2_grant_type`==`password`; password used for the OAuth2 token request
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: OAuth2 scopes included in the token request when `type`==`oauth2`
+        :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
+        :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
-        :param pulumi.Input[_builtins.str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        :param pulumi.Input[_builtins.str] type: Delivery mechanism used by this webhook
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -94,6 +96,9 @@ class WebhookArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization that owns the webhook
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -115,6 +120,9 @@ class WebhookArgs:
     @_builtins.property
     @pulumi.getter
     def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        Destination URL that receives webhook deliveries
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -149,7 +157,7 @@ class WebhookArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the webhook
+        Display name of the webhook
         """
         return pulumi.get(self, "name")
 
@@ -161,7 +169,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2ClientId")
     def oauth2_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client identifier used to request an access token
         """
         return pulumi.get(self, "oauth2_client_id")
 
@@ -173,7 +181,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2ClientSecret")
     def oauth2_client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client secret used to request an access token
         """
         return pulumi.get(self, "oauth2_client_secret")
 
@@ -185,7 +193,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2GrantType")
     def oauth2_grant_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        required when `type`==`oauth2`. enum: `client_credentials`, `password`
+        OAuth2 grant type used when `type`==`oauth2`
         """
         return pulumi.get(self, "oauth2_grant_type")
 
@@ -197,7 +205,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2Password")
     def oauth2_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`; password used for the OAuth2 token request
         """
         return pulumi.get(self, "oauth2_password")
 
@@ -209,7 +217,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2Scopes")
     def oauth2_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Required when `type`==`oauth2`, if provided, will be used in the token request
+        OAuth2 scopes included in the token request when `type`==`oauth2`
         """
         return pulumi.get(self, "oauth2_scopes")
 
@@ -221,7 +229,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2TokenUrl")
     def oauth2_token_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required when `type`==`oauth2`
+        Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
         """
         return pulumi.get(self, "oauth2_token_url")
 
@@ -233,7 +241,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2Username")
     def oauth2_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
         """
         return pulumi.get(self, "oauth2_username")
 
@@ -281,7 +289,7 @@ class WebhookArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        Delivery mechanism used by this webhook
         """
         return pulumi.get(self, "type")
 
@@ -328,19 +336,21 @@ class _WebhookState:
 
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
-        :param pulumi.Input[_builtins.str] name: Name of the webhook
-        :param pulumi.Input[_builtins.str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`
-        :param pulumi.Input[_builtins.str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`
-        :param pulumi.Input[_builtins.str] oauth2_grant_type: required when `type`==`oauth2`. enum: `client_credentials`, `password`
-        :param pulumi.Input[_builtins.str] oauth2_password: Required when `oauth2_grant_type`==`password`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: Required when `type`==`oauth2`, if provided, will be used in the token request
-        :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`
-        :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`
+        :param pulumi.Input[_builtins.str] name: Display name of the webhook
+        :param pulumi.Input[_builtins.str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client identifier used to request an access token
+        :param pulumi.Input[_builtins.str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client secret used to request an access token
+        :param pulumi.Input[_builtins.str] oauth2_grant_type: OAuth2 grant type used when `type`==`oauth2`
+        :param pulumi.Input[_builtins.str] oauth2_password: Required when `oauth2_grant_type`==`password`; password used for the OAuth2 token request
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: OAuth2 scopes included in the token request when `type`==`oauth2`
+        :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
+        :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the webhook
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
-        :param pulumi.Input[_builtins.str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        :param pulumi.Input[_builtins.str] type: Delivery mechanism used by this webhook
+        :param pulumi.Input[_builtins.str] url: Destination URL that receives webhook deliveries
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
         if enabled is not None:
@@ -408,7 +418,7 @@ class _WebhookState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the webhook
+        Display name of the webhook
         """
         return pulumi.get(self, "name")
 
@@ -420,7 +430,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2ClientId")
     def oauth2_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client identifier used to request an access token
         """
         return pulumi.get(self, "oauth2_client_id")
 
@@ -432,7 +442,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2ClientSecret")
     def oauth2_client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client secret used to request an access token
         """
         return pulumi.get(self, "oauth2_client_secret")
 
@@ -444,7 +454,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2GrantType")
     def oauth2_grant_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        required when `type`==`oauth2`. enum: `client_credentials`, `password`
+        OAuth2 grant type used when `type`==`oauth2`
         """
         return pulumi.get(self, "oauth2_grant_type")
 
@@ -456,7 +466,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2Password")
     def oauth2_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`; password used for the OAuth2 token request
         """
         return pulumi.get(self, "oauth2_password")
 
@@ -468,7 +478,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2Scopes")
     def oauth2_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Required when `type`==`oauth2`, if provided, will be used in the token request
+        OAuth2 scopes included in the token request when `type`==`oauth2`
         """
         return pulumi.get(self, "oauth2_scopes")
 
@@ -480,7 +490,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2TokenUrl")
     def oauth2_token_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required when `type`==`oauth2`
+        Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
         """
         return pulumi.get(self, "oauth2_token_url")
 
@@ -492,7 +502,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2Username")
     def oauth2_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
         """
         return pulumi.get(self, "oauth2_username")
 
@@ -503,6 +513,9 @@ class _WebhookState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns the webhook
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -561,7 +574,7 @@ class _WebhookState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        Delivery mechanism used by this webhook
         """
         return pulumi.get(self, "type")
 
@@ -572,6 +585,9 @@ class _WebhookState:
     @_builtins.property
     @pulumi.getter
     def url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Destination URL that receives webhook deliveries
+        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -664,19 +680,21 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
-        :param pulumi.Input[_builtins.str] name: Name of the webhook
-        :param pulumi.Input[_builtins.str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`
-        :param pulumi.Input[_builtins.str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`
-        :param pulumi.Input[_builtins.str] oauth2_grant_type: required when `type`==`oauth2`. enum: `client_credentials`, `password`
-        :param pulumi.Input[_builtins.str] oauth2_password: Required when `oauth2_grant_type`==`password`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: Required when `type`==`oauth2`, if provided, will be used in the token request
-        :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`
-        :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`
+        :param pulumi.Input[_builtins.str] name: Display name of the webhook
+        :param pulumi.Input[_builtins.str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client identifier used to request an access token
+        :param pulumi.Input[_builtins.str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client secret used to request an access token
+        :param pulumi.Input[_builtins.str] oauth2_grant_type: OAuth2 grant type used when `type`==`oauth2`
+        :param pulumi.Input[_builtins.str] oauth2_password: Required when `oauth2_grant_type`==`password`; password used for the OAuth2 token request
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: OAuth2 scopes included in the token request when `type`==`oauth2`
+        :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
+        :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the webhook
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
-        :param pulumi.Input[_builtins.str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        :param pulumi.Input[_builtins.str] type: Delivery mechanism used by this webhook
+        :param pulumi.Input[_builtins.str] url: Destination URL that receives webhook deliveries
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
         ...
@@ -834,19 +852,21 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether webhook is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
-        :param pulumi.Input[_builtins.str] name: Name of the webhook
-        :param pulumi.Input[_builtins.str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`
-        :param pulumi.Input[_builtins.str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`
-        :param pulumi.Input[_builtins.str] oauth2_grant_type: required when `type`==`oauth2`. enum: `client_credentials`, `password`
-        :param pulumi.Input[_builtins.str] oauth2_password: Required when `oauth2_grant_type`==`password`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: Required when `type`==`oauth2`, if provided, will be used in the token request
-        :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`
-        :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`
+        :param pulumi.Input[_builtins.str] name: Display name of the webhook
+        :param pulumi.Input[_builtins.str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client identifier used to request an access token
+        :param pulumi.Input[_builtins.str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client secret used to request an access token
+        :param pulumi.Input[_builtins.str] oauth2_grant_type: OAuth2 grant type used when `type`==`oauth2`
+        :param pulumi.Input[_builtins.str] oauth2_password: Required when `oauth2_grant_type`==`password`; password used for the OAuth2 token request
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth2_scopes: OAuth2 scopes included in the token request when `type`==`oauth2`
+        :param pulumi.Input[_builtins.str] oauth2_token_url: Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
+        :param pulumi.Input[_builtins.str] oauth2_username: Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the webhook
         :param pulumi.Input[_builtins.str] secret: Only if `type`=`http-post`
         :param pulumi.Input[_builtins.bool] single_event_per_message: Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
         :param pulumi.Input[_builtins.str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-events`, `device-updowns`, `guest-authorizations`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`
-        :param pulumi.Input[_builtins.str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        :param pulumi.Input[_builtins.str] type: Delivery mechanism used by this webhook
+        :param pulumi.Input[_builtins.str] url: Destination URL that receives webhook deliveries
         :param pulumi.Input[_builtins.bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -893,7 +913,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the webhook
+        Display name of the webhook
         """
         return pulumi.get(self, "name")
 
@@ -901,7 +921,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2ClientId")
     def oauth2_client_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client identifier used to request an access token
         """
         return pulumi.get(self, "oauth2_client_id")
 
@@ -909,7 +929,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2ClientSecret")
     def oauth2_client_secret(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`; OAuth2 client secret used to request an access token
         """
         return pulumi.get(self, "oauth2_client_secret")
 
@@ -917,7 +937,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2GrantType")
     def oauth2_grant_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        required when `type`==`oauth2`. enum: `client_credentials`, `password`
+        OAuth2 grant type used when `type`==`oauth2`
         """
         return pulumi.get(self, "oauth2_grant_type")
 
@@ -925,7 +945,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2Password")
     def oauth2_password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`; password used for the OAuth2 token request
         """
         return pulumi.get(self, "oauth2_password")
 
@@ -933,7 +953,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2Scopes")
     def oauth2_scopes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Required when `type`==`oauth2`, if provided, will be used in the token request
+        OAuth2 scopes included in the token request when `type`==`oauth2`
         """
         return pulumi.get(self, "oauth2_scopes")
 
@@ -941,7 +961,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2TokenUrl")
     def oauth2_token_url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Required when `type`==`oauth2`
+        Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
         """
         return pulumi.get(self, "oauth2_token_url")
 
@@ -949,13 +969,16 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2Username")
     def oauth2_username(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`; username used for the OAuth2 token request
         """
         return pulumi.get(self, "oauth2_username")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns the webhook
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
@@ -994,13 +1017,16 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        Delivery mechanism used by this webhook
         """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Destination URL that receives webhook deliveries
+        """
         return pulumi.get(self, "url")
 
     @_builtins.property

@@ -16,9 +16,13 @@ public final class SwitchRoutingPoliciesTermMatching {
      * 
      */
     private @Nullable List<String> asPaths;
+    /**
+     * @return BGP communities that routes must match
+     * 
+     */
     private @Nullable List<String> communities;
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route prefixes that routes must match
      * 
      */
     private @Nullable List<String> prefixes;
@@ -36,11 +40,15 @@ public final class SwitchRoutingPoliciesTermMatching {
     public List<String> asPaths() {
         return this.asPaths == null ? List.of() : this.asPaths;
     }
+    /**
+     * @return BGP communities that routes must match
+     * 
+     */
     public List<String> communities() {
         return this.communities == null ? List.of() : this.communities;
     }
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route prefixes that routes must match
      * 
      */
     public List<String> prefixes() {

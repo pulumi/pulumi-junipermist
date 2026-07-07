@@ -17,16 +17,32 @@ public final class MxedgeTuntermMulticastConfigSsdpArgs extends com.pulumi.resou
 
     public static final MxedgeTuntermMulticastConfigSsdpArgs Empty = new MxedgeTuntermMulticastConfigSsdpArgs();
 
+    /**
+     * Whether SSDP forwarding is enabled for the configured VLANs
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether SSDP forwarding is enabled for the configured VLANs
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * List of VLAN IDs where SSDP forwarding is enabled
+     * 
+     */
     @Import(name="vlanIds")
     private @Nullable Output<List<String>> vlanIds;
 
+    /**
+     * @return List of VLAN IDs where SSDP forwarding is enabled
+     * 
+     */
     public Optional<Output<List<String>>> vlanIds() {
         return Optional.ofNullable(this.vlanIds);
     }
@@ -56,24 +72,54 @@ public final class MxedgeTuntermMulticastConfigSsdpArgs extends com.pulumi.resou
             $ = new MxedgeTuntermMulticastConfigSsdpArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether SSDP forwarding is enabled for the configured VLANs
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether SSDP forwarding is enabled for the configured VLANs
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param vlanIds List of VLAN IDs where SSDP forwarding is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanIds(@Nullable Output<List<String>> vlanIds) {
             $.vlanIds = vlanIds;
             return this;
         }
 
+        /**
+         * @param vlanIds List of VLAN IDs where SSDP forwarding is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanIds(List<String> vlanIds) {
             return vlanIds(Output.of(vlanIds));
         }
 
+        /**
+         * @param vlanIds List of VLAN IDs where SSDP forwarding is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanIds(String... vlanIds) {
             return vlanIds(List.of(vlanIds));
         }

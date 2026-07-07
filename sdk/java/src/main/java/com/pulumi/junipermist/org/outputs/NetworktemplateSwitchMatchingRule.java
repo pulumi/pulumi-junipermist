@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSwitchMatchingRule {
     /**
-     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * @return Additional Junos CLI commands applied when this matching rule matches
      * 
      */
     private @Nullable List<String> additionalConfigCmds;
@@ -30,7 +30,7 @@ public final class NetworktemplateSwitchMatchingRule {
      */
     private @Nullable String defaultPortUsage;
     /**
-     * @return In-Band Management interface configuration
+     * @return In-band management IP configuration applied when this matching rule matches
      * 
      */
     private @Nullable NetworktemplateSwitchMatchingRuleIpConfig ipConfig;
@@ -60,25 +60,29 @@ public final class NetworktemplateSwitchMatchingRule {
      */
     private @Nullable String name;
     /**
-     * @return Out-of-Band Management interface configuration
+     * @return Out-of-band management IP configuration applied when this matching rule matches
      * 
      */
     private @Nullable NetworktemplateSwitchMatchingRuleOobIpConfig oobIpConfig;
     /**
-     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * @return Per-port wired configuration applied when this matching rule matches
      * 
      */
     private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortConfig> portConfig;
     /**
-     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Port mirroring configuration applied when this matching rule matches
      * 
      */
     private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortMirroring> portMirroring;
+    /**
+     * @return Spanning Tree Protocol configuration applied when this matching rule matches
+     * 
+     */
     private @Nullable NetworktemplateSwitchMatchingRuleStpConfig stpConfig;
 
     private NetworktemplateSwitchMatchingRule() {}
     /**
-     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * @return Additional Junos CLI commands applied when this matching rule matches
      * 
      */
     public List<String> additionalConfigCmds() {
@@ -92,7 +96,7 @@ public final class NetworktemplateSwitchMatchingRule {
         return Optional.ofNullable(this.defaultPortUsage);
     }
     /**
-     * @return In-Band Management interface configuration
+     * @return In-band management IP configuration applied when this matching rule matches
      * 
      */
     public Optional<NetworktemplateSwitchMatchingRuleIpConfig> ipConfig() {
@@ -134,26 +138,30 @@ public final class NetworktemplateSwitchMatchingRule {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Out-of-Band Management interface configuration
+     * @return Out-of-band management IP configuration applied when this matching rule matches
      * 
      */
     public Optional<NetworktemplateSwitchMatchingRuleOobIpConfig> oobIpConfig() {
         return Optional.ofNullable(this.oobIpConfig);
     }
     /**
-     * @return Property key is the port name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * @return Per-port wired configuration applied when this matching rule matches
      * 
      */
     public Map<String,NetworktemplateSwitchMatchingRulePortConfig> portConfig() {
         return this.portConfig == null ? Map.of() : this.portConfig;
     }
     /**
-     * @return Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * @return Port mirroring configuration applied when this matching rule matches
      * 
      */
     public Map<String,NetworktemplateSwitchMatchingRulePortMirroring> portMirroring() {
         return this.portMirroring == null ? Map.of() : this.portMirroring;
     }
+    /**
+     * @return Spanning Tree Protocol configuration applied when this matching rule matches
+     * 
+     */
     public Optional<NetworktemplateSwitchMatchingRuleStpConfig> stpConfig() {
         return Optional.ofNullable(this.stpConfig);
     }

@@ -12,25 +12,42 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchRemoteSyslogGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Retention settings for generated syslog archive files
+        /// </summary>
         [Input("archive")]
         public Input<Inputs.SwitchRemoteSyslogArchiveGetArgs>? Archive { get; set; }
 
         [Input("cacerts")]
         private InputList<string>? _cacerts;
+
+        /// <summary>
+        /// CA certificates used to verify TLS syslog servers
+        /// </summary>
         public InputList<string> Cacerts
         {
             get => _cacerts ?? (_cacerts = new InputList<string>());
             set => _cacerts = value;
         }
 
+        /// <summary>
+        /// Log forwarding filters for console messages sent to remote syslog
+        /// </summary>
         [Input("console")]
         public Input<Inputs.SwitchRemoteSyslogConsoleGetArgs>? Console { get; set; }
 
+        /// <summary>
+        /// Whether remote syslog forwarding is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("files")]
         private InputList<Inputs.SwitchRemoteSyslogFileGetArgs>? _files;
+
+        /// <summary>
+        /// Local syslog file definitions to generate and forward
+        /// </summary>
         public InputList<Inputs.SwitchRemoteSyslogFileGetArgs> Files
         {
             get => _files ?? (_files = new InputList<Inputs.SwitchRemoteSyslogFileGetArgs>());
@@ -38,16 +55,23 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// If SourceAddress is configured, will use the vlan firstly otherwise use source_ip
+        /// Source network used for syslog traffic. If `SourceAddress` is configured, Mist uses the VLAN first; otherwise it uses `SourceIp`
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// Whether each log entry is sent to all configured remote syslog servers
+        /// </summary>
         [Input("sendToAllServers")]
         public Input<bool>? SendToAllServers { get; set; }
 
         [Input("servers")]
         private InputList<Inputs.SwitchRemoteSyslogServerGetArgs>? _servers;
+
+        /// <summary>
+        /// Remote syslog server destinations
+        /// </summary>
         public InputList<Inputs.SwitchRemoteSyslogServerGetArgs> Servers
         {
             get => _servers ?? (_servers = new InputList<Inputs.SwitchRemoteSyslogServerGetArgs>());
@@ -55,13 +79,17 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `Millisecond`, `Year`, `year millisecond`
+        /// Timestamp format used in forwarded syslog messages
         /// </summary>
         [Input("timeFormat")]
         public Input<string>? TimeFormat { get; set; }
 
         [Input("users")]
         private InputList<Inputs.SwitchRemoteSyslogUserGetArgs>? _users;
+
+        /// <summary>
+        /// User-specific syslog logging rules
+        /// </summary>
         public InputList<Inputs.SwitchRemoteSyslogUserGetArgs> Users
         {
             get => _users ?? (_users = new InputList<Inputs.SwitchRemoteSyslogUserGetArgs>());

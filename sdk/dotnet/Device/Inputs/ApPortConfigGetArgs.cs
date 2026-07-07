@@ -12,25 +12,26 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class ApPortConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether this AP Ethernet port is disabled
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Optional dynamic vlan
+        /// RADIUS-assigned VLAN settings for AP port authentication
         /// </summary>
         [Input("dynamicVlan")]
         public Input<Inputs.ApPortConfigDynamicVlanGetArgs>? DynamicVlan { get; set; }
 
+        /// <summary>
+        /// Whether MAC authentication is enabled on this AP port
+        /// </summary>
         [Input("enableMacAuth")]
         public Input<bool>? EnableMacAuth { get; set; }
 
         /// <summary>
-        /// enum: 
-        ///   * `All`: local breakout, All VLANs
-        ///   * `Limited`: local breakout, only the VLANs configured in `PortVlanId` and `VlanIds`
-        ///   * `Mxtunnel`: central breakout to an Org Mist Edge (requires `MxtunnelId`)
-        ///   * `SiteMxedge`: central breakout to a Site Mist Edge (requires `MxtunnelName`)
-        ///   * `Wxtunnel`': central breakout to an Org WxTunnel (requires `WxtunnelId`)
+        /// Traffic forwarding mode for this AP Ethernet port
         /// </summary>
         [Input("forwarding")]
         public Input<string>? Forwarding { get; set; }
@@ -42,11 +43,14 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? MacAuthPreferred { get; set; }
 
         /// <summary>
-        /// if `EnableMacAuth`==`True`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `Pap`
+        /// Protocol used for MAC authentication when `EnableMacAuth` is `True`
         /// </summary>
         [Input("macAuthProtocol")]
         public Input<string>? MacAuthProtocol { get; set; }
 
+        /// <summary>
+        /// Juniper Mist NAC settings used by AP port authentication
+        /// </summary>
         [Input("mistNac")]
         public Input<Inputs.ApPortConfigMistNacGetArgs>? MistNac { get; set; }
 
@@ -63,31 +67,31 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? MxtunnelName { get; set; }
 
         /// <summary>
-        /// When doing port auth. enum: `Dot1x`, `None`
+        /// Authentication mode for this AP Ethernet port
         /// </summary>
         [Input("portAuth")]
         public Input<string>? PortAuth { get; set; }
 
         /// <summary>
-        /// If `Forwarding`==`Limited`
+        /// If `Forwarding`==`Limited`. VLAN ID allowed on this AP Ethernet port
         /// </summary>
         [Input("portVlanId")]
         public Input<int>? PortVlanId { get; set; }
 
         /// <summary>
-        /// Junos Radius config
+        /// RADIUS authentication and accounting settings for this AP port
         /// </summary>
         [Input("radiusConfig")]
         public Input<Inputs.ApPortConfigRadiusConfigGetArgs>? RadiusConfig { get; set; }
 
         /// <summary>
-        /// RadSec settings
+        /// TLS-secured RADIUS settings for this AP port
         /// </summary>
         [Input("radsec")]
         public Input<Inputs.ApPortConfigRadsecGetArgs>? Radsec { get; set; }
 
         /// <summary>
-        /// Optional to specify the vlan id for a tunnel if forwarding is for `Wxtunnel`, `Mxtunnel` or `SiteMxedge`.
+        /// Optional to specify the VLAN ID for a tunnel if forwarding is for `Wxtunnel`, `Mxtunnel` or `SiteMxedge`.
         ///   * if VlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
         ///   * if forwarding == site_mxedge, VlanIds comes from SiteMxedge (`Mxtunnels` under site setting)
         /// </summary>
@@ -95,7 +99,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? VlanId { get; set; }
 
         /// <summary>
-        /// If `Forwarding`==`Limited`, comma separated list of additional vlan ids allowed on this port
+        /// If `Forwarding`==`Limited`, comma separated list of additional VLAN IDs allowed on this port
         /// </summary>
         [Input("vlanIds")]
         public Input<string>? VlanIds { get; set; }

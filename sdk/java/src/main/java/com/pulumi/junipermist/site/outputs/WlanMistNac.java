@@ -14,17 +14,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanMistNac {
     /**
-     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
      * 
      */
     private @Nullable Integer acctInterimInterval;
     /**
-     * @return Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
+     * @return RADIUS auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
      * 
      */
     private @Nullable Integer authServersRetries;
     /**
-     * @return Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
+     * @return RADIUS auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
      * 
      */
     private @Nullable Integer authServersTimeout;
@@ -67,21 +67,21 @@ public final class WlanMistNac {
 
     private WlanMistNac() {}
     /**
-     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled.
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled.
      * 
      */
     public Optional<Integer> acctInterimInterval() {
         return Optional.ofNullable(this.acctInterimInterval);
     }
     /**
-     * @return Radius auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
+     * @return RADIUS auth session retries. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;retries&#34; are set to value of `authServersTimeout`. &#34;max-requests&#34; is also set when setting `authServersRetries` is set to default value to 3.
      * 
      */
     public Optional<Integer> authServersRetries() {
         return Optional.ofNullable(this.authServersRetries);
     }
     /**
-     * @return Radius auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
+     * @return RADIUS auth session timeout. Following fast timers are set if `fastDot1xTimers` knob is enabled. &#34;quite-period&#34; and &#34;transmit-period&#34; are set to half the value of `authServersTimeout`. &#34;supplicant-timeout&#34; is also set when setting `authServersTimeout` is set to default value of 10.
      * 
      */
     public Optional<Integer> authServersTimeout() {

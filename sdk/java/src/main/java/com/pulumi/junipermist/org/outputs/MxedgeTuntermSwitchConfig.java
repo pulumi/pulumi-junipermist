@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxedgeTuntermSwitchConfig {
+    /**
+     * @return Untagged VLAN ID for this tunnel termination switch port
+     * 
+     */
     private @Nullable Integer portVlanId;
+    /**
+     * @return List of tagged VLAN IDs allowed on this tunnel termination switch port
+     * 
+     */
     private @Nullable List<String> vlanIds;
 
     private MxedgeTuntermSwitchConfig() {}
+    /**
+     * @return Untagged VLAN ID for this tunnel termination switch port
+     * 
+     */
     public Optional<Integer> portVlanId() {
         return Optional.ofNullable(this.portVlanId);
     }
+    /**
+     * @return List of tagged VLAN IDs allowed on this tunnel termination switch port
+     * 
+     */
     public List<String> vlanIds() {
         return this.vlanIds == null ? List.of() : this.vlanIds;
     }

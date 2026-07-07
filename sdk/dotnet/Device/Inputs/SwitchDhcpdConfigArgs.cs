@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// If set to `True`, enable the DHCP server
+        /// Whether switch DHCP server or relay configuration is enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

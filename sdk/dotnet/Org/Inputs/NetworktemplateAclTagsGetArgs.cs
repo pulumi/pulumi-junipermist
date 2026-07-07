@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _etherTypes;
 
         /// <summary>
-        /// ARP / IPv6. Default is `Any`
+        /// Layer 2 EtherTypes matched by this ACL tag; defaults to `Any`
         /// </summary>
         public InputList<string> EtherTypes
         {
@@ -37,9 +37,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _macs;
 
         /// <summary>
-        /// Required if 
-        /// - `Type`==`Mac`
-        /// - `Type`==`StaticGbp` if from matching mac
+        /// Client or resource MAC addresses matched by this ACL tag
         /// </summary>
         public InputList<string> Macs
         {
@@ -59,7 +57,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Required if `Type`==`PortUsage`
+        /// Required if `Type`==`PortUsage`. Switch port usage name matched by this ACL tag
         /// </summary>
         [Input("portUsage")]
         public Input<string>? PortUsage { get; set; }
@@ -77,7 +75,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.NetworktemplateAclTagsSpecGetArgs>? _specs;
 
         /// <summary>
-        /// If `Type`==`Resource`, `Type`==`RadiusGroup`, `Type`==`PortUsage` or `Type`==`GbpResource`. Empty means unrestricted, i.e. any
+        /// Layer 4 protocol and destination-port constraints for this ACL tag
         /// </summary>
         public InputList<Inputs.NetworktemplateAclTagsSpecGetArgs> Specs
         {
@@ -89,10 +87,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _subnets;
 
         /// <summary>
-        /// If 
-        /// - `Type`==`Subnet` 
-        /// - `Type`==`Resource` (optional. default is `Any`)
-        /// - `Type`==`StaticGbp` if from matching subnet
+        /// IP subnets matched by this ACL tag
         /// </summary>
         public InputList<string> Subnets
         {
@@ -101,17 +96,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// enum: 
-        ///   * `Any`: matching anything not identified
-        ///   * `DynamicGbp`: from the GbpTag received from RADIUS
-        ///   * `GbpResource`: can only be used in `DstTags`
-        ///   * `Mac`
-        ///   * `Network`
-        ///   * `PortUsage`
-        ///   * `RadiusGroup`
-        ///   * `Resource`: can only be used in `DstTags`
-        ///   * `StaticGbp`: applying gbp tag against matching conditions
-        ///   * `Subnet`'
+        /// Classifier type that determines which ACL tag fields are evaluated
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

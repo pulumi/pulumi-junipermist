@@ -28,6 +28,10 @@ public final class ApAeroscout {
      * 
      */
     private @Nullable Boolean locateConnected;
+    /**
+     * @return Optional if enabled, Aeroscout server port. Defaults to 1144
+     * 
+     */
     private @Nullable Integer port;
 
     private ApAeroscout() {}
@@ -52,6 +56,10 @@ public final class ApAeroscout {
     public Optional<Boolean> locateConnected() {
         return Optional.ofNullable(this.locateConnected);
     }
+    /**
+     * @return Optional if enabled, Aeroscout server port. Defaults to 1144
+     * 
+     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }

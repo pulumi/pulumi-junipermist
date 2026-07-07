@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional Junos CLI commands applied when this matching rule matches
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? DefaultPortUsage { get; set; }
 
         /// <summary>
-        /// In-Band Management interface configuration
+        /// In-band management IP configuration applied when this matching rule matches
         /// </summary>
         [Input("ipConfig")]
         public Input<Inputs.NetworktemplateSwitchMatchingRuleIpConfigArgs>? IpConfig { get; set; }
@@ -67,7 +67,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Out-of-Band Management interface configuration
+        /// Out-of-band management IP configuration applied when this matching rule matches
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.NetworktemplateSwitchMatchingRuleOobIpConfigArgs>? OobIpConfig { get; set; }
@@ -76,7 +76,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.NetworktemplateSwitchMatchingRulePortConfigArgs>? _portConfig;
 
         /// <summary>
-        /// Property key is the port name or range (e.g. "ge-0/0/0-10")
+        /// Per-port wired configuration applied when this matching rule matches
         /// </summary>
         public InputMap<Inputs.NetworktemplateSwitchMatchingRulePortConfigArgs> PortConfig
         {
@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.NetworktemplateSwitchMatchingRulePortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Port mirroring configuration applied when this matching rule matches
         /// </summary>
         public InputMap<Inputs.NetworktemplateSwitchMatchingRulePortMirroringArgs> PortMirroring
         {
@@ -96,6 +96,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _portMirroring = value;
         }
 
+        /// <summary>
+        /// Spanning Tree Protocol configuration applied when this matching rule matches
+        /// </summary>
         [Input("stpConfig")]
         public Input<Inputs.NetworktemplateSwitchMatchingRuleStpConfigArgs>? StpConfig { get; set; }
 

@@ -17,23 +17,47 @@ public final class SettingMarvisSelfDrivingArgs extends com.pulumi.resources.Res
 
     public static final SettingMarvisSelfDrivingArgs Empty = new SettingMarvisSelfDrivingArgs();
 
+    /**
+     * Self-driving automation settings for the WAN domain
+     * 
+     */
     @Import(name="wan")
     private @Nullable Output<SettingMarvisSelfDrivingWanArgs> wan;
 
+    /**
+     * @return Self-driving automation settings for the WAN domain
+     * 
+     */
     public Optional<Output<SettingMarvisSelfDrivingWanArgs>> wan() {
         return Optional.ofNullable(this.wan);
     }
 
+    /**
+     * Self-driving automation settings for the wired domain
+     * 
+     */
     @Import(name="wired")
     private @Nullable Output<SettingMarvisSelfDrivingWiredArgs> wired;
 
+    /**
+     * @return Self-driving automation settings for the wired domain
+     * 
+     */
     public Optional<Output<SettingMarvisSelfDrivingWiredArgs>> wired() {
         return Optional.ofNullable(this.wired);
     }
 
+    /**
+     * Self-driving automation settings for the wireless domain
+     * 
+     */
     @Import(name="wireless")
     private @Nullable Output<SettingMarvisSelfDrivingWirelessArgs> wireless;
 
+    /**
+     * @return Self-driving automation settings for the wireless domain
+     * 
+     */
     public Optional<Output<SettingMarvisSelfDrivingWirelessArgs>> wireless() {
         return Optional.ofNullable(this.wireless);
     }
@@ -64,29 +88,65 @@ public final class SettingMarvisSelfDrivingArgs extends com.pulumi.resources.Res
             $ = new SettingMarvisSelfDrivingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param wan Self-driving automation settings for the WAN domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder wan(@Nullable Output<SettingMarvisSelfDrivingWanArgs> wan) {
             $.wan = wan;
             return this;
         }
 
+        /**
+         * @param wan Self-driving automation settings for the WAN domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder wan(SettingMarvisSelfDrivingWanArgs wan) {
             return wan(Output.of(wan));
         }
 
+        /**
+         * @param wired Self-driving automation settings for the wired domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder wired(@Nullable Output<SettingMarvisSelfDrivingWiredArgs> wired) {
             $.wired = wired;
             return this;
         }
 
+        /**
+         * @param wired Self-driving automation settings for the wired domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder wired(SettingMarvisSelfDrivingWiredArgs wired) {
             return wired(Output.of(wired));
         }
 
+        /**
+         * @param wireless Self-driving automation settings for the wireless domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder wireless(@Nullable Output<SettingMarvisSelfDrivingWirelessArgs> wireless) {
             $.wireless = wireless;
             return this;
         }
 
+        /**
+         * @param wireless Self-driving automation settings for the wireless domain
+         * 
+         * @return builder
+         * 
+         */
         public Builder wireless(SettingMarvisSelfDrivingWirelessArgs wireless) {
             return wireless(Output.of(wireless));
         }

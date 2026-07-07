@@ -22,11 +22,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// Secret of RADIUS server
+        /// Shared secret used with this RADIUS accounting server
         /// </summary>
         public readonly string? Secret;
         /// <summary>
-        /// List of ssids that will use this server if MatchSsid is true and match is found
+        /// WLAN SSID filters that use this accounting server when matching is enabled
         /// </summary>
         public readonly ImmutableArray<string> Ssids;
 

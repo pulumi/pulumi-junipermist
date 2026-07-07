@@ -16,22 +16,30 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
 
     public static final WlantemplateAppliesArgs Empty = new WlantemplateAppliesArgs();
 
+    /**
+     * Organization included in the WLAN template application scope
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization included in the WLAN template application scope
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
     /**
-     * List of site ids
+     * Sites included in the WLAN template application scope
      * 
      */
     @Import(name="siteIds")
     private @Nullable Output<List<String>> siteIds;
 
     /**
-     * @return List of site ids
+     * @return Sites included in the WLAN template application scope
      * 
      */
     public Optional<Output<List<String>>> siteIds() {
@@ -39,14 +47,14 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * List of sitegroup ids
+     * Site groups included in the WLAN template application scope
      * 
      */
     @Import(name="sitegroupIds")
     private @Nullable Output<List<String>> sitegroupIds;
 
     /**
-     * @return List of sitegroup ids
+     * @return Site groups included in the WLAN template application scope
      * 
      */
     public Optional<Output<List<String>>> sitegroupIds() {
@@ -79,17 +87,29 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
             $ = new WlantemplateAppliesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param orgId Organization included in the WLAN template application scope
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization included in the WLAN template application scope
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param siteIds List of site ids
+         * @param siteIds Sites included in the WLAN template application scope
          * 
          * @return builder
          * 
@@ -100,7 +120,7 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param siteIds List of site ids
+         * @param siteIds Sites included in the WLAN template application scope
          * 
          * @return builder
          * 
@@ -110,7 +130,7 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param siteIds List of site ids
+         * @param siteIds Sites included in the WLAN template application scope
          * 
          * @return builder
          * 
@@ -120,7 +140,7 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sitegroupIds List of sitegroup ids
+         * @param sitegroupIds Site groups included in the WLAN template application scope
          * 
          * @return builder
          * 
@@ -131,7 +151,7 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sitegroupIds List of sitegroup ids
+         * @param sitegroupIds Site groups included in the WLAN template application scope
          * 
          * @return builder
          * 
@@ -141,7 +161,7 @@ public final class WlantemplateAppliesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sitegroupIds List of sitegroup ids
+         * @param sitegroupIds Site groups included in the WLAN template application scope
          * 
          * @return builder
          * 

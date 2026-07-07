@@ -91,22 +91,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/nacPortalTemplate:NacPortalTemplate")
 public class NacPortalTemplate extends com.pulumi.resources.CustomResource {
     /**
-     * defines alignment on portal. enum: `center`, `left`, `right`
+     * Text and content alignment for the NAC portal page
      * 
      */
     @Export(name="alignment", refs={String.class}, tree="[0]")
     private Output<String> alignment;
 
     /**
-     * @return defines alignment on portal. enum: `center`, `left`, `right`
+     * @return Text and content alignment for the NAC portal page
      * 
      */
     public Output<String> alignment() {
         return this.alignment;
     }
+    /**
+     * Primary color used by the NAC portal template
+     * 
+     */
     @Export(name="color", refs={String.class}, tree="[0]")
     private Output<String> color;
 
+    /**
+     * @return Primary color used by the NAC portal template
+     * 
+     */
     public Output<String> color() {
         return this.color;
     }

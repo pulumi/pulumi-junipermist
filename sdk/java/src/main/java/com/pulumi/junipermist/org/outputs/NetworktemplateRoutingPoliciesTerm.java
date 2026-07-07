@@ -15,32 +15,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateRoutingPoliciesTerm {
     /**
-     * @return When used as import policy
+     * @return Policy actions applied when this routing policy term matches
      * 
      */
     private @Nullable NetworktemplateRoutingPoliciesTermActions actions;
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route match criteria that must be satisfied before actions are applied
      * 
      */
     private @Nullable NetworktemplateRoutingPoliciesTermMatching matching;
+    /**
+     * @return Display name of the switch routing policy term
+     * 
+     */
     private String name;
 
     private NetworktemplateRoutingPoliciesTerm() {}
     /**
-     * @return When used as import policy
+     * @return Policy actions applied when this routing policy term matches
      * 
      */
     public Optional<NetworktemplateRoutingPoliciesTermActions> actions() {
         return Optional.ofNullable(this.actions);
     }
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route match criteria that must be satisfied before actions are applied
      * 
      */
     public Optional<NetworktemplateRoutingPoliciesTermMatching> matching() {
         return Optional.ofNullable(this.matching);
     }
+    /**
+     * @return Display name of the switch routing policy term
+     * 
+     */
     public String name() {
         return this.name;
     }

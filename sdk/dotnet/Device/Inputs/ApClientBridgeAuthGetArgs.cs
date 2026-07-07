@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         [Input("psk")]
         private Input<string>? _psk;
+
+        /// <summary>
+        /// Pre-shared key used when `Type`==`Psk` for client bridge authentication
+        /// </summary>
         public Input<string>? Psk
         {
             get => _psk;
@@ -25,7 +29,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// wpa2-AES/CCMPp is assumed when `Type`==`Psk`. enum: `Open`, `Psk`
+        /// Authentication mode for the client bridge connection
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

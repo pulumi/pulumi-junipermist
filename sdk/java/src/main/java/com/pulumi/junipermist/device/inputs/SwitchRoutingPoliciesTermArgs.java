@@ -19,14 +19,14 @@ public final class SwitchRoutingPoliciesTermArgs extends com.pulumi.resources.Re
     public static final SwitchRoutingPoliciesTermArgs Empty = new SwitchRoutingPoliciesTermArgs();
 
     /**
-     * When used as import policy
+     * Policy actions applied when this routing policy term matches
      * 
      */
     @Import(name="actions")
     private @Nullable Output<SwitchRoutingPoliciesTermActionsArgs> actions;
 
     /**
-     * @return When used as import policy
+     * @return Policy actions applied when this routing policy term matches
      * 
      */
     public Optional<Output<SwitchRoutingPoliciesTermActionsArgs>> actions() {
@@ -34,23 +34,31 @@ public final class SwitchRoutingPoliciesTermArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * Route match criteria that must be satisfied before actions are applied
      * 
      */
     @Import(name="matching")
     private @Nullable Output<SwitchRoutingPoliciesTermMatchingArgs> matching;
 
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route match criteria that must be satisfied before actions are applied
      * 
      */
     public Optional<Output<SwitchRoutingPoliciesTermMatchingArgs>> matching() {
         return Optional.ofNullable(this.matching);
     }
 
+    /**
+     * Display name of the switch routing policy term
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Display name of the switch routing policy term
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -82,7 +90,7 @@ public final class SwitchRoutingPoliciesTermArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param actions When used as import policy
+         * @param actions Policy actions applied when this routing policy term matches
          * 
          * @return builder
          * 
@@ -93,7 +101,7 @@ public final class SwitchRoutingPoliciesTermArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param actions When used as import policy
+         * @param actions Policy actions applied when this routing policy term matches
          * 
          * @return builder
          * 
@@ -103,7 +111,7 @@ public final class SwitchRoutingPoliciesTermArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param matching zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param matching Route match criteria that must be satisfied before actions are applied
          * 
          * @return builder
          * 
@@ -114,7 +122,7 @@ public final class SwitchRoutingPoliciesTermArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param matching zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param matching Route match criteria that must be satisfied before actions are applied
          * 
          * @return builder
          * 
@@ -123,11 +131,23 @@ public final class SwitchRoutingPoliciesTermArgs extends com.pulumi.resources.Re
             return matching(Output.of(matching));
         }
 
+        /**
+         * @param name Display name of the switch routing policy term
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the switch routing policy term
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

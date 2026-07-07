@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
     {
         [Input("apitoken")]
         private Input<string>? _apitoken;
+
+        /// <summary>
+        /// Token used by Mist to access the CloudShark integration
+        /// </summary>
         public Input<string>? Apitoken
         {
             get => _apitoken;
@@ -25,7 +29,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// If using CS Enterprise
+        /// CloudShark Enterprise URL, if using a self-hosted CS Enterprise instance
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

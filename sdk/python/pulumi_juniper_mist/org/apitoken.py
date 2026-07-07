@@ -28,9 +28,10 @@ class ApitokenArgs:
         """
         The set of arguments for constructing a Apitoken resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]] privileges: List of privileges the token has on the orgs/sites
-        :param pulumi.Input[_builtins.str] name: Name of the token
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ips: List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this API token
+        :param pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]] privileges: Access scopes and roles granted to the organization API token
+        :param pulumi.Input[_builtins.str] name: Display name of the organization API token
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ips: Allowed source IP addresses or CIDRs from which the token may be used
         """
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "privileges", privileges)
@@ -42,6 +43,9 @@ class ApitokenArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization that owns this API token
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -52,7 +56,7 @@ class ApitokenArgs:
     @pulumi.getter
     def privileges(self) -> pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]]:
         """
-        List of privileges the token has on the orgs/sites
+        Access scopes and roles granted to the organization API token
         """
         return pulumi.get(self, "privileges")
 
@@ -64,7 +68,7 @@ class ApitokenArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the token
+        Display name of the organization API token
         """
         return pulumi.get(self, "name")
 
@@ -76,7 +80,7 @@ class ApitokenArgs:
     @pulumi.getter(name="srcIps")
     def src_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        Allowed source IP addresses or CIDRs from which the token may be used
         """
         return pulumi.get(self, "src_ips")
 
@@ -98,9 +102,11 @@ class _ApitokenState:
         Input properties used for looking up and filtering Apitoken resources.
 
         :param pulumi.Input[_builtins.str] created_by: email of the token creator / null if creator is deleted
-        :param pulumi.Input[_builtins.str] name: Name of the token
-        :param pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]] privileges: List of privileges the token has on the orgs/sites
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ips: List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        :param pulumi.Input[_builtins.str] key: Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
+        :param pulumi.Input[_builtins.str] name: Display name of the organization API token
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this API token
+        :param pulumi.Input[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]] privileges: Access scopes and roles granted to the organization API token
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ips: Allowed source IP addresses or CIDRs from which the token may be used
         """
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
@@ -130,6 +136,9 @@ class _ApitokenState:
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -140,7 +149,7 @@ class _ApitokenState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the token
+        Display name of the organization API token
         """
         return pulumi.get(self, "name")
 
@@ -151,6 +160,9 @@ class _ApitokenState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns this API token
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -161,7 +173,7 @@ class _ApitokenState:
     @pulumi.getter
     def privileges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApitokenPrivilegeArgs']]]]:
         """
-        List of privileges the token has on the orgs/sites
+        Access scopes and roles granted to the organization API token
         """
         return pulumi.get(self, "privileges")
 
@@ -173,7 +185,7 @@ class _ApitokenState:
     @pulumi.getter(name="srcIps")
     def src_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        Allowed source IP addresses or CIDRs from which the token may be used
         """
         return pulumi.get(self, "src_ips")
 
@@ -227,9 +239,10 @@ class Apitoken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: Name of the token
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]] privileges: List of privileges the token has on the orgs/sites
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ips: List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        :param pulumi.Input[_builtins.str] name: Display name of the organization API token
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this API token
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]] privileges: Access scopes and roles granted to the organization API token
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ips: Allowed source IP addresses or CIDRs from which the token may be used
         """
         ...
     @overload
@@ -333,9 +346,11 @@ class Apitoken(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_by: email of the token creator / null if creator is deleted
-        :param pulumi.Input[_builtins.str] name: Name of the token
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]] privileges: List of privileges the token has on the orgs/sites
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ips: List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        :param pulumi.Input[_builtins.str] key: Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
+        :param pulumi.Input[_builtins.str] name: Display name of the organization API token
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this API token
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApitokenPrivilegeArgs', 'ApitokenPrivilegeArgsDict']]]] privileges: Access scopes and roles granted to the organization API token
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ips: Allowed source IP addresses or CIDRs from which the token may be used
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -360,26 +375,32 @@ class Apitoken(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
+        """
+        Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
+        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the token
+        Display name of the organization API token
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns this API token
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter
     def privileges(self) -> pulumi.Output[Sequence['outputs.ApitokenPrivilege']]:
         """
-        List of privileges the token has on the orgs/sites
+        Access scopes and roles granted to the organization API token
         """
         return pulumi.get(self, "privileges")
 
@@ -387,7 +408,7 @@ class Apitoken(pulumi.CustomResource):
     @pulumi.getter(name="srcIps")
     def src_ips(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        Allowed source IP addresses or CIDRs from which the token may be used
         """
         return pulumi.get(self, "src_ips")
 

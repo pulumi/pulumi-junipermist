@@ -15,9 +15,17 @@ public final class DeviceprofileGatewayPortConfigWanExtraRoutes6Args extends com
 
     public static final DeviceprofileGatewayPortConfigWanExtraRoutes6Args Empty = new DeviceprofileGatewayPortConfigWanExtraRoutes6Args();
 
+    /**
+     * IPv6 next-hop address for this WAN extra route
+     * 
+     */
     @Import(name="via")
     private @Nullable Output<String> via;
 
+    /**
+     * @return IPv6 next-hop address for this WAN extra route
+     * 
+     */
     public Optional<Output<String>> via() {
         return Optional.ofNullable(this.via);
     }
@@ -46,11 +54,23 @@ public final class DeviceprofileGatewayPortConfigWanExtraRoutes6Args extends com
             $ = new DeviceprofileGatewayPortConfigWanExtraRoutes6Args(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param via IPv6 next-hop address for this WAN extra route
+         * 
+         * @return builder
+         * 
+         */
         public Builder via(@Nullable Output<String> via) {
             $.via = via;
             return this;
         }
 
+        /**
+         * @param via IPv6 next-hop address for this WAN extra route
+         * 
+         * @return builder
+         * 
+         */
         public Builder via(String via) {
             return via(Output.of(via));
         }

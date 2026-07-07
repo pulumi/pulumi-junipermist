@@ -14,87 +14,111 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileApPortConfigRadsec {
+    /**
+     * @return Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
+     * 
+     */
     private @Nullable Boolean coaEnabled;
+    /**
+     * @return Whether RadSec is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Idle timeout, in seconds, for RadSec connections
+     * 
+     */
     private @Nullable String idleTimeout;
     /**
-     * @return To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+     * @return Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
      * 
      */
     private @Nullable List<String> mxclusterIds;
     /**
-     * @return Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+     * @return RadSec proxy hostnames advertised to APs
      * 
      */
     private @Nullable List<String> proxyHosts;
     /**
-     * @return Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+     * @return TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
      * 
      */
     private @Nullable String serverName;
     /**
-     * @return List of RadSec Servers. Only if not Mist Edge.
+     * @return External RadSec servers. Only if not Mist Edge.
      * 
      */
     private @Nullable List<DeviceprofileApPortConfigRadsecServer> servers;
     /**
-     * @return use mxedge(s) as RadSec Proxy
+     * @return Whether to use organization Mist Edge instances as RadSec proxies
      * 
      */
     private @Nullable Boolean useMxedge;
     /**
-     * @return To use Site mxedges when this WLAN does not use mxtunnel
+     * @return Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
      * 
      */
     private @Nullable Boolean useSiteMxedge;
 
     private DeviceprofileApPortConfigRadsec() {}
+    /**
+     * @return Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
+     * 
+     */
     public Optional<Boolean> coaEnabled() {
         return Optional.ofNullable(this.coaEnabled);
     }
+    /**
+     * @return Whether RadSec is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Idle timeout, in seconds, for RadSec connections
+     * 
+     */
     public Optional<String> idleTimeout() {
         return Optional.ofNullable(this.idleTimeout);
     }
     /**
-     * @return To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+     * @return Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
      * 
      */
     public List<String> mxclusterIds() {
         return this.mxclusterIds == null ? List.of() : this.mxclusterIds;
     }
     /**
-     * @return Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+     * @return RadSec proxy hostnames advertised to APs
      * 
      */
     public List<String> proxyHosts() {
         return this.proxyHosts == null ? List.of() : this.proxyHosts;
     }
     /**
-     * @return Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+     * @return TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
      * 
      */
     public Optional<String> serverName() {
         return Optional.ofNullable(this.serverName);
     }
     /**
-     * @return List of RadSec Servers. Only if not Mist Edge.
+     * @return External RadSec servers. Only if not Mist Edge.
      * 
      */
     public List<DeviceprofileApPortConfigRadsecServer> servers() {
         return this.servers == null ? List.of() : this.servers;
     }
     /**
-     * @return use mxedge(s) as RadSec Proxy
+     * @return Whether to use organization Mist Edge instances as RadSec proxies
      * 
      */
     public Optional<Boolean> useMxedge() {
         return Optional.ofNullable(this.useMxedge);
     }
     /**
-     * @return To use Site mxedges when this WLAN does not use mxtunnel
+     * @return Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
      * 
      */
     public Optional<Boolean> useSiteMxedge() {

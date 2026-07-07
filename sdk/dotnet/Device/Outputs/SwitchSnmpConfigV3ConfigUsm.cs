@@ -14,13 +14,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchSnmpConfigV3ConfigUsm
     {
         /// <summary>
-        /// enum: `LocalEngine`, `RemoteEngine`
+        /// SNMP engine type used for this USM configuration
         /// </summary>
         public readonly string EngineType;
         /// <summary>
         /// Required only if `EngineType`==`RemoteEngine`
         /// </summary>
         public readonly string? RemoteEngineId;
+        /// <summary>
+        /// SNMPv3 USM users for this engine
+        /// </summary>
         public readonly ImmutableArray<Outputs.SwitchSnmpConfigV3ConfigUsmUser> Users;
 
         [OutputConstructor]

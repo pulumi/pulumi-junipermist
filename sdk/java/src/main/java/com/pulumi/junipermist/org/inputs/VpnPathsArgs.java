@@ -21,14 +21,14 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
     public static final VpnPathsArgs Empty = new VpnPathsArgs();
 
     /**
-     * enum: `broadband`, `lte`
+     * BFD profile used for this VPN path
      * 
      */
     @Import(name="bfdProfile")
     private @Nullable Output<String> bfdProfile;
 
     /**
-     * @return enum: `broadband`, `lte`
+     * @return BFD profile used for this VPN path
      * 
      */
     public Optional<Output<String>> bfdProfile() {
@@ -51,14 +51,14 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If different from the wan port
+     * Source IP address for this VPN path, if different from the WAN port IP
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return If different from the wan port
+     * @return Source IP address for this VPN path, if different from the WAN port IP
      * 
      */
     public Optional<Output<String>> ip() {
@@ -66,30 +66,46 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `type`==`mesh`, Property key is the Peer Interface name
+     * Peer path preferences used when `type`==`mesh`
      * 
      */
     @Import(name="peerPaths")
     private @Nullable Output<Map<String,VpnPathsPeerPathsArgs>> peerPaths;
 
     /**
-     * @return If `type`==`mesh`, Property key is the Peer Interface name
+     * @return Peer path preferences used when `type`==`mesh`
      * 
      */
     public Optional<Output<Map<String,VpnPathsPeerPathsArgs>>> peerPaths() {
         return Optional.ofNullable(this.peerPaths);
     }
 
+    /**
+     * Grouping index used to place this VPN path into a pod
+     * 
+     */
     @Import(name="pod")
     private @Nullable Output<Integer> pod;
 
+    /**
+     * @return Grouping index used to place this VPN path into a pod
+     * 
+     */
     public Optional<Output<Integer>> pod() {
         return Optional.ofNullable(this.pod);
     }
 
+    /**
+     * Traffic shaping settings applied to this VPN path
+     * 
+     */
     @Import(name="trafficShaping")
     private @Nullable Output<VpnPathsTrafficShapingArgs> trafficShaping;
 
+    /**
+     * @return Traffic shaping settings applied to this VPN path
+     * 
+     */
     public Optional<Output<VpnPathsTrafficShapingArgs>> trafficShaping() {
         return Optional.ofNullable(this.trafficShaping);
     }
@@ -124,7 +140,7 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bfdProfile enum: `broadband`, `lte`
+         * @param bfdProfile BFD profile used for this VPN path
          * 
          * @return builder
          * 
@@ -135,7 +151,7 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bfdProfile enum: `broadband`, `lte`
+         * @param bfdProfile BFD profile used for this VPN path
          * 
          * @return builder
          * 
@@ -166,7 +182,7 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip If different from the wan port
+         * @param ip Source IP address for this VPN path, if different from the WAN port IP
          * 
          * @return builder
          * 
@@ -177,7 +193,7 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip If different from the wan port
+         * @param ip Source IP address for this VPN path, if different from the WAN port IP
          * 
          * @return builder
          * 
@@ -187,7 +203,7 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peerPaths If `type`==`mesh`, Property key is the Peer Interface name
+         * @param peerPaths Peer path preferences used when `type`==`mesh`
          * 
          * @return builder
          * 
@@ -198,7 +214,7 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peerPaths If `type`==`mesh`, Property key is the Peer Interface name
+         * @param peerPaths Peer path preferences used when `type`==`mesh`
          * 
          * @return builder
          * 
@@ -207,20 +223,44 @@ public final class VpnPathsArgs extends com.pulumi.resources.ResourceArgs {
             return peerPaths(Output.of(peerPaths));
         }
 
+        /**
+         * @param pod Grouping index used to place this VPN path into a pod
+         * 
+         * @return builder
+         * 
+         */
         public Builder pod(@Nullable Output<Integer> pod) {
             $.pod = pod;
             return this;
         }
 
+        /**
+         * @param pod Grouping index used to place this VPN path into a pod
+         * 
+         * @return builder
+         * 
+         */
         public Builder pod(Integer pod) {
             return pod(Output.of(pod));
         }
 
+        /**
+         * @param trafficShaping Traffic shaping settings applied to this VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder trafficShaping(@Nullable Output<VpnPathsTrafficShapingArgs> trafficShaping) {
             $.trafficShaping = trafficShaping;
             return this;
         }
 
+        /**
+         * @param trafficShaping Traffic shaping settings applied to this VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder trafficShaping(VpnPathsTrafficShapingArgs trafficShaping) {
             return trafficShaping(Output.of(trafficShaping));
         }

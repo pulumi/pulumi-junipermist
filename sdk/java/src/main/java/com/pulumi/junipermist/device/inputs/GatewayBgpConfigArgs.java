@@ -85,9 +85,17 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.disableBfd);
     }
 
+    /**
+     * Routing policy applied to routes exported by this BGP session
+     * 
+     */
     @Import(name="export")
     private @Nullable Output<String> export;
 
+    /**
+     * @return Routing policy applied to routes exported by this BGP session
+     * 
+     */
     public Optional<Output<String>> export() {
         return Optional.ofNullable(this.export);
     }
@@ -152,9 +160,17 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.holdTime);
     }
 
+    /**
+     * Routing policy applied to routes imported by this BGP session
+     * 
+     */
     @Import(name="import")
     private @Nullable Output<String> import_;
 
+    /**
+     * @return Routing policy applied to routes imported by this BGP session
+     * 
+     */
     public Optional<Output<String>> import_() {
         return Optional.ofNullable(this.import_);
     }
@@ -220,14 +236,14 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+     * Optional if `via`==`lan`; networks where BGP neighbors can connect to or from
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+     * @return Optional if `via`==`lan`; networks where BGP neighbors can connect to or from
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -265,14 +281,14 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional if `via`==`tunnel`
+     * Optional if `via`==`tunnel`; tunnel name used for this BGP session
      * 
      */
     @Import(name="tunnelName")
     private @Nullable Output<String> tunnelName;
 
     /**
-     * @return Optional if `via`==`tunnel`
+     * @return Optional if `via`==`tunnel`; tunnel name used for this BGP session
      * 
      */
     public Optional<Output<String>> tunnelName() {
@@ -280,14 +296,14 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
+     * Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`; BGP session type, internal or external
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
+     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`; BGP session type, internal or external
      * 
      */
     public Optional<Output<String>> type() {
@@ -295,14 +311,14 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * enum: `lan`, `tunnel`, `vpn`, `wan`
+     * Transport used for this BGP session, such as LAN, tunnel, VPN, or WAN
      * 
      */
     @Import(name="via", required=true)
     private Output<String> via;
 
     /**
-     * @return enum: `lan`, `tunnel`, `vpn`, `wan`
+     * @return Transport used for this BGP session, such as LAN, tunnel, VPN, or WAN
      * 
      */
     public Output<String> via() {
@@ -310,14 +326,14 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional if `via`==`vpn`
+     * Optional if `via`==`vpn`; VPN name used for this BGP session
      * 
      */
     @Import(name="vpnName")
     private @Nullable Output<String> vpnName;
 
     /**
-     * @return Optional if `via`==`vpn`
+     * @return Optional if `via`==`vpn`; VPN name used for this BGP session
      * 
      */
     public Optional<Output<String>> vpnName() {
@@ -325,14 +341,14 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional if `via`==`wan`
+     * Optional if `via`==`wan`; WAN interface name used for this BGP session
      * 
      */
     @Import(name="wanName")
     private @Nullable Output<String> wanName;
 
     /**
-     * @return Optional if `via`==`wan`
+     * @return Optional if `via`==`wan`; WAN interface name used for this BGP session
      * 
      */
     public Optional<Output<String>> wanName() {
@@ -472,11 +488,23 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
             return disableBfd(Output.of(disableBfd));
         }
 
+        /**
+         * @param export Routing policy applied to routes exported by this BGP session
+         * 
+         * @return builder
+         * 
+         */
         public Builder export(@Nullable Output<String> export) {
             $.export = export;
             return this;
         }
 
+        /**
+         * @param export Routing policy applied to routes exported by this BGP session
+         * 
+         * @return builder
+         * 
+         */
         public Builder export(String export) {
             return export(Output.of(export));
         }
@@ -565,11 +593,23 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
             return holdTime(Output.of(holdTime));
         }
 
+        /**
+         * @param import_ Routing policy applied to routes imported by this BGP session
+         * 
+         * @return builder
+         * 
+         */
         public Builder import_(@Nullable Output<String> import_) {
             $.import_ = import_;
             return this;
         }
 
+        /**
+         * @param import_ Routing policy applied to routes imported by this BGP session
+         * 
+         * @return builder
+         * 
+         */
         public Builder import_(String import_) {
             return import_(Output.of(import_));
         }
@@ -659,7 +699,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networks Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+         * @param networks Optional if `via`==`lan`; networks where BGP neighbors can connect to or from
          * 
          * @return builder
          * 
@@ -670,7 +710,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networks Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+         * @param networks Optional if `via`==`lan`; networks where BGP neighbors can connect to or from
          * 
          * @return builder
          * 
@@ -680,7 +720,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networks Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+         * @param networks Optional if `via`==`lan`; networks where BGP neighbors can connect to or from
          * 
          * @return builder
          * 
@@ -732,7 +772,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tunnelName Optional if `via`==`tunnel`
+         * @param tunnelName Optional if `via`==`tunnel`; tunnel name used for this BGP session
          * 
          * @return builder
          * 
@@ -743,7 +783,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tunnelName Optional if `via`==`tunnel`
+         * @param tunnelName Optional if `via`==`tunnel`; tunnel name used for this BGP session
          * 
          * @return builder
          * 
@@ -753,7 +793,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
+         * @param type Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`; BGP session type, internal or external
          * 
          * @return builder
          * 
@@ -764,7 +804,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
+         * @param type Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`; BGP session type, internal or external
          * 
          * @return builder
          * 
@@ -774,7 +814,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param via enum: `lan`, `tunnel`, `vpn`, `wan`
+         * @param via Transport used for this BGP session, such as LAN, tunnel, VPN, or WAN
          * 
          * @return builder
          * 
@@ -785,7 +825,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param via enum: `lan`, `tunnel`, `vpn`, `wan`
+         * @param via Transport used for this BGP session, such as LAN, tunnel, VPN, or WAN
          * 
          * @return builder
          * 
@@ -795,7 +835,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vpnName Optional if `via`==`vpn`
+         * @param vpnName Optional if `via`==`vpn`; VPN name used for this BGP session
          * 
          * @return builder
          * 
@@ -806,7 +846,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vpnName Optional if `via`==`vpn`
+         * @param vpnName Optional if `via`==`vpn`; VPN name used for this BGP session
          * 
          * @return builder
          * 
@@ -816,7 +856,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param wanName Optional if `via`==`wan`
+         * @param wanName Optional if `via`==`wan`; WAN interface name used for this BGP session
          * 
          * @return builder
          * 
@@ -827,7 +867,7 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param wanName Optional if `via`==`wan`
+         * @param wanName Optional if `via`==`wan`; WAN interface name used for this BGP session
          * 
          * @return builder
          * 

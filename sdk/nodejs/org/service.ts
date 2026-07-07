@@ -74,22 +74,19 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
-     * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+     * Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
      */
     declare public readonly addresses: pulumi.Output<string[]>;
     /**
-     * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+     * Categories of applications matched by this service when `type`==`appCategories`
      */
     declare public readonly appCategories: pulumi.Output<string[]>;
     /**
-     * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+     * Application subcategories matched by this service when `type`==`appCategories`
      */
     declare public readonly appSubcategories: pulumi.Output<string[]>;
     /**
-     * When `type`==`apps`, list of applications are available through:
-     *   * List Applications
-     *   * List Gateway Applications
-     *   * /insight/top_app_by-bytes?wired=true
+     * Application identifiers matched by this service when `type`==`apps`
      */
     declare public readonly apps: pulumi.Output<string[]>;
     /**
@@ -100,20 +97,41 @@ export class Service extends pulumi.CustomResource {
      * 0 means unlimited, value from 0 to 107374182
      */
     declare public readonly clientLimitUp: pulumi.Output<number | undefined>;
+    /**
+     * Free-form description of the service definition
+     */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * QoS DSCP value used for custom SSR traffic classification
+     */
     declare public readonly dscp: pulumi.Output<string | undefined>;
     /**
-     * enum: `nonRevertible`, `none`, `revertible`
+     * Failover behavior for traffic matched by this service
      */
     declare public readonly failoverPolicy: pulumi.Output<string | undefined>;
     /**
-     * If `type`==`custom`, web filtering
+     * Domain hostnames matched by this custom service for web filtering
      */
     declare public readonly hostnames: pulumi.Output<string[]>;
+    /**
+     * Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+     */
     declare public readonly maxJitter: pulumi.Output<string | undefined>;
+    /**
+     * Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
+     */
     declare public readonly maxLatency: pulumi.Output<string | undefined>;
+    /**
+     * Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+     */
     declare public readonly maxLoss: pulumi.Output<string | undefined>;
+    /**
+     * Display name of the service definition
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Organization identifier associated with the service definition
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
      * 0 means unlimited, value from 0 to 107374182
@@ -128,12 +146,15 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly sleEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+     * Protocol and port match rules used when `type`==`custom`
      */
     declare public readonly specs: pulumi.Output<outputs.org.ServiceSpec[] | undefined>;
+    /**
+     * Whether SSR relaxes TCP state enforcement for this service
+     */
     declare public readonly ssrRelaxedTcpStateEnforcement: pulumi.Output<boolean | undefined>;
     /**
-     * when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+     * Traffic class applied when `trafficType`==`custom`
      */
     declare public readonly trafficClass: pulumi.Output<string | undefined>;
     /**
@@ -141,11 +162,11 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly trafficType: pulumi.Output<string>;
     /**
-     * enum: `appCategories`, `apps`, `custom`, `urls`
+     * Matching mode that determines which app, URL, or custom fields are used
      */
     declare public readonly type: pulumi.Output<string>;
     /**
-     * When `type`==`urls`, no need for spec as URL can encode the ports being used
+     * URL patterns matched by this service when `type`==`urls`
      */
     declare public readonly urls: pulumi.Output<string[]>;
 
@@ -226,22 +247,19 @@ export class Service extends pulumi.CustomResource {
  */
 export interface ServiceState {
     /**
-     * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+     * Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
      */
     addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+     * Categories of applications matched by this service when `type`==`appCategories`
      */
     appCategories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+     * Application subcategories matched by this service when `type`==`appCategories`
      */
     appSubcategories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * When `type`==`apps`, list of applications are available through:
-     *   * List Applications
-     *   * List Gateway Applications
-     *   * /insight/top_app_by-bytes?wired=true
+     * Application identifiers matched by this service when `type`==`apps`
      */
     apps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -252,20 +270,41 @@ export interface ServiceState {
      * 0 means unlimited, value from 0 to 107374182
      */
     clientLimitUp?: pulumi.Input<number | undefined>;
+    /**
+     * Free-form description of the service definition
+     */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * QoS DSCP value used for custom SSR traffic classification
+     */
     dscp?: pulumi.Input<string | undefined>;
     /**
-     * enum: `nonRevertible`, `none`, `revertible`
+     * Failover behavior for traffic matched by this service
      */
     failoverPolicy?: pulumi.Input<string | undefined>;
     /**
-     * If `type`==`custom`, web filtering
+     * Domain hostnames matched by this custom service for web filtering
      */
     hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+     */
     maxJitter?: pulumi.Input<string | undefined>;
+    /**
+     * Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
+     */
     maxLatency?: pulumi.Input<string | undefined>;
+    /**
+     * Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+     */
     maxLoss?: pulumi.Input<string | undefined>;
+    /**
+     * Display name of the service definition
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization identifier associated with the service definition
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
      * 0 means unlimited, value from 0 to 107374182
@@ -280,12 +319,15 @@ export interface ServiceState {
      */
     sleEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+     * Protocol and port match rules used when `type`==`custom`
      */
     specs?: pulumi.Input<pulumi.Input<inputs.org.ServiceSpec>[] | undefined>;
+    /**
+     * Whether SSR relaxes TCP state enforcement for this service
+     */
     ssrRelaxedTcpStateEnforcement?: pulumi.Input<boolean | undefined>;
     /**
-     * when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+     * Traffic class applied when `trafficType`==`custom`
      */
     trafficClass?: pulumi.Input<string | undefined>;
     /**
@@ -293,11 +335,11 @@ export interface ServiceState {
      */
     trafficType?: pulumi.Input<string | undefined>;
     /**
-     * enum: `appCategories`, `apps`, `custom`, `urls`
+     * Matching mode that determines which app, URL, or custom fields are used
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * When `type`==`urls`, no need for spec as URL can encode the ports being used
+     * URL patterns matched by this service when `type`==`urls`
      */
     urls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -307,22 +349,19 @@ export interface ServiceState {
  */
 export interface ServiceArgs {
     /**
-     * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+     * Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
      */
     addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+     * Categories of applications matched by this service when `type`==`appCategories`
      */
     appCategories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+     * Application subcategories matched by this service when `type`==`appCategories`
      */
     appSubcategories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * When `type`==`apps`, list of applications are available through:
-     *   * List Applications
-     *   * List Gateway Applications
-     *   * /insight/top_app_by-bytes?wired=true
+     * Application identifiers matched by this service when `type`==`apps`
      */
     apps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -333,20 +372,41 @@ export interface ServiceArgs {
      * 0 means unlimited, value from 0 to 107374182
      */
     clientLimitUp?: pulumi.Input<number | undefined>;
+    /**
+     * Free-form description of the service definition
+     */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * QoS DSCP value used for custom SSR traffic classification
+     */
     dscp?: pulumi.Input<string | undefined>;
     /**
-     * enum: `nonRevertible`, `none`, `revertible`
+     * Failover behavior for traffic matched by this service
      */
     failoverPolicy?: pulumi.Input<string | undefined>;
     /**
-     * If `type`==`custom`, web filtering
+     * Domain hostnames matched by this custom service for web filtering
      */
     hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+     */
     maxJitter?: pulumi.Input<string | undefined>;
+    /**
+     * Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
+     */
     maxLatency?: pulumi.Input<string | undefined>;
+    /**
+     * Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+     */
     maxLoss?: pulumi.Input<string | undefined>;
+    /**
+     * Display name of the service definition
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization identifier associated with the service definition
+     */
     orgId: pulumi.Input<string>;
     /**
      * 0 means unlimited, value from 0 to 107374182
@@ -361,12 +421,15 @@ export interface ServiceArgs {
      */
     sleEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+     * Protocol and port match rules used when `type`==`custom`
      */
     specs?: pulumi.Input<pulumi.Input<inputs.org.ServiceSpec>[] | undefined>;
+    /**
+     * Whether SSR relaxes TCP state enforcement for this service
+     */
     ssrRelaxedTcpStateEnforcement?: pulumi.Input<boolean | undefined>;
     /**
-     * when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+     * Traffic class applied when `trafficType`==`custom`
      */
     trafficClass?: pulumi.Input<string | undefined>;
     /**
@@ -374,11 +437,11 @@ export interface ServiceArgs {
      */
     trafficType?: pulumi.Input<string | undefined>;
     /**
-     * enum: `appCategories`, `apps`, `custom`, `urls`
+     * Matching mode that determines which app, URL, or custom fields are used
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * When `type`==`urls`, no need for spec as URL can encode the ports being used
+     * URL patterns matched by this service when `type`==`urls`
      */
     urls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

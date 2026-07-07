@@ -29,8 +29,10 @@ class EvpnTopologyArgs:
         """
         The set of arguments for constructing a EvpnTopology resource.
 
-        :param pulumi.Input[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]] switches: Property key can be the switch MAC Address
-        :param pulumi.Input['EvpnTopologyEvpnOptionsArgs'] evpn_options: EVPN Options
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the EVPN topology
+        :param pulumi.Input[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]] switches: Topology member switches, roles, and links
+        :param pulumi.Input['EvpnTopologyEvpnOptionsArgs'] evpn_options: Generation options applied to the EVPN topology
+        :param pulumi.Input[_builtins.str] name: Display name for the EVPN topology
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pod_names: Property key is the pod number
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -45,6 +47,9 @@ class EvpnTopologyArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization that owns the EVPN topology
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -55,7 +60,7 @@ class EvpnTopologyArgs:
     @pulumi.getter
     def switches(self) -> pulumi.Input[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]]:
         """
-        Property key can be the switch MAC Address
+        Topology member switches, roles, and links
         """
         return pulumi.get(self, "switches")
 
@@ -67,7 +72,7 @@ class EvpnTopologyArgs:
     @pulumi.getter(name="evpnOptions")
     def evpn_options(self) -> pulumi.Input[Optional['EvpnTopologyEvpnOptionsArgs']]:
         """
-        EVPN Options
+        Generation options applied to the EVPN topology
         """
         return pulumi.get(self, "evpn_options")
 
@@ -78,6 +83,9 @@ class EvpnTopologyArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name for the EVPN topology
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -108,9 +116,11 @@ class _EvpnTopologyState:
         """
         Input properties used for looking up and filtering EvpnTopology resources.
 
-        :param pulumi.Input['EvpnTopologyEvpnOptionsArgs'] evpn_options: EVPN Options
+        :param pulumi.Input['EvpnTopologyEvpnOptionsArgs'] evpn_options: Generation options applied to the EVPN topology
+        :param pulumi.Input[_builtins.str] name: Display name for the EVPN topology
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the EVPN topology
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pod_names: Property key is the pod number
-        :param pulumi.Input[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]] switches: Property key can be the switch MAC Address
+        :param pulumi.Input[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]] switches: Topology member switches, roles, and links
         """
         if evpn_options is not None:
             pulumi.set(__self__, "evpn_options", evpn_options)
@@ -127,7 +137,7 @@ class _EvpnTopologyState:
     @pulumi.getter(name="evpnOptions")
     def evpn_options(self) -> pulumi.Input[Optional['EvpnTopologyEvpnOptionsArgs']]:
         """
-        EVPN Options
+        Generation options applied to the EVPN topology
         """
         return pulumi.get(self, "evpn_options")
 
@@ -138,6 +148,9 @@ class _EvpnTopologyState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name for the EVPN topology
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -147,6 +160,9 @@ class _EvpnTopologyState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns the EVPN topology
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -169,7 +185,7 @@ class _EvpnTopologyState:
     @pulumi.getter
     def switches(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['EvpnTopologySwitchesArgs']]]]:
         """
-        Property key can be the switch MAC Address
+        Topology member switches, roles, and links
         """
         return pulumi.get(self, "switches")
 
@@ -262,9 +278,11 @@ class EvpnTopology(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']] evpn_options: EVPN Options
+        :param pulumi.Input[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']] evpn_options: Generation options applied to the EVPN topology
+        :param pulumi.Input[_builtins.str] name: Display name for the EVPN topology
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the EVPN topology
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pod_names: Property key is the pod number
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]] switches: Property key can be the switch MAC Address
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]] switches: Topology member switches, roles, and links
         """
         ...
     @overload
@@ -402,9 +420,11 @@ class EvpnTopology(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']] evpn_options: EVPN Options
+        :param pulumi.Input[Union['EvpnTopologyEvpnOptionsArgs', 'EvpnTopologyEvpnOptionsArgsDict']] evpn_options: Generation options applied to the EVPN topology
+        :param pulumi.Input[_builtins.str] name: Display name for the EVPN topology
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns the EVPN topology
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pod_names: Property key is the pod number
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]] switches: Property key can be the switch MAC Address
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['EvpnTopologySwitchesArgs', 'EvpnTopologySwitchesArgsDict']]]] switches: Topology member switches, roles, and links
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -421,18 +441,24 @@ class EvpnTopology(pulumi.CustomResource):
     @pulumi.getter(name="evpnOptions")
     def evpn_options(self) -> pulumi.Output[Optional['outputs.EvpnTopologyEvpnOptions']]:
         """
-        EVPN Options
+        Generation options applied to the EVPN topology
         """
         return pulumi.get(self, "evpn_options")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name for the EVPN topology
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns the EVPN topology
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
@@ -447,7 +473,7 @@ class EvpnTopology(pulumi.CustomResource):
     @pulumi.getter
     def switches(self) -> pulumi.Output[Mapping[str, 'outputs.EvpnTopologySwitches']]:
         """
-        Property key can be the switch MAC Address
+        Topology member switches, roles, and links
         """
         return pulumi.get(self, "switches")
 

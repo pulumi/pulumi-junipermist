@@ -13,22 +13,25 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayOobIpConfigNode1GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `Type`==`Static`
+        /// Default gateway for the node1 out-of-band management interface when `Type`==`Static`
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
+        /// <summary>
+        /// Static IPv4 address for the node1 out-of-band management interface when `Type`==`Static`
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// Used only if `Subnet` is not specified in `Networks`
+        /// IPv4 netmask or prefix length for the node1 out-of-band management interface when `Type`==`Static`; used only if `Subnet` is not specified in `Networks`
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IP assignment mode for the node1 out-of-band management interface
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -45,6 +48,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("useMgmtVrfForHostOut")]
         public Input<bool>? UseMgmtVrfForHostOut { get; set; }
 
+        /// <summary>
+        /// VLAN ID used for node1 out-of-band management traffic
+        /// </summary>
         [Input("vlanId")]
         public Input<string>? VlanId { get; set; }
 

@@ -15,24 +15,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateGatewayMgmtAppProbing {
     /**
-     * @return APp-keys from List Applications
+     * @return Predefined application keys to probe
      * 
      */
     private @Nullable List<String> apps;
+    /**
+     * @return User-defined application probe definitions
+     * 
+     */
     private @Nullable List<GatewaytemplateGatewayMgmtAppProbingCustomApp> customApps;
+    /**
+     * @return Whether gateway application probing is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private GatewaytemplateGatewayMgmtAppProbing() {}
     /**
-     * @return APp-keys from List Applications
+     * @return Predefined application keys to probe
      * 
      */
     public List<String> apps() {
         return this.apps == null ? List.of() : this.apps;
     }
+    /**
+     * @return User-defined application probe definitions
+     * 
+     */
     public List<GatewaytemplateGatewayMgmtAppProbingCustomApp> customApps() {
         return this.customApps == null ? List.of() : this.customApps;
     }
+    /**
+     * @return Whether gateway application probing is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

@@ -16,75 +16,99 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RftemplateModelSpecific {
+    /**
+     * @return Model-specific external antenna gain for the 2.4 GHz radio
+     * 
+     */
     private @Nullable Integer antGain24;
+    /**
+     * @return Model-specific external antenna gain for the 5 GHz radio
+     * 
+     */
     private @Nullable Integer antGain5;
+    /**
+     * @return Model-specific external antenna gain for the 6 GHz radio
+     * 
+     */
     private @Nullable Integer antGain6;
     /**
-     * @return Radio Band AP settings
+     * @return Model-specific 2.4 GHz radio settings that override RF template defaults
      * 
      */
     private @Nullable RftemplateModelSpecificBand24 band24;
     /**
-     * @return enum: `24`, `5`, `6`, `auto`
+     * @return Model-specific radio usage mode for the 2.4 GHz-capable radio
      * 
      */
     private @Nullable String band24Usage;
     /**
-     * @return Radio Band AP settings
+     * @return Model-specific 5 GHz radio settings that override RF template defaults
      * 
      */
     private @Nullable RftemplateModelSpecificBand5 band5;
     /**
-     * @return Radio Band AP settings
+     * @return Model-specific 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      * 
      */
     private @Nullable RftemplateModelSpecificBand5On24Radio band5On24Radio;
     /**
-     * @return Radio Band AP settings
+     * @return Model-specific 6 GHz radio settings that override RF template defaults
      * 
      */
     private @Nullable RftemplateModelSpecificBand6 band6;
 
     private RftemplateModelSpecific() {}
+    /**
+     * @return Model-specific external antenna gain for the 2.4 GHz radio
+     * 
+     */
     public Optional<Integer> antGain24() {
         return Optional.ofNullable(this.antGain24);
     }
+    /**
+     * @return Model-specific external antenna gain for the 5 GHz radio
+     * 
+     */
     public Optional<Integer> antGain5() {
         return Optional.ofNullable(this.antGain5);
     }
+    /**
+     * @return Model-specific external antenna gain for the 6 GHz radio
+     * 
+     */
     public Optional<Integer> antGain6() {
         return Optional.ofNullable(this.antGain6);
     }
     /**
-     * @return Radio Band AP settings
+     * @return Model-specific 2.4 GHz radio settings that override RF template defaults
      * 
      */
     public Optional<RftemplateModelSpecificBand24> band24() {
         return Optional.ofNullable(this.band24);
     }
     /**
-     * @return enum: `24`, `5`, `6`, `auto`
+     * @return Model-specific radio usage mode for the 2.4 GHz-capable radio
      * 
      */
     public Optional<String> band24Usage() {
         return Optional.ofNullable(this.band24Usage);
     }
     /**
-     * @return Radio Band AP settings
+     * @return Model-specific 5 GHz radio settings that override RF template defaults
      * 
      */
     public Optional<RftemplateModelSpecificBand5> band5() {
         return Optional.ofNullable(this.band5);
     }
     /**
-     * @return Radio Band AP settings
+     * @return Model-specific 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      * 
      */
     public Optional<RftemplateModelSpecificBand5On24Radio> band5On24Radio() {
         return Optional.ofNullable(this.band5On24Radio);
     }
     /**
-     * @return Radio Band AP settings
+     * @return Model-specific 6 GHz radio settings that override RF template defaults
      * 
      */
     public Optional<RftemplateModelSpecificBand6> band6() {

@@ -13,17 +13,20 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class WlanAirwatchGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// API Key
+        /// API key used to authenticate to the AirWatch service
         /// </summary>
         [Input("apiKey")]
         public Input<string>? ApiKey { get; set; }
 
         /// <summary>
-        /// Console URL
+        /// Base console URL of the AirWatch deployment
         /// </summary>
         [Input("consoleUrl")]
         public Input<string>? ConsoleUrl { get; set; }
 
+        /// <summary>
+        /// Whether AirWatch integration is enabled for the WLAN
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -31,7 +34,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// Password
+        /// AirWatch integration account password for this WLAN
         /// </summary>
         public Input<string>? Password
         {
@@ -44,7 +47,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// Username
+        /// AirWatch integration account username for this WLAN
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

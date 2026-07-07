@@ -24,6 +24,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        /// <summary>
+        /// Optional if enabled, Airista server port. Defaults to 1144
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 

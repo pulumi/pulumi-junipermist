@@ -15,29 +15,45 @@ public final class SettingMistNacServerCertArgs extends com.pulumi.resources.Res
 
     public static final SettingMistNacServerCertArgs Empty = new SettingMistNacServerCertArgs();
 
+    /**
+     * PEM-encoded RADIUS server certificate presented during EAP-TLS
+     * 
+     */
     @Import(name="cert")
     private @Nullable Output<String> cert;
 
+    /**
+     * @return PEM-encoded RADIUS server certificate presented during EAP-TLS
+     * 
+     */
     public Optional<Output<String>> cert() {
         return Optional.ofNullable(this.cert);
     }
 
+    /**
+     * Private key paired with the Mist NAC RADIUS server certificate
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return Private key paired with the Mist NAC RADIUS server certificate
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
     /**
-     * private key password (optional)
+     * Optional password for the private key
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return private key password (optional)
+     * @return Optional password for the private key
      * 
      */
     public Optional<Output<String>> password() {
@@ -70,26 +86,50 @@ public final class SettingMistNacServerCertArgs extends com.pulumi.resources.Res
             $ = new SettingMistNacServerCertArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cert PEM-encoded RADIUS server certificate presented during EAP-TLS
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(@Nullable Output<String> cert) {
             $.cert = cert;
             return this;
         }
 
+        /**
+         * @param cert PEM-encoded RADIUS server certificate presented during EAP-TLS
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(String cert) {
             return cert(Output.of(cert));
         }
 
+        /**
+         * @param key Private key paired with the Mist NAC RADIUS server certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key Private key paired with the Mist NAC RADIUS server certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
         /**
-         * @param password private key password (optional)
+         * @param password Optional password for the private key
          * 
          * @return builder
          * 
@@ -100,7 +140,7 @@ public final class SettingMistNacServerCertArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param password private key password (optional)
+         * @param password Optional password for the private key
          * 
          * @return builder
          * 

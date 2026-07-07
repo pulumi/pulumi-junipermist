@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SsoRolePrivilege {
     /**
-     * @return access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+     * @return Access role granted by this organization privilege
      * 
      */
     private String role;
     /**
-     * @return enum: `org`, `site`, `sitegroup`, `orgsites`
+     * @return Organization hierarchy level where this privilege applies
      * 
      */
     private String scope;
@@ -34,34 +34,21 @@ public final class SsoRolePrivilege {
      */
     private @Nullable String sitegroupId;
     /**
-     * @return Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
-     * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
-     * Below are the list of supported UI views. Note that this is UI only feature.
-     * 
-     *   | UI View | Required Role | Description |
-     *   | --- | --- | --- |
-     *   | `reporting` | `read` | full access to all analytics tools |
-     *   | `marketing` | `read` | can view analytics and location maps |
-     *   | `superObserver` | `read` | can view all the organization except the subscription page |
-     *   | `location` | `write` | can view and manage location maps, can view analytics |
-     *   | `security` | `write` | can view and manage site labels, policies and security |
-     *   | `switchAdmin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
-     *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
-     *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
+     * @return UI views allowed by custom role restrictions
      * 
      */
     private @Nullable List<String> views;
 
     private SsoRolePrivilege() {}
     /**
-     * @return access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+     * @return Access role granted by this organization privilege
      * 
      */
     public String role() {
         return this.role;
     }
     /**
-     * @return enum: `org`, `site`, `sitegroup`, `orgsites`
+     * @return Organization hierarchy level where this privilege applies
      * 
      */
     public String scope() {
@@ -82,20 +69,7 @@ public final class SsoRolePrivilege {
         return Optional.ofNullable(this.sitegroupId);
     }
     /**
-     * @return Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
-     * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
-     * Below are the list of supported UI views. Note that this is UI only feature.
-     * 
-     *   | UI View | Required Role | Description |
-     *   | --- | --- | --- |
-     *   | `reporting` | `read` | full access to all analytics tools |
-     *   | `marketing` | `read` | can view analytics and location maps |
-     *   | `superObserver` | `read` | can view all the organization except the subscription page |
-     *   | `location` | `write` | can view and manage location maps, can view analytics |
-     *   | `security` | `write` | can view and manage site labels, policies and security |
-     *   | `switchAdmin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
-     *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
-     *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
+     * @return UI views allowed by custom role restrictions
      * 
      */
     public List<String> views() {

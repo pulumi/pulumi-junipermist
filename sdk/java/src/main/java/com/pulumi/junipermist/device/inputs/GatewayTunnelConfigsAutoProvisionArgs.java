@@ -36,36 +36,44 @@ public final class GatewayTunnelConfigsAutoProvisionArgs extends com.pulumi.reso
     }
 
     /**
-     * API override for POP selection
+     * Geographic coordinate override used for tunnel POP selection
      * 
      */
     @Import(name="latlng")
     private @Nullable Output<GatewayTunnelConfigsAutoProvisionLatlngArgs> latlng;
 
     /**
-     * @return API override for POP selection
+     * @return Geographic coordinate override used for tunnel POP selection
      * 
      */
     public Optional<Output<GatewayTunnelConfigsAutoProvisionLatlngArgs>> latlng() {
         return Optional.ofNullable(this.latlng);
     }
 
+    /**
+     * Main auto-provisioned tunnel endpoint settings
+     * 
+     */
     @Import(name="primary")
     private @Nullable Output<GatewayTunnelConfigsAutoProvisionPrimaryArgs> primary;
 
+    /**
+     * @return Main auto-provisioned tunnel endpoint settings
+     * 
+     */
     public Optional<Output<GatewayTunnelConfigsAutoProvisionPrimaryArgs>> primary() {
         return Optional.ofNullable(this.primary);
     }
 
     /**
-     * enum: `jse-ipsec`, `zscaler-ipsec`
+     * Tunnel provider used for automatic endpoint provisioning
      * 
      */
     @Import(name="provider", required=true)
     private Output<String> provider;
 
     /**
-     * @return enum: `jse-ipsec`, `zscaler-ipsec`
+     * @return Tunnel provider used for automatic endpoint provisioning
      * 
      */
     public Output<String> provider() {
@@ -87,9 +95,17 @@ public final class GatewayTunnelConfigsAutoProvisionArgs extends com.pulumi.reso
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * Backup auto-provisioned tunnel endpoint settings
+     * 
+     */
     @Import(name="secondary")
     private @Nullable Output<GatewayTunnelConfigsAutoProvisionSecondaryArgs> secondary;
 
+    /**
+     * @return Backup auto-provisioned tunnel endpoint settings
+     * 
+     */
     public Optional<Output<GatewayTunnelConfigsAutoProvisionSecondaryArgs>> secondary() {
         return Optional.ofNullable(this.secondary);
     }
@@ -161,7 +177,7 @@ public final class GatewayTunnelConfigsAutoProvisionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param latlng API override for POP selection
+         * @param latlng Geographic coordinate override used for tunnel POP selection
          * 
          * @return builder
          * 
@@ -172,7 +188,7 @@ public final class GatewayTunnelConfigsAutoProvisionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param latlng API override for POP selection
+         * @param latlng Geographic coordinate override used for tunnel POP selection
          * 
          * @return builder
          * 
@@ -181,17 +197,29 @@ public final class GatewayTunnelConfigsAutoProvisionArgs extends com.pulumi.reso
             return latlng(Output.of(latlng));
         }
 
+        /**
+         * @param primary Main auto-provisioned tunnel endpoint settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder primary(@Nullable Output<GatewayTunnelConfigsAutoProvisionPrimaryArgs> primary) {
             $.primary = primary;
             return this;
         }
 
+        /**
+         * @param primary Main auto-provisioned tunnel endpoint settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder primary(GatewayTunnelConfigsAutoProvisionPrimaryArgs primary) {
             return primary(Output.of(primary));
         }
 
         /**
-         * @param provider enum: `jse-ipsec`, `zscaler-ipsec`
+         * @param provider Tunnel provider used for automatic endpoint provisioning
          * 
          * @return builder
          * 
@@ -202,7 +230,7 @@ public final class GatewayTunnelConfigsAutoProvisionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param provider enum: `jse-ipsec`, `zscaler-ipsec`
+         * @param provider Tunnel provider used for automatic endpoint provisioning
          * 
          * @return builder
          * 
@@ -232,11 +260,23 @@ public final class GatewayTunnelConfigsAutoProvisionArgs extends com.pulumi.reso
             return region(Output.of(region));
         }
 
+        /**
+         * @param secondary Backup auto-provisioned tunnel endpoint settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder secondary(@Nullable Output<GatewayTunnelConfigsAutoProvisionSecondaryArgs> secondary) {
             $.secondary = secondary;
             return this;
         }
 
+        /**
+         * @param secondary Backup auto-provisioned tunnel endpoint settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder secondary(GatewayTunnelConfigsAutoProvisionSecondaryArgs secondary) {
             return secondary(Output.of(secondary));
         }

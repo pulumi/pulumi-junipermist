@@ -72,48 +72,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/nactag:Nactag")
 public class Nactag extends com.pulumi.resources.CustomResource {
     /**
-     * Can be set to true to allow the override by usermac result
+     * Whether usermac result values can override this NAC tag when the result type is also supported by usermac
      * 
      */
     @Export(name="allowUsermacOverride", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowUsermacOverride;
 
     /**
-     * @return Can be set to true to allow the override by usermac result
+     * @return Whether usermac result values can override this NAC tag when the result type is also supported by usermac
      * 
      */
     public Output<Optional<Boolean>> allowUsermacOverride() {
         return Codegen.optional(this.allowUsermacOverride);
     }
     /**
-     * If `type`==`egressVlanNames`, list of egress vlans to return
+     * If `type`==`egressVlanNames`, list of egress VLAN names returned by the NAC rule
      * 
      */
     @Export(name="egressVlanNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> egressVlanNames;
 
     /**
-     * @return If `type`==`egressVlanNames`, list of egress vlans to return
+     * @return If `type`==`egressVlanNames`, list of egress VLAN names returned by the NAC rule
      * 
      */
     public Output<Optional<List<String>>> egressVlanNames() {
         return Codegen.optional(this.egressVlanNames);
     }
+    /**
+     * If `type`==`gbpTag`, GBP tag value returned by the NAC rule
+     * 
+     */
     @Export(name="gbpTag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gbpTag;
 
+    /**
+     * @return If `type`==`gbpTag`, GBP tag value returned by the NAC rule
+     * 
+     */
     public Output<Optional<String>> gbpTag() {
         return Codegen.optional(this.gbpTag);
     }
     /**
-     * if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * If `type`==`match`, client or authentication attribute used for rule matching
      * 
      */
     @Export(name="match", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> match;
 
     /**
-     * @return if `type`==`match`. enum: `certCn`, `certEku`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `edrStatus`, `gbpTag`, `hostname`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+     * @return If `type`==`match`, client or authentication attribute used for rule matching
      * 
      */
     public Output<Optional<String>> match() {
@@ -142,146 +150,154 @@ public class Nactag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.matchAll);
     }
     /**
-     * If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+     * If `type`==`redirectNacportalId`, NAC portal ID used for client redirection
      * 
      */
     @Export(name="nacportalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nacportalId;
 
     /**
-     * @return If `type`==`redirectNacportalId`, the ID of the NAC portal to redirect to
+     * @return If `type`==`redirectNacportalId`, NAC portal ID used for client redirection
      * 
      */
     public Output<Optional<String>> nacportalId() {
         return Codegen.optional(this.nacportalId);
     }
+    /**
+     * Human-readable name of the NAC tag
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Human-readable name of the NAC tag
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Org identifier that owns the NAC tag
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Org identifier that owns the NAC tag
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field &#34;radiusAttrs&#34;.
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+     * If `type`==`radiusAttrs`, standard RADIUS attributes returned by the NAC rule
      * 
      */
     @Export(name="radiusAttrs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> radiusAttrs;
 
     /**
-     * @return If `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field &#34;radiusAttrs&#34;.
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+     * @return If `type`==`radiusAttrs`, standard RADIUS attributes returned by the NAC rule
      * 
      */
     public Output<Optional<List<String>>> radiusAttrs() {
         return Codegen.optional(this.radiusAttrs);
     }
     /**
-     * If `type`==`radiusGroup`
+     * If `type`==`radiusGroup`, RADIUS group value returned by the NAC rule
      * 
      */
     @Export(name="radiusGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> radiusGroup;
 
     /**
-     * @return If `type`==`radiusGroup`
+     * @return If `type`==`radiusGroup`, RADIUS group value returned by the NAC rule
      * 
      */
     public Output<Optional<String>> radiusGroup() {
         return Codegen.optional(this.radiusGroup);
     }
     /**
-     * If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radiusVendorAttrs&#34;.
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+     * If `type`==`radiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
      * 
      */
     @Export(name="radiusVendorAttrs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> radiusVendorAttrs;
 
     /**
-     * @return If `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field &#34;radiusVendorAttrs&#34;.
-     * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
-     * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+     * @return If `type`==`radiusVendorAttrs`, vendor-specific RADIUS attributes returned by the NAC rule
      * 
      */
     public Output<Optional<List<String>>> radiusVendorAttrs() {
         return Codegen.optional(this.radiusVendorAttrs);
     }
     /**
-     * If `type`==`session_timeout, in seconds
+     * If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
      * 
      */
     @Export(name="sessionTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sessionTimeout;
 
     /**
-     * @return If `type`==`session_timeout, in seconds
+     * @return If `type`==`sessionTimeout`, session timeout returned by the NAC rule, in seconds
      * 
      */
     public Output<Optional<Integer>> sessionTimeout() {
         return Codegen.optional(this.sessionTimeout);
     }
     /**
-     * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * NAC tag type that determines whether the tag is a matcher or a result attribute
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `redirectNacportalId`, `sessionTimeout`, `usernameAttr`, `vlan`
+     * @return NAC tag type that determines whether the tag is a matcher or a result attribute
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * enum: `automatic`, `cn`, `dns`, `email`, `upn`
+     * If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
      * 
      */
     @Export(name="usernameAttr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> usernameAttr;
 
     /**
-     * @return enum: `automatic`, `cn`, `dns`, `email`, `upn`
+     * @return If `type`==`usernameAttr`, attribute used to derive the username returned by the NAC rule
      * 
      */
     public Output<Optional<String>> usernameAttr() {
         return Codegen.optional(this.usernameAttr);
     }
     /**
-     * If `type`==`match`
+     * If `type`==`match`, attribute values used by the NAC tag matcher
      * 
      */
     @Export(name="values", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> values;
 
     /**
-     * @return If `type`==`match`
+     * @return If `type`==`match`, attribute values used by the NAC tag matcher
      * 
      */
     public Output<Optional<List<String>>> values() {
         return Codegen.optional(this.values);
     }
     /**
-     * If `type`==`vlan`
+     * If `type`==`vlan`, VLAN name or ID returned by the NAC rule
      * 
      */
     @Export(name="vlan", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vlan;
 
     /**
-     * @return If `type`==`vlan`
+     * @return If `type`==`vlan`, VLAN name or ID returned by the NAC rule
      * 
      */
     public Output<Optional<String>> vlan() {

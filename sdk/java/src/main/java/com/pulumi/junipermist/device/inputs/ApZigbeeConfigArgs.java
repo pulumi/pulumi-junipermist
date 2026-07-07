@@ -18,14 +18,14 @@ public final class ApZigbeeConfigArgs extends com.pulumi.resources.ResourceArgs 
     public static final ApZigbeeConfigArgs Empty = new ApZigbeeConfigArgs();
 
     /**
-     * Controls whether new Zigbee devices are allowed to join the network. enum: `always`, `manual`
+     * Join policy for new Zigbee devices on this AP
      * 
      */
     @Import(name="allowJoin")
     private @Nullable Output<String> allowJoin;
 
     /**
-     * @return Controls whether new Zigbee devices are allowed to join the network. enum: `always`, `manual`
+     * @return Join policy for new Zigbee devices on this AP
      * 
      */
     public Optional<Output<String>> allowJoin() {
@@ -121,7 +121,7 @@ public final class ApZigbeeConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allowJoin Controls whether new Zigbee devices are allowed to join the network. enum: `always`, `manual`
+         * @param allowJoin Join policy for new Zigbee devices on this AP
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ApZigbeeConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allowJoin Controls whether new Zigbee devices are allowed to join the network. enum: `always`, `manual`
+         * @param allowJoin Join policy for new Zigbee devices on this AP
          * 
          * @return builder
          * 

@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchSnmpConfigV3ConfigVacmSecurityToGroup
     {
+        /// <summary>
+        /// VACM security-name to group mapping entries
+        /// </summary>
         public readonly ImmutableArray<Outputs.SwitchSnmpConfigV3ConfigVacmSecurityToGroupContent> Contents;
         /// <summary>
-        /// enum: `Usm`, `V1`, `V2c`
+        /// Required security model for these VACM group mappings
         /// </summary>
         public readonly string? SecurityModel;
 

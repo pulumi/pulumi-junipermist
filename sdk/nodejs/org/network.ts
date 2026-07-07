@@ -66,11 +66,20 @@ export class Network extends pulumi.CustomResource {
      * Whether to disallow Mist Devices in the network
      */
     declare public readonly disallowMistServices: pulumi.Output<boolean>;
+    /**
+     * IPv4 gateway address for this network
+     */
     declare public readonly gateway: pulumi.Output<string | undefined>;
+    /**
+     * IPv6 gateway address for this network
+     */
     declare public readonly gateway6: pulumi.Output<string | undefined>;
+    /**
+     * Internal access settings for this network
+     */
     declare public readonly internalAccess: pulumi.Output<outputs.org.NetworkInternalAccess | undefined>;
     /**
-     * Whether this network has direct internet access
+     * Direct internet access and NAT settings for this network
      */
     declare public readonly internetAccess: pulumi.Output<outputs.org.NetworkInternetAccess | undefined>;
     /**
@@ -78,24 +87,39 @@ export class Network extends pulumi.CustomResource {
      */
     declare public readonly isolation: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to enable multicast support (only PIM-sparse mode is supported)
+     * Settings for multicast routing on this network
      */
     declare public readonly multicast: pulumi.Output<outputs.org.NetworkMulticast | undefined>;
+    /**
+     * Display name of the organization network
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Organization that owns this network
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
-     * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * Other network names this network can route to, for example through BGP, OSPF or static routes
      */
     declare public readonly routedForNetworks: pulumi.Output<string[]>;
+    /**
+     * IPv4 subnet CIDR for this network
+     */
     declare public readonly subnet: pulumi.Output<string>;
+    /**
+     * IPv6 subnet CIDR for this network
+     */
     declare public readonly subnet6: pulumi.Output<string | undefined>;
     /**
-     * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+     * Tenant address mappings associated with this network
      */
     declare public readonly tenants: pulumi.Output<{[key: string]: outputs.org.NetworkTenants} | undefined>;
+    /**
+     * VLAN ID or variable associated with this network
+     */
     declare public readonly vlanId: pulumi.Output<string | undefined>;
     /**
-     * Property key is the VPN name. Whether this network can be accessed from vpn
+     * VPN access settings keyed by VPN name for this network
      */
     declare public readonly vpnAccess: pulumi.Output<{[key: string]: outputs.org.NetworkVpnAccess} | undefined>;
 
@@ -164,11 +188,20 @@ export interface NetworkState {
      * Whether to disallow Mist Devices in the network
      */
     disallowMistServices?: pulumi.Input<boolean | undefined>;
+    /**
+     * IPv4 gateway address for this network
+     */
     gateway?: pulumi.Input<string | undefined>;
+    /**
+     * IPv6 gateway address for this network
+     */
     gateway6?: pulumi.Input<string | undefined>;
+    /**
+     * Internal access settings for this network
+     */
     internalAccess?: pulumi.Input<inputs.org.NetworkInternalAccess | undefined>;
     /**
-     * Whether this network has direct internet access
+     * Direct internet access and NAT settings for this network
      */
     internetAccess?: pulumi.Input<inputs.org.NetworkInternetAccess | undefined>;
     /**
@@ -176,24 +209,39 @@ export interface NetworkState {
      */
     isolation?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether to enable multicast support (only PIM-sparse mode is supported)
+     * Settings for multicast routing on this network
      */
     multicast?: pulumi.Input<inputs.org.NetworkMulticast | undefined>;
+    /**
+     * Display name of the organization network
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns this network
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * Other network names this network can route to, for example through BGP, OSPF or static routes
      */
     routedForNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * IPv4 subnet CIDR for this network
+     */
     subnet?: pulumi.Input<string | undefined>;
+    /**
+     * IPv6 subnet CIDR for this network
+     */
     subnet6?: pulumi.Input<string | undefined>;
     /**
-     * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+     * Tenant address mappings associated with this network
      */
     tenants?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkTenants>} | undefined>;
+    /**
+     * VLAN ID or variable associated with this network
+     */
     vlanId?: pulumi.Input<string | undefined>;
     /**
-     * Property key is the VPN name. Whether this network can be accessed from vpn
+     * VPN access settings keyed by VPN name for this network
      */
     vpnAccess?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkVpnAccess>} | undefined>;
 }
@@ -206,11 +254,20 @@ export interface NetworkArgs {
      * Whether to disallow Mist Devices in the network
      */
     disallowMistServices?: pulumi.Input<boolean | undefined>;
+    /**
+     * IPv4 gateway address for this network
+     */
     gateway?: pulumi.Input<string | undefined>;
+    /**
+     * IPv6 gateway address for this network
+     */
     gateway6?: pulumi.Input<string | undefined>;
+    /**
+     * Internal access settings for this network
+     */
     internalAccess?: pulumi.Input<inputs.org.NetworkInternalAccess | undefined>;
     /**
-     * Whether this network has direct internet access
+     * Direct internet access and NAT settings for this network
      */
     internetAccess?: pulumi.Input<inputs.org.NetworkInternetAccess | undefined>;
     /**
@@ -218,24 +275,39 @@ export interface NetworkArgs {
      */
     isolation?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether to enable multicast support (only PIM-sparse mode is supported)
+     * Settings for multicast routing on this network
      */
     multicast?: pulumi.Input<inputs.org.NetworkMulticast | undefined>;
+    /**
+     * Display name of the organization network
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns this network
+     */
     orgId: pulumi.Input<string>;
     /**
-     * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * Other network names this network can route to, for example through BGP, OSPF or static routes
      */
     routedForNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * IPv4 subnet CIDR for this network
+     */
     subnet: pulumi.Input<string>;
+    /**
+     * IPv6 subnet CIDR for this network
+     */
     subnet6?: pulumi.Input<string | undefined>;
     /**
-     * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+     * Tenant address mappings associated with this network
      */
     tenants?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkTenants>} | undefined>;
+    /**
+     * VLAN ID or variable associated with this network
+     */
     vlanId?: pulumi.Input<string | undefined>;
     /**
-     * Property key is the VPN name. Whether this network can be accessed from vpn
+     * VPN access settings keyed by VPN name for this network
      */
     vpnAccess?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkVpnAccess>} | undefined>;
 }

@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayTunnelProviderOptionsZscalerSubLocation
     {
+        /// <summary>
+        /// Whether this sub-location blocks internet access until the Acceptable Use Policy is accepted
+        /// </summary>
         public readonly bool? AupBlockInternetUntilAccepted;
         /// <summary>
         /// Can only be `True` when `AuthRequired`==`False`, display Acceptable Use Policy (AUP)

@@ -14,28 +14,52 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayIdpProfiles {
     /**
-     * @return enum: `critical`, `standard`, `strict`
+     * @return Built-in IDP baseline profile inherited before applying overwrites
      * 
      */
     private @Nullable String baseProfile;
+    /**
+     * @return Display name of the IDP profile
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Owning organization for the IDP profile
+     * 
+     */
     private @Nullable String orgId;
+    /**
+     * @return IDP signature override rules applied on top of the base profile
+     * 
+     */
     private @Nullable List<DeviceprofileGatewayIdpProfilesOverwrite> overwrites;
 
     private DeviceprofileGatewayIdpProfiles() {}
     /**
-     * @return enum: `critical`, `standard`, `strict`
+     * @return Built-in IDP baseline profile inherited before applying overwrites
      * 
      */
     public Optional<String> baseProfile() {
         return Optional.ofNullable(this.baseProfile);
     }
+    /**
+     * @return Display name of the IDP profile
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Owning organization for the IDP profile
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
+    /**
+     * @return IDP signature override rules applied on top of the base profile
+     * 
+     */
     public List<DeviceprofileGatewayIdpProfilesOverwrite> overwrites() {
         return this.overwrites == null ? List.of() : this.overwrites;
     }

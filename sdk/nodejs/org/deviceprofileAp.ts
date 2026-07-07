@@ -67,12 +67,15 @@ export class DeviceprofileAp extends pulumi.CustomResource {
     }
 
     /**
-     * Aeroscout AP settings
+     * Location integration defaults for AeroScout in this AP profile
      */
     declare public readonly aeroscout: pulumi.Output<outputs.org.DeviceprofileApAeroscout | undefined>;
+    /**
+     * Location integration defaults for Airista in this AP profile
+     */
     declare public readonly airista: pulumi.Output<outputs.org.DeviceprofileApAirista | undefined>;
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy beacon and asset defaults in this AP profile
      */
     declare public readonly bleConfig: pulumi.Output<outputs.org.DeviceprofileApBleConfig | undefined>;
     /**
@@ -91,22 +94,41 @@ export class DeviceprofileAp extends pulumi.CustomResource {
      * Whether to disable module port
      */
     declare public readonly disableModule: pulumi.Output<boolean>;
+    /**
+     * Electronic shelf label integration defaults in this AP profile
+     */
     declare public readonly eslConfig: pulumi.Output<outputs.org.DeviceprofileApEslConfig | undefined>;
     /**
-     * IP AP settings
+     * Management IP addressing defaults in this AP profile
      */
     declare public readonly ipConfig: pulumi.Output<outputs.org.DeviceprofileApIpConfig | undefined>;
+    /**
+     * Link aggregation defaults for supported AP Ethernet uplinks
+     */
     declare public readonly lacpConfig: pulumi.Output<outputs.org.DeviceprofileApLacpConfig | undefined>;
     /**
-     * LED AP settings
+     * Indicator light behavior defaults in this AP profile
      */
     declare public readonly led: pulumi.Output<outputs.org.DeviceprofileApLed | undefined>;
     /**
-     * Mesh AP settings
+     * Wireless mesh role and band defaults in this AP profile
      */
     declare public readonly mesh: pulumi.Output<outputs.org.DeviceprofileApMesh | undefined>;
+    /**
+     * MQTT broker publishing settings for this AP profile
+     */
+    declare public readonly mqttConfig: pulumi.Output<outputs.org.DeviceprofileApMqttConfig | undefined>;
+    /**
+     * Display name of the AP device profile
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * NTP servers configured by this AP profile
+     */
     declare public readonly ntpServers: pulumi.Output<string[] | undefined>;
+    /**
+     * Organization that owns this AP device profile
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
      * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
@@ -117,34 +139,35 @@ export class DeviceprofileAp extends pulumi.CustomResource {
      */
     declare public readonly portConfig: pulumi.Output<{[key: string]: outputs.org.DeviceprofileApPortConfig} | undefined>;
     /**
-     * Power related configs
+     * Power negotiation and peripheral power defaults in this AP profile
      */
     declare public readonly pwrConfig: pulumi.Output<outputs.org.DeviceprofileApPwrConfig | undefined>;
     /**
-     * Radio AP settings
+     * Radio configuration defaults in this AP profile
      */
     declare public readonly radioConfig: pulumi.Output<outputs.org.DeviceprofileApRadioConfig | undefined>;
+    /**
+     * Site where this AP device profile is defined, when scoped to a site
+     */
     declare public readonly siteId: pulumi.Output<string | undefined>;
     /**
-     * Device Type. enum: `ap`
+     * Device type discriminator for AP device profiles
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
-     * AP Uplink port configuration
+     * Authentication and failover defaults for AP uplink ports
      */
     declare public readonly uplinkPortConfig: pulumi.Output<outputs.org.DeviceprofileApUplinkPortConfig | undefined>;
     /**
-     * USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * Legacy USB integration defaults in this AP profile
      */
     declare public readonly usbConfig: pulumi.Output<outputs.org.DeviceprofileApUsbConfig | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values provided by this AP device profile
      */
     declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Zigbee AP settings
+     * Zigbee radio and network defaults in this AP profile
      */
     declare public readonly zigbeeConfig: pulumi.Output<outputs.org.DeviceprofileApZigbeeConfig | undefined>;
 
@@ -173,6 +196,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
             resourceInputs["lacpConfig"] = state?.lacpConfig;
             resourceInputs["led"] = state?.led;
             resourceInputs["mesh"] = state?.mesh;
+            resourceInputs["mqttConfig"] = state?.mqttConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["ntpServers"] = state?.ntpServers;
             resourceInputs["orgId"] = state?.orgId;
@@ -203,6 +227,7 @@ export class DeviceprofileAp extends pulumi.CustomResource {
             resourceInputs["lacpConfig"] = args?.lacpConfig;
             resourceInputs["led"] = args?.led;
             resourceInputs["mesh"] = args?.mesh;
+            resourceInputs["mqttConfig"] = args?.mqttConfig;
             resourceInputs["name"] = args?.name;
             resourceInputs["ntpServers"] = args?.ntpServers;
             resourceInputs["orgId"] = args?.orgId;
@@ -227,12 +252,15 @@ export class DeviceprofileAp extends pulumi.CustomResource {
  */
 export interface DeviceprofileApState {
     /**
-     * Aeroscout AP settings
+     * Location integration defaults for AeroScout in this AP profile
      */
     aeroscout?: pulumi.Input<inputs.org.DeviceprofileApAeroscout | undefined>;
+    /**
+     * Location integration defaults for Airista in this AP profile
+     */
     airista?: pulumi.Input<inputs.org.DeviceprofileApAirista | undefined>;
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy beacon and asset defaults in this AP profile
      */
     bleConfig?: pulumi.Input<inputs.org.DeviceprofileApBleConfig | undefined>;
     /**
@@ -251,22 +279,41 @@ export interface DeviceprofileApState {
      * Whether to disable module port
      */
     disableModule?: pulumi.Input<boolean | undefined>;
+    /**
+     * Electronic shelf label integration defaults in this AP profile
+     */
     eslConfig?: pulumi.Input<inputs.org.DeviceprofileApEslConfig | undefined>;
     /**
-     * IP AP settings
+     * Management IP addressing defaults in this AP profile
      */
     ipConfig?: pulumi.Input<inputs.org.DeviceprofileApIpConfig | undefined>;
+    /**
+     * Link aggregation defaults for supported AP Ethernet uplinks
+     */
     lacpConfig?: pulumi.Input<inputs.org.DeviceprofileApLacpConfig | undefined>;
     /**
-     * LED AP settings
+     * Indicator light behavior defaults in this AP profile
      */
     led?: pulumi.Input<inputs.org.DeviceprofileApLed | undefined>;
     /**
-     * Mesh AP settings
+     * Wireless mesh role and band defaults in this AP profile
      */
     mesh?: pulumi.Input<inputs.org.DeviceprofileApMesh | undefined>;
+    /**
+     * MQTT broker publishing settings for this AP profile
+     */
+    mqttConfig?: pulumi.Input<inputs.org.DeviceprofileApMqttConfig | undefined>;
+    /**
+     * Display name of the AP device profile
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * NTP servers configured by this AP profile
+     */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Organization that owns this AP device profile
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
@@ -277,34 +324,35 @@ export interface DeviceprofileApState {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileApPortConfig>} | undefined>;
     /**
-     * Power related configs
+     * Power negotiation and peripheral power defaults in this AP profile
      */
     pwrConfig?: pulumi.Input<inputs.org.DeviceprofileApPwrConfig | undefined>;
     /**
-     * Radio AP settings
+     * Radio configuration defaults in this AP profile
      */
     radioConfig?: pulumi.Input<inputs.org.DeviceprofileApRadioConfig | undefined>;
+    /**
+     * Site where this AP device profile is defined, when scoped to a site
+     */
     siteId?: pulumi.Input<string | undefined>;
     /**
-     * Device Type. enum: `ap`
+     * Device type discriminator for AP device profiles
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * AP Uplink port configuration
+     * Authentication and failover defaults for AP uplink ports
      */
     uplinkPortConfig?: pulumi.Input<inputs.org.DeviceprofileApUplinkPortConfig | undefined>;
     /**
-     * USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * Legacy USB integration defaults in this AP profile
      */
     usbConfig?: pulumi.Input<inputs.org.DeviceprofileApUsbConfig | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values provided by this AP device profile
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Zigbee AP settings
+     * Zigbee radio and network defaults in this AP profile
      */
     zigbeeConfig?: pulumi.Input<inputs.org.DeviceprofileApZigbeeConfig | undefined>;
 }
@@ -314,12 +362,15 @@ export interface DeviceprofileApState {
  */
 export interface DeviceprofileApArgs {
     /**
-     * Aeroscout AP settings
+     * Location integration defaults for AeroScout in this AP profile
      */
     aeroscout?: pulumi.Input<inputs.org.DeviceprofileApAeroscout | undefined>;
+    /**
+     * Location integration defaults for Airista in this AP profile
+     */
     airista?: pulumi.Input<inputs.org.DeviceprofileApAirista | undefined>;
     /**
-     * BLE AP settings
+     * Bluetooth Low Energy beacon and asset defaults in this AP profile
      */
     bleConfig?: pulumi.Input<inputs.org.DeviceprofileApBleConfig | undefined>;
     /**
@@ -338,22 +389,41 @@ export interface DeviceprofileApArgs {
      * Whether to disable module port
      */
     disableModule?: pulumi.Input<boolean | undefined>;
+    /**
+     * Electronic shelf label integration defaults in this AP profile
+     */
     eslConfig?: pulumi.Input<inputs.org.DeviceprofileApEslConfig | undefined>;
     /**
-     * IP AP settings
+     * Management IP addressing defaults in this AP profile
      */
     ipConfig?: pulumi.Input<inputs.org.DeviceprofileApIpConfig | undefined>;
+    /**
+     * Link aggregation defaults for supported AP Ethernet uplinks
+     */
     lacpConfig?: pulumi.Input<inputs.org.DeviceprofileApLacpConfig | undefined>;
     /**
-     * LED AP settings
+     * Indicator light behavior defaults in this AP profile
      */
     led?: pulumi.Input<inputs.org.DeviceprofileApLed | undefined>;
     /**
-     * Mesh AP settings
+     * Wireless mesh role and band defaults in this AP profile
      */
     mesh?: pulumi.Input<inputs.org.DeviceprofileApMesh | undefined>;
+    /**
+     * MQTT broker publishing settings for this AP profile
+     */
+    mqttConfig?: pulumi.Input<inputs.org.DeviceprofileApMqttConfig | undefined>;
+    /**
+     * Display name of the AP device profile
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * NTP servers configured by this AP profile
+     */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Organization that owns this AP device profile
+     */
     orgId: pulumi.Input<string>;
     /**
      * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
@@ -364,30 +434,31 @@ export interface DeviceprofileApArgs {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileApPortConfig>} | undefined>;
     /**
-     * Power related configs
+     * Power negotiation and peripheral power defaults in this AP profile
      */
     pwrConfig?: pulumi.Input<inputs.org.DeviceprofileApPwrConfig | undefined>;
     /**
-     * Radio AP settings
+     * Radio configuration defaults in this AP profile
      */
     radioConfig?: pulumi.Input<inputs.org.DeviceprofileApRadioConfig | undefined>;
+    /**
+     * Site where this AP device profile is defined, when scoped to a site
+     */
     siteId?: pulumi.Input<string | undefined>;
     /**
-     * AP Uplink port configuration
+     * Authentication and failover defaults for AP uplink ports
      */
     uplinkPortConfig?: pulumi.Input<inputs.org.DeviceprofileApUplinkPortConfig | undefined>;
     /**
-     * USB AP settings
-     *   - Note: if native imagotag is enabled, BLE will be disabled automatically
-     *   - Note: legacy, new config moved to ESL Config.
+     * Legacy USB integration defaults in this AP profile
      */
     usbConfig?: pulumi.Input<inputs.org.DeviceprofileApUsbConfig | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values provided by this AP device profile
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Zigbee AP settings
+     * Zigbee radio and network defaults in this AP profile
      */
     zigbeeConfig?: pulumi.Input<inputs.org.DeviceprofileApZigbeeConfig | undefined>;
 }

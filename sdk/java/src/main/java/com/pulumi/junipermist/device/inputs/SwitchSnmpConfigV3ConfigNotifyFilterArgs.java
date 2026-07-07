@@ -17,16 +17,32 @@ public final class SwitchSnmpConfigV3ConfigNotifyFilterArgs extends com.pulumi.r
 
     public static final SwitchSnmpConfigV3ConfigNotifyFilterArgs Empty = new SwitchSnmpConfigV3ConfigNotifyFilterArgs();
 
+    /**
+     * OID filter rules in this notification filter profile
+     * 
+     */
     @Import(name="contents")
     private @Nullable Output<List<SwitchSnmpConfigV3ConfigNotifyFilterContentArgs>> contents;
 
+    /**
+     * @return OID filter rules in this notification filter profile
+     * 
+     */
     public Optional<Output<List<SwitchSnmpConfigV3ConfigNotifyFilterContentArgs>>> contents() {
         return Optional.ofNullable(this.contents);
     }
 
+    /**
+     * Notification filter profile name
+     * 
+     */
     @Import(name="profileName")
     private @Nullable Output<String> profileName;
 
+    /**
+     * @return Notification filter profile name
+     * 
+     */
     public Optional<Output<String>> profileName() {
         return Optional.ofNullable(this.profileName);
     }
@@ -56,24 +72,54 @@ public final class SwitchSnmpConfigV3ConfigNotifyFilterArgs extends com.pulumi.r
             $ = new SwitchSnmpConfigV3ConfigNotifyFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contents OID filter rules in this notification filter profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(@Nullable Output<List<SwitchSnmpConfigV3ConfigNotifyFilterContentArgs>> contents) {
             $.contents = contents;
             return this;
         }
 
+        /**
+         * @param contents OID filter rules in this notification filter profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(List<SwitchSnmpConfigV3ConfigNotifyFilterContentArgs> contents) {
             return contents(Output.of(contents));
         }
 
+        /**
+         * @param contents OID filter rules in this notification filter profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder contents(SwitchSnmpConfigV3ConfigNotifyFilterContentArgs... contents) {
             return contents(List.of(contents));
         }
 
+        /**
+         * @param profileName Notification filter profile name
+         * 
+         * @return builder
+         * 
+         */
         public Builder profileName(@Nullable Output<String> profileName) {
             $.profileName = profileName;
             return this;
         }
 
+        /**
+         * @param profileName Notification filter profile name
+         * 
+         * @return builder
+         * 
+         */
         public Builder profileName(String profileName) {
             return profileName(Output.of(profileName));
         }

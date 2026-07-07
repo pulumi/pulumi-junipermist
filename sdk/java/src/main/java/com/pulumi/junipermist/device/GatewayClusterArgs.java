@@ -17,14 +17,14 @@ public final class GatewayClusterArgs extends com.pulumi.resources.ResourceArgs 
     public static final GatewayClusterArgs Empty = new GatewayClusterArgs();
 
     /**
-     * When replacing a node, either mac has to remain the same as existing cluster
+     * Gateway nodes that form the HA cluster
      * 
      */
     @Import(name="nodes", required=true)
     private Output<List<GatewayClusterNodeArgs>> nodes;
 
     /**
-     * @return When replacing a node, either mac has to remain the same as existing cluster
+     * @return Gateway nodes that form the HA cluster
      * 
      */
     public Output<List<GatewayClusterNodeArgs>> nodes() {
@@ -64,7 +64,7 @@ public final class GatewayClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodes When replacing a node, either mac has to remain the same as existing cluster
+         * @param nodes Gateway nodes that form the HA cluster
          * 
          * @return builder
          * 
@@ -75,7 +75,7 @@ public final class GatewayClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodes When replacing a node, either mac has to remain the same as existing cluster
+         * @param nodes Gateway nodes that form the HA cluster
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class GatewayClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodes When replacing a node, either mac has to remain the same as existing cluster
+         * @param nodes Gateway nodes that form the HA cluster
          * 
          * @return builder
          * 

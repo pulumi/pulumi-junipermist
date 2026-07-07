@@ -32,22 +32,30 @@ public final class MxclusterMistDasCoaServerArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.disableEventTimestampCheck);
     }
 
+    /**
+     * Whether this DAS CoA or Disconnect-Message client is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether this DAS CoA or Disconnect-Message client is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * This server configured to send CoA|DM to mist edges
+     * Server host allowed to send CoA or Disconnect-Message requests to Mist Edges
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return This server configured to send CoA|DM to mist edges
+     * @return Server host allowed to send CoA or Disconnect-Message requests to Mist Edges
      * 
      */
     public Optional<Output<String>> host() {
@@ -55,14 +63,14 @@ public final class MxclusterMistDasCoaServerArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Mist edges will allow this host on this port
+     * UDP port where Mist Edges accept CoA or Disconnect-Message requests from this host
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return Mist edges will allow this host on this port
+     * @return UDP port where Mist Edges accept CoA or Disconnect-Message requests from this host
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -84,9 +92,17 @@ public final class MxclusterMistDasCoaServerArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.requireMessageAuthenticator);
     }
 
+    /**
+     * Shared secret used by this DAS CoA or Disconnect-Message client
+     * 
+     */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
+    /**
+     * @return Shared secret used by this DAS CoA or Disconnect-Message client
+     * 
+     */
     public Optional<Output<String>> secret() {
         return Optional.ofNullable(this.secret);
     }
@@ -141,17 +157,29 @@ public final class MxclusterMistDasCoaServerArgs extends com.pulumi.resources.Re
             return disableEventTimestampCheck(Output.of(disableEventTimestampCheck));
         }
 
+        /**
+         * @param enabled Whether this DAS CoA or Disconnect-Message client is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether this DAS CoA or Disconnect-Message client is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param host This server configured to send CoA|DM to mist edges
+         * @param host Server host allowed to send CoA or Disconnect-Message requests to Mist Edges
          * 
          * @return builder
          * 
@@ -162,7 +190,7 @@ public final class MxclusterMistDasCoaServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param host This server configured to send CoA|DM to mist edges
+         * @param host Server host allowed to send CoA or Disconnect-Message requests to Mist Edges
          * 
          * @return builder
          * 
@@ -172,7 +200,7 @@ public final class MxclusterMistDasCoaServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param port Mist edges will allow this host on this port
+         * @param port UDP port where Mist Edges accept CoA or Disconnect-Message requests from this host
          * 
          * @return builder
          * 
@@ -183,7 +211,7 @@ public final class MxclusterMistDasCoaServerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param port Mist edges will allow this host on this port
+         * @param port UDP port where Mist Edges accept CoA or Disconnect-Message requests from this host
          * 
          * @return builder
          * 
@@ -213,11 +241,23 @@ public final class MxclusterMistDasCoaServerArgs extends com.pulumi.resources.Re
             return requireMessageAuthenticator(Output.of(requireMessageAuthenticator));
         }
 
+        /**
+         * @param secret Shared secret used by this DAS CoA or Disconnect-Message client
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param secret Shared secret used by this DAS CoA or Disconnect-Message client
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(String secret) {
             return secret(Output.of(secret));
         }

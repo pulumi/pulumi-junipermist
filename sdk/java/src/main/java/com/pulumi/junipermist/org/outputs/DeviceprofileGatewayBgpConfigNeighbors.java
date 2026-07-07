@@ -19,8 +19,20 @@ public final class DeviceprofileGatewayBgpConfigNeighbors {
      * 
      */
     private @Nullable Boolean disabled;
+    /**
+     * @return Export policy applied only to this BGP neighbor
+     * 
+     */
     private @Nullable String exportPolicy;
+    /**
+     * @return BGP hold time for this neighbor, in seconds
+     * 
+     */
     private @Nullable Integer holdTime;
+    /**
+     * @return Import policy applied only to this BGP neighbor
+     * 
+     */
     private @Nullable String importPolicy;
     /**
      * @return Assuming BGP neighbor is directly connected
@@ -33,7 +45,7 @@ public final class DeviceprofileGatewayBgpConfigNeighbors {
      */
     private String neighborAs;
     /**
-     * @return If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+     * @return If `via`==`tunnel`, primary or secondary tunnel associated with this BGP neighbor
      * 
      */
     private @Nullable String tunnelVia;
@@ -46,12 +58,24 @@ public final class DeviceprofileGatewayBgpConfigNeighbors {
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
+    /**
+     * @return Export policy applied only to this BGP neighbor
+     * 
+     */
     public Optional<String> exportPolicy() {
         return Optional.ofNullable(this.exportPolicy);
     }
+    /**
+     * @return BGP hold time for this neighbor, in seconds
+     * 
+     */
     public Optional<Integer> holdTime() {
         return Optional.ofNullable(this.holdTime);
     }
+    /**
+     * @return Import policy applied only to this BGP neighbor
+     * 
+     */
     public Optional<String> importPolicy() {
         return Optional.ofNullable(this.importPolicy);
     }
@@ -70,7 +94,7 @@ public final class DeviceprofileGatewayBgpConfigNeighbors {
         return this.neighborAs;
     }
     /**
-     * @return If `via`==`tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `primary`, `secondary`
+     * @return If `via`==`tunnel`, primary or secondary tunnel associated with this BGP neighbor
      * 
      */
     public Optional<String> tunnelVia() {

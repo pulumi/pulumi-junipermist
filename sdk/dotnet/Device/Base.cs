@@ -94,9 +94,15 @@ namespace Pulumi.JuniperMist.Device
         [Output("gatewaytemplateId")]
         public Output<string?> GatewaytemplateId { get; private set; } = null!;
 
+        /// <summary>
+        /// Latitude and longitude for the site location
+        /// </summary>
         [Output("latlng")]
         public Output<Outputs.BaseLatlng?> Latlng { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the site
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -112,6 +118,9 @@ namespace Pulumi.JuniperMist.Device
         [Output("notes")]
         public Output<string> Notes { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization identifier associated with the site
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -128,7 +137,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<string?> RoutertemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// SecPolicy ID
+        /// Security policy identifier applied to this site
         /// </summary>
         [Output("secpolicyId")]
         public Output<string?> SecpolicyId { get; private set; } = null!;
@@ -140,17 +149,20 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableArray<string>> SitegroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// Site Template ID
+        /// Site template identifier applied to this site
         /// </summary>
         [Output("sitetemplateId")]
         public Output<string?> SitetemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// Timezone the site is at
+        /// IANA time zone name for the site
         /// </summary>
         [Output("timezone")]
         public Output<string> Timezone { get; private set; } = null!;
 
+        /// <summary>
+        /// Time zone offset value derived from the site's timezone
+        /// </summary>
         [Output("tzoffset")]
         public Output<int> Tzoffset { get; private set; } = null!;
 
@@ -231,9 +243,15 @@ namespace Pulumi.JuniperMist.Device
         [Input("gatewaytemplateId")]
         public Input<string>? GatewaytemplateId { get; set; }
 
+        /// <summary>
+        /// Latitude and longitude for the site location
+        /// </summary>
         [Input("latlng")]
         public Input<Inputs.BaseLatlngArgs>? Latlng { get; set; }
 
+        /// <summary>
+        /// Display name of the site
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -249,6 +267,9 @@ namespace Pulumi.JuniperMist.Device
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
+        /// <summary>
+        /// Organization identifier associated with the site
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -265,7 +286,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? RoutertemplateId { get; set; }
 
         /// <summary>
-        /// SecPolicy ID
+        /// Security policy identifier applied to this site
         /// </summary>
         [Input("secpolicyId")]
         public Input<string>? SecpolicyId { get; set; }
@@ -283,13 +304,13 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Site Template ID
+        /// Site template identifier applied to this site
         /// </summary>
         [Input("sitetemplateId")]
         public Input<string>? SitetemplateId { get; set; }
 
         /// <summary>
-        /// Timezone the site is at
+        /// IANA time zone name for the site
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
@@ -332,9 +353,15 @@ namespace Pulumi.JuniperMist.Device
         [Input("gatewaytemplateId")]
         public Input<string>? GatewaytemplateId { get; set; }
 
+        /// <summary>
+        /// Latitude and longitude for the site location
+        /// </summary>
         [Input("latlng")]
         public Input<Inputs.BaseLatlngGetArgs>? Latlng { get; set; }
 
+        /// <summary>
+        /// Display name of the site
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -350,6 +377,9 @@ namespace Pulumi.JuniperMist.Device
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
+        /// <summary>
+        /// Organization identifier associated with the site
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -366,7 +396,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? RoutertemplateId { get; set; }
 
         /// <summary>
-        /// SecPolicy ID
+        /// Security policy identifier applied to this site
         /// </summary>
         [Input("secpolicyId")]
         public Input<string>? SecpolicyId { get; set; }
@@ -384,17 +414,20 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Site Template ID
+        /// Site template identifier applied to this site
         /// </summary>
         [Input("sitetemplateId")]
         public Input<string>? SitetemplateId { get; set; }
 
         /// <summary>
-        /// Timezone the site is at
+        /// IANA time zone name for the site
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
+        /// <summary>
+        /// Time zone offset value derived from the site's timezone
+        /// </summary>
         [Input("tzoffset")]
         public Input<int>? Tzoffset { get; set; }
 

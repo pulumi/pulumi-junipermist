@@ -12,11 +12,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class GatewaytemplateServicePolicySkyatpDnsDgaDetectionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Sky ATP DNS DGA detection is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// enum: `Default`, `Standard`, `Strict`
+        /// Sky ATP DNS DGA detection profile to apply
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

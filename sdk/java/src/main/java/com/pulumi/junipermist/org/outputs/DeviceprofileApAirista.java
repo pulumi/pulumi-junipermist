@@ -23,6 +23,10 @@ public final class DeviceprofileApAirista {
      * 
      */
     private @Nullable String host;
+    /**
+     * @return Optional if enabled, Airista server port. Defaults to 1144
+     * 
+     */
     private @Nullable Integer port;
 
     private DeviceprofileApAirista() {}
@@ -40,6 +44,10 @@ public final class DeviceprofileApAirista {
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
+    /**
+     * @return Optional if enabled, Airista server port. Defaults to 1144
+     * 
+     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }

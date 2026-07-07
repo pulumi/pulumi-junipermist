@@ -40,12 +40,12 @@ public final class WlanAuth {
      */
     private @Nullable Boolean enableMacAuth;
     /**
-     * @return When `type`==`wep`
+     * @return When `type`==`wep`, index of the WEP key used as the default transmit key
      * 
      */
     private @Nullable Integer keyIdx;
     /**
-     * @return When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+     * @return When `type`==`wep`, WEP keys configured for this WLAN
      * 
      */
     private @Nullable List<String> keys;
@@ -55,12 +55,12 @@ public final class WlanAuth {
      */
     private @Nullable Boolean multiPskOnly;
     /**
-     * @return if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+     * @return When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
      * 
      */
     private @Nullable String owe;
     /**
-     * @return When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+     * @return When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
      * 
      */
     private @Nullable List<String> pairwises;
@@ -75,7 +75,7 @@ public final class WlanAuth {
      */
     private @Nullable String psk;
     /**
-     * @return enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+     * @return Authentication mode used by this WLAN
      * 
      */
     private @Nullable String type;
@@ -122,14 +122,14 @@ public final class WlanAuth {
         return Optional.ofNullable(this.enableMacAuth);
     }
     /**
-     * @return When `type`==`wep`
+     * @return When `type`==`wep`, index of the WEP key used as the default transmit key
      * 
      */
     public Optional<Integer> keyIdx() {
         return Optional.ofNullable(this.keyIdx);
     }
     /**
-     * @return When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+     * @return When `type`==`wep`, WEP keys configured for this WLAN
      * 
      */
     public List<String> keys() {
@@ -143,14 +143,14 @@ public final class WlanAuth {
         return Optional.ofNullable(this.multiPskOnly);
     }
     /**
-     * @return if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+     * @return When `type`==`open`, Opportunistic Wireless Encryption mode for this WLAN
      * 
      */
     public Optional<String> owe() {
         return Optional.ofNullable(this.owe);
     }
     /**
-     * @return When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+     * @return When `type`==`psk` or `type`==`eap`, pairwise cipher suites allowed for this WLAN
      * 
      */
     public List<String> pairwises() {
@@ -171,7 +171,7 @@ public final class WlanAuth {
         return Optional.ofNullable(this.psk);
     }
     /**
-     * @return enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+     * @return Authentication mode used by this WLAN
      * 
      */
     public Optional<String> type() {

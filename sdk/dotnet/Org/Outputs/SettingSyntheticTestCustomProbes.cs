@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingSyntheticTestCustomProbes
     {
         /// <summary>
-        /// enum: `Auto`, `High`, `Low`
+        /// Probe aggressiveness level for this custom synthetic probe
         /// </summary>
         public readonly string? Aggressiveness;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Target;
         /// <summary>
-        /// In milliseconds
+        /// Response-time threshold for this custom probe, in milliseconds
         /// </summary>
         public readonly int? Threshold;
         /// <summary>
-        /// enum: `Application`, `Curl`, `Icmp`, `Reachability`, `Tcp`
+        /// Probe type used by this custom synthetic probe
         /// </summary>
         public readonly string? Type;
 

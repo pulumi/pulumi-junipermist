@@ -13,19 +13,20 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class ApPortConfig
     {
+        /// <summary>
+        /// Whether this AP Ethernet port is disabled
+        /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Optional dynamic vlan
+        /// RADIUS-assigned VLAN settings for AP port authentication
         /// </summary>
         public readonly Outputs.ApPortConfigDynamicVlan? DynamicVlan;
+        /// <summary>
+        /// Whether MAC authentication is enabled on this AP port
+        /// </summary>
         public readonly bool? EnableMacAuth;
         /// <summary>
-        /// enum: 
-        ///   * `All`: local breakout, All VLANs
-        ///   * `Limited`: local breakout, only the VLANs configured in `PortVlanId` and `VlanIds`
-        ///   * `Mxtunnel`: central breakout to an Org Mist Edge (requires `MxtunnelId`)
-        ///   * `SiteMxedge`: central breakout to a Site Mist Edge (requires `MxtunnelName`)
-        ///   * `Wxtunnel`': central breakout to an Org WxTunnel (requires `WxtunnelId`)
+        /// Traffic forwarding mode for this AP Ethernet port
         /// </summary>
         public readonly string? Forwarding;
         /// <summary>
@@ -33,9 +34,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? MacAuthPreferred;
         /// <summary>
-        /// if `EnableMacAuth`==`True`, allows user to select an authentication protocol. enum: `eap-md5`, `eap-peap`, `Pap`
+        /// Protocol used for MAC authentication when `EnableMacAuth` is `True`
         /// </summary>
         public readonly string? MacAuthProtocol;
+        /// <summary>
+        /// Juniper Mist NAC settings used by AP port authentication
+        /// </summary>
         public readonly Outputs.ApPortConfigMistNac? MistNac;
         /// <summary>
         /// If `Forwarding`==`Mxtunnel`, VlanIds comes from mxtunnel
@@ -46,29 +50,29 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? MxtunnelName;
         /// <summary>
-        /// When doing port auth. enum: `Dot1x`, `None`
+        /// Authentication mode for this AP Ethernet port
         /// </summary>
         public readonly string? PortAuth;
         /// <summary>
-        /// If `Forwarding`==`Limited`
+        /// If `Forwarding`==`Limited`. VLAN ID allowed on this AP Ethernet port
         /// </summary>
         public readonly int? PortVlanId;
         /// <summary>
-        /// Junos Radius config
+        /// RADIUS authentication and accounting settings for this AP port
         /// </summary>
         public readonly Outputs.ApPortConfigRadiusConfig? RadiusConfig;
         /// <summary>
-        /// RadSec settings
+        /// TLS-secured RADIUS settings for this AP port
         /// </summary>
         public readonly Outputs.ApPortConfigRadsec? Radsec;
         /// <summary>
-        /// Optional to specify the vlan id for a tunnel if forwarding is for `Wxtunnel`, `Mxtunnel` or `SiteMxedge`.
+        /// Optional to specify the VLAN ID for a tunnel if forwarding is for `Wxtunnel`, `Mxtunnel` or `SiteMxedge`.
         ///   * if VlanId is not specified then it will use first one in vlan_ids[] of the mxtunnel.
         ///   * if forwarding == site_mxedge, VlanIds comes from SiteMxedge (`Mxtunnels` under site setting)
         /// </summary>
         public readonly int? VlanId;
         /// <summary>
-        /// If `Forwarding`==`Limited`, comma separated list of additional vlan ids allowed on this port
+        /// If `Forwarding`==`Limited`, comma separated list of additional VLAN IDs allowed on this port
         /// </summary>
         public readonly string? VlanIds;
         /// <summary>

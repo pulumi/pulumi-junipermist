@@ -14,24 +14,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VpnPathsTrafficShaping {
     /**
-     * @return percentages for different class of traffic: high / medium / low / best-effort adding up to 100
+     * @return Bandwidth percentages for high, medium, low, and best-effort traffic classes
      * 
      */
     private @Nullable List<Integer> classPercentages;
+    /**
+     * @return Whether traffic shaping is enabled for this VPN path
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Maximum transmit rate for this VPN path, in Kbps; `null` means no explicit limit
+     * 
+     */
     private @Nullable Integer maxTxKbps;
 
     private VpnPathsTrafficShaping() {}
     /**
-     * @return percentages for different class of traffic: high / medium / low / best-effort adding up to 100
+     * @return Bandwidth percentages for high, medium, low, and best-effort traffic classes
      * 
      */
     public List<Integer> classPercentages() {
         return this.classPercentages == null ? List.of() : this.classPercentages;
     }
+    /**
+     * @return Whether traffic shaping is enabled for this VPN path
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Maximum transmit rate for this VPN path, in Kbps; `null` means no explicit limit
+     * 
+     */
     public Optional<Integer> maxTxKbps() {
         return Optional.ofNullable(this.maxTxKbps);
     }

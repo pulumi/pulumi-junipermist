@@ -13,15 +13,21 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchPortConfigOverwrite
     {
+        /// <summary>
+        /// Administrative description applied to the switch port override
+        /// </summary>
         public readonly string? Description;
         /// <summary>
         /// Whether the port is disabled
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Link connection mode. enum: `Auto`, `Full`, `Half`
+        /// Link duplex mode override for the switch port
         /// </summary>
         public readonly string? Duplex;
+        /// <summary>
+        /// MAC address learning limit override for the switch port
+        /// </summary>
         public readonly string? MacLimit;
         /// <summary>
         /// Whether PoE capabilities are disabled for a port
@@ -36,7 +42,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
-        /// Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`Auto`
+        /// Link speed override for the switch port
         /// </summary>
         public readonly string? Speed;
 

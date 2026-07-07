@@ -20,23 +20,47 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
 
     public static final UpgradeDeviceState Empty = new UpgradeDeviceState();
 
+    /**
+     * Automatic firmware upgrade status for the switch
+     * 
+     */
     @Import(name="autoUpgradeStat")
     private @Nullable Output<UpgradeDeviceAutoUpgradeStatArgs> autoUpgradeStat;
 
+    /**
+     * @return Automatic firmware upgrade status for the switch
+     * 
+     */
     public Optional<Output<UpgradeDeviceAutoUpgradeStatArgs>> autoUpgradeStat() {
         return Optional.ofNullable(this.autoUpgradeStat);
     }
 
+    /**
+     * Time when the switch configuration status was last updated, in epoch seconds
+     * 
+     */
     @Import(name="configTimestamp")
     private @Nullable Output<Integer> configTimestamp;
 
+    /**
+     * @return Time when the switch configuration status was last updated, in epoch seconds
+     * 
+     */
     public Optional<Output<Integer>> configTimestamp() {
         return Optional.ofNullable(this.configTimestamp);
     }
 
+    /**
+     * Currently applied configuration version for the switch
+     * 
+     */
     @Import(name="configVersion")
     private @Nullable Output<Integer> configVersion;
 
+    /**
+     * @return Currently applied configuration version for the switch
+     * 
+     */
     public Optional<Output<Integer>> configVersion() {
         return Optional.ofNullable(this.configVersion);
     }
@@ -63,16 +87,32 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.deviceVersion);
     }
 
+    /**
+     * Public IP address observed for the switch
+     * 
+     */
     @Import(name="extIp")
     private @Nullable Output<String> extIp;
 
+    /**
+     * @return Public IP address observed for the switch
+     * 
+     */
     public Optional<Output<String>> extIp() {
         return Optional.ofNullable(this.extIp);
     }
 
+    /**
+     * Firmware update status for the switch
+     * 
+     */
     @Import(name="fwupdate")
     private @Nullable Output<UpgradeDeviceFwupdateArgs> fwupdate;
 
+    /**
+     * @return Firmware update status for the switch
+     * 
+     */
     public Optional<Output<UpgradeDeviceFwupdateArgs>> fwupdate() {
         return Optional.ofNullable(this.fwupdate);
     }
@@ -107,9 +147,17 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.rebootAt);
     }
 
+    /**
+     * Associated site identifier for the switch statistics record
+     * 
+     */
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
+    /**
+     * @return Associated site identifier for the switch statistics record
+     * 
+     */
     public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
@@ -145,14 +193,14 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+     * Current status of the requested device upgrade
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+     * @return Current status of the requested device upgrade
      * 
      */
     public Optional<Output<String>> status() {
@@ -219,16 +267,32 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.syncUpgradeTimeout);
     }
 
+    /**
+     * Numeric inventory tag identifier associated with the switch
+     * 
+     */
     @Import(name="tagId")
     private @Nullable Output<Integer> tagId;
 
+    /**
+     * @return Numeric inventory tag identifier associated with the switch
+     * 
+     */
     public Optional<Output<Integer>> tagId() {
         return Optional.ofNullable(this.tagId);
     }
 
+    /**
+     * Inventory tag UUID associated with the switch
+     * 
+     */
     @Import(name="tagUuid")
     private @Nullable Output<String> tagUuid;
 
+    /**
+     * @return Inventory tag UUID associated with the switch
+     * 
+     */
     public Optional<Output<String>> tagUuid() {
         return Optional.ofNullable(this.tagUuid);
     }
@@ -249,14 +313,14 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Epoch (seconds)
+     * Epoch timestamp when the device upgrade status was reported
      * 
      */
     @Import(name="timestamp")
     private @Nullable Output<Double> timestamp;
 
     /**
-     * @return Epoch (seconds)
+     * @return Epoch timestamp when the device upgrade status was reported
      * 
      */
     public Optional<Output<Double>> timestamp() {
@@ -307,29 +371,65 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
             $ = new UpgradeDeviceState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoUpgradeStat Automatic firmware upgrade status for the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoUpgradeStat(@Nullable Output<UpgradeDeviceAutoUpgradeStatArgs> autoUpgradeStat) {
             $.autoUpgradeStat = autoUpgradeStat;
             return this;
         }
 
+        /**
+         * @param autoUpgradeStat Automatic firmware upgrade status for the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoUpgradeStat(UpgradeDeviceAutoUpgradeStatArgs autoUpgradeStat) {
             return autoUpgradeStat(Output.of(autoUpgradeStat));
         }
 
+        /**
+         * @param configTimestamp Time when the switch configuration status was last updated, in epoch seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder configTimestamp(@Nullable Output<Integer> configTimestamp) {
             $.configTimestamp = configTimestamp;
             return this;
         }
 
+        /**
+         * @param configTimestamp Time when the switch configuration status was last updated, in epoch seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder configTimestamp(Integer configTimestamp) {
             return configTimestamp(Output.of(configTimestamp));
         }
 
+        /**
+         * @param configVersion Currently applied configuration version for the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder configVersion(@Nullable Output<Integer> configVersion) {
             $.configVersion = configVersion;
             return this;
         }
 
+        /**
+         * @param configVersion Currently applied configuration version for the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder configVersion(Integer configVersion) {
             return configVersion(Output.of(configVersion));
         }
@@ -364,20 +464,44 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
             return deviceVersion(Output.of(deviceVersion));
         }
 
+        /**
+         * @param extIp Public IP address observed for the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder extIp(@Nullable Output<String> extIp) {
             $.extIp = extIp;
             return this;
         }
 
+        /**
+         * @param extIp Public IP address observed for the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder extIp(String extIp) {
             return extIp(Output.of(extIp));
         }
 
+        /**
+         * @param fwupdate Firmware update status for the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder fwupdate(@Nullable Output<UpgradeDeviceFwupdateArgs> fwupdate) {
             $.fwupdate = fwupdate;
             return this;
         }
 
+        /**
+         * @param fwupdate Firmware update status for the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder fwupdate(UpgradeDeviceFwupdateArgs fwupdate) {
             return fwupdate(Output.of(fwupdate));
         }
@@ -424,11 +548,23 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
             return rebootAt(Output.of(rebootAt));
         }
 
+        /**
+         * @param siteId Associated site identifier for the switch statistics record
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Associated site identifier for the switch statistics record
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
@@ -476,7 +612,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+         * @param status Current status of the requested device upgrade
          * 
          * @return builder
          * 
@@ -487,7 +623,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status enum: `error`, `inprogress`, `scheduled`, `starting`, `success`
+         * @param status Current status of the requested device upgrade
          * 
          * @return builder
          * 
@@ -580,20 +716,44 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
             return syncUpgradeTimeout(Output.of(syncUpgradeTimeout));
         }
 
+        /**
+         * @param tagId Numeric inventory tag identifier associated with the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagId(@Nullable Output<Integer> tagId) {
             $.tagId = tagId;
             return this;
         }
 
+        /**
+         * @param tagId Numeric inventory tag identifier associated with the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagId(Integer tagId) {
             return tagId(Output.of(tagId));
         }
 
+        /**
+         * @param tagUuid Inventory tag UUID associated with the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagUuid(@Nullable Output<String> tagUuid) {
             $.tagUuid = tagUuid;
             return this;
         }
 
+        /**
+         * @param tagUuid Inventory tag UUID associated with the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagUuid(String tagUuid) {
             return tagUuid(Output.of(tagUuid));
         }
@@ -620,7 +780,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timestamp Epoch (seconds)
+         * @param timestamp Epoch timestamp when the device upgrade status was reported
          * 
          * @return builder
          * 
@@ -631,7 +791,7 @@ public final class UpgradeDeviceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timestamp Epoch (seconds)
+         * @param timestamp Epoch timestamp when the device upgrade status was reported
          * 
          * @return builder
          * 

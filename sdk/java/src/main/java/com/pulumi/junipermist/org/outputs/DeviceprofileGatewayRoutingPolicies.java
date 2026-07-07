@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayRoutingPolicies {
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Ordered terms evaluated by this gateway routing policy
      * 
      */
     private @Nullable List<DeviceprofileGatewayRoutingPoliciesTerm> terms;
 
     private DeviceprofileGatewayRoutingPolicies() {}
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Ordered terms evaluated by this gateway routing policy
      * 
      */
     public List<DeviceprofileGatewayRoutingPoliciesTerm> terms() {

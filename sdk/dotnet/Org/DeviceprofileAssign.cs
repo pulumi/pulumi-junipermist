@@ -44,6 +44,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("deviceprofileId")]
         public Output<string> DeviceprofileId { get; private set; } = null!;
 
+        /// <summary>
+        /// List of MAC addresses included in the request
+        /// </summary>
         [Output("macs")]
         public Output<ImmutableArray<string>> Macs { get; private set; } = null!;
 
@@ -102,6 +105,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("macs", required: true)]
         private InputList<string>? _macs;
+
+        /// <summary>
+        /// List of MAC addresses included in the request
+        /// </summary>
         public InputList<string> Macs
         {
             get => _macs ?? (_macs = new InputList<string>());
@@ -124,6 +131,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("macs")]
         private InputList<string>? _macs;
+
+        /// <summary>
+        /// List of MAC addresses included in the request
+        /// </summary>
         public InputList<string> Macs
         {
             get => _macs ?? (_macs = new InputList<string>());

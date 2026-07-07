@@ -15,23 +15,47 @@ public final class DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs extend
 
     public static final DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs Empty = new DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs();
 
+    /**
+     * Reserved IPv4 address for this fixed DHCP binding
+     * 
+     */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
+    /**
+     * @return Reserved IPv4 address for this fixed DHCP binding
+     * 
+     */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
     }
 
+    /**
+     * Reserved IPv6 address for this fixed DHCP binding
+     * 
+     */
     @Import(name="ip6")
     private @Nullable Output<String> ip6;
 
+    /**
+     * @return Reserved IPv6 address for this fixed DHCP binding
+     * 
+     */
     public Optional<Output<String>> ip6() {
         return Optional.ofNullable(this.ip6);
     }
 
+    /**
+     * Friendly name for this fixed DHCP binding
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Friendly name for this fixed DHCP binding
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -62,29 +86,65 @@ public final class DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs extend
             $ = new DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ip Reserved IPv4 address for this fixed DHCP binding
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(@Nullable Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
+        /**
+         * @param ip Reserved IPv4 address for this fixed DHCP binding
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }
 
+        /**
+         * @param ip6 Reserved IPv6 address for this fixed DHCP binding
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6(@Nullable Output<String> ip6) {
             $.ip6 = ip6;
             return this;
         }
 
+        /**
+         * @param ip6 Reserved IPv6 address for this fixed DHCP binding
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6(String ip6) {
             return ip6(Output.of(ip6));
         }
 
+        /**
+         * @param name Friendly name for this fixed DHCP binding
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Friendly name for this fixed DHCP binding
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

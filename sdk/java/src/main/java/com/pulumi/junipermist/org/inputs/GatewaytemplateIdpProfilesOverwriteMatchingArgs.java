@@ -16,23 +16,47 @@ public final class GatewaytemplateIdpProfilesOverwriteMatchingArgs extends com.p
 
     public static final GatewaytemplateIdpProfilesOverwriteMatchingArgs Empty = new GatewaytemplateIdpProfilesOverwriteMatchingArgs();
 
+    /**
+     * Signature names matched by the IDP profile overwrite
+     * 
+     */
     @Import(name="attackNames")
     private @Nullable Output<List<String>> attackNames;
 
+    /**
+     * @return Signature names matched by the IDP profile overwrite
+     * 
+     */
     public Optional<Output<List<String>>> attackNames() {
         return Optional.ofNullable(this.attackNames);
     }
 
+    /**
+     * Destination subnets matched by the IDP profile overwrite
+     * 
+     */
     @Import(name="dstSubnets")
     private @Nullable Output<List<String>> dstSubnets;
 
+    /**
+     * @return Destination subnets matched by the IDP profile overwrite
+     * 
+     */
     public Optional<Output<List<String>>> dstSubnets() {
         return Optional.ofNullable(this.dstSubnets);
     }
 
+    /**
+     * Threat levels matched by the IDP profile overwrite
+     * 
+     */
     @Import(name="severities")
     private @Nullable Output<List<String>> severities;
 
+    /**
+     * @return Threat levels matched by the IDP profile overwrite
+     * 
+     */
     public Optional<Output<List<String>>> severities() {
         return Optional.ofNullable(this.severities);
     }
@@ -63,41 +87,95 @@ public final class GatewaytemplateIdpProfilesOverwriteMatchingArgs extends com.p
             $ = new GatewaytemplateIdpProfilesOverwriteMatchingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param attackNames Signature names matched by the IDP profile overwrite
+         * 
+         * @return builder
+         * 
+         */
         public Builder attackNames(@Nullable Output<List<String>> attackNames) {
             $.attackNames = attackNames;
             return this;
         }
 
+        /**
+         * @param attackNames Signature names matched by the IDP profile overwrite
+         * 
+         * @return builder
+         * 
+         */
         public Builder attackNames(List<String> attackNames) {
             return attackNames(Output.of(attackNames));
         }
 
+        /**
+         * @param attackNames Signature names matched by the IDP profile overwrite
+         * 
+         * @return builder
+         * 
+         */
         public Builder attackNames(String... attackNames) {
             return attackNames(List.of(attackNames));
         }
 
+        /**
+         * @param dstSubnets Destination subnets matched by the IDP profile overwrite
+         * 
+         * @return builder
+         * 
+         */
         public Builder dstSubnets(@Nullable Output<List<String>> dstSubnets) {
             $.dstSubnets = dstSubnets;
             return this;
         }
 
+        /**
+         * @param dstSubnets Destination subnets matched by the IDP profile overwrite
+         * 
+         * @return builder
+         * 
+         */
         public Builder dstSubnets(List<String> dstSubnets) {
             return dstSubnets(Output.of(dstSubnets));
         }
 
+        /**
+         * @param dstSubnets Destination subnets matched by the IDP profile overwrite
+         * 
+         * @return builder
+         * 
+         */
         public Builder dstSubnets(String... dstSubnets) {
             return dstSubnets(List.of(dstSubnets));
         }
 
+        /**
+         * @param severities Threat levels matched by the IDP profile overwrite
+         * 
+         * @return builder
+         * 
+         */
         public Builder severities(@Nullable Output<List<String>> severities) {
             $.severities = severities;
             return this;
         }
 
+        /**
+         * @param severities Threat levels matched by the IDP profile overwrite
+         * 
+         * @return builder
+         * 
+         */
         public Builder severities(List<String> severities) {
             return severities(Output.of(severities));
         }
 
+        /**
+         * @param severities Threat levels matched by the IDP profile overwrite
+         * 
+         * @return builder
+         * 
+         */
         public Builder severities(String... severities) {
             return severities(List.of(severities));
         }

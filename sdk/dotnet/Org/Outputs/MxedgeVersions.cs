@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxedgeVersions
     {
+        /// <summary>
+        /// Reported version of the mxagent service
+        /// </summary>
         public readonly string? Mxagent;
+        /// <summary>
+        /// Reported version of the tunnel termination service
+        /// </summary>
         public readonly string? Tunterm;
 
         [OutputConstructor]

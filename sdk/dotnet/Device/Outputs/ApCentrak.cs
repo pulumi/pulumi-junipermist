@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class ApCentrak
     {
+        /// <summary>
+        /// Whether to enable Centrak config
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

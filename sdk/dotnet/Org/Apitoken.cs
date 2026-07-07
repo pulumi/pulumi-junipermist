@@ -63,26 +63,32 @@ namespace Pulumi.JuniperMist.Org
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
+        /// <summary>
+        /// Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
+        /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the token
+        /// Display name of the organization API token
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns this API token
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// List of privileges the token has on the orgs/sites
+        /// Access scopes and roles granted to the organization API token
         /// </summary>
         [Output("privileges")]
         public Output<ImmutableArray<Outputs.ApitokenPrivilege>> Privileges { get; private set; } = null!;
 
         /// <summary>
-        /// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        /// Allowed source IP addresses or CIDRs from which the token may be used
         /// </summary>
         [Output("srcIps")]
         public Output<ImmutableArray<string>> SrcIps { get; private set; } = null!;
@@ -139,11 +145,14 @@ namespace Pulumi.JuniperMist.Org
     public sealed class ApitokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the token
+        /// Display name of the organization API token
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns this API token
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -151,7 +160,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.ApitokenPrivilegeArgs>? _privileges;
 
         /// <summary>
-        /// List of privileges the token has on the orgs/sites
+        /// Access scopes and roles granted to the organization API token
         /// </summary>
         public InputList<Inputs.ApitokenPrivilegeArgs> Privileges
         {
@@ -163,7 +172,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _srcIps;
 
         /// <summary>
-        /// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        /// Allowed source IP addresses or CIDRs from which the token may be used
         /// </summary>
         public InputList<string> SrcIps
         {
@@ -187,6 +196,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("key")]
         private Input<string>? _key;
+
+        /// <summary>
+        /// Token secret key. The full API Token is only returned when the API token is created and can only be partially retrieved afterward
+        /// </summary>
         public Input<string>? Key
         {
             get => _key;
@@ -198,11 +211,14 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Name of the token
+        /// Display name of the organization API token
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Organization that owns this API token
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -210,7 +226,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<Inputs.ApitokenPrivilegeGetArgs>? _privileges;
 
         /// <summary>
-        /// List of privileges the token has on the orgs/sites
+        /// Access scopes and roles granted to the organization API token
         /// </summary>
         public InputList<Inputs.ApitokenPrivilegeGetArgs> Privileges
         {
@@ -222,7 +238,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _srcIps;
 
         /// <summary>
-        /// List of allowed IP addresses from where the token can be used from. At most 10 IP addresses can be specified, cannot be changed once the API Token is created.
+        /// Allowed source IP addresses or CIDRs from which the token may be used
         /// </summary>
         public InputList<string> SrcIps
         {

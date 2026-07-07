@@ -24,6 +24,7 @@ class SettingArgs:
                  org_id: pulumi.Input[_builtins.str],
                  ap_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  api_policy: pulumi.Input[Optional['SettingApiPolicyArgs']] = None,
+                 auto_upgrade: pulumi.Input[Optional['SettingAutoUpgradeArgs']] = None,
                  cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  celona: pulumi.Input[Optional['SettingCelonaArgs']] = None,
                  cloudshark: pulumi.Input[Optional['SettingCloudsharkArgs']] = None,
@@ -59,9 +60,14 @@ class SettingArgs:
         """
         The set of arguments for constructing a Setting resource.
 
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns these settings
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: RADSec certificates for AP
-        :param pulumi.Input['SettingDeviceCertArgs'] device_cert: common device cert, optional
+        :param pulumi.Input['SettingApiPolicyArgs'] api_policy: Policy for hiding API secrets and passwords in responses
+        :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: AP automatic firmware upgrade policy for the organization
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: CA certificates used by organization-level RADIUS and RADSec settings
+        :param pulumi.Input['SettingCelonaArgs'] celona: Integration settings for Celona
+        :param pulumi.Input['SettingCloudsharkArgs'] cloudshark: Packet capture integration settings for CloudShark
+        :param pulumi.Input['SettingDeviceCertArgs'] device_cert: Common device certificate used by organization settings
         :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via
                  * device-updowns webhooks topic, 
                  * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
@@ -69,21 +75,37 @@ class SettingArgs:
         :param pulumi.Input[_builtins.bool] disable_remote_shell: Whether to disable remote shell access for an entire org
         :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
-        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: junos_shell_access: Manages role-based web-shell access.  
-               When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
-               When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
-        :param pulumi.Input['SettingMgmtArgs'] mgmt: management-related properties
-        :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
-        :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: password policy
+        :param pulumi.Input['SettingInstallerArgs'] installer: Access settings for organization installer workflows
+        :param pulumi.Input['SettingJcloudArgs'] jcloud: Integration settings for JCloud
+        :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: Routing Assurance integration settings for JCloud
+        :param pulumi.Input['SettingJuniperSrxArgs'] juniper_srx: SRX integration settings for Juniper devices
+        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: Role-based Junos web-shell access settings
+        :param pulumi.Input['SettingMarvisArgs'] marvis: AI assistant and self-driving feature settings for Marvis
+        :param pulumi.Input['SettingMgmtArgs'] mgmt: Tunnel settings for organization management connectivity
+        :param pulumi.Input['SettingMistNacArgs'] mist_nac: NAC settings for Mist Access Assurance
+        :param pulumi.Input['SettingMxedgeMgmtArgs'] mxedge_mgmt: Management settings for Mist Edge devices
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Configuration defaults for optic ports
+        :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: Admin credential policy settings for the organization
+        :param pulumi.Input['SettingSecurityArgs'] security: Organization security controls such as local SSH restrictions
+        :param pulumi.Input['SettingSsrArgs'] ssr: Session Smart Router settings for the organization
+        :param pulumi.Input['SettingSwitchArgs'] switch: Configuration defaults for switches in this organization
+        :param pulumi.Input['SettingSwitchMgmtArgs'] switch_mgmt: Management settings for switches in this organization
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input['SettingSyntheticTestArgs'] synthetic_test: Configuration for organization synthetic tests
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
+        :param pulumi.Input[_builtins.bool] ui_no_tracking: Whether UI usage tracking is disabled for the organization
+        :param pulumi.Input['SettingVpnOptionsArgs'] vpn_options: Options for organization VPN behavior
+        :param pulumi.Input['SettingWanPmaArgs'] wan_pma: PMA feature settings for WAN Assurance
+        :param pulumi.Input['SettingWiredPmaArgs'] wired_pma: PMA feature settings for Wired Assurance
+        :param pulumi.Input['SettingWirelessPmaArgs'] wireless_pma: PMA feature settings for Wireless Assurance
         """
         pulumi.set(__self__, "org_id", org_id)
         if ap_updown_threshold is not None:
             pulumi.set(__self__, "ap_updown_threshold", ap_updown_threshold)
         if api_policy is not None:
             pulumi.set(__self__, "api_policy", api_policy)
+        if auto_upgrade is not None:
+            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
         if cacerts is not None:
             pulumi.set(__self__, "cacerts", cacerts)
         if celona is not None:
@@ -152,6 +174,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization that owns these settings
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -173,6 +198,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="apiPolicy")
     def api_policy(self) -> pulumi.Input[Optional['SettingApiPolicyArgs']]:
+        """
+        Policy for hiding API secrets and passwords in responses
+        """
         return pulumi.get(self, "api_policy")
 
     @api_policy.setter
@@ -180,10 +208,22 @@ class SettingArgs:
         pulumi.set(self, "api_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> pulumi.Input[Optional['SettingAutoUpgradeArgs']]:
+        """
+        AP automatic firmware upgrade policy for the organization
+        """
+        return pulumi.get(self, "auto_upgrade")
+
+    @auto_upgrade.setter
+    def auto_upgrade(self, value: pulumi.Input[Optional['SettingAutoUpgradeArgs']]):
+        pulumi.set(self, "auto_upgrade", value)
+
+    @_builtins.property
     @pulumi.getter
     def cacerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        RADSec certificates for AP
+        CA certificates used by organization-level RADIUS and RADSec settings
         """
         return pulumi.get(self, "cacerts")
 
@@ -194,6 +234,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def celona(self) -> pulumi.Input[Optional['SettingCelonaArgs']]:
+        """
+        Integration settings for Celona
+        """
         return pulumi.get(self, "celona")
 
     @celona.setter
@@ -203,6 +246,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def cloudshark(self) -> pulumi.Input[Optional['SettingCloudsharkArgs']]:
+        """
+        Packet capture integration settings for CloudShark
+        """
         return pulumi.get(self, "cloudshark")
 
     @cloudshark.setter
@@ -213,7 +259,7 @@ class SettingArgs:
     @pulumi.getter(name="deviceCert")
     def device_cert(self) -> pulumi.Input[Optional['SettingDeviceCertArgs']]:
         """
-        common device cert, optional
+        Common device certificate used by organization settings
         """
         return pulumi.get(self, "device_cert")
 
@@ -286,6 +332,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def installer(self) -> pulumi.Input[Optional['SettingInstallerArgs']]:
+        """
+        Access settings for organization installer workflows
+        """
         return pulumi.get(self, "installer")
 
     @installer.setter
@@ -295,6 +344,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def jcloud(self) -> pulumi.Input[Optional['SettingJcloudArgs']]:
+        """
+        Integration settings for JCloud
+        """
         return pulumi.get(self, "jcloud")
 
     @jcloud.setter
@@ -305,7 +357,7 @@ class SettingArgs:
     @pulumi.getter(name="jcloudRa")
     def jcloud_ra(self) -> pulumi.Input[Optional['SettingJcloudRaArgs']]:
         """
-        JCloud Routing Assurance connexion
+        Routing Assurance integration settings for JCloud
         """
         return pulumi.get(self, "jcloud_ra")
 
@@ -316,6 +368,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="juniperSrx")
     def juniper_srx(self) -> pulumi.Input[Optional['SettingJuniperSrxArgs']]:
+        """
+        SRX integration settings for Juniper devices
+        """
         return pulumi.get(self, "juniper_srx")
 
     @juniper_srx.setter
@@ -326,9 +381,7 @@ class SettingArgs:
     @pulumi.getter(name="junosShellAccess")
     def junos_shell_access(self) -> pulumi.Input[Optional['SettingJunosShellAccessArgs']]:
         """
-        junos_shell_access: Manages role-based web-shell access.  
-        When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
-        When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+        Role-based Junos web-shell access settings
         """
         return pulumi.get(self, "junos_shell_access")
 
@@ -339,6 +392,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def marvis(self) -> pulumi.Input[Optional['SettingMarvisArgs']]:
+        """
+        AI assistant and self-driving feature settings for Marvis
+        """
         return pulumi.get(self, "marvis")
 
     @marvis.setter
@@ -349,7 +405,7 @@ class SettingArgs:
     @pulumi.getter
     def mgmt(self) -> pulumi.Input[Optional['SettingMgmtArgs']]:
         """
-        management-related properties
+        Tunnel settings for organization management connectivity
         """
         return pulumi.get(self, "mgmt")
 
@@ -360,6 +416,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="mistNac")
     def mist_nac(self) -> pulumi.Input[Optional['SettingMistNacArgs']]:
+        """
+        NAC settings for Mist Access Assurance
+        """
         return pulumi.get(self, "mist_nac")
 
     @mist_nac.setter
@@ -369,6 +428,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="mxedgeMgmt")
     def mxedge_mgmt(self) -> pulumi.Input[Optional['SettingMxedgeMgmtArgs']]:
+        """
+        Management settings for Mist Edge devices
+        """
         return pulumi.get(self, "mxedge_mgmt")
 
     @mxedge_mgmt.setter
@@ -379,7 +441,7 @@ class SettingArgs:
     @pulumi.getter(name="opticPortConfig")
     def optic_port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]]]:
         """
-        Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+        Configuration defaults for optic ports
         """
         return pulumi.get(self, "optic_port_config")
 
@@ -391,7 +453,7 @@ class SettingArgs:
     @pulumi.getter(name="passwordPolicy")
     def password_policy(self) -> pulumi.Input[Optional['SettingPasswordPolicyArgs']]:
         """
-        password policy
+        Admin credential policy settings for the organization
         """
         return pulumi.get(self, "password_policy")
 
@@ -402,6 +464,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def security(self) -> pulumi.Input[Optional['SettingSecurityArgs']]:
+        """
+        Organization security controls such as local SSH restrictions
+        """
         return pulumi.get(self, "security")
 
     @security.setter
@@ -411,6 +476,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def ssr(self) -> pulumi.Input[Optional['SettingSsrArgs']]:
+        """
+        Session Smart Router settings for the organization
+        """
         return pulumi.get(self, "ssr")
 
     @ssr.setter
@@ -420,6 +488,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter
     def switch(self) -> pulumi.Input[Optional['SettingSwitchArgs']]:
+        """
+        Configuration defaults for switches in this organization
+        """
         return pulumi.get(self, "switch")
 
     @switch.setter
@@ -429,6 +500,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> pulumi.Input[Optional['SettingSwitchMgmtArgs']]:
+        """
+        Management settings for switches in this organization
+        """
         return pulumi.get(self, "switch_mgmt")
 
     @switch_mgmt.setter
@@ -450,6 +524,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="syntheticTest")
     def synthetic_test(self) -> pulumi.Input[Optional['SettingSyntheticTestArgs']]:
+        """
+        Configuration for organization synthetic tests
+        """
         return pulumi.get(self, "synthetic_test")
 
     @synthetic_test.setter
@@ -471,6 +548,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="uiNoTracking")
     def ui_no_tracking(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether UI usage tracking is disabled for the organization
+        """
         return pulumi.get(self, "ui_no_tracking")
 
     @ui_no_tracking.setter
@@ -480,6 +560,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="vpnOptions")
     def vpn_options(self) -> pulumi.Input[Optional['SettingVpnOptionsArgs']]:
+        """
+        Options for organization VPN behavior
+        """
         return pulumi.get(self, "vpn_options")
 
     @vpn_options.setter
@@ -489,6 +572,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="wanPma")
     def wan_pma(self) -> pulumi.Input[Optional['SettingWanPmaArgs']]:
+        """
+        PMA feature settings for WAN Assurance
+        """
         return pulumi.get(self, "wan_pma")
 
     @wan_pma.setter
@@ -498,6 +584,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="wiredPma")
     def wired_pma(self) -> pulumi.Input[Optional['SettingWiredPmaArgs']]:
+        """
+        PMA feature settings for Wired Assurance
+        """
         return pulumi.get(self, "wired_pma")
 
     @wired_pma.setter
@@ -507,6 +596,9 @@ class SettingArgs:
     @_builtins.property
     @pulumi.getter(name="wirelessPma")
     def wireless_pma(self) -> pulumi.Input[Optional['SettingWirelessPmaArgs']]:
+        """
+        PMA feature settings for Wireless Assurance
+        """
         return pulumi.get(self, "wireless_pma")
 
     @wireless_pma.setter
@@ -520,6 +612,7 @@ class _SettingState:
                  allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
                  ap_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  api_policy: pulumi.Input[Optional['SettingApiPolicyArgs']] = None,
+                 auto_upgrade: pulumi.Input[Optional['SettingAutoUpgradeArgs']] = None,
                  cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  celona: pulumi.Input[Optional['SettingCelonaArgs']] = None,
                  cloudshark: pulumi.Input[Optional['SettingCloudsharkArgs']] = None,
@@ -561,8 +654,13 @@ class _SettingState:
 
         :param pulumi.Input[_builtins.bool] allow_mist: whether to allow Mist to look at this org
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: RADSec certificates for AP
-        :param pulumi.Input['SettingDeviceCertArgs'] device_cert: common device cert, optional
+        :param pulumi.Input['SettingApiPolicyArgs'] api_policy: Policy for hiding API secrets and passwords in responses
+        :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: AP automatic firmware upgrade policy for the organization
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: CA certificates used by organization-level RADIUS and RADSec settings
+        :param pulumi.Input['SettingCelonaArgs'] celona: Integration settings for Celona
+        :param pulumi.Input['SettingCloudsharkArgs'] cloudshark: Packet capture integration settings for CloudShark
+        :param pulumi.Input['SettingCradlepointArgs'] cradlepoint: Integration settings for Cradlepoint devices
+        :param pulumi.Input['SettingDeviceCertArgs'] device_cert: Common device certificate used by organization settings
         :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via
                  * device-updowns webhooks topic, 
                  * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
@@ -570,15 +668,32 @@ class _SettingState:
         :param pulumi.Input[_builtins.bool] disable_remote_shell: Whether to disable remote shell access for an entire org
         :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
-        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: junos_shell_access: Manages role-based web-shell access.  
-               When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
-               When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
-        :param pulumi.Input['SettingMgmtArgs'] mgmt: management-related properties
-        :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
-        :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: password policy
+        :param pulumi.Input['SettingInstallerArgs'] installer: Access settings for organization installer workflows
+        :param pulumi.Input['SettingJcloudArgs'] jcloud: Integration settings for JCloud
+        :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: Routing Assurance integration settings for JCloud
+        :param pulumi.Input['SettingJuniperArgs'] juniper: Linked Juniper account information for this organization
+        :param pulumi.Input['SettingJuniperSrxArgs'] juniper_srx: SRX integration settings for Juniper devices
+        :param pulumi.Input['SettingJunosShellAccessArgs'] junos_shell_access: Role-based Junos web-shell access settings
+        :param pulumi.Input['SettingMarvisArgs'] marvis: AI assistant and self-driving feature settings for Marvis
+        :param pulumi.Input['SettingMgmtArgs'] mgmt: Tunnel settings for organization management connectivity
+        :param pulumi.Input['SettingMistNacArgs'] mist_nac: NAC settings for Mist Access Assurance
+        :param pulumi.Input['SettingMxedgeMgmtArgs'] mxedge_mgmt: Management settings for Mist Edge devices
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Configuration defaults for optic ports
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns these settings
+        :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: Admin credential policy settings for the organization
+        :param pulumi.Input['SettingPcapArgs'] pcap: Packet capture settings for the organization
+        :param pulumi.Input['SettingSecurityArgs'] security: Organization security controls such as local SSH restrictions
+        :param pulumi.Input['SettingSsrArgs'] ssr: Session Smart Router settings for the organization
+        :param pulumi.Input['SettingSwitchArgs'] switch: Configuration defaults for switches in this organization
+        :param pulumi.Input['SettingSwitchMgmtArgs'] switch_mgmt: Management settings for switches in this organization
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input['SettingSyntheticTestArgs'] synthetic_test: Configuration for organization synthetic tests
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
+        :param pulumi.Input[_builtins.bool] ui_no_tracking: Whether UI usage tracking is disabled for the organization
+        :param pulumi.Input['SettingVpnOptionsArgs'] vpn_options: Options for organization VPN behavior
+        :param pulumi.Input['SettingWanPmaArgs'] wan_pma: PMA feature settings for WAN Assurance
+        :param pulumi.Input['SettingWiredPmaArgs'] wired_pma: PMA feature settings for Wired Assurance
+        :param pulumi.Input['SettingWirelessPmaArgs'] wireless_pma: PMA feature settings for Wireless Assurance
         """
         if allow_mist is not None:
             pulumi.set(__self__, "allow_mist", allow_mist)
@@ -586,6 +701,8 @@ class _SettingState:
             pulumi.set(__self__, "ap_updown_threshold", ap_updown_threshold)
         if api_policy is not None:
             pulumi.set(__self__, "api_policy", api_policy)
+        if auto_upgrade is not None:
+            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
         if cacerts is not None:
             pulumi.set(__self__, "cacerts", cacerts)
         if celona is not None:
@@ -686,6 +803,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="apiPolicy")
     def api_policy(self) -> pulumi.Input[Optional['SettingApiPolicyArgs']]:
+        """
+        Policy for hiding API secrets and passwords in responses
+        """
         return pulumi.get(self, "api_policy")
 
     @api_policy.setter
@@ -693,10 +813,22 @@ class _SettingState:
         pulumi.set(self, "api_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> pulumi.Input[Optional['SettingAutoUpgradeArgs']]:
+        """
+        AP automatic firmware upgrade policy for the organization
+        """
+        return pulumi.get(self, "auto_upgrade")
+
+    @auto_upgrade.setter
+    def auto_upgrade(self, value: pulumi.Input[Optional['SettingAutoUpgradeArgs']]):
+        pulumi.set(self, "auto_upgrade", value)
+
+    @_builtins.property
     @pulumi.getter
     def cacerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        RADSec certificates for AP
+        CA certificates used by organization-level RADIUS and RADSec settings
         """
         return pulumi.get(self, "cacerts")
 
@@ -707,6 +839,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def celona(self) -> pulumi.Input[Optional['SettingCelonaArgs']]:
+        """
+        Integration settings for Celona
+        """
         return pulumi.get(self, "celona")
 
     @celona.setter
@@ -716,6 +851,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def cloudshark(self) -> pulumi.Input[Optional['SettingCloudsharkArgs']]:
+        """
+        Packet capture integration settings for CloudShark
+        """
         return pulumi.get(self, "cloudshark")
 
     @cloudshark.setter
@@ -725,6 +863,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def cradlepoint(self) -> pulumi.Input[Optional['SettingCradlepointArgs']]:
+        """
+        Integration settings for Cradlepoint devices
+        """
         return pulumi.get(self, "cradlepoint")
 
     @cradlepoint.setter
@@ -735,7 +876,7 @@ class _SettingState:
     @pulumi.getter(name="deviceCert")
     def device_cert(self) -> pulumi.Input[Optional['SettingDeviceCertArgs']]:
         """
-        common device cert, optional
+        Common device certificate used by organization settings
         """
         return pulumi.get(self, "device_cert")
 
@@ -808,6 +949,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def installer(self) -> pulumi.Input[Optional['SettingInstallerArgs']]:
+        """
+        Access settings for organization installer workflows
+        """
         return pulumi.get(self, "installer")
 
     @installer.setter
@@ -817,6 +961,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def jcloud(self) -> pulumi.Input[Optional['SettingJcloudArgs']]:
+        """
+        Integration settings for JCloud
+        """
         return pulumi.get(self, "jcloud")
 
     @jcloud.setter
@@ -827,7 +974,7 @@ class _SettingState:
     @pulumi.getter(name="jcloudRa")
     def jcloud_ra(self) -> pulumi.Input[Optional['SettingJcloudRaArgs']]:
         """
-        JCloud Routing Assurance connexion
+        Routing Assurance integration settings for JCloud
         """
         return pulumi.get(self, "jcloud_ra")
 
@@ -838,6 +985,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def juniper(self) -> pulumi.Input[Optional['SettingJuniperArgs']]:
+        """
+        Linked Juniper account information for this organization
+        """
         return pulumi.get(self, "juniper")
 
     @juniper.setter
@@ -847,6 +997,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="juniperSrx")
     def juniper_srx(self) -> pulumi.Input[Optional['SettingJuniperSrxArgs']]:
+        """
+        SRX integration settings for Juniper devices
+        """
         return pulumi.get(self, "juniper_srx")
 
     @juniper_srx.setter
@@ -857,9 +1010,7 @@ class _SettingState:
     @pulumi.getter(name="junosShellAccess")
     def junos_shell_access(self) -> pulumi.Input[Optional['SettingJunosShellAccessArgs']]:
         """
-        junos_shell_access: Manages role-based web-shell access.  
-        When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
-        When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+        Role-based Junos web-shell access settings
         """
         return pulumi.get(self, "junos_shell_access")
 
@@ -870,6 +1021,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def marvis(self) -> pulumi.Input[Optional['SettingMarvisArgs']]:
+        """
+        AI assistant and self-driving feature settings for Marvis
+        """
         return pulumi.get(self, "marvis")
 
     @marvis.setter
@@ -880,7 +1034,7 @@ class _SettingState:
     @pulumi.getter
     def mgmt(self) -> pulumi.Input[Optional['SettingMgmtArgs']]:
         """
-        management-related properties
+        Tunnel settings for organization management connectivity
         """
         return pulumi.get(self, "mgmt")
 
@@ -891,6 +1045,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="mistNac")
     def mist_nac(self) -> pulumi.Input[Optional['SettingMistNacArgs']]:
+        """
+        NAC settings for Mist Access Assurance
+        """
         return pulumi.get(self, "mist_nac")
 
     @mist_nac.setter
@@ -900,6 +1057,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="mxedgeMgmt")
     def mxedge_mgmt(self) -> pulumi.Input[Optional['SettingMxedgeMgmtArgs']]:
+        """
+        Management settings for Mist Edge devices
+        """
         return pulumi.get(self, "mxedge_mgmt")
 
     @mxedge_mgmt.setter
@@ -910,7 +1070,7 @@ class _SettingState:
     @pulumi.getter(name="opticPortConfig")
     def optic_port_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]]]:
         """
-        Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+        Configuration defaults for optic ports
         """
         return pulumi.get(self, "optic_port_config")
 
@@ -921,6 +1081,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns these settings
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -931,7 +1094,7 @@ class _SettingState:
     @pulumi.getter(name="passwordPolicy")
     def password_policy(self) -> pulumi.Input[Optional['SettingPasswordPolicyArgs']]:
         """
-        password policy
+        Admin credential policy settings for the organization
         """
         return pulumi.get(self, "password_policy")
 
@@ -942,6 +1105,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def pcap(self) -> pulumi.Input[Optional['SettingPcapArgs']]:
+        """
+        Packet capture settings for the organization
+        """
         return pulumi.get(self, "pcap")
 
     @pcap.setter
@@ -951,6 +1117,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def security(self) -> pulumi.Input[Optional['SettingSecurityArgs']]:
+        """
+        Organization security controls such as local SSH restrictions
+        """
         return pulumi.get(self, "security")
 
     @security.setter
@@ -960,6 +1129,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def ssr(self) -> pulumi.Input[Optional['SettingSsrArgs']]:
+        """
+        Session Smart Router settings for the organization
+        """
         return pulumi.get(self, "ssr")
 
     @ssr.setter
@@ -969,6 +1141,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter
     def switch(self) -> pulumi.Input[Optional['SettingSwitchArgs']]:
+        """
+        Configuration defaults for switches in this organization
+        """
         return pulumi.get(self, "switch")
 
     @switch.setter
@@ -978,6 +1153,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> pulumi.Input[Optional['SettingSwitchMgmtArgs']]:
+        """
+        Management settings for switches in this organization
+        """
         return pulumi.get(self, "switch_mgmt")
 
     @switch_mgmt.setter
@@ -999,6 +1177,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="syntheticTest")
     def synthetic_test(self) -> pulumi.Input[Optional['SettingSyntheticTestArgs']]:
+        """
+        Configuration for organization synthetic tests
+        """
         return pulumi.get(self, "synthetic_test")
 
     @synthetic_test.setter
@@ -1020,6 +1201,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="uiNoTracking")
     def ui_no_tracking(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether UI usage tracking is disabled for the organization
+        """
         return pulumi.get(self, "ui_no_tracking")
 
     @ui_no_tracking.setter
@@ -1029,6 +1213,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="vpnOptions")
     def vpn_options(self) -> pulumi.Input[Optional['SettingVpnOptionsArgs']]:
+        """
+        Options for organization VPN behavior
+        """
         return pulumi.get(self, "vpn_options")
 
     @vpn_options.setter
@@ -1038,6 +1225,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="wanPma")
     def wan_pma(self) -> pulumi.Input[Optional['SettingWanPmaArgs']]:
+        """
+        PMA feature settings for WAN Assurance
+        """
         return pulumi.get(self, "wan_pma")
 
     @wan_pma.setter
@@ -1047,6 +1237,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="wiredPma")
     def wired_pma(self) -> pulumi.Input[Optional['SettingWiredPmaArgs']]:
+        """
+        PMA feature settings for Wired Assurance
+        """
         return pulumi.get(self, "wired_pma")
 
     @wired_pma.setter
@@ -1056,6 +1249,9 @@ class _SettingState:
     @_builtins.property
     @pulumi.getter(name="wirelessPma")
     def wireless_pma(self) -> pulumi.Input[Optional['SettingWirelessPmaArgs']]:
+        """
+        PMA feature settings for Wireless Assurance
+        """
         return pulumi.get(self, "wireless_pma")
 
     @wireless_pma.setter
@@ -1071,6 +1267,7 @@ class Setting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ap_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  api_policy: pulumi.Input[Optional[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']]] = None,
+                 auto_upgrade: pulumi.Input[Optional[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
                  cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  celona: pulumi.Input[Optional[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']]] = None,
                  cloudshark: pulumi.Input[Optional[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']]] = None,
@@ -1181,8 +1378,12 @@ class Setting(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: RADSec certificates for AP
-        :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: common device cert, optional
+        :param pulumi.Input[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']] api_policy: Policy for hiding API secrets and passwords in responses
+        :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: AP automatic firmware upgrade policy for the organization
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: CA certificates used by organization-level RADIUS and RADSec settings
+        :param pulumi.Input[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']] celona: Integration settings for Celona
+        :param pulumi.Input[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']] cloudshark: Packet capture integration settings for CloudShark
+        :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: Common device certificate used by organization settings
         :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via
                  * device-updowns webhooks topic, 
                  * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
@@ -1190,15 +1391,30 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disable_remote_shell: Whether to disable remote shell access for an entire org
         :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
-        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: junos_shell_access: Manages role-based web-shell access.  
-               When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
-               When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
-        :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
-        :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
+        :param pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']] installer: Access settings for organization installer workflows
+        :param pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']] jcloud: Integration settings for JCloud
+        :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: Routing Assurance integration settings for JCloud
+        :param pulumi.Input[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']] juniper_srx: SRX integration settings for Juniper devices
+        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: Role-based Junos web-shell access settings
+        :param pulumi.Input[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']] marvis: AI assistant and self-driving feature settings for Marvis
+        :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: Tunnel settings for organization management connectivity
+        :param pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']] mist_nac: NAC settings for Mist Access Assurance
+        :param pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']] mxedge_mgmt: Management settings for Mist Edge devices
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Configuration defaults for optic ports
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns these settings
+        :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: Admin credential policy settings for the organization
+        :param pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']] security: Organization security controls such as local SSH restrictions
+        :param pulumi.Input[Union['SettingSsrArgs', 'SettingSsrArgsDict']] ssr: Session Smart Router settings for the organization
+        :param pulumi.Input[Union['SettingSwitchArgs', 'SettingSwitchArgsDict']] switch: Configuration defaults for switches in this organization
+        :param pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']] switch_mgmt: Management settings for switches in this organization
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']] synthetic_test: Configuration for organization synthetic tests
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
+        :param pulumi.Input[_builtins.bool] ui_no_tracking: Whether UI usage tracking is disabled for the organization
+        :param pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']] vpn_options: Options for organization VPN behavior
+        :param pulumi.Input[Union['SettingWanPmaArgs', 'SettingWanPmaArgsDict']] wan_pma: PMA feature settings for WAN Assurance
+        :param pulumi.Input[Union['SettingWiredPmaArgs', 'SettingWiredPmaArgsDict']] wired_pma: PMA feature settings for Wired Assurance
+        :param pulumi.Input[Union['SettingWirelessPmaArgs', 'SettingWirelessPmaArgsDict']] wireless_pma: PMA feature settings for Wireless Assurance
         """
         ...
     @overload
@@ -1296,6 +1512,7 @@ class Setting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ap_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  api_policy: pulumi.Input[Optional[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']]] = None,
+                 auto_upgrade: pulumi.Input[Optional[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
                  cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  celona: pulumi.Input[Optional[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']]] = None,
                  cloudshark: pulumi.Input[Optional[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']]] = None,
@@ -1340,6 +1557,7 @@ class Setting(pulumi.CustomResource):
 
             __props__.__dict__["ap_updown_threshold"] = ap_updown_threshold
             __props__.__dict__["api_policy"] = api_policy
+            __props__.__dict__["auto_upgrade"] = auto_upgrade
             __props__.__dict__["cacerts"] = cacerts
             __props__.__dict__["celona"] = celona
             __props__.__dict__["cloudshark"] = cloudshark
@@ -1392,6 +1610,7 @@ class Setting(pulumi.CustomResource):
             allow_mist: pulumi.Input[Optional[_builtins.bool]] = None,
             ap_updown_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             api_policy: pulumi.Input[Optional[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']]] = None,
+            auto_upgrade: pulumi.Input[Optional[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
             cacerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             celona: pulumi.Input[Optional[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']]] = None,
             cloudshark: pulumi.Input[Optional[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']]] = None,
@@ -1437,8 +1656,13 @@ class Setting(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_mist: whether to allow Mist to look at this org
         :param pulumi.Input[_builtins.int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: RADSec certificates for AP
-        :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: common device cert, optional
+        :param pulumi.Input[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']] api_policy: Policy for hiding API secrets and passwords in responses
+        :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: AP automatic firmware upgrade policy for the organization
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cacerts: CA certificates used by organization-level RADIUS and RADSec settings
+        :param pulumi.Input[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']] celona: Integration settings for Celona
+        :param pulumi.Input[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']] cloudshark: Packet capture integration settings for CloudShark
+        :param pulumi.Input[Union['SettingCradlepointArgs', 'SettingCradlepointArgsDict']] cradlepoint: Integration settings for Cradlepoint devices
+        :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: Common device certificate used by organization settings
         :param pulumi.Input[_builtins.int] device_updown_threshold: Enable threshold-based device down delivery via
                  * device-updowns webhooks topic, 
                  * Mist Alert Framework; e.g. send AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger immediate)
@@ -1446,15 +1670,32 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disable_remote_shell: Whether to disable remote shell access for an entire org
         :param pulumi.Input[_builtins.int] gateway_tunnel_updown_threshold: enable threshold-based gateway tunnel (secure edge tunnels) up-down delivery.
         :param pulumi.Input[_builtins.int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
-        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: junos_shell_access: Manages role-based web-shell access.  
-               When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
-               When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
-        :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
-        :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
+        :param pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']] installer: Access settings for organization installer workflows
+        :param pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']] jcloud: Integration settings for JCloud
+        :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: Routing Assurance integration settings for JCloud
+        :param pulumi.Input[Union['SettingJuniperArgs', 'SettingJuniperArgsDict']] juniper: Linked Juniper account information for this organization
+        :param pulumi.Input[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']] juniper_srx: SRX integration settings for Juniper devices
+        :param pulumi.Input[Union['SettingJunosShellAccessArgs', 'SettingJunosShellAccessArgsDict']] junos_shell_access: Role-based Junos web-shell access settings
+        :param pulumi.Input[Union['SettingMarvisArgs', 'SettingMarvisArgsDict']] marvis: AI assistant and self-driving feature settings for Marvis
+        :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: Tunnel settings for organization management connectivity
+        :param pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']] mist_nac: NAC settings for Mist Access Assurance
+        :param pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']] mxedge_mgmt: Management settings for Mist Edge devices
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Configuration defaults for optic ports
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns these settings
+        :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: Admin credential policy settings for the organization
+        :param pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']] pcap: Packet capture settings for the organization
+        :param pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']] security: Organization security controls such as local SSH restrictions
+        :param pulumi.Input[Union['SettingSsrArgs', 'SettingSsrArgsDict']] ssr: Session Smart Router settings for the organization
+        :param pulumi.Input[Union['SettingSwitchArgs', 'SettingSwitchArgsDict']] switch: Configuration defaults for switches in this organization
+        :param pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']] switch_mgmt: Management settings for switches in this organization
         :param pulumi.Input[_builtins.int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']] synthetic_test: Configuration for organization synthetic tests
         :param pulumi.Input[_builtins.int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
+        :param pulumi.Input[_builtins.bool] ui_no_tracking: Whether UI usage tracking is disabled for the organization
+        :param pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']] vpn_options: Options for organization VPN behavior
+        :param pulumi.Input[Union['SettingWanPmaArgs', 'SettingWanPmaArgsDict']] wan_pma: PMA feature settings for WAN Assurance
+        :param pulumi.Input[Union['SettingWiredPmaArgs', 'SettingWiredPmaArgsDict']] wired_pma: PMA feature settings for Wired Assurance
+        :param pulumi.Input[Union['SettingWirelessPmaArgs', 'SettingWirelessPmaArgsDict']] wireless_pma: PMA feature settings for Wireless Assurance
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1463,6 +1704,7 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["allow_mist"] = allow_mist
         __props__.__dict__["ap_updown_threshold"] = ap_updown_threshold
         __props__.__dict__["api_policy"] = api_policy
+        __props__.__dict__["auto_upgrade"] = auto_upgrade
         __props__.__dict__["cacerts"] = cacerts
         __props__.__dict__["celona"] = celona
         __props__.__dict__["cloudshark"] = cloudshark
@@ -1520,36 +1762,56 @@ class Setting(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="apiPolicy")
     def api_policy(self) -> pulumi.Output[Optional['outputs.SettingApiPolicy']]:
+        """
+        Policy for hiding API secrets and passwords in responses
+        """
         return pulumi.get(self, "api_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> pulumi.Output[Optional['outputs.SettingAutoUpgrade']]:
+        """
+        AP automatic firmware upgrade policy for the organization
+        """
+        return pulumi.get(self, "auto_upgrade")
 
     @_builtins.property
     @pulumi.getter
     def cacerts(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        RADSec certificates for AP
+        CA certificates used by organization-level RADIUS and RADSec settings
         """
         return pulumi.get(self, "cacerts")
 
     @_builtins.property
     @pulumi.getter
     def celona(self) -> pulumi.Output[Optional['outputs.SettingCelona']]:
+        """
+        Integration settings for Celona
+        """
         return pulumi.get(self, "celona")
 
     @_builtins.property
     @pulumi.getter
     def cloudshark(self) -> pulumi.Output[Optional['outputs.SettingCloudshark']]:
+        """
+        Packet capture integration settings for CloudShark
+        """
         return pulumi.get(self, "cloudshark")
 
     @_builtins.property
     @pulumi.getter
     def cradlepoint(self) -> pulumi.Output['outputs.SettingCradlepoint']:
+        """
+        Integration settings for Cradlepoint devices
+        """
         return pulumi.get(self, "cradlepoint")
 
     @_builtins.property
     @pulumi.getter(name="deviceCert")
     def device_cert(self) -> pulumi.Output[Optional['outputs.SettingDeviceCert']]:
         """
-        common device cert, optional
+        Common device certificate used by organization settings
         """
         return pulumi.get(self, "device_cert")
 
@@ -1598,108 +1860,145 @@ class Setting(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def installer(self) -> pulumi.Output[Optional['outputs.SettingInstaller']]:
+        """
+        Access settings for organization installer workflows
+        """
         return pulumi.get(self, "installer")
 
     @_builtins.property
     @pulumi.getter
     def jcloud(self) -> pulumi.Output[Optional['outputs.SettingJcloud']]:
+        """
+        Integration settings for JCloud
+        """
         return pulumi.get(self, "jcloud")
 
     @_builtins.property
     @pulumi.getter(name="jcloudRa")
     def jcloud_ra(self) -> pulumi.Output[Optional['outputs.SettingJcloudRa']]:
         """
-        JCloud Routing Assurance connexion
+        Routing Assurance integration settings for JCloud
         """
         return pulumi.get(self, "jcloud_ra")
 
     @_builtins.property
     @pulumi.getter
     def juniper(self) -> pulumi.Output['outputs.SettingJuniper']:
+        """
+        Linked Juniper account information for this organization
+        """
         return pulumi.get(self, "juniper")
 
     @_builtins.property
     @pulumi.getter(name="juniperSrx")
     def juniper_srx(self) -> pulumi.Output[Optional['outputs.SettingJuniperSrx']]:
+        """
+        SRX integration settings for Juniper devices
+        """
         return pulumi.get(self, "juniper_srx")
 
     @_builtins.property
     @pulumi.getter(name="junosShellAccess")
     def junos_shell_access(self) -> pulumi.Output[Optional['outputs.SettingJunosShellAccess']]:
         """
-        junos_shell_access: Manages role-based web-shell access.  
-        When junos_shell access is not defined (Default) - No additional users are configured and web-shell uses default `mist` user to login.  
-        When junos_shell_access is defined - Additional users mist-web-admin (admin permission), mist-web-viewer(viewer permission) are configured on the device and web-shell logs in with the mist-web-admin/mist-web-viewer user depending upon the shell access level. Setting the shell access level to "none", disables web-shell access for that specific role.
+        Role-based Junos web-shell access settings
         """
         return pulumi.get(self, "junos_shell_access")
 
     @_builtins.property
     @pulumi.getter
     def marvis(self) -> pulumi.Output[Optional['outputs.SettingMarvis']]:
+        """
+        AI assistant and self-driving feature settings for Marvis
+        """
         return pulumi.get(self, "marvis")
 
     @_builtins.property
     @pulumi.getter
     def mgmt(self) -> pulumi.Output[Optional['outputs.SettingMgmt']]:
         """
-        management-related properties
+        Tunnel settings for organization management connectivity
         """
         return pulumi.get(self, "mgmt")
 
     @_builtins.property
     @pulumi.getter(name="mistNac")
     def mist_nac(self) -> pulumi.Output[Optional['outputs.SettingMistNac']]:
+        """
+        NAC settings for Mist Access Assurance
+        """
         return pulumi.get(self, "mist_nac")
 
     @_builtins.property
     @pulumi.getter(name="mxedgeMgmt")
     def mxedge_mgmt(self) -> pulumi.Output[Optional['outputs.SettingMxedgeMgmt']]:
+        """
+        Management settings for Mist Edge devices
+        """
         return pulumi.get(self, "mxedge_mgmt")
 
     @_builtins.property
     @pulumi.getter(name="opticPortConfig")
     def optic_port_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SettingOpticPortConfig']]]:
         """
-        Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+        Configuration defaults for optic ports
         """
         return pulumi.get(self, "optic_port_config")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns these settings
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter(name="passwordPolicy")
     def password_policy(self) -> pulumi.Output[Optional['outputs.SettingPasswordPolicy']]:
         """
-        password policy
+        Admin credential policy settings for the organization
         """
         return pulumi.get(self, "password_policy")
 
     @_builtins.property
     @pulumi.getter
     def pcap(self) -> pulumi.Output['outputs.SettingPcap']:
+        """
+        Packet capture settings for the organization
+        """
         return pulumi.get(self, "pcap")
 
     @_builtins.property
     @pulumi.getter
     def security(self) -> pulumi.Output[Optional['outputs.SettingSecurity']]:
+        """
+        Organization security controls such as local SSH restrictions
+        """
         return pulumi.get(self, "security")
 
     @_builtins.property
     @pulumi.getter
     def ssr(self) -> pulumi.Output[Optional['outputs.SettingSsr']]:
+        """
+        Session Smart Router settings for the organization
+        """
         return pulumi.get(self, "ssr")
 
     @_builtins.property
     @pulumi.getter
     def switch(self) -> pulumi.Output[Optional['outputs.SettingSwitch']]:
+        """
+        Configuration defaults for switches in this organization
+        """
         return pulumi.get(self, "switch")
 
     @_builtins.property
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> pulumi.Output[Optional['outputs.SettingSwitchMgmt']]:
+        """
+        Management settings for switches in this organization
+        """
         return pulumi.get(self, "switch_mgmt")
 
     @_builtins.property
@@ -1713,6 +2012,9 @@ class Setting(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="syntheticTest")
     def synthetic_test(self) -> pulumi.Output[Optional['outputs.SettingSyntheticTest']]:
+        """
+        Configuration for organization synthetic tests
+        """
         return pulumi.get(self, "synthetic_test")
 
     @_builtins.property
@@ -1726,25 +2028,40 @@ class Setting(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="uiNoTracking")
     def ui_no_tracking(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether UI usage tracking is disabled for the organization
+        """
         return pulumi.get(self, "ui_no_tracking")
 
     @_builtins.property
     @pulumi.getter(name="vpnOptions")
     def vpn_options(self) -> pulumi.Output[Optional['outputs.SettingVpnOptions']]:
+        """
+        Options for organization VPN behavior
+        """
         return pulumi.get(self, "vpn_options")
 
     @_builtins.property
     @pulumi.getter(name="wanPma")
     def wan_pma(self) -> pulumi.Output[Optional['outputs.SettingWanPma']]:
+        """
+        PMA feature settings for WAN Assurance
+        """
         return pulumi.get(self, "wan_pma")
 
     @_builtins.property
     @pulumi.getter(name="wiredPma")
     def wired_pma(self) -> pulumi.Output[Optional['outputs.SettingWiredPma']]:
+        """
+        PMA feature settings for Wired Assurance
+        """
         return pulumi.get(self, "wired_pma")
 
     @_builtins.property
     @pulumi.getter(name="wirelessPma")
     def wireless_pma(self) -> pulumi.Output[Optional['outputs.SettingWirelessPma']]:
+        """
+        PMA feature settings for Wireless Assurance
+        """
         return pulumi.get(self, "wireless_pma")
 

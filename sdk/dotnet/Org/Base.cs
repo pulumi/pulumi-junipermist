@@ -45,12 +45,21 @@ namespace Pulumi.JuniperMist.Org
     [JuniperMistResourceType("junipermist:org/base:base")]
     public partial class Base : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Org-level alarm template ID used as the default for sites
+        /// </summary>
         [Output("alarmtemplateId")]
         public Output<string?> AlarmtemplateId { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether Mist support access is allowed for this organization
+        /// </summary>
         [Output("allowMist")]
         public Output<bool> AllowMist { get; private set; } = null!;
 
+        /// <summary>
+        /// Managed service provider account that owns this organization, when applicable
+        /// </summary>
         [Output("mspId")]
         public Output<string> MspId { get; private set; } = null!;
 
@@ -66,12 +75,21 @@ namespace Pulumi.JuniperMist.Org
         [Output("mspName")]
         public Output<string> MspName { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the organization
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization group IDs that include this organization
+        /// </summary>
         [Output("orggroupIds")]
         public Output<ImmutableArray<string>> OrggroupIds { get; private set; } = null!;
 
+        /// <summary>
+        /// Admin session lifetime for the organization, in minutes
+        /// </summary>
         [Output("sessionExpiry")]
         public Output<int> SessionExpiry { get; private set; } = null!;
 
@@ -122,15 +140,27 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class BaseArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Org-level alarm template ID used as the default for sites
+        /// </summary>
         [Input("alarmtemplateId")]
         public Input<string>? AlarmtemplateId { get; set; }
 
+        /// <summary>
+        /// Whether Mist support access is allowed for this organization
+        /// </summary>
         [Input("allowMist")]
         public Input<bool>? AllowMist { get; set; }
 
+        /// <summary>
+        /// Display name of the organization
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Admin session lifetime for the organization, in minutes
+        /// </summary>
         [Input("sessionExpiry")]
         public Input<int>? SessionExpiry { get; set; }
 
@@ -142,12 +172,21 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class BaseState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Org-level alarm template ID used as the default for sites
+        /// </summary>
         [Input("alarmtemplateId")]
         public Input<string>? AlarmtemplateId { get; set; }
 
+        /// <summary>
+        /// Whether Mist support access is allowed for this organization
+        /// </summary>
         [Input("allowMist")]
         public Input<bool>? AllowMist { get; set; }
 
+        /// <summary>
+        /// Managed service provider account that owns this organization, when applicable
+        /// </summary>
         [Input("mspId")]
         public Input<string>? MspId { get; set; }
 
@@ -163,17 +202,27 @@ namespace Pulumi.JuniperMist.Org
         [Input("mspName")]
         public Input<string>? MspName { get; set; }
 
+        /// <summary>
+        /// Display name of the organization
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("orggroupIds")]
         private InputList<string>? _orggroupIds;
+
+        /// <summary>
+        /// Organization group IDs that include this organization
+        /// </summary>
         public InputList<string> OrggroupIds
         {
             get => _orggroupIds ?? (_orggroupIds = new InputList<string>());
             set => _orggroupIds = value;
         }
 
+        /// <summary>
+        /// Admin session lifetime for the organization, in minutes
+        /// </summary>
         [Input("sessionExpiry")]
         public Input<int>? SessionExpiry { get; set; }
 

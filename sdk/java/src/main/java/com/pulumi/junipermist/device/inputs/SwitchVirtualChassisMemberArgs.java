@@ -16,36 +16,44 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
     public static final SwitchVirtualChassisMemberArgs Empty = new SwitchVirtualChassisMemberArgs();
 
     /**
-     * fpc0, same as the mac of device_id
+     * Virtual Chassis member MAC address; for FPC0 this matches the device ID MAC
      * 
      */
     @Import(name="mac", required=true)
     private Output<String> mac;
 
     /**
-     * @return fpc0, same as the mac of device_id
+     * @return Virtual Chassis member MAC address; for FPC0 this matches the device ID MAC
      * 
      */
     public Output<String> mac() {
         return this.mac;
     }
 
+    /**
+     * Virtual Chassis member identifier
+     * 
+     */
     @Import(name="memberId", required=true)
     private Output<Integer> memberId;
 
+    /**
+     * @return Virtual Chassis member identifier
+     * 
+     */
     public Output<Integer> memberId() {
         return this.memberId;
     }
 
     /**
-     * Both vcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+     * Role of this member in the Virtual Chassis
      * 
      */
     @Import(name="vcRole", required=true)
     private Output<String> vcRole;
 
     /**
-     * @return Both vcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+     * @return Role of this member in the Virtual Chassis
      * 
      */
     public Output<String> vcRole() {
@@ -79,7 +87,7 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param mac fpc0, same as the mac of device_id
+         * @param mac Virtual Chassis member MAC address; for FPC0 this matches the device ID MAC
          * 
          * @return builder
          * 
@@ -90,7 +98,7 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param mac fpc0, same as the mac of device_id
+         * @param mac Virtual Chassis member MAC address; for FPC0 this matches the device ID MAC
          * 
          * @return builder
          * 
@@ -99,17 +107,29 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
             return mac(Output.of(mac));
         }
 
+        /**
+         * @param memberId Virtual Chassis member identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder memberId(Output<Integer> memberId) {
             $.memberId = memberId;
             return this;
         }
 
+        /**
+         * @param memberId Virtual Chassis member identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder memberId(Integer memberId) {
             return memberId(Output.of(memberId));
         }
 
         /**
-         * @param vcRole Both vcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+         * @param vcRole Role of this member in the Virtual Chassis
          * 
          * @return builder
          * 
@@ -120,7 +140,7 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vcRole Both vcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+         * @param vcRole Role of this member in the Virtual Chassis
          * 
          * @return builder
          * 

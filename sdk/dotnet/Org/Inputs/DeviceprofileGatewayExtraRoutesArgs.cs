@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class DeviceprofileGatewayExtraRoutesArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Next-hop IPv4 address for the gateway extra route
+        /// </summary>
         [Input("via", required: true)]
         public Input<string> Via { get; set; } = null!;
 

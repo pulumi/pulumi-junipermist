@@ -13,31 +13,40 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GatewaytemplateRoutingPoliciesTermActions
     {
+        /// <summary>
+        /// Whether to accept routes that match this term
+        /// </summary>
         public readonly bool? Accept;
+        /// <summary>
+        /// BGP communities to add to routes that match this term
+        /// </summary>
         public readonly ImmutableArray<string> AddCommunities;
         /// <summary>
-        /// For SSR, hub decides how VRF routes are leaked on spoke
+        /// SSR target VRFs to add when leaking routes from hub to spoke
         /// </summary>
         public readonly ImmutableArray<string> AddTargetVrfs;
         /// <summary>
-        /// When used as export policy, optional
+        /// BGP communities to set when this term is used as an export policy
         /// </summary>
         public readonly ImmutableArray<string> Communities;
         /// <summary>
-        /// When used as export policy, optional. To exclude certain AS
+        /// AS path values to exclude when this term is used as an export policy
         /// </summary>
         public readonly ImmutableArray<string> ExcludeAsPaths;
+        /// <summary>
+        /// BGP communities to exclude from routes that match this term
+        /// </summary>
         public readonly ImmutableArray<string> ExcludeCommunities;
         /// <summary>
-        /// When used as export policy, optional
+        /// BGP communities allowed for export when this term is used as an export policy
         /// </summary>
         public readonly ImmutableArray<string> ExportCommunities;
         /// <summary>
-        /// Optional, for an import policy, LocalPreference can be changed, value in range 1-4294967294. Can be a Variable (e.g. `{{bgp_as}}`)
+        /// Preference value to set when this term is used as an import policy
         /// </summary>
         public readonly string? LocalPreference;
         /// <summary>
-        /// When used as export policy, optional. By default, the local AS will be prepended, to change it. Can be a Variable (e.g. `{{as_path}}`)
+        /// AS path values to prepend when this term is used as an export policy
         /// </summary>
         public readonly ImmutableArray<string> PrependAsPaths;
 

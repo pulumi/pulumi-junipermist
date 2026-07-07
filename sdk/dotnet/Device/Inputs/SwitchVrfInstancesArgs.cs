@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchVrfInstancesArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// IPv4 subnet used for automatic EVPN loopback addresses in this VRF instance
+        /// </summary>
         [Input("evpnAutoLoopbackSubnet")]
         public Input<string>? EvpnAutoLoopbackSubnet { get; set; }
 
+        /// <summary>
+        /// IPv6 subnet used for automatic EVPN loopback addresses in this VRF instance
+        /// </summary>
         [Input("evpnAutoLoopbackSubnet6")]
         public Input<string>? EvpnAutoLoopbackSubnet6 { get; set; }
 
@@ -22,7 +28,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchVrfInstancesExtraRoutesArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Additional IPv4 static routes configured for this VRF instance
         /// </summary>
         public InputMap<Inputs.SwitchVrfInstancesExtraRoutesArgs> ExtraRoutes
         {
@@ -34,7 +40,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchVrfInstancesExtraRoutes6Args>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Additional IPv6 static routes configured for this VRF instance
         /// </summary>
         public InputMap<Inputs.SwitchVrfInstancesExtraRoutes6Args> ExtraRoutes6
         {
@@ -44,6 +50,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         [Input("networks")]
         private InputList<string>? _networks;
+
+        /// <summary>
+        /// Names of switch networks included in this VRF instance
+        /// </summary>
         public InputList<string> Networks
         {
             get => _networks ?? (_networks = new InputList<string>());

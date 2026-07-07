@@ -79,6 +79,10 @@ export class Inventory extends pulumi.CustomResource {
     }
 
     /**
+     * Filter results to devices that were last disconnected before this time, in epoch seconds
+     */
+    declare public readonly disconnectedBefore: pulumi.Output<number | undefined>;
+    /**
      * Property key can be the device Claim Code or the device MAC Address:
      *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
      *   * MAC Address: used to manage a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
@@ -101,6 +105,7 @@ export class Inventory extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InventoryState | undefined;
+            resourceInputs["disconnectedBefore"] = state?.disconnectedBefore;
             resourceInputs["inventory"] = state?.inventory;
             resourceInputs["orgId"] = state?.orgId;
         } else {
@@ -108,6 +113,7 @@ export class Inventory extends pulumi.CustomResource {
             if (args?.orgId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
+            resourceInputs["disconnectedBefore"] = args?.disconnectedBefore;
             resourceInputs["inventory"] = args?.inventory;
             resourceInputs["orgId"] = args?.orgId;
         }
@@ -120,6 +126,10 @@ export class Inventory extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Inventory resources.
  */
 export interface InventoryState {
+    /**
+     * Filter results to devices that were last disconnected before this time, in epoch seconds
+     */
+    disconnectedBefore?: pulumi.Input<number | undefined>;
     /**
      * Property key can be the device Claim Code or the device MAC Address:
      *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
@@ -135,6 +145,10 @@ export interface InventoryState {
  * The set of arguments for constructing a Inventory resource.
  */
 export interface InventoryArgs {
+    /**
+     * Filter results to devices that were last disconnected before this time, in epoch seconds
+     */
+    disconnectedBefore?: pulumi.Input<number | undefined>;
     /**
      * Property key can be the device Claim Code or the device MAC Address:
      *   * Claim Code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)

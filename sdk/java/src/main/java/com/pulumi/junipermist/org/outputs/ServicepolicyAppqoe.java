@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServicepolicyAppqoe {
+    /**
+     * @return Whether application QoE is enabled for the service policy
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private ServicepolicyAppqoe() {}
+    /**
+     * @return Whether application QoE is enabled for the service policy
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

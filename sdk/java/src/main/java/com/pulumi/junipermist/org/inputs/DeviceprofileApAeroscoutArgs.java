@@ -62,9 +62,17 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.locateConnected);
     }
 
+    /**
+     * Optional if enabled, Aeroscout server port. Defaults to 1144
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
+    /**
+     * @return Optional if enabled, Aeroscout server port. Defaults to 1144
+     * 
+     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
@@ -159,11 +167,23 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
             return locateConnected(Output.of(locateConnected));
         }
 
+        /**
+         * @param port Optional if enabled, Aeroscout server port. Defaults to 1144
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port Optional if enabled, Aeroscout server port. Defaults to 1144
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }

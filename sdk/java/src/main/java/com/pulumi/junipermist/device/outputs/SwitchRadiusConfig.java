@@ -16,31 +16,55 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchRadiusConfig {
+    /**
+     * @return Whether immediate RADIUS accounting updates are sent
+     * 
+     */
     private @Nullable Boolean acctImmediateUpdate;
     /**
-     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      * 
      */
     private @Nullable Integer acctInterimInterval;
+    /**
+     * @return RADIUS accounting servers used by this switch configuration
+     * 
+     */
     private @Nullable List<SwitchRadiusConfigAcctServer> acctServers;
     /**
-     * @return enum: `ordered`, `unordered`
+     * @return Selection strategy for RADIUS authentication servers
      * 
      */
     private @Nullable String authServerSelection;
+    /**
+     * @return RADIUS authentication servers used by this switch configuration
+     * 
+     */
     private @Nullable List<SwitchRadiusConfigAuthServer> authServers;
     /**
-     * @return Radius auth session retries
+     * @return RADIUS auth session retries
      * 
      */
     private @Nullable Integer authServersRetries;
     /**
-     * @return Radius auth session timeout
+     * @return RADIUS auth session timeout
      * 
      */
     private @Nullable Integer authServersTimeout;
+    /**
+     * @return Whether RADIUS Change of Authorization (CoA) is enabled
+     * 
+     */
     private @Nullable Boolean coaEnabled;
+    /**
+     * @return UDP port used for RADIUS Change of Authorization (CoA)
+     * 
+     */
     private @Nullable String coaPort;
+    /**
+     * @return Whether fast 802.1X timers are enabled for RADIUS authentication
+     * 
+     */
     private @Nullable Boolean fastDot1xTimers;
     /**
      * @return Use `network`or `sourceIp`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
@@ -48,55 +72,79 @@ public final class SwitchRadiusConfig {
      */
     private @Nullable String network;
     /**
-     * @return Use `network`or `sourceIp`
+     * @return Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
      * 
      */
     private @Nullable String sourceIp;
 
     private SwitchRadiusConfig() {}
+    /**
+     * @return Whether immediate RADIUS accounting updates are sent
+     * 
+     */
     public Optional<Boolean> acctImmediateUpdate() {
         return Optional.ofNullable(this.acctImmediateUpdate);
     }
     /**
-     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      * 
      */
     public Optional<Integer> acctInterimInterval() {
         return Optional.ofNullable(this.acctInterimInterval);
     }
+    /**
+     * @return RADIUS accounting servers used by this switch configuration
+     * 
+     */
     public List<SwitchRadiusConfigAcctServer> acctServers() {
         return this.acctServers == null ? List.of() : this.acctServers;
     }
     /**
-     * @return enum: `ordered`, `unordered`
+     * @return Selection strategy for RADIUS authentication servers
      * 
      */
     public Optional<String> authServerSelection() {
         return Optional.ofNullable(this.authServerSelection);
     }
+    /**
+     * @return RADIUS authentication servers used by this switch configuration
+     * 
+     */
     public List<SwitchRadiusConfigAuthServer> authServers() {
         return this.authServers == null ? List.of() : this.authServers;
     }
     /**
-     * @return Radius auth session retries
+     * @return RADIUS auth session retries
      * 
      */
     public Optional<Integer> authServersRetries() {
         return Optional.ofNullable(this.authServersRetries);
     }
     /**
-     * @return Radius auth session timeout
+     * @return RADIUS auth session timeout
      * 
      */
     public Optional<Integer> authServersTimeout() {
         return Optional.ofNullable(this.authServersTimeout);
     }
+    /**
+     * @return Whether RADIUS Change of Authorization (CoA) is enabled
+     * 
+     */
     public Optional<Boolean> coaEnabled() {
         return Optional.ofNullable(this.coaEnabled);
     }
+    /**
+     * @return UDP port used for RADIUS Change of Authorization (CoA)
+     * 
+     */
     public Optional<String> coaPort() {
         return Optional.ofNullable(this.coaPort);
     }
+    /**
+     * @return Whether fast 802.1X timers are enabled for RADIUS authentication
+     * 
+     */
     public Optional<Boolean> fastDot1xTimers() {
         return Optional.ofNullable(this.fastDot1xTimers);
     }
@@ -108,7 +156,7 @@ public final class SwitchRadiusConfig {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return Use `network`or `sourceIp`
+     * @return Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
      * 
      */
     public Optional<String> sourceIp() {

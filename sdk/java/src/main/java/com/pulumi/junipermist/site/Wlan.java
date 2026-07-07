@@ -118,42 +118,42 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.acctImmediateUpdate;
     }
     /**
-     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      * 
      */
     @Export(name="acctInterimInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> acctInterimInterval;
 
     /**
-     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      * 
      */
     public Output<Integer> acctInterimInterval() {
         return this.acctInterimInterval;
     }
     /**
-     * List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * RADIUS accounting servers used by this WLAN
      * 
      */
     @Export(name="acctServers", refs={List.class,WlanAcctServer.class}, tree="[0,1]")
     private Output<List<WlanAcctServer>> acctServers;
 
     /**
-     * @return List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * @return RADIUS accounting servers used by this WLAN
      * 
      */
     public Output<List<WlanAcctServer>> acctServers() {
         return this.acctServers;
     }
     /**
-     * Airwatch wlan settings
+     * Integration settings for AirWatch device compliance on this WLAN
      * 
      */
     @Export(name="airwatch", refs={WlanAirwatch.class}, tree="[0]")
     private Output<WlanAirwatch> airwatch;
 
     /**
-     * @return Airwatch wlan settings
+     * @return Integration settings for AirWatch device compliance on this WLAN
      * 
      */
     public Output<WlanAirwatch> airwatch() {
@@ -202,56 +202,56 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.allowSsdp;
     }
     /**
-     * List of device ids
+     * Access point identifiers used when `applyTo`==`aps`
      * 
      */
     @Export(name="apIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> apIds;
 
     /**
-     * @return List of device ids
+     * @return Access point identifiers used when `applyTo`==`aps`
      * 
      */
     public Output<List<String>> apIds() {
         return this.apIds;
     }
     /**
-     * Bandwidth limiting for apps (applies to up/down)
+     * Bandwidth limits for applications on this WLAN
      * 
      */
     @Export(name="appLimit", refs={WlanAppLimit.class}, tree="[0]")
     private Output</* @Nullable */ WlanAppLimit> appLimit;
 
     /**
-     * @return Bandwidth limiting for apps (applies to up/down)
+     * @return Bandwidth limits for applications on this WLAN
      * 
      */
     public Output<Optional<WlanAppLimit>> appLimit() {
         return Codegen.optional(this.appLimit);
     }
     /**
-     * APP qos wlan settings
+     * QoS rules for application traffic on this WLAN
      * 
      */
     @Export(name="appQos", refs={WlanAppQos.class}, tree="[0]")
     private Output<WlanAppQos> appQos;
 
     /**
-     * @return APP qos wlan settings
+     * @return QoS rules for application traffic on this WLAN
      * 
      */
     public Output<WlanAppQos> appQos() {
         return this.appQos;
     }
     /**
-     * enum: `aps`, `site`, `wxtags`
+     * Scope that determines where this WLAN is applied
      * 
      */
     @Export(name="applyTo", refs={String.class}, tree="[0]")
     private Output<String> applyTo;
 
     /**
-     * @return enum: `aps`, `site`, `wxtags`
+     * @return Scope that determines where this WLAN is applied
      * 
      */
     public Output<String> applyTo() {
@@ -272,42 +272,42 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.arpFilter;
     }
     /**
-     * Authentication wlan settings
+     * Settings that control client authentication for this WLAN
      * 
      */
     @Export(name="auth", refs={WlanAuth.class}, tree="[0]")
     private Output</* @Nullable */ WlanAuth> auth;
 
     /**
-     * @return Authentication wlan settings
+     * @return Settings that control client authentication for this WLAN
      * 
      */
     public Output<Optional<WlanAuth>> auth() {
         return Codegen.optional(this.auth);
     }
     /**
-     * When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+     * RADIUS authentication server selection behavior for this WLAN
      * 
      */
     @Export(name="authServerSelection", refs={String.class}, tree="[0]")
     private Output<String> authServerSelection;
 
     /**
-     * @return When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+     * @return RADIUS authentication server selection behavior for this WLAN
      * 
      */
     public Output<String> authServerSelection() {
         return this.authServerSelection;
     }
     /**
-     * List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+     * RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
      * 
      */
     @Export(name="authServers", refs={List.class,WlanAuthServer.class}, tree="[0,1]")
     private Output<List<WlanAuthServer>> authServers;
 
     /**
-     * @return List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+     * @return RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
      * 
      */
     public Output<List<WlanAuthServer>> authServers() {
@@ -342,28 +342,28 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.authServersNasIp;
     }
     /**
-     * Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * RADIUS auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      * 
      */
     @Export(name="authServersRetries", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> authServersRetries;
 
     /**
-     * @return Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * @return RADIUS auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      * 
      */
     public Output<Optional<Integer>> authServersRetries() {
         return Codegen.optional(this.authServersRetries);
     }
     /**
-     * Radius auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+     * RADIUS auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
      * 
      */
     @Export(name="authServersTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> authServersTimeout;
 
     /**
-     * @return Radius auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+     * @return RADIUS auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
      * 
      */
     public Output<Optional<Integer>> authServersTimeout() {
@@ -426,36 +426,44 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.blockBlacklistClients);
     }
     /**
-     * Bonjour gateway wlan settings
+     * Service discovery gateway settings for Bonjour traffic on this WLAN
      * 
      */
     @Export(name="bonjour", refs={WlanBonjour.class}, tree="[0]")
     private Output</* @Nullable */ WlanBonjour> bonjour;
 
     /**
-     * @return Bonjour gateway wlan settings
+     * @return Service discovery gateway settings for Bonjour traffic on this WLAN
      * 
      */
     public Output<Optional<WlanBonjour>> bonjour() {
         return Codegen.optional(this.bonjour);
     }
     /**
-     * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+     * Central web authentication settings for Cisco CWA on this WLAN
      * 
      */
     @Export(name="ciscoCwa", refs={WlanCiscoCwa.class}, tree="[0]")
     private Output<WlanCiscoCwa> ciscoCwa;
 
     /**
-     * @return Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+     * @return Central web authentication settings for Cisco CWA on this WLAN
      * 
      */
     public Output<WlanCiscoCwa> ciscoCwa() {
         return this.ciscoCwa;
     }
+    /**
+     * Downlink bandwidth limit applied per client
+     * 
+     */
     @Export(name="clientLimitDown", refs={String.class}, tree="[0]")
     private Output<String> clientLimitDown;
 
+    /**
+     * @return Downlink bandwidth limit applied per client
+     * 
+     */
     public Output<String> clientLimitDown() {
         return this.clientLimitDown;
     }
@@ -473,9 +481,17 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> clientLimitDownEnabled() {
         return Codegen.optional(this.clientLimitDownEnabled);
     }
+    /**
+     * Uplink bandwidth limit applied per client
+     * 
+     */
     @Export(name="clientLimitUp", refs={String.class}, tree="[0]")
     private Output<String> clientLimitUp;
 
+    /**
+     * @return Uplink bandwidth limit applied per client
+     * 
+     */
     public Output<String> clientLimitUp() {
         return this.clientLimitUp;
     }
@@ -494,14 +510,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clientLimitUpEnabled);
     }
     /**
-     * List of COA (change of authorization) servers, optional
+     * RADIUS Change of Authorization servers available to this WLAN
      * 
      */
     @Export(name="coaServers", refs={List.class,WlanCoaServer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WlanCoaServer>> coaServers;
 
     /**
-     * @return List of COA (change of authorization) servers, optional
+     * @return RADIUS Change of Authorization servers available to this WLAN
      * 
      */
     public Output<Optional<List<WlanCoaServer>>> coaServers() {
@@ -625,9 +641,17 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> disableWhenGatewayUnreachable() {
         return Codegen.optional(this.disableWhenGatewayUnreachable);
     }
+    /**
+     * Whether to disable this WLAN when the configured Mist tunnel is down
+     * 
+     */
     @Export(name="disableWhenMxtunnelDown", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableWhenMxtunnelDown;
 
+    /**
+     * @return Whether to disable this WLAN when the configured Mist tunnel is down
+     * 
+     */
     public Output<Optional<Boolean>> disableWhenMxtunnelDown() {
         return Codegen.optional(this.disableWhenMxtunnelDown);
     }
@@ -646,68 +670,74 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.disableWmm;
     }
     /**
-     * For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+     * RADIUS group based DNS server rewrite settings for this WLAN
      * 
      */
     @Export(name="dnsServerRewrite", refs={WlanDnsServerRewrite.class}, tree="[0]")
     private Output</* @Nullable */ WlanDnsServerRewrite> dnsServerRewrite;
 
     /**
-     * @return For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+     * @return RADIUS group based DNS server rewrite settings for this WLAN
      * 
      */
     public Output<Optional<WlanDnsServerRewrite>> dnsServerRewrite() {
         return Codegen.optional(this.dnsServerRewrite);
     }
+    /**
+     * Delivery Traffic Indication Message interval for this WLAN
+     * 
+     */
     @Export(name="dtim", refs={Integer.class}, tree="[0]")
     private Output<Integer> dtim;
 
+    /**
+     * @return Delivery Traffic Indication Message interval for this WLAN
+     * 
+     */
     public Output<Integer> dtim() {
         return this.dtim;
     }
     /**
-     * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-     *   * PSK will come from RADIUS server
-     *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-     *   * AP sends BSSID:SSID as Caller-Station-ID
-     *   * `authServers` is required
-     *   * PSK will come from cloud WLC if source is cloudPsks
-     *   * defaultPsk will be used if cloud WLC is not available
-     *   * `multiPskOnly` and `psk` is ignored
-     *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+     * Per-user PSK selection settings for this WLAN
      * 
      */
     @Export(name="dynamicPsk", refs={WlanDynamicPsk.class}, tree="[0]")
     private Output</* @Nullable */ WlanDynamicPsk> dynamicPsk;
 
     /**
-     * @return For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-     *   * PSK will come from RADIUS server
-     *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-     *   * AP sends BSSID:SSID as Caller-Station-ID
-     *   * `authServers` is required
-     *   * PSK will come from cloud WLC if source is cloudPsks
-     *   * defaultPsk will be used if cloud WLC is not available
-     *   * `multiPskOnly` and `psk` is ignored
-     *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+     * @return Per-user PSK selection settings for this WLAN
      * 
      */
     public Output<Optional<WlanDynamicPsk>> dynamicPsk() {
         return Codegen.optional(this.dynamicPsk);
     }
     /**
-     * For 802.1x
+     * VLAN assignment settings for 802.1X dynamic VLANs
      * 
      */
     @Export(name="dynamicVlan", refs={WlanDynamicVlan.class}, tree="[0]")
     private Output</* @Nullable */ WlanDynamicVlan> dynamicVlan;
 
     /**
-     * @return For 802.1x
+     * @return VLAN assignment settings for 802.1X dynamic VLANs
      * 
      */
     public Output<Optional<WlanDynamicVlan>> dynamicVlan() {
         return Codegen.optional(this.dynamicVlan);
+    }
+    /**
+     * Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+     * 
+     */
+    @Export(name="enableFtm", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableFtm;
+
+    /**
+     * @return Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+     * 
+     */
+    public Output<Boolean> enableFtm() {
+        return this.enableFtm;
     }
     /**
      * Enable AP-AP keycaching via multicast
@@ -808,34 +838,42 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.hostnameIe;
     }
     /**
-     * Hostspot 2.0 wlan settings
+     * Passpoint and Hotspot 2.0 settings for this WLAN
      * 
      */
     @Export(name="hotspot20", refs={WlanHotspot20.class}, tree="[0]")
     private Output</* @Nullable */ WlanHotspot20> hotspot20;
 
     /**
-     * @return Hostspot 2.0 wlan settings
+     * @return Passpoint and Hotspot 2.0 settings for this WLAN
      * 
      */
     public Output<Optional<WlanHotspot20>> hotspot20() {
         return Codegen.optional(this.hotspot20);
     }
+    /**
+     * DHCP Option 82 insertion settings for this WLAN
+     * 
+     */
     @Export(name="injectDhcpOption82", refs={WlanInjectDhcpOption82.class}, tree="[0]")
     private Output</* @Nullable */ WlanInjectDhcpOption82> injectDhcpOption82;
 
+    /**
+     * @return DHCP Option 82 insertion settings for this WLAN
+     * 
+     */
     public Output<Optional<WlanInjectDhcpOption82>> injectDhcpOption82() {
         return Codegen.optional(this.injectDhcpOption82);
     }
     /**
-     * where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+     * Network interface or tunnel where this WLAN bridges client traffic
      * 
      */
     @Export(name="interface", refs={String.class}, tree="[0]")
     private Output<String> interface_;
 
     /**
-     * @return where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+     * @return Network interface or tunnel where this WLAN bridges client traffic
      * 
      */
     public Output<String> interface_() {
@@ -939,41 +977,57 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> maxNumClients() {
         return Codegen.optional(this.maxNumClients);
     }
+    /**
+     * Juniper Mist NAC settings used by this WLAN
+     * 
+     */
     @Export(name="mistNac", refs={WlanMistNac.class}, tree="[0]")
     private Output<WlanMistNac> mistNac;
 
+    /**
+     * @return Juniper Mist NAC settings used by this WLAN
+     * 
+     */
     public Output<WlanMistNac> mistNac() {
         return this.mistNac;
     }
+    /**
+     * Managed service provider identifier associated with this WLAN
+     * 
+     */
     @Export(name="mspId", refs={String.class}, tree="[0]")
     private Output<String> mspId;
 
+    /**
+     * @return Managed service provider identifier associated with this WLAN
+     * 
+     */
     public Output<String> mspId() {
         return this.mspId;
     }
     /**
-     * When `interface`=`mxtunnel`, id of the Mist Tunnel
+     * Mist Tunnel identifiers used when `interface`==`mxtunnel`
      * 
      */
     @Export(name="mxtunnelIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> mxtunnelIds;
 
     /**
-     * @return When `interface`=`mxtunnel`, id of the Mist Tunnel
+     * @return Mist Tunnel identifiers used when `interface`==`mxtunnel`
      * 
      */
     public Output<List<String>> mxtunnelIds() {
         return this.mxtunnelIds;
     }
     /**
-     * When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * Mist Tunnel names used when `interface`==`siteMxedge`
      * 
      */
     @Export(name="mxtunnelNames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> mxtunnelNames;
 
     /**
-     * @return When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * @return Mist Tunnel names used when `interface`==`siteMxedge`
      * 
      */
     public Output<List<String>> mxtunnelNames() {
@@ -1007,49 +1061,57 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<Boolean> noStaticIp() {
         return this.noStaticIp;
     }
+    /**
+     * Owning organization associated with this WLAN
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Owning organization associated with this WLAN
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Portal wlan settings
+     * Guest portal settings for this WLAN
      * 
      */
     @Export(name="portal", refs={WlanPortal.class}, tree="[0]")
     private Output<WlanPortal> portal;
 
     /**
-     * @return Portal wlan settings
+     * @return Guest portal settings for this WLAN
      * 
      */
     public Output<WlanPortal> portal() {
         return this.portal;
     }
     /**
-     * List of hostnames without http(s):// (matched by substring)
+     * Guest portal hostnames that clients may reach before authorization
      * 
      */
     @Export(name="portalAllowedHostnames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> portalAllowedHostnames;
 
     /**
-     * @return List of hostnames without http(s):// (matched by substring)
+     * @return Guest portal hostnames that clients may reach before authorization
      * 
      */
     public Output<List<String>> portalAllowedHostnames() {
         return this.portalAllowedHostnames;
     }
     /**
-     * List of CIDRs
+     * Guest portal CIDR subnets that clients may reach before authorization
      * 
      */
     @Export(name="portalAllowedSubnets", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> portalAllowedSubnets;
 
     /**
-     * @return List of CIDRs
+     * @return Guest portal CIDR subnets that clients may reach before authorization
      * 
      */
     public Output<List<String>> portalAllowedSubnets() {
@@ -1070,14 +1132,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.portalApiSecret;
     }
     /**
-     * List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+     * Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
      * 
      */
     @Export(name="portalDeniedHostnames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> portalDeniedHostnames;
 
     /**
-     * @return List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+     * @return Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
      * 
      */
     public Output<List<String>> portalDeniedHostnames() {
@@ -1111,35 +1173,43 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<String> portalSsoUrl() {
         return this.portalSsoUrl;
     }
+    /**
+     * Quality-of-service settings for WLAN client traffic
+     * 
+     */
     @Export(name="qos", refs={WlanQos.class}, tree="[0]")
     private Output<WlanQos> qos;
 
+    /**
+     * @return Quality-of-service settings for WLAN client traffic
+     * 
+     */
     public Output<WlanQos> qos() {
         return this.qos;
     }
     /**
-     * RadSec settings
+     * TLS-secured RADIUS transport settings for this WLAN
      * 
      */
     @Export(name="radsec", refs={WlanRadsec.class}, tree="[0]")
     private Output<WlanRadsec> radsec;
 
     /**
-     * @return RadSec settings
+     * @return TLS-secured RADIUS transport settings for this WLAN
      * 
      */
     public Output<WlanRadsec> radsec() {
         return this.radsec;
     }
     /**
-     * Property key is the RF band. enum: `24`, `5`, `6`
+     * Data rate settings by RF band for this WLAN
      * 
      */
     @Export(name="rateset", refs={Map.class,String.class,WlanRateset.class}, tree="[0,1,2]")
     private Output<Map<String,WlanRateset>> rateset;
 
     /**
-     * @return Property key is the RF band. enum: `24`, `5`, `6`
+     * @return Data rate settings by RF band for this WLAN
      * 
      */
     public Output<Map<String,WlanRateset>> rateset() {
@@ -1160,36 +1230,44 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.reconnectClientsWhenRoamingMxcluster);
     }
     /**
-     * enum: `11r`, `OKC`, `NONE`
+     * Fast roaming mode configured for this WLAN
      * 
      */
     @Export(name="roamMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roamMode;
 
     /**
-     * @return enum: `11r`, `OKC`, `NONE`
+     * @return Fast roaming mode configured for this WLAN
      * 
      */
     public Output<Optional<String>> roamMode() {
         return Codegen.optional(this.roamMode);
     }
     /**
-     * WLAN operating schedule, default is disabled
+     * Operating schedule controlling when this WLAN is active
      * 
      */
     @Export(name="schedule", refs={WlanSchedule.class}, tree="[0]")
     private Output<WlanSchedule> schedule;
 
     /**
-     * @return WLAN operating schedule, default is disabled
+     * @return Operating schedule controlling when this WLAN is active
      * 
      */
     public Output<WlanSchedule> schedule() {
         return this.schedule;
     }
+    /**
+     * Mist site associated with this WLAN, when site-scoped
+     * 
+     */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
+    /**
+     * @return Mist site associated with this WLAN, when site-scoped
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
@@ -1249,21 +1327,29 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<Boolean> vlanEnabled() {
         return this.vlanEnabled;
     }
+    /**
+     * Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+     * 
+     */
     @Export(name="vlanId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vlanId;
 
+    /**
+     * @return Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+     * 
+     */
     public Output<Optional<String>> vlanId() {
         return Codegen.optional(this.vlanId);
     }
     /**
-     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+     * Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
      * 
      */
     @Export(name="vlanIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> vlanIds;
 
     /**
-     * @return if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+     * @return Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
      * 
      */
     public Output<List<String>> vlanIds() {
@@ -1283,9 +1369,17 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<Boolean> vlanPooling() {
         return this.vlanPooling;
     }
+    /**
+     * Downlink bandwidth limit applied to the whole WLAN
+     * 
+     */
     @Export(name="wlanLimitDown", refs={String.class}, tree="[0]")
     private Output<String> wlanLimitDown;
 
+    /**
+     * @return Downlink bandwidth limit applied to the whole WLAN
+     * 
+     */
     public Output<String> wlanLimitDown() {
         return this.wlanLimitDown;
     }
@@ -1303,9 +1397,17 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> wlanLimitDownEnabled() {
         return Codegen.optional(this.wlanLimitDownEnabled);
     }
+    /**
+     * Uplink bandwidth limit applied to the whole WLAN
+     * 
+     */
     @Export(name="wlanLimitUp", refs={String.class}, tree="[0]")
     private Output<String> wlanLimitUp;
 
+    /**
+     * @return Uplink bandwidth limit applied to the whole WLAN
+     * 
+     */
     public Output<String> wlanLimitUp() {
         return this.wlanLimitUp;
     }
@@ -1324,14 +1426,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.wlanLimitUpEnabled);
     }
     /**
-     * List of wxtag_ids
+     * Identifiers of WxLAN tags used when `applyTo`==`wxtags`
      * 
      */
     @Export(name="wxtagIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> wxtagIds;
 
     /**
-     * @return List of wxtag_ids
+     * @return Identifiers of WxLAN tags used when `applyTo`==`wxtags`
      * 
      */
     public Output<List<String>> wxtagIds() {

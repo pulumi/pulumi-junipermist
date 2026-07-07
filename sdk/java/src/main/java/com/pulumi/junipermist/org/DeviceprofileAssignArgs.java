@@ -22,9 +22,17 @@ public final class DeviceprofileAssignArgs extends com.pulumi.resources.Resource
         return this.deviceprofileId;
     }
 
+    /**
+     * List of MAC addresses included in the request
+     * 
+     */
     @Import(name="macs", required=true)
     private Output<List<String>> macs;
 
+    /**
+     * @return List of MAC addresses included in the request
+     * 
+     */
     public Output<List<String>> macs() {
         return this.macs;
     }
@@ -71,15 +79,33 @@ public final class DeviceprofileAssignArgs extends com.pulumi.resources.Resource
             return deviceprofileId(Output.of(deviceprofileId));
         }
 
+        /**
+         * @param macs List of MAC addresses included in the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder macs(Output<List<String>> macs) {
             $.macs = macs;
             return this;
         }
 
+        /**
+         * @param macs List of MAC addresses included in the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder macs(List<String> macs) {
             return macs(Output.of(macs));
         }
 
+        /**
+         * @param macs List of MAC addresses included in the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder macs(String... macs) {
             return macs(List.of(macs));
         }

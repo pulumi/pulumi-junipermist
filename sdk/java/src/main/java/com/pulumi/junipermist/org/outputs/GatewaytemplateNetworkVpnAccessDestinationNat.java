@@ -12,24 +12,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateNetworkVpnAccessDestinationNat {
     /**
-     * @return The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return The Destination NAT destination IP address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable String internalIp;
+    /**
+     * @return Label for this VPN destination NAT rule
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Destination port or variable for this VPN destination NAT rule
+     * 
+     */
     private @Nullable String port;
 
     private GatewaytemplateNetworkVpnAccessDestinationNat() {}
     /**
-     * @return The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return The Destination NAT destination IP address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<String> internalIp() {
         return Optional.ofNullable(this.internalIp);
     }
+    /**
+     * @return Label for this VPN destination NAT rule
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Destination port or variable for this VPN destination NAT rule
+     * 
+     */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }

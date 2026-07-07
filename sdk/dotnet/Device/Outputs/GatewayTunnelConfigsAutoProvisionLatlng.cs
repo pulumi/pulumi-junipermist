@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayTunnelConfigsAutoProvisionLatlng
     {
+        /// <summary>
+        /// Geographic latitude used for POP selection override
+        /// </summary>
         public readonly double Lat;
+        /// <summary>
+        /// Geographic longitude used for POP selection override
+        /// </summary>
         public readonly double Lng;
 
         [OutputConstructor]

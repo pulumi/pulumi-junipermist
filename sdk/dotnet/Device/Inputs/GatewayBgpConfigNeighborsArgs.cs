@@ -18,12 +18,21 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
+        /// <summary>
+        /// Export policy applied only to this BGP neighbor
+        /// </summary>
         [Input("exportPolicy")]
         public Input<string>? ExportPolicy { get; set; }
 
+        /// <summary>
+        /// BGP hold time for this neighbor, in seconds
+        /// </summary>
         [Input("holdTime")]
         public Input<int>? HoldTime { get; set; }
 
+        /// <summary>
+        /// Import policy applied only to this BGP neighbor
+        /// </summary>
         [Input("importPolicy")]
         public Input<string>? ImportPolicy { get; set; }
 
@@ -40,7 +49,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string> NeighborAs { get; set; } = null!;
 
         /// <summary>
-        /// If `Via`==`Tunnel`, specifies which tunnel (primary/secondary) this neighbor is associated with. enum: `Primary`, `Secondary`
+        /// If `Via`==`Tunnel`, primary or secondary tunnel associated with this BGP neighbor
         /// </summary>
         [Input("tunnelVia")]
         public Input<string>? TunnelVia { get; set; }

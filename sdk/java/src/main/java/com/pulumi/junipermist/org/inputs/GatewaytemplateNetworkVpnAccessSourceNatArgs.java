@@ -15,9 +15,17 @@ public final class GatewaytemplateNetworkVpnAccessSourceNatArgs extends com.pulu
 
     public static final GatewaytemplateNetworkVpnAccessSourceNatArgs Empty = new GatewaytemplateNetworkVpnAccessSourceNatArgs();
 
+    /**
+     * External source NAT IP or subnet used when spoke hosts must be reachable from the hub
+     * 
+     */
     @Import(name="externalIp")
     private @Nullable Output<String> externalIp;
 
+    /**
+     * @return External source NAT IP or subnet used when spoke hosts must be reachable from the hub
+     * 
+     */
     public Optional<Output<String>> externalIp() {
         return Optional.ofNullable(this.externalIp);
     }
@@ -46,11 +54,23 @@ public final class GatewaytemplateNetworkVpnAccessSourceNatArgs extends com.pulu
             $ = new GatewaytemplateNetworkVpnAccessSourceNatArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param externalIp External source NAT IP or subnet used when spoke hosts must be reachable from the hub
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIp(@Nullable Output<String> externalIp) {
             $.externalIp = externalIp;
             return this;
         }
 
+        /**
+         * @param externalIp External source NAT IP or subnet used when spoke hosts must be reachable from the hub
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIp(String externalIp) {
             return externalIp(Output.of(externalIp));
         }

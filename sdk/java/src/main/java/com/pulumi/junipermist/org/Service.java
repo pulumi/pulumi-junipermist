@@ -83,62 +83,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/service:Service")
 public class Service extends com.pulumi.resources.CustomResource {
     /**
-     * If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+     * Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
      * 
      */
     @Export(name="addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> addresses;
 
     /**
-     * @return If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+     * @return Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
      * 
      */
     public Output<List<String>> addresses() {
         return this.addresses;
     }
     /**
-     * When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+     * Categories of applications matched by this service when `type`==`appCategories`
      * 
      */
     @Export(name="appCategories", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> appCategories;
 
     /**
-     * @return When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+     * @return Categories of applications matched by this service when `type`==`appCategories`
      * 
      */
     public Output<List<String>> appCategories() {
         return this.appCategories;
     }
     /**
-     * When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+     * Application subcategories matched by this service when `type`==`appCategories`
      * 
      */
     @Export(name="appSubcategories", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> appSubcategories;
 
     /**
-     * @return When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+     * @return Application subcategories matched by this service when `type`==`appCategories`
      * 
      */
     public Output<List<String>> appSubcategories() {
         return this.appSubcategories;
     }
     /**
-     * When `type`==`apps`, list of applications are available through:
-     *   * List Applications
-     *   * List Gateway Applications
-     *   * /insight/top_app_by-bytes?wired=true
+     * Application identifiers matched by this service when `type`==`apps`
      * 
      */
     @Export(name="apps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> apps;
 
     /**
-     * @return When `type`==`apps`, list of applications are available through:
-     *   * List Applications
-     *   * List Gateway Applications
-     *   * /insight/top_app_by-bytes?wired=true
+     * @return Application identifiers matched by this service when `type`==`apps`
      * 
      */
     public Output<List<String>> apps() {
@@ -172,73 +166,129 @@ public class Service extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> clientLimitUp() {
         return Codegen.optional(this.clientLimitUp);
     }
+    /**
+     * Free-form description of the service definition
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return Free-form description of the service definition
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * QoS DSCP value used for custom SSR traffic classification
+     * 
+     */
     @Export(name="dscp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dscp;
 
+    /**
+     * @return QoS DSCP value used for custom SSR traffic classification
+     * 
+     */
     public Output<Optional<String>> dscp() {
         return Codegen.optional(this.dscp);
     }
     /**
-     * enum: `nonRevertible`, `none`, `revertible`
+     * Failover behavior for traffic matched by this service
      * 
      */
     @Export(name="failoverPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> failoverPolicy;
 
     /**
-     * @return enum: `nonRevertible`, `none`, `revertible`
+     * @return Failover behavior for traffic matched by this service
      * 
      */
     public Output<Optional<String>> failoverPolicy() {
         return Codegen.optional(this.failoverPolicy);
     }
     /**
-     * If `type`==`custom`, web filtering
+     * Domain hostnames matched by this custom service for web filtering
      * 
      */
     @Export(name="hostnames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> hostnames;
 
     /**
-     * @return If `type`==`custom`, web filtering
+     * @return Domain hostnames matched by this custom service for web filtering
      * 
      */
     public Output<List<String>> hostnames() {
         return this.hostnames;
     }
+    /**
+     * Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+     * 
+     */
     @Export(name="maxJitter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maxJitter;
 
+    /**
+     * @return Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+     * 
+     */
     public Output<Optional<String>> maxJitter() {
         return Codegen.optional(this.maxJitter);
     }
+    /**
+     * Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
+     * 
+     */
     @Export(name="maxLatency", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maxLatency;
 
+    /**
+     * @return Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
+     * 
+     */
     public Output<Optional<String>> maxLatency() {
         return Codegen.optional(this.maxLatency);
     }
+    /**
+     * Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+     * 
+     */
     @Export(name="maxLoss", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maxLoss;
 
+    /**
+     * @return Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+     * 
+     */
     public Output<Optional<String>> maxLoss() {
         return Codegen.optional(this.maxLoss);
     }
+    /**
+     * Display name of the service definition
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the service definition
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Organization identifier associated with the service definition
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization identifier associated with the service definition
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -285,34 +335,42 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sleEnabled);
     }
     /**
-     * When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+     * Protocol and port match rules used when `type`==`custom`
      * 
      */
     @Export(name="specs", refs={List.class,ServiceSpec.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServiceSpec>> specs;
 
     /**
-     * @return When `type`==`custom`, optional, if it doesn&#39;t exist, http and https is assumed
+     * @return Protocol and port match rules used when `type`==`custom`
      * 
      */
     public Output<Optional<List<ServiceSpec>>> specs() {
         return Codegen.optional(this.specs);
     }
+    /**
+     * Whether SSR relaxes TCP state enforcement for this service
+     * 
+     */
     @Export(name="ssrRelaxedTcpStateEnforcement", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ssrRelaxedTcpStateEnforcement;
 
+    /**
+     * @return Whether SSR relaxes TCP state enforcement for this service
+     * 
+     */
     public Output<Optional<Boolean>> ssrRelaxedTcpStateEnforcement() {
         return Codegen.optional(this.ssrRelaxedTcpStateEnforcement);
     }
     /**
-     * when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+     * Traffic class applied when `trafficType`==`custom`
      * 
      */
     @Export(name="trafficClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trafficClass;
 
     /**
-     * @return when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+     * @return Traffic class applied when `trafficType`==`custom`
      * 
      */
     public Output<Optional<String>> trafficClass() {
@@ -333,28 +391,28 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.trafficType;
     }
     /**
-     * enum: `appCategories`, `apps`, `custom`, `urls`
+     * Matching mode that determines which app, URL, or custom fields are used
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return enum: `appCategories`, `apps`, `custom`, `urls`
+     * @return Matching mode that determines which app, URL, or custom fields are used
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * When `type`==`urls`, no need for spec as URL can encode the ports being used
+     * URL patterns matched by this service when `type`==`urls`
      * 
      */
     @Export(name="urls", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> urls;
 
     /**
-     * @return When `type`==`urls`, no need for spec as URL can encode the ports being used
+     * @return URL patterns matched by this service when `type`==`urls`
      * 
      */
     public Output<List<String>> urls() {

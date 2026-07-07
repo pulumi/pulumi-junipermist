@@ -18,6 +18,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Property key is the app key, defined in Get Application List
         /// </summary>
         public readonly ImmutableDictionary<string, int>? Apps;
+        /// <summary>
+        /// Whether application bandwidth limits are enabled for this WLAN
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// Map from WxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `WxtagId`

@@ -31,16 +31,32 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.defaultPsk);
     }
 
+    /**
+     * Default VLAN ID used when dynamic PSK lookup does not return a VLAN
+     * 
+     */
     @Import(name="defaultVlanId")
     private @Nullable Output<String> defaultVlanId;
 
+    /**
+     * @return Default VLAN ID used when dynamic PSK lookup does not return a VLAN
+     * 
+     */
     public Optional<Output<String>> defaultVlanId() {
         return Optional.ofNullable(this.defaultVlanId);
     }
 
+    /**
+     * Whether dynamic PSK is enabled for this WLAN
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether dynamic PSK is enabled for this WLAN
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -61,14 +77,14 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * enum: `cloudPsks`, `radius`
+     * Origin used to retrieve per-user PSKs
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return enum: `cloudPsks`, `radius`
+     * @return Origin used to retrieve per-user PSKs
      * 
      */
     public Optional<Output<String>> source() {
@@ -124,20 +140,44 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
             return defaultPsk(Output.of(defaultPsk));
         }
 
+        /**
+         * @param defaultVlanId Default VLAN ID used when dynamic PSK lookup does not return a VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultVlanId(@Nullable Output<String> defaultVlanId) {
             $.defaultVlanId = defaultVlanId;
             return this;
         }
 
+        /**
+         * @param defaultVlanId Default VLAN ID used when dynamic PSK lookup does not return a VLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultVlanId(String defaultVlanId) {
             return defaultVlanId(Output.of(defaultVlanId));
         }
 
+        /**
+         * @param enabled Whether dynamic PSK is enabled for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether dynamic PSK is enabled for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
@@ -164,7 +204,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param source enum: `cloudPsks`, `radius`
+         * @param source Origin used to retrieve per-user PSKs
          * 
          * @return builder
          * 
@@ -175,7 +215,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param source enum: `cloudPsks`, `radius`
+         * @param source Origin used to retrieve per-user PSKs
          * 
          * @return builder
          * 

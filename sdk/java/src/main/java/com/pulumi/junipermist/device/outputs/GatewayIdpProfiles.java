@@ -14,40 +14,64 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayIdpProfiles {
     /**
-     * @return enum: `critical`, `standard`, `strict`
+     * @return Built-in IDP baseline profile inherited before applying overwrites
      * 
      */
     private @Nullable String baseProfile;
     /**
-     * @return Unique ID of the object instance in the Mist Organization
+     * @return Unique identifier of the IDP profile
      * 
      */
     private @Nullable String id;
+    /**
+     * @return Display name of the IDP profile
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Owning organization for the IDP profile
+     * 
+     */
     private @Nullable String orgId;
+    /**
+     * @return IDP signature override rules applied on top of the base profile
+     * 
+     */
     private @Nullable List<GatewayIdpProfilesOverwrite> overwrites;
 
     private GatewayIdpProfiles() {}
     /**
-     * @return enum: `critical`, `standard`, `strict`
+     * @return Built-in IDP baseline profile inherited before applying overwrites
      * 
      */
     public Optional<String> baseProfile() {
         return Optional.ofNullable(this.baseProfile);
     }
     /**
-     * @return Unique ID of the object instance in the Mist Organization
+     * @return Unique identifier of the IDP profile
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Display name of the IDP profile
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Owning organization for the IDP profile
+     * 
+     */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
+    /**
+     * @return IDP signature override rules applied on top of the base profile
+     * 
+     */
     public List<GatewayIdpProfilesOverwrite> overwrites() {
         return this.overwrites == null ? List.of() : this.overwrites;
     }

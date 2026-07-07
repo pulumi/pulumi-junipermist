@@ -70,26 +70,32 @@ import (
 type Servicepolicy struct {
 	pulumi.CustomResourceState
 
-	// SRX only
+	// Advanced anti-malware settings applied by this service policy
 	Aamw ServicepolicyAamwPtrOutput `pulumi:"aamw"`
-	// enum: `allow`, `deny`
+	// Allow or deny action for traffic matched by this service policy
 	Action pulumi.StringOutput `pulumi:"action"`
-	// For SRX-only
+	// Malware and virus inspection settings applied by this service policy
 	Antivirus ServicepolicyAntivirusPtrOutput `pulumi:"antivirus"`
-	// SRX only
+	// Application QoE settings applied by this service policy
 	Appqoe ServicepolicyAppqoePtrOutput `pulumi:"appqoe"`
-	Ewfs   ServicepolicyEwfArrayOutput  `pulumi:"ewfs"`
-	Idp    ServicepolicyIdpPtrOutput    `pulumi:"idp"`
-	// access within the same VRF
+	// Enhanced web filtering rules applied by this service policy
+	Ewfs ServicepolicyEwfArrayOutput `pulumi:"ewfs"`
+	// Intrusion detection and prevention settings applied by this service policy
+	Idp ServicepolicyIdpPtrOutput `pulumi:"idp"`
+	// Whether the policy permits access within the same VRF
 	LocalRouting pulumi.BoolPtrOutput `pulumi:"localRouting"`
-	Name         pulumi.StringOutput  `pulumi:"name"`
-	OrgId        pulumi.StringOutput  `pulumi:"orgId"`
+	// Display name of the service policy
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Organization that owns this service policy
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
-	PathPreference pulumi.StringPtrOutput   `pulumi:"pathPreference"`
-	Services       pulumi.StringArrayOutput `pulumi:"services"`
-	// For SRX-only
+	PathPreference pulumi.StringPtrOutput `pulumi:"pathPreference"`
+	// Application services or groups matched by this policy
+	Services pulumi.StringArrayOutput `pulumi:"services"`
+	// SSL proxy inspection settings applied by this service policy
 	SslProxy ServicepolicySslProxyPtrOutput `pulumi:"sslProxy"`
-	Tenants  pulumi.StringArrayOutput       `pulumi:"tenants"`
+	// Tenant names matched by this service policy
+	Tenants pulumi.StringArrayOutput `pulumi:"tenants"`
 }
 
 // NewServicepolicy registers a new resource with the given unique name, arguments, and options.
@@ -125,49 +131,61 @@ func GetServicepolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Servicepolicy resources.
 type servicepolicyState struct {
-	// SRX only
+	// Advanced anti-malware settings applied by this service policy
 	Aamw *ServicepolicyAamw `pulumi:"aamw"`
-	// enum: `allow`, `deny`
+	// Allow or deny action for traffic matched by this service policy
 	Action *string `pulumi:"action"`
-	// For SRX-only
+	// Malware and virus inspection settings applied by this service policy
 	Antivirus *ServicepolicyAntivirus `pulumi:"antivirus"`
-	// SRX only
+	// Application QoE settings applied by this service policy
 	Appqoe *ServicepolicyAppqoe `pulumi:"appqoe"`
-	Ewfs   []ServicepolicyEwf   `pulumi:"ewfs"`
-	Idp    *ServicepolicyIdp    `pulumi:"idp"`
-	// access within the same VRF
-	LocalRouting *bool   `pulumi:"localRouting"`
-	Name         *string `pulumi:"name"`
-	OrgId        *string `pulumi:"orgId"`
+	// Enhanced web filtering rules applied by this service policy
+	Ewfs []ServicepolicyEwf `pulumi:"ewfs"`
+	// Intrusion detection and prevention settings applied by this service policy
+	Idp *ServicepolicyIdp `pulumi:"idp"`
+	// Whether the policy permits access within the same VRF
+	LocalRouting *bool `pulumi:"localRouting"`
+	// Display name of the service policy
+	Name *string `pulumi:"name"`
+	// Organization that owns this service policy
+	OrgId *string `pulumi:"orgId"`
 	// By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
-	PathPreference *string  `pulumi:"pathPreference"`
-	Services       []string `pulumi:"services"`
-	// For SRX-only
+	PathPreference *string `pulumi:"pathPreference"`
+	// Application services or groups matched by this policy
+	Services []string `pulumi:"services"`
+	// SSL proxy inspection settings applied by this service policy
 	SslProxy *ServicepolicySslProxy `pulumi:"sslProxy"`
-	Tenants  []string               `pulumi:"tenants"`
+	// Tenant names matched by this service policy
+	Tenants []string `pulumi:"tenants"`
 }
 
 type ServicepolicyState struct {
-	// SRX only
+	// Advanced anti-malware settings applied by this service policy
 	Aamw ServicepolicyAamwPtrInput
-	// enum: `allow`, `deny`
+	// Allow or deny action for traffic matched by this service policy
 	Action pulumi.StringPtrInput
-	// For SRX-only
+	// Malware and virus inspection settings applied by this service policy
 	Antivirus ServicepolicyAntivirusPtrInput
-	// SRX only
+	// Application QoE settings applied by this service policy
 	Appqoe ServicepolicyAppqoePtrInput
-	Ewfs   ServicepolicyEwfArrayInput
-	Idp    ServicepolicyIdpPtrInput
-	// access within the same VRF
+	// Enhanced web filtering rules applied by this service policy
+	Ewfs ServicepolicyEwfArrayInput
+	// Intrusion detection and prevention settings applied by this service policy
+	Idp ServicepolicyIdpPtrInput
+	// Whether the policy permits access within the same VRF
 	LocalRouting pulumi.BoolPtrInput
-	Name         pulumi.StringPtrInput
-	OrgId        pulumi.StringPtrInput
+	// Display name of the service policy
+	Name pulumi.StringPtrInput
+	// Organization that owns this service policy
+	OrgId pulumi.StringPtrInput
 	// By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
 	PathPreference pulumi.StringPtrInput
-	Services       pulumi.StringArrayInput
-	// For SRX-only
+	// Application services or groups matched by this policy
+	Services pulumi.StringArrayInput
+	// SSL proxy inspection settings applied by this service policy
 	SslProxy ServicepolicySslProxyPtrInput
-	Tenants  pulumi.StringArrayInput
+	// Tenant names matched by this service policy
+	Tenants pulumi.StringArrayInput
 }
 
 func (ServicepolicyState) ElementType() reflect.Type {
@@ -175,50 +193,62 @@ func (ServicepolicyState) ElementType() reflect.Type {
 }
 
 type servicepolicyArgs struct {
-	// SRX only
+	// Advanced anti-malware settings applied by this service policy
 	Aamw *ServicepolicyAamw `pulumi:"aamw"`
-	// enum: `allow`, `deny`
+	// Allow or deny action for traffic matched by this service policy
 	Action *string `pulumi:"action"`
-	// For SRX-only
+	// Malware and virus inspection settings applied by this service policy
 	Antivirus *ServicepolicyAntivirus `pulumi:"antivirus"`
-	// SRX only
+	// Application QoE settings applied by this service policy
 	Appqoe *ServicepolicyAppqoe `pulumi:"appqoe"`
-	Ewfs   []ServicepolicyEwf   `pulumi:"ewfs"`
-	Idp    *ServicepolicyIdp    `pulumi:"idp"`
-	// access within the same VRF
-	LocalRouting *bool   `pulumi:"localRouting"`
-	Name         *string `pulumi:"name"`
-	OrgId        string  `pulumi:"orgId"`
+	// Enhanced web filtering rules applied by this service policy
+	Ewfs []ServicepolicyEwf `pulumi:"ewfs"`
+	// Intrusion detection and prevention settings applied by this service policy
+	Idp *ServicepolicyIdp `pulumi:"idp"`
+	// Whether the policy permits access within the same VRF
+	LocalRouting *bool `pulumi:"localRouting"`
+	// Display name of the service policy
+	Name *string `pulumi:"name"`
+	// Organization that owns this service policy
+	OrgId string `pulumi:"orgId"`
 	// By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
-	PathPreference *string  `pulumi:"pathPreference"`
-	Services       []string `pulumi:"services"`
-	// For SRX-only
+	PathPreference *string `pulumi:"pathPreference"`
+	// Application services or groups matched by this policy
+	Services []string `pulumi:"services"`
+	// SSL proxy inspection settings applied by this service policy
 	SslProxy *ServicepolicySslProxy `pulumi:"sslProxy"`
-	Tenants  []string               `pulumi:"tenants"`
+	// Tenant names matched by this service policy
+	Tenants []string `pulumi:"tenants"`
 }
 
 // The set of arguments for constructing a Servicepolicy resource.
 type ServicepolicyArgs struct {
-	// SRX only
+	// Advanced anti-malware settings applied by this service policy
 	Aamw ServicepolicyAamwPtrInput
-	// enum: `allow`, `deny`
+	// Allow or deny action for traffic matched by this service policy
 	Action pulumi.StringPtrInput
-	// For SRX-only
+	// Malware and virus inspection settings applied by this service policy
 	Antivirus ServicepolicyAntivirusPtrInput
-	// SRX only
+	// Application QoE settings applied by this service policy
 	Appqoe ServicepolicyAppqoePtrInput
-	Ewfs   ServicepolicyEwfArrayInput
-	Idp    ServicepolicyIdpPtrInput
-	// access within the same VRF
+	// Enhanced web filtering rules applied by this service policy
+	Ewfs ServicepolicyEwfArrayInput
+	// Intrusion detection and prevention settings applied by this service policy
+	Idp ServicepolicyIdpPtrInput
+	// Whether the policy permits access within the same VRF
 	LocalRouting pulumi.BoolPtrInput
-	Name         pulumi.StringPtrInput
-	OrgId        pulumi.StringInput
+	// Display name of the service policy
+	Name pulumi.StringPtrInput
+	// Organization that owns this service policy
+	OrgId pulumi.StringInput
 	// By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
 	PathPreference pulumi.StringPtrInput
-	Services       pulumi.StringArrayInput
-	// For SRX-only
+	// Application services or groups matched by this policy
+	Services pulumi.StringArrayInput
+	// SSL proxy inspection settings applied by this service policy
 	SslProxy ServicepolicySslProxyPtrInput
-	Tenants  pulumi.StringArrayInput
+	// Tenant names matched by this service policy
+	Tenants pulumi.StringArrayInput
 }
 
 func (ServicepolicyArgs) ElementType() reflect.Type {
@@ -308,43 +338,47 @@ func (o ServicepolicyOutput) ToServicepolicyOutputWithContext(ctx context.Contex
 	return o
 }
 
-// SRX only
+// Advanced anti-malware settings applied by this service policy
 func (o ServicepolicyOutput) Aamw() ServicepolicyAamwPtrOutput {
 	return o.ApplyT(func(v *Servicepolicy) ServicepolicyAamwPtrOutput { return v.Aamw }).(ServicepolicyAamwPtrOutput)
 }
 
-// enum: `allow`, `deny`
+// Allow or deny action for traffic matched by this service policy
 func (o ServicepolicyOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *Servicepolicy) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
-// For SRX-only
+// Malware and virus inspection settings applied by this service policy
 func (o ServicepolicyOutput) Antivirus() ServicepolicyAntivirusPtrOutput {
 	return o.ApplyT(func(v *Servicepolicy) ServicepolicyAntivirusPtrOutput { return v.Antivirus }).(ServicepolicyAntivirusPtrOutput)
 }
 
-// SRX only
+// Application QoE settings applied by this service policy
 func (o ServicepolicyOutput) Appqoe() ServicepolicyAppqoePtrOutput {
 	return o.ApplyT(func(v *Servicepolicy) ServicepolicyAppqoePtrOutput { return v.Appqoe }).(ServicepolicyAppqoePtrOutput)
 }
 
+// Enhanced web filtering rules applied by this service policy
 func (o ServicepolicyOutput) Ewfs() ServicepolicyEwfArrayOutput {
 	return o.ApplyT(func(v *Servicepolicy) ServicepolicyEwfArrayOutput { return v.Ewfs }).(ServicepolicyEwfArrayOutput)
 }
 
+// Intrusion detection and prevention settings applied by this service policy
 func (o ServicepolicyOutput) Idp() ServicepolicyIdpPtrOutput {
 	return o.ApplyT(func(v *Servicepolicy) ServicepolicyIdpPtrOutput { return v.Idp }).(ServicepolicyIdpPtrOutput)
 }
 
-// access within the same VRF
+// Whether the policy permits access within the same VRF
 func (o ServicepolicyOutput) LocalRouting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Servicepolicy) pulumi.BoolPtrOutput { return v.LocalRouting }).(pulumi.BoolPtrOutput)
 }
 
+// Display name of the service policy
 func (o ServicepolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Servicepolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Organization that owns this service policy
 func (o ServicepolicyOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Servicepolicy) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
@@ -354,15 +388,17 @@ func (o ServicepolicyOutput) PathPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Servicepolicy) pulumi.StringPtrOutput { return v.PathPreference }).(pulumi.StringPtrOutput)
 }
 
+// Application services or groups matched by this policy
 func (o ServicepolicyOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Servicepolicy) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
 }
 
-// For SRX-only
+// SSL proxy inspection settings applied by this service policy
 func (o ServicepolicyOutput) SslProxy() ServicepolicySslProxyPtrOutput {
 	return o.ApplyT(func(v *Servicepolicy) ServicepolicySslProxyPtrOutput { return v.SslProxy }).(ServicepolicySslProxyPtrOutput)
 }
 
+// Tenant names matched by this service policy
 func (o ServicepolicyOutput) Tenants() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Servicepolicy) pulumi.StringArrayOutput { return v.Tenants }).(pulumi.StringArrayOutput)
 }

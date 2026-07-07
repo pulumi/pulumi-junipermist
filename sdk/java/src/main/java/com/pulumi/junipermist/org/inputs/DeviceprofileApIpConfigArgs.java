@@ -18,14 +18,14 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
     public static final DeviceprofileApIpConfigArgs Empty = new DeviceprofileApIpConfigArgs();
 
     /**
-     * If `type`==`static`
+     * If `type`==`static`. DNS server IP addresses for AP management traffic
      * 
      */
     @Import(name="dns")
     private @Nullable Output<List<String>> dns;
 
     /**
-     * @return If `type`==`static`
+     * @return If `type`==`static`. DNS server IP addresses for AP management traffic
      * 
      */
     public Optional<Output<List<String>>> dns() {
@@ -33,14 +33,14 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Required if `type`==`static`
+     * If `type`==`static`. DNS search suffixes applied to AP management lookups
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return Required if `type`==`static`
+     * @return If `type`==`static`. DNS search suffixes applied to AP management lookups
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -48,87 +48,119 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Required if `type`==`static`
+     * Required if `type`==`static`. IPv4 default gateway for AP management traffic
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return Required if `type`==`static`
+     * @return Required if `type`==`static`. IPv4 default gateway for AP management traffic
      * 
      */
     public Optional<Output<String>> gateway() {
         return Optional.ofNullable(this.gateway);
     }
 
+    /**
+     * Required if `type6`==`static`. IPv6 default gateway for AP management traffic when static IPv6 addressing is used
+     * 
+     */
     @Import(name="gateway6")
     private @Nullable Output<String> gateway6;
 
+    /**
+     * @return Required if `type6`==`static`. IPv6 default gateway for AP management traffic when static IPv6 addressing is used
+     * 
+     */
     public Optional<Output<String>> gateway6() {
         return Optional.ofNullable(this.gateway6);
     }
 
     /**
-     * Required if `type`==`static`
+     * Required if `type`==`static`. Static IPv4 address for the AP management interface
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return Required if `type`==`static`
+     * @return Required if `type`==`static`. Static IPv4 address for the AP management interface
      * 
      */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
     }
 
+    /**
+     * Required if `type6`==`static`. Static IPv6 address for the AP management interface
+     * 
+     */
     @Import(name="ip6")
     private @Nullable Output<String> ip6;
 
+    /**
+     * @return Required if `type6`==`static`. Static IPv6 address for the AP management interface
+     * 
+     */
     public Optional<Output<String>> ip6() {
         return Optional.ofNullable(this.ip6);
     }
 
+    /**
+     * Maximum transmission unit for AP management traffic
+     * 
+     */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
+    /**
+     * @return Maximum transmission unit for AP management traffic
+     * 
+     */
     public Optional<Output<Integer>> mtu() {
         return Optional.ofNullable(this.mtu);
     }
 
     /**
-     * Required if `type`==`static`
+     * Required if `type`==`static`. IPv4 netmask for the AP management interface
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return Required if `type`==`static`
+     * @return Required if `type`==`static`. IPv4 netmask for the AP management interface
      * 
      */
     public Optional<Output<String>> netmask() {
         return Optional.ofNullable(this.netmask);
     }
 
+    /**
+     * Required if `type6`==`static`. IPv6 prefix length for the AP management interface
+     * 
+     */
     @Import(name="netmask6")
     private @Nullable Output<String> netmask6;
 
+    /**
+     * @return Required if `type6`==`static`. IPv6 prefix length for the AP management interface
+     * 
+     */
     public Optional<Output<String>> netmask6() {
         return Optional.ofNullable(this.netmask6);
     }
 
     /**
-     * enum: `dhcp`, `static`
+     * IPv4 address assignment mode for AP management traffic
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv4 address assignment mode for AP management traffic
      * 
      */
     public Optional<Output<String>> type() {
@@ -136,14 +168,14 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * IPv6 address assignment mode for AP management traffic
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return enum: `autoconf`, `dhcp`, `disabled`, `static`
+     * @return IPv6 address assignment mode for AP management traffic
      * 
      */
     public Optional<Output<String>> type6() {
@@ -151,14 +183,14 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Management VLAN id, default is 1 (untagged)
+     * Management VLAN ID, default is 1 (untagged)
      * 
      */
     @Import(name="vlanId")
     private @Nullable Output<Integer> vlanId;
 
     /**
-     * @return Management VLAN id, default is 1 (untagged)
+     * @return Management VLAN ID, default is 1 (untagged)
      * 
      */
     public Optional<Output<Integer>> vlanId() {
@@ -201,7 +233,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dns If `type`==`static`
+         * @param dns If `type`==`static`. DNS server IP addresses for AP management traffic
          * 
          * @return builder
          * 
@@ -212,7 +244,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dns If `type`==`static`
+         * @param dns If `type`==`static`. DNS server IP addresses for AP management traffic
          * 
          * @return builder
          * 
@@ -222,7 +254,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dns If `type`==`static`
+         * @param dns If `type`==`static`. DNS server IP addresses for AP management traffic
          * 
          * @return builder
          * 
@@ -232,7 +264,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsSuffixes Required if `type`==`static`
+         * @param dnsSuffixes If `type`==`static`. DNS search suffixes applied to AP management lookups
          * 
          * @return builder
          * 
@@ -243,7 +275,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsSuffixes Required if `type`==`static`
+         * @param dnsSuffixes If `type`==`static`. DNS search suffixes applied to AP management lookups
          * 
          * @return builder
          * 
@@ -253,7 +285,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsSuffixes Required if `type`==`static`
+         * @param dnsSuffixes If `type`==`static`. DNS search suffixes applied to AP management lookups
          * 
          * @return builder
          * 
@@ -263,7 +295,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param gateway Required if `type`==`static`
+         * @param gateway Required if `type`==`static`. IPv4 default gateway for AP management traffic
          * 
          * @return builder
          * 
@@ -274,7 +306,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param gateway Required if `type`==`static`
+         * @param gateway Required if `type`==`static`. IPv4 default gateway for AP management traffic
          * 
          * @return builder
          * 
@@ -283,17 +315,29 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
             return gateway(Output.of(gateway));
         }
 
+        /**
+         * @param gateway6 Required if `type6`==`static`. IPv6 default gateway for AP management traffic when static IPv6 addressing is used
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway6(@Nullable Output<String> gateway6) {
             $.gateway6 = gateway6;
             return this;
         }
 
+        /**
+         * @param gateway6 Required if `type6`==`static`. IPv6 default gateway for AP management traffic when static IPv6 addressing is used
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway6(String gateway6) {
             return gateway6(Output.of(gateway6));
         }
 
         /**
-         * @param ip Required if `type`==`static`
+         * @param ip Required if `type`==`static`. Static IPv4 address for the AP management interface
          * 
          * @return builder
          * 
@@ -304,7 +348,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ip Required if `type`==`static`
+         * @param ip Required if `type`==`static`. Static IPv4 address for the AP management interface
          * 
          * @return builder
          * 
@@ -313,26 +357,50 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
             return ip(Output.of(ip));
         }
 
+        /**
+         * @param ip6 Required if `type6`==`static`. Static IPv6 address for the AP management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6(@Nullable Output<String> ip6) {
             $.ip6 = ip6;
             return this;
         }
 
+        /**
+         * @param ip6 Required if `type6`==`static`. Static IPv6 address for the AP management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6(String ip6) {
             return ip6(Output.of(ip6));
         }
 
+        /**
+         * @param mtu Maximum transmission unit for AP management traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtu(@Nullable Output<Integer> mtu) {
             $.mtu = mtu;
             return this;
         }
 
+        /**
+         * @param mtu Maximum transmission unit for AP management traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder mtu(Integer mtu) {
             return mtu(Output.of(mtu));
         }
 
         /**
-         * @param netmask Required if `type`==`static`
+         * @param netmask Required if `type`==`static`. IPv4 netmask for the AP management interface
          * 
          * @return builder
          * 
@@ -343,7 +411,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param netmask Required if `type`==`static`
+         * @param netmask Required if `type`==`static`. IPv4 netmask for the AP management interface
          * 
          * @return builder
          * 
@@ -352,17 +420,29 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
             return netmask(Output.of(netmask));
         }
 
+        /**
+         * @param netmask6 Required if `type6`==`static`. IPv6 prefix length for the AP management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask6(@Nullable Output<String> netmask6) {
             $.netmask6 = netmask6;
             return this;
         }
 
+        /**
+         * @param netmask6 Required if `type6`==`static`. IPv6 prefix length for the AP management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask6(String netmask6) {
             return netmask6(Output.of(netmask6));
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IPv4 address assignment mode for AP management traffic
          * 
          * @return builder
          * 
@@ -373,7 +453,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IPv4 address assignment mode for AP management traffic
          * 
          * @return builder
          * 
@@ -383,7 +463,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type6 enum: `autoconf`, `dhcp`, `disabled`, `static`
+         * @param type6 IPv6 address assignment mode for AP management traffic
          * 
          * @return builder
          * 
@@ -394,7 +474,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type6 enum: `autoconf`, `dhcp`, `disabled`, `static`
+         * @param type6 IPv6 address assignment mode for AP management traffic
          * 
          * @return builder
          * 
@@ -404,7 +484,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vlanId Management VLAN id, default is 1 (untagged)
+         * @param vlanId Management VLAN ID, default is 1 (untagged)
          * 
          * @return builder
          * 
@@ -415,7 +495,7 @@ public final class DeviceprofileApIpConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vlanId Management VLAN id, default is 1 (untagged)
+         * @param vlanId Management VLAN ID, default is 1 (untagged)
          * 
          * @return builder
          * 

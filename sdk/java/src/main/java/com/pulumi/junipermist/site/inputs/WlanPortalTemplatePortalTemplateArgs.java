@@ -19,22 +19,30 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
 
     public static final WlanPortalTemplatePortalTemplateArgs Empty = new WlanPortalTemplatePortalTemplateArgs();
 
+    /**
+     * Link text for using an alternate email address during access-code login
+     * 
+     */
     @Import(name="accessCodeAlternateEmail")
     private @Nullable Output<String> accessCodeAlternateEmail;
 
+    /**
+     * @return Link text for using an alternate email address during access-code login
+     * 
+     */
     public Optional<Output<String>> accessCodeAlternateEmail() {
         return Optional.ofNullable(this.accessCodeAlternateEmail);
     }
 
     /**
-     * defines alignment on portal. enum: `center`, `left`, `right`
+     * Text and content alignment used by the guest portal template
      * 
      */
     @Import(name="alignment")
     private @Nullable Output<String> alignment;
 
     /**
-     * @return defines alignment on portal. enum: `center`, `left`, `right`
+     * @return Text and content alignment used by the guest portal template
      * 
      */
     public Optional<Output<String>> alignment() {
@@ -176,9 +184,17 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.authButtonSponsor);
     }
 
+    /**
+     * Heading text displayed above portal authentication options
+     * 
+     */
     @Import(name="authLabel")
     private @Nullable Output<String> authLabel;
 
+    /**
+     * @return Heading text displayed above portal authentication options
+     * 
+     */
     public Optional<Output<String>> authLabel() {
         return Optional.ofNullable(this.authLabel);
     }
@@ -199,30 +215,46 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Portal main color
+     * Primary color used by the portal template
      * 
      */
     @Import(name="color")
     private @Nullable Output<String> color;
 
     /**
-     * @return Portal main color
+     * @return Primary color used by the portal template
      * 
      */
     public Optional<Output<String>> color() {
         return Optional.ofNullable(this.color);
     }
 
+    /**
+     * Darker accent color used by the portal template
+     * 
+     */
     @Import(name="colorDark")
     private @Nullable Output<String> colorDark;
 
+    /**
+     * @return Darker accent color used by the portal template
+     * 
+     */
     public Optional<Output<String>> colorDark() {
         return Optional.ofNullable(this.colorDark);
     }
 
+    /**
+     * Lighter accent color used by the portal template
+     * 
+     */
     @Import(name="colorLight")
     private @Nullable Output<String> colorLight;
 
+    /**
+     * @return Lighter accent color used by the portal template
+     * 
+     */
     public Optional<Output<String>> colorLight() {
         return Optional.ofNullable(this.colorLight);
     }
@@ -258,14 +290,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Label of company field
+     * Label displayed for the company input field
      * 
      */
     @Import(name="companyLabel")
     private @Nullable Output<String> companyLabel;
 
     /**
-     * @return Label of company field
+     * @return Label displayed for the company input field
      * 
      */
     public Optional<Output<String>> companyLabel() {
@@ -317,44 +349,92 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.emailCancel);
     }
 
+    /**
+     * Link text for requesting help when the email access code was not received
+     * 
+     */
     @Import(name="emailCodeCancel")
     private @Nullable Output<String> emailCodeCancel;
 
+    /**
+     * @return Link text for requesting help when the email access code was not received
+     * 
+     */
     public Optional<Output<String>> emailCodeCancel() {
         return Optional.ofNullable(this.emailCodeCancel);
     }
 
+    /**
+     * Error message shown when the alternate email address for access-code delivery is invalid
+     * 
+     */
     @Import(name="emailCodeError")
     private @Nullable Output<String> emailCodeError;
 
+    /**
+     * @return Error message shown when the alternate email address for access-code delivery is invalid
+     * 
+     */
     public Optional<Output<String>> emailCodeError() {
         return Optional.ofNullable(this.emailCodeError);
     }
 
+    /**
+     * Label for the email access-code input field
+     * 
+     */
     @Import(name="emailCodeFieldLabel")
     private @Nullable Output<String> emailCodeFieldLabel;
 
+    /**
+     * @return Label for the email access-code input field
+     * 
+     */
     public Optional<Output<String>> emailCodeFieldLabel() {
         return Optional.ofNullable(this.emailCodeFieldLabel);
     }
 
+    /**
+     * Instructional text shown before entering the email access code
+     * 
+     */
     @Import(name="emailCodeMessage")
     private @Nullable Output<String> emailCodeMessage;
 
+    /**
+     * @return Instructional text shown before entering the email access code
+     * 
+     */
     public Optional<Output<String>> emailCodeMessage() {
         return Optional.ofNullable(this.emailCodeMessage);
     }
 
+    /**
+     * Button label for submitting the email access code
+     * 
+     */
     @Import(name="emailCodeSubmit")
     private @Nullable Output<String> emailCodeSubmit;
 
+    /**
+     * @return Button label for submitting the email access code
+     * 
+     */
     public Optional<Output<String>> emailCodeSubmit() {
         return Optional.ofNullable(this.emailCodeSubmit);
     }
 
+    /**
+     * Title shown on the email access-code entry page
+     * 
+     */
     @Import(name="emailCodeTitle")
     private @Nullable Output<String> emailCodeTitle;
 
+    /**
+     * @return Title shown on the email access-code entry page
+     * 
+     */
     public Optional<Output<String>> emailCodeTitle() {
         return Optional.ofNullable(this.emailCodeTitle);
     }
@@ -374,31 +454,47 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.emailError);
     }
 
+    /**
+     * Label for the email address input field
+     * 
+     */
     @Import(name="emailFieldLabel")
     private @Nullable Output<String> emailFieldLabel;
 
+    /**
+     * @return Label for the email address input field
+     * 
+     */
     public Optional<Output<String>> emailFieldLabel() {
         return Optional.ofNullable(this.emailFieldLabel);
     }
 
     /**
-     * Label of email field
+     * Label displayed for the email input field
      * 
      */
     @Import(name="emailLabel")
     private @Nullable Output<String> emailLabel;
 
     /**
-     * @return Label of email field
+     * @return Label displayed for the email input field
      * 
      */
     public Optional<Output<String>> emailLabel() {
         return Optional.ofNullable(this.emailLabel);
     }
 
+    /**
+     * Instructional text explaining email access-code delivery
+     * 
+     */
     @Import(name="emailMessage")
     private @Nullable Output<String> emailMessage;
 
+    /**
+     * @return Instructional text explaining email access-code delivery
+     * 
+     */
     public Optional<Output<String>> emailMessage() {
         return Optional.ofNullable(this.emailMessage);
     }
@@ -464,14 +560,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Label of field1
+     * Label for custom field 1 input
      * 
      */
     @Import(name="field1label")
     private @Nullable Output<String> field1label;
 
     /**
-     * @return Label of field1
+     * @return Label for custom field 1 input
      * 
      */
     public Optional<Output<String>> field1label() {
@@ -479,14 +575,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Whether field1 is required field
+     * Whether custom field 1 must be provided when the field is shown
      * 
      */
     @Import(name="field1required")
     private @Nullable Output<Boolean> field1required;
 
     /**
-     * @return Whether field1 is required field
+     * @return Whether custom field 1 must be provided when the field is shown
      * 
      */
     public Optional<Output<Boolean>> field1required() {
@@ -524,14 +620,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Label of field2
+     * Label for custom field 2 input
      * 
      */
     @Import(name="field2label")
     private @Nullable Output<String> field2label;
 
     /**
-     * @return Label of field2
+     * @return Label for custom field 2 input
      * 
      */
     public Optional<Output<String>> field2label() {
@@ -539,14 +635,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Whether field2 is required field
+     * Whether custom field 2 must be provided when the field is shown
      * 
      */
     @Import(name="field2required")
     private @Nullable Output<Boolean> field2required;
 
     /**
-     * @return Whether field2 is required field
+     * @return Whether custom field 2 must be provided when the field is shown
      * 
      */
     public Optional<Output<Boolean>> field2required() {
@@ -584,14 +680,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Label of field3
+     * Label for custom field 3 input
      * 
      */
     @Import(name="field3label")
     private @Nullable Output<String> field3label;
 
     /**
-     * @return Label of field3
+     * @return Label for custom field 3 input
      * 
      */
     public Optional<Output<String>> field3label() {
@@ -599,14 +695,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Whether field3 is required field
+     * Whether custom field 3 must be provided when the field is shown
      * 
      */
     @Import(name="field3required")
     private @Nullable Output<Boolean> field3required;
 
     /**
-     * @return Whether field3 is required field
+     * @return Whether custom field 3 must be provided when the field is shown
      * 
      */
     public Optional<Output<Boolean>> field3required() {
@@ -644,14 +740,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Label of field4
+     * Label for custom field 4 input
      * 
      */
     @Import(name="field4label")
     private @Nullable Output<String> field4label;
 
     /**
-     * @return Label of field4
+     * @return Label for custom field 4 input
      * 
      */
     public Optional<Output<String>> field4label() {
@@ -659,14 +755,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Whether field4 is required field
+     * Whether custom field 4 must be provided when the field is shown
      * 
      */
     @Import(name="field4required")
     private @Nullable Output<Boolean> field4required;
 
     /**
-     * @return Whether field4 is required field
+     * @return Whether custom field 4 must be provided when the field is shown
      * 
      */
     public Optional<Output<Boolean>> field4required() {
@@ -757,30 +853,46 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * marketing policy text
+     * Text of the marketing policy opt-in content
      * 
      */
     @Import(name="marketingPolicyOptInText")
     private @Nullable Output<String> marketingPolicyOptInText;
 
     /**
-     * @return marketing policy text
+     * @return Text of the marketing policy opt-in content
      * 
      */
     public Optional<Output<String>> marketingPolicyOptInText() {
         return Optional.ofNullable(this.marketingPolicyOptInText);
     }
 
+    /**
+     * Main message displayed on the guest portal sign-in page
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return Main message displayed on the guest portal sign-in page
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
 
+    /**
+     * Whether the portal presents multiple authentication methods
+     * 
+     */
     @Import(name="multiAuth")
     private @Nullable Output<Boolean> multiAuth;
 
+    /**
+     * @return Whether the portal presents multiple authentication methods
+     * 
+     */
     public Optional<Output<Boolean>> multiAuth() {
         return Optional.ofNullable(this.multiAuth);
     }
@@ -816,14 +928,14 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Label of name field
+     * Label displayed for the name input field
      * 
      */
     @Import(name="nameLabel")
     private @Nullable Output<String> nameLabel;
 
     /**
-     * @return Label of name field
+     * @return Label displayed for the name input field
      * 
      */
     public Optional<Output<String>> nameLabel() {
@@ -875,9 +987,17 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.optoutLabel);
     }
 
+    /**
+     * Browser or page title shown for the guest portal
+     * 
+     */
     @Import(name="pageTitle")
     private @Nullable Output<String> pageTitle;
 
+    /**
+     * @return Browser or page title shown for the guest portal
+     * 
+     */
     public Optional<Output<String>> pageTitle() {
         return Optional.ofNullable(this.pageTitle);
     }
@@ -913,23 +1033,31 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Passphrase
+     * Label for the passphrase input field
      * 
      */
     @Import(name="passphraseLabel")
     private @Nullable Output<String> passphraseLabel;
 
     /**
-     * @return Passphrase
+     * @return Label for the passphrase input field
      * 
      */
     public Optional<Output<String>> passphraseLabel() {
         return Optional.ofNullable(this.passphraseLabel);
     }
 
+    /**
+     * Instructional text shown on the passphrase sign-in page
+     * 
+     */
     @Import(name="passphraseMessage")
     private @Nullable Output<String> passphraseMessage;
 
+    /**
+     * @return Instructional text shown on the passphrase sign-in page
+     * 
+     */
     public Optional<Output<String>> passphraseMessage() {
         return Optional.ofNullable(this.passphraseMessage);
     }
@@ -1055,23 +1183,31 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
     }
 
     /**
-     * Label to denote required field
+     * Text used to mark a form field as required
      * 
      */
     @Import(name="requiredFieldLabel")
     private @Nullable Output<String> requiredFieldLabel;
 
     /**
-     * @return Label to denote required field
+     * @return Text used to mark a form field as required
      * 
      */
     public Optional<Output<String>> requiredFieldLabel() {
         return Optional.ofNullable(this.requiredFieldLabel);
     }
 
+    /**
+     * Whether the portal template uses a responsive layout
+     * 
+     */
     @Import(name="responsiveLayout")
     private @Nullable Output<Boolean> responsiveLayout;
 
+    /**
+     * @return Whether the portal template uses a responsive layout
+     * 
+     */
     public Optional<Output<Boolean>> responsiveLayout() {
         return Optional.ofNullable(this.responsiveLayout);
     }
@@ -1091,16 +1227,32 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.signInLabel);
     }
 
+    /**
+     * Default option text shown in the SMS carrier selector
+     * 
+     */
     @Import(name="smsCarrierDefault")
     private @Nullable Output<String> smsCarrierDefault;
 
+    /**
+     * @return Default option text shown in the SMS carrier selector
+     * 
+     */
     public Optional<Output<String>> smsCarrierDefault() {
         return Optional.ofNullable(this.smsCarrierDefault);
     }
 
+    /**
+     * Error message shown when no mobile carrier is selected
+     * 
+     */
     @Import(name="smsCarrierError")
     private @Nullable Output<String> smsCarrierError;
 
+    /**
+     * @return Error message shown when no mobile carrier is selected
+     * 
+     */
     public Optional<Output<String>> smsCarrierError() {
         return Optional.ofNullable(this.smsCarrierError);
     }
@@ -1150,16 +1302,32 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.smsCodeError);
     }
 
+    /**
+     * Label for the SMS confirmation-code input field
+     * 
+     */
     @Import(name="smsCodeFieldLabel")
     private @Nullable Output<String> smsCodeFieldLabel;
 
+    /**
+     * @return Label for the SMS confirmation-code input field
+     * 
+     */
     public Optional<Output<String>> smsCodeFieldLabel() {
         return Optional.ofNullable(this.smsCodeFieldLabel);
     }
 
+    /**
+     * Instructional text shown before entering the SMS access code
+     * 
+     */
     @Import(name="smsCodeMessage")
     private @Nullable Output<String> smsCodeMessage;
 
+    /**
+     * @return Instructional text shown before entering the SMS access code
+     * 
+     */
     public Optional<Output<String>> smsCodeMessage() {
         return Optional.ofNullable(this.smsCodeMessage);
     }
@@ -1179,23 +1347,47 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.smsCodeSubmit);
     }
 
+    /**
+     * Title shown on the SMS access-code entry page
+     * 
+     */
     @Import(name="smsCodeTitle")
     private @Nullable Output<String> smsCodeTitle;
 
+    /**
+     * @return Title shown on the SMS access-code entry page
+     * 
+     */
     public Optional<Output<String>> smsCodeTitle() {
         return Optional.ofNullable(this.smsCodeTitle);
     }
 
+    /**
+     * Label for the SMS country-code input field
+     * 
+     */
     @Import(name="smsCountryFieldLabel")
     private @Nullable Output<String> smsCountryFieldLabel;
 
+    /**
+     * @return Label for the SMS country-code input field
+     * 
+     */
     public Optional<Output<String>> smsCountryFieldLabel() {
         return Optional.ofNullable(this.smsCountryFieldLabel);
     }
 
+    /**
+     * Example country code format shown for SMS authentication
+     * 
+     */
     @Import(name="smsCountryFormat")
     private @Nullable Output<String> smsCountryFormat;
 
+    /**
+     * @return Example country code format shown for SMS authentication
+     * 
+     */
     public Optional<Output<String>> smsCountryFormat() {
         return Optional.ofNullable(this.smsCountryFormat);
     }
@@ -1215,9 +1407,17 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.smsHaveAccessCode);
     }
 
+    /**
+     * Whether the SMS portal flow uses Twilio-specific behavior
+     * 
+     */
     @Import(name="smsIsTwilio")
     private @Nullable Output<Boolean> smsIsTwilio;
 
+    /**
+     * @return Whether the SMS portal flow uses Twilio-specific behavior
+     * 
+     */
     public Optional<Output<Boolean>> smsIsTwilio() {
         return Optional.ofNullable(this.smsIsTwilio);
     }
@@ -1252,9 +1452,17 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.smsNumberCancel);
     }
 
+    /**
+     * Error message shown when the mobile number is invalid
+     * 
+     */
     @Import(name="smsNumberError")
     private @Nullable Output<String> smsNumberError;
 
+    /**
+     * @return Error message shown when the mobile number is invalid
+     * 
+     */
     public Optional<Output<String>> smsNumberError() {
         return Optional.ofNullable(this.smsNumberError);
     }
@@ -1274,16 +1482,32 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.smsNumberFieldLabel);
     }
 
+    /**
+     * Example mobile number format shown for SMS authentication
+     * 
+     */
     @Import(name="smsNumberFormat")
     private @Nullable Output<String> smsNumberFormat;
 
+    /**
+     * @return Example mobile number format shown for SMS authentication
+     * 
+     */
     public Optional<Output<String>> smsNumberFormat() {
         return Optional.ofNullable(this.smsNumberFormat);
     }
 
+    /**
+     * Instructional text explaining SMS access-code delivery
+     * 
+     */
     @Import(name="smsNumberMessage")
     private @Nullable Output<String> smsNumberMessage;
 
+    /**
+     * @return Instructional text explaining SMS access-code delivery
+     * 
+     */
     public Optional<Output<String>> smsNumberMessage() {
         return Optional.ofNullable(this.smsNumberMessage);
     }
@@ -1318,9 +1542,17 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.smsNumberTitle);
     }
 
+    /**
+     * Example username format shown for SMS authentication
+     * 
+     */
     @Import(name="smsUsernameFormat")
     private @Nullable Output<String> smsUsernameFormat;
 
+    /**
+     * @return Example username format shown for SMS authentication
+     * 
+     */
     public Optional<Output<String>> smsUsernameFormat() {
         return Optional.ofNullable(this.smsUsernameFormat);
     }
@@ -1340,16 +1572,32 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.smsValidityDuration);
     }
 
+    /**
+     * Link text for returning to edit the sponsor request form
+     * 
+     */
     @Import(name="sponsorBackLink")
     private @Nullable Output<String> sponsorBackLink;
 
+    /**
+     * @return Link text for returning to edit the sponsor request form
+     * 
+     */
     public Optional<Output<String>> sponsorBackLink() {
         return Optional.ofNullable(this.sponsorBackLink);
     }
 
+    /**
+     * Button label for canceling sponsor authentication
+     * 
+     */
     @Import(name="sponsorCancel")
     private @Nullable Output<String> sponsorCancel;
 
+    /**
+     * @return Button label for canceling sponsor authentication
+     * 
+     */
     public Optional<Output<String>> sponsorCancel() {
         return Optional.ofNullable(this.sponsorCancel);
     }
@@ -1369,9 +1617,17 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.sponsorEmail);
     }
 
+    /**
+     * Error message shown when the sponsor email address is invalid
+     * 
+     */
     @Import(name="sponsorEmailError")
     private @Nullable Output<String> sponsorEmailError;
 
+    /**
+     * @return Error message shown when the sponsor email address is invalid
+     * 
+     */
     public Optional<Output<String>> sponsorEmailError() {
         return Optional.ofNullable(this.sponsorEmailError);
     }
@@ -1409,23 +1665,47 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.sponsorEmailTemplate);
     }
 
+    /**
+     * Status message prefix shown when a sponsor approves the request
+     * 
+     */
     @Import(name="sponsorInfoApproved")
     private @Nullable Output<String> sponsorInfoApproved;
 
+    /**
+     * @return Status message prefix shown when a sponsor approves the request
+     * 
+     */
     public Optional<Output<String>> sponsorInfoApproved() {
         return Optional.ofNullable(this.sponsorInfoApproved);
     }
 
+    /**
+     * Status message prefix shown when a sponsor denies the request
+     * 
+     */
     @Import(name="sponsorInfoDenied")
     private @Nullable Output<String> sponsorInfoDenied;
 
+    /**
+     * @return Status message prefix shown when a sponsor denies the request
+     * 
+     */
     public Optional<Output<String>> sponsorInfoDenied() {
         return Optional.ofNullable(this.sponsorInfoDenied);
     }
 
+    /**
+     * Status message prefix shown after a sponsor notification is sent
+     * 
+     */
     @Import(name="sponsorInfoPending")
     private @Nullable Output<String> sponsorInfoPending;
 
+    /**
+     * @return Status message prefix shown after a sponsor notification is sent
+     * 
+     */
     public Optional<Output<String>> sponsorInfoPending() {
         return Optional.ofNullable(this.sponsorInfoPending);
     }
@@ -1445,16 +1725,32 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.sponsorName);
     }
 
+    /**
+     * Error message shown when the sponsor name is missing
+     * 
+     */
     @Import(name="sponsorNameError")
     private @Nullable Output<String> sponsorNameError;
 
+    /**
+     * @return Error message shown when the sponsor name is missing
+     * 
+     */
     public Optional<Output<String>> sponsorNameError() {
         return Optional.ofNullable(this.sponsorNameError);
     }
 
+    /**
+     * Additional status text shown while sponsor approval is pending
+     * 
+     */
     @Import(name="sponsorNotePending")
     private @Nullable Output<String> sponsorNotePending;
 
+    /**
+     * @return Additional status text shown while sponsor approval is pending
+     * 
+     */
     public Optional<Output<String>> sponsorNotePending() {
         return Optional.ofNullable(this.sponsorNotePending);
     }
@@ -1534,23 +1830,47 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.sponsorSubmit);
     }
 
+    /**
+     * Error message shown when no sponsor is selected
+     * 
+     */
     @Import(name="sponsorsError")
     private @Nullable Output<String> sponsorsError;
 
+    /**
+     * @return Error message shown when no sponsor is selected
+     * 
+     */
     public Optional<Output<String>> sponsorsError() {
         return Optional.ofNullable(this.sponsorsError);
     }
 
+    /**
+     * Label for the sponsor selection field
+     * 
+     */
     @Import(name="sponsorsFieldLabel")
     private @Nullable Output<String> sponsorsFieldLabel;
 
+    /**
+     * @return Label for the sponsor selection field
+     * 
+     */
     public Optional<Output<String>> sponsorsFieldLabel() {
         return Optional.ofNullable(this.sponsorsFieldLabel);
     }
 
+    /**
+     * Whether the portal requires Terms of Service acceptance
+     * 
+     */
     @Import(name="tos")
     private @Nullable Output<Boolean> tos;
 
+    /**
+     * @return Whether the portal requires Terms of Service acceptance
+     * 
+     */
     public Optional<Output<Boolean>> tos() {
         return Optional.ofNullable(this.tos);
     }
@@ -1764,17 +2084,29 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             $ = new WlanPortalTemplatePortalTemplateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessCodeAlternateEmail Link text for using an alternate email address during access-code login
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessCodeAlternateEmail(@Nullable Output<String> accessCodeAlternateEmail) {
             $.accessCodeAlternateEmail = accessCodeAlternateEmail;
             return this;
         }
 
+        /**
+         * @param accessCodeAlternateEmail Link text for using an alternate email address during access-code login
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessCodeAlternateEmail(String accessCodeAlternateEmail) {
             return accessCodeAlternateEmail(Output.of(accessCodeAlternateEmail));
         }
 
         /**
-         * @param alignment defines alignment on portal. enum: `center`, `left`, `right`
+         * @param alignment Text and content alignment used by the guest portal template
          * 
          * @return builder
          * 
@@ -1785,7 +2117,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param alignment defines alignment on portal. enum: `center`, `left`, `right`
+         * @param alignment Text and content alignment used by the guest portal template
          * 
          * @return builder
          * 
@@ -1983,11 +2315,23 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return authButtonSponsor(Output.of(authButtonSponsor));
         }
 
+        /**
+         * @param authLabel Heading text displayed above portal authentication options
+         * 
+         * @return builder
+         * 
+         */
         public Builder authLabel(@Nullable Output<String> authLabel) {
             $.authLabel = authLabel;
             return this;
         }
 
+        /**
+         * @param authLabel Heading text displayed above portal authentication options
+         * 
+         * @return builder
+         * 
+         */
         public Builder authLabel(String authLabel) {
             return authLabel(Output.of(authLabel));
         }
@@ -2014,7 +2358,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param color Portal main color
+         * @param color Primary color used by the portal template
          * 
          * @return builder
          * 
@@ -2025,7 +2369,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param color Portal main color
+         * @param color Primary color used by the portal template
          * 
          * @return builder
          * 
@@ -2034,20 +2378,44 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return color(Output.of(color));
         }
 
+        /**
+         * @param colorDark Darker accent color used by the portal template
+         * 
+         * @return builder
+         * 
+         */
         public Builder colorDark(@Nullable Output<String> colorDark) {
             $.colorDark = colorDark;
             return this;
         }
 
+        /**
+         * @param colorDark Darker accent color used by the portal template
+         * 
+         * @return builder
+         * 
+         */
         public Builder colorDark(String colorDark) {
             return colorDark(Output.of(colorDark));
         }
 
+        /**
+         * @param colorLight Lighter accent color used by the portal template
+         * 
+         * @return builder
+         * 
+         */
         public Builder colorLight(@Nullable Output<String> colorLight) {
             $.colorLight = colorLight;
             return this;
         }
 
+        /**
+         * @param colorLight Lighter accent color used by the portal template
+         * 
+         * @return builder
+         * 
+         */
         public Builder colorLight(String colorLight) {
             return colorLight(Output.of(colorLight));
         }
@@ -2095,7 +2463,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param companyLabel Label of company field
+         * @param companyLabel Label displayed for the company input field
          * 
          * @return builder
          * 
@@ -2106,7 +2474,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param companyLabel Label of company field
+         * @param companyLabel Label displayed for the company input field
          * 
          * @return builder
          * 
@@ -2178,56 +2546,128 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return emailCancel(Output.of(emailCancel));
         }
 
+        /**
+         * @param emailCodeCancel Link text for requesting help when the email access code was not received
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeCancel(@Nullable Output<String> emailCodeCancel) {
             $.emailCodeCancel = emailCodeCancel;
             return this;
         }
 
+        /**
+         * @param emailCodeCancel Link text for requesting help when the email access code was not received
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeCancel(String emailCodeCancel) {
             return emailCodeCancel(Output.of(emailCodeCancel));
         }
 
+        /**
+         * @param emailCodeError Error message shown when the alternate email address for access-code delivery is invalid
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeError(@Nullable Output<String> emailCodeError) {
             $.emailCodeError = emailCodeError;
             return this;
         }
 
+        /**
+         * @param emailCodeError Error message shown when the alternate email address for access-code delivery is invalid
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeError(String emailCodeError) {
             return emailCodeError(Output.of(emailCodeError));
         }
 
+        /**
+         * @param emailCodeFieldLabel Label for the email access-code input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeFieldLabel(@Nullable Output<String> emailCodeFieldLabel) {
             $.emailCodeFieldLabel = emailCodeFieldLabel;
             return this;
         }
 
+        /**
+         * @param emailCodeFieldLabel Label for the email access-code input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeFieldLabel(String emailCodeFieldLabel) {
             return emailCodeFieldLabel(Output.of(emailCodeFieldLabel));
         }
 
+        /**
+         * @param emailCodeMessage Instructional text shown before entering the email access code
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeMessage(@Nullable Output<String> emailCodeMessage) {
             $.emailCodeMessage = emailCodeMessage;
             return this;
         }
 
+        /**
+         * @param emailCodeMessage Instructional text shown before entering the email access code
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeMessage(String emailCodeMessage) {
             return emailCodeMessage(Output.of(emailCodeMessage));
         }
 
+        /**
+         * @param emailCodeSubmit Button label for submitting the email access code
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeSubmit(@Nullable Output<String> emailCodeSubmit) {
             $.emailCodeSubmit = emailCodeSubmit;
             return this;
         }
 
+        /**
+         * @param emailCodeSubmit Button label for submitting the email access code
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeSubmit(String emailCodeSubmit) {
             return emailCodeSubmit(Output.of(emailCodeSubmit));
         }
 
+        /**
+         * @param emailCodeTitle Title shown on the email access-code entry page
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeTitle(@Nullable Output<String> emailCodeTitle) {
             $.emailCodeTitle = emailCodeTitle;
             return this;
         }
 
+        /**
+         * @param emailCodeTitle Title shown on the email access-code entry page
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeTitle(String emailCodeTitle) {
             return emailCodeTitle(Output.of(emailCodeTitle));
         }
@@ -2253,17 +2693,29 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return emailError(Output.of(emailError));
         }
 
+        /**
+         * @param emailFieldLabel Label for the email address input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailFieldLabel(@Nullable Output<String> emailFieldLabel) {
             $.emailFieldLabel = emailFieldLabel;
             return this;
         }
 
+        /**
+         * @param emailFieldLabel Label for the email address input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailFieldLabel(String emailFieldLabel) {
             return emailFieldLabel(Output.of(emailFieldLabel));
         }
 
         /**
-         * @param emailLabel Label of email field
+         * @param emailLabel Label displayed for the email input field
          * 
          * @return builder
          * 
@@ -2274,7 +2726,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param emailLabel Label of email field
+         * @param emailLabel Label displayed for the email input field
          * 
          * @return builder
          * 
@@ -2283,11 +2735,23 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return emailLabel(Output.of(emailLabel));
         }
 
+        /**
+         * @param emailMessage Instructional text explaining email access-code delivery
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailMessage(@Nullable Output<String> emailMessage) {
             $.emailMessage = emailMessage;
             return this;
         }
 
+        /**
+         * @param emailMessage Instructional text explaining email access-code delivery
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailMessage(String emailMessage) {
             return emailMessage(Output.of(emailMessage));
         }
@@ -2377,7 +2841,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field1label Label of field1
+         * @param field1label Label for custom field 1 input
          * 
          * @return builder
          * 
@@ -2388,7 +2852,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field1label Label of field1
+         * @param field1label Label for custom field 1 input
          * 
          * @return builder
          * 
@@ -2398,7 +2862,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field1required Whether field1 is required field
+         * @param field1required Whether custom field 1 must be provided when the field is shown
          * 
          * @return builder
          * 
@@ -2409,7 +2873,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field1required Whether field1 is required field
+         * @param field1required Whether custom field 1 must be provided when the field is shown
          * 
          * @return builder
          * 
@@ -2461,7 +2925,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field2label Label of field2
+         * @param field2label Label for custom field 2 input
          * 
          * @return builder
          * 
@@ -2472,7 +2936,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field2label Label of field2
+         * @param field2label Label for custom field 2 input
          * 
          * @return builder
          * 
@@ -2482,7 +2946,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field2required Whether field2 is required field
+         * @param field2required Whether custom field 2 must be provided when the field is shown
          * 
          * @return builder
          * 
@@ -2493,7 +2957,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field2required Whether field2 is required field
+         * @param field2required Whether custom field 2 must be provided when the field is shown
          * 
          * @return builder
          * 
@@ -2545,7 +3009,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field3label Label of field3
+         * @param field3label Label for custom field 3 input
          * 
          * @return builder
          * 
@@ -2556,7 +3020,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field3label Label of field3
+         * @param field3label Label for custom field 3 input
          * 
          * @return builder
          * 
@@ -2566,7 +3030,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field3required Whether field3 is required field
+         * @param field3required Whether custom field 3 must be provided when the field is shown
          * 
          * @return builder
          * 
@@ -2577,7 +3041,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field3required Whether field3 is required field
+         * @param field3required Whether custom field 3 must be provided when the field is shown
          * 
          * @return builder
          * 
@@ -2629,7 +3093,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field4label Label of field4
+         * @param field4label Label for custom field 4 input
          * 
          * @return builder
          * 
@@ -2640,7 +3104,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field4label Label of field4
+         * @param field4label Label for custom field 4 input
          * 
          * @return builder
          * 
@@ -2650,7 +3114,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field4required Whether field4 is required field
+         * @param field4required Whether custom field 4 must be provided when the field is shown
          * 
          * @return builder
          * 
@@ -2661,7 +3125,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param field4required Whether field4 is required field
+         * @param field4required Whether custom field 4 must be provided when the field is shown
          * 
          * @return builder
          * 
@@ -2784,7 +3248,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param marketingPolicyOptInText marketing policy text
+         * @param marketingPolicyOptInText Text of the marketing policy opt-in content
          * 
          * @return builder
          * 
@@ -2795,7 +3259,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param marketingPolicyOptInText marketing policy text
+         * @param marketingPolicyOptInText Text of the marketing policy opt-in content
          * 
          * @return builder
          * 
@@ -2804,20 +3268,44 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return marketingPolicyOptInText(Output.of(marketingPolicyOptInText));
         }
 
+        /**
+         * @param message Main message displayed on the guest portal sign-in page
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message Main message displayed on the guest portal sign-in page
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }
 
+        /**
+         * @param multiAuth Whether the portal presents multiple authentication methods
+         * 
+         * @return builder
+         * 
+         */
         public Builder multiAuth(@Nullable Output<Boolean> multiAuth) {
             $.multiAuth = multiAuth;
             return this;
         }
 
+        /**
+         * @param multiAuth Whether the portal presents multiple authentication methods
+         * 
+         * @return builder
+         * 
+         */
         public Builder multiAuth(Boolean multiAuth) {
             return multiAuth(Output.of(multiAuth));
         }
@@ -2865,7 +3353,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nameLabel Label of name field
+         * @param nameLabel Label displayed for the name input field
          * 
          * @return builder
          * 
@@ -2876,7 +3364,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nameLabel Label of name field
+         * @param nameLabel Label displayed for the name input field
          * 
          * @return builder
          * 
@@ -2948,11 +3436,23 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return optoutLabel(Output.of(optoutLabel));
         }
 
+        /**
+         * @param pageTitle Browser or page title shown for the guest portal
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageTitle(@Nullable Output<String> pageTitle) {
             $.pageTitle = pageTitle;
             return this;
         }
 
+        /**
+         * @param pageTitle Browser or page title shown for the guest portal
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageTitle(String pageTitle) {
             return pageTitle(Output.of(pageTitle));
         }
@@ -3000,7 +3500,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param passphraseLabel Passphrase
+         * @param passphraseLabel Label for the passphrase input field
          * 
          * @return builder
          * 
@@ -3011,7 +3511,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param passphraseLabel Passphrase
+         * @param passphraseLabel Label for the passphrase input field
          * 
          * @return builder
          * 
@@ -3020,11 +3520,23 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return passphraseLabel(Output.of(passphraseLabel));
         }
 
+        /**
+         * @param passphraseMessage Instructional text shown on the passphrase sign-in page
+         * 
+         * @return builder
+         * 
+         */
         public Builder passphraseMessage(@Nullable Output<String> passphraseMessage) {
             $.passphraseMessage = passphraseMessage;
             return this;
         }
 
+        /**
+         * @param passphraseMessage Instructional text shown on the passphrase sign-in page
+         * 
+         * @return builder
+         * 
+         */
         public Builder passphraseMessage(String passphraseMessage) {
             return passphraseMessage(Output.of(passphraseMessage));
         }
@@ -3198,7 +3710,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param requiredFieldLabel Label to denote required field
+         * @param requiredFieldLabel Text used to mark a form field as required
          * 
          * @return builder
          * 
@@ -3209,7 +3721,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         }
 
         /**
-         * @param requiredFieldLabel Label to denote required field
+         * @param requiredFieldLabel Text used to mark a form field as required
          * 
          * @return builder
          * 
@@ -3218,11 +3730,23 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return requiredFieldLabel(Output.of(requiredFieldLabel));
         }
 
+        /**
+         * @param responsiveLayout Whether the portal template uses a responsive layout
+         * 
+         * @return builder
+         * 
+         */
         public Builder responsiveLayout(@Nullable Output<Boolean> responsiveLayout) {
             $.responsiveLayout = responsiveLayout;
             return this;
         }
 
+        /**
+         * @param responsiveLayout Whether the portal template uses a responsive layout
+         * 
+         * @return builder
+         * 
+         */
         public Builder responsiveLayout(Boolean responsiveLayout) {
             return responsiveLayout(Output.of(responsiveLayout));
         }
@@ -3248,20 +3772,44 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return signInLabel(Output.of(signInLabel));
         }
 
+        /**
+         * @param smsCarrierDefault Default option text shown in the SMS carrier selector
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCarrierDefault(@Nullable Output<String> smsCarrierDefault) {
             $.smsCarrierDefault = smsCarrierDefault;
             return this;
         }
 
+        /**
+         * @param smsCarrierDefault Default option text shown in the SMS carrier selector
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCarrierDefault(String smsCarrierDefault) {
             return smsCarrierDefault(Output.of(smsCarrierDefault));
         }
 
+        /**
+         * @param smsCarrierError Error message shown when no mobile carrier is selected
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCarrierError(@Nullable Output<String> smsCarrierError) {
             $.smsCarrierError = smsCarrierError;
             return this;
         }
 
+        /**
+         * @param smsCarrierError Error message shown when no mobile carrier is selected
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCarrierError(String smsCarrierError) {
             return smsCarrierError(Output.of(smsCarrierError));
         }
@@ -3329,20 +3877,44 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return smsCodeError(Output.of(smsCodeError));
         }
 
+        /**
+         * @param smsCodeFieldLabel Label for the SMS confirmation-code input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCodeFieldLabel(@Nullable Output<String> smsCodeFieldLabel) {
             $.smsCodeFieldLabel = smsCodeFieldLabel;
             return this;
         }
 
+        /**
+         * @param smsCodeFieldLabel Label for the SMS confirmation-code input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCodeFieldLabel(String smsCodeFieldLabel) {
             return smsCodeFieldLabel(Output.of(smsCodeFieldLabel));
         }
 
+        /**
+         * @param smsCodeMessage Instructional text shown before entering the SMS access code
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCodeMessage(@Nullable Output<String> smsCodeMessage) {
             $.smsCodeMessage = smsCodeMessage;
             return this;
         }
 
+        /**
+         * @param smsCodeMessage Instructional text shown before entering the SMS access code
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCodeMessage(String smsCodeMessage) {
             return smsCodeMessage(Output.of(smsCodeMessage));
         }
@@ -3368,29 +3940,65 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return smsCodeSubmit(Output.of(smsCodeSubmit));
         }
 
+        /**
+         * @param smsCodeTitle Title shown on the SMS access-code entry page
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCodeTitle(@Nullable Output<String> smsCodeTitle) {
             $.smsCodeTitle = smsCodeTitle;
             return this;
         }
 
+        /**
+         * @param smsCodeTitle Title shown on the SMS access-code entry page
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCodeTitle(String smsCodeTitle) {
             return smsCodeTitle(Output.of(smsCodeTitle));
         }
 
+        /**
+         * @param smsCountryFieldLabel Label for the SMS country-code input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCountryFieldLabel(@Nullable Output<String> smsCountryFieldLabel) {
             $.smsCountryFieldLabel = smsCountryFieldLabel;
             return this;
         }
 
+        /**
+         * @param smsCountryFieldLabel Label for the SMS country-code input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCountryFieldLabel(String smsCountryFieldLabel) {
             return smsCountryFieldLabel(Output.of(smsCountryFieldLabel));
         }
 
+        /**
+         * @param smsCountryFormat Example country code format shown for SMS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCountryFormat(@Nullable Output<String> smsCountryFormat) {
             $.smsCountryFormat = smsCountryFormat;
             return this;
         }
 
+        /**
+         * @param smsCountryFormat Example country code format shown for SMS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCountryFormat(String smsCountryFormat) {
             return smsCountryFormat(Output.of(smsCountryFormat));
         }
@@ -3416,11 +4024,23 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return smsHaveAccessCode(Output.of(smsHaveAccessCode));
         }
 
+        /**
+         * @param smsIsTwilio Whether the SMS portal flow uses Twilio-specific behavior
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsIsTwilio(@Nullable Output<Boolean> smsIsTwilio) {
             $.smsIsTwilio = smsIsTwilio;
             return this;
         }
 
+        /**
+         * @param smsIsTwilio Whether the SMS portal flow uses Twilio-specific behavior
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsIsTwilio(Boolean smsIsTwilio) {
             return smsIsTwilio(Output.of(smsIsTwilio));
         }
@@ -3467,11 +4087,23 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return smsNumberCancel(Output.of(smsNumberCancel));
         }
 
+        /**
+         * @param smsNumberError Error message shown when the mobile number is invalid
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsNumberError(@Nullable Output<String> smsNumberError) {
             $.smsNumberError = smsNumberError;
             return this;
         }
 
+        /**
+         * @param smsNumberError Error message shown when the mobile number is invalid
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsNumberError(String smsNumberError) {
             return smsNumberError(Output.of(smsNumberError));
         }
@@ -3497,20 +4129,44 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return smsNumberFieldLabel(Output.of(smsNumberFieldLabel));
         }
 
+        /**
+         * @param smsNumberFormat Example mobile number format shown for SMS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsNumberFormat(@Nullable Output<String> smsNumberFormat) {
             $.smsNumberFormat = smsNumberFormat;
             return this;
         }
 
+        /**
+         * @param smsNumberFormat Example mobile number format shown for SMS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsNumberFormat(String smsNumberFormat) {
             return smsNumberFormat(Output.of(smsNumberFormat));
         }
 
+        /**
+         * @param smsNumberMessage Instructional text explaining SMS access-code delivery
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsNumberMessage(@Nullable Output<String> smsNumberMessage) {
             $.smsNumberMessage = smsNumberMessage;
             return this;
         }
 
+        /**
+         * @param smsNumberMessage Instructional text explaining SMS access-code delivery
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsNumberMessage(String smsNumberMessage) {
             return smsNumberMessage(Output.of(smsNumberMessage));
         }
@@ -3557,11 +4213,23 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return smsNumberTitle(Output.of(smsNumberTitle));
         }
 
+        /**
+         * @param smsUsernameFormat Example username format shown for SMS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsUsernameFormat(@Nullable Output<String> smsUsernameFormat) {
             $.smsUsernameFormat = smsUsernameFormat;
             return this;
         }
 
+        /**
+         * @param smsUsernameFormat Example username format shown for SMS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsUsernameFormat(String smsUsernameFormat) {
             return smsUsernameFormat(Output.of(smsUsernameFormat));
         }
@@ -3587,20 +4255,44 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return smsValidityDuration(Output.of(smsValidityDuration));
         }
 
+        /**
+         * @param sponsorBackLink Link text for returning to edit the sponsor request form
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorBackLink(@Nullable Output<String> sponsorBackLink) {
             $.sponsorBackLink = sponsorBackLink;
             return this;
         }
 
+        /**
+         * @param sponsorBackLink Link text for returning to edit the sponsor request form
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorBackLink(String sponsorBackLink) {
             return sponsorBackLink(Output.of(sponsorBackLink));
         }
 
+        /**
+         * @param sponsorCancel Button label for canceling sponsor authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorCancel(@Nullable Output<String> sponsorCancel) {
             $.sponsorCancel = sponsorCancel;
             return this;
         }
 
+        /**
+         * @param sponsorCancel Button label for canceling sponsor authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorCancel(String sponsorCancel) {
             return sponsorCancel(Output.of(sponsorCancel));
         }
@@ -3626,11 +4318,23 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return sponsorEmail(Output.of(sponsorEmail));
         }
 
+        /**
+         * @param sponsorEmailError Error message shown when the sponsor email address is invalid
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorEmailError(@Nullable Output<String> sponsorEmailError) {
             $.sponsorEmailError = sponsorEmailError;
             return this;
         }
 
+        /**
+         * @param sponsorEmailError Error message shown when the sponsor email address is invalid
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorEmailError(String sponsorEmailError) {
             return sponsorEmailError(Output.of(sponsorEmailError));
         }
@@ -3674,29 +4378,65 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return sponsorEmailTemplate(Output.of(sponsorEmailTemplate));
         }
 
+        /**
+         * @param sponsorInfoApproved Status message prefix shown when a sponsor approves the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorInfoApproved(@Nullable Output<String> sponsorInfoApproved) {
             $.sponsorInfoApproved = sponsorInfoApproved;
             return this;
         }
 
+        /**
+         * @param sponsorInfoApproved Status message prefix shown when a sponsor approves the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorInfoApproved(String sponsorInfoApproved) {
             return sponsorInfoApproved(Output.of(sponsorInfoApproved));
         }
 
+        /**
+         * @param sponsorInfoDenied Status message prefix shown when a sponsor denies the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorInfoDenied(@Nullable Output<String> sponsorInfoDenied) {
             $.sponsorInfoDenied = sponsorInfoDenied;
             return this;
         }
 
+        /**
+         * @param sponsorInfoDenied Status message prefix shown when a sponsor denies the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorInfoDenied(String sponsorInfoDenied) {
             return sponsorInfoDenied(Output.of(sponsorInfoDenied));
         }
 
+        /**
+         * @param sponsorInfoPending Status message prefix shown after a sponsor notification is sent
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorInfoPending(@Nullable Output<String> sponsorInfoPending) {
             $.sponsorInfoPending = sponsorInfoPending;
             return this;
         }
 
+        /**
+         * @param sponsorInfoPending Status message prefix shown after a sponsor notification is sent
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorInfoPending(String sponsorInfoPending) {
             return sponsorInfoPending(Output.of(sponsorInfoPending));
         }
@@ -3722,20 +4462,44 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return sponsorName(Output.of(sponsorName));
         }
 
+        /**
+         * @param sponsorNameError Error message shown when the sponsor name is missing
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorNameError(@Nullable Output<String> sponsorNameError) {
             $.sponsorNameError = sponsorNameError;
             return this;
         }
 
+        /**
+         * @param sponsorNameError Error message shown when the sponsor name is missing
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorNameError(String sponsorNameError) {
             return sponsorNameError(Output.of(sponsorNameError));
         }
 
+        /**
+         * @param sponsorNotePending Additional status text shown while sponsor approval is pending
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorNotePending(@Nullable Output<String> sponsorNotePending) {
             $.sponsorNotePending = sponsorNotePending;
             return this;
         }
 
+        /**
+         * @param sponsorNotePending Additional status text shown while sponsor approval is pending
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorNotePending(String sponsorNotePending) {
             return sponsorNotePending(Output.of(sponsorNotePending));
         }
@@ -3845,29 +4609,65 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
             return sponsorSubmit(Output.of(sponsorSubmit));
         }
 
+        /**
+         * @param sponsorsError Error message shown when no sponsor is selected
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorsError(@Nullable Output<String> sponsorsError) {
             $.sponsorsError = sponsorsError;
             return this;
         }
 
+        /**
+         * @param sponsorsError Error message shown when no sponsor is selected
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorsError(String sponsorsError) {
             return sponsorsError(Output.of(sponsorsError));
         }
 
+        /**
+         * @param sponsorsFieldLabel Label for the sponsor selection field
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorsFieldLabel(@Nullable Output<String> sponsorsFieldLabel) {
             $.sponsorsFieldLabel = sponsorsFieldLabel;
             return this;
         }
 
+        /**
+         * @param sponsorsFieldLabel Label for the sponsor selection field
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorsFieldLabel(String sponsorsFieldLabel) {
             return sponsorsFieldLabel(Output.of(sponsorsFieldLabel));
         }
 
+        /**
+         * @param tos Whether the portal requires Terms of Service acceptance
+         * 
+         * @return builder
+         * 
+         */
         public Builder tos(@Nullable Output<Boolean> tos) {
             $.tos = tos;
             return this;
         }
 
+        /**
+         * @param tos Whether the portal requires Terms of Service acceptance
+         * 
+         * @return builder
+         * 
+         */
         public Builder tos(Boolean tos) {
             return tos(Output.of(tos));
         }

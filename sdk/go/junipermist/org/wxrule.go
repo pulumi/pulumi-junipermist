@@ -64,22 +64,25 @@ import (
 type Wxrule struct {
 	pulumi.CustomResourceState
 
-	// type of action, allow / block. enum: `allow`, `block`
-	Action    pulumi.StringOutput      `pulumi:"action"`
+	// Allow or block behavior applied by this WxLAN rule
+	Action pulumi.StringOutput `pulumi:"action"`
+	// WxLAN tag identifiers applied when this rule matches
 	ApplyTags pulumi.StringArrayOutput `pulumi:"applyTags"`
-	// Blocked apps (always blocking, ignoring action), the key of Get Application List
+	// Application keys always blocked by this rule, regardless of the rule action
 	BlockedApps pulumi.StringArrayOutput `pulumi:"blockedApps"`
-	// List of WxTag UUID to indicate these tags are allowed access
+	// Destination WxLAN tag identifiers explicitly allowed by this rule
 	DstAllowWxtags pulumi.StringArrayOutput `pulumi:"dstAllowWxtags"`
-	// List of WxTag UUID to indicate these tags are blocked access
+	// Destination WxLAN tag identifiers explicitly denied by this rule
 	DstDenyWxtags pulumi.StringArrayOutput `pulumi:"dstDenyWxtags"`
-	// List of WxTag UUID
+	// Destination WxLAN tag identifiers matched by this rule
 	DstWxtags pulumi.StringArrayOutput `pulumi:"dstWxtags"`
-	Enabled   pulumi.BoolOutput        `pulumi:"enabled"`
-	// Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
-	Order pulumi.IntOutput    `pulumi:"order"`
+	// Whether this WxLAN rule is enabled
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
+	Order pulumi.IntOutput `pulumi:"order"`
+	// Owning organization associated with this WxLAN rule
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// List of WxTag UUID to determine if this rule would match
+	// Source WxLAN tag identifiers that must match for this rule to apply
 	SrcWxtags pulumi.StringArrayOutput `pulumi:"srcWxtags"`
 	// Only for Org Level WxRule
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
@@ -127,44 +130,50 @@ func GetWxrule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Wxrule resources.
 type wxruleState struct {
-	// type of action, allow / block. enum: `allow`, `block`
-	Action    *string  `pulumi:"action"`
+	// Allow or block behavior applied by this WxLAN rule
+	Action *string `pulumi:"action"`
+	// WxLAN tag identifiers applied when this rule matches
 	ApplyTags []string `pulumi:"applyTags"`
-	// Blocked apps (always blocking, ignoring action), the key of Get Application List
+	// Application keys always blocked by this rule, regardless of the rule action
 	BlockedApps []string `pulumi:"blockedApps"`
-	// List of WxTag UUID to indicate these tags are allowed access
+	// Destination WxLAN tag identifiers explicitly allowed by this rule
 	DstAllowWxtags []string `pulumi:"dstAllowWxtags"`
-	// List of WxTag UUID to indicate these tags are blocked access
+	// Destination WxLAN tag identifiers explicitly denied by this rule
 	DstDenyWxtags []string `pulumi:"dstDenyWxtags"`
-	// List of WxTag UUID
+	// Destination WxLAN tag identifiers matched by this rule
 	DstWxtags []string `pulumi:"dstWxtags"`
-	Enabled   *bool    `pulumi:"enabled"`
-	// Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
-	Order *int    `pulumi:"order"`
+	// Whether this WxLAN rule is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
+	Order *int `pulumi:"order"`
+	// Owning organization associated with this WxLAN rule
 	OrgId *string `pulumi:"orgId"`
-	// List of WxTag UUID to determine if this rule would match
+	// Source WxLAN tag identifiers that must match for this rule to apply
 	SrcWxtags []string `pulumi:"srcWxtags"`
 	// Only for Org Level WxRule
 	TemplateId *string `pulumi:"templateId"`
 }
 
 type WxruleState struct {
-	// type of action, allow / block. enum: `allow`, `block`
-	Action    pulumi.StringPtrInput
+	// Allow or block behavior applied by this WxLAN rule
+	Action pulumi.StringPtrInput
+	// WxLAN tag identifiers applied when this rule matches
 	ApplyTags pulumi.StringArrayInput
-	// Blocked apps (always blocking, ignoring action), the key of Get Application List
+	// Application keys always blocked by this rule, regardless of the rule action
 	BlockedApps pulumi.StringArrayInput
-	// List of WxTag UUID to indicate these tags are allowed access
+	// Destination WxLAN tag identifiers explicitly allowed by this rule
 	DstAllowWxtags pulumi.StringArrayInput
-	// List of WxTag UUID to indicate these tags are blocked access
+	// Destination WxLAN tag identifiers explicitly denied by this rule
 	DstDenyWxtags pulumi.StringArrayInput
-	// List of WxTag UUID
+	// Destination WxLAN tag identifiers matched by this rule
 	DstWxtags pulumi.StringArrayInput
-	Enabled   pulumi.BoolPtrInput
-	// Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+	// Whether this WxLAN rule is enabled
+	Enabled pulumi.BoolPtrInput
+	// Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
 	Order pulumi.IntPtrInput
+	// Owning organization associated with this WxLAN rule
 	OrgId pulumi.StringPtrInput
-	// List of WxTag UUID to determine if this rule would match
+	// Source WxLAN tag identifiers that must match for this rule to apply
 	SrcWxtags pulumi.StringArrayInput
 	// Only for Org Level WxRule
 	TemplateId pulumi.StringPtrInput
@@ -175,22 +184,25 @@ func (WxruleState) ElementType() reflect.Type {
 }
 
 type wxruleArgs struct {
-	// type of action, allow / block. enum: `allow`, `block`
-	Action    string   `pulumi:"action"`
+	// Allow or block behavior applied by this WxLAN rule
+	Action string `pulumi:"action"`
+	// WxLAN tag identifiers applied when this rule matches
 	ApplyTags []string `pulumi:"applyTags"`
-	// Blocked apps (always blocking, ignoring action), the key of Get Application List
+	// Application keys always blocked by this rule, regardless of the rule action
 	BlockedApps []string `pulumi:"blockedApps"`
-	// List of WxTag UUID to indicate these tags are allowed access
+	// Destination WxLAN tag identifiers explicitly allowed by this rule
 	DstAllowWxtags []string `pulumi:"dstAllowWxtags"`
-	// List of WxTag UUID to indicate these tags are blocked access
+	// Destination WxLAN tag identifiers explicitly denied by this rule
 	DstDenyWxtags []string `pulumi:"dstDenyWxtags"`
-	// List of WxTag UUID
+	// Destination WxLAN tag identifiers matched by this rule
 	DstWxtags []string `pulumi:"dstWxtags"`
-	Enabled   *bool    `pulumi:"enabled"`
-	// Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
-	Order int    `pulumi:"order"`
+	// Whether this WxLAN rule is enabled
+	Enabled *bool `pulumi:"enabled"`
+	// Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
+	Order int `pulumi:"order"`
+	// Owning organization associated with this WxLAN rule
 	OrgId string `pulumi:"orgId"`
-	// List of WxTag UUID to determine if this rule would match
+	// Source WxLAN tag identifiers that must match for this rule to apply
 	SrcWxtags []string `pulumi:"srcWxtags"`
 	// Only for Org Level WxRule
 	TemplateId string `pulumi:"templateId"`
@@ -198,22 +210,25 @@ type wxruleArgs struct {
 
 // The set of arguments for constructing a Wxrule resource.
 type WxruleArgs struct {
-	// type of action, allow / block. enum: `allow`, `block`
-	Action    pulumi.StringInput
+	// Allow or block behavior applied by this WxLAN rule
+	Action pulumi.StringInput
+	// WxLAN tag identifiers applied when this rule matches
 	ApplyTags pulumi.StringArrayInput
-	// Blocked apps (always blocking, ignoring action), the key of Get Application List
+	// Application keys always blocked by this rule, regardless of the rule action
 	BlockedApps pulumi.StringArrayInput
-	// List of WxTag UUID to indicate these tags are allowed access
+	// Destination WxLAN tag identifiers explicitly allowed by this rule
 	DstAllowWxtags pulumi.StringArrayInput
-	// List of WxTag UUID to indicate these tags are blocked access
+	// Destination WxLAN tag identifiers explicitly denied by this rule
 	DstDenyWxtags pulumi.StringArrayInput
-	// List of WxTag UUID
+	// Destination WxLAN tag identifiers matched by this rule
 	DstWxtags pulumi.StringArrayInput
-	Enabled   pulumi.BoolPtrInput
-	// Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+	// Whether this WxLAN rule is enabled
+	Enabled pulumi.BoolPtrInput
+	// Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
 	Order pulumi.IntInput
+	// Owning organization associated with this WxLAN rule
 	OrgId pulumi.StringInput
-	// List of WxTag UUID to determine if this rule would match
+	// Source WxLAN tag identifiers that must match for this rule to apply
 	SrcWxtags pulumi.StringArrayInput
 	// Only for Org Level WxRule
 	TemplateId pulumi.StringInput
@@ -306,49 +321,52 @@ func (o WxruleOutput) ToWxruleOutputWithContext(ctx context.Context) WxruleOutpu
 	return o
 }
 
-// type of action, allow / block. enum: `allow`, `block`
+// Allow or block behavior applied by this WxLAN rule
 func (o WxruleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
+// WxLAN tag identifiers applied when this rule matches
 func (o WxruleOutput) ApplyTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.ApplyTags }).(pulumi.StringArrayOutput)
 }
 
-// Blocked apps (always blocking, ignoring action), the key of Get Application List
+// Application keys always blocked by this rule, regardless of the rule action
 func (o WxruleOutput) BlockedApps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.BlockedApps }).(pulumi.StringArrayOutput)
 }
 
-// List of WxTag UUID to indicate these tags are allowed access
+// Destination WxLAN tag identifiers explicitly allowed by this rule
 func (o WxruleOutput) DstAllowWxtags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.DstAllowWxtags }).(pulumi.StringArrayOutput)
 }
 
-// List of WxTag UUID to indicate these tags are blocked access
+// Destination WxLAN tag identifiers explicitly denied by this rule
 func (o WxruleOutput) DstDenyWxtags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.DstDenyWxtags }).(pulumi.StringArrayOutput)
 }
 
-// List of WxTag UUID
+// Destination WxLAN tag identifiers matched by this rule
 func (o WxruleOutput) DstWxtags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.DstWxtags }).(pulumi.StringArrayOutput)
 }
 
+// Whether this WxLAN rule is enabled
 func (o WxruleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
+// Lookup priority for WxLAN rules; larger positive values match first, and -1 means LAST. Uniqueness is not checked
 func (o WxruleOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.IntOutput { return v.Order }).(pulumi.IntOutput)
 }
 
+// Owning organization associated with this WxLAN rule
 func (o WxruleOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// List of WxTag UUID to determine if this rule would match
+// Source WxLAN tag identifiers that must match for this rule to apply
 func (o WxruleOutput) SrcWxtags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.SrcWxtags }).(pulumi.StringArrayOutput)
 }

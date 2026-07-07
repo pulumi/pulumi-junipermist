@@ -15,41 +15,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchRemoteSyslogFile {
+    /**
+     * @return Retention settings for this generated syslog file
+     * 
+     */
     private @Nullable SwitchRemoteSyslogFileArchive archive;
+    /**
+     * @return Syslog facilities and severities written to this file
+     * 
+     */
     private @Nullable List<SwitchRemoteSyslogFileContent> contents;
     /**
-     * @return Only if `protocol`==`tcp`
+     * @return Only if `protocol`==`tcp`, enable TLS for this syslog file destination
      * 
      */
     private @Nullable Boolean enableTls;
+    /**
+     * @return Whether to include explicit syslog priority values in file output
+     * 
+     */
     private @Nullable Boolean explicitPriority;
+    /**
+     * @return Generated syslog file name
+     * 
+     */
     private @Nullable String file;
+    /**
+     * @return Expression used to filter log messages written to this file
+     * 
+     */
     private @Nullable String match;
+    /**
+     * @return Whether to include structured syslog data in file output
+     * 
+     */
     private @Nullable Boolean structuredData;
 
     private SwitchRemoteSyslogFile() {}
+    /**
+     * @return Retention settings for this generated syslog file
+     * 
+     */
     public Optional<SwitchRemoteSyslogFileArchive> archive() {
         return Optional.ofNullable(this.archive);
     }
+    /**
+     * @return Syslog facilities and severities written to this file
+     * 
+     */
     public List<SwitchRemoteSyslogFileContent> contents() {
         return this.contents == null ? List.of() : this.contents;
     }
     /**
-     * @return Only if `protocol`==`tcp`
+     * @return Only if `protocol`==`tcp`, enable TLS for this syslog file destination
      * 
      */
     public Optional<Boolean> enableTls() {
         return Optional.ofNullable(this.enableTls);
     }
+    /**
+     * @return Whether to include explicit syslog priority values in file output
+     * 
+     */
     public Optional<Boolean> explicitPriority() {
         return Optional.ofNullable(this.explicitPriority);
     }
+    /**
+     * @return Generated syslog file name
+     * 
+     */
     public Optional<String> file() {
         return Optional.ofNullable(this.file);
     }
+    /**
+     * @return Expression used to filter log messages written to this file
+     * 
+     */
     public Optional<String> match() {
         return Optional.ofNullable(this.match);
     }
+    /**
+     * @return Whether to include structured syslog data in file output
+     * 
+     */
     public Optional<Boolean> structuredData() {
         return Optional.ofNullable(this.structuredData);
     }

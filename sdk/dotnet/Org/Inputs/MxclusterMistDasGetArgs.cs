@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.MxclusterMistDasCoaServerGetArgs>? _coaServers;
 
         /// <summary>
-        /// Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+        /// Dynamic authorization clients allowed to send CoA or Disconnect-Message requests
         /// </summary>
         public InputList<Inputs.MxclusterMistDasCoaServerGetArgs> CoaServers
         {
@@ -24,6 +24,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _coaServers = value;
         }
 
+        /// <summary>
+        /// Whether cloud-assisted DAS is enabled for the Mist Edge cluster
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

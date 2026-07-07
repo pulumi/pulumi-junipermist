@@ -6,6 +6,8 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,10 +36,26 @@ public final class SettingApiPolicyArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.noReveal);
     }
 
+    /**
+     * Optional list of IP addresses or CIDR subnets from which org API access is allowed. At most 10 entries. The source IP of the request making this update must be within one of the specified subnets.
+     * 
+     */
+    @Import(name="srcIps")
+    private @Nullable Output<List<String>> srcIps;
+
+    /**
+     * @return Optional list of IP addresses or CIDR subnets from which org API access is allowed. At most 10 entries. The source IP of the request making this update must be within one of the specified subnets.
+     * 
+     */
+    public Optional<Output<List<String>>> srcIps() {
+        return Optional.ofNullable(this.srcIps);
+    }
+
     private SettingApiPolicyArgs() {}
 
     private SettingApiPolicyArgs(SettingApiPolicyArgs $) {
         this.noReveal = $.noReveal;
+        this.srcIps = $.srcIps;
     }
 
     public static Builder builder() {
@@ -81,6 +99,37 @@ public final class SettingApiPolicyArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder noReveal(Boolean noReveal) {
             return noReveal(Output.of(noReveal));
+        }
+
+        /**
+         * @param srcIps Optional list of IP addresses or CIDR subnets from which org API access is allowed. At most 10 entries. The source IP of the request making this update must be within one of the specified subnets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcIps(@Nullable Output<List<String>> srcIps) {
+            $.srcIps = srcIps;
+            return this;
+        }
+
+        /**
+         * @param srcIps Optional list of IP addresses or CIDR subnets from which org API access is allowed. At most 10 entries. The source IP of the request making this update must be within one of the specified subnets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcIps(List<String> srcIps) {
+            return srcIps(Output.of(srcIps));
+        }
+
+        /**
+         * @param srcIps Optional list of IP addresses or CIDR subnets from which org API access is allowed. At most 10 entries. The source IP of the request making this update must be within one of the specified subnets.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcIps(String... srcIps) {
+            return srcIps(List.of(srcIps));
         }
 
         public SettingApiPolicyArgs build() {

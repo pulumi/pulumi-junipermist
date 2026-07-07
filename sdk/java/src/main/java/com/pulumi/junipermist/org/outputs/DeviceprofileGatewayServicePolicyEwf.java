@@ -12,27 +12,51 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayServicePolicyEwf {
+    /**
+     * @return Whether matching enhanced web filtering traffic is logged without being blocked
+     * 
+     */
     private @Nullable Boolean alertOnly;
+    /**
+     * @return Message returned when enhanced web filtering blocks a request
+     * 
+     */
     private @Nullable String blockMessage;
+    /**
+     * @return Whether this enhanced web filtering rule is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return enum: `critical`, `standard`, `strict`
+     * @return Enhanced web filtering profile applied by this rule
      * 
      */
     private @Nullable String profile;
 
     private DeviceprofileGatewayServicePolicyEwf() {}
+    /**
+     * @return Whether matching enhanced web filtering traffic is logged without being blocked
+     * 
+     */
     public Optional<Boolean> alertOnly() {
         return Optional.ofNullable(this.alertOnly);
     }
+    /**
+     * @return Message returned when enhanced web filtering blocks a request
+     * 
+     */
     public Optional<String> blockMessage() {
         return Optional.ofNullable(this.blockMessage);
     }
+    /**
+     * @return Whether this enhanced web filtering rule is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return enum: `critical`, `standard`, `strict`
+     * @return Enhanced web filtering profile applied by this rule
      * 
      */
     public Optional<String> profile() {

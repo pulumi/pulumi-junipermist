@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingVpnOptionsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Base BGP autonomous system number used for generated VPN configurations
+        /// </summary>
         [Input("asBase")]
         public Input<int>? AsBase { get; set; }
 
+        /// <summary>
+        /// Whether IPv6 is enabled for organization VPN configuration
+        /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 

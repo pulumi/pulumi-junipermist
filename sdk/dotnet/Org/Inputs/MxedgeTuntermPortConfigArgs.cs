@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _downstreamPorts;
 
         /// <summary>
-        /// List of ports to be used for downstream (to AP) purpose
+        /// Ports connected downstream toward APs for tunnel termination
         /// </summary>
         public InputList<string> DownstreamPorts
         {
@@ -30,6 +30,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("separateUpstreamDownstream")]
         public Input<bool>? SeparateUpstreamDownstream { get; set; }
 
+        /// <summary>
+        /// Native VLAN ID applied to upstream tunnel termination ports
+        /// </summary>
         [Input("upstreamPortVlanId")]
         public Input<string>? UpstreamPortVlanId { get; set; }
 
@@ -37,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _upstreamPorts;
 
         /// <summary>
-        /// List of ports to be used for upstream purpose (to LAN)
+        /// Ports connected upstream toward the LAN for tunnel termination
         /// </summary>
         public InputList<string> UpstreamPorts
         {

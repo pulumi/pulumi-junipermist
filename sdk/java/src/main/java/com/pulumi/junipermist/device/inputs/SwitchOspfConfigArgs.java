@@ -19,14 +19,14 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
     public static final SwitchOspfConfigArgs Empty = new SwitchOspfConfigArgs();
 
     /**
-     * Property key is the area name. Defines the OSPF areas configured on the switch.
+     * OSPF areas configured on the switch
      * 
      */
     @Import(name="areas")
     private @Nullable Output<Map<String,SwitchOspfConfigAreasArgs>> areas;
 
     /**
-     * @return Property key is the area name. Defines the OSPF areas configured on the switch.
+     * @return OSPF areas configured on the switch
      * 
      */
     public Optional<Output<Map<String,SwitchOspfConfigAreasArgs>>> areas() {
@@ -78,9 +78,17 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.importPolicy);
     }
 
+    /**
+     * Reference bandwidth used for OSPF cost calculation
+     * 
+     */
     @Import(name="referenceBandwidth")
     private @Nullable Output<String> referenceBandwidth;
 
+    /**
+     * @return Reference bandwidth used for OSPF cost calculation
+     * 
+     */
     public Optional<Output<String>> referenceBandwidth() {
         return Optional.ofNullable(this.referenceBandwidth);
     }
@@ -114,7 +122,7 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param areas Property key is the area name. Defines the OSPF areas configured on the switch.
+         * @param areas OSPF areas configured on the switch
          * 
          * @return builder
          * 
@@ -125,7 +133,7 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param areas Property key is the area name. Defines the OSPF areas configured on the switch.
+         * @param areas OSPF areas configured on the switch
          * 
          * @return builder
          * 
@@ -197,11 +205,23 @@ public final class SwitchOspfConfigArgs extends com.pulumi.resources.ResourceArg
             return importPolicy(Output.of(importPolicy));
         }
 
+        /**
+         * @param referenceBandwidth Reference bandwidth used for OSPF cost calculation
+         * 
+         * @return builder
+         * 
+         */
         public Builder referenceBandwidth(@Nullable Output<String> referenceBandwidth) {
             $.referenceBandwidth = referenceBandwidth;
             return this;
         }
 
+        /**
+         * @param referenceBandwidth Reference bandwidth used for OSPF cost calculation
+         * 
+         * @return builder
+         * 
+         */
         public Builder referenceBandwidth(String referenceBandwidth) {
             return referenceBandwidth(Output.of(referenceBandwidth));
         }

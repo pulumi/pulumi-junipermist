@@ -17,6 +17,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly int Port;
         public readonly string Protocol;
         public readonly int SrcVlanId;
+        /// <summary>
+        /// Authentication request timeout, in seconds
+        /// </summary>
         public readonly int Timeout;
 
         [OutputConstructor]

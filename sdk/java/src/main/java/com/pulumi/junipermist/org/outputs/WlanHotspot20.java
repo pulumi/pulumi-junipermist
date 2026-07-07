@@ -13,18 +13,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WlanHotspot20 {
+    /**
+     * @return Advertised domain names for Hotspot 2.0 clients
+     * 
+     */
     private @Nullable List<String> domainNames;
     /**
      * @return Whether to enable hotspot 2.0 config
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return NAI realms advertised for Hotspot 2.0 authentication
+     * 
+     */
     private @Nullable List<String> naiRealms;
     /**
-     * @return List of operators to support
+     * @return Operator profiles supported by this Hotspot 2.0 configuration
      * 
      */
     private @Nullable List<String> operators;
+    /**
+     * @return Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
+     * 
+     */
     private @Nullable List<String> rcois;
     /**
      * @return Venue name, default is site name
@@ -33,6 +45,10 @@ public final class WlanHotspot20 {
     private @Nullable String venueName;
 
     private WlanHotspot20() {}
+    /**
+     * @return Advertised domain names for Hotspot 2.0 clients
+     * 
+     */
     public List<String> domainNames() {
         return this.domainNames == null ? List.of() : this.domainNames;
     }
@@ -43,16 +59,24 @@ public final class WlanHotspot20 {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return NAI realms advertised for Hotspot 2.0 authentication
+     * 
+     */
     public List<String> naiRealms() {
         return this.naiRealms == null ? List.of() : this.naiRealms;
     }
     /**
-     * @return List of operators to support
+     * @return Operator profiles supported by this Hotspot 2.0 configuration
      * 
      */
     public List<String> operators() {
         return this.operators == null ? List.of() : this.operators;
     }
+    /**
+     * @return Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
+     * 
+     */
     public List<String> rcois() {
         return this.rcois == null ? List.of() : this.rcois;
     }

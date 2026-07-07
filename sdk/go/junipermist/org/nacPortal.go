@@ -97,42 +97,35 @@ import (
 type NacPortal struct {
 	pulumi.CustomResourceState
 
-	// if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
+	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
 	AccessType pulumi.StringOutput `pulumi:"accessType"`
-	// Optional list of additional CA certificates to be used
+	// Additional CA certificates trusted during NAC portal certificate onboarding
 	AdditionalCacerts pulumi.StringArrayOutput `pulumi:"additionalCacerts"`
 	// Optional list of additional NAC server names
 	AdditionalNacServerNames pulumi.StringArrayOutput `pulumi:"additionalNacServerNames"`
-	// In days
+	// Validity duration for portal-issued client certificates, in days
 	CertExpireTime pulumi.IntPtrOutput `pulumi:"certExpireTime"`
-	// enum: `wpa2`, `wpa3`
+	// EAP mode used when onboarding wireless clients through the NAC portal
 	EapType pulumi.StringOutput `pulumi:"eapType"`
 	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
 	EnableTelemetry pulumi.BoolPtrOutput `pulumi:"enableTelemetry"`
-	// In days
+	// Number of days before certificate expiration to start sending reminder notifications
 	ExpiryNotificationTime pulumi.IntPtrOutput `pulumi:"expiryNotificationTime"`
-	Name                   pulumi.StringOutput `pulumi:"name"`
-	// phase 2
+	// Human-readable name of the NAC portal
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Whether to send reminder notifications before portal-issued certificates expire
 	NotifyExpiry pulumi.BoolPtrOutput `pulumi:"notifyExpiry"`
-	OrgId        pulumi.StringOutput  `pulumi:"orgId"`
-	// Guest portal configuration when `type`==`guestPortal`. If
-	//   * `auth`==`none`, the user is presented with a terms of service and can click and continue.
-	//   * `auth`==`external`, the user is redirected to an external URL for authentication.
-	//   * `auth`==`multi`, the user is presented with a choice of authentication methods:
-	//     - social logins: facebook / google / amazon / microsoft / azure
-	//     - sponsor
-	//     - sms: supported provider: twillio
-	//     - email
-	//     - sso
-	//     - userpass: pre created guest list
+	// Organization that owns this NAC portal
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// Guest portal settings used when `type`==`guestPortal`
 	Portal NacPortalPortalPtrOutput `pulumi:"portal"`
-	Ssid   pulumi.StringPtrOutput   `pulumi:"ssid"`
-	Sso    NacPortalSsoPtrOutput    `pulumi:"sso"`
-	Tos    pulumi.StringPtrOutput   `pulumi:"tos"`
-	// enum:
-	//   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-	//   * `guestPortal`: NAC-Based Guest Portal
-	//   * `marvisClient`
+	// Wireless SSID associated with the NAC portal
+	Ssid pulumi.StringPtrOutput `pulumi:"ssid"`
+	// SAML SSO settings for NAC portal authentication and role mapping
+	Sso NacPortalSsoPtrOutput `pulumi:"sso"`
+	// Terms of service text shown in the NAC portal
+	Tos pulumi.StringPtrOutput `pulumi:"tos"`
+	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -169,82 +162,68 @@ func GetNacPortal(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NacPortal resources.
 type nacPortalState struct {
-	// if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
+	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
 	AccessType *string `pulumi:"accessType"`
-	// Optional list of additional CA certificates to be used
+	// Additional CA certificates trusted during NAC portal certificate onboarding
 	AdditionalCacerts []string `pulumi:"additionalCacerts"`
 	// Optional list of additional NAC server names
 	AdditionalNacServerNames []string `pulumi:"additionalNacServerNames"`
-	// In days
+	// Validity duration for portal-issued client certificates, in days
 	CertExpireTime *int `pulumi:"certExpireTime"`
-	// enum: `wpa2`, `wpa3`
+	// EAP mode used when onboarding wireless clients through the NAC portal
 	EapType *string `pulumi:"eapType"`
 	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
 	EnableTelemetry *bool `pulumi:"enableTelemetry"`
-	// In days
-	ExpiryNotificationTime *int    `pulumi:"expiryNotificationTime"`
-	Name                   *string `pulumi:"name"`
-	// phase 2
-	NotifyExpiry *bool   `pulumi:"notifyExpiry"`
-	OrgId        *string `pulumi:"orgId"`
-	// Guest portal configuration when `type`==`guestPortal`. If
-	//   * `auth`==`none`, the user is presented with a terms of service and can click and continue.
-	//   * `auth`==`external`, the user is redirected to an external URL for authentication.
-	//   * `auth`==`multi`, the user is presented with a choice of authentication methods:
-	//     - social logins: facebook / google / amazon / microsoft / azure
-	//     - sponsor
-	//     - sms: supported provider: twillio
-	//     - email
-	//     - sso
-	//     - userpass: pre created guest list
+	// Number of days before certificate expiration to start sending reminder notifications
+	ExpiryNotificationTime *int `pulumi:"expiryNotificationTime"`
+	// Human-readable name of the NAC portal
+	Name *string `pulumi:"name"`
+	// Whether to send reminder notifications before portal-issued certificates expire
+	NotifyExpiry *bool `pulumi:"notifyExpiry"`
+	// Organization that owns this NAC portal
+	OrgId *string `pulumi:"orgId"`
+	// Guest portal settings used when `type`==`guestPortal`
 	Portal *NacPortalPortal `pulumi:"portal"`
-	Ssid   *string          `pulumi:"ssid"`
-	Sso    *NacPortalSso    `pulumi:"sso"`
-	Tos    *string          `pulumi:"tos"`
-	// enum:
-	//   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-	//   * `guestPortal`: NAC-Based Guest Portal
-	//   * `marvisClient`
+	// Wireless SSID associated with the NAC portal
+	Ssid *string `pulumi:"ssid"`
+	// SAML SSO settings for NAC portal authentication and role mapping
+	Sso *NacPortalSso `pulumi:"sso"`
+	// Terms of service text shown in the NAC portal
+	Tos *string `pulumi:"tos"`
+	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
 	Type *string `pulumi:"type"`
 }
 
 type NacPortalState struct {
-	// if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
+	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
 	AccessType pulumi.StringPtrInput
-	// Optional list of additional CA certificates to be used
+	// Additional CA certificates trusted during NAC portal certificate onboarding
 	AdditionalCacerts pulumi.StringArrayInput
 	// Optional list of additional NAC server names
 	AdditionalNacServerNames pulumi.StringArrayInput
-	// In days
+	// Validity duration for portal-issued client certificates, in days
 	CertExpireTime pulumi.IntPtrInput
-	// enum: `wpa2`, `wpa3`
+	// EAP mode used when onboarding wireless clients through the NAC portal
 	EapType pulumi.StringPtrInput
 	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
 	EnableTelemetry pulumi.BoolPtrInput
-	// In days
+	// Number of days before certificate expiration to start sending reminder notifications
 	ExpiryNotificationTime pulumi.IntPtrInput
-	Name                   pulumi.StringPtrInput
-	// phase 2
+	// Human-readable name of the NAC portal
+	Name pulumi.StringPtrInput
+	// Whether to send reminder notifications before portal-issued certificates expire
 	NotifyExpiry pulumi.BoolPtrInput
-	OrgId        pulumi.StringPtrInput
-	// Guest portal configuration when `type`==`guestPortal`. If
-	//   * `auth`==`none`, the user is presented with a terms of service and can click and continue.
-	//   * `auth`==`external`, the user is redirected to an external URL for authentication.
-	//   * `auth`==`multi`, the user is presented with a choice of authentication methods:
-	//     - social logins: facebook / google / amazon / microsoft / azure
-	//     - sponsor
-	//     - sms: supported provider: twillio
-	//     - email
-	//     - sso
-	//     - userpass: pre created guest list
+	// Organization that owns this NAC portal
+	OrgId pulumi.StringPtrInput
+	// Guest portal settings used when `type`==`guestPortal`
 	Portal NacPortalPortalPtrInput
-	Ssid   pulumi.StringPtrInput
-	Sso    NacPortalSsoPtrInput
-	Tos    pulumi.StringPtrInput
-	// enum:
-	//   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-	//   * `guestPortal`: NAC-Based Guest Portal
-	//   * `marvisClient`
+	// Wireless SSID associated with the NAC portal
+	Ssid pulumi.StringPtrInput
+	// SAML SSO settings for NAC portal authentication and role mapping
+	Sso NacPortalSsoPtrInput
+	// Terms of service text shown in the NAC portal
+	Tos pulumi.StringPtrInput
+	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
 	Type pulumi.StringPtrInput
 }
 
@@ -253,83 +232,69 @@ func (NacPortalState) ElementType() reflect.Type {
 }
 
 type nacPortalArgs struct {
-	// if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
+	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
 	AccessType *string `pulumi:"accessType"`
-	// Optional list of additional CA certificates to be used
+	// Additional CA certificates trusted during NAC portal certificate onboarding
 	AdditionalCacerts []string `pulumi:"additionalCacerts"`
 	// Optional list of additional NAC server names
 	AdditionalNacServerNames []string `pulumi:"additionalNacServerNames"`
-	// In days
+	// Validity duration for portal-issued client certificates, in days
 	CertExpireTime *int `pulumi:"certExpireTime"`
-	// enum: `wpa2`, `wpa3`
+	// EAP mode used when onboarding wireless clients through the NAC portal
 	EapType *string `pulumi:"eapType"`
 	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
 	EnableTelemetry *bool `pulumi:"enableTelemetry"`
-	// In days
-	ExpiryNotificationTime *int    `pulumi:"expiryNotificationTime"`
-	Name                   *string `pulumi:"name"`
-	// phase 2
-	NotifyExpiry *bool  `pulumi:"notifyExpiry"`
-	OrgId        string `pulumi:"orgId"`
-	// Guest portal configuration when `type`==`guestPortal`. If
-	//   * `auth`==`none`, the user is presented with a terms of service and can click and continue.
-	//   * `auth`==`external`, the user is redirected to an external URL for authentication.
-	//   * `auth`==`multi`, the user is presented with a choice of authentication methods:
-	//     - social logins: facebook / google / amazon / microsoft / azure
-	//     - sponsor
-	//     - sms: supported provider: twillio
-	//     - email
-	//     - sso
-	//     - userpass: pre created guest list
+	// Number of days before certificate expiration to start sending reminder notifications
+	ExpiryNotificationTime *int `pulumi:"expiryNotificationTime"`
+	// Human-readable name of the NAC portal
+	Name *string `pulumi:"name"`
+	// Whether to send reminder notifications before portal-issued certificates expire
+	NotifyExpiry *bool `pulumi:"notifyExpiry"`
+	// Organization that owns this NAC portal
+	OrgId string `pulumi:"orgId"`
+	// Guest portal settings used when `type`==`guestPortal`
 	Portal *NacPortalPortal `pulumi:"portal"`
-	Ssid   *string          `pulumi:"ssid"`
-	Sso    *NacPortalSso    `pulumi:"sso"`
-	Tos    *string          `pulumi:"tos"`
-	// enum:
-	//   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-	//   * `guestPortal`: NAC-Based Guest Portal
-	//   * `marvisClient`
+	// Wireless SSID associated with the NAC portal
+	Ssid *string `pulumi:"ssid"`
+	// SAML SSO settings for NAC portal authentication and role mapping
+	Sso *NacPortalSso `pulumi:"sso"`
+	// Terms of service text shown in the NAC portal
+	Tos *string `pulumi:"tos"`
+	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a NacPortal resource.
 type NacPortalArgs struct {
-	// if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
+	// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
 	AccessType pulumi.StringPtrInput
-	// Optional list of additional CA certificates to be used
+	// Additional CA certificates trusted during NAC portal certificate onboarding
 	AdditionalCacerts pulumi.StringArrayInput
 	// Optional list of additional NAC server names
 	AdditionalNacServerNames pulumi.StringArrayInput
-	// In days
+	// Validity duration for portal-issued client certificates, in days
 	CertExpireTime pulumi.IntPtrInput
-	// enum: `wpa2`, `wpa3`
+	// EAP mode used when onboarding wireless clients through the NAC portal
 	EapType pulumi.StringPtrInput
 	// Model, version, fingering, events (connecting, disconnect, roaming), which ap
 	EnableTelemetry pulumi.BoolPtrInput
-	// In days
+	// Number of days before certificate expiration to start sending reminder notifications
 	ExpiryNotificationTime pulumi.IntPtrInput
-	Name                   pulumi.StringPtrInput
-	// phase 2
+	// Human-readable name of the NAC portal
+	Name pulumi.StringPtrInput
+	// Whether to send reminder notifications before portal-issued certificates expire
 	NotifyExpiry pulumi.BoolPtrInput
-	OrgId        pulumi.StringInput
-	// Guest portal configuration when `type`==`guestPortal`. If
-	//   * `auth`==`none`, the user is presented with a terms of service and can click and continue.
-	//   * `auth`==`external`, the user is redirected to an external URL for authentication.
-	//   * `auth`==`multi`, the user is presented with a choice of authentication methods:
-	//     - social logins: facebook / google / amazon / microsoft / azure
-	//     - sponsor
-	//     - sms: supported provider: twillio
-	//     - email
-	//     - sso
-	//     - userpass: pre created guest list
+	// Organization that owns this NAC portal
+	OrgId pulumi.StringInput
+	// Guest portal settings used when `type`==`guestPortal`
 	Portal NacPortalPortalPtrInput
-	Ssid   pulumi.StringPtrInput
-	Sso    NacPortalSsoPtrInput
-	Tos    pulumi.StringPtrInput
-	// enum:
-	//   * `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-	//   * `guestPortal`: NAC-Based Guest Portal
-	//   * `marvisClient`
+	// Wireless SSID associated with the NAC portal
+	Ssid pulumi.StringPtrInput
+	// SAML SSO settings for NAC portal authentication and role mapping
+	Sso NacPortalSsoPtrInput
+	// Terms of service text shown in the NAC portal
+	Tos pulumi.StringPtrInput
+	// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
 	Type pulumi.StringPtrInput
 }
 
@@ -420,12 +385,12 @@ func (o NacPortalOutput) ToNacPortalOutputWithContext(ctx context.Context) NacPo
 	return o
 }
 
-// if `type`==`marvisClient`. enum: `wireless`, `wireless+wired`
+// If `type`==`marvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
 func (o NacPortalOutput) AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringOutput { return v.AccessType }).(pulumi.StringOutput)
 }
 
-// Optional list of additional CA certificates to be used
+// Additional CA certificates trusted during NAC portal certificate onboarding
 func (o NacPortalOutput) AdditionalCacerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringArrayOutput { return v.AdditionalCacerts }).(pulumi.StringArrayOutput)
 }
@@ -435,12 +400,12 @@ func (o NacPortalOutput) AdditionalNacServerNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringArrayOutput { return v.AdditionalNacServerNames }).(pulumi.StringArrayOutput)
 }
 
-// In days
+// Validity duration for portal-issued client certificates, in days
 func (o NacPortalOutput) CertExpireTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.IntPtrOutput { return v.CertExpireTime }).(pulumi.IntPtrOutput)
 }
 
-// enum: `wpa2`, `wpa3`
+// EAP mode used when onboarding wireless clients through the NAC portal
 func (o NacPortalOutput) EapType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringOutput { return v.EapType }).(pulumi.StringOutput)
 }
@@ -450,54 +415,47 @@ func (o NacPortalOutput) EnableTelemetry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.BoolPtrOutput { return v.EnableTelemetry }).(pulumi.BoolPtrOutput)
 }
 
-// In days
+// Number of days before certificate expiration to start sending reminder notifications
 func (o NacPortalOutput) ExpiryNotificationTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.IntPtrOutput { return v.ExpiryNotificationTime }).(pulumi.IntPtrOutput)
 }
 
+// Human-readable name of the NAC portal
 func (o NacPortalOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// phase 2
+// Whether to send reminder notifications before portal-issued certificates expire
 func (o NacPortalOutput) NotifyExpiry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.BoolPtrOutput { return v.NotifyExpiry }).(pulumi.BoolPtrOutput)
 }
 
+// Organization that owns this NAC portal
 func (o NacPortalOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Guest portal configuration when `type`==`guestPortal`. If
-//   - `auth`==`none`, the user is presented with a terms of service and can click and continue.
-//   - `auth`==`external`, the user is redirected to an external URL for authentication.
-//   - `auth`==`multi`, the user is presented with a choice of authentication methods:
-//   - social logins: facebook / google / amazon / microsoft / azure
-//   - sponsor
-//   - sms: supported provider: twillio
-//   - email
-//   - sso
-//   - userpass: pre created guest list
+// Guest portal settings used when `type`==`guestPortal`
 func (o NacPortalOutput) Portal() NacPortalPortalPtrOutput {
 	return o.ApplyT(func(v *NacPortal) NacPortalPortalPtrOutput { return v.Portal }).(NacPortalPortalPtrOutput)
 }
 
+// Wireless SSID associated with the NAC portal
 func (o NacPortalOutput) Ssid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringPtrOutput { return v.Ssid }).(pulumi.StringPtrOutput)
 }
 
+// SAML SSO settings for NAC portal authentication and role mapping
 func (o NacPortalOutput) Sso() NacPortalSsoPtrOutput {
 	return o.ApplyT(func(v *NacPortal) NacPortalSsoPtrOutput { return v.Sso }).(NacPortalSsoPtrOutput)
 }
 
+// Terms of service text shown in the NAC portal
 func (o NacPortalOutput) Tos() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringPtrOutput { return v.Tos }).(pulumi.StringPtrOutput)
 }
 
-// enum:
-//   - `guestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-//   - `guestPortal`: NAC-Based Guest Portal
-//   - `marvisClient`
+// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
 func (o NacPortalOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NacPortal) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

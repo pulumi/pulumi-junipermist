@@ -37,13 +37,19 @@ class ServicepolicyArgs:
         """
         The set of arguments for constructing a Servicepolicy resource.
 
-        :param pulumi.Input['ServicepolicyAamwArgs'] aamw: SRX only
-        :param pulumi.Input[_builtins.str] action: enum: `allow`, `deny`
-        :param pulumi.Input['ServicepolicyAntivirusArgs'] antivirus: For SRX-only
-        :param pulumi.Input['ServicepolicyAppqoeArgs'] appqoe: SRX only
-        :param pulumi.Input[_builtins.bool] local_routing: access within the same VRF
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this service policy
+        :param pulumi.Input['ServicepolicyAamwArgs'] aamw: Advanced anti-malware settings applied by this service policy
+        :param pulumi.Input[_builtins.str] action: Allow or deny action for traffic matched by this service policy
+        :param pulumi.Input['ServicepolicyAntivirusArgs'] antivirus: Malware and virus inspection settings applied by this service policy
+        :param pulumi.Input['ServicepolicyAppqoeArgs'] appqoe: Application QoE settings applied by this service policy
+        :param pulumi.Input[Sequence[pulumi.Input['ServicepolicyEwfArgs']]] ewfs: Enhanced web filtering rules applied by this service policy
+        :param pulumi.Input['ServicepolicyIdpArgs'] idp: Intrusion detection and prevention settings applied by this service policy
+        :param pulumi.Input[_builtins.bool] local_routing: Whether the policy permits access within the same VRF
+        :param pulumi.Input[_builtins.str] name: Display name of the service policy
         :param pulumi.Input[_builtins.str] path_preference: By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
-        :param pulumi.Input['ServicepolicySslProxyArgs'] ssl_proxy: For SRX-only
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: Application services or groups matched by this policy
+        :param pulumi.Input['ServicepolicySslProxyArgs'] ssl_proxy: SSL proxy inspection settings applied by this service policy
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tenants: Tenant names matched by this service policy
         """
         pulumi.set(__self__, "org_id", org_id)
         if aamw is not None:
@@ -74,6 +80,9 @@ class ServicepolicyArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization that owns this service policy
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -84,7 +93,7 @@ class ServicepolicyArgs:
     @pulumi.getter
     def aamw(self) -> pulumi.Input[Optional['ServicepolicyAamwArgs']]:
         """
-        SRX only
+        Advanced anti-malware settings applied by this service policy
         """
         return pulumi.get(self, "aamw")
 
@@ -96,7 +105,7 @@ class ServicepolicyArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `allow`, `deny`
+        Allow or deny action for traffic matched by this service policy
         """
         return pulumi.get(self, "action")
 
@@ -108,7 +117,7 @@ class ServicepolicyArgs:
     @pulumi.getter
     def antivirus(self) -> pulumi.Input[Optional['ServicepolicyAntivirusArgs']]:
         """
-        For SRX-only
+        Malware and virus inspection settings applied by this service policy
         """
         return pulumi.get(self, "antivirus")
 
@@ -120,7 +129,7 @@ class ServicepolicyArgs:
     @pulumi.getter
     def appqoe(self) -> pulumi.Input[Optional['ServicepolicyAppqoeArgs']]:
         """
-        SRX only
+        Application QoE settings applied by this service policy
         """
         return pulumi.get(self, "appqoe")
 
@@ -131,6 +140,9 @@ class ServicepolicyArgs:
     @_builtins.property
     @pulumi.getter
     def ewfs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]]:
+        """
+        Enhanced web filtering rules applied by this service policy
+        """
         return pulumi.get(self, "ewfs")
 
     @ewfs.setter
@@ -140,6 +152,9 @@ class ServicepolicyArgs:
     @_builtins.property
     @pulumi.getter
     def idp(self) -> pulumi.Input[Optional['ServicepolicyIdpArgs']]:
+        """
+        Intrusion detection and prevention settings applied by this service policy
+        """
         return pulumi.get(self, "idp")
 
     @idp.setter
@@ -150,7 +165,7 @@ class ServicepolicyArgs:
     @pulumi.getter(name="localRouting")
     def local_routing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        access within the same VRF
+        Whether the policy permits access within the same VRF
         """
         return pulumi.get(self, "local_routing")
 
@@ -161,6 +176,9 @@ class ServicepolicyArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the service policy
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -182,6 +200,9 @@ class ServicepolicyArgs:
     @_builtins.property
     @pulumi.getter
     def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Application services or groups matched by this policy
+        """
         return pulumi.get(self, "services")
 
     @services.setter
@@ -192,7 +213,7 @@ class ServicepolicyArgs:
     @pulumi.getter(name="sslProxy")
     def ssl_proxy(self) -> pulumi.Input[Optional['ServicepolicySslProxyArgs']]:
         """
-        For SRX-only
+        SSL proxy inspection settings applied by this service policy
         """
         return pulumi.get(self, "ssl_proxy")
 
@@ -203,6 +224,9 @@ class ServicepolicyArgs:
     @_builtins.property
     @pulumi.getter
     def tenants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Tenant names matched by this service policy
+        """
         return pulumi.get(self, "tenants")
 
     @tenants.setter
@@ -229,13 +253,19 @@ class _ServicepolicyState:
         """
         Input properties used for looking up and filtering Servicepolicy resources.
 
-        :param pulumi.Input['ServicepolicyAamwArgs'] aamw: SRX only
-        :param pulumi.Input[_builtins.str] action: enum: `allow`, `deny`
-        :param pulumi.Input['ServicepolicyAntivirusArgs'] antivirus: For SRX-only
-        :param pulumi.Input['ServicepolicyAppqoeArgs'] appqoe: SRX only
-        :param pulumi.Input[_builtins.bool] local_routing: access within the same VRF
+        :param pulumi.Input['ServicepolicyAamwArgs'] aamw: Advanced anti-malware settings applied by this service policy
+        :param pulumi.Input[_builtins.str] action: Allow or deny action for traffic matched by this service policy
+        :param pulumi.Input['ServicepolicyAntivirusArgs'] antivirus: Malware and virus inspection settings applied by this service policy
+        :param pulumi.Input['ServicepolicyAppqoeArgs'] appqoe: Application QoE settings applied by this service policy
+        :param pulumi.Input[Sequence[pulumi.Input['ServicepolicyEwfArgs']]] ewfs: Enhanced web filtering rules applied by this service policy
+        :param pulumi.Input['ServicepolicyIdpArgs'] idp: Intrusion detection and prevention settings applied by this service policy
+        :param pulumi.Input[_builtins.bool] local_routing: Whether the policy permits access within the same VRF
+        :param pulumi.Input[_builtins.str] name: Display name of the service policy
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this service policy
         :param pulumi.Input[_builtins.str] path_preference: By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
-        :param pulumi.Input['ServicepolicySslProxyArgs'] ssl_proxy: For SRX-only
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: Application services or groups matched by this policy
+        :param pulumi.Input['ServicepolicySslProxyArgs'] ssl_proxy: SSL proxy inspection settings applied by this service policy
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tenants: Tenant names matched by this service policy
         """
         if aamw is not None:
             pulumi.set(__self__, "aamw", aamw)
@@ -268,7 +298,7 @@ class _ServicepolicyState:
     @pulumi.getter
     def aamw(self) -> pulumi.Input[Optional['ServicepolicyAamwArgs']]:
         """
-        SRX only
+        Advanced anti-malware settings applied by this service policy
         """
         return pulumi.get(self, "aamw")
 
@@ -280,7 +310,7 @@ class _ServicepolicyState:
     @pulumi.getter
     def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `allow`, `deny`
+        Allow or deny action for traffic matched by this service policy
         """
         return pulumi.get(self, "action")
 
@@ -292,7 +322,7 @@ class _ServicepolicyState:
     @pulumi.getter
     def antivirus(self) -> pulumi.Input[Optional['ServicepolicyAntivirusArgs']]:
         """
-        For SRX-only
+        Malware and virus inspection settings applied by this service policy
         """
         return pulumi.get(self, "antivirus")
 
@@ -304,7 +334,7 @@ class _ServicepolicyState:
     @pulumi.getter
     def appqoe(self) -> pulumi.Input[Optional['ServicepolicyAppqoeArgs']]:
         """
-        SRX only
+        Application QoE settings applied by this service policy
         """
         return pulumi.get(self, "appqoe")
 
@@ -315,6 +345,9 @@ class _ServicepolicyState:
     @_builtins.property
     @pulumi.getter
     def ewfs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicepolicyEwfArgs']]]]:
+        """
+        Enhanced web filtering rules applied by this service policy
+        """
         return pulumi.get(self, "ewfs")
 
     @ewfs.setter
@@ -324,6 +357,9 @@ class _ServicepolicyState:
     @_builtins.property
     @pulumi.getter
     def idp(self) -> pulumi.Input[Optional['ServicepolicyIdpArgs']]:
+        """
+        Intrusion detection and prevention settings applied by this service policy
+        """
         return pulumi.get(self, "idp")
 
     @idp.setter
@@ -334,7 +370,7 @@ class _ServicepolicyState:
     @pulumi.getter(name="localRouting")
     def local_routing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        access within the same VRF
+        Whether the policy permits access within the same VRF
         """
         return pulumi.get(self, "local_routing")
 
@@ -345,6 +381,9 @@ class _ServicepolicyState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the service policy
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -354,6 +393,9 @@ class _ServicepolicyState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns this service policy
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -375,6 +417,9 @@ class _ServicepolicyState:
     @_builtins.property
     @pulumi.getter
     def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Application services or groups matched by this policy
+        """
         return pulumi.get(self, "services")
 
     @services.setter
@@ -385,7 +430,7 @@ class _ServicepolicyState:
     @pulumi.getter(name="sslProxy")
     def ssl_proxy(self) -> pulumi.Input[Optional['ServicepolicySslProxyArgs']]:
         """
-        For SRX-only
+        SSL proxy inspection settings applied by this service policy
         """
         return pulumi.get(self, "ssl_proxy")
 
@@ -396,6 +441,9 @@ class _ServicepolicyState:
     @_builtins.property
     @pulumi.getter
     def tenants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Tenant names matched by this service policy
+        """
         return pulumi.get(self, "tenants")
 
     @tenants.setter
@@ -463,13 +511,19 @@ class Servicepolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: SRX only
-        :param pulumi.Input[_builtins.str] action: enum: `allow`, `deny`
-        :param pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']] antivirus: For SRX-only
-        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: SRX only
-        :param pulumi.Input[_builtins.bool] local_routing: access within the same VRF
+        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: Advanced anti-malware settings applied by this service policy
+        :param pulumi.Input[_builtins.str] action: Allow or deny action for traffic matched by this service policy
+        :param pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']] antivirus: Malware and virus inspection settings applied by this service policy
+        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: Application QoE settings applied by this service policy
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]] ewfs: Enhanced web filtering rules applied by this service policy
+        :param pulumi.Input[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']] idp: Intrusion detection and prevention settings applied by this service policy
+        :param pulumi.Input[_builtins.bool] local_routing: Whether the policy permits access within the same VRF
+        :param pulumi.Input[_builtins.str] name: Display name of the service policy
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this service policy
         :param pulumi.Input[_builtins.str] path_preference: By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
-        :param pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']] ssl_proxy: For SRX-only
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: Application services or groups matched by this policy
+        :param pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']] ssl_proxy: SSL proxy inspection settings applied by this service policy
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tenants: Tenant names matched by this service policy
         """
         ...
     @overload
@@ -597,13 +651,19 @@ class Servicepolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: SRX only
-        :param pulumi.Input[_builtins.str] action: enum: `allow`, `deny`
-        :param pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']] antivirus: For SRX-only
-        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: SRX only
-        :param pulumi.Input[_builtins.bool] local_routing: access within the same VRF
+        :param pulumi.Input[Union['ServicepolicyAamwArgs', 'ServicepolicyAamwArgsDict']] aamw: Advanced anti-malware settings applied by this service policy
+        :param pulumi.Input[_builtins.str] action: Allow or deny action for traffic matched by this service policy
+        :param pulumi.Input[Union['ServicepolicyAntivirusArgs', 'ServicepolicyAntivirusArgsDict']] antivirus: Malware and virus inspection settings applied by this service policy
+        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: Application QoE settings applied by this service policy
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]] ewfs: Enhanced web filtering rules applied by this service policy
+        :param pulumi.Input[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']] idp: Intrusion detection and prevention settings applied by this service policy
+        :param pulumi.Input[_builtins.bool] local_routing: Whether the policy permits access within the same VRF
+        :param pulumi.Input[_builtins.str] name: Display name of the service policy
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this service policy
         :param pulumi.Input[_builtins.str] path_preference: By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
-        :param pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']] ssl_proxy: For SRX-only
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: Application services or groups matched by this policy
+        :param pulumi.Input[Union['ServicepolicySslProxyArgs', 'ServicepolicySslProxyArgsDict']] ssl_proxy: SSL proxy inspection settings applied by this service policy
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tenants: Tenant names matched by this service policy
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -628,7 +688,7 @@ class Servicepolicy(pulumi.CustomResource):
     @pulumi.getter
     def aamw(self) -> pulumi.Output[Optional['outputs.ServicepolicyAamw']]:
         """
-        SRX only
+        Advanced anti-malware settings applied by this service policy
         """
         return pulumi.get(self, "aamw")
 
@@ -636,7 +696,7 @@ class Servicepolicy(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:
         """
-        enum: `allow`, `deny`
+        Allow or deny action for traffic matched by this service policy
         """
         return pulumi.get(self, "action")
 
@@ -644,7 +704,7 @@ class Servicepolicy(pulumi.CustomResource):
     @pulumi.getter
     def antivirus(self) -> pulumi.Output[Optional['outputs.ServicepolicyAntivirus']]:
         """
-        For SRX-only
+        Malware and virus inspection settings applied by this service policy
         """
         return pulumi.get(self, "antivirus")
 
@@ -652,36 +712,48 @@ class Servicepolicy(pulumi.CustomResource):
     @pulumi.getter
     def appqoe(self) -> pulumi.Output[Optional['outputs.ServicepolicyAppqoe']]:
         """
-        SRX only
+        Application QoE settings applied by this service policy
         """
         return pulumi.get(self, "appqoe")
 
     @_builtins.property
     @pulumi.getter
     def ewfs(self) -> pulumi.Output[Optional[Sequence['outputs.ServicepolicyEwf']]]:
+        """
+        Enhanced web filtering rules applied by this service policy
+        """
         return pulumi.get(self, "ewfs")
 
     @_builtins.property
     @pulumi.getter
     def idp(self) -> pulumi.Output[Optional['outputs.ServicepolicyIdp']]:
+        """
+        Intrusion detection and prevention settings applied by this service policy
+        """
         return pulumi.get(self, "idp")
 
     @_builtins.property
     @pulumi.getter(name="localRouting")
     def local_routing(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        access within the same VRF
+        Whether the policy permits access within the same VRF
         """
         return pulumi.get(self, "local_routing")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the service policy
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns this service policy
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
@@ -695,18 +767,24 @@ class Servicepolicy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def services(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Application services or groups matched by this policy
+        """
         return pulumi.get(self, "services")
 
     @_builtins.property
     @pulumi.getter(name="sslProxy")
     def ssl_proxy(self) -> pulumi.Output[Optional['outputs.ServicepolicySslProxy']]:
         """
-        For SRX-only
+        SSL proxy inspection settings applied by this service policy
         """
         return pulumi.get(self, "ssl_proxy")
 
     @_builtins.property
     @pulumi.getter
     def tenants(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Tenant names matched by this service policy
+        """
         return pulumi.get(self, "tenants")
 

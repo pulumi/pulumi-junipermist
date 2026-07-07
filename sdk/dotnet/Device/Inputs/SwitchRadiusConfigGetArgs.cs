@@ -12,17 +12,24 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchRadiusConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether immediate RADIUS accounting updates are sent
+        /// </summary>
         [Input("acctImmediateUpdate")]
         public Input<bool>? AcctImmediateUpdate { get; set; }
 
         /// <summary>
-        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
         /// </summary>
         [Input("acctInterimInterval")]
         public Input<int>? AcctInterimInterval { get; set; }
 
         [Input("acctServers")]
         private InputList<Inputs.SwitchRadiusConfigAcctServerGetArgs>? _acctServers;
+
+        /// <summary>
+        /// RADIUS accounting servers used by this switch configuration
+        /// </summary>
         public InputList<Inputs.SwitchRadiusConfigAcctServerGetArgs> AcctServers
         {
             get => _acctServers ?? (_acctServers = new InputList<Inputs.SwitchRadiusConfigAcctServerGetArgs>());
@@ -30,13 +37,17 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `Ordered`, `Unordered`
+        /// Selection strategy for RADIUS authentication servers
         /// </summary>
         [Input("authServerSelection")]
         public Input<string>? AuthServerSelection { get; set; }
 
         [Input("authServers")]
         private InputList<Inputs.SwitchRadiusConfigAuthServerGetArgs>? _authServers;
+
+        /// <summary>
+        /// RADIUS authentication servers used by this switch configuration
+        /// </summary>
         public InputList<Inputs.SwitchRadiusConfigAuthServerGetArgs> AuthServers
         {
             get => _authServers ?? (_authServers = new InputList<Inputs.SwitchRadiusConfigAuthServerGetArgs>());
@@ -44,23 +55,32 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// Radius auth session retries
+        /// RADIUS auth session retries
         /// </summary>
         [Input("authServersRetries")]
         public Input<int>? AuthServersRetries { get; set; }
 
         /// <summary>
-        /// Radius auth session timeout
+        /// RADIUS auth session timeout
         /// </summary>
         [Input("authServersTimeout")]
         public Input<int>? AuthServersTimeout { get; set; }
 
+        /// <summary>
+        /// Whether RADIUS Change of Authorization (CoA) is enabled
+        /// </summary>
         [Input("coaEnabled")]
         public Input<bool>? CoaEnabled { get; set; }
 
+        /// <summary>
+        /// UDP port used for RADIUS Change of Authorization (CoA)
+        /// </summary>
         [Input("coaPort")]
         public Input<string>? CoaPort { get; set; }
 
+        /// <summary>
+        /// Whether fast 802.1X timers are enabled for RADIUS authentication
+        /// </summary>
         [Input("fastDot1xTimers")]
         public Input<bool>? FastDot1xTimers { get; set; }
 
@@ -71,7 +91,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Use `Network`or `SourceIp`
+        /// Use `Network` or `SourceIp`. Explicit source IP address for RADIUS traffic
         /// </summary>
         [Input("sourceIp")]
         public Input<string>? SourceIp { get; set; }

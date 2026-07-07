@@ -16,16 +16,32 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
 
     public static final SwitchOobIpConfigArgs Empty = new SwitchOobIpConfigArgs();
 
+    /**
+     * Default gateway for the out-of-band management interface when `type`==`static`
+     * 
+     */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
+    /**
+     * @return Default gateway for the out-of-band management interface when `type`==`static`
+     * 
+     */
     public Optional<Output<String>> gateway() {
         return Optional.ofNullable(this.gateway);
     }
 
+    /**
+     * Static IPv4 address for the out-of-band management interface when `type`==`static`
+     * 
+     */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
+    /**
+     * @return Static IPv4 address for the out-of-band management interface when `type`==`static`
+     * 
+     */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
     }
@@ -61,14 +77,14 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * enum: `dhcp`, `static`
+     * IP assignment mode for the out-of-band management interface
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IP assignment mode for the out-of-band management interface
      * 
      */
     public Optional<Output<String>> type() {
@@ -135,20 +151,44 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
             $ = new SwitchOobIpConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gateway Default gateway for the out-of-band management interface when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway(@Nullable Output<String> gateway) {
             $.gateway = gateway;
             return this;
         }
 
+        /**
+         * @param gateway Default gateway for the out-of-band management interface when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway(String gateway) {
             return gateway(Output.of(gateway));
         }
 
+        /**
+         * @param ip Static IPv4 address for the out-of-band management interface when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(@Nullable Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
+        /**
+         * @param ip Static IPv4 address for the out-of-band management interface when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }
@@ -196,7 +236,7 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IP assignment mode for the out-of-band management interface
          * 
          * @return builder
          * 
@@ -207,7 +247,7 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IP assignment mode for the out-of-band management interface
          * 
          * @return builder
          * 

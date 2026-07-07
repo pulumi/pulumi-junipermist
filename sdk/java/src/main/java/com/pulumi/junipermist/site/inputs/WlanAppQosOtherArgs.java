@@ -15,37 +15,77 @@ public final class WlanAppQosOtherArgs extends com.pulumi.resources.ResourceArgs
 
     public static final WlanAppQosOtherArgs Empty = new WlanAppQosOtherArgs();
 
+    /**
+     * Differentiated Services Code Point value applied to matching traffic
+     * 
+     */
     @Import(name="dscp")
     private @Nullable Output<String> dscp;
 
+    /**
+     * @return Differentiated Services Code Point value applied to matching traffic
+     * 
+     */
     public Optional<Output<String>> dscp() {
         return Optional.ofNullable(this.dscp);
     }
 
+    /**
+     * Destination subnet filter for this custom QoS rule
+     * 
+     */
     @Import(name="dstSubnet")
     private @Nullable Output<String> dstSubnet;
 
+    /**
+     * @return Destination subnet filter for this custom QoS rule
+     * 
+     */
     public Optional<Output<String>> dstSubnet() {
         return Optional.ofNullable(this.dstSubnet);
     }
 
+    /**
+     * TCP or UDP port ranges matched by this custom QoS rule
+     * 
+     */
     @Import(name="portRanges")
     private @Nullable Output<String> portRanges;
 
+    /**
+     * @return TCP or UDP port ranges matched by this custom QoS rule
+     * 
+     */
     public Optional<Output<String>> portRanges() {
         return Optional.ofNullable(this.portRanges);
     }
 
+    /**
+     * IP protocol matched by this custom QoS rule
+     * 
+     */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
+    /**
+     * @return IP protocol matched by this custom QoS rule
+     * 
+     */
     public Optional<Output<String>> protocol() {
         return Optional.ofNullable(this.protocol);
     }
 
+    /**
+     * Source subnet filter for this custom QoS rule
+     * 
+     */
     @Import(name="srcSubnet")
     private @Nullable Output<String> srcSubnet;
 
+    /**
+     * @return Source subnet filter for this custom QoS rule
+     * 
+     */
     public Optional<Output<String>> srcSubnet() {
         return Optional.ofNullable(this.srcSubnet);
     }
@@ -78,47 +118,107 @@ public final class WlanAppQosOtherArgs extends com.pulumi.resources.ResourceArgs
             $ = new WlanAppQosOtherArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dscp Differentiated Services Code Point value applied to matching traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder dscp(@Nullable Output<String> dscp) {
             $.dscp = dscp;
             return this;
         }
 
+        /**
+         * @param dscp Differentiated Services Code Point value applied to matching traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder dscp(String dscp) {
             return dscp(Output.of(dscp));
         }
 
+        /**
+         * @param dstSubnet Destination subnet filter for this custom QoS rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder dstSubnet(@Nullable Output<String> dstSubnet) {
             $.dstSubnet = dstSubnet;
             return this;
         }
 
+        /**
+         * @param dstSubnet Destination subnet filter for this custom QoS rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder dstSubnet(String dstSubnet) {
             return dstSubnet(Output.of(dstSubnet));
         }
 
+        /**
+         * @param portRanges TCP or UDP port ranges matched by this custom QoS rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder portRanges(@Nullable Output<String> portRanges) {
             $.portRanges = portRanges;
             return this;
         }
 
+        /**
+         * @param portRanges TCP or UDP port ranges matched by this custom QoS rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder portRanges(String portRanges) {
             return portRanges(Output.of(portRanges));
         }
 
+        /**
+         * @param protocol IP protocol matched by this custom QoS rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder protocol(@Nullable Output<String> protocol) {
             $.protocol = protocol;
             return this;
         }
 
+        /**
+         * @param protocol IP protocol matched by this custom QoS rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder protocol(String protocol) {
             return protocol(Output.of(protocol));
         }
 
+        /**
+         * @param srcSubnet Source subnet filter for this custom QoS rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcSubnet(@Nullable Output<String> srcSubnet) {
             $.srcSubnet = srcSubnet;
             return this;
         }
 
+        /**
+         * @param srcSubnet Source subnet filter for this custom QoS rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcSubnet(String srcSubnet) {
             return srcSubnet(Output.of(srcSubnet));
         }

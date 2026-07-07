@@ -13,13 +13,25 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxclusterMistNac
     {
+        /// <summary>
+        /// RADIUS accounting port used by Mist NAC on the cluster
+        /// </summary>
         public readonly int? AcctServerPort;
+        /// <summary>
+        /// RADIUS authentication port used by Mist NAC on the cluster
+        /// </summary>
         public readonly int? AuthServerPort;
         /// <summary>
         /// Property key is the RADIUS Client IP/Subnet.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.MxclusterMistNacClientIps>? ClientIps;
+        /// <summary>
+        /// Whether Mist NAC is enabled on the cluster
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Shared RADIUS secret used by Mist NAC clients
+        /// </summary>
         public readonly string? Secret;
 
         [OutputConstructor]

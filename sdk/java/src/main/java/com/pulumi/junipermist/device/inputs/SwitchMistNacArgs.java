@@ -16,16 +16,32 @@ public final class SwitchMistNacArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SwitchMistNacArgs Empty = new SwitchMistNacArgs();
 
+    /**
+     * Whether Mist NAC RadSec is enabled for the switch
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether Mist NAC RadSec is enabled for the switch
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Switch network used for Mist NAC RadSec connectivity
+     * 
+     */
     @Import(name="network")
     private @Nullable Output<String> network;
 
+    /**
+     * @return Switch network used for Mist NAC RadSec connectivity
+     * 
+     */
     public Optional<Output<String>> network() {
         return Optional.ofNullable(this.network);
     }
@@ -55,20 +71,44 @@ public final class SwitchMistNacArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SwitchMistNacArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether Mist NAC RadSec is enabled for the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether Mist NAC RadSec is enabled for the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param network Switch network used for Mist NAC RadSec connectivity
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(@Nullable Output<String> network) {
             $.network = network;
             return this;
         }
 
+        /**
+         * @param network Switch network used for Mist NAC RadSec connectivity
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(String network) {
             return network(Output.of(network));
         }

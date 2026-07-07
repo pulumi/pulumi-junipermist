@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxedgeTuntermMulticastConfigSsdp {
+    /**
+     * @return Whether SSDP forwarding is enabled for the configured VLANs
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return List of VLAN IDs where SSDP forwarding is enabled
+     * 
+     */
     private @Nullable List<String> vlanIds;
 
     private MxedgeTuntermMulticastConfigSsdp() {}
+    /**
+     * @return Whether SSDP forwarding is enabled for the configured VLANs
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return List of VLAN IDs where SSDP forwarding is enabled
+     * 
+     */
     public List<String> vlanIds() {
         return this.vlanIds == null ? List.of() : this.vlanIds;
     }

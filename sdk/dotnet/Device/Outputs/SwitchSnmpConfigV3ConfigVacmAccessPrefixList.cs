@@ -14,31 +14,31 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchSnmpConfigV3ConfigVacmAccessPrefixList
     {
         /// <summary>
-        /// Only required if `Type`==`ContextPrefix`
+        /// Context prefix for this VACM access rule. Required only if `Type`==`ContextPrefix`
         /// </summary>
         public readonly string? ContextPrefix;
         /// <summary>
-        /// Refer to view name
+        /// Notify view name referenced by this VACM access rule
         /// </summary>
         public readonly string? NotifyView;
         /// <summary>
-        /// Refer to view name
+        /// Read view name referenced by this VACM access rule
         /// </summary>
         public readonly string? ReadView;
         /// <summary>
-        /// enum: `Authentication`, `None`, `Privacy`
+        /// Required security level for this VACM access rule
         /// </summary>
         public readonly string? SecurityLevel;
         /// <summary>
-        /// enum: `Any`, `Usm`, `V1`, `V2c`
+        /// Required security model for this VACM access rule
         /// </summary>
         public readonly string? SecurityModel;
         /// <summary>
-        /// enum: `ContextPrefix`, `DefaultContextPrefix`
+        /// VACM context matching type for this access rule
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Refer to view name
+        /// Write view name referenced by this VACM access rule
         /// </summary>
         public readonly string? WriteView;
 

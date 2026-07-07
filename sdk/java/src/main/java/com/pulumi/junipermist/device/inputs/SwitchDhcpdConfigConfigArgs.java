@@ -23,14 +23,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     public static final SwitchDhcpdConfigConfigArgs Empty = new SwitchDhcpdConfigConfigArgs();
 
     /**
-     * If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+     * If `type`==`server` or `type6`==`server`, DNS servers advertised to DHCP clients
      * 
      */
     @Import(name="dnsServers")
     private @Nullable Output<List<String>> dnsServers;
 
     /**
-     * @return If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+     * @return If `type`==`server` or `type6`==`server`, DNS servers advertised to DHCP clients
      * 
      */
     public Optional<Output<List<String>>> dnsServers() {
@@ -38,14 +38,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+     * If `type`==`server` or `type6`==`server`, DNS search suffixes advertised to DHCP clients
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+     * @return If `type`==`server` or `type6`==`server`, DNS search suffixes advertised to DHCP clients
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -53,14 +53,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
+     * If `type`==`server` or `type6`==`server`, fixed client bindings for DHCP service
      * 
      */
     @Import(name="fixedBindings")
     private @Nullable Output<Map<String,SwitchDhcpdConfigConfigFixedBindingsArgs>> fixedBindings;
 
     /**
-     * @return If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
+     * @return If `type`==`server` or `type6`==`server`, fixed client bindings for DHCP service
      * 
      */
     public Optional<Output<Map<String,SwitchDhcpdConfigConfigFixedBindingsArgs>>> fixedBindings() {
@@ -83,14 +83,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If `type`==`server`
+     * If `type`==`server`, ending IPv4 address for the DHCP lease pool
      * 
      */
     @Import(name="ipEnd")
     private @Nullable Output<String> ipEnd;
 
     /**
-     * @return If `type`==`server`
+     * @return If `type`==`server`, ending IPv4 address for the DHCP lease pool
      * 
      */
     public Optional<Output<String>> ipEnd() {
@@ -98,14 +98,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If `type6`==`server`
+     * If `type6`==`server`, ending IPv6 address for the DHCP lease pool
      * 
      */
     @Import(name="ipEnd6")
     private @Nullable Output<String> ipEnd6;
 
     /**
-     * @return If `type6`==`server`
+     * @return If `type6`==`server`, ending IPv6 address for the DHCP lease pool
      * 
      */
     public Optional<Output<String>> ipEnd6() {
@@ -113,14 +113,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If `type`==`server`
+     * If `type`==`server`, starting IPv4 address for the DHCP lease pool
      * 
      */
     @Import(name="ipStart")
     private @Nullable Output<String> ipStart;
 
     /**
-     * @return If `type`==`server`
+     * @return If `type`==`server`, starting IPv4 address for the DHCP lease pool
      * 
      */
     public Optional<Output<String>> ipStart() {
@@ -128,14 +128,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If `type6`==`server`
+     * If `type6`==`server`, starting IPv6 address for the DHCP lease pool
      * 
      */
     @Import(name="ipStart6")
     private @Nullable Output<String> ipStart6;
 
     /**
-     * @return If `type6`==`server`
+     * @return If `type6`==`server`, starting IPv6 address for the DHCP lease pool
      * 
      */
     public Optional<Output<String>> ipStart6() {
@@ -158,14 +158,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If `type`==`server` or `type6`==`server`. Property key is the DHCP option number
+     * If `type`==`server` or `type6`==`server`, custom DHCP options advertised to clients
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,SwitchDhcpdConfigConfigOptionsArgs>> options;
 
     /**
-     * @return If `type`==`server` or `type6`==`server`. Property key is the DHCP option number
+     * @return If `type`==`server` or `type6`==`server`, custom DHCP options advertised to clients
      * 
      */
     public Optional<Output<Map<String,SwitchDhcpdConfigConfigOptionsArgs>>> options() {
@@ -190,14 +190,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If `type`==`relay`
+     * If `type`==`relay`, upstream IPv4 DHCP servers
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<String>> servers;
 
     /**
-     * @return If `type`==`relay`
+     * @return If `type`==`relay`, upstream IPv4 DHCP servers
      * 
      */
     public Optional<Output<List<String>>> servers() {
@@ -205,14 +205,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If `type6`==`relay`
+     * If `type6`==`relay`, upstream IPv6 DHCP servers
      * 
      */
     @Import(name="servers6s")
     private @Nullable Output<List<String>> servers6s;
 
     /**
-     * @return If `type6`==`relay`
+     * @return If `type6`==`relay`, upstream IPv6 DHCP servers
      * 
      */
     public Optional<Output<List<String>>> servers6s() {
@@ -220,14 +220,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+     * IPv4 DHCP mode for this switch network
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+     * @return IPv4 DHCP mode for this switch network
      * 
      */
     public Optional<Output<String>> type() {
@@ -235,14 +235,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+     * IPv6 DHCP mode for this switch network
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+     * @return IPv6 DHCP mode for this switch network
      * 
      */
     public Optional<Output<String>> type6() {
@@ -250,18 +250,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-     *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-     *   * sub option code: 1-255, sub-option code&#39;
+     * If `type`==`server` or `type6`==`server`, vendor-encapsulated DHCP options advertised to clients
      * 
      */
     @Import(name="vendorEncapsulated")
     private @Nullable Output<Map<String,SwitchDhcpdConfigConfigVendorEncapsulatedArgs>> vendorEncapsulated;
 
     /**
-     * @return If `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-     *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-     *   * sub option code: 1-255, sub-option code&#39;
+     * @return If `type`==`server` or `type6`==`server`, vendor-encapsulated DHCP options advertised to clients
      * 
      */
     public Optional<Output<Map<String,SwitchDhcpdConfigConfigVendorEncapsulatedArgs>>> vendorEncapsulated() {
@@ -308,7 +304,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsServers If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+         * @param dnsServers If `type`==`server` or `type6`==`server`, DNS servers advertised to DHCP clients
          * 
          * @return builder
          * 
@@ -319,7 +315,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsServers If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+         * @param dnsServers If `type`==`server` or `type6`==`server`, DNS servers advertised to DHCP clients
          * 
          * @return builder
          * 
@@ -329,7 +325,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsServers If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+         * @param dnsServers If `type`==`server` or `type6`==`server`, DNS servers advertised to DHCP clients
          * 
          * @return builder
          * 
@@ -339,7 +335,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsSuffixes If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+         * @param dnsSuffixes If `type`==`server` or `type6`==`server`, DNS search suffixes advertised to DHCP clients
          * 
          * @return builder
          * 
@@ -350,7 +346,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsSuffixes If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+         * @param dnsSuffixes If `type`==`server` or `type6`==`server`, DNS search suffixes advertised to DHCP clients
          * 
          * @return builder
          * 
@@ -360,7 +356,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsSuffixes If `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
+         * @param dnsSuffixes If `type`==`server` or `type6`==`server`, DNS search suffixes advertised to DHCP clients
          * 
          * @return builder
          * 
@@ -370,7 +366,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param fixedBindings If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
+         * @param fixedBindings If `type`==`server` or `type6`==`server`, fixed client bindings for DHCP service
          * 
          * @return builder
          * 
@@ -381,7 +377,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param fixedBindings If `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. &#34;5684dae9ac8b&#34;)
+         * @param fixedBindings If `type`==`server` or `type6`==`server`, fixed client bindings for DHCP service
          * 
          * @return builder
          * 
@@ -412,7 +408,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipEnd If `type`==`server`
+         * @param ipEnd If `type`==`server`, ending IPv4 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -423,7 +419,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipEnd If `type`==`server`
+         * @param ipEnd If `type`==`server`, ending IPv4 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -433,7 +429,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipEnd6 If `type6`==`server`
+         * @param ipEnd6 If `type6`==`server`, ending IPv6 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -444,7 +440,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipEnd6 If `type6`==`server`
+         * @param ipEnd6 If `type6`==`server`, ending IPv6 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -454,7 +450,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipStart If `type`==`server`
+         * @param ipStart If `type`==`server`, starting IPv4 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -465,7 +461,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipStart If `type`==`server`
+         * @param ipStart If `type`==`server`, starting IPv4 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -475,7 +471,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipStart6 If `type6`==`server`
+         * @param ipStart6 If `type6`==`server`, starting IPv6 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -486,7 +482,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipStart6 If `type6`==`server`
+         * @param ipStart6 If `type6`==`server`, starting IPv6 address for the DHCP lease pool
          * 
          * @return builder
          * 
@@ -517,7 +513,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options If `type`==`server` or `type6`==`server`. Property key is the DHCP option number
+         * @param options If `type`==`server` or `type6`==`server`, custom DHCP options advertised to clients
          * 
          * @return builder
          * 
@@ -528,7 +524,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options If `type`==`server` or `type6`==`server`. Property key is the DHCP option number
+         * @param options If `type`==`server` or `type6`==`server`, custom DHCP options advertised to clients
          * 
          * @return builder
          * 
@@ -561,7 +557,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servers If `type`==`relay`
+         * @param servers If `type`==`relay`, upstream IPv4 DHCP servers
          * 
          * @return builder
          * 
@@ -572,7 +568,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servers If `type`==`relay`
+         * @param servers If `type`==`relay`, upstream IPv4 DHCP servers
          * 
          * @return builder
          * 
@@ -582,7 +578,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servers If `type`==`relay`
+         * @param servers If `type`==`relay`, upstream IPv4 DHCP servers
          * 
          * @return builder
          * 
@@ -592,7 +588,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servers6s If `type6`==`relay`
+         * @param servers6s If `type6`==`relay`, upstream IPv6 DHCP servers
          * 
          * @return builder
          * 
@@ -603,7 +599,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servers6s If `type6`==`relay`
+         * @param servers6s If `type6`==`relay`, upstream IPv6 DHCP servers
          * 
          * @return builder
          * 
@@ -613,7 +609,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servers6s If `type6`==`relay`
+         * @param servers6s If `type6`==`relay`, upstream IPv6 DHCP servers
          * 
          * @return builder
          * 
@@ -623,7 +619,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+         * @param type IPv4 DHCP mode for this switch network
          * 
          * @return builder
          * 
@@ -634,7 +630,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+         * @param type IPv4 DHCP mode for this switch network
          * 
          * @return builder
          * 
@@ -644,7 +640,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type6 enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+         * @param type6 IPv6 DHCP mode for this switch network
          * 
          * @return builder
          * 
@@ -655,7 +651,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type6 enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+         * @param type6 IPv6 DHCP mode for this switch network
          * 
          * @return builder
          * 
@@ -665,9 +661,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vendorEncapsulated If `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-         *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-         *   * sub option code: 1-255, sub-option code&#39;
+         * @param vendorEncapsulated If `type`==`server` or `type6`==`server`, vendor-encapsulated DHCP options advertised to clients
          * 
          * @return builder
          * 
@@ -678,9 +672,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vendorEncapsulated If `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-         *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-         *   * sub option code: 1-255, sub-option code&#39;
+         * @param vendorEncapsulated If `type`==`server` or `type6`==`server`, vendor-encapsulated DHCP options advertised to clients
          * 
          * @return builder
          * 

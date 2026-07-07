@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class WlanDnsServerRewriteGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether DNS server rewrite by RADIUS group is enabled for this WLAN
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

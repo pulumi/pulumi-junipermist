@@ -13,11 +13,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileGatewayDhcpdConfigConfigOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Boolean`, `Hex`, `Int16`, `Int32`, `Ip`, `String`, `Uint16`, `Uint32`
+        /// Data type used to encode this DHCP option value
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Option value to send for this DHCP option
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

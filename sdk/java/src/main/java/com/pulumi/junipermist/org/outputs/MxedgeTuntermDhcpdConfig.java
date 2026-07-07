@@ -13,31 +13,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxedgeTuntermDhcpdConfig {
+    /**
+     * @return Whether DHCP relay is enabled for this tunneled VLAN
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
-     * @return List of DHCP servers; required if `type`==`relay`
+     * @return DHCP relay server addresses used by this tunneled VLAN
      * 
      */
     private @Nullable List<String> servers;
     /**
-     * @return enum: `relay`
+     * @return DHCP handling mode for this tunneled VLAN
      * 
      */
     private @Nullable String type;
 
     private MxedgeTuntermDhcpdConfig() {}
+    /**
+     * @return Whether DHCP relay is enabled for this tunneled VLAN
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return List of DHCP servers; required if `type`==`relay`
+     * @return DHCP relay server addresses used by this tunneled VLAN
      * 
      */
     public List<String> servers() {
         return this.servers == null ? List.of() : this.servers;
     }
     /**
-     * @return enum: `relay`
+     * @return DHCP handling mode for this tunneled VLAN
      * 
      */
     public Optional<String> type() {

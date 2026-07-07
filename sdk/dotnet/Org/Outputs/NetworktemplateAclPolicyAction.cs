@@ -14,9 +14,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplateAclPolicyAction
     {
         /// <summary>
-        /// enum: `Allow`, `Deny`
+        /// Allow or deny decision applied to traffic matching the destination tag
         /// </summary>
         public readonly string? Action;
+        /// <summary>
+        /// Destination ACL tag matched by this policy action
+        /// </summary>
         public readonly string DstTag;
 
         [OutputConstructor]

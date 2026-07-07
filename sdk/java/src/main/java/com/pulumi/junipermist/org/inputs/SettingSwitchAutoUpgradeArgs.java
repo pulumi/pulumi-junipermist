@@ -18,14 +18,14 @@ public final class SettingSwitchAutoUpgradeArgs extends com.pulumi.resources.Res
     public static final SettingSwitchAutoUpgradeArgs Empty = new SettingSwitchAutoUpgradeArgs();
 
     /**
-     * Custom version to be used. The Property Key is the switch hardware and the property value is the firmware version
+     * Per-model switch firmware versions to use for auto-upgrade
      * 
      */
     @Import(name="customVersions")
     private @Nullable Output<Map<String,String>> customVersions;
 
     /**
-     * @return Custom version to be used. The Property Key is the switch hardware and the property value is the firmware version
+     * @return Per-model switch firmware versions to use for auto-upgrade
      * 
      */
     public Optional<Output<Map<String,String>>> customVersions() {
@@ -33,14 +33,14 @@ public final class SettingSwitchAutoUpgradeArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enable auto upgrade for the switch
+     * Whether switch auto-upgrade is enabled
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable auto upgrade for the switch
+     * @return Whether switch auto-upgrade is enabled
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -48,14 +48,14 @@ public final class SettingSwitchAutoUpgradeArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enable snapshot during the upgrade process
+     * Whether to create a recovery snapshot during the upgrade process
      * 
      */
     @Import(name="snapshot")
     private @Nullable Output<Boolean> snapshot;
 
     /**
-     * @return Enable snapshot during the upgrade process
+     * @return Whether to create a recovery snapshot during the upgrade process
      * 
      */
     public Optional<Output<Boolean>> snapshot() {
@@ -89,7 +89,7 @@ public final class SettingSwitchAutoUpgradeArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customVersions Custom version to be used. The Property Key is the switch hardware and the property value is the firmware version
+         * @param customVersions Per-model switch firmware versions to use for auto-upgrade
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class SettingSwitchAutoUpgradeArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customVersions Custom version to be used. The Property Key is the switch hardware and the property value is the firmware version
+         * @param customVersions Per-model switch firmware versions to use for auto-upgrade
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class SettingSwitchAutoUpgradeArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled Enable auto upgrade for the switch
+         * @param enabled Whether switch auto-upgrade is enabled
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class SettingSwitchAutoUpgradeArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled Enable auto upgrade for the switch
+         * @param enabled Whether switch auto-upgrade is enabled
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class SettingSwitchAutoUpgradeArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param snapshot Enable snapshot during the upgrade process
+         * @param snapshot Whether to create a recovery snapshot during the upgrade process
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class SettingSwitchAutoUpgradeArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param snapshot Enable snapshot during the upgrade process
+         * @param snapshot Whether to create a recovery snapshot during the upgrade process
          * 
          * @return builder
          * 

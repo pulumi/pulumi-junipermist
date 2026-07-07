@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayPortMirroring
     {
+        /// <summary>
+        /// Mirroring rule that copies ingress traffic from source ports to an output port
+        /// </summary>
         public readonly Outputs.GatewayPortMirroringPortMirror? PortMirror;
 
         [OutputConstructor]

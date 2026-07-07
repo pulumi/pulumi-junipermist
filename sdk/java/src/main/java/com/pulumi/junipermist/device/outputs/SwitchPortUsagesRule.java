@@ -18,9 +18,13 @@ public final class SwitchPortUsagesRule {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Exact value that the selected source attribute must match
+     * 
+     */
     private @Nullable String equals;
     /**
-     * @return Use `equalsAny` to match any item in a list
+     * @return List of values where any match satisfies this dynamic rule
      * 
      */
     private @Nullable List<String> equalsAnies;
@@ -32,12 +36,12 @@ public final class SwitchPortUsagesRule {
      */
     private @Nullable String expression;
     /**
-     * @return enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+     * @return Source attribute evaluated by this dynamic rule
      * 
      */
     private String src;
     /**
-     * @return `portUsage` name
+     * @return Port usage name to apply when this dynamic rule matches
      * 
      */
     private @Nullable String usage;
@@ -50,11 +54,15 @@ public final class SwitchPortUsagesRule {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Exact value that the selected source attribute must match
+     * 
+     */
     public Optional<String> equals_() {
         return Optional.ofNullable(this.equals);
     }
     /**
-     * @return Use `equalsAny` to match any item in a list
+     * @return List of values where any match satisfies this dynamic rule
      * 
      */
     public List<String> equalsAnies() {
@@ -70,14 +78,14 @@ public final class SwitchPortUsagesRule {
         return Optional.ofNullable(this.expression);
     }
     /**
-     * @return enum: `linkPeermac`, `lldpChassisId`, `lldpHardwareRevision`, `lldpManufacturerName`, `lldpOui`, `lldpSerialNumber`, `lldpSystemDescription`, `lldpSystemName`, `radiusDynamicfilter`, `radiusUsermac`, `radiusUsername`
+     * @return Source attribute evaluated by this dynamic rule
      * 
      */
     public String src() {
         return this.src;
     }
     /**
-     * @return `portUsage` name
+     * @return Port usage name to apply when this dynamic rule matches
      * 
      */
     public Optional<String> usage() {

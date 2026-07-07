@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingOpticPortConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable channelization
+        /// Whether channelization is enabled on this optic port
         /// </summary>
         [Input("channelized")]
         public Input<bool>? Channelized { get; set; }

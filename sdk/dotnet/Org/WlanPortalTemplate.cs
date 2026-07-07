@@ -59,7 +59,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Portal template wlan settings
+        /// Template settings that define guest portal text, layout, and localization
         /// </summary>
         [Output("portalTemplate")]
         public Output<Outputs.WlanPortalTemplatePortalTemplate> PortalTemplate { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Portal template wlan settings
+        /// Template settings that define guest portal text, layout, and localization
         /// </summary>
         [Input("portalTemplate", required: true)]
         public Input<Inputs.WlanPortalTemplatePortalTemplateArgs> PortalTemplate { get; set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Portal template wlan settings
+        /// Template settings that define guest portal text, layout, and localization
         /// </summary>
         [Input("portalTemplate")]
         public Input<Inputs.WlanPortalTemplatePortalTemplateGetArgs>? PortalTemplate { get; set; }

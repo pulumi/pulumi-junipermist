@@ -37,6 +37,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// device model
         /// </summary>
         public readonly string? Model;
+        /// <summary>
+        /// Unique identifier of a Mist organization
+        /// </summary>
         public readonly string? OrgId;
         /// <summary>
         /// device serial

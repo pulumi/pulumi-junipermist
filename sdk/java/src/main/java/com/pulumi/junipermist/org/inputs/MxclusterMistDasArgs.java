@@ -18,23 +18,31 @@ public final class MxclusterMistDasArgs extends com.pulumi.resources.ResourceArg
     public static final MxclusterMistDasArgs Empty = new MxclusterMistDasArgs();
 
     /**
-     * Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+     * Dynamic authorization clients allowed to send CoA or Disconnect-Message requests
      * 
      */
     @Import(name="coaServers")
     private @Nullable Output<List<MxclusterMistDasCoaServerArgs>> coaServers;
 
     /**
-     * @return Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+     * @return Dynamic authorization clients allowed to send CoA or Disconnect-Message requests
      * 
      */
     public Optional<Output<List<MxclusterMistDasCoaServerArgs>>> coaServers() {
         return Optional.ofNullable(this.coaServers);
     }
 
+    /**
+     * Whether cloud-assisted DAS is enabled for the Mist Edge cluster
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether cloud-assisted DAS is enabled for the Mist Edge cluster
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -65,7 +73,7 @@ public final class MxclusterMistDasArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param coaServers Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+         * @param coaServers Dynamic authorization clients allowed to send CoA or Disconnect-Message requests
          * 
          * @return builder
          * 
@@ -76,7 +84,7 @@ public final class MxclusterMistDasArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param coaServers Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+         * @param coaServers Dynamic authorization clients allowed to send CoA or Disconnect-Message requests
          * 
          * @return builder
          * 
@@ -86,7 +94,7 @@ public final class MxclusterMistDasArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param coaServers Dynamic authorization clients configured to send CoA|DM to mist edges on port 3799
+         * @param coaServers Dynamic authorization clients allowed to send CoA or Disconnect-Message requests
          * 
          * @return builder
          * 
@@ -95,11 +103,23 @@ public final class MxclusterMistDasArgs extends com.pulumi.resources.ResourceArg
             return coaServers(List.of(coaServers));
         }
 
+        /**
+         * @param enabled Whether cloud-assisted DAS is enabled for the Mist Edge cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether cloud-assisted DAS is enabled for the Mist Edge cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

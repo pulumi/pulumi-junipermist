@@ -39,6 +39,10 @@ public final class GatewayBgpConfig {
      * 
      */
     private @Nullable Boolean disableBfd;
+    /**
+     * @return Routing policy applied to routes exported by this BGP session
+     * 
+     */
     private @Nullable String export;
     /**
      * @return Default export policies if no per-neighbor policies defined
@@ -60,6 +64,10 @@ public final class GatewayBgpConfig {
      * 
      */
     private @Nullable Integer holdTime;
+    /**
+     * @return Routing policy applied to routes imported by this BGP session
+     * 
+     */
     private @Nullable String import_;
     /**
      * @return Optional if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. Default import policies if no per-neighbor policies defined
@@ -82,7 +90,7 @@ public final class GatewayBgpConfig {
      */
     private @Nullable Map<String,GatewayBgpConfigNeighbors> neighbors;
     /**
-     * @return Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+     * @return Optional if `via`==`lan`; networks where BGP neighbors can connect to or from
      * 
      */
     private @Nullable List<String> networks;
@@ -97,27 +105,27 @@ public final class GatewayBgpConfig {
      */
     private @Nullable Boolean noReadvertiseToOverlay;
     /**
-     * @return Optional if `via`==`tunnel`
+     * @return Optional if `via`==`tunnel`; tunnel name used for this BGP session
      * 
      */
     private @Nullable String tunnelName;
     /**
-     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
+     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`; BGP session type, internal or external
      * 
      */
     private @Nullable String type;
     /**
-     * @return enum: `lan`, `tunnel`, `vpn`, `wan`
+     * @return Transport used for this BGP session, such as LAN, tunnel, VPN, or WAN
      * 
      */
     private String via;
     /**
-     * @return Optional if `via`==`vpn`
+     * @return Optional if `via`==`vpn`; VPN name used for this BGP session
      * 
      */
     private @Nullable String vpnName;
     /**
-     * @return Optional if `via`==`wan`
+     * @return Optional if `via`==`wan`; WAN interface name used for this BGP session
      * 
      */
     private @Nullable String wanName;
@@ -153,6 +161,10 @@ public final class GatewayBgpConfig {
     public Optional<Boolean> disableBfd() {
         return Optional.ofNullable(this.disableBfd);
     }
+    /**
+     * @return Routing policy applied to routes exported by this BGP session
+     * 
+     */
     public Optional<String> export() {
         return Optional.ofNullable(this.export);
     }
@@ -184,6 +196,10 @@ public final class GatewayBgpConfig {
     public Optional<Integer> holdTime() {
         return Optional.ofNullable(this.holdTime);
     }
+    /**
+     * @return Routing policy applied to routes imported by this BGP session
+     * 
+     */
     public Optional<String> import_() {
         return Optional.ofNullable(this.import_);
     }
@@ -216,7 +232,7 @@ public final class GatewayBgpConfig {
         return this.neighbors == null ? Map.of() : this.neighbors;
     }
     /**
-     * @return Optional if `via`==`lan`. List of networks where we expect BGP neighbor to connect to/from
+     * @return Optional if `via`==`lan`; networks where BGP neighbors can connect to or from
      * 
      */
     public List<String> networks() {
@@ -237,35 +253,35 @@ public final class GatewayBgpConfig {
         return Optional.ofNullable(this.noReadvertiseToOverlay);
     }
     /**
-     * @return Optional if `via`==`tunnel`
+     * @return Optional if `via`==`tunnel`; tunnel name used for this BGP session
      * 
      */
     public Optional<String> tunnelName() {
         return Optional.ofNullable(this.tunnelName);
     }
     /**
-     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`. enum: `external`, `internal`
+     * @return Required if `via`==`lan`, `via`==`tunnel` or `via`==`wan`; BGP session type, internal or external
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return enum: `lan`, `tunnel`, `vpn`, `wan`
+     * @return Transport used for this BGP session, such as LAN, tunnel, VPN, or WAN
      * 
      */
     public String via() {
         return this.via;
     }
     /**
-     * @return Optional if `via`==`vpn`
+     * @return Optional if `via`==`vpn`; VPN name used for this BGP session
      * 
      */
     public Optional<String> vpnName() {
         return Optional.ofNullable(this.vpnName);
     }
     /**
-     * @return Optional if `via`==`wan`
+     * @return Optional if `via`==`wan`; WAN interface name used for this BGP session
      * 
      */
     public Optional<String> wanName() {

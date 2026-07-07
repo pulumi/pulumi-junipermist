@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchDhcpdConfigConfig
     {
         /// <summary>
-        /// If `Type`==`Server` or `Type6`==`Server` - optional, if not defined, system one will be used
+        /// If `Type`==`Server` or `Type6`==`Server`, DNS servers advertised to DHCP clients
         /// </summary>
         public readonly ImmutableArray<string> DnsServers;
         /// <summary>
-        /// If `Type`==`Server` or `Type6`==`Server` - optional, if not defined, system one will be used
+        /// If `Type`==`Server` or `Type6`==`Server`, DNS search suffixes advertised to DHCP clients
         /// </summary>
         public readonly ImmutableArray<string> DnsSuffixes;
         /// <summary>
-        /// If `Type`==`Server` or `Type6`==`Server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g. "5684dae9ac8b")
+        /// If `Type`==`Server` or `Type6`==`Server`, fixed client bindings for DHCP service
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.SwitchDhcpdConfigConfigFixedBindings>? FixedBindings;
         /// <summary>
@@ -30,19 +30,19 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Gateway;
         /// <summary>
-        /// If `Type`==`Server`
+        /// If `Type`==`Server`, ending IPv4 address for the DHCP lease pool
         /// </summary>
         public readonly string? IpEnd;
         /// <summary>
-        /// If `Type6`==`Server`
+        /// If `Type6`==`Server`, ending IPv6 address for the DHCP lease pool
         /// </summary>
         public readonly string? IpEnd6;
         /// <summary>
-        /// If `Type`==`Server`
+        /// If `Type`==`Server`, starting IPv4 address for the DHCP lease pool
         /// </summary>
         public readonly string? IpStart;
         /// <summary>
-        /// If `Type6`==`Server`
+        /// If `Type6`==`Server`, starting IPv6 address for the DHCP lease pool
         /// </summary>
         public readonly string? IpStart6;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? LeaseTime;
         /// <summary>
-        /// If `Type`==`Server` or `Type6`==`Server`. Property key is the DHCP option number
+        /// If `Type`==`Server` or `Type6`==`Server`, custom DHCP options advertised to clients
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.SwitchDhcpdConfigConfigOptions>? Options;
         /// <summary>
@@ -59,25 +59,23 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? ServerIdOverride;
         /// <summary>
-        /// If `Type`==`Relay`
+        /// If `Type`==`Relay`, upstream IPv4 DHCP servers
         /// </summary>
         public readonly ImmutableArray<string> Servers;
         /// <summary>
-        /// If `Type6`==`Relay`
+        /// If `Type6`==`Relay`, upstream IPv6 DHCP servers
         /// </summary>
         public readonly ImmutableArray<string> Servers6s;
         /// <summary>
-        /// enum: `None`, `Relay` (DHCP Relay), `Server` (DHCP Server)
+        /// IPv4 DHCP mode for this switch network
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `None`, `Relay` (DHCP Relay), `Server` (DHCP Server)
+        /// IPv6 DHCP mode for this switch network
         /// </summary>
         public readonly string? Type6;
         /// <summary>
-        /// If `Type`==`Server` or `Type6`==`Server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
-        ///   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-        ///   * sub option code: 1-255, sub-option code'
+        /// If `Type`==`Server` or `Type6`==`Server`, vendor-encapsulated DHCP options advertised to clients
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.SwitchDhcpdConfigConfigVendorEncapsulated>? VendorEncapsulated;
 

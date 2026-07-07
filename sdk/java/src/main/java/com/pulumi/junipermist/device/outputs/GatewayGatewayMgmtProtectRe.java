@@ -15,10 +15,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayGatewayMgmtProtectRe {
     /**
-     * @return Optionally, services we&#39;ll allow
+     * @return Built-in services explicitly allowed by the Protect RE policy
      * 
      */
     private @Nullable List<String> allowedServices;
+    /**
+     * @return Additional ACL entries allowed by the Protect RE policy
+     * 
+     */
     private @Nullable List<GatewayGatewayMgmtProtectReCustom> customs;
     /**
      * @return When enabled, all traffic that is not essential to our operation will be dropped
@@ -33,19 +37,23 @@ public final class GatewayGatewayMgmtProtectRe {
      */
     private @Nullable Boolean hitCount;
     /**
-     * @return host/subnets we&#39;ll allow traffic to/from
+     * @return Trusted host or subnet entries allowed by the Protect RE policy
      * 
      */
     private @Nullable List<String> trustedHosts;
 
     private GatewayGatewayMgmtProtectRe() {}
     /**
-     * @return Optionally, services we&#39;ll allow
+     * @return Built-in services explicitly allowed by the Protect RE policy
      * 
      */
     public List<String> allowedServices() {
         return this.allowedServices == null ? List.of() : this.allowedServices;
     }
+    /**
+     * @return Additional ACL entries allowed by the Protect RE policy
+     * 
+     */
     public List<GatewayGatewayMgmtProtectReCustom> customs() {
         return this.customs == null ? List.of() : this.customs;
     }
@@ -66,7 +74,7 @@ public final class GatewayGatewayMgmtProtectRe {
         return Optional.ofNullable(this.hitCount);
     }
     /**
-     * @return host/subnets we&#39;ll allow traffic to/from
+     * @return Trusted host or subnet entries allowed by the Protect RE policy
      * 
      */
     public List<String> trustedHosts() {

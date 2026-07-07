@@ -104,7 +104,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Issuer { get; private set; } = null!;
 
         /// <summary>
-        /// Name
+        /// Display name of the SSO configuration
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -116,11 +116,32 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> NameidFormat { get; private set; } = null!;
 
         /// <summary>
-        /// If `OauthType`==`Okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`
         /// </summary>
         [Output("oauthProviderDomain")]
         public Output<string> OauthProviderDomain { get; private set; } = null!;
 
+        /// <summary>
+        /// SSIDs that support OpenRoaming, used when `IdpType`==`Openroaming`
+        /// </summary>
+        [Output("openroamingSsids")]
+        public Output<ImmutableArray<string>> OpenroamingSsids { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        /// </summary>
+        [Output("openroamingWbaClientCert")]
+        public Output<string?> OpenroamingWbaClientCert { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        /// </summary>
+        [Output("openroamingWbaClientKey")]
+        public Output<string?> OpenroamingWbaClientKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Owning organization identifier for this SSO configuration
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -160,6 +181,11 @@ namespace Pulumi.JuniperMist.Org
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumi/pulumi-junipermist",
+                AdditionalSecretOutputs =
+                {
+                    "openroamingWbaClientCert",
+                    "openroamingWbaClientKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -226,7 +252,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> Issuer { get; set; } = null!;
 
         /// <summary>
-        /// Name
+        /// Display name of the SSO configuration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -238,11 +264,58 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? NameidFormat { get; set; }
 
         /// <summary>
-        /// If `OauthType`==`Okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`
         /// </summary>
         [Input("oauthProviderDomain")]
         public Input<string>? OauthProviderDomain { get; set; }
 
+        [Input("openroamingSsids")]
+        private InputList<string>? _openroamingSsids;
+
+        /// <summary>
+        /// SSIDs that support OpenRoaming, used when `IdpType`==`Openroaming`
+        /// </summary>
+        public InputList<string> OpenroamingSsids
+        {
+            get => _openroamingSsids ?? (_openroamingSsids = new InputList<string>());
+            set => _openroamingSsids = value;
+        }
+
+        [Input("openroamingWbaClientCert")]
+        private Input<string>? _openroamingWbaClientCert;
+
+        /// <summary>
+        /// Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        /// </summary>
+        public Input<string>? OpenroamingWbaClientCert
+        {
+            get => _openroamingWbaClientCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _openroamingWbaClientCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("openroamingWbaClientKey")]
+        private Input<string>? _openroamingWbaClientKey;
+
+        /// <summary>
+        /// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        /// </summary>
+        public Input<string>? OpenroamingWbaClientKey
+        {
+            get => _openroamingWbaClientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _openroamingWbaClientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Owning organization identifier for this SSO configuration
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -317,7 +390,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Issuer { get; set; }
 
         /// <summary>
-        /// Name
+        /// Display name of the SSO configuration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -329,11 +402,58 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? NameidFormat { get; set; }
 
         /// <summary>
-        /// If `OauthType`==`Okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        /// Provider domain for Okta OAuth SSO when `OauthType`==`Okta`
         /// </summary>
         [Input("oauthProviderDomain")]
         public Input<string>? OauthProviderDomain { get; set; }
 
+        [Input("openroamingSsids")]
+        private InputList<string>? _openroamingSsids;
+
+        /// <summary>
+        /// SSIDs that support OpenRoaming, used when `IdpType`==`Openroaming`
+        /// </summary>
+        public InputList<string> OpenroamingSsids
+        {
+            get => _openroamingSsids ?? (_openroamingSsids = new InputList<string>());
+            set => _openroamingSsids = value;
+        }
+
+        [Input("openroamingWbaClientCert")]
+        private Input<string>? _openroamingWbaClientCert;
+
+        /// <summary>
+        /// Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        /// </summary>
+        public Input<string>? OpenroamingWbaClientCert
+        {
+            get => _openroamingWbaClientCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _openroamingWbaClientCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("openroamingWbaClientKey")]
+        private Input<string>? _openroamingWbaClientKey;
+
+        /// <summary>
+        /// Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        /// </summary>
+        public Input<string>? OpenroamingWbaClientKey
+        {
+            get => _openroamingWbaClientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _openroamingWbaClientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Owning organization identifier for this SSO configuration
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 

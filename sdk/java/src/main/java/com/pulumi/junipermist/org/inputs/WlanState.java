@@ -55,14 +55,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      * 
      */
     @Import(name="acctInterimInterval")
     private @Nullable Output<Integer> acctInterimInterval;
 
     /**
-     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      * 
      */
     public Optional<Output<Integer>> acctInterimInterval() {
@@ -70,14 +70,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * RADIUS accounting servers used by this WLAN
      * 
      */
     @Import(name="acctServers")
     private @Nullable Output<List<WlanAcctServerArgs>> acctServers;
 
     /**
-     * @return List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * @return RADIUS accounting servers used by this WLAN
      * 
      */
     public Optional<Output<List<WlanAcctServerArgs>>> acctServers() {
@@ -85,14 +85,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Airwatch wlan settings
+     * Integration settings for AirWatch device compliance on this WLAN
      * 
      */
     @Import(name="airwatch")
     private @Nullable Output<WlanAirwatchArgs> airwatch;
 
     /**
-     * @return Airwatch wlan settings
+     * @return Integration settings for AirWatch device compliance on this WLAN
      * 
      */
     public Optional<Output<WlanAirwatchArgs>> airwatch() {
@@ -145,14 +145,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of device ids
+     * Access point identifiers used when `applyTo`==`aps`
      * 
      */
     @Import(name="apIds")
     private @Nullable Output<List<String>> apIds;
 
     /**
-     * @return List of device ids
+     * @return Access point identifiers used when `applyTo`==`aps`
      * 
      */
     public Optional<Output<List<String>>> apIds() {
@@ -160,14 +160,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Bandwidth limiting for apps (applies to up/down)
+     * Bandwidth limits for applications on this WLAN
      * 
      */
     @Import(name="appLimit")
     private @Nullable Output<WlanAppLimitArgs> appLimit;
 
     /**
-     * @return Bandwidth limiting for apps (applies to up/down)
+     * @return Bandwidth limits for applications on this WLAN
      * 
      */
     public Optional<Output<WlanAppLimitArgs>> appLimit() {
@@ -175,14 +175,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * APP qos wlan settings
+     * QoS rules for application traffic on this WLAN
      * 
      */
     @Import(name="appQos")
     private @Nullable Output<WlanAppQosArgs> appQos;
 
     /**
-     * @return APP qos wlan settings
+     * @return QoS rules for application traffic on this WLAN
      * 
      */
     public Optional<Output<WlanAppQosArgs>> appQos() {
@@ -190,14 +190,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `aps`, `site`, `wxtags`
+     * Scope that determines where this WLAN is applied
      * 
      */
     @Import(name="applyTo")
     private @Nullable Output<String> applyTo;
 
     /**
-     * @return enum: `aps`, `site`, `wxtags`
+     * @return Scope that determines where this WLAN is applied
      * 
      */
     public Optional<Output<String>> applyTo() {
@@ -220,14 +220,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Authentication wlan settings
+     * Settings that control client authentication for this WLAN
      * 
      */
     @Import(name="auth")
     private @Nullable Output<WlanAuthArgs> auth;
 
     /**
-     * @return Authentication wlan settings
+     * @return Settings that control client authentication for this WLAN
      * 
      */
     public Optional<Output<WlanAuthArgs>> auth() {
@@ -235,14 +235,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+     * RADIUS authentication server selection behavior for this WLAN
      * 
      */
     @Import(name="authServerSelection")
     private @Nullable Output<String> authServerSelection;
 
     /**
-     * @return When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+     * @return RADIUS authentication server selection behavior for this WLAN
      * 
      */
     public Optional<Output<String>> authServerSelection() {
@@ -250,14 +250,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+     * RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
      * 
      */
     @Import(name="authServers")
     private @Nullable Output<List<WlanAuthServerArgs>> authServers;
 
     /**
-     * @return List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+     * @return RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
      * 
      */
     public Optional<Output<List<WlanAuthServerArgs>>> authServers() {
@@ -295,14 +295,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * RADIUS auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      * 
      */
     @Import(name="authServersRetries")
     private @Nullable Output<Integer> authServersRetries;
 
     /**
-     * @return Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+     * @return RADIUS auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
      * 
      */
     public Optional<Output<Integer>> authServersRetries() {
@@ -310,14 +310,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radius auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+     * RADIUS auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
      * 
      */
     @Import(name="authServersTimeout")
     private @Nullable Output<Integer> authServersTimeout;
 
     /**
-     * @return Radius auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+     * @return RADIUS auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
      * 
      */
     public Optional<Output<Integer>> authServersTimeout() {
@@ -385,14 +385,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Bonjour gateway wlan settings
+     * Service discovery gateway settings for Bonjour traffic on this WLAN
      * 
      */
     @Import(name="bonjour")
     private @Nullable Output<WlanBonjourArgs> bonjour;
 
     /**
-     * @return Bonjour gateway wlan settings
+     * @return Service discovery gateway settings for Bonjour traffic on this WLAN
      * 
      */
     public Optional<Output<WlanBonjourArgs>> bonjour() {
@@ -400,23 +400,31 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+     * Central web authentication settings for Cisco CWA on this WLAN
      * 
      */
     @Import(name="ciscoCwa")
     private @Nullable Output<WlanCiscoCwaArgs> ciscoCwa;
 
     /**
-     * @return Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+     * @return Central web authentication settings for Cisco CWA on this WLAN
      * 
      */
     public Optional<Output<WlanCiscoCwaArgs>> ciscoCwa() {
         return Optional.ofNullable(this.ciscoCwa);
     }
 
+    /**
+     * Downlink bandwidth limit applied per client
+     * 
+     */
     @Import(name="clientLimitDown")
     private @Nullable Output<String> clientLimitDown;
 
+    /**
+     * @return Downlink bandwidth limit applied per client
+     * 
+     */
     public Optional<Output<String>> clientLimitDown() {
         return Optional.ofNullable(this.clientLimitDown);
     }
@@ -436,9 +444,17 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clientLimitDownEnabled);
     }
 
+    /**
+     * Uplink bandwidth limit applied per client
+     * 
+     */
     @Import(name="clientLimitUp")
     private @Nullable Output<String> clientLimitUp;
 
+    /**
+     * @return Uplink bandwidth limit applied per client
+     * 
+     */
     public Optional<Output<String>> clientLimitUp() {
         return Optional.ofNullable(this.clientLimitUp);
     }
@@ -459,14 +475,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of COA (change of authorization) servers, optional
+     * RADIUS Change of Authorization servers available to this WLAN
      * 
      */
     @Import(name="coaServers")
     private @Nullable Output<List<WlanCoaServerArgs>> coaServers;
 
     /**
-     * @return List of COA (change of authorization) servers, optional
+     * @return RADIUS Change of Authorization servers available to this WLAN
      * 
      */
     public Optional<Output<List<WlanCoaServerArgs>>> coaServers() {
@@ -599,9 +615,17 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.disableWhenGatewayUnreachable);
     }
 
+    /**
+     * Whether to disable this WLAN when the configured Mist tunnel is down
+     * 
+     */
     @Import(name="disableWhenMxtunnelDown")
     private @Nullable Output<Boolean> disableWhenMxtunnelDown;
 
+    /**
+     * @return Whether to disable this WLAN when the configured Mist tunnel is down
+     * 
+     */
     public Optional<Output<Boolean>> disableWhenMxtunnelDown() {
         return Optional.ofNullable(this.disableWhenMxtunnelDown);
     }
@@ -622,52 +646,44 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+     * RADIUS group based DNS server rewrite settings for this WLAN
      * 
      */
     @Import(name="dnsServerRewrite")
     private @Nullable Output<WlanDnsServerRewriteArgs> dnsServerRewrite;
 
     /**
-     * @return For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+     * @return RADIUS group based DNS server rewrite settings for this WLAN
      * 
      */
     public Optional<Output<WlanDnsServerRewriteArgs>> dnsServerRewrite() {
         return Optional.ofNullable(this.dnsServerRewrite);
     }
 
+    /**
+     * Delivery Traffic Indication Message interval for this WLAN
+     * 
+     */
     @Import(name="dtim")
     private @Nullable Output<Integer> dtim;
 
+    /**
+     * @return Delivery Traffic Indication Message interval for this WLAN
+     * 
+     */
     public Optional<Output<Integer>> dtim() {
         return Optional.ofNullable(this.dtim);
     }
 
     /**
-     * For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-     *   * PSK will come from RADIUS server
-     *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-     *   * AP sends BSSID:SSID as Caller-Station-ID
-     *   * `authServers` is required
-     *   * PSK will come from cloud WLC if source is cloudPsks
-     *   * defaultPsk will be used if cloud WLC is not available
-     *   * `multiPskOnly` and `psk` is ignored
-     *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+     * Per-user PSK selection settings for this WLAN
      * 
      */
     @Import(name="dynamicPsk")
     private @Nullable Output<WlanDynamicPskArgs> dynamicPsk;
 
     /**
-     * @return For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-     *   * PSK will come from RADIUS server
-     *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-     *   * AP sends BSSID:SSID as Caller-Station-ID
-     *   * `authServers` is required
-     *   * PSK will come from cloud WLC if source is cloudPsks
-     *   * defaultPsk will be used if cloud WLC is not available
-     *   * `multiPskOnly` and `psk` is ignored
-     *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+     * @return Per-user PSK selection settings for this WLAN
      * 
      */
     public Optional<Output<WlanDynamicPskArgs>> dynamicPsk() {
@@ -675,18 +691,33 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For 802.1x
+     * VLAN assignment settings for 802.1X dynamic VLANs
      * 
      */
     @Import(name="dynamicVlan")
     private @Nullable Output<WlanDynamicVlanArgs> dynamicVlan;
 
     /**
-     * @return For 802.1x
+     * @return VLAN assignment settings for 802.1X dynamic VLANs
      * 
      */
     public Optional<Output<WlanDynamicVlanArgs>> dynamicVlan() {
         return Optional.ofNullable(this.dynamicVlan);
+    }
+
+    /**
+     * Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+     * 
+     */
+    @Import(name="enableFtm")
+    private @Nullable Output<Boolean> enableFtm;
+
+    /**
+     * @return Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+     * 
+     */
+    public Optional<Output<Boolean>> enableFtm() {
+        return Optional.ofNullable(this.enableFtm);
     }
 
     /**
@@ -795,36 +826,44 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hostspot 2.0 wlan settings
+     * Passpoint and Hotspot 2.0 settings for this WLAN
      * 
      */
     @Import(name="hotspot20")
     private @Nullable Output<WlanHotspot20Args> hotspot20;
 
     /**
-     * @return Hostspot 2.0 wlan settings
+     * @return Passpoint and Hotspot 2.0 settings for this WLAN
      * 
      */
     public Optional<Output<WlanHotspot20Args>> hotspot20() {
         return Optional.ofNullable(this.hotspot20);
     }
 
+    /**
+     * DHCP Option 82 insertion settings for this WLAN
+     * 
+     */
     @Import(name="injectDhcpOption82")
     private @Nullable Output<WlanInjectDhcpOption82Args> injectDhcpOption82;
 
+    /**
+     * @return DHCP Option 82 insertion settings for this WLAN
+     * 
+     */
     public Optional<Output<WlanInjectDhcpOption82Args>> injectDhcpOption82() {
         return Optional.ofNullable(this.injectDhcpOption82);
     }
 
     /**
-     * where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+     * Network interface or tunnel where this WLAN bridges client traffic
      * 
      */
     @Import(name="interface")
     private @Nullable Output<String> interface_;
 
     /**
-     * @return where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+     * @return Network interface or tunnel where this WLAN bridges client traffic
      * 
      */
     public Optional<Output<String>> interface_() {
@@ -936,29 +975,45 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.maxNumClients);
     }
 
+    /**
+     * Juniper Mist NAC settings used by this WLAN
+     * 
+     */
     @Import(name="mistNac")
     private @Nullable Output<WlanMistNacArgs> mistNac;
 
+    /**
+     * @return Juniper Mist NAC settings used by this WLAN
+     * 
+     */
     public Optional<Output<WlanMistNacArgs>> mistNac() {
         return Optional.ofNullable(this.mistNac);
     }
 
+    /**
+     * Managed service provider identifier associated with this WLAN
+     * 
+     */
     @Import(name="mspId")
     private @Nullable Output<String> mspId;
 
+    /**
+     * @return Managed service provider identifier associated with this WLAN
+     * 
+     */
     public Optional<Output<String>> mspId() {
         return Optional.ofNullable(this.mspId);
     }
 
     /**
-     * When `interface`=`mxtunnel`, id of the Mist Tunnel
+     * Mist Tunnel identifiers used when `interface`==`mxtunnel`
      * 
      */
     @Import(name="mxtunnelIds")
     private @Nullable Output<List<String>> mxtunnelIds;
 
     /**
-     * @return When `interface`=`mxtunnel`, id of the Mist Tunnel
+     * @return Mist Tunnel identifiers used when `interface`==`mxtunnel`
      * 
      */
     public Optional<Output<List<String>>> mxtunnelIds() {
@@ -966,14 +1021,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * Mist Tunnel names used when `interface`==`siteMxedge`
      * 
      */
     @Import(name="mxtunnelNames")
     private @Nullable Output<List<String>> mxtunnelNames;
 
     /**
-     * @return When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * @return Mist Tunnel names used when `interface`==`siteMxedge`
      * 
      */
     public Optional<Output<List<String>>> mxtunnelNames() {
@@ -1010,22 +1065,30 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.noStaticIp);
     }
 
+    /**
+     * Owning organization associated with this WLAN
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Owning organization associated with this WLAN
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
     /**
-     * Portal wlan settings
+     * Guest portal settings for this WLAN
      * 
      */
     @Import(name="portal")
     private @Nullable Output<WlanPortalArgs> portal;
 
     /**
-     * @return Portal wlan settings
+     * @return Guest portal settings for this WLAN
      * 
      */
     public Optional<Output<WlanPortalArgs>> portal() {
@@ -1033,14 +1096,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of hostnames without http(s):// (matched by substring)
+     * Guest portal hostnames that clients may reach before authorization
      * 
      */
     @Import(name="portalAllowedHostnames")
     private @Nullable Output<List<String>> portalAllowedHostnames;
 
     /**
-     * @return List of hostnames without http(s):// (matched by substring)
+     * @return Guest portal hostnames that clients may reach before authorization
      * 
      */
     public Optional<Output<List<String>>> portalAllowedHostnames() {
@@ -1048,14 +1111,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of CIDRs
+     * Guest portal CIDR subnets that clients may reach before authorization
      * 
      */
     @Import(name="portalAllowedSubnets")
     private @Nullable Output<List<String>> portalAllowedSubnets;
 
     /**
-     * @return List of CIDRs
+     * @return Guest portal CIDR subnets that clients may reach before authorization
      * 
      */
     public Optional<Output<List<String>>> portalAllowedSubnets() {
@@ -1078,14 +1141,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+     * Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
      * 
      */
     @Import(name="portalDeniedHostnames")
     private @Nullable Output<List<String>> portalDeniedHostnames;
 
     /**
-     * @return List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+     * @return Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
      * 
      */
     public Optional<Output<List<String>>> portalDeniedHostnames() {
@@ -1122,22 +1185,30 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.portalSsoUrl);
     }
 
+    /**
+     * Quality-of-service settings for WLAN client traffic
+     * 
+     */
     @Import(name="qos")
     private @Nullable Output<WlanQosArgs> qos;
 
+    /**
+     * @return Quality-of-service settings for WLAN client traffic
+     * 
+     */
     public Optional<Output<WlanQosArgs>> qos() {
         return Optional.ofNullable(this.qos);
     }
 
     /**
-     * RadSec settings
+     * TLS-secured RADIUS transport settings for this WLAN
      * 
      */
     @Import(name="radsec")
     private @Nullable Output<WlanRadsecArgs> radsec;
 
     /**
-     * @return RadSec settings
+     * @return TLS-secured RADIUS transport settings for this WLAN
      * 
      */
     public Optional<Output<WlanRadsecArgs>> radsec() {
@@ -1145,14 +1216,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the RF band. enum: `24`, `5`, `6`
+     * Data rate settings by RF band for this WLAN
      * 
      */
     @Import(name="rateset")
     private @Nullable Output<Map<String,WlanRatesetArgs>> rateset;
 
     /**
-     * @return Property key is the RF band. enum: `24`, `5`, `6`
+     * @return Data rate settings by RF band for this WLAN
      * 
      */
     public Optional<Output<Map<String,WlanRatesetArgs>>> rateset() {
@@ -1175,14 +1246,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `11r`, `OKC`, `NONE`
+     * Fast roaming mode configured for this WLAN
      * 
      */
     @Import(name="roamMode")
     private @Nullable Output<String> roamMode;
 
     /**
-     * @return enum: `11r`, `OKC`, `NONE`
+     * @return Fast roaming mode configured for this WLAN
      * 
      */
     public Optional<Output<String>> roamMode() {
@@ -1190,14 +1261,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * WLAN operating schedule, default is disabled
+     * Operating schedule controlling when this WLAN is active
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<WlanScheduleArgs> schedule;
 
     /**
-     * @return WLAN operating schedule, default is disabled
+     * @return Operating schedule controlling when this WLAN is active
      * 
      */
     public Optional<Output<WlanScheduleArgs>> schedule() {
@@ -1234,9 +1305,17 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ssid);
     }
 
+    /**
+     * Identifier of the WLAN template associated with this WLAN
+     * 
+     */
     @Import(name="templateId")
     private @Nullable Output<String> templateId;
 
+    /**
+     * @return Identifier of the WLAN template associated with this WLAN
+     * 
+     */
     public Optional<Output<String>> templateId() {
         return Optional.ofNullable(this.templateId);
     }
@@ -1271,22 +1350,30 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vlanEnabled);
     }
 
+    /**
+     * Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+     * 
+     */
     @Import(name="vlanId")
     private @Nullable Output<String> vlanId;
 
+    /**
+     * @return Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+     * 
+     */
     public Optional<Output<String>> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
 
     /**
-     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+     * Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
      * 
      */
     @Import(name="vlanIds")
     private @Nullable Output<List<String>> vlanIds;
 
     /**
-     * @return if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+     * @return Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
      * 
      */
     public Optional<Output<List<String>>> vlanIds() {
@@ -1308,9 +1395,17 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vlanPooling);
     }
 
+    /**
+     * Downlink bandwidth limit applied to the whole WLAN
+     * 
+     */
     @Import(name="wlanLimitDown")
     private @Nullable Output<String> wlanLimitDown;
 
+    /**
+     * @return Downlink bandwidth limit applied to the whole WLAN
+     * 
+     */
     public Optional<Output<String>> wlanLimitDown() {
         return Optional.ofNullable(this.wlanLimitDown);
     }
@@ -1330,9 +1425,17 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.wlanLimitDownEnabled);
     }
 
+    /**
+     * Uplink bandwidth limit applied to the whole WLAN
+     * 
+     */
     @Import(name="wlanLimitUp")
     private @Nullable Output<String> wlanLimitUp;
 
+    /**
+     * @return Uplink bandwidth limit applied to the whole WLAN
+     * 
+     */
     public Optional<Output<String>> wlanLimitUp() {
         return Optional.ofNullable(this.wlanLimitUp);
     }
@@ -1353,14 +1456,14 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of wxtag_ids
+     * Identifiers of WxLAN tags used when `applyTo`==`wxtags`
      * 
      */
     @Import(name="wxtagIds")
     private @Nullable Output<List<String>> wxtagIds;
 
     /**
-     * @return List of wxtag_ids
+     * @return Identifiers of WxLAN tags used when `applyTo`==`wxtags`
      * 
      */
     public Optional<Output<List<String>>> wxtagIds() {
@@ -1444,6 +1547,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         this.dtim = $.dtim;
         this.dynamicPsk = $.dynamicPsk;
         this.dynamicVlan = $.dynamicVlan;
+        this.enableFtm = $.enableFtm;
         this.enableLocalKeycaching = $.enableLocalKeycaching;
         this.enableWirelessBridging = $.enableWirelessBridging;
         this.enableWirelessBridgingDhcpTracking = $.enableWirelessBridgingDhcpTracking;
@@ -1538,7 +1642,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
          * 
          * @return builder
          * 
@@ -1549,7 +1653,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
          * 
          * @return builder
          * 
@@ -1559,7 +1663,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acctServers List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+         * @param acctServers RADIUS accounting servers used by this WLAN
          * 
          * @return builder
          * 
@@ -1570,7 +1674,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acctServers List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+         * @param acctServers RADIUS accounting servers used by this WLAN
          * 
          * @return builder
          * 
@@ -1580,7 +1684,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acctServers List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+         * @param acctServers RADIUS accounting servers used by this WLAN
          * 
          * @return builder
          * 
@@ -1590,7 +1694,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param airwatch Airwatch wlan settings
+         * @param airwatch Integration settings for AirWatch device compliance on this WLAN
          * 
          * @return builder
          * 
@@ -1601,7 +1705,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param airwatch Airwatch wlan settings
+         * @param airwatch Integration settings for AirWatch device compliance on this WLAN
          * 
          * @return builder
          * 
@@ -1674,7 +1778,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apIds List of device ids
+         * @param apIds Access point identifiers used when `applyTo`==`aps`
          * 
          * @return builder
          * 
@@ -1685,7 +1789,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apIds List of device ids
+         * @param apIds Access point identifiers used when `applyTo`==`aps`
          * 
          * @return builder
          * 
@@ -1695,7 +1799,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apIds List of device ids
+         * @param apIds Access point identifiers used when `applyTo`==`aps`
          * 
          * @return builder
          * 
@@ -1705,7 +1809,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appLimit Bandwidth limiting for apps (applies to up/down)
+         * @param appLimit Bandwidth limits for applications on this WLAN
          * 
          * @return builder
          * 
@@ -1716,7 +1820,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appLimit Bandwidth limiting for apps (applies to up/down)
+         * @param appLimit Bandwidth limits for applications on this WLAN
          * 
          * @return builder
          * 
@@ -1726,7 +1830,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appQos APP qos wlan settings
+         * @param appQos QoS rules for application traffic on this WLAN
          * 
          * @return builder
          * 
@@ -1737,7 +1841,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appQos APP qos wlan settings
+         * @param appQos QoS rules for application traffic on this WLAN
          * 
          * @return builder
          * 
@@ -1747,7 +1851,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applyTo enum: `aps`, `site`, `wxtags`
+         * @param applyTo Scope that determines where this WLAN is applied
          * 
          * @return builder
          * 
@@ -1758,7 +1862,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applyTo enum: `aps`, `site`, `wxtags`
+         * @param applyTo Scope that determines where this WLAN is applied
          * 
          * @return builder
          * 
@@ -1789,7 +1893,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param auth Authentication wlan settings
+         * @param auth Settings that control client authentication for this WLAN
          * 
          * @return builder
          * 
@@ -1800,7 +1904,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param auth Authentication wlan settings
+         * @param auth Settings that control client authentication for this WLAN
          * 
          * @return builder
          * 
@@ -1810,7 +1914,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServerSelection When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+         * @param authServerSelection RADIUS authentication server selection behavior for this WLAN
          * 
          * @return builder
          * 
@@ -1821,7 +1925,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServerSelection When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+         * @param authServerSelection RADIUS authentication server selection behavior for this WLAN
          * 
          * @return builder
          * 
@@ -1831,7 +1935,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServers List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+         * @param authServers RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
          * 
          * @return builder
          * 
@@ -1842,7 +1946,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServers List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+         * @param authServers RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
          * 
          * @return builder
          * 
@@ -1852,7 +1956,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServers List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+         * @param authServers RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
          * 
          * @return builder
          * 
@@ -1904,7 +2008,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+         * @param authServersRetries RADIUS auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
          * 
          * @return builder
          * 
@@ -1915,7 +2019,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServersRetries Radius auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+         * @param authServersRetries RADIUS auth session retries. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
          * 
          * @return builder
          * 
@@ -1925,7 +2029,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServersTimeout Radius auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+         * @param authServersTimeout RADIUS auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
          * 
          * @return builder
          * 
@@ -1936,7 +2040,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authServersTimeout Radius auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+         * @param authServersTimeout RADIUS auth session timeout. Following fast timers are set if &#34;fastDot1xTimers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
          * 
          * @return builder
          * 
@@ -2040,7 +2144,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bonjour Bonjour gateway wlan settings
+         * @param bonjour Service discovery gateway settings for Bonjour traffic on this WLAN
          * 
          * @return builder
          * 
@@ -2051,7 +2155,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bonjour Bonjour gateway wlan settings
+         * @param bonjour Service discovery gateway settings for Bonjour traffic on this WLAN
          * 
          * @return builder
          * 
@@ -2061,7 +2165,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ciscoCwa Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+         * @param ciscoCwa Central web authentication settings for Cisco CWA on this WLAN
          * 
          * @return builder
          * 
@@ -2072,7 +2176,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ciscoCwa Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+         * @param ciscoCwa Central web authentication settings for Cisco CWA on this WLAN
          * 
          * @return builder
          * 
@@ -2081,11 +2185,23 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return ciscoCwa(Output.of(ciscoCwa));
         }
 
+        /**
+         * @param clientLimitDown Downlink bandwidth limit applied per client
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientLimitDown(@Nullable Output<String> clientLimitDown) {
             $.clientLimitDown = clientLimitDown;
             return this;
         }
 
+        /**
+         * @param clientLimitDown Downlink bandwidth limit applied per client
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientLimitDown(String clientLimitDown) {
             return clientLimitDown(Output.of(clientLimitDown));
         }
@@ -2111,11 +2227,23 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return clientLimitDownEnabled(Output.of(clientLimitDownEnabled));
         }
 
+        /**
+         * @param clientLimitUp Uplink bandwidth limit applied per client
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientLimitUp(@Nullable Output<String> clientLimitUp) {
             $.clientLimitUp = clientLimitUp;
             return this;
         }
 
+        /**
+         * @param clientLimitUp Uplink bandwidth limit applied per client
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientLimitUp(String clientLimitUp) {
             return clientLimitUp(Output.of(clientLimitUp));
         }
@@ -2142,7 +2270,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coaServers List of COA (change of authorization) servers, optional
+         * @param coaServers RADIUS Change of Authorization servers available to this WLAN
          * 
          * @return builder
          * 
@@ -2153,7 +2281,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coaServers List of COA (change of authorization) servers, optional
+         * @param coaServers RADIUS Change of Authorization servers available to this WLAN
          * 
          * @return builder
          * 
@@ -2163,7 +2291,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coaServers List of COA (change of authorization) servers, optional
+         * @param coaServers RADIUS Change of Authorization servers available to this WLAN
          * 
          * @return builder
          * 
@@ -2346,11 +2474,23 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return disableWhenGatewayUnreachable(Output.of(disableWhenGatewayUnreachable));
         }
 
+        /**
+         * @param disableWhenMxtunnelDown Whether to disable this WLAN when the configured Mist tunnel is down
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableWhenMxtunnelDown(@Nullable Output<Boolean> disableWhenMxtunnelDown) {
             $.disableWhenMxtunnelDown = disableWhenMxtunnelDown;
             return this;
         }
 
+        /**
+         * @param disableWhenMxtunnelDown Whether to disable this WLAN when the configured Mist tunnel is down
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableWhenMxtunnelDown(Boolean disableWhenMxtunnelDown) {
             return disableWhenMxtunnelDown(Output.of(disableWhenMxtunnelDown));
         }
@@ -2377,7 +2517,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServerRewrite For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+         * @param dnsServerRewrite RADIUS group based DNS server rewrite settings for this WLAN
          * 
          * @return builder
          * 
@@ -2388,7 +2528,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsServerRewrite For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+         * @param dnsServerRewrite RADIUS group based DNS server rewrite settings for this WLAN
          * 
          * @return builder
          * 
@@ -2397,25 +2537,29 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return dnsServerRewrite(Output.of(dnsServerRewrite));
         }
 
+        /**
+         * @param dtim Delivery Traffic Indication Message interval for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder dtim(@Nullable Output<Integer> dtim) {
             $.dtim = dtim;
             return this;
         }
 
+        /**
+         * @param dtim Delivery Traffic Indication Message interval for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder dtim(Integer dtim) {
             return dtim(Output.of(dtim));
         }
 
         /**
-         * @param dynamicPsk For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-         *   * PSK will come from RADIUS server
-         *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-         *   * AP sends BSSID:SSID as Caller-Station-ID
-         *   * `authServers` is required
-         *   * PSK will come from cloud WLC if source is cloudPsks
-         *   * defaultPsk will be used if cloud WLC is not available
-         *   * `multiPskOnly` and `psk` is ignored
-         *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+         * @param dynamicPsk Per-user PSK selection settings for this WLAN
          * 
          * @return builder
          * 
@@ -2426,15 +2570,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dynamicPsk For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-         *   * PSK will come from RADIUS server
-         *   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-         *   * AP sends BSSID:SSID as Caller-Station-ID
-         *   * `authServers` is required
-         *   * PSK will come from cloud WLC if source is cloudPsks
-         *   * defaultPsk will be used if cloud WLC is not available
-         *   * `multiPskOnly` and `psk` is ignored
-         *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+         * @param dynamicPsk Per-user PSK selection settings for this WLAN
          * 
          * @return builder
          * 
@@ -2444,7 +2580,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dynamicVlan For 802.1x
+         * @param dynamicVlan VLAN assignment settings for 802.1X dynamic VLANs
          * 
          * @return builder
          * 
@@ -2455,13 +2591,34 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dynamicVlan For 802.1x
+         * @param dynamicVlan VLAN assignment settings for 802.1X dynamic VLANs
          * 
          * @return builder
          * 
          */
         public Builder dynamicVlan(WlanDynamicVlanArgs dynamicVlan) {
             return dynamicVlan(Output.of(dynamicVlan));
+        }
+
+        /**
+         * @param enableFtm Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableFtm(@Nullable Output<Boolean> enableFtm) {
+            $.enableFtm = enableFtm;
+            return this;
+        }
+
+        /**
+         * @param enableFtm Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableFtm(Boolean enableFtm) {
+            return enableFtm(Output.of(enableFtm));
         }
 
         /**
@@ -2612,7 +2769,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hotspot20 Hostspot 2.0 wlan settings
+         * @param hotspot20 Passpoint and Hotspot 2.0 settings for this WLAN
          * 
          * @return builder
          * 
@@ -2623,7 +2780,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hotspot20 Hostspot 2.0 wlan settings
+         * @param hotspot20 Passpoint and Hotspot 2.0 settings for this WLAN
          * 
          * @return builder
          * 
@@ -2632,17 +2789,29 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return hotspot20(Output.of(hotspot20));
         }
 
+        /**
+         * @param injectDhcpOption82 DHCP Option 82 insertion settings for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder injectDhcpOption82(@Nullable Output<WlanInjectDhcpOption82Args> injectDhcpOption82) {
             $.injectDhcpOption82 = injectDhcpOption82;
             return this;
         }
 
+        /**
+         * @param injectDhcpOption82 DHCP Option 82 insertion settings for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder injectDhcpOption82(WlanInjectDhcpOption82Args injectDhcpOption82) {
             return injectDhcpOption82(Output.of(injectDhcpOption82));
         }
 
         /**
-         * @param interface_ where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+         * @param interface_ Network interface or tunnel where this WLAN bridges client traffic
          * 
          * @return builder
          * 
@@ -2653,7 +2822,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+         * @param interface_ Network interface or tunnel where this WLAN bridges client traffic
          * 
          * @return builder
          * 
@@ -2809,26 +2978,50 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return maxNumClients(Output.of(maxNumClients));
         }
 
+        /**
+         * @param mistNac Juniper Mist NAC settings used by this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder mistNac(@Nullable Output<WlanMistNacArgs> mistNac) {
             $.mistNac = mistNac;
             return this;
         }
 
+        /**
+         * @param mistNac Juniper Mist NAC settings used by this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder mistNac(WlanMistNacArgs mistNac) {
             return mistNac(Output.of(mistNac));
         }
 
+        /**
+         * @param mspId Managed service provider identifier associated with this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder mspId(@Nullable Output<String> mspId) {
             $.mspId = mspId;
             return this;
         }
 
+        /**
+         * @param mspId Managed service provider identifier associated with this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder mspId(String mspId) {
             return mspId(Output.of(mspId));
         }
 
         /**
-         * @param mxtunnelIds When `interface`=`mxtunnel`, id of the Mist Tunnel
+         * @param mxtunnelIds Mist Tunnel identifiers used when `interface`==`mxtunnel`
          * 
          * @return builder
          * 
@@ -2839,7 +3032,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelIds When `interface`=`mxtunnel`, id of the Mist Tunnel
+         * @param mxtunnelIds Mist Tunnel identifiers used when `interface`==`mxtunnel`
          * 
          * @return builder
          * 
@@ -2849,7 +3042,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelIds When `interface`=`mxtunnel`, id of the Mist Tunnel
+         * @param mxtunnelIds Mist Tunnel identifiers used when `interface`==`mxtunnel`
          * 
          * @return builder
          * 
@@ -2859,7 +3052,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelNames When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+         * @param mxtunnelNames Mist Tunnel names used when `interface`==`siteMxedge`
          * 
          * @return builder
          * 
@@ -2870,7 +3063,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelNames When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+         * @param mxtunnelNames Mist Tunnel names used when `interface`==`siteMxedge`
          * 
          * @return builder
          * 
@@ -2880,7 +3073,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelNames When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+         * @param mxtunnelNames Mist Tunnel names used when `interface`==`siteMxedge`
          * 
          * @return builder
          * 
@@ -2931,17 +3124,29 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return noStaticIp(Output.of(noStaticIp));
         }
 
+        /**
+         * @param orgId Owning organization associated with this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Owning organization associated with this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param portal Portal wlan settings
+         * @param portal Guest portal settings for this WLAN
          * 
          * @return builder
          * 
@@ -2952,7 +3157,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portal Portal wlan settings
+         * @param portal Guest portal settings for this WLAN
          * 
          * @return builder
          * 
@@ -2962,7 +3167,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portalAllowedHostnames List of hostnames without http(s):// (matched by substring)
+         * @param portalAllowedHostnames Guest portal hostnames that clients may reach before authorization
          * 
          * @return builder
          * 
@@ -2973,7 +3178,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portalAllowedHostnames List of hostnames without http(s):// (matched by substring)
+         * @param portalAllowedHostnames Guest portal hostnames that clients may reach before authorization
          * 
          * @return builder
          * 
@@ -2983,7 +3188,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portalAllowedHostnames List of hostnames without http(s):// (matched by substring)
+         * @param portalAllowedHostnames Guest portal hostnames that clients may reach before authorization
          * 
          * @return builder
          * 
@@ -2993,7 +3198,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portalAllowedSubnets List of CIDRs
+         * @param portalAllowedSubnets Guest portal CIDR subnets that clients may reach before authorization
          * 
          * @return builder
          * 
@@ -3004,7 +3209,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portalAllowedSubnets List of CIDRs
+         * @param portalAllowedSubnets Guest portal CIDR subnets that clients may reach before authorization
          * 
          * @return builder
          * 
@@ -3014,7 +3219,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portalAllowedSubnets List of CIDRs
+         * @param portalAllowedSubnets Guest portal CIDR subnets that clients may reach before authorization
          * 
          * @return builder
          * 
@@ -3045,7 +3250,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portalDeniedHostnames List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+         * @param portalDeniedHostnames Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
          * 
          * @return builder
          * 
@@ -3056,7 +3261,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portalDeniedHostnames List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+         * @param portalDeniedHostnames Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
          * 
          * @return builder
          * 
@@ -3066,7 +3271,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portalDeniedHostnames List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+         * @param portalDeniedHostnames Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
          * 
          * @return builder
          * 
@@ -3117,17 +3322,29 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return portalSsoUrl(Output.of(portalSsoUrl));
         }
 
+        /**
+         * @param qos Quality-of-service settings for WLAN client traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder qos(@Nullable Output<WlanQosArgs> qos) {
             $.qos = qos;
             return this;
         }
 
+        /**
+         * @param qos Quality-of-service settings for WLAN client traffic
+         * 
+         * @return builder
+         * 
+         */
         public Builder qos(WlanQosArgs qos) {
             return qos(Output.of(qos));
         }
 
         /**
-         * @param radsec RadSec settings
+         * @param radsec TLS-secured RADIUS transport settings for this WLAN
          * 
          * @return builder
          * 
@@ -3138,7 +3355,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param radsec RadSec settings
+         * @param radsec TLS-secured RADIUS transport settings for this WLAN
          * 
          * @return builder
          * 
@@ -3148,7 +3365,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rateset Property key is the RF band. enum: `24`, `5`, `6`
+         * @param rateset Data rate settings by RF band for this WLAN
          * 
          * @return builder
          * 
@@ -3159,7 +3376,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rateset Property key is the RF band. enum: `24`, `5`, `6`
+         * @param rateset Data rate settings by RF band for this WLAN
          * 
          * @return builder
          * 
@@ -3190,7 +3407,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roamMode enum: `11r`, `OKC`, `NONE`
+         * @param roamMode Fast roaming mode configured for this WLAN
          * 
          * @return builder
          * 
@@ -3201,7 +3418,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roamMode enum: `11r`, `OKC`, `NONE`
+         * @param roamMode Fast roaming mode configured for this WLAN
          * 
          * @return builder
          * 
@@ -3211,7 +3428,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule WLAN operating schedule, default is disabled
+         * @param schedule Operating schedule controlling when this WLAN is active
          * 
          * @return builder
          * 
@@ -3222,7 +3439,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule WLAN operating schedule, default is disabled
+         * @param schedule Operating schedule controlling when this WLAN is active
          * 
          * @return builder
          * 
@@ -3273,11 +3490,23 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return ssid(Output.of(ssid));
         }
 
+        /**
+         * @param templateId Identifier of the WLAN template associated with this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateId(@Nullable Output<String> templateId) {
             $.templateId = templateId;
             return this;
         }
 
+        /**
+         * @param templateId Identifier of the WLAN template associated with this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateId(String templateId) {
             return templateId(Output.of(templateId));
         }
@@ -3324,17 +3553,29 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return vlanEnabled(Output.of(vlanEnabled));
         }
 
+        /**
+         * @param vlanId Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(@Nullable Output<String> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
+        /**
+         * @param vlanId Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(String vlanId) {
             return vlanId(Output.of(vlanId));
         }
 
         /**
-         * @param vlanIds if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+         * @param vlanIds Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
          * 
          * @return builder
          * 
@@ -3345,7 +3586,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+         * @param vlanIds Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
          * 
          * @return builder
          * 
@@ -3355,7 +3596,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+         * @param vlanIds Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
          * 
          * @return builder
          * 
@@ -3385,11 +3626,23 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return vlanPooling(Output.of(vlanPooling));
         }
 
+        /**
+         * @param wlanLimitDown Downlink bandwidth limit applied to the whole WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder wlanLimitDown(@Nullable Output<String> wlanLimitDown) {
             $.wlanLimitDown = wlanLimitDown;
             return this;
         }
 
+        /**
+         * @param wlanLimitDown Downlink bandwidth limit applied to the whole WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder wlanLimitDown(String wlanLimitDown) {
             return wlanLimitDown(Output.of(wlanLimitDown));
         }
@@ -3415,11 +3668,23 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return wlanLimitDownEnabled(Output.of(wlanLimitDownEnabled));
         }
 
+        /**
+         * @param wlanLimitUp Uplink bandwidth limit applied to the whole WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder wlanLimitUp(@Nullable Output<String> wlanLimitUp) {
             $.wlanLimitUp = wlanLimitUp;
             return this;
         }
 
+        /**
+         * @param wlanLimitUp Uplink bandwidth limit applied to the whole WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder wlanLimitUp(String wlanLimitUp) {
             return wlanLimitUp(Output.of(wlanLimitUp));
         }
@@ -3446,7 +3711,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wxtagIds List of wxtag_ids
+         * @param wxtagIds Identifiers of WxLAN tags used when `applyTo`==`wxtags`
          * 
          * @return builder
          * 
@@ -3457,7 +3722,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wxtagIds List of wxtag_ids
+         * @param wxtagIds Identifiers of WxLAN tags used when `applyTo`==`wxtags`
          * 
          * @return builder
          * 
@@ -3467,7 +3732,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wxtagIds List of wxtag_ids
+         * @param wxtagIds Identifiers of WxLAN tags used when `applyTo`==`wxtags`
          * 
          * @return builder
          * 

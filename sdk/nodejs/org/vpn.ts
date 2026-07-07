@@ -79,18 +79,24 @@ export class Vpn extends pulumi.CustomResource {
         return obj['__pulumiType'] === Vpn.__pulumiType;
     }
 
+    /**
+     * Display name of the VPN configuration
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Organization that owns the VPN configuration
+     */
     declare public readonly orgId: pulumi.Output<string | undefined>;
     /**
-     * Only if `type`==`hubSpoke`
+     * Path selection settings used when `type`==`hubSpoke`
      */
     declare public readonly pathSelection: pulumi.Output<outputs.org.VpnPathSelection | undefined>;
     /**
-     * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
      */
     declare public readonly paths: pulumi.Output<{[key: string]: outputs.org.VpnPaths}>;
     /**
-     * enum: `hubSpoke`, `mesh`
+     * VPN topology mode for this configuration
      */
     declare public readonly type: pulumi.Output<string | undefined>;
 
@@ -132,18 +138,24 @@ export class Vpn extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Vpn resources.
  */
 export interface VpnState {
+    /**
+     * Display name of the VPN configuration
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns the VPN configuration
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * Only if `type`==`hubSpoke`
+     * Path selection settings used when `type`==`hubSpoke`
      */
     pathSelection?: pulumi.Input<inputs.org.VpnPathSelection | undefined>;
     /**
-     * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
      */
     paths?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.VpnPaths>} | undefined>;
     /**
-     * enum: `hubSpoke`, `mesh`
+     * VPN topology mode for this configuration
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -152,18 +164,24 @@ export interface VpnState {
  * The set of arguments for constructing a Vpn resource.
  */
 export interface VpnArgs {
+    /**
+     * Display name of the VPN configuration
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns the VPN configuration
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * Only if `type`==`hubSpoke`
+     * Path selection settings used when `type`==`hubSpoke`
      */
     pathSelection?: pulumi.Input<inputs.org.VpnPathSelection | undefined>;
     /**
-     * For `type`==`hubSpoke`, Property key is the VPN name. For `type`==`mesh`, Property key is the Interface name
+     * VPN path definitions keyed by VPN name for `hubSpoke` mode or interface name for `mesh` mode
      */
     paths: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.VpnPaths>}>;
     /**
-     * enum: `hubSpoke`, `mesh`
+     * VPN topology mode for this configuration
      */
     type?: pulumi.Input<string | undefined>;
 }

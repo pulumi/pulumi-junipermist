@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigNotifyFilterContent {
+    /**
+     * @return Whether the matching OID subtree is included
+     * 
+     */
     private @Nullable Boolean include;
+    /**
+     * @return Matched OID subtree for this notification filter rule
+     * 
+     */
     private String oid;
 
     private NetworktemplateSnmpConfigV3ConfigNotifyFilterContent() {}
+    /**
+     * @return Whether the matching OID subtree is included
+     * 
+     */
     public Optional<Boolean> include() {
         return Optional.ofNullable(this.include);
     }
+    /**
+     * @return Matched OID subtree for this notification filter rule
+     * 
+     */
     public String oid() {
         return this.oid;
     }

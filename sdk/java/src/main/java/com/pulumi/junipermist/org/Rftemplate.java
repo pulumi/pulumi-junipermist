@@ -101,89 +101,113 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/rftemplate:Rftemplate")
 public class Rftemplate extends com.pulumi.resources.CustomResource {
+    /**
+     * External antenna gain for the 2.4 GHz radio
+     * 
+     */
     @Export(name="antGain24", refs={Integer.class}, tree="[0]")
     private Output<Integer> antGain24;
 
+    /**
+     * @return External antenna gain for the 2.4 GHz radio
+     * 
+     */
     public Output<Integer> antGain24() {
         return this.antGain24;
     }
+    /**
+     * External antenna gain for the 5 GHz radio
+     * 
+     */
     @Export(name="antGain5", refs={Integer.class}, tree="[0]")
     private Output<Integer> antGain5;
 
+    /**
+     * @return External antenna gain for the 5 GHz radio
+     * 
+     */
     public Output<Integer> antGain5() {
         return this.antGain5;
     }
+    /**
+     * External antenna gain for the 6 GHz radio
+     * 
+     */
     @Export(name="antGain6", refs={Integer.class}, tree="[0]")
     private Output<Integer> antGain6;
 
+    /**
+     * @return External antenna gain for the 6 GHz radio
+     * 
+     */
     public Output<Integer> antGain6() {
         return this.antGain6;
     }
     /**
-     * Radio Band AP settings
+     * 2.4 GHz radio settings in this RF template
      * 
      */
     @Export(name="band24", refs={RftemplateBand24.class}, tree="[0]")
     private Output</* @Nullable */ RftemplateBand24> band24;
 
     /**
-     * @return Radio Band AP settings
+     * @return 2.4 GHz radio settings in this RF template
      * 
      */
     public Output<Optional<RftemplateBand24>> band24() {
         return Codegen.optional(this.band24);
     }
     /**
-     * enum: `24`, `5`, `6`, `auto`
+     * Radio usage mode for the 2.4 GHz-capable radio in this RF template
      * 
      */
     @Export(name="band24Usage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> band24Usage;
 
     /**
-     * @return enum: `24`, `5`, `6`, `auto`
+     * @return Radio usage mode for the 2.4 GHz-capable radio in this RF template
      * 
      */
     public Output<Optional<String>> band24Usage() {
         return Codegen.optional(this.band24Usage);
     }
     /**
-     * Radio Band AP settings
+     * 5 GHz radio settings in this RF template
      * 
      */
     @Export(name="band5", refs={RftemplateBand5.class}, tree="[0]")
     private Output</* @Nullable */ RftemplateBand5> band5;
 
     /**
-     * @return Radio Band AP settings
+     * @return 5 GHz radio settings in this RF template
      * 
      */
     public Output<Optional<RftemplateBand5>> band5() {
         return Codegen.optional(this.band5);
     }
     /**
-     * Radio Band AP settings
+     * 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      * 
      */
     @Export(name="band5On24Radio", refs={RftemplateBand5On24Radio.class}, tree="[0]")
     private Output</* @Nullable */ RftemplateBand5On24Radio> band5On24Radio;
 
     /**
-     * @return Radio Band AP settings
+     * @return 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      * 
      */
     public Output<Optional<RftemplateBand5On24Radio>> band5On24Radio() {
         return Codegen.optional(this.band5On24Radio);
     }
     /**
-     * Radio Band AP settings
+     * 6 GHz radio settings in this RF template
      * 
      */
     @Export(name="band6", refs={RftemplateBand6.class}, tree="[0]")
     private Output</* @Nullable */ RftemplateBand6> band6;
 
     /**
-     * @return Radio Band AP settings
+     * @return 6 GHz radio settings in this RF template
      * 
      */
     public Output<Optional<RftemplateBand6>> band6() {
@@ -231,9 +255,17 @@ public class Rftemplate extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Organization that owns this RF template
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this RF template
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }

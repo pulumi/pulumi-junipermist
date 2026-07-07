@@ -23,14 +23,14 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
     public static final SettingSyntheticTestArgs Empty = new SettingSyntheticTestArgs();
 
     /**
-     * enum: `auto`, `high`, `low`
+     * Overall aggressiveness level for synthetic test probes
      * 
      */
     @Import(name="aggressiveness")
     private @Nullable Output<String> aggressiveness;
 
     /**
-     * @return enum: `auto`, `high`, `low`
+     * @return Overall aggressiveness level for synthetic test probes
      * 
      */
     public Optional<Output<String>> aggressiveness() {
@@ -38,36 +38,44 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Custom probes to be used for synthetic tests
+     * Custom synthetic probe definitions keyed by probe name
      * 
      */
     @Import(name="customProbes")
     private @Nullable Output<Map<String,SettingSyntheticTestCustomProbesArgs>> customProbes;
 
     /**
-     * @return Custom probes to be used for synthetic tests
+     * @return Custom synthetic probe definitions keyed by probe name
      * 
      */
     public Optional<Output<Map<String,SettingSyntheticTestCustomProbesArgs>>> customProbes() {
         return Optional.ofNullable(this.customProbes);
     }
 
+    /**
+     * Whether synthetic tests are disabled
+     * 
+     */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
+    /**
+     * @return Whether synthetic tests are disabled
+     * 
+     */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
     }
 
     /**
-     * List of networks to be used for synthetic tests
+     * LAN network probe groups used by synthetic tests
      * 
      */
     @Import(name="lanNetworks")
     private @Nullable Output<List<SettingSyntheticTestLanNetworkArgs>> lanNetworks;
 
     /**
-     * @return List of networks to be used for synthetic tests
+     * @return LAN network probe groups used by synthetic tests
      * 
      */
     public Optional<Output<List<SettingSyntheticTestLanNetworkArgs>>> lanNetworks() {
@@ -75,6 +83,8 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Deprecated VLAN-based synthetic test settings
+     * 
      * @deprecated
      * This attribute is deprecated.
      * 
@@ -84,6 +94,8 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<List<SettingSyntheticTestVlanArgs>> vlans;
 
     /**
+     * @return Deprecated VLAN-based synthetic test settings
+     * 
      * @deprecated
      * This attribute is deprecated.
      * 
@@ -93,9 +105,17 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.vlans);
     }
 
+    /**
+     * WAN speedtest settings for synthetic tests
+     * 
+     */
     @Import(name="wanSpeedtest")
     private @Nullable Output<SettingSyntheticTestWanSpeedtestArgs> wanSpeedtest;
 
+    /**
+     * @return WAN speedtest settings for synthetic tests
+     * 
+     */
     public Optional<Output<SettingSyntheticTestWanSpeedtestArgs>> wanSpeedtest() {
         return Optional.ofNullable(this.wanSpeedtest);
     }
@@ -130,7 +150,7 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param aggressiveness enum: `auto`, `high`, `low`
+         * @param aggressiveness Overall aggressiveness level for synthetic test probes
          * 
          * @return builder
          * 
@@ -141,7 +161,7 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param aggressiveness enum: `auto`, `high`, `low`
+         * @param aggressiveness Overall aggressiveness level for synthetic test probes
          * 
          * @return builder
          * 
@@ -151,7 +171,7 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customProbes Custom probes to be used for synthetic tests
+         * @param customProbes Custom synthetic probe definitions keyed by probe name
          * 
          * @return builder
          * 
@@ -162,7 +182,7 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customProbes Custom probes to be used for synthetic tests
+         * @param customProbes Custom synthetic probe definitions keyed by probe name
          * 
          * @return builder
          * 
@@ -171,17 +191,29 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
             return customProbes(Output.of(customProbes));
         }
 
+        /**
+         * @param disabled Whether synthetic tests are disabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(@Nullable Output<Boolean> disabled) {
             $.disabled = disabled;
             return this;
         }
 
+        /**
+         * @param disabled Whether synthetic tests are disabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
         }
 
         /**
-         * @param lanNetworks List of networks to be used for synthetic tests
+         * @param lanNetworks LAN network probe groups used by synthetic tests
          * 
          * @return builder
          * 
@@ -192,7 +224,7 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param lanNetworks List of networks to be used for synthetic tests
+         * @param lanNetworks LAN network probe groups used by synthetic tests
          * 
          * @return builder
          * 
@@ -202,7 +234,7 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param lanNetworks List of networks to be used for synthetic tests
+         * @param lanNetworks LAN network probe groups used by synthetic tests
          * 
          * @return builder
          * 
@@ -212,6 +244,8 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param vlans Deprecated VLAN-based synthetic test settings
+         * 
          * @return builder
          * 
          * @deprecated
@@ -225,6 +259,8 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param vlans Deprecated VLAN-based synthetic test settings
+         * 
          * @return builder
          * 
          * @deprecated
@@ -237,6 +273,8 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param vlans Deprecated VLAN-based synthetic test settings
+         * 
          * @return builder
          * 
          * @deprecated
@@ -248,11 +286,23 @@ public final class SettingSyntheticTestArgs extends com.pulumi.resources.Resourc
             return vlans(List.of(vlans));
         }
 
+        /**
+         * @param wanSpeedtest WAN speedtest settings for synthetic tests
+         * 
+         * @return builder
+         * 
+         */
         public Builder wanSpeedtest(@Nullable Output<SettingSyntheticTestWanSpeedtestArgs> wanSpeedtest) {
             $.wanSpeedtest = wanSpeedtest;
             return this;
         }
 
+        /**
+         * @param wanSpeedtest WAN speedtest settings for synthetic tests
+         * 
+         * @return builder
+         * 
+         */
         public Builder wanSpeedtest(SettingSyntheticTestWanSpeedtestArgs wanSpeedtest) {
             return wanSpeedtest(Output.of(wanSpeedtest));
         }

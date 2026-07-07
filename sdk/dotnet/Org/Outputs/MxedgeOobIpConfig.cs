@@ -13,33 +13,48 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxedgeOobIpConfig
     {
+        /// <summary>
+        /// Whether IPv6 autoconfiguration is enabled on the out-of-band management interface
+        /// </summary>
         public readonly bool? Autoconf6;
+        /// <summary>
+        /// Whether DHCPv6 is enabled on the out-of-band management interface
+        /// </summary>
         public readonly bool? Dhcp6;
         /// <summary>
-        /// IPv4 ignored if `Type`!=`Static`, IPv6 ignored if `Type6`!=`Static`
+        /// Name server addresses for out-of-band management
         /// </summary>
         public readonly ImmutableArray<string> Dns;
         /// <summary>
-        /// If `Type`=`Static`
+        /// If `Type`=`Static`, IPv4 default gateway for the out-of-band management interface
         /// </summary>
         public readonly string? Gateway;
+        /// <summary>
+        /// If `Type6`=`Static`, IPv6 default gateway for the out-of-band management interface
+        /// </summary>
         public readonly string? Gateway6;
         /// <summary>
-        /// If `Type`=`Static`
+        /// If `Type`=`Static`, IPv4 address for the out-of-band management interface
         /// </summary>
         public readonly string? Ip;
+        /// <summary>
+        /// If `Type6`=`Static`, IPv6 address for the out-of-band management interface
+        /// </summary>
         public readonly string? Ip6;
         /// <summary>
-        /// If `Type`=`Static`
+        /// If `Type`=`Static`, IPv4 netmask for the out-of-band management interface
         /// </summary>
         public readonly string? Netmask;
+        /// <summary>
+        /// If `Type6`=`Static`, IPv6 prefix length for the out-of-band management interface
+        /// </summary>
         public readonly string? Netmask6;
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IPv4 address assignment mode for out-of-band management
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IPv6 address assignment mode for out-of-band management
         /// </summary>
         public readonly string? Type6;
 

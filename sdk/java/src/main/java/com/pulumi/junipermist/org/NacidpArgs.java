@@ -34,14 +34,14 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `ldap`, `mxedgeProxy`, `oauth`
+     * enum: `ldap`, `mxedgeProxy`, `oauth`, `openroaming`
      * 
      */
     @Import(name="idpType", required=true)
     private Output<String> idpType;
 
     /**
-     * @return enum: `ldap`, `mxedgeProxy`, `oauth`
+     * @return enum: `ldap`, `mxedgeProxy`, `oauth`, `openroaming`
      * 
      */
     public Output<String> idpType() {
@@ -94,14 +94,14 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
+     * CA certificates used to validate LDAP or LDAPS server certificates. Required if `idpType`==`ldap`
      * 
      */
     @Import(name="ldapCacerts")
     private @Nullable Output<List<String>> ldapCacerts;
 
     /**
-     * @return Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
+     * @return CA certificates used to validate LDAP or LDAPS server certificates. Required if `idpType`==`ldap`
      * 
      */
     public Optional<Output<List<String>>> ldapCacerts() {
@@ -139,14 +139,14 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `ldapType`==`custom`
+     * Group attribute used to resolve LDAP memberships. If `ldapType`==`custom`
      * 
      */
     @Import(name="ldapGroupAttr")
     private @Nullable Output<String> ldapGroupAttr;
 
     /**
-     * @return If `ldapType`==`custom`
+     * @return Group attribute used to resolve LDAP memberships. If `ldapType`==`custom`
      * 
      */
     public Optional<Output<String>> ldapGroupAttr() {
@@ -154,14 +154,14 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `ldapType`==`custom`
+     * Group search base used for custom LDAP group lookup. If `ldapType`==`custom`
      * 
      */
     @Import(name="ldapGroupDn")
     private @Nullable Output<String> ldapGroupDn;
 
     /**
-     * @return If `ldapType`==`custom`
+     * @return Group search base used for custom LDAP group lookup. If `ldapType`==`custom`
      * 
      */
     public Optional<Output<String>> ldapGroupDn() {
@@ -184,14 +184,14 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+     * Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
      * 
      */
     @Import(name="ldapServerHosts")
     private @Nullable Output<List<String>> ldapServerHosts;
 
     /**
-     * @return If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+     * @return Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
      * 
      */
     public Optional<Output<List<String>>> ldapServerHosts() {
@@ -199,14 +199,14 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
+     * Provider template for LDAP SSO when `idpType`==`ldap`
      * 
      */
     @Import(name="ldapType")
     private @Nullable Output<String> ldapType;
 
     /**
-     * @return if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
+     * @return Provider template for LDAP SSO when `idpType`==`ldap`
      * 
      */
     public Optional<Output<String>> ldapType() {
@@ -244,14 +244,14 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name
+     * Display name of the NAC IDP configuration
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name
+     * @return Display name of the NAC IDP configuration
      * 
      */
     public Optional<Output<String>> name() {
@@ -289,14 +289,14 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `idpType`==`oauth`
+     * OAuth discovery document URL used when `idpType`==`oauth`
      * 
      */
     @Import(name="oauthDiscoveryUrl")
     private @Nullable Output<String> oauthDiscoveryUrl;
 
     /**
-     * @return If `idpType`==`oauth`
+     * @return OAuth discovery document URL used when `idpType`==`oauth`
      * 
      */
     public Optional<Output<String>> oauthDiscoveryUrl() {
@@ -304,14 +304,14 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
      * 
      */
     @Import(name="oauthPingIdentityRegion")
     private @Nullable Output<String> oauthPingIdentityRegion;
 
     /**
-     * @return enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+     * @return Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
      * 
      */
     public Optional<Output<String>> oauthPingIdentityRegion() {
@@ -319,14 +319,14 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
      * 
      */
     @Import(name="oauthProviderDomain")
     private @Nullable Output<String> oauthProviderDomain;
 
     /**
-     * @return If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * @return Provider domain for Okta OAuth SSO when `oauthType`==`okta`
      * 
      */
     public Optional<Output<String>> oauthProviderDomain() {
@@ -379,23 +379,76 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
+     * Provider type for OAuth SSO when `idpType`==`oauth`
      * 
      */
     @Import(name="oauthType")
     private @Nullable Output<String> oauthType;
 
     /**
-     * @return if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
+     * @return Provider type for OAuth SSO when `idpType`==`oauth`
      * 
      */
     public Optional<Output<String>> oauthType() {
         return Optional.ofNullable(this.oauthType);
     }
 
+    /**
+     * SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+     * 
+     */
+    @Import(name="openroamingSsids")
+    private @Nullable Output<List<String>> openroamingSsids;
+
+    /**
+     * @return SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+     * 
+     */
+    public Optional<Output<List<String>>> openroamingSsids() {
+        return Optional.ofNullable(this.openroamingSsids);
+    }
+
+    /**
+     * Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+     * 
+     */
+    @Import(name="openroamingWbaClientCert")
+    private @Nullable Output<String> openroamingWbaClientCert;
+
+    /**
+     * @return Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+     * 
+     */
+    public Optional<Output<String>> openroamingWbaClientCert() {
+        return Optional.ofNullable(this.openroamingWbaClientCert);
+    }
+
+    /**
+     * Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+     * 
+     */
+    @Import(name="openroamingWbaClientKey")
+    private @Nullable Output<String> openroamingWbaClientKey;
+
+    /**
+     * @return Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+     * 
+     */
+    public Optional<Output<String>> openroamingWbaClientKey() {
+        return Optional.ofNullable(this.openroamingWbaClientKey);
+    }
+
+    /**
+     * Owning organization identifier for this NAC IDP configuration
+     * 
+     */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
+    /**
+     * @return Owning organization identifier for this NAC IDP configuration
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
@@ -458,6 +511,9 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         this.oauthRopcClientSecret = $.oauthRopcClientSecret;
         this.oauthTenantId = $.oauthTenantId;
         this.oauthType = $.oauthType;
+        this.openroamingSsids = $.openroamingSsids;
+        this.openroamingWbaClientCert = $.openroamingWbaClientCert;
+        this.openroamingWbaClientKey = $.openroamingWbaClientKey;
         this.orgId = $.orgId;
         this.scimEnabled = $.scimEnabled;
         this.scimSecretToken = $.scimSecretToken;
@@ -503,7 +559,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idpType enum: `ldap`, `mxedgeProxy`, `oauth`
+         * @param idpType enum: `ldap`, `mxedgeProxy`, `oauth`, `openroaming`
          * 
          * @return builder
          * 
@@ -514,7 +570,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idpType enum: `ldap`, `mxedgeProxy`, `oauth`
+         * @param idpType enum: `ldap`, `mxedgeProxy`, `oauth`, `openroaming`
          * 
          * @return builder
          * 
@@ -587,7 +643,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapCacerts Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
+         * @param ldapCacerts CA certificates used to validate LDAP or LDAPS server certificates. Required if `idpType`==`ldap`
          * 
          * @return builder
          * 
@@ -598,7 +654,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapCacerts Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
+         * @param ldapCacerts CA certificates used to validate LDAP or LDAPS server certificates. Required if `idpType`==`ldap`
          * 
          * @return builder
          * 
@@ -608,7 +664,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapCacerts Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
+         * @param ldapCacerts CA certificates used to validate LDAP or LDAPS server certificates. Required if `idpType`==`ldap`
          * 
          * @return builder
          * 
@@ -660,7 +716,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapGroupAttr If `ldapType`==`custom`
+         * @param ldapGroupAttr Group attribute used to resolve LDAP memberships. If `ldapType`==`custom`
          * 
          * @return builder
          * 
@@ -671,7 +727,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapGroupAttr If `ldapType`==`custom`
+         * @param ldapGroupAttr Group attribute used to resolve LDAP memberships. If `ldapType`==`custom`
          * 
          * @return builder
          * 
@@ -681,7 +737,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapGroupDn If `ldapType`==`custom`
+         * @param ldapGroupDn Group search base used for custom LDAP group lookup. If `ldapType`==`custom`
          * 
          * @return builder
          * 
@@ -692,7 +748,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapGroupDn If `ldapType`==`custom`
+         * @param ldapGroupDn Group search base used for custom LDAP group lookup. If `ldapType`==`custom`
          * 
          * @return builder
          * 
@@ -723,7 +779,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapServerHosts If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+         * @param ldapServerHosts Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
          * 
          * @return builder
          * 
@@ -734,7 +790,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapServerHosts If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+         * @param ldapServerHosts Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
          * 
          * @return builder
          * 
@@ -744,7 +800,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapServerHosts If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+         * @param ldapServerHosts Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
          * 
          * @return builder
          * 
@@ -754,7 +810,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapType if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
+         * @param ldapType Provider template for LDAP SSO when `idpType`==`ldap`
          * 
          * @return builder
          * 
@@ -765,7 +821,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ldapType if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
+         * @param ldapType Provider template for LDAP SSO when `idpType`==`ldap`
          * 
          * @return builder
          * 
@@ -817,7 +873,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name
+         * @param name Display name of the NAC IDP configuration
          * 
          * @return builder
          * 
@@ -828,7 +884,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name
+         * @param name Display name of the NAC IDP configuration
          * 
          * @return builder
          * 
@@ -880,7 +936,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthDiscoveryUrl If `idpType`==`oauth`
+         * @param oauthDiscoveryUrl OAuth discovery document URL used when `idpType`==`oauth`
          * 
          * @return builder
          * 
@@ -891,7 +947,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthDiscoveryUrl If `idpType`==`oauth`
+         * @param oauthDiscoveryUrl OAuth discovery document URL used when `idpType`==`oauth`
          * 
          * @return builder
          * 
@@ -901,7 +957,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthPingIdentityRegion enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+         * @param oauthPingIdentityRegion Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
          * 
          * @return builder
          * 
@@ -912,7 +968,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthPingIdentityRegion enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+         * @param oauthPingIdentityRegion Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
          * 
          * @return builder
          * 
@@ -922,7 +978,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthProviderDomain If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+         * @param oauthProviderDomain Provider domain for Okta OAuth SSO when `oauthType`==`okta`
          * 
          * @return builder
          * 
@@ -933,7 +989,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthProviderDomain If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+         * @param oauthProviderDomain Provider domain for Okta OAuth SSO when `oauthType`==`okta`
          * 
          * @return builder
          * 
@@ -1006,7 +1062,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthType if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
+         * @param oauthType Provider type for OAuth SSO when `idpType`==`oauth`
          * 
          * @return builder
          * 
@@ -1017,7 +1073,7 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauthType if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
+         * @param oauthType Provider type for OAuth SSO when `idpType`==`oauth`
          * 
          * @return builder
          * 
@@ -1026,11 +1082,96 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
             return oauthType(Output.of(oauthType));
         }
 
+        /**
+         * @param openroamingSsids SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingSsids(@Nullable Output<List<String>> openroamingSsids) {
+            $.openroamingSsids = openroamingSsids;
+            return this;
+        }
+
+        /**
+         * @param openroamingSsids SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingSsids(List<String> openroamingSsids) {
+            return openroamingSsids(Output.of(openroamingSsids));
+        }
+
+        /**
+         * @param openroamingSsids SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingSsids(String... openroamingSsids) {
+            return openroamingSsids(List.of(openroamingSsids));
+        }
+
+        /**
+         * @param openroamingWbaClientCert Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingWbaClientCert(@Nullable Output<String> openroamingWbaClientCert) {
+            $.openroamingWbaClientCert = openroamingWbaClientCert;
+            return this;
+        }
+
+        /**
+         * @param openroamingWbaClientCert Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingWbaClientCert(String openroamingWbaClientCert) {
+            return openroamingWbaClientCert(Output.of(openroamingWbaClientCert));
+        }
+
+        /**
+         * @param openroamingWbaClientKey Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingWbaClientKey(@Nullable Output<String> openroamingWbaClientKey) {
+            $.openroamingWbaClientKey = openroamingWbaClientKey;
+            return this;
+        }
+
+        /**
+         * @param openroamingWbaClientKey Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openroamingWbaClientKey(String openroamingWbaClientKey) {
+            return openroamingWbaClientKey(Output.of(openroamingWbaClientKey));
+        }
+
+        /**
+         * @param orgId Owning organization identifier for this NAC IDP configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Owning organization identifier for this NAC IDP configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }

@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayTunnelProviderOptionsZscalerSubLocationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether this sub-location blocks internet access until the Acceptable Use Policy is accepted
+        /// </summary>
         [Input("aupBlockInternetUntilAccepted")]
         public Input<bool>? AupBlockInternetUntilAccepted { get; set; }
 

@@ -69,7 +69,7 @@ export class Psk extends pulumi.CustomResource {
     }
 
     /**
-     * email to send psk expiring notifications to
+     * Notification recipient email address for PSK creation notification and expiration reminders
      */
     declare public readonly email: pulumi.Output<string | undefined>;
     /**
@@ -81,10 +81,16 @@ export class Psk extends pulumi.CustomResource {
      */
     declare public readonly expiryNotificationTime: pulumi.Output<number | undefined>;
     /**
-     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
      */
     declare public readonly mac: pulumi.Output<string | undefined>;
+    /**
+     * Display name of the PSK
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Admin note or description stored with the PSK
+     */
     declare public readonly note: pulumi.Output<string | undefined>;
     /**
      * If set to true, reminder notification will be sent when psk is about to expire
@@ -98,21 +104,33 @@ export class Psk extends pulumi.CustomResource {
      * previous passphrase of the PSK if it has been rotated
      */
     declare public readonly oldPassphrase: pulumi.Output<string | undefined>;
+    /**
+     * Organization that owns the site-level PSK
+     */
     declare public /*out*/ readonly orgId: pulumi.Output<string>;
     /**
-     * passphrase of the PSK (8-63 character or 64 in hex)
+     * PSK passphrase, 8-63 characters or 64 hexadecimal characters
      */
     declare public readonly passphrase: pulumi.Output<string>;
+    /**
+     * Client role applied to users authenticated with this PSK
+     */
     declare public readonly role: pulumi.Output<string | undefined>;
+    /**
+     * Site associated with the site-level PSK
+     */
     declare public readonly siteId: pulumi.Output<string>;
     /**
-     * SSID this PSK should be applicable to
+     * WLAN SSID where this PSK can be used
      */
     declare public readonly ssid: pulumi.Output<string>;
     /**
      * enum: `multi`, `single`
      */
     declare public readonly usage: pulumi.Output<string>;
+    /**
+     * VLAN ID returned for clients using this PSK
+     */
     declare public readonly vlanId: pulumi.Output<string | undefined>;
     /**
      * VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
@@ -190,7 +208,7 @@ export class Psk extends pulumi.CustomResource {
  */
 export interface PskState {
     /**
-     * email to send psk expiring notifications to
+     * Notification recipient email address for PSK creation notification and expiration reminders
      */
     email?: pulumi.Input<string | undefined>;
     /**
@@ -202,10 +220,16 @@ export interface PskState {
      */
     expiryNotificationTime?: pulumi.Input<number | undefined>;
     /**
-     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
      */
     mac?: pulumi.Input<string | undefined>;
+    /**
+     * Display name of the PSK
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Admin note or description stored with the PSK
+     */
     note?: pulumi.Input<string | undefined>;
     /**
      * If set to true, reminder notification will be sent when psk is about to expire
@@ -219,21 +243,33 @@ export interface PskState {
      * previous passphrase of the PSK if it has been rotated
      */
     oldPassphrase?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns the site-level PSK
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * passphrase of the PSK (8-63 character or 64 in hex)
+     * PSK passphrase, 8-63 characters or 64 hexadecimal characters
      */
     passphrase?: pulumi.Input<string | undefined>;
+    /**
+     * Client role applied to users authenticated with this PSK
+     */
     role?: pulumi.Input<string | undefined>;
+    /**
+     * Site associated with the site-level PSK
+     */
     siteId?: pulumi.Input<string | undefined>;
     /**
-     * SSID this PSK should be applicable to
+     * WLAN SSID where this PSK can be used
      */
     ssid?: pulumi.Input<string | undefined>;
     /**
      * enum: `multi`, `single`
      */
     usage?: pulumi.Input<string | undefined>;
+    /**
+     * VLAN ID returned for clients using this PSK
+     */
     vlanId?: pulumi.Input<string | undefined>;
     /**
      * VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
@@ -246,7 +282,7 @@ export interface PskState {
  */
 export interface PskArgs {
     /**
-     * email to send psk expiring notifications to
+     * Notification recipient email address for PSK creation notification and expiration reminders
      */
     email?: pulumi.Input<string | undefined>;
     /**
@@ -258,10 +294,16 @@ export interface PskArgs {
      */
     expiryNotificationTime?: pulumi.Input<number | undefined>;
     /**
-     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
      */
     mac?: pulumi.Input<string | undefined>;
+    /**
+     * Display name of the PSK
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Admin note or description stored with the PSK
+     */
     note?: pulumi.Input<string | undefined>;
     /**
      * If set to true, reminder notification will be sent when psk is about to expire
@@ -276,19 +318,28 @@ export interface PskArgs {
      */
     oldPassphrase?: pulumi.Input<string | undefined>;
     /**
-     * passphrase of the PSK (8-63 character or 64 in hex)
+     * PSK passphrase, 8-63 characters or 64 hexadecimal characters
      */
     passphrase: pulumi.Input<string>;
+    /**
+     * Client role applied to users authenticated with this PSK
+     */
     role?: pulumi.Input<string | undefined>;
+    /**
+     * Site associated with the site-level PSK
+     */
     siteId: pulumi.Input<string>;
     /**
-     * SSID this PSK should be applicable to
+     * WLAN SSID where this PSK can be used
      */
     ssid: pulumi.Input<string>;
     /**
      * enum: `multi`, `single`
      */
     usage?: pulumi.Input<string | undefined>;
+    /**
+     * VLAN ID returned for clients using this PSK
+     */
     vlanId?: pulumi.Input<string | undefined>;
     /**
      * VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided

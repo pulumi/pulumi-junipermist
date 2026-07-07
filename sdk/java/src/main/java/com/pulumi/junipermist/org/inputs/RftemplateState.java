@@ -23,36 +23,60 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
 
     public static final RftemplateState Empty = new RftemplateState();
 
+    /**
+     * External antenna gain for the 2.4 GHz radio
+     * 
+     */
     @Import(name="antGain24")
     private @Nullable Output<Integer> antGain24;
 
+    /**
+     * @return External antenna gain for the 2.4 GHz radio
+     * 
+     */
     public Optional<Output<Integer>> antGain24() {
         return Optional.ofNullable(this.antGain24);
     }
 
+    /**
+     * External antenna gain for the 5 GHz radio
+     * 
+     */
     @Import(name="antGain5")
     private @Nullable Output<Integer> antGain5;
 
+    /**
+     * @return External antenna gain for the 5 GHz radio
+     * 
+     */
     public Optional<Output<Integer>> antGain5() {
         return Optional.ofNullable(this.antGain5);
     }
 
+    /**
+     * External antenna gain for the 6 GHz radio
+     * 
+     */
     @Import(name="antGain6")
     private @Nullable Output<Integer> antGain6;
 
+    /**
+     * @return External antenna gain for the 6 GHz radio
+     * 
+     */
     public Optional<Output<Integer>> antGain6() {
         return Optional.ofNullable(this.antGain6);
     }
 
     /**
-     * Radio Band AP settings
+     * 2.4 GHz radio settings in this RF template
      * 
      */
     @Import(name="band24")
     private @Nullable Output<RftemplateBand24Args> band24;
 
     /**
-     * @return Radio Band AP settings
+     * @return 2.4 GHz radio settings in this RF template
      * 
      */
     public Optional<Output<RftemplateBand24Args>> band24() {
@@ -60,14 +84,14 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `24`, `5`, `6`, `auto`
+     * Radio usage mode for the 2.4 GHz-capable radio in this RF template
      * 
      */
     @Import(name="band24Usage")
     private @Nullable Output<String> band24Usage;
 
     /**
-     * @return enum: `24`, `5`, `6`, `auto`
+     * @return Radio usage mode for the 2.4 GHz-capable radio in this RF template
      * 
      */
     public Optional<Output<String>> band24Usage() {
@@ -75,14 +99,14 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radio Band AP settings
+     * 5 GHz radio settings in this RF template
      * 
      */
     @Import(name="band5")
     private @Nullable Output<RftemplateBand5Args> band5;
 
     /**
-     * @return Radio Band AP settings
+     * @return 5 GHz radio settings in this RF template
      * 
      */
     public Optional<Output<RftemplateBand5Args>> band5() {
@@ -90,14 +114,14 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radio Band AP settings
+     * 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      * 
      */
     @Import(name="band5On24Radio")
     private @Nullable Output<RftemplateBand5On24RadioArgs> band5On24Radio;
 
     /**
-     * @return Radio Band AP settings
+     * @return 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      * 
      */
     public Optional<Output<RftemplateBand5On24RadioArgs>> band5On24Radio() {
@@ -105,14 +129,14 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Radio Band AP settings
+     * 6 GHz radio settings in this RF template
      * 
      */
     @Import(name="band6")
     private @Nullable Output<RftemplateBand6Args> band6;
 
     /**
-     * @return Radio Band AP settings
+     * @return 6 GHz radio settings in this RF template
      * 
      */
     public Optional<Output<RftemplateBand6Args>> band6() {
@@ -164,9 +188,17 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Organization that owns this RF template
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization that owns this RF template
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
@@ -222,35 +254,71 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
             $ = new RftemplateState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param antGain24 External antenna gain for the 2.4 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain24(@Nullable Output<Integer> antGain24) {
             $.antGain24 = antGain24;
             return this;
         }
 
+        /**
+         * @param antGain24 External antenna gain for the 2.4 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain24(Integer antGain24) {
             return antGain24(Output.of(antGain24));
         }
 
+        /**
+         * @param antGain5 External antenna gain for the 5 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain5(@Nullable Output<Integer> antGain5) {
             $.antGain5 = antGain5;
             return this;
         }
 
+        /**
+         * @param antGain5 External antenna gain for the 5 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain5(Integer antGain5) {
             return antGain5(Output.of(antGain5));
         }
 
+        /**
+         * @param antGain6 External antenna gain for the 6 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain6(@Nullable Output<Integer> antGain6) {
             $.antGain6 = antGain6;
             return this;
         }
 
+        /**
+         * @param antGain6 External antenna gain for the 6 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain6(Integer antGain6) {
             return antGain6(Output.of(antGain6));
         }
 
         /**
-         * @param band24 Radio Band AP settings
+         * @param band24 2.4 GHz radio settings in this RF template
          * 
          * @return builder
          * 
@@ -261,7 +329,7 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band24 Radio Band AP settings
+         * @param band24 2.4 GHz radio settings in this RF template
          * 
          * @return builder
          * 
@@ -271,7 +339,7 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band24Usage enum: `24`, `5`, `6`, `auto`
+         * @param band24Usage Radio usage mode for the 2.4 GHz-capable radio in this RF template
          * 
          * @return builder
          * 
@@ -282,7 +350,7 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band24Usage enum: `24`, `5`, `6`, `auto`
+         * @param band24Usage Radio usage mode for the 2.4 GHz-capable radio in this RF template
          * 
          * @return builder
          * 
@@ -292,7 +360,7 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band5 Radio Band AP settings
+         * @param band5 5 GHz radio settings in this RF template
          * 
          * @return builder
          * 
@@ -303,7 +371,7 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band5 Radio Band AP settings
+         * @param band5 5 GHz radio settings in this RF template
          * 
          * @return builder
          * 
@@ -313,7 +381,7 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band5On24Radio Radio Band AP settings
+         * @param band5On24Radio 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
          * 
          * @return builder
          * 
@@ -324,7 +392,7 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band5On24Radio Radio Band AP settings
+         * @param band5On24Radio 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
          * 
          * @return builder
          * 
@@ -334,7 +402,7 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band6 Radio Band AP settings
+         * @param band6 6 GHz radio settings in this RF template
          * 
          * @return builder
          * 
@@ -345,7 +413,7 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band6 Radio Band AP settings
+         * @param band6 6 GHz radio settings in this RF template
          * 
          * @return builder
          * 
@@ -417,11 +485,23 @@ public final class RftemplateState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Organization that owns this RF template
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns this RF template
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }

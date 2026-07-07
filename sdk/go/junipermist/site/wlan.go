@@ -70,11 +70,11 @@ type Wlan struct {
 
 	// Enable coa-immediate-update and address-change-immediate-update on the access profile.
 	AcctImmediateUpdate pulumi.BoolOutput `pulumi:"acctImmediateUpdate"`
-	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
 	AcctInterimInterval pulumi.IntOutput `pulumi:"acctInterimInterval"`
-	// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+	// RADIUS accounting servers used by this WLAN
 	AcctServers WlanAcctServerArrayOutput `pulumi:"acctServers"`
-	// Airwatch wlan settings
+	// Integration settings for AirWatch device compliance on this WLAN
 	Airwatch WlanAirwatchOutput `pulumi:"airwatch"`
 	// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp pulumi.BoolOutput `pulumi:"allowIpv6Ndp"`
@@ -82,29 +82,29 @@ type Wlan struct {
 	AllowMdns pulumi.BoolOutput `pulumi:"allowMdns"`
 	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp pulumi.BoolOutput `pulumi:"allowSsdp"`
-	// List of device ids
+	// Access point identifiers used when `applyTo`==`aps`
 	ApIds pulumi.StringArrayOutput `pulumi:"apIds"`
-	// Bandwidth limiting for apps (applies to up/down)
+	// Bandwidth limits for applications on this WLAN
 	AppLimit WlanAppLimitPtrOutput `pulumi:"appLimit"`
-	// APP qos wlan settings
+	// QoS rules for application traffic on this WLAN
 	AppQos WlanAppQosOutput `pulumi:"appQos"`
-	// enum: `aps`, `site`, `wxtags`
+	// Scope that determines where this WLAN is applied
 	ApplyTo pulumi.StringOutput `pulumi:"applyTo"`
 	// Whether to enable smart arp filter
 	ArpFilter pulumi.BoolOutput `pulumi:"arpFilter"`
-	// Authentication wlan settings
+	// Settings that control client authentication for this WLAN
 	Auth WlanAuthPtrOutput `pulumi:"auth"`
-	// When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+	// RADIUS authentication server selection behavior for this WLAN
 	AuthServerSelection pulumi.StringOutput `pulumi:"authServerSelection"`
-	// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+	// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
 	AuthServers WlanAuthServerArrayOutput `pulumi:"authServers"`
 	// Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
 	AuthServersNasId pulumi.StringOutput `pulumi:"authServersNasId"`
 	// Optional, NAS-IP-ADDRESS to use
 	AuthServersNasIp pulumi.StringOutput `pulumi:"authServersNasIp"`
-	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	// RADIUS auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 	AuthServersRetries pulumi.IntPtrOutput `pulumi:"authServersRetries"`
-	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+	// RADIUS auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 	AuthServersTimeout pulumi.IntPtrOutput `pulumi:"authServersTimeout"`
 	// Whether to enable band_steering, this works only when band==both
 	BandSteer pulumi.BoolOutput `pulumi:"bandSteer"`
@@ -114,17 +114,19 @@ type Wlan struct {
 	Bands pulumi.StringArrayOutput `pulumi:"bands"`
 	// Whether to block the clients in the blacklist (up to first 256 macs)
 	BlockBlacklistClients pulumi.BoolPtrOutput `pulumi:"blockBlacklistClients"`
-	// Bonjour gateway wlan settings
+	// Service discovery gateway settings for Bonjour traffic on this WLAN
 	Bonjour WlanBonjourPtrOutput `pulumi:"bonjour"`
-	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa        WlanCiscoCwaOutput  `pulumi:"ciscoCwa"`
+	// Central web authentication settings for Cisco CWA on this WLAN
+	CiscoCwa WlanCiscoCwaOutput `pulumi:"ciscoCwa"`
+	// Downlink bandwidth limit applied per client
 	ClientLimitDown pulumi.StringOutput `pulumi:"clientLimitDown"`
 	// If downlink limiting per-client is enabled
 	ClientLimitDownEnabled pulumi.BoolPtrOutput `pulumi:"clientLimitDownEnabled"`
-	ClientLimitUp          pulumi.StringOutput  `pulumi:"clientLimitUp"`
+	// Uplink bandwidth limit applied per client
+	ClientLimitUp pulumi.StringOutput `pulumi:"clientLimitUp"`
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled pulumi.BoolPtrOutput `pulumi:"clientLimitUpEnabled"`
-	// List of COA (change of authorization) servers, optional
+	// RADIUS Change of Authorization servers available to this WLAN
 	CoaServers WlanCoaServerArrayOutput `pulumi:"coaServers"`
 	// Some old WLAN drivers may not be compatible
 	Disable11ax pulumi.BoolOutput `pulumi:"disable11ax"`
@@ -145,24 +147,20 @@ type Wlan struct {
 	//    * cannot obtain default gateway
 	//    * cannot reach default gateway
 	DisableWhenGatewayUnreachable pulumi.BoolPtrOutput `pulumi:"disableWhenGatewayUnreachable"`
-	DisableWhenMxtunnelDown       pulumi.BoolPtrOutput `pulumi:"disableWhenMxtunnelDown"`
+	// Whether to disable this WLAN when the configured Mist tunnel is down
+	DisableWhenMxtunnelDown pulumi.BoolPtrOutput `pulumi:"disableWhenMxtunnelDown"`
 	// Whether to disable WMM
 	DisableWmm pulumi.BoolOutput `pulumi:"disableWmm"`
-	// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+	// RADIUS group based DNS server rewrite settings for this WLAN
 	DnsServerRewrite WlanDnsServerRewritePtrOutput `pulumi:"dnsServerRewrite"`
-	Dtim             pulumi.IntOutput              `pulumi:"dtim"`
-	// For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-	//   * PSK will come from RADIUS server
-	//   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-	//   * AP sends BSSID:SSID as Caller-Station-ID
-	//   * `authServers` is required
-	//   * PSK will come from cloud WLC if source is cloudPsks
-	//   * defaultPsk will be used if cloud WLC is not available
-	//   * `multiPskOnly` and `psk` is ignored
-	//   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+	// Delivery Traffic Indication Message interval for this WLAN
+	Dtim pulumi.IntOutput `pulumi:"dtim"`
+	// Per-user PSK selection settings for this WLAN
 	DynamicPsk WlanDynamicPskPtrOutput `pulumi:"dynamicPsk"`
-	// For 802.1x
+	// VLAN assignment settings for 802.1X dynamic VLANs
 	DynamicVlan WlanDynamicVlanPtrOutput `pulumi:"dynamicVlan"`
+	// Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+	EnableFtm pulumi.BoolOutput `pulumi:"enableFtm"`
 	// Enable AP-AP keycaching via multicast
 	EnableLocalKeycaching pulumi.BoolPtrOutput `pulumi:"enableLocalKeycaching"`
 	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
@@ -177,10 +175,11 @@ type Wlan struct {
 	HideSsid pulumi.BoolOutput `pulumi:"hideSsid"`
 	// Include hostname inside IE in AP beacons / probe responses
 	HostnameIe pulumi.BoolOutput `pulumi:"hostnameIe"`
-	// Hostspot 2.0 wlan settings
-	Hotspot20          WlanHotspot20PtrOutput          `pulumi:"hotspot20"`
+	// Passpoint and Hotspot 2.0 settings for this WLAN
+	Hotspot20 WlanHotspot20PtrOutput `pulumi:"hotspot20"`
+	// DHCP Option 82 insertion settings for this WLAN
 	InjectDhcpOption82 WlanInjectDhcpOption82PtrOutput `pulumi:"injectDhcpOption82"`
-	// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+	// Network interface or tunnel where this WLAN bridges client traffic
 	Interface pulumi.StringOutput `pulumi:"interface"`
 	// Whether to stop clients to talk to each other
 	Isolation pulumi.BoolPtrOutput `pulumi:"isolation"`
@@ -196,43 +195,48 @@ type Wlan struct {
 	MaxIdletime pulumi.IntOutput `pulumi:"maxIdletime"`
 	// Maximum number of client connected to the SSID. `0` means unlimited
 	MaxNumClients pulumi.IntPtrOutput `pulumi:"maxNumClients"`
-	MistNac       WlanMistNacOutput   `pulumi:"mistNac"`
-	MspId         pulumi.StringOutput `pulumi:"mspId"`
-	// When `interface`=`mxtunnel`, id of the Mist Tunnel
+	// Juniper Mist NAC settings used by this WLAN
+	MistNac WlanMistNacOutput `pulumi:"mistNac"`
+	// Managed service provider identifier associated with this WLAN
+	MspId pulumi.StringOutput `pulumi:"mspId"`
+	// Mist Tunnel identifiers used when `interface`==`mxtunnel`
 	MxtunnelIds pulumi.StringArrayOutput `pulumi:"mxtunnelIds"`
-	// When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	// Mist Tunnel names used when `interface`==`siteMxedge`
 	MxtunnelNames pulumi.StringArrayOutput `pulumi:"mxtunnelNames"`
 	// Whether to only allow client to use DNS that we’ve learned from DHCP response
 	NoStaticDns pulumi.BoolOutput `pulumi:"noStaticDns"`
 	// Whether to only allow client that we’ve learned from DHCP exchange to talk
-	NoStaticIp pulumi.BoolOutput   `pulumi:"noStaticIp"`
-	OrgId      pulumi.StringOutput `pulumi:"orgId"`
-	// Portal wlan settings
+	NoStaticIp pulumi.BoolOutput `pulumi:"noStaticIp"`
+	// Owning organization associated with this WLAN
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// Guest portal settings for this WLAN
 	Portal WlanPortalOutput `pulumi:"portal"`
-	// List of hostnames without http(s):// (matched by substring)
+	// Guest portal hostnames that clients may reach before authorization
 	PortalAllowedHostnames pulumi.StringArrayOutput `pulumi:"portalAllowedHostnames"`
-	// List of CIDRs
+	// Guest portal CIDR subnets that clients may reach before authorization
 	PortalAllowedSubnets pulumi.StringArrayOutput `pulumi:"portalAllowedSubnets"`
 	// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
 	PortalApiSecret pulumi.StringOutput `pulumi:"portalApiSecret"`
-	// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+	// Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
 	PortalDeniedHostnames pulumi.StringArrayOutput `pulumi:"portalDeniedHostnames"`
 	// Url of portal background image
 	PortalImage pulumi.StringOutput `pulumi:"portalImage"`
 	// URL used in the SSO process, auto-generated when auth is set to `sso`
 	PortalSsoUrl pulumi.StringOutput `pulumi:"portalSsoUrl"`
-	Qos          WlanQosOutput       `pulumi:"qos"`
-	// RadSec settings
+	// Quality-of-service settings for WLAN client traffic
+	Qos WlanQosOutput `pulumi:"qos"`
+	// TLS-secured RADIUS transport settings for this WLAN
 	Radsec WlanRadsecOutput `pulumi:"radsec"`
-	// Property key is the RF band. enum: `24`, `5`, `6`
+	// Data rate settings by RF band for this WLAN
 	Rateset WlanRatesetMapOutput `pulumi:"rateset"`
 	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster pulumi.BoolPtrOutput `pulumi:"reconnectClientsWhenRoamingMxcluster"`
-	// enum: `11r`, `OKC`, `NONE`
+	// Fast roaming mode configured for this WLAN
 	RoamMode pulumi.StringPtrOutput `pulumi:"roamMode"`
-	// WLAN operating schedule, default is disabled
-	Schedule WlanScheduleOutput  `pulumi:"schedule"`
-	SiteId   pulumi.StringOutput `pulumi:"siteId"`
+	// Operating schedule controlling when this WLAN is active
+	Schedule WlanScheduleOutput `pulumi:"schedule"`
+	// Mist site associated with this WLAN, when site-scoped
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Whether to exclude this WLAN from SLE metrics
 	SleExcluded pulumi.BoolPtrOutput `pulumi:"sleExcluded"`
 	// Name of the SSID
@@ -240,19 +244,22 @@ type Wlan struct {
 	// If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
 	UseEapolV1 pulumi.BoolOutput `pulumi:"useEapolV1"`
 	// If vlan tagging is enabled
-	VlanEnabled pulumi.BoolOutput      `pulumi:"vlanEnabled"`
-	VlanId      pulumi.StringPtrOutput `pulumi:"vlanId"`
-	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+	VlanEnabled pulumi.BoolOutput `pulumi:"vlanEnabled"`
+	// Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+	VlanId pulumi.StringPtrOutput `pulumi:"vlanId"`
+	// Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
 	VlanIds pulumi.StringArrayOutput `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
-	VlanPooling   pulumi.BoolOutput   `pulumi:"vlanPooling"`
+	VlanPooling pulumi.BoolOutput `pulumi:"vlanPooling"`
+	// Downlink bandwidth limit applied to the whole WLAN
 	WlanLimitDown pulumi.StringOutput `pulumi:"wlanLimitDown"`
 	// If downlink limiting for whole wlan is enabled
 	WlanLimitDownEnabled pulumi.BoolPtrOutput `pulumi:"wlanLimitDownEnabled"`
-	WlanLimitUp          pulumi.StringOutput  `pulumi:"wlanLimitUp"`
+	// Uplink bandwidth limit applied to the whole WLAN
+	WlanLimitUp pulumi.StringOutput `pulumi:"wlanLimitUp"`
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled pulumi.BoolPtrOutput `pulumi:"wlanLimitUpEnabled"`
-	// List of wxtag_ids
+	// Identifiers of WxLAN tags used when `applyTo`==`wxtags`
 	WxtagIds pulumi.StringArrayOutput `pulumi:"wxtagIds"`
 	// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
 	WxtunnelId pulumi.StringOutput `pulumi:"wxtunnelId"`
@@ -298,11 +305,11 @@ func GetWlan(ctx *pulumi.Context,
 type wlanState struct {
 	// Enable coa-immediate-update and address-change-immediate-update on the access profile.
 	AcctImmediateUpdate *bool `pulumi:"acctImmediateUpdate"`
-	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
 	AcctInterimInterval *int `pulumi:"acctInterimInterval"`
-	// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+	// RADIUS accounting servers used by this WLAN
 	AcctServers []WlanAcctServer `pulumi:"acctServers"`
-	// Airwatch wlan settings
+	// Integration settings for AirWatch device compliance on this WLAN
 	Airwatch *WlanAirwatch `pulumi:"airwatch"`
 	// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp *bool `pulumi:"allowIpv6Ndp"`
@@ -310,29 +317,29 @@ type wlanState struct {
 	AllowMdns *bool `pulumi:"allowMdns"`
 	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp *bool `pulumi:"allowSsdp"`
-	// List of device ids
+	// Access point identifiers used when `applyTo`==`aps`
 	ApIds []string `pulumi:"apIds"`
-	// Bandwidth limiting for apps (applies to up/down)
+	// Bandwidth limits for applications on this WLAN
 	AppLimit *WlanAppLimit `pulumi:"appLimit"`
-	// APP qos wlan settings
+	// QoS rules for application traffic on this WLAN
 	AppQos *WlanAppQos `pulumi:"appQos"`
-	// enum: `aps`, `site`, `wxtags`
+	// Scope that determines where this WLAN is applied
 	ApplyTo *string `pulumi:"applyTo"`
 	// Whether to enable smart arp filter
 	ArpFilter *bool `pulumi:"arpFilter"`
-	// Authentication wlan settings
+	// Settings that control client authentication for this WLAN
 	Auth *WlanAuth `pulumi:"auth"`
-	// When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+	// RADIUS authentication server selection behavior for this WLAN
 	AuthServerSelection *string `pulumi:"authServerSelection"`
-	// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+	// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
 	AuthServers []WlanAuthServer `pulumi:"authServers"`
 	// Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
 	AuthServersNasId *string `pulumi:"authServersNasId"`
 	// Optional, NAS-IP-ADDRESS to use
 	AuthServersNasIp *string `pulumi:"authServersNasIp"`
-	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	// RADIUS auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 	AuthServersRetries *int `pulumi:"authServersRetries"`
-	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+	// RADIUS auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 	AuthServersTimeout *int `pulumi:"authServersTimeout"`
 	// Whether to enable band_steering, this works only when band==both
 	BandSteer *bool `pulumi:"bandSteer"`
@@ -342,17 +349,19 @@ type wlanState struct {
 	Bands []string `pulumi:"bands"`
 	// Whether to block the clients in the blacklist (up to first 256 macs)
 	BlockBlacklistClients *bool `pulumi:"blockBlacklistClients"`
-	// Bonjour gateway wlan settings
+	// Service discovery gateway settings for Bonjour traffic on this WLAN
 	Bonjour *WlanBonjour `pulumi:"bonjour"`
-	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa        *WlanCiscoCwa `pulumi:"ciscoCwa"`
-	ClientLimitDown *string       `pulumi:"clientLimitDown"`
+	// Central web authentication settings for Cisco CWA on this WLAN
+	CiscoCwa *WlanCiscoCwa `pulumi:"ciscoCwa"`
+	// Downlink bandwidth limit applied per client
+	ClientLimitDown *string `pulumi:"clientLimitDown"`
 	// If downlink limiting per-client is enabled
-	ClientLimitDownEnabled *bool   `pulumi:"clientLimitDownEnabled"`
-	ClientLimitUp          *string `pulumi:"clientLimitUp"`
+	ClientLimitDownEnabled *bool `pulumi:"clientLimitDownEnabled"`
+	// Uplink bandwidth limit applied per client
+	ClientLimitUp *string `pulumi:"clientLimitUp"`
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled *bool `pulumi:"clientLimitUpEnabled"`
-	// List of COA (change of authorization) servers, optional
+	// RADIUS Change of Authorization servers available to this WLAN
 	CoaServers []WlanCoaServer `pulumi:"coaServers"`
 	// Some old WLAN drivers may not be compatible
 	Disable11ax *bool `pulumi:"disable11ax"`
@@ -373,24 +382,20 @@ type wlanState struct {
 	//    * cannot obtain default gateway
 	//    * cannot reach default gateway
 	DisableWhenGatewayUnreachable *bool `pulumi:"disableWhenGatewayUnreachable"`
-	DisableWhenMxtunnelDown       *bool `pulumi:"disableWhenMxtunnelDown"`
+	// Whether to disable this WLAN when the configured Mist tunnel is down
+	DisableWhenMxtunnelDown *bool `pulumi:"disableWhenMxtunnelDown"`
 	// Whether to disable WMM
 	DisableWmm *bool `pulumi:"disableWmm"`
-	// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+	// RADIUS group based DNS server rewrite settings for this WLAN
 	DnsServerRewrite *WlanDnsServerRewrite `pulumi:"dnsServerRewrite"`
-	Dtim             *int                  `pulumi:"dtim"`
-	// For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-	//   * PSK will come from RADIUS server
-	//   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-	//   * AP sends BSSID:SSID as Caller-Station-ID
-	//   * `authServers` is required
-	//   * PSK will come from cloud WLC if source is cloudPsks
-	//   * defaultPsk will be used if cloud WLC is not available
-	//   * `multiPskOnly` and `psk` is ignored
-	//   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+	// Delivery Traffic Indication Message interval for this WLAN
+	Dtim *int `pulumi:"dtim"`
+	// Per-user PSK selection settings for this WLAN
 	DynamicPsk *WlanDynamicPsk `pulumi:"dynamicPsk"`
-	// For 802.1x
+	// VLAN assignment settings for 802.1X dynamic VLANs
 	DynamicVlan *WlanDynamicVlan `pulumi:"dynamicVlan"`
+	// Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+	EnableFtm *bool `pulumi:"enableFtm"`
 	// Enable AP-AP keycaching via multicast
 	EnableLocalKeycaching *bool `pulumi:"enableLocalKeycaching"`
 	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
@@ -405,10 +410,11 @@ type wlanState struct {
 	HideSsid *bool `pulumi:"hideSsid"`
 	// Include hostname inside IE in AP beacons / probe responses
 	HostnameIe *bool `pulumi:"hostnameIe"`
-	// Hostspot 2.0 wlan settings
-	Hotspot20          *WlanHotspot20          `pulumi:"hotspot20"`
+	// Passpoint and Hotspot 2.0 settings for this WLAN
+	Hotspot20 *WlanHotspot20 `pulumi:"hotspot20"`
+	// DHCP Option 82 insertion settings for this WLAN
 	InjectDhcpOption82 *WlanInjectDhcpOption82 `pulumi:"injectDhcpOption82"`
-	// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+	// Network interface or tunnel where this WLAN bridges client traffic
 	Interface *string `pulumi:"interface"`
 	// Whether to stop clients to talk to each other
 	Isolation *bool `pulumi:"isolation"`
@@ -423,44 +429,49 @@ type wlanState struct {
 	// Max idle time in seconds
 	MaxIdletime *int `pulumi:"maxIdletime"`
 	// Maximum number of client connected to the SSID. `0` means unlimited
-	MaxNumClients *int         `pulumi:"maxNumClients"`
-	MistNac       *WlanMistNac `pulumi:"mistNac"`
-	MspId         *string      `pulumi:"mspId"`
-	// When `interface`=`mxtunnel`, id of the Mist Tunnel
+	MaxNumClients *int `pulumi:"maxNumClients"`
+	// Juniper Mist NAC settings used by this WLAN
+	MistNac *WlanMistNac `pulumi:"mistNac"`
+	// Managed service provider identifier associated with this WLAN
+	MspId *string `pulumi:"mspId"`
+	// Mist Tunnel identifiers used when `interface`==`mxtunnel`
 	MxtunnelIds []string `pulumi:"mxtunnelIds"`
-	// When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	// Mist Tunnel names used when `interface`==`siteMxedge`
 	MxtunnelNames []string `pulumi:"mxtunnelNames"`
 	// Whether to only allow client to use DNS that we’ve learned from DHCP response
 	NoStaticDns *bool `pulumi:"noStaticDns"`
 	// Whether to only allow client that we’ve learned from DHCP exchange to talk
-	NoStaticIp *bool   `pulumi:"noStaticIp"`
-	OrgId      *string `pulumi:"orgId"`
-	// Portal wlan settings
+	NoStaticIp *bool `pulumi:"noStaticIp"`
+	// Owning organization associated with this WLAN
+	OrgId *string `pulumi:"orgId"`
+	// Guest portal settings for this WLAN
 	Portal *WlanPortal `pulumi:"portal"`
-	// List of hostnames without http(s):// (matched by substring)
+	// Guest portal hostnames that clients may reach before authorization
 	PortalAllowedHostnames []string `pulumi:"portalAllowedHostnames"`
-	// List of CIDRs
+	// Guest portal CIDR subnets that clients may reach before authorization
 	PortalAllowedSubnets []string `pulumi:"portalAllowedSubnets"`
 	// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
 	PortalApiSecret *string `pulumi:"portalApiSecret"`
-	// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+	// Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
 	PortalDeniedHostnames []string `pulumi:"portalDeniedHostnames"`
 	// Url of portal background image
 	PortalImage *string `pulumi:"portalImage"`
 	// URL used in the SSO process, auto-generated when auth is set to `sso`
-	PortalSsoUrl *string  `pulumi:"portalSsoUrl"`
-	Qos          *WlanQos `pulumi:"qos"`
-	// RadSec settings
+	PortalSsoUrl *string `pulumi:"portalSsoUrl"`
+	// Quality-of-service settings for WLAN client traffic
+	Qos *WlanQos `pulumi:"qos"`
+	// TLS-secured RADIUS transport settings for this WLAN
 	Radsec *WlanRadsec `pulumi:"radsec"`
-	// Property key is the RF band. enum: `24`, `5`, `6`
+	// Data rate settings by RF band for this WLAN
 	Rateset map[string]WlanRateset `pulumi:"rateset"`
 	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster *bool `pulumi:"reconnectClientsWhenRoamingMxcluster"`
-	// enum: `11r`, `OKC`, `NONE`
+	// Fast roaming mode configured for this WLAN
 	RoamMode *string `pulumi:"roamMode"`
-	// WLAN operating schedule, default is disabled
+	// Operating schedule controlling when this WLAN is active
 	Schedule *WlanSchedule `pulumi:"schedule"`
-	SiteId   *string       `pulumi:"siteId"`
+	// Mist site associated with this WLAN, when site-scoped
+	SiteId *string `pulumi:"siteId"`
 	// Whether to exclude this WLAN from SLE metrics
 	SleExcluded *bool `pulumi:"sleExcluded"`
 	// Name of the SSID
@@ -468,19 +479,22 @@ type wlanState struct {
 	// If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
 	UseEapolV1 *bool `pulumi:"useEapolV1"`
 	// If vlan tagging is enabled
-	VlanEnabled *bool   `pulumi:"vlanEnabled"`
-	VlanId      *string `pulumi:"vlanId"`
-	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+	VlanEnabled *bool `pulumi:"vlanEnabled"`
+	// Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+	VlanId *string `pulumi:"vlanId"`
+	// Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
 	VlanIds []string `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
-	VlanPooling   *bool   `pulumi:"vlanPooling"`
+	VlanPooling *bool `pulumi:"vlanPooling"`
+	// Downlink bandwidth limit applied to the whole WLAN
 	WlanLimitDown *string `pulumi:"wlanLimitDown"`
 	// If downlink limiting for whole wlan is enabled
-	WlanLimitDownEnabled *bool   `pulumi:"wlanLimitDownEnabled"`
-	WlanLimitUp          *string `pulumi:"wlanLimitUp"`
+	WlanLimitDownEnabled *bool `pulumi:"wlanLimitDownEnabled"`
+	// Uplink bandwidth limit applied to the whole WLAN
+	WlanLimitUp *string `pulumi:"wlanLimitUp"`
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled *bool `pulumi:"wlanLimitUpEnabled"`
-	// List of wxtag_ids
+	// Identifiers of WxLAN tags used when `applyTo`==`wxtags`
 	WxtagIds []string `pulumi:"wxtagIds"`
 	// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
 	WxtunnelId *string `pulumi:"wxtunnelId"`
@@ -491,11 +505,11 @@ type wlanState struct {
 type WlanState struct {
 	// Enable coa-immediate-update and address-change-immediate-update on the access profile.
 	AcctImmediateUpdate pulumi.BoolPtrInput
-	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
 	AcctInterimInterval pulumi.IntPtrInput
-	// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+	// RADIUS accounting servers used by this WLAN
 	AcctServers WlanAcctServerArrayInput
-	// Airwatch wlan settings
+	// Integration settings for AirWatch device compliance on this WLAN
 	Airwatch WlanAirwatchPtrInput
 	// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp pulumi.BoolPtrInput
@@ -503,29 +517,29 @@ type WlanState struct {
 	AllowMdns pulumi.BoolPtrInput
 	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp pulumi.BoolPtrInput
-	// List of device ids
+	// Access point identifiers used when `applyTo`==`aps`
 	ApIds pulumi.StringArrayInput
-	// Bandwidth limiting for apps (applies to up/down)
+	// Bandwidth limits for applications on this WLAN
 	AppLimit WlanAppLimitPtrInput
-	// APP qos wlan settings
+	// QoS rules for application traffic on this WLAN
 	AppQos WlanAppQosPtrInput
-	// enum: `aps`, `site`, `wxtags`
+	// Scope that determines where this WLAN is applied
 	ApplyTo pulumi.StringPtrInput
 	// Whether to enable smart arp filter
 	ArpFilter pulumi.BoolPtrInput
-	// Authentication wlan settings
+	// Settings that control client authentication for this WLAN
 	Auth WlanAuthPtrInput
-	// When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+	// RADIUS authentication server selection behavior for this WLAN
 	AuthServerSelection pulumi.StringPtrInput
-	// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+	// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
 	AuthServers WlanAuthServerArrayInput
 	// Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
 	AuthServersNasId pulumi.StringPtrInput
 	// Optional, NAS-IP-ADDRESS to use
 	AuthServersNasIp pulumi.StringPtrInput
-	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	// RADIUS auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 	AuthServersRetries pulumi.IntPtrInput
-	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+	// RADIUS auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 	AuthServersTimeout pulumi.IntPtrInput
 	// Whether to enable band_steering, this works only when band==both
 	BandSteer pulumi.BoolPtrInput
@@ -535,17 +549,19 @@ type WlanState struct {
 	Bands pulumi.StringArrayInput
 	// Whether to block the clients in the blacklist (up to first 256 macs)
 	BlockBlacklistClients pulumi.BoolPtrInput
-	// Bonjour gateway wlan settings
+	// Service discovery gateway settings for Bonjour traffic on this WLAN
 	Bonjour WlanBonjourPtrInput
-	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa        WlanCiscoCwaPtrInput
+	// Central web authentication settings for Cisco CWA on this WLAN
+	CiscoCwa WlanCiscoCwaPtrInput
+	// Downlink bandwidth limit applied per client
 	ClientLimitDown pulumi.StringPtrInput
 	// If downlink limiting per-client is enabled
 	ClientLimitDownEnabled pulumi.BoolPtrInput
-	ClientLimitUp          pulumi.StringPtrInput
+	// Uplink bandwidth limit applied per client
+	ClientLimitUp pulumi.StringPtrInput
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled pulumi.BoolPtrInput
-	// List of COA (change of authorization) servers, optional
+	// RADIUS Change of Authorization servers available to this WLAN
 	CoaServers WlanCoaServerArrayInput
 	// Some old WLAN drivers may not be compatible
 	Disable11ax pulumi.BoolPtrInput
@@ -566,24 +582,20 @@ type WlanState struct {
 	//    * cannot obtain default gateway
 	//    * cannot reach default gateway
 	DisableWhenGatewayUnreachable pulumi.BoolPtrInput
-	DisableWhenMxtunnelDown       pulumi.BoolPtrInput
+	// Whether to disable this WLAN when the configured Mist tunnel is down
+	DisableWhenMxtunnelDown pulumi.BoolPtrInput
 	// Whether to disable WMM
 	DisableWmm pulumi.BoolPtrInput
-	// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+	// RADIUS group based DNS server rewrite settings for this WLAN
 	DnsServerRewrite WlanDnsServerRewritePtrInput
-	Dtim             pulumi.IntPtrInput
-	// For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-	//   * PSK will come from RADIUS server
-	//   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-	//   * AP sends BSSID:SSID as Caller-Station-ID
-	//   * `authServers` is required
-	//   * PSK will come from cloud WLC if source is cloudPsks
-	//   * defaultPsk will be used if cloud WLC is not available
-	//   * `multiPskOnly` and `psk` is ignored
-	//   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+	// Delivery Traffic Indication Message interval for this WLAN
+	Dtim pulumi.IntPtrInput
+	// Per-user PSK selection settings for this WLAN
 	DynamicPsk WlanDynamicPskPtrInput
-	// For 802.1x
+	// VLAN assignment settings for 802.1X dynamic VLANs
 	DynamicVlan WlanDynamicVlanPtrInput
+	// Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+	EnableFtm pulumi.BoolPtrInput
 	// Enable AP-AP keycaching via multicast
 	EnableLocalKeycaching pulumi.BoolPtrInput
 	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
@@ -598,10 +610,11 @@ type WlanState struct {
 	HideSsid pulumi.BoolPtrInput
 	// Include hostname inside IE in AP beacons / probe responses
 	HostnameIe pulumi.BoolPtrInput
-	// Hostspot 2.0 wlan settings
-	Hotspot20          WlanHotspot20PtrInput
+	// Passpoint and Hotspot 2.0 settings for this WLAN
+	Hotspot20 WlanHotspot20PtrInput
+	// DHCP Option 82 insertion settings for this WLAN
 	InjectDhcpOption82 WlanInjectDhcpOption82PtrInput
-	// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+	// Network interface or tunnel where this WLAN bridges client traffic
 	Interface pulumi.StringPtrInput
 	// Whether to stop clients to talk to each other
 	Isolation pulumi.BoolPtrInput
@@ -617,43 +630,48 @@ type WlanState struct {
 	MaxIdletime pulumi.IntPtrInput
 	// Maximum number of client connected to the SSID. `0` means unlimited
 	MaxNumClients pulumi.IntPtrInput
-	MistNac       WlanMistNacPtrInput
-	MspId         pulumi.StringPtrInput
-	// When `interface`=`mxtunnel`, id of the Mist Tunnel
+	// Juniper Mist NAC settings used by this WLAN
+	MistNac WlanMistNacPtrInput
+	// Managed service provider identifier associated with this WLAN
+	MspId pulumi.StringPtrInput
+	// Mist Tunnel identifiers used when `interface`==`mxtunnel`
 	MxtunnelIds pulumi.StringArrayInput
-	// When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	// Mist Tunnel names used when `interface`==`siteMxedge`
 	MxtunnelNames pulumi.StringArrayInput
 	// Whether to only allow client to use DNS that we’ve learned from DHCP response
 	NoStaticDns pulumi.BoolPtrInput
 	// Whether to only allow client that we’ve learned from DHCP exchange to talk
 	NoStaticIp pulumi.BoolPtrInput
-	OrgId      pulumi.StringPtrInput
-	// Portal wlan settings
+	// Owning organization associated with this WLAN
+	OrgId pulumi.StringPtrInput
+	// Guest portal settings for this WLAN
 	Portal WlanPortalPtrInput
-	// List of hostnames without http(s):// (matched by substring)
+	// Guest portal hostnames that clients may reach before authorization
 	PortalAllowedHostnames pulumi.StringArrayInput
-	// List of CIDRs
+	// Guest portal CIDR subnets that clients may reach before authorization
 	PortalAllowedSubnets pulumi.StringArrayInput
 	// API secret (auto-generated) that can be used to sign guest authorization requests, only generated when auth is set to `external`
 	PortalApiSecret pulumi.StringPtrInput
-	// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+	// Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
 	PortalDeniedHostnames pulumi.StringArrayInput
 	// Url of portal background image
 	PortalImage pulumi.StringPtrInput
 	// URL used in the SSO process, auto-generated when auth is set to `sso`
 	PortalSsoUrl pulumi.StringPtrInput
-	Qos          WlanQosPtrInput
-	// RadSec settings
+	// Quality-of-service settings for WLAN client traffic
+	Qos WlanQosPtrInput
+	// TLS-secured RADIUS transport settings for this WLAN
 	Radsec WlanRadsecPtrInput
-	// Property key is the RF band. enum: `24`, `5`, `6`
+	// Data rate settings by RF band for this WLAN
 	Rateset WlanRatesetMapInput
 	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster pulumi.BoolPtrInput
-	// enum: `11r`, `OKC`, `NONE`
+	// Fast roaming mode configured for this WLAN
 	RoamMode pulumi.StringPtrInput
-	// WLAN operating schedule, default is disabled
+	// Operating schedule controlling when this WLAN is active
 	Schedule WlanSchedulePtrInput
-	SiteId   pulumi.StringPtrInput
+	// Mist site associated with this WLAN, when site-scoped
+	SiteId pulumi.StringPtrInput
 	// Whether to exclude this WLAN from SLE metrics
 	SleExcluded pulumi.BoolPtrInput
 	// Name of the SSID
@@ -662,18 +680,21 @@ type WlanState struct {
 	UseEapolV1 pulumi.BoolPtrInput
 	// If vlan tagging is enabled
 	VlanEnabled pulumi.BoolPtrInput
-	VlanId      pulumi.StringPtrInput
-	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+	// Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+	VlanId pulumi.StringPtrInput
+	// Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
 	VlanIds pulumi.StringArrayInput
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
-	VlanPooling   pulumi.BoolPtrInput
+	VlanPooling pulumi.BoolPtrInput
+	// Downlink bandwidth limit applied to the whole WLAN
 	WlanLimitDown pulumi.StringPtrInput
 	// If downlink limiting for whole wlan is enabled
 	WlanLimitDownEnabled pulumi.BoolPtrInput
-	WlanLimitUp          pulumi.StringPtrInput
+	// Uplink bandwidth limit applied to the whole WLAN
+	WlanLimitUp pulumi.StringPtrInput
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled pulumi.BoolPtrInput
-	// List of wxtag_ids
+	// Identifiers of WxLAN tags used when `applyTo`==`wxtags`
 	WxtagIds pulumi.StringArrayInput
 	// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
 	WxtunnelId pulumi.StringPtrInput
@@ -688,11 +709,11 @@ func (WlanState) ElementType() reflect.Type {
 type wlanArgs struct {
 	// Enable coa-immediate-update and address-change-immediate-update on the access profile.
 	AcctImmediateUpdate *bool `pulumi:"acctImmediateUpdate"`
-	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
 	AcctInterimInterval *int `pulumi:"acctInterimInterval"`
-	// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+	// RADIUS accounting servers used by this WLAN
 	AcctServers []WlanAcctServer `pulumi:"acctServers"`
-	// Airwatch wlan settings
+	// Integration settings for AirWatch device compliance on this WLAN
 	Airwatch *WlanAirwatch `pulumi:"airwatch"`
 	// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp *bool `pulumi:"allowIpv6Ndp"`
@@ -700,29 +721,29 @@ type wlanArgs struct {
 	AllowMdns *bool `pulumi:"allowMdns"`
 	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp *bool `pulumi:"allowSsdp"`
-	// List of device ids
+	// Access point identifiers used when `applyTo`==`aps`
 	ApIds []string `pulumi:"apIds"`
-	// Bandwidth limiting for apps (applies to up/down)
+	// Bandwidth limits for applications on this WLAN
 	AppLimit *WlanAppLimit `pulumi:"appLimit"`
-	// APP qos wlan settings
+	// QoS rules for application traffic on this WLAN
 	AppQos *WlanAppQos `pulumi:"appQos"`
-	// enum: `aps`, `site`, `wxtags`
+	// Scope that determines where this WLAN is applied
 	ApplyTo *string `pulumi:"applyTo"`
 	// Whether to enable smart arp filter
 	ArpFilter *bool `pulumi:"arpFilter"`
-	// Authentication wlan settings
+	// Settings that control client authentication for this WLAN
 	Auth *WlanAuth `pulumi:"auth"`
-	// When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+	// RADIUS authentication server selection behavior for this WLAN
 	AuthServerSelection *string `pulumi:"authServerSelection"`
-	// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+	// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
 	AuthServers []WlanAuthServer `pulumi:"authServers"`
 	// Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
 	AuthServersNasId *string `pulumi:"authServersNasId"`
 	// Optional, NAS-IP-ADDRESS to use
 	AuthServersNasIp *string `pulumi:"authServersNasIp"`
-	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	// RADIUS auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 	AuthServersRetries *int `pulumi:"authServersRetries"`
-	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+	// RADIUS auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 	AuthServersTimeout *int `pulumi:"authServersTimeout"`
 	// Whether to enable band_steering, this works only when band==both
 	BandSteer *bool `pulumi:"bandSteer"`
@@ -732,17 +753,19 @@ type wlanArgs struct {
 	Bands []string `pulumi:"bands"`
 	// Whether to block the clients in the blacklist (up to first 256 macs)
 	BlockBlacklistClients *bool `pulumi:"blockBlacklistClients"`
-	// Bonjour gateway wlan settings
+	// Service discovery gateway settings for Bonjour traffic on this WLAN
 	Bonjour *WlanBonjour `pulumi:"bonjour"`
-	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa        *WlanCiscoCwa `pulumi:"ciscoCwa"`
-	ClientLimitDown *string       `pulumi:"clientLimitDown"`
+	// Central web authentication settings for Cisco CWA on this WLAN
+	CiscoCwa *WlanCiscoCwa `pulumi:"ciscoCwa"`
+	// Downlink bandwidth limit applied per client
+	ClientLimitDown *string `pulumi:"clientLimitDown"`
 	// If downlink limiting per-client is enabled
-	ClientLimitDownEnabled *bool   `pulumi:"clientLimitDownEnabled"`
-	ClientLimitUp          *string `pulumi:"clientLimitUp"`
+	ClientLimitDownEnabled *bool `pulumi:"clientLimitDownEnabled"`
+	// Uplink bandwidth limit applied per client
+	ClientLimitUp *string `pulumi:"clientLimitUp"`
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled *bool `pulumi:"clientLimitUpEnabled"`
-	// List of COA (change of authorization) servers, optional
+	// RADIUS Change of Authorization servers available to this WLAN
 	CoaServers []WlanCoaServer `pulumi:"coaServers"`
 	// Some old WLAN drivers may not be compatible
 	Disable11ax *bool `pulumi:"disable11ax"`
@@ -763,24 +786,20 @@ type wlanArgs struct {
 	//    * cannot obtain default gateway
 	//    * cannot reach default gateway
 	DisableWhenGatewayUnreachable *bool `pulumi:"disableWhenGatewayUnreachable"`
-	DisableWhenMxtunnelDown       *bool `pulumi:"disableWhenMxtunnelDown"`
+	// Whether to disable this WLAN when the configured Mist tunnel is down
+	DisableWhenMxtunnelDown *bool `pulumi:"disableWhenMxtunnelDown"`
 	// Whether to disable WMM
 	DisableWmm *bool `pulumi:"disableWmm"`
-	// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+	// RADIUS group based DNS server rewrite settings for this WLAN
 	DnsServerRewrite *WlanDnsServerRewrite `pulumi:"dnsServerRewrite"`
-	Dtim             *int                  `pulumi:"dtim"`
-	// For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-	//   * PSK will come from RADIUS server
-	//   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-	//   * AP sends BSSID:SSID as Caller-Station-ID
-	//   * `authServers` is required
-	//   * PSK will come from cloud WLC if source is cloudPsks
-	//   * defaultPsk will be used if cloud WLC is not available
-	//   * `multiPskOnly` and `psk` is ignored
-	//   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+	// Delivery Traffic Indication Message interval for this WLAN
+	Dtim *int `pulumi:"dtim"`
+	// Per-user PSK selection settings for this WLAN
 	DynamicPsk *WlanDynamicPsk `pulumi:"dynamicPsk"`
-	// For 802.1x
+	// VLAN assignment settings for 802.1X dynamic VLANs
 	DynamicVlan *WlanDynamicVlan `pulumi:"dynamicVlan"`
+	// Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+	EnableFtm *bool `pulumi:"enableFtm"`
 	// Enable AP-AP keycaching via multicast
 	EnableLocalKeycaching *bool `pulumi:"enableLocalKeycaching"`
 	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
@@ -795,10 +814,11 @@ type wlanArgs struct {
 	HideSsid *bool `pulumi:"hideSsid"`
 	// Include hostname inside IE in AP beacons / probe responses
 	HostnameIe *bool `pulumi:"hostnameIe"`
-	// Hostspot 2.0 wlan settings
-	Hotspot20          *WlanHotspot20          `pulumi:"hotspot20"`
+	// Passpoint and Hotspot 2.0 settings for this WLAN
+	Hotspot20 *WlanHotspot20 `pulumi:"hotspot20"`
+	// DHCP Option 82 insertion settings for this WLAN
 	InjectDhcpOption82 *WlanInjectDhcpOption82 `pulumi:"injectDhcpOption82"`
-	// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+	// Network interface or tunnel where this WLAN bridges client traffic
 	Interface *string `pulumi:"interface"`
 	// Whether to stop clients to talk to each other
 	Isolation *bool `pulumi:"isolation"`
@@ -813,36 +833,39 @@ type wlanArgs struct {
 	// Max idle time in seconds
 	MaxIdletime *int `pulumi:"maxIdletime"`
 	// Maximum number of client connected to the SSID. `0` means unlimited
-	MaxNumClients *int         `pulumi:"maxNumClients"`
-	MistNac       *WlanMistNac `pulumi:"mistNac"`
-	// When `interface`=`mxtunnel`, id of the Mist Tunnel
+	MaxNumClients *int `pulumi:"maxNumClients"`
+	// Juniper Mist NAC settings used by this WLAN
+	MistNac *WlanMistNac `pulumi:"mistNac"`
+	// Mist Tunnel identifiers used when `interface`==`mxtunnel`
 	MxtunnelIds []string `pulumi:"mxtunnelIds"`
-	// When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	// Mist Tunnel names used when `interface`==`siteMxedge`
 	MxtunnelNames []string `pulumi:"mxtunnelNames"`
 	// Whether to only allow client to use DNS that we’ve learned from DHCP response
 	NoStaticDns *bool `pulumi:"noStaticDns"`
 	// Whether to only allow client that we’ve learned from DHCP exchange to talk
 	NoStaticIp *bool `pulumi:"noStaticIp"`
-	// Portal wlan settings
+	// Guest portal settings for this WLAN
 	Portal *WlanPortal `pulumi:"portal"`
-	// List of hostnames without http(s):// (matched by substring)
+	// Guest portal hostnames that clients may reach before authorization
 	PortalAllowedHostnames []string `pulumi:"portalAllowedHostnames"`
-	// List of CIDRs
+	// Guest portal CIDR subnets that clients may reach before authorization
 	PortalAllowedSubnets []string `pulumi:"portalAllowedSubnets"`
-	// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+	// Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
 	PortalDeniedHostnames []string `pulumi:"portalDeniedHostnames"`
-	Qos                   *WlanQos `pulumi:"qos"`
-	// RadSec settings
+	// Quality-of-service settings for WLAN client traffic
+	Qos *WlanQos `pulumi:"qos"`
+	// TLS-secured RADIUS transport settings for this WLAN
 	Radsec *WlanRadsec `pulumi:"radsec"`
-	// Property key is the RF band. enum: `24`, `5`, `6`
+	// Data rate settings by RF band for this WLAN
 	Rateset map[string]WlanRateset `pulumi:"rateset"`
 	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster *bool `pulumi:"reconnectClientsWhenRoamingMxcluster"`
-	// enum: `11r`, `OKC`, `NONE`
+	// Fast roaming mode configured for this WLAN
 	RoamMode *string `pulumi:"roamMode"`
-	// WLAN operating schedule, default is disabled
+	// Operating schedule controlling when this WLAN is active
 	Schedule *WlanSchedule `pulumi:"schedule"`
-	SiteId   string        `pulumi:"siteId"`
+	// Mist site associated with this WLAN, when site-scoped
+	SiteId string `pulumi:"siteId"`
 	// Whether to exclude this WLAN from SLE metrics
 	SleExcluded *bool `pulumi:"sleExcluded"`
 	// Name of the SSID
@@ -850,19 +873,22 @@ type wlanArgs struct {
 	// If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
 	UseEapolV1 *bool `pulumi:"useEapolV1"`
 	// If vlan tagging is enabled
-	VlanEnabled *bool   `pulumi:"vlanEnabled"`
-	VlanId      *string `pulumi:"vlanId"`
-	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+	VlanEnabled *bool `pulumi:"vlanEnabled"`
+	// Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+	VlanId *string `pulumi:"vlanId"`
+	// Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
 	VlanIds []string `pulumi:"vlanIds"`
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
-	VlanPooling   *bool   `pulumi:"vlanPooling"`
+	VlanPooling *bool `pulumi:"vlanPooling"`
+	// Downlink bandwidth limit applied to the whole WLAN
 	WlanLimitDown *string `pulumi:"wlanLimitDown"`
 	// If downlink limiting for whole wlan is enabled
-	WlanLimitDownEnabled *bool   `pulumi:"wlanLimitDownEnabled"`
-	WlanLimitUp          *string `pulumi:"wlanLimitUp"`
+	WlanLimitDownEnabled *bool `pulumi:"wlanLimitDownEnabled"`
+	// Uplink bandwidth limit applied to the whole WLAN
+	WlanLimitUp *string `pulumi:"wlanLimitUp"`
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled *bool `pulumi:"wlanLimitUpEnabled"`
-	// List of wxtag_ids
+	// Identifiers of WxLAN tags used when `applyTo`==`wxtags`
 	WxtagIds []string `pulumi:"wxtagIds"`
 	// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
 	WxtunnelId *string `pulumi:"wxtunnelId"`
@@ -874,11 +900,11 @@ type wlanArgs struct {
 type WlanArgs struct {
 	// Enable coa-immediate-update and address-change-immediate-update on the access profile.
 	AcctImmediateUpdate pulumi.BoolPtrInput
-	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
 	AcctInterimInterval pulumi.IntPtrInput
-	// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+	// RADIUS accounting servers used by this WLAN
 	AcctServers WlanAcctServerArrayInput
-	// Airwatch wlan settings
+	// Integration settings for AirWatch device compliance on this WLAN
 	Airwatch WlanAirwatchPtrInput
 	// Only applicable when `limitBcast`==`true`, which allows or disallows ipv6 Neighbor Discovery packets to go through
 	AllowIpv6Ndp pulumi.BoolPtrInput
@@ -886,29 +912,29 @@ type WlanArgs struct {
 	AllowMdns pulumi.BoolPtrInput
 	// Only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp pulumi.BoolPtrInput
-	// List of device ids
+	// Access point identifiers used when `applyTo`==`aps`
 	ApIds pulumi.StringArrayInput
-	// Bandwidth limiting for apps (applies to up/down)
+	// Bandwidth limits for applications on this WLAN
 	AppLimit WlanAppLimitPtrInput
-	// APP qos wlan settings
+	// QoS rules for application traffic on this WLAN
 	AppQos WlanAppQosPtrInput
-	// enum: `aps`, `site`, `wxtags`
+	// Scope that determines where this WLAN is applied
 	ApplyTo pulumi.StringPtrInput
 	// Whether to enable smart arp filter
 	ArpFilter pulumi.BoolPtrInput
-	// Authentication wlan settings
+	// Settings that control client authentication for this WLAN
 	Auth WlanAuthPtrInput
-	// When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+	// RADIUS authentication server selection behavior for this WLAN
 	AuthServerSelection pulumi.StringPtrInput
-	// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+	// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
 	AuthServers WlanAuthServerArrayInput
 	// Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
 	AuthServersNasId pulumi.StringPtrInput
 	// Optional, NAS-IP-ADDRESS to use
 	AuthServersNasIp pulumi.StringPtrInput
-	// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	// RADIUS auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 	AuthServersRetries pulumi.IntPtrInput
-	// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+	// RADIUS auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 	AuthServersTimeout pulumi.IntPtrInput
 	// Whether to enable band_steering, this works only when band==both
 	BandSteer pulumi.BoolPtrInput
@@ -918,17 +944,19 @@ type WlanArgs struct {
 	Bands pulumi.StringArrayInput
 	// Whether to block the clients in the blacklist (up to first 256 macs)
 	BlockBlacklistClients pulumi.BoolPtrInput
-	// Bonjour gateway wlan settings
+	// Service discovery gateway settings for Bonjour traffic on this WLAN
 	Bonjour WlanBonjourPtrInput
-	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
-	CiscoCwa        WlanCiscoCwaPtrInput
+	// Central web authentication settings for Cisco CWA on this WLAN
+	CiscoCwa WlanCiscoCwaPtrInput
+	// Downlink bandwidth limit applied per client
 	ClientLimitDown pulumi.StringPtrInput
 	// If downlink limiting per-client is enabled
 	ClientLimitDownEnabled pulumi.BoolPtrInput
-	ClientLimitUp          pulumi.StringPtrInput
+	// Uplink bandwidth limit applied per client
+	ClientLimitUp pulumi.StringPtrInput
 	// If uplink limiting per-client is enabled
 	ClientLimitUpEnabled pulumi.BoolPtrInput
-	// List of COA (change of authorization) servers, optional
+	// RADIUS Change of Authorization servers available to this WLAN
 	CoaServers WlanCoaServerArrayInput
 	// Some old WLAN drivers may not be compatible
 	Disable11ax pulumi.BoolPtrInput
@@ -949,24 +977,20 @@ type WlanArgs struct {
 	//    * cannot obtain default gateway
 	//    * cannot reach default gateway
 	DisableWhenGatewayUnreachable pulumi.BoolPtrInput
-	DisableWhenMxtunnelDown       pulumi.BoolPtrInput
+	// Whether to disable this WLAN when the configured Mist tunnel is down
+	DisableWhenMxtunnelDown pulumi.BoolPtrInput
 	// Whether to disable WMM
 	DisableWmm pulumi.BoolPtrInput
-	// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+	// RADIUS group based DNS server rewrite settings for this WLAN
 	DnsServerRewrite WlanDnsServerRewritePtrInput
-	Dtim             pulumi.IntPtrInput
-	// For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-	//   * PSK will come from RADIUS server
-	//   * AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-	//   * AP sends BSSID:SSID as Caller-Station-ID
-	//   * `authServers` is required
-	//   * PSK will come from cloud WLC if source is cloudPsks
-	//   * defaultPsk will be used if cloud WLC is not available
-	//   * `multiPskOnly` and `psk` is ignored
-	//   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+	// Delivery Traffic Indication Message interval for this WLAN
+	Dtim pulumi.IntPtrInput
+	// Per-user PSK selection settings for this WLAN
 	DynamicPsk WlanDynamicPskPtrInput
-	// For 802.1x
+	// VLAN assignment settings for 802.1X dynamic VLANs
 	DynamicVlan WlanDynamicVlanPtrInput
+	// Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+	EnableFtm pulumi.BoolPtrInput
 	// Enable AP-AP keycaching via multicast
 	EnableLocalKeycaching pulumi.BoolPtrInput
 	// By default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be forwarded), wirelessBridging can be enabled
@@ -981,10 +1005,11 @@ type WlanArgs struct {
 	HideSsid pulumi.BoolPtrInput
 	// Include hostname inside IE in AP beacons / probe responses
 	HostnameIe pulumi.BoolPtrInput
-	// Hostspot 2.0 wlan settings
-	Hotspot20          WlanHotspot20PtrInput
+	// Passpoint and Hotspot 2.0 settings for this WLAN
+	Hotspot20 WlanHotspot20PtrInput
+	// DHCP Option 82 insertion settings for this WLAN
 	InjectDhcpOption82 WlanInjectDhcpOption82PtrInput
-	// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+	// Network interface or tunnel where this WLAN bridges client traffic
 	Interface pulumi.StringPtrInput
 	// Whether to stop clients to talk to each other
 	Isolation pulumi.BoolPtrInput
@@ -1000,35 +1025,38 @@ type WlanArgs struct {
 	MaxIdletime pulumi.IntPtrInput
 	// Maximum number of client connected to the SSID. `0` means unlimited
 	MaxNumClients pulumi.IntPtrInput
-	MistNac       WlanMistNacPtrInput
-	// When `interface`=`mxtunnel`, id of the Mist Tunnel
+	// Juniper Mist NAC settings used by this WLAN
+	MistNac WlanMistNacPtrInput
+	// Mist Tunnel identifiers used when `interface`==`mxtunnel`
 	MxtunnelIds pulumi.StringArrayInput
-	// When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	// Mist Tunnel names used when `interface`==`siteMxedge`
 	MxtunnelNames pulumi.StringArrayInput
 	// Whether to only allow client to use DNS that we’ve learned from DHCP response
 	NoStaticDns pulumi.BoolPtrInput
 	// Whether to only allow client that we’ve learned from DHCP exchange to talk
 	NoStaticIp pulumi.BoolPtrInput
-	// Portal wlan settings
+	// Guest portal settings for this WLAN
 	Portal WlanPortalPtrInput
-	// List of hostnames without http(s):// (matched by substring)
+	// Guest portal hostnames that clients may reach before authorization
 	PortalAllowedHostnames pulumi.StringArrayInput
-	// List of CIDRs
+	// Guest portal CIDR subnets that clients may reach before authorization
 	PortalAllowedSubnets pulumi.StringArrayInput
-	// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+	// Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
 	PortalDeniedHostnames pulumi.StringArrayInput
-	Qos                   WlanQosPtrInput
-	// RadSec settings
+	// Quality-of-service settings for WLAN client traffic
+	Qos WlanQosPtrInput
+	// TLS-secured RADIUS transport settings for this WLAN
 	Radsec WlanRadsecPtrInput
-	// Property key is the RF band. enum: `24`, `5`, `6`
+	// Data rate settings by RF band for this WLAN
 	Rateset WlanRatesetMapInput
 	// When different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
 	ReconnectClientsWhenRoamingMxcluster pulumi.BoolPtrInput
-	// enum: `11r`, `OKC`, `NONE`
+	// Fast roaming mode configured for this WLAN
 	RoamMode pulumi.StringPtrInput
-	// WLAN operating schedule, default is disabled
+	// Operating schedule controlling when this WLAN is active
 	Schedule WlanSchedulePtrInput
-	SiteId   pulumi.StringInput
+	// Mist site associated with this WLAN, when site-scoped
+	SiteId pulumi.StringInput
 	// Whether to exclude this WLAN from SLE metrics
 	SleExcluded pulumi.BoolPtrInput
 	// Name of the SSID
@@ -1037,18 +1065,21 @@ type WlanArgs struct {
 	UseEapolV1 pulumi.BoolPtrInput
 	// If vlan tagging is enabled
 	VlanEnabled pulumi.BoolPtrInput
-	VlanId      pulumi.StringPtrInput
-	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+	// Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
+	VlanId pulumi.StringPtrInput
+	// Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
 	VlanIds pulumi.StringArrayInput
 	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
-	VlanPooling   pulumi.BoolPtrInput
+	VlanPooling pulumi.BoolPtrInput
+	// Downlink bandwidth limit applied to the whole WLAN
 	WlanLimitDown pulumi.StringPtrInput
 	// If downlink limiting for whole wlan is enabled
 	WlanLimitDownEnabled pulumi.BoolPtrInput
-	WlanLimitUp          pulumi.StringPtrInput
+	// Uplink bandwidth limit applied to the whole WLAN
+	WlanLimitUp pulumi.StringPtrInput
 	// If uplink limiting for whole wlan is enabled
 	WlanLimitUpEnabled pulumi.BoolPtrInput
-	// List of wxtag_ids
+	// Identifiers of WxLAN tags used when `applyTo`==`wxtags`
 	WxtagIds pulumi.StringArrayInput
 	// When `interface`=`wxtunnel`, id of the WXLAN Tunnel
 	WxtunnelId pulumi.StringPtrInput
@@ -1148,17 +1179,17 @@ func (o WlanOutput) AcctImmediateUpdate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.AcctImmediateUpdate }).(pulumi.BoolOutput)
 }
 
-// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
 func (o WlanOutput) AcctInterimInterval() pulumi.IntOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.IntOutput { return v.AcctInterimInterval }).(pulumi.IntOutput)
 }
 
-// List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+// RADIUS accounting servers used by this WLAN
 func (o WlanOutput) AcctServers() WlanAcctServerArrayOutput {
 	return o.ApplyT(func(v *Wlan) WlanAcctServerArrayOutput { return v.AcctServers }).(WlanAcctServerArrayOutput)
 }
 
-// Airwatch wlan settings
+// Integration settings for AirWatch device compliance on this WLAN
 func (o WlanOutput) Airwatch() WlanAirwatchOutput {
 	return o.ApplyT(func(v *Wlan) WlanAirwatchOutput { return v.Airwatch }).(WlanAirwatchOutput)
 }
@@ -1178,22 +1209,22 @@ func (o WlanOutput) AllowSsdp() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.AllowSsdp }).(pulumi.BoolOutput)
 }
 
-// List of device ids
+// Access point identifiers used when `applyTo`==`aps`
 func (o WlanOutput) ApIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.ApIds }).(pulumi.StringArrayOutput)
 }
 
-// Bandwidth limiting for apps (applies to up/down)
+// Bandwidth limits for applications on this WLAN
 func (o WlanOutput) AppLimit() WlanAppLimitPtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanAppLimitPtrOutput { return v.AppLimit }).(WlanAppLimitPtrOutput)
 }
 
-// APP qos wlan settings
+// QoS rules for application traffic on this WLAN
 func (o WlanOutput) AppQos() WlanAppQosOutput {
 	return o.ApplyT(func(v *Wlan) WlanAppQosOutput { return v.AppQos }).(WlanAppQosOutput)
 }
 
-// enum: `aps`, `site`, `wxtags`
+// Scope that determines where this WLAN is applied
 func (o WlanOutput) ApplyTo() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.ApplyTo }).(pulumi.StringOutput)
 }
@@ -1203,17 +1234,17 @@ func (o WlanOutput) ArpFilter() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.ArpFilter }).(pulumi.BoolOutput)
 }
 
-// Authentication wlan settings
+// Settings that control client authentication for this WLAN
 func (o WlanOutput) Auth() WlanAuthPtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanAuthPtrOutput { return v.Auth }).(WlanAuthPtrOutput)
 }
 
-// When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+// RADIUS authentication server selection behavior for this WLAN
 func (o WlanOutput) AuthServerSelection() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.AuthServerSelection }).(pulumi.StringOutput)
 }
 
-// List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+// RADIUS authentication servers used by this WLAN. Required when `auth.type`==`eap`
 func (o WlanOutput) AuthServers() WlanAuthServerArrayOutput {
 	return o.ApplyT(func(v *Wlan) WlanAuthServerArrayOutput { return v.AuthServers }).(WlanAuthServerArrayOutput)
 }
@@ -1228,12 +1259,12 @@ func (o WlanOutput) AuthServersNasIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.AuthServersNasIp }).(pulumi.StringOutput)
 }
 
-// Radius auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+// RADIUS auth session retries. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘retries’ are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
 func (o WlanOutput) AuthServersRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.IntPtrOutput { return v.AuthServersRetries }).(pulumi.IntPtrOutput)
 }
 
-// Radius auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+// RADIUS auth session timeout. Following fast timers are set if "fastDot1xTimers" knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
 func (o WlanOutput) AuthServersTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.IntPtrOutput { return v.AuthServersTimeout }).(pulumi.IntPtrOutput)
 }
@@ -1258,16 +1289,17 @@ func (o WlanOutput) BlockBlacklistClients() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.BlockBlacklistClients }).(pulumi.BoolPtrOutput)
 }
 
-// Bonjour gateway wlan settings
+// Service discovery gateway settings for Bonjour traffic on this WLAN
 func (o WlanOutput) Bonjour() WlanBonjourPtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanBonjourPtrOutput { return v.Bonjour }).(WlanBonjourPtrOutput)
 }
 
-// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+// Central web authentication settings for Cisco CWA on this WLAN
 func (o WlanOutput) CiscoCwa() WlanCiscoCwaOutput {
 	return o.ApplyT(func(v *Wlan) WlanCiscoCwaOutput { return v.CiscoCwa }).(WlanCiscoCwaOutput)
 }
 
+// Downlink bandwidth limit applied per client
 func (o WlanOutput) ClientLimitDown() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.ClientLimitDown }).(pulumi.StringOutput)
 }
@@ -1277,6 +1309,7 @@ func (o WlanOutput) ClientLimitDownEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.ClientLimitDownEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Uplink bandwidth limit applied per client
 func (o WlanOutput) ClientLimitUp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.ClientLimitUp }).(pulumi.StringOutput)
 }
@@ -1286,7 +1319,7 @@ func (o WlanOutput) ClientLimitUpEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.ClientLimitUpEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// List of COA (change of authorization) servers, optional
+// RADIUS Change of Authorization servers available to this WLAN
 func (o WlanOutput) CoaServers() WlanCoaServerArrayOutput {
 	return o.ApplyT(func(v *Wlan) WlanCoaServerArrayOutput { return v.CoaServers }).(WlanCoaServerArrayOutput)
 }
@@ -1334,6 +1367,7 @@ func (o WlanOutput) DisableWhenGatewayUnreachable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.DisableWhenGatewayUnreachable }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to disable this WLAN when the configured Mist tunnel is down
 func (o WlanOutput) DisableWhenMxtunnelDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.DisableWhenMxtunnelDown }).(pulumi.BoolPtrOutput)
 }
@@ -1343,31 +1377,29 @@ func (o WlanOutput) DisableWmm() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.DisableWmm }).(pulumi.BoolOutput)
 }
 
-// For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+// RADIUS group based DNS server rewrite settings for this WLAN
 func (o WlanOutput) DnsServerRewrite() WlanDnsServerRewritePtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanDnsServerRewritePtrOutput { return v.DnsServerRewrite }).(WlanDnsServerRewritePtrOutput)
 }
 
+// Delivery Traffic Indication Message interval for this WLAN
 func (o WlanOutput) Dtim() pulumi.IntOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.IntOutput { return v.Dtim }).(pulumi.IntOutput)
 }
 
-// For dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
-//   - PSK will come from RADIUS server
-//   - AP sends client MAC as username and password (i.e. `enableMacAuth` is assumed)
-//   - AP sends BSSID:SSID as Caller-Station-ID
-//   - `authServers` is required
-//   - PSK will come from cloud WLC if source is cloudPsks
-//   - defaultPsk will be used if cloud WLC is not available
-//   - `multiPskOnly` and `psk` is ignored
-//   - `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+// Per-user PSK selection settings for this WLAN
 func (o WlanOutput) DynamicPsk() WlanDynamicPskPtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanDynamicPskPtrOutput { return v.DynamicPsk }).(WlanDynamicPskPtrOutput)
 }
 
-// For 802.1x
+// VLAN assignment settings for 802.1X dynamic VLANs
 func (o WlanOutput) DynamicVlan() WlanDynamicVlanPtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanDynamicVlanPtrOutput { return v.DynamicVlan }).(WlanDynamicVlanPtrOutput)
+}
+
+// Enable FTM (Fine-Time Measurement, 802.11mc); configures the AP as an FTM Responder (target), allowing clients to perform ranging requests against it
+func (o WlanOutput) EnableFtm() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.EnableFtm }).(pulumi.BoolOutput)
 }
 
 // Enable AP-AP keycaching via multicast
@@ -1405,16 +1437,17 @@ func (o WlanOutput) HostnameIe() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.HostnameIe }).(pulumi.BoolOutput)
 }
 
-// Hostspot 2.0 wlan settings
+// Passpoint and Hotspot 2.0 settings for this WLAN
 func (o WlanOutput) Hotspot20() WlanHotspot20PtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanHotspot20PtrOutput { return v.Hotspot20 }).(WlanHotspot20PtrOutput)
 }
 
+// DHCP Option 82 insertion settings for this WLAN
 func (o WlanOutput) InjectDhcpOption82() WlanInjectDhcpOption82PtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanInjectDhcpOption82PtrOutput { return v.InjectDhcpOption82 }).(WlanInjectDhcpOption82PtrOutput)
 }
 
-// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+// Network interface or tunnel where this WLAN bridges client traffic
 func (o WlanOutput) Interface() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.Interface }).(pulumi.StringOutput)
 }
@@ -1454,20 +1487,22 @@ func (o WlanOutput) MaxNumClients() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.IntPtrOutput { return v.MaxNumClients }).(pulumi.IntPtrOutput)
 }
 
+// Juniper Mist NAC settings used by this WLAN
 func (o WlanOutput) MistNac() WlanMistNacOutput {
 	return o.ApplyT(func(v *Wlan) WlanMistNacOutput { return v.MistNac }).(WlanMistNacOutput)
 }
 
+// Managed service provider identifier associated with this WLAN
 func (o WlanOutput) MspId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.MspId }).(pulumi.StringOutput)
 }
 
-// When `interface`=`mxtunnel`, id of the Mist Tunnel
+// Mist Tunnel identifiers used when `interface`==`mxtunnel`
 func (o WlanOutput) MxtunnelIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.MxtunnelIds }).(pulumi.StringArrayOutput)
 }
 
-// When `interface`=`siteMxedge`, name of the mxtunnel that in mxtunnels under Site Setting
+// Mist Tunnel names used when `interface`==`siteMxedge`
 func (o WlanOutput) MxtunnelNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.MxtunnelNames }).(pulumi.StringArrayOutput)
 }
@@ -1482,21 +1517,22 @@ func (o WlanOutput) NoStaticIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.NoStaticIp }).(pulumi.BoolOutput)
 }
 
+// Owning organization associated with this WLAN
 func (o WlanOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Portal wlan settings
+// Guest portal settings for this WLAN
 func (o WlanOutput) Portal() WlanPortalOutput {
 	return o.ApplyT(func(v *Wlan) WlanPortalOutput { return v.Portal }).(WlanPortalOutput)
 }
 
-// List of hostnames without http(s):// (matched by substring)
+// Guest portal hostnames that clients may reach before authorization
 func (o WlanOutput) PortalAllowedHostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.PortalAllowedHostnames }).(pulumi.StringArrayOutput)
 }
 
-// List of CIDRs
+// Guest portal CIDR subnets that clients may reach before authorization
 func (o WlanOutput) PortalAllowedSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.PortalAllowedSubnets }).(pulumi.StringArrayOutput)
 }
@@ -1506,7 +1542,7 @@ func (o WlanOutput) PortalApiSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.PortalApiSecret }).(pulumi.StringOutput)
 }
 
-// List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+// Guest portal hostnames denied before authorization, taking precedence over allowed hostnames
 func (o WlanOutput) PortalDeniedHostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.PortalDeniedHostnames }).(pulumi.StringArrayOutput)
 }
@@ -1521,16 +1557,17 @@ func (o WlanOutput) PortalSsoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.PortalSsoUrl }).(pulumi.StringOutput)
 }
 
+// Quality-of-service settings for WLAN client traffic
 func (o WlanOutput) Qos() WlanQosOutput {
 	return o.ApplyT(func(v *Wlan) WlanQosOutput { return v.Qos }).(WlanQosOutput)
 }
 
-// RadSec settings
+// TLS-secured RADIUS transport settings for this WLAN
 func (o WlanOutput) Radsec() WlanRadsecOutput {
 	return o.ApplyT(func(v *Wlan) WlanRadsecOutput { return v.Radsec }).(WlanRadsecOutput)
 }
 
-// Property key is the RF band. enum: `24`, `5`, `6`
+// Data rate settings by RF band for this WLAN
 func (o WlanOutput) Rateset() WlanRatesetMapOutput {
 	return o.ApplyT(func(v *Wlan) WlanRatesetMapOutput { return v.Rateset }).(WlanRatesetMapOutput)
 }
@@ -1540,16 +1577,17 @@ func (o WlanOutput) ReconnectClientsWhenRoamingMxcluster() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.ReconnectClientsWhenRoamingMxcluster }).(pulumi.BoolPtrOutput)
 }
 
-// enum: `11r`, `OKC`, `NONE`
+// Fast roaming mode configured for this WLAN
 func (o WlanOutput) RoamMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringPtrOutput { return v.RoamMode }).(pulumi.StringPtrOutput)
 }
 
-// WLAN operating schedule, default is disabled
+// Operating schedule controlling when this WLAN is active
 func (o WlanOutput) Schedule() WlanScheduleOutput {
 	return o.ApplyT(func(v *Wlan) WlanScheduleOutput { return v.Schedule }).(WlanScheduleOutput)
 }
 
+// Mist site associated with this WLAN, when site-scoped
 func (o WlanOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
@@ -1574,11 +1612,12 @@ func (o WlanOutput) VlanEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.VlanEnabled }).(pulumi.BoolOutput)
 }
 
+// Default VLAN ID, range, or variable used when `vlanEnabled`==`true`
 func (o WlanOutput) VlanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringPtrOutput { return v.VlanId }).(pulumi.StringPtrOutput)
 }
 
-// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separated) to be used in the VLAN Pool
+// Pool of VLAN IDs used when `vlanEnabled`==`true` and `vlanPooling`==`true`
 func (o WlanOutput) VlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.VlanIds }).(pulumi.StringArrayOutput)
 }
@@ -1588,6 +1627,7 @@ func (o WlanOutput) VlanPooling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.VlanPooling }).(pulumi.BoolOutput)
 }
 
+// Downlink bandwidth limit applied to the whole WLAN
 func (o WlanOutput) WlanLimitDown() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.WlanLimitDown }).(pulumi.StringOutput)
 }
@@ -1597,6 +1637,7 @@ func (o WlanOutput) WlanLimitDownEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.WlanLimitDownEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Uplink bandwidth limit applied to the whole WLAN
 func (o WlanOutput) WlanLimitUp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.WlanLimitUp }).(pulumi.StringOutput)
 }
@@ -1606,7 +1647,7 @@ func (o WlanOutput) WlanLimitUpEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolPtrOutput { return v.WlanLimitUpEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// List of wxtag_ids
+// Identifiers of WxLAN tags used when `applyTo`==`wxtags`
 func (o WlanOutput) WxtagIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.WxtagIds }).(pulumi.StringArrayOutput)
 }

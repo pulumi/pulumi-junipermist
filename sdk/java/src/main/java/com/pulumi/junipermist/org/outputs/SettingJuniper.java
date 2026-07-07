@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingJuniper {
+    /**
+     * @return List of linked Juniper account records
+     * 
+     */
     private @Nullable List<SettingJuniperAccount> accounts;
 
     private SettingJuniper() {}
+    /**
+     * @return List of linked Juniper account records
+     * 
+     */
     public List<SettingJuniperAccount> accounts() {
         return this.accounts == null ? List.of() : this.accounts;
     }

@@ -13,26 +13,38 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchRadiusConfigAcctServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IP/ hostname of RADIUS server
+        /// Address or hostname of the RADIUS accounting server
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
+        /// <summary>
+        /// Whether RADIUS keywrap is enabled for messages sent to this accounting server
+        /// </summary>
         [Input("keywrapEnabled")]
         public Input<bool>? KeywrapEnabled { get; set; }
 
         /// <summary>
-        /// enum: `Ascii`, `Hex`
+        /// Encoding format for RADIUS keywrap KEK and MACK values
         /// </summary>
         [Input("keywrapFormat")]
         public Input<string>? KeywrapFormat { get; set; }
 
+        /// <summary>
+        /// RADIUS keywrap key encryption key (KEK)
+        /// </summary>
         [Input("keywrapKek")]
         public Input<string>? KeywrapKek { get; set; }
 
+        /// <summary>
+        /// RADIUS keywrap message authentication code key (MACK)
+        /// </summary>
         [Input("keywrapMack")]
         public Input<string>? KeywrapMack { get; set; }
 
+        /// <summary>
+        /// UDP port used by the RADIUS accounting server
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
@@ -40,7 +52,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private Input<string>? _secret;
 
         /// <summary>
-        /// Secret of RADIUS server
+        /// Shared secret used with this RADIUS accounting server
         /// </summary>
         public Input<string>? Secret
         {

@@ -14,13 +14,21 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingMarvis
     {
         /// <summary>
-        /// Self-driving network automation settings per domain
+        /// Disable proactive monitoring in Marvis. NOTE: support access must be enabled for the org (`AllowMist`=`True`) for proactive monitoring to function.
+        /// </summary>
+        public readonly bool? DisableProactiveMonitoring;
+        /// <summary>
+        /// Self-driving network automation settings by domain
         /// </summary>
         public readonly Outputs.SettingMarvisSelfDriving? SelfDriving;
 
         [OutputConstructor]
-        private SettingMarvis(Outputs.SettingMarvisSelfDriving? selfDriving)
+        private SettingMarvis(
+            bool? disableProactiveMonitoring,
+
+            Outputs.SettingMarvisSelfDriving? selfDriving)
         {
+            DisableProactiveMonitoring = disableProactiveMonitoring;
             SelfDriving = selfDriving;
         }
     }

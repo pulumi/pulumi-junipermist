@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// note: BleConfig will be ignored if EslConfig is enabled and with native mode. enum: `Hanshow`, `Imagotag`, `Native`, `Solum`
+        /// ESL integration type to enable on the AP
         /// </summary>
         public readonly string? Type;
         /// <summary>

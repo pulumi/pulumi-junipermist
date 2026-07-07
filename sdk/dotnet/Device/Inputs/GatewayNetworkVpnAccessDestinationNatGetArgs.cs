@@ -13,14 +13,20 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayNetworkVpnAccessDestinationNatGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+        /// The Destination NAT destination IP address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         [Input("internalIp")]
         public Input<string>? InternalIp { get; set; }
 
+        /// <summary>
+        /// Label for this VPN destination NAT rule
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Destination port or variable for this VPN destination NAT rule
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 

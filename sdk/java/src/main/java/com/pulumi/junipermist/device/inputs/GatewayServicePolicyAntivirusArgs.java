@@ -17,36 +17,44 @@ public final class GatewayServicePolicyAntivirusArgs extends com.pulumi.resource
     public static final GatewayServicePolicyAntivirusArgs Empty = new GatewayServicePolicyAntivirusArgs();
 
     /**
-     * org-level AV Profile can be used, this takes precedence over &#39;profile&#39;
+     * Organization-level antivirus profile ID; takes precedence over inline `profile` settings
      * 
      */
     @Import(name="avprofileId")
     private @Nullable Output<String> avprofileId;
 
     /**
-     * @return org-level AV Profile can be used, this takes precedence over &#39;profile&#39;
+     * @return Organization-level antivirus profile ID; takes precedence over inline `profile` settings
      * 
      */
     public Optional<Output<String>> avprofileId() {
         return Optional.ofNullable(this.avprofileId);
     }
 
+    /**
+     * Whether antivirus inspection is enabled for the service policy
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether antivirus inspection is enabled for the service policy
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Default / noftp / httponly / or keys from av_profiles
+     * Antivirus profile name to apply, such as `default`, `noftp`, `httponly`, or an AV profile key
      * 
      */
     @Import(name="profile")
     private @Nullable Output<String> profile;
 
     /**
-     * @return Default / noftp / httponly / or keys from av_profiles
+     * @return Antivirus profile name to apply, such as `default`, `noftp`, `httponly`, or an AV profile key
      * 
      */
     public Optional<Output<String>> profile() {
@@ -80,7 +88,7 @@ public final class GatewayServicePolicyAntivirusArgs extends com.pulumi.resource
         }
 
         /**
-         * @param avprofileId org-level AV Profile can be used, this takes precedence over &#39;profile&#39;
+         * @param avprofileId Organization-level antivirus profile ID; takes precedence over inline `profile` settings
          * 
          * @return builder
          * 
@@ -91,7 +99,7 @@ public final class GatewayServicePolicyAntivirusArgs extends com.pulumi.resource
         }
 
         /**
-         * @param avprofileId org-level AV Profile can be used, this takes precedence over &#39;profile&#39;
+         * @param avprofileId Organization-level antivirus profile ID; takes precedence over inline `profile` settings
          * 
          * @return builder
          * 
@@ -100,17 +108,29 @@ public final class GatewayServicePolicyAntivirusArgs extends com.pulumi.resource
             return avprofileId(Output.of(avprofileId));
         }
 
+        /**
+         * @param enabled Whether antivirus inspection is enabled for the service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether antivirus inspection is enabled for the service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param profile Default / noftp / httponly / or keys from av_profiles
+         * @param profile Antivirus profile name to apply, such as `default`, `noftp`, `httponly`, or an AV profile key
          * 
          * @return builder
          * 
@@ -121,7 +141,7 @@ public final class GatewayServicePolicyAntivirusArgs extends com.pulumi.resource
         }
 
         /**
-         * @param profile Default / noftp / httponly / or keys from av_profiles
+         * @param profile Antivirus profile name to apply, such as `default`, `noftp`, `httponly`, or an AV profile key
          * 
          * @return builder
          * 

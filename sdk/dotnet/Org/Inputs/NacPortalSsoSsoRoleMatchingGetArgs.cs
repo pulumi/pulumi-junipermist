@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class NacPortalSsoSsoRoleMatchingGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// NAC portal role assigned when the SSO role value matches
+        /// </summary>
         [Input("assigned")]
         public Input<string>? Assigned { get; set; }
 
+        /// <summary>
+        /// SSO role value to match from the SAML assertion
+        /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
 

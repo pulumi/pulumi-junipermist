@@ -60,29 +60,41 @@ class GatewayArgs:
         """
         The set of arguments for constructing a Gateway resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input['GatewayGatewayMgmtArgs'] gateway_mgmt: Gateway Management settings
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Property key is the network name
+        :param pulumi.Input[_builtins.str] site_id: Site where this gateway is assigned
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands to apply to this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayBgpConfigArgs']]] bgp_config: BGP routing configuration for this gateway. Property key is the BGP session name
+        :param pulumi.Input['GatewayDhcpdConfigArgs'] dhcpd_config: DHCP server configuration served by this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers configured for this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes configured for this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]] extra_routes: Additional IPv4 routes configured on this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Additional IPv6 routes configured on this gateway
+        :param pulumi.Input['GatewayGatewayMgmtArgs'] gateway_mgmt: Management-plane settings for this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Intrusion detection and prevention profiles configured for this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Gateway interface IP configurations by network name
         :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
-        :param pulumi.Input['GatewayOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[_builtins.str] msp_id: MSP that manages this gateway, when applicable
+        :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the gateway
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayNetworkArgs']]] networks: Layer 3 networks configured for use by this gateway
+        :param pulumi.Input[_builtins.str] notes: Free-form administrative notes for this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this gateway
+        :param pulumi.Input['GatewayOobIpConfigArgs'] oob_ip_config: Out-of-band management IP configuration for this gateway
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input['GatewayPortMirroringArgs'] port_mirroring: Port mirroring configuration for this gateway
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayRoutingPoliciesArgs']]] routing_policies: Routing policies applied by this gateway
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayServicePolicyArgs']]] service_policies: Traffic service policies enforced by this gateway
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
+        :param pulumi.Input['GatewayTunnelProviderOptionsArgs'] tunnel_provider_options: Provider-specific options for tunnels terminated by this gateway
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
-        :param pulumi.Input[_builtins.float] x: X in pixel
-        :param pulumi.Input[_builtins.float] y: Y in pixel
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this gateway
+        :param pulumi.Input['GatewayVrfConfigArgs'] vrf_config: VRF configuration applied to this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]] vrf_instances: VRF instances configured on this gateway
+        :param pulumi.Input[_builtins.float] x: Horizontal map position of the gateway, in pixels
+        :param pulumi.Input[_builtins.float] y: Vertical map position of the gateway, in pixels
         """
         pulumi.set(__self__, "device_id", device_id)
         pulumi.set(__self__, "site_id", site_id)
@@ -170,6 +182,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Site where this gateway is assigned
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -180,7 +195,7 @@ class GatewayArgs:
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional CLI configuration commands to apply to this gateway
         """
         return pulumi.get(self, "additional_config_cmds")
 
@@ -191,6 +206,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayBgpConfigArgs']]]]:
+        """
+        BGP routing configuration for this gateway. Property key is the BGP session name
+        """
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
@@ -200,6 +218,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
     def dhcpd_config(self) -> pulumi.Input[Optional['GatewayDhcpdConfigArgs']]:
+        """
+        DHCP server configuration served by this gateway
+        """
         return pulumi.get(self, "dhcpd_config")
 
     @dhcpd_config.setter
@@ -210,7 +231,7 @@ class GatewayArgs:
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS servers configured for this gateway
         """
         return pulumi.get(self, "dns_servers")
 
@@ -222,7 +243,7 @@ class GatewayArgs:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS search suffixes configured for this gateway
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -234,7 +255,7 @@ class GatewayArgs:
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]]]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv4 routes configured on this gateway
         """
         return pulumi.get(self, "extra_routes")
 
@@ -246,7 +267,7 @@ class GatewayArgs:
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv6 routes configured on this gateway
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -258,7 +279,7 @@ class GatewayArgs:
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Input[Optional['GatewayGatewayMgmtArgs']]:
         """
-        Gateway Management settings
+        Management-plane settings for this gateway
         """
         return pulumi.get(self, "gateway_mgmt")
 
@@ -270,7 +291,7 @@ class GatewayArgs:
     @pulumi.getter(name="idpProfiles")
     def idp_profiles(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]]]:
         """
-        Property key is the profile name
+        Intrusion detection and prevention profiles configured for this gateway
         """
         return pulumi.get(self, "idp_profiles")
 
@@ -282,7 +303,7 @@ class GatewayArgs:
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]]]:
         """
-        Property key is the network name
+        Gateway interface IP configurations by network name
         """
         return pulumi.get(self, "ip_configs")
 
@@ -330,6 +351,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter(name="mspId")
     def msp_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        MSP that manages this gateway, when applicable
+        """
         return pulumi.get(self, "msp_id")
 
     @msp_id.setter
@@ -339,6 +363,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Friendly display name assigned to the gateway
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -348,6 +375,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewayNetworkArgs']]]]:
+        """
+        Layer 3 networks configured for use by this gateway
+        """
         return pulumi.get(self, "networks")
 
     @networks.setter
@@ -357,6 +387,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter
     def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Free-form administrative notes for this gateway
+        """
         return pulumi.get(self, "notes")
 
     @notes.setter
@@ -366,6 +399,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        NTP servers used by this gateway
+        """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
@@ -376,7 +412,7 @@ class GatewayArgs:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Input[Optional['GatewayOobIpConfigArgs']]:
         """
-        Out-of-band (vme/em0/fxp0) IP config
+        Out-of-band management IP configuration for this gateway
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -411,6 +447,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> pulumi.Input[Optional['GatewayPortMirroringArgs']]:
+        """
+        Port mirroring configuration for this gateway
+        """
         return pulumi.get(self, "port_mirroring")
 
     @port_mirroring.setter
@@ -433,7 +472,7 @@ class GatewayArgs:
     @pulumi.getter(name="routingPolicies")
     def routing_policies(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayRoutingPoliciesArgs']]]]:
         """
-        Property key is the routing policy name
+        Routing policies applied by this gateway
         """
         return pulumi.get(self, "routing_policies")
 
@@ -444,6 +483,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter(name="servicePolicies")
     def service_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewayServicePolicyArgs']]]]:
+        """
+        Traffic service policies enforced by this gateway
+        """
         return pulumi.get(self, "service_policies")
 
     @service_policies.setter
@@ -477,6 +519,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter(name="tunnelProviderOptions")
     def tunnel_provider_options(self) -> pulumi.Input[Optional['GatewayTunnelProviderOptionsArgs']]:
+        """
+        Provider-specific options for tunnels terminated by this gateway
+        """
         return pulumi.get(self, "tunnel_provider_options")
 
     @tunnel_provider_options.setter
@@ -499,7 +544,7 @@ class GatewayArgs:
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Variable values that override site variables for this gateway
         """
         return pulumi.get(self, "vars")
 
@@ -510,6 +555,9 @@ class GatewayArgs:
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> pulumi.Input[Optional['GatewayVrfConfigArgs']]:
+        """
+        VRF configuration applied to this gateway
+        """
         return pulumi.get(self, "vrf_config")
 
     @vrf_config.setter
@@ -520,7 +568,7 @@ class GatewayArgs:
     @pulumi.getter(name="vrfInstances")
     def vrf_instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]]]:
         """
-        Property key is the network name
+        VRF instances configured on this gateway
         """
         return pulumi.get(self, "vrf_instances")
 
@@ -532,7 +580,7 @@ class GatewayArgs:
     @pulumi.getter
     def x(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        X in pixel
+        Horizontal map position of the gateway, in pixels
         """
         return pulumi.get(self, "x")
 
@@ -544,7 +592,7 @@ class GatewayArgs:
     @pulumi.getter
     def y(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Y in pixel
+        Vertical map position of the gateway, in pixels
         """
         return pulumi.get(self, "y")
 
@@ -603,33 +651,49 @@ class _GatewayState:
         """
         Input properties used for looking up and filtering Gateway resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input['GatewayGatewayMgmtArgs'] gateway_mgmt: Gateway Management settings
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Property key is the network name
-        :param pulumi.Input[_builtins.str] mac: Device MAC address
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands to apply to this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayBgpConfigArgs']]] bgp_config: BGP routing configuration for this gateway. Property key is the BGP session name
+        :param pulumi.Input['GatewayDhcpdConfigArgs'] dhcpd_config: DHCP server configuration served by this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers configured for this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes configured for this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]] extra_routes: Additional IPv4 routes configured on this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Additional IPv6 routes configured on this gateway
+        :param pulumi.Input['GatewayGatewayMgmtArgs'] gateway_mgmt: Management-plane settings for this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Intrusion detection and prevention profiles configured for this gateway
+        :param pulumi.Input[_builtins.str] image1_url: First custom image URL associated with the gateway
+        :param pulumi.Input[_builtins.str] image2_url: Second custom image URL associated with the gateway
+        :param pulumi.Input[_builtins.str] image3_url: Third custom image URL associated with the gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Gateway interface IP configurations by network name
+        :param pulumi.Input[_builtins.str] mac: Gateway MAC address used to identify the device
         :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
-        :param pulumi.Input[_builtins.str] model: Device Model
-        :param pulumi.Input['GatewayOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[_builtins.str] model: Gateway model reported for the device
+        :param pulumi.Input[_builtins.str] msp_id: MSP that manages this gateway, when applicable
+        :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the gateway
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayNetworkArgs']]] networks: Layer 3 networks configured for use by this gateway
+        :param pulumi.Input[_builtins.str] notes: Free-form administrative notes for this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this gateway
+        :param pulumi.Input['GatewayOobIpConfigArgs'] oob_ip_config: Out-of-band management IP configuration for this gateway
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this gateway
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input['GatewayPortMirroringArgs'] port_mirroring: Port mirroring configuration for this gateway
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
-        :param pulumi.Input[_builtins.str] serial: Device Serial
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayRoutingPoliciesArgs']]] routing_policies: Routing policies applied by this gateway
+        :param pulumi.Input[_builtins.str] serial: Manufacturer serial number for the gateway
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayServicePolicyArgs']]] service_policies: Traffic service policies enforced by this gateway
+        :param pulumi.Input[_builtins.str] site_id: Site where this gateway is assigned
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[_builtins.str] type: Device Type. enum: `gateway`
+        :param pulumi.Input['GatewayTunnelProviderOptionsArgs'] tunnel_provider_options: Provider-specific options for tunnels terminated by this gateway
+        :param pulumi.Input[_builtins.str] type: Device type discriminator for gateway records
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
-        :param pulumi.Input[_builtins.float] x: X in pixel
-        :param pulumi.Input[_builtins.float] y: Y in pixel
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this gateway
+        :param pulumi.Input['GatewayVrfConfigArgs'] vrf_config: VRF configuration applied to this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]] vrf_instances: VRF instances configured on this gateway
+        :param pulumi.Input[_builtins.float] x: Horizontal map position of the gateway, in pixels
+        :param pulumi.Input[_builtins.float] y: Vertical map position of the gateway, in pixels
         """
         if additional_config_cmds is not None:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
@@ -727,7 +791,7 @@ class _GatewayState:
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional CLI configuration commands to apply to this gateway
         """
         return pulumi.get(self, "additional_config_cmds")
 
@@ -738,6 +802,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayBgpConfigArgs']]]]:
+        """
+        BGP routing configuration for this gateway. Property key is the BGP session name
+        """
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
@@ -756,6 +823,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
     def dhcpd_config(self) -> pulumi.Input[Optional['GatewayDhcpdConfigArgs']]:
+        """
+        DHCP server configuration served by this gateway
+        """
         return pulumi.get(self, "dhcpd_config")
 
     @dhcpd_config.setter
@@ -766,7 +836,7 @@ class _GatewayState:
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS servers configured for this gateway
         """
         return pulumi.get(self, "dns_servers")
 
@@ -778,7 +848,7 @@ class _GatewayState:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS search suffixes configured for this gateway
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -790,7 +860,7 @@ class _GatewayState:
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayExtraRoutesArgs']]]]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv4 routes configured on this gateway
         """
         return pulumi.get(self, "extra_routes")
 
@@ -802,7 +872,7 @@ class _GatewayState:
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv6 routes configured on this gateway
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -814,7 +884,7 @@ class _GatewayState:
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Input[Optional['GatewayGatewayMgmtArgs']]:
         """
-        Gateway Management settings
+        Management-plane settings for this gateway
         """
         return pulumi.get(self, "gateway_mgmt")
 
@@ -826,7 +896,7 @@ class _GatewayState:
     @pulumi.getter(name="idpProfiles")
     def idp_profiles(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]]]:
         """
-        Property key is the profile name
+        Intrusion detection and prevention profiles configured for this gateway
         """
         return pulumi.get(self, "idp_profiles")
 
@@ -837,6 +907,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="image1Url")
     def image1_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        First custom image URL associated with the gateway
+        """
         return pulumi.get(self, "image1_url")
 
     @image1_url.setter
@@ -846,6 +919,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="image2Url")
     def image2_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Second custom image URL associated with the gateway
+        """
         return pulumi.get(self, "image2_url")
 
     @image2_url.setter
@@ -855,6 +931,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="image3Url")
     def image3_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Third custom image URL associated with the gateway
+        """
         return pulumi.get(self, "image3_url")
 
     @image3_url.setter
@@ -865,7 +944,7 @@ class _GatewayState:
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]]]:
         """
-        Property key is the network name
+        Gateway interface IP configurations by network name
         """
         return pulumi.get(self, "ip_configs")
 
@@ -877,7 +956,7 @@ class _GatewayState:
     @pulumi.getter
     def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device MAC address
+        Gateway MAC address used to identify the device
         """
         return pulumi.get(self, "mac")
 
@@ -926,7 +1005,7 @@ class _GatewayState:
     @pulumi.getter
     def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device Model
+        Gateway model reported for the device
         """
         return pulumi.get(self, "model")
 
@@ -937,6 +1016,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="mspId")
     def msp_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        MSP that manages this gateway, when applicable
+        """
         return pulumi.get(self, "msp_id")
 
     @msp_id.setter
@@ -946,6 +1028,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Friendly display name assigned to the gateway
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -955,6 +1040,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewayNetworkArgs']]]]:
+        """
+        Layer 3 networks configured for use by this gateway
+        """
         return pulumi.get(self, "networks")
 
     @networks.setter
@@ -964,6 +1052,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter
     def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Free-form administrative notes for this gateway
+        """
         return pulumi.get(self, "notes")
 
     @notes.setter
@@ -973,6 +1064,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        NTP servers used by this gateway
+        """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
@@ -983,7 +1077,7 @@ class _GatewayState:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Input[Optional['GatewayOobIpConfigArgs']]:
         """
-        Out-of-band (vme/em0/fxp0) IP config
+        Out-of-band management IP configuration for this gateway
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -994,6 +1088,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns this gateway
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -1027,6 +1124,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> pulumi.Input[Optional['GatewayPortMirroringArgs']]:
+        """
+        Port mirroring configuration for this gateway
+        """
         return pulumi.get(self, "port_mirroring")
 
     @port_mirroring.setter
@@ -1049,7 +1149,7 @@ class _GatewayState:
     @pulumi.getter(name="routingPolicies")
     def routing_policies(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayRoutingPoliciesArgs']]]]:
         """
-        Property key is the routing policy name
+        Routing policies applied by this gateway
         """
         return pulumi.get(self, "routing_policies")
 
@@ -1061,7 +1161,7 @@ class _GatewayState:
     @pulumi.getter
     def serial(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device Serial
+        Manufacturer serial number for the gateway
         """
         return pulumi.get(self, "serial")
 
@@ -1072,6 +1172,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="servicePolicies")
     def service_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewayServicePolicyArgs']]]]:
+        """
+        Traffic service policies enforced by this gateway
+        """
         return pulumi.get(self, "service_policies")
 
     @service_policies.setter
@@ -1081,6 +1184,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Site where this gateway is assigned
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -1114,6 +1220,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="tunnelProviderOptions")
     def tunnel_provider_options(self) -> pulumi.Input[Optional['GatewayTunnelProviderOptionsArgs']]:
+        """
+        Provider-specific options for tunnels terminated by this gateway
+        """
         return pulumi.get(self, "tunnel_provider_options")
 
     @tunnel_provider_options.setter
@@ -1124,7 +1233,7 @@ class _GatewayState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device Type. enum: `gateway`
+        Device type discriminator for gateway records
         """
         return pulumi.get(self, "type")
 
@@ -1148,7 +1257,7 @@ class _GatewayState:
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Variable values that override site variables for this gateway
         """
         return pulumi.get(self, "vars")
 
@@ -1159,6 +1268,9 @@ class _GatewayState:
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> pulumi.Input[Optional['GatewayVrfConfigArgs']]:
+        """
+        VRF configuration applied to this gateway
+        """
         return pulumi.get(self, "vrf_config")
 
     @vrf_config.setter
@@ -1169,7 +1281,7 @@ class _GatewayState:
     @pulumi.getter(name="vrfInstances")
     def vrf_instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]]]:
         """
-        Property key is the network name
+        VRF instances configured on this gateway
         """
         return pulumi.get(self, "vrf_instances")
 
@@ -1181,7 +1293,7 @@ class _GatewayState:
     @pulumi.getter
     def x(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        X in pixel
+        Horizontal map position of the gateway, in pixels
         """
         return pulumi.get(self, "x")
 
@@ -1193,7 +1305,7 @@ class _GatewayState:
     @pulumi.getter
     def y(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Y in pixel
+        Vertical map position of the gateway, in pixels
         """
         return pulumi.get(self, "y")
 
@@ -1288,29 +1400,41 @@ class Gateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']] gateway_mgmt: Gateway Management settings
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands to apply to this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayBgpConfigArgs', 'GatewayBgpConfigArgsDict']]]] bgp_config: BGP routing configuration for this gateway. Property key is the BGP session name
+        :param pulumi.Input[Union['GatewayDhcpdConfigArgs', 'GatewayDhcpdConfigArgsDict']] dhcpd_config: DHCP server configuration served by this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers configured for this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes configured for this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 routes configured on this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 routes configured on this gateway
+        :param pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']] gateway_mgmt: Management-plane settings for this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Intrusion detection and prevention profiles configured for this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Gateway interface IP configurations by network name
         :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
-        :param pulumi.Input[Union['GatewayOobIpConfigArgs', 'GatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[_builtins.str] msp_id: MSP that manages this gateway, when applicable
+        :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the gateway
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayNetworkArgs', 'GatewayNetworkArgsDict']]]] networks: Layer 3 networks configured for use by this gateway
+        :param pulumi.Input[_builtins.str] notes: Free-form administrative notes for this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this gateway
+        :param pulumi.Input[Union['GatewayOobIpConfigArgs', 'GatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP configuration for this gateway
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayPathPreferencesArgs', 'GatewayPathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayPortConfigArgs', 'GatewayPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input[Union['GatewayPortMirroringArgs', 'GatewayPortMirroringArgsDict']] port_mirroring: Port mirroring configuration for this gateway
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayRoutingPoliciesArgs', 'GatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayRoutingPoliciesArgs', 'GatewayRoutingPoliciesArgsDict']]]] routing_policies: Routing policies applied by this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayServicePolicyArgs', 'GatewayServicePolicyArgsDict']]]] service_policies: Traffic service policies enforced by this gateway
+        :param pulumi.Input[_builtins.str] site_id: Site where this gateway is assigned
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
+        :param pulumi.Input[Union['GatewayTunnelProviderOptionsArgs', 'GatewayTunnelProviderOptionsArgsDict']] tunnel_provider_options: Provider-specific options for tunnels terminated by this gateway
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayVrfInstancesArgs', 'GatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
-        :param pulumi.Input[_builtins.float] x: X in pixel
-        :param pulumi.Input[_builtins.float] y: Y in pixel
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this gateway
+        :param pulumi.Input[Union['GatewayVrfConfigArgs', 'GatewayVrfConfigArgsDict']] vrf_config: VRF configuration applied to this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayVrfInstancesArgs', 'GatewayVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured on this gateway
+        :param pulumi.Input[_builtins.float] x: Horizontal map position of the gateway, in pixels
+        :param pulumi.Input[_builtins.float] y: Vertical map position of the gateway, in pixels
         """
         ...
     @overload
@@ -1528,33 +1652,49 @@ class Gateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']] gateway_mgmt: Gateway Management settings
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
-        :param pulumi.Input[_builtins.str] mac: Device MAC address
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands to apply to this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayBgpConfigArgs', 'GatewayBgpConfigArgsDict']]]] bgp_config: BGP routing configuration for this gateway. Property key is the BGP session name
+        :param pulumi.Input[Union['GatewayDhcpdConfigArgs', 'GatewayDhcpdConfigArgsDict']] dhcpd_config: DHCP server configuration served by this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers configured for this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes configured for this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutesArgs', 'GatewayExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 routes configured on this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 routes configured on this gateway
+        :param pulumi.Input[Union['GatewayGatewayMgmtArgs', 'GatewayGatewayMgmtArgsDict']] gateway_mgmt: Management-plane settings for this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Intrusion detection and prevention profiles configured for this gateway
+        :param pulumi.Input[_builtins.str] image1_url: First custom image URL associated with the gateway
+        :param pulumi.Input[_builtins.str] image2_url: Second custom image URL associated with the gateway
+        :param pulumi.Input[_builtins.str] image3_url: Third custom image URL associated with the gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Gateway interface IP configurations by network name
+        :param pulumi.Input[_builtins.str] mac: Gateway MAC address used to identify the device
         :param pulumi.Input[_builtins.bool] managed: Whether the device is managed by Mist. Deprecated in favour of mist_configured.
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
         :param pulumi.Input[_builtins.bool] mist_configured: whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
-        :param pulumi.Input[_builtins.str] model: Device Model
-        :param pulumi.Input[Union['GatewayOobIpConfigArgs', 'GatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[_builtins.str] model: Gateway model reported for the device
+        :param pulumi.Input[_builtins.str] msp_id: MSP that manages this gateway, when applicable
+        :param pulumi.Input[_builtins.str] name: Friendly display name assigned to the gateway
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayNetworkArgs', 'GatewayNetworkArgsDict']]]] networks: Layer 3 networks configured for use by this gateway
+        :param pulumi.Input[_builtins.str] notes: Free-form administrative notes for this gateway
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this gateway
+        :param pulumi.Input[Union['GatewayOobIpConfigArgs', 'GatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP configuration for this gateway
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this gateway
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayPathPreferencesArgs', 'GatewayPathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayPortConfigArgs', 'GatewayPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input[Union['GatewayPortMirroringArgs', 'GatewayPortMirroringArgsDict']] port_mirroring: Port mirroring configuration for this gateway
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayRoutingPoliciesArgs', 'GatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
-        :param pulumi.Input[_builtins.str] serial: Device Serial
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayRoutingPoliciesArgs', 'GatewayRoutingPoliciesArgsDict']]]] routing_policies: Routing policies applied by this gateway
+        :param pulumi.Input[_builtins.str] serial: Manufacturer serial number for the gateway
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayServicePolicyArgs', 'GatewayServicePolicyArgsDict']]]] service_policies: Traffic service policies enforced by this gateway
+        :param pulumi.Input[_builtins.str] site_id: Site where this gateway is assigned
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[_builtins.str] type: Device Type. enum: `gateway`
+        :param pulumi.Input[Union['GatewayTunnelProviderOptionsArgs', 'GatewayTunnelProviderOptionsArgsDict']] tunnel_provider_options: Provider-specific options for tunnels terminated by this gateway
+        :param pulumi.Input[_builtins.str] type: Device type discriminator for gateway records
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayVrfInstancesArgs', 'GatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
-        :param pulumi.Input[_builtins.float] x: X in pixel
-        :param pulumi.Input[_builtins.float] y: Y in pixel
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this gateway
+        :param pulumi.Input[Union['GatewayVrfConfigArgs', 'GatewayVrfConfigArgsDict']] vrf_config: VRF configuration applied to this gateway
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayVrfInstancesArgs', 'GatewayVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured on this gateway
+        :param pulumi.Input[_builtins.float] x: Horizontal map position of the gateway, in pixels
+        :param pulumi.Input[_builtins.float] y: Vertical map position of the gateway, in pixels
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1610,13 +1750,16 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional CLI configuration commands to apply to this gateway
         """
         return pulumi.get(self, "additional_config_cmds")
 
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewayBgpConfig']]]:
+        """
+        BGP routing configuration for this gateway. Property key is the BGP session name
+        """
         return pulumi.get(self, "bgp_config")
 
     @_builtins.property
@@ -1627,13 +1770,16 @@ class Gateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
     def dhcpd_config(self) -> pulumi.Output[Optional['outputs.GatewayDhcpdConfig']]:
+        """
+        DHCP server configuration served by this gateway
+        """
         return pulumi.get(self, "dhcpd_config")
 
     @_builtins.property
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS servers configured for this gateway
         """
         return pulumi.get(self, "dns_servers")
 
@@ -1641,7 +1787,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS search suffixes configured for this gateway
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -1649,7 +1795,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewayExtraRoutes']]]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv4 routes configured on this gateway
         """
         return pulumi.get(self, "extra_routes")
 
@@ -1657,7 +1803,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewayExtraRoutes6']]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv6 routes configured on this gateway
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -1665,7 +1811,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="gatewayMgmt")
     def gateway_mgmt(self) -> pulumi.Output[Optional['outputs.GatewayGatewayMgmt']]:
         """
-        Gateway Management settings
+        Management-plane settings for this gateway
         """
         return pulumi.get(self, "gateway_mgmt")
 
@@ -1673,30 +1819,39 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="idpProfiles")
     def idp_profiles(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewayIdpProfiles']]]:
         """
-        Property key is the profile name
+        Intrusion detection and prevention profiles configured for this gateway
         """
         return pulumi.get(self, "idp_profiles")
 
     @_builtins.property
     @pulumi.getter(name="image1Url")
     def image1_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        First custom image URL associated with the gateway
+        """
         return pulumi.get(self, "image1_url")
 
     @_builtins.property
     @pulumi.getter(name="image2Url")
     def image2_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Second custom image URL associated with the gateway
+        """
         return pulumi.get(self, "image2_url")
 
     @_builtins.property
     @pulumi.getter(name="image3Url")
     def image3_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Third custom image URL associated with the gateway
+        """
         return pulumi.get(self, "image3_url")
 
     @_builtins.property
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewayIpConfigs']]]:
         """
-        Property key is the network name
+        Gateway interface IP configurations by network name
         """
         return pulumi.get(self, "ip_configs")
 
@@ -1704,7 +1859,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def mac(self) -> pulumi.Output[_builtins.str]:
         """
-        Device MAC address
+        Gateway MAC address used to identify the device
         """
         return pulumi.get(self, "mac")
 
@@ -1737,46 +1892,64 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def model(self) -> pulumi.Output[_builtins.str]:
         """
-        Device Model
+        Gateway model reported for the device
         """
         return pulumi.get(self, "model")
 
     @_builtins.property
     @pulumi.getter(name="mspId")
     def msp_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        MSP that manages this gateway, when applicable
+        """
         return pulumi.get(self, "msp_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Friendly display name assigned to the gateway
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Output[Optional[Sequence['outputs.GatewayNetwork']]]:
+        """
+        Layer 3 networks configured for use by this gateway
+        """
         return pulumi.get(self, "networks")
 
     @_builtins.property
     @pulumi.getter
     def notes(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Free-form administrative notes for this gateway
+        """
         return pulumi.get(self, "notes")
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        NTP servers used by this gateway
+        """
         return pulumi.get(self, "ntp_servers")
 
     @_builtins.property
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Output['outputs.GatewayOobIpConfig']:
         """
-        Out-of-band (vme/em0/fxp0) IP config
+        Out-of-band management IP configuration for this gateway
         """
         return pulumi.get(self, "oob_ip_config")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns this gateway
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
@@ -1798,6 +1971,9 @@ class Gateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> pulumi.Output[Optional['outputs.GatewayPortMirroring']]:
+        """
+        Port mirroring configuration for this gateway
+        """
         return pulumi.get(self, "port_mirroring")
 
     @_builtins.property
@@ -1812,7 +1988,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="routingPolicies")
     def routing_policies(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewayRoutingPolicies']]]:
         """
-        Property key is the routing policy name
+        Routing policies applied by this gateway
         """
         return pulumi.get(self, "routing_policies")
 
@@ -1820,18 +1996,24 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def serial(self) -> pulumi.Output[_builtins.str]:
         """
-        Device Serial
+        Manufacturer serial number for the gateway
         """
         return pulumi.get(self, "serial")
 
     @_builtins.property
     @pulumi.getter(name="servicePolicies")
     def service_policies(self) -> pulumi.Output[Optional[Sequence['outputs.GatewayServicePolicy']]]:
+        """
+        Traffic service policies enforced by this gateway
+        """
         return pulumi.get(self, "service_policies")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Site where this gateway is assigned
+        """
         return pulumi.get(self, "site_id")
 
     @_builtins.property
@@ -1853,13 +2035,16 @@ class Gateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="tunnelProviderOptions")
     def tunnel_provider_options(self) -> pulumi.Output[Optional['outputs.GatewayTunnelProviderOptions']]:
+        """
+        Provider-specific options for tunnels terminated by this gateway
+        """
         return pulumi.get(self, "tunnel_provider_options")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Device Type. enum: `gateway`
+        Device type discriminator for gateway records
         """
         return pulumi.get(self, "type")
 
@@ -1875,20 +2060,23 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def vars(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Variable values that override site variables for this gateway
         """
         return pulumi.get(self, "vars")
 
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> pulumi.Output[Optional['outputs.GatewayVrfConfig']]:
+        """
+        VRF configuration applied to this gateway
+        """
         return pulumi.get(self, "vrf_config")
 
     @_builtins.property
     @pulumi.getter(name="vrfInstances")
     def vrf_instances(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.GatewayVrfInstances']]]:
         """
-        Property key is the network name
+        VRF instances configured on this gateway
         """
         return pulumi.get(self, "vrf_instances")
 
@@ -1896,7 +2084,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def x(self) -> pulumi.Output[Optional[_builtins.float]]:
         """
-        X in pixel
+        Horizontal map position of the gateway, in pixels
         """
         return pulumi.get(self, "x")
 
@@ -1904,7 +2092,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def y(self) -> pulumi.Output[Optional[_builtins.float]]:
         """
-        Y in pixel
+        Vertical map position of the gateway, in pixels
         """
         return pulumi.get(self, "y")
 

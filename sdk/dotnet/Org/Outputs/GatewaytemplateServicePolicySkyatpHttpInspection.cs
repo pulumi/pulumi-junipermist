@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GatewaytemplateServicePolicySkyatpHttpInspection
     {
+        /// <summary>
+        /// Whether Sky ATP HTTP inspection is enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// enum: `Standard`, `Strict`
+        /// Sky ATP HTTP inspection profile to apply
         /// </summary>
         public readonly string? Profile;
 

@@ -14,19 +14,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingJunosShellAccess
     {
         /// <summary>
-        /// enum: `Admin`, `Viewer`, `None`
+        /// Shell access level used for administrator web-shell sessions
         /// </summary>
         public readonly string? Admin;
         /// <summary>
-        /// enum: `Admin`, `Viewer`, `None`
+        /// Shell access level used for helpdesk web-shell sessions
         /// </summary>
         public readonly string? Helpdesk;
         /// <summary>
-        /// enum: `Admin`, `Viewer`, `None`
+        /// Shell access level used for read-only web-shell sessions
         /// </summary>
         public readonly string? Read;
         /// <summary>
-        /// enum: `Admin`, `Viewer`, `None`
+        /// Shell access level used for write-role web-shell sessions
         /// </summary>
         public readonly string? Write;
 

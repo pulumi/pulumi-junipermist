@@ -73,28 +73,44 @@ export class Nacrule extends pulumi.CustomResource {
     }
 
     /**
-     * enum: `allow`, `block`
+     * Allow or block decision applied when the NAC rule matches
      */
     declare public readonly action: pulumi.Output<string>;
     /**
-     * All optional, this goes into Access-Accept
+     * NAC tag IDs to include in the Access-Accept when the rule allows access
      */
     declare public readonly applyTags: pulumi.Output<string[]>;
     /**
-     * Enabled or not
+     * Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+     */
+    declare public readonly dryRun: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether the NAC rule is evaluated during policy matching
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
-     * Guest portal authorization state. enum: `authorized`, `unknown`
+     * Guest portal authorization state condition for the rule
      */
     declare public readonly guestAuthState: pulumi.Output<string | undefined>;
+    /**
+     * Criteria that must match for the NAC rule to apply
+     */
     declare public readonly matching: pulumi.Output<outputs.org.NacruleMatching | undefined>;
+    /**
+     * Human-readable name of the NAC rule
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Criteria that must not match for the NAC rule to apply
+     */
     declare public readonly notMatching: pulumi.Output<outputs.org.NacruleNotMatching | undefined>;
     /**
-     * Order of the rule, lower value implies higher priority
+     * Rule priority; lower values are evaluated with higher priority
      */
     declare public readonly order: pulumi.Output<number>;
+    /**
+     * Org identifier that owns the NAC rule
+     */
     declare public readonly orgId: pulumi.Output<string>;
 
     /**
@@ -112,6 +128,7 @@ export class Nacrule extends pulumi.CustomResource {
             const state = argsOrState as NacruleState | undefined;
             resourceInputs["action"] = state?.action;
             resourceInputs["applyTags"] = state?.applyTags;
+            resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["guestAuthState"] = state?.guestAuthState;
             resourceInputs["matching"] = state?.matching;
@@ -132,6 +149,7 @@ export class Nacrule extends pulumi.CustomResource {
             }
             resourceInputs["action"] = args?.action;
             resourceInputs["applyTags"] = args?.applyTags;
+            resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["guestAuthState"] = args?.guestAuthState;
             resourceInputs["matching"] = args?.matching;
@@ -150,28 +168,44 @@ export class Nacrule extends pulumi.CustomResource {
  */
 export interface NacruleState {
     /**
-     * enum: `allow`, `block`
+     * Allow or block decision applied when the NAC rule matches
      */
     action?: pulumi.Input<string | undefined>;
     /**
-     * All optional, this goes into Access-Accept
+     * NAC tag IDs to include in the Access-Accept when the rule allows access
      */
     applyTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Enabled or not
+     * Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+     */
+    dryRun?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the NAC rule is evaluated during policy matching
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Guest portal authorization state. enum: `authorized`, `unknown`
+     * Guest portal authorization state condition for the rule
      */
     guestAuthState?: pulumi.Input<string | undefined>;
+    /**
+     * Criteria that must match for the NAC rule to apply
+     */
     matching?: pulumi.Input<inputs.org.NacruleMatching | undefined>;
+    /**
+     * Human-readable name of the NAC rule
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Criteria that must not match for the NAC rule to apply
+     */
     notMatching?: pulumi.Input<inputs.org.NacruleNotMatching | undefined>;
     /**
-     * Order of the rule, lower value implies higher priority
+     * Rule priority; lower values are evaluated with higher priority
      */
     order?: pulumi.Input<number | undefined>;
+    /**
+     * Org identifier that owns the NAC rule
+     */
     orgId?: pulumi.Input<string | undefined>;
 }
 
@@ -180,27 +214,43 @@ export interface NacruleState {
  */
 export interface NacruleArgs {
     /**
-     * enum: `allow`, `block`
+     * Allow or block decision applied when the NAC rule matches
      */
     action: pulumi.Input<string>;
     /**
-     * All optional, this goes into Access-Accept
+     * NAC tag IDs to include in the Access-Accept when the rule allows access
      */
     applyTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Enabled or not
+     * Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+     */
+    dryRun?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the NAC rule is evaluated during policy matching
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Guest portal authorization state. enum: `authorized`, `unknown`
+     * Guest portal authorization state condition for the rule
      */
     guestAuthState?: pulumi.Input<string | undefined>;
+    /**
+     * Criteria that must match for the NAC rule to apply
+     */
     matching?: pulumi.Input<inputs.org.NacruleMatching | undefined>;
+    /**
+     * Human-readable name of the NAC rule
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Criteria that must not match for the NAC rule to apply
+     */
     notMatching?: pulumi.Input<inputs.org.NacruleNotMatching | undefined>;
     /**
-     * Order of the rule, lower value implies higher priority
+     * Rule priority; lower values are evaluated with higher priority
      */
     order: pulumi.Input<number>;
+    /**
+     * Org identifier that owns the NAC rule
+     */
     orgId: pulumi.Input<string>;
 }

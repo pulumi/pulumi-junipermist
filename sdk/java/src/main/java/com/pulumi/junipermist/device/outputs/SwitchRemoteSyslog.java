@@ -18,61 +18,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchRemoteSyslog {
+    /**
+     * @return Retention settings for generated syslog archive files
+     * 
+     */
     private @Nullable SwitchRemoteSyslogArchive archive;
+    /**
+     * @return CA certificates used to verify TLS syslog servers
+     * 
+     */
     private @Nullable List<String> cacerts;
+    /**
+     * @return Log forwarding filters for console messages sent to remote syslog
+     * 
+     */
     private @Nullable SwitchRemoteSyslogConsole console;
+    /**
+     * @return Whether remote syslog forwarding is enabled
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Local syslog file definitions to generate and forward
+     * 
+     */
     private @Nullable List<SwitchRemoteSyslogFile> files;
     /**
-     * @return If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+     * @return Source network used for syslog traffic. If `sourceAddress` is configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
      * 
      */
     private @Nullable String network;
+    /**
+     * @return Whether each log entry is sent to all configured remote syslog servers
+     * 
+     */
     private @Nullable Boolean sendToAllServers;
+    /**
+     * @return Remote syslog server destinations
+     * 
+     */
     private @Nullable List<SwitchRemoteSyslogServer> servers;
     /**
-     * @return enum: `millisecond`, `year`, `year millisecond`
+     * @return Timestamp format used in forwarded syslog messages
      * 
      */
     private @Nullable String timeFormat;
+    /**
+     * @return User-specific syslog logging rules
+     * 
+     */
     private @Nullable List<SwitchRemoteSyslogUser> users;
 
     private SwitchRemoteSyslog() {}
+    /**
+     * @return Retention settings for generated syslog archive files
+     * 
+     */
     public Optional<SwitchRemoteSyslogArchive> archive() {
         return Optional.ofNullable(this.archive);
     }
+    /**
+     * @return CA certificates used to verify TLS syslog servers
+     * 
+     */
     public List<String> cacerts() {
         return this.cacerts == null ? List.of() : this.cacerts;
     }
+    /**
+     * @return Log forwarding filters for console messages sent to remote syslog
+     * 
+     */
     public Optional<SwitchRemoteSyslogConsole> console() {
         return Optional.ofNullable(this.console);
     }
+    /**
+     * @return Whether remote syslog forwarding is enabled
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Local syslog file definitions to generate and forward
+     * 
+     */
     public List<SwitchRemoteSyslogFile> files() {
         return this.files == null ? List.of() : this.files;
     }
     /**
-     * @return If sourceAddress is configured, will use the vlan firstly otherwise use source_ip
+     * @return Source network used for syslog traffic. If `sourceAddress` is configured, Mist uses the VLAN first; otherwise it uses `sourceIp`
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
+    /**
+     * @return Whether each log entry is sent to all configured remote syslog servers
+     * 
+     */
     public Optional<Boolean> sendToAllServers() {
         return Optional.ofNullable(this.sendToAllServers);
     }
+    /**
+     * @return Remote syslog server destinations
+     * 
+     */
     public List<SwitchRemoteSyslogServer> servers() {
         return this.servers == null ? List.of() : this.servers;
     }
     /**
-     * @return enum: `millisecond`, `year`, `year millisecond`
+     * @return Timestamp format used in forwarded syslog messages
      * 
      */
     public Optional<String> timeFormat() {
         return Optional.ofNullable(this.timeFormat);
     }
+    /**
+     * @return User-specific syslog logging rules
+     * 
+     */
     public List<SwitchRemoteSyslogUser> users() {
         return this.users == null ? List.of() : this.users;
     }

@@ -143,77 +143,98 @@ namespace Pulumi.JuniperMist.Org
     public partial class DeviceprofileGateway : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands provided by this gateway profile
         /// </summary>
         [Output("additionalConfigCmds")]
         public Output<ImmutableArray<string>> AdditionalConfigCmds { get; private set; } = null!;
 
+        /// <summary>
+        /// BGP routing defaults for this gateway profile. Property key is the BGP session name
+        /// </summary>
         [Output("bgpConfig")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileGatewayBgpConfig>?> BgpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// DHCP server defaults provided by this gateway profile
+        /// </summary>
         [Output("dhcpdConfig")]
         public Output<Outputs.DeviceprofileGatewayDhcpdConfig?> DhcpdConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether DNS server and suffix settings in this profile override inherited values
+        /// </summary>
         [Output("dnsOverride")]
         public Output<bool?> DnsOverride { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS servers provided by this gateway profile
         /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS search suffixes provided by this gateway profile
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        /// Additional IPv4 route defaults in this gateway profile
         /// </summary>
         [Output("extraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileGatewayExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        /// Additional IPv6 route defaults in this gateway profile
         /// </summary>
         [Output("extraRoutes6")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileGatewayExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the profile name
+        /// Intrusion detection and prevention profile defaults in this gateway profile
         /// </summary>
         [Output("idpProfiles")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileGatewayIdpProfiles>?> IdpProfiles { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the network name
+        /// Gateway interface IP configuration defaults by network name
         /// </summary>
         [Output("ipConfigs")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileGatewayIpConfigs>?> IpConfigs { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the gateway profile
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Layer 3 networks configured by this gateway profile
+        /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.DeviceprofileGatewayNetwork>> Networks { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether NTP servers in this profile override inherited values
+        /// </summary>
         [Output("ntpOverride")]
         public Output<bool?> NtpOverride { get; private set; } = null!;
 
         /// <summary>
-        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// NTP servers provided by this gateway profile
         /// </summary>
         [Output("ntpServers")]
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
         /// <summary>
-        /// Out-of-band (vme/em0/fxp0) IP config
+        /// Out-of-band management IP defaults in this gateway profile
         /// </summary>
         [Output("oobIpConfig")]
         public Output<Outputs.DeviceprofileGatewayOobIpConfig> OobIpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns this gateway profile
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -236,11 +257,14 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> RouterId { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Routing policy defaults applied by this gateway profile
         /// </summary>
         [Output("routingPolicies")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileGatewayRoutingPolicies>?> RoutingPolicies { get; private set; } = null!;
 
+        /// <summary>
+        /// Traffic service policy defaults enforced by this gateway profile
+        /// </summary>
         [Output("servicePolicies")]
         public Output<ImmutableArray<Outputs.DeviceprofileGatewayServicePolicy>> ServicePolicies { get; private set; } = null!;
 
@@ -256,11 +280,14 @@ namespace Pulumi.JuniperMist.Org
         [Output("tunnelConfigs")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileGatewayTunnelConfigs>?> TunnelConfigs { get; private set; } = null!;
 
+        /// <summary>
+        /// Provider-specific tunnel options defined by this gateway profile
+        /// </summary>
         [Output("tunnelProviderOptions")]
         public Output<Outputs.DeviceprofileGatewayTunnelProviderOptions?> TunnelProviderOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Device Type. enum: `Gateway`
+        /// Device type discriminator for gateway profiles
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -271,11 +298,14 @@ namespace Pulumi.JuniperMist.Org
         [Output("urlFilteringDenyMsg")]
         public Output<string?> UrlFilteringDenyMsg { get; private set; } = null!;
 
+        /// <summary>
+        /// VRF defaults applied by this gateway profile
+        /// </summary>
         [Output("vrfConfig")]
         public Output<Outputs.DeviceprofileGatewayVrfConfig?> VrfConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the network name
+        /// VRF instances configured by this gateway profile
         /// </summary>
         [Output("vrfInstances")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileGatewayVrfInstances>?> VrfInstances { get; private set; } = null!;
@@ -331,7 +361,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands provided by this gateway profile
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -341,15 +371,25 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("bgpConfig")]
         private InputMap<Inputs.DeviceprofileGatewayBgpConfigArgs>? _bgpConfig;
+
+        /// <summary>
+        /// BGP routing defaults for this gateway profile. Property key is the BGP session name
+        /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayBgpConfigArgs> BgpConfig
         {
             get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.DeviceprofileGatewayBgpConfigArgs>());
             set => _bgpConfig = value;
         }
 
+        /// <summary>
+        /// DHCP server defaults provided by this gateway profile
+        /// </summary>
         [Input("dhcpdConfig")]
         public Input<Inputs.DeviceprofileGatewayDhcpdConfigArgs>? DhcpdConfig { get; set; }
 
+        /// <summary>
+        /// Whether DNS server and suffix settings in this profile override inherited values
+        /// </summary>
         [Input("dnsOverride")]
         public Input<bool>? DnsOverride { get; set; }
 
@@ -357,7 +397,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS servers provided by this gateway profile
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -369,7 +409,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS search suffixes provided by this gateway profile
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -381,7 +421,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayExtraRoutesArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        /// Additional IPv4 route defaults in this gateway profile
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayExtraRoutesArgs> ExtraRoutes
         {
@@ -393,7 +433,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayExtraRoutes6Args>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        /// Additional IPv6 route defaults in this gateway profile
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayExtraRoutes6Args> ExtraRoutes6
         {
@@ -405,7 +445,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayIdpProfilesArgs>? _idpProfiles;
 
         /// <summary>
-        /// Property key is the profile name
+        /// Intrusion detection and prevention profile defaults in this gateway profile
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayIdpProfilesArgs> IdpProfiles
         {
@@ -417,7 +457,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayIpConfigsArgs>? _ipConfigs;
 
         /// <summary>
-        /// Property key is the network name
+        /// Gateway interface IP configuration defaults by network name
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayIpConfigsArgs> IpConfigs
         {
@@ -425,17 +465,27 @@ namespace Pulumi.JuniperMist.Org
             set => _ipConfigs = value;
         }
 
+        /// <summary>
+        /// Display name of the gateway profile
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("networks")]
         private InputList<Inputs.DeviceprofileGatewayNetworkArgs>? _networks;
+
+        /// <summary>
+        /// Layer 3 networks configured by this gateway profile
+        /// </summary>
         public InputList<Inputs.DeviceprofileGatewayNetworkArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.DeviceprofileGatewayNetworkArgs>());
             set => _networks = value;
         }
 
+        /// <summary>
+        /// Whether NTP servers in this profile override inherited values
+        /// </summary>
         [Input("ntpOverride")]
         public Input<bool>? NtpOverride { get; set; }
 
@@ -443,7 +493,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// NTP servers provided by this gateway profile
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -452,11 +502,14 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Out-of-band (vme/em0/fxp0) IP config
+        /// Out-of-band management IP defaults in this gateway profile
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.DeviceprofileGatewayOobIpConfigArgs>? OobIpConfig { get; set; }
 
+        /// <summary>
+        /// Organization that owns this gateway profile
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -494,7 +547,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayRoutingPoliciesArgs>? _routingPolicies;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Routing policy defaults applied by this gateway profile
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayRoutingPoliciesArgs> RoutingPolicies
         {
@@ -504,6 +557,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("servicePolicies")]
         private InputList<Inputs.DeviceprofileGatewayServicePolicyArgs>? _servicePolicies;
+
+        /// <summary>
+        /// Traffic service policy defaults enforced by this gateway profile
+        /// </summary>
         public InputList<Inputs.DeviceprofileGatewayServicePolicyArgs> ServicePolicies
         {
             get => _servicePolicies ?? (_servicePolicies = new InputList<Inputs.DeviceprofileGatewayServicePolicyArgs>());
@@ -534,6 +591,9 @@ namespace Pulumi.JuniperMist.Org
             set => _tunnelConfigs = value;
         }
 
+        /// <summary>
+        /// Provider-specific tunnel options defined by this gateway profile
+        /// </summary>
         [Input("tunnelProviderOptions")]
         public Input<Inputs.DeviceprofileGatewayTunnelProviderOptionsArgs>? TunnelProviderOptions { get; set; }
 
@@ -543,6 +603,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("urlFilteringDenyMsg")]
         public Input<string>? UrlFilteringDenyMsg { get; set; }
 
+        /// <summary>
+        /// VRF defaults applied by this gateway profile
+        /// </summary>
         [Input("vrfConfig")]
         public Input<Inputs.DeviceprofileGatewayVrfConfigArgs>? VrfConfig { get; set; }
 
@@ -550,7 +613,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayVrfInstancesArgs>? _vrfInstances;
 
         /// <summary>
-        /// Property key is the network name
+        /// VRF instances configured by this gateway profile
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayVrfInstancesArgs> VrfInstances
         {
@@ -570,7 +633,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands provided by this gateway profile
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -580,15 +643,25 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("bgpConfig")]
         private InputMap<Inputs.DeviceprofileGatewayBgpConfigGetArgs>? _bgpConfig;
+
+        /// <summary>
+        /// BGP routing defaults for this gateway profile. Property key is the BGP session name
+        /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayBgpConfigGetArgs> BgpConfig
         {
             get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.DeviceprofileGatewayBgpConfigGetArgs>());
             set => _bgpConfig = value;
         }
 
+        /// <summary>
+        /// DHCP server defaults provided by this gateway profile
+        /// </summary>
         [Input("dhcpdConfig")]
         public Input<Inputs.DeviceprofileGatewayDhcpdConfigGetArgs>? DhcpdConfig { get; set; }
 
+        /// <summary>
+        /// Whether DNS server and suffix settings in this profile override inherited values
+        /// </summary>
         [Input("dnsOverride")]
         public Input<bool>? DnsOverride { get; set; }
 
@@ -596,7 +669,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS servers provided by this gateway profile
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -608,7 +681,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS search suffixes provided by this gateway profile
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -620,7 +693,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayExtraRoutesGetArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        /// Additional IPv4 route defaults in this gateway profile
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayExtraRoutesGetArgs> ExtraRoutes
         {
@@ -632,7 +705,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayExtraRoutes6GetArgs>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        /// Additional IPv6 route defaults in this gateway profile
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayExtraRoutes6GetArgs> ExtraRoutes6
         {
@@ -644,7 +717,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayIdpProfilesGetArgs>? _idpProfiles;
 
         /// <summary>
-        /// Property key is the profile name
+        /// Intrusion detection and prevention profile defaults in this gateway profile
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayIdpProfilesGetArgs> IdpProfiles
         {
@@ -656,7 +729,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayIpConfigsGetArgs>? _ipConfigs;
 
         /// <summary>
-        /// Property key is the network name
+        /// Gateway interface IP configuration defaults by network name
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayIpConfigsGetArgs> IpConfigs
         {
@@ -664,17 +737,27 @@ namespace Pulumi.JuniperMist.Org
             set => _ipConfigs = value;
         }
 
+        /// <summary>
+        /// Display name of the gateway profile
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("networks")]
         private InputList<Inputs.DeviceprofileGatewayNetworkGetArgs>? _networks;
+
+        /// <summary>
+        /// Layer 3 networks configured by this gateway profile
+        /// </summary>
         public InputList<Inputs.DeviceprofileGatewayNetworkGetArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.DeviceprofileGatewayNetworkGetArgs>());
             set => _networks = value;
         }
 
+        /// <summary>
+        /// Whether NTP servers in this profile override inherited values
+        /// </summary>
         [Input("ntpOverride")]
         public Input<bool>? NtpOverride { get; set; }
 
@@ -682,7 +765,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// NTP servers provided by this gateway profile
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -691,11 +774,14 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Out-of-band (vme/em0/fxp0) IP config
+        /// Out-of-band management IP defaults in this gateway profile
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.DeviceprofileGatewayOobIpConfigGetArgs>? OobIpConfig { get; set; }
 
+        /// <summary>
+        /// Organization that owns this gateway profile
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -733,7 +819,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayRoutingPoliciesGetArgs>? _routingPolicies;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Routing policy defaults applied by this gateway profile
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayRoutingPoliciesGetArgs> RoutingPolicies
         {
@@ -743,6 +829,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("servicePolicies")]
         private InputList<Inputs.DeviceprofileGatewayServicePolicyGetArgs>? _servicePolicies;
+
+        /// <summary>
+        /// Traffic service policy defaults enforced by this gateway profile
+        /// </summary>
         public InputList<Inputs.DeviceprofileGatewayServicePolicyGetArgs> ServicePolicies
         {
             get => _servicePolicies ?? (_servicePolicies = new InputList<Inputs.DeviceprofileGatewayServicePolicyGetArgs>());
@@ -773,11 +863,14 @@ namespace Pulumi.JuniperMist.Org
             set => _tunnelConfigs = value;
         }
 
+        /// <summary>
+        /// Provider-specific tunnel options defined by this gateway profile
+        /// </summary>
         [Input("tunnelProviderOptions")]
         public Input<Inputs.DeviceprofileGatewayTunnelProviderOptionsGetArgs>? TunnelProviderOptions { get; set; }
 
         /// <summary>
-        /// Device Type. enum: `Gateway`
+        /// Device type discriminator for gateway profiles
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -788,6 +881,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("urlFilteringDenyMsg")]
         public Input<string>? UrlFilteringDenyMsg { get; set; }
 
+        /// <summary>
+        /// VRF defaults applied by this gateway profile
+        /// </summary>
         [Input("vrfConfig")]
         public Input<Inputs.DeviceprofileGatewayVrfConfigGetArgs>? VrfConfig { get; set; }
 
@@ -795,7 +891,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.DeviceprofileGatewayVrfInstancesGetArgs>? _vrfInstances;
 
         /// <summary>
-        /// Property key is the network name
+        /// VRF instances configured by this gateway profile
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayVrfInstancesGetArgs> VrfInstances
         {

@@ -13,10 +13,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxclusterTuntermDhcpdConfig
     {
+        /// <summary>
+        /// Whether DHCP relay is enabled for this tunneled VLAN
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// DHCP server IP addresses used as relay targets for this VLAN
+        /// </summary>
         public readonly ImmutableArray<string> Servers;
         /// <summary>
-        /// enum: `Relay`
+        /// DHCP forwarding mode for this tunneled VLAN
         /// </summary>
         public readonly string? Type;
 

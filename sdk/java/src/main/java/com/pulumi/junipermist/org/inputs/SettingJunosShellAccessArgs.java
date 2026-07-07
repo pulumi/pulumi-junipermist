@@ -16,14 +16,14 @@ public final class SettingJunosShellAccessArgs extends com.pulumi.resources.Reso
     public static final SettingJunosShellAccessArgs Empty = new SettingJunosShellAccessArgs();
 
     /**
-     * enum: `admin`, `viewer`, `none`
+     * Shell access level used for administrator web-shell sessions
      * 
      */
     @Import(name="admin")
     private @Nullable Output<String> admin;
 
     /**
-     * @return enum: `admin`, `viewer`, `none`
+     * @return Shell access level used for administrator web-shell sessions
      * 
      */
     public Optional<Output<String>> admin() {
@@ -31,14 +31,14 @@ public final class SettingJunosShellAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * enum: `admin`, `viewer`, `none`
+     * Shell access level used for helpdesk web-shell sessions
      * 
      */
     @Import(name="helpdesk")
     private @Nullable Output<String> helpdesk;
 
     /**
-     * @return enum: `admin`, `viewer`, `none`
+     * @return Shell access level used for helpdesk web-shell sessions
      * 
      */
     public Optional<Output<String>> helpdesk() {
@@ -46,14 +46,14 @@ public final class SettingJunosShellAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * enum: `admin`, `viewer`, `none`
+     * Shell access level used for read-only web-shell sessions
      * 
      */
     @Import(name="read")
     private @Nullable Output<String> read;
 
     /**
-     * @return enum: `admin`, `viewer`, `none`
+     * @return Shell access level used for read-only web-shell sessions
      * 
      */
     public Optional<Output<String>> read() {
@@ -61,14 +61,14 @@ public final class SettingJunosShellAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * enum: `admin`, `viewer`, `none`
+     * Shell access level used for write-role web-shell sessions
      * 
      */
     @Import(name="write")
     private @Nullable Output<String> write;
 
     /**
-     * @return enum: `admin`, `viewer`, `none`
+     * @return Shell access level used for write-role web-shell sessions
      * 
      */
     public Optional<Output<String>> write() {
@@ -103,7 +103,7 @@ public final class SettingJunosShellAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param admin enum: `admin`, `viewer`, `none`
+         * @param admin Shell access level used for administrator web-shell sessions
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class SettingJunosShellAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param admin enum: `admin`, `viewer`, `none`
+         * @param admin Shell access level used for administrator web-shell sessions
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class SettingJunosShellAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param helpdesk enum: `admin`, `viewer`, `none`
+         * @param helpdesk Shell access level used for helpdesk web-shell sessions
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class SettingJunosShellAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param helpdesk enum: `admin`, `viewer`, `none`
+         * @param helpdesk Shell access level used for helpdesk web-shell sessions
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class SettingJunosShellAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param read enum: `admin`, `viewer`, `none`
+         * @param read Shell access level used for read-only web-shell sessions
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class SettingJunosShellAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param read enum: `admin`, `viewer`, `none`
+         * @param read Shell access level used for read-only web-shell sessions
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class SettingJunosShellAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param write enum: `admin`, `viewer`, `none`
+         * @param write Shell access level used for write-role web-shell sessions
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class SettingJunosShellAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param write enum: `admin`, `viewer`, `none`
+         * @param write Shell access level used for write-role web-shell sessions
          * 
          * @return builder
          * 

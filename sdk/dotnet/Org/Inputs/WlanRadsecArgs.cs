@@ -12,12 +12,21 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class WlanRadsecArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether RADIUS Change of Authorization (CoA) is enabled for RadSec traffic
+        /// </summary>
         [Input("coaEnabled")]
         public Input<bool>? CoaEnabled { get; set; }
 
+        /// <summary>
+        /// Whether RadSec is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Idle timeout, in seconds, for RadSec connections
+        /// </summary>
         [Input("idleTimeout")]
         public Input<string>? IdleTimeout { get; set; }
 
@@ -25,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _mxclusterIds;
 
         /// <summary>
-        /// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+        /// Mist Edge cluster IDs used as RadSec proxies when the WLAN does not use mxtunnel
         /// </summary>
         public InputList<string> MxclusterIds
         {
@@ -37,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _proxyHosts;
 
         /// <summary>
-        /// Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `UseSiteMxedge`
+        /// RadSec proxy hostnames advertised to APs
         /// </summary>
         public InputList<string> ProxyHosts
         {
@@ -46,7 +55,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+        /// TLS server name to verify against the CA certificates in Org Setting. Only if not Mist Edge.
         /// </summary>
         [Input("serverName")]
         public Input<string>? ServerName { get; set; }
@@ -55,7 +64,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.WlanRadsecServerArgs>? _servers;
 
         /// <summary>
-        /// List of RadSec Servers. Only if not Mist Edge.
+        /// External RadSec servers. Only if not Mist Edge.
         /// </summary>
         public InputList<Inputs.WlanRadsecServerArgs> Servers
         {
@@ -64,13 +73,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// use mxedge(s) as RadSec Proxy
+        /// Whether to use organization Mist Edge instances as RadSec proxies
         /// </summary>
         [Input("useMxedge")]
         public Input<bool>? UseMxedge { get; set; }
 
         /// <summary>
-        /// To use Site mxedges when this WLAN does not use mxtunnel
+        /// Whether to use site Mist Edge instances when this WLAN does not use mxtunnel
         /// </summary>
         [Input("useSiteMxedge")]
         public Input<bool>? UseSiteMxedge { get; set; }

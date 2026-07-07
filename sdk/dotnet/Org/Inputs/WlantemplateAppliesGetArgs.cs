@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class WlantemplateAppliesGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Organization included in the WLAN template application scope
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -19,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _siteIds;
 
         /// <summary>
-        /// List of site ids
+        /// Sites included in the WLAN template application scope
         /// </summary>
         public InputList<string> SiteIds
         {
@@ -31,7 +34,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _sitegroupIds;
 
         /// <summary>
-        /// List of sitegroup ids
+        /// Site groups included in the WLAN template application scope
         /// </summary>
         public InputList<string> SitegroupIds
         {

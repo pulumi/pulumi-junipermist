@@ -39,13 +39,21 @@ class NetworkArgs:
         """
         The set of arguments for constructing a Network resource.
 
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this network
+        :param pulumi.Input[_builtins.str] subnet: IPv4 subnet CIDR for this network
         :param pulumi.Input[_builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
-        :param pulumi.Input['NetworkInternetAccessArgs'] internet_access: Whether this network has direct internet access
+        :param pulumi.Input[_builtins.str] gateway: IPv4 gateway address for this network
+        :param pulumi.Input[_builtins.str] gateway6: IPv6 gateway address for this network
+        :param pulumi.Input['NetworkInternalAccessArgs'] internal_access: Internal access settings for this network
+        :param pulumi.Input['NetworkInternetAccessArgs'] internet_access: Direct internet access and NAT settings for this network
         :param pulumi.Input[_builtins.bool] isolation: Whether to allow clients in the network to talk to each other
-        :param pulumi.Input['NetworkMulticastArgs'] multicast: Whether to enable multicast support (only PIM-sparse mode is supported)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] routed_for_networks: For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
-        :param pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
+        :param pulumi.Input['NetworkMulticastArgs'] multicast: Settings for multicast routing on this network
+        :param pulumi.Input[_builtins.str] name: Display name of the organization network
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] routed_for_networks: Other network names this network can route to, for example through BGP, OSPF or static routes
+        :param pulumi.Input[_builtins.str] subnet6: IPv6 subnet CIDR for this network
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]] tenants: Tenant address mappings associated with this network
+        :param pulumi.Input[_builtins.str] vlan_id: VLAN ID or variable associated with this network
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]] vpn_access: VPN access settings keyed by VPN name for this network
         """
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "subnet", subnet)
@@ -79,6 +87,9 @@ class NetworkArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization that owns this network
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -88,6 +99,9 @@ class NetworkArgs:
     @_builtins.property
     @pulumi.getter
     def subnet(self) -> pulumi.Input[_builtins.str]:
+        """
+        IPv4 subnet CIDR for this network
+        """
         return pulumi.get(self, "subnet")
 
     @subnet.setter
@@ -109,6 +123,9 @@ class NetworkArgs:
     @_builtins.property
     @pulumi.getter
     def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv4 gateway address for this network
+        """
         return pulumi.get(self, "gateway")
 
     @gateway.setter
@@ -118,6 +135,9 @@ class NetworkArgs:
     @_builtins.property
     @pulumi.getter
     def gateway6(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv6 gateway address for this network
+        """
         return pulumi.get(self, "gateway6")
 
     @gateway6.setter
@@ -127,6 +147,9 @@ class NetworkArgs:
     @_builtins.property
     @pulumi.getter(name="internalAccess")
     def internal_access(self) -> pulumi.Input[Optional['NetworkInternalAccessArgs']]:
+        """
+        Internal access settings for this network
+        """
         return pulumi.get(self, "internal_access")
 
     @internal_access.setter
@@ -137,7 +160,7 @@ class NetworkArgs:
     @pulumi.getter(name="internetAccess")
     def internet_access(self) -> pulumi.Input[Optional['NetworkInternetAccessArgs']]:
         """
-        Whether this network has direct internet access
+        Direct internet access and NAT settings for this network
         """
         return pulumi.get(self, "internet_access")
 
@@ -161,7 +184,7 @@ class NetworkArgs:
     @pulumi.getter
     def multicast(self) -> pulumi.Input[Optional['NetworkMulticastArgs']]:
         """
-        Whether to enable multicast support (only PIM-sparse mode is supported)
+        Settings for multicast routing on this network
         """
         return pulumi.get(self, "multicast")
 
@@ -172,6 +195,9 @@ class NetworkArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the organization network
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -182,7 +208,7 @@ class NetworkArgs:
     @pulumi.getter(name="routedForNetworks")
     def routed_for_networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        Other network names this network can route to, for example through BGP, OSPF or static routes
         """
         return pulumi.get(self, "routed_for_networks")
 
@@ -193,6 +219,9 @@ class NetworkArgs:
     @_builtins.property
     @pulumi.getter
     def subnet6(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv6 subnet CIDR for this network
+        """
         return pulumi.get(self, "subnet6")
 
     @subnet6.setter
@@ -203,7 +232,7 @@ class NetworkArgs:
     @pulumi.getter
     def tenants(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]]:
         """
-        Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        Tenant address mappings associated with this network
         """
         return pulumi.get(self, "tenants")
 
@@ -214,6 +243,9 @@ class NetworkArgs:
     @_builtins.property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        VLAN ID or variable associated with this network
+        """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
@@ -224,7 +256,7 @@ class NetworkArgs:
     @pulumi.getter(name="vpnAccess")
     def vpn_access(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]]:
         """
-        Property key is the VPN name. Whether this network can be accessed from vpn
+        VPN access settings keyed by VPN name for this network
         """
         return pulumi.get(self, "vpn_access")
 
@@ -255,12 +287,20 @@ class _NetworkState:
         Input properties used for looking up and filtering Network resources.
 
         :param pulumi.Input[_builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
-        :param pulumi.Input['NetworkInternetAccessArgs'] internet_access: Whether this network has direct internet access
+        :param pulumi.Input[_builtins.str] gateway: IPv4 gateway address for this network
+        :param pulumi.Input[_builtins.str] gateway6: IPv6 gateway address for this network
+        :param pulumi.Input['NetworkInternalAccessArgs'] internal_access: Internal access settings for this network
+        :param pulumi.Input['NetworkInternetAccessArgs'] internet_access: Direct internet access and NAT settings for this network
         :param pulumi.Input[_builtins.bool] isolation: Whether to allow clients in the network to talk to each other
-        :param pulumi.Input['NetworkMulticastArgs'] multicast: Whether to enable multicast support (only PIM-sparse mode is supported)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] routed_for_networks: For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
-        :param pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
+        :param pulumi.Input['NetworkMulticastArgs'] multicast: Settings for multicast routing on this network
+        :param pulumi.Input[_builtins.str] name: Display name of the organization network
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this network
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] routed_for_networks: Other network names this network can route to, for example through BGP, OSPF or static routes
+        :param pulumi.Input[_builtins.str] subnet: IPv4 subnet CIDR for this network
+        :param pulumi.Input[_builtins.str] subnet6: IPv6 subnet CIDR for this network
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]] tenants: Tenant address mappings associated with this network
+        :param pulumi.Input[_builtins.str] vlan_id: VLAN ID or variable associated with this network
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]] vpn_access: VPN access settings keyed by VPN name for this network
         """
         if disallow_mist_services is not None:
             pulumi.set(__self__, "disallow_mist_services", disallow_mist_services)
@@ -308,6 +348,9 @@ class _NetworkState:
     @_builtins.property
     @pulumi.getter
     def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv4 gateway address for this network
+        """
         return pulumi.get(self, "gateway")
 
     @gateway.setter
@@ -317,6 +360,9 @@ class _NetworkState:
     @_builtins.property
     @pulumi.getter
     def gateway6(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv6 gateway address for this network
+        """
         return pulumi.get(self, "gateway6")
 
     @gateway6.setter
@@ -326,6 +372,9 @@ class _NetworkState:
     @_builtins.property
     @pulumi.getter(name="internalAccess")
     def internal_access(self) -> pulumi.Input[Optional['NetworkInternalAccessArgs']]:
+        """
+        Internal access settings for this network
+        """
         return pulumi.get(self, "internal_access")
 
     @internal_access.setter
@@ -336,7 +385,7 @@ class _NetworkState:
     @pulumi.getter(name="internetAccess")
     def internet_access(self) -> pulumi.Input[Optional['NetworkInternetAccessArgs']]:
         """
-        Whether this network has direct internet access
+        Direct internet access and NAT settings for this network
         """
         return pulumi.get(self, "internet_access")
 
@@ -360,7 +409,7 @@ class _NetworkState:
     @pulumi.getter
     def multicast(self) -> pulumi.Input[Optional['NetworkMulticastArgs']]:
         """
-        Whether to enable multicast support (only PIM-sparse mode is supported)
+        Settings for multicast routing on this network
         """
         return pulumi.get(self, "multicast")
 
@@ -371,6 +420,9 @@ class _NetworkState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the organization network
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -380,6 +432,9 @@ class _NetworkState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns this network
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -390,7 +445,7 @@ class _NetworkState:
     @pulumi.getter(name="routedForNetworks")
     def routed_for_networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        Other network names this network can route to, for example through BGP, OSPF or static routes
         """
         return pulumi.get(self, "routed_for_networks")
 
@@ -401,6 +456,9 @@ class _NetworkState:
     @_builtins.property
     @pulumi.getter
     def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv4 subnet CIDR for this network
+        """
         return pulumi.get(self, "subnet")
 
     @subnet.setter
@@ -410,6 +468,9 @@ class _NetworkState:
     @_builtins.property
     @pulumi.getter
     def subnet6(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IPv6 subnet CIDR for this network
+        """
         return pulumi.get(self, "subnet6")
 
     @subnet6.setter
@@ -420,7 +481,7 @@ class _NetworkState:
     @pulumi.getter
     def tenants(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]]:
         """
-        Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        Tenant address mappings associated with this network
         """
         return pulumi.get(self, "tenants")
 
@@ -431,6 +492,9 @@ class _NetworkState:
     @_builtins.property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        VLAN ID or variable associated with this network
+        """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
@@ -441,7 +505,7 @@ class _NetworkState:
     @pulumi.getter(name="vpnAccess")
     def vpn_access(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]]]:
         """
-        Property key is the VPN name. Whether this network can be accessed from vpn
+        VPN access settings keyed by VPN name for this network
         """
         return pulumi.get(self, "vpn_access")
 
@@ -503,12 +567,20 @@ class Network(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
-        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: Whether this network has direct internet access
+        :param pulumi.Input[_builtins.str] gateway: IPv4 gateway address for this network
+        :param pulumi.Input[_builtins.str] gateway6: IPv6 gateway address for this network
+        :param pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']] internal_access: Internal access settings for this network
+        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: Direct internet access and NAT settings for this network
         :param pulumi.Input[_builtins.bool] isolation: Whether to allow clients in the network to talk to each other
-        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']] multicast: Whether to enable multicast support (only PIM-sparse mode is supported)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] routed_for_networks: For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
+        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']] multicast: Settings for multicast routing on this network
+        :param pulumi.Input[_builtins.str] name: Display name of the organization network
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this network
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] routed_for_networks: Other network names this network can route to, for example through BGP, OSPF or static routes
+        :param pulumi.Input[_builtins.str] subnet: IPv4 subnet CIDR for this network
+        :param pulumi.Input[_builtins.str] subnet6: IPv6 subnet CIDR for this network
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]] tenants: Tenant address mappings associated with this network
+        :param pulumi.Input[_builtins.str] vlan_id: VLAN ID or variable associated with this network
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: VPN access settings keyed by VPN name for this network
         """
         ...
     @overload
@@ -635,12 +707,20 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disallow_mist_services: Whether to disallow Mist Devices in the network
-        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: Whether this network has direct internet access
+        :param pulumi.Input[_builtins.str] gateway: IPv4 gateway address for this network
+        :param pulumi.Input[_builtins.str] gateway6: IPv6 gateway address for this network
+        :param pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']] internal_access: Internal access settings for this network
+        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: Direct internet access and NAT settings for this network
         :param pulumi.Input[_builtins.bool] isolation: Whether to allow clients in the network to talk to each other
-        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']] multicast: Whether to enable multicast support (only PIM-sparse mode is supported)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] routed_for_networks: For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
+        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']] multicast: Settings for multicast routing on this network
+        :param pulumi.Input[_builtins.str] name: Display name of the organization network
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this network
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] routed_for_networks: Other network names this network can route to, for example through BGP, OSPF or static routes
+        :param pulumi.Input[_builtins.str] subnet: IPv4 subnet CIDR for this network
+        :param pulumi.Input[_builtins.str] subnet6: IPv6 subnet CIDR for this network
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]] tenants: Tenant address mappings associated with this network
+        :param pulumi.Input[_builtins.str] vlan_id: VLAN ID or variable associated with this network
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: VPN access settings keyed by VPN name for this network
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -674,23 +754,32 @@ class Network(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def gateway(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        IPv4 gateway address for this network
+        """
         return pulumi.get(self, "gateway")
 
     @_builtins.property
     @pulumi.getter
     def gateway6(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        IPv6 gateway address for this network
+        """
         return pulumi.get(self, "gateway6")
 
     @_builtins.property
     @pulumi.getter(name="internalAccess")
     def internal_access(self) -> pulumi.Output[Optional['outputs.NetworkInternalAccess']]:
+        """
+        Internal access settings for this network
+        """
         return pulumi.get(self, "internal_access")
 
     @_builtins.property
     @pulumi.getter(name="internetAccess")
     def internet_access(self) -> pulumi.Output[Optional['outputs.NetworkInternetAccess']]:
         """
-        Whether this network has direct internet access
+        Direct internet access and NAT settings for this network
         """
         return pulumi.get(self, "internet_access")
 
@@ -706,56 +795,71 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def multicast(self) -> pulumi.Output[Optional['outputs.NetworkMulticast']]:
         """
-        Whether to enable multicast support (only PIM-sparse mode is supported)
+        Settings for multicast routing on this network
         """
         return pulumi.get(self, "multicast")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the organization network
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns this network
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter(name="routedForNetworks")
     def routed_for_networks(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        Other network names this network can route to, for example through BGP, OSPF or static routes
         """
         return pulumi.get(self, "routed_for_networks")
 
     @_builtins.property
     @pulumi.getter
     def subnet(self) -> pulumi.Output[_builtins.str]:
+        """
+        IPv4 subnet CIDR for this network
+        """
         return pulumi.get(self, "subnet")
 
     @_builtins.property
     @pulumi.getter
     def subnet6(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        IPv6 subnet CIDR for this network
+        """
         return pulumi.get(self, "subnet6")
 
     @_builtins.property
     @pulumi.getter
     def tenants(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.NetworkTenants']]]:
         """
-        Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        Tenant address mappings associated with this network
         """
         return pulumi.get(self, "tenants")
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        VLAN ID or variable associated with this network
+        """
         return pulumi.get(self, "vlan_id")
 
     @_builtins.property
     @pulumi.getter(name="vpnAccess")
     def vpn_access(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.NetworkVpnAccess']]]:
         """
-        Property key is the VPN name. Whether this network can be accessed from vpn
+        VPN access settings keyed by VPN name for this network
         """
         return pulumi.get(self, "vpn_access")
 

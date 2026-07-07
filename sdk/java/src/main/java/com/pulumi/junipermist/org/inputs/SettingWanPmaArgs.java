@@ -15,9 +15,17 @@ public final class SettingWanPmaArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingWanPmaArgs Empty = new SettingWanPmaArgs();
 
+    /**
+     * Whether PMA is enabled for WAN Assurance
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether PMA is enabled for WAN Assurance
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -46,11 +54,23 @@ public final class SettingWanPmaArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingWanPmaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether PMA is enabled for WAN Assurance
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether PMA is enabled for WAN Assurance
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

@@ -20,36 +20,60 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
 
     public static final RftemplateModelSpecificArgs Empty = new RftemplateModelSpecificArgs();
 
+    /**
+     * Model-specific external antenna gain for the 2.4 GHz radio
+     * 
+     */
     @Import(name="antGain24")
     private @Nullable Output<Integer> antGain24;
 
+    /**
+     * @return Model-specific external antenna gain for the 2.4 GHz radio
+     * 
+     */
     public Optional<Output<Integer>> antGain24() {
         return Optional.ofNullable(this.antGain24);
     }
 
+    /**
+     * Model-specific external antenna gain for the 5 GHz radio
+     * 
+     */
     @Import(name="antGain5")
     private @Nullable Output<Integer> antGain5;
 
+    /**
+     * @return Model-specific external antenna gain for the 5 GHz radio
+     * 
+     */
     public Optional<Output<Integer>> antGain5() {
         return Optional.ofNullable(this.antGain5);
     }
 
+    /**
+     * Model-specific external antenna gain for the 6 GHz radio
+     * 
+     */
     @Import(name="antGain6")
     private @Nullable Output<Integer> antGain6;
 
+    /**
+     * @return Model-specific external antenna gain for the 6 GHz radio
+     * 
+     */
     public Optional<Output<Integer>> antGain6() {
         return Optional.ofNullable(this.antGain6);
     }
 
     /**
-     * Radio Band AP settings
+     * Model-specific 2.4 GHz radio settings that override RF template defaults
      * 
      */
     @Import(name="band24")
     private @Nullable Output<RftemplateModelSpecificBand24Args> band24;
 
     /**
-     * @return Radio Band AP settings
+     * @return Model-specific 2.4 GHz radio settings that override RF template defaults
      * 
      */
     public Optional<Output<RftemplateModelSpecificBand24Args>> band24() {
@@ -57,14 +81,14 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * enum: `24`, `5`, `6`, `auto`
+     * Model-specific radio usage mode for the 2.4 GHz-capable radio
      * 
      */
     @Import(name="band24Usage")
     private @Nullable Output<String> band24Usage;
 
     /**
-     * @return enum: `24`, `5`, `6`, `auto`
+     * @return Model-specific radio usage mode for the 2.4 GHz-capable radio
      * 
      */
     public Optional<Output<String>> band24Usage() {
@@ -72,14 +96,14 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Radio Band AP settings
+     * Model-specific 5 GHz radio settings that override RF template defaults
      * 
      */
     @Import(name="band5")
     private @Nullable Output<RftemplateModelSpecificBand5Args> band5;
 
     /**
-     * @return Radio Band AP settings
+     * @return Model-specific 5 GHz radio settings that override RF template defaults
      * 
      */
     public Optional<Output<RftemplateModelSpecificBand5Args>> band5() {
@@ -87,14 +111,14 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Radio Band AP settings
+     * Model-specific 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      * 
      */
     @Import(name="band5On24Radio")
     private @Nullable Output<RftemplateModelSpecificBand5On24RadioArgs> band5On24Radio;
 
     /**
-     * @return Radio Band AP settings
+     * @return Model-specific 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      * 
      */
     public Optional<Output<RftemplateModelSpecificBand5On24RadioArgs>> band5On24Radio() {
@@ -102,14 +126,14 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Radio Band AP settings
+     * Model-specific 6 GHz radio settings that override RF template defaults
      * 
      */
     @Import(name="band6")
     private @Nullable Output<RftemplateModelSpecificBand6Args> band6;
 
     /**
-     * @return Radio Band AP settings
+     * @return Model-specific 6 GHz radio settings that override RF template defaults
      * 
      */
     public Optional<Output<RftemplateModelSpecificBand6Args>> band6() {
@@ -147,35 +171,71 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
             $ = new RftemplateModelSpecificArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param antGain24 Model-specific external antenna gain for the 2.4 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain24(@Nullable Output<Integer> antGain24) {
             $.antGain24 = antGain24;
             return this;
         }
 
+        /**
+         * @param antGain24 Model-specific external antenna gain for the 2.4 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain24(Integer antGain24) {
             return antGain24(Output.of(antGain24));
         }
 
+        /**
+         * @param antGain5 Model-specific external antenna gain for the 5 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain5(@Nullable Output<Integer> antGain5) {
             $.antGain5 = antGain5;
             return this;
         }
 
+        /**
+         * @param antGain5 Model-specific external antenna gain for the 5 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain5(Integer antGain5) {
             return antGain5(Output.of(antGain5));
         }
 
+        /**
+         * @param antGain6 Model-specific external antenna gain for the 6 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain6(@Nullable Output<Integer> antGain6) {
             $.antGain6 = antGain6;
             return this;
         }
 
+        /**
+         * @param antGain6 Model-specific external antenna gain for the 6 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain6(Integer antGain6) {
             return antGain6(Output.of(antGain6));
         }
 
         /**
-         * @param band24 Radio Band AP settings
+         * @param band24 Model-specific 2.4 GHz radio settings that override RF template defaults
          * 
          * @return builder
          * 
@@ -186,7 +246,7 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param band24 Radio Band AP settings
+         * @param band24 Model-specific 2.4 GHz radio settings that override RF template defaults
          * 
          * @return builder
          * 
@@ -196,7 +256,7 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param band24Usage enum: `24`, `5`, `6`, `auto`
+         * @param band24Usage Model-specific radio usage mode for the 2.4 GHz-capable radio
          * 
          * @return builder
          * 
@@ -207,7 +267,7 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param band24Usage enum: `24`, `5`, `6`, `auto`
+         * @param band24Usage Model-specific radio usage mode for the 2.4 GHz-capable radio
          * 
          * @return builder
          * 
@@ -217,7 +277,7 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param band5 Radio Band AP settings
+         * @param band5 Model-specific 5 GHz radio settings that override RF template defaults
          * 
          * @return builder
          * 
@@ -228,7 +288,7 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param band5 Radio Band AP settings
+         * @param band5 Model-specific 5 GHz radio settings that override RF template defaults
          * 
          * @return builder
          * 
@@ -238,7 +298,7 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param band5On24Radio Radio Band AP settings
+         * @param band5On24Radio Model-specific 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
          * 
          * @return builder
          * 
@@ -249,7 +309,7 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param band5On24Radio Radio Band AP settings
+         * @param band5On24Radio Model-specific 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
          * 
          * @return builder
          * 
@@ -259,7 +319,7 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param band6 Radio Band AP settings
+         * @param band6 Model-specific 6 GHz radio settings that override RF template defaults
          * 
          * @return builder
          * 
@@ -270,7 +330,7 @@ public final class RftemplateModelSpecificArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param band6 Radio Band AP settings
+         * @param band6 Model-specific 6 GHz radio settings that override RF template defaults
          * 
          * @return builder
          * 

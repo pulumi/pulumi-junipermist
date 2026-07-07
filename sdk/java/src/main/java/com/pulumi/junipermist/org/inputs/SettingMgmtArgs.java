@@ -18,14 +18,14 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
     public static final SettingMgmtArgs Empty = new SettingMgmtArgs();
 
     /**
-     * List of Mist Tunnels
+     * Mist Tunnel IDs selected for management connectivity
      * 
      */
     @Import(name="mxtunnelIds")
     private @Nullable Output<List<String>> mxtunnelIds;
 
     /**
-     * @return List of Mist Tunnels
+     * @return Mist Tunnel IDs selected for management connectivity
      * 
      */
     public Optional<Output<List<String>>> mxtunnelIds() {
@@ -89,7 +89,7 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelIds List of Mist Tunnels
+         * @param mxtunnelIds Mist Tunnel IDs selected for management connectivity
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelIds List of Mist Tunnels
+         * @param mxtunnelIds Mist Tunnel IDs selected for management connectivity
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelIds List of Mist Tunnels
+         * @param mxtunnelIds Mist Tunnel IDs selected for management connectivity
          * 
          * @return builder
          * 

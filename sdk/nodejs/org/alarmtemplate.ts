@@ -89,13 +89,16 @@ export class Alarmtemplate extends pulumi.CustomResource {
     }
 
     /**
-     * Delivery object to configure the alarm delivery
+     * Default alarm delivery settings for rules in this template
      */
     declare public readonly delivery: pulumi.Output<outputs.org.AlarmtemplateDelivery>;
     /**
      * Some string to name the alarm template
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Organization that owns this alarm template
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
      * Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `junipermist.getConstAlarms` data source).
@@ -145,13 +148,16 @@ export class Alarmtemplate extends pulumi.CustomResource {
  */
 export interface AlarmtemplateState {
     /**
-     * Delivery object to configure the alarm delivery
+     * Default alarm delivery settings for rules in this template
      */
     delivery?: pulumi.Input<inputs.org.AlarmtemplateDelivery | undefined>;
     /**
      * Some string to name the alarm template
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns this alarm template
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
      * Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `junipermist.getConstAlarms` data source).
@@ -164,13 +170,16 @@ export interface AlarmtemplateState {
  */
 export interface AlarmtemplateArgs {
     /**
-     * Delivery object to configure the alarm delivery
+     * Default alarm delivery settings for rules in this template
      */
     delivery: pulumi.Input<inputs.org.AlarmtemplateDelivery>;
     /**
      * Some string to name the alarm template
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization that owns this alarm template
+     */
     orgId: pulumi.Input<string>;
     /**
      * Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `junipermist.getConstAlarms` data source).

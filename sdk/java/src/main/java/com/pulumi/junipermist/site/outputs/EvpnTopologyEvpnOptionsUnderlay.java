@@ -18,6 +18,10 @@ public final class EvpnTopologyEvpnOptionsUnderlay {
      * 
      */
     private @Nullable Integer asBase;
+    /**
+     * @return Prefix length used for automatically derived underlay router identifiers
+     * 
+     */
     private @Nullable String routedIdPrefix;
     /**
      * @return Underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
@@ -38,6 +42,10 @@ public final class EvpnTopologyEvpnOptionsUnderlay {
     public Optional<Integer> asBase() {
         return Optional.ofNullable(this.asBase);
     }
+    /**
+     * @return Prefix length used for automatically derived underlay router identifiers
+     * 
+     */
     public Optional<String> routedIdPrefix() {
         return Optional.ofNullable(this.routedIdPrefix);
     }

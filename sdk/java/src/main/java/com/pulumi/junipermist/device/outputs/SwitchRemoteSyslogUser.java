@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchRemoteSyslogUser {
+    /**
+     * @return Syslog facilities and severities logged for this user rule
+     * 
+     */
     private @Nullable List<SwitchRemoteSyslogUserContent> contents;
+    /**
+     * @return Expression used to filter user log messages
+     * 
+     */
     private @Nullable String match;
+    /**
+     * @return Account name or wildcard matched by this syslog rule
+     * 
+     */
     private @Nullable String user;
 
     private SwitchRemoteSyslogUser() {}
+    /**
+     * @return Syslog facilities and severities logged for this user rule
+     * 
+     */
     public List<SwitchRemoteSyslogUserContent> contents() {
         return this.contents == null ? List.of() : this.contents;
     }
+    /**
+     * @return Expression used to filter user log messages
+     * 
+     */
     public Optional<String> match() {
         return Optional.ofNullable(this.match);
     }
+    /**
+     * @return Account name or wildcard matched by this syslog rule
+     * 
+     */
     public Optional<String> user() {
         return Optional.ofNullable(this.user);
     }

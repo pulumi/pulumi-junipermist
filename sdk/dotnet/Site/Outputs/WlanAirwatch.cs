@@ -14,20 +14,23 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class WlanAirwatch
     {
         /// <summary>
-        /// API Key
+        /// API key used to authenticate to the AirWatch service
         /// </summary>
         public readonly string? ApiKey;
         /// <summary>
-        /// Console URL
+        /// Base console URL of the AirWatch deployment
         /// </summary>
         public readonly string? ConsoleUrl;
+        /// <summary>
+        /// Whether AirWatch integration is enabled for the WLAN
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Password
+        /// AirWatch integration account password for this WLAN
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// Username
+        /// AirWatch integration account username for this WLAN
         /// </summary>
         public readonly string? Username;
 

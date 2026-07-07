@@ -93,24 +93,14 @@ public final class WlanRatesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data Rates template to apply. enum:
-     *   * `no-legacy`: no 11b
-     *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-     *   * `legacy-only`: disable 802.11n and 802.11ac
-     *   * `high-density`: no 11b, no low rates
-     *   * `custom`: user defined
+     * Data rate template used to derive WLAN rate settings
      * 
      */
     @Import(name="template")
     private @Nullable Output<String> template;
 
     /**
-     * @return Data Rates template to apply. enum:
-     *   * `no-legacy`: no 11b
-     *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-     *   * `legacy-only`: disable 802.11n and 802.11ac
-     *   * `high-density`: no 11b, no low rates
-     *   * `custom`: user defined
+     * @return Data rate template used to derive WLAN rate settings
      * 
      */
     public Optional<Output<String>> template() {
@@ -278,12 +268,7 @@ public final class WlanRatesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template Data Rates template to apply. enum:
-         *   * `no-legacy`: no 11b
-         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-         *   * `legacy-only`: disable 802.11n and 802.11ac
-         *   * `high-density`: no 11b, no low rates
-         *   * `custom`: user defined
+         * @param template Data rate template used to derive WLAN rate settings
          * 
          * @return builder
          * 
@@ -294,12 +279,7 @@ public final class WlanRatesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template Data Rates template to apply. enum:
-         *   * `no-legacy`: no 11b
-         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-         *   * `legacy-only`: disable 802.11n and 802.11ac
-         *   * `high-density`: no 11b, no low rates
-         *   * `custom`: user defined
+         * @param template Data rate template used to derive WLAN rate settings
          * 
          * @return builder
          * 

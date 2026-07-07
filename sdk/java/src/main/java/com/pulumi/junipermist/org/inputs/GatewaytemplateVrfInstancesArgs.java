@@ -16,9 +16,17 @@ public final class GatewaytemplateVrfInstancesArgs extends com.pulumi.resources.
 
     public static final GatewaytemplateVrfInstancesArgs Empty = new GatewaytemplateVrfInstancesArgs();
 
+    /**
+     * Network names included in this gateway VRF instance
+     * 
+     */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
+    /**
+     * @return Network names included in this gateway VRF instance
+     * 
+     */
     public Optional<Output<List<String>>> networks() {
         return Optional.ofNullable(this.networks);
     }
@@ -47,15 +55,33 @@ public final class GatewaytemplateVrfInstancesArgs extends com.pulumi.resources.
             $ = new GatewaytemplateVrfInstancesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param networks Network names included in this gateway VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(@Nullable Output<List<String>> networks) {
             $.networks = networks;
             return this;
         }
 
+        /**
+         * @param networks Network names included in this gateway VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(List<String> networks) {
             return networks(Output.of(networks));
         }
 
+        /**
+         * @param networks Network names included in this gateway VRF instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(String... networks) {
             return networks(List.of(networks));
         }

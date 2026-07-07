@@ -15,16 +15,32 @@ public final class MxedgeVersionsArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final MxedgeVersionsArgs Empty = new MxedgeVersionsArgs();
 
+    /**
+     * Reported version of the mxagent service
+     * 
+     */
     @Import(name="mxagent")
     private @Nullable Output<String> mxagent;
 
+    /**
+     * @return Reported version of the mxagent service
+     * 
+     */
     public Optional<Output<String>> mxagent() {
         return Optional.ofNullable(this.mxagent);
     }
 
+    /**
+     * Reported version of the tunnel termination service
+     * 
+     */
     @Import(name="tunterm")
     private @Nullable Output<String> tunterm;
 
+    /**
+     * @return Reported version of the tunnel termination service
+     * 
+     */
     public Optional<Output<String>> tunterm() {
         return Optional.ofNullable(this.tunterm);
     }
@@ -54,20 +70,44 @@ public final class MxedgeVersionsArgs extends com.pulumi.resources.ResourceArgs 
             $ = new MxedgeVersionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mxagent Reported version of the mxagent service
+         * 
+         * @return builder
+         * 
+         */
         public Builder mxagent(@Nullable Output<String> mxagent) {
             $.mxagent = mxagent;
             return this;
         }
 
+        /**
+         * @param mxagent Reported version of the mxagent service
+         * 
+         * @return builder
+         * 
+         */
         public Builder mxagent(String mxagent) {
             return mxagent(Output.of(mxagent));
         }
 
+        /**
+         * @param tunterm Reported version of the tunnel termination service
+         * 
+         * @return builder
+         * 
+         */
         public Builder tunterm(@Nullable Output<String> tunterm) {
             $.tunterm = tunterm;
             return this;
         }
 
+        /**
+         * @param tunterm Reported version of the tunnel termination service
+         * 
+         * @return builder
+         * 
+         */
         public Builder tunterm(String tunterm) {
             return tunterm(Output.of(tunterm));
         }

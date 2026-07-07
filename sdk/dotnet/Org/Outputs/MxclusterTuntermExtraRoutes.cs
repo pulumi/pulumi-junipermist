@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxclusterTuntermExtraRoutes
     {
+        /// <summary>
+        /// Next-hop IP address for this extra route
+        /// </summary>
         public readonly string? Via;
 
         [OutputConstructor]

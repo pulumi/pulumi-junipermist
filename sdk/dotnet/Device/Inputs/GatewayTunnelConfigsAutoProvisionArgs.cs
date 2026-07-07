@@ -19,16 +19,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// API override for POP selection
+        /// Geographic coordinate override used for tunnel POP selection
         /// </summary>
         [Input("latlng")]
         public Input<Inputs.GatewayTunnelConfigsAutoProvisionLatlngArgs>? Latlng { get; set; }
 
+        /// <summary>
+        /// Main auto-provisioned tunnel endpoint settings
+        /// </summary>
         [Input("primary")]
         public Input<Inputs.GatewayTunnelConfigsAutoProvisionPrimaryArgs>? Primary { get; set; }
 
         /// <summary>
-        /// enum: `jse-ipsec`, `zscaler-ipsec`
+        /// Tunnel provider used for automatic endpoint provisioning
         /// </summary>
         [Input("provider", required: true)]
         public Input<string> Provider { get; set; } = null!;
@@ -39,6 +42,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Backup auto-provisioned tunnel endpoint settings
+        /// </summary>
         [Input("secondary")]
         public Input<Inputs.GatewayTunnelConfigsAutoProvisionSecondaryArgs>? Secondary { get; set; }
 

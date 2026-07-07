@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayPortConfigWanExtraRoutes6Args : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// IPv6 next-hop address for this WAN extra route
+        /// </summary>
         [Input("via")]
         public Input<string>? Via { get; set; }
 

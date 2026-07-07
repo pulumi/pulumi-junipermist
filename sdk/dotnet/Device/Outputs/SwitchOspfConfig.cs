@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchOspfConfig
     {
         /// <summary>
-        /// Property key is the area name. Defines the OSPF areas configured on the switch.
+        /// OSPF areas configured on the switch
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.SwitchOspfConfigAreas>? Areas;
         /// <summary>
@@ -29,6 +29,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// optional, for basic scenario, `ImportPolicy` can be specified and can be applied to all networks in all areas if not explicitly specified
         /// </summary>
         public readonly string? ImportPolicy;
+        /// <summary>
+        /// Reference bandwidth used for OSPF cost calculation
+        /// </summary>
         public readonly string? ReferenceBandwidth;
 
         [OutputConstructor]

@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         [Input("addresses")]
         private InputList<string>? _addresses;
+
+        /// <summary>
+        /// IP addresses or subnets assigned to this tenant in the network
+        /// </summary>
         public InputList<string> Addresses
         {
             get => _addresses ?? (_addresses = new InputList<string>());

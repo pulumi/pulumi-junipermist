@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _bands;
 
         /// <summary>
-        /// List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+        /// Radio bands allowed for AP mesh links
         /// </summary>
         public InputList<string> Bands
         {
@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? Group { get; set; }
 
         /// <summary>
-        /// enum: `Base`, `Remote`
+        /// Mesh role for this AP, either base or remote
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

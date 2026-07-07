@@ -13,10 +13,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingMistNacServerCert
     {
+        /// <summary>
+        /// PEM-encoded RADIUS server certificate presented during EAP-TLS
+        /// </summary>
         public readonly string? Cert;
+        /// <summary>
+        /// Private key paired with the Mist NAC RADIUS server certificate
+        /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// private key password (optional)
+        /// Optional password for the private key
         /// </summary>
         public readonly string? Password;
 

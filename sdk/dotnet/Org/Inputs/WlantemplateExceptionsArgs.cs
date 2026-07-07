@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _siteIds;
 
         /// <summary>
-        /// List of site ids
+        /// Sites excluded from the WLAN template application scope
         /// </summary>
         public InputList<string> SiteIds
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _sitegroupIds;
 
         /// <summary>
-        /// List of sitegroup ids
+        /// Site groups excluded from the WLAN template application scope
         /// </summary>
         public InputList<string> SitegroupIds
         {

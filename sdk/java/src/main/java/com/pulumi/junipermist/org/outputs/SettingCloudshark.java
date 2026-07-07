@@ -11,19 +11,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingCloudshark {
+    /**
+     * @return Token used by Mist to access the CloudShark integration
+     * 
+     */
     private @Nullable String apitoken;
     /**
-     * @return If using CS Enterprise
+     * @return CloudShark Enterprise URL, if using a self-hosted CS Enterprise instance
      * 
      */
     private @Nullable String url;
 
     private SettingCloudshark() {}
+    /**
+     * @return Token used by Mist to access the CloudShark integration
+     * 
+     */
     public Optional<String> apitoken() {
         return Optional.ofNullable(this.apitoken);
     }
     /**
-     * @return If using CS Enterprise
+     * @return CloudShark Enterprise URL, if using a self-hosted CS Enterprise instance
      * 
      */
     public Optional<String> url() {

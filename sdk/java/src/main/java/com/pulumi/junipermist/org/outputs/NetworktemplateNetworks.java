@@ -28,6 +28,10 @@ public final class NetworktemplateNetworks {
      * 
      */
     private @Nullable Boolean isolation;
+    /**
+     * @return Required when `isolation`==`true`. Unique VLAN ID used for client isolation
+     * 
+     */
     private @Nullable String isolationVlanId;
     /**
      * @return Optional for pure switching, required when L3 / routing features are used
@@ -39,6 +43,10 @@ public final class NetworktemplateNetworks {
      * 
      */
     private @Nullable String subnet6;
+    /**
+     * @return VLAN identifier for this switch network
+     * 
+     */
     private String vlanId;
 
     private NetworktemplateNetworks() {}
@@ -63,6 +71,10 @@ public final class NetworktemplateNetworks {
     public Optional<Boolean> isolation() {
         return Optional.ofNullable(this.isolation);
     }
+    /**
+     * @return Required when `isolation`==`true`. Unique VLAN ID used for client isolation
+     * 
+     */
     public Optional<String> isolationVlanId() {
         return Optional.ofNullable(this.isolationVlanId);
     }
@@ -80,6 +92,10 @@ public final class NetworktemplateNetworks {
     public Optional<String> subnet6() {
         return Optional.ofNullable(this.subnet6);
     }
+    /**
+     * @return VLAN identifier for this switch network
+     * 
+     */
     public String vlanId() {
         return this.vlanId;
     }

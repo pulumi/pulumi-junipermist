@@ -62,7 +62,7 @@ type WlanPortalTemplate struct {
 	pulumi.CustomResourceState
 
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Portal template wlan settings
+	// Template settings that define guest portal text, layout, and localization
 	PortalTemplate WlanPortalTemplatePortalTemplateOutput `pulumi:"portalTemplate"`
 	// Org WLAN ID
 	WlanId pulumi.StringOutput `pulumi:"wlanId"`
@@ -108,7 +108,7 @@ func GetWlanPortalTemplate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering WlanPortalTemplate resources.
 type wlanPortalTemplateState struct {
 	OrgId *string `pulumi:"orgId"`
-	// Portal template wlan settings
+	// Template settings that define guest portal text, layout, and localization
 	PortalTemplate *WlanPortalTemplatePortalTemplate `pulumi:"portalTemplate"`
 	// Org WLAN ID
 	WlanId *string `pulumi:"wlanId"`
@@ -116,7 +116,7 @@ type wlanPortalTemplateState struct {
 
 type WlanPortalTemplateState struct {
 	OrgId pulumi.StringPtrInput
-	// Portal template wlan settings
+	// Template settings that define guest portal text, layout, and localization
 	PortalTemplate WlanPortalTemplatePortalTemplatePtrInput
 	// Org WLAN ID
 	WlanId pulumi.StringPtrInput
@@ -128,7 +128,7 @@ func (WlanPortalTemplateState) ElementType() reflect.Type {
 
 type wlanPortalTemplateArgs struct {
 	OrgId string `pulumi:"orgId"`
-	// Portal template wlan settings
+	// Template settings that define guest portal text, layout, and localization
 	PortalTemplate WlanPortalTemplatePortalTemplate `pulumi:"portalTemplate"`
 	// Org WLAN ID
 	WlanId string `pulumi:"wlanId"`
@@ -137,7 +137,7 @@ type wlanPortalTemplateArgs struct {
 // The set of arguments for constructing a WlanPortalTemplate resource.
 type WlanPortalTemplateArgs struct {
 	OrgId pulumi.StringInput
-	// Portal template wlan settings
+	// Template settings that define guest portal text, layout, and localization
 	PortalTemplate WlanPortalTemplatePortalTemplateInput
 	// Org WLAN ID
 	WlanId pulumi.StringInput
@@ -234,7 +234,7 @@ func (o WlanPortalTemplateOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WlanPortalTemplate) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Portal template wlan settings
+// Template settings that define guest portal text, layout, and localization
 func (o WlanPortalTemplateOutput) PortalTemplate() WlanPortalTemplatePortalTemplateOutput {
 	return o.ApplyT(func(v *WlanPortalTemplate) WlanPortalTemplatePortalTemplateOutput { return v.PortalTemplate }).(WlanPortalTemplatePortalTemplateOutput)
 }

@@ -17,6 +17,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileApRadioConfig {
+    /**
+     * @return Whether RRM can be disabled for individual radio-band settings
+     * 
+     */
     private @Nullable Boolean allowRrmDisable;
     /**
      * @return Antenna gain for 2.4G - for models with external antenna only
@@ -34,37 +38,37 @@ public final class DeviceprofileApRadioConfig {
      */
     private @Nullable Integer antGain6;
     /**
-     * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+     * @return Selected radio chain mode for AP models that support antenna mode control
      * 
      */
     private @Nullable String antennaMode;
     /**
-     * @return Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
+     * @return Internal or external antenna selection for AP models with selectable antennas
      * 
      */
     private @Nullable String antennaSelect;
     /**
-     * @return Radio Band AP settings
+     * @return 2.4 GHz radio settings for this access point
      * 
      */
     private @Nullable DeviceprofileApRadioConfigBand24 band24;
     /**
-     * @return enum: `24`, `5`, `6`, `auto`
+     * @return Radio usage mode for the 2.4 GHz-capable radio
      * 
      */
     private @Nullable String band24Usage;
     /**
-     * @return Radio Band AP settings
+     * @return 5 GHz radio settings for this access point
      * 
      */
     private @Nullable DeviceprofileApRadioConfigBand5 band5;
     /**
-     * @return Radio Band AP settings
+     * @return 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      * 
      */
     private @Nullable DeviceprofileApRadioConfigBand5On24Radio band5On24Radio;
     /**
-     * @return Radio Band AP settings
+     * @return 6 GHz radio settings for this access point
      * 
      */
     private @Nullable DeviceprofileApRadioConfigBand6 band6;
@@ -90,6 +94,10 @@ public final class DeviceprofileApRadioConfig {
     private @Nullable Boolean scanningEnabled;
 
     private DeviceprofileApRadioConfig() {}
+    /**
+     * @return Whether RRM can be disabled for individual radio-band settings
+     * 
+     */
     public Optional<Boolean> allowRrmDisable() {
         return Optional.ofNullable(this.allowRrmDisable);
     }
@@ -115,49 +123,49 @@ public final class DeviceprofileApRadioConfig {
         return Optional.ofNullable(this.antGain6);
     }
     /**
-     * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+     * @return Selected radio chain mode for AP models that support antenna mode control
      * 
      */
     public Optional<String> antennaMode() {
         return Optional.ofNullable(this.antennaMode);
     }
     /**
-     * @return Antenna Mode for AP which supports selectable antennas. enum: `&#34;&#34;` (default), `external`, `internal`
+     * @return Internal or external antenna selection for AP models with selectable antennas
      * 
      */
     public Optional<String> antennaSelect() {
         return Optional.ofNullable(this.antennaSelect);
     }
     /**
-     * @return Radio Band AP settings
+     * @return 2.4 GHz radio settings for this access point
      * 
      */
     public Optional<DeviceprofileApRadioConfigBand24> band24() {
         return Optional.ofNullable(this.band24);
     }
     /**
-     * @return enum: `24`, `5`, `6`, `auto`
+     * @return Radio usage mode for the 2.4 GHz-capable radio
      * 
      */
     public Optional<String> band24Usage() {
         return Optional.ofNullable(this.band24Usage);
     }
     /**
-     * @return Radio Band AP settings
+     * @return 5 GHz radio settings for this access point
      * 
      */
     public Optional<DeviceprofileApRadioConfigBand5> band5() {
         return Optional.ofNullable(this.band5);
     }
     /**
-     * @return Radio Band AP settings
+     * @return 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
      * 
      */
     public Optional<DeviceprofileApRadioConfigBand5On24Radio> band5On24Radio() {
         return Optional.ofNullable(this.band5On24Radio);
     }
     /**
-     * @return Radio Band AP settings
+     * @return 6 GHz radio settings for this access point
      * 
      */
     public Optional<DeviceprofileApRadioConfigBand6> band6() {

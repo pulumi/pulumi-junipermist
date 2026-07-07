@@ -13,27 +13,36 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class RftemplateModelSpecific
     {
+        /// <summary>
+        /// Model-specific external antenna gain for the 2.4 GHz radio
+        /// </summary>
         public readonly int? AntGain24;
+        /// <summary>
+        /// Model-specific external antenna gain for the 5 GHz radio
+        /// </summary>
         public readonly int? AntGain5;
+        /// <summary>
+        /// Model-specific external antenna gain for the 6 GHz radio
+        /// </summary>
         public readonly int? AntGain6;
         /// <summary>
-        /// Radio Band AP settings
+        /// Model-specific 2.4 GHz radio settings that override RF template defaults
         /// </summary>
         public readonly Outputs.RftemplateModelSpecificBand24? Band24;
         /// <summary>
-        /// enum: `24`, `5`, `6`, `Auto`
+        /// Model-specific radio usage mode for the 2.4 GHz-capable radio
         /// </summary>
         public readonly string? Band24Usage;
         /// <summary>
-        /// Radio Band AP settings
+        /// Model-specific 5 GHz radio settings that override RF template defaults
         /// </summary>
         public readonly Outputs.RftemplateModelSpecificBand5? Band5;
         /// <summary>
-        /// Radio Band AP settings
+        /// Model-specific 5 GHz settings used when the 2.4 GHz radio operates in 5 GHz mode
         /// </summary>
         public readonly Outputs.RftemplateModelSpecificBand5On24Radio? Band5On24Radio;
         /// <summary>
-        /// Radio Band AP settings
+        /// Model-specific 6 GHz radio settings that override RF template defaults
         /// </summary>
         public readonly Outputs.RftemplateModelSpecificBand6? Band6;
 

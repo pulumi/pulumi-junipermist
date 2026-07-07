@@ -17,16 +17,32 @@ public final class SwitchSnmpConfigV3ConfigNotifyFilterContentArgs extends com.p
 
     public static final SwitchSnmpConfigV3ConfigNotifyFilterContentArgs Empty = new SwitchSnmpConfigV3ConfigNotifyFilterContentArgs();
 
+    /**
+     * Whether the matching OID subtree is included
+     * 
+     */
     @Import(name="include")
     private @Nullable Output<Boolean> include;
 
+    /**
+     * @return Whether the matching OID subtree is included
+     * 
+     */
     public Optional<Output<Boolean>> include() {
         return Optional.ofNullable(this.include);
     }
 
+    /**
+     * Matched OID subtree for this notification filter rule
+     * 
+     */
     @Import(name="oid", required=true)
     private Output<String> oid;
 
+    /**
+     * @return Matched OID subtree for this notification filter rule
+     * 
+     */
     public Output<String> oid() {
         return this.oid;
     }
@@ -56,20 +72,44 @@ public final class SwitchSnmpConfigV3ConfigNotifyFilterContentArgs extends com.p
             $ = new SwitchSnmpConfigV3ConfigNotifyFilterContentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param include Whether the matching OID subtree is included
+         * 
+         * @return builder
+         * 
+         */
         public Builder include(@Nullable Output<Boolean> include) {
             $.include = include;
             return this;
         }
 
+        /**
+         * @param include Whether the matching OID subtree is included
+         * 
+         * @return builder
+         * 
+         */
         public Builder include(Boolean include) {
             return include(Output.of(include));
         }
 
+        /**
+         * @param oid Matched OID subtree for this notification filter rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder oid(Output<String> oid) {
             $.oid = oid;
             return this;
         }
 
+        /**
+         * @param oid Matched OID subtree for this notification filter rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder oid(String oid) {
             return oid(Output.of(oid));
         }

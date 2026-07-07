@@ -13,16 +13,28 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NetworktemplateSnmpConfigV3ConfigTargetAddress
     {
+        /// <summary>
+        /// IP address or hostname of the SNMP target
+        /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// Mask applied to the SNMP target address
+        /// </summary>
         public readonly string AddressMask;
+        /// <summary>
+        /// UDP port used by the SNMP target
+        /// </summary>
         public readonly string? Port;
         /// <summary>
-        /// Refer to notify tag, can be multiple with blank
+        /// Set of notification tags for this target address; use spaces between multiple tags
         /// </summary>
         public readonly string? TagList;
+        /// <summary>
+        /// Name of the SNMP target address entry
+        /// </summary>
         public readonly string TargetAddressName;
         /// <summary>
-        /// Refer to notify target parameters name
+        /// Target parameter profile referenced by this target address
         /// </summary>
         public readonly string? TargetParameters;
 

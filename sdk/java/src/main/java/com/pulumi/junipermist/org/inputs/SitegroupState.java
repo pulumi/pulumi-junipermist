@@ -15,16 +15,32 @@ public final class SitegroupState extends com.pulumi.resources.ResourceArgs {
 
     public static final SitegroupState Empty = new SitegroupState();
 
+    /**
+     * Display name of the site group
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the site group
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Identifier of the org that owns the site group
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Identifier of the org that owns the site group
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
@@ -54,20 +70,44 @@ public final class SitegroupState extends com.pulumi.resources.ResourceArgs {
             $ = new SitegroupState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Display name of the site group
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the site group
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Identifier of the org that owns the site group
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Identifier of the org that owns the site group
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }

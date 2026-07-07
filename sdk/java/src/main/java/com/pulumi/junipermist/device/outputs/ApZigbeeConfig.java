@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApZigbeeConfig {
     /**
-     * @return Controls whether new Zigbee devices are allowed to join the network. enum: `always`, `manual`
+     * @return Join policy for new Zigbee devices on this AP
      * 
      */
     private @Nullable String allowJoin;
@@ -41,7 +41,7 @@ public final class ApZigbeeConfig {
 
     private ApZigbeeConfig() {}
     /**
-     * @return Controls whether new Zigbee devices are allowed to join the network. enum: `always`, `manual`
+     * @return Join policy for new Zigbee devices on this AP
      * 
      */
     public Optional<String> allowJoin() {

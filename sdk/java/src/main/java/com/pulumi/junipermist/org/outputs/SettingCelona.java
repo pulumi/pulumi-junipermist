@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class SettingCelona {
+    /**
+     * @return Credential used by Mist for the Celona integration
+     * 
+     */
     private String apiKey;
+    /**
+     * @return Celona API prefix configured for the integration
+     * 
+     */
     private String apiPrefix;
 
     private SettingCelona() {}
+    /**
+     * @return Credential used by Mist for the Celona integration
+     * 
+     */
     public String apiKey() {
         return this.apiKey;
     }
+    /**
+     * @return Celona API prefix configured for the integration
+     * 
+     */
     public String apiPrefix() {
         return this.apiPrefix;
     }

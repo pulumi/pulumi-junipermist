@@ -107,7 +107,7 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly groupFilter: pulumi.Output<string | undefined>;
     /**
-     * enum: `ldap`, `mxedgeProxy`, `oauth`
+     * enum: `ldap`, `mxedgeProxy`, `oauth`, `openroaming`
      */
     declare public readonly idpType: pulumi.Output<string>;
     /**
@@ -123,7 +123,7 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly ldapBindPassword: pulumi.Output<string | undefined>;
     /**
-     * Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
+     * CA certificates used to validate LDAP or LDAPS server certificates. Required if `idpType`==`ldap`
      */
     declare public readonly ldapCacerts: pulumi.Output<string[] | undefined>;
     /**
@@ -135,11 +135,11 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly ldapClientKey: pulumi.Output<string | undefined>;
     /**
-     * If `ldapType`==`custom`
+     * Group attribute used to resolve LDAP memberships. If `ldapType`==`custom`
      */
     declare public readonly ldapGroupAttr: pulumi.Output<string | undefined>;
     /**
-     * If `ldapType`==`custom`
+     * Group search base used for custom LDAP group lookup. If `ldapType`==`custom`
      */
     declare public readonly ldapGroupDn: pulumi.Output<string | undefined>;
     /**
@@ -147,11 +147,11 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly ldapResolveGroups: pulumi.Output<boolean>;
     /**
-     * If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+     * Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
      */
     declare public readonly ldapServerHosts: pulumi.Output<string[] | undefined>;
     /**
-     * if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
+     * Provider template for LDAP SSO when `idpType`==`ldap`
      */
     declare public readonly ldapType: pulumi.Output<string | undefined>;
     /**
@@ -163,7 +163,7 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly memberFilter: pulumi.Output<string | undefined>;
     /**
-     * Name
+     * Display name of the NAC IDP configuration
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -175,15 +175,15 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly oauthCcClientSecret: pulumi.Output<string | undefined>;
     /**
-     * If `idpType`==`oauth`
+     * OAuth discovery document URL used when `idpType`==`oauth`
      */
     declare public readonly oauthDiscoveryUrl: pulumi.Output<string | undefined>;
     /**
-     * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
      */
     declare public readonly oauthPingIdentityRegion: pulumi.Output<string>;
     /**
-     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
      */
     declare public readonly oauthProviderDomain: pulumi.Output<string>;
     /**
@@ -199,9 +199,24 @@ export class Nacidp extends pulumi.CustomResource {
      */
     declare public readonly oauthTenantId: pulumi.Output<string | undefined>;
     /**
-     * if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
+     * Provider type for OAuth SSO when `idpType`==`oauth`
      */
     declare public readonly oauthType: pulumi.Output<string>;
+    /**
+     * SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+     */
+    declare public readonly openroamingSsids: pulumi.Output<string[] | undefined>;
+    /**
+     * Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+     */
+    declare public readonly openroamingWbaClientCert: pulumi.Output<string | undefined>;
+    /**
+     * Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+     */
+    declare public readonly openroamingWbaClientKey: pulumi.Output<string | undefined>;
+    /**
+     * Owning organization identifier for this NAC IDP configuration
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
      * If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
@@ -250,6 +265,9 @@ export class Nacidp extends pulumi.CustomResource {
             resourceInputs["oauthRopcClientSecret"] = state?.oauthRopcClientSecret;
             resourceInputs["oauthTenantId"] = state?.oauthTenantId;
             resourceInputs["oauthType"] = state?.oauthType;
+            resourceInputs["openroamingSsids"] = state?.openroamingSsids;
+            resourceInputs["openroamingWbaClientCert"] = state?.openroamingWbaClientCert;
+            resourceInputs["openroamingWbaClientKey"] = state?.openroamingWbaClientKey;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["scimEnabled"] = state?.scimEnabled;
             resourceInputs["scimSecretToken"] = state?.scimSecretToken;
@@ -286,12 +304,15 @@ export class Nacidp extends pulumi.CustomResource {
             resourceInputs["oauthRopcClientSecret"] = args?.oauthRopcClientSecret ? pulumi.secret(args.oauthRopcClientSecret) : undefined;
             resourceInputs["oauthTenantId"] = args?.oauthTenantId;
             resourceInputs["oauthType"] = args?.oauthType;
+            resourceInputs["openroamingSsids"] = args?.openroamingSsids;
+            resourceInputs["openroamingWbaClientCert"] = args?.openroamingWbaClientCert ? pulumi.secret(args.openroamingWbaClientCert) : undefined;
+            resourceInputs["openroamingWbaClientKey"] = args?.openroamingWbaClientKey ? pulumi.secret(args.openroamingWbaClientKey) : undefined;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["scimEnabled"] = args?.scimEnabled;
             resourceInputs["scimSecretToken"] = args?.scimSecretToken ? pulumi.secret(args.scimSecretToken) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["oauthCcClientSecret", "oauthRopcClientSecret", "scimSecretToken"] };
+        const secretOpts = { additionalSecretOutputs: ["oauthCcClientSecret", "oauthRopcClientSecret", "openroamingWbaClientCert", "openroamingWbaClientKey", "scimSecretToken"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Nacidp.__pulumiType, name, resourceInputs, opts);
     }
@@ -306,7 +327,7 @@ export interface NacidpState {
      */
     groupFilter?: pulumi.Input<string | undefined>;
     /**
-     * enum: `ldap`, `mxedgeProxy`, `oauth`
+     * enum: `ldap`, `mxedgeProxy`, `oauth`, `openroaming`
      */
     idpType?: pulumi.Input<string | undefined>;
     /**
@@ -322,7 +343,7 @@ export interface NacidpState {
      */
     ldapBindPassword?: pulumi.Input<string | undefined>;
     /**
-     * Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
+     * CA certificates used to validate LDAP or LDAPS server certificates. Required if `idpType`==`ldap`
      */
     ldapCacerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -334,11 +355,11 @@ export interface NacidpState {
      */
     ldapClientKey?: pulumi.Input<string | undefined>;
     /**
-     * If `ldapType`==`custom`
+     * Group attribute used to resolve LDAP memberships. If `ldapType`==`custom`
      */
     ldapGroupAttr?: pulumi.Input<string | undefined>;
     /**
-     * If `ldapType`==`custom`
+     * Group search base used for custom LDAP group lookup. If `ldapType`==`custom`
      */
     ldapGroupDn?: pulumi.Input<string | undefined>;
     /**
@@ -346,11 +367,11 @@ export interface NacidpState {
      */
     ldapResolveGroups?: pulumi.Input<boolean | undefined>;
     /**
-     * If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+     * Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
      */
     ldapServerHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
+     * Provider template for LDAP SSO when `idpType`==`ldap`
      */
     ldapType?: pulumi.Input<string | undefined>;
     /**
@@ -362,7 +383,7 @@ export interface NacidpState {
      */
     memberFilter?: pulumi.Input<string | undefined>;
     /**
-     * Name
+     * Display name of the NAC IDP configuration
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -374,15 +395,15 @@ export interface NacidpState {
      */
     oauthCcClientSecret?: pulumi.Input<string | undefined>;
     /**
-     * If `idpType`==`oauth`
+     * OAuth discovery document URL used when `idpType`==`oauth`
      */
     oauthDiscoveryUrl?: pulumi.Input<string | undefined>;
     /**
-     * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
      */
     oauthPingIdentityRegion?: pulumi.Input<string | undefined>;
     /**
-     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
      */
     oauthProviderDomain?: pulumi.Input<string | undefined>;
     /**
@@ -398,9 +419,24 @@ export interface NacidpState {
      */
     oauthTenantId?: pulumi.Input<string | undefined>;
     /**
-     * if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
+     * Provider type for OAuth SSO when `idpType`==`oauth`
      */
     oauthType?: pulumi.Input<string | undefined>;
+    /**
+     * SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+     */
+    openroamingSsids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+     */
+    openroamingWbaClientCert?: pulumi.Input<string | undefined>;
+    /**
+     * Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+     */
+    openroamingWbaClientKey?: pulumi.Input<string | undefined>;
+    /**
+     * Owning organization identifier for this NAC IDP configuration
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
      * If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
@@ -421,7 +457,7 @@ export interface NacidpArgs {
      */
     groupFilter?: pulumi.Input<string | undefined>;
     /**
-     * enum: `ldap`, `mxedgeProxy`, `oauth`
+     * enum: `ldap`, `mxedgeProxy`, `oauth`, `openroaming`
      */
     idpType: pulumi.Input<string>;
     /**
@@ -437,7 +473,7 @@ export interface NacidpArgs {
      */
     ldapBindPassword?: pulumi.Input<string | undefined>;
     /**
-     * Required if `idpType`==`ldap`, list of CA certificates to validate the LDAP certificate
+     * CA certificates used to validate LDAP or LDAPS server certificates. Required if `idpType`==`ldap`
      */
     ldapCacerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -449,11 +485,11 @@ export interface NacidpArgs {
      */
     ldapClientKey?: pulumi.Input<string | undefined>;
     /**
-     * If `ldapType`==`custom`
+     * Group attribute used to resolve LDAP memberships. If `ldapType`==`custom`
      */
     ldapGroupAttr?: pulumi.Input<string | undefined>;
     /**
-     * If `ldapType`==`custom`
+     * Group search base used for custom LDAP group lookup. If `ldapType`==`custom`
      */
     ldapGroupDn?: pulumi.Input<string | undefined>;
     /**
@@ -461,11 +497,11 @@ export interface NacidpArgs {
      */
     ldapResolveGroups?: pulumi.Input<boolean | undefined>;
     /**
-     * If `idpType`==`ldap`, list of LDAP/LDAPS server IP Addresses or Hostnames
+     * Server hostnames or IP addresses for LDAP or LDAPS when `idpType`==`ldap`
      */
     ldapServerHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * if `idpType`==`ldap`. enum: `azure`, `custom`, `google`, `okta`, `pingIdentity`
+     * Provider template for LDAP SSO when `idpType`==`ldap`
      */
     ldapType?: pulumi.Input<string | undefined>;
     /**
@@ -477,7 +513,7 @@ export interface NacidpArgs {
      */
     memberFilter?: pulumi.Input<string | undefined>;
     /**
-     * Name
+     * Display name of the NAC IDP configuration
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -489,15 +525,15 @@ export interface NacidpArgs {
      */
     oauthCcClientSecret?: pulumi.Input<string | undefined>;
     /**
-     * If `idpType`==`oauth`
+     * OAuth discovery document URL used when `idpType`==`oauth`
      */
     oauthDiscoveryUrl?: pulumi.Input<string | undefined>;
     /**
-     * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+     * Ping Identity region for OAuth SSO when `oauthType`==`pingIdentity`
      */
     oauthPingIdentityRegion?: pulumi.Input<string | undefined>;
     /**
-     * If `oauthType`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+     * Provider domain for Okta OAuth SSO when `oauthType`==`okta`
      */
     oauthProviderDomain?: pulumi.Input<string | undefined>;
     /**
@@ -513,9 +549,24 @@ export interface NacidpArgs {
      */
     oauthTenantId?: pulumi.Input<string | undefined>;
     /**
-     * if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
+     * Provider type for OAuth SSO when `idpType`==`oauth`
      */
     oauthType?: pulumi.Input<string | undefined>;
+    /**
+     * SSIDs that support OpenRoaming, used when `idpType`==`openroaming`
+     */
+    openroamingSsids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+     */
+    openroamingWbaClientCert?: pulumi.Input<string | undefined>;
+    /**
+     * Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+     */
+    openroamingWbaClientKey?: pulumi.Input<string | undefined>;
+    /**
+     * Owning organization identifier for this NAC IDP configuration
+     */
     orgId: pulumi.Input<string>;
     /**
      * If `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<Inputs.SwitchVirtualChassisMemberGetArgs>? _members;
 
         /// <summary>
-        /// List of Virtual Chassis members
+        /// Virtual Chassis members and their expected roles
         /// </summary>
         public InputList<Inputs.SwitchVirtualChassisMemberGetArgs> Members
         {

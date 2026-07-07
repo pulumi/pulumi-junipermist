@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileGatewayPathPreferences
     {
+        /// <summary>
+        /// Candidate paths evaluated for this gateway path preference
+        /// </summary>
         public readonly ImmutableArray<Outputs.DeviceprofileGatewayPathPreferencesPath> Paths;
         /// <summary>
-        /// enum: `Ecmp`, `Ordered`, `Weighted`
+        /// Selection strategy used to evaluate the candidate paths
         /// </summary>
         public readonly string? Strategy;
 

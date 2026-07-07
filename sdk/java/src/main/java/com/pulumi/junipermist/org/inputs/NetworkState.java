@@ -38,36 +38,60 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.disallowMistServices);
     }
 
+    /**
+     * IPv4 gateway address for this network
+     * 
+     */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
+    /**
+     * @return IPv4 gateway address for this network
+     * 
+     */
     public Optional<Output<String>> gateway() {
         return Optional.ofNullable(this.gateway);
     }
 
+    /**
+     * IPv6 gateway address for this network
+     * 
+     */
     @Import(name="gateway6")
     private @Nullable Output<String> gateway6;
 
+    /**
+     * @return IPv6 gateway address for this network
+     * 
+     */
     public Optional<Output<String>> gateway6() {
         return Optional.ofNullable(this.gateway6);
     }
 
+    /**
+     * Internal access settings for this network
+     * 
+     */
     @Import(name="internalAccess")
     private @Nullable Output<NetworkInternalAccessArgs> internalAccess;
 
+    /**
+     * @return Internal access settings for this network
+     * 
+     */
     public Optional<Output<NetworkInternalAccessArgs>> internalAccess() {
         return Optional.ofNullable(this.internalAccess);
     }
 
     /**
-     * Whether this network has direct internet access
+     * Direct internet access and NAT settings for this network
      * 
      */
     @Import(name="internetAccess")
     private @Nullable Output<NetworkInternetAccessArgs> internetAccess;
 
     /**
-     * @return Whether this network has direct internet access
+     * @return Direct internet access and NAT settings for this network
      * 
      */
     public Optional<Output<NetworkInternetAccessArgs>> internetAccess() {
@@ -90,94 +114,134 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable multicast support (only PIM-sparse mode is supported)
+     * Settings for multicast routing on this network
      * 
      */
     @Import(name="multicast")
     private @Nullable Output<NetworkMulticastArgs> multicast;
 
     /**
-     * @return Whether to enable multicast support (only PIM-sparse mode is supported)
+     * @return Settings for multicast routing on this network
      * 
      */
     public Optional<Output<NetworkMulticastArgs>> multicast() {
         return Optional.ofNullable(this.multicast);
     }
 
+    /**
+     * Display name of the organization network
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the organization network
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Organization that owns this network
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization that owns this network
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
     /**
-     * For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * Other network names this network can route to, for example through BGP, OSPF or static routes
      * 
      */
     @Import(name="routedForNetworks")
     private @Nullable Output<List<String>> routedForNetworks;
 
     /**
-     * @return For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+     * @return Other network names this network can route to, for example through BGP, OSPF or static routes
      * 
      */
     public Optional<Output<List<String>>> routedForNetworks() {
         return Optional.ofNullable(this.routedForNetworks);
     }
 
+    /**
+     * IPv4 subnet CIDR for this network
+     * 
+     */
     @Import(name="subnet")
     private @Nullable Output<String> subnet;
 
+    /**
+     * @return IPv4 subnet CIDR for this network
+     * 
+     */
     public Optional<Output<String>> subnet() {
         return Optional.ofNullable(this.subnet);
     }
 
+    /**
+     * IPv6 subnet CIDR for this network
+     * 
+     */
     @Import(name="subnet6")
     private @Nullable Output<String> subnet6;
 
+    /**
+     * @return IPv6 subnet CIDR for this network
+     * 
+     */
     public Optional<Output<String>> subnet6() {
         return Optional.ofNullable(this.subnet6);
     }
 
     /**
-     * Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * Tenant address mappings associated with this network
      * 
      */
     @Import(name="tenants")
     private @Nullable Output<Map<String,NetworkTenantsArgs>> tenants;
 
     /**
-     * @return Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Tenant address mappings associated with this network
      * 
      */
     public Optional<Output<Map<String,NetworkTenantsArgs>>> tenants() {
         return Optional.ofNullable(this.tenants);
     }
 
+    /**
+     * VLAN ID or variable associated with this network
+     * 
+     */
     @Import(name="vlanId")
     private @Nullable Output<String> vlanId;
 
+    /**
+     * @return VLAN ID or variable associated with this network
+     * 
+     */
     public Optional<Output<String>> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
 
     /**
-     * Property key is the VPN name. Whether this network can be accessed from vpn
+     * VPN access settings keyed by VPN name for this network
      * 
      */
     @Import(name="vpnAccess")
     private @Nullable Output<Map<String,NetworkVpnAccessArgs>> vpnAccess;
 
     /**
-     * @return Property key is the VPN name. Whether this network can be accessed from vpn
+     * @return VPN access settings keyed by VPN name for this network
      * 
      */
     public Optional<Output<Map<String,NetworkVpnAccessArgs>>> vpnAccess() {
@@ -243,35 +307,71 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
             return disallowMistServices(Output.of(disallowMistServices));
         }
 
+        /**
+         * @param gateway IPv4 gateway address for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway(@Nullable Output<String> gateway) {
             $.gateway = gateway;
             return this;
         }
 
+        /**
+         * @param gateway IPv4 gateway address for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway(String gateway) {
             return gateway(Output.of(gateway));
         }
 
+        /**
+         * @param gateway6 IPv6 gateway address for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway6(@Nullable Output<String> gateway6) {
             $.gateway6 = gateway6;
             return this;
         }
 
+        /**
+         * @param gateway6 IPv6 gateway address for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway6(String gateway6) {
             return gateway6(Output.of(gateway6));
         }
 
+        /**
+         * @param internalAccess Internal access settings for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder internalAccess(@Nullable Output<NetworkInternalAccessArgs> internalAccess) {
             $.internalAccess = internalAccess;
             return this;
         }
 
+        /**
+         * @param internalAccess Internal access settings for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder internalAccess(NetworkInternalAccessArgs internalAccess) {
             return internalAccess(Output.of(internalAccess));
         }
 
         /**
-         * @param internetAccess Whether this network has direct internet access
+         * @param internetAccess Direct internet access and NAT settings for this network
          * 
          * @return builder
          * 
@@ -282,7 +382,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetAccess Whether this network has direct internet access
+         * @param internetAccess Direct internet access and NAT settings for this network
          * 
          * @return builder
          * 
@@ -313,7 +413,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multicast Whether to enable multicast support (only PIM-sparse mode is supported)
+         * @param multicast Settings for multicast routing on this network
          * 
          * @return builder
          * 
@@ -324,7 +424,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multicast Whether to enable multicast support (only PIM-sparse mode is supported)
+         * @param multicast Settings for multicast routing on this network
          * 
          * @return builder
          * 
@@ -333,26 +433,50 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
             return multicast(Output.of(multicast));
         }
 
+        /**
+         * @param name Display name of the organization network
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the organization network
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Organization that owns this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
         /**
-         * @param routedForNetworks For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+         * @param routedForNetworks Other network names this network can route to, for example through BGP, OSPF or static routes
          * 
          * @return builder
          * 
@@ -363,7 +487,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routedForNetworks For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+         * @param routedForNetworks Other network names this network can route to, for example through BGP, OSPF or static routes
          * 
          * @return builder
          * 
@@ -373,7 +497,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routedForNetworks For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+         * @param routedForNetworks Other network names this network can route to, for example through BGP, OSPF or static routes
          * 
          * @return builder
          * 
@@ -382,26 +506,50 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
             return routedForNetworks(List.of(routedForNetworks));
         }
 
+        /**
+         * @param subnet IPv4 subnet CIDR for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnet(@Nullable Output<String> subnet) {
             $.subnet = subnet;
             return this;
         }
 
+        /**
+         * @param subnet IPv4 subnet CIDR for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnet(String subnet) {
             return subnet(Output.of(subnet));
         }
 
+        /**
+         * @param subnet6 IPv6 subnet CIDR for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnet6(@Nullable Output<String> subnet6) {
             $.subnet6 = subnet6;
             return this;
         }
 
+        /**
+         * @param subnet6 IPv6 subnet CIDR for this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnet6(String subnet6) {
             return subnet6(Output.of(subnet6));
         }
 
         /**
-         * @param tenants Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param tenants Tenant address mappings associated with this network
          * 
          * @return builder
          * 
@@ -412,7 +560,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenants Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param tenants Tenant address mappings associated with this network
          * 
          * @return builder
          * 
@@ -421,17 +569,29 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
             return tenants(Output.of(tenants));
         }
 
+        /**
+         * @param vlanId VLAN ID or variable associated with this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(@Nullable Output<String> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
+        /**
+         * @param vlanId VLAN ID or variable associated with this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder vlanId(String vlanId) {
             return vlanId(Output.of(vlanId));
         }
 
         /**
-         * @param vpnAccess Property key is the VPN name. Whether this network can be accessed from vpn
+         * @param vpnAccess VPN access settings keyed by VPN name for this network
          * 
          * @return builder
          * 
@@ -442,7 +602,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpnAccess Property key is the VPN name. Whether this network can be accessed from vpn
+         * @param vpnAccess VPN access settings keyed by VPN name for this network
          * 
          * @return builder
          * 

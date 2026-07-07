@@ -17,9 +17,17 @@ public final class WlanDnsServerRewriteArgs extends com.pulumi.resources.Resourc
 
     public static final WlanDnsServerRewriteArgs Empty = new WlanDnsServerRewriteArgs();
 
+    /**
+     * Whether DNS server rewrite by RADIUS group is enabled for this WLAN
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether DNS server rewrite by RADIUS group is enabled for this WLAN
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -64,11 +72,23 @@ public final class WlanDnsServerRewriteArgs extends com.pulumi.resources.Resourc
             $ = new WlanDnsServerRewriteArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether DNS server rewrite by RADIUS group is enabled for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether DNS server rewrite by RADIUS group is enabled for this WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

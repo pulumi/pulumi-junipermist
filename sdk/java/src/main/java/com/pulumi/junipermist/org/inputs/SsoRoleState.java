@@ -17,23 +17,47 @@ public final class SsoRoleState extends com.pulumi.resources.ResourceArgs {
 
     public static final SsoRoleState Empty = new SsoRoleState();
 
+    /**
+     * Display name of the organization SSO role
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the organization SSO role
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Owning organization identifier for this SSO role
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Owning organization identifier for this SSO role
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Access privileges granted by this organization SSO role
+     * 
+     */
     @Import(name="privileges")
     private @Nullable Output<List<SsoRolePrivilegeArgs>> privileges;
 
+    /**
+     * @return Access privileges granted by this organization SSO role
+     * 
+     */
     public Optional<Output<List<SsoRolePrivilegeArgs>>> privileges() {
         return Optional.ofNullable(this.privileges);
     }
@@ -64,33 +88,75 @@ public final class SsoRoleState extends com.pulumi.resources.ResourceArgs {
             $ = new SsoRoleState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Display name of the organization SSO role
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the organization SSO role
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Owning organization identifier for this SSO role
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Owning organization identifier for this SSO role
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
+        /**
+         * @param privileges Access privileges granted by this organization SSO role
+         * 
+         * @return builder
+         * 
+         */
         public Builder privileges(@Nullable Output<List<SsoRolePrivilegeArgs>> privileges) {
             $.privileges = privileges;
             return this;
         }
 
+        /**
+         * @param privileges Access privileges granted by this organization SSO role
+         * 
+         * @return builder
+         * 
+         */
         public Builder privileges(List<SsoRolePrivilegeArgs> privileges) {
             return privileges(Output.of(privileges));
         }
 
+        /**
+         * @param privileges Access privileges granted by this organization SSO role
+         * 
+         * @return builder
+         * 
+         */
         public Builder privileges(SsoRolePrivilegeArgs... privileges) {
             return privileges(List.of(privileges));
         }

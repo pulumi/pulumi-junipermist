@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchPortConfigOverwriteArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Administrative description applied to the switch port override
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -22,11 +25,14 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Link connection mode. enum: `Auto`, `Full`, `Half`
+        /// Link duplex mode override for the switch port
         /// </summary>
         [Input("duplex")]
         public Input<string>? Duplex { get; set; }
 
+        /// <summary>
+        /// MAC address learning limit override for the switch port
+        /// </summary>
         [Input("macLimit")]
         public Input<string>? MacLimit { get; set; }
 
@@ -49,7 +55,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? PortNetwork { get; set; }
 
         /// <summary>
-        /// Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`Auto`
+        /// Link speed override for the switch port
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }

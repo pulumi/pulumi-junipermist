@@ -11,35 +11,51 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateSnmpConfigV2cConfig {
+    /**
+     * @return Access level for the SNMPv2c community
+     * 
+     */
     private @Nullable String authorization;
     /**
-     * @return Client_list_name here should refer to clientList above
+     * @return SNMP client list name referenced by this community
      * 
      */
     private @Nullable String clientListName;
+    /**
+     * @return SNMPv2c community string name
+     * 
+     */
     private @Nullable String communityName;
     /**
-     * @return View name here should be defined in views above
+     * @return SNMP view name that must be defined in the views list
      * 
      */
     private @Nullable String view;
 
     private NetworktemplateSnmpConfigV2cConfig() {}
+    /**
+     * @return Access level for the SNMPv2c community
+     * 
+     */
     public Optional<String> authorization() {
         return Optional.ofNullable(this.authorization);
     }
     /**
-     * @return Client_list_name here should refer to clientList above
+     * @return SNMP client list name referenced by this community
      * 
      */
     public Optional<String> clientListName() {
         return Optional.ofNullable(this.clientListName);
     }
+    /**
+     * @return SNMPv2c community string name
+     * 
+     */
     public Optional<String> communityName() {
         return Optional.ofNullable(this.communityName);
     }
     /**
-     * @return View name here should be defined in views above
+     * @return SNMP view name that must be defined in the views list
      * 
      */
     public Optional<String> view() {

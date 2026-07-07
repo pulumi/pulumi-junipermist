@@ -18,53 +18,77 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
 
     public static final UpgradeDeviceFwupdateArgs Empty = new UpgradeDeviceFwupdateArgs();
 
+    /**
+     * Firmware update progress percentage, or null when unavailable
+     * 
+     */
     @Import(name="progress")
     private @Nullable Output<Integer> progress;
 
+    /**
+     * @return Firmware update progress percentage, or null when unavailable
+     * 
+     */
     public Optional<Output<Integer>> progress() {
         return Optional.ofNullable(this.progress);
     }
 
     /**
-     * enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
+     * Current firmware update status
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
+     * @return Current firmware update status
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * Numeric firmware update status identifier
+     * 
+     */
     @Import(name="statusId")
     private @Nullable Output<Integer> statusId;
 
+    /**
+     * @return Numeric firmware update status identifier
+     * 
+     */
     public Optional<Output<Integer>> statusId() {
         return Optional.ofNullable(this.statusId);
     }
 
     /**
-     * Epoch (seconds)
+     * Time when the firmware update status was last updated
      * 
      */
     @Import(name="timestamp")
     private @Nullable Output<Double> timestamp;
 
     /**
-     * @return Epoch (seconds)
+     * @return Time when the firmware update status was last updated
      * 
      */
     public Optional<Output<Double>> timestamp() {
         return Optional.ofNullable(this.timestamp);
     }
 
+    /**
+     * Whether the firmware update process will retry after the current status
+     * 
+     */
     @Import(name="willRetry")
     private @Nullable Output<Boolean> willRetry;
 
+    /**
+     * @return Whether the firmware update process will retry after the current status
+     * 
+     */
     public Optional<Output<Boolean>> willRetry() {
         return Optional.ofNullable(this.willRetry);
     }
@@ -97,17 +121,29 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
             $ = new UpgradeDeviceFwupdateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param progress Firmware update progress percentage, or null when unavailable
+         * 
+         * @return builder
+         * 
+         */
         public Builder progress(@Nullable Output<Integer> progress) {
             $.progress = progress;
             return this;
         }
 
+        /**
+         * @param progress Firmware update progress percentage, or null when unavailable
+         * 
+         * @return builder
+         * 
+         */
         public Builder progress(Integer progress) {
             return progress(Output.of(progress));
         }
 
         /**
-         * @param status enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
+         * @param status Current firmware update status
          * 
          * @return builder
          * 
@@ -118,7 +154,7 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status enum: `inprogress`, `failed`, `upgraded`, `success`, `scheduled`, `error`
+         * @param status Current firmware update status
          * 
          * @return builder
          * 
@@ -127,17 +163,29 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
             return status(Output.of(status));
         }
 
+        /**
+         * @param statusId Numeric firmware update status identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusId(@Nullable Output<Integer> statusId) {
             $.statusId = statusId;
             return this;
         }
 
+        /**
+         * @param statusId Numeric firmware update status identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusId(Integer statusId) {
             return statusId(Output.of(statusId));
         }
 
         /**
-         * @param timestamp Epoch (seconds)
+         * @param timestamp Time when the firmware update status was last updated
          * 
          * @return builder
          * 
@@ -148,7 +196,7 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param timestamp Epoch (seconds)
+         * @param timestamp Time when the firmware update status was last updated
          * 
          * @return builder
          * 
@@ -157,11 +205,23 @@ public final class UpgradeDeviceFwupdateArgs extends com.pulumi.resources.Resour
             return timestamp(Output.of(timestamp));
         }
 
+        /**
+         * @param willRetry Whether the firmware update process will retry after the current status
+         * 
+         * @return builder
+         * 
+         */
         public Builder willRetry(@Nullable Output<Boolean> willRetry) {
             $.willRetry = willRetry;
             return this;
         }
 
+        /**
+         * @param willRetry Whether the firmware update process will retry after the current status
+         * 
+         * @return builder
+         * 
+         */
         public Builder willRetry(Boolean willRetry) {
             return willRetry(Output.of(willRetry));
         }

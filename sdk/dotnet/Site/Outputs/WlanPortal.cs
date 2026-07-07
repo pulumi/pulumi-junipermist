@@ -26,7 +26,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? AmazonClientSecret;
         /// <summary>
-        /// Optional if `AmazonEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `AmazonEnabled`==`True`. Email domains allowed for Amazon-authenticated guest users. If null or empty, any authenticated Amazon email domain is allowed.
         /// </summary>
         public readonly ImmutableArray<string> AmazonEmailDomains;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? AmazonExpire;
         /// <summary>
-        /// authentication scheme. enum: `Amazon`, `Azure`, `Email`, `External`, `Facebook`, `Google`, `Microsoft`, `Multi`, `None`, `Password`, `Sms`, `Sponsor`, `Sso`
+        /// Guest portal login scheme used by the WLAN
         /// </summary>
         public readonly string? Auth;
         /// <summary>
@@ -62,15 +62,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? AzureTenantId;
         /// <summary>
-        /// Required if `SmsProvider`==`Broadnet`
+        /// Required if `SmsProvider`==`Broadnet`. Password for the Broadnet SMS provider account
         /// </summary>
         public readonly string? BroadnetPassword;
         /// <summary>
-        /// Required if `SmsProvider`==`Broadnet`
+        /// Required if `SmsProvider`==`Broadnet`. SID for the Broadnet SMS provider account
         /// </summary>
         public readonly string? BroadnetSid;
         /// <summary>
-        /// Required if `SmsProvider`==`Broadnet`
+        /// Required if `SmsProvider`==`Broadnet`. User ID for the Broadnet SMS provider account
         /// </summary>
         public readonly string? BroadnetUserId;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? BypassWhenCloudDown;
         /// <summary>
-        /// Required if `SmsProvider`==`Clickatell`
+        /// Required if `SmsProvider`==`Clickatell`. API key for the Clickatell SMS provider account
         /// </summary>
         public readonly string? ClickatellApiKey;
         /// <summary>
@@ -110,7 +110,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? FacebookClientSecret;
         /// <summary>
-        /// Optional if `FacebookEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `FacebookEnabled`==`True`. Email domains allowed for Facebook-authenticated guest users. If null or empty, any authenticated Facebook email domain is allowed.
         /// </summary>
         public readonly ImmutableArray<string> FacebookEmailDomains;
         /// <summary>
@@ -138,7 +138,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? GoogleClientSecret;
         /// <summary>
-        /// Optional if `GoogleEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `GoogleEnabled`==`True`. Email domains allowed for Google-authenticated guest users. If null or empty, any authenticated Google email domain is allowed.
         /// </summary>
         public readonly ImmutableArray<string> GoogleEmailDomains;
         /// <summary>
@@ -150,11 +150,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? GoogleExpire;
         /// <summary>
-        /// Required if `SmsProvider`==`Gupshup`
+        /// Required if `SmsProvider`==`Gupshup`. Password for the Gupshup SMS provider account
         /// </summary>
         public readonly string? GupshupPassword;
         /// <summary>
-        /// Required if `SmsProvider`==`Gupshup`
+        /// Required if `SmsProvider`==`Gupshup`. User ID for the Gupshup SMS provider account
         /// </summary>
         public readonly string? GupshupUserid;
         /// <summary>
@@ -166,7 +166,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? MicrosoftClientSecret;
         /// <summary>
-        /// Optional if `MicrosoftEnabled`==`True`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        /// Optional if `MicrosoftEnabled`==`True`. Email domains allowed for Microsoft 365-authenticated guest users. If null or empty, any authenticated Microsoft 365 email domain is allowed.
         /// </summary>
         public readonly ImmutableArray<string> MicrosoftEmailDomains;
         /// <summary>
@@ -186,7 +186,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? PassphraseExpire;
         /// <summary>
-        /// Required if `PassphraseEnabled`==`True`.
+        /// Required if `PassphraseEnabled`==`True`. Passphrase guests must enter when passphrase authentication is enabled
         /// </summary>
         public readonly string? Password;
         /// <summary>
@@ -197,17 +197,20 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Whether to hide sponsor’s email from list of sponsors
         /// </summary>
         public readonly bool? PredefinedSponsorsHideEmail;
+        /// <summary>
+        /// Whether to show the privacy policy in the WLAN guest portal
+        /// </summary>
         public readonly bool? Privacy;
         /// <summary>
-        /// Required if `SmsProvider`==`Puzzel`
+        /// Required if `SmsProvider`==`Puzzel`. Password for the Puzzel SMS provider account
         /// </summary>
         public readonly string? PuzzelPassword;
         /// <summary>
-        /// Required if `SmsProvider`==`Puzzel`
+        /// Required if `SmsProvider`==`Puzzel`. Service ID for the Puzzel SMS provider account
         /// </summary>
         public readonly string? PuzzelServiceId;
         /// <summary>
-        /// Required if `SmsProvider`==`Puzzel`
+        /// Required if `SmsProvider`==`Puzzel`. Username for the Puzzel SMS provider account
         /// </summary>
         public readonly string? PuzzelUsername;
         /// <summary>
@@ -223,7 +226,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? SmsMessageFormat;
         /// <summary>
-        /// Optional if `SmsEnabled`==`True`. enum: `Broadnet`, `Clickatell`, `Gupshup`, `Manual`, `Puzzel`, `Smsglobal`, `Telstra`, `Twilio`
+        /// Optional if `SmsEnabled`==`True`. SMS provider used to deliver guest portal access codes
         /// </summary>
         public readonly string? SmsProvider;
         /// <summary>
@@ -235,11 +238,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? SmsglobalApiSecret;
         /// <summary>
+        /// Optional sender's number or sender ID for SMSGlobal. If not provided, uses the default number associated with the account
+        /// </summary>
+        public readonly string? SmsglobalSender;
+        /// <summary>
         /// Optional if `SponsorEnabled`==`True`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs PredefinedSponsorsEnabled enabled and SponsorNotifyAll disabled
         /// </summary>
         public readonly bool? SponsorAutoApprove;
         /// <summary>
-        /// List of domain allowed for sponsor email. Required if `SponsorEnabled` is `True` and `Sponsors` is empty.
+        /// Email domains allowed for sponsor email addresses. Required if `SponsorEnabled` is `True` and `Sponsors` is empty.
         /// </summary>
         public readonly ImmutableArray<string> SponsorEmailDomains;
         /// <summary>
@@ -274,7 +281,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? SsoDefaultRole;
         /// <summary>
-        /// Optional if `WlanPortalAuth`==`Sso`
+        /// Optional if `WlanPortalAuth`==`Sso`. Role assigned to authenticated users when guest SSO is used
         /// </summary>
         public readonly string? SsoForcedRole;
         /// <summary>
@@ -282,7 +289,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? SsoIdpCert;
         /// <summary>
-        /// Optional if `WlanPortalAuth`==`Sso`, Signing algorithm for SAML Assertion. enum: `Sha1`, `Sha256`, `Sha384`, `Sha512`
+        /// Optional if `WlanPortalAuth`==`Sso`. Signing algorithm used for SAML assertions from the identity provider
         /// </summary>
         public readonly string? SsoIdpSignAlgo;
         /// <summary>
@@ -294,7 +301,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? SsoIssuer;
         /// <summary>
-        /// Optional if `WlanPortalAuth`==`Sso`. enum: `Email`, `Unspecified`
+        /// Optional if `WlanPortalAuth`==`Sso`. SAML NameID format expected from the identity provider
         /// </summary>
         public readonly string? SsoNameidFormat;
         /// <summary>
@@ -432,6 +439,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? smsglobalApiSecret,
 
+            string? smsglobalSender,
+
             bool? sponsorAutoApprove,
 
             ImmutableArray<string> sponsorEmailDomains,
@@ -528,6 +537,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             SmsProvider = smsProvider;
             SmsglobalApiKey = smsglobalApiKey;
             SmsglobalApiSecret = smsglobalApiSecret;
+            SmsglobalSender = smsglobalSender;
             SponsorAutoApprove = sponsorAutoApprove;
             SponsorEmailDomains = sponsorEmailDomains;
             SponsorEnabled = sponsorEnabled;

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchRemoteSyslogConsole {
+    /**
+     * @return Syslog facilities and severities forwarded from console logs
+     * 
+     */
     private @Nullable List<SwitchRemoteSyslogConsoleContent> contents;
 
     private SwitchRemoteSyslogConsole() {}
+    /**
+     * @return Syslog facilities and severities forwarded from console logs
+     * 
+     */
     public List<SwitchRemoteSyslogConsoleContent> contents() {
         return this.contents == null ? List.of() : this.contents;
     }

@@ -58,8 +58,17 @@ export class Base extends pulumi.CustomResource {
         return obj['__pulumiType'] === Base.__pulumiType;
     }
 
+    /**
+     * Org-level alarm template ID used as the default for sites
+     */
     declare public readonly alarmtemplateId: pulumi.Output<string | undefined>;
+    /**
+     * Whether Mist support access is allowed for this organization
+     */
     declare public readonly allowMist: pulumi.Output<boolean>;
+    /**
+     * Managed service provider account that owns this organization, when applicable
+     */
     declare public /*out*/ readonly mspId: pulumi.Output<string>;
     /**
      * logo uploaded by the MSP with advanced tier, only present if provided
@@ -69,8 +78,17 @@ export class Base extends pulumi.CustomResource {
      * Name of the msp the org belongs to
      */
     declare public /*out*/ readonly mspName: pulumi.Output<string>;
+    /**
+     * Display name of the organization
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Organization group IDs that include this organization
+     */
     declare public /*out*/ readonly orggroupIds: pulumi.Output<string[]>;
+    /**
+     * Admin session lifetime for the organization, in minutes
+     */
     declare public readonly sessionExpiry: pulumi.Output<number>;
 
     /**
@@ -114,8 +132,17 @@ export class Base extends pulumi.CustomResource {
  * Input properties used for looking up and filtering base resources.
  */
 export interface BaseState {
+    /**
+     * Org-level alarm template ID used as the default for sites
+     */
     alarmtemplateId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Mist support access is allowed for this organization
+     */
     allowMist?: pulumi.Input<boolean | undefined>;
+    /**
+     * Managed service provider account that owns this organization, when applicable
+     */
     mspId?: pulumi.Input<string | undefined>;
     /**
      * logo uploaded by the MSP with advanced tier, only present if provided
@@ -125,8 +152,17 @@ export interface BaseState {
      * Name of the msp the org belongs to
      */
     mspName?: pulumi.Input<string | undefined>;
+    /**
+     * Display name of the organization
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Organization group IDs that include this organization
+     */
     orggroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Admin session lifetime for the organization, in minutes
+     */
     sessionExpiry?: pulumi.Input<number | undefined>;
 }
 
@@ -134,8 +170,20 @@ export interface BaseState {
  * The set of arguments for constructing a Base resource.
  */
 export interface BaseArgs {
+    /**
+     * Org-level alarm template ID used as the default for sites
+     */
     alarmtemplateId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Mist support access is allowed for this organization
+     */
     allowMist?: pulumi.Input<boolean | undefined>;
+    /**
+     * Display name of the organization
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Admin session lifetime for the organization, in minutes
+     */
     sessionExpiry?: pulumi.Input<number | undefined>;
 }

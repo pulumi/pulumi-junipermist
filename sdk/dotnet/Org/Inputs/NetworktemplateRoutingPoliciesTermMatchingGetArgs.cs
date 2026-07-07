@@ -26,6 +26,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("communities")]
         private InputList<string>? _communities;
+
+        /// <summary>
+        /// BGP communities that routes must match
+        /// </summary>
         public InputList<string> Communities
         {
             get => _communities ?? (_communities = new InputList<string>());
@@ -36,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _prefixes;
 
         /// <summary>
-        /// zero or more criteria/filter can be specified to match the term, all criteria have to be met
+        /// Route prefixes that routes must match
         /// </summary>
         public InputList<string> Prefixes
         {

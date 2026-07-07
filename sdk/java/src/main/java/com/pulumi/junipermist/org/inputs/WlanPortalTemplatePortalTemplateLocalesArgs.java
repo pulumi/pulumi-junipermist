@@ -151,9 +151,17 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.authButtonSponsor);
     }
 
+    /**
+     * Localized heading text displayed above portal authentication options
+     * 
+     */
     @Import(name="authLabel")
     private @Nullable Output<String> authLabel;
 
+    /**
+     * @return Localized heading text displayed above portal authentication options
+     * 
+     */
     public Optional<Output<String>> authLabel() {
         return Optional.ofNullable(this.authLabel);
     }
@@ -189,14 +197,14 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
     }
 
     /**
-     * Label of company field
+     * Localized label displayed for the company input field
      * 
      */
     @Import(name="companyLabel")
     private @Nullable Output<String> companyLabel;
 
     /**
-     * @return Label of company field
+     * @return Localized label displayed for the company input field
      * 
      */
     public Optional<Output<String>> companyLabel() {
@@ -233,44 +241,92 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.emailCancel);
     }
 
+    /**
+     * Localized link text for requesting help when the email access code was not received
+     * 
+     */
     @Import(name="emailCodeCancel")
     private @Nullable Output<String> emailCodeCancel;
 
+    /**
+     * @return Localized link text for requesting help when the email access code was not received
+     * 
+     */
     public Optional<Output<String>> emailCodeCancel() {
         return Optional.ofNullable(this.emailCodeCancel);
     }
 
+    /**
+     * Localized error message shown when the alternate email address for access-code delivery is invalid
+     * 
+     */
     @Import(name="emailCodeError")
     private @Nullable Output<String> emailCodeError;
 
+    /**
+     * @return Localized error message shown when the alternate email address for access-code delivery is invalid
+     * 
+     */
     public Optional<Output<String>> emailCodeError() {
         return Optional.ofNullable(this.emailCodeError);
     }
 
+    /**
+     * Localized label for the email access-code input field
+     * 
+     */
     @Import(name="emailCodeFieldLabel")
     private @Nullable Output<String> emailCodeFieldLabel;
 
+    /**
+     * @return Localized label for the email access-code input field
+     * 
+     */
     public Optional<Output<String>> emailCodeFieldLabel() {
         return Optional.ofNullable(this.emailCodeFieldLabel);
     }
 
+    /**
+     * Localized instructional text shown before entering the email access code
+     * 
+     */
     @Import(name="emailCodeMessage")
     private @Nullable Output<String> emailCodeMessage;
 
+    /**
+     * @return Localized instructional text shown before entering the email access code
+     * 
+     */
     public Optional<Output<String>> emailCodeMessage() {
         return Optional.ofNullable(this.emailCodeMessage);
     }
 
+    /**
+     * Localized button label for submitting the email access code
+     * 
+     */
     @Import(name="emailCodeSubmit")
     private @Nullable Output<String> emailCodeSubmit;
 
+    /**
+     * @return Localized button label for submitting the email access code
+     * 
+     */
     public Optional<Output<String>> emailCodeSubmit() {
         return Optional.ofNullable(this.emailCodeSubmit);
     }
 
+    /**
+     * Localized title shown on the email access-code entry page
+     * 
+     */
     @Import(name="emailCodeTitle")
     private @Nullable Output<String> emailCodeTitle;
 
+    /**
+     * @return Localized title shown on the email access-code entry page
+     * 
+     */
     public Optional<Output<String>> emailCodeTitle() {
         return Optional.ofNullable(this.emailCodeTitle);
     }
@@ -290,31 +346,47 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.emailError);
     }
 
+    /**
+     * Localized label for the email address input field
+     * 
+     */
     @Import(name="emailFieldLabel")
     private @Nullable Output<String> emailFieldLabel;
 
+    /**
+     * @return Localized label for the email address input field
+     * 
+     */
     public Optional<Output<String>> emailFieldLabel() {
         return Optional.ofNullable(this.emailFieldLabel);
     }
 
     /**
-     * Label of email field
+     * Localized label displayed for the email input field
      * 
      */
     @Import(name="emailLabel")
     private @Nullable Output<String> emailLabel;
 
     /**
-     * @return Label of email field
+     * @return Localized label displayed for the email input field
      * 
      */
     public Optional<Output<String>> emailLabel() {
         return Optional.ofNullable(this.emailLabel);
     }
 
+    /**
+     * Localized instructional text explaining email access-code delivery
+     * 
+     */
     @Import(name="emailMessage")
     private @Nullable Output<String> emailMessage;
 
+    /**
+     * @return Localized instructional text explaining email access-code delivery
+     * 
+     */
     public Optional<Output<String>> emailMessage() {
         return Optional.ofNullable(this.emailMessage);
     }
@@ -365,14 +437,14 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
     }
 
     /**
-     * Label of field1
+     * Localized label for custom field 1 input
      * 
      */
     @Import(name="field1label")
     private @Nullable Output<String> field1label;
 
     /**
-     * @return Label of field1
+     * @return Localized label for custom field 1 input
      * 
      */
     public Optional<Output<String>> field1label() {
@@ -395,14 +467,14 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
     }
 
     /**
-     * Label of field2
+     * Localized label for custom field 2 input
      * 
      */
     @Import(name="field2label")
     private @Nullable Output<String> field2label;
 
     /**
-     * @return Label of field2
+     * @return Localized label for custom field 2 input
      * 
      */
     public Optional<Output<String>> field2label() {
@@ -425,14 +497,14 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
     }
 
     /**
-     * Label of field3
+     * Localized label for custom field 3 input
      * 
      */
     @Import(name="field3label")
     private @Nullable Output<String> field3label;
 
     /**
-     * @return Label of field3
+     * @return Localized label for custom field 3 input
      * 
      */
     public Optional<Output<String>> field3label() {
@@ -455,14 +527,14 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
     }
 
     /**
-     * Label of field4
+     * Localized label for custom field 4 input
      * 
      */
     @Import(name="field4label")
     private @Nullable Output<String> field4label;
 
     /**
-     * @return Label of field4
+     * @return Localized label for custom field 4 input
      * 
      */
     public Optional<Output<String>> field4label() {
@@ -515,23 +587,31 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
     }
 
     /**
-     * marketing policy text
+     * Localized text of the marketing policy opt-in content
      * 
      */
     @Import(name="marketingPolicyOptInText")
     private @Nullable Output<String> marketingPolicyOptInText;
 
     /**
-     * @return marketing policy text
+     * @return Localized text of the marketing policy opt-in content
      * 
      */
     public Optional<Output<String>> marketingPolicyOptInText() {
         return Optional.ofNullable(this.marketingPolicyOptInText);
     }
 
+    /**
+     * Localized main message displayed on the guest portal sign-in page
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return Localized main message displayed on the guest portal sign-in page
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
@@ -552,14 +632,14 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
     }
 
     /**
-     * Label of name field
+     * Localized label displayed for the name input field
      * 
      */
     @Import(name="nameLabel")
     private @Nullable Output<String> nameLabel;
 
     /**
-     * @return Label of name field
+     * @return Localized label displayed for the name input field
      * 
      */
     public Optional<Output<String>> nameLabel() {
@@ -581,9 +661,17 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.optoutLabel);
     }
 
+    /**
+     * Localized browser or page title shown for the guest portal
+     * 
+     */
     @Import(name="pageTitle")
     private @Nullable Output<String> pageTitle;
 
+    /**
+     * @return Localized browser or page title shown for the guest portal
+     * 
+     */
     public Optional<Output<String>> pageTitle() {
         return Optional.ofNullable(this.pageTitle);
     }
@@ -619,23 +707,31 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
     }
 
     /**
-     * Passphrase
+     * Localized label for the passphrase input field
      * 
      */
     @Import(name="passphraseLabel")
     private @Nullable Output<String> passphraseLabel;
 
     /**
-     * @return Passphrase
+     * @return Localized label for the passphrase input field
      * 
      */
     public Optional<Output<String>> passphraseLabel() {
         return Optional.ofNullable(this.passphraseLabel);
     }
 
+    /**
+     * Localized instructional text shown on the passphrase sign-in page
+     * 
+     */
     @Import(name="passphraseMessage")
     private @Nullable Output<String> passphraseMessage;
 
+    /**
+     * @return Localized instructional text shown on the passphrase sign-in page
+     * 
+     */
     public Optional<Output<String>> passphraseMessage() {
         return Optional.ofNullable(this.passphraseMessage);
     }
@@ -731,14 +827,14 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
     }
 
     /**
-     * Label to denote required field
+     * Localized text used to mark a form field as required
      * 
      */
     @Import(name="requiredFieldLabel")
     private @Nullable Output<String> requiredFieldLabel;
 
     /**
-     * @return Label to denote required field
+     * @return Localized text used to mark a form field as required
      * 
      */
     public Optional<Output<String>> requiredFieldLabel() {
@@ -760,16 +856,32 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.signInLabel);
     }
 
+    /**
+     * Localized default option text shown in the SMS carrier selector
+     * 
+     */
     @Import(name="smsCarrierDefault")
     private @Nullable Output<String> smsCarrierDefault;
 
+    /**
+     * @return Localized default option text shown in the SMS carrier selector
+     * 
+     */
     public Optional<Output<String>> smsCarrierDefault() {
         return Optional.ofNullable(this.smsCarrierDefault);
     }
 
+    /**
+     * Localized error message shown when no mobile carrier is selected
+     * 
+     */
     @Import(name="smsCarrierError")
     private @Nullable Output<String> smsCarrierError;
 
+    /**
+     * @return Localized error message shown when no mobile carrier is selected
+     * 
+     */
     public Optional<Output<String>> smsCarrierError() {
         return Optional.ofNullable(this.smsCarrierError);
     }
@@ -819,16 +931,32 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.smsCodeError);
     }
 
+    /**
+     * Localized label for the SMS confirmation-code input field
+     * 
+     */
     @Import(name="smsCodeFieldLabel")
     private @Nullable Output<String> smsCodeFieldLabel;
 
+    /**
+     * @return Localized label for the SMS confirmation-code input field
+     * 
+     */
     public Optional<Output<String>> smsCodeFieldLabel() {
         return Optional.ofNullable(this.smsCodeFieldLabel);
     }
 
+    /**
+     * Localized instructional text shown before entering the SMS access code
+     * 
+     */
     @Import(name="smsCodeMessage")
     private @Nullable Output<String> smsCodeMessage;
 
+    /**
+     * @return Localized instructional text shown before entering the SMS access code
+     * 
+     */
     public Optional<Output<String>> smsCodeMessage() {
         return Optional.ofNullable(this.smsCodeMessage);
     }
@@ -848,23 +976,47 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.smsCodeSubmit);
     }
 
+    /**
+     * Localized title shown on the SMS access-code entry page
+     * 
+     */
     @Import(name="smsCodeTitle")
     private @Nullable Output<String> smsCodeTitle;
 
+    /**
+     * @return Localized title shown on the SMS access-code entry page
+     * 
+     */
     public Optional<Output<String>> smsCodeTitle() {
         return Optional.ofNullable(this.smsCodeTitle);
     }
 
+    /**
+     * Localized label for the SMS country-code input field
+     * 
+     */
     @Import(name="smsCountryFieldLabel")
     private @Nullable Output<String> smsCountryFieldLabel;
 
+    /**
+     * @return Localized label for the SMS country-code input field
+     * 
+     */
     public Optional<Output<String>> smsCountryFieldLabel() {
         return Optional.ofNullable(this.smsCountryFieldLabel);
     }
 
+    /**
+     * Localized example country code format shown for SMS authentication
+     * 
+     */
     @Import(name="smsCountryFormat")
     private @Nullable Output<String> smsCountryFormat;
 
+    /**
+     * @return Localized example country code format shown for SMS authentication
+     * 
+     */
     public Optional<Output<String>> smsCountryFormat() {
         return Optional.ofNullable(this.smsCountryFormat);
     }
@@ -914,9 +1066,17 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.smsNumberCancel);
     }
 
+    /**
+     * Localized error message shown when the mobile number is invalid
+     * 
+     */
     @Import(name="smsNumberError")
     private @Nullable Output<String> smsNumberError;
 
+    /**
+     * @return Localized error message shown when the mobile number is invalid
+     * 
+     */
     public Optional<Output<String>> smsNumberError() {
         return Optional.ofNullable(this.smsNumberError);
     }
@@ -936,16 +1096,32 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.smsNumberFieldLabel);
     }
 
+    /**
+     * Localized example mobile number format shown for SMS authentication
+     * 
+     */
     @Import(name="smsNumberFormat")
     private @Nullable Output<String> smsNumberFormat;
 
+    /**
+     * @return Localized example mobile number format shown for SMS authentication
+     * 
+     */
     public Optional<Output<String>> smsNumberFormat() {
         return Optional.ofNullable(this.smsNumberFormat);
     }
 
+    /**
+     * Localized instructional text explaining SMS access-code delivery
+     * 
+     */
     @Import(name="smsNumberMessage")
     private @Nullable Output<String> smsNumberMessage;
 
+    /**
+     * @return Localized instructional text explaining SMS access-code delivery
+     * 
+     */
     public Optional<Output<String>> smsNumberMessage() {
         return Optional.ofNullable(this.smsNumberMessage);
     }
@@ -980,23 +1156,47 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.smsNumberTitle);
     }
 
+    /**
+     * Localized example username format shown for SMS authentication
+     * 
+     */
     @Import(name="smsUsernameFormat")
     private @Nullable Output<String> smsUsernameFormat;
 
+    /**
+     * @return Localized example username format shown for SMS authentication
+     * 
+     */
     public Optional<Output<String>> smsUsernameFormat() {
         return Optional.ofNullable(this.smsUsernameFormat);
     }
 
+    /**
+     * Localized link text for returning to edit the sponsor request form
+     * 
+     */
     @Import(name="sponsorBackLink")
     private @Nullable Output<String> sponsorBackLink;
 
+    /**
+     * @return Localized link text for returning to edit the sponsor request form
+     * 
+     */
     public Optional<Output<String>> sponsorBackLink() {
         return Optional.ofNullable(this.sponsorBackLink);
     }
 
+    /**
+     * Localized button label for canceling sponsor authentication
+     * 
+     */
     @Import(name="sponsorCancel")
     private @Nullable Output<String> sponsorCancel;
 
+    /**
+     * @return Localized button label for canceling sponsor authentication
+     * 
+     */
     public Optional<Output<String>> sponsorCancel() {
         return Optional.ofNullable(this.sponsorCancel);
     }
@@ -1016,30 +1216,62 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.sponsorEmail);
     }
 
+    /**
+     * Localized error message shown when the sponsor email address is invalid
+     * 
+     */
     @Import(name="sponsorEmailError")
     private @Nullable Output<String> sponsorEmailError;
 
+    /**
+     * @return Localized error message shown when the sponsor email address is invalid
+     * 
+     */
     public Optional<Output<String>> sponsorEmailError() {
         return Optional.ofNullable(this.sponsorEmailError);
     }
 
+    /**
+     * Localized status message prefix shown when a sponsor approves the request
+     * 
+     */
     @Import(name="sponsorInfoApproved")
     private @Nullable Output<String> sponsorInfoApproved;
 
+    /**
+     * @return Localized status message prefix shown when a sponsor approves the request
+     * 
+     */
     public Optional<Output<String>> sponsorInfoApproved() {
         return Optional.ofNullable(this.sponsorInfoApproved);
     }
 
+    /**
+     * Localized status message prefix shown when a sponsor denies the request
+     * 
+     */
     @Import(name="sponsorInfoDenied")
     private @Nullable Output<String> sponsorInfoDenied;
 
+    /**
+     * @return Localized status message prefix shown when a sponsor denies the request
+     * 
+     */
     public Optional<Output<String>> sponsorInfoDenied() {
         return Optional.ofNullable(this.sponsorInfoDenied);
     }
 
+    /**
+     * Localized status message prefix shown after a sponsor notification is sent
+     * 
+     */
     @Import(name="sponsorInfoPending")
     private @Nullable Output<String> sponsorInfoPending;
 
+    /**
+     * @return Localized status message prefix shown after a sponsor notification is sent
+     * 
+     */
     public Optional<Output<String>> sponsorInfoPending() {
         return Optional.ofNullable(this.sponsorInfoPending);
     }
@@ -1059,16 +1291,32 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.sponsorName);
     }
 
+    /**
+     * Localized error message shown when the sponsor name is missing
+     * 
+     */
     @Import(name="sponsorNameError")
     private @Nullable Output<String> sponsorNameError;
 
+    /**
+     * @return Localized error message shown when the sponsor name is missing
+     * 
+     */
     public Optional<Output<String>> sponsorNameError() {
         return Optional.ofNullable(this.sponsorNameError);
     }
 
+    /**
+     * Localized additional status text shown while sponsor approval is pending
+     * 
+     */
     @Import(name="sponsorNotePending")
     private @Nullable Output<String> sponsorNotePending;
 
+    /**
+     * @return Localized additional status text shown while sponsor approval is pending
+     * 
+     */
     public Optional<Output<String>> sponsorNotePending() {
         return Optional.ofNullable(this.sponsorNotePending);
     }
@@ -1148,16 +1396,32 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.sponsorSubmit);
     }
 
+    /**
+     * Localized error message shown when no sponsor is selected
+     * 
+     */
     @Import(name="sponsorsError")
     private @Nullable Output<String> sponsorsError;
 
+    /**
+     * @return Localized error message shown when no sponsor is selected
+     * 
+     */
     public Optional<Output<String>> sponsorsError() {
         return Optional.ofNullable(this.sponsorsError);
     }
 
+    /**
+     * Localized label for the sponsor selection field
+     * 
+     */
     @Import(name="sponsorsFieldLabel")
     private @Nullable Output<String> sponsorsFieldLabel;
 
+    /**
+     * @return Localized label for the sponsor selection field
+     * 
+     */
     public Optional<Output<String>> sponsorsFieldLabel() {
         return Optional.ofNullable(this.sponsorsFieldLabel);
     }
@@ -1532,11 +1796,23 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return authButtonSponsor(Output.of(authButtonSponsor));
         }
 
+        /**
+         * @param authLabel Localized heading text displayed above portal authentication options
+         * 
+         * @return builder
+         * 
+         */
         public Builder authLabel(@Nullable Output<String> authLabel) {
             $.authLabel = authLabel;
             return this;
         }
 
+        /**
+         * @param authLabel Localized heading text displayed above portal authentication options
+         * 
+         * @return builder
+         * 
+         */
         public Builder authLabel(String authLabel) {
             return authLabel(Output.of(authLabel));
         }
@@ -1584,7 +1860,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param companyLabel Label of company field
+         * @param companyLabel Localized label displayed for the company input field
          * 
          * @return builder
          * 
@@ -1595,7 +1871,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param companyLabel Label of company field
+         * @param companyLabel Localized label displayed for the company input field
          * 
          * @return builder
          * 
@@ -1646,56 +1922,128 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return emailCancel(Output.of(emailCancel));
         }
 
+        /**
+         * @param emailCodeCancel Localized link text for requesting help when the email access code was not received
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeCancel(@Nullable Output<String> emailCodeCancel) {
             $.emailCodeCancel = emailCodeCancel;
             return this;
         }
 
+        /**
+         * @param emailCodeCancel Localized link text for requesting help when the email access code was not received
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeCancel(String emailCodeCancel) {
             return emailCodeCancel(Output.of(emailCodeCancel));
         }
 
+        /**
+         * @param emailCodeError Localized error message shown when the alternate email address for access-code delivery is invalid
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeError(@Nullable Output<String> emailCodeError) {
             $.emailCodeError = emailCodeError;
             return this;
         }
 
+        /**
+         * @param emailCodeError Localized error message shown when the alternate email address for access-code delivery is invalid
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeError(String emailCodeError) {
             return emailCodeError(Output.of(emailCodeError));
         }
 
+        /**
+         * @param emailCodeFieldLabel Localized label for the email access-code input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeFieldLabel(@Nullable Output<String> emailCodeFieldLabel) {
             $.emailCodeFieldLabel = emailCodeFieldLabel;
             return this;
         }
 
+        /**
+         * @param emailCodeFieldLabel Localized label for the email access-code input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeFieldLabel(String emailCodeFieldLabel) {
             return emailCodeFieldLabel(Output.of(emailCodeFieldLabel));
         }
 
+        /**
+         * @param emailCodeMessage Localized instructional text shown before entering the email access code
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeMessage(@Nullable Output<String> emailCodeMessage) {
             $.emailCodeMessage = emailCodeMessage;
             return this;
         }
 
+        /**
+         * @param emailCodeMessage Localized instructional text shown before entering the email access code
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeMessage(String emailCodeMessage) {
             return emailCodeMessage(Output.of(emailCodeMessage));
         }
 
+        /**
+         * @param emailCodeSubmit Localized button label for submitting the email access code
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeSubmit(@Nullable Output<String> emailCodeSubmit) {
             $.emailCodeSubmit = emailCodeSubmit;
             return this;
         }
 
+        /**
+         * @param emailCodeSubmit Localized button label for submitting the email access code
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeSubmit(String emailCodeSubmit) {
             return emailCodeSubmit(Output.of(emailCodeSubmit));
         }
 
+        /**
+         * @param emailCodeTitle Localized title shown on the email access-code entry page
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeTitle(@Nullable Output<String> emailCodeTitle) {
             $.emailCodeTitle = emailCodeTitle;
             return this;
         }
 
+        /**
+         * @param emailCodeTitle Localized title shown on the email access-code entry page
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailCodeTitle(String emailCodeTitle) {
             return emailCodeTitle(Output.of(emailCodeTitle));
         }
@@ -1721,17 +2069,29 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return emailError(Output.of(emailError));
         }
 
+        /**
+         * @param emailFieldLabel Localized label for the email address input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailFieldLabel(@Nullable Output<String> emailFieldLabel) {
             $.emailFieldLabel = emailFieldLabel;
             return this;
         }
 
+        /**
+         * @param emailFieldLabel Localized label for the email address input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailFieldLabel(String emailFieldLabel) {
             return emailFieldLabel(Output.of(emailFieldLabel));
         }
 
         /**
-         * @param emailLabel Label of email field
+         * @param emailLabel Localized label displayed for the email input field
          * 
          * @return builder
          * 
@@ -1742,7 +2102,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param emailLabel Label of email field
+         * @param emailLabel Localized label displayed for the email input field
          * 
          * @return builder
          * 
@@ -1751,11 +2111,23 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return emailLabel(Output.of(emailLabel));
         }
 
+        /**
+         * @param emailMessage Localized instructional text explaining email access-code delivery
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailMessage(@Nullable Output<String> emailMessage) {
             $.emailMessage = emailMessage;
             return this;
         }
 
+        /**
+         * @param emailMessage Localized instructional text explaining email access-code delivery
+         * 
+         * @return builder
+         * 
+         */
         public Builder emailMessage(String emailMessage) {
             return emailMessage(Output.of(emailMessage));
         }
@@ -1824,7 +2196,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param field1label Label of field1
+         * @param field1label Localized label for custom field 1 input
          * 
          * @return builder
          * 
@@ -1835,7 +2207,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param field1label Label of field1
+         * @param field1label Localized label for custom field 1 input
          * 
          * @return builder
          * 
@@ -1866,7 +2238,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param field2label Label of field2
+         * @param field2label Localized label for custom field 2 input
          * 
          * @return builder
          * 
@@ -1877,7 +2249,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param field2label Label of field2
+         * @param field2label Localized label for custom field 2 input
          * 
          * @return builder
          * 
@@ -1908,7 +2280,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param field3label Label of field3
+         * @param field3label Localized label for custom field 3 input
          * 
          * @return builder
          * 
@@ -1919,7 +2291,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param field3label Label of field3
+         * @param field3label Localized label for custom field 3 input
          * 
          * @return builder
          * 
@@ -1950,7 +2322,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param field4label Label of field4
+         * @param field4label Localized label for custom field 4 input
          * 
          * @return builder
          * 
@@ -1961,7 +2333,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param field4label Label of field4
+         * @param field4label Localized label for custom field 4 input
          * 
          * @return builder
          * 
@@ -2034,7 +2406,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param marketingPolicyOptInText marketing policy text
+         * @param marketingPolicyOptInText Localized text of the marketing policy opt-in content
          * 
          * @return builder
          * 
@@ -2045,7 +2417,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param marketingPolicyOptInText marketing policy text
+         * @param marketingPolicyOptInText Localized text of the marketing policy opt-in content
          * 
          * @return builder
          * 
@@ -2054,11 +2426,23 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return marketingPolicyOptInText(Output.of(marketingPolicyOptInText));
         }
 
+        /**
+         * @param message Localized main message displayed on the guest portal sign-in page
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message Localized main message displayed on the guest portal sign-in page
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }
@@ -2085,7 +2469,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param nameLabel Label of name field
+         * @param nameLabel Localized label displayed for the name input field
          * 
          * @return builder
          * 
@@ -2096,7 +2480,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param nameLabel Label of name field
+         * @param nameLabel Localized label displayed for the name input field
          * 
          * @return builder
          * 
@@ -2126,11 +2510,23 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return optoutLabel(Output.of(optoutLabel));
         }
 
+        /**
+         * @param pageTitle Localized browser or page title shown for the guest portal
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageTitle(@Nullable Output<String> pageTitle) {
             $.pageTitle = pageTitle;
             return this;
         }
 
+        /**
+         * @param pageTitle Localized browser or page title shown for the guest portal
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageTitle(String pageTitle) {
             return pageTitle(Output.of(pageTitle));
         }
@@ -2178,7 +2574,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param passphraseLabel Passphrase
+         * @param passphraseLabel Localized label for the passphrase input field
          * 
          * @return builder
          * 
@@ -2189,7 +2585,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param passphraseLabel Passphrase
+         * @param passphraseLabel Localized label for the passphrase input field
          * 
          * @return builder
          * 
@@ -2198,11 +2594,23 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return passphraseLabel(Output.of(passphraseLabel));
         }
 
+        /**
+         * @param passphraseMessage Localized instructional text shown on the passphrase sign-in page
+         * 
+         * @return builder
+         * 
+         */
         public Builder passphraseMessage(@Nullable Output<String> passphraseMessage) {
             $.passphraseMessage = passphraseMessage;
             return this;
         }
 
+        /**
+         * @param passphraseMessage Localized instructional text shown on the passphrase sign-in page
+         * 
+         * @return builder
+         * 
+         */
         public Builder passphraseMessage(String passphraseMessage) {
             return passphraseMessage(Output.of(passphraseMessage));
         }
@@ -2334,7 +2742,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param requiredFieldLabel Label to denote required field
+         * @param requiredFieldLabel Localized text used to mark a form field as required
          * 
          * @return builder
          * 
@@ -2345,7 +2753,7 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         }
 
         /**
-         * @param requiredFieldLabel Label to denote required field
+         * @param requiredFieldLabel Localized text used to mark a form field as required
          * 
          * @return builder
          * 
@@ -2375,20 +2783,44 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return signInLabel(Output.of(signInLabel));
         }
 
+        /**
+         * @param smsCarrierDefault Localized default option text shown in the SMS carrier selector
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCarrierDefault(@Nullable Output<String> smsCarrierDefault) {
             $.smsCarrierDefault = smsCarrierDefault;
             return this;
         }
 
+        /**
+         * @param smsCarrierDefault Localized default option text shown in the SMS carrier selector
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCarrierDefault(String smsCarrierDefault) {
             return smsCarrierDefault(Output.of(smsCarrierDefault));
         }
 
+        /**
+         * @param smsCarrierError Localized error message shown when no mobile carrier is selected
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCarrierError(@Nullable Output<String> smsCarrierError) {
             $.smsCarrierError = smsCarrierError;
             return this;
         }
 
+        /**
+         * @param smsCarrierError Localized error message shown when no mobile carrier is selected
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCarrierError(String smsCarrierError) {
             return smsCarrierError(Output.of(smsCarrierError));
         }
@@ -2456,20 +2888,44 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return smsCodeError(Output.of(smsCodeError));
         }
 
+        /**
+         * @param smsCodeFieldLabel Localized label for the SMS confirmation-code input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCodeFieldLabel(@Nullable Output<String> smsCodeFieldLabel) {
             $.smsCodeFieldLabel = smsCodeFieldLabel;
             return this;
         }
 
+        /**
+         * @param smsCodeFieldLabel Localized label for the SMS confirmation-code input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCodeFieldLabel(String smsCodeFieldLabel) {
             return smsCodeFieldLabel(Output.of(smsCodeFieldLabel));
         }
 
+        /**
+         * @param smsCodeMessage Localized instructional text shown before entering the SMS access code
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCodeMessage(@Nullable Output<String> smsCodeMessage) {
             $.smsCodeMessage = smsCodeMessage;
             return this;
         }
 
+        /**
+         * @param smsCodeMessage Localized instructional text shown before entering the SMS access code
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCodeMessage(String smsCodeMessage) {
             return smsCodeMessage(Output.of(smsCodeMessage));
         }
@@ -2495,29 +2951,65 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return smsCodeSubmit(Output.of(smsCodeSubmit));
         }
 
+        /**
+         * @param smsCodeTitle Localized title shown on the SMS access-code entry page
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCodeTitle(@Nullable Output<String> smsCodeTitle) {
             $.smsCodeTitle = smsCodeTitle;
             return this;
         }
 
+        /**
+         * @param smsCodeTitle Localized title shown on the SMS access-code entry page
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCodeTitle(String smsCodeTitle) {
             return smsCodeTitle(Output.of(smsCodeTitle));
         }
 
+        /**
+         * @param smsCountryFieldLabel Localized label for the SMS country-code input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCountryFieldLabel(@Nullable Output<String> smsCountryFieldLabel) {
             $.smsCountryFieldLabel = smsCountryFieldLabel;
             return this;
         }
 
+        /**
+         * @param smsCountryFieldLabel Localized label for the SMS country-code input field
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCountryFieldLabel(String smsCountryFieldLabel) {
             return smsCountryFieldLabel(Output.of(smsCountryFieldLabel));
         }
 
+        /**
+         * @param smsCountryFormat Localized example country code format shown for SMS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCountryFormat(@Nullable Output<String> smsCountryFormat) {
             $.smsCountryFormat = smsCountryFormat;
             return this;
         }
 
+        /**
+         * @param smsCountryFormat Localized example country code format shown for SMS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsCountryFormat(String smsCountryFormat) {
             return smsCountryFormat(Output.of(smsCountryFormat));
         }
@@ -2585,11 +3077,23 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return smsNumberCancel(Output.of(smsNumberCancel));
         }
 
+        /**
+         * @param smsNumberError Localized error message shown when the mobile number is invalid
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsNumberError(@Nullable Output<String> smsNumberError) {
             $.smsNumberError = smsNumberError;
             return this;
         }
 
+        /**
+         * @param smsNumberError Localized error message shown when the mobile number is invalid
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsNumberError(String smsNumberError) {
             return smsNumberError(Output.of(smsNumberError));
         }
@@ -2615,20 +3119,44 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return smsNumberFieldLabel(Output.of(smsNumberFieldLabel));
         }
 
+        /**
+         * @param smsNumberFormat Localized example mobile number format shown for SMS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsNumberFormat(@Nullable Output<String> smsNumberFormat) {
             $.smsNumberFormat = smsNumberFormat;
             return this;
         }
 
+        /**
+         * @param smsNumberFormat Localized example mobile number format shown for SMS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsNumberFormat(String smsNumberFormat) {
             return smsNumberFormat(Output.of(smsNumberFormat));
         }
 
+        /**
+         * @param smsNumberMessage Localized instructional text explaining SMS access-code delivery
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsNumberMessage(@Nullable Output<String> smsNumberMessage) {
             $.smsNumberMessage = smsNumberMessage;
             return this;
         }
 
+        /**
+         * @param smsNumberMessage Localized instructional text explaining SMS access-code delivery
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsNumberMessage(String smsNumberMessage) {
             return smsNumberMessage(Output.of(smsNumberMessage));
         }
@@ -2675,29 +3203,65 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return smsNumberTitle(Output.of(smsNumberTitle));
         }
 
+        /**
+         * @param smsUsernameFormat Localized example username format shown for SMS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsUsernameFormat(@Nullable Output<String> smsUsernameFormat) {
             $.smsUsernameFormat = smsUsernameFormat;
             return this;
         }
 
+        /**
+         * @param smsUsernameFormat Localized example username format shown for SMS authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder smsUsernameFormat(String smsUsernameFormat) {
             return smsUsernameFormat(Output.of(smsUsernameFormat));
         }
 
+        /**
+         * @param sponsorBackLink Localized link text for returning to edit the sponsor request form
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorBackLink(@Nullable Output<String> sponsorBackLink) {
             $.sponsorBackLink = sponsorBackLink;
             return this;
         }
 
+        /**
+         * @param sponsorBackLink Localized link text for returning to edit the sponsor request form
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorBackLink(String sponsorBackLink) {
             return sponsorBackLink(Output.of(sponsorBackLink));
         }
 
+        /**
+         * @param sponsorCancel Localized button label for canceling sponsor authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorCancel(@Nullable Output<String> sponsorCancel) {
             $.sponsorCancel = sponsorCancel;
             return this;
         }
 
+        /**
+         * @param sponsorCancel Localized button label for canceling sponsor authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorCancel(String sponsorCancel) {
             return sponsorCancel(Output.of(sponsorCancel));
         }
@@ -2723,38 +3287,86 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return sponsorEmail(Output.of(sponsorEmail));
         }
 
+        /**
+         * @param sponsorEmailError Localized error message shown when the sponsor email address is invalid
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorEmailError(@Nullable Output<String> sponsorEmailError) {
             $.sponsorEmailError = sponsorEmailError;
             return this;
         }
 
+        /**
+         * @param sponsorEmailError Localized error message shown when the sponsor email address is invalid
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorEmailError(String sponsorEmailError) {
             return sponsorEmailError(Output.of(sponsorEmailError));
         }
 
+        /**
+         * @param sponsorInfoApproved Localized status message prefix shown when a sponsor approves the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorInfoApproved(@Nullable Output<String> sponsorInfoApproved) {
             $.sponsorInfoApproved = sponsorInfoApproved;
             return this;
         }
 
+        /**
+         * @param sponsorInfoApproved Localized status message prefix shown when a sponsor approves the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorInfoApproved(String sponsorInfoApproved) {
             return sponsorInfoApproved(Output.of(sponsorInfoApproved));
         }
 
+        /**
+         * @param sponsorInfoDenied Localized status message prefix shown when a sponsor denies the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorInfoDenied(@Nullable Output<String> sponsorInfoDenied) {
             $.sponsorInfoDenied = sponsorInfoDenied;
             return this;
         }
 
+        /**
+         * @param sponsorInfoDenied Localized status message prefix shown when a sponsor denies the request
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorInfoDenied(String sponsorInfoDenied) {
             return sponsorInfoDenied(Output.of(sponsorInfoDenied));
         }
 
+        /**
+         * @param sponsorInfoPending Localized status message prefix shown after a sponsor notification is sent
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorInfoPending(@Nullable Output<String> sponsorInfoPending) {
             $.sponsorInfoPending = sponsorInfoPending;
             return this;
         }
 
+        /**
+         * @param sponsorInfoPending Localized status message prefix shown after a sponsor notification is sent
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorInfoPending(String sponsorInfoPending) {
             return sponsorInfoPending(Output.of(sponsorInfoPending));
         }
@@ -2780,20 +3392,44 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return sponsorName(Output.of(sponsorName));
         }
 
+        /**
+         * @param sponsorNameError Localized error message shown when the sponsor name is missing
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorNameError(@Nullable Output<String> sponsorNameError) {
             $.sponsorNameError = sponsorNameError;
             return this;
         }
 
+        /**
+         * @param sponsorNameError Localized error message shown when the sponsor name is missing
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorNameError(String sponsorNameError) {
             return sponsorNameError(Output.of(sponsorNameError));
         }
 
+        /**
+         * @param sponsorNotePending Localized additional status text shown while sponsor approval is pending
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorNotePending(@Nullable Output<String> sponsorNotePending) {
             $.sponsorNotePending = sponsorNotePending;
             return this;
         }
 
+        /**
+         * @param sponsorNotePending Localized additional status text shown while sponsor approval is pending
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorNotePending(String sponsorNotePending) {
             return sponsorNotePending(Output.of(sponsorNotePending));
         }
@@ -2903,20 +3539,44 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
             return sponsorSubmit(Output.of(sponsorSubmit));
         }
 
+        /**
+         * @param sponsorsError Localized error message shown when no sponsor is selected
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorsError(@Nullable Output<String> sponsorsError) {
             $.sponsorsError = sponsorsError;
             return this;
         }
 
+        /**
+         * @param sponsorsError Localized error message shown when no sponsor is selected
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorsError(String sponsorsError) {
             return sponsorsError(Output.of(sponsorsError));
         }
 
+        /**
+         * @param sponsorsFieldLabel Localized label for the sponsor selection field
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorsFieldLabel(@Nullable Output<String> sponsorsFieldLabel) {
             $.sponsorsFieldLabel = sponsorsFieldLabel;
             return this;
         }
 
+        /**
+         * @param sponsorsFieldLabel Localized label for the sponsor selection field
+         * 
+         * @return builder
+         * 
+         */
         public Builder sponsorsFieldLabel(String sponsorsFieldLabel) {
             return sponsorsFieldLabel(Output.of(sponsorsFieldLabel));
         }

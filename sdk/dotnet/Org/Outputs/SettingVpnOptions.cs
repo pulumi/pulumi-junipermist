@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingVpnOptions
     {
+        /// <summary>
+        /// Base BGP autonomous system number used for generated VPN configurations
+        /// </summary>
         public readonly int? AsBase;
+        /// <summary>
+        /// Whether IPv6 is enabled for organization VPN configuration
+        /// </summary>
         public readonly bool? EnableIpv6;
         /// <summary>
         /// requiring /12 or bigger to support 16 private IPs for 65535 gateways

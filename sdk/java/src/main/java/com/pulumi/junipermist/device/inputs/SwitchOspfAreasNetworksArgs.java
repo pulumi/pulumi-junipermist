@@ -49,73 +49,121 @@ public final class SwitchOspfAreasNetworksArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * auth type. enum: `md5`, `none`, `password`
+     * Authentication method used by this OSPF network
      * 
      */
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
     /**
-     * @return auth type. enum: `md5`, `none`, `password`
+     * @return Authentication method used by this OSPF network
      * 
      */
     public Optional<Output<String>> authType() {
         return Optional.ofNullable(this.authType);
     }
 
+    /**
+     * Minimum BFD interval for this OSPF network, in milliseconds
+     * 
+     */
     @Import(name="bfdMinimumInterval")
     private @Nullable Output<Integer> bfdMinimumInterval;
 
+    /**
+     * @return Minimum BFD interval for this OSPF network, in milliseconds
+     * 
+     */
     public Optional<Output<Integer>> bfdMinimumInterval() {
         return Optional.ofNullable(this.bfdMinimumInterval);
     }
 
+    /**
+     * OSPF dead interval for this network, in seconds
+     * 
+     */
     @Import(name="deadInterval")
     private @Nullable Output<Integer> deadInterval;
 
+    /**
+     * @return OSPF dead interval for this network, in seconds
+     * 
+     */
     public Optional<Output<Integer>> deadInterval() {
         return Optional.ofNullable(this.deadInterval);
     }
 
+    /**
+     * Routing policy used to export routes from this OSPF network
+     * 
+     */
     @Import(name="exportPolicy")
     private @Nullable Output<String> exportPolicy;
 
+    /**
+     * @return Routing policy used to export routes from this OSPF network
+     * 
+     */
     public Optional<Output<String>> exportPolicy() {
         return Optional.ofNullable(this.exportPolicy);
     }
 
+    /**
+     * OSPF hello interval for this network, in seconds
+     * 
+     */
     @Import(name="helloInterval")
     private @Nullable Output<Integer> helloInterval;
 
+    /**
+     * @return OSPF hello interval for this network, in seconds
+     * 
+     */
     public Optional<Output<Integer>> helloInterval() {
         return Optional.ofNullable(this.helloInterval);
     }
 
+    /**
+     * Routing policy used to import routes for this OSPF network
+     * 
+     */
     @Import(name="importPolicy")
     private @Nullable Output<String> importPolicy;
 
+    /**
+     * @return Routing policy used to import routes for this OSPF network
+     * 
+     */
     public Optional<Output<String>> importPolicy() {
         return Optional.ofNullable(this.importPolicy);
     }
 
     /**
-     * interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+     * OSPF interface type used for this network
      * 
      */
     @Import(name="interfaceType")
     private @Nullable Output<String> interfaceType;
 
     /**
-     * @return interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+     * @return OSPF interface type used for this network
      * 
      */
     public Optional<Output<String>> interfaceType() {
         return Optional.ofNullable(this.interfaceType);
     }
 
+    /**
+     * OSPF metric assigned to this network
+     * 
+     */
     @Import(name="metric")
     private @Nullable Output<Integer> metric;
 
+    /**
+     * @return OSPF metric assigned to this network
+     * 
+     */
     public Optional<Output<Integer>> metric() {
         return Optional.ofNullable(this.metric);
     }
@@ -228,7 +276,7 @@ public final class SwitchOspfAreasNetworksArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param authType auth type. enum: `md5`, `none`, `password`
+         * @param authType Authentication method used by this OSPF network
          * 
          * @return builder
          * 
@@ -239,7 +287,7 @@ public final class SwitchOspfAreasNetworksArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param authType auth type. enum: `md5`, `none`, `password`
+         * @param authType Authentication method used by this OSPF network
          * 
          * @return builder
          * 
@@ -248,53 +296,113 @@ public final class SwitchOspfAreasNetworksArgs extends com.pulumi.resources.Reso
             return authType(Output.of(authType));
         }
 
+        /**
+         * @param bfdMinimumInterval Minimum BFD interval for this OSPF network, in milliseconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder bfdMinimumInterval(@Nullable Output<Integer> bfdMinimumInterval) {
             $.bfdMinimumInterval = bfdMinimumInterval;
             return this;
         }
 
+        /**
+         * @param bfdMinimumInterval Minimum BFD interval for this OSPF network, in milliseconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder bfdMinimumInterval(Integer bfdMinimumInterval) {
             return bfdMinimumInterval(Output.of(bfdMinimumInterval));
         }
 
+        /**
+         * @param deadInterval OSPF dead interval for this network, in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder deadInterval(@Nullable Output<Integer> deadInterval) {
             $.deadInterval = deadInterval;
             return this;
         }
 
+        /**
+         * @param deadInterval OSPF dead interval for this network, in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder deadInterval(Integer deadInterval) {
             return deadInterval(Output.of(deadInterval));
         }
 
+        /**
+         * @param exportPolicy Routing policy used to export routes from this OSPF network
+         * 
+         * @return builder
+         * 
+         */
         public Builder exportPolicy(@Nullable Output<String> exportPolicy) {
             $.exportPolicy = exportPolicy;
             return this;
         }
 
+        /**
+         * @param exportPolicy Routing policy used to export routes from this OSPF network
+         * 
+         * @return builder
+         * 
+         */
         public Builder exportPolicy(String exportPolicy) {
             return exportPolicy(Output.of(exportPolicy));
         }
 
+        /**
+         * @param helloInterval OSPF hello interval for this network, in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder helloInterval(@Nullable Output<Integer> helloInterval) {
             $.helloInterval = helloInterval;
             return this;
         }
 
+        /**
+         * @param helloInterval OSPF hello interval for this network, in seconds
+         * 
+         * @return builder
+         * 
+         */
         public Builder helloInterval(Integer helloInterval) {
             return helloInterval(Output.of(helloInterval));
         }
 
+        /**
+         * @param importPolicy Routing policy used to import routes for this OSPF network
+         * 
+         * @return builder
+         * 
+         */
         public Builder importPolicy(@Nullable Output<String> importPolicy) {
             $.importPolicy = importPolicy;
             return this;
         }
 
+        /**
+         * @param importPolicy Routing policy used to import routes for this OSPF network
+         * 
+         * @return builder
+         * 
+         */
         public Builder importPolicy(String importPolicy) {
             return importPolicy(Output.of(importPolicy));
         }
 
         /**
-         * @param interfaceType interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+         * @param interfaceType OSPF interface type used for this network
          * 
          * @return builder
          * 
@@ -305,7 +413,7 @@ public final class SwitchOspfAreasNetworksArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param interfaceType interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+         * @param interfaceType OSPF interface type used for this network
          * 
          * @return builder
          * 
@@ -314,11 +422,23 @@ public final class SwitchOspfAreasNetworksArgs extends com.pulumi.resources.Reso
             return interfaceType(Output.of(interfaceType));
         }
 
+        /**
+         * @param metric OSPF metric assigned to this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder metric(@Nullable Output<Integer> metric) {
             $.metric = metric;
             return this;
         }
 
+        /**
+         * @param metric OSPF metric assigned to this network
+         * 
+         * @return builder
+         * 
+         */
         public Builder metric(Integer metric) {
             return metric(Output.of(metric));
         }

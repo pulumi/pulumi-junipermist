@@ -65,15 +65,31 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/sitegroup:Sitegroup")
 public class Sitegroup extends com.pulumi.resources.CustomResource {
+    /**
+     * Display name of the site group
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the site group
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Identifier of the org that owns the site group
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Identifier of the org that owns the site group
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }

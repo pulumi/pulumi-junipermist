@@ -49,9 +49,10 @@ import (
 type DeviceprofileAssign struct {
 	pulumi.CustomResourceState
 
-	DeviceprofileId pulumi.StringOutput      `pulumi:"deviceprofileId"`
-	Macs            pulumi.StringArrayOutput `pulumi:"macs"`
-	OrgId           pulumi.StringOutput      `pulumi:"orgId"`
+	DeviceprofileId pulumi.StringOutput `pulumi:"deviceprofileId"`
+	// List of MAC addresses included in the request
+	Macs  pulumi.StringArrayOutput `pulumi:"macs"`
+	OrgId pulumi.StringOutput      `pulumi:"orgId"`
 }
 
 // NewDeviceprofileAssign registers a new resource with the given unique name, arguments, and options.
@@ -93,15 +94,17 @@ func GetDeviceprofileAssign(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeviceprofileAssign resources.
 type deviceprofileAssignState struct {
-	DeviceprofileId *string  `pulumi:"deviceprofileId"`
-	Macs            []string `pulumi:"macs"`
-	OrgId           *string  `pulumi:"orgId"`
+	DeviceprofileId *string `pulumi:"deviceprofileId"`
+	// List of MAC addresses included in the request
+	Macs  []string `pulumi:"macs"`
+	OrgId *string  `pulumi:"orgId"`
 }
 
 type DeviceprofileAssignState struct {
 	DeviceprofileId pulumi.StringPtrInput
-	Macs            pulumi.StringArrayInput
-	OrgId           pulumi.StringPtrInput
+	// List of MAC addresses included in the request
+	Macs  pulumi.StringArrayInput
+	OrgId pulumi.StringPtrInput
 }
 
 func (DeviceprofileAssignState) ElementType() reflect.Type {
@@ -109,16 +112,18 @@ func (DeviceprofileAssignState) ElementType() reflect.Type {
 }
 
 type deviceprofileAssignArgs struct {
-	DeviceprofileId string   `pulumi:"deviceprofileId"`
-	Macs            []string `pulumi:"macs"`
-	OrgId           string   `pulumi:"orgId"`
+	DeviceprofileId string `pulumi:"deviceprofileId"`
+	// List of MAC addresses included in the request
+	Macs  []string `pulumi:"macs"`
+	OrgId string   `pulumi:"orgId"`
 }
 
 // The set of arguments for constructing a DeviceprofileAssign resource.
 type DeviceprofileAssignArgs struct {
 	DeviceprofileId pulumi.StringInput
-	Macs            pulumi.StringArrayInput
-	OrgId           pulumi.StringInput
+	// List of MAC addresses included in the request
+	Macs  pulumi.StringArrayInput
+	OrgId pulumi.StringInput
 }
 
 func (DeviceprofileAssignArgs) ElementType() reflect.Type {
@@ -212,6 +217,7 @@ func (o DeviceprofileAssignOutput) DeviceprofileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceprofileAssign) pulumi.StringOutput { return v.DeviceprofileId }).(pulumi.StringOutput)
 }
 
+// List of MAC addresses included in the request
 func (o DeviceprofileAssignOutput) Macs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileAssign) pulumi.StringArrayOutput { return v.Macs }).(pulumi.StringArrayOutput)
 }

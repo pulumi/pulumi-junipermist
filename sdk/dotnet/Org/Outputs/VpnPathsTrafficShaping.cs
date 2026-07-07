@@ -14,10 +14,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class VpnPathsTrafficShaping
     {
         /// <summary>
-        /// percentages for different class of traffic: high / medium / low / best-effort adding up to 100
+        /// Bandwidth percentages for high, medium, low, and best-effort traffic classes
         /// </summary>
         public readonly ImmutableArray<int> ClassPercentages;
+        /// <summary>
+        /// Whether traffic shaping is enabled for this VPN path
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Maximum transmit rate for this VPN path, in Kbps; `Null` means no explicit limit
+        /// </summary>
         public readonly int? MaxTxKbps;
 
         [OutputConstructor]

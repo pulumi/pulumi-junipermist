@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class DeviceprofileGatewayNetworkInternetAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Mist should create simple service policies for restricted internet access
+        /// </summary>
         [Input("createSimpleServicePolicy")]
         public Input<bool>? CreateSimpleServicePolicy { get; set; }
 
@@ -19,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.DeviceprofileGatewayNetworkInternetAccessDestinationNatArgs>? _destinationNat;
 
         /// <summary>
-        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `InternalIp` or `Port` must be defined
+        /// Destination NAT rules for direct internet access
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayNetworkInternetAccessDestinationNatArgs> DestinationNat
         {
@@ -27,6 +30,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _destinationNat = value;
         }
 
+        /// <summary>
+        /// Whether direct internet access is enabled for this network
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -40,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.DeviceprofileGatewayNetworkInternetAccessStaticNatArgs>? _staticNat;
 
         /// <summary>
-        /// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+        /// Static NAT rules for direct internet access
         /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayNetworkInternetAccessStaticNatArgs> StaticNat
         {

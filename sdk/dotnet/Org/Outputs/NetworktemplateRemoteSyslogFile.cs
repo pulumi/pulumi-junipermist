@@ -13,15 +13,33 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NetworktemplateRemoteSyslogFile
     {
+        /// <summary>
+        /// Retention settings for this generated syslog file
+        /// </summary>
         public readonly Outputs.NetworktemplateRemoteSyslogFileArchive? Archive;
+        /// <summary>
+        /// Syslog facilities and severities written to this file
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateRemoteSyslogFileContent> Contents;
         /// <summary>
-        /// Only if `Protocol`==`Tcp`
+        /// Only if `Protocol`==`Tcp`, enable TLS for this syslog file destination
         /// </summary>
         public readonly bool? EnableTls;
+        /// <summary>
+        /// Whether to include explicit syslog priority values in file output
+        /// </summary>
         public readonly bool? ExplicitPriority;
+        /// <summary>
+        /// Generated syslog file name
+        /// </summary>
         public readonly string? File;
+        /// <summary>
+        /// Expression used to filter log messages written to this file
+        /// </summary>
         public readonly string? Match;
+        /// <summary>
+        /// Whether to include structured syslog data in file output
+        /// </summary>
         public readonly bool? StructuredData;
 
         [OutputConstructor]

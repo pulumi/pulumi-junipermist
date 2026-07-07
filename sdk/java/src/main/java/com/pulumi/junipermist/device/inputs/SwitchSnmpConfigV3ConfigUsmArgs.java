@@ -19,14 +19,14 @@ public final class SwitchSnmpConfigV3ConfigUsmArgs extends com.pulumi.resources.
     public static final SwitchSnmpConfigV3ConfigUsmArgs Empty = new SwitchSnmpConfigV3ConfigUsmArgs();
 
     /**
-     * enum: `localEngine`, `remoteEngine`
+     * SNMP engine type used for this USM configuration
      * 
      */
     @Import(name="engineType", required=true)
     private Output<String> engineType;
 
     /**
-     * @return enum: `localEngine`, `remoteEngine`
+     * @return SNMP engine type used for this USM configuration
      * 
      */
     public Output<String> engineType() {
@@ -48,9 +48,17 @@ public final class SwitchSnmpConfigV3ConfigUsmArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.remoteEngineId);
     }
 
+    /**
+     * SNMPv3 USM users for this engine
+     * 
+     */
     @Import(name="users")
     private @Nullable Output<List<SwitchSnmpConfigV3ConfigUsmUserArgs>> users;
 
+    /**
+     * @return SNMPv3 USM users for this engine
+     * 
+     */
     public Optional<Output<List<SwitchSnmpConfigV3ConfigUsmUserArgs>>> users() {
         return Optional.ofNullable(this.users);
     }
@@ -82,7 +90,7 @@ public final class SwitchSnmpConfigV3ConfigUsmArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param engineType enum: `localEngine`, `remoteEngine`
+         * @param engineType SNMP engine type used for this USM configuration
          * 
          * @return builder
          * 
@@ -93,7 +101,7 @@ public final class SwitchSnmpConfigV3ConfigUsmArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param engineType enum: `localEngine`, `remoteEngine`
+         * @param engineType SNMP engine type used for this USM configuration
          * 
          * @return builder
          * 
@@ -123,15 +131,33 @@ public final class SwitchSnmpConfigV3ConfigUsmArgs extends com.pulumi.resources.
             return remoteEngineId(Output.of(remoteEngineId));
         }
 
+        /**
+         * @param users SNMPv3 USM users for this engine
+         * 
+         * @return builder
+         * 
+         */
         public Builder users(@Nullable Output<List<SwitchSnmpConfigV3ConfigUsmUserArgs>> users) {
             $.users = users;
             return this;
         }
 
+        /**
+         * @param users SNMPv3 USM users for this engine
+         * 
+         * @return builder
+         * 
+         */
         public Builder users(List<SwitchSnmpConfigV3ConfigUsmUserArgs> users) {
             return users(Output.of(users));
         }
 
+        /**
+         * @param users SNMPv3 USM users for this engine
+         * 
+         * @return builder
+         * 
+         */
         public Builder users(SwitchSnmpConfigV3ConfigUsmUserArgs... users) {
             return users(List.of(users));
         }

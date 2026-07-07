@@ -13,20 +13,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServicepolicySslProxy {
     /**
-     * @return enum: `medium`, `strong`, `weak`
+     * @return Allowed cipher strength category for SSL proxy inspection
      * 
      */
     private @Nullable String ciphersCategory;
+    /**
+     * @return Whether SSL proxy inspection is enabled for the service policy
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private ServicepolicySslProxy() {}
     /**
-     * @return enum: `medium`, `strong`, `weak`
+     * @return Allowed cipher strength category for SSL proxy inspection
      * 
      */
     public Optional<String> ciphersCategory() {
         return Optional.ofNullable(this.ciphersCategory);
     }
+    /**
+     * @return Whether SSL proxy inspection is enabled for the service policy
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

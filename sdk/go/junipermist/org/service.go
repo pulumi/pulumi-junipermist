@@ -69,48 +69,53 @@ import (
 type Service struct {
 	pulumi.CustomResourceState
 
-	// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+	// Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
 	Addresses pulumi.StringArrayOutput `pulumi:"addresses"`
-	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+	// Categories of applications matched by this service when `type`==`appCategories`
 	AppCategories pulumi.StringArrayOutput `pulumi:"appCategories"`
-	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+	// Application subcategories matched by this service when `type`==`appCategories`
 	AppSubcategories pulumi.StringArrayOutput `pulumi:"appSubcategories"`
-	// When `type`==`apps`, list of applications are available through:
-	//   * List Applications
-	//   * List Gateway Applications
-	//   * /insight/top_app_by-bytes?wired=true
+	// Application identifiers matched by this service when `type`==`apps`
 	Apps pulumi.StringArrayOutput `pulumi:"apps"`
 	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitDown pulumi.IntPtrOutput `pulumi:"clientLimitDown"`
 	// 0 means unlimited, value from 0 to 107374182
-	ClientLimitUp pulumi.IntPtrOutput    `pulumi:"clientLimitUp"`
-	Description   pulumi.StringPtrOutput `pulumi:"description"`
-	Dscp          pulumi.StringPtrOutput `pulumi:"dscp"`
-	// enum: `nonRevertible`, `none`, `revertible`
+	ClientLimitUp pulumi.IntPtrOutput `pulumi:"clientLimitUp"`
+	// Free-form description of the service definition
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// QoS DSCP value used for custom SSR traffic classification
+	Dscp pulumi.StringPtrOutput `pulumi:"dscp"`
+	// Failover behavior for traffic matched by this service
 	FailoverPolicy pulumi.StringPtrOutput `pulumi:"failoverPolicy"`
-	// If `type`==`custom`, web filtering
-	Hostnames  pulumi.StringArrayOutput `pulumi:"hostnames"`
-	MaxJitter  pulumi.StringPtrOutput   `pulumi:"maxJitter"`
-	MaxLatency pulumi.StringPtrOutput   `pulumi:"maxLatency"`
-	MaxLoss    pulumi.StringPtrOutput   `pulumi:"maxLoss"`
-	Name       pulumi.StringOutput      `pulumi:"name"`
-	OrgId      pulumi.StringOutput      `pulumi:"orgId"`
+	// Domain hostnames matched by this custom service for web filtering
+	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
+	// Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxJitter pulumi.StringPtrOutput `pulumi:"maxJitter"`
+	// Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxLatency pulumi.StringPtrOutput `pulumi:"maxLatency"`
+	// Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxLoss pulumi.StringPtrOutput `pulumi:"maxLoss"`
+	// Display name of the service definition
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Organization identifier associated with the service definition
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitDown pulumi.IntPtrOutput `pulumi:"serviceLimitDown"`
 	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitUp pulumi.IntPtrOutput `pulumi:"serviceLimitUp"`
 	// Whether to enable measure SLE
 	SleEnabled pulumi.BoolPtrOutput `pulumi:"sleEnabled"`
-	// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
-	Specs                         ServiceSpecArrayOutput `pulumi:"specs"`
-	SsrRelaxedTcpStateEnforcement pulumi.BoolPtrOutput   `pulumi:"ssrRelaxedTcpStateEnforcement"`
-	// when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+	// Protocol and port match rules used when `type`==`custom`
+	Specs ServiceSpecArrayOutput `pulumi:"specs"`
+	// Whether SSR relaxes TCP state enforcement for this service
+	SsrRelaxedTcpStateEnforcement pulumi.BoolPtrOutput `pulumi:"ssrRelaxedTcpStateEnforcement"`
+	// Traffic class applied when `trafficType`==`custom`
 	TrafficClass pulumi.StringPtrOutput `pulumi:"trafficClass"`
 	// values from List Traffic Types
 	TrafficType pulumi.StringOutput `pulumi:"trafficType"`
-	// enum: `appCategories`, `apps`, `custom`, `urls`
+	// Matching mode that determines which app, URL, or custom fields are used
 	Type pulumi.StringOutput `pulumi:"type"`
-	// When `type`==`urls`, no need for spec as URL can encode the ports being used
+	// URL patterns matched by this service when `type`==`urls`
 	Urls pulumi.StringArrayOutput `pulumi:"urls"`
 }
 
@@ -147,94 +152,104 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
-	// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+	// Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
 	Addresses []string `pulumi:"addresses"`
-	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+	// Categories of applications matched by this service when `type`==`appCategories`
 	AppCategories []string `pulumi:"appCategories"`
-	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+	// Application subcategories matched by this service when `type`==`appCategories`
 	AppSubcategories []string `pulumi:"appSubcategories"`
-	// When `type`==`apps`, list of applications are available through:
-	//   * List Applications
-	//   * List Gateway Applications
-	//   * /insight/top_app_by-bytes?wired=true
+	// Application identifiers matched by this service when `type`==`apps`
 	Apps []string `pulumi:"apps"`
 	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitDown *int `pulumi:"clientLimitDown"`
 	// 0 means unlimited, value from 0 to 107374182
-	ClientLimitUp *int    `pulumi:"clientLimitUp"`
-	Description   *string `pulumi:"description"`
-	Dscp          *string `pulumi:"dscp"`
-	// enum: `nonRevertible`, `none`, `revertible`
+	ClientLimitUp *int `pulumi:"clientLimitUp"`
+	// Free-form description of the service definition
+	Description *string `pulumi:"description"`
+	// QoS DSCP value used for custom SSR traffic classification
+	Dscp *string `pulumi:"dscp"`
+	// Failover behavior for traffic matched by this service
 	FailoverPolicy *string `pulumi:"failoverPolicy"`
-	// If `type`==`custom`, web filtering
-	Hostnames  []string `pulumi:"hostnames"`
-	MaxJitter  *string  `pulumi:"maxJitter"`
-	MaxLatency *string  `pulumi:"maxLatency"`
-	MaxLoss    *string  `pulumi:"maxLoss"`
-	Name       *string  `pulumi:"name"`
-	OrgId      *string  `pulumi:"orgId"`
+	// Domain hostnames matched by this custom service for web filtering
+	Hostnames []string `pulumi:"hostnames"`
+	// Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxJitter *string `pulumi:"maxJitter"`
+	// Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxLatency *string `pulumi:"maxLatency"`
+	// Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxLoss *string `pulumi:"maxLoss"`
+	// Display name of the service definition
+	Name *string `pulumi:"name"`
+	// Organization identifier associated with the service definition
+	OrgId *string `pulumi:"orgId"`
 	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitDown *int `pulumi:"serviceLimitDown"`
 	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitUp *int `pulumi:"serviceLimitUp"`
 	// Whether to enable measure SLE
 	SleEnabled *bool `pulumi:"sleEnabled"`
-	// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
-	Specs                         []ServiceSpec `pulumi:"specs"`
-	SsrRelaxedTcpStateEnforcement *bool         `pulumi:"ssrRelaxedTcpStateEnforcement"`
-	// when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+	// Protocol and port match rules used when `type`==`custom`
+	Specs []ServiceSpec `pulumi:"specs"`
+	// Whether SSR relaxes TCP state enforcement for this service
+	SsrRelaxedTcpStateEnforcement *bool `pulumi:"ssrRelaxedTcpStateEnforcement"`
+	// Traffic class applied when `trafficType`==`custom`
 	TrafficClass *string `pulumi:"trafficClass"`
 	// values from List Traffic Types
 	TrafficType *string `pulumi:"trafficType"`
-	// enum: `appCategories`, `apps`, `custom`, `urls`
+	// Matching mode that determines which app, URL, or custom fields are used
 	Type *string `pulumi:"type"`
-	// When `type`==`urls`, no need for spec as URL can encode the ports being used
+	// URL patterns matched by this service when `type`==`urls`
 	Urls []string `pulumi:"urls"`
 }
 
 type ServiceState struct {
-	// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+	// Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
 	Addresses pulumi.StringArrayInput
-	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+	// Categories of applications matched by this service when `type`==`appCategories`
 	AppCategories pulumi.StringArrayInput
-	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+	// Application subcategories matched by this service when `type`==`appCategories`
 	AppSubcategories pulumi.StringArrayInput
-	// When `type`==`apps`, list of applications are available through:
-	//   * List Applications
-	//   * List Gateway Applications
-	//   * /insight/top_app_by-bytes?wired=true
+	// Application identifiers matched by this service when `type`==`apps`
 	Apps pulumi.StringArrayInput
 	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitDown pulumi.IntPtrInput
 	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitUp pulumi.IntPtrInput
-	Description   pulumi.StringPtrInput
-	Dscp          pulumi.StringPtrInput
-	// enum: `nonRevertible`, `none`, `revertible`
+	// Free-form description of the service definition
+	Description pulumi.StringPtrInput
+	// QoS DSCP value used for custom SSR traffic classification
+	Dscp pulumi.StringPtrInput
+	// Failover behavior for traffic matched by this service
 	FailoverPolicy pulumi.StringPtrInput
-	// If `type`==`custom`, web filtering
-	Hostnames  pulumi.StringArrayInput
-	MaxJitter  pulumi.StringPtrInput
+	// Domain hostnames matched by this custom service for web filtering
+	Hostnames pulumi.StringArrayInput
+	// Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxJitter pulumi.StringPtrInput
+	// Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
 	MaxLatency pulumi.StringPtrInput
-	MaxLoss    pulumi.StringPtrInput
-	Name       pulumi.StringPtrInput
-	OrgId      pulumi.StringPtrInput
+	// Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxLoss pulumi.StringPtrInput
+	// Display name of the service definition
+	Name pulumi.StringPtrInput
+	// Organization identifier associated with the service definition
+	OrgId pulumi.StringPtrInput
 	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitDown pulumi.IntPtrInput
 	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitUp pulumi.IntPtrInput
 	// Whether to enable measure SLE
 	SleEnabled pulumi.BoolPtrInput
-	// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
-	Specs                         ServiceSpecArrayInput
+	// Protocol and port match rules used when `type`==`custom`
+	Specs ServiceSpecArrayInput
+	// Whether SSR relaxes TCP state enforcement for this service
 	SsrRelaxedTcpStateEnforcement pulumi.BoolPtrInput
-	// when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+	// Traffic class applied when `trafficType`==`custom`
 	TrafficClass pulumi.StringPtrInput
 	// values from List Traffic Types
 	TrafficType pulumi.StringPtrInput
-	// enum: `appCategories`, `apps`, `custom`, `urls`
+	// Matching mode that determines which app, URL, or custom fields are used
 	Type pulumi.StringPtrInput
-	// When `type`==`urls`, no need for spec as URL can encode the ports being used
+	// URL patterns matched by this service when `type`==`urls`
 	Urls pulumi.StringArrayInput
 }
 
@@ -243,95 +258,105 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+	// Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
 	Addresses []string `pulumi:"addresses"`
-	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+	// Categories of applications matched by this service when `type`==`appCategories`
 	AppCategories []string `pulumi:"appCategories"`
-	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+	// Application subcategories matched by this service when `type`==`appCategories`
 	AppSubcategories []string `pulumi:"appSubcategories"`
-	// When `type`==`apps`, list of applications are available through:
-	//   * List Applications
-	//   * List Gateway Applications
-	//   * /insight/top_app_by-bytes?wired=true
+	// Application identifiers matched by this service when `type`==`apps`
 	Apps []string `pulumi:"apps"`
 	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitDown *int `pulumi:"clientLimitDown"`
 	// 0 means unlimited, value from 0 to 107374182
-	ClientLimitUp *int    `pulumi:"clientLimitUp"`
-	Description   *string `pulumi:"description"`
-	Dscp          *string `pulumi:"dscp"`
-	// enum: `nonRevertible`, `none`, `revertible`
+	ClientLimitUp *int `pulumi:"clientLimitUp"`
+	// Free-form description of the service definition
+	Description *string `pulumi:"description"`
+	// QoS DSCP value used for custom SSR traffic classification
+	Dscp *string `pulumi:"dscp"`
+	// Failover behavior for traffic matched by this service
 	FailoverPolicy *string `pulumi:"failoverPolicy"`
-	// If `type`==`custom`, web filtering
-	Hostnames  []string `pulumi:"hostnames"`
-	MaxJitter  *string  `pulumi:"maxJitter"`
-	MaxLatency *string  `pulumi:"maxLatency"`
-	MaxLoss    *string  `pulumi:"maxLoss"`
-	Name       *string  `pulumi:"name"`
-	OrgId      string   `pulumi:"orgId"`
+	// Domain hostnames matched by this custom service for web filtering
+	Hostnames []string `pulumi:"hostnames"`
+	// Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxJitter *string `pulumi:"maxJitter"`
+	// Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxLatency *string `pulumi:"maxLatency"`
+	// Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxLoss *string `pulumi:"maxLoss"`
+	// Display name of the service definition
+	Name *string `pulumi:"name"`
+	// Organization identifier associated with the service definition
+	OrgId string `pulumi:"orgId"`
 	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitDown *int `pulumi:"serviceLimitDown"`
 	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitUp *int `pulumi:"serviceLimitUp"`
 	// Whether to enable measure SLE
 	SleEnabled *bool `pulumi:"sleEnabled"`
-	// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
-	Specs                         []ServiceSpec `pulumi:"specs"`
-	SsrRelaxedTcpStateEnforcement *bool         `pulumi:"ssrRelaxedTcpStateEnforcement"`
-	// when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+	// Protocol and port match rules used when `type`==`custom`
+	Specs []ServiceSpec `pulumi:"specs"`
+	// Whether SSR relaxes TCP state enforcement for this service
+	SsrRelaxedTcpStateEnforcement *bool `pulumi:"ssrRelaxedTcpStateEnforcement"`
+	// Traffic class applied when `trafficType`==`custom`
 	TrafficClass *string `pulumi:"trafficClass"`
 	// values from List Traffic Types
 	TrafficType *string `pulumi:"trafficType"`
-	// enum: `appCategories`, `apps`, `custom`, `urls`
+	// Matching mode that determines which app, URL, or custom fields are used
 	Type *string `pulumi:"type"`
-	// When `type`==`urls`, no need for spec as URL can encode the ports being used
+	// URL patterns matched by this service when `type`==`urls`
 	Urls []string `pulumi:"urls"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+	// Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
 	Addresses pulumi.StringArrayInput
-	// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+	// Categories of applications matched by this service when `type`==`appCategories`
 	AppCategories pulumi.StringArrayInput
-	// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+	// Application subcategories matched by this service when `type`==`appCategories`
 	AppSubcategories pulumi.StringArrayInput
-	// When `type`==`apps`, list of applications are available through:
-	//   * List Applications
-	//   * List Gateway Applications
-	//   * /insight/top_app_by-bytes?wired=true
+	// Application identifiers matched by this service when `type`==`apps`
 	Apps pulumi.StringArrayInput
 	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitDown pulumi.IntPtrInput
 	// 0 means unlimited, value from 0 to 107374182
 	ClientLimitUp pulumi.IntPtrInput
-	Description   pulumi.StringPtrInput
-	Dscp          pulumi.StringPtrInput
-	// enum: `nonRevertible`, `none`, `revertible`
+	// Free-form description of the service definition
+	Description pulumi.StringPtrInput
+	// QoS DSCP value used for custom SSR traffic classification
+	Dscp pulumi.StringPtrInput
+	// Failover behavior for traffic matched by this service
 	FailoverPolicy pulumi.StringPtrInput
-	// If `type`==`custom`, web filtering
-	Hostnames  pulumi.StringArrayInput
-	MaxJitter  pulumi.StringPtrInput
+	// Domain hostnames matched by this custom service for web filtering
+	Hostnames pulumi.StringArrayInput
+	// Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxJitter pulumi.StringPtrInput
+	// Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
 	MaxLatency pulumi.StringPtrInput
-	MaxLoss    pulumi.StringPtrInput
-	Name       pulumi.StringPtrInput
-	OrgId      pulumi.StringInput
+	// Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
+	MaxLoss pulumi.StringPtrInput
+	// Display name of the service definition
+	Name pulumi.StringPtrInput
+	// Organization identifier associated with the service definition
+	OrgId pulumi.StringInput
 	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitDown pulumi.IntPtrInput
 	// 0 means unlimited, value from 0 to 107374182
 	ServiceLimitUp pulumi.IntPtrInput
 	// Whether to enable measure SLE
 	SleEnabled pulumi.BoolPtrInput
-	// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
-	Specs                         ServiceSpecArrayInput
+	// Protocol and port match rules used when `type`==`custom`
+	Specs ServiceSpecArrayInput
+	// Whether SSR relaxes TCP state enforcement for this service
 	SsrRelaxedTcpStateEnforcement pulumi.BoolPtrInput
-	// when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+	// Traffic class applied when `trafficType`==`custom`
 	TrafficClass pulumi.StringPtrInput
 	// values from List Traffic Types
 	TrafficType pulumi.StringPtrInput
-	// enum: `appCategories`, `apps`, `custom`, `urls`
+	// Matching mode that determines which app, URL, or custom fields are used
 	Type pulumi.StringPtrInput
-	// When `type`==`urls`, no need for spec as URL can encode the ports being used
+	// URL patterns matched by this service when `type`==`urls`
 	Urls pulumi.StringArrayInput
 }
 
@@ -422,25 +447,22 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
-// If `type`==`custom`, IPv4 and/or IPv6 subnets (e.g. 10.0.0.0/8, fd28::/128)
+// Custom IPv4 or IPv6 subnets matched by this service when `type`==`custom`
 func (o ServiceOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Addresses }).(pulumi.StringArrayOutput)
 }
 
-// When `type`==`appCategories`, list of application categories are available through List App Category Definitions
+// Categories of applications matched by this service when `type`==`appCategories`
 func (o ServiceOutput) AppCategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.AppCategories }).(pulumi.StringArrayOutput)
 }
 
-// When `type`==`appCategories`, list of application categories are available through List App Sub Category Definitions
+// Application subcategories matched by this service when `type`==`appCategories`
 func (o ServiceOutput) AppSubcategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.AppSubcategories }).(pulumi.StringArrayOutput)
 }
 
-// When `type`==`apps`, list of applications are available through:
-//   - List Applications
-//   - List Gateway Applications
-//   - /insight/top_app_by-bytes?wired=true
+// Application identifiers matched by this service when `type`==`apps`
 func (o ServiceOutput) Apps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Apps }).(pulumi.StringArrayOutput)
 }
@@ -455,40 +477,47 @@ func (o ServiceOutput) ClientLimitUp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.IntPtrOutput { return v.ClientLimitUp }).(pulumi.IntPtrOutput)
 }
 
+// Free-form description of the service definition
 func (o ServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// QoS DSCP value used for custom SSR traffic classification
 func (o ServiceOutput) Dscp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Dscp }).(pulumi.StringPtrOutput)
 }
 
-// enum: `nonRevertible`, `none`, `revertible`
+// Failover behavior for traffic matched by this service
 func (o ServiceOutput) FailoverPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.FailoverPolicy }).(pulumi.StringPtrOutput)
 }
 
-// If `type`==`custom`, web filtering
+// Domain hostnames matched by this custom service for web filtering
 func (o ServiceOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
+// Maximum jitter threshold used for SSR uplink selection when `trafficType`==`custom`
 func (o ServiceOutput) MaxJitter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.MaxJitter }).(pulumi.StringPtrOutput)
 }
 
+// Maximum latency threshold used for SSR uplink selection when `trafficType`==`custom`
 func (o ServiceOutput) MaxLatency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.MaxLatency }).(pulumi.StringPtrOutput)
 }
 
+// Maximum packet loss threshold used for SSR uplink selection when `trafficType`==`custom`
 func (o ServiceOutput) MaxLoss() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.MaxLoss }).(pulumi.StringPtrOutput)
 }
 
+// Display name of the service definition
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Organization identifier associated with the service definition
 func (o ServiceOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
@@ -508,16 +537,17 @@ func (o ServiceOutput) SleEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.SleEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// When `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+// Protocol and port match rules used when `type`==`custom`
 func (o ServiceOutput) Specs() ServiceSpecArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceSpecArrayOutput { return v.Specs }).(ServiceSpecArrayOutput)
 }
 
+// Whether SSR relaxes TCP state enforcement for this service
 func (o ServiceOutput) SsrRelaxedTcpStateEnforcement() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.SsrRelaxedTcpStateEnforcement }).(pulumi.BoolPtrOutput)
 }
 
-// when `trafficType`==`custom`. enum: `bestEffort`, `high`, `low`, `medium`
+// Traffic class applied when `trafficType`==`custom`
 func (o ServiceOutput) TrafficClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.TrafficClass }).(pulumi.StringPtrOutput)
 }
@@ -527,12 +557,12 @@ func (o ServiceOutput) TrafficType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.TrafficType }).(pulumi.StringOutput)
 }
 
-// enum: `appCategories`, `apps`, `custom`, `urls`
+// Matching mode that determines which app, URL, or custom fields are used
 func (o ServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// When `type`==`urls`, no need for spec as URL can encode the ports being used
+// URL patterns matched by this service when `type`==`urls`
 func (o ServiceOutput) Urls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Urls }).(pulumi.StringArrayOutput)
 }

@@ -12,11 +12,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class GatewaytemplateServicePolicySkyatpHttpInspectionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Sky ATP HTTP inspection is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// enum: `Standard`, `Strict`
+        /// Sky ATP HTTP inspection profile to apply
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

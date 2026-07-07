@@ -66,44 +66,62 @@ namespace Pulumi.JuniperMist.Org
     public partial class Nacrule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// enum: `Allow`, `Block`
+        /// Allow or block decision applied when the NAC rule matches
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
-        /// All optional, this goes into Access-Accept
+        /// NAC tag IDs to include in the Access-Accept when the rule allows access
         /// </summary>
         [Output("applyTags")]
         public Output<ImmutableArray<string>> ApplyTags { get; private set; } = null!;
 
         /// <summary>
-        /// Enabled or not
+        /// Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+        /// </summary>
+        [Output("dryRun")]
+        public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the NAC rule is evaluated during policy matching
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Guest portal authorization state. enum: `Authorized`, `Unknown`
+        /// Guest portal authorization state condition for the rule
         /// </summary>
         [Output("guestAuthState")]
         public Output<string?> GuestAuthState { get; private set; } = null!;
 
+        /// <summary>
+        /// Criteria that must match for the NAC rule to apply
+        /// </summary>
         [Output("matching")]
         public Output<Outputs.NacruleMatching?> Matching { get; private set; } = null!;
 
+        /// <summary>
+        /// Human-readable name of the NAC rule
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Criteria that must not match for the NAC rule to apply
+        /// </summary>
         [Output("notMatching")]
         public Output<Outputs.NacruleNotMatching?> NotMatching { get; private set; } = null!;
 
         /// <summary>
-        /// Order of the rule, lower value implies higher priority
+        /// Rule priority; lower values are evaluated with higher priority
         /// </summary>
         [Output("order")]
         public Output<int> Order { get; private set; } = null!;
 
+        /// <summary>
+        /// Org identifier that owns the NAC rule
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -155,7 +173,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacruleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Allow`, `Block`
+        /// Allow or block decision applied when the NAC rule matches
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -164,7 +182,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _applyTags;
 
         /// <summary>
-        /// All optional, this goes into Access-Accept
+        /// NAC tag IDs to include in the Access-Accept when the rule allows access
         /// </summary>
         public InputList<string> ApplyTags
         {
@@ -173,32 +191,50 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Enabled or not
+        /// Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Whether the NAC rule is evaluated during policy matching
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Guest portal authorization state. enum: `Authorized`, `Unknown`
+        /// Guest portal authorization state condition for the rule
         /// </summary>
         [Input("guestAuthState")]
         public Input<string>? GuestAuthState { get; set; }
 
+        /// <summary>
+        /// Criteria that must match for the NAC rule to apply
+        /// </summary>
         [Input("matching")]
         public Input<Inputs.NacruleMatchingArgs>? Matching { get; set; }
 
+        /// <summary>
+        /// Human-readable name of the NAC rule
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Criteria that must not match for the NAC rule to apply
+        /// </summary>
         [Input("notMatching")]
         public Input<Inputs.NacruleNotMatchingArgs>? NotMatching { get; set; }
 
         /// <summary>
-        /// Order of the rule, lower value implies higher priority
+        /// Rule priority; lower values are evaluated with higher priority
         /// </summary>
         [Input("order", required: true)]
         public Input<int> Order { get; set; } = null!;
 
+        /// <summary>
+        /// Org identifier that owns the NAC rule
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -211,7 +247,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacruleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Allow`, `Block`
+        /// Allow or block decision applied when the NAC rule matches
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -220,7 +256,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _applyTags;
 
         /// <summary>
-        /// All optional, this goes into Access-Accept
+        /// NAC tag IDs to include in the Access-Accept when the rule allows access
         /// </summary>
         public InputList<string> ApplyTags
         {
@@ -229,32 +265,50 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Enabled or not
+        /// Whether the NAC rule is in dry-run mode, where matches are logged but the action is not enforced
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Whether the NAC rule is evaluated during policy matching
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Guest portal authorization state. enum: `Authorized`, `Unknown`
+        /// Guest portal authorization state condition for the rule
         /// </summary>
         [Input("guestAuthState")]
         public Input<string>? GuestAuthState { get; set; }
 
+        /// <summary>
+        /// Criteria that must match for the NAC rule to apply
+        /// </summary>
         [Input("matching")]
         public Input<Inputs.NacruleMatchingGetArgs>? Matching { get; set; }
 
+        /// <summary>
+        /// Human-readable name of the NAC rule
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Criteria that must not match for the NAC rule to apply
+        /// </summary>
         [Input("notMatching")]
         public Input<Inputs.NacruleNotMatchingGetArgs>? NotMatching { get; set; }
 
         /// <summary>
-        /// Order of the rule, lower value implies higher priority
+        /// Rule priority; lower values are evaluated with higher priority
         /// </summary>
         [Input("order")]
         public Input<int>? Order { get; set; }
 
+        /// <summary>
+        /// Org identifier that owns the NAC rule
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 

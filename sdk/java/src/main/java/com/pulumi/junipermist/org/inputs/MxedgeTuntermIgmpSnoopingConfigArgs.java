@@ -18,29 +18,45 @@ public final class MxedgeTuntermIgmpSnoopingConfigArgs extends com.pulumi.resour
 
     public static final MxedgeTuntermIgmpSnoopingConfigArgs Empty = new MxedgeTuntermIgmpSnoopingConfigArgs();
 
+    /**
+     * Whether IGMP snooping is enabled for the configured VLANs
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether IGMP snooping is enabled for the configured VLANs
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * IGMP querier settings used with tunnel termination snooping
+     * 
+     */
     @Import(name="querier")
     private @Nullable Output<MxedgeTuntermIgmpSnoopingConfigQuerierArgs> querier;
 
+    /**
+     * @return IGMP querier settings used with tunnel termination snooping
+     * 
+     */
     public Optional<Output<MxedgeTuntermIgmpSnoopingConfigQuerierArgs>> querier() {
         return Optional.ofNullable(this.querier);
     }
 
     /**
-     * List of vlans on which tunterm performs IGMP snooping
+     * List of VLAN IDs where tunnel termination performs IGMP snooping
      * 
      */
     @Import(name="vlanIds")
     private @Nullable Output<List<Integer>> vlanIds;
 
     /**
-     * @return List of vlans on which tunterm performs IGMP snooping
+     * @return List of VLAN IDs where tunnel termination performs IGMP snooping
      * 
      */
     public Optional<Output<List<Integer>>> vlanIds() {
@@ -73,26 +89,50 @@ public final class MxedgeTuntermIgmpSnoopingConfigArgs extends com.pulumi.resour
             $ = new MxedgeTuntermIgmpSnoopingConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether IGMP snooping is enabled for the configured VLANs
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether IGMP snooping is enabled for the configured VLANs
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param querier IGMP querier settings used with tunnel termination snooping
+         * 
+         * @return builder
+         * 
+         */
         public Builder querier(@Nullable Output<MxedgeTuntermIgmpSnoopingConfigQuerierArgs> querier) {
             $.querier = querier;
             return this;
         }
 
+        /**
+         * @param querier IGMP querier settings used with tunnel termination snooping
+         * 
+         * @return builder
+         * 
+         */
         public Builder querier(MxedgeTuntermIgmpSnoopingConfigQuerierArgs querier) {
             return querier(Output.of(querier));
         }
 
         /**
-         * @param vlanIds List of vlans on which tunterm performs IGMP snooping
+         * @param vlanIds List of VLAN IDs where tunnel termination performs IGMP snooping
          * 
          * @return builder
          * 
@@ -103,7 +143,7 @@ public final class MxedgeTuntermIgmpSnoopingConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param vlanIds List of vlans on which tunterm performs IGMP snooping
+         * @param vlanIds List of VLAN IDs where tunnel termination performs IGMP snooping
          * 
          * @return builder
          * 
@@ -113,7 +153,7 @@ public final class MxedgeTuntermIgmpSnoopingConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param vlanIds List of vlans on which tunterm performs IGMP snooping
+         * @param vlanIds List of VLAN IDs where tunnel termination performs IGMP snooping
          * 
          * @return builder
          * 

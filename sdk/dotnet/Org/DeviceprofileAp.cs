@@ -53,16 +53,19 @@ namespace Pulumi.JuniperMist.Org
     public partial class DeviceprofileAp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Aeroscout AP settings
+        /// Location integration defaults for AeroScout in this AP profile
         /// </summary>
         [Output("aeroscout")]
         public Output<Outputs.DeviceprofileApAeroscout?> Aeroscout { get; private set; } = null!;
 
+        /// <summary>
+        /// Location integration defaults for Airista in this AP profile
+        /// </summary>
         [Output("airista")]
         public Output<Outputs.DeviceprofileApAirista?> Airista { get; private set; } = null!;
 
         /// <summary>
-        /// BLE AP settings
+        /// Bluetooth Low Energy beacon and asset defaults in this AP profile
         /// </summary>
         [Output("bleConfig")]
         public Output<Outputs.DeviceprofileApBleConfig?> BleConfig { get; private set; } = null!;
@@ -91,36 +94,57 @@ namespace Pulumi.JuniperMist.Org
         [Output("disableModule")]
         public Output<bool> DisableModule { get; private set; } = null!;
 
+        /// <summary>
+        /// Electronic shelf label integration defaults in this AP profile
+        /// </summary>
         [Output("eslConfig")]
         public Output<Outputs.DeviceprofileApEslConfig?> EslConfig { get; private set; } = null!;
 
         /// <summary>
-        /// IP AP settings
+        /// Management IP addressing defaults in this AP profile
         /// </summary>
         [Output("ipConfig")]
         public Output<Outputs.DeviceprofileApIpConfig?> IpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Link aggregation defaults for supported AP Ethernet uplinks
+        /// </summary>
         [Output("lacpConfig")]
         public Output<Outputs.DeviceprofileApLacpConfig?> LacpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// LED AP settings
+        /// Indicator light behavior defaults in this AP profile
         /// </summary>
         [Output("led")]
         public Output<Outputs.DeviceprofileApLed?> Led { get; private set; } = null!;
 
         /// <summary>
-        /// Mesh AP settings
+        /// Wireless mesh role and band defaults in this AP profile
         /// </summary>
         [Output("mesh")]
         public Output<Outputs.DeviceprofileApMesh?> Mesh { get; private set; } = null!;
 
+        /// <summary>
+        /// MQTT broker publishing settings for this AP profile
+        /// </summary>
+        [Output("mqttConfig")]
+        public Output<Outputs.DeviceprofileApMqttConfig?> MqttConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Display name of the AP device profile
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// NTP servers configured by this AP profile
+        /// </summary>
         [Output("ntpServers")]
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns this AP device profile
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -137,48 +161,49 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileApPortConfig>?> PortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Power related configs
+        /// Power negotiation and peripheral power defaults in this AP profile
         /// </summary>
         [Output("pwrConfig")]
         public Output<Outputs.DeviceprofileApPwrConfig?> PwrConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Radio AP settings
+        /// Radio configuration defaults in this AP profile
         /// </summary>
         [Output("radioConfig")]
         public Output<Outputs.DeviceprofileApRadioConfig?> RadioConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Site where this AP device profile is defined, when scoped to a site
+        /// </summary>
         [Output("siteId")]
         public Output<string?> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Device Type. enum: `Ap`
+        /// Device type discriminator for AP device profiles
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// AP Uplink port configuration
+        /// Authentication and failover defaults for AP uplink ports
         /// </summary>
         [Output("uplinkPortConfig")]
         public Output<Outputs.DeviceprofileApUplinkPortConfig?> UplinkPortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// USB AP settings
-        ///   - Note: if native imagotag is enabled, BLE will be disabled automatically
-        ///   - Note: legacy, new config moved to ESL Config.
+        /// Legacy USB integration defaults in this AP profile
         /// </summary>
         [Output("usbConfig")]
         public Output<Outputs.DeviceprofileApUsbConfig?> UsbConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Variable values provided by this AP device profile
         /// </summary>
         [Output("vars")]
         public Output<ImmutableDictionary<string, string>?> Vars { get; private set; } = null!;
 
         /// <summary>
-        /// Zigbee AP settings
+        /// Zigbee radio and network defaults in this AP profile
         /// </summary>
         [Output("zigbeeConfig")]
         public Output<Outputs.DeviceprofileApZigbeeConfig?> ZigbeeConfig { get; private set; } = null!;
@@ -231,16 +256,19 @@ namespace Pulumi.JuniperMist.Org
     public sealed class DeviceprofileApArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Aeroscout AP settings
+        /// Location integration defaults for AeroScout in this AP profile
         /// </summary>
         [Input("aeroscout")]
         public Input<Inputs.DeviceprofileApAeroscoutArgs>? Aeroscout { get; set; }
 
+        /// <summary>
+        /// Location integration defaults for Airista in this AP profile
+        /// </summary>
         [Input("airista")]
         public Input<Inputs.DeviceprofileApAiristaArgs>? Airista { get; set; }
 
         /// <summary>
-        /// BLE AP settings
+        /// Bluetooth Low Energy beacon and asset defaults in this AP profile
         /// </summary>
         [Input("bleConfig")]
         public Input<Inputs.DeviceprofileApBleConfigArgs>? BleConfig { get; set; }
@@ -269,41 +297,63 @@ namespace Pulumi.JuniperMist.Org
         [Input("disableModule")]
         public Input<bool>? DisableModule { get; set; }
 
+        /// <summary>
+        /// Electronic shelf label integration defaults in this AP profile
+        /// </summary>
         [Input("eslConfig")]
         public Input<Inputs.DeviceprofileApEslConfigArgs>? EslConfig { get; set; }
 
         /// <summary>
-        /// IP AP settings
+        /// Management IP addressing defaults in this AP profile
         /// </summary>
         [Input("ipConfig")]
         public Input<Inputs.DeviceprofileApIpConfigArgs>? IpConfig { get; set; }
 
+        /// <summary>
+        /// Link aggregation defaults for supported AP Ethernet uplinks
+        /// </summary>
         [Input("lacpConfig")]
         public Input<Inputs.DeviceprofileApLacpConfigArgs>? LacpConfig { get; set; }
 
         /// <summary>
-        /// LED AP settings
+        /// Indicator light behavior defaults in this AP profile
         /// </summary>
         [Input("led")]
         public Input<Inputs.DeviceprofileApLedArgs>? Led { get; set; }
 
         /// <summary>
-        /// Mesh AP settings
+        /// Wireless mesh role and band defaults in this AP profile
         /// </summary>
         [Input("mesh")]
         public Input<Inputs.DeviceprofileApMeshArgs>? Mesh { get; set; }
 
+        /// <summary>
+        /// MQTT broker publishing settings for this AP profile
+        /// </summary>
+        [Input("mqttConfig")]
+        public Input<Inputs.DeviceprofileApMqttConfigArgs>? MqttConfig { get; set; }
+
+        /// <summary>
+        /// Display name of the AP device profile
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("ntpServers")]
         private InputList<string>? _ntpServers;
+
+        /// <summary>
+        /// NTP servers configured by this AP profile
+        /// </summary>
         public InputList<string> NtpServers
         {
             get => _ntpServers ?? (_ntpServers = new InputList<string>());
             set => _ntpServers = value;
         }
 
+        /// <summary>
+        /// Organization that owns this AP device profile
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -326,30 +376,31 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Power related configs
+        /// Power negotiation and peripheral power defaults in this AP profile
         /// </summary>
         [Input("pwrConfig")]
         public Input<Inputs.DeviceprofileApPwrConfigArgs>? PwrConfig { get; set; }
 
         /// <summary>
-        /// Radio AP settings
+        /// Radio configuration defaults in this AP profile
         /// </summary>
         [Input("radioConfig")]
         public Input<Inputs.DeviceprofileApRadioConfigArgs>? RadioConfig { get; set; }
 
+        /// <summary>
+        /// Site where this AP device profile is defined, when scoped to a site
+        /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// AP Uplink port configuration
+        /// Authentication and failover defaults for AP uplink ports
         /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.DeviceprofileApUplinkPortConfigArgs>? UplinkPortConfig { get; set; }
 
         /// <summary>
-        /// USB AP settings
-        ///   - Note: if native imagotag is enabled, BLE will be disabled automatically
-        ///   - Note: legacy, new config moved to ESL Config.
+        /// Legacy USB integration defaults in this AP profile
         /// </summary>
         [Input("usbConfig")]
         public Input<Inputs.DeviceprofileApUsbConfigArgs>? UsbConfig { get; set; }
@@ -358,7 +409,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Variable values provided by this AP device profile
         /// </summary>
         public InputMap<string> Vars
         {
@@ -367,7 +418,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Zigbee AP settings
+        /// Zigbee radio and network defaults in this AP profile
         /// </summary>
         [Input("zigbeeConfig")]
         public Input<Inputs.DeviceprofileApZigbeeConfigArgs>? ZigbeeConfig { get; set; }
@@ -381,16 +432,19 @@ namespace Pulumi.JuniperMist.Org
     public sealed class DeviceprofileApState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Aeroscout AP settings
+        /// Location integration defaults for AeroScout in this AP profile
         /// </summary>
         [Input("aeroscout")]
         public Input<Inputs.DeviceprofileApAeroscoutGetArgs>? Aeroscout { get; set; }
 
+        /// <summary>
+        /// Location integration defaults for Airista in this AP profile
+        /// </summary>
         [Input("airista")]
         public Input<Inputs.DeviceprofileApAiristaGetArgs>? Airista { get; set; }
 
         /// <summary>
-        /// BLE AP settings
+        /// Bluetooth Low Energy beacon and asset defaults in this AP profile
         /// </summary>
         [Input("bleConfig")]
         public Input<Inputs.DeviceprofileApBleConfigGetArgs>? BleConfig { get; set; }
@@ -419,41 +473,63 @@ namespace Pulumi.JuniperMist.Org
         [Input("disableModule")]
         public Input<bool>? DisableModule { get; set; }
 
+        /// <summary>
+        /// Electronic shelf label integration defaults in this AP profile
+        /// </summary>
         [Input("eslConfig")]
         public Input<Inputs.DeviceprofileApEslConfigGetArgs>? EslConfig { get; set; }
 
         /// <summary>
-        /// IP AP settings
+        /// Management IP addressing defaults in this AP profile
         /// </summary>
         [Input("ipConfig")]
         public Input<Inputs.DeviceprofileApIpConfigGetArgs>? IpConfig { get; set; }
 
+        /// <summary>
+        /// Link aggregation defaults for supported AP Ethernet uplinks
+        /// </summary>
         [Input("lacpConfig")]
         public Input<Inputs.DeviceprofileApLacpConfigGetArgs>? LacpConfig { get; set; }
 
         /// <summary>
-        /// LED AP settings
+        /// Indicator light behavior defaults in this AP profile
         /// </summary>
         [Input("led")]
         public Input<Inputs.DeviceprofileApLedGetArgs>? Led { get; set; }
 
         /// <summary>
-        /// Mesh AP settings
+        /// Wireless mesh role and band defaults in this AP profile
         /// </summary>
         [Input("mesh")]
         public Input<Inputs.DeviceprofileApMeshGetArgs>? Mesh { get; set; }
 
+        /// <summary>
+        /// MQTT broker publishing settings for this AP profile
+        /// </summary>
+        [Input("mqttConfig")]
+        public Input<Inputs.DeviceprofileApMqttConfigGetArgs>? MqttConfig { get; set; }
+
+        /// <summary>
+        /// Display name of the AP device profile
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("ntpServers")]
         private InputList<string>? _ntpServers;
+
+        /// <summary>
+        /// NTP servers configured by this AP profile
+        /// </summary>
         public InputList<string> NtpServers
         {
             get => _ntpServers ?? (_ntpServers = new InputList<string>());
             set => _ntpServers = value;
         }
 
+        /// <summary>
+        /// Organization that owns this AP device profile
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -476,36 +552,37 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Power related configs
+        /// Power negotiation and peripheral power defaults in this AP profile
         /// </summary>
         [Input("pwrConfig")]
         public Input<Inputs.DeviceprofileApPwrConfigGetArgs>? PwrConfig { get; set; }
 
         /// <summary>
-        /// Radio AP settings
+        /// Radio configuration defaults in this AP profile
         /// </summary>
         [Input("radioConfig")]
         public Input<Inputs.DeviceprofileApRadioConfigGetArgs>? RadioConfig { get; set; }
 
+        /// <summary>
+        /// Site where this AP device profile is defined, when scoped to a site
+        /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// Device Type. enum: `Ap`
+        /// Device type discriminator for AP device profiles
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// AP Uplink port configuration
+        /// Authentication and failover defaults for AP uplink ports
         /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.DeviceprofileApUplinkPortConfigGetArgs>? UplinkPortConfig { get; set; }
 
         /// <summary>
-        /// USB AP settings
-        ///   - Note: if native imagotag is enabled, BLE will be disabled automatically
-        ///   - Note: legacy, new config moved to ESL Config.
+        /// Legacy USB integration defaults in this AP profile
         /// </summary>
         [Input("usbConfig")]
         public Input<Inputs.DeviceprofileApUsbConfigGetArgs>? UsbConfig { get; set; }
@@ -514,7 +591,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Variable values provided by this AP device profile
         /// </summary>
         public InputMap<string> Vars
         {
@@ -523,7 +600,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Zigbee AP settings
+        /// Zigbee radio and network defaults in this AP profile
         /// </summary>
         [Input("zigbeeConfig")]
         public Input<Inputs.DeviceprofileApZigbeeConfigGetArgs>? ZigbeeConfig { get; set; }

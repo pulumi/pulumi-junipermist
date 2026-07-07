@@ -23,14 +23,14 @@ public final class WlanPortalTemplateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Portal template wlan settings
+     * Template settings that define guest portal text, layout, and localization
      * 
      */
     @Import(name="portalTemplate", required=true)
     private Output<WlanPortalTemplatePortalTemplateArgs> portalTemplate;
 
     /**
-     * @return Portal template wlan settings
+     * @return Template settings that define guest portal text, layout, and localization
      * 
      */
     public Output<WlanPortalTemplatePortalTemplateArgs> portalTemplate() {
@@ -88,7 +88,7 @@ public final class WlanPortalTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param portalTemplate Portal template wlan settings
+         * @param portalTemplate Template settings that define guest portal text, layout, and localization
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class WlanPortalTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param portalTemplate Portal template wlan settings
+         * @param portalTemplate Template settings that define guest portal text, layout, and localization
          * 
          * @return builder
          * 

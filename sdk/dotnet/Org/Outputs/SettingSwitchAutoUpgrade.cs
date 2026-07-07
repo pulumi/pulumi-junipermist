@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingSwitchAutoUpgrade
     {
         /// <summary>
-        /// Custom version to be used. The Property Key is the switch hardware and the property value is the firmware version
+        /// Per-model switch firmware versions to use for auto-upgrade
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomVersions;
         /// <summary>
-        /// Enable auto upgrade for the switch
+        /// Whether switch auto-upgrade is enabled
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Enable snapshot during the upgrade process
+        /// Whether to create a recovery snapshot during the upgrade process
         /// </summary>
         public readonly bool? Snapshot;
 

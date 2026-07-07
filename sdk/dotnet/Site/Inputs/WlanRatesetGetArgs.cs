@@ -49,12 +49,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? MinRssi { get; set; }
 
         /// <summary>
-        /// Data Rates template to apply. enum: 
-        ///   * `no-legacy`: no 11b
-        ///   * `Compatible`: all, like before, default setting that Broadcom/Atheros used
-        ///   * `legacy-only`: disable 802.11n and 802.11ac
-        ///   * `high-density`: no 11b, no low rates
-        ///   * `Custom`: user defined
+        /// Data rate template used to derive WLAN rate settings
         /// </summary>
         [Input("template")]
         public Input<string>? Template { get; set; }

@@ -19,30 +19,37 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// For SRX-only
+        /// Malware and virus inspection settings applied by this service policy
         /// </summary>
         [Input("antivirus")]
         public Input<Inputs.GatewayServicePolicyAntivirusGetArgs>? Antivirus { get; set; }
 
         /// <summary>
-        /// SRX only
+        /// Application QoE settings applied by this service policy
         /// </summary>
         [Input("appqoe")]
         public Input<Inputs.GatewayServicePolicyAppqoeGetArgs>? Appqoe { get; set; }
 
         [Input("ewfs")]
         private InputList<Inputs.GatewayServicePolicyEwfGetArgs>? _ewfs;
+
+        /// <summary>
+        /// Enhanced web filtering rules applied by this service policy
+        /// </summary>
         public InputList<Inputs.GatewayServicePolicyEwfGetArgs> Ewfs
         {
             get => _ewfs ?? (_ewfs = new InputList<Inputs.GatewayServicePolicyEwfGetArgs>());
             set => _ewfs = value;
         }
 
+        /// <summary>
+        /// Intrusion detection and prevention settings applied by this service policy
+        /// </summary>
         [Input("idp")]
         public Input<Inputs.GatewayServicePolicyIdpGetArgs>? Idp { get; set; }
 
         /// <summary>
-        /// access within the same VRF
+        /// Whether the policy permits access within the same VRF
         /// </summary>
         [Input("localRouting")]
         public Input<bool>? LocalRouting { get; set; }
@@ -60,7 +67,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? PathPreference { get; set; }
 
         /// <summary>
-        /// Used to link servicepolicy defined at org level and overwrite some attributes
+        /// Organization-level service policy identifier used to link and override selected attributes
         /// </summary>
         [Input("servicepolicyId")]
         public Input<string>? ServicepolicyId { get; set; }
@@ -78,19 +85,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// SRX only
+        /// Threat inspection settings provided by Sky ATP for this service policy
         /// </summary>
         [Input("skyatp")]
         public Input<Inputs.GatewayServicePolicySkyatpGetArgs>? Skyatp { get; set; }
 
         /// <summary>
-        /// For SRX-only
+        /// TLS inspection settings applied by this service policy
         /// </summary>
         [Input("sslProxy")]
         public Input<Inputs.GatewayServicePolicySslProxyGetArgs>? SslProxy { get; set; }
 
         /// <summary>
-        /// Required for syslog logging
+        /// Remote logging settings applied by this service policy
         /// </summary>
         [Input("syslog")]
         public Input<Inputs.GatewayServicePolicySyslogGetArgs>? Syslog { get; set; }

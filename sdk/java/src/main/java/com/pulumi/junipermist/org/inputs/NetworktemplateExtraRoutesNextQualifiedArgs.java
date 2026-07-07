@@ -15,16 +15,32 @@ public final class NetworktemplateExtraRoutesNextQualifiedArgs extends com.pulum
 
     public static final NetworktemplateExtraRoutesNextQualifiedArgs Empty = new NetworktemplateExtraRoutesNextQualifiedArgs();
 
+    /**
+     * Route metric for this qualified IPv4 next hop
+     * 
+     */
     @Import(name="metric")
     private @Nullable Output<Integer> metric;
 
+    /**
+     * @return Route metric for this qualified IPv4 next hop
+     * 
+     */
     public Optional<Output<Integer>> metric() {
         return Optional.ofNullable(this.metric);
     }
 
+    /**
+     * Route preference for this qualified IPv4 next hop
+     * 
+     */
     @Import(name="preference")
     private @Nullable Output<Integer> preference;
 
+    /**
+     * @return Route preference for this qualified IPv4 next hop
+     * 
+     */
     public Optional<Output<Integer>> preference() {
         return Optional.ofNullable(this.preference);
     }
@@ -54,20 +70,44 @@ public final class NetworktemplateExtraRoutesNextQualifiedArgs extends com.pulum
             $ = new NetworktemplateExtraRoutesNextQualifiedArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param metric Route metric for this qualified IPv4 next hop
+         * 
+         * @return builder
+         * 
+         */
         public Builder metric(@Nullable Output<Integer> metric) {
             $.metric = metric;
             return this;
         }
 
+        /**
+         * @param metric Route metric for this qualified IPv4 next hop
+         * 
+         * @return builder
+         * 
+         */
         public Builder metric(Integer metric) {
             return metric(Output.of(metric));
         }
 
+        /**
+         * @param preference Route preference for this qualified IPv4 next hop
+         * 
+         * @return builder
+         * 
+         */
         public Builder preference(@Nullable Output<Integer> preference) {
             $.preference = preference;
             return this;
         }
 
+        /**
+         * @param preference Route preference for this qualified IPv4 next hop
+         * 
+         * @return builder
+         * 
+         */
         public Builder preference(Integer preference) {
             return preference(Output.of(preference));
         }

@@ -18,36 +18,44 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
     public static final DeviceprofileGatewayTunnelProviderOptionsArgs Empty = new DeviceprofileGatewayTunnelProviderOptionsArgs();
 
     /**
-     * For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
+     * Juniper Secure Edge provisioning options for tunnel endpoints
      * 
      */
     @Import(name="jse")
     private @Nullable Output<DeviceprofileGatewayTunnelProviderOptionsJseArgs> jse;
 
     /**
-     * @return For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
+     * @return Juniper Secure Edge provisioning options for tunnel endpoints
      * 
      */
     public Optional<Output<DeviceprofileGatewayTunnelProviderOptionsJseArgs>> jse() {
         return Optional.ofNullable(this.jse);
     }
 
+    /**
+     * Palo Alto Prisma Access provisioning options for tunnel endpoints
+     * 
+     */
     @Import(name="prisma")
     private @Nullable Output<DeviceprofileGatewayTunnelProviderOptionsPrismaArgs> prisma;
 
+    /**
+     * @return Palo Alto Prisma Access provisioning options for tunnel endpoints
+     * 
+     */
     public Optional<Output<DeviceprofileGatewayTunnelProviderOptionsPrismaArgs>> prisma() {
         return Optional.ofNullable(this.prisma);
     }
 
     /**
-     * For zscaler-ipsec and zscaler-gre
+     * Provider settings for Zscaler tunnel endpoints
      * 
      */
     @Import(name="zscaler")
     private @Nullable Output<DeviceprofileGatewayTunnelProviderOptionsZscalerArgs> zscaler;
 
     /**
-     * @return For zscaler-ipsec and zscaler-gre
+     * @return Provider settings for Zscaler tunnel endpoints
      * 
      */
     public Optional<Output<DeviceprofileGatewayTunnelProviderOptionsZscalerArgs>> zscaler() {
@@ -81,7 +89,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
         }
 
         /**
-         * @param jse For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
+         * @param jse Juniper Secure Edge provisioning options for tunnel endpoints
          * 
          * @return builder
          * 
@@ -92,7 +100,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
         }
 
         /**
-         * @param jse For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
+         * @param jse Juniper Secure Edge provisioning options for tunnel endpoints
          * 
          * @return builder
          * 
@@ -101,17 +109,29 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
             return jse(Output.of(jse));
         }
 
+        /**
+         * @param prisma Palo Alto Prisma Access provisioning options for tunnel endpoints
+         * 
+         * @return builder
+         * 
+         */
         public Builder prisma(@Nullable Output<DeviceprofileGatewayTunnelProviderOptionsPrismaArgs> prisma) {
             $.prisma = prisma;
             return this;
         }
 
+        /**
+         * @param prisma Palo Alto Prisma Access provisioning options for tunnel endpoints
+         * 
+         * @return builder
+         * 
+         */
         public Builder prisma(DeviceprofileGatewayTunnelProviderOptionsPrismaArgs prisma) {
             return prisma(Output.of(prisma));
         }
 
         /**
-         * @param zscaler For zscaler-ipsec and zscaler-gre
+         * @param zscaler Provider settings for Zscaler tunnel endpoints
          * 
          * @return builder
          * 
@@ -122,7 +142,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsArgs extends com.pul
         }
 
         /**
-         * @param zscaler For zscaler-ipsec and zscaler-gre
+         * @param zscaler Provider settings for Zscaler tunnel endpoints
          * 
          * @return builder
          * 

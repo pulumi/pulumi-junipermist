@@ -12,6 +12,7 @@ import com.pulumi.junipermist.org.MxclusterArgs;
 import com.pulumi.junipermist.org.inputs.MxclusterState;
 import com.pulumi.junipermist.org.outputs.MxclusterMistDas;
 import com.pulumi.junipermist.org.outputs.MxclusterMistNac;
+import com.pulumi.junipermist.org.outputs.MxclusterMistNacedge;
 import com.pulumi.junipermist.org.outputs.MxclusterMxedgeMgmt;
 import com.pulumi.junipermist.org.outputs.MxclusterProxy;
 import com.pulumi.junipermist.org.outputs.MxclusterRadsec;
@@ -45,182 +46,254 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/mxcluster:Mxcluster")
 public class Mxcluster extends com.pulumi.resources.CustomResource {
     /**
-     * Configure cloud-assisted dynamic authorization service on this cluster of mist edges
+     * Dynamic authorization service settings for the cluster
      * 
      */
     @Export(name="mistDas", refs={MxclusterMistDas.class}, tree="[0]")
     private Output</* @Nullable */ MxclusterMistDas> mistDas;
 
     /**
-     * @return Configure cloud-assisted dynamic authorization service on this cluster of mist edges
+     * @return Dynamic authorization service settings for the cluster
      * 
      */
     public Output<Optional<MxclusterMistDas>> mistDas() {
         return Codegen.optional(this.mistDas);
     }
+    /**
+     * NAC settings for the Mist Edge cluster
+     * 
+     */
     @Export(name="mistNac", refs={MxclusterMistNac.class}, tree="[0]")
     private Output</* @Nullable */ MxclusterMistNac> mistNac;
 
+    /**
+     * @return NAC settings for the Mist Edge cluster
+     * 
+     */
     public Output<Optional<MxclusterMistNac>> mistNac() {
         return Codegen.optional(this.mistNac);
     }
+    /**
+     * NAC Edge survivability settings for the cluster; requires `mistNac` to be enabled
+     * 
+     */
+    @Export(name="mistNacedge", refs={MxclusterMistNacedge.class}, tree="[0]")
+    private Output</* @Nullable */ MxclusterMistNacedge> mistNacedge;
+
+    /**
+     * @return NAC Edge survivability settings for the cluster; requires `mistNac` to be enabled
+     * 
+     */
+    public Output<Optional<MxclusterMistNacedge>> mistNacedge() {
+        return Codegen.optional(this.mistNacedge);
+    }
+    /**
+     * Out-of-band management settings for Mist Edges in the cluster
+     * 
+     */
     @Export(name="mxedgeMgmt", refs={MxclusterMxedgeMgmt.class}, tree="[0]")
     private Output</* @Nullable */ MxclusterMxedgeMgmt> mxedgeMgmt;
 
+    /**
+     * @return Out-of-band management settings for Mist Edges in the cluster
+     * 
+     */
     public Output<Optional<MxclusterMxedgeMgmt>> mxedgeMgmt() {
         return Codegen.optional(this.mxedgeMgmt);
     }
+    /**
+     * Display name of the Mist Edge cluster
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the Mist Edge cluster
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Identifier of the org that owns the Mist Edge cluster
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Identifier of the org that owns the Mist Edge cluster
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Proxy Configuration to talk to Mist
+     * Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
      * 
      */
     @Export(name="proxy", refs={MxclusterProxy.class}, tree="[0]")
     private Output</* @Nullable */ MxclusterProxy> proxy;
 
     /**
-     * @return Proxy Configuration to talk to Mist
+     * @return Network proxy settings used by Mist Edges in the cluster to communicate with the Mist Cloud
      * 
      */
     public Output<Optional<MxclusterProxy>> proxy() {
         return Codegen.optional(this.proxy);
     }
     /**
-     * MxEdge RadSec Configuration
+     * TLS RADIUS proxy settings for the Mist Edge cluster
      * 
      */
     @Export(name="radsec", refs={MxclusterRadsec.class}, tree="[0]")
     private Output</* @Nullable */ MxclusterRadsec> radsec;
 
     /**
-     * @return MxEdge RadSec Configuration
+     * @return TLS RADIUS proxy settings for the Mist Edge cluster
      * 
      */
     public Output<Optional<MxclusterRadsec>> radsec() {
         return Codegen.optional(this.radsec);
     }
+    /**
+     * TLS keypair settings for RadSec on the Mist Edge cluster
+     * 
+     */
     @Export(name="radsecTls", refs={MxclusterRadsecTls.class}, tree="[0]")
     private Output<MxclusterRadsecTls> radsecTls;
 
+    /**
+     * @return TLS keypair settings for RadSec on the Mist Edge cluster
+     * 
+     */
     public Output<MxclusterRadsecTls> radsecTls() {
         return this.radsecTls;
     }
+    /**
+     * Identifier of the site when the Mist Edge cluster is site-scoped
+     * 
+     */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> siteId;
 
+    /**
+     * @return Identifier of the site when the Mist Edge cluster is site-scoped
+     * 
+     */
     public Output<Optional<String>> siteId() {
         return Codegen.optional(this.siteId);
     }
     /**
-     * List of subnets where we allow AP to establish Mist Tunnels from
+     * AP source subnets allowed to establish Mist tunnels
      * 
      */
     @Export(name="tuntermApSubnets", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tuntermApSubnets;
 
     /**
-     * @return List of subnets where we allow AP to establish Mist Tunnels from
+     * @return AP source subnets allowed to establish Mist tunnels
      * 
      */
     public Output<Optional<List<String>>> tuntermApSubnets() {
         return Codegen.optional(this.tuntermApSubnets);
     }
     /**
-     * DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+     * DHCP relay or server settings for tunneled VLANs
      * 
      */
     @Export(name="tuntermDhcpdConfig", refs={Map.class,String.class,MxclusterTuntermDhcpdConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,MxclusterTuntermDhcpdConfig>> tuntermDhcpdConfig;
 
     /**
-     * @return DHCP server/relay configuration of Mist Tunneled VLANs. Property key is the VLAN ID
+     * @return DHCP relay or server settings for tunneled VLANs
      * 
      */
     public Output<Optional<Map<String,MxclusterTuntermDhcpdConfig>>> tuntermDhcpdConfig() {
         return Codegen.optional(this.tuntermDhcpdConfig);
     }
     /**
-     * Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+     * Extra routes for Mist Tunnel VLAN traffic
      * 
      */
     @Export(name="tuntermExtraRoutes", refs={Map.class,String.class,MxclusterTuntermExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,MxclusterTuntermExtraRoutes>> tuntermExtraRoutes;
 
     /**
-     * @return Extra routes for Mist Tunneled VLANs. Property key is a CIDR
+     * @return Extra routes for Mist Tunnel VLAN traffic
      * 
      */
     public Output<Optional<Map<String,MxclusterTuntermExtraRoutes>>> tuntermExtraRoutes() {
         return Codegen.optional(this.tuntermExtraRoutes);
     }
     /**
-     * Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+     * Hostnames or IP addresses used as Mist Tunnel peers
      * 
      */
     @Export(name="tuntermHosts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tuntermHosts;
 
     /**
-     * @return Hostnames or IPs where a Mist Tunnel will use as the Peer (i.e. they are reachable from AP)
+     * @return Hostnames or IP addresses used as Mist Tunnel peers
      * 
      */
     public Output<Optional<List<String>>> tuntermHosts() {
         return Codegen.optional(this.tuntermHosts);
     }
     /**
-     * List of index of tunterm_hosts
+     * Explicit host ordering indexes used when ordered selection is configured
      * 
      */
     @Export(name="tuntermHostsOrders", refs={List.class,Integer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<Integer>> tuntermHostsOrders;
 
     /**
-     * @return List of index of tunterm_hosts
+     * @return Explicit host ordering indexes used when ordered selection is configured
      * 
      */
     public Output<Optional<List<Integer>>> tuntermHostsOrders() {
         return Codegen.optional(this.tuntermHostsOrders);
     }
     /**
-     * Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
-     *   * `shuffle`: the ordering of tuntermHosts is randomized by the device&#39;&#39;s MAC
-     *   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-     *   * `ordered`: order decided by tunterm_hosts_order
+     * Selection strategy for ordering tunnel termination hosts
      * 
      */
     @Export(name="tuntermHostsSelection", refs={String.class}, tree="[0]")
     private Output<String> tuntermHostsSelection;
 
     /**
-     * @return Ordering of tuntermHosts for mxedge within the same mxcluster. enum:
-     *   * `shuffle`: the ordering of tuntermHosts is randomized by the device&#39;&#39;s MAC
-     *   * `shuffle-by-site`: shuffle by site_id+tunnel_id (so when client connects to a specific Tunnel, it will go to the same (order of) mxedge, and we load-balancing between tunnels)
-     *   * `ordered`: order decided by tunterm_hosts_order
+     * @return Selection strategy for ordering tunnel termination hosts
      * 
      */
     public Output<String> tuntermHostsSelection() {
         return this.tuntermHostsSelection;
     }
+    /**
+     * Whether tunnel termination monitoring is disabled for the cluster
+     * 
+     */
     @Export(name="tuntermMonitoringDisabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> tuntermMonitoringDisabled;
 
+    /**
+     * @return Whether tunnel termination monitoring is disabled for the cluster
+     * 
+     */
     public Output<Optional<Boolean>> tuntermMonitoringDisabled() {
         return Codegen.optional(this.tuntermMonitoringDisabled);
     }
+    /**
+     * Monitoring checks for tunnel termination reachability
+     * 
+     */
     @Export(name="tuntermMonitorings", refs={List.class,MxclusterTuntermMonitoring.class}, tree="[0,[0,1]]")
     private Output</* @Nullable */ List<List<MxclusterTuntermMonitoring>>> tuntermMonitorings;
 
+    /**
+     * @return Monitoring checks for tunnel termination reachability
+     * 
+     */
     public Output<Optional<List<List<MxclusterTuntermMonitoring>>>> tuntermMonitorings() {
         return Codegen.optional(this.tuntermMonitorings);
     }

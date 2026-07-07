@@ -14,29 +14,45 @@ public final class SwitchSnmpConfigV3ConfigNotifyArgs extends com.pulumi.resourc
 
     public static final SwitchSnmpConfigV3ConfigNotifyArgs Empty = new SwitchSnmpConfigV3ConfigNotifyArgs();
 
+    /**
+     * Identifier for this SNMPv3 notification definition
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Identifier for this SNMPv3 notification definition
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * Notification tag used to select target addresses
+     * 
+     */
     @Import(name="tag", required=true)
     private Output<String> tag;
 
+    /**
+     * @return Notification tag used to select target addresses
+     * 
+     */
     public Output<String> tag() {
         return this.tag;
     }
 
     /**
-     * enum: `inform`, `trap`
+     * Delivery mode for this SNMPv3 notification, such as trap or inform
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return enum: `inform`, `trap`
+     * @return Delivery mode for this SNMPv3 notification, such as trap or inform
      * 
      */
     public Output<String> type() {
@@ -69,26 +85,50 @@ public final class SwitchSnmpConfigV3ConfigNotifyArgs extends com.pulumi.resourc
             $ = new SwitchSnmpConfigV3ConfigNotifyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Identifier for this SNMPv3 notification definition
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Identifier for this SNMPv3 notification definition
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param tag Notification tag used to select target addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(Output<String> tag) {
             $.tag = tag;
             return this;
         }
 
+        /**
+         * @param tag Notification tag used to select target addresses
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(String tag) {
             return tag(Output.of(tag));
         }
 
         /**
-         * @param type enum: `inform`, `trap`
+         * @param type Delivery mode for this SNMPv3 notification, such as trap or inform
          * 
          * @return builder
          * 
@@ -99,7 +139,7 @@ public final class SwitchSnmpConfigV3ConfigNotifyArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type enum: `inform`, `trap`
+         * @param type Delivery mode for this SNMPv3 notification, such as trap or inform
          * 
          * @return builder
          * 

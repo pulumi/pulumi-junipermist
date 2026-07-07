@@ -13,25 +13,35 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayIdpProfilesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Critical`, `Standard`, `Strict`
+        /// Built-in IDP baseline profile inherited before applying overwrites
         /// </summary>
         [Input("baseProfile")]
         public Input<string>? BaseProfile { get; set; }
 
         /// <summary>
-        /// Unique ID of the object instance in the Mist Organization
+        /// Unique identifier of the IDP profile
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Display name of the IDP profile
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Owning organization for the IDP profile
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         [Input("overwrites")]
         private InputList<Inputs.GatewayIdpProfilesOverwriteGetArgs>? _overwrites;
+
+        /// <summary>
+        /// IDP signature override rules applied on top of the base profile
+        /// </summary>
         public InputList<Inputs.GatewayIdpProfilesOverwriteGetArgs> Overwrites
         {
             get => _overwrites ?? (_overwrites = new InputList<Inputs.GatewayIdpProfilesOverwriteGetArgs>());

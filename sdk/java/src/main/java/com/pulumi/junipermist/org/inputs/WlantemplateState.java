@@ -20,14 +20,14 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
     public static final WlantemplateState Empty = new WlantemplateState();
 
     /**
-     * Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * Organizations, sites, or site groups targeted by this WLAN template
      * 
      */
     @Import(name="applies")
     private @Nullable Output<WlantemplateAppliesArgs> applies;
 
     /**
-     * @return Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+     * @return Organizations, sites, or site groups targeted by this WLAN template
      * 
      */
     public Optional<Output<WlantemplateAppliesArgs>> applies() {
@@ -35,14 +35,14 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of Device Profile ids
+     * Device profile IDs that further limit where this WLAN template applies
      * 
      */
     @Import(name="deviceprofileIds")
     private @Nullable Output<List<String>> deviceprofileIds;
 
     /**
-     * @return List of Device Profile ids
+     * @return Device profile IDs that further limit where this WLAN template applies
      * 
      */
     public Optional<Output<List<String>>> deviceprofileIds() {
@@ -50,14 +50,14 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Where this template should not be applied to (takes precedence)
+     * Sites or site groups excluded from this WLAN template even when included by the application scope
      * 
      */
     @Import(name="exceptions")
     private @Nullable Output<WlantemplateExceptionsArgs> exceptions;
 
     /**
-     * @return Where this template should not be applied to (takes precedence)
+     * @return Sites or site groups excluded from this WLAN template even when included by the application scope
      * 
      */
     public Optional<Output<WlantemplateExceptionsArgs>> exceptions() {
@@ -79,16 +79,32 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.filterByDeviceprofile);
     }
 
+    /**
+     * Display name of the WLAN template
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the WLAN template
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Organization that owns this WLAN template
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization that owns this WLAN template
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
@@ -123,7 +139,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applies Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+         * @param applies Organizations, sites, or site groups targeted by this WLAN template
          * 
          * @return builder
          * 
@@ -134,7 +150,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applies Where this template should be applied to, can be org*id, site*ids, sitegroup_ids
+         * @param applies Organizations, sites, or site groups targeted by this WLAN template
          * 
          * @return builder
          * 
@@ -144,7 +160,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceprofileIds List of Device Profile ids
+         * @param deviceprofileIds Device profile IDs that further limit where this WLAN template applies
          * 
          * @return builder
          * 
@@ -155,7 +171,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceprofileIds List of Device Profile ids
+         * @param deviceprofileIds Device profile IDs that further limit where this WLAN template applies
          * 
          * @return builder
          * 
@@ -165,7 +181,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceprofileIds List of Device Profile ids
+         * @param deviceprofileIds Device profile IDs that further limit where this WLAN template applies
          * 
          * @return builder
          * 
@@ -175,7 +191,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exceptions Where this template should not be applied to (takes precedence)
+         * @param exceptions Sites or site groups excluded from this WLAN template even when included by the application scope
          * 
          * @return builder
          * 
@@ -186,7 +202,7 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exceptions Where this template should not be applied to (takes precedence)
+         * @param exceptions Sites or site groups excluded from this WLAN template even when included by the application scope
          * 
          * @return builder
          * 
@@ -216,20 +232,44 @@ public final class WlantemplateState extends com.pulumi.resources.ResourceArgs {
             return filterByDeviceprofile(Output.of(filterByDeviceprofile));
         }
 
+        /**
+         * @param name Display name of the WLAN template
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the WLAN template
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Organization that owns this WLAN template
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns this WLAN template
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }

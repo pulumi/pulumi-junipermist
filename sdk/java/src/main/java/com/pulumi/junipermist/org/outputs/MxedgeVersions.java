@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxedgeVersions {
+    /**
+     * @return Reported version of the mxagent service
+     * 
+     */
     private @Nullable String mxagent;
+    /**
+     * @return Reported version of the tunnel termination service
+     * 
+     */
     private @Nullable String tunterm;
 
     private MxedgeVersions() {}
+    /**
+     * @return Reported version of the mxagent service
+     * 
+     */
     public Optional<String> mxagent() {
         return Optional.ofNullable(this.mxagent);
     }
+    /**
+     * @return Reported version of the tunnel termination service
+     * 
+     */
     public Optional<String> tunterm() {
         return Optional.ofNullable(this.tunterm);
     }

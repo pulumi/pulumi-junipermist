@@ -75,7 +75,7 @@ export class GatewayCluster extends pulumi.CustomResource {
     }
 
     /**
-     * When replacing a node, either mac has to remain the same as existing cluster
+     * Gateway nodes that form the HA cluster
      */
     declare public readonly nodes: pulumi.Output<outputs.device.GatewayClusterNode[]>;
     declare public readonly siteId: pulumi.Output<string>;
@@ -116,7 +116,7 @@ export class GatewayCluster extends pulumi.CustomResource {
  */
 export interface GatewayClusterState {
     /**
-     * When replacing a node, either mac has to remain the same as existing cluster
+     * Gateway nodes that form the HA cluster
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.device.GatewayClusterNode>[] | undefined>;
     siteId?: pulumi.Input<string | undefined>;
@@ -127,7 +127,7 @@ export interface GatewayClusterState {
  */
 export interface GatewayClusterArgs {
     /**
-     * When replacing a node, either mac has to remain the same as existing cluster
+     * Gateway nodes that form the HA cluster
      */
     nodes: pulumi.Input<pulumi.Input<inputs.device.GatewayClusterNode>[]>;
     siteId: pulumi.Input<string>;

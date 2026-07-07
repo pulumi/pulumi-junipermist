@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class ApUsbConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Only if `Type`==`Imagotag`
+        /// Only if `Type`==`Imagotag`. CA certificate used to validate the Imagotag service certificate
         /// </summary>
         [Input("cacert")]
         public Input<string>? Cacert { get; set; }
@@ -31,19 +31,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Only if `Type`==`Imagotag`
+        /// Only if `Type`==`Imagotag`. Imagotag service host or IP address contacted by the AP
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Only if `Type`==`Imagotag`
+        /// Only if `Type`==`Imagotag`. TCP port used to reach the Imagotag service
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// usb config type. enum: `Hanshow`, `Imagotag`, `Solum`
+        /// USB integration type for this legacy AP USB configuration
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

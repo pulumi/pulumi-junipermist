@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.SwitchOspfConfigAreasGetArgs>? _areas;
 
         /// <summary>
-        /// Property key is the area name. Defines the OSPF areas configured on the switch.
+        /// OSPF areas configured on the switch
         /// </summary>
         public InputMap<Inputs.SwitchOspfConfigAreasGetArgs> Areas
         {
@@ -42,6 +42,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("importPolicy")]
         public Input<string>? ImportPolicy { get; set; }
 
+        /// <summary>
+        /// Reference bandwidth used for OSPF cost calculation
+        /// </summary>
         [Input("referenceBandwidth")]
         public Input<string>? ReferenceBandwidth { get; set; }
 

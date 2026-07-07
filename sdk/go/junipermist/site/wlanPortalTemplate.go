@@ -60,7 +60,7 @@ import (
 type WlanPortalTemplate struct {
 	pulumi.CustomResourceState
 
-	// Portal template wlan settings
+	// Template settings that define guest portal text, layout, and localization
 	PortalTemplate WlanPortalTemplatePortalTemplateOutput `pulumi:"portalTemplate"`
 	SiteId         pulumi.StringOutput                    `pulumi:"siteId"`
 	// Site WLAN ID
@@ -106,7 +106,7 @@ func GetWlanPortalTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WlanPortalTemplate resources.
 type wlanPortalTemplateState struct {
-	// Portal template wlan settings
+	// Template settings that define guest portal text, layout, and localization
 	PortalTemplate *WlanPortalTemplatePortalTemplate `pulumi:"portalTemplate"`
 	SiteId         *string                           `pulumi:"siteId"`
 	// Site WLAN ID
@@ -114,7 +114,7 @@ type wlanPortalTemplateState struct {
 }
 
 type WlanPortalTemplateState struct {
-	// Portal template wlan settings
+	// Template settings that define guest portal text, layout, and localization
 	PortalTemplate WlanPortalTemplatePortalTemplatePtrInput
 	SiteId         pulumi.StringPtrInput
 	// Site WLAN ID
@@ -126,7 +126,7 @@ func (WlanPortalTemplateState) ElementType() reflect.Type {
 }
 
 type wlanPortalTemplateArgs struct {
-	// Portal template wlan settings
+	// Template settings that define guest portal text, layout, and localization
 	PortalTemplate WlanPortalTemplatePortalTemplate `pulumi:"portalTemplate"`
 	SiteId         string                           `pulumi:"siteId"`
 	// Site WLAN ID
@@ -135,7 +135,7 @@ type wlanPortalTemplateArgs struct {
 
 // The set of arguments for constructing a WlanPortalTemplate resource.
 type WlanPortalTemplateArgs struct {
-	// Portal template wlan settings
+	// Template settings that define guest portal text, layout, and localization
 	PortalTemplate WlanPortalTemplatePortalTemplateInput
 	SiteId         pulumi.StringInput
 	// Site WLAN ID
@@ -229,7 +229,7 @@ func (o WlanPortalTemplateOutput) ToWlanPortalTemplateOutputWithContext(ctx cont
 	return o
 }
 
-// Portal template wlan settings
+// Template settings that define guest portal text, layout, and localization
 func (o WlanPortalTemplateOutput) PortalTemplate() WlanPortalTemplatePortalTemplateOutput {
 	return o.ApplyT(func(v *WlanPortalTemplate) WlanPortalTemplatePortalTemplateOutput { return v.PortalTemplate }).(WlanPortalTemplatePortalTemplateOutput)
 }

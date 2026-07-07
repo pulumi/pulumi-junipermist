@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GatewaytemplateServicePolicySkyatpDnsTunnelDetection
     {
+        /// <summary>
+        /// Whether Sky ATP DNS tunneling detection is enabled
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// enum: `Default`, `Standard`, `Strict`
+        /// Sky ATP DNS tunneling detection profile to apply
         /// </summary>
         public readonly string? Profile;
 

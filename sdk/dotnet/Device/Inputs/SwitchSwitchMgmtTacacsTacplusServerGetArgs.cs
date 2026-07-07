@@ -12,14 +12,24 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class SwitchSwitchMgmtTacacsTacplusServerGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Address or hostname of the TACACS+ authentication server
+        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        /// <summary>
+        /// TCP port used by the TACACS+ authentication server
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
         [Input("secret")]
         private Input<string>? _secret;
+
+        /// <summary>
+        /// Shared secret used with this TACACS+ authentication server
+        /// </summary>
         public Input<string>? Secret
         {
             get => _secret;
@@ -30,6 +40,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
             }
         }
 
+        /// <summary>
+        /// TACACS+ authentication server timeout, in seconds
+        /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 

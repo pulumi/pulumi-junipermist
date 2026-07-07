@@ -70,32 +70,44 @@ namespace Pulumi.JuniperMist.Org
     public partial class Avprofile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// enum: `Block`, `log-and-permit`, `Permit`
+        /// Action to take when antivirus scanning cannot complete
         /// </summary>
         [Output("fallbackAction")]
         public Output<string?> FallbackAction { get; private set; } = null!;
 
         /// <summary>
-        /// In KB
+        /// Maximum file size scanned by this antivirus profile, in KB
         /// </summary>
         [Output("maxFilesize")]
         public Output<int> MaxFilesize { get; private set; } = null!;
 
+        /// <summary>
+        /// Content MIME types exempted from antivirus scanning
+        /// </summary>
         [Output("mimeWhitelists")]
         public Output<ImmutableArray<string>> MimeWhitelists { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the antivirus profile
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Owning organization identifier for this antivirus profile
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// List of protocols to monitor. enum: `Ftp`, `Http`, `Imap`, `Pop3`, `Smtp`
+        /// Network protocols inspected by this antivirus profile
         /// </summary>
         [Output("protocols")]
         public Output<ImmutableArray<string>> Protocols { get; private set; } = null!;
 
+        /// <summary>
+        /// Allowed URL entries exempted from antivirus scanning
+        /// </summary>
         [Output("urlWhitelists")]
         public Output<ImmutableArray<string>> UrlWhitelists { get; private set; } = null!;
 
@@ -147,28 +159,38 @@ namespace Pulumi.JuniperMist.Org
     public sealed class AvprofileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Block`, `log-and-permit`, `Permit`
+        /// Action to take when antivirus scanning cannot complete
         /// </summary>
         [Input("fallbackAction")]
         public Input<string>? FallbackAction { get; set; }
 
         /// <summary>
-        /// In KB
+        /// Maximum file size scanned by this antivirus profile, in KB
         /// </summary>
         [Input("maxFilesize")]
         public Input<int>? MaxFilesize { get; set; }
 
         [Input("mimeWhitelists")]
         private InputList<string>? _mimeWhitelists;
+
+        /// <summary>
+        /// Content MIME types exempted from antivirus scanning
+        /// </summary>
         public InputList<string> MimeWhitelists
         {
             get => _mimeWhitelists ?? (_mimeWhitelists = new InputList<string>());
             set => _mimeWhitelists = value;
         }
 
+        /// <summary>
+        /// Display name of the antivirus profile
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Owning organization identifier for this antivirus profile
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -176,7 +198,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _protocols;
 
         /// <summary>
-        /// List of protocols to monitor. enum: `Ftp`, `Http`, `Imap`, `Pop3`, `Smtp`
+        /// Network protocols inspected by this antivirus profile
         /// </summary>
         public InputList<string> Protocols
         {
@@ -186,6 +208,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("urlWhitelists")]
         private InputList<string>? _urlWhitelists;
+
+        /// <summary>
+        /// Allowed URL entries exempted from antivirus scanning
+        /// </summary>
         public InputList<string> UrlWhitelists
         {
             get => _urlWhitelists ?? (_urlWhitelists = new InputList<string>());
@@ -201,28 +227,38 @@ namespace Pulumi.JuniperMist.Org
     public sealed class AvprofileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Block`, `log-and-permit`, `Permit`
+        /// Action to take when antivirus scanning cannot complete
         /// </summary>
         [Input("fallbackAction")]
         public Input<string>? FallbackAction { get; set; }
 
         /// <summary>
-        /// In KB
+        /// Maximum file size scanned by this antivirus profile, in KB
         /// </summary>
         [Input("maxFilesize")]
         public Input<int>? MaxFilesize { get; set; }
 
         [Input("mimeWhitelists")]
         private InputList<string>? _mimeWhitelists;
+
+        /// <summary>
+        /// Content MIME types exempted from antivirus scanning
+        /// </summary>
         public InputList<string> MimeWhitelists
         {
             get => _mimeWhitelists ?? (_mimeWhitelists = new InputList<string>());
             set => _mimeWhitelists = value;
         }
 
+        /// <summary>
+        /// Display name of the antivirus profile
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Owning organization identifier for this antivirus profile
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -230,7 +266,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _protocols;
 
         /// <summary>
-        /// List of protocols to monitor. enum: `Ftp`, `Http`, `Imap`, `Pop3`, `Smtp`
+        /// Network protocols inspected by this antivirus profile
         /// </summary>
         public InputList<string> Protocols
         {
@@ -240,6 +276,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("urlWhitelists")]
         private InputList<string>? _urlWhitelists;
+
+        /// <summary>
+        /// Allowed URL entries exempted from antivirus scanning
+        /// </summary>
         public InputList<string> UrlWhitelists
         {
             get => _urlWhitelists ?? (_urlWhitelists = new InputList<string>());

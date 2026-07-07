@@ -16,9 +16,17 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
 
     public static final SwitchPortConfigOverwriteArgs Empty = new SwitchPortConfigOverwriteArgs();
 
+    /**
+     * Administrative description applied to the switch port override
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Administrative description applied to the switch port override
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -39,23 +47,31 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Link connection mode. enum: `auto`, `full`, `half`
+     * Link duplex mode override for the switch port
      * 
      */
     @Import(name="duplex")
     private @Nullable Output<String> duplex;
 
     /**
-     * @return Link connection mode. enum: `auto`, `full`, `half`
+     * @return Link duplex mode override for the switch port
      * 
      */
     public Optional<Output<String>> duplex() {
         return Optional.ofNullable(this.duplex);
     }
 
+    /**
+     * MAC address learning limit override for the switch port
+     * 
+     */
     @Import(name="macLimit")
     private @Nullable Output<String> macLimit;
 
+    /**
+     * @return MAC address learning limit override for the switch port
+     * 
+     */
     public Optional<Output<String>> macLimit() {
         return Optional.ofNullable(this.macLimit);
     }
@@ -106,14 +122,14 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * Link speed override for the switch port
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+     * @return Link speed override for the switch port
      * 
      */
     public Optional<Output<String>> speed() {
@@ -151,11 +167,23 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
             $ = new SwitchPortConfigOverwriteArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description Administrative description applied to the switch port override
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Administrative description applied to the switch port override
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -182,7 +210,7 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param duplex Link connection mode. enum: `auto`, `full`, `half`
+         * @param duplex Link duplex mode override for the switch port
          * 
          * @return builder
          * 
@@ -193,7 +221,7 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param duplex Link connection mode. enum: `auto`, `full`, `half`
+         * @param duplex Link duplex mode override for the switch port
          * 
          * @return builder
          * 
@@ -202,11 +230,23 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
             return duplex(Output.of(duplex));
         }
 
+        /**
+         * @param macLimit MAC address learning limit override for the switch port
+         * 
+         * @return builder
+         * 
+         */
         public Builder macLimit(@Nullable Output<String> macLimit) {
             $.macLimit = macLimit;
             return this;
         }
 
+        /**
+         * @param macLimit MAC address learning limit override for the switch port
+         * 
+         * @return builder
+         * 
+         */
         public Builder macLimit(String macLimit) {
             return macLimit(Output.of(macLimit));
         }
@@ -275,7 +315,7 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param speed Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * @param speed Link speed override for the switch port
          * 
          * @return builder
          * 
@@ -286,7 +326,7 @@ public final class SwitchPortConfigOverwriteArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param speed Port Speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+         * @param speed Link speed override for the switch port
          * 
          * @return builder
          * 

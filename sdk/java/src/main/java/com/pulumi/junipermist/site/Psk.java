@@ -79,14 +79,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:site/psk:Psk")
 public class Psk extends com.pulumi.resources.CustomResource {
     /**
-     * email to send psk expiring notifications to
+     * Notification recipient email address for PSK creation notification and expiration reminders
      * 
      */
     @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**
-     * @return email to send psk expiring notifications to
+     * @return Notification recipient email address for PSK creation notification and expiration reminders
      * 
      */
     public Output<Optional<String>> email() {
@@ -121,28 +121,44 @@ public class Psk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.expiryNotificationTime);
     }
     /**
-     * If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mac;
 
     /**
-     * @return If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+     * @return If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
      * 
      */
     public Output<Optional<String>> mac() {
         return Codegen.optional(this.mac);
     }
+    /**
+     * Display name of the PSK
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the PSK
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Admin note or description stored with the PSK
+     * 
+     */
     @Export(name="note", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> note;
 
+    /**
+     * @return Admin note or description stored with the PSK
+     * 
+     */
     public Output<Optional<String>> note() {
         return Codegen.optional(this.note);
     }
@@ -188,47 +204,71 @@ public class Psk extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> oldPassphrase() {
         return Codegen.optional(this.oldPassphrase);
     }
+    /**
+     * Organization that owns the site-level PSK
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns the site-level PSK
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * passphrase of the PSK (8-63 character or 64 in hex)
+     * PSK passphrase, 8-63 characters or 64 hexadecimal characters
      * 
      */
     @Export(name="passphrase", refs={String.class}, tree="[0]")
     private Output<String> passphrase;
 
     /**
-     * @return passphrase of the PSK (8-63 character or 64 in hex)
+     * @return PSK passphrase, 8-63 characters or 64 hexadecimal characters
      * 
      */
     public Output<String> passphrase() {
         return this.passphrase;
     }
+    /**
+     * Client role applied to users authenticated with this PSK
+     * 
+     */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> role;
 
+    /**
+     * @return Client role applied to users authenticated with this PSK
+     * 
+     */
     public Output<Optional<String>> role() {
         return Codegen.optional(this.role);
     }
+    /**
+     * Site associated with the site-level PSK
+     * 
+     */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
+    /**
+     * @return Site associated with the site-level PSK
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
     /**
-     * SSID this PSK should be applicable to
+     * WLAN SSID where this PSK can be used
      * 
      */
     @Export(name="ssid", refs={String.class}, tree="[0]")
     private Output<String> ssid;
 
     /**
-     * @return SSID this PSK should be applicable to
+     * @return WLAN SSID where this PSK can be used
      * 
      */
     public Output<String> ssid() {
@@ -248,9 +288,17 @@ public class Psk extends com.pulumi.resources.CustomResource {
     public Output<String> usage() {
         return this.usage;
     }
+    /**
+     * VLAN ID returned for clients using this PSK
+     * 
+     */
     @Export(name="vlanId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vlanId;
 
+    /**
+     * @return VLAN ID returned for clients using this PSK
+     * 
+     */
     public Output<Optional<String>> vlanId() {
         return Codegen.optional(this.vlanId);
     }

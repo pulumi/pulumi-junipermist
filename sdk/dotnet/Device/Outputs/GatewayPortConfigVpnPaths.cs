@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayPortConfigVpnPaths
     {
         /// <summary>
-        /// Only if the VPN `Type`==`HubSpoke`. enum: `Broadband`, `Lte`
+        /// BFD profile used for this VPN path when the VPN `Type`==`HubSpoke`
         /// </summary>
         public readonly string? BfdProfile;
         /// <summary>
@@ -26,9 +26,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? Preference;
         /// <summary>
-        /// If the VPN `Type`==`HubSpoke`, enum: `Hub`, `Spoke`. If the VPN `Type`==`Mesh`, enum: `Mesh`
+        /// Gateway role for this VPN path; valid values depend on the VPN `Type`
         /// </summary>
         public readonly string? Role;
+        /// <summary>
+        /// Traffic shaping settings applied to this VPN path
+        /// </summary>
         public readonly Outputs.GatewayPortConfigVpnPathsTrafficShaping? TrafficShaping;
 
         [OutputConstructor]

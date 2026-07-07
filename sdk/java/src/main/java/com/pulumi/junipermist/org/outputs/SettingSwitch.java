@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingSwitch {
+    /**
+     * @return Auto-upgrade defaults for switches in this organization
+     * 
+     */
     private @Nullable SettingSwitchAutoUpgrade autoUpgrade;
 
     private SettingSwitch() {}
+    /**
+     * @return Auto-upgrade defaults for switches in this organization
+     * 
+     */
     public Optional<SettingSwitchAutoUpgrade> autoUpgrade() {
         return Optional.ofNullable(this.autoUpgrade);
     }

@@ -14,16 +14,32 @@ public final class SettingCelonaArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingCelonaArgs Empty = new SettingCelonaArgs();
 
+    /**
+     * Credential used by Mist for the Celona integration
+     * 
+     */
     @Import(name="apiKey", required=true)
     private Output<String> apiKey;
 
+    /**
+     * @return Credential used by Mist for the Celona integration
+     * 
+     */
     public Output<String> apiKey() {
         return this.apiKey;
     }
 
+    /**
+     * Celona API prefix configured for the integration
+     * 
+     */
     @Import(name="apiPrefix", required=true)
     private Output<String> apiPrefix;
 
+    /**
+     * @return Celona API prefix configured for the integration
+     * 
+     */
     public Output<String> apiPrefix() {
         return this.apiPrefix;
     }
@@ -53,20 +69,44 @@ public final class SettingCelonaArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingCelonaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param apiKey Credential used by Mist for the Celona integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiKey(Output<String> apiKey) {
             $.apiKey = apiKey;
             return this;
         }
 
+        /**
+         * @param apiKey Credential used by Mist for the Celona integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiKey(String apiKey) {
             return apiKey(Output.of(apiKey));
         }
 
+        /**
+         * @param apiPrefix Celona API prefix configured for the integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiPrefix(Output<String> apiPrefix) {
             $.apiPrefix = apiPrefix;
             return this;
         }
 
+        /**
+         * @param apiPrefix Celona API prefix configured for the integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiPrefix(String apiPrefix) {
             return apiPrefix(Output.of(apiPrefix));
         }

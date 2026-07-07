@@ -33,14 +33,14 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional, if the service is further restricted for certain RADIUS groups
+     * RADIUS groups allowed to discover this Bonjour service, when restricted
      * 
      */
     @Import(name="radiusGroups")
     private @Nullable Output<List<String>> radiusGroups;
 
     /**
-     * @return Optional, if the service is further restricted for certain RADIUS groups
+     * @return RADIUS groups allowed to discover this Bonjour service, when restricted
      * 
      */
     public Optional<Output<List<String>>> radiusGroups() {
@@ -48,14 +48,14 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+     * Discovery scope for this Bonjour service on the WLAN
      * 
      */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
     /**
-     * @return how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+     * @return Discovery scope for this Bonjour service on the WLAN
      * 
      */
     public Optional<Output<String>> scope() {
@@ -110,7 +110,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param radiusGroups Optional, if the service is further restricted for certain RADIUS groups
+         * @param radiusGroups RADIUS groups allowed to discover this Bonjour service, when restricted
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param radiusGroups Optional, if the service is further restricted for certain RADIUS groups
+         * @param radiusGroups RADIUS groups allowed to discover this Bonjour service, when restricted
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param radiusGroups Optional, if the service is further restricted for certain RADIUS groups
+         * @param radiusGroups RADIUS groups allowed to discover this Bonjour service, when restricted
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scope how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+         * @param scope Discovery scope for this Bonjour service on the WLAN
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scope how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+         * @param scope Discovery scope for this Bonjour service on the WLAN
          * 
          * @return builder
          * 

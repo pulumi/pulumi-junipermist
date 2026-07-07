@@ -30,6 +30,9 @@ class SsoArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nameid_format: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 openroaming_wba_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_wba_client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  role_attr_extraction: pulumi.Input[Optional[_builtins.str]] = None,
                  role_attr_from: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -39,12 +42,16 @@ class SsoArgs:
         :param pulumi.Input[_builtins.str] idp_sign_algo: Signing algorithm for SAML Assertion. enum `sha1`, `sha256`, `sha384`, `sha512`
         :param pulumi.Input[_builtins.str] idp_sso_url: IDP Single-Sign-On URL
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this SSO configuration
         :param pulumi.Input[_builtins.str] custom_logout_url: a URL we will redirect the user after user logout from Mist (for some IdP which supports a custom logout URL that is different from SP-initiated SLO process)
         :param pulumi.Input[_builtins.str] default_role: default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         :param pulumi.Input[_builtins.bool] ignore_unmatched_roles: ignore any unmatched roles provided in assertion. By default, an assertion is treated as invalid for any unmatched role
-        :param pulumi.Input[_builtins.str] name: Name
+        :param pulumi.Input[_builtins.str] name: Display name of the SSO configuration
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
-        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] openroaming_ssids: SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_cert: Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_key: Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
         :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         :param pulumi.Input[_builtins.str] role_attr_from: name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
@@ -65,6 +72,12 @@ class SsoArgs:
             pulumi.set(__self__, "nameid_format", nameid_format)
         if oauth_provider_domain is not None:
             pulumi.set(__self__, "oauth_provider_domain", oauth_provider_domain)
+        if openroaming_ssids is not None:
+            pulumi.set(__self__, "openroaming_ssids", openroaming_ssids)
+        if openroaming_wba_client_cert is not None:
+            pulumi.set(__self__, "openroaming_wba_client_cert", openroaming_wba_client_cert)
+        if openroaming_wba_client_key is not None:
+            pulumi.set(__self__, "openroaming_wba_client_key", openroaming_wba_client_key)
         if role_attr_extraction is not None:
             pulumi.set(__self__, "role_attr_extraction", role_attr_extraction)
         if role_attr_from is not None:
@@ -121,6 +134,9 @@ class SsoArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Owning organization identifier for this SSO configuration
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -167,7 +183,7 @@ class SsoArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name
+        Display name of the SSO configuration
         """
         return pulumi.get(self, "name")
 
@@ -191,13 +207,49 @@ class SsoArgs:
     @pulumi.getter(name="oauthProviderDomain")
     def oauth_provider_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
         """
         return pulumi.get(self, "oauth_provider_domain")
 
     @oauth_provider_domain.setter
     def oauth_provider_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_provider_domain", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingSsids")
+    def openroaming_ssids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        """
+        return pulumi.get(self, "openroaming_ssids")
+
+    @openroaming_ssids.setter
+    def openroaming_ssids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "openroaming_ssids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingWbaClientCert")
+    def openroaming_wba_client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        """
+        return pulumi.get(self, "openroaming_wba_client_cert")
+
+    @openroaming_wba_client_cert.setter
+    def openroaming_wba_client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "openroaming_wba_client_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingWbaClientKey")
+    def openroaming_wba_client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        """
+        return pulumi.get(self, "openroaming_wba_client_key")
+
+    @openroaming_wba_client_key.setter
+    def openroaming_wba_client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "openroaming_wba_client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="roleAttrExtraction")
@@ -238,6 +290,9 @@ class _SsoState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nameid_format: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 openroaming_wba_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_wba_client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  role_attr_extraction: pulumi.Input[Optional[_builtins.str]] = None,
                  role_attr_from: pulumi.Input[Optional[_builtins.str]] = None):
@@ -254,9 +309,13 @@ class _SsoState:
         :param pulumi.Input[_builtins.str] idp_sso_url: IDP Single-Sign-On URL
         :param pulumi.Input[_builtins.bool] ignore_unmatched_roles: ignore any unmatched roles provided in assertion. By default, an assertion is treated as invalid for any unmatched role
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
-        :param pulumi.Input[_builtins.str] name: Name
+        :param pulumi.Input[_builtins.str] name: Display name of the SSO configuration
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
-        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] openroaming_ssids: SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_cert: Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_key: Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this SSO configuration
         :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         :param pulumi.Input[_builtins.str] role_attr_from: name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
@@ -282,6 +341,12 @@ class _SsoState:
             pulumi.set(__self__, "nameid_format", nameid_format)
         if oauth_provider_domain is not None:
             pulumi.set(__self__, "oauth_provider_domain", oauth_provider_domain)
+        if openroaming_ssids is not None:
+            pulumi.set(__self__, "openroaming_ssids", openroaming_ssids)
+        if openroaming_wba_client_cert is not None:
+            pulumi.set(__self__, "openroaming_wba_client_cert", openroaming_wba_client_cert)
+        if openroaming_wba_client_key is not None:
+            pulumi.set(__self__, "openroaming_wba_client_key", openroaming_wba_client_key)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if role_attr_extraction is not None:
@@ -391,7 +456,7 @@ class _SsoState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name
+        Display name of the SSO configuration
         """
         return pulumi.get(self, "name")
 
@@ -415,7 +480,7 @@ class _SsoState:
     @pulumi.getter(name="oauthProviderDomain")
     def oauth_provider_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
         """
         return pulumi.get(self, "oauth_provider_domain")
 
@@ -424,8 +489,47 @@ class _SsoState:
         pulumi.set(self, "oauth_provider_domain", value)
 
     @_builtins.property
+    @pulumi.getter(name="openroamingSsids")
+    def openroaming_ssids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        """
+        return pulumi.get(self, "openroaming_ssids")
+
+    @openroaming_ssids.setter
+    def openroaming_ssids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "openroaming_ssids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingWbaClientCert")
+    def openroaming_wba_client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        """
+        return pulumi.get(self, "openroaming_wba_client_cert")
+
+    @openroaming_wba_client_cert.setter
+    def openroaming_wba_client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "openroaming_wba_client_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingWbaClientKey")
+    def openroaming_wba_client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        """
+        return pulumi.get(self, "openroaming_wba_client_key")
+
+    @openroaming_wba_client_key.setter
+    def openroaming_wba_client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "openroaming_wba_client_key", value)
+
+    @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Owning organization identifier for this SSO configuration
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -473,6 +577,9 @@ class Sso(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nameid_format: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 openroaming_wba_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_wba_client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  role_attr_extraction: pulumi.Input[Optional[_builtins.str]] = None,
                  role_attr_from: pulumi.Input[Optional[_builtins.str]] = None,
@@ -520,9 +627,13 @@ class Sso(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] idp_sso_url: IDP Single-Sign-On URL
         :param pulumi.Input[_builtins.bool] ignore_unmatched_roles: ignore any unmatched roles provided in assertion. By default, an assertion is treated as invalid for any unmatched role
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
-        :param pulumi.Input[_builtins.str] name: Name
+        :param pulumi.Input[_builtins.str] name: Display name of the SSO configuration
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
-        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] openroaming_ssids: SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_cert: Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_key: Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this SSO configuration
         :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         :param pulumi.Input[_builtins.str] role_attr_from: name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
@@ -591,6 +702,9 @@ class Sso(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nameid_format: pulumi.Input[Optional[_builtins.str]] = None,
                  oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 openroaming_wba_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 openroaming_wba_client_key: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  role_attr_extraction: pulumi.Input[Optional[_builtins.str]] = None,
                  role_attr_from: pulumi.Input[Optional[_builtins.str]] = None,
@@ -621,12 +735,17 @@ class Sso(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["nameid_format"] = nameid_format
             __props__.__dict__["oauth_provider_domain"] = oauth_provider_domain
+            __props__.__dict__["openroaming_ssids"] = openroaming_ssids
+            __props__.__dict__["openroaming_wba_client_cert"] = None if openroaming_wba_client_cert is None else pulumi.Output.secret(openroaming_wba_client_cert)
+            __props__.__dict__["openroaming_wba_client_key"] = None if openroaming_wba_client_key is None else pulumi.Output.secret(openroaming_wba_client_key)
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["role_attr_extraction"] = role_attr_extraction
             __props__.__dict__["role_attr_from"] = role_attr_from
             __props__.__dict__["domain"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["openroamingWbaClientCert", "openroamingWbaClientKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Sso, __self__).__init__(
             'junipermist:org/sso:Sso',
             resource_name,
@@ -648,6 +767,9 @@ class Sso(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             nameid_format: pulumi.Input[Optional[_builtins.str]] = None,
             oauth_provider_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            openroaming_ssids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            openroaming_wba_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            openroaming_wba_client_key: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             role_attr_extraction: pulumi.Input[Optional[_builtins.str]] = None,
             role_attr_from: pulumi.Input[Optional[_builtins.str]] = None) -> 'Sso':
@@ -668,9 +790,13 @@ class Sso(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] idp_sso_url: IDP Single-Sign-On URL
         :param pulumi.Input[_builtins.bool] ignore_unmatched_roles: ignore any unmatched roles provided in assertion. By default, an assertion is treated as invalid for any unmatched role
         :param pulumi.Input[_builtins.str] issuer: IDP issuer URL
-        :param pulumi.Input[_builtins.str] name: Name
+        :param pulumi.Input[_builtins.str] name: Display name of the SSO configuration
         :param pulumi.Input[_builtins.str] nameid_format: enum: `email`, `unspecified`
-        :param pulumi.Input[_builtins.str] oauth_provider_domain: If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        :param pulumi.Input[_builtins.str] oauth_provider_domain: Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] openroaming_ssids: SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_cert: Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        :param pulumi.Input[_builtins.str] openroaming_wba_client_key: Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this SSO configuration
         :param pulumi.Input[_builtins.str] role_attr_extraction: custom role attribute parsing scheme. Supported Role Parsing Schemes <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is “cn”</td></tr></table>
         :param pulumi.Input[_builtins.str] role_attr_from: name of the attribute in SAML Assertion to extract role from. Default: `Role`
         """
@@ -689,6 +815,9 @@ class Sso(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["nameid_format"] = nameid_format
         __props__.__dict__["oauth_provider_domain"] = oauth_provider_domain
+        __props__.__dict__["openroaming_ssids"] = openroaming_ssids
+        __props__.__dict__["openroaming_wba_client_cert"] = openroaming_wba_client_cert
+        __props__.__dict__["openroaming_wba_client_key"] = openroaming_wba_client_key
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["role_attr_extraction"] = role_attr_extraction
         __props__.__dict__["role_attr_from"] = role_attr_from
@@ -764,7 +893,7 @@ class Sso(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name
+        Display name of the SSO configuration
         """
         return pulumi.get(self, "name")
 
@@ -780,13 +909,40 @@ class Sso(pulumi.CustomResource):
     @pulumi.getter(name="oauthProviderDomain")
     def oauth_provider_domain(self) -> pulumi.Output[_builtins.str]:
         """
-        If `oauth_type`==`okta`, specifies the region-specific OAuth provider domain. enum: `okta.com`, `oktapreview.com`, `okta-emea.com`, `okta-gov.com`, `okta.mil`, `mtls.okta.com`
+        Provider domain for Okta OAuth SSO when `oauth_type`==`okta`
         """
         return pulumi.get(self, "oauth_provider_domain")
 
     @_builtins.property
+    @pulumi.getter(name="openroamingSsids")
+    def openroaming_ssids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        SSIDs that support OpenRoaming, used when `idp_type`==`openroaming`
+        """
+        return pulumi.get(self, "openroaming_ssids")
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingWbaClientCert")
+    def openroaming_wba_client_cert(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Optional WBA-issued client certificate for OpenRoaming. If not provided, the default WBA-issued certificate for Juniper will be used.
+        """
+        return pulumi.get(self, "openroaming_wba_client_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="openroamingWbaClientKey")
+    def openroaming_wba_client_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Optional WBA-issued client private key for OpenRoaming. If not provided, the default WBA-issued key for Juniper will be used.
+        """
+        return pulumi.get(self, "openroaming_wba_client_key")
+
+    @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Owning organization identifier for this SSO configuration
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property

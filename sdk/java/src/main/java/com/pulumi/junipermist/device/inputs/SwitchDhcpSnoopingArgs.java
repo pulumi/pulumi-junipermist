@@ -17,9 +17,17 @@ public final class SwitchDhcpSnoopingArgs extends com.pulumi.resources.ResourceA
 
     public static final SwitchDhcpSnoopingArgs Empty = new SwitchDhcpSnoopingArgs();
 
+    /**
+     * Whether DHCP snooping applies to all configured networks
+     * 
+     */
     @Import(name="allNetworks")
     private @Nullable Output<Boolean> allNetworks;
 
+    /**
+     * @return Whether DHCP snooping applies to all configured networks
+     * 
+     */
     public Optional<Output<Boolean>> allNetworks() {
         return Optional.ofNullable(this.allNetworks);
     }
@@ -54,22 +62,30 @@ public final class SwitchDhcpSnoopingArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.enableIpSourceGuard);
     }
 
+    /**
+     * Whether DHCP snooping is enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether DHCP snooping is enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * If `allNetworks`==`false`, list of network with DHCP snooping enabled
+     * Network names with DHCP snooping enabled when `allNetworks`==`false`
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return If `allNetworks`==`false`, list of network with DHCP snooping enabled
+     * @return Network names with DHCP snooping enabled when `allNetworks`==`false`
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -104,11 +120,23 @@ public final class SwitchDhcpSnoopingArgs extends com.pulumi.resources.ResourceA
             $ = new SwitchDhcpSnoopingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allNetworks Whether DHCP snooping applies to all configured networks
+         * 
+         * @return builder
+         * 
+         */
         public Builder allNetworks(@Nullable Output<Boolean> allNetworks) {
             $.allNetworks = allNetworks;
             return this;
         }
 
+        /**
+         * @param allNetworks Whether DHCP snooping applies to all configured networks
+         * 
+         * @return builder
+         * 
+         */
         public Builder allNetworks(Boolean allNetworks) {
             return allNetworks(Output.of(allNetworks));
         }
@@ -155,17 +183,29 @@ public final class SwitchDhcpSnoopingArgs extends com.pulumi.resources.ResourceA
             return enableIpSourceGuard(Output.of(enableIpSourceGuard));
         }
 
+        /**
+         * @param enabled Whether DHCP snooping is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether DHCP snooping is enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param networks If `allNetworks`==`false`, list of network with DHCP snooping enabled
+         * @param networks Network names with DHCP snooping enabled when `allNetworks`==`false`
          * 
          * @return builder
          * 
@@ -176,7 +216,7 @@ public final class SwitchDhcpSnoopingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networks If `allNetworks`==`false`, list of network with DHCP snooping enabled
+         * @param networks Network names with DHCP snooping enabled when `allNetworks`==`false`
          * 
          * @return builder
          * 
@@ -186,7 +226,7 @@ public final class SwitchDhcpSnoopingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param networks If `allNetworks`==`false`, list of network with DHCP snooping enabled
+         * @param networks Network names with DHCP snooping enabled when `allNetworks`==`false`
          * 
          * @return builder
          * 

@@ -18,9 +18,17 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
 
     public static final GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs Empty = new GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs();
 
+    /**
+     * Whether this sub-location blocks internet access until the Acceptable Use Policy is accepted
+     * 
+     */
     @Import(name="aupBlockInternetUntilAccepted")
     private @Nullable Output<Boolean> aupBlockInternetUntilAccepted;
 
+    /**
+     * @return Whether this sub-location blocks internet access until the Acceptable Use Policy is accepted
+     * 
+     */
     public Optional<Output<Boolean>> aupBlockInternetUntilAccepted() {
         return Optional.ofNullable(this.aupBlockInternetUntilAccepted);
     }
@@ -257,11 +265,23 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
             $ = new GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aupBlockInternetUntilAccepted Whether this sub-location blocks internet access until the Acceptable Use Policy is accepted
+         * 
+         * @return builder
+         * 
+         */
         public Builder aupBlockInternetUntilAccepted(@Nullable Output<Boolean> aupBlockInternetUntilAccepted) {
             $.aupBlockInternetUntilAccepted = aupBlockInternetUntilAccepted;
             return this;
         }
 
+        /**
+         * @param aupBlockInternetUntilAccepted Whether this sub-location blocks internet access until the Acceptable Use Policy is accepted
+         * 
+         * @return builder
+         * 
+         */
         public Builder aupBlockInternetUntilAccepted(Boolean aupBlockInternetUntilAccepted) {
             return aupBlockInternetUntilAccepted(Output.of(aupBlockInternetUntilAccepted));
         }

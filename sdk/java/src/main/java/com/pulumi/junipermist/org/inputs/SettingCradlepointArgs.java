@@ -16,37 +16,77 @@ public final class SettingCradlepointArgs extends com.pulumi.resources.ResourceA
 
     public static final SettingCradlepointArgs Empty = new SettingCradlepointArgs();
 
+    /**
+     * Cradlepoint API ID used by Mist for the integration
+     * 
+     */
     @Import(name="cpApiId")
     private @Nullable Output<String> cpApiId;
 
+    /**
+     * @return Cradlepoint API ID used by Mist for the integration
+     * 
+     */
     public Optional<Output<String>> cpApiId() {
         return Optional.ofNullable(this.cpApiId);
     }
 
+    /**
+     * Cradlepoint API key paired with the Cradlepoint API ID
+     * 
+     */
     @Import(name="cpApiKey")
     private @Nullable Output<String> cpApiKey;
 
+    /**
+     * @return Cradlepoint API key paired with the Cradlepoint API ID
+     * 
+     */
     public Optional<Output<String>> cpApiKey() {
         return Optional.ofNullable(this.cpApiKey);
     }
 
+    /**
+     * Cradlepoint ECM API ID used by Mist for the integration
+     * 
+     */
     @Import(name="ecmApiId")
     private @Nullable Output<String> ecmApiId;
 
+    /**
+     * @return Cradlepoint ECM API ID used by Mist for the integration
+     * 
+     */
     public Optional<Output<String>> ecmApiId() {
         return Optional.ofNullable(this.ecmApiId);
     }
 
+    /**
+     * Cradlepoint ECM API key paired with the ECM API ID
+     * 
+     */
     @Import(name="ecmApiKey")
     private @Nullable Output<String> ecmApiKey;
 
+    /**
+     * @return Cradlepoint ECM API key paired with the ECM API ID
+     * 
+     */
     public Optional<Output<String>> ecmApiKey() {
         return Optional.ofNullable(this.ecmApiKey);
     }
 
+    /**
+     * Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
+     * 
+     */
     @Import(name="enableLldp")
     private @Nullable Output<Boolean> enableLldp;
 
+    /**
+     * @return Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
+     * 
+     */
     public Optional<Output<Boolean>> enableLldp() {
         return Optional.ofNullable(this.enableLldp);
     }
@@ -79,47 +119,107 @@ public final class SettingCradlepointArgs extends com.pulumi.resources.ResourceA
             $ = new SettingCradlepointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cpApiId Cradlepoint API ID used by Mist for the integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpApiId(@Nullable Output<String> cpApiId) {
             $.cpApiId = cpApiId;
             return this;
         }
 
+        /**
+         * @param cpApiId Cradlepoint API ID used by Mist for the integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpApiId(String cpApiId) {
             return cpApiId(Output.of(cpApiId));
         }
 
+        /**
+         * @param cpApiKey Cradlepoint API key paired with the Cradlepoint API ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpApiKey(@Nullable Output<String> cpApiKey) {
             $.cpApiKey = cpApiKey;
             return this;
         }
 
+        /**
+         * @param cpApiKey Cradlepoint API key paired with the Cradlepoint API ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpApiKey(String cpApiKey) {
             return cpApiKey(Output.of(cpApiKey));
         }
 
+        /**
+         * @param ecmApiId Cradlepoint ECM API ID used by Mist for the integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder ecmApiId(@Nullable Output<String> ecmApiId) {
             $.ecmApiId = ecmApiId;
             return this;
         }
 
+        /**
+         * @param ecmApiId Cradlepoint ECM API ID used by Mist for the integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder ecmApiId(String ecmApiId) {
             return ecmApiId(Output.of(ecmApiId));
         }
 
+        /**
+         * @param ecmApiKey Cradlepoint ECM API key paired with the ECM API ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder ecmApiKey(@Nullable Output<String> ecmApiKey) {
             $.ecmApiKey = ecmApiKey;
             return this;
         }
 
+        /**
+         * @param ecmApiKey Cradlepoint ECM API key paired with the ECM API ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder ecmApiKey(String ecmApiKey) {
             return ecmApiKey(Output.of(ecmApiKey));
         }
 
+        /**
+         * @param enableLldp Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableLldp(@Nullable Output<Boolean> enableLldp) {
             $.enableLldp = enableLldp;
             return this;
         }
 
+        /**
+         * @param enableLldp Whether Mist uses Cradlepoint LLDP data to link routers to Mist sites and devices
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableLldp(Boolean enableLldp) {
             return enableLldp(Output.of(enableLldp));
         }

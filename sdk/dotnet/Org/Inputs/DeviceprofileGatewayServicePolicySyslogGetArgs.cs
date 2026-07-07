@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class DeviceprofileGatewayServicePolicySyslogGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether syslog logging is enabled for the service policy
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("serverNames")]
         private InputList<string>? _serverNames;
+
+        /// <summary>
+        /// Names of syslog servers that receive logs for this service policy
+        /// </summary>
         public InputList<string> ServerNames
         {
             get => _serverNames ?? (_serverNames = new InputList<string>());

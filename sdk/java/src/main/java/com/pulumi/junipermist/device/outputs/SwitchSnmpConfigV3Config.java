@@ -17,29 +17,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchSnmpConfigV3Config {
+    /**
+     * @return SNMPv3 notification definitions used for traps and informs
+     * 
+     */
     private @Nullable List<SwitchSnmpConfigV3ConfigNotify> notifies;
+    /**
+     * @return SNMPv3 notification filter profiles
+     * 
+     */
     private @Nullable List<SwitchSnmpConfigV3ConfigNotifyFilter> notifyFilters;
+    /**
+     * @return SNMPv3 notification target addresses
+     * 
+     */
     private @Nullable List<SwitchSnmpConfigV3ConfigTargetAddress> targetAddresses;
+    /**
+     * @return SNMPv3 target parameter profiles
+     * 
+     */
     private @Nullable List<SwitchSnmpConfigV3ConfigTargetParameter> targetParameters;
+    /**
+     * @return SNMPv3 USM engine configurations
+     * 
+     */
     private @Nullable List<SwitchSnmpConfigV3ConfigUsm> usms;
+    /**
+     * @return SNMPv3 VACM access control configuration
+     * 
+     */
     private @Nullable SwitchSnmpConfigV3ConfigVacm vacm;
 
     private SwitchSnmpConfigV3Config() {}
+    /**
+     * @return SNMPv3 notification definitions used for traps and informs
+     * 
+     */
     public List<SwitchSnmpConfigV3ConfigNotify> notifies() {
         return this.notifies == null ? List.of() : this.notifies;
     }
+    /**
+     * @return SNMPv3 notification filter profiles
+     * 
+     */
     public List<SwitchSnmpConfigV3ConfigNotifyFilter> notifyFilters() {
         return this.notifyFilters == null ? List.of() : this.notifyFilters;
     }
+    /**
+     * @return SNMPv3 notification target addresses
+     * 
+     */
     public List<SwitchSnmpConfigV3ConfigTargetAddress> targetAddresses() {
         return this.targetAddresses == null ? List.of() : this.targetAddresses;
     }
+    /**
+     * @return SNMPv3 target parameter profiles
+     * 
+     */
     public List<SwitchSnmpConfigV3ConfigTargetParameter> targetParameters() {
         return this.targetParameters == null ? List.of() : this.targetParameters;
     }
+    /**
+     * @return SNMPv3 USM engine configurations
+     * 
+     */
     public List<SwitchSnmpConfigV3ConfigUsm> usms() {
         return this.usms == null ? List.of() : this.usms;
     }
+    /**
+     * @return SNMPv3 VACM access control configuration
+     * 
+     */
     public Optional<SwitchSnmpConfigV3ConfigVacm> vacm() {
         return Optional.ofNullable(this.vacm);
     }

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchVrfInstancesExtraRoutesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Next-hop address
+        /// IPv4 next-hop address for this VRF extra route
         /// </summary>
         [Input("via", required: true)]
         public Input<string> Via { get; set; } = null!;

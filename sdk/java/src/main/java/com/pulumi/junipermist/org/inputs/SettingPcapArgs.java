@@ -16,22 +16,30 @@ public final class SettingPcapArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingPcapArgs Empty = new SettingPcapArgs();
 
+    /**
+     * Storage bucket name used for organization packet capture files
+     * 
+     */
     @Import(name="bucket")
     private @Nullable Output<String> bucket;
 
+    /**
+     * @return Storage bucket name used for organization packet capture files
+     * 
+     */
     public Optional<Output<String>> bucket() {
         return Optional.ofNullable(this.bucket);
     }
 
     /**
-     * Max_len of non-management packets to capture
+     * Maximum length of non-management packets to capture, in bytes
      * 
      */
     @Import(name="maxPktLen")
     private @Nullable Output<Integer> maxPktLen;
 
     /**
-     * @return Max_len of non-management packets to capture
+     * @return Maximum length of non-management packets to capture, in bytes
      * 
      */
     public Optional<Output<Integer>> maxPktLen() {
@@ -63,17 +71,29 @@ public final class SettingPcapArgs extends com.pulumi.resources.ResourceArgs {
             $ = new SettingPcapArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bucket Storage bucket name used for organization packet capture files
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucket(@Nullable Output<String> bucket) {
             $.bucket = bucket;
             return this;
         }
 
+        /**
+         * @param bucket Storage bucket name used for organization packet capture files
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
         }
 
         /**
-         * @param maxPktLen Max_len of non-management packets to capture
+         * @param maxPktLen Maximum length of non-management packets to capture, in bytes
          * 
          * @return builder
          * 
@@ -84,7 +104,7 @@ public final class SettingPcapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxPktLen Max_len of non-management packets to capture
+         * @param maxPktLen Maximum length of non-management packets to capture, in bytes
          * 
          * @return builder
          * 

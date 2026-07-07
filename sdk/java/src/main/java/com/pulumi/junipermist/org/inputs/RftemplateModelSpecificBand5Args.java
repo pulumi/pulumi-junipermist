@@ -18,29 +18,45 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
 
     public static final RftemplateModelSpecificBand5Args Empty = new RftemplateModelSpecificBand5Args();
 
+    /**
+     * Whether RRM may disable the 5 GHz radio when optimizing RF settings
+     * 
+     */
     @Import(name="allowRrmDisable")
     private @Nullable Output<Boolean> allowRrmDisable;
 
+    /**
+     * @return Whether RRM may disable the 5 GHz radio when optimizing RF settings
+     * 
+     */
     public Optional<Output<Boolean>> allowRrmDisable() {
         return Optional.ofNullable(this.allowRrmDisable);
     }
 
+    /**
+     * External antenna gain for the 5 GHz radio
+     * 
+     */
     @Import(name="antGain")
     private @Nullable Output<Integer> antGain;
 
+    /**
+     * @return External antenna gain for the 5 GHz radio
+     * 
+     */
     public Optional<Output<Integer>> antGain() {
         return Optional.ofNullable(this.antGain);
     }
 
     /**
-     * enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+     * Radio chain mode for the 5 GHz radio
      * 
      */
     @Import(name="antennaMode")
     private @Nullable Output<String> antennaMode;
 
     /**
-     * @return enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+     * @return Radio chain mode for the 5 GHz radio
      * 
      */
     public Optional<Output<String>> antennaMode() {
@@ -48,14 +64,14 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
     }
 
     /**
-     * channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
+     * Channel width configured for the 5 GHz radio
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
+     * @return Channel width configured for the 5 GHz radio
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -63,14 +79,14 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
     }
 
     /**
-     * For RFTemplates. List of channels, null or empty array means auto
+     * Allowed channel list for the 5 GHz radio; null or an empty array uses automatic selection
      * 
      */
     @Import(name="channels")
     private @Nullable Output<List<Integer>> channels;
 
     /**
-     * @return For RFTemplates. List of channels, null or empty array means auto
+     * @return Allowed channel list for the 5 GHz radio; null or an empty array uses automatic selection
      * 
      */
     public Optional<Output<List<Integer>>> channels() {
@@ -93,14 +109,14 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
     }
 
     /**
-     * Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+     * Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
      * 
      */
     @Import(name="power")
     private @Nullable Output<Integer> power;
 
     /**
-     * @return Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+     * @return Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
      * 
      */
     public Optional<Output<Integer>> power() {
@@ -108,14 +124,14 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
     }
 
     /**
-     * When power=0, max tx power to use, HW-specific values will be used if not set
+     * When power=null/unset, max tx power to use, HW-specific values will be used if not set
      * 
      */
     @Import(name="powerMax")
     private @Nullable Output<Integer> powerMax;
 
     /**
-     * @return When power=0, max tx power to use, HW-specific values will be used if not set
+     * @return When power=null/unset, max tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Output<Integer>> powerMax() {
@@ -123,14 +139,14 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
     }
 
     /**
-     * When power=0, min tx power to use, HW-specific values will be used if not set
+     * When power=null/unset, min tx power to use, HW-specific values will be used if not set
      * 
      */
     @Import(name="powerMin")
     private @Nullable Output<Integer> powerMin;
 
     /**
-     * @return When power=0, min tx power to use, HW-specific values will be used if not set
+     * @return When power=null/unset, min tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Output<Integer>> powerMin() {
@@ -138,14 +154,14 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
     }
 
     /**
-     * enum: `auto`, `long`, `short`
+     * 802.11 preamble mode used by the 5 GHz radio
      * 
      */
     @Import(name="preamble")
     private @Nullable Output<String> preamble;
 
     /**
-     * @return enum: `auto`, `long`, `short`
+     * @return 802.11 preamble mode used by the 5 GHz radio
      * 
      */
     public Optional<Output<String>> preamble() {
@@ -185,26 +201,50 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
             $ = new RftemplateModelSpecificBand5Args(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowRrmDisable Whether RRM may disable the 5 GHz radio when optimizing RF settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowRrmDisable(@Nullable Output<Boolean> allowRrmDisable) {
             $.allowRrmDisable = allowRrmDisable;
             return this;
         }
 
+        /**
+         * @param allowRrmDisable Whether RRM may disable the 5 GHz radio when optimizing RF settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowRrmDisable(Boolean allowRrmDisable) {
             return allowRrmDisable(Output.of(allowRrmDisable));
         }
 
+        /**
+         * @param antGain External antenna gain for the 5 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain(@Nullable Output<Integer> antGain) {
             $.antGain = antGain;
             return this;
         }
 
+        /**
+         * @param antGain External antenna gain for the 5 GHz radio
+         * 
+         * @return builder
+         * 
+         */
         public Builder antGain(Integer antGain) {
             return antGain(Output.of(antGain));
         }
 
         /**
-         * @param antennaMode enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+         * @param antennaMode Radio chain mode for the 5 GHz radio
          * 
          * @return builder
          * 
@@ -215,7 +255,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param antennaMode enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
+         * @param antennaMode Radio chain mode for the 5 GHz radio
          * 
          * @return builder
          * 
@@ -225,7 +265,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param bandwidth channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
+         * @param bandwidth Channel width configured for the 5 GHz radio
          * 
          * @return builder
          * 
@@ -236,7 +276,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param bandwidth channel width for the 5GHz band. enum: `0`(disabled, response only), `20`, `40`, `80`
+         * @param bandwidth Channel width configured for the 5 GHz radio
          * 
          * @return builder
          * 
@@ -246,7 +286,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param channels For RFTemplates. List of channels, null or empty array means auto
+         * @param channels Allowed channel list for the 5 GHz radio; null or an empty array uses automatic selection
          * 
          * @return builder
          * 
@@ -257,7 +297,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param channels For RFTemplates. List of channels, null or empty array means auto
+         * @param channels Allowed channel list for the 5 GHz radio; null or an empty array uses automatic selection
          * 
          * @return builder
          * 
@@ -267,7 +307,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param channels For RFTemplates. List of channels, null or empty array means auto
+         * @param channels Allowed channel list for the 5 GHz radio; null or an empty array uses automatic selection
          * 
          * @return builder
          * 
@@ -298,7 +338,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param power Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+         * @param power Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
          * 
          * @return builder
          * 
@@ -309,7 +349,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param power Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+         * @param power Radio Tx power, in dBm. Can be an integer 0-25 for static power configuration, or `null` or unset for auto power mode
          * 
          * @return builder
          * 
@@ -319,7 +359,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param powerMax When power=0, max tx power to use, HW-specific values will be used if not set
+         * @param powerMax When power=null/unset, max tx power to use, HW-specific values will be used if not set
          * 
          * @return builder
          * 
@@ -330,7 +370,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param powerMax When power=0, max tx power to use, HW-specific values will be used if not set
+         * @param powerMax When power=null/unset, max tx power to use, HW-specific values will be used if not set
          * 
          * @return builder
          * 
@@ -340,7 +380,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param powerMin When power=0, min tx power to use, HW-specific values will be used if not set
+         * @param powerMin When power=null/unset, min tx power to use, HW-specific values will be used if not set
          * 
          * @return builder
          * 
@@ -351,7 +391,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param powerMin When power=0, min tx power to use, HW-specific values will be used if not set
+         * @param powerMin When power=null/unset, min tx power to use, HW-specific values will be used if not set
          * 
          * @return builder
          * 
@@ -361,7 +401,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param preamble enum: `auto`, `long`, `short`
+         * @param preamble 802.11 preamble mode used by the 5 GHz radio
          * 
          * @return builder
          * 
@@ -372,7 +412,7 @@ public final class RftemplateModelSpecificBand5Args extends com.pulumi.resources
         }
 
         /**
-         * @param preamble enum: `auto`, `long`, `short`
+         * @param preamble 802.11 preamble mode used by the 5 GHz radio
          * 
          * @return builder
          * 

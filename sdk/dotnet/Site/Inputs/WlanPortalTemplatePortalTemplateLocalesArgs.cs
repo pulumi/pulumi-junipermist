@@ -66,6 +66,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("authButtonSponsor")]
         public Input<string>? AuthButtonSponsor { get; set; }
 
+        /// <summary>
+        /// Localized heading text displayed above portal authentication options
+        /// </summary>
         [Input("authLabel")]
         public Input<string>? AuthLabel { get; set; }
 
@@ -82,7 +85,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? CompanyError { get; set; }
 
         /// <summary>
-        /// Label of company field
+        /// Localized label displayed for the company input field
         /// </summary>
         [Input("companyLabel")]
         public Input<string>? CompanyLabel { get; set; }
@@ -99,21 +102,39 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("emailCancel")]
         public Input<string>? EmailCancel { get; set; }
 
+        /// <summary>
+        /// Localized link text for requesting help when the email access code was not received
+        /// </summary>
         [Input("emailCodeCancel")]
         public Input<string>? EmailCodeCancel { get; set; }
 
+        /// <summary>
+        /// Localized error message shown when the alternate email address for access-code delivery is invalid
+        /// </summary>
         [Input("emailCodeError")]
         public Input<string>? EmailCodeError { get; set; }
 
+        /// <summary>
+        /// Localized label for the email access-code input field
+        /// </summary>
         [Input("emailCodeFieldLabel")]
         public Input<string>? EmailCodeFieldLabel { get; set; }
 
+        /// <summary>
+        /// Localized instructional text shown before entering the email access code
+        /// </summary>
         [Input("emailCodeMessage")]
         public Input<string>? EmailCodeMessage { get; set; }
 
+        /// <summary>
+        /// Localized button label for submitting the email access code
+        /// </summary>
         [Input("emailCodeSubmit")]
         public Input<string>? EmailCodeSubmit { get; set; }
 
+        /// <summary>
+        /// Localized title shown on the email access-code entry page
+        /// </summary>
         [Input("emailCodeTitle")]
         public Input<string>? EmailCodeTitle { get; set; }
 
@@ -123,15 +144,21 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("emailError")]
         public Input<string>? EmailError { get; set; }
 
+        /// <summary>
+        /// Localized label for the email address input field
+        /// </summary>
         [Input("emailFieldLabel")]
         public Input<string>? EmailFieldLabel { get; set; }
 
         /// <summary>
-        /// Label of email field
+        /// Localized label displayed for the email input field
         /// </summary>
         [Input("emailLabel")]
         public Input<string>? EmailLabel { get; set; }
 
+        /// <summary>
+        /// Localized instructional text explaining email access-code delivery
+        /// </summary>
         [Input("emailMessage")]
         public Input<string>? EmailMessage { get; set; }
 
@@ -154,7 +181,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Field1error { get; set; }
 
         /// <summary>
-        /// Label of field1
+        /// Localized label for custom field 1 input
         /// </summary>
         [Input("field1label")]
         public Input<string>? Field1label { get; set; }
@@ -166,7 +193,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Field2error { get; set; }
 
         /// <summary>
-        /// Label of field2
+        /// Localized label for custom field 2 input
         /// </summary>
         [Input("field2label")]
         public Input<string>? Field2label { get; set; }
@@ -178,7 +205,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Field3error { get; set; }
 
         /// <summary>
-        /// Label of field3
+        /// Localized label for custom field 3 input
         /// </summary>
         [Input("field3label")]
         public Input<string>? Field3label { get; set; }
@@ -190,7 +217,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Field4error { get; set; }
 
         /// <summary>
-        /// Label of field4
+        /// Localized label for custom field 4 input
         /// </summary>
         [Input("field4label")]
         public Input<string>? Field4label { get; set; }
@@ -214,11 +241,14 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? MarketingPolicyOptInLabel { get; set; }
 
         /// <summary>
-        /// marketing policy text
+        /// Localized text of the marketing policy opt-in content
         /// </summary>
         [Input("marketingPolicyOptInText")]
         public Input<string>? MarketingPolicyOptInText { get; set; }
 
+        /// <summary>
+        /// Localized main message displayed on the guest portal sign-in page
+        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
@@ -229,7 +259,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? NameError { get; set; }
 
         /// <summary>
-        /// Label of name field
+        /// Localized label displayed for the name input field
         /// </summary>
         [Input("nameLabel")]
         public Input<string>? NameLabel { get; set; }
@@ -240,6 +270,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("optoutLabel")]
         public Input<string>? OptoutLabel { get; set; }
 
+        /// <summary>
+        /// Localized browser or page title shown for the guest portal
+        /// </summary>
         [Input("pageTitle")]
         public Input<string>? PageTitle { get; set; }
 
@@ -256,11 +289,14 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? PassphraseError { get; set; }
 
         /// <summary>
-        /// Passphrase
+        /// Localized label for the passphrase input field
         /// </summary>
         [Input("passphraseLabel")]
         public Input<string>? PassphraseLabel { get; set; }
 
+        /// <summary>
+        /// Localized instructional text shown on the passphrase sign-in page
+        /// </summary>
         [Input("passphraseMessage")]
         public Input<string>? PassphraseMessage { get; set; }
 
@@ -301,7 +337,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? PrivacyPolicyText { get; set; }
 
         /// <summary>
-        /// Label to denote required field
+        /// Localized text used to mark a form field as required
         /// </summary>
         [Input("requiredFieldLabel")]
         public Input<string>? RequiredFieldLabel { get; set; }
@@ -312,9 +348,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("signInLabel")]
         public Input<string>? SignInLabel { get; set; }
 
+        /// <summary>
+        /// Localized default option text shown in the SMS carrier selector
+        /// </summary>
         [Input("smsCarrierDefault")]
         public Input<string>? SmsCarrierDefault { get; set; }
 
+        /// <summary>
+        /// Localized error message shown when no mobile carrier is selected
+        /// </summary>
         [Input("smsCarrierError")]
         public Input<string>? SmsCarrierError { get; set; }
 
@@ -336,9 +378,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("smsCodeError")]
         public Input<string>? SmsCodeError { get; set; }
 
+        /// <summary>
+        /// Localized label for the SMS confirmation-code input field
+        /// </summary>
         [Input("smsCodeFieldLabel")]
         public Input<string>? SmsCodeFieldLabel { get; set; }
 
+        /// <summary>
+        /// Localized instructional text shown before entering the SMS access code
+        /// </summary>
         [Input("smsCodeMessage")]
         public Input<string>? SmsCodeMessage { get; set; }
 
@@ -348,12 +396,21 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("smsCodeSubmit")]
         public Input<string>? SmsCodeSubmit { get; set; }
 
+        /// <summary>
+        /// Localized title shown on the SMS access-code entry page
+        /// </summary>
         [Input("smsCodeTitle")]
         public Input<string>? SmsCodeTitle { get; set; }
 
+        /// <summary>
+        /// Localized label for the SMS country-code input field
+        /// </summary>
         [Input("smsCountryFieldLabel")]
         public Input<string>? SmsCountryFieldLabel { get; set; }
 
+        /// <summary>
+        /// Localized example country code format shown for SMS authentication
+        /// </summary>
         [Input("smsCountryFormat")]
         public Input<string>? SmsCountryFormat { get; set; }
 
@@ -375,6 +432,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("smsNumberCancel")]
         public Input<string>? SmsNumberCancel { get; set; }
 
+        /// <summary>
+        /// Localized error message shown when the mobile number is invalid
+        /// </summary>
         [Input("smsNumberError")]
         public Input<string>? SmsNumberError { get; set; }
 
@@ -384,9 +444,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("smsNumberFieldLabel")]
         public Input<string>? SmsNumberFieldLabel { get; set; }
 
+        /// <summary>
+        /// Localized example mobile number format shown for SMS authentication
+        /// </summary>
         [Input("smsNumberFormat")]
         public Input<string>? SmsNumberFormat { get; set; }
 
+        /// <summary>
+        /// Localized instructional text explaining SMS access-code delivery
+        /// </summary>
         [Input("smsNumberMessage")]
         public Input<string>? SmsNumberMessage { get; set; }
 
@@ -402,12 +468,21 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("smsNumberTitle")]
         public Input<string>? SmsNumberTitle { get; set; }
 
+        /// <summary>
+        /// Localized example username format shown for SMS authentication
+        /// </summary>
         [Input("smsUsernameFormat")]
         public Input<string>? SmsUsernameFormat { get; set; }
 
+        /// <summary>
+        /// Localized link text for returning to edit the sponsor request form
+        /// </summary>
         [Input("sponsorBackLink")]
         public Input<string>? SponsorBackLink { get; set; }
 
+        /// <summary>
+        /// Localized button label for canceling sponsor authentication
+        /// </summary>
         [Input("sponsorCancel")]
         public Input<string>? SponsorCancel { get; set; }
 
@@ -417,15 +492,27 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("sponsorEmail")]
         public Input<string>? SponsorEmail { get; set; }
 
+        /// <summary>
+        /// Localized error message shown when the sponsor email address is invalid
+        /// </summary>
         [Input("sponsorEmailError")]
         public Input<string>? SponsorEmailError { get; set; }
 
+        /// <summary>
+        /// Localized status message prefix shown when a sponsor approves the request
+        /// </summary>
         [Input("sponsorInfoApproved")]
         public Input<string>? SponsorInfoApproved { get; set; }
 
+        /// <summary>
+        /// Localized status message prefix shown when a sponsor denies the request
+        /// </summary>
         [Input("sponsorInfoDenied")]
         public Input<string>? SponsorInfoDenied { get; set; }
 
+        /// <summary>
+        /// Localized status message prefix shown after a sponsor notification is sent
+        /// </summary>
         [Input("sponsorInfoPending")]
         public Input<string>? SponsorInfoPending { get; set; }
 
@@ -435,9 +522,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("sponsorName")]
         public Input<string>? SponsorName { get; set; }
 
+        /// <summary>
+        /// Localized error message shown when the sponsor name is missing
+        /// </summary>
         [Input("sponsorNameError")]
         public Input<string>? SponsorNameError { get; set; }
 
+        /// <summary>
+        /// Localized additional status text shown while sponsor approval is pending
+        /// </summary>
         [Input("sponsorNotePending")]
         public Input<string>? SponsorNotePending { get; set; }
 
@@ -471,9 +564,15 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("sponsorSubmit")]
         public Input<string>? SponsorSubmit { get; set; }
 
+        /// <summary>
+        /// Localized error message shown when no sponsor is selected
+        /// </summary>
         [Input("sponsorsError")]
         public Input<string>? SponsorsError { get; set; }
 
+        /// <summary>
+        /// Localized label for the sponsor selection field
+        /// </summary>
         [Input("sponsorsFieldLabel")]
         public Input<string>? SponsorsFieldLabel { get; set; }
 

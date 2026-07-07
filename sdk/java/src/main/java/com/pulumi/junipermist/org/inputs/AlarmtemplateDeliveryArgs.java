@@ -19,14 +19,14 @@ public final class AlarmtemplateDeliveryArgs extends com.pulumi.resources.Resour
     public static final AlarmtemplateDeliveryArgs Empty = new AlarmtemplateDeliveryArgs();
 
     /**
-     * List of additional email string to deliver the alarms via emails
+     * Additional email recipients for alarm delivery
      * 
      */
     @Import(name="additionalEmails")
     private @Nullable Output<List<String>> additionalEmails;
 
     /**
-     * @return List of additional email string to deliver the alarms via emails
+     * @return Additional email recipients for alarm delivery
      * 
      */
     public Optional<Output<List<String>>> additionalEmails() {
@@ -106,7 +106,7 @@ public final class AlarmtemplateDeliveryArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param additionalEmails List of additional email string to deliver the alarms via emails
+         * @param additionalEmails Additional email recipients for alarm delivery
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class AlarmtemplateDeliveryArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param additionalEmails List of additional email string to deliver the alarms via emails
+         * @param additionalEmails Additional email recipients for alarm delivery
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class AlarmtemplateDeliveryArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param additionalEmails List of additional email string to deliver the alarms via emails
+         * @param additionalEmails Additional email recipients for alarm delivery
          * 
          * @return builder
          * 

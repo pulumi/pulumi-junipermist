@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayNetworkInternalAccess
     {
+        /// <summary>
+        /// Whether internal access is enabled for this network
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

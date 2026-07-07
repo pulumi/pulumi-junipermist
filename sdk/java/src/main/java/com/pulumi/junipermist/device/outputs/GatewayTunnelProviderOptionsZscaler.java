@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayTunnelProviderOptionsZscaler {
+    /**
+     * @return Whether Zscaler blocks internet access until the Acceptable Use Policy is accepted
+     * 
+     */
     private @Nullable Boolean aupBlockInternetUntilAccepted;
     /**
      * @return Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
@@ -57,7 +61,7 @@ public final class GatewayTunnelProviderOptionsZscaler {
      */
     private @Nullable Boolean ofwEnabled;
     /**
-     * @return `sub-locations` can be used for specific uses cases to define different configuration based on the user network
+     * @return Per-network Zscaler sub-location settings
      * 
      */
     private @Nullable List<GatewayTunnelProviderOptionsZscalerSubLocation> subLocations;
@@ -88,6 +92,10 @@ public final class GatewayTunnelProviderOptionsZscaler {
     private @Nullable Boolean xffForwardEnabled;
 
     private GatewayTunnelProviderOptionsZscaler() {}
+    /**
+     * @return Whether Zscaler blocks internet access until the Acceptable Use Policy is accepted
+     * 
+     */
     public Optional<Boolean> aupBlockInternetUntilAccepted() {
         return Optional.ofNullable(this.aupBlockInternetUntilAccepted);
     }
@@ -148,7 +156,7 @@ public final class GatewayTunnelProviderOptionsZscaler {
         return Optional.ofNullable(this.ofwEnabled);
     }
     /**
-     * @return `sub-locations` can be used for specific uses cases to define different configuration based on the user network
+     * @return Per-network Zscaler sub-location settings
      * 
      */
     public List<GatewayTunnelProviderOptionsZscalerSubLocation> subLocations() {

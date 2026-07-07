@@ -36,36 +36,44 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
     }
 
     /**
-     * API override for POP selection
+     * Geographic coordinate override used for tunnel POP selection
      * 
      */
     @Import(name="latlng")
     private @Nullable Output<GatewaytemplateTunnelConfigsAutoProvisionLatlngArgs> latlng;
 
     /**
-     * @return API override for POP selection
+     * @return Geographic coordinate override used for tunnel POP selection
      * 
      */
     public Optional<Output<GatewaytemplateTunnelConfigsAutoProvisionLatlngArgs>> latlng() {
         return Optional.ofNullable(this.latlng);
     }
 
+    /**
+     * Main auto-provisioned tunnel endpoint settings
+     * 
+     */
     @Import(name="primary")
     private @Nullable Output<GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs> primary;
 
+    /**
+     * @return Main auto-provisioned tunnel endpoint settings
+     * 
+     */
     public Optional<Output<GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs>> primary() {
         return Optional.ofNullable(this.primary);
     }
 
     /**
-     * enum: `jse-ipsec`, `zscaler-ipsec`
+     * Tunnel provider used for automatic endpoint provisioning
      * 
      */
     @Import(name="provider", required=true)
     private Output<String> provider;
 
     /**
-     * @return enum: `jse-ipsec`, `zscaler-ipsec`
+     * @return Tunnel provider used for automatic endpoint provisioning
      * 
      */
     public Output<String> provider() {
@@ -87,9 +95,17 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * Backup auto-provisioned tunnel endpoint settings
+     * 
+     */
     @Import(name="secondary")
     private @Nullable Output<GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgs> secondary;
 
+    /**
+     * @return Backup auto-provisioned tunnel endpoint settings
+     * 
+     */
     public Optional<Output<GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgs>> secondary() {
         return Optional.ofNullable(this.secondary);
     }
@@ -161,7 +177,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         }
 
         /**
-         * @param latlng API override for POP selection
+         * @param latlng Geographic coordinate override used for tunnel POP selection
          * 
          * @return builder
          * 
@@ -172,7 +188,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         }
 
         /**
-         * @param latlng API override for POP selection
+         * @param latlng Geographic coordinate override used for tunnel POP selection
          * 
          * @return builder
          * 
@@ -181,17 +197,29 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
             return latlng(Output.of(latlng));
         }
 
+        /**
+         * @param primary Main auto-provisioned tunnel endpoint settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder primary(@Nullable Output<GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs> primary) {
             $.primary = primary;
             return this;
         }
 
+        /**
+         * @param primary Main auto-provisioned tunnel endpoint settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder primary(GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs primary) {
             return primary(Output.of(primary));
         }
 
         /**
-         * @param provider enum: `jse-ipsec`, `zscaler-ipsec`
+         * @param provider Tunnel provider used for automatic endpoint provisioning
          * 
          * @return builder
          * 
@@ -202,7 +230,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         }
 
         /**
-         * @param provider enum: `jse-ipsec`, `zscaler-ipsec`
+         * @param provider Tunnel provider used for automatic endpoint provisioning
          * 
          * @return builder
          * 
@@ -232,11 +260,23 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
             return region(Output.of(region));
         }
 
+        /**
+         * @param secondary Backup auto-provisioned tunnel endpoint settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder secondary(@Nullable Output<GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgs> secondary) {
             $.secondary = secondary;
             return this;
         }
 
+        /**
+         * @param secondary Backup auto-provisioned tunnel endpoint settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder secondary(GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgs secondary) {
             return secondary(Output.of(secondary));
         }

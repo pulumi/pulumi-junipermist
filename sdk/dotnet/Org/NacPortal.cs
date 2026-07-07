@@ -102,13 +102,13 @@ namespace Pulumi.JuniperMist.Org
     public partial class NacPortal : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// if `Type`==`MarvisClient`. enum: `Wireless`, `wireless+wired`
+        /// If `Type`==`MarvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
         /// </summary>
         [Output("accessType")]
         public Output<string> AccessType { get; private set; } = null!;
 
         /// <summary>
-        /// Optional list of additional CA certificates to be used
+        /// Additional CA certificates trusted during NAC portal certificate onboarding
         /// </summary>
         [Output("additionalCacerts")]
         public Output<ImmutableArray<string>> AdditionalCacerts { get; private set; } = null!;
@@ -120,13 +120,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> AdditionalNacServerNames { get; private set; } = null!;
 
         /// <summary>
-        /// In days
+        /// Validity duration for portal-issued client certificates, in days
         /// </summary>
         [Output("certExpireTime")]
         public Output<int?> CertExpireTime { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `Wpa2`, `Wpa3`
+        /// EAP mode used when onboarding wireless clients through the NAC portal
         /// </summary>
         [Output("eapType")]
         public Output<string> EapType { get; private set; } = null!;
@@ -138,52 +138,55 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> EnableTelemetry { get; private set; } = null!;
 
         /// <summary>
-        /// In days
+        /// Number of days before certificate expiration to start sending reminder notifications
         /// </summary>
         [Output("expiryNotificationTime")]
         public Output<int?> ExpiryNotificationTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Human-readable name of the NAC portal
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// phase 2
+        /// Whether to send reminder notifications before portal-issued certificates expire
         /// </summary>
         [Output("notifyExpiry")]
         public Output<bool?> NotifyExpiry { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns this NAC portal
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Guest portal configuration when `Type`==`GuestPortal`. If 
-        ///   * `Auth`==`None`, the user is presented with a terms of service and can click and continue.
-        ///   * `Auth`==`External`, the user is redirected to an external URL for authentication.
-        ///   * `Auth`==`Multi`, the user is presented with a choice of authentication methods:
-        ///     - social logins: facebook / google / amazon / microsoft / azure
-        ///     - sponsor
-        ///     - sms: supported provider: twillio
-        ///     - email
-        ///     - sso
-        ///     - userpass: pre created guest list
+        /// Guest portal settings used when `Type`==`GuestPortal`
         /// </summary>
         [Output("portal")]
         public Output<Outputs.NacPortalPortal?> Portal { get; private set; } = null!;
 
+        /// <summary>
+        /// Wireless SSID associated with the NAC portal
+        /// </summary>
         [Output("ssid")]
         public Output<string?> Ssid { get; private set; } = null!;
 
+        /// <summary>
+        /// SAML SSO settings for NAC portal authentication and role mapping
+        /// </summary>
         [Output("sso")]
         public Output<Outputs.NacPortalSso?> Sso { get; private set; } = null!;
 
+        /// <summary>
+        /// Terms of service text shown in the NAC portal
+        /// </summary>
         [Output("tos")]
         public Output<string?> Tos { get; private set; } = null!;
 
         /// <summary>
-        /// enum: 
-        ///   * `GuestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-        ///   * `GuestPortal`: NAC-Based Guest Portal
-        ///   * `MarvisClient`
+        /// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -236,7 +239,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacPortalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// if `Type`==`MarvisClient`. enum: `Wireless`, `wireless+wired`
+        /// If `Type`==`MarvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
         /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
@@ -245,7 +248,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _additionalCacerts;
 
         /// <summary>
-        /// Optional list of additional CA certificates to be used
+        /// Additional CA certificates trusted during NAC portal certificate onboarding
         /// </summary>
         public InputList<string> AdditionalCacerts
         {
@@ -266,13 +269,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// In days
+        /// Validity duration for portal-issued client certificates, in days
         /// </summary>
         [Input("certExpireTime")]
         public Input<int>? CertExpireTime { get; set; }
 
         /// <summary>
-        /// enum: `Wpa2`, `Wpa3`
+        /// EAP mode used when onboarding wireless clients through the NAC portal
         /// </summary>
         [Input("eapType")]
         public Input<string>? EapType { get; set; }
@@ -284,52 +287,55 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? EnableTelemetry { get; set; }
 
         /// <summary>
-        /// In days
+        /// Number of days before certificate expiration to start sending reminder notifications
         /// </summary>
         [Input("expiryNotificationTime")]
         public Input<int>? ExpiryNotificationTime { get; set; }
 
+        /// <summary>
+        /// Human-readable name of the NAC portal
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// phase 2
+        /// Whether to send reminder notifications before portal-issued certificates expire
         /// </summary>
         [Input("notifyExpiry")]
         public Input<bool>? NotifyExpiry { get; set; }
 
+        /// <summary>
+        /// Organization that owns this NAC portal
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Guest portal configuration when `Type`==`GuestPortal`. If 
-        ///   * `Auth`==`None`, the user is presented with a terms of service and can click and continue.
-        ///   * `Auth`==`External`, the user is redirected to an external URL for authentication.
-        ///   * `Auth`==`Multi`, the user is presented with a choice of authentication methods:
-        ///     - social logins: facebook / google / amazon / microsoft / azure
-        ///     - sponsor
-        ///     - sms: supported provider: twillio
-        ///     - email
-        ///     - sso
-        ///     - userpass: pre created guest list
+        /// Guest portal settings used when `Type`==`GuestPortal`
         /// </summary>
         [Input("portal")]
         public Input<Inputs.NacPortalPortalArgs>? Portal { get; set; }
 
+        /// <summary>
+        /// Wireless SSID associated with the NAC portal
+        /// </summary>
         [Input("ssid")]
         public Input<string>? Ssid { get; set; }
 
+        /// <summary>
+        /// SAML SSO settings for NAC portal authentication and role mapping
+        /// </summary>
         [Input("sso")]
         public Input<Inputs.NacPortalSsoArgs>? Sso { get; set; }
 
+        /// <summary>
+        /// Terms of service text shown in the NAC portal
+        /// </summary>
         [Input("tos")]
         public Input<string>? Tos { get; set; }
 
         /// <summary>
-        /// enum: 
-        ///   * `GuestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-        ///   * `GuestPortal`: NAC-Based Guest Portal
-        ///   * `MarvisClient`
+        /// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -343,7 +349,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class NacPortalState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// if `Type`==`MarvisClient`. enum: `Wireless`, `wireless+wired`
+        /// If `Type`==`MarvisClient`, whether onboarding applies to wireless clients or both wireless and wired clients
         /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
@@ -352,7 +358,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _additionalCacerts;
 
         /// <summary>
-        /// Optional list of additional CA certificates to be used
+        /// Additional CA certificates trusted during NAC portal certificate onboarding
         /// </summary>
         public InputList<string> AdditionalCacerts
         {
@@ -373,13 +379,13 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// In days
+        /// Validity duration for portal-issued client certificates, in days
         /// </summary>
         [Input("certExpireTime")]
         public Input<int>? CertExpireTime { get; set; }
 
         /// <summary>
-        /// enum: `Wpa2`, `Wpa3`
+        /// EAP mode used when onboarding wireless clients through the NAC portal
         /// </summary>
         [Input("eapType")]
         public Input<string>? EapType { get; set; }
@@ -391,52 +397,55 @@ namespace Pulumi.JuniperMist.Org
         public Input<bool>? EnableTelemetry { get; set; }
 
         /// <summary>
-        /// In days
+        /// Number of days before certificate expiration to start sending reminder notifications
         /// </summary>
         [Input("expiryNotificationTime")]
         public Input<int>? ExpiryNotificationTime { get; set; }
 
+        /// <summary>
+        /// Human-readable name of the NAC portal
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// phase 2
+        /// Whether to send reminder notifications before portal-issued certificates expire
         /// </summary>
         [Input("notifyExpiry")]
         public Input<bool>? NotifyExpiry { get; set; }
 
+        /// <summary>
+        /// Organization that owns this NAC portal
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Guest portal configuration when `Type`==`GuestPortal`. If 
-        ///   * `Auth`==`None`, the user is presented with a terms of service and can click and continue.
-        ///   * `Auth`==`External`, the user is redirected to an external URL for authentication.
-        ///   * `Auth`==`Multi`, the user is presented with a choice of authentication methods:
-        ///     - social logins: facebook / google / amazon / microsoft / azure
-        ///     - sponsor
-        ///     - sms: supported provider: twillio
-        ///     - email
-        ///     - sso
-        ///     - userpass: pre created guest list
+        /// Guest portal settings used when `Type`==`GuestPortal`
         /// </summary>
         [Input("portal")]
         public Input<Inputs.NacPortalPortalGetArgs>? Portal { get; set; }
 
+        /// <summary>
+        /// Wireless SSID associated with the NAC portal
+        /// </summary>
         [Input("ssid")]
         public Input<string>? Ssid { get; set; }
 
+        /// <summary>
+        /// SAML SSO settings for NAC portal authentication and role mapping
+        /// </summary>
         [Input("sso")]
         public Input<Inputs.NacPortalSsoGetArgs>? Sso { get; set; }
 
+        /// <summary>
+        /// Terms of service text shown in the NAC portal
+        /// </summary>
         [Input("tos")]
         public Input<string>? Tos { get; set; }
 
         /// <summary>
-        /// enum: 
-        ///   * `GuestAdmin`: NAC-Based Portal Admin for Pre Created Guest Authentication
-        ///   * `GuestPortal`: NAC-Based Guest Portal
-        ///   * `MarvisClient`
+        /// NAC portal mode, such as guest admin, guest portal, or Marvis client onboarding
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

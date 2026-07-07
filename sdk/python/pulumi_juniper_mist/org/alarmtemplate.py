@@ -28,7 +28,8 @@ class AlarmtemplateArgs:
         """
         The set of arguments for constructing a Alarmtemplate resource.
 
-        :param pulumi.Input['AlarmtemplateDeliveryArgs'] delivery: Delivery object to configure the alarm delivery
+        :param pulumi.Input['AlarmtemplateDeliveryArgs'] delivery: Default alarm delivery settings for rules in this template
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this alarm template
         :param pulumi.Input[Mapping[str, pulumi.Input['AlarmtemplateRulesArgs']]] rules: Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `get_const_alarms` data source).
         :param pulumi.Input[_builtins.str] name: Some string to name the alarm template
         """
@@ -42,7 +43,7 @@ class AlarmtemplateArgs:
     @pulumi.getter
     def delivery(self) -> pulumi.Input['AlarmtemplateDeliveryArgs']:
         """
-        Delivery object to configure the alarm delivery
+        Default alarm delivery settings for rules in this template
         """
         return pulumi.get(self, "delivery")
 
@@ -53,6 +54,9 @@ class AlarmtemplateArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization that owns this alarm template
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -94,8 +98,9 @@ class _AlarmtemplateState:
         """
         Input properties used for looking up and filtering Alarmtemplate resources.
 
-        :param pulumi.Input['AlarmtemplateDeliveryArgs'] delivery: Delivery object to configure the alarm delivery
+        :param pulumi.Input['AlarmtemplateDeliveryArgs'] delivery: Default alarm delivery settings for rules in this template
         :param pulumi.Input[_builtins.str] name: Some string to name the alarm template
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this alarm template
         :param pulumi.Input[Mapping[str, pulumi.Input['AlarmtemplateRulesArgs']]] rules: Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `get_const_alarms` data source).
         """
         if delivery is not None:
@@ -111,7 +116,7 @@ class _AlarmtemplateState:
     @pulumi.getter
     def delivery(self) -> pulumi.Input[Optional['AlarmtemplateDeliveryArgs']]:
         """
-        Delivery object to configure the alarm delivery
+        Default alarm delivery settings for rules in this template
         """
         return pulumi.get(self, "delivery")
 
@@ -134,6 +139,9 @@ class _AlarmtemplateState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns this alarm template
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -220,8 +228,9 @@ class Alarmtemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']] delivery: Delivery object to configure the alarm delivery
+        :param pulumi.Input[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']] delivery: Default alarm delivery settings for rules in this template
         :param pulumi.Input[_builtins.str] name: Some string to name the alarm template
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this alarm template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]] rules: Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `get_const_alarms` data source).
         """
         ...
@@ -343,8 +352,9 @@ class Alarmtemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']] delivery: Delivery object to configure the alarm delivery
+        :param pulumi.Input[Union['AlarmtemplateDeliveryArgs', 'AlarmtemplateDeliveryArgsDict']] delivery: Default alarm delivery settings for rules in this template
         :param pulumi.Input[_builtins.str] name: Some string to name the alarm template
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this alarm template
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['AlarmtemplateRulesArgs', 'AlarmtemplateRulesArgsDict']]]] rules: Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name (list available with the `get_const_alarms` data source).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -361,7 +371,7 @@ class Alarmtemplate(pulumi.CustomResource):
     @pulumi.getter
     def delivery(self) -> pulumi.Output['outputs.AlarmtemplateDelivery']:
         """
-        Delivery object to configure the alarm delivery
+        Default alarm delivery settings for rules in this template
         """
         return pulumi.get(self, "delivery")
 
@@ -376,6 +386,9 @@ class Alarmtemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns this alarm template
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property

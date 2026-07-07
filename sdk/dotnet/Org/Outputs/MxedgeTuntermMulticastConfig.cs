@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxedgeTuntermMulticastConfig
     {
+        /// <summary>
+        /// Settings for mDNS forwarding on tunnel termination VLANs
+        /// </summary>
         public readonly Outputs.MxedgeTuntermMulticastConfigMdns? Mdns;
+        /// <summary>
+        /// Settings for SSDP forwarding on tunnel termination VLANs
+        /// </summary>
         public readonly Outputs.MxedgeTuntermMulticastConfigSsdp? Ssdp;
 
         [OutputConstructor]

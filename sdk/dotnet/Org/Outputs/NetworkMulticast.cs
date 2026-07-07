@@ -17,9 +17,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// If the network will only be the source of the multicast traffic, IGMP can be disabled
         /// </summary>
         public readonly bool? DisableIgmp;
+        /// <summary>
+        /// Whether multicast support is enabled for this network
+        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+        /// Multicast group-to-RP mappings for this network
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworkMulticastGroups>? Groups;
 

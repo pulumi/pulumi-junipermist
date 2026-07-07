@@ -50,22 +50,34 @@ export class Switch extends pulumi.CustomResource {
         return obj['__pulumiType'] === Switch.__pulumiType;
     }
 
+    /**
+     * ACL policies applied to traffic handled by this switch
+     */
     declare public readonly aclPolicies: pulumi.Output<outputs.device.SwitchAclPolicy[] | undefined>;
     /**
-     * ACL Tags to identify traffic source or destination. Key name is the tag name
+     * ACL tags used by switch access policies
      */
     declare public readonly aclTags: pulumi.Output<{[key: string]: outputs.device.SwitchAclTags} | undefined>;
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands to apply to this switch
      */
     declare public readonly additionalConfigCmds: pulumi.Output<string[] | undefined>;
+    /**
+     * BGP routing configuration for this switch. Property key is the BGP session name
+     */
     declare public readonly bgpConfig: pulumi.Output<{[key: string]: outputs.device.SwitchBgpConfig} | undefined>;
     /**
      * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
      */
     declare public readonly defaultPortUsage: pulumi.Output<string>;
     declare public readonly deviceId: pulumi.Output<string>;
+    /**
+     * DHCP snooping configuration for this switch
+     */
     declare public readonly dhcpSnooping: pulumi.Output<outputs.device.SwitchDhcpSnooping | undefined>;
+    /**
+     * DHCP server configuration served by this switch
+     */
     declare public readonly dhcpdConfig: pulumi.Output<outputs.device.SwitchDhcpdConfig | undefined>;
     /**
      * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
@@ -74,34 +86,43 @@ export class Switch extends pulumi.CustomResource {
      */
     declare public readonly disableAutoConfig: pulumi.Output<boolean>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers configured for this switch
      */
     declare public readonly dnsServers: pulumi.Output<string[]>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes configured for this switch
      */
     declare public readonly dnsSuffixes: pulumi.Output<string[]>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     * Additional IPv4 routes configured on this switch
      */
     declare public readonly extraRoutes: pulumi.Output<{[key: string]: outputs.device.SwitchExtraRoutes} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+     * Additional IPv6 routes configured on this switch
      */
     declare public readonly extraRoutes6: pulumi.Output<{[key: string]: outputs.device.SwitchExtraRoutes6} | undefined>;
+    /**
+     * First custom image URL associated with the switch
+     */
     declare public /*out*/ readonly image1Url: pulumi.Output<string>;
+    /**
+     * Second custom image URL associated with the switch
+     */
     declare public /*out*/ readonly image2Url: pulumi.Output<string>;
+    /**
+     * Third custom image URL associated with the switch
+     */
     declare public /*out*/ readonly image3Url: pulumi.Output<string>;
     /**
-     * Junos IP Config
+     * Management IP addressing settings for this switch
      */
     declare public readonly ipConfig: pulumi.Output<outputs.device.SwitchIpConfig | undefined>;
     /**
-     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+     * Local port configuration settings for this switch
      */
     declare public readonly localPortConfig: pulumi.Output<{[key: string]: outputs.device.SwitchLocalPortConfig} | undefined>;
     /**
-     * Device MAC address
+     * Switch MAC address used to identify the device
      */
     declare public /*out*/ readonly mac: pulumi.Output<string>;
     /**
@@ -119,82 +140,107 @@ export class Switch extends pulumi.CustomResource {
      */
     declare public readonly mistConfigured: pulumi.Output<boolean>;
     /**
-     * Enable mistNac to use RadSec
+     * Mist NAC settings applied to this switch
      */
     declare public readonly mistNac: pulumi.Output<outputs.device.SwitchMistNac | undefined>;
     /**
-     * Device Model
+     * Switch model reported for the device
      */
     declare public /*out*/ readonly model: pulumi.Output<string>;
+    /**
+     * Friendly display name assigned to the switch
+     */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Property key is network name
+     * Layer 3 networks configured for use by this switch
      */
     declare public readonly networks: pulumi.Output<{[key: string]: outputs.device.SwitchNetworks} | undefined>;
+    /**
+     * Free-form administrative notes for this switch
+     */
     declare public readonly notes: pulumi.Output<string | undefined>;
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers used by this switch
      */
     declare public readonly ntpServers: pulumi.Output<string[]>;
     /**
-     * Switch OOB IP Config:
-     *   - If HA configuration: key parameter will be nodeX (eg: node1)
-     *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+     * Out-of-band management IP configuration for this switch
      */
     declare public readonly oobIpConfig: pulumi.Output<outputs.device.SwitchOobIpConfig | undefined>;
+    /**
+     * Organization that owns this switch
+     */
     declare public /*out*/ readonly orgId: pulumi.Output<string>;
     /**
-     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * OSPF area configuration for this switch
      */
     declare public readonly ospfAreas: pulumi.Output<{[key: string]: outputs.device.SwitchOspfAreas} | undefined>;
+    /**
+     * OSPF routing configuration for this switch
+     */
     declare public readonly ospfConfig: pulumi.Output<outputs.device.SwitchOspfConfig | undefined>;
     /**
      * Property key is the network name. Defines the additional IP Addresses configured on the device.
      */
     declare public readonly otherIpConfigs: pulumi.Output<{[key: string]: outputs.device.SwitchOtherIpConfigs} | undefined>;
     /**
-     * Property key is the port name or range (e.g. "ge-0/0/0-10")
+     * Per-port wired configuration for this switch
      */
     declare public readonly portConfig: pulumi.Output<{[key: string]: outputs.device.SwitchPortConfig} | undefined>;
     /**
-     * Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the portUsage without having to create a new port_usage.
+     * Per-port overrides for switch port usage attributes
      */
     declare public readonly portConfigOverwrite: pulumi.Output<{[key: string]: outputs.device.SwitchPortConfigOverwrite} | undefined>;
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Port mirroring configuration for this switch
      */
     declare public readonly portMirroring: pulumi.Output<{[key: string]: outputs.device.SwitchPortMirroring} | undefined>;
     /**
-     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * Reusable switch port usage profiles available on this switch
      */
     declare public readonly portUsages: pulumi.Output<{[key: string]: outputs.device.SwitchPortUsages} | undefined>;
     /**
-     * Junos Radius config
+     * RADIUS authentication and accounting settings for this switch
      */
     declare public readonly radiusConfig: pulumi.Output<outputs.device.SwitchRadiusConfig | undefined>;
+    /**
+     * Remote syslog settings for this switch
+     */
     declare public readonly remoteSyslog: pulumi.Output<outputs.device.SwitchRemoteSyslog | undefined>;
+    /**
+     * Deployment role label for this switch
+     */
     declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * Used for OSPF / BGP / EVPN
      */
     declare public readonly routerId: pulumi.Output<string>;
     /**
-     * Property key is the routing policy name
+     * Routing policies applied by this switch
      */
     declare public readonly routingPolicies: pulumi.Output<{[key: string]: outputs.device.SwitchRoutingPolicies} | undefined>;
     /**
-     * Device Serial
+     * Manufacturer serial number for the switch
      */
     declare public /*out*/ readonly serial: pulumi.Output<string>;
+    /**
+     * Site where this switch is assigned
+     */
     declare public readonly siteId: pulumi.Output<string>;
+    /**
+     * SNMP configuration for this switch
+     */
     declare public readonly snmpConfig: pulumi.Output<outputs.device.SwitchSnmpConfig | undefined>;
+    /**
+     * Spanning Tree Protocol configuration for this switch
+     */
     declare public readonly stpConfig: pulumi.Output<outputs.device.SwitchStpConfig | undefined>;
     /**
-     * Switch Management settings
+     * Management-plane settings for this switch
      */
     declare public readonly switchMgmt: pulumi.Output<outputs.device.SwitchSwitchMgmt | undefined>;
     /**
-     * Device Type. enum: `switch`
+     * Device type discriminator for switch records
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
@@ -202,28 +248,31 @@ export class Switch extends pulumi.CustomResource {
      */
     declare public readonly useRouterIdAsSourceIp: pulumi.Output<boolean>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this switch
      */
     declare public readonly vars: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Required for preprovisioned Virtual Chassis
+     * Virtual Chassis membership and provisioning settings for this switch
      */
     declare public readonly virtualChassis: pulumi.Output<outputs.device.SwitchVirtualChassis | undefined>;
+    /**
+     * VRF configuration applied to this switch
+     */
     declare public readonly vrfConfig: pulumi.Output<outputs.device.SwitchVrfConfig | undefined>;
     /**
-     * Property key is the network name
+     * VRF instances configured on this switch
      */
     declare public readonly vrfInstances: pulumi.Output<{[key: string]: outputs.device.SwitchVrfInstances} | undefined>;
     /**
-     * Junos VRRP config
+     * VRRP configuration applied to this switch
      */
     declare public readonly vrrpConfig: pulumi.Output<outputs.device.SwitchVrrpConfig | undefined>;
     /**
-     * X in pixel
+     * Horizontal map position of the switch, in pixels
      */
     declare public readonly x: pulumi.Output<number | undefined>;
     /**
-     * Y in pixel
+     * Vertical map position of the switch, in pixels
      */
     declare public readonly y: pulumi.Output<number | undefined>;
 
@@ -370,22 +419,34 @@ export class Switch extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Switch resources.
  */
 export interface SwitchState {
+    /**
+     * ACL policies applied to traffic handled by this switch
+     */
     aclPolicies?: pulumi.Input<pulumi.Input<inputs.device.SwitchAclPolicy>[] | undefined>;
     /**
-     * ACL Tags to identify traffic source or destination. Key name is the tag name
+     * ACL tags used by switch access policies
      */
     aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchAclTags>} | undefined>;
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands to apply to this switch
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * BGP routing configuration for this switch. Property key is the BGP session name
+     */
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchBgpConfig>} | undefined>;
     /**
      * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
      */
     defaultPortUsage?: pulumi.Input<string | undefined>;
     deviceId?: pulumi.Input<string | undefined>;
+    /**
+     * DHCP snooping configuration for this switch
+     */
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping | undefined>;
+    /**
+     * DHCP server configuration served by this switch
+     */
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig | undefined>;
     /**
      * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
@@ -394,34 +455,43 @@ export interface SwitchState {
      */
     disableAutoConfig?: pulumi.Input<boolean | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers configured for this switch
      */
     dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes configured for this switch
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     * Additional IPv4 routes configured on this switch
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchExtraRoutes>} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+     * Additional IPv6 routes configured on this switch
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchExtraRoutes6>} | undefined>;
+    /**
+     * First custom image URL associated with the switch
+     */
     image1Url?: pulumi.Input<string | undefined>;
+    /**
+     * Second custom image URL associated with the switch
+     */
     image2Url?: pulumi.Input<string | undefined>;
+    /**
+     * Third custom image URL associated with the switch
+     */
     image3Url?: pulumi.Input<string | undefined>;
     /**
-     * Junos IP Config
+     * Management IP addressing settings for this switch
      */
     ipConfig?: pulumi.Input<inputs.device.SwitchIpConfig | undefined>;
     /**
-     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+     * Local port configuration settings for this switch
      */
     localPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchLocalPortConfig>} | undefined>;
     /**
-     * Device MAC address
+     * Switch MAC address used to identify the device
      */
     mac?: pulumi.Input<string | undefined>;
     /**
@@ -439,82 +509,107 @@ export interface SwitchState {
      */
     mistConfigured?: pulumi.Input<boolean | undefined>;
     /**
-     * Enable mistNac to use RadSec
+     * Mist NAC settings applied to this switch
      */
     mistNac?: pulumi.Input<inputs.device.SwitchMistNac | undefined>;
     /**
-     * Device Model
+     * Switch model reported for the device
      */
     model?: pulumi.Input<string | undefined>;
+    /**
+     * Friendly display name assigned to the switch
+     */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Property key is network name
+     * Layer 3 networks configured for use by this switch
      */
     networks?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchNetworks>} | undefined>;
+    /**
+     * Free-form administrative notes for this switch
+     */
     notes?: pulumi.Input<string | undefined>;
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers used by this switch
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Switch OOB IP Config:
-     *   - If HA configuration: key parameter will be nodeX (eg: node1)
-     *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+     * Out-of-band management IP configuration for this switch
      */
     oobIpConfig?: pulumi.Input<inputs.device.SwitchOobIpConfig | undefined>;
+    /**
+     * Organization that owns this switch
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * OSPF area configuration for this switch
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOspfAreas>} | undefined>;
+    /**
+     * OSPF routing configuration for this switch
+     */
     ospfConfig?: pulumi.Input<inputs.device.SwitchOspfConfig | undefined>;
     /**
      * Property key is the network name. Defines the additional IP Addresses configured on the device.
      */
     otherIpConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOtherIpConfigs>} | undefined>;
     /**
-     * Property key is the port name or range (e.g. "ge-0/0/0-10")
+     * Per-port wired configuration for this switch
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfig>} | undefined>;
     /**
-     * Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the portUsage without having to create a new port_usage.
+     * Per-port overrides for switch port usage attributes
      */
     portConfigOverwrite?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfigOverwrite>} | undefined>;
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Port mirroring configuration for this switch
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortMirroring>} | undefined>;
     /**
-     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * Reusable switch port usage profiles available on this switch
      */
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortUsages>} | undefined>;
     /**
-     * Junos Radius config
+     * RADIUS authentication and accounting settings for this switch
      */
     radiusConfig?: pulumi.Input<inputs.device.SwitchRadiusConfig | undefined>;
+    /**
+     * Remote syslog settings for this switch
+     */
     remoteSyslog?: pulumi.Input<inputs.device.SwitchRemoteSyslog | undefined>;
+    /**
+     * Deployment role label for this switch
+     */
     role?: pulumi.Input<string | undefined>;
     /**
      * Used for OSPF / BGP / EVPN
      */
     routerId?: pulumi.Input<string | undefined>;
     /**
-     * Property key is the routing policy name
+     * Routing policies applied by this switch
      */
     routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchRoutingPolicies>} | undefined>;
     /**
-     * Device Serial
+     * Manufacturer serial number for the switch
      */
     serial?: pulumi.Input<string | undefined>;
+    /**
+     * Site where this switch is assigned
+     */
     siteId?: pulumi.Input<string | undefined>;
+    /**
+     * SNMP configuration for this switch
+     */
     snmpConfig?: pulumi.Input<inputs.device.SwitchSnmpConfig | undefined>;
+    /**
+     * Spanning Tree Protocol configuration for this switch
+     */
     stpConfig?: pulumi.Input<inputs.device.SwitchStpConfig | undefined>;
     /**
-     * Switch Management settings
+     * Management-plane settings for this switch
      */
     switchMgmt?: pulumi.Input<inputs.device.SwitchSwitchMgmt | undefined>;
     /**
-     * Device Type. enum: `switch`
+     * Device type discriminator for switch records
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -522,28 +617,31 @@ export interface SwitchState {
      */
     useRouterIdAsSourceIp?: pulumi.Input<boolean | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this switch
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Required for preprovisioned Virtual Chassis
+     * Virtual Chassis membership and provisioning settings for this switch
      */
     virtualChassis?: pulumi.Input<inputs.device.SwitchVirtualChassis | undefined>;
+    /**
+     * VRF configuration applied to this switch
+     */
     vrfConfig?: pulumi.Input<inputs.device.SwitchVrfConfig | undefined>;
     /**
-     * Property key is the network name
+     * VRF instances configured on this switch
      */
     vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchVrfInstances>} | undefined>;
     /**
-     * Junos VRRP config
+     * VRRP configuration applied to this switch
      */
     vrrpConfig?: pulumi.Input<inputs.device.SwitchVrrpConfig | undefined>;
     /**
-     * X in pixel
+     * Horizontal map position of the switch, in pixels
      */
     x?: pulumi.Input<number | undefined>;
     /**
-     * Y in pixel
+     * Vertical map position of the switch, in pixels
      */
     y?: pulumi.Input<number | undefined>;
 }
@@ -552,22 +650,34 @@ export interface SwitchState {
  * The set of arguments for constructing a Switch resource.
  */
 export interface SwitchArgs {
+    /**
+     * ACL policies applied to traffic handled by this switch
+     */
     aclPolicies?: pulumi.Input<pulumi.Input<inputs.device.SwitchAclPolicy>[] | undefined>;
     /**
-     * ACL Tags to identify traffic source or destination. Key name is the tag name
+     * ACL tags used by switch access policies
      */
     aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchAclTags>} | undefined>;
     /**
-     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
+     * Additional CLI configuration commands to apply to this switch
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * BGP routing configuration for this switch. Property key is the BGP session name
+     */
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchBgpConfig>} | undefined>;
     /**
      * Port usage to assign to switch ports without any port usage assigned. Default: `default` to preserve default behavior
      */
     defaultPortUsage?: pulumi.Input<string | undefined>;
     deviceId: pulumi.Input<string>;
+    /**
+     * DHCP snooping configuration for this switch
+     */
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping | undefined>;
+    /**
+     * DHCP server configuration served by this switch
+     */
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig | undefined>;
     /**
      * This disables the default behavior of a cloud-ready switch/gateway being managed/configured by Mist. Setting this to `true` means you want to disable the default behavior and do not want the device to be Mist-managed.
@@ -576,27 +686,27 @@ export interface SwitchArgs {
      */
     disableAutoConfig?: pulumi.Input<boolean | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS servers configured for this switch
      */
     dnsServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+     * DNS search suffixes configured for this switch
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "10.0.0.0/8")
+     * Additional IPv4 routes configured on this switch
      */
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchExtraRoutes>} | undefined>;
     /**
-     * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+     * Additional IPv6 routes configured on this switch
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchExtraRoutes6>} | undefined>;
     /**
-     * Junos IP Config
+     * Management IP addressing settings for this switch
      */
     ipConfig?: pulumi.Input<inputs.device.SwitchIpConfig | undefined>;
     /**
-     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+     * Local port configuration settings for this switch
      */
     localPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchLocalPortConfig>} | undefined>;
     /**
@@ -614,69 +724,91 @@ export interface SwitchArgs {
      */
     mistConfigured?: pulumi.Input<boolean | undefined>;
     /**
-     * Enable mistNac to use RadSec
+     * Mist NAC settings applied to this switch
      */
     mistNac?: pulumi.Input<inputs.device.SwitchMistNac | undefined>;
+    /**
+     * Friendly display name assigned to the switch
+     */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Property key is network name
+     * Layer 3 networks configured for use by this switch
      */
     networks?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchNetworks>} | undefined>;
+    /**
+     * Free-form administrative notes for this switch
+     */
     notes?: pulumi.Input<string | undefined>;
     /**
-     * List of NTP servers specific to this device. By default, those in Site Settings will be used
+     * NTP servers used by this switch
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Switch OOB IP Config:
-     *   - If HA configuration: key parameter will be nodeX (eg: node1)
-     *   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
+     * Out-of-band management IP configuration for this switch
      */
     oobIpConfig?: pulumi.Input<inputs.device.SwitchOobIpConfig | undefined>;
     /**
-     * Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+     * OSPF area configuration for this switch
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOspfAreas>} | undefined>;
+    /**
+     * OSPF routing configuration for this switch
+     */
     ospfConfig?: pulumi.Input<inputs.device.SwitchOspfConfig | undefined>;
     /**
      * Property key is the network name. Defines the additional IP Addresses configured on the device.
      */
     otherIpConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOtherIpConfigs>} | undefined>;
     /**
-     * Property key is the port name or range (e.g. "ge-0/0/0-10")
+     * Per-port wired configuration for this switch
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfig>} | undefined>;
     /**
-     * Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the portUsage without having to create a new port_usage.
+     * Per-port overrides for switch port usage attributes
      */
     portConfigOverwrite?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfigOverwrite>} | undefined>;
     /**
-     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+     * Port mirroring configuration for this switch
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortMirroring>} | undefined>;
     /**
-     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * Reusable switch port usage profiles available on this switch
      */
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortUsages>} | undefined>;
     /**
-     * Junos Radius config
+     * RADIUS authentication and accounting settings for this switch
      */
     radiusConfig?: pulumi.Input<inputs.device.SwitchRadiusConfig | undefined>;
+    /**
+     * Remote syslog settings for this switch
+     */
     remoteSyslog?: pulumi.Input<inputs.device.SwitchRemoteSyslog | undefined>;
+    /**
+     * Deployment role label for this switch
+     */
     role?: pulumi.Input<string | undefined>;
     /**
      * Used for OSPF / BGP / EVPN
      */
     routerId?: pulumi.Input<string | undefined>;
     /**
-     * Property key is the routing policy name
+     * Routing policies applied by this switch
      */
     routingPolicies?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchRoutingPolicies>} | undefined>;
+    /**
+     * Site where this switch is assigned
+     */
     siteId: pulumi.Input<string>;
+    /**
+     * SNMP configuration for this switch
+     */
     snmpConfig?: pulumi.Input<inputs.device.SwitchSnmpConfig | undefined>;
+    /**
+     * Spanning Tree Protocol configuration for this switch
+     */
     stpConfig?: pulumi.Input<inputs.device.SwitchStpConfig | undefined>;
     /**
-     * Switch Management settings
+     * Management-plane settings for this switch
      */
     switchMgmt?: pulumi.Input<inputs.device.SwitchSwitchMgmt | undefined>;
     /**
@@ -684,28 +816,31 @@ export interface SwitchArgs {
      */
     useRouterIdAsSourceIp?: pulumi.Input<boolean | undefined>;
     /**
-     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Variable values that override site variables for this switch
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Required for preprovisioned Virtual Chassis
+     * Virtual Chassis membership and provisioning settings for this switch
      */
     virtualChassis?: pulumi.Input<inputs.device.SwitchVirtualChassis | undefined>;
+    /**
+     * VRF configuration applied to this switch
+     */
     vrfConfig?: pulumi.Input<inputs.device.SwitchVrfConfig | undefined>;
     /**
-     * Property key is the network name
+     * VRF instances configured on this switch
      */
     vrfInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchVrfInstances>} | undefined>;
     /**
-     * Junos VRRP config
+     * VRRP configuration applied to this switch
      */
     vrrpConfig?: pulumi.Input<inputs.device.SwitchVrrpConfig | undefined>;
     /**
-     * X in pixel
+     * Horizontal map position of the switch, in pixels
      */
     x?: pulumi.Input<number | undefined>;
     /**
-     * Y in pixel
+     * Vertical map position of the switch, in pixels
      */
     y?: pulumi.Input<number | undefined>;
 }

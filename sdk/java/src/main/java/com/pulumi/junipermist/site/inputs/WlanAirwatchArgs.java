@@ -17,14 +17,14 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
     public static final WlanAirwatchArgs Empty = new WlanAirwatchArgs();
 
     /**
-     * API Key
+     * API key used to authenticate to the AirWatch service
      * 
      */
     @Import(name="apiKey")
     private @Nullable Output<String> apiKey;
 
     /**
-     * @return API Key
+     * @return API key used to authenticate to the AirWatch service
      * 
      */
     public Optional<Output<String>> apiKey() {
@@ -32,36 +32,44 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Console URL
+     * Base console URL of the AirWatch deployment
      * 
      */
     @Import(name="consoleUrl")
     private @Nullable Output<String> consoleUrl;
 
     /**
-     * @return Console URL
+     * @return Base console URL of the AirWatch deployment
      * 
      */
     public Optional<Output<String>> consoleUrl() {
         return Optional.ofNullable(this.consoleUrl);
     }
 
+    /**
+     * Whether AirWatch integration is enabled for the WLAN
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether AirWatch integration is enabled for the WLAN
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Password
+     * AirWatch integration account password for this WLAN
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Password
+     * @return AirWatch integration account password for this WLAN
      * 
      */
     public Optional<Output<String>> password() {
@@ -69,14 +77,14 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username
+     * AirWatch integration account username for this WLAN
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return Username
+     * @return AirWatch integration account username for this WLAN
      * 
      */
     public Optional<Output<String>> username() {
@@ -112,7 +120,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiKey API Key
+         * @param apiKey API key used to authenticate to the AirWatch service
          * 
          * @return builder
          * 
@@ -123,7 +131,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiKey API Key
+         * @param apiKey API key used to authenticate to the AirWatch service
          * 
          * @return builder
          * 
@@ -133,7 +141,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param consoleUrl Console URL
+         * @param consoleUrl Base console URL of the AirWatch deployment
          * 
          * @return builder
          * 
@@ -144,7 +152,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param consoleUrl Console URL
+         * @param consoleUrl Base console URL of the AirWatch deployment
          * 
          * @return builder
          * 
@@ -153,17 +161,29 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
             return consoleUrl(Output.of(consoleUrl));
         }
 
+        /**
+         * @param enabled Whether AirWatch integration is enabled for the WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether AirWatch integration is enabled for the WLAN
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param password Password
+         * @param password AirWatch integration account password for this WLAN
          * 
          * @return builder
          * 
@@ -174,7 +194,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Password
+         * @param password AirWatch integration account password for this WLAN
          * 
          * @return builder
          * 
@@ -184,7 +204,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username Username
+         * @param username AirWatch integration account username for this WLAN
          * 
          * @return builder
          * 
@@ -195,7 +215,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username Username
+         * @param username AirWatch integration account username for this WLAN
          * 
          * @return builder
          * 

@@ -13,11 +13,14 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayDhcpdConfigConfigVendorEncapsulatedGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Boolean`, `Hex`, `Int16`, `Int32`, `Ip`, `String`, `Uint16`, `Uint32`
+        /// Data type used to encode this vendor option value
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Option value to send for this vendor option
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

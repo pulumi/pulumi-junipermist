@@ -26,6 +26,10 @@ class SsoRoleArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SsoRole resource.
+
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this SSO role
+        :param pulumi.Input[Sequence[pulumi.Input['SsoRolePrivilegeArgs']]] privileges: Access privileges granted by this organization SSO role
+        :param pulumi.Input[_builtins.str] name: Display name of the organization SSO role
         """
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "privileges", privileges)
@@ -35,6 +39,9 @@ class SsoRoleArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Owning organization identifier for this SSO role
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -44,6 +51,9 @@ class SsoRoleArgs:
     @_builtins.property
     @pulumi.getter
     def privileges(self) -> pulumi.Input[Sequence[pulumi.Input['SsoRolePrivilegeArgs']]]:
+        """
+        Access privileges granted by this organization SSO role
+        """
         return pulumi.get(self, "privileges")
 
     @privileges.setter
@@ -53,6 +63,9 @@ class SsoRoleArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the organization SSO role
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -68,6 +81,10 @@ class _SsoRoleState:
                  privileges: pulumi.Input[Optional[Sequence[pulumi.Input['SsoRolePrivilegeArgs']]]] = None):
         """
         Input properties used for looking up and filtering SsoRole resources.
+
+        :param pulumi.Input[_builtins.str] name: Display name of the organization SSO role
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this SSO role
+        :param pulumi.Input[Sequence[pulumi.Input['SsoRolePrivilegeArgs']]] privileges: Access privileges granted by this organization SSO role
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -79,6 +96,9 @@ class _SsoRoleState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the organization SSO role
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -88,6 +108,9 @@ class _SsoRoleState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Owning organization identifier for this SSO role
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -97,6 +120,9 @@ class _SsoRoleState:
     @_builtins.property
     @pulumi.getter
     def privileges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SsoRolePrivilegeArgs']]]]:
+        """
+        Access privileges granted by this organization SSO role
+        """
         return pulumi.get(self, "privileges")
 
     @privileges.setter
@@ -149,6 +175,9 @@ class SsoRole(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] name: Display name of the organization SSO role
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this SSO role
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]] privileges: Access privileges granted by this organization SSO role
         """
         ...
     @overload
@@ -243,6 +272,9 @@ class SsoRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] name: Display name of the organization SSO role
+        :param pulumi.Input[_builtins.str] org_id: Owning organization identifier for this SSO role
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SsoRolePrivilegeArgs', 'SsoRolePrivilegeArgsDict']]]] privileges: Access privileges granted by this organization SSO role
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -256,15 +288,24 @@ class SsoRole(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the organization SSO role
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Owning organization identifier for this SSO role
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter
     def privileges(self) -> pulumi.Output[Sequence['outputs.SsoRolePrivilege']]:
+        """
+        Access privileges granted by this organization SSO role
+        """
         return pulumi.get(self, "privileges")
 

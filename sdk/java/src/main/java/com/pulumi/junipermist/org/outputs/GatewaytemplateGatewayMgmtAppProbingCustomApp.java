@@ -14,84 +14,124 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateGatewayMgmtAppProbingCustomApp {
     /**
-     * @return Required if `protocol`==`icmp`
+     * @return Required if `protocol`==`icmp`. IP address probed by the ICMP custom app
      * 
      */
     private @Nullable String address;
+    /**
+     * @return Category label used for this custom application probe
+     * 
+     */
     private @Nullable String appType;
     /**
-     * @return If `protocol`==`http`
+     * @return If `protocol`==`http`. Hostnames or URLs probed by this custom app
      * 
      */
     private @Nullable List<String> hostnames;
+    /**
+     * @return Stable key used to identify this custom application probe
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return Display name for this custom application probe
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Gateway network used as the source context for this probe
+     * 
+     */
     private @Nullable String network;
     /**
-     * @return If `protocol`==`icmp`
+     * @return If `protocol`==`icmp`. ICMP packet size used by this custom app probe
      * 
      */
     private @Nullable Integer packetSize;
     /**
-     * @return enum: `http`, `icmp`
+     * @return Probe protocol used by this custom application definition
      * 
      */
     private @Nullable String protocol;
     /**
-     * @return If `protocol`==`http`
+     * @return If `protocol`==`http`. HTTP URL or hostname probed by this custom app
      * 
      */
     private @Nullable String url;
+    /**
+     * @return Gateway VRF used as the source context for this probe
+     * 
+     */
     private @Nullable String vrf;
 
     private GatewaytemplateGatewayMgmtAppProbingCustomApp() {}
     /**
-     * @return Required if `protocol`==`icmp`
+     * @return Required if `protocol`==`icmp`. IP address probed by the ICMP custom app
      * 
      */
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
+    /**
+     * @return Category label used for this custom application probe
+     * 
+     */
     public Optional<String> appType() {
         return Optional.ofNullable(this.appType);
     }
     /**
-     * @return If `protocol`==`http`
+     * @return If `protocol`==`http`. Hostnames or URLs probed by this custom app
      * 
      */
     public List<String> hostnames() {
         return this.hostnames == null ? List.of() : this.hostnames;
     }
+    /**
+     * @return Stable key used to identify this custom application probe
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return Display name for this custom application probe
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Gateway network used as the source context for this probe
+     * 
+     */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return If `protocol`==`icmp`
+     * @return If `protocol`==`icmp`. ICMP packet size used by this custom app probe
      * 
      */
     public Optional<Integer> packetSize() {
         return Optional.ofNullable(this.packetSize);
     }
     /**
-     * @return enum: `http`, `icmp`
+     * @return Probe protocol used by this custom application definition
      * 
      */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return If `protocol`==`http`
+     * @return If `protocol`==`http`. HTTP URL or hostname probed by this custom app
      * 
      */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }
+    /**
+     * @return Gateway VRF used as the source context for this probe
+     * 
+     */
     public Optional<String> vrf() {
         return Optional.ofNullable(this.vrf);
     }

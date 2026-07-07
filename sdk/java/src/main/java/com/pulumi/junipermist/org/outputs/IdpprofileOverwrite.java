@@ -14,30 +14,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class IdpprofileOverwrite {
     /**
-     * @return enum:
-     *   * alert (default)
-     *   * drop: silently dropping packets
-     *   * close: notify client/server to close connection
+     * @return Enforcement action applied when this overwrite rule matches
      * 
      */
     private @Nullable String action;
+    /**
+     * @return Criteria that select signatures for this overwrite rule
+     * 
+     */
     private @Nullable IdpprofileOverwriteMatching matching;
+    /**
+     * @return Display name for this IDP profile overwrite rule
+     * 
+     */
     private String name;
 
     private IdpprofileOverwrite() {}
     /**
-     * @return enum:
-     *   * alert (default)
-     *   * drop: silently dropping packets
-     *   * close: notify client/server to close connection
+     * @return Enforcement action applied when this overwrite rule matches
      * 
      */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
+    /**
+     * @return Criteria that select signatures for this overwrite rule
+     * 
+     */
     public Optional<IdpprofileOverwriteMatching> matching() {
         return Optional.ofNullable(this.matching);
     }
+    /**
+     * @return Display name for this IDP profile overwrite rule
+     * 
+     */
     public String name() {
         return this.name;
     }

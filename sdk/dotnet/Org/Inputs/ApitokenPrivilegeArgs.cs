@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class ApitokenPrivilegeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// access permissions. enum: `Admin`, `Helpdesk`, `Installer`, `Read`, `Write`
+        /// Access role granted by this organization privilege
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// enum: `Org`, `Site`, `Sitegroup`, `Orgsites`
+        /// Organization hierarchy level where this privilege applies
         /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;

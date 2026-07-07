@@ -13,106 +13,122 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NacruleMatching {
     /**
-     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
+     * @return NAC authentication method that must match the request
      * 
      */
     private @Nullable String authType;
     /**
-     * @return List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+     * @return Client device family values that must match the request
      * 
      */
     private @Nullable List<String> families;
     /**
-     * @return List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+     * @return Client device manufacturer values that must match the request
      * 
      */
     private @Nullable List<String> mfgs;
     /**
-     * @return List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+     * @return Client device model values that must match the request
      * 
      */
     private @Nullable List<String> models;
+    /**
+     * @return NAC tag IDs whose match criteria must be satisfied by the request
+     * 
+     */
     private @Nullable List<String> nactags;
     /**
-     * @return List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
+     * @return Client OS type values that must match the request
      * 
      */
     private @Nullable List<String> osTypes;
+    /**
+     * @return Wired or wireless access types that must match the request
+     * 
+     */
     private @Nullable List<String> portTypes;
     /**
-     * @return List of site ids to match
+     * @return Site IDs where the rule criteria apply
      * 
      */
     private @Nullable List<String> siteIds;
     /**
-     * @return List of sitegroup ids to match
+     * @return Site group IDs where the rule criteria apply
      * 
      */
     private @Nullable List<String> sitegroupIds;
     /**
-     * @return List of vendors to match
+     * @return Client device vendor values that must match the request
      * 
      */
     private @Nullable List<String> vendors;
 
     private NacruleMatching() {}
     /**
-     * @return enum: `cert`, `device-auth`, `eap-teap`, `eap-tls`, `eap-ttls`, `idp`, `mab`, `eap-peap`
+     * @return NAC authentication method that must match the request
      * 
      */
     public Optional<String> authType() {
         return Optional.ofNullable(this.authType);
     }
     /**
-     * @return List of client device families to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed family values
+     * @return Client device family values that must match the request
      * 
      */
     public List<String> families() {
         return this.families == null ? List.of() : this.families;
     }
     /**
-     * @return List of client device models to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed model values
+     * @return Client device manufacturer values that must match the request
      * 
      */
     public List<String> mfgs() {
         return this.mfgs == null ? List.of() : this.mfgs;
     }
     /**
-     * @return List of client device manufacturers to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed mfg values
+     * @return Client device model values that must match the request
      * 
      */
     public List<String> models() {
         return this.models == null ? List.of() : this.models;
     }
+    /**
+     * @return NAC tag IDs whose match criteria must be satisfied by the request
+     * 
+     */
     public List<String> nactags() {
         return this.nactags == null ? List.of() : this.nactags;
     }
     /**
-     * @return List of client device os types to match. Refer to [List Fingerprint Types]]($e/Constants%20Definitions/listFingerprintTypes) for allowed osType values
+     * @return Client OS type values that must match the request
      * 
      */
     public List<String> osTypes() {
         return this.osTypes == null ? List.of() : this.osTypes;
     }
+    /**
+     * @return Wired or wireless access types that must match the request
+     * 
+     */
     public List<String> portTypes() {
         return this.portTypes == null ? List.of() : this.portTypes;
     }
     /**
-     * @return List of site ids to match
+     * @return Site IDs where the rule criteria apply
      * 
      */
     public List<String> siteIds() {
         return this.siteIds == null ? List.of() : this.siteIds;
     }
     /**
-     * @return List of sitegroup ids to match
+     * @return Site group IDs where the rule criteria apply
      * 
      */
     public List<String> sitegroupIds() {
         return this.sitegroupIds == null ? List.of() : this.sitegroupIds;
     }
     /**
-     * @return List of vendors to match
+     * @return Client device vendor values that must match the request
      * 
      */
     public List<String> vendors() {

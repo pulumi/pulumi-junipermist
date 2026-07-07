@@ -41,18 +41,21 @@ class BaseArgs:
         The set of arguments for constructing a Base resource.
 
         :param pulumi.Input[_builtins.str] address: full address of the site
+        :param pulumi.Input[_builtins.str] org_id: Organization identifier associated with the site
         :param pulumi.Input[_builtins.str] alarmtemplate_id: Alarm Template ID, this takes precedence over the Org-level alarmtemplate_id
         :param pulumi.Input[_builtins.str] aptemplate_id: AP Template ID, used by APs
         :param pulumi.Input[_builtins.str] country_code: Country code for the site (for AP config generation), in two-character
         :param pulumi.Input[_builtins.str] gatewaytemplate_id: Gateway Template ID, used by gateways
+        :param pulumi.Input['BaseLatlngArgs'] latlng: Latitude and longitude for the site location
+        :param pulumi.Input[_builtins.str] name: Display name of the site
         :param pulumi.Input[_builtins.str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] notes: Optional, any notes about the site
         :param pulumi.Input[_builtins.str] rftemplate_id: RF Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] routertemplate_id: Router Template ID, used by gateways
-        :param pulumi.Input[_builtins.str] secpolicy_id: SecPolicy ID
+        :param pulumi.Input[_builtins.str] secpolicy_id: Security policy identifier applied to this site
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sitegroup_ids: Sitegroups this site belongs to
-        :param pulumi.Input[_builtins.str] sitetemplate_id: Site Template ID
-        :param pulumi.Input[_builtins.str] timezone: Timezone the site is at
+        :param pulumi.Input[_builtins.str] sitetemplate_id: Site template identifier applied to this site
+        :param pulumi.Input[_builtins.str] timezone: IANA time zone name for the site
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "org_id", org_id)
@@ -100,6 +103,9 @@ class BaseArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization identifier associated with the site
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -157,6 +163,9 @@ class BaseArgs:
     @_builtins.property
     @pulumi.getter
     def latlng(self) -> pulumi.Input[Optional['BaseLatlngArgs']]:
+        """
+        Latitude and longitude for the site location
+        """
         return pulumi.get(self, "latlng")
 
     @latlng.setter
@@ -166,6 +175,9 @@ class BaseArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the site
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -224,7 +236,7 @@ class BaseArgs:
     @pulumi.getter(name="secpolicyId")
     def secpolicy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        SecPolicy ID
+        Security policy identifier applied to this site
         """
         return pulumi.get(self, "secpolicy_id")
 
@@ -248,7 +260,7 @@ class BaseArgs:
     @pulumi.getter(name="sitetemplateId")
     def sitetemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Site Template ID
+        Site template identifier applied to this site
         """
         return pulumi.get(self, "sitetemplate_id")
 
@@ -260,7 +272,7 @@ class BaseArgs:
     @pulumi.getter
     def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Timezone the site is at
+        IANA time zone name for the site
         """
         return pulumi.get(self, "timezone")
 
@@ -297,14 +309,18 @@ class _BaseState:
         :param pulumi.Input[_builtins.str] aptemplate_id: AP Template ID, used by APs
         :param pulumi.Input[_builtins.str] country_code: Country code for the site (for AP config generation), in two-character
         :param pulumi.Input[_builtins.str] gatewaytemplate_id: Gateway Template ID, used by gateways
+        :param pulumi.Input['BaseLatlngArgs'] latlng: Latitude and longitude for the site location
+        :param pulumi.Input[_builtins.str] name: Display name of the site
         :param pulumi.Input[_builtins.str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] notes: Optional, any notes about the site
+        :param pulumi.Input[_builtins.str] org_id: Organization identifier associated with the site
         :param pulumi.Input[_builtins.str] rftemplate_id: RF Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] routertemplate_id: Router Template ID, used by gateways
-        :param pulumi.Input[_builtins.str] secpolicy_id: SecPolicy ID
+        :param pulumi.Input[_builtins.str] secpolicy_id: Security policy identifier applied to this site
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sitegroup_ids: Sitegroups this site belongs to
-        :param pulumi.Input[_builtins.str] sitetemplate_id: Site Template ID
-        :param pulumi.Input[_builtins.str] timezone: Timezone the site is at
+        :param pulumi.Input[_builtins.str] sitetemplate_id: Site template identifier applied to this site
+        :param pulumi.Input[_builtins.str] timezone: IANA time zone name for the site
+        :param pulumi.Input[_builtins.int] tzoffset: Time zone offset value derived from the site's timezone
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -404,6 +420,9 @@ class _BaseState:
     @_builtins.property
     @pulumi.getter
     def latlng(self) -> pulumi.Input[Optional['BaseLatlngArgs']]:
+        """
+        Latitude and longitude for the site location
+        """
         return pulumi.get(self, "latlng")
 
     @latlng.setter
@@ -413,6 +432,9 @@ class _BaseState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the site
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -446,6 +468,9 @@ class _BaseState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization identifier associated with the site
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -480,7 +505,7 @@ class _BaseState:
     @pulumi.getter(name="secpolicyId")
     def secpolicy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        SecPolicy ID
+        Security policy identifier applied to this site
         """
         return pulumi.get(self, "secpolicy_id")
 
@@ -504,7 +529,7 @@ class _BaseState:
     @pulumi.getter(name="sitetemplateId")
     def sitetemplate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Site Template ID
+        Site template identifier applied to this site
         """
         return pulumi.get(self, "sitetemplate_id")
 
@@ -516,7 +541,7 @@ class _BaseState:
     @pulumi.getter
     def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Timezone the site is at
+        IANA time zone name for the site
         """
         return pulumi.get(self, "timezone")
 
@@ -527,6 +552,9 @@ class _BaseState:
     @_builtins.property
     @pulumi.getter
     def tzoffset(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Time zone offset value derived from the site's timezone
+        """
         return pulumi.get(self, "tzoffset")
 
     @tzoffset.setter
@@ -611,14 +639,17 @@ class Base(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] aptemplate_id: AP Template ID, used by APs
         :param pulumi.Input[_builtins.str] country_code: Country code for the site (for AP config generation), in two-character
         :param pulumi.Input[_builtins.str] gatewaytemplate_id: Gateway Template ID, used by gateways
+        :param pulumi.Input[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']] latlng: Latitude and longitude for the site location
+        :param pulumi.Input[_builtins.str] name: Display name of the site
         :param pulumi.Input[_builtins.str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] notes: Optional, any notes about the site
+        :param pulumi.Input[_builtins.str] org_id: Organization identifier associated with the site
         :param pulumi.Input[_builtins.str] rftemplate_id: RF Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] routertemplate_id: Router Template ID, used by gateways
-        :param pulumi.Input[_builtins.str] secpolicy_id: SecPolicy ID
+        :param pulumi.Input[_builtins.str] secpolicy_id: Security policy identifier applied to this site
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sitegroup_ids: Sitegroups this site belongs to
-        :param pulumi.Input[_builtins.str] sitetemplate_id: Site Template ID
-        :param pulumi.Input[_builtins.str] timezone: Timezone the site is at
+        :param pulumi.Input[_builtins.str] sitetemplate_id: Site template identifier applied to this site
+        :param pulumi.Input[_builtins.str] timezone: IANA time zone name for the site
         """
         ...
     @overload
@@ -769,14 +800,18 @@ class Base(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] aptemplate_id: AP Template ID, used by APs
         :param pulumi.Input[_builtins.str] country_code: Country code for the site (for AP config generation), in two-character
         :param pulumi.Input[_builtins.str] gatewaytemplate_id: Gateway Template ID, used by gateways
+        :param pulumi.Input[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']] latlng: Latitude and longitude for the site location
+        :param pulumi.Input[_builtins.str] name: Display name of the site
         :param pulumi.Input[_builtins.str] networktemplate_id: Network Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] notes: Optional, any notes about the site
+        :param pulumi.Input[_builtins.str] org_id: Organization identifier associated with the site
         :param pulumi.Input[_builtins.str] rftemplate_id: RF Template ID, this takes precedence over Site Settings
         :param pulumi.Input[_builtins.str] routertemplate_id: Router Template ID, used by gateways
-        :param pulumi.Input[_builtins.str] secpolicy_id: SecPolicy ID
+        :param pulumi.Input[_builtins.str] secpolicy_id: Security policy identifier applied to this site
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sitegroup_ids: Sitegroups this site belongs to
-        :param pulumi.Input[_builtins.str] sitetemplate_id: Site Template ID
-        :param pulumi.Input[_builtins.str] timezone: Timezone the site is at
+        :param pulumi.Input[_builtins.str] sitetemplate_id: Site template identifier applied to this site
+        :param pulumi.Input[_builtins.str] timezone: IANA time zone name for the site
+        :param pulumi.Input[_builtins.int] tzoffset: Time zone offset value derived from the site's timezone
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -844,11 +879,17 @@ class Base(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def latlng(self) -> pulumi.Output[Optional['outputs.BaseLatlng']]:
+        """
+        Latitude and longitude for the site location
+        """
         return pulumi.get(self, "latlng")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the site
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -870,6 +911,9 @@ class Base(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization identifier associated with the site
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
@@ -892,7 +936,7 @@ class Base(pulumi.CustomResource):
     @pulumi.getter(name="secpolicyId")
     def secpolicy_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        SecPolicy ID
+        Security policy identifier applied to this site
         """
         return pulumi.get(self, "secpolicy_id")
 
@@ -908,7 +952,7 @@ class Base(pulumi.CustomResource):
     @pulumi.getter(name="sitetemplateId")
     def sitetemplate_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Site Template ID
+        Site template identifier applied to this site
         """
         return pulumi.get(self, "sitetemplate_id")
 
@@ -916,12 +960,15 @@ class Base(pulumi.CustomResource):
     @pulumi.getter
     def timezone(self) -> pulumi.Output[_builtins.str]:
         """
-        Timezone the site is at
+        IANA time zone name for the site
         """
         return pulumi.get(self, "timezone")
 
     @_builtins.property
     @pulumi.getter
     def tzoffset(self) -> pulumi.Output[_builtins.int]:
+        """
+        Time zone offset value derived from the site's timezone
+        """
         return pulumi.get(self, "tzoffset")
 

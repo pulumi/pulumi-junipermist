@@ -128,99 +128,117 @@ namespace Pulumi.JuniperMist.Org
     [JuniperMistResourceType("junipermist:org/networktemplate:Networktemplate")]
     public partial class Networktemplate : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// ACL policy defaults provided by this network template
+        /// </summary>
         [Output("aclPolicies")]
         public Output<ImmutableArray<Outputs.NetworktemplateAclPolicy>> AclPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// ACL Tags to identify traffic source or destination. Key name is the tag name
+        /// ACL tags available to access policies in this network template
         /// </summary>
         [Output("aclTags")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateAclTags>?> AclTags { get; private set; } = null!;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands provided by this network template
         /// </summary>
         [Output("additionalConfigCmds")]
         public Output<ImmutableArray<string>> AdditionalConfigCmds { get; private set; } = null!;
 
+        /// <summary>
+        /// BGP routing defaults for this network template. Property key is the BGP session name
+        /// </summary>
         [Output("bgpConfig")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateBgpConfig>?> BgpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// DHCP snooping defaults provided by this network template
+        /// </summary>
         [Output("dhcpSnooping")]
         public Output<Outputs.NetworktemplateDhcpSnooping?> DhcpSnooping { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS servers provided by this network template
         /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS search suffixes provided by this network template
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Additional IPv4 route defaults in this network template
         /// </summary>
         [Output("extraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Additional IPv6 route defaults in this network template
         /// </summary>
         [Output("extraRoutes6")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
 
         /// <summary>
-        /// Enable MistNac to use RadSec
+        /// Mist NAC defaults applied by this network template
         /// </summary>
         [Output("mistNac")]
         public Output<Outputs.NetworktemplateMistNac?> MistNac { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the network template
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is network name
+        /// Layer 3 networks configured by this network template
         /// </summary>
         [Output("networks")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateNetworks>?> Networks { get; private set; } = null!;
 
         /// <summary>
-        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// NTP servers provided by this network template
         /// </summary>
         [Output("ntpServers")]
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns this network template
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        /// OSPF area defaults provided by this network template
         /// </summary>
         [Output("ospfAreas")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateOspfAreas>?> OspfAreas { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Port mirroring defaults provided by this network template
         /// </summary>
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortMirroring>?> PortMirroring { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// Reusable switch port usage profiles provided by this network template
         /// </summary>
         [Output("portUsages")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortUsages>?> PortUsages { get; private set; } = null!;
 
         /// <summary>
-        /// Junos Radius config
+        /// RADIUS authentication and accounting defaults in this network template
         /// </summary>
         [Output("radiusConfig")]
         public Output<Outputs.NetworktemplateRadiusConfig?> RadiusConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Remote syslog defaults provided by this network template
+        /// </summary>
         [Output("remoteSyslog")]
         public Output<Outputs.NetworktemplateRemoteSyslog?> RemoteSyslog { get; private set; } = null!;
 
@@ -231,31 +249,37 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool?> RemoveExistingConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Routing policy defaults applied by this network template
         /// </summary>
         [Output("routingPolicies")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateRoutingPolicies>?> RoutingPolicies { get; private set; } = null!;
 
+        /// <summary>
+        /// SNMP defaults provided by this network template
+        /// </summary>
         [Output("snmpConfig")]
         public Output<Outputs.NetworktemplateSnmpConfig?> SnmpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Defines custom switch configuration based on different criteria
+        /// Matching rules that select switches for this network template
         /// </summary>
         [Output("switchMatching")]
         public Output<Outputs.NetworktemplateSwitchMatching?> SwitchMatching { get; private set; } = null!;
 
         /// <summary>
-        /// Switch Management settings
+        /// Management-plane defaults provided by this network template
         /// </summary>
         [Output("switchMgmt")]
         public Output<Outputs.NetworktemplateSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
 
+        /// <summary>
+        /// VRF defaults applied by this network template
+        /// </summary>
         [Output("vrfConfig")]
         public Output<Outputs.NetworktemplateVrfConfig?> VrfConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the network name
+        /// VRF instances configured by this network template
         /// </summary>
         [Output("vrfInstances")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateVrfInstances>?> VrfInstances { get; private set; } = null!;
@@ -309,6 +333,10 @@ namespace Pulumi.JuniperMist.Org
     {
         [Input("aclPolicies")]
         private InputList<Inputs.NetworktemplateAclPolicyArgs>? _aclPolicies;
+
+        /// <summary>
+        /// ACL policy defaults provided by this network template
+        /// </summary>
         public InputList<Inputs.NetworktemplateAclPolicyArgs> AclPolicies
         {
             get => _aclPolicies ?? (_aclPolicies = new InputList<Inputs.NetworktemplateAclPolicyArgs>());
@@ -319,7 +347,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateAclTagsArgs>? _aclTags;
 
         /// <summary>
-        /// ACL Tags to identify traffic source or destination. Key name is the tag name
+        /// ACL tags available to access policies in this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateAclTagsArgs> AclTags
         {
@@ -331,7 +359,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands provided by this network template
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -341,12 +369,19 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("bgpConfig")]
         private InputMap<Inputs.NetworktemplateBgpConfigArgs>? _bgpConfig;
+
+        /// <summary>
+        /// BGP routing defaults for this network template. Property key is the BGP session name
+        /// </summary>
         public InputMap<Inputs.NetworktemplateBgpConfigArgs> BgpConfig
         {
             get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.NetworktemplateBgpConfigArgs>());
             set => _bgpConfig = value;
         }
 
+        /// <summary>
+        /// DHCP snooping defaults provided by this network template
+        /// </summary>
         [Input("dhcpSnooping")]
         public Input<Inputs.NetworktemplateDhcpSnoopingArgs>? DhcpSnooping { get; set; }
 
@@ -354,7 +389,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS servers provided by this network template
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -366,7 +401,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS search suffixes provided by this network template
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -378,7 +413,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateExtraRoutesArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Additional IPv4 route defaults in this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateExtraRoutesArgs> ExtraRoutes
         {
@@ -390,7 +425,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateExtraRoutes6Args>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Additional IPv6 route defaults in this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateExtraRoutes6Args> ExtraRoutes6
         {
@@ -399,11 +434,14 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Enable MistNac to use RadSec
+        /// Mist NAC defaults applied by this network template
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacArgs>? MistNac { get; set; }
 
+        /// <summary>
+        /// Display name of the network template
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -411,7 +449,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateNetworksArgs>? _networks;
 
         /// <summary>
-        /// Property key is network name
+        /// Layer 3 networks configured by this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateNetworksArgs> Networks
         {
@@ -423,7 +461,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// NTP servers provided by this network template
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -431,6 +469,9 @@ namespace Pulumi.JuniperMist.Org
             set => _ntpServers = value;
         }
 
+        /// <summary>
+        /// Organization that owns this network template
+        /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -438,7 +479,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateOspfAreasArgs>? _ospfAreas;
 
         /// <summary>
-        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        /// OSPF area defaults provided by this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateOspfAreasArgs> OspfAreas
         {
@@ -450,7 +491,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplatePortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Port mirroring defaults provided by this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringArgs> PortMirroring
         {
@@ -462,7 +503,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplatePortUsagesArgs>? _portUsages;
 
         /// <summary>
-        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// Reusable switch port usage profiles provided by this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortUsagesArgs> PortUsages
         {
@@ -471,11 +512,14 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Junos Radius config
+        /// RADIUS authentication and accounting defaults in this network template
         /// </summary>
         [Input("radiusConfig")]
         public Input<Inputs.NetworktemplateRadiusConfigArgs>? RadiusConfig { get; set; }
 
+        /// <summary>
+        /// Remote syslog defaults provided by this network template
+        /// </summary>
         [Input("remoteSyslog")]
         public Input<Inputs.NetworktemplateRemoteSyslogArgs>? RemoteSyslog { get; set; }
 
@@ -489,7 +533,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateRoutingPoliciesArgs>? _routingPolicies;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Routing policy defaults applied by this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateRoutingPoliciesArgs> RoutingPolicies
         {
@@ -497,21 +541,27 @@ namespace Pulumi.JuniperMist.Org
             set => _routingPolicies = value;
         }
 
+        /// <summary>
+        /// SNMP defaults provided by this network template
+        /// </summary>
         [Input("snmpConfig")]
         public Input<Inputs.NetworktemplateSnmpConfigArgs>? SnmpConfig { get; set; }
 
         /// <summary>
-        /// Defines custom switch configuration based on different criteria
+        /// Matching rules that select switches for this network template
         /// </summary>
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingArgs>? SwitchMatching { get; set; }
 
         /// <summary>
-        /// Switch Management settings
+        /// Management-plane defaults provided by this network template
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtArgs>? SwitchMgmt { get; set; }
 
+        /// <summary>
+        /// VRF defaults applied by this network template
+        /// </summary>
         [Input("vrfConfig")]
         public Input<Inputs.NetworktemplateVrfConfigArgs>? VrfConfig { get; set; }
 
@@ -519,7 +569,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateVrfInstancesArgs>? _vrfInstances;
 
         /// <summary>
-        /// Property key is the network name
+        /// VRF instances configured by this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateVrfInstancesArgs> VrfInstances
         {
@@ -537,6 +587,10 @@ namespace Pulumi.JuniperMist.Org
     {
         [Input("aclPolicies")]
         private InputList<Inputs.NetworktemplateAclPolicyGetArgs>? _aclPolicies;
+
+        /// <summary>
+        /// ACL policy defaults provided by this network template
+        /// </summary>
         public InputList<Inputs.NetworktemplateAclPolicyGetArgs> AclPolicies
         {
             get => _aclPolicies ?? (_aclPolicies = new InputList<Inputs.NetworktemplateAclPolicyGetArgs>());
@@ -547,7 +601,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateAclTagsGetArgs>? _aclTags;
 
         /// <summary>
-        /// ACL Tags to identify traffic source or destination. Key name is the tag name
+        /// ACL tags available to access policies in this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateAclTagsGetArgs> AclTags
         {
@@ -559,7 +613,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands provided by this network template
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -569,12 +623,19 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("bgpConfig")]
         private InputMap<Inputs.NetworktemplateBgpConfigGetArgs>? _bgpConfig;
+
+        /// <summary>
+        /// BGP routing defaults for this network template. Property key is the BGP session name
+        /// </summary>
         public InputMap<Inputs.NetworktemplateBgpConfigGetArgs> BgpConfig
         {
             get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.NetworktemplateBgpConfigGetArgs>());
             set => _bgpConfig = value;
         }
 
+        /// <summary>
+        /// DHCP snooping defaults provided by this network template
+        /// </summary>
         [Input("dhcpSnooping")]
         public Input<Inputs.NetworktemplateDhcpSnoopingGetArgs>? DhcpSnooping { get; set; }
 
@@ -582,7 +643,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS servers provided by this network template
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -594,7 +655,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS search suffixes provided by this network template
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -606,7 +667,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateExtraRoutesGetArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Additional IPv4 route defaults in this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateExtraRoutesGetArgs> ExtraRoutes
         {
@@ -618,7 +679,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateExtraRoutes6GetArgs>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Additional IPv6 route defaults in this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateExtraRoutes6GetArgs> ExtraRoutes6
         {
@@ -627,11 +688,14 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Enable MistNac to use RadSec
+        /// Mist NAC defaults applied by this network template
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacGetArgs>? MistNac { get; set; }
 
+        /// <summary>
+        /// Display name of the network template
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -639,7 +703,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateNetworksGetArgs>? _networks;
 
         /// <summary>
-        /// Property key is network name
+        /// Layer 3 networks configured by this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateNetworksGetArgs> Networks
         {
@@ -651,7 +715,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// NTP servers provided by this network template
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -659,6 +723,9 @@ namespace Pulumi.JuniperMist.Org
             set => _ntpServers = value;
         }
 
+        /// <summary>
+        /// Organization that owns this network template
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -666,7 +733,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateOspfAreasGetArgs>? _ospfAreas;
 
         /// <summary>
-        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        /// OSPF area defaults provided by this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateOspfAreasGetArgs> OspfAreas
         {
@@ -678,7 +745,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplatePortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Port mirroring defaults provided by this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringGetArgs> PortMirroring
         {
@@ -690,7 +757,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplatePortUsagesGetArgs>? _portUsages;
 
         /// <summary>
-        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// Reusable switch port usage profiles provided by this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortUsagesGetArgs> PortUsages
         {
@@ -699,11 +766,14 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// Junos Radius config
+        /// RADIUS authentication and accounting defaults in this network template
         /// </summary>
         [Input("radiusConfig")]
         public Input<Inputs.NetworktemplateRadiusConfigGetArgs>? RadiusConfig { get; set; }
 
+        /// <summary>
+        /// Remote syslog defaults provided by this network template
+        /// </summary>
         [Input("remoteSyslog")]
         public Input<Inputs.NetworktemplateRemoteSyslogGetArgs>? RemoteSyslog { get; set; }
 
@@ -717,7 +787,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateRoutingPoliciesGetArgs>? _routingPolicies;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Routing policy defaults applied by this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateRoutingPoliciesGetArgs> RoutingPolicies
         {
@@ -725,21 +795,27 @@ namespace Pulumi.JuniperMist.Org
             set => _routingPolicies = value;
         }
 
+        /// <summary>
+        /// SNMP defaults provided by this network template
+        /// </summary>
         [Input("snmpConfig")]
         public Input<Inputs.NetworktemplateSnmpConfigGetArgs>? SnmpConfig { get; set; }
 
         /// <summary>
-        /// Defines custom switch configuration based on different criteria
+        /// Matching rules that select switches for this network template
         /// </summary>
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingGetArgs>? SwitchMatching { get; set; }
 
         /// <summary>
-        /// Switch Management settings
+        /// Management-plane defaults provided by this network template
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtGetArgs>? SwitchMgmt { get; set; }
 
+        /// <summary>
+        /// VRF defaults applied by this network template
+        /// </summary>
         [Input("vrfConfig")]
         public Input<Inputs.NetworktemplateVrfConfigGetArgs>? VrfConfig { get; set; }
 
@@ -747,7 +823,7 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplateVrfInstancesGetArgs>? _vrfInstances;
 
         /// <summary>
-        /// Property key is the network name
+        /// VRF instances configured by this network template
         /// </summary>
         public InputMap<Inputs.NetworktemplateVrfInstancesGetArgs> VrfInstances
         {

@@ -57,26 +57,34 @@ type Network struct {
 	pulumi.CustomResourceState
 
 	// Whether to disallow Mist Devices in the network
-	DisallowMistServices pulumi.BoolOutput              `pulumi:"disallowMistServices"`
-	Gateway              pulumi.StringPtrOutput         `pulumi:"gateway"`
-	Gateway6             pulumi.StringPtrOutput         `pulumi:"gateway6"`
-	InternalAccess       NetworkInternalAccessPtrOutput `pulumi:"internalAccess"`
-	// Whether this network has direct internet access
+	DisallowMistServices pulumi.BoolOutput `pulumi:"disallowMistServices"`
+	// IPv4 gateway address for this network
+	Gateway pulumi.StringPtrOutput `pulumi:"gateway"`
+	// IPv6 gateway address for this network
+	Gateway6 pulumi.StringPtrOutput `pulumi:"gateway6"`
+	// Internal access settings for this network
+	InternalAccess NetworkInternalAccessPtrOutput `pulumi:"internalAccess"`
+	// Direct internet access and NAT settings for this network
 	InternetAccess NetworkInternetAccessPtrOutput `pulumi:"internetAccess"`
 	// Whether to allow clients in the network to talk to each other
 	Isolation pulumi.BoolPtrOutput `pulumi:"isolation"`
-	// Whether to enable multicast support (only PIM-sparse mode is supported)
+	// Settings for multicast routing on this network
 	Multicast NetworkMulticastPtrOutput `pulumi:"multicast"`
-	Name      pulumi.StringOutput       `pulumi:"name"`
-	OrgId     pulumi.StringOutput       `pulumi:"orgId"`
-	// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+	// Display name of the organization network
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Organization that owns this network
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// Other network names this network can route to, for example through BGP, OSPF or static routes
 	RoutedForNetworks pulumi.StringArrayOutput `pulumi:"routedForNetworks"`
-	Subnet            pulumi.StringOutput      `pulumi:"subnet"`
-	Subnet6           pulumi.StringPtrOutput   `pulumi:"subnet6"`
-	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	// IPv4 subnet CIDR for this network
+	Subnet pulumi.StringOutput `pulumi:"subnet"`
+	// IPv6 subnet CIDR for this network
+	Subnet6 pulumi.StringPtrOutput `pulumi:"subnet6"`
+	// Tenant address mappings associated with this network
 	Tenants NetworkTenantsMapOutput `pulumi:"tenants"`
-	VlanId  pulumi.StringPtrOutput  `pulumi:"vlanId"`
-	// Property key is the VPN name. Whether this network can be accessed from vpn
+	// VLAN ID or variable associated with this network
+	VlanId pulumi.StringPtrOutput `pulumi:"vlanId"`
+	// VPN access settings keyed by VPN name for this network
 	VpnAccess NetworkVpnAccessMapOutput `pulumi:"vpnAccess"`
 }
 
@@ -117,51 +125,67 @@ func GetNetwork(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Network resources.
 type networkState struct {
 	// Whether to disallow Mist Devices in the network
-	DisallowMistServices *bool                  `pulumi:"disallowMistServices"`
-	Gateway              *string                `pulumi:"gateway"`
-	Gateway6             *string                `pulumi:"gateway6"`
-	InternalAccess       *NetworkInternalAccess `pulumi:"internalAccess"`
-	// Whether this network has direct internet access
+	DisallowMistServices *bool `pulumi:"disallowMistServices"`
+	// IPv4 gateway address for this network
+	Gateway *string `pulumi:"gateway"`
+	// IPv6 gateway address for this network
+	Gateway6 *string `pulumi:"gateway6"`
+	// Internal access settings for this network
+	InternalAccess *NetworkInternalAccess `pulumi:"internalAccess"`
+	// Direct internet access and NAT settings for this network
 	InternetAccess *NetworkInternetAccess `pulumi:"internetAccess"`
 	// Whether to allow clients in the network to talk to each other
 	Isolation *bool `pulumi:"isolation"`
-	// Whether to enable multicast support (only PIM-sparse mode is supported)
+	// Settings for multicast routing on this network
 	Multicast *NetworkMulticast `pulumi:"multicast"`
-	Name      *string           `pulumi:"name"`
-	OrgId     *string           `pulumi:"orgId"`
-	// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+	// Display name of the organization network
+	Name *string `pulumi:"name"`
+	// Organization that owns this network
+	OrgId *string `pulumi:"orgId"`
+	// Other network names this network can route to, for example through BGP, OSPF or static routes
 	RoutedForNetworks []string `pulumi:"routedForNetworks"`
-	Subnet            *string  `pulumi:"subnet"`
-	Subnet6           *string  `pulumi:"subnet6"`
-	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	// IPv4 subnet CIDR for this network
+	Subnet *string `pulumi:"subnet"`
+	// IPv6 subnet CIDR for this network
+	Subnet6 *string `pulumi:"subnet6"`
+	// Tenant address mappings associated with this network
 	Tenants map[string]NetworkTenants `pulumi:"tenants"`
-	VlanId  *string                   `pulumi:"vlanId"`
-	// Property key is the VPN name. Whether this network can be accessed from vpn
+	// VLAN ID or variable associated with this network
+	VlanId *string `pulumi:"vlanId"`
+	// VPN access settings keyed by VPN name for this network
 	VpnAccess map[string]NetworkVpnAccess `pulumi:"vpnAccess"`
 }
 
 type NetworkState struct {
 	// Whether to disallow Mist Devices in the network
 	DisallowMistServices pulumi.BoolPtrInput
-	Gateway              pulumi.StringPtrInput
-	Gateway6             pulumi.StringPtrInput
-	InternalAccess       NetworkInternalAccessPtrInput
-	// Whether this network has direct internet access
+	// IPv4 gateway address for this network
+	Gateway pulumi.StringPtrInput
+	// IPv6 gateway address for this network
+	Gateway6 pulumi.StringPtrInput
+	// Internal access settings for this network
+	InternalAccess NetworkInternalAccessPtrInput
+	// Direct internet access and NAT settings for this network
 	InternetAccess NetworkInternetAccessPtrInput
 	// Whether to allow clients in the network to talk to each other
 	Isolation pulumi.BoolPtrInput
-	// Whether to enable multicast support (only PIM-sparse mode is supported)
+	// Settings for multicast routing on this network
 	Multicast NetworkMulticastPtrInput
-	Name      pulumi.StringPtrInput
-	OrgId     pulumi.StringPtrInput
-	// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+	// Display name of the organization network
+	Name pulumi.StringPtrInput
+	// Organization that owns this network
+	OrgId pulumi.StringPtrInput
+	// Other network names this network can route to, for example through BGP, OSPF or static routes
 	RoutedForNetworks pulumi.StringArrayInput
-	Subnet            pulumi.StringPtrInput
-	Subnet6           pulumi.StringPtrInput
-	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	// IPv4 subnet CIDR for this network
+	Subnet pulumi.StringPtrInput
+	// IPv6 subnet CIDR for this network
+	Subnet6 pulumi.StringPtrInput
+	// Tenant address mappings associated with this network
 	Tenants NetworkTenantsMapInput
-	VlanId  pulumi.StringPtrInput
-	// Property key is the VPN name. Whether this network can be accessed from vpn
+	// VLAN ID or variable associated with this network
+	VlanId pulumi.StringPtrInput
+	// VPN access settings keyed by VPN name for this network
 	VpnAccess NetworkVpnAccessMapInput
 }
 
@@ -171,26 +195,34 @@ func (NetworkState) ElementType() reflect.Type {
 
 type networkArgs struct {
 	// Whether to disallow Mist Devices in the network
-	DisallowMistServices *bool                  `pulumi:"disallowMistServices"`
-	Gateway              *string                `pulumi:"gateway"`
-	Gateway6             *string                `pulumi:"gateway6"`
-	InternalAccess       *NetworkInternalAccess `pulumi:"internalAccess"`
-	// Whether this network has direct internet access
+	DisallowMistServices *bool `pulumi:"disallowMistServices"`
+	// IPv4 gateway address for this network
+	Gateway *string `pulumi:"gateway"`
+	// IPv6 gateway address for this network
+	Gateway6 *string `pulumi:"gateway6"`
+	// Internal access settings for this network
+	InternalAccess *NetworkInternalAccess `pulumi:"internalAccess"`
+	// Direct internet access and NAT settings for this network
 	InternetAccess *NetworkInternetAccess `pulumi:"internetAccess"`
 	// Whether to allow clients in the network to talk to each other
 	Isolation *bool `pulumi:"isolation"`
-	// Whether to enable multicast support (only PIM-sparse mode is supported)
+	// Settings for multicast routing on this network
 	Multicast *NetworkMulticast `pulumi:"multicast"`
-	Name      *string           `pulumi:"name"`
-	OrgId     string            `pulumi:"orgId"`
-	// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+	// Display name of the organization network
+	Name *string `pulumi:"name"`
+	// Organization that owns this network
+	OrgId string `pulumi:"orgId"`
+	// Other network names this network can route to, for example through BGP, OSPF or static routes
 	RoutedForNetworks []string `pulumi:"routedForNetworks"`
-	Subnet            string   `pulumi:"subnet"`
-	Subnet6           *string  `pulumi:"subnet6"`
-	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	// IPv4 subnet CIDR for this network
+	Subnet string `pulumi:"subnet"`
+	// IPv6 subnet CIDR for this network
+	Subnet6 *string `pulumi:"subnet6"`
+	// Tenant address mappings associated with this network
 	Tenants map[string]NetworkTenants `pulumi:"tenants"`
-	VlanId  *string                   `pulumi:"vlanId"`
-	// Property key is the VPN name. Whether this network can be accessed from vpn
+	// VLAN ID or variable associated with this network
+	VlanId *string `pulumi:"vlanId"`
+	// VPN access settings keyed by VPN name for this network
 	VpnAccess map[string]NetworkVpnAccess `pulumi:"vpnAccess"`
 }
 
@@ -198,25 +230,33 @@ type networkArgs struct {
 type NetworkArgs struct {
 	// Whether to disallow Mist Devices in the network
 	DisallowMistServices pulumi.BoolPtrInput
-	Gateway              pulumi.StringPtrInput
-	Gateway6             pulumi.StringPtrInput
-	InternalAccess       NetworkInternalAccessPtrInput
-	// Whether this network has direct internet access
+	// IPv4 gateway address for this network
+	Gateway pulumi.StringPtrInput
+	// IPv6 gateway address for this network
+	Gateway6 pulumi.StringPtrInput
+	// Internal access settings for this network
+	InternalAccess NetworkInternalAccessPtrInput
+	// Direct internet access and NAT settings for this network
 	InternetAccess NetworkInternetAccessPtrInput
 	// Whether to allow clients in the network to talk to each other
 	Isolation pulumi.BoolPtrInput
-	// Whether to enable multicast support (only PIM-sparse mode is supported)
+	// Settings for multicast routing on this network
 	Multicast NetworkMulticastPtrInput
-	Name      pulumi.StringPtrInput
-	OrgId     pulumi.StringInput
-	// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+	// Display name of the organization network
+	Name pulumi.StringPtrInput
+	// Organization that owns this network
+	OrgId pulumi.StringInput
+	// Other network names this network can route to, for example through BGP, OSPF or static routes
 	RoutedForNetworks pulumi.StringArrayInput
-	Subnet            pulumi.StringInput
-	Subnet6           pulumi.StringPtrInput
-	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	// IPv4 subnet CIDR for this network
+	Subnet pulumi.StringInput
+	// IPv6 subnet CIDR for this network
+	Subnet6 pulumi.StringPtrInput
+	// Tenant address mappings associated with this network
 	Tenants NetworkTenantsMapInput
-	VlanId  pulumi.StringPtrInput
-	// Property key is the VPN name. Whether this network can be accessed from vpn
+	// VLAN ID or variable associated with this network
+	VlanId pulumi.StringPtrInput
+	// VPN access settings keyed by VPN name for this network
 	VpnAccess NetworkVpnAccessMapInput
 }
 
@@ -312,19 +352,22 @@ func (o NetworkOutput) DisallowMistServices() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.DisallowMistServices }).(pulumi.BoolOutput)
 }
 
+// IPv4 gateway address for this network
 func (o NetworkOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Gateway }).(pulumi.StringPtrOutput)
 }
 
+// IPv6 gateway address for this network
 func (o NetworkOutput) Gateway6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Gateway6 }).(pulumi.StringPtrOutput)
 }
 
+// Internal access settings for this network
 func (o NetworkOutput) InternalAccess() NetworkInternalAccessPtrOutput {
 	return o.ApplyT(func(v *Network) NetworkInternalAccessPtrOutput { return v.InternalAccess }).(NetworkInternalAccessPtrOutput)
 }
 
-// Whether this network has direct internet access
+// Direct internet access and NAT settings for this network
 func (o NetworkOutput) InternetAccess() NetworkInternetAccessPtrOutput {
 	return o.ApplyT(func(v *Network) NetworkInternetAccessPtrOutput { return v.InternetAccess }).(NetworkInternetAccessPtrOutput)
 }
@@ -334,42 +377,47 @@ func (o NetworkOutput) Isolation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.Isolation }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable multicast support (only PIM-sparse mode is supported)
+// Settings for multicast routing on this network
 func (o NetworkOutput) Multicast() NetworkMulticastPtrOutput {
 	return o.ApplyT(func(v *Network) NetworkMulticastPtrOutput { return v.Multicast }).(NetworkMulticastPtrOutput)
 }
 
+// Display name of the organization network
 func (o NetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Organization that owns this network
 func (o NetworkOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+// Other network names this network can route to, for example through BGP, OSPF or static routes
 func (o NetworkOutput) RoutedForNetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.RoutedForNetworks }).(pulumi.StringArrayOutput)
 }
 
+// IPv4 subnet CIDR for this network
 func (o NetworkOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Subnet }).(pulumi.StringOutput)
 }
 
+// IPv6 subnet CIDR for this network
 func (o NetworkOutput) Subnet6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Subnet6 }).(pulumi.StringPtrOutput)
 }
 
-// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+// Tenant address mappings associated with this network
 func (o NetworkOutput) Tenants() NetworkTenantsMapOutput {
 	return o.ApplyT(func(v *Network) NetworkTenantsMapOutput { return v.Tenants }).(NetworkTenantsMapOutput)
 }
 
+// VLAN ID or variable associated with this network
 func (o NetworkOutput) VlanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.VlanId }).(pulumi.StringPtrOutput)
 }
 
-// Property key is the VPN name. Whether this network can be accessed from vpn
+// VPN access settings keyed by VPN name for this network
 func (o NetworkOutput) VpnAccess() NetworkVpnAccessMapOutput {
 	return o.ApplyT(func(v *Network) NetworkVpnAccessMapOutput { return v.VpnAccess }).(NetworkVpnAccessMapOutput)
 }

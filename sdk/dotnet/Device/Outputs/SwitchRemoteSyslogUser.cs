@@ -13,8 +13,17 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchRemoteSyslogUser
     {
+        /// <summary>
+        /// Syslog facilities and severities logged for this user rule
+        /// </summary>
         public readonly ImmutableArray<Outputs.SwitchRemoteSyslogUserContent> Contents;
+        /// <summary>
+        /// Expression used to filter user log messages
+        /// </summary>
         public readonly string? Match;
+        /// <summary>
+        /// Account name or wildcard matched by this syslog rule
+        /// </summary>
         public readonly string? User;
 
         [OutputConstructor]

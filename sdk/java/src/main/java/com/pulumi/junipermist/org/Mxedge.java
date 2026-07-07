@@ -47,179 +47,297 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/mxedge:Mxedge")
 public class Mxedge extends com.pulumi.resources.CustomResource {
+    /**
+     * Registration claim code for the Mist Edge
+     * 
+     */
     @Export(name="claimCode", refs={String.class}, tree="[0]")
     private Output<String> claimCode;
 
+    /**
+     * @return Registration claim code for the Mist Edge
+     * 
+     */
     public Output<String> claimCode() {
         return this.claimCode;
     }
+    /**
+     * Whether this Mist Edge is scoped to a site
+     * 
+     */
+    @Export(name="forSite", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> forSite;
+
+    /**
+     * @return Whether this Mist Edge is scoped to a site
+     * 
+     */
+    public Output<Boolean> forSite() {
+        return this.forSite;
+    }
+    /**
+     * Mist Edge MAC address
+     * 
+     */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
+    /**
+     * @return Mist Edge MAC address
+     * 
+     */
     public Output<String> mac() {
         return this.mac;
     }
+    /**
+     * Mist Edge hardware or virtual appliance model
+     * 
+     */
     @Export(name="model", refs={String.class}, tree="[0]")
     private Output<String> model;
 
+    /**
+     * @return Mist Edge hardware or virtual appliance model
+     * 
+     */
     public Output<String> model() {
         return this.model;
     }
+    /**
+     * Whether the Mist Edge agent has registered with Mist cloud
+     * 
+     */
     @Export(name="mxagentRegistered", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mxagentRegistered;
 
+    /**
+     * @return Whether the Mist Edge agent has registered with Mist cloud
+     * 
+     */
     public Output<Boolean> mxagentRegistered() {
         return this.mxagentRegistered;
     }
     /**
-     * MxCluster this MxEdge belongs to
+     * Mist Edge cluster identifier that this appliance belongs to
      * 
      */
     @Export(name="mxclusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mxclusterId;
 
     /**
-     * @return MxCluster this MxEdge belongs to
+     * @return Mist Edge cluster identifier that this appliance belongs to
      * 
      */
     public Output<Optional<String>> mxclusterId() {
         return Codegen.optional(this.mxclusterId);
     }
+    /**
+     * Management credentials and settings for the Mist Edge
+     * 
+     */
     @Export(name="mxedgeMgmt", refs={MxedgeMxedgeMgmt.class}, tree="[0]")
     private Output</* @Nullable */ MxedgeMxedgeMgmt> mxedgeMgmt;
 
+    /**
+     * @return Management credentials and settings for the Mist Edge
+     * 
+     */
     public Output<Optional<MxedgeMxedgeMgmt>> mxedgeMgmt() {
         return Codegen.optional(this.mxedgeMgmt);
     }
+    /**
+     * Display name of the Mist Edge
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the Mist Edge
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Free-form notes for the Mist Edge
+     * 
+     */
     @Export(name="notes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notes;
 
+    /**
+     * @return Free-form notes for the Mist Edge
+     * 
+     */
     public Output<Optional<String>> notes() {
         return Codegen.optional(this.notes);
     }
+    /**
+     * Time synchronization servers used by the Mist Edge
+     * 
+     */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ntpServers;
 
+    /**
+     * @return Time synchronization servers used by the Mist Edge
+     * 
+     */
     public Output<Optional<List<String>>> ntpServers() {
         return Codegen.optional(this.ntpServers);
     }
     /**
-     * IPconfiguration of the Mist Edge out-of*band management interface
+     * Out-of-band management IP configuration for the Mist Edge
      * 
      */
     @Export(name="oobIpConfig", refs={MxedgeOobIpConfig.class}, tree="[0]")
     private Output</* @Nullable */ MxedgeOobIpConfig> oobIpConfig;
 
     /**
-     * @return IPconfiguration of the Mist Edge out-of*band management interface
+     * @return Out-of-band management IP configuration for the Mist Edge
      * 
      */
     public Output<Optional<MxedgeOobIpConfig>> oobIpConfig() {
         return Codegen.optional(this.oobIpConfig);
     }
+    /**
+     * Identifier of the org that owns the Mist Edge
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Identifier of the org that owns the Mist Edge
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Proxy Configuration to talk to Mist
+     * Network proxy settings used by the Mist Edge
      * 
      */
     @Export(name="proxy", refs={MxedgeProxy.class}, tree="[0]")
     private Output</* @Nullable */ MxedgeProxy> proxy;
 
     /**
-     * @return Proxy Configuration to talk to Mist
+     * @return Network proxy settings used by the Mist Edge
      * 
      */
     public Output<Optional<MxedgeProxy>> proxy() {
         return Codegen.optional(this.proxy);
     }
     /**
-     * List of services to run, tunterm only for now
+     * List of services enabled to run on the Mist Edge
      * 
      */
     @Export(name="services", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> services;
 
     /**
-     * @return List of services to run, tunterm only for now
+     * @return List of services enabled to run on the Mist Edge
      * 
      */
     public Output<List<String>> services() {
         return this.services;
     }
+    /**
+     * Identifier of the site when the Mist Edge is site-scoped
+     * 
+     */
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> siteId;
 
+    /**
+     * @return Identifier of the site when the Mist Edge is site-scoped
+     * 
+     */
     public Output<Optional<String>> siteId() {
         return Codegen.optional(this.siteId);
     }
     /**
-     * Global and per-VLAN. Property key is the VLAN ID
+     * DHCP relay or server settings for Mist Tunneled VLANs
      * 
      */
     @Export(name="tuntermDhcpdConfig", refs={Map.class,String.class,MxedgeTuntermDhcpdConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,MxedgeTuntermDhcpdConfig>> tuntermDhcpdConfig;
 
     /**
-     * @return Global and per-VLAN. Property key is the VLAN ID
+     * @return DHCP relay or server settings for Mist Tunneled VLANs
      * 
      */
     public Output<Optional<Map<String,MxedgeTuntermDhcpdConfig>>> tuntermDhcpdConfig() {
         return Codegen.optional(this.tuntermDhcpdConfig);
     }
     /**
-     * Property key is a CIDR
+     * Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
      * 
      */
     @Export(name="tuntermExtraRoutes", refs={Map.class,String.class,MxedgeTuntermExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,MxedgeTuntermExtraRoutes>> tuntermExtraRoutes;
 
     /**
-     * @return Property key is a CIDR
+     * @return Extra routes for Mist Tunneled VLAN traffic; property key is a CIDR
      * 
      */
     public Output<Optional<Map<String,MxedgeTuntermExtraRoutes>>> tuntermExtraRoutes() {
         return Codegen.optional(this.tuntermExtraRoutes);
     }
+    /**
+     * IGMP snooping settings for Mist Tunneled VLANs
+     * 
+     */
     @Export(name="tuntermIgmpSnoopingConfig", refs={MxedgeTuntermIgmpSnoopingConfig.class}, tree="[0]")
     private Output</* @Nullable */ MxedgeTuntermIgmpSnoopingConfig> tuntermIgmpSnoopingConfig;
 
+    /**
+     * @return IGMP snooping settings for Mist Tunneled VLANs
+     * 
+     */
     public Output<Optional<MxedgeTuntermIgmpSnoopingConfig>> tuntermIgmpSnoopingConfig() {
         return Codegen.optional(this.tuntermIgmpSnoopingConfig);
     }
     /**
-     * IPconfiguration of the Mist Tunnel interface
+     * Tunnel termination IP configuration for the Mist Edge
      * 
      */
     @Export(name="tuntermIpConfig", refs={MxedgeTuntermIpConfig.class}, tree="[0]")
     private Output</* @Nullable */ MxedgeTuntermIpConfig> tuntermIpConfig;
 
     /**
-     * @return IPconfiguration of the Mist Tunnel interface
+     * @return Tunnel termination IP configuration for the Mist Edge
      * 
      */
     public Output<Optional<MxedgeTuntermIpConfig>> tuntermIpConfig() {
         return Codegen.optional(this.tuntermIpConfig);
     }
+    /**
+     * Monitoring checks for tunnel termination reachability
+     * 
+     */
     @Export(name="tuntermMonitorings", refs={List.class,MxedgeTuntermMonitoring.class}, tree="[0,[0,1]]")
     private Output</* @Nullable */ List<List<MxedgeTuntermMonitoring>>> tuntermMonitorings;
 
+    /**
+     * @return Monitoring checks for tunnel termination reachability
+     * 
+     */
     public Output<Optional<List<List<MxedgeTuntermMonitoring>>>> tuntermMonitorings() {
         return Codegen.optional(this.tuntermMonitorings);
     }
+    /**
+     * Multicast forwarding settings for tunnel termination
+     * 
+     */
     @Export(name="tuntermMulticastConfig", refs={MxedgeTuntermMulticastConfig.class}, tree="[0]")
     private Output</* @Nullable */ MxedgeTuntermMulticastConfig> tuntermMulticastConfig;
 
+    /**
+     * @return Multicast forwarding settings for tunnel termination
+     * 
+     */
     public Output<Optional<MxedgeTuntermMulticastConfig>> tuntermMulticastConfig() {
         return Codegen.optional(this.tuntermMulticastConfig);
     }
@@ -238,42 +356,58 @@ public class Mxedge extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tuntermOtherIpConfigs);
     }
     /**
-     * Ethernet port configurations
+     * Port configuration for tunnel termination traffic
      * 
      */
     @Export(name="tuntermPortConfig", refs={MxedgeTuntermPortConfig.class}, tree="[0]")
     private Output</* @Nullable */ MxedgeTuntermPortConfig> tuntermPortConfig;
 
     /**
-     * @return Ethernet port configurations
+     * @return Port configuration for tunnel termination traffic
      * 
      */
     public Output<Optional<MxedgeTuntermPortConfig>> tuntermPortConfig() {
         return Codegen.optional(this.tuntermPortConfig);
     }
+    /**
+     * Whether the tunnel termination service has registered with Mist cloud
+     * 
+     */
     @Export(name="tuntermRegistered", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> tuntermRegistered;
 
+    /**
+     * @return Whether the tunnel termination service has registered with Mist cloud
+     * 
+     */
     public Output<Boolean> tuntermRegistered() {
         return this.tuntermRegistered;
     }
     /**
-     * If custom vlan settings are desired
+     * Switch VLAN settings for tunnel termination
      * 
      */
     @Export(name="tuntermSwitchConfig", refs={Map.class,String.class,MxedgeTuntermSwitchConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,MxedgeTuntermSwitchConfig>> tuntermSwitchConfig;
 
     /**
-     * @return If custom vlan settings are desired
+     * @return Switch VLAN settings for tunnel termination
      * 
      */
     public Output<Optional<Map<String,MxedgeTuntermSwitchConfig>>> tuntermSwitchConfig() {
         return Codegen.optional(this.tuntermSwitchConfig);
     }
+    /**
+     * Service version information reported by the Mist Edge
+     * 
+     */
     @Export(name="versions", refs={MxedgeVersions.class}, tree="[0]")
     private Output</* @Nullable */ MxedgeVersions> versions;
 
+    /**
+     * @return Service version information reported by the Mist Edge
+     * 
+     */
     public Output<Optional<MxedgeVersions>> versions() {
         return Codegen.optional(this.versions);
     }

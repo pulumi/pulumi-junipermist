@@ -64,15 +64,17 @@ import (
 type Psk struct {
 	pulumi.CustomResourceState
 
-	// email to send psk expiring notifications to
+	// Notification recipient email address for PSK creation notification and expiration reminders
 	Email pulumi.StringPtrOutput `pulumi:"email"`
 	// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
 	ExpireTime pulumi.IntOutput `pulumi:"expireTime"`
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime pulumi.IntPtrOutput `pulumi:"expiryNotificationTime"`
-	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-	Mac  pulumi.StringPtrOutput `pulumi:"mac"`
-	Name pulumi.StringOutput    `pulumi:"name"`
+	// If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
+	Mac pulumi.StringPtrOutput `pulumi:"mac"`
+	// Display name of the PSK
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Admin note or description stored with the PSK
 	Note pulumi.StringPtrOutput `pulumi:"note"`
 	// If set to true, reminder notification will be sent when psk is about to expire
 	NotifyExpiry pulumi.BoolOutput `pulumi:"notifyExpiry"`
@@ -80,15 +82,19 @@ type Psk struct {
 	NotifyOnCreateOrEdit pulumi.BoolPtrOutput `pulumi:"notifyOnCreateOrEdit"`
 	// previous passphrase of the PSK if it has been rotated
 	OldPassphrase pulumi.StringPtrOutput `pulumi:"oldPassphrase"`
-	OrgId         pulumi.StringOutput    `pulumi:"orgId"`
-	// passphrase of the PSK (8-63 character or 64 in hex)
-	Passphrase pulumi.StringOutput    `pulumi:"passphrase"`
-	Role       pulumi.StringPtrOutput `pulumi:"role"`
-	SiteId     pulumi.StringOutput    `pulumi:"siteId"`
-	// SSID this PSK should be applicable to
+	// Organization that owns the site-level PSK
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// PSK passphrase, 8-63 characters or 64 hexadecimal characters
+	Passphrase pulumi.StringOutput `pulumi:"passphrase"`
+	// Client role applied to users authenticated with this PSK
+	Role pulumi.StringPtrOutput `pulumi:"role"`
+	// Site associated with the site-level PSK
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
+	// WLAN SSID where this PSK can be used
 	Ssid pulumi.StringOutput `pulumi:"ssid"`
 	// enum: `multi`, `single`
-	Usage  pulumi.StringOutput    `pulumi:"usage"`
+	Usage pulumi.StringOutput `pulumi:"usage"`
+	// VLAN ID returned for clients using this PSK
 	VlanId pulumi.StringPtrOutput `pulumi:"vlanId"`
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
 	VlanName pulumi.StringPtrOutput `pulumi:"vlanName"`
@@ -144,15 +150,17 @@ func GetPsk(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Psk resources.
 type pskState struct {
-	// email to send psk expiring notifications to
+	// Notification recipient email address for PSK creation notification and expiration reminders
 	Email *string `pulumi:"email"`
 	// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
 	ExpireTime *int `pulumi:"expireTime"`
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime *int `pulumi:"expiryNotificationTime"`
-	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-	Mac  *string `pulumi:"mac"`
+	// If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
+	Mac *string `pulumi:"mac"`
+	// Display name of the PSK
 	Name *string `pulumi:"name"`
+	// Admin note or description stored with the PSK
 	Note *string `pulumi:"note"`
 	// If set to true, reminder notification will be sent when psk is about to expire
 	NotifyExpiry *bool `pulumi:"notifyExpiry"`
@@ -160,30 +168,36 @@ type pskState struct {
 	NotifyOnCreateOrEdit *bool `pulumi:"notifyOnCreateOrEdit"`
 	// previous passphrase of the PSK if it has been rotated
 	OldPassphrase *string `pulumi:"oldPassphrase"`
-	OrgId         *string `pulumi:"orgId"`
-	// passphrase of the PSK (8-63 character or 64 in hex)
+	// Organization that owns the site-level PSK
+	OrgId *string `pulumi:"orgId"`
+	// PSK passphrase, 8-63 characters or 64 hexadecimal characters
 	Passphrase *string `pulumi:"passphrase"`
-	Role       *string `pulumi:"role"`
-	SiteId     *string `pulumi:"siteId"`
-	// SSID this PSK should be applicable to
+	// Client role applied to users authenticated with this PSK
+	Role *string `pulumi:"role"`
+	// Site associated with the site-level PSK
+	SiteId *string `pulumi:"siteId"`
+	// WLAN SSID where this PSK can be used
 	Ssid *string `pulumi:"ssid"`
 	// enum: `multi`, `single`
-	Usage  *string `pulumi:"usage"`
+	Usage *string `pulumi:"usage"`
+	// VLAN ID returned for clients using this PSK
 	VlanId *string `pulumi:"vlanId"`
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
 	VlanName *string `pulumi:"vlanName"`
 }
 
 type PskState struct {
-	// email to send psk expiring notifications to
+	// Notification recipient email address for PSK creation notification and expiration reminders
 	Email pulumi.StringPtrInput
 	// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
 	ExpireTime pulumi.IntPtrInput
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime pulumi.IntPtrInput
-	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-	Mac  pulumi.StringPtrInput
+	// If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
+	Mac pulumi.StringPtrInput
+	// Display name of the PSK
 	Name pulumi.StringPtrInput
+	// Admin note or description stored with the PSK
 	Note pulumi.StringPtrInput
 	// If set to true, reminder notification will be sent when psk is about to expire
 	NotifyExpiry pulumi.BoolPtrInput
@@ -191,15 +205,19 @@ type PskState struct {
 	NotifyOnCreateOrEdit pulumi.BoolPtrInput
 	// previous passphrase of the PSK if it has been rotated
 	OldPassphrase pulumi.StringPtrInput
-	OrgId         pulumi.StringPtrInput
-	// passphrase of the PSK (8-63 character or 64 in hex)
+	// Organization that owns the site-level PSK
+	OrgId pulumi.StringPtrInput
+	// PSK passphrase, 8-63 characters or 64 hexadecimal characters
 	Passphrase pulumi.StringPtrInput
-	Role       pulumi.StringPtrInput
-	SiteId     pulumi.StringPtrInput
-	// SSID this PSK should be applicable to
+	// Client role applied to users authenticated with this PSK
+	Role pulumi.StringPtrInput
+	// Site associated with the site-level PSK
+	SiteId pulumi.StringPtrInput
+	// WLAN SSID where this PSK can be used
 	Ssid pulumi.StringPtrInput
 	// enum: `multi`, `single`
-	Usage  pulumi.StringPtrInput
+	Usage pulumi.StringPtrInput
+	// VLAN ID returned for clients using this PSK
 	VlanId pulumi.StringPtrInput
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
 	VlanName pulumi.StringPtrInput
@@ -210,15 +228,17 @@ func (PskState) ElementType() reflect.Type {
 }
 
 type pskArgs struct {
-	// email to send psk expiring notifications to
+	// Notification recipient email address for PSK creation notification and expiration reminders
 	Email *string `pulumi:"email"`
 	// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
 	ExpireTime *int `pulumi:"expireTime"`
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime *int `pulumi:"expiryNotificationTime"`
-	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-	Mac  *string `pulumi:"mac"`
+	// If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
+	Mac *string `pulumi:"mac"`
+	// Display name of the PSK
 	Name *string `pulumi:"name"`
+	// Admin note or description stored with the PSK
 	Note *string `pulumi:"note"`
 	// If set to true, reminder notification will be sent when psk is about to expire
 	NotifyExpiry *bool `pulumi:"notifyExpiry"`
@@ -226,14 +246,17 @@ type pskArgs struct {
 	NotifyOnCreateOrEdit *bool `pulumi:"notifyOnCreateOrEdit"`
 	// previous passphrase of the PSK if it has been rotated
 	OldPassphrase *string `pulumi:"oldPassphrase"`
-	// passphrase of the PSK (8-63 character or 64 in hex)
-	Passphrase string  `pulumi:"passphrase"`
-	Role       *string `pulumi:"role"`
-	SiteId     string  `pulumi:"siteId"`
-	// SSID this PSK should be applicable to
+	// PSK passphrase, 8-63 characters or 64 hexadecimal characters
+	Passphrase string `pulumi:"passphrase"`
+	// Client role applied to users authenticated with this PSK
+	Role *string `pulumi:"role"`
+	// Site associated with the site-level PSK
+	SiteId string `pulumi:"siteId"`
+	// WLAN SSID where this PSK can be used
 	Ssid string `pulumi:"ssid"`
 	// enum: `multi`, `single`
-	Usage  *string `pulumi:"usage"`
+	Usage *string `pulumi:"usage"`
+	// VLAN ID returned for clients using this PSK
 	VlanId *string `pulumi:"vlanId"`
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
 	VlanName *string `pulumi:"vlanName"`
@@ -241,15 +264,17 @@ type pskArgs struct {
 
 // The set of arguments for constructing a Psk resource.
 type PskArgs struct {
-	// email to send psk expiring notifications to
+	// Notification recipient email address for PSK creation notification and expiration reminders
 	Email pulumi.StringPtrInput
 	// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
 	ExpireTime pulumi.IntPtrInput
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
 	ExpiryNotificationTime pulumi.IntPtrInput
-	// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-	Mac  pulumi.StringPtrInput
+	// If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
+	Mac pulumi.StringPtrInput
+	// Display name of the PSK
 	Name pulumi.StringPtrInput
+	// Admin note or description stored with the PSK
 	Note pulumi.StringPtrInput
 	// If set to true, reminder notification will be sent when psk is about to expire
 	NotifyExpiry pulumi.BoolPtrInput
@@ -257,14 +282,17 @@ type PskArgs struct {
 	NotifyOnCreateOrEdit pulumi.BoolPtrInput
 	// previous passphrase of the PSK if it has been rotated
 	OldPassphrase pulumi.StringPtrInput
-	// passphrase of the PSK (8-63 character or 64 in hex)
+	// PSK passphrase, 8-63 characters or 64 hexadecimal characters
 	Passphrase pulumi.StringInput
-	Role       pulumi.StringPtrInput
-	SiteId     pulumi.StringInput
-	// SSID this PSK should be applicable to
+	// Client role applied to users authenticated with this PSK
+	Role pulumi.StringPtrInput
+	// Site associated with the site-level PSK
+	SiteId pulumi.StringInput
+	// WLAN SSID where this PSK can be used
 	Ssid pulumi.StringInput
 	// enum: `multi`, `single`
-	Usage  pulumi.StringPtrInput
+	Usage pulumi.StringPtrInput
+	// VLAN ID returned for clients using this PSK
 	VlanId pulumi.StringPtrInput
 	// VLAN name to be assigned. Optional, `vlanId` takes precedence if both are provided
 	VlanName pulumi.StringPtrInput
@@ -357,7 +385,7 @@ func (o PskOutput) ToPskOutputWithContext(ctx context.Context) PskOutput {
 	return o
 }
 
-// email to send psk expiring notifications to
+// Notification recipient email address for PSK creation notification and expiration reminders
 func (o PskOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
 }
@@ -372,15 +400,17 @@ func (o PskOutput) ExpiryNotificationTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.IntPtrOutput { return v.ExpiryNotificationTime }).(pulumi.IntPtrOutput)
 }
 
-// If `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+// If `usage`==`single`, client MAC address this PSK is bound to; empty when auto-binding is used
 func (o PskOutput) Mac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringPtrOutput { return v.Mac }).(pulumi.StringPtrOutput)
 }
 
+// Display name of the PSK
 func (o PskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Admin note or description stored with the PSK
 func (o PskOutput) Note() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringPtrOutput { return v.Note }).(pulumi.StringPtrOutput)
 }
@@ -400,24 +430,27 @@ func (o PskOutput) OldPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringPtrOutput { return v.OldPassphrase }).(pulumi.StringPtrOutput)
 }
 
+// Organization that owns the site-level PSK
 func (o PskOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// passphrase of the PSK (8-63 character or 64 in hex)
+// PSK passphrase, 8-63 characters or 64 hexadecimal characters
 func (o PskOutput) Passphrase() pulumi.StringOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringOutput { return v.Passphrase }).(pulumi.StringOutput)
 }
 
+// Client role applied to users authenticated with this PSK
 func (o PskOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
 }
 
+// Site associated with the site-level PSK
 func (o PskOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// SSID this PSK should be applicable to
+// WLAN SSID where this PSK can be used
 func (o PskOutput) Ssid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringOutput { return v.Ssid }).(pulumi.StringOutput)
 }
@@ -427,6 +460,7 @@ func (o PskOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringOutput { return v.Usage }).(pulumi.StringOutput)
 }
 
+// VLAN ID returned for clients using this PSK
 func (o PskOutput) VlanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Psk) pulumi.StringPtrOutput { return v.VlanId }).(pulumi.StringPtrOutput)
 }

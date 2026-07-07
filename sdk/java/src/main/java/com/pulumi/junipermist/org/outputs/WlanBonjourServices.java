@@ -19,12 +19,12 @@ public final class WlanBonjourServices {
      */
     private @Nullable Boolean disableLocal;
     /**
-     * @return Optional, if the service is further restricted for certain RADIUS groups
+     * @return RADIUS groups allowed to discover this Bonjour service, when restricted
      * 
      */
     private @Nullable List<String> radiusGroups;
     /**
-     * @return how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+     * @return Discovery scope for this Bonjour service on the WLAN
      * 
      */
     private @Nullable String scope;
@@ -38,14 +38,14 @@ public final class WlanBonjourServices {
         return Optional.ofNullable(this.disableLocal);
     }
     /**
-     * @return Optional, if the service is further restricted for certain RADIUS groups
+     * @return RADIUS groups allowed to discover this Bonjour service, when restricted
      * 
      */
     public List<String> radiusGroups() {
         return this.radiusGroups == null ? List.of() : this.radiusGroups;
     }
     /**
-     * @return how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+     * @return Discovery scope for this Bonjour service on the WLAN
      * 
      */
     public Optional<String> scope() {

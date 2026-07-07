@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// List of networks to be used for synthetic tests
+        /// LAN network names where synthetic probes are run
         /// </summary>
         public InputList<string> Networks
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _probes;
 
         /// <summary>
-        /// app name comes from `CustomProbes` above or /const/synthetic_test_probes
+        /// Synthetic probe names to run on the listed LAN networks
         /// </summary>
         public InputList<string> Probes
         {

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApLacpConfig {
+    /**
+     * @return Whether to enable LACP on supported AP Ethernet uplinks
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private ApLacpConfig() {}
+    /**
+     * @return Whether to enable LACP on supported AP Ethernet uplinks
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

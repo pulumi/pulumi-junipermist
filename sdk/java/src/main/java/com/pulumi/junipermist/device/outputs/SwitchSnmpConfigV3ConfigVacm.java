@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchSnmpConfigV3ConfigVacm {
+    /**
+     * @return VACM access rules for SNMPv3
+     * 
+     */
     private @Nullable List<SwitchSnmpConfigV3ConfigVacmAccess> accesses;
+    /**
+     * @return VACM security-name to group mappings
+     * 
+     */
     private @Nullable SwitchSnmpConfigV3ConfigVacmSecurityToGroup securityToGroup;
 
     private SwitchSnmpConfigV3ConfigVacm() {}
+    /**
+     * @return VACM access rules for SNMPv3
+     * 
+     */
     public List<SwitchSnmpConfigV3ConfigVacmAccess> accesses() {
         return this.accesses == null ? List.of() : this.accesses;
     }
+    /**
+     * @return VACM security-name to group mappings
+     * 
+     */
     public Optional<SwitchSnmpConfigV3ConfigVacmSecurityToGroup> securityToGroup() {
         return Optional.ofNullable(this.securityToGroup);
     }

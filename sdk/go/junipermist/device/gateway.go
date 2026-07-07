@@ -71,29 +71,34 @@ import (
 type Gateway struct {
 	pulumi.CustomResourceState
 
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds pulumi.StringArrayOutput    `pulumi:"additionalConfigCmds"`
-	BgpConfig            GatewayBgpConfigMapOutput   `pulumi:"bgpConfig"`
-	DeviceId             pulumi.StringOutput         `pulumi:"deviceId"`
-	DhcpdConfig          GatewayDhcpdConfigPtrOutput `pulumi:"dhcpdConfig"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Additional CLI configuration commands to apply to this gateway
+	AdditionalConfigCmds pulumi.StringArrayOutput `pulumi:"additionalConfigCmds"`
+	// BGP routing configuration for this gateway. Property key is the BGP session name
+	BgpConfig GatewayBgpConfigMapOutput `pulumi:"bgpConfig"`
+	DeviceId  pulumi.StringOutput       `pulumi:"deviceId"`
+	// DHCP server configuration served by this gateway
+	DhcpdConfig GatewayDhcpdConfigPtrOutput `pulumi:"dhcpdConfig"`
+	// DNS servers configured for this gateway
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes configured for this gateway
 	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 routes configured on this gateway
 	ExtraRoutes GatewayExtraRoutesMapOutput `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 routes configured on this gateway
 	ExtraRoutes6 GatewayExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
-	// Gateway Management settings
+	// Management-plane settings for this gateway
 	GatewayMgmt GatewayGatewayMgmtPtrOutput `pulumi:"gatewayMgmt"`
-	// Property key is the profile name
+	// Intrusion detection and prevention profiles configured for this gateway
 	IdpProfiles GatewayIdpProfilesMapOutput `pulumi:"idpProfiles"`
-	Image1Url   pulumi.StringOutput         `pulumi:"image1Url"`
-	Image2Url   pulumi.StringOutput         `pulumi:"image2Url"`
-	Image3Url   pulumi.StringOutput         `pulumi:"image3Url"`
-	// Property key is the network name
+	// First custom image URL associated with the gateway
+	Image1Url pulumi.StringOutput `pulumi:"image1Url"`
+	// Second custom image URL associated with the gateway
+	Image2Url pulumi.StringOutput `pulumi:"image2Url"`
+	// Third custom image URL associated with the gateway
+	Image3Url pulumi.StringOutput `pulumi:"image3Url"`
+	// Gateway interface IP configurations by network name
 	IpConfigs GatewayIpConfigsMapOutput `pulumi:"ipConfigs"`
-	// Device MAC address
+	// Gateway MAC address used to identify the device
 	Mac pulumi.StringOutput `pulumi:"mac"`
 	// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
 	//
@@ -103,46 +108,57 @@ type Gateway struct {
 	MapId pulumi.StringPtrOutput `pulumi:"mapId"`
 	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
 	MistConfigured pulumi.BoolOutput `pulumi:"mistConfigured"`
-	// Device Model
-	Model      pulumi.StringOutput       `pulumi:"model"`
-	MspId      pulumi.StringPtrOutput    `pulumi:"mspId"`
-	Name       pulumi.StringOutput       `pulumi:"name"`
-	Networks   GatewayNetworkArrayOutput `pulumi:"networks"`
-	Notes      pulumi.StringPtrOutput    `pulumi:"notes"`
-	NtpServers pulumi.StringArrayOutput  `pulumi:"ntpServers"`
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Gateway model reported for the device
+	Model pulumi.StringOutput `pulumi:"model"`
+	// MSP that manages this gateway, when applicable
+	MspId pulumi.StringPtrOutput `pulumi:"mspId"`
+	// Friendly display name assigned to the gateway
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Layer 3 networks configured for use by this gateway
+	Networks GatewayNetworkArrayOutput `pulumi:"networks"`
+	// Free-form administrative notes for this gateway
+	Notes pulumi.StringPtrOutput `pulumi:"notes"`
+	// NTP servers used by this gateway
+	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
+	// Out-of-band management IP configuration for this gateway
 	OobIpConfig GatewayOobIpConfigOutput `pulumi:"oobIpConfig"`
-	OrgId       pulumi.StringOutput      `pulumi:"orgId"`
+	// Organization that owns this gateway
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences GatewayPathPreferencesMapOutput `pulumi:"pathPreferences"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
-	PortConfig    GatewayPortConfigMapOutput    `pulumi:"portConfig"`
+	PortConfig GatewayPortConfigMapOutput `pulumi:"portConfig"`
+	// Port mirroring configuration for this gateway
 	PortMirroring GatewayPortMirroringPtrOutput `pulumi:"portMirroring"`
 	// Auto assigned if not set
 	RouterId pulumi.StringPtrOutput `pulumi:"routerId"`
-	// Property key is the routing policy name
+	// Routing policies applied by this gateway
 	RoutingPolicies GatewayRoutingPoliciesMapOutput `pulumi:"routingPolicies"`
-	// Device Serial
-	Serial          pulumi.StringOutput             `pulumi:"serial"`
+	// Manufacturer serial number for the gateway
+	Serial pulumi.StringOutput `pulumi:"serial"`
+	// Traffic service policies enforced by this gateway
 	ServicePolicies GatewayServicePolicyArrayOutput `pulumi:"servicePolicies"`
-	SiteId          pulumi.StringOutput             `pulumi:"siteId"`
+	// Site where this gateway is assigned
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds pulumi.StringArrayOutput `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
-	TunnelConfigs         GatewayTunnelConfigsMapOutput         `pulumi:"tunnelConfigs"`
+	TunnelConfigs GatewayTunnelConfigsMapOutput `pulumi:"tunnelConfigs"`
+	// Provider-specific options for tunnels terminated by this gateway
 	TunnelProviderOptions GatewayTunnelProviderOptionsPtrOutput `pulumi:"tunnelProviderOptions"`
-	// Device Type. enum: `gateway`
+	// Device type discriminator for gateway records
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg pulumi.StringPtrOutput `pulumi:"urlFilteringDenyMsg"`
-	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-	Vars      pulumi.StringMapOutput    `pulumi:"vars"`
+	// Variable values that override site variables for this gateway
+	Vars pulumi.StringMapOutput `pulumi:"vars"`
+	// VRF configuration applied to this gateway
 	VrfConfig GatewayVrfConfigPtrOutput `pulumi:"vrfConfig"`
-	// Property key is the network name
+	// VRF instances configured on this gateway
 	VrfInstances GatewayVrfInstancesMapOutput `pulumi:"vrfInstances"`
-	// X in pixel
+	// Horizontal map position of the gateway, in pixels
 	X pulumi.Float64PtrOutput `pulumi:"x"`
-	// Y in pixel
+	// Vertical map position of the gateway, in pixels
 	Y pulumi.Float64PtrOutput `pulumi:"y"`
 }
 
@@ -182,29 +198,34 @@ func GetGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds []string                    `pulumi:"additionalConfigCmds"`
-	BgpConfig            map[string]GatewayBgpConfig `pulumi:"bgpConfig"`
-	DeviceId             *string                     `pulumi:"deviceId"`
-	DhcpdConfig          *GatewayDhcpdConfig         `pulumi:"dhcpdConfig"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Additional CLI configuration commands to apply to this gateway
+	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`
+	// BGP routing configuration for this gateway. Property key is the BGP session name
+	BgpConfig map[string]GatewayBgpConfig `pulumi:"bgpConfig"`
+	DeviceId  *string                     `pulumi:"deviceId"`
+	// DHCP server configuration served by this gateway
+	DhcpdConfig *GatewayDhcpdConfig `pulumi:"dhcpdConfig"`
+	// DNS servers configured for this gateway
 	DnsServers []string `pulumi:"dnsServers"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes configured for this gateway
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 routes configured on this gateway
 	ExtraRoutes map[string]GatewayExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 routes configured on this gateway
 	ExtraRoutes6 map[string]GatewayExtraRoutes6 `pulumi:"extraRoutes6"`
-	// Gateway Management settings
+	// Management-plane settings for this gateway
 	GatewayMgmt *GatewayGatewayMgmt `pulumi:"gatewayMgmt"`
-	// Property key is the profile name
+	// Intrusion detection and prevention profiles configured for this gateway
 	IdpProfiles map[string]GatewayIdpProfiles `pulumi:"idpProfiles"`
-	Image1Url   *string                       `pulumi:"image1Url"`
-	Image2Url   *string                       `pulumi:"image2Url"`
-	Image3Url   *string                       `pulumi:"image3Url"`
-	// Property key is the network name
+	// First custom image URL associated with the gateway
+	Image1Url *string `pulumi:"image1Url"`
+	// Second custom image URL associated with the gateway
+	Image2Url *string `pulumi:"image2Url"`
+	// Third custom image URL associated with the gateway
+	Image3Url *string `pulumi:"image3Url"`
+	// Gateway interface IP configurations by network name
 	IpConfigs map[string]GatewayIpConfigs `pulumi:"ipConfigs"`
-	// Device MAC address
+	// Gateway MAC address used to identify the device
 	Mac *string `pulumi:"mac"`
 	// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
 	//
@@ -214,73 +235,89 @@ type gatewayState struct {
 	MapId *string `pulumi:"mapId"`
 	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
 	MistConfigured *bool `pulumi:"mistConfigured"`
-	// Device Model
-	Model      *string          `pulumi:"model"`
-	MspId      *string          `pulumi:"mspId"`
-	Name       *string          `pulumi:"name"`
-	Networks   []GatewayNetwork `pulumi:"networks"`
-	Notes      *string          `pulumi:"notes"`
-	NtpServers []string         `pulumi:"ntpServers"`
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Gateway model reported for the device
+	Model *string `pulumi:"model"`
+	// MSP that manages this gateway, when applicable
+	MspId *string `pulumi:"mspId"`
+	// Friendly display name assigned to the gateway
+	Name *string `pulumi:"name"`
+	// Layer 3 networks configured for use by this gateway
+	Networks []GatewayNetwork `pulumi:"networks"`
+	// Free-form administrative notes for this gateway
+	Notes *string `pulumi:"notes"`
+	// NTP servers used by this gateway
+	NtpServers []string `pulumi:"ntpServers"`
+	// Out-of-band management IP configuration for this gateway
 	OobIpConfig *GatewayOobIpConfig `pulumi:"oobIpConfig"`
-	OrgId       *string             `pulumi:"orgId"`
+	// Organization that owns this gateway
+	OrgId *string `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences map[string]GatewayPathPreferences `pulumi:"pathPreferences"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
-	PortConfig    map[string]GatewayPortConfig `pulumi:"portConfig"`
-	PortMirroring *GatewayPortMirroring        `pulumi:"portMirroring"`
+	PortConfig map[string]GatewayPortConfig `pulumi:"portConfig"`
+	// Port mirroring configuration for this gateway
+	PortMirroring *GatewayPortMirroring `pulumi:"portMirroring"`
 	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
-	// Property key is the routing policy name
+	// Routing policies applied by this gateway
 	RoutingPolicies map[string]GatewayRoutingPolicies `pulumi:"routingPolicies"`
-	// Device Serial
-	Serial          *string                `pulumi:"serial"`
+	// Manufacturer serial number for the gateway
+	Serial *string `pulumi:"serial"`
+	// Traffic service policies enforced by this gateway
 	ServicePolicies []GatewayServicePolicy `pulumi:"servicePolicies"`
-	SiteId          *string                `pulumi:"siteId"`
+	// Site where this gateway is assigned
+	SiteId *string `pulumi:"siteId"`
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds []string `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
-	TunnelConfigs         map[string]GatewayTunnelConfigs `pulumi:"tunnelConfigs"`
-	TunnelProviderOptions *GatewayTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
-	// Device Type. enum: `gateway`
+	TunnelConfigs map[string]GatewayTunnelConfigs `pulumi:"tunnelConfigs"`
+	// Provider-specific options for tunnels terminated by this gateway
+	TunnelProviderOptions *GatewayTunnelProviderOptions `pulumi:"tunnelProviderOptions"`
+	// Device type discriminator for gateway records
 	Type *string `pulumi:"type"`
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg *string `pulumi:"urlFilteringDenyMsg"`
-	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-	Vars      map[string]string `pulumi:"vars"`
+	// Variable values that override site variables for this gateway
+	Vars map[string]string `pulumi:"vars"`
+	// VRF configuration applied to this gateway
 	VrfConfig *GatewayVrfConfig `pulumi:"vrfConfig"`
-	// Property key is the network name
+	// VRF instances configured on this gateway
 	VrfInstances map[string]GatewayVrfInstances `pulumi:"vrfInstances"`
-	// X in pixel
+	// Horizontal map position of the gateway, in pixels
 	X *float64 `pulumi:"x"`
-	// Y in pixel
+	// Vertical map position of the gateway, in pixels
 	Y *float64 `pulumi:"y"`
 }
 
 type GatewayState struct {
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+	// Additional CLI configuration commands to apply to this gateway
 	AdditionalConfigCmds pulumi.StringArrayInput
-	BgpConfig            GatewayBgpConfigMapInput
-	DeviceId             pulumi.StringPtrInput
-	DhcpdConfig          GatewayDhcpdConfigPtrInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// BGP routing configuration for this gateway. Property key is the BGP session name
+	BgpConfig GatewayBgpConfigMapInput
+	DeviceId  pulumi.StringPtrInput
+	// DHCP server configuration served by this gateway
+	DhcpdConfig GatewayDhcpdConfigPtrInput
+	// DNS servers configured for this gateway
 	DnsServers pulumi.StringArrayInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes configured for this gateway
 	DnsSuffixes pulumi.StringArrayInput
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 routes configured on this gateway
 	ExtraRoutes GatewayExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 routes configured on this gateway
 	ExtraRoutes6 GatewayExtraRoutes6MapInput
-	// Gateway Management settings
+	// Management-plane settings for this gateway
 	GatewayMgmt GatewayGatewayMgmtPtrInput
-	// Property key is the profile name
+	// Intrusion detection and prevention profiles configured for this gateway
 	IdpProfiles GatewayIdpProfilesMapInput
-	Image1Url   pulumi.StringPtrInput
-	Image2Url   pulumi.StringPtrInput
-	Image3Url   pulumi.StringPtrInput
-	// Property key is the network name
+	// First custom image URL associated with the gateway
+	Image1Url pulumi.StringPtrInput
+	// Second custom image URL associated with the gateway
+	Image2Url pulumi.StringPtrInput
+	// Third custom image URL associated with the gateway
+	Image3Url pulumi.StringPtrInput
+	// Gateway interface IP configurations by network name
 	IpConfigs GatewayIpConfigsMapInput
-	// Device MAC address
+	// Gateway MAC address used to identify the device
 	Mac pulumi.StringPtrInput
 	// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
 	//
@@ -290,46 +327,57 @@ type GatewayState struct {
 	MapId pulumi.StringPtrInput
 	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
 	MistConfigured pulumi.BoolPtrInput
-	// Device Model
-	Model      pulumi.StringPtrInput
-	MspId      pulumi.StringPtrInput
-	Name       pulumi.StringPtrInput
-	Networks   GatewayNetworkArrayInput
-	Notes      pulumi.StringPtrInput
+	// Gateway model reported for the device
+	Model pulumi.StringPtrInput
+	// MSP that manages this gateway, when applicable
+	MspId pulumi.StringPtrInput
+	// Friendly display name assigned to the gateway
+	Name pulumi.StringPtrInput
+	// Layer 3 networks configured for use by this gateway
+	Networks GatewayNetworkArrayInput
+	// Free-form administrative notes for this gateway
+	Notes pulumi.StringPtrInput
+	// NTP servers used by this gateway
 	NtpServers pulumi.StringArrayInput
-	// Out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band management IP configuration for this gateway
 	OobIpConfig GatewayOobIpConfigPtrInput
-	OrgId       pulumi.StringPtrInput
+	// Organization that owns this gateway
+	OrgId pulumi.StringPtrInput
 	// Property key is the path name
 	PathPreferences GatewayPathPreferencesMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
-	PortConfig    GatewayPortConfigMapInput
+	PortConfig GatewayPortConfigMapInput
+	// Port mirroring configuration for this gateway
 	PortMirroring GatewayPortMirroringPtrInput
 	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
-	// Property key is the routing policy name
+	// Routing policies applied by this gateway
 	RoutingPolicies GatewayRoutingPoliciesMapInput
-	// Device Serial
-	Serial          pulumi.StringPtrInput
+	// Manufacturer serial number for the gateway
+	Serial pulumi.StringPtrInput
+	// Traffic service policies enforced by this gateway
 	ServicePolicies GatewayServicePolicyArrayInput
-	SiteId          pulumi.StringPtrInput
+	// Site where this gateway is assigned
+	SiteId pulumi.StringPtrInput
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds pulumi.StringArrayInput
 	// Property key is the tunnel name
-	TunnelConfigs         GatewayTunnelConfigsMapInput
+	TunnelConfigs GatewayTunnelConfigsMapInput
+	// Provider-specific options for tunnels terminated by this gateway
 	TunnelProviderOptions GatewayTunnelProviderOptionsPtrInput
-	// Device Type. enum: `gateway`
+	// Device type discriminator for gateway records
 	Type pulumi.StringPtrInput
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg pulumi.StringPtrInput
-	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-	Vars      pulumi.StringMapInput
+	// Variable values that override site variables for this gateway
+	Vars pulumi.StringMapInput
+	// VRF configuration applied to this gateway
 	VrfConfig GatewayVrfConfigPtrInput
-	// Property key is the network name
+	// VRF instances configured on this gateway
 	VrfInstances GatewayVrfInstancesMapInput
-	// X in pixel
+	// Horizontal map position of the gateway, in pixels
 	X pulumi.Float64PtrInput
-	// Y in pixel
+	// Vertical map position of the gateway, in pixels
 	Y pulumi.Float64PtrInput
 }
 
@@ -338,24 +386,26 @@ func (GatewayState) ElementType() reflect.Type {
 }
 
 type gatewayArgs struct {
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
-	AdditionalConfigCmds []string                    `pulumi:"additionalConfigCmds"`
-	BgpConfig            map[string]GatewayBgpConfig `pulumi:"bgpConfig"`
-	DeviceId             string                      `pulumi:"deviceId"`
-	DhcpdConfig          *GatewayDhcpdConfig         `pulumi:"dhcpdConfig"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// Additional CLI configuration commands to apply to this gateway
+	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`
+	// BGP routing configuration for this gateway. Property key is the BGP session name
+	BgpConfig map[string]GatewayBgpConfig `pulumi:"bgpConfig"`
+	DeviceId  string                      `pulumi:"deviceId"`
+	// DHCP server configuration served by this gateway
+	DhcpdConfig *GatewayDhcpdConfig `pulumi:"dhcpdConfig"`
+	// DNS servers configured for this gateway
 	DnsServers []string `pulumi:"dnsServers"`
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes configured for this gateway
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 routes configured on this gateway
 	ExtraRoutes map[string]GatewayExtraRoutes `pulumi:"extraRoutes"`
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 routes configured on this gateway
 	ExtraRoutes6 map[string]GatewayExtraRoutes6 `pulumi:"extraRoutes6"`
-	// Gateway Management settings
+	// Management-plane settings for this gateway
 	GatewayMgmt *GatewayGatewayMgmt `pulumi:"gatewayMgmt"`
-	// Property key is the profile name
+	// Intrusion detection and prevention profiles configured for this gateway
 	IdpProfiles map[string]GatewayIdpProfiles `pulumi:"idpProfiles"`
-	// Property key is the network name
+	// Gateway interface IP configurations by network name
 	IpConfigs map[string]GatewayIpConfigs `pulumi:"ipConfigs"`
 	// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
 	//
@@ -364,63 +414,75 @@ type gatewayArgs struct {
 	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
 	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
-	MistConfigured *bool            `pulumi:"mistConfigured"`
-	MspId          *string          `pulumi:"mspId"`
-	Name           *string          `pulumi:"name"`
-	Networks       []GatewayNetwork `pulumi:"networks"`
-	Notes          *string          `pulumi:"notes"`
-	NtpServers     []string         `pulumi:"ntpServers"`
-	// Out-of-band (vme/em0/fxp0) IP config
+	MistConfigured *bool `pulumi:"mistConfigured"`
+	// MSP that manages this gateway, when applicable
+	MspId *string `pulumi:"mspId"`
+	// Friendly display name assigned to the gateway
+	Name *string `pulumi:"name"`
+	// Layer 3 networks configured for use by this gateway
+	Networks []GatewayNetwork `pulumi:"networks"`
+	// Free-form administrative notes for this gateway
+	Notes *string `pulumi:"notes"`
+	// NTP servers used by this gateway
+	NtpServers []string `pulumi:"ntpServers"`
+	// Out-of-band management IP configuration for this gateway
 	OobIpConfig *GatewayOobIpConfig `pulumi:"oobIpConfig"`
 	// Property key is the path name
 	PathPreferences map[string]GatewayPathPreferences `pulumi:"pathPreferences"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
-	PortConfig    map[string]GatewayPortConfig `pulumi:"portConfig"`
-	PortMirroring *GatewayPortMirroring        `pulumi:"portMirroring"`
+	PortConfig map[string]GatewayPortConfig `pulumi:"portConfig"`
+	// Port mirroring configuration for this gateway
+	PortMirroring *GatewayPortMirroring `pulumi:"portMirroring"`
 	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
-	// Property key is the routing policy name
+	// Routing policies applied by this gateway
 	RoutingPolicies map[string]GatewayRoutingPolicies `pulumi:"routingPolicies"`
-	ServicePolicies []GatewayServicePolicy            `pulumi:"servicePolicies"`
-	SiteId          string                            `pulumi:"siteId"`
+	// Traffic service policies enforced by this gateway
+	ServicePolicies []GatewayServicePolicy `pulumi:"servicePolicies"`
+	// Site where this gateway is assigned
+	SiteId string `pulumi:"siteId"`
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds []string `pulumi:"ssrAdditionalConfigCmds"`
 	// Property key is the tunnel name
-	TunnelConfigs         map[string]GatewayTunnelConfigs `pulumi:"tunnelConfigs"`
-	TunnelProviderOptions *GatewayTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
+	TunnelConfigs map[string]GatewayTunnelConfigs `pulumi:"tunnelConfigs"`
+	// Provider-specific options for tunnels terminated by this gateway
+	TunnelProviderOptions *GatewayTunnelProviderOptions `pulumi:"tunnelProviderOptions"`
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg *string `pulumi:"urlFilteringDenyMsg"`
-	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-	Vars      map[string]string `pulumi:"vars"`
+	// Variable values that override site variables for this gateway
+	Vars map[string]string `pulumi:"vars"`
+	// VRF configuration applied to this gateway
 	VrfConfig *GatewayVrfConfig `pulumi:"vrfConfig"`
-	// Property key is the network name
+	// VRF instances configured on this gateway
 	VrfInstances map[string]GatewayVrfInstances `pulumi:"vrfInstances"`
-	// X in pixel
+	// Horizontal map position of the gateway, in pixels
 	X *float64 `pulumi:"x"`
-	// Y in pixel
+	// Vertical map position of the gateway, in pixels
 	Y *float64 `pulumi:"y"`
 }
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
-	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+	// Additional CLI configuration commands to apply to this gateway
 	AdditionalConfigCmds pulumi.StringArrayInput
-	BgpConfig            GatewayBgpConfigMapInput
-	DeviceId             pulumi.StringInput
-	DhcpdConfig          GatewayDhcpdConfigPtrInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// BGP routing configuration for this gateway. Property key is the BGP session name
+	BgpConfig GatewayBgpConfigMapInput
+	DeviceId  pulumi.StringInput
+	// DHCP server configuration served by this gateway
+	DhcpdConfig GatewayDhcpdConfigPtrInput
+	// DNS servers configured for this gateway
 	DnsServers pulumi.StringArrayInput
-	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+	// DNS search suffixes configured for this gateway
 	DnsSuffixes pulumi.StringArrayInput
-	// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv4 routes configured on this gateway
 	ExtraRoutes GatewayExtraRoutesMapInput
-	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+	// Additional IPv6 routes configured on this gateway
 	ExtraRoutes6 GatewayExtraRoutes6MapInput
-	// Gateway Management settings
+	// Management-plane settings for this gateway
 	GatewayMgmt GatewayGatewayMgmtPtrInput
-	// Property key is the profile name
+	// Intrusion detection and prevention profiles configured for this gateway
 	IdpProfiles GatewayIdpProfilesMapInput
-	// Property key is the network name
+	// Gateway interface IP configurations by network name
 	IpConfigs GatewayIpConfigsMapInput
 	// Whether the device is managed by Mist. Deprecated in favour of mist_configured.
 	//
@@ -430,39 +492,49 @@ type GatewayArgs struct {
 	MapId pulumi.StringPtrInput
 	// whether the device can be configured by Mist or not. This deprecates `managed` for adopted devices.
 	MistConfigured pulumi.BoolPtrInput
-	MspId          pulumi.StringPtrInput
-	Name           pulumi.StringPtrInput
-	Networks       GatewayNetworkArrayInput
-	Notes          pulumi.StringPtrInput
-	NtpServers     pulumi.StringArrayInput
-	// Out-of-band (vme/em0/fxp0) IP config
+	// MSP that manages this gateway, when applicable
+	MspId pulumi.StringPtrInput
+	// Friendly display name assigned to the gateway
+	Name pulumi.StringPtrInput
+	// Layer 3 networks configured for use by this gateway
+	Networks GatewayNetworkArrayInput
+	// Free-form administrative notes for this gateway
+	Notes pulumi.StringPtrInput
+	// NTP servers used by this gateway
+	NtpServers pulumi.StringArrayInput
+	// Out-of-band management IP configuration for this gateway
 	OobIpConfig GatewayOobIpConfigPtrInput
 	// Property key is the path name
 	PathPreferences GatewayPathPreferencesMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
-	PortConfig    GatewayPortConfigMapInput
+	PortConfig GatewayPortConfigMapInput
+	// Port mirroring configuration for this gateway
 	PortMirroring GatewayPortMirroringPtrInput
 	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
-	// Property key is the routing policy name
+	// Routing policies applied by this gateway
 	RoutingPolicies GatewayRoutingPoliciesMapInput
+	// Traffic service policies enforced by this gateway
 	ServicePolicies GatewayServicePolicyArrayInput
-	SiteId          pulumi.StringInput
+	// Site where this gateway is assigned
+	SiteId pulumi.StringInput
 	// additional CLI commands to append to the generated SSR config. **Note**: no check is done
 	SsrAdditionalConfigCmds pulumi.StringArrayInput
 	// Property key is the tunnel name
-	TunnelConfigs         GatewayTunnelConfigsMapInput
+	TunnelConfigs GatewayTunnelConfigsMapInput
+	// Provider-specific options for tunnels terminated by this gateway
 	TunnelProviderOptions GatewayTunnelProviderOptionsPtrInput
 	// When a service policy denies a app_category, what message to show in user's browser
 	UrlFilteringDenyMsg pulumi.StringPtrInput
-	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-	Vars      pulumi.StringMapInput
+	// Variable values that override site variables for this gateway
+	Vars pulumi.StringMapInput
+	// VRF configuration applied to this gateway
 	VrfConfig GatewayVrfConfigPtrInput
-	// Property key is the network name
+	// VRF instances configured on this gateway
 	VrfInstances GatewayVrfInstancesMapInput
-	// X in pixel
+	// Horizontal map position of the gateway, in pixels
 	X pulumi.Float64PtrInput
-	// Y in pixel
+	// Vertical map position of the gateway, in pixels
 	Y pulumi.Float64PtrInput
 }
 
@@ -553,11 +625,12 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
-// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+// Additional CLI configuration commands to apply to this gateway
 func (o GatewayOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.AdditionalConfigCmds }).(pulumi.StringArrayOutput)
 }
 
+// BGP routing configuration for this gateway. Property key is the BGP session name
 func (o GatewayOutput) BgpConfig() GatewayBgpConfigMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayBgpConfigMapOutput { return v.BgpConfig }).(GatewayBgpConfigMapOutput)
 }
@@ -566,58 +639,62 @@ func (o GatewayOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
 }
 
+// DHCP server configuration served by this gateway
 func (o GatewayOutput) DhcpdConfig() GatewayDhcpdConfigPtrOutput {
 	return o.ApplyT(func(v *Gateway) GatewayDhcpdConfigPtrOutput { return v.DhcpdConfig }).(GatewayDhcpdConfigPtrOutput)
 }
 
-// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+// DNS servers configured for this gateway
 func (o GatewayOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.DnsServers }).(pulumi.StringArrayOutput)
 }
 
-// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
+// DNS search suffixes configured for this gateway
 func (o GatewayOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+// Additional IPv4 routes configured on this gateway
 func (o GatewayOutput) ExtraRoutes() GatewayExtraRoutesMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayExtraRoutesMapOutput { return v.ExtraRoutes }).(GatewayExtraRoutesMapOutput)
 }
 
-// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+// Additional IPv6 routes configured on this gateway
 func (o GatewayOutput) ExtraRoutes6() GatewayExtraRoutes6MapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayExtraRoutes6MapOutput { return v.ExtraRoutes6 }).(GatewayExtraRoutes6MapOutput)
 }
 
-// Gateway Management settings
+// Management-plane settings for this gateway
 func (o GatewayOutput) GatewayMgmt() GatewayGatewayMgmtPtrOutput {
 	return o.ApplyT(func(v *Gateway) GatewayGatewayMgmtPtrOutput { return v.GatewayMgmt }).(GatewayGatewayMgmtPtrOutput)
 }
 
-// Property key is the profile name
+// Intrusion detection and prevention profiles configured for this gateway
 func (o GatewayOutput) IdpProfiles() GatewayIdpProfilesMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayIdpProfilesMapOutput { return v.IdpProfiles }).(GatewayIdpProfilesMapOutput)
 }
 
+// First custom image URL associated with the gateway
 func (o GatewayOutput) Image1Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Image1Url }).(pulumi.StringOutput)
 }
 
+// Second custom image URL associated with the gateway
 func (o GatewayOutput) Image2Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Image2Url }).(pulumi.StringOutput)
 }
 
+// Third custom image URL associated with the gateway
 func (o GatewayOutput) Image3Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Image3Url }).(pulumi.StringOutput)
 }
 
-// Property key is the network name
+// Gateway interface IP configurations by network name
 func (o GatewayOutput) IpConfigs() GatewayIpConfigsMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayIpConfigsMapOutput { return v.IpConfigs }).(GatewayIpConfigsMapOutput)
 }
 
-// Device MAC address
+// Gateway MAC address used to identify the device
 func (o GatewayOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }
@@ -639,36 +716,42 @@ func (o GatewayOutput) MistConfigured() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.BoolOutput { return v.MistConfigured }).(pulumi.BoolOutput)
 }
 
-// Device Model
+// Gateway model reported for the device
 func (o GatewayOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Model }).(pulumi.StringOutput)
 }
 
+// MSP that manages this gateway, when applicable
 func (o GatewayOutput) MspId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.MspId }).(pulumi.StringPtrOutput)
 }
 
+// Friendly display name assigned to the gateway
 func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Layer 3 networks configured for use by this gateway
 func (o GatewayOutput) Networks() GatewayNetworkArrayOutput {
 	return o.ApplyT(func(v *Gateway) GatewayNetworkArrayOutput { return v.Networks }).(GatewayNetworkArrayOutput)
 }
 
+// Free-form administrative notes for this gateway
 func (o GatewayOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
+// NTP servers used by this gateway
 func (o GatewayOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
 
-// Out-of-band (vme/em0/fxp0) IP config
+// Out-of-band management IP configuration for this gateway
 func (o GatewayOutput) OobIpConfig() GatewayOobIpConfigOutput {
 	return o.ApplyT(func(v *Gateway) GatewayOobIpConfigOutput { return v.OobIpConfig }).(GatewayOobIpConfigOutput)
 }
 
+// Organization that owns this gateway
 func (o GatewayOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
@@ -683,6 +766,7 @@ func (o GatewayOutput) PortConfig() GatewayPortConfigMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayPortConfigMapOutput { return v.PortConfig }).(GatewayPortConfigMapOutput)
 }
 
+// Port mirroring configuration for this gateway
 func (o GatewayOutput) PortMirroring() GatewayPortMirroringPtrOutput {
 	return o.ApplyT(func(v *Gateway) GatewayPortMirroringPtrOutput { return v.PortMirroring }).(GatewayPortMirroringPtrOutput)
 }
@@ -692,20 +776,22 @@ func (o GatewayOutput) RouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.RouterId }).(pulumi.StringPtrOutput)
 }
 
-// Property key is the routing policy name
+// Routing policies applied by this gateway
 func (o GatewayOutput) RoutingPolicies() GatewayRoutingPoliciesMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayRoutingPoliciesMapOutput { return v.RoutingPolicies }).(GatewayRoutingPoliciesMapOutput)
 }
 
-// Device Serial
+// Manufacturer serial number for the gateway
 func (o GatewayOutput) Serial() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Serial }).(pulumi.StringOutput)
 }
 
+// Traffic service policies enforced by this gateway
 func (o GatewayOutput) ServicePolicies() GatewayServicePolicyArrayOutput {
 	return o.ApplyT(func(v *Gateway) GatewayServicePolicyArrayOutput { return v.ServicePolicies }).(GatewayServicePolicyArrayOutput)
 }
 
+// Site where this gateway is assigned
 func (o GatewayOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
@@ -720,11 +806,12 @@ func (o GatewayOutput) TunnelConfigs() GatewayTunnelConfigsMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayTunnelConfigsMapOutput { return v.TunnelConfigs }).(GatewayTunnelConfigsMapOutput)
 }
 
+// Provider-specific options for tunnels terminated by this gateway
 func (o GatewayOutput) TunnelProviderOptions() GatewayTunnelProviderOptionsPtrOutput {
 	return o.ApplyT(func(v *Gateway) GatewayTunnelProviderOptionsPtrOutput { return v.TunnelProviderOptions }).(GatewayTunnelProviderOptionsPtrOutput)
 }
 
-// Device Type. enum: `gateway`
+// Device type discriminator for gateway records
 func (o GatewayOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -734,26 +821,27 @@ func (o GatewayOutput) UrlFilteringDenyMsg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.UrlFilteringDenyMsg }).(pulumi.StringPtrOutput)
 }
 
-// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+// Variable values that override site variables for this gateway
 func (o GatewayOutput) Vars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.Vars }).(pulumi.StringMapOutput)
 }
 
+// VRF configuration applied to this gateway
 func (o GatewayOutput) VrfConfig() GatewayVrfConfigPtrOutput {
 	return o.ApplyT(func(v *Gateway) GatewayVrfConfigPtrOutput { return v.VrfConfig }).(GatewayVrfConfigPtrOutput)
 }
 
-// Property key is the network name
+// VRF instances configured on this gateway
 func (o GatewayOutput) VrfInstances() GatewayVrfInstancesMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayVrfInstancesMapOutput { return v.VrfInstances }).(GatewayVrfInstancesMapOutput)
 }
 
-// X in pixel
+// Horizontal map position of the gateway, in pixels
 func (o GatewayOutput) X() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.Float64PtrOutput { return v.X }).(pulumi.Float64PtrOutput)
 }
 
-// Y in pixel
+// Vertical map position of the gateway, in pixels
 func (o GatewayOutput) Y() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.Float64PtrOutput { return v.Y }).(pulumi.Float64PtrOutput)
 }

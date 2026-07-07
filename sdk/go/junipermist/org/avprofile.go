@@ -75,15 +75,19 @@ import (
 type Avprofile struct {
 	pulumi.CustomResourceState
 
-	// enum: `block`, `log-and-permit`, `permit`
+	// Action to take when antivirus scanning cannot complete
 	FallbackAction pulumi.StringPtrOutput `pulumi:"fallbackAction"`
-	// In KB
-	MaxFilesize    pulumi.IntOutput         `pulumi:"maxFilesize"`
+	// Maximum file size scanned by this antivirus profile, in KB
+	MaxFilesize pulumi.IntOutput `pulumi:"maxFilesize"`
+	// Content MIME types exempted from antivirus scanning
 	MimeWhitelists pulumi.StringArrayOutput `pulumi:"mimeWhitelists"`
-	Name           pulumi.StringOutput      `pulumi:"name"`
-	OrgId          pulumi.StringOutput      `pulumi:"orgId"`
-	// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
-	Protocols     pulumi.StringArrayOutput `pulumi:"protocols"`
+	// Display name of the antivirus profile
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Owning organization identifier for this antivirus profile
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// Network protocols inspected by this antivirus profile
+	Protocols pulumi.StringArrayOutput `pulumi:"protocols"`
+	// Allowed URL entries exempted from antivirus scanning
 	UrlWhitelists pulumi.StringArrayOutput `pulumi:"urlWhitelists"`
 }
 
@@ -123,28 +127,36 @@ func GetAvprofile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Avprofile resources.
 type avprofileState struct {
-	// enum: `block`, `log-and-permit`, `permit`
+	// Action to take when antivirus scanning cannot complete
 	FallbackAction *string `pulumi:"fallbackAction"`
-	// In KB
-	MaxFilesize    *int     `pulumi:"maxFilesize"`
+	// Maximum file size scanned by this antivirus profile, in KB
+	MaxFilesize *int `pulumi:"maxFilesize"`
+	// Content MIME types exempted from antivirus scanning
 	MimeWhitelists []string `pulumi:"mimeWhitelists"`
-	Name           *string  `pulumi:"name"`
-	OrgId          *string  `pulumi:"orgId"`
-	// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
-	Protocols     []string `pulumi:"protocols"`
+	// Display name of the antivirus profile
+	Name *string `pulumi:"name"`
+	// Owning organization identifier for this antivirus profile
+	OrgId *string `pulumi:"orgId"`
+	// Network protocols inspected by this antivirus profile
+	Protocols []string `pulumi:"protocols"`
+	// Allowed URL entries exempted from antivirus scanning
 	UrlWhitelists []string `pulumi:"urlWhitelists"`
 }
 
 type AvprofileState struct {
-	// enum: `block`, `log-and-permit`, `permit`
+	// Action to take when antivirus scanning cannot complete
 	FallbackAction pulumi.StringPtrInput
-	// In KB
-	MaxFilesize    pulumi.IntPtrInput
+	// Maximum file size scanned by this antivirus profile, in KB
+	MaxFilesize pulumi.IntPtrInput
+	// Content MIME types exempted from antivirus scanning
 	MimeWhitelists pulumi.StringArrayInput
-	Name           pulumi.StringPtrInput
-	OrgId          pulumi.StringPtrInput
-	// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
-	Protocols     pulumi.StringArrayInput
+	// Display name of the antivirus profile
+	Name pulumi.StringPtrInput
+	// Owning organization identifier for this antivirus profile
+	OrgId pulumi.StringPtrInput
+	// Network protocols inspected by this antivirus profile
+	Protocols pulumi.StringArrayInput
+	// Allowed URL entries exempted from antivirus scanning
 	UrlWhitelists pulumi.StringArrayInput
 }
 
@@ -153,29 +165,37 @@ func (AvprofileState) ElementType() reflect.Type {
 }
 
 type avprofileArgs struct {
-	// enum: `block`, `log-and-permit`, `permit`
+	// Action to take when antivirus scanning cannot complete
 	FallbackAction *string `pulumi:"fallbackAction"`
-	// In KB
-	MaxFilesize    *int     `pulumi:"maxFilesize"`
+	// Maximum file size scanned by this antivirus profile, in KB
+	MaxFilesize *int `pulumi:"maxFilesize"`
+	// Content MIME types exempted from antivirus scanning
 	MimeWhitelists []string `pulumi:"mimeWhitelists"`
-	Name           *string  `pulumi:"name"`
-	OrgId          string   `pulumi:"orgId"`
-	// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
-	Protocols     []string `pulumi:"protocols"`
+	// Display name of the antivirus profile
+	Name *string `pulumi:"name"`
+	// Owning organization identifier for this antivirus profile
+	OrgId string `pulumi:"orgId"`
+	// Network protocols inspected by this antivirus profile
+	Protocols []string `pulumi:"protocols"`
+	// Allowed URL entries exempted from antivirus scanning
 	UrlWhitelists []string `pulumi:"urlWhitelists"`
 }
 
 // The set of arguments for constructing a Avprofile resource.
 type AvprofileArgs struct {
-	// enum: `block`, `log-and-permit`, `permit`
+	// Action to take when antivirus scanning cannot complete
 	FallbackAction pulumi.StringPtrInput
-	// In KB
-	MaxFilesize    pulumi.IntPtrInput
+	// Maximum file size scanned by this antivirus profile, in KB
+	MaxFilesize pulumi.IntPtrInput
+	// Content MIME types exempted from antivirus scanning
 	MimeWhitelists pulumi.StringArrayInput
-	Name           pulumi.StringPtrInput
-	OrgId          pulumi.StringInput
-	// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
-	Protocols     pulumi.StringArrayInput
+	// Display name of the antivirus profile
+	Name pulumi.StringPtrInput
+	// Owning organization identifier for this antivirus profile
+	OrgId pulumi.StringInput
+	// Network protocols inspected by this antivirus profile
+	Protocols pulumi.StringArrayInput
+	// Allowed URL entries exempted from antivirus scanning
 	UrlWhitelists pulumi.StringArrayInput
 }
 
@@ -266,33 +286,37 @@ func (o AvprofileOutput) ToAvprofileOutputWithContext(ctx context.Context) Avpro
 	return o
 }
 
-// enum: `block`, `log-and-permit`, `permit`
+// Action to take when antivirus scanning cannot complete
 func (o AvprofileOutput) FallbackAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Avprofile) pulumi.StringPtrOutput { return v.FallbackAction }).(pulumi.StringPtrOutput)
 }
 
-// In KB
+// Maximum file size scanned by this antivirus profile, in KB
 func (o AvprofileOutput) MaxFilesize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Avprofile) pulumi.IntOutput { return v.MaxFilesize }).(pulumi.IntOutput)
 }
 
+// Content MIME types exempted from antivirus scanning
 func (o AvprofileOutput) MimeWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Avprofile) pulumi.StringArrayOutput { return v.MimeWhitelists }).(pulumi.StringArrayOutput)
 }
 
+// Display name of the antivirus profile
 func (o AvprofileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Avprofile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Owning organization identifier for this antivirus profile
 func (o AvprofileOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Avprofile) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+// Network protocols inspected by this antivirus profile
 func (o AvprofileOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Avprofile) pulumi.StringArrayOutput { return v.Protocols }).(pulumi.StringArrayOutput)
 }
 
+// Allowed URL entries exempted from antivirus scanning
 func (o AvprofileOutput) UrlWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Avprofile) pulumi.StringArrayOutput { return v.UrlWhitelists }).(pulumi.StringArrayOutput)
 }

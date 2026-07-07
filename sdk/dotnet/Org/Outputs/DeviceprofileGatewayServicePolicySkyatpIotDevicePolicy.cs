@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy
     {
+        /// <summary>
+        /// Whether Sky ATP IoT device policy inspection is enabled
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

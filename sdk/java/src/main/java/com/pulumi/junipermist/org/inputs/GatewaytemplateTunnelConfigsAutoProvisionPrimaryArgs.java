@@ -16,22 +16,30 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs extends 
 
     public static final GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs Empty = new GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs();
 
+    /**
+     * Probe IP addresses used to monitor auto-provisioned tunnel reachability
+     * 
+     */
     @Import(name="probeIps")
     private @Nullable Output<List<String>> probeIps;
 
+    /**
+     * @return Probe IP addresses used to monitor auto-provisioned tunnel reachability
+     * 
+     */
     public Optional<Output<List<String>>> probeIps() {
         return Optional.ofNullable(this.probeIps);
     }
 
     /**
-     * Optional, only needed if `varsOnly`==`false`
+     * WAN interface names used by the auto-provisioned tunnel endpoint
      * 
      */
     @Import(name="wanNames")
     private @Nullable Output<List<String>> wanNames;
 
     /**
-     * @return Optional, only needed if `varsOnly`==`false`
+     * @return WAN interface names used by the auto-provisioned tunnel endpoint
      * 
      */
     public Optional<Output<List<String>>> wanNames() {
@@ -63,21 +71,39 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs extends 
             $ = new GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param probeIps Probe IP addresses used to monitor auto-provisioned tunnel reachability
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeIps(@Nullable Output<List<String>> probeIps) {
             $.probeIps = probeIps;
             return this;
         }
 
+        /**
+         * @param probeIps Probe IP addresses used to monitor auto-provisioned tunnel reachability
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeIps(List<String> probeIps) {
             return probeIps(Output.of(probeIps));
         }
 
+        /**
+         * @param probeIps Probe IP addresses used to monitor auto-provisioned tunnel reachability
+         * 
+         * @return builder
+         * 
+         */
         public Builder probeIps(String... probeIps) {
             return probeIps(List.of(probeIps));
         }
 
         /**
-         * @param wanNames Optional, only needed if `varsOnly`==`false`
+         * @param wanNames WAN interface names used by the auto-provisioned tunnel endpoint
          * 
          * @return builder
          * 
@@ -88,7 +114,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs extends 
         }
 
         /**
-         * @param wanNames Optional, only needed if `varsOnly`==`false`
+         * @param wanNames WAN interface names used by the auto-provisioned tunnel endpoint
          * 
          * @return builder
          * 
@@ -98,7 +124,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs extends 
         }
 
         /**
-         * @param wanNames Optional, only needed if `varsOnly`==`false`
+         * @param wanNames WAN interface names used by the auto-provisioned tunnel endpoint
          * 
          * @return builder
          * 

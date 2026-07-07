@@ -12,11 +12,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class MxedgeTuntermMulticastConfigMdnsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether mDNS forwarding is enabled for the configured VLANs
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("vlanIds")]
         private InputList<string>? _vlanIds;
+
+        /// <summary>
+        /// List of VLAN IDs where mDNS forwarding is enabled
+        /// </summary>
         public InputList<string> VlanIds
         {
             get => _vlanIds ?? (_vlanIds = new InputList<string>());

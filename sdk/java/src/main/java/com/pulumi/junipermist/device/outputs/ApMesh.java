@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApMesh {
     /**
-     * @return List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+     * @return Radio bands allowed for AP mesh links
      * 
      */
     private @Nullable List<String> bands;
@@ -30,7 +30,7 @@ public final class ApMesh {
      */
     private @Nullable Integer group;
     /**
-     * @return enum: `base`, `remote`
+     * @return Mesh role for this AP, either base or remote
      * 
      */
     private @Nullable String role;
@@ -42,7 +42,7 @@ public final class ApMesh {
 
     private ApMesh() {}
     /**
-     * @return List of bands that the mesh should apply to. For relay, the first viable one will be picked. For relay, the first viable one will be picked. enum: `24`, `5`, `6`
+     * @return Radio bands allowed for AP mesh links
      * 
      */
     public List<String> bands() {
@@ -63,7 +63,7 @@ public final class ApMesh {
         return Optional.ofNullable(this.group);
     }
     /**
-     * @return enum: `base`, `remote`
+     * @return Mesh role for this AP, either base or remote
      * 
      */
     public Optional<String> role() {

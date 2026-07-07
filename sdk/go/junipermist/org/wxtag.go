@@ -73,40 +73,24 @@ import (
 type Wxtag struct {
 	pulumi.CustomResourceState
 
-	// If `type`==`client`, Client MAC Address
+	// If `type`==`client`, Client MAC address
 	Mac pulumi.StringPtrOutput `pulumi:"mac"`
-	// required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+	// Required if `type`==`match`; attribute compared against `values`
 	Match pulumi.StringPtrOutput `pulumi:"match"`
-	// The name
+	// Display name of the WxLAN tag
 	Name pulumi.StringOutput `pulumi:"name"`
-	// required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
-	Op    pulumi.StringPtrOutput `pulumi:"op"`
-	OrgId pulumi.StringOutput    `pulumi:"orgId"`
-	// If `type`==`spec`
+	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+	Op pulumi.StringPtrOutput `pulumi:"op"`
+	// Owning organization associated with this WxLAN tag
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// Traffic match specifications used when `type`==`spec`
 	Specs WxtagSpecArrayOutput `pulumi:"specs"`
-	// enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+	// Kind of WxLAN tag and how it is populated
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Required if `type`==`match` and
-	//   * `match`==`apId`: list of AP IDs
-	//   * `match`==`app`: list of Application Names
-	//   * `match`==`assetMac`: list of Asset MAC Addresses
-	//   * `match`==`clientMac`: list of Client MAC Addresses
-	//   * `match`==`hostname`: list of Resources Hostnames
-	//   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-	//   * `match`==`pskName`: list of PSK Names
-	//   * `match`==`pskRole`: list of PSK Roles
-	//   * `match`==`port`: list of Ports or Port Ranges
-	//   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
-	//   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-	//   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-	//   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-	//   * `match`==`sdkclientUuid`: list of SDK UUIDs
-	//   * `match`==`wlanId`: list of WLAN IDs
-	//
-	// **Notes**:
-	// Variables are not allowed
+	// Comparison values for the selected `match` attribute when `type`==`match`
 	Values pulumi.StringArrayOutput `pulumi:"values"`
-	VlanId pulumi.StringPtrOutput   `pulumi:"vlanId"`
+	// Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
+	VlanId pulumi.StringPtrOutput `pulumi:"vlanId"`
 }
 
 // NewWxtag registers a new resource with the given unique name, arguments, and options.
@@ -145,76 +129,44 @@ func GetWxtag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Wxtag resources.
 type wxtagState struct {
-	// If `type`==`client`, Client MAC Address
+	// If `type`==`client`, Client MAC address
 	Mac *string `pulumi:"mac"`
-	// required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+	// Required if `type`==`match`; attribute compared against `values`
 	Match *string `pulumi:"match"`
-	// The name
+	// Display name of the WxLAN tag
 	Name *string `pulumi:"name"`
-	// required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
-	Op    *string `pulumi:"op"`
+	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+	Op *string `pulumi:"op"`
+	// Owning organization associated with this WxLAN tag
 	OrgId *string `pulumi:"orgId"`
-	// If `type`==`spec`
+	// Traffic match specifications used when `type`==`spec`
 	Specs []WxtagSpec `pulumi:"specs"`
-	// enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+	// Kind of WxLAN tag and how it is populated
 	Type *string `pulumi:"type"`
-	// Required if `type`==`match` and
-	//   * `match`==`apId`: list of AP IDs
-	//   * `match`==`app`: list of Application Names
-	//   * `match`==`assetMac`: list of Asset MAC Addresses
-	//   * `match`==`clientMac`: list of Client MAC Addresses
-	//   * `match`==`hostname`: list of Resources Hostnames
-	//   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-	//   * `match`==`pskName`: list of PSK Names
-	//   * `match`==`pskRole`: list of PSK Roles
-	//   * `match`==`port`: list of Ports or Port Ranges
-	//   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
-	//   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-	//   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-	//   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-	//   * `match`==`sdkclientUuid`: list of SDK UUIDs
-	//   * `match`==`wlanId`: list of WLAN IDs
-	//
-	// **Notes**:
-	// Variables are not allowed
+	// Comparison values for the selected `match` attribute when `type`==`match`
 	Values []string `pulumi:"values"`
-	VlanId *string  `pulumi:"vlanId"`
+	// Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
+	VlanId *string `pulumi:"vlanId"`
 }
 
 type WxtagState struct {
-	// If `type`==`client`, Client MAC Address
+	// If `type`==`client`, Client MAC address
 	Mac pulumi.StringPtrInput
-	// required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+	// Required if `type`==`match`; attribute compared against `values`
 	Match pulumi.StringPtrInput
-	// The name
+	// Display name of the WxLAN tag
 	Name pulumi.StringPtrInput
-	// required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
-	Op    pulumi.StringPtrInput
+	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+	Op pulumi.StringPtrInput
+	// Owning organization associated with this WxLAN tag
 	OrgId pulumi.StringPtrInput
-	// If `type`==`spec`
+	// Traffic match specifications used when `type`==`spec`
 	Specs WxtagSpecArrayInput
-	// enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+	// Kind of WxLAN tag and how it is populated
 	Type pulumi.StringPtrInput
-	// Required if `type`==`match` and
-	//   * `match`==`apId`: list of AP IDs
-	//   * `match`==`app`: list of Application Names
-	//   * `match`==`assetMac`: list of Asset MAC Addresses
-	//   * `match`==`clientMac`: list of Client MAC Addresses
-	//   * `match`==`hostname`: list of Resources Hostnames
-	//   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-	//   * `match`==`pskName`: list of PSK Names
-	//   * `match`==`pskRole`: list of PSK Roles
-	//   * `match`==`port`: list of Ports or Port Ranges
-	//   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
-	//   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-	//   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-	//   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-	//   * `match`==`sdkclientUuid`: list of SDK UUIDs
-	//   * `match`==`wlanId`: list of WLAN IDs
-	//
-	// **Notes**:
-	// Variables are not allowed
+	// Comparison values for the selected `match` attribute when `type`==`match`
 	Values pulumi.StringArrayInput
+	// Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
 	VlanId pulumi.StringPtrInput
 }
 
@@ -223,77 +175,45 @@ func (WxtagState) ElementType() reflect.Type {
 }
 
 type wxtagArgs struct {
-	// If `type`==`client`, Client MAC Address
+	// If `type`==`client`, Client MAC address
 	Mac *string `pulumi:"mac"`
-	// required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+	// Required if `type`==`match`; attribute compared against `values`
 	Match *string `pulumi:"match"`
-	// The name
+	// Display name of the WxLAN tag
 	Name *string `pulumi:"name"`
-	// required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
-	Op    *string `pulumi:"op"`
-	OrgId string  `pulumi:"orgId"`
-	// If `type`==`spec`
+	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+	Op *string `pulumi:"op"`
+	// Owning organization associated with this WxLAN tag
+	OrgId string `pulumi:"orgId"`
+	// Traffic match specifications used when `type`==`spec`
 	Specs []WxtagSpec `pulumi:"specs"`
-	// enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+	// Kind of WxLAN tag and how it is populated
 	Type string `pulumi:"type"`
-	// Required if `type`==`match` and
-	//   * `match`==`apId`: list of AP IDs
-	//   * `match`==`app`: list of Application Names
-	//   * `match`==`assetMac`: list of Asset MAC Addresses
-	//   * `match`==`clientMac`: list of Client MAC Addresses
-	//   * `match`==`hostname`: list of Resources Hostnames
-	//   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-	//   * `match`==`pskName`: list of PSK Names
-	//   * `match`==`pskRole`: list of PSK Roles
-	//   * `match`==`port`: list of Ports or Port Ranges
-	//   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
-	//   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-	//   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-	//   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-	//   * `match`==`sdkclientUuid`: list of SDK UUIDs
-	//   * `match`==`wlanId`: list of WLAN IDs
-	//
-	// **Notes**:
-	// Variables are not allowed
+	// Comparison values for the selected `match` attribute when `type`==`match`
 	Values []string `pulumi:"values"`
-	VlanId *string  `pulumi:"vlanId"`
+	// Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
+	VlanId *string `pulumi:"vlanId"`
 }
 
 // The set of arguments for constructing a Wxtag resource.
 type WxtagArgs struct {
-	// If `type`==`client`, Client MAC Address
+	// If `type`==`client`, Client MAC address
 	Mac pulumi.StringPtrInput
-	// required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+	// Required if `type`==`match`; attribute compared against `values`
 	Match pulumi.StringPtrInput
-	// The name
+	// Display name of the WxLAN tag
 	Name pulumi.StringPtrInput
-	// required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
-	Op    pulumi.StringPtrInput
+	// Required if `type`==`match`; whether `values` are inclusive or exclusive matches
+	Op pulumi.StringPtrInput
+	// Owning organization associated with this WxLAN tag
 	OrgId pulumi.StringInput
-	// If `type`==`spec`
+	// Traffic match specifications used when `type`==`spec`
 	Specs WxtagSpecArrayInput
-	// enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+	// Kind of WxLAN tag and how it is populated
 	Type pulumi.StringInput
-	// Required if `type`==`match` and
-	//   * `match`==`apId`: list of AP IDs
-	//   * `match`==`app`: list of Application Names
-	//   * `match`==`assetMac`: list of Asset MAC Addresses
-	//   * `match`==`clientMac`: list of Client MAC Addresses
-	//   * `match`==`hostname`: list of Resources Hostnames
-	//   * `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-	//   * `match`==`pskName`: list of PSK Names
-	//   * `match`==`pskRole`: list of PSK Roles
-	//   * `match`==`port`: list of Ports or Port Ranges
-	//   * `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
-	//   * `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-	//   * `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-	//   * `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-	//   * `match`==`sdkclientUuid`: list of SDK UUIDs
-	//   * `match`==`wlanId`: list of WLAN IDs
-	//
-	// **Notes**:
-	// Variables are not allowed
+	// Comparison values for the selected `match` attribute when `type`==`match`
 	Values pulumi.StringArrayInput
+	// Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
 	VlanId pulumi.StringPtrInput
 }
 
@@ -384,63 +304,47 @@ func (o WxtagOutput) ToWxtagOutputWithContext(ctx context.Context) WxtagOutput {
 	return o
 }
 
-// If `type`==`client`, Client MAC Address
+// If `type`==`client`, Client MAC address
 func (o WxtagOutput) Mac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringPtrOutput { return v.Mac }).(pulumi.StringPtrOutput)
 }
 
-// required if `type`==`match`. enum: `apId`, `app`, `assetMac`, `clientMac`, `hostname`, `ipRangeSubnet`, `port`, `pskName`, `pskRole`, `radiusAttr`, `radiusClass`, `radiusGroup`, `radiusUsername`, `sdkclientUuid`, `wlanId`
+// Required if `type`==`match`; attribute compared against `values`
 func (o WxtagOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringPtrOutput { return v.Match }).(pulumi.StringPtrOutput)
 }
 
-// The name
+// Display name of the WxLAN tag
 func (o WxtagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
+// Required if `type`==`match`; whether `values` are inclusive or exclusive matches
 func (o WxtagOutput) Op() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringPtrOutput { return v.Op }).(pulumi.StringPtrOutput)
 }
 
+// Owning organization associated with this WxLAN tag
 func (o WxtagOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// If `type`==`spec`
+// Traffic match specifications used when `type`==`spec`
 func (o WxtagOutput) Specs() WxtagSpecArrayOutput {
 	return o.ApplyT(func(v *Wxtag) WxtagSpecArrayOutput { return v.Specs }).(WxtagSpecArrayOutput)
 }
 
-// enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
+// Kind of WxLAN tag and how it is populated
 func (o WxtagOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Required if `type`==`match` and
-//   - `match`==`apId`: list of AP IDs
-//   - `match`==`app`: list of Application Names
-//   - `match`==`assetMac`: list of Asset MAC Addresses
-//   - `match`==`clientMac`: list of Client MAC Addresses
-//   - `match`==`hostname`: list of Resources Hostnames
-//   - `match`==`ipRangeSubnet`: list of IP Addresses and/or CIDRs
-//   - `match`==`pskName`: list of PSK Names
-//   - `match`==`pskRole`: list of PSK Roles
-//   - `match`==`port`: list of Ports or Port Ranges
-//   - `match`==`radiusAttr`: list of RADIUS Attributes. The values are [ "6=1", "26=10.2.3.4" ], this support other RADIUS attributes where we know the type
-//   - `match`==`radiusClass`: list of RADIUS Classes. This matches the ATTR-Class(25)
-//   - `match`==`radiusGroup`: list of RADIUS Groups. This is a smart tag that matches RADIUS-Filter-ID, Airespace-ACL-Name (VendorID=14179, VendorType=6) / Aruba-User-Role (VendorID=14823, VendorType=1)
-//   - `match`==`radiusUsername`: list of RADIUS Usernames. This matches the ATTR-User-Name(1)
-//   - `match`==`sdkclientUuid`: list of SDK UUIDs
-//   - `match`==`wlanId`: list of WLAN IDs
-//
-// **Notes**:
-// Variables are not allowed
+// Comparison values for the selected `match` attribute when `type`==`match`
 func (o WxtagOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringArrayOutput { return v.Values }).(pulumi.StringArrayOutput)
 }
 
+// Identifier of the VLAN associated with this WxLAN tag when `type`==`vlan`
 func (o WxtagOutput) VlanId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringPtrOutput { return v.VlanId }).(pulumi.StringPtrOutput)
 }

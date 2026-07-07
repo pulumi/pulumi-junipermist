@@ -12,20 +12,33 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingInstallerArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether installers may work with all eligible devices
+        /// </summary>
         [Input("allowAllDevices")]
         public Input<bool>? AllowAllDevices { get; set; }
 
+        /// <summary>
+        /// Whether installers may work with all sites
+        /// </summary>
         [Input("allowAllSites")]
         public Input<bool>? AllowAllSites { get; set; }
 
         [Input("extraSiteIds")]
         private InputList<string>? _extraSiteIds;
+
+        /// <summary>
+        /// Additional site IDs that installers may access
+        /// </summary>
         public InputList<string> ExtraSiteIds
         {
             get => _extraSiteIds ?? (_extraSiteIds = new InputList<string>());
             set => _extraSiteIds = value;
         }
 
+        /// <summary>
+        /// Grace period, in days, during which installers can modify recent sites or devices
+        /// </summary>
         [Input("gracePeriod")]
         public Input<int>? GracePeriod { get; set; }
 

@@ -13,30 +13,43 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchExtraRoutesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This takes precedence
+        /// Whether to install a discard route; this takes precedence over next-hop settings
         /// </summary>
         [Input("discard")]
         public Input<bool>? Discard { get; set; }
 
+        /// <summary>
+        /// Route metric for the IPv4 static route
+        /// </summary>
         [Input("metric")]
         public Input<int>? Metric { get; set; }
 
         [Input("nextQualified")]
         private InputMap<Inputs.SwitchExtraRoutesNextQualifiedArgs>? _nextQualified;
+
+        /// <summary>
+        /// Qualified next-hop settings keyed by IPv4 next-hop address
+        /// </summary>
         public InputMap<Inputs.SwitchExtraRoutesNextQualifiedArgs> NextQualified
         {
             get => _nextQualified ?? (_nextQualified = new InputMap<Inputs.SwitchExtraRoutesNextQualifiedArgs>());
             set => _nextQualified = value;
         }
 
+        /// <summary>
+        /// Whether to prevent recursive next-hop resolution for the IPv4 static route
+        /// </summary>
         [Input("noResolve")]
         public Input<bool>? NoResolve { get; set; }
 
+        /// <summary>
+        /// Route preference for the IPv4 static route
+        /// </summary>
         [Input("preference")]
         public Input<int>? Preference { get; set; }
 
         /// <summary>
-        /// Next-hop IP Address. Can be a single IP address or an array of IP addresses for ECMP (Equal-Cost Multi-Path) load balancing across multiple next-hops.
+        /// Next-hop IPv4 address or ECMP next-hop IPv4 addresses for the route
         /// </summary>
         [Input("via", required: true)]
         public Input<string> Via { get; set; } = null!;

@@ -15,9 +15,17 @@ public final class DeviceprofileGatewayServicePolicyAppqoeArgs extends com.pulum
 
     public static final DeviceprofileGatewayServicePolicyAppqoeArgs Empty = new DeviceprofileGatewayServicePolicyAppqoeArgs();
 
+    /**
+     * Whether application QoE is enabled for the service policy
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether application QoE is enabled for the service policy
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -46,11 +54,23 @@ public final class DeviceprofileGatewayServicePolicyAppqoeArgs extends com.pulum
             $ = new DeviceprofileGatewayServicePolicyAppqoeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether application QoE is enabled for the service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether application QoE is enabled for the service policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

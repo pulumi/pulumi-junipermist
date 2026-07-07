@@ -18,17 +18,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Action;
         /// <summary>
-        /// For SRX-only
+        /// Malware and virus inspection settings applied by this service policy
         /// </summary>
         public readonly Outputs.GatewaytemplateServicePolicyAntivirus? Antivirus;
         /// <summary>
-        /// SRX only
+        /// Application QoE settings applied by this service policy
         /// </summary>
         public readonly Outputs.GatewaytemplateServicePolicyAppqoe? Appqoe;
+        /// <summary>
+        /// Enhanced web filtering rules applied by this service policy
+        /// </summary>
         public readonly ImmutableArray<Outputs.GatewaytemplateServicePolicyEwf> Ewfs;
+        /// <summary>
+        /// Intrusion detection and prevention settings applied by this service policy
+        /// </summary>
         public readonly Outputs.GatewaytemplateServicePolicyIdp? Idp;
         /// <summary>
-        /// access within the same VRF
+        /// Whether the policy permits access within the same VRF
         /// </summary>
         public readonly bool? LocalRouting;
         /// <summary>
@@ -40,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? PathPreference;
         /// <summary>
-        /// Used to link servicepolicy defined at org level and overwrite some attributes
+        /// Organization-level service policy identifier used to link and override selected attributes
         /// </summary>
         public readonly string? ServicepolicyId;
         /// <summary>
@@ -48,15 +54,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Services;
         /// <summary>
-        /// SRX only
+        /// Threat inspection settings provided by Sky ATP for this service policy
         /// </summary>
         public readonly Outputs.GatewaytemplateServicePolicySkyatp? Skyatp;
         /// <summary>
-        /// For SRX-only
+        /// TLS inspection settings applied by this service policy
         /// </summary>
         public readonly Outputs.GatewaytemplateServicePolicySslProxy? SslProxy;
         /// <summary>
-        /// Required for syslog logging
+        /// Remote logging settings applied by this service policy
         /// </summary>
         public readonly Outputs.GatewaytemplateServicePolicySyslog? Syslog;
         /// <summary>

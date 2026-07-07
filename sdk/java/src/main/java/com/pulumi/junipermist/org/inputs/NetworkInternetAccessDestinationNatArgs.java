@@ -16,36 +16,44 @@ public final class NetworkInternetAccessDestinationNatArgs extends com.pulumi.re
     public static final NetworkInternetAccessDestinationNatArgs Empty = new NetworkInternetAccessDestinationNatArgs();
 
     /**
-     * The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * The Destination NAT destination IP address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     @Import(name="internalIp")
     private @Nullable Output<String> internalIp;
 
     /**
-     * @return The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return The Destination NAT destination IP address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<Output<String>> internalIp() {
         return Optional.ofNullable(this.internalIp);
     }
 
+    /**
+     * Label for this direct internet destination NAT rule
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Label for this direct internet destination NAT rule
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The Destination NAT destination IP Address. Must be a Port (i.e. &#34;443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * The Destination NAT destination IP address. Must be a Port (i.e. &#34;443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return The Destination NAT destination IP Address. Must be a Port (i.e. &#34;443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return The Destination NAT destination IP address. Must be a Port (i.e. &#34;443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<Output<String>> port() {
@@ -95,7 +103,7 @@ public final class NetworkInternetAccessDestinationNatArgs extends com.pulumi.re
         }
 
         /**
-         * @param internalIp The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param internalIp The Destination NAT destination IP address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -106,7 +114,7 @@ public final class NetworkInternetAccessDestinationNatArgs extends com.pulumi.re
         }
 
         /**
-         * @param internalIp The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param internalIp The Destination NAT destination IP address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -115,17 +123,29 @@ public final class NetworkInternetAccessDestinationNatArgs extends com.pulumi.re
             return internalIp(Output.of(internalIp));
         }
 
+        /**
+         * @param name Label for this direct internet destination NAT rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Label for this direct internet destination NAT rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param port The Destination NAT destination IP Address. Must be a Port (i.e. &#34;443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param port The Destination NAT destination IP address. Must be a Port (i.e. &#34;443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -136,7 +156,7 @@ public final class NetworkInternetAccessDestinationNatArgs extends com.pulumi.re
         }
 
         /**
-         * @param port The Destination NAT destination IP Address. Must be a Port (i.e. &#34;443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param port The Destination NAT destination IP address. Must be a Port (i.e. &#34;443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 

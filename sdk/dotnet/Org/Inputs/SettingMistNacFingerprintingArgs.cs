@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? GenerateWirelessCoa { get; set; }
 
         /// <summary>
-        /// enum: `Reauth`, `Disconnect`
+        /// Change of Authorization action sent to wireless clients when fingerprints change
         /// </summary>
         [Input("wirelessCoaType")]
         public Input<string>? WirelessCoaType { get; set; }

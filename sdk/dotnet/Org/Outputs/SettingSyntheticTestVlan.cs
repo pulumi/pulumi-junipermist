@@ -13,15 +13,21 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingSyntheticTestVlan
     {
+        /// <summary>
+        /// Deprecated custom URLs tested by VLAN-based synthetic probes
+        /// </summary>
         public readonly ImmutableArray<string> CustomTestUrls;
         /// <summary>
         /// For some vlans where we don't want this to run
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// app name comes from `CustomProbes` above or /const/synthetic_test_probes
+        /// Synthetic probe names to run for the listed VLANs
         /// </summary>
         public readonly ImmutableArray<string> Probes;
+        /// <summary>
+        /// VLAN identifiers where synthetic probes are run
+        /// </summary>
         public readonly ImmutableArray<string> VlanIds;
 
         [OutputConstructor]

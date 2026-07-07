@@ -12,9 +12,15 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class GatewaytemplateTunnelConfigsAutoProvisionLatlngGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Geographic latitude used for POP selection override
+        /// </summary>
         [Input("lat", required: true)]
         public Input<double> Lat { get; set; } = null!;
 
+        /// <summary>
+        /// Geographic longitude used for POP selection override
+        /// </summary>
         [Input("lng", required: true)]
         public Input<double> Lng { get; set; } = null!;
 

@@ -72,41 +72,44 @@ import (
 type Webhook struct {
 	pulumi.CustomResourceState
 
-	// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds pulumi.StringArrayOutput `pulumi:"assetfilterIds"`
 	// Whether webhook is enabled
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
 	Headers pulumi.StringMapOutput `pulumi:"headers"`
-	// Name of the webhook
+	// Display name of the webhook
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
 	Oauth2ClientId pulumi.StringPtrOutput `pulumi:"oauth2ClientId"`
-	// Required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
 	Oauth2ClientSecret pulumi.StringPtrOutput `pulumi:"oauth2ClientSecret"`
-	// required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+	// OAuth2 grant type used when `type`==`oauth2`
 	Oauth2GrantType pulumi.StringPtrOutput `pulumi:"oauth2GrantType"`
-	// Required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
 	Oauth2Password pulumi.StringPtrOutput `pulumi:"oauth2Password"`
-	// Required when `type`==`oauth2`, if provided, will be used in the token request
+	// OAuth2 scopes included in the token request when `type`==`oauth2`
 	Oauth2Scopes pulumi.StringArrayOutput `pulumi:"oauth2Scopes"`
-	// Required when `type`==`oauth2`
+	// Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
 	Oauth2TokenUrl pulumi.StringPtrOutput `pulumi:"oauth2TokenUrl"`
-	// Required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
 	Oauth2Username pulumi.StringPtrOutput `pulumi:"oauth2Username"`
-	OrgId          pulumi.StringOutput    `pulumi:"orgId"`
+	// Organization that owns the webhook
+	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Only if `type`=`http-post`
 	Secret pulumi.StringPtrOutput `pulumi:"secret"`
 	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
 	SingleEventPerMessage pulumi.BoolPtrOutput `pulumi:"singleEventPerMessage"`
-	SiteId                pulumi.StringOutput  `pulumi:"siteId"`
+	// Site associated with this webhook when it is site-scoped
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken pulumi.StringPtrOutput `pulumi:"splunkToken"`
 	// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
 	Topics pulumi.StringArrayOutput `pulumi:"topics"`
-	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+	// Delivery mechanism used by this webhook
 	Type pulumi.StringOutput `pulumi:"type"`
-	Url  pulumi.StringOutput `pulumi:"url"`
+	// Destination URL that receives webhook deliveries
+	Url pulumi.StringOutput `pulumi:"url"`
 	// When url uses HTTPS, whether to verify the certificate
 	VerifyCert pulumi.BoolOutput `pulumi:"verifyCert"`
 }
@@ -169,81 +172,87 @@ func GetWebhook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Webhook resources.
 type webhookState struct {
-	// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds []string `pulumi:"assetfilterIds"`
 	// Whether webhook is enabled
 	Enabled *bool `pulumi:"enabled"`
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
 	Headers map[string]string `pulumi:"headers"`
-	// Name of the webhook
+	// Display name of the webhook
 	Name *string `pulumi:"name"`
-	// Required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
 	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
-	// Required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
 	Oauth2ClientSecret *string `pulumi:"oauth2ClientSecret"`
-	// required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+	// OAuth2 grant type used when `type`==`oauth2`
 	Oauth2GrantType *string `pulumi:"oauth2GrantType"`
-	// Required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
 	Oauth2Password *string `pulumi:"oauth2Password"`
-	// Required when `type`==`oauth2`, if provided, will be used in the token request
+	// OAuth2 scopes included in the token request when `type`==`oauth2`
 	Oauth2Scopes []string `pulumi:"oauth2Scopes"`
-	// Required when `type`==`oauth2`
+	// Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
 	Oauth2TokenUrl *string `pulumi:"oauth2TokenUrl"`
-	// Required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
 	Oauth2Username *string `pulumi:"oauth2Username"`
-	OrgId          *string `pulumi:"orgId"`
+	// Organization that owns the webhook
+	OrgId *string `pulumi:"orgId"`
 	// Only if `type`=`http-post`
 	Secret *string `pulumi:"secret"`
 	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
-	SingleEventPerMessage *bool   `pulumi:"singleEventPerMessage"`
-	SiteId                *string `pulumi:"siteId"`
+	SingleEventPerMessage *bool `pulumi:"singleEventPerMessage"`
+	// Site associated with this webhook when it is site-scoped
+	SiteId *string `pulumi:"siteId"`
 	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken *string `pulumi:"splunkToken"`
 	// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
 	Topics []string `pulumi:"topics"`
-	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+	// Delivery mechanism used by this webhook
 	Type *string `pulumi:"type"`
-	Url  *string `pulumi:"url"`
+	// Destination URL that receives webhook deliveries
+	Url *string `pulumi:"url"`
 	// When url uses HTTPS, whether to verify the certificate
 	VerifyCert *bool `pulumi:"verifyCert"`
 }
 
 type WebhookState struct {
-	// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds pulumi.StringArrayInput
 	// Whether webhook is enabled
 	Enabled pulumi.BoolPtrInput
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
 	Headers pulumi.StringMapInput
-	// Name of the webhook
+	// Display name of the webhook
 	Name pulumi.StringPtrInput
-	// Required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
 	Oauth2ClientId pulumi.StringPtrInput
-	// Required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
 	Oauth2ClientSecret pulumi.StringPtrInput
-	// required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+	// OAuth2 grant type used when `type`==`oauth2`
 	Oauth2GrantType pulumi.StringPtrInput
-	// Required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
 	Oauth2Password pulumi.StringPtrInput
-	// Required when `type`==`oauth2`, if provided, will be used in the token request
+	// OAuth2 scopes included in the token request when `type`==`oauth2`
 	Oauth2Scopes pulumi.StringArrayInput
-	// Required when `type`==`oauth2`
+	// Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
 	Oauth2TokenUrl pulumi.StringPtrInput
-	// Required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
 	Oauth2Username pulumi.StringPtrInput
-	OrgId          pulumi.StringPtrInput
+	// Organization that owns the webhook
+	OrgId pulumi.StringPtrInput
 	// Only if `type`=`http-post`
 	Secret pulumi.StringPtrInput
 	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
 	SingleEventPerMessage pulumi.BoolPtrInput
-	SiteId                pulumi.StringPtrInput
+	// Site associated with this webhook when it is site-scoped
+	SiteId pulumi.StringPtrInput
 	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken pulumi.StringPtrInput
 	// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
 	Topics pulumi.StringArrayInput
-	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+	// Delivery mechanism used by this webhook
 	Type pulumi.StringPtrInput
-	Url  pulumi.StringPtrInput
+	// Destination URL that receives webhook deliveries
+	Url pulumi.StringPtrInput
 	// When url uses HTTPS, whether to verify the certificate
 	VerifyCert pulumi.BoolPtrInput
 }
@@ -253,80 +262,84 @@ func (WebhookState) ElementType() reflect.Type {
 }
 
 type webhookArgs struct {
-	// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds []string `pulumi:"assetfilterIds"`
 	// Whether webhook is enabled
 	Enabled *bool `pulumi:"enabled"`
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
 	Headers map[string]string `pulumi:"headers"`
-	// Name of the webhook
+	// Display name of the webhook
 	Name *string `pulumi:"name"`
-	// Required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
 	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
-	// Required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
 	Oauth2ClientSecret *string `pulumi:"oauth2ClientSecret"`
-	// required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+	// OAuth2 grant type used when `type`==`oauth2`
 	Oauth2GrantType *string `pulumi:"oauth2GrantType"`
-	// Required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
 	Oauth2Password *string `pulumi:"oauth2Password"`
-	// Required when `type`==`oauth2`, if provided, will be used in the token request
+	// OAuth2 scopes included in the token request when `type`==`oauth2`
 	Oauth2Scopes []string `pulumi:"oauth2Scopes"`
-	// Required when `type`==`oauth2`
+	// Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
 	Oauth2TokenUrl *string `pulumi:"oauth2TokenUrl"`
-	// Required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
 	Oauth2Username *string `pulumi:"oauth2Username"`
 	// Only if `type`=`http-post`
 	Secret *string `pulumi:"secret"`
 	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
-	SingleEventPerMessage *bool  `pulumi:"singleEventPerMessage"`
-	SiteId                string `pulumi:"siteId"`
+	SingleEventPerMessage *bool `pulumi:"singleEventPerMessage"`
+	// Site associated with this webhook when it is site-scoped
+	SiteId string `pulumi:"siteId"`
 	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken *string `pulumi:"splunkToken"`
 	// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
 	Topics []string `pulumi:"topics"`
-	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+	// Delivery mechanism used by this webhook
 	Type *string `pulumi:"type"`
-	Url  string  `pulumi:"url"`
+	// Destination URL that receives webhook deliveries
+	Url string `pulumi:"url"`
 	// When url uses HTTPS, whether to verify the certificate
 	VerifyCert *bool `pulumi:"verifyCert"`
 }
 
 // The set of arguments for constructing a Webhook resource.
 type WebhookArgs struct {
-	// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+	// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 	AssetfilterIds pulumi.StringArrayInput
 	// Whether webhook is enabled
 	Enabled pulumi.BoolPtrInput
 	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
 	Headers pulumi.StringMapInput
-	// Name of the webhook
+	// Display name of the webhook
 	Name pulumi.StringPtrInput
-	// Required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
 	Oauth2ClientId pulumi.StringPtrInput
-	// Required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
 	Oauth2ClientSecret pulumi.StringPtrInput
-	// required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+	// OAuth2 grant type used when `type`==`oauth2`
 	Oauth2GrantType pulumi.StringPtrInput
-	// Required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
 	Oauth2Password pulumi.StringPtrInput
-	// Required when `type`==`oauth2`, if provided, will be used in the token request
+	// OAuth2 scopes included in the token request when `type`==`oauth2`
 	Oauth2Scopes pulumi.StringArrayInput
-	// Required when `type`==`oauth2`
+	// Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
 	Oauth2TokenUrl pulumi.StringPtrInput
-	// Required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
 	Oauth2Username pulumi.StringPtrInput
 	// Only if `type`=`http-post`
 	Secret pulumi.StringPtrInput
 	// Some solutions may not be able to parse multiple events from a single message (e.g. IBM Qradar, DSM). When set to `true`, only a single event will be sent per message. this feature is only available on certain topics (see List Webhook Topics)
 	SingleEventPerMessage pulumi.BoolPtrInput
-	SiteId                pulumi.StringInput
+	// Site associated with this webhook when it is site-scoped
+	SiteId pulumi.StringInput
 	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
 	SplunkToken pulumi.StringPtrInput
 	// enum: `alarms`, `asset-raw`, `asset-raw-rssi`, `audits`, `client-info`, `client-join`, `client-latency`, `client-sessions`, `device-events`, `device-updowns`, `discovered-raw-rssi`, `guest-authorizations`, `location`, `location-asset`, `location-centrak`, `location-client`, `location-sdk`, `location-unclient`, `mxedge-events`, `minis-application`, `minis-reachability`, `nac-accounting`, `nac-events`, `occupancy-alerts`, `rssizone`, `sdkclient-scan-data`, `vbeacon`, `wifi-conn-raw`, `wifi-unconn-raw`, `zone`
 	Topics pulumi.StringArrayInput
-	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+	// Delivery mechanism used by this webhook
 	Type pulumi.StringPtrInput
-	Url  pulumi.StringInput
+	// Destination URL that receives webhook deliveries
+	Url pulumi.StringInput
 	// When url uses HTTPS, whether to verify the certificate
 	VerifyCert pulumi.BoolPtrInput
 }
@@ -418,7 +431,7 @@ func (o WebhookOutput) ToWebhookOutputWithContext(ctx context.Context) WebhookOu
 	return o
 }
 
-// Only if `type`==`asset-raw-rssi`. List of ids to associated asset filters. These filters will be applied to messages routed to a filtered-asset-rssi webhook
+// Asset filter identifiers used to restrict `asset-raw-rssi` webhook events
 func (o WebhookOutput) AssetfilterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringArrayOutput { return v.AssetfilterIds }).(pulumi.StringArrayOutput)
 }
@@ -433,46 +446,47 @@ func (o WebhookOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringMapOutput { return v.Headers }).(pulumi.StringMapOutput)
 }
 
-// Name of the webhook
+// Display name of the webhook
 func (o WebhookOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required when `oauth2GrantType`==`clientCredentials`
+// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client identifier used to request an access token
 func (o WebhookOutput) Oauth2ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.Oauth2ClientId }).(pulumi.StringPtrOutput)
 }
 
-// Required when `oauth2GrantType`==`clientCredentials`
+// Required when `oauth2GrantType`==`clientCredentials`; OAuth2 client secret used to request an access token
 func (o WebhookOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.Oauth2ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+// OAuth2 grant type used when `type`==`oauth2`
 func (o WebhookOutput) Oauth2GrantType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.Oauth2GrantType }).(pulumi.StringPtrOutput)
 }
 
-// Required when `oauth2GrantType`==`password`
+// Required when `oauth2GrantType`==`password`; password used for the OAuth2 token request
 func (o WebhookOutput) Oauth2Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.Oauth2Password }).(pulumi.StringPtrOutput)
 }
 
-// Required when `type`==`oauth2`, if provided, will be used in the token request
+// OAuth2 scopes included in the token request when `type`==`oauth2`
 func (o WebhookOutput) Oauth2Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringArrayOutput { return v.Oauth2Scopes }).(pulumi.StringArrayOutput)
 }
 
-// Required when `type`==`oauth2`
+// Required when `type`==`oauth2`; token endpoint URL used to obtain the OAuth2 access token
 func (o WebhookOutput) Oauth2TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.Oauth2TokenUrl }).(pulumi.StringPtrOutput)
 }
 
-// Required when `oauth2GrantType`==`password`
+// Required when `oauth2GrantType`==`password`; username used for the OAuth2 token request
 func (o WebhookOutput) Oauth2Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.Oauth2Username }).(pulumi.StringPtrOutput)
 }
 
+// Organization that owns the webhook
 func (o WebhookOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
@@ -487,6 +501,7 @@ func (o WebhookOutput) SingleEventPerMessage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.BoolPtrOutput { return v.SingleEventPerMessage }).(pulumi.BoolPtrOutput)
 }
 
+// Site associated with this webhook when it is site-scoped
 func (o WebhookOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
@@ -501,11 +516,12 @@ func (o WebhookOutput) Topics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringArrayOutput { return v.Topics }).(pulumi.StringArrayOutput)
 }
 
-// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+// Delivery mechanism used by this webhook
 func (o WebhookOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
+// Destination URL that receives webhook deliveries
 func (o WebhookOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

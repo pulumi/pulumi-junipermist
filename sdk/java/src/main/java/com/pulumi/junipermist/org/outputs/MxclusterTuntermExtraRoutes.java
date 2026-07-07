@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MxclusterTuntermExtraRoutes {
+    /**
+     * @return Next-hop IP address for this extra route
+     * 
+     */
     private @Nullable String via;
 
     private MxclusterTuntermExtraRoutes() {}
+    /**
+     * @return Next-hop IP address for this extra route
+     * 
+     */
     public Optional<String> via() {
         return Optional.ofNullable(this.via);
     }

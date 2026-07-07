@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayServicePolicySkyatp {
+    /**
+     * @return Detection settings for DNS DGA threats provided by Sky ATP
+     * 
+     */
     private @Nullable DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection dnsDgaDetection;
+    /**
+     * @return Detection settings for DNS tunneling threats provided by Sky ATP
+     * 
+     */
     private @Nullable DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection dnsTunnelDetection;
+    /**
+     * @return Web traffic inspection settings provided by Sky ATP
+     * 
+     */
     private @Nullable DeviceprofileGatewayServicePolicySkyatpHttpInspection httpInspection;
+    /**
+     * @return Device threat policy settings provided by Sky ATP for IoT clients
+     * 
+     */
     private @Nullable DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy iotDevicePolicy;
 
     private DeviceprofileGatewayServicePolicySkyatp() {}
+    /**
+     * @return Detection settings for DNS DGA threats provided by Sky ATP
+     * 
+     */
     public Optional<DeviceprofileGatewayServicePolicySkyatpDnsDgaDetection> dnsDgaDetection() {
         return Optional.ofNullable(this.dnsDgaDetection);
     }
+    /**
+     * @return Detection settings for DNS tunneling threats provided by Sky ATP
+     * 
+     */
     public Optional<DeviceprofileGatewayServicePolicySkyatpDnsTunnelDetection> dnsTunnelDetection() {
         return Optional.ofNullable(this.dnsTunnelDetection);
     }
+    /**
+     * @return Web traffic inspection settings provided by Sky ATP
+     * 
+     */
     public Optional<DeviceprofileGatewayServicePolicySkyatpHttpInspection> httpInspection() {
         return Optional.ofNullable(this.httpInspection);
     }
+    /**
+     * @return Device threat policy settings provided by Sky ATP for IoT clients
+     * 
+     */
     public Optional<DeviceprofileGatewayServicePolicySkyatpIotDevicePolicy> iotDevicePolicy() {
         return Optional.ofNullable(this.iotDevicePolicy);
     }

@@ -14,16 +14,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class MxedgeTuntermPortConfig
     {
         /// <summary>
-        /// List of ports to be used for downstream (to AP) purpose
+        /// Ports connected downstream toward APs for tunnel termination
         /// </summary>
         public readonly ImmutableArray<string> DownstreamPorts;
         /// <summary>
         /// Whether to separate upstream / downstream ports. default is false where all ports will be used.
         /// </summary>
         public readonly bool? SeparateUpstreamDownstream;
+        /// <summary>
+        /// Native VLAN ID applied to upstream tunnel termination ports
+        /// </summary>
         public readonly string? UpstreamPortVlanId;
         /// <summary>
-        /// List of ports to be used for upstream purpose (to LAN)
+        /// Ports connected upstream toward the LAN for tunnel termination
         /// </summary>
         public readonly ImmutableArray<string> UpstreamPorts;
 

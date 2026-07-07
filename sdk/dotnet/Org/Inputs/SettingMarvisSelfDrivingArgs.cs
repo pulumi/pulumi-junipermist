@@ -12,12 +12,21 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingMarvisSelfDrivingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Self-driving automation settings for the WAN domain
+        /// </summary>
         [Input("wan")]
         public Input<Inputs.SettingMarvisSelfDrivingWanArgs>? Wan { get; set; }
 
+        /// <summary>
+        /// Self-driving automation settings for the wired domain
+        /// </summary>
         [Input("wired")]
         public Input<Inputs.SettingMarvisSelfDrivingWiredArgs>? Wired { get; set; }
 
+        /// <summary>
+        /// Self-driving automation settings for the wireless domain
+        /// </summary>
         [Input("wireless")]
         public Input<Inputs.SettingMarvisSelfDrivingWirelessArgs>? Wireless { get; set; }
 

@@ -13,16 +13,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class ServicepolicyAamwGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// org-level Advanced Advance Anti Malware Profile (SkyAtp) Profile can be used, this takes precedence over 'profile'
+        /// Organization-level advanced anti-malware profile ID; takes precedence over inline `Profile` settings
         /// </summary>
         [Input("aamwprofileId")]
         public Input<string>? AamwprofileId { get; set; }
 
+        /// <summary>
+        /// Whether advanced anti-malware inspection is enabled for the service policy
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// enum: `Docsonly`, `Executables`, `Standard`
+        /// Built-in advanced anti-malware inspection profile to apply
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

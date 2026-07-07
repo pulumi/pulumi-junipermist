@@ -19,14 +19,14 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
     public static final GatewayPortConfigVpnPathsArgs Empty = new GatewayPortConfigVpnPathsArgs();
 
     /**
-     * Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
+     * BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
      * 
      */
     @Import(name="bfdProfile")
     private @Nullable Output<String> bfdProfile;
 
     /**
-     * @return Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
+     * @return BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
      * 
      */
     public Optional<Output<String>> bfdProfile() {
@@ -64,23 +64,31 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+     * Gateway role for this VPN path; valid values depend on the VPN `type`
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+     * @return Gateway role for this VPN path; valid values depend on the VPN `type`
      * 
      */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
 
+    /**
+     * Traffic shaping settings applied to this VPN path
+     * 
+     */
     @Import(name="trafficShaping")
     private @Nullable Output<GatewayPortConfigVpnPathsTrafficShapingArgs> trafficShaping;
 
+    /**
+     * @return Traffic shaping settings applied to this VPN path
+     * 
+     */
     public Optional<Output<GatewayPortConfigVpnPathsTrafficShapingArgs>> trafficShaping() {
         return Optional.ofNullable(this.trafficShaping);
     }
@@ -114,7 +122,7 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bfdProfile Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
+         * @param bfdProfile BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
          * 
          * @return builder
          * 
@@ -125,7 +133,7 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bfdProfile Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
+         * @param bfdProfile BFD profile used for this VPN path when the VPN `type`==`hubSpoke`
          * 
          * @return builder
          * 
@@ -177,7 +185,7 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param role If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+         * @param role Gateway role for this VPN path; valid values depend on the VPN `type`
          * 
          * @return builder
          * 
@@ -188,7 +196,7 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param role If the VPN `type`==`hubSpoke`, enum: `hub`, `spoke`. If the VPN `type`==`mesh`, enum: `mesh`
+         * @param role Gateway role for this VPN path; valid values depend on the VPN `type`
          * 
          * @return builder
          * 
@@ -197,11 +205,23 @@ public final class GatewayPortConfigVpnPathsArgs extends com.pulumi.resources.Re
             return role(Output.of(role));
         }
 
+        /**
+         * @param trafficShaping Traffic shaping settings applied to this VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder trafficShaping(@Nullable Output<GatewayPortConfigVpnPathsTrafficShapingArgs> trafficShaping) {
             $.trafficShaping = trafficShaping;
             return this;
         }
 
+        /**
+         * @param trafficShaping Traffic shaping settings applied to this VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder trafficShaping(GatewayPortConfigVpnPathsTrafficShapingArgs trafficShaping) {
             return trafficShaping(Output.of(trafficShaping));
         }

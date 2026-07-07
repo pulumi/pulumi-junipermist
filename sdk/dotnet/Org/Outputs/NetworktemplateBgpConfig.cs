@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NetworktemplateBgpConfig
     {
+        /// <summary>
+        /// Authentication key used for BGP neighbor sessions, when configured
+        /// </summary>
         public readonly string? AuthKey;
         /// <summary>
         /// Minimum interval in milliseconds for BFD hello packets. A neighbor is considered failed when the device stops receiving replies after the specified interval. Value must be between 1 and 255000.
@@ -23,24 +26,27 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? ExportPolicy;
         /// <summary>
-        /// Hold time is three times the interval at which keepalive messages are sent. It indicates to the peer the length of time that it should consider the sender valid. Must be 0 or a number in the range 3-65535.
+        /// Default BGP hold time for switch BGP sessions
         /// </summary>
         public readonly int? HoldTime;
         /// <summary>
         /// Import policy must match one of the policy names defined in the `RoutingPolicies` property.
         /// </summary>
         public readonly string? ImportPolicy;
+        /// <summary>
+        /// Local BGP Autonomous System (AS) number for the switch
+        /// </summary>
         public readonly string LocalAs;
         /// <summary>
-        /// Property key is the BGP Neighbor IP Address.
+        /// BGP neighbor settings keyed by neighbor IP address
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateBgpConfigNeighbors>? Neighbors;
         /// <summary>
-        /// List of network names for BGP configuration. When a network is specified, a BGP group will be added to the VRF that network is part of.
+        /// Network names used to add BGP groups to the corresponding VRFs
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// enum: `External`, `Internal`
+        /// BGP session type for this switch BGP configuration
         /// </summary>
         public readonly string Type;
 

@@ -67,7 +67,7 @@ export class WlanPortalTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * Portal template wlan settings
+     * Template settings that define guest portal text, layout, and localization
      */
     declare public readonly portalTemplate: pulumi.Output<outputs.site.WlanPortalTemplatePortalTemplate>;
     declare public readonly siteId: pulumi.Output<string>;
@@ -117,7 +117,7 @@ export class WlanPortalTemplate extends pulumi.CustomResource {
  */
 export interface WlanPortalTemplateState {
     /**
-     * Portal template wlan settings
+     * Template settings that define guest portal text, layout, and localization
      */
     portalTemplate?: pulumi.Input<inputs.site.WlanPortalTemplatePortalTemplate | undefined>;
     siteId?: pulumi.Input<string | undefined>;
@@ -132,7 +132,7 @@ export interface WlanPortalTemplateState {
  */
 export interface WlanPortalTemplateArgs {
     /**
-     * Portal template wlan settings
+     * Template settings that define guest portal text, layout, and localization
      */
     portalTemplate: pulumi.Input<inputs.site.WlanPortalTemplatePortalTemplate>;
     siteId: pulumi.Input<string>;

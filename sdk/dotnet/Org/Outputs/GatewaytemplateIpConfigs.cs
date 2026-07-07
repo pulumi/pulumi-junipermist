@@ -13,20 +13,32 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GatewaytemplateIpConfigs
     {
+        /// <summary>
+        /// Static IPv4 address for the gateway network interface when `Type`==`Static`
+        /// </summary>
         public readonly string? Ip;
+        /// <summary>
+        /// Static IPv6 address for the gateway network interface when `Type6`==`Static`
+        /// </summary>
         public readonly string? Ip6;
+        /// <summary>
+        /// IPv4 netmask or prefix length for the gateway network interface when `Type`==`Static`
+        /// </summary>
         public readonly string? Netmask;
+        /// <summary>
+        /// IPv6 netmask or prefix length for the gateway network interface when `Type6`==`Static`
+        /// </summary>
         public readonly string? Netmask6;
         /// <summary>
-        /// Optional list of secondary IPs in CIDR format
+        /// Additional IPv4 addresses in CIDR notation for this gateway network interface
         /// </summary>
         public readonly ImmutableArray<string> SecondaryIps;
         /// <summary>
-        /// enum: `Dhcp`, `Static`
+        /// IPv4 address assignment mode for this gateway network interface
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `Autoconf`, `Dhcp`, `Disabled`, `Static`
+        /// IPv6 address assignment mode for this gateway network interface
         /// </summary>
         public readonly string? Type6;
 

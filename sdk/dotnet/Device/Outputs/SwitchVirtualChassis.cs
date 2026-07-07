@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchVirtualChassis
     {
         /// <summary>
-        /// List of Virtual Chassis members
+        /// Virtual Chassis members and their expected roles
         /// </summary>
         public readonly ImmutableArray<Outputs.SwitchVirtualChassisMember> Members;
         /// <summary>

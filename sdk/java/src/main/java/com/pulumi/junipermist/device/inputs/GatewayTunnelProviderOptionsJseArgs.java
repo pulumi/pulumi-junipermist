@@ -16,9 +16,17 @@ public final class GatewayTunnelProviderOptionsJseArgs extends com.pulumi.resour
 
     public static final GatewayTunnelProviderOptionsJseArgs Empty = new GatewayTunnelProviderOptionsJseArgs();
 
+    /**
+     * User capacity to provision on Juniper Secure Edge
+     * 
+     */
     @Import(name="numUsers")
     private @Nullable Output<Integer> numUsers;
 
+    /**
+     * @return User capacity to provision on Juniper Secure Edge
+     * 
+     */
     public Optional<Output<Integer>> numUsers() {
         return Optional.ofNullable(this.numUsers);
     }
@@ -63,11 +71,23 @@ public final class GatewayTunnelProviderOptionsJseArgs extends com.pulumi.resour
             $ = new GatewayTunnelProviderOptionsJseArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param numUsers User capacity to provision on Juniper Secure Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder numUsers(@Nullable Output<Integer> numUsers) {
             $.numUsers = numUsers;
             return this;
         }
 
+        /**
+         * @param numUsers User capacity to provision on Juniper Secure Edge
+         * 
+         * @return builder
+         * 
+         */
         public Builder numUsers(Integer numUsers) {
             return numUsers(Output.of(numUsers));
         }

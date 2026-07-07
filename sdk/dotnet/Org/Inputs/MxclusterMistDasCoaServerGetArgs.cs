@@ -18,17 +18,20 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("disableEventTimestampCheck")]
         public Input<bool>? DisableEventTimestampCheck { get; set; }
 
+        /// <summary>
+        /// Whether this DAS CoA or Disconnect-Message client is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// This server configured to send CoA|DM to mist edges
+        /// Server host allowed to send CoA or Disconnect-Message requests to Mist Edges
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Mist edges will allow this host on this port
+        /// UDP port where Mist Edges accept CoA or Disconnect-Message requests from this host
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -41,6 +44,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("secret")]
         private Input<string>? _secret;
+
+        /// <summary>
+        /// Shared secret used by this DAS CoA or Disconnect-Message client
+        /// </summary>
         public Input<string>? Secret
         {
             get => _secret;

@@ -19,29 +19,45 @@ public final class SwitchOspfAreasArgs extends com.pulumi.resources.ResourceArgs
 
     public static final SwitchOspfAreasArgs Empty = new SwitchOspfAreasArgs();
 
+    /**
+     * Whether loopback interfaces are included in this OSPF area
+     * 
+     */
     @Import(name="includeLoopback")
     private @Nullable Output<Boolean> includeLoopback;
 
+    /**
+     * @return Whether loopback interfaces are included in this OSPF area
+     * 
+     */
     public Optional<Output<Boolean>> includeLoopback() {
         return Optional.ofNullable(this.includeLoopback);
     }
 
+    /**
+     * OSPF network settings keyed by network name
+     * 
+     */
     @Import(name="networks", required=true)
     private Output<Map<String,SwitchOspfAreasNetworksArgs>> networks;
 
+    /**
+     * @return OSPF network settings keyed by network name
+     * 
+     */
     public Output<Map<String,SwitchOspfAreasNetworksArgs>> networks() {
         return this.networks;
     }
 
     /**
-     * OSPF type. enum: `default`, `nssa`, `stub`
+     * Area type for this OSPF area
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return OSPF type. enum: `default`, `nssa`, `stub`
+     * @return Area type for this OSPF area
      * 
      */
     public Optional<Output<String>> type() {
@@ -74,26 +90,50 @@ public final class SwitchOspfAreasArgs extends com.pulumi.resources.ResourceArgs
             $ = new SwitchOspfAreasArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param includeLoopback Whether loopback interfaces are included in this OSPF area
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeLoopback(@Nullable Output<Boolean> includeLoopback) {
             $.includeLoopback = includeLoopback;
             return this;
         }
 
+        /**
+         * @param includeLoopback Whether loopback interfaces are included in this OSPF area
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeLoopback(Boolean includeLoopback) {
             return includeLoopback(Output.of(includeLoopback));
         }
 
+        /**
+         * @param networks OSPF network settings keyed by network name
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(Output<Map<String,SwitchOspfAreasNetworksArgs>> networks) {
             $.networks = networks;
             return this;
         }
 
+        /**
+         * @param networks OSPF network settings keyed by network name
+         * 
+         * @return builder
+         * 
+         */
         public Builder networks(Map<String,SwitchOspfAreasNetworksArgs> networks) {
             return networks(Output.of(networks));
         }
 
         /**
-         * @param type OSPF type. enum: `default`, `nssa`, `stub`
+         * @param type Area type for this OSPF area
          * 
          * @return builder
          * 
@@ -104,7 +144,7 @@ public final class SwitchOspfAreasArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type OSPF type. enum: `default`, `nssa`, `stub`
+         * @param type Area type for this OSPF area
          * 
          * @return builder
          * 

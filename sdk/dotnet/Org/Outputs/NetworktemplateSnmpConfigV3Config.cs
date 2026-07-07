@@ -13,11 +13,29 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class NetworktemplateSnmpConfigV3Config
     {
+        /// <summary>
+        /// SNMPv3 notification definitions used for traps and informs
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigNotify> Notifies;
+        /// <summary>
+        /// SNMPv3 notification filter profiles
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigNotifyFilter> NotifyFilters;
+        /// <summary>
+        /// SNMPv3 notification target addresses
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigTargetAddress> TargetAddresses;
+        /// <summary>
+        /// SNMPv3 target parameter profiles
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigTargetParameter> TargetParameters;
+        /// <summary>
+        /// SNMPv3 USM engine configurations
+        /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigUsm> Usms;
+        /// <summary>
+        /// SNMPv3 VACM access control configuration
+        /// </summary>
         public readonly Outputs.NetworktemplateSnmpConfigV3ConfigVacm? Vacm;
 
         [OutputConstructor]

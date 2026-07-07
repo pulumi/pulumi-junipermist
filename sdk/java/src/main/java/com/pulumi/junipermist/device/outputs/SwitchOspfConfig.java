@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchOspfConfig {
     /**
-     * @return Property key is the area name. Defines the OSPF areas configured on the switch.
+     * @return OSPF areas configured on the switch
      * 
      */
     private @Nullable Map<String,SwitchOspfConfigAreas> areas;
@@ -34,11 +34,15 @@ public final class SwitchOspfConfig {
      * 
      */
     private @Nullable String importPolicy;
+    /**
+     * @return Reference bandwidth used for OSPF cost calculation
+     * 
+     */
     private @Nullable String referenceBandwidth;
 
     private SwitchOspfConfig() {}
     /**
-     * @return Property key is the area name. Defines the OSPF areas configured on the switch.
+     * @return OSPF areas configured on the switch
      * 
      */
     public Map<String,SwitchOspfConfigAreas> areas() {
@@ -65,6 +69,10 @@ public final class SwitchOspfConfig {
     public Optional<String> importPolicy() {
         return Optional.ofNullable(this.importPolicy);
     }
+    /**
+     * @return Reference bandwidth used for OSPF cost calculation
+     * 
+     */
     public Optional<String> referenceBandwidth() {
         return Optional.ofNullable(this.referenceBandwidth);
     }

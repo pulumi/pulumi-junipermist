@@ -16,16 +16,32 @@ public final class MxedgeProxyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MxedgeProxyArgs Empty = new MxedgeProxyArgs();
 
+    /**
+     * Whether this proxy configuration is disabled
+     * 
+     */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
+    /**
+     * @return Whether this proxy configuration is disabled
+     * 
+     */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
     }
 
+    /**
+     * Proxy URL used to reach Mist
+     * 
+     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
+    /**
+     * @return Proxy URL used to reach Mist
+     * 
+     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -55,20 +71,44 @@ public final class MxedgeProxyArgs extends com.pulumi.resources.ResourceArgs {
             $ = new MxedgeProxyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param disabled Whether this proxy configuration is disabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(@Nullable Output<Boolean> disabled) {
             $.disabled = disabled;
             return this;
         }
 
+        /**
+         * @param disabled Whether this proxy configuration is disabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
         }
 
+        /**
+         * @param url Proxy URL used to reach Mist
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url Proxy URL used to reach Mist
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

@@ -17,78 +17,110 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApPortConfigRadiusConfig {
     /**
-     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      * 
      */
     private @Nullable Integer acctInterimInterval;
+    /**
+     * @return RADIUS accounting servers used by this Junos configuration
+     * 
+     */
     private @Nullable List<ApPortConfigRadiusConfigAcctServer> acctServers;
+    /**
+     * @return RADIUS authentication servers used by this Junos configuration
+     * 
+     */
     private @Nullable List<ApPortConfigRadiusConfigAuthServer> authServers;
     /**
-     * @return radius auth session retries
+     * @return Number of RADIUS authentication request retries before failover
      * 
      */
     private @Nullable Integer authServersRetries;
     /**
-     * @return radius auth session timeout
+     * @return RADIUS authentication server timeout, in seconds
      * 
      */
     private @Nullable Integer authServersTimeout;
+    /**
+     * @return Whether RADIUS Change of Authorization (CoA) is enabled
+     * 
+     */
     private @Nullable Boolean coaEnabled;
+    /**
+     * @return UDP port used for RADIUS Change of Authorization (CoA)
+     * 
+     */
     private @Nullable Integer coaPort;
     /**
-     * @return use `network`or `sourceIp`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return Use `network` or `sourceIp`. Network where the RADIUS server resides; if the network has a static IP, Mist uses it as the source IP
      * 
      */
     private @Nullable String network;
     /**
-     * @return use `network`or `sourceIp`
+     * @return Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
      * 
      */
     private @Nullable String sourceIp;
 
     private ApPortConfigRadiusConfig() {}
     /**
-     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the RADIUS server, 600 and up is recommended when enabled
      * 
      */
     public Optional<Integer> acctInterimInterval() {
         return Optional.ofNullable(this.acctInterimInterval);
     }
+    /**
+     * @return RADIUS accounting servers used by this Junos configuration
+     * 
+     */
     public List<ApPortConfigRadiusConfigAcctServer> acctServers() {
         return this.acctServers == null ? List.of() : this.acctServers;
     }
+    /**
+     * @return RADIUS authentication servers used by this Junos configuration
+     * 
+     */
     public List<ApPortConfigRadiusConfigAuthServer> authServers() {
         return this.authServers == null ? List.of() : this.authServers;
     }
     /**
-     * @return radius auth session retries
+     * @return Number of RADIUS authentication request retries before failover
      * 
      */
     public Optional<Integer> authServersRetries() {
         return Optional.ofNullable(this.authServersRetries);
     }
     /**
-     * @return radius auth session timeout
+     * @return RADIUS authentication server timeout, in seconds
      * 
      */
     public Optional<Integer> authServersTimeout() {
         return Optional.ofNullable(this.authServersTimeout);
     }
+    /**
+     * @return Whether RADIUS Change of Authorization (CoA) is enabled
+     * 
+     */
     public Optional<Boolean> coaEnabled() {
         return Optional.ofNullable(this.coaEnabled);
     }
+    /**
+     * @return UDP port used for RADIUS Change of Authorization (CoA)
+     * 
+     */
     public Optional<Integer> coaPort() {
         return Optional.ofNullable(this.coaPort);
     }
     /**
-     * @return use `network`or `sourceIp`, which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return Use `network` or `sourceIp`. Network where the RADIUS server resides; if the network has a static IP, Mist uses it as the source IP
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return use `network`or `sourceIp`
+     * @return Use `network` or `sourceIp`. Explicit source IP address for RADIUS traffic
      * 
      */
     public Optional<String> sourceIp() {

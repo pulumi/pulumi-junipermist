@@ -13,8 +13,17 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileGatewayDhcpdConfigConfigFixedBindings
     {
+        /// <summary>
+        /// Reserved IPv4 address for this fixed DHCP binding
+        /// </summary>
         public readonly string? Ip;
+        /// <summary>
+        /// Reserved IPv6 address for this fixed DHCP binding
+        /// </summary>
         public readonly string? Ip6;
+        /// <summary>
+        /// Friendly name for this fixed DHCP binding
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

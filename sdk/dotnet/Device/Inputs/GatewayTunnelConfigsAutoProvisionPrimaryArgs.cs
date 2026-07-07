@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         [Input("probeIps")]
         private InputList<string>? _probeIps;
+
+        /// <summary>
+        /// Probe IP addresses used to monitor auto-provisioned tunnel reachability
+        /// </summary>
         public InputList<string> ProbeIps
         {
             get => _probeIps ?? (_probeIps = new InputList<string>());
@@ -24,7 +28,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _wanNames;
 
         /// <summary>
-        /// Optional, only needed if `VarsOnly`==`False`
+        /// WAN interface names used by the auto-provisioned tunnel endpoint
         /// </summary>
         public InputList<string> WanNames
         {

@@ -14,44 +14,52 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanCiscoCwa {
     /**
-     * @return List of hostnames without http(s):// (matched by substring)
+     * @return Hostnames allowed for Cisco CWA client access before authorization
      * 
      */
     private @Nullable List<String> allowedHostnames;
     /**
-     * @return List of CIDRs
+     * @return CIDR subnets allowed for Cisco CWA client access before authorization
      * 
      */
     private @Nullable List<String> allowedSubnets;
     /**
-     * @return List of blocked CIDRs
+     * @return CIDR subnets blocked for Cisco CWA client access
      * 
      */
     private @Nullable List<String> blockedSubnets;
+    /**
+     * @return Whether Cisco CWA is enabled for this WLAN
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private WlanCiscoCwa() {}
     /**
-     * @return List of hostnames without http(s):// (matched by substring)
+     * @return Hostnames allowed for Cisco CWA client access before authorization
      * 
      */
     public List<String> allowedHostnames() {
         return this.allowedHostnames == null ? List.of() : this.allowedHostnames;
     }
     /**
-     * @return List of CIDRs
+     * @return CIDR subnets allowed for Cisco CWA client access before authorization
      * 
      */
     public List<String> allowedSubnets() {
         return this.allowedSubnets == null ? List.of() : this.allowedSubnets;
     }
     /**
-     * @return List of blocked CIDRs
+     * @return CIDR subnets blocked for Cisco CWA client access
      * 
      */
     public List<String> blockedSubnets() {
         return this.blockedSubnets == null ? List.of() : this.blockedSubnets;
     }
+    /**
+     * @return Whether Cisco CWA is enabled for this WLAN
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

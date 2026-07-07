@@ -13,14 +13,29 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxedgeTuntermIpConfig
     {
+        /// <summary>
+        /// IPv4 gateway for the Mist Tunnel interface
+        /// </summary>
         public readonly string Gateway;
+        /// <summary>
+        /// IPv6 gateway for the Mist Tunnel interface
+        /// </summary>
         public readonly string? Gateway6;
         /// <summary>
-        /// Untagged VLAN
+        /// Address on the untagged Mist Tunnel interface, in IPv4 format
         /// </summary>
         public readonly string Ip;
+        /// <summary>
+        /// Address on the Mist Tunnel interface, in IPv6 format
+        /// </summary>
         public readonly string? Ip6;
+        /// <summary>
+        /// Subnet mask for the Mist Tunnel IPv4 address
+        /// </summary>
         public readonly string Netmask;
+        /// <summary>
+        /// Prefix length for the Mist Tunnel IPv6 address
+        /// </summary>
         public readonly string? Netmask6;
 
         [OutputConstructor]

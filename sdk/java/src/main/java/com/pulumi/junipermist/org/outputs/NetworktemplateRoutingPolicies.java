@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateRoutingPolicies {
     /**
-     * @return at least criteria/filter must be specified to match the term, all criteria have to be met
+     * @return Ordered terms evaluated by this switch routing policy
      * 
      */
     private @Nullable List<NetworktemplateRoutingPoliciesTerm> terms;
 
     private NetworktemplateRoutingPolicies() {}
     /**
-     * @return at least criteria/filter must be specified to match the term, all criteria have to be met
+     * @return Ordered terms evaluated by this switch routing policy
      * 
      */
     public List<NetworktemplateRoutingPoliciesTerm> terms() {

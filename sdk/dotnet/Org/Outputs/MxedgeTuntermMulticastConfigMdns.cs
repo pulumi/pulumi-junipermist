@@ -13,7 +13,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class MxedgeTuntermMulticastConfigMdns
     {
+        /// <summary>
+        /// Whether mDNS forwarding is enabled for the configured VLANs
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// List of VLAN IDs where mDNS forwarding is enabled
+        /// </summary>
         public readonly ImmutableArray<string> VlanIds;
 
         [OutputConstructor]

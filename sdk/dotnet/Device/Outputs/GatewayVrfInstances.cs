@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayVrfInstances
     {
+        /// <summary>
+        /// Network names included in this gateway VRF instance
+        /// </summary>
         public readonly ImmutableArray<string> Networks;
 
         [OutputConstructor]

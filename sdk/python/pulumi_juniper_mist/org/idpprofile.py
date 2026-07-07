@@ -28,7 +28,10 @@ class IdpprofileArgs:
         """
         The set of arguments for constructing a Idpprofile resource.
 
-        :param pulumi.Input[_builtins.str] base_profile: enum: `critical`, `standard`, `strict`
+        :param pulumi.Input[_builtins.str] base_profile: Built-in IDP baseline profile inherited before applying overwrites
+        :param pulumi.Input[_builtins.str] org_id: Owning organization for the IDP profile
+        :param pulumi.Input[_builtins.str] name: Display name of the IDP profile
+        :param pulumi.Input[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]] overwrites: IDP signature override rules applied on top of the base profile
         """
         pulumi.set(__self__, "base_profile", base_profile)
         pulumi.set(__self__, "org_id", org_id)
@@ -41,7 +44,7 @@ class IdpprofileArgs:
     @pulumi.getter(name="baseProfile")
     def base_profile(self) -> pulumi.Input[_builtins.str]:
         """
-        enum: `critical`, `standard`, `strict`
+        Built-in IDP baseline profile inherited before applying overwrites
         """
         return pulumi.get(self, "base_profile")
 
@@ -52,6 +55,9 @@ class IdpprofileArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Owning organization for the IDP profile
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -61,6 +67,9 @@ class IdpprofileArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the IDP profile
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -70,6 +79,9 @@ class IdpprofileArgs:
     @_builtins.property
     @pulumi.getter
     def overwrites(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]]:
+        """
+        IDP signature override rules applied on top of the base profile
+        """
         return pulumi.get(self, "overwrites")
 
     @overwrites.setter
@@ -87,7 +99,10 @@ class _IdpprofileState:
         """
         Input properties used for looking up and filtering Idpprofile resources.
 
-        :param pulumi.Input[_builtins.str] base_profile: enum: `critical`, `standard`, `strict`
+        :param pulumi.Input[_builtins.str] base_profile: Built-in IDP baseline profile inherited before applying overwrites
+        :param pulumi.Input[_builtins.str] name: Display name of the IDP profile
+        :param pulumi.Input[_builtins.str] org_id: Owning organization for the IDP profile
+        :param pulumi.Input[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]] overwrites: IDP signature override rules applied on top of the base profile
         """
         if base_profile is not None:
             pulumi.set(__self__, "base_profile", base_profile)
@@ -102,7 +117,7 @@ class _IdpprofileState:
     @pulumi.getter(name="baseProfile")
     def base_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        enum: `critical`, `standard`, `strict`
+        Built-in IDP baseline profile inherited before applying overwrites
         """
         return pulumi.get(self, "base_profile")
 
@@ -113,6 +128,9 @@ class _IdpprofileState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the IDP profile
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -122,6 +140,9 @@ class _IdpprofileState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Owning organization for the IDP profile
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -131,6 +152,9 @@ class _IdpprofileState:
     @_builtins.property
     @pulumi.getter
     def overwrites(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IdpprofileOverwriteArgs']]]]:
+        """
+        IDP signature override rules applied on top of the base profile
+        """
         return pulumi.get(self, "overwrites")
 
     @overwrites.setter
@@ -198,7 +222,10 @@ class Idpprofile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] base_profile: enum: `critical`, `standard`, `strict`
+        :param pulumi.Input[_builtins.str] base_profile: Built-in IDP baseline profile inherited before applying overwrites
+        :param pulumi.Input[_builtins.str] name: Display name of the IDP profile
+        :param pulumi.Input[_builtins.str] org_id: Owning organization for the IDP profile
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]] overwrites: IDP signature override rules applied on top of the base profile
         """
         ...
     @overload
@@ -310,7 +337,10 @@ class Idpprofile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] base_profile: enum: `critical`, `standard`, `strict`
+        :param pulumi.Input[_builtins.str] base_profile: Built-in IDP baseline profile inherited before applying overwrites
+        :param pulumi.Input[_builtins.str] name: Display name of the IDP profile
+        :param pulumi.Input[_builtins.str] org_id: Owning organization for the IDP profile
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]] overwrites: IDP signature override rules applied on top of the base profile
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -326,22 +356,31 @@ class Idpprofile(pulumi.CustomResource):
     @pulumi.getter(name="baseProfile")
     def base_profile(self) -> pulumi.Output[_builtins.str]:
         """
-        enum: `critical`, `standard`, `strict`
+        Built-in IDP baseline profile inherited before applying overwrites
         """
         return pulumi.get(self, "base_profile")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the IDP profile
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Owning organization for the IDP profile
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter
     def overwrites(self) -> pulumi.Output[Optional[Sequence['outputs.IdpprofileOverwrite']]]:
+        """
+        IDP signature override rules applied on top of the base profile
+        """
         return pulumi.get(self, "overwrites")
 

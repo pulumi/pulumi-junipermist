@@ -51,23 +51,33 @@ class DeviceprofileGatewayArgs:
         """
         The set of arguments for constructing a DeviceprofileGateway resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIpConfigsArgs']]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input['DeviceprofileGatewayOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands provided by this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigArgs']]] bgp_config: BGP routing defaults for this gateway profile. Property key is the BGP session name
+        :param pulumi.Input['DeviceprofileGatewayDhcpdConfigArgs'] dhcpd_config: DHCP server defaults provided by this gateway profile
+        :param pulumi.Input[_builtins.bool] dns_override: Whether DNS server and suffix settings in this profile override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers provided by this gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes provided by this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutesArgs']]] extra_routes: Additional IPv4 route defaults in this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutes6Args']]] extra_routes6: Additional IPv6 route defaults in this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIdpProfilesArgs']]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIpConfigsArgs']]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input[_builtins.str] name: Display name of the gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayNetworkArgs']]] networks: Layer 3 networks configured by this gateway profile
+        :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this profile override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this gateway profile
+        :param pulumi.Input['DeviceprofileGatewayOobIpConfigArgs'] oob_ip_config: Out-of-band management IP defaults in this gateway profile
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayPathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigArgs']]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]] routing_policies: Routing policy defaults applied by this gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayServicePolicyArgs']]] service_policies: Traffic service policy defaults enforced by this gateway profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
+        :param pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsArgs'] tunnel_provider_options: Provider-specific tunnel options defined by this gateway profile
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
+        :param pulumi.Input['DeviceprofileGatewayVrfConfigArgs'] vrf_config: VRF defaults applied by this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]] vrf_instances: VRF instances configured by this gateway profile
         """
         pulumi.set(__self__, "org_id", org_id)
         if additional_config_cmds is not None:
@@ -126,6 +136,9 @@ class DeviceprofileGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Organization that owns this gateway profile
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -136,7 +149,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional CLI configuration commands provided by this gateway profile
         """
         return pulumi.get(self, "additional_config_cmds")
 
@@ -147,6 +160,9 @@ class DeviceprofileGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigArgs']]]]:
+        """
+        BGP routing defaults for this gateway profile. Property key is the BGP session name
+        """
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
@@ -156,6 +172,9 @@ class DeviceprofileGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
     def dhcpd_config(self) -> pulumi.Input[Optional['DeviceprofileGatewayDhcpdConfigArgs']]:
+        """
+        DHCP server defaults provided by this gateway profile
+        """
         return pulumi.get(self, "dhcpd_config")
 
     @dhcpd_config.setter
@@ -165,6 +184,9 @@ class DeviceprofileGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="dnsOverride")
     def dns_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether DNS server and suffix settings in this profile override inherited values
+        """
         return pulumi.get(self, "dns_override")
 
     @dns_override.setter
@@ -175,7 +197,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS servers provided by this gateway profile
         """
         return pulumi.get(self, "dns_servers")
 
@@ -187,7 +209,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS search suffixes provided by this gateway profile
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -199,7 +221,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutesArgs']]]]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv4 route defaults in this gateway profile
         """
         return pulumi.get(self, "extra_routes")
 
@@ -211,7 +233,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutes6Args']]]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv6 route defaults in this gateway profile
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -223,7 +245,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="idpProfiles")
     def idp_profiles(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayIdpProfilesArgs']]]]:
         """
-        Property key is the profile name
+        Intrusion detection and prevention profile defaults in this gateway profile
         """
         return pulumi.get(self, "idp_profiles")
 
@@ -235,7 +257,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayIpConfigsArgs']]]]:
         """
-        Property key is the network name
+        Gateway interface IP configuration defaults by network name
         """
         return pulumi.get(self, "ip_configs")
 
@@ -246,6 +268,9 @@ class DeviceprofileGatewayArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the gateway profile
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -255,6 +280,9 @@ class DeviceprofileGatewayArgs:
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayNetworkArgs']]]]:
+        """
+        Layer 3 networks configured by this gateway profile
+        """
         return pulumi.get(self, "networks")
 
     @networks.setter
@@ -264,6 +292,9 @@ class DeviceprofileGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="ntpOverride")
     def ntp_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether NTP servers in this profile override inherited values
+        """
         return pulumi.get(self, "ntp_override")
 
     @ntp_override.setter
@@ -274,7 +305,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of NTP servers specific to this device. By default, those in Site Settings will be used
+        NTP servers provided by this gateway profile
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -286,7 +317,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Input[Optional['DeviceprofileGatewayOobIpConfigArgs']]:
         """
-        Out-of-band (vme/em0/fxp0) IP config
+        Out-of-band management IP defaults in this gateway profile
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -334,7 +365,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="routingPolicies")
     def routing_policies(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]]]:
         """
-        Property key is the routing policy name
+        Routing policy defaults applied by this gateway profile
         """
         return pulumi.get(self, "routing_policies")
 
@@ -345,6 +376,9 @@ class DeviceprofileGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="servicePolicies")
     def service_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayServicePolicyArgs']]]]:
+        """
+        Traffic service policy defaults enforced by this gateway profile
+        """
         return pulumi.get(self, "service_policies")
 
     @service_policies.setter
@@ -378,6 +412,9 @@ class DeviceprofileGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="tunnelProviderOptions")
     def tunnel_provider_options(self) -> pulumi.Input[Optional['DeviceprofileGatewayTunnelProviderOptionsArgs']]:
+        """
+        Provider-specific tunnel options defined by this gateway profile
+        """
         return pulumi.get(self, "tunnel_provider_options")
 
     @tunnel_provider_options.setter
@@ -399,6 +436,9 @@ class DeviceprofileGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> pulumi.Input[Optional['DeviceprofileGatewayVrfConfigArgs']]:
+        """
+        VRF defaults applied by this gateway profile
+        """
         return pulumi.get(self, "vrf_config")
 
     @vrf_config.setter
@@ -409,7 +449,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="vrfInstances")
     def vrf_instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]]]:
         """
-        Property key is the network name
+        VRF instances configured by this gateway profile
         """
         return pulumi.get(self, "vrf_instances")
 
@@ -452,24 +492,34 @@ class _DeviceprofileGatewayState:
         """
         Input properties used for looking up and filtering DeviceprofileGateway resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIpConfigsArgs']]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input['DeviceprofileGatewayOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands provided by this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigArgs']]] bgp_config: BGP routing defaults for this gateway profile. Property key is the BGP session name
+        :param pulumi.Input['DeviceprofileGatewayDhcpdConfigArgs'] dhcpd_config: DHCP server defaults provided by this gateway profile
+        :param pulumi.Input[_builtins.bool] dns_override: Whether DNS server and suffix settings in this profile override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers provided by this gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes provided by this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutesArgs']]] extra_routes: Additional IPv4 route defaults in this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutes6Args']]] extra_routes6: Additional IPv6 route defaults in this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIdpProfilesArgs']]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIpConfigsArgs']]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input[_builtins.str] name: Display name of the gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayNetworkArgs']]] networks: Layer 3 networks configured by this gateway profile
+        :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this profile override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this gateway profile
+        :param pulumi.Input['DeviceprofileGatewayOobIpConfigArgs'] oob_ip_config: Out-of-band management IP defaults in this gateway profile
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this gateway profile
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayPathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigArgs']]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]] routing_policies: Routing policy defaults applied by this gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayServicePolicyArgs']]] service_policies: Traffic service policy defaults enforced by this gateway profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[_builtins.str] type: Device Type. enum: `gateway`
+        :param pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsArgs'] tunnel_provider_options: Provider-specific tunnel options defined by this gateway profile
+        :param pulumi.Input[_builtins.str] type: Device type discriminator for gateway profiles
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
+        :param pulumi.Input['DeviceprofileGatewayVrfConfigArgs'] vrf_config: VRF defaults applied by this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]] vrf_instances: VRF instances configured by this gateway profile
         """
         if additional_config_cmds is not None:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
@@ -532,7 +582,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional CLI configuration commands provided by this gateway profile
         """
         return pulumi.get(self, "additional_config_cmds")
 
@@ -543,6 +593,9 @@ class _DeviceprofileGatewayState:
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigArgs']]]]:
+        """
+        BGP routing defaults for this gateway profile. Property key is the BGP session name
+        """
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
@@ -552,6 +605,9 @@ class _DeviceprofileGatewayState:
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
     def dhcpd_config(self) -> pulumi.Input[Optional['DeviceprofileGatewayDhcpdConfigArgs']]:
+        """
+        DHCP server defaults provided by this gateway profile
+        """
         return pulumi.get(self, "dhcpd_config")
 
     @dhcpd_config.setter
@@ -561,6 +617,9 @@ class _DeviceprofileGatewayState:
     @_builtins.property
     @pulumi.getter(name="dnsOverride")
     def dns_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether DNS server and suffix settings in this profile override inherited values
+        """
         return pulumi.get(self, "dns_override")
 
     @dns_override.setter
@@ -571,7 +630,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS servers provided by this gateway profile
         """
         return pulumi.get(self, "dns_servers")
 
@@ -583,7 +642,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS search suffixes provided by this gateway profile
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -595,7 +654,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutesArgs']]]]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv4 route defaults in this gateway profile
         """
         return pulumi.get(self, "extra_routes")
 
@@ -607,7 +666,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutes6Args']]]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv6 route defaults in this gateway profile
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -619,7 +678,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="idpProfiles")
     def idp_profiles(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayIdpProfilesArgs']]]]:
         """
-        Property key is the profile name
+        Intrusion detection and prevention profile defaults in this gateway profile
         """
         return pulumi.get(self, "idp_profiles")
 
@@ -631,7 +690,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayIpConfigsArgs']]]]:
         """
-        Property key is the network name
+        Gateway interface IP configuration defaults by network name
         """
         return pulumi.get(self, "ip_configs")
 
@@ -642,6 +701,9 @@ class _DeviceprofileGatewayState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Display name of the gateway profile
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -651,6 +713,9 @@ class _DeviceprofileGatewayState:
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayNetworkArgs']]]]:
+        """
+        Layer 3 networks configured by this gateway profile
+        """
         return pulumi.get(self, "networks")
 
     @networks.setter
@@ -660,6 +725,9 @@ class _DeviceprofileGatewayState:
     @_builtins.property
     @pulumi.getter(name="ntpOverride")
     def ntp_override(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether NTP servers in this profile override inherited values
+        """
         return pulumi.get(self, "ntp_override")
 
     @ntp_override.setter
@@ -670,7 +738,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of NTP servers specific to this device. By default, those in Site Settings will be used
+        NTP servers provided by this gateway profile
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -682,7 +750,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Input[Optional['DeviceprofileGatewayOobIpConfigArgs']]:
         """
-        Out-of-band (vme/em0/fxp0) IP config
+        Out-of-band management IP defaults in this gateway profile
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -693,6 +761,9 @@ class _DeviceprofileGatewayState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns this gateway profile
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -739,7 +810,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="routingPolicies")
     def routing_policies(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayRoutingPoliciesArgs']]]]:
         """
-        Property key is the routing policy name
+        Routing policy defaults applied by this gateway profile
         """
         return pulumi.get(self, "routing_policies")
 
@@ -750,6 +821,9 @@ class _DeviceprofileGatewayState:
     @_builtins.property
     @pulumi.getter(name="servicePolicies")
     def service_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DeviceprofileGatewayServicePolicyArgs']]]]:
+        """
+        Traffic service policy defaults enforced by this gateway profile
+        """
         return pulumi.get(self, "service_policies")
 
     @service_policies.setter
@@ -783,6 +857,9 @@ class _DeviceprofileGatewayState:
     @_builtins.property
     @pulumi.getter(name="tunnelProviderOptions")
     def tunnel_provider_options(self) -> pulumi.Input[Optional['DeviceprofileGatewayTunnelProviderOptionsArgs']]:
+        """
+        Provider-specific tunnel options defined by this gateway profile
+        """
         return pulumi.get(self, "tunnel_provider_options")
 
     @tunnel_provider_options.setter
@@ -793,7 +870,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device Type. enum: `gateway`
+        Device type discriminator for gateway profiles
         """
         return pulumi.get(self, "type")
 
@@ -816,6 +893,9 @@ class _DeviceprofileGatewayState:
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> pulumi.Input[Optional['DeviceprofileGatewayVrfConfigArgs']]:
+        """
+        VRF defaults applied by this gateway profile
+        """
         return pulumi.get(self, "vrf_config")
 
     @vrf_config.setter
@@ -826,7 +906,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="vrfInstances")
     def vrf_instances(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]]]:
         """
-        Property key is the network name
+        VRF instances configured by this gateway profile
         """
         return pulumi.get(self, "vrf_instances")
 
@@ -971,23 +1051,33 @@ class DeviceprofileGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutesArgs', 'DeviceprofileGatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands provided by this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayBgpConfigArgs', 'DeviceprofileGatewayBgpConfigArgsDict']]]] bgp_config: BGP routing defaults for this gateway profile. Property key is the BGP session name
+        :param pulumi.Input[Union['DeviceprofileGatewayDhcpdConfigArgs', 'DeviceprofileGatewayDhcpdConfigArgsDict']] dhcpd_config: DHCP server defaults provided by this gateway profile
+        :param pulumi.Input[_builtins.bool] dns_override: Whether DNS server and suffix settings in this profile override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers provided by this gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes provided by this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutesArgs', 'DeviceprofileGatewayExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 route defaults in this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 route defaults in this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input[_builtins.str] name: Display name of the gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayNetworkArgs', 'DeviceprofileGatewayNetworkArgsDict']]]] networks: Layer 3 networks configured by this gateway profile
+        :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this profile override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this gateway profile
+        :param pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP defaults in this gateway profile
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this gateway profile
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPathPreferencesArgs', 'DeviceprofileGatewayPathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPortConfigArgs', 'DeviceprofileGatewayPortConfigArgsDict']]]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]] routing_policies: Routing policy defaults applied by this gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayServicePolicyArgs', 'DeviceprofileGatewayServicePolicyArgsDict']]]] service_policies: Traffic service policy defaults enforced by this gateway profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
+        :param pulumi.Input[Union['DeviceprofileGatewayTunnelProviderOptionsArgs', 'DeviceprofileGatewayTunnelProviderOptionsArgsDict']] tunnel_provider_options: Provider-specific tunnel options defined by this gateway profile
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
+        :param pulumi.Input[Union['DeviceprofileGatewayVrfConfigArgs', 'DeviceprofileGatewayVrfConfigArgsDict']] vrf_config: VRF defaults applied by this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured by this gateway profile
         """
         ...
     @overload
@@ -1221,24 +1311,34 @@ class DeviceprofileGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutesArgs', 'DeviceprofileGatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: List of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_config_cmds: Additional CLI configuration commands provided by this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayBgpConfigArgs', 'DeviceprofileGatewayBgpConfigArgsDict']]]] bgp_config: BGP routing defaults for this gateway profile. Property key is the BGP session name
+        :param pulumi.Input[Union['DeviceprofileGatewayDhcpdConfigArgs', 'DeviceprofileGatewayDhcpdConfigArgsDict']] dhcpd_config: DHCP server defaults provided by this gateway profile
+        :param pulumi.Input[_builtins.bool] dns_override: Whether DNS server and suffix settings in this profile override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_servers: DNS servers provided by this gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_suffixes: DNS search suffixes provided by this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutesArgs', 'DeviceprofileGatewayExtraRoutesArgsDict']]]] extra_routes: Additional IPv4 route defaults in this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]] extra_routes6: Additional IPv6 route defaults in this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]] idp_profiles: Intrusion detection and prevention profile defaults in this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]] ip_configs: Gateway interface IP configuration defaults by network name
+        :param pulumi.Input[_builtins.str] name: Display name of the gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayNetworkArgs', 'DeviceprofileGatewayNetworkArgsDict']]]] networks: Layer 3 networks configured by this gateway profile
+        :param pulumi.Input[_builtins.bool] ntp_override: Whether NTP servers in this profile override inherited values
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers provided by this gateway profile
+        :param pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band management IP defaults in this gateway profile
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this gateway profile
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPathPreferencesArgs', 'DeviceprofileGatewayPathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPortConfigArgs', 'DeviceprofileGatewayPortConfigArgsDict']]]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[_builtins.str] router_id: Auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]] routing_policies: Routing policy defaults applied by this gateway profile
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayServicePolicyArgs', 'DeviceprofileGatewayServicePolicyArgsDict']]]] service_policies: Traffic service policy defaults enforced by this gateway profile
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssr_additional_config_cmds: additional CLI commands to append to the generated SSR config. **Note**: no check is done
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[_builtins.str] type: Device Type. enum: `gateway`
+        :param pulumi.Input[Union['DeviceprofileGatewayTunnelProviderOptionsArgs', 'DeviceprofileGatewayTunnelProviderOptionsArgsDict']] tunnel_provider_options: Provider-specific tunnel options defined by this gateway profile
+        :param pulumi.Input[_builtins.str] type: Device type discriminator for gateway profiles
         :param pulumi.Input[_builtins.str] url_filtering_deny_msg: When a service policy denies a app_category, what message to show in user's browser
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
+        :param pulumi.Input[Union['DeviceprofileGatewayVrfConfigArgs', 'DeviceprofileGatewayVrfConfigArgsDict']] vrf_config: VRF defaults applied by this gateway profile
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]] vrf_instances: VRF instances configured by this gateway profile
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1278,30 +1378,39 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        Additional CLI configuration commands provided by this gateway profile
         """
         return pulumi.get(self, "additional_config_cmds")
 
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.DeviceprofileGatewayBgpConfig']]]:
+        """
+        BGP routing defaults for this gateway profile. Property key is the BGP session name
+        """
         return pulumi.get(self, "bgp_config")
 
     @_builtins.property
     @pulumi.getter(name="dhcpdConfig")
     def dhcpd_config(self) -> pulumi.Output[Optional['outputs.DeviceprofileGatewayDhcpdConfig']]:
+        """
+        DHCP server defaults provided by this gateway profile
+        """
         return pulumi.get(self, "dhcpd_config")
 
     @_builtins.property
     @pulumi.getter(name="dnsOverride")
     def dns_override(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether DNS server and suffix settings in this profile override inherited values
+        """
         return pulumi.get(self, "dns_override")
 
     @_builtins.property
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS servers provided by this gateway profile
         """
         return pulumi.get(self, "dns_servers")
 
@@ -1309,7 +1418,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
+        DNS search suffixes provided by this gateway profile
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -1317,7 +1426,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="extraRoutes")
     def extra_routes(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.DeviceprofileGatewayExtraRoutes']]]:
         """
-        Property key is the destination CIDR (e.g. "10.0.0.0/8"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv4 route defaults in this gateway profile
         """
         return pulumi.get(self, "extra_routes")
 
@@ -1325,7 +1434,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="extraRoutes6")
     def extra_routes6(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.DeviceprofileGatewayExtraRoutes6']]]:
         """
-        Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64"), the destination Network name or a variable (e.g. "{{myvar}}")
+        Additional IPv6 route defaults in this gateway profile
         """
         return pulumi.get(self, "extra_routes6")
 
@@ -1333,7 +1442,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="idpProfiles")
     def idp_profiles(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.DeviceprofileGatewayIdpProfiles']]]:
         """
-        Property key is the profile name
+        Intrusion detection and prevention profile defaults in this gateway profile
         """
         return pulumi.get(self, "idp_profiles")
 
@@ -1341,30 +1450,39 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.DeviceprofileGatewayIpConfigs']]]:
         """
-        Property key is the network name
+        Gateway interface IP configuration defaults by network name
         """
         return pulumi.get(self, "ip_configs")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Display name of the gateway profile
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Output[Optional[Sequence['outputs.DeviceprofileGatewayNetwork']]]:
+        """
+        Layer 3 networks configured by this gateway profile
+        """
         return pulumi.get(self, "networks")
 
     @_builtins.property
     @pulumi.getter(name="ntpOverride")
     def ntp_override(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether NTP servers in this profile override inherited values
+        """
         return pulumi.get(self, "ntp_override")
 
     @_builtins.property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        List of NTP servers specific to this device. By default, those in Site Settings will be used
+        NTP servers provided by this gateway profile
         """
         return pulumi.get(self, "ntp_servers")
 
@@ -1372,13 +1490,16 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Output['outputs.DeviceprofileGatewayOobIpConfig']:
         """
-        Out-of-band (vme/em0/fxp0) IP config
+        Out-of-band management IP defaults in this gateway profile
         """
         return pulumi.get(self, "oob_ip_config")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns this gateway profile
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
@@ -1409,13 +1530,16 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="routingPolicies")
     def routing_policies(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.DeviceprofileGatewayRoutingPolicies']]]:
         """
-        Property key is the routing policy name
+        Routing policy defaults applied by this gateway profile
         """
         return pulumi.get(self, "routing_policies")
 
     @_builtins.property
     @pulumi.getter(name="servicePolicies")
     def service_policies(self) -> pulumi.Output[Optional[Sequence['outputs.DeviceprofileGatewayServicePolicy']]]:
+        """
+        Traffic service policy defaults enforced by this gateway profile
+        """
         return pulumi.get(self, "service_policies")
 
     @_builtins.property
@@ -1437,13 +1561,16 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="tunnelProviderOptions")
     def tunnel_provider_options(self) -> pulumi.Output[Optional['outputs.DeviceprofileGatewayTunnelProviderOptions']]:
+        """
+        Provider-specific tunnel options defined by this gateway profile
+        """
         return pulumi.get(self, "tunnel_provider_options")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Device Type. enum: `gateway`
+        Device type discriminator for gateway profiles
         """
         return pulumi.get(self, "type")
 
@@ -1458,13 +1585,16 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="vrfConfig")
     def vrf_config(self) -> pulumi.Output[Optional['outputs.DeviceprofileGatewayVrfConfig']]:
+        """
+        VRF defaults applied by this gateway profile
+        """
         return pulumi.get(self, "vrf_config")
 
     @_builtins.property
     @pulumi.getter(name="vrfInstances")
     def vrf_instances(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.DeviceprofileGatewayVrfInstances']]]:
         """
-        Property key is the network name
+        VRF instances configured by this gateway profile
         """
         return pulumi.get(self, "vrf_instances")
 

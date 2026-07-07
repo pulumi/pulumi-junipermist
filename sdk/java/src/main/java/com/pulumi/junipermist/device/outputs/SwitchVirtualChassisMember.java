@@ -12,30 +12,38 @@ import java.util.Objects;
 @CustomType
 public final class SwitchVirtualChassisMember {
     /**
-     * @return fpc0, same as the mac of device_id
+     * @return Virtual Chassis member MAC address; for FPC0 this matches the device ID MAC
      * 
      */
     private String mac;
+    /**
+     * @return Virtual Chassis member identifier
+     * 
+     */
     private Integer memberId;
     /**
-     * @return Both vcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+     * @return Role of this member in the Virtual Chassis
      * 
      */
     private String vcRole;
 
     private SwitchVirtualChassisMember() {}
     /**
-     * @return fpc0, same as the mac of device_id
+     * @return Virtual Chassis member MAC address; for FPC0 this matches the device ID MAC
      * 
      */
     public String mac() {
         return this.mac;
     }
+    /**
+     * @return Virtual Chassis member identifier
+     * 
+     */
     public Integer memberId() {
         return this.memberId;
     }
     /**
-     * @return Both vcRole master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
+     * @return Role of this member in the Virtual Chassis
      * 
      */
     public String vcRole() {

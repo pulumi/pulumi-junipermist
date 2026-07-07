@@ -17,14 +17,14 @@ public final class DeviceprofileGatewayRoutingPoliciesTermArgs extends com.pulum
     public static final DeviceprofileGatewayRoutingPoliciesTermArgs Empty = new DeviceprofileGatewayRoutingPoliciesTermArgs();
 
     /**
-     * When used as import policy
+     * Policy actions applied when this routing policy term matches
      * 
      */
     @Import(name="actions")
     private @Nullable Output<DeviceprofileGatewayRoutingPoliciesTermActionsArgs> actions;
 
     /**
-     * @return When used as import policy
+     * @return Policy actions applied when this routing policy term matches
      * 
      */
     public Optional<Output<DeviceprofileGatewayRoutingPoliciesTermActionsArgs>> actions() {
@@ -32,14 +32,14 @@ public final class DeviceprofileGatewayRoutingPoliciesTermArgs extends com.pulum
     }
 
     /**
-     * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * Route match criteria that must be satisfied before actions are applied
      * 
      */
     @Import(name="matching")
     private @Nullable Output<DeviceprofileGatewayRoutingPoliciesTermMatchingArgs> matching;
 
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route match criteria that must be satisfied before actions are applied
      * 
      */
     public Optional<Output<DeviceprofileGatewayRoutingPoliciesTermMatchingArgs>> matching() {
@@ -72,7 +72,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermArgs extends com.pulum
         }
 
         /**
-         * @param actions When used as import policy
+         * @param actions Policy actions applied when this routing policy term matches
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermArgs extends com.pulum
         }
 
         /**
-         * @param actions When used as import policy
+         * @param actions Policy actions applied when this routing policy term matches
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermArgs extends com.pulum
         }
 
         /**
-         * @param matching zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param matching Route match criteria that must be satisfied before actions are applied
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermArgs extends com.pulum
         }
 
         /**
-         * @param matching zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param matching Route match criteria that must be satisfied before actions are applied
          * 
          * @return builder
          * 

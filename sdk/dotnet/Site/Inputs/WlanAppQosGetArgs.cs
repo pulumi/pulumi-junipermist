@@ -14,17 +14,28 @@ namespace Pulumi.JuniperMist.Site.Inputs
     {
         [Input("apps")]
         private InputMap<Inputs.WlanAppQosAppsGetArgs>? _apps;
+
+        /// <summary>
+        /// Map of application keys to QoS rewrite settings
+        /// </summary>
         public InputMap<Inputs.WlanAppQosAppsGetArgs> Apps
         {
             get => _apps ?? (_apps = new InputMap<Inputs.WlanAppQosAppsGetArgs>());
             set => _apps = value;
         }
 
+        /// <summary>
+        /// Whether application QoS rewrite rules are enabled for this WLAN
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("others")]
         private InputList<Inputs.WlanAppQosOtherGetArgs>? _others;
+
+        /// <summary>
+        /// Custom traffic QoS rules that are not tied to named applications
+        /// </summary>
         public InputList<Inputs.WlanAppQosOtherGetArgs> Others
         {
             get => _others ?? (_others = new InputList<Inputs.WlanAppQosOtherGetArgs>());

@@ -17,36 +17,46 @@ public final class GatewayIdpProfilesOverwriteArgs extends com.pulumi.resources.
     public static final GatewayIdpProfilesOverwriteArgs Empty = new GatewayIdpProfilesOverwriteArgs();
 
     /**
-     * enum:
-     *   * alert (default)
-     *   * drop: silently dropping packets
-     *   * close: notify client/server to close connection
+     * Enforcement action applied when this overwrite rule matches
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return enum:
-     *   * alert (default)
-     *   * drop: silently dropping packets
-     *   * close: notify client/server to close connection
+     * @return Enforcement action applied when this overwrite rule matches
      * 
      */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
     }
 
+    /**
+     * Criteria that select signatures for this overwrite rule
+     * 
+     */
     @Import(name="matching")
     private @Nullable Output<GatewayIdpProfilesOverwriteMatchingArgs> matching;
 
+    /**
+     * @return Criteria that select signatures for this overwrite rule
+     * 
+     */
     public Optional<Output<GatewayIdpProfilesOverwriteMatchingArgs>> matching() {
         return Optional.ofNullable(this.matching);
     }
 
+    /**
+     * Display name for this IDP profile overwrite rule
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name for this IDP profile overwrite rule
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -78,10 +88,7 @@ public final class GatewayIdpProfilesOverwriteArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param action enum:
-         *   * alert (default)
-         *   * drop: silently dropping packets
-         *   * close: notify client/server to close connection
+         * @param action Enforcement action applied when this overwrite rule matches
          * 
          * @return builder
          * 
@@ -92,10 +99,7 @@ public final class GatewayIdpProfilesOverwriteArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param action enum:
-         *   * alert (default)
-         *   * drop: silently dropping packets
-         *   * close: notify client/server to close connection
+         * @param action Enforcement action applied when this overwrite rule matches
          * 
          * @return builder
          * 
@@ -104,20 +108,44 @@ public final class GatewayIdpProfilesOverwriteArgs extends com.pulumi.resources.
             return action(Output.of(action));
         }
 
+        /**
+         * @param matching Criteria that select signatures for this overwrite rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder matching(@Nullable Output<GatewayIdpProfilesOverwriteMatchingArgs> matching) {
             $.matching = matching;
             return this;
         }
 
+        /**
+         * @param matching Criteria that select signatures for this overwrite rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder matching(GatewayIdpProfilesOverwriteMatchingArgs matching) {
             return matching(Output.of(matching));
         }
 
+        /**
+         * @param name Display name for this IDP profile overwrite rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name for this IDP profile overwrite rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

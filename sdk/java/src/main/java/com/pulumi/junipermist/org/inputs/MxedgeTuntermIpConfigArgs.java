@@ -16,52 +16,92 @@ public final class MxedgeTuntermIpConfigArgs extends com.pulumi.resources.Resour
 
     public static final MxedgeTuntermIpConfigArgs Empty = new MxedgeTuntermIpConfigArgs();
 
+    /**
+     * IPv4 gateway for the Mist Tunnel interface
+     * 
+     */
     @Import(name="gateway", required=true)
     private Output<String> gateway;
 
+    /**
+     * @return IPv4 gateway for the Mist Tunnel interface
+     * 
+     */
     public Output<String> gateway() {
         return this.gateway;
     }
 
+    /**
+     * IPv6 gateway for the Mist Tunnel interface
+     * 
+     */
     @Import(name="gateway6")
     private @Nullable Output<String> gateway6;
 
+    /**
+     * @return IPv6 gateway for the Mist Tunnel interface
+     * 
+     */
     public Optional<Output<String>> gateway6() {
         return Optional.ofNullable(this.gateway6);
     }
 
     /**
-     * Untagged VLAN
+     * Address on the untagged Mist Tunnel interface, in IPv4 format
      * 
      */
     @Import(name="ip", required=true)
     private Output<String> ip;
 
     /**
-     * @return Untagged VLAN
+     * @return Address on the untagged Mist Tunnel interface, in IPv4 format
      * 
      */
     public Output<String> ip() {
         return this.ip;
     }
 
+    /**
+     * Address on the Mist Tunnel interface, in IPv6 format
+     * 
+     */
     @Import(name="ip6")
     private @Nullable Output<String> ip6;
 
+    /**
+     * @return Address on the Mist Tunnel interface, in IPv6 format
+     * 
+     */
     public Optional<Output<String>> ip6() {
         return Optional.ofNullable(this.ip6);
     }
 
+    /**
+     * Subnet mask for the Mist Tunnel IPv4 address
+     * 
+     */
     @Import(name="netmask", required=true)
     private Output<String> netmask;
 
+    /**
+     * @return Subnet mask for the Mist Tunnel IPv4 address
+     * 
+     */
     public Output<String> netmask() {
         return this.netmask;
     }
 
+    /**
+     * Prefix length for the Mist Tunnel IPv6 address
+     * 
+     */
     @Import(name="netmask6")
     private @Nullable Output<String> netmask6;
 
+    /**
+     * @return Prefix length for the Mist Tunnel IPv6 address
+     * 
+     */
     public Optional<Output<String>> netmask6() {
         return Optional.ofNullable(this.netmask6);
     }
@@ -95,26 +135,50 @@ public final class MxedgeTuntermIpConfigArgs extends com.pulumi.resources.Resour
             $ = new MxedgeTuntermIpConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gateway IPv4 gateway for the Mist Tunnel interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway(Output<String> gateway) {
             $.gateway = gateway;
             return this;
         }
 
+        /**
+         * @param gateway IPv4 gateway for the Mist Tunnel interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway(String gateway) {
             return gateway(Output.of(gateway));
         }
 
+        /**
+         * @param gateway6 IPv6 gateway for the Mist Tunnel interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway6(@Nullable Output<String> gateway6) {
             $.gateway6 = gateway6;
             return this;
         }
 
+        /**
+         * @param gateway6 IPv6 gateway for the Mist Tunnel interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway6(String gateway6) {
             return gateway6(Output.of(gateway6));
         }
 
         /**
-         * @param ip Untagged VLAN
+         * @param ip Address on the untagged Mist Tunnel interface, in IPv4 format
          * 
          * @return builder
          * 
@@ -125,7 +189,7 @@ public final class MxedgeTuntermIpConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ip Untagged VLAN
+         * @param ip Address on the untagged Mist Tunnel interface, in IPv4 format
          * 
          * @return builder
          * 
@@ -134,29 +198,65 @@ public final class MxedgeTuntermIpConfigArgs extends com.pulumi.resources.Resour
             return ip(Output.of(ip));
         }
 
+        /**
+         * @param ip6 Address on the Mist Tunnel interface, in IPv6 format
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6(@Nullable Output<String> ip6) {
             $.ip6 = ip6;
             return this;
         }
 
+        /**
+         * @param ip6 Address on the Mist Tunnel interface, in IPv6 format
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6(String ip6) {
             return ip6(Output.of(ip6));
         }
 
+        /**
+         * @param netmask Subnet mask for the Mist Tunnel IPv4 address
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask(Output<String> netmask) {
             $.netmask = netmask;
             return this;
         }
 
+        /**
+         * @param netmask Subnet mask for the Mist Tunnel IPv4 address
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask(String netmask) {
             return netmask(Output.of(netmask));
         }
 
+        /**
+         * @param netmask6 Prefix length for the Mist Tunnel IPv6 address
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask6(@Nullable Output<String> netmask6) {
             $.netmask6 = netmask6;
             return this;
         }
 
+        /**
+         * @param netmask6 Prefix length for the Mist Tunnel IPv6 address
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask6(String netmask6) {
             return netmask6(Output.of(netmask6));
         }

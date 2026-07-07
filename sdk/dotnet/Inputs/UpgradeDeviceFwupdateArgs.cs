@@ -12,24 +12,33 @@ namespace Pulumi.JuniperMist.Inputs
 
     public sealed class UpgradeDeviceFwupdateArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Firmware update progress percentage, or null when unavailable
+        /// </summary>
         [Input("progress")]
         public Input<int>? Progress { get; set; }
 
         /// <summary>
-        /// enum: `Inprogress`, `Failed`, `Upgraded`, `Success`, `Scheduled`, `Error`
+        /// Current firmware update status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// Numeric firmware update status identifier
+        /// </summary>
         [Input("statusId")]
         public Input<int>? StatusId { get; set; }
 
         /// <summary>
-        /// Epoch (seconds)
+        /// Time when the firmware update status was last updated
         /// </summary>
         [Input("timestamp")]
         public Input<double>? Timestamp { get; set; }
 
+        /// <summary>
+        /// Whether the firmware update process will retry after the current status
+        /// </summary>
         [Input("willRetry")]
         public Input<bool>? WillRetry { get; set; }
 

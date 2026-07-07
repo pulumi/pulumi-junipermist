@@ -17,29 +17,45 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
 
     public static final MxedgeOobIpConfigArgs Empty = new MxedgeOobIpConfigArgs();
 
+    /**
+     * Whether IPv6 autoconfiguration is enabled on the out-of-band management interface
+     * 
+     */
     @Import(name="autoconf6")
     private @Nullable Output<Boolean> autoconf6;
 
+    /**
+     * @return Whether IPv6 autoconfiguration is enabled on the out-of-band management interface
+     * 
+     */
     public Optional<Output<Boolean>> autoconf6() {
         return Optional.ofNullable(this.autoconf6);
     }
 
+    /**
+     * Whether DHCPv6 is enabled on the out-of-band management interface
+     * 
+     */
     @Import(name="dhcp6")
     private @Nullable Output<Boolean> dhcp6;
 
+    /**
+     * @return Whether DHCPv6 is enabled on the out-of-band management interface
+     * 
+     */
     public Optional<Output<Boolean>> dhcp6() {
         return Optional.ofNullable(this.dhcp6);
     }
 
     /**
-     * IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+     * Name server addresses for out-of-band management
      * 
      */
     @Import(name="dns")
     private @Nullable Output<List<String>> dns;
 
     /**
-     * @return IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+     * @return Name server addresses for out-of-band management
      * 
      */
     public Optional<Output<List<String>>> dns() {
@@ -47,80 +63,104 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If `type`=`static`
+     * If `type`=`static`, IPv4 default gateway for the out-of-band management interface
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return If `type`=`static`
+     * @return If `type`=`static`, IPv4 default gateway for the out-of-band management interface
      * 
      */
     public Optional<Output<String>> gateway() {
         return Optional.ofNullable(this.gateway);
     }
 
+    /**
+     * If `type6`=`static`, IPv6 default gateway for the out-of-band management interface
+     * 
+     */
     @Import(name="gateway6")
     private @Nullable Output<String> gateway6;
 
+    /**
+     * @return If `type6`=`static`, IPv6 default gateway for the out-of-band management interface
+     * 
+     */
     public Optional<Output<String>> gateway6() {
         return Optional.ofNullable(this.gateway6);
     }
 
     /**
-     * If `type`=`static`
+     * If `type`=`static`, IPv4 address for the out-of-band management interface
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return If `type`=`static`
+     * @return If `type`=`static`, IPv4 address for the out-of-band management interface
      * 
      */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
     }
 
+    /**
+     * If `type6`=`static`, IPv6 address for the out-of-band management interface
+     * 
+     */
     @Import(name="ip6")
     private @Nullable Output<String> ip6;
 
+    /**
+     * @return If `type6`=`static`, IPv6 address for the out-of-band management interface
+     * 
+     */
     public Optional<Output<String>> ip6() {
         return Optional.ofNullable(this.ip6);
     }
 
     /**
-     * If `type`=`static`
+     * If `type`=`static`, IPv4 netmask for the out-of-band management interface
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return If `type`=`static`
+     * @return If `type`=`static`, IPv4 netmask for the out-of-band management interface
      * 
      */
     public Optional<Output<String>> netmask() {
         return Optional.ofNullable(this.netmask);
     }
 
+    /**
+     * If `type6`=`static`, IPv6 prefix length for the out-of-band management interface
+     * 
+     */
     @Import(name="netmask6")
     private @Nullable Output<String> netmask6;
 
+    /**
+     * @return If `type6`=`static`, IPv6 prefix length for the out-of-band management interface
+     * 
+     */
     public Optional<Output<String>> netmask6() {
         return Optional.ofNullable(this.netmask6);
     }
 
     /**
-     * enum: `dhcp`, `static`
+     * IPv4 address assignment mode for out-of-band management
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv4 address assignment mode for out-of-band management
      * 
      */
     public Optional<Output<String>> type() {
@@ -128,14 +168,14 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * enum: `dhcp`, `static`
+     * IPv6 address assignment mode for out-of-band management
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return enum: `dhcp`, `static`
+     * @return IPv6 address assignment mode for out-of-band management
      * 
      */
     public Optional<Output<String>> type6() {
@@ -176,26 +216,50 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
             $ = new MxedgeOobIpConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoconf6 Whether IPv6 autoconfiguration is enabled on the out-of-band management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoconf6(@Nullable Output<Boolean> autoconf6) {
             $.autoconf6 = autoconf6;
             return this;
         }
 
+        /**
+         * @param autoconf6 Whether IPv6 autoconfiguration is enabled on the out-of-band management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoconf6(Boolean autoconf6) {
             return autoconf6(Output.of(autoconf6));
         }
 
+        /**
+         * @param dhcp6 Whether DHCPv6 is enabled on the out-of-band management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcp6(@Nullable Output<Boolean> dhcp6) {
             $.dhcp6 = dhcp6;
             return this;
         }
 
+        /**
+         * @param dhcp6 Whether DHCPv6 is enabled on the out-of-band management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder dhcp6(Boolean dhcp6) {
             return dhcp6(Output.of(dhcp6));
         }
 
         /**
-         * @param dns IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+         * @param dns Name server addresses for out-of-band management
          * 
          * @return builder
          * 
@@ -206,7 +270,7 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dns IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+         * @param dns Name server addresses for out-of-band management
          * 
          * @return builder
          * 
@@ -216,7 +280,7 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dns IPv4 ignored if `type`!=`static`, IPv6 ignored if `type6`!=`static`
+         * @param dns Name server addresses for out-of-band management
          * 
          * @return builder
          * 
@@ -226,7 +290,7 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param gateway If `type`=`static`
+         * @param gateway If `type`=`static`, IPv4 default gateway for the out-of-band management interface
          * 
          * @return builder
          * 
@@ -237,7 +301,7 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param gateway If `type`=`static`
+         * @param gateway If `type`=`static`, IPv4 default gateway for the out-of-band management interface
          * 
          * @return builder
          * 
@@ -246,17 +310,29 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
             return gateway(Output.of(gateway));
         }
 
+        /**
+         * @param gateway6 If `type6`=`static`, IPv6 default gateway for the out-of-band management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway6(@Nullable Output<String> gateway6) {
             $.gateway6 = gateway6;
             return this;
         }
 
+        /**
+         * @param gateway6 If `type6`=`static`, IPv6 default gateway for the out-of-band management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder gateway6(String gateway6) {
             return gateway6(Output.of(gateway6));
         }
 
         /**
-         * @param ip If `type`=`static`
+         * @param ip If `type`=`static`, IPv4 address for the out-of-band management interface
          * 
          * @return builder
          * 
@@ -267,7 +343,7 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ip If `type`=`static`
+         * @param ip If `type`=`static`, IPv4 address for the out-of-band management interface
          * 
          * @return builder
          * 
@@ -276,17 +352,29 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
             return ip(Output.of(ip));
         }
 
+        /**
+         * @param ip6 If `type6`=`static`, IPv6 address for the out-of-band management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6(@Nullable Output<String> ip6) {
             $.ip6 = ip6;
             return this;
         }
 
+        /**
+         * @param ip6 If `type6`=`static`, IPv6 address for the out-of-band management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip6(String ip6) {
             return ip6(Output.of(ip6));
         }
 
         /**
-         * @param netmask If `type`=`static`
+         * @param netmask If `type`=`static`, IPv4 netmask for the out-of-band management interface
          * 
          * @return builder
          * 
@@ -297,7 +385,7 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param netmask If `type`=`static`
+         * @param netmask If `type`=`static`, IPv4 netmask for the out-of-band management interface
          * 
          * @return builder
          * 
@@ -306,17 +394,29 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
             return netmask(Output.of(netmask));
         }
 
+        /**
+         * @param netmask6 If `type6`=`static`, IPv6 prefix length for the out-of-band management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask6(@Nullable Output<String> netmask6) {
             $.netmask6 = netmask6;
             return this;
         }
 
+        /**
+         * @param netmask6 If `type6`=`static`, IPv6 prefix length for the out-of-band management interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder netmask6(String netmask6) {
             return netmask6(Output.of(netmask6));
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IPv4 address assignment mode for out-of-band management
          * 
          * @return builder
          * 
@@ -327,7 +427,7 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type enum: `dhcp`, `static`
+         * @param type IPv4 address assignment mode for out-of-band management
          * 
          * @return builder
          * 
@@ -337,7 +437,7 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type6 enum: `dhcp`, `static`
+         * @param type6 IPv6 address assignment mode for out-of-band management
          * 
          * @return builder
          * 
@@ -348,7 +448,7 @@ public final class MxedgeOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type6 enum: `dhcp`, `static`
+         * @param type6 IPv6 address assignment mode for out-of-band management
          * 
          * @return builder
          * 

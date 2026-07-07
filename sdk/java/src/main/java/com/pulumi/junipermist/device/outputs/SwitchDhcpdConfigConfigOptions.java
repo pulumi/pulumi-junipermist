@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchDhcpdConfigConfigOptions {
     /**
-     * @return enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+     * @return Data type used to encode this DHCP option value
      * 
      */
     private @Nullable String type;
+    /**
+     * @return Option value to send for this DHCP option
+     * 
+     */
     private @Nullable String value;
 
     private SwitchDhcpdConfigConfigOptions() {}
     /**
-     * @return enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
+     * @return Data type used to encode this DHCP option value
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Option value to send for this DHCP option
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

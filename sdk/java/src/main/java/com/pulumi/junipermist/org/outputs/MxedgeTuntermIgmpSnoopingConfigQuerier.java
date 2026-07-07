@@ -27,7 +27,7 @@ public final class MxedgeTuntermIgmpSnoopingConfigQuerier {
      */
     private @Nullable Integer queryInterval;
     /**
-     * @return Querier&#39;s robustness
+     * @return IGMP querier robustness variable
      * 
      */
     private @Nullable Integer robustness;
@@ -60,7 +60,7 @@ public final class MxedgeTuntermIgmpSnoopingConfigQuerier {
         return Optional.ofNullable(this.queryInterval);
     }
     /**
-     * @return Querier&#39;s robustness
+     * @return IGMP querier robustness variable
      * 
      */
     public Optional<Integer> robustness() {

@@ -19,14 +19,14 @@ public final class AlarmtemplateState extends com.pulumi.resources.ResourceArgs 
     public static final AlarmtemplateState Empty = new AlarmtemplateState();
 
     /**
-     * Delivery object to configure the alarm delivery
+     * Default alarm delivery settings for rules in this template
      * 
      */
     @Import(name="delivery")
     private @Nullable Output<AlarmtemplateDeliveryArgs> delivery;
 
     /**
-     * @return Delivery object to configure the alarm delivery
+     * @return Default alarm delivery settings for rules in this template
      * 
      */
     public Optional<Output<AlarmtemplateDeliveryArgs>> delivery() {
@@ -48,9 +48,17 @@ public final class AlarmtemplateState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Organization that owns this alarm template
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Organization that owns this alarm template
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
@@ -98,7 +106,7 @@ public final class AlarmtemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param delivery Delivery object to configure the alarm delivery
+         * @param delivery Default alarm delivery settings for rules in this template
          * 
          * @return builder
          * 
@@ -109,7 +117,7 @@ public final class AlarmtemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param delivery Delivery object to configure the alarm delivery
+         * @param delivery Default alarm delivery settings for rules in this template
          * 
          * @return builder
          * 
@@ -139,11 +147,23 @@ public final class AlarmtemplateState extends com.pulumi.resources.ResourceArgs 
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Organization that owns this alarm template
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Organization that owns this alarm template
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }

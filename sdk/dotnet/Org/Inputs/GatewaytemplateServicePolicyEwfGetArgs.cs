@@ -12,17 +12,26 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class GatewaytemplateServicePolicyEwfGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether matching enhanced web filtering traffic is logged without being blocked
+        /// </summary>
         [Input("alertOnly")]
         public Input<bool>? AlertOnly { get; set; }
 
+        /// <summary>
+        /// Message returned when enhanced web filtering blocks a request
+        /// </summary>
         [Input("blockMessage")]
         public Input<string>? BlockMessage { get; set; }
 
+        /// <summary>
+        /// Whether this enhanced web filtering rule is enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// enum: `Critical`, `Standard`, `Strict`
+        /// Enhanced web filtering profile applied by this rule
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

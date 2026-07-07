@@ -28,21 +28,27 @@ namespace Pulumi.JuniperMist.Device
     [JuniperMistResourceType("junipermist:device/switch:Switch")]
     public partial class Switch : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// ACL policies applied to traffic handled by this switch
+        /// </summary>
         [Output("aclPolicies")]
         public Output<ImmutableArray<Outputs.SwitchAclPolicy>> AclPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// ACL Tags to identify traffic source or destination. Key name is the tag name
+        /// ACL tags used by switch access policies
         /// </summary>
         [Output("aclTags")]
         public Output<ImmutableDictionary<string, Outputs.SwitchAclTags>?> AclTags { get; private set; } = null!;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands to apply to this switch
         /// </summary>
         [Output("additionalConfigCmds")]
         public Output<ImmutableArray<string>> AdditionalConfigCmds { get; private set; } = null!;
 
+        /// <summary>
+        /// BGP routing configuration for this switch. Property key is the BGP session name
+        /// </summary>
         [Output("bgpConfig")]
         public Output<ImmutableDictionary<string, Outputs.SwitchBgpConfig>?> BgpConfig { get; private set; } = null!;
 
@@ -55,9 +61,15 @@ namespace Pulumi.JuniperMist.Device
         [Output("deviceId")]
         public Output<string> DeviceId { get; private set; } = null!;
 
+        /// <summary>
+        /// DHCP snooping configuration for this switch
+        /// </summary>
         [Output("dhcpSnooping")]
         public Output<Outputs.SwitchDhcpSnooping?> DhcpSnooping { get; private set; } = null!;
 
+        /// <summary>
+        /// DHCP server configuration served by this switch
+        /// </summary>
         [Output("dhcpdConfig")]
         public Output<Outputs.SwitchDhcpdConfig?> DhcpdConfig { get; private set; } = null!;
 
@@ -68,52 +80,61 @@ namespace Pulumi.JuniperMist.Device
         public Output<bool> DisableAutoConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS servers configured for this switch
         /// </summary>
         [Output("dnsServers")]
         public Output<ImmutableArray<string>> DnsServers { get; private set; } = null!;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS search suffixes configured for this switch
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Additional IPv4 routes configured on this switch
         /// </summary>
         [Output("extraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.SwitchExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Additional IPv6 routes configured on this switch
         /// </summary>
         [Output("extraRoutes6")]
         public Output<ImmutableDictionary<string, Outputs.SwitchExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
 
+        /// <summary>
+        /// First custom image URL associated with the switch
+        /// </summary>
         [Output("image1Url")]
         public Output<string> Image1Url { get; private set; } = null!;
 
+        /// <summary>
+        /// Second custom image URL associated with the switch
+        /// </summary>
         [Output("image2Url")]
         public Output<string> Image2Url { get; private set; } = null!;
 
+        /// <summary>
+        /// Third custom image URL associated with the switch
+        /// </summary>
         [Output("image3Url")]
         public Output<string> Image3Url { get; private set; } = null!;
 
         /// <summary>
-        /// Junos IP Config
+        /// Management IP addressing settings for this switch
         /// </summary>
         [Output("ipConfig")]
         public Output<Outputs.SwitchIpConfig?> IpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Local port override, overriding the port configuration from `PortConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+        /// Local port configuration settings for this switch
         /// </summary>
         [Output("localPortConfig")]
         public Output<ImmutableDictionary<string, Outputs.SwitchLocalPortConfig>?> LocalPortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Device MAC address
+        /// Switch MAC address used to identify the device
         /// </summary>
         [Output("mac")]
         public Output<string> Mac { get; private set; } = null!;
@@ -137,52 +158,62 @@ namespace Pulumi.JuniperMist.Device
         public Output<bool> MistConfigured { get; private set; } = null!;
 
         /// <summary>
-        /// Enable MistNac to use RadSec
+        /// Mist NAC settings applied to this switch
         /// </summary>
         [Output("mistNac")]
         public Output<Outputs.SwitchMistNac?> MistNac { get; private set; } = null!;
 
         /// <summary>
-        /// Device Model
+        /// Switch model reported for the device
         /// </summary>
         [Output("model")]
         public Output<string> Model { get; private set; } = null!;
 
+        /// <summary>
+        /// Friendly display name assigned to the switch
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is network name
+        /// Layer 3 networks configured for use by this switch
         /// </summary>
         [Output("networks")]
         public Output<ImmutableDictionary<string, Outputs.SwitchNetworks>?> Networks { get; private set; } = null!;
 
+        /// <summary>
+        /// Free-form administrative notes for this switch
+        /// </summary>
         [Output("notes")]
         public Output<string?> Notes { get; private set; } = null!;
 
         /// <summary>
-        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// NTP servers used by this switch
         /// </summary>
         [Output("ntpServers")]
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
         /// <summary>
-        /// Switch OOB IP Config:
-        ///   - If HA configuration: key parameter will be nodeX (eg: node1)
-        ///   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `Re1`
+        /// Out-of-band management IP configuration for this switch
         /// </summary>
         [Output("oobIpConfig")]
         public Output<Outputs.SwitchOobIpConfig?> OobIpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns this switch
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        /// OSPF area configuration for this switch
         /// </summary>
         [Output("ospfAreas")]
         public Output<ImmutableDictionary<string, Outputs.SwitchOspfAreas>?> OspfAreas { get; private set; } = null!;
 
+        /// <summary>
+        /// OSPF routing configuration for this switch
+        /// </summary>
         [Output("ospfConfig")]
         public Output<Outputs.SwitchOspfConfig?> OspfConfig { get; private set; } = null!;
 
@@ -193,38 +224,44 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.SwitchOtherIpConfigs>?> OtherIpConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port name or range (e.g. "ge-0/0/0-10")
+        /// Per-port wired configuration for this switch
         /// </summary>
         [Output("portConfig")]
         public Output<ImmutableDictionary<string, Outputs.SwitchPortConfig>?> PortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the PortUsage without having to create a new port_usage.
+        /// Per-port overrides for switch port usage attributes
         /// </summary>
         [Output("portConfigOverwrite")]
         public Output<ImmutableDictionary<string, Outputs.SwitchPortConfigOverwrite>?> PortConfigOverwrite { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Port mirroring configuration for this switch
         /// </summary>
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.SwitchPortMirroring>?> PortMirroring { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// Reusable switch port usage profiles available on this switch
         /// </summary>
         [Output("portUsages")]
         public Output<ImmutableDictionary<string, Outputs.SwitchPortUsages>?> PortUsages { get; private set; } = null!;
 
         /// <summary>
-        /// Junos Radius config
+        /// RADIUS authentication and accounting settings for this switch
         /// </summary>
         [Output("radiusConfig")]
         public Output<Outputs.SwitchRadiusConfig?> RadiusConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Remote syslog settings for this switch
+        /// </summary>
         [Output("remoteSyslog")]
         public Output<Outputs.SwitchRemoteSyslog?> RemoteSyslog { get; private set; } = null!;
 
+        /// <summary>
+        /// Deployment role label for this switch
+        /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
 
@@ -235,34 +272,43 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> RouterId { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Routing policies applied by this switch
         /// </summary>
         [Output("routingPolicies")]
         public Output<ImmutableDictionary<string, Outputs.SwitchRoutingPolicies>?> RoutingPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// Device Serial
+        /// Manufacturer serial number for the switch
         /// </summary>
         [Output("serial")]
         public Output<string> Serial { get; private set; } = null!;
 
+        /// <summary>
+        /// Site where this switch is assigned
+        /// </summary>
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
+        /// <summary>
+        /// SNMP configuration for this switch
+        /// </summary>
         [Output("snmpConfig")]
         public Output<Outputs.SwitchSnmpConfig?> SnmpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Spanning Tree Protocol configuration for this switch
+        /// </summary>
         [Output("stpConfig")]
         public Output<Outputs.SwitchStpConfig?> StpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Switch Management settings
+        /// Management-plane settings for this switch
         /// </summary>
         [Output("switchMgmt")]
         public Output<Outputs.SwitchSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
 
         /// <summary>
-        /// Device Type. enum: `Switch`
+        /// Device type discriminator for switch records
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -274,40 +320,43 @@ namespace Pulumi.JuniperMist.Device
         public Output<bool> UseRouterIdAsSourceIp { get; private set; } = null!;
 
         /// <summary>
-        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Variable values that override site variables for this switch
         /// </summary>
         [Output("vars")]
         public Output<ImmutableDictionary<string, string>?> Vars { get; private set; } = null!;
 
         /// <summary>
-        /// Required for preprovisioned Virtual Chassis
+        /// Virtual Chassis membership and provisioning settings for this switch
         /// </summary>
         [Output("virtualChassis")]
         public Output<Outputs.SwitchVirtualChassis?> VirtualChassis { get; private set; } = null!;
 
+        /// <summary>
+        /// VRF configuration applied to this switch
+        /// </summary>
         [Output("vrfConfig")]
         public Output<Outputs.SwitchVrfConfig?> VrfConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the network name
+        /// VRF instances configured on this switch
         /// </summary>
         [Output("vrfInstances")]
         public Output<ImmutableDictionary<string, Outputs.SwitchVrfInstances>?> VrfInstances { get; private set; } = null!;
 
         /// <summary>
-        /// Junos VRRP config
+        /// VRRP configuration applied to this switch
         /// </summary>
         [Output("vrrpConfig")]
         public Output<Outputs.SwitchVrrpConfig?> VrrpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// X in pixel
+        /// Horizontal map position of the switch, in pixels
         /// </summary>
         [Output("x")]
         public Output<double?> X { get; private set; } = null!;
 
         /// <summary>
-        /// Y in pixel
+        /// Vertical map position of the switch, in pixels
         /// </summary>
         [Output("y")]
         public Output<double?> Y { get; private set; } = null!;
@@ -361,6 +410,10 @@ namespace Pulumi.JuniperMist.Device
     {
         [Input("aclPolicies")]
         private InputList<Inputs.SwitchAclPolicyArgs>? _aclPolicies;
+
+        /// <summary>
+        /// ACL policies applied to traffic handled by this switch
+        /// </summary>
         public InputList<Inputs.SwitchAclPolicyArgs> AclPolicies
         {
             get => _aclPolicies ?? (_aclPolicies = new InputList<Inputs.SwitchAclPolicyArgs>());
@@ -371,7 +424,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchAclTagsArgs>? _aclTags;
 
         /// <summary>
-        /// ACL Tags to identify traffic source or destination. Key name is the tag name
+        /// ACL tags used by switch access policies
         /// </summary>
         public InputMap<Inputs.SwitchAclTagsArgs> AclTags
         {
@@ -383,7 +436,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands to apply to this switch
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -393,6 +446,10 @@ namespace Pulumi.JuniperMist.Device
 
         [Input("bgpConfig")]
         private InputMap<Inputs.SwitchBgpConfigArgs>? _bgpConfig;
+
+        /// <summary>
+        /// BGP routing configuration for this switch. Property key is the BGP session name
+        /// </summary>
         public InputMap<Inputs.SwitchBgpConfigArgs> BgpConfig
         {
             get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.SwitchBgpConfigArgs>());
@@ -408,9 +465,15 @@ namespace Pulumi.JuniperMist.Device
         [Input("deviceId", required: true)]
         public Input<string> DeviceId { get; set; } = null!;
 
+        /// <summary>
+        /// DHCP snooping configuration for this switch
+        /// </summary>
         [Input("dhcpSnooping")]
         public Input<Inputs.SwitchDhcpSnoopingArgs>? DhcpSnooping { get; set; }
 
+        /// <summary>
+        /// DHCP server configuration served by this switch
+        /// </summary>
         [Input("dhcpdConfig")]
         public Input<Inputs.SwitchDhcpdConfigArgs>? DhcpdConfig { get; set; }
 
@@ -424,7 +487,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS servers configured for this switch
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -436,7 +499,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS search suffixes configured for this switch
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -448,7 +511,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchExtraRoutesArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Additional IPv4 routes configured on this switch
         /// </summary>
         public InputMap<Inputs.SwitchExtraRoutesArgs> ExtraRoutes
         {
@@ -460,7 +523,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchExtraRoutes6Args>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Additional IPv6 routes configured on this switch
         /// </summary>
         public InputMap<Inputs.SwitchExtraRoutes6Args> ExtraRoutes6
         {
@@ -469,7 +532,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Junos IP Config
+        /// Management IP addressing settings for this switch
         /// </summary>
         [Input("ipConfig")]
         public Input<Inputs.SwitchIpConfigArgs>? IpConfig { get; set; }
@@ -478,7 +541,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchLocalPortConfigArgs>? _localPortConfig;
 
         /// <summary>
-        /// Local port override, overriding the port configuration from `PortConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+        /// Local port configuration settings for this switch
         /// </summary>
         public InputMap<Inputs.SwitchLocalPortConfigArgs> LocalPortConfig
         {
@@ -505,11 +568,14 @@ namespace Pulumi.JuniperMist.Device
         public Input<bool>? MistConfigured { get; set; }
 
         /// <summary>
-        /// Enable MistNac to use RadSec
+        /// Mist NAC settings applied to this switch
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.SwitchMistNacArgs>? MistNac { get; set; }
 
+        /// <summary>
+        /// Friendly display name assigned to the switch
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -517,7 +583,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchNetworksArgs>? _networks;
 
         /// <summary>
-        /// Property key is network name
+        /// Layer 3 networks configured for use by this switch
         /// </summary>
         public InputMap<Inputs.SwitchNetworksArgs> Networks
         {
@@ -525,6 +591,9 @@ namespace Pulumi.JuniperMist.Device
             set => _networks = value;
         }
 
+        /// <summary>
+        /// Free-form administrative notes for this switch
+        /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
@@ -532,7 +601,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// NTP servers used by this switch
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -541,9 +610,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Switch OOB IP Config:
-        ///   - If HA configuration: key parameter will be nodeX (eg: node1)
-        ///   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `Re1`
+        /// Out-of-band management IP configuration for this switch
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.SwitchOobIpConfigArgs>? OobIpConfig { get; set; }
@@ -552,7 +619,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchOspfAreasArgs>? _ospfAreas;
 
         /// <summary>
-        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        /// OSPF area configuration for this switch
         /// </summary>
         public InputMap<Inputs.SwitchOspfAreasArgs> OspfAreas
         {
@@ -560,6 +627,9 @@ namespace Pulumi.JuniperMist.Device
             set => _ospfAreas = value;
         }
 
+        /// <summary>
+        /// OSPF routing configuration for this switch
+        /// </summary>
         [Input("ospfConfig")]
         public Input<Inputs.SwitchOspfConfigArgs>? OspfConfig { get; set; }
 
@@ -579,7 +649,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortConfigArgs>? _portConfig;
 
         /// <summary>
-        /// Property key is the port name or range (e.g. "ge-0/0/0-10")
+        /// Per-port wired configuration for this switch
         /// </summary>
         public InputMap<Inputs.SwitchPortConfigArgs> PortConfig
         {
@@ -591,7 +661,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortConfigOverwriteArgs>? _portConfigOverwrite;
 
         /// <summary>
-        /// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the PortUsage without having to create a new port_usage.
+        /// Per-port overrides for switch port usage attributes
         /// </summary>
         public InputMap<Inputs.SwitchPortConfigOverwriteArgs> PortConfigOverwrite
         {
@@ -603,7 +673,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Port mirroring configuration for this switch
         /// </summary>
         public InputMap<Inputs.SwitchPortMirroringArgs> PortMirroring
         {
@@ -615,7 +685,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortUsagesArgs>? _portUsages;
 
         /// <summary>
-        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// Reusable switch port usage profiles available on this switch
         /// </summary>
         public InputMap<Inputs.SwitchPortUsagesArgs> PortUsages
         {
@@ -624,14 +694,20 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Junos Radius config
+        /// RADIUS authentication and accounting settings for this switch
         /// </summary>
         [Input("radiusConfig")]
         public Input<Inputs.SwitchRadiusConfigArgs>? RadiusConfig { get; set; }
 
+        /// <summary>
+        /// Remote syslog settings for this switch
+        /// </summary>
         [Input("remoteSyslog")]
         public Input<Inputs.SwitchRemoteSyslogArgs>? RemoteSyslog { get; set; }
 
+        /// <summary>
+        /// Deployment role label for this switch
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
@@ -645,7 +721,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchRoutingPoliciesArgs>? _routingPolicies;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Routing policies applied by this switch
         /// </summary>
         public InputMap<Inputs.SwitchRoutingPoliciesArgs> RoutingPolicies
         {
@@ -653,17 +729,26 @@ namespace Pulumi.JuniperMist.Device
             set => _routingPolicies = value;
         }
 
+        /// <summary>
+        /// Site where this switch is assigned
+        /// </summary>
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
+        /// <summary>
+        /// SNMP configuration for this switch
+        /// </summary>
         [Input("snmpConfig")]
         public Input<Inputs.SwitchSnmpConfigArgs>? SnmpConfig { get; set; }
 
+        /// <summary>
+        /// Spanning Tree Protocol configuration for this switch
+        /// </summary>
         [Input("stpConfig")]
         public Input<Inputs.SwitchStpConfigArgs>? StpConfig { get; set; }
 
         /// <summary>
-        /// Switch Management settings
+        /// Management-plane settings for this switch
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.SwitchSwitchMgmtArgs>? SwitchMgmt { get; set; }
@@ -678,7 +763,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Variable values that override site variables for this switch
         /// </summary>
         public InputMap<string> Vars
         {
@@ -687,11 +772,14 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Required for preprovisioned Virtual Chassis
+        /// Virtual Chassis membership and provisioning settings for this switch
         /// </summary>
         [Input("virtualChassis")]
         public Input<Inputs.SwitchVirtualChassisArgs>? VirtualChassis { get; set; }
 
+        /// <summary>
+        /// VRF configuration applied to this switch
+        /// </summary>
         [Input("vrfConfig")]
         public Input<Inputs.SwitchVrfConfigArgs>? VrfConfig { get; set; }
 
@@ -699,7 +787,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchVrfInstancesArgs>? _vrfInstances;
 
         /// <summary>
-        /// Property key is the network name
+        /// VRF instances configured on this switch
         /// </summary>
         public InputMap<Inputs.SwitchVrfInstancesArgs> VrfInstances
         {
@@ -708,19 +796,19 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Junos VRRP config
+        /// VRRP configuration applied to this switch
         /// </summary>
         [Input("vrrpConfig")]
         public Input<Inputs.SwitchVrrpConfigArgs>? VrrpConfig { get; set; }
 
         /// <summary>
-        /// X in pixel
+        /// Horizontal map position of the switch, in pixels
         /// </summary>
         [Input("x")]
         public Input<double>? X { get; set; }
 
         /// <summary>
-        /// Y in pixel
+        /// Vertical map position of the switch, in pixels
         /// </summary>
         [Input("y")]
         public Input<double>? Y { get; set; }
@@ -735,6 +823,10 @@ namespace Pulumi.JuniperMist.Device
     {
         [Input("aclPolicies")]
         private InputList<Inputs.SwitchAclPolicyGetArgs>? _aclPolicies;
+
+        /// <summary>
+        /// ACL policies applied to traffic handled by this switch
+        /// </summary>
         public InputList<Inputs.SwitchAclPolicyGetArgs> AclPolicies
         {
             get => _aclPolicies ?? (_aclPolicies = new InputList<Inputs.SwitchAclPolicyGetArgs>());
@@ -745,7 +837,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchAclTagsGetArgs>? _aclTags;
 
         /// <summary>
-        /// ACL Tags to identify traffic source or destination. Key name is the tag name
+        /// ACL tags used by switch access policies
         /// </summary>
         public InputMap<Inputs.SwitchAclTagsGetArgs> AclTags
         {
@@ -757,7 +849,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
+        /// Additional CLI configuration commands to apply to this switch
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -767,6 +859,10 @@ namespace Pulumi.JuniperMist.Device
 
         [Input("bgpConfig")]
         private InputMap<Inputs.SwitchBgpConfigGetArgs>? _bgpConfig;
+
+        /// <summary>
+        /// BGP routing configuration for this switch. Property key is the BGP session name
+        /// </summary>
         public InputMap<Inputs.SwitchBgpConfigGetArgs> BgpConfig
         {
             get => _bgpConfig ?? (_bgpConfig = new InputMap<Inputs.SwitchBgpConfigGetArgs>());
@@ -782,9 +878,15 @@ namespace Pulumi.JuniperMist.Device
         [Input("deviceId")]
         public Input<string>? DeviceId { get; set; }
 
+        /// <summary>
+        /// DHCP snooping configuration for this switch
+        /// </summary>
         [Input("dhcpSnooping")]
         public Input<Inputs.SwitchDhcpSnoopingGetArgs>? DhcpSnooping { get; set; }
 
+        /// <summary>
+        /// DHCP server configuration served by this switch
+        /// </summary>
         [Input("dhcpdConfig")]
         public Input<Inputs.SwitchDhcpdConfigGetArgs>? DhcpdConfig { get; set; }
 
@@ -798,7 +900,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS servers configured for this switch
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -810,7 +912,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// Global dns settings. To keep compatibility, dns settings in `IpConfig` and `OobIpConfig` will overwrite this setting
+        /// DNS search suffixes configured for this switch
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -822,7 +924,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchExtraRoutesGetArgs>? _extraRoutes;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// Additional IPv4 routes configured on this switch
         /// </summary>
         public InputMap<Inputs.SwitchExtraRoutesGetArgs> ExtraRoutes
         {
@@ -834,7 +936,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchExtraRoutes6GetArgs>? _extraRoutes6;
 
         /// <summary>
-        /// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        /// Additional IPv6 routes configured on this switch
         /// </summary>
         public InputMap<Inputs.SwitchExtraRoutes6GetArgs> ExtraRoutes6
         {
@@ -842,17 +944,26 @@ namespace Pulumi.JuniperMist.Device
             set => _extraRoutes6 = value;
         }
 
+        /// <summary>
+        /// First custom image URL associated with the switch
+        /// </summary>
         [Input("image1Url")]
         public Input<string>? Image1Url { get; set; }
 
+        /// <summary>
+        /// Second custom image URL associated with the switch
+        /// </summary>
         [Input("image2Url")]
         public Input<string>? Image2Url { get; set; }
 
+        /// <summary>
+        /// Third custom image URL associated with the switch
+        /// </summary>
         [Input("image3Url")]
         public Input<string>? Image3Url { get; set; }
 
         /// <summary>
-        /// Junos IP Config
+        /// Management IP addressing settings for this switch
         /// </summary>
         [Input("ipConfig")]
         public Input<Inputs.SwitchIpConfigGetArgs>? IpConfig { get; set; }
@@ -861,7 +972,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchLocalPortConfigGetArgs>? _localPortConfig;
 
         /// <summary>
-        /// Local port override, overriding the port configuration from `PortConfig`. Property key is the port name or range (e.g. "ge-0/0/0-10")
+        /// Local port configuration settings for this switch
         /// </summary>
         public InputMap<Inputs.SwitchLocalPortConfigGetArgs> LocalPortConfig
         {
@@ -870,7 +981,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Device MAC address
+        /// Switch MAC address used to identify the device
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -894,17 +1005,20 @@ namespace Pulumi.JuniperMist.Device
         public Input<bool>? MistConfigured { get; set; }
 
         /// <summary>
-        /// Enable MistNac to use RadSec
+        /// Mist NAC settings applied to this switch
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.SwitchMistNacGetArgs>? MistNac { get; set; }
 
         /// <summary>
-        /// Device Model
+        /// Switch model reported for the device
         /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
 
+        /// <summary>
+        /// Friendly display name assigned to the switch
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -912,7 +1026,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchNetworksGetArgs>? _networks;
 
         /// <summary>
-        /// Property key is network name
+        /// Layer 3 networks configured for use by this switch
         /// </summary>
         public InputMap<Inputs.SwitchNetworksGetArgs> Networks
         {
@@ -920,6 +1034,9 @@ namespace Pulumi.JuniperMist.Device
             set => _networks = value;
         }
 
+        /// <summary>
+        /// Free-form administrative notes for this switch
+        /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
@@ -927,7 +1044,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// NTP servers used by this switch
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -936,13 +1053,14 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Switch OOB IP Config:
-        ///   - If HA configuration: key parameter will be nodeX (eg: node1)
-        ///   - If there are 2 routing engines, re1 mgmt IP has to be set separately (if desired): key parameter = `Re1`
+        /// Out-of-band management IP configuration for this switch
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.SwitchOobIpConfigGetArgs>? OobIpConfig { get; set; }
 
+        /// <summary>
+        /// Organization that owns this switch
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -950,7 +1068,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchOspfAreasGetArgs>? _ospfAreas;
 
         /// <summary>
-        /// Junos OSPF areas. Property key is the OSPF Area (Area should be a number (0-255) / IP address)
+        /// OSPF area configuration for this switch
         /// </summary>
         public InputMap<Inputs.SwitchOspfAreasGetArgs> OspfAreas
         {
@@ -958,6 +1076,9 @@ namespace Pulumi.JuniperMist.Device
             set => _ospfAreas = value;
         }
 
+        /// <summary>
+        /// OSPF routing configuration for this switch
+        /// </summary>
         [Input("ospfConfig")]
         public Input<Inputs.SwitchOspfConfigGetArgs>? OspfConfig { get; set; }
 
@@ -977,7 +1098,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortConfigGetArgs>? _portConfig;
 
         /// <summary>
-        /// Property key is the port name or range (e.g. "ge-0/0/0-10")
+        /// Per-port wired configuration for this switch
         /// </summary>
         public InputMap<Inputs.SwitchPortConfigGetArgs> PortConfig
         {
@@ -989,7 +1110,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortConfigOverwriteGetArgs>? _portConfigOverwrite;
 
         /// <summary>
-        /// Property key is the port name or range (e.g. "ge-0/0/0-10"). This can be used to override some attributes of the PortUsage without having to create a new port_usage.
+        /// Per-port overrides for switch port usage attributes
         /// </summary>
         public InputMap<Inputs.SwitchPortConfigOverwriteGetArgs> PortConfigOverwrite
         {
@@ -1001,7 +1122,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name. `PortMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 mirroring ports is allowed
+        /// Port mirroring configuration for this switch
         /// </summary>
         public InputMap<Inputs.SwitchPortMirroringGetArgs> PortMirroring
         {
@@ -1013,7 +1134,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortUsagesGetArgs>? _portUsages;
 
         /// <summary>
-        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// Reusable switch port usage profiles available on this switch
         /// </summary>
         public InputMap<Inputs.SwitchPortUsagesGetArgs> PortUsages
         {
@@ -1022,14 +1143,20 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Junos Radius config
+        /// RADIUS authentication and accounting settings for this switch
         /// </summary>
         [Input("radiusConfig")]
         public Input<Inputs.SwitchRadiusConfigGetArgs>? RadiusConfig { get; set; }
 
+        /// <summary>
+        /// Remote syslog settings for this switch
+        /// </summary>
         [Input("remoteSyslog")]
         public Input<Inputs.SwitchRemoteSyslogGetArgs>? RemoteSyslog { get; set; }
 
+        /// <summary>
+        /// Deployment role label for this switch
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
@@ -1043,7 +1170,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchRoutingPoliciesGetArgs>? _routingPolicies;
 
         /// <summary>
-        /// Property key is the routing policy name
+        /// Routing policies applied by this switch
         /// </summary>
         public InputMap<Inputs.SwitchRoutingPoliciesGetArgs> RoutingPolicies
         {
@@ -1052,28 +1179,37 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Device Serial
+        /// Manufacturer serial number for the switch
         /// </summary>
         [Input("serial")]
         public Input<string>? Serial { get; set; }
 
+        /// <summary>
+        /// Site where this switch is assigned
+        /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
+        /// <summary>
+        /// SNMP configuration for this switch
+        /// </summary>
         [Input("snmpConfig")]
         public Input<Inputs.SwitchSnmpConfigGetArgs>? SnmpConfig { get; set; }
 
+        /// <summary>
+        /// Spanning Tree Protocol configuration for this switch
+        /// </summary>
         [Input("stpConfig")]
         public Input<Inputs.SwitchStpConfigGetArgs>? StpConfig { get; set; }
 
         /// <summary>
-        /// Switch Management settings
+        /// Management-plane settings for this switch
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.SwitchSwitchMgmtGetArgs>? SwitchMgmt { get; set; }
 
         /// <summary>
-        /// Device Type. enum: `Switch`
+        /// Device type discriminator for switch records
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -1088,7 +1224,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Variable values that override site variables for this switch
         /// </summary>
         public InputMap<string> Vars
         {
@@ -1097,11 +1233,14 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Required for preprovisioned Virtual Chassis
+        /// Virtual Chassis membership and provisioning settings for this switch
         /// </summary>
         [Input("virtualChassis")]
         public Input<Inputs.SwitchVirtualChassisGetArgs>? VirtualChassis { get; set; }
 
+        /// <summary>
+        /// VRF configuration applied to this switch
+        /// </summary>
         [Input("vrfConfig")]
         public Input<Inputs.SwitchVrfConfigGetArgs>? VrfConfig { get; set; }
 
@@ -1109,7 +1248,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchVrfInstancesGetArgs>? _vrfInstances;
 
         /// <summary>
-        /// Property key is the network name
+        /// VRF instances configured on this switch
         /// </summary>
         public InputMap<Inputs.SwitchVrfInstancesGetArgs> VrfInstances
         {
@@ -1118,19 +1257,19 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Junos VRRP config
+        /// VRRP configuration applied to this switch
         /// </summary>
         [Input("vrrpConfig")]
         public Input<Inputs.SwitchVrrpConfigGetArgs>? VrrpConfig { get; set; }
 
         /// <summary>
-        /// X in pixel
+        /// Horizontal map position of the switch, in pixels
         /// </summary>
         [Input("x")]
         public Input<double>? X { get; set; }
 
         /// <summary>
-        /// Y in pixel
+        /// Vertical map position of the switch, in pixels
         /// </summary>
         [Input("y")]
         public Input<double>? Y { get; set; }

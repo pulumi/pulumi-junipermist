@@ -13,19 +13,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceprofileGatewayPathPreferences {
+    /**
+     * @return Candidate paths evaluated for this gateway path preference
+     * 
+     */
     private @Nullable List<DeviceprofileGatewayPathPreferencesPath> paths;
     /**
-     * @return enum: `ecmp`, `ordered`, `weighted`
+     * @return Selection strategy used to evaluate the candidate paths
      * 
      */
     private @Nullable String strategy;
 
     private DeviceprofileGatewayPathPreferences() {}
+    /**
+     * @return Candidate paths evaluated for this gateway path preference
+     * 
+     */
     public List<DeviceprofileGatewayPathPreferencesPath> paths() {
         return this.paths == null ? List.of() : this.paths;
     }
     /**
-     * @return enum: `ecmp`, `ordered`, `weighted`
+     * @return Selection strategy used to evaluate the candidate paths
      * 
      */
     public Optional<String> strategy() {

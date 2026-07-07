@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingJuniperSrx {
     /**
-     * @return auto_upgrade device first time it is onboarded
+     * @return SRX auto-upgrade settings applied when Juniper SRX devices are first onboarded
      * 
      */
     private @Nullable SettingJuniperSrxAutoUpgrade autoUpgrade;
 
     private SettingJuniperSrx() {}
     /**
-     * @return auto_upgrade device first time it is onboarded
+     * @return SRX auto-upgrade settings applied when Juniper SRX devices are first onboarded
      * 
      */
     public Optional<SettingJuniperSrxAutoUpgrade> autoUpgrade() {

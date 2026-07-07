@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? AllowPing;
         /// <summary>
-        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `InternalIp` or `Port` must be defined
+        /// Destination NAT rules applied for VPN access to this network
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworkVpnAccessDestinationNat>? DestinationNat;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? NoReadvertiseToOverlay;
         /// <summary>
-        /// By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+        /// Other VRFs that can receive leaked routes from this spoke network
         /// </summary>
         public readonly ImmutableArray<string> OtherVrfs;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Routed;
         /// <summary>
-        /// If `Routed`==`False` (usually at Spoke), but some hosts needs to be reachable from Hub
+        /// Source NAT settings used when non-routed spoke hosts must be reachable from the hub
         /// </summary>
         public readonly Outputs.NetworkVpnAccessSourceNat? SourceNat;
         /// <summary>
-        /// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+        /// Static NAT rules applied for VPN access to this network
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworkVpnAccessStaticNat>? StaticNat;
         /// <summary>

@@ -18,30 +18,62 @@ public final class GatewayServicePolicySkyatpArgs extends com.pulumi.resources.R
 
     public static final GatewayServicePolicySkyatpArgs Empty = new GatewayServicePolicySkyatpArgs();
 
+    /**
+     * Detection settings for DNS DGA threats provided by Sky ATP
+     * 
+     */
     @Import(name="dnsDgaDetection")
     private @Nullable Output<GatewayServicePolicySkyatpDnsDgaDetectionArgs> dnsDgaDetection;
 
+    /**
+     * @return Detection settings for DNS DGA threats provided by Sky ATP
+     * 
+     */
     public Optional<Output<GatewayServicePolicySkyatpDnsDgaDetectionArgs>> dnsDgaDetection() {
         return Optional.ofNullable(this.dnsDgaDetection);
     }
 
+    /**
+     * Detection settings for DNS tunneling threats provided by Sky ATP
+     * 
+     */
     @Import(name="dnsTunnelDetection")
     private @Nullable Output<GatewayServicePolicySkyatpDnsTunnelDetectionArgs> dnsTunnelDetection;
 
+    /**
+     * @return Detection settings for DNS tunneling threats provided by Sky ATP
+     * 
+     */
     public Optional<Output<GatewayServicePolicySkyatpDnsTunnelDetectionArgs>> dnsTunnelDetection() {
         return Optional.ofNullable(this.dnsTunnelDetection);
     }
 
+    /**
+     * Web traffic inspection settings provided by Sky ATP
+     * 
+     */
     @Import(name="httpInspection")
     private @Nullable Output<GatewayServicePolicySkyatpHttpInspectionArgs> httpInspection;
 
+    /**
+     * @return Web traffic inspection settings provided by Sky ATP
+     * 
+     */
     public Optional<Output<GatewayServicePolicySkyatpHttpInspectionArgs>> httpInspection() {
         return Optional.ofNullable(this.httpInspection);
     }
 
+    /**
+     * Device threat policy settings provided by Sky ATP for IoT clients
+     * 
+     */
     @Import(name="iotDevicePolicy")
     private @Nullable Output<GatewayServicePolicySkyatpIotDevicePolicyArgs> iotDevicePolicy;
 
+    /**
+     * @return Device threat policy settings provided by Sky ATP for IoT clients
+     * 
+     */
     public Optional<Output<GatewayServicePolicySkyatpIotDevicePolicyArgs>> iotDevicePolicy() {
         return Optional.ofNullable(this.iotDevicePolicy);
     }
@@ -73,38 +105,86 @@ public final class GatewayServicePolicySkyatpArgs extends com.pulumi.resources.R
             $ = new GatewayServicePolicySkyatpArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dnsDgaDetection Detection settings for DNS DGA threats provided by Sky ATP
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsDgaDetection(@Nullable Output<GatewayServicePolicySkyatpDnsDgaDetectionArgs> dnsDgaDetection) {
             $.dnsDgaDetection = dnsDgaDetection;
             return this;
         }
 
+        /**
+         * @param dnsDgaDetection Detection settings for DNS DGA threats provided by Sky ATP
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsDgaDetection(GatewayServicePolicySkyatpDnsDgaDetectionArgs dnsDgaDetection) {
             return dnsDgaDetection(Output.of(dnsDgaDetection));
         }
 
+        /**
+         * @param dnsTunnelDetection Detection settings for DNS tunneling threats provided by Sky ATP
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsTunnelDetection(@Nullable Output<GatewayServicePolicySkyatpDnsTunnelDetectionArgs> dnsTunnelDetection) {
             $.dnsTunnelDetection = dnsTunnelDetection;
             return this;
         }
 
+        /**
+         * @param dnsTunnelDetection Detection settings for DNS tunneling threats provided by Sky ATP
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsTunnelDetection(GatewayServicePolicySkyatpDnsTunnelDetectionArgs dnsTunnelDetection) {
             return dnsTunnelDetection(Output.of(dnsTunnelDetection));
         }
 
+        /**
+         * @param httpInspection Web traffic inspection settings provided by Sky ATP
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpInspection(@Nullable Output<GatewayServicePolicySkyatpHttpInspectionArgs> httpInspection) {
             $.httpInspection = httpInspection;
             return this;
         }
 
+        /**
+         * @param httpInspection Web traffic inspection settings provided by Sky ATP
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpInspection(GatewayServicePolicySkyatpHttpInspectionArgs httpInspection) {
             return httpInspection(Output.of(httpInspection));
         }
 
+        /**
+         * @param iotDevicePolicy Device threat policy settings provided by Sky ATP for IoT clients
+         * 
+         * @return builder
+         * 
+         */
         public Builder iotDevicePolicy(@Nullable Output<GatewayServicePolicySkyatpIotDevicePolicyArgs> iotDevicePolicy) {
             $.iotDevicePolicy = iotDevicePolicy;
             return this;
         }
 
+        /**
+         * @param iotDevicePolicy Device threat policy settings provided by Sky ATP for IoT clients
+         * 
+         * @return builder
+         * 
+         */
         public Builder iotDevicePolicy(GatewayServicePolicySkyatpIotDevicePolicyArgs iotDevicePolicy) {
             return iotDevicePolicy(Output.of(iotDevicePolicy));
         }

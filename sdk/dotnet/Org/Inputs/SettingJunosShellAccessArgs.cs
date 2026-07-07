@@ -13,25 +13,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingJunosShellAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `Admin`, `Viewer`, `None`
+        /// Shell access level used for administrator web-shell sessions
         /// </summary>
         [Input("admin")]
         public Input<string>? Admin { get; set; }
 
         /// <summary>
-        /// enum: `Admin`, `Viewer`, `None`
+        /// Shell access level used for helpdesk web-shell sessions
         /// </summary>
         [Input("helpdesk")]
         public Input<string>? Helpdesk { get; set; }
 
         /// <summary>
-        /// enum: `Admin`, `Viewer`, `None`
+        /// Shell access level used for read-only web-shell sessions
         /// </summary>
         [Input("read")]
         public Input<string>? Read { get; set; }
 
         /// <summary>
-        /// enum: `Admin`, `Viewer`, `None`
+        /// Shell access level used for write-role web-shell sessions
         /// </summary>
         [Input("write")]
         public Input<string>? Write { get; set; }

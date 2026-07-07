@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? ExpiryInDays { get; set; }
 
         /// <summary>
-        /// Required password length
+        /// Minimum number of characters required for passwords
         /// </summary>
         [Input("minLength")]
         public Input<int>? MinLength { get; set; }

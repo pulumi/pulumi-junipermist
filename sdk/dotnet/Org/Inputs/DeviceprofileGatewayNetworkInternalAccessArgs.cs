@@ -12,6 +12,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class DeviceprofileGatewayNetworkInternalAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether internal access is enabled for this network
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

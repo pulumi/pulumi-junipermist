@@ -41,6 +41,7 @@ class ApArgs:
                  locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  map_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mesh: pulumi.Input[Optional['ApMeshArgs']] = None,
+                 mqtt_config: pulumi.Input[Optional['ApMqttConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -58,33 +59,40 @@ class ApArgs:
         """
         The set of arguments for constructing a Ap resource.
 
-        :param pulumi.Input['ApAeroscoutArgs'] aeroscout: Aeroscout AP settings
-        :param pulumi.Input['ApBleConfigArgs'] ble_config: BLE AP settings
+        :param pulumi.Input[_builtins.str] site_id: Site where this access point is assigned
+        :param pulumi.Input['ApAeroscoutArgs'] aeroscout: Location integration settings for AeroScout on this access point
+        :param pulumi.Input['ApAiristaArgs'] airista: Location integration settings for Airista on this access point
+        :param pulumi.Input['ApBleConfigArgs'] ble_config: Bluetooth Low Energy beacon and asset settings for this access point
+        :param pulumi.Input['ApCentrakArgs'] centrak: Location integration settings for Centrak on this access point
+        :param pulumi.Input['ApClientBridgeArgs'] client_bridge: Wireless client bridge settings for this access point
         :param pulumi.Input[_builtins.bool] disable_eth1: Whether to disable eth1 port
         :param pulumi.Input[_builtins.bool] disable_eth2: Whether to disable eth2 port
         :param pulumi.Input[_builtins.bool] disable_eth3: Whether to disable eth3 port
         :param pulumi.Input[_builtins.bool] disable_module: Whether to disable module port
+        :param pulumi.Input['ApEslConfigArgs'] esl_config: Electronic shelf label integration settings for this access point
         :param pulumi.Input[_builtins.bool] flow_control: For some AP models, flow_control can be enabled to address some switch compatibility issue
-        :param pulumi.Input[_builtins.float] height: Height, in meters, optional
-        :param pulumi.Input['ApIpConfigArgs'] ip_config: IP AP settings
-        :param pulumi.Input['ApLedArgs'] led: LED AP settings
+        :param pulumi.Input[_builtins.float] height: Installation height of the AP, in meters
+        :param pulumi.Input['ApIpConfigArgs'] ip_config: Management IP addressing settings for this access point
+        :param pulumi.Input['ApLacpConfigArgs'] lacp_config: Link aggregation settings for supported AP Ethernet uplinks
+        :param pulumi.Input['ApLedArgs'] led: Indicator light behavior settings for this access point
         :param pulumi.Input[_builtins.bool] locked: Whether this map is considered locked down
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
-        :param pulumi.Input['ApMeshArgs'] mesh: Mesh AP settings
+        :param pulumi.Input['ApMeshArgs'] mesh: Wireless mesh role and band settings for this access point
+        :param pulumi.Input['ApMqttConfigArgs'] mqtt_config: MQTT broker publishing settings for this access point
+        :param pulumi.Input[_builtins.str] name: Configured hostname assigned to the access point
         :param pulumi.Input[_builtins.str] notes: Any notes about this AP
-        :param pulumi.Input[_builtins.int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this access point
+        :param pulumi.Input[_builtins.int] orientation: AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         :param pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
-        :param pulumi.Input['ApPwrConfigArgs'] pwr_config: Power related configs
-        :param pulumi.Input['ApRadioConfigArgs'] radio_config: Radio AP settings
-        :param pulumi.Input['ApUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input['ApUsbConfigArgs'] usb_config: USB AP settings
-                 - Note: if native imagotag is enabled, BLE will be disabled automatically
-                 - Note: legacy, new config moved to ESL Config.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[_builtins.float] x: X in pixel
-        :param pulumi.Input[_builtins.float] y: Y in pixel
-        :param pulumi.Input['ApZigbeeConfigArgs'] zigbee_config: Zigbee AP settings
+        :param pulumi.Input['ApPwrConfigArgs'] pwr_config: Power negotiation and peripheral power settings for this access point
+        :param pulumi.Input['ApRadioConfigArgs'] radio_config: Radio configuration overrides for this access point
+        :param pulumi.Input['ApUplinkPortConfigArgs'] uplink_port_config: Authentication and failover behavior for AP uplink ports
+        :param pulumi.Input['ApUsbConfigArgs'] usb_config: Legacy USB integration settings for this access point
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this access point
+        :param pulumi.Input[_builtins.float] x: Horizontal map position of the AP, in pixels
+        :param pulumi.Input[_builtins.float] y: Vertical map position of the AP, in pixels
+        :param pulumi.Input['ApZigbeeConfigArgs'] zigbee_config: Zigbee radio and network settings for this access point
         """
         pulumi.set(__self__, "device_id", device_id)
         pulumi.set(__self__, "site_id", site_id)
@@ -124,6 +132,8 @@ class ApArgs:
             pulumi.set(__self__, "map_id", map_id)
         if mesh is not None:
             pulumi.set(__self__, "mesh", mesh)
+        if mqtt_config is not None:
+            pulumi.set(__self__, "mqtt_config", mqtt_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notes is not None:
@@ -165,6 +175,9 @@ class ApArgs:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Site where this access point is assigned
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -175,7 +188,7 @@ class ApArgs:
     @pulumi.getter
     def aeroscout(self) -> pulumi.Input[Optional['ApAeroscoutArgs']]:
         """
-        Aeroscout AP settings
+        Location integration settings for AeroScout on this access point
         """
         return pulumi.get(self, "aeroscout")
 
@@ -186,6 +199,9 @@ class ApArgs:
     @_builtins.property
     @pulumi.getter
     def airista(self) -> pulumi.Input[Optional['ApAiristaArgs']]:
+        """
+        Location integration settings for Airista on this access point
+        """
         return pulumi.get(self, "airista")
 
     @airista.setter
@@ -196,7 +212,7 @@ class ApArgs:
     @pulumi.getter(name="bleConfig")
     def ble_config(self) -> pulumi.Input[Optional['ApBleConfigArgs']]:
         """
-        BLE AP settings
+        Bluetooth Low Energy beacon and asset settings for this access point
         """
         return pulumi.get(self, "ble_config")
 
@@ -207,6 +223,9 @@ class ApArgs:
     @_builtins.property
     @pulumi.getter
     def centrak(self) -> pulumi.Input[Optional['ApCentrakArgs']]:
+        """
+        Location integration settings for Centrak on this access point
+        """
         return pulumi.get(self, "centrak")
 
     @centrak.setter
@@ -216,6 +235,9 @@ class ApArgs:
     @_builtins.property
     @pulumi.getter(name="clientBridge")
     def client_bridge(self) -> pulumi.Input[Optional['ApClientBridgeArgs']]:
+        """
+        Wireless client bridge settings for this access point
+        """
         return pulumi.get(self, "client_bridge")
 
     @client_bridge.setter
@@ -273,6 +295,9 @@ class ApArgs:
     @_builtins.property
     @pulumi.getter(name="eslConfig")
     def esl_config(self) -> pulumi.Input[Optional['ApEslConfigArgs']]:
+        """
+        Electronic shelf label integration settings for this access point
+        """
         return pulumi.get(self, "esl_config")
 
     @esl_config.setter
@@ -295,7 +320,7 @@ class ApArgs:
     @pulumi.getter
     def height(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Height, in meters, optional
+        Installation height of the AP, in meters
         """
         return pulumi.get(self, "height")
 
@@ -307,7 +332,7 @@ class ApArgs:
     @pulumi.getter(name="ipConfig")
     def ip_config(self) -> pulumi.Input[Optional['ApIpConfigArgs']]:
         """
-        IP AP settings
+        Management IP addressing settings for this access point
         """
         return pulumi.get(self, "ip_config")
 
@@ -318,6 +343,9 @@ class ApArgs:
     @_builtins.property
     @pulumi.getter(name="lacpConfig")
     def lacp_config(self) -> pulumi.Input[Optional['ApLacpConfigArgs']]:
+        """
+        Link aggregation settings for supported AP Ethernet uplinks
+        """
         return pulumi.get(self, "lacp_config")
 
     @lacp_config.setter
@@ -328,7 +356,7 @@ class ApArgs:
     @pulumi.getter
     def led(self) -> pulumi.Input[Optional['ApLedArgs']]:
         """
-        LED AP settings
+        Indicator light behavior settings for this access point
         """
         return pulumi.get(self, "led")
 
@@ -364,7 +392,7 @@ class ApArgs:
     @pulumi.getter
     def mesh(self) -> pulumi.Input[Optional['ApMeshArgs']]:
         """
-        Mesh AP settings
+        Wireless mesh role and band settings for this access point
         """
         return pulumi.get(self, "mesh")
 
@@ -373,8 +401,23 @@ class ApArgs:
         pulumi.set(self, "mesh", value)
 
     @_builtins.property
+    @pulumi.getter(name="mqttConfig")
+    def mqtt_config(self) -> pulumi.Input[Optional['ApMqttConfigArgs']]:
+        """
+        MQTT broker publishing settings for this access point
+        """
+        return pulumi.get(self, "mqtt_config")
+
+    @mqtt_config.setter
+    def mqtt_config(self, value: pulumi.Input[Optional['ApMqttConfigArgs']]):
+        pulumi.set(self, "mqtt_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Configured hostname assigned to the access point
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -396,6 +439,9 @@ class ApArgs:
     @_builtins.property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        NTP servers used by this access point
+        """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
@@ -406,7 +452,7 @@ class ApArgs:
     @pulumi.getter
     def orientation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Orientation, 0-359, in degrees, up is 0, right is 90.
+        AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
         """
         return pulumi.get(self, "orientation")
 
@@ -442,7 +488,7 @@ class ApArgs:
     @pulumi.getter(name="pwrConfig")
     def pwr_config(self) -> pulumi.Input[Optional['ApPwrConfigArgs']]:
         """
-        Power related configs
+        Power negotiation and peripheral power settings for this access point
         """
         return pulumi.get(self, "pwr_config")
 
@@ -454,7 +500,7 @@ class ApArgs:
     @pulumi.getter(name="radioConfig")
     def radio_config(self) -> pulumi.Input[Optional['ApRadioConfigArgs']]:
         """
-        Radio AP settings
+        Radio configuration overrides for this access point
         """
         return pulumi.get(self, "radio_config")
 
@@ -466,7 +512,7 @@ class ApArgs:
     @pulumi.getter(name="uplinkPortConfig")
     def uplink_port_config(self) -> pulumi.Input[Optional['ApUplinkPortConfigArgs']]:
         """
-        AP Uplink port configuration
+        Authentication and failover behavior for AP uplink ports
         """
         return pulumi.get(self, "uplink_port_config")
 
@@ -478,9 +524,7 @@ class ApArgs:
     @pulumi.getter(name="usbConfig")
     def usb_config(self) -> pulumi.Input[Optional['ApUsbConfigArgs']]:
         """
-        USB AP settings
-          - Note: if native imagotag is enabled, BLE will be disabled automatically
-          - Note: legacy, new config moved to ESL Config.
+        Legacy USB integration settings for this access point
         """
         return pulumi.get(self, "usb_config")
 
@@ -492,7 +536,7 @@ class ApArgs:
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Variable values that override site variables for this access point
         """
         return pulumi.get(self, "vars")
 
@@ -504,7 +548,7 @@ class ApArgs:
     @pulumi.getter
     def x(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        X in pixel
+        Horizontal map position of the AP, in pixels
         """
         return pulumi.get(self, "x")
 
@@ -516,7 +560,7 @@ class ApArgs:
     @pulumi.getter
     def y(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Y in pixel
+        Vertical map position of the AP, in pixels
         """
         return pulumi.get(self, "y")
 
@@ -528,7 +572,7 @@ class ApArgs:
     @pulumi.getter(name="zigbeeConfig")
     def zigbee_config(self) -> pulumi.Input[Optional['ApZigbeeConfigArgs']]:
         """
-        Zigbee AP settings
+        Zigbee radio and network settings for this access point
         """
         return pulumi.get(self, "zigbee_config")
 
@@ -564,6 +608,7 @@ class _ApState:
                  map_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mesh: pulumi.Input[Optional['ApMeshArgs']] = None,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
+                 mqtt_config: pulumi.Input[Optional['ApMqttConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -585,37 +630,48 @@ class _ApState:
         """
         Input properties used for looking up and filtering Ap resources.
 
-        :param pulumi.Input['ApAeroscoutArgs'] aeroscout: Aeroscout AP settings
-        :param pulumi.Input['ApBleConfigArgs'] ble_config: BLE AP settings
+        :param pulumi.Input['ApAeroscoutArgs'] aeroscout: Location integration settings for AeroScout on this access point
+        :param pulumi.Input['ApAiristaArgs'] airista: Location integration settings for Airista on this access point
+        :param pulumi.Input['ApBleConfigArgs'] ble_config: Bluetooth Low Energy beacon and asset settings for this access point
+        :param pulumi.Input['ApCentrakArgs'] centrak: Location integration settings for Centrak on this access point
+        :param pulumi.Input['ApClientBridgeArgs'] client_bridge: Wireless client bridge settings for this access point
         :param pulumi.Input[_builtins.bool] disable_eth1: Whether to disable eth1 port
         :param pulumi.Input[_builtins.bool] disable_eth2: Whether to disable eth2 port
         :param pulumi.Input[_builtins.bool] disable_eth3: Whether to disable eth3 port
         :param pulumi.Input[_builtins.bool] disable_module: Whether to disable module port
+        :param pulumi.Input['ApEslConfigArgs'] esl_config: Electronic shelf label integration settings for this access point
         :param pulumi.Input[_builtins.bool] flow_control: For some AP models, flow_control can be enabled to address some switch compatibility issue
-        :param pulumi.Input[_builtins.float] height: Height, in meters, optional
-        :param pulumi.Input['ApIpConfigArgs'] ip_config: IP AP settings
-        :param pulumi.Input['ApLedArgs'] led: LED AP settings
+        :param pulumi.Input[_builtins.float] height: Installation height of the AP, in meters
+        :param pulumi.Input[_builtins.str] image1_url: First custom image URL associated with the access point
+        :param pulumi.Input[_builtins.str] image2_url: Second custom image URL associated with the access point
+        :param pulumi.Input[_builtins.str] image3_url: Third custom image URL associated with the access point
+        :param pulumi.Input['ApIpConfigArgs'] ip_config: Management IP addressing settings for this access point
+        :param pulumi.Input['ApLacpConfigArgs'] lacp_config: Link aggregation settings for supported AP Ethernet uplinks
+        :param pulumi.Input['ApLedArgs'] led: Indicator light behavior settings for this access point
         :param pulumi.Input[_builtins.bool] locked: Whether this map is considered locked down
-        :param pulumi.Input[_builtins.str] mac: Device MAC address
+        :param pulumi.Input[_builtins.str] mac: Access point MAC address used to identify the device
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
-        :param pulumi.Input['ApMeshArgs'] mesh: Mesh AP settings
-        :param pulumi.Input[_builtins.str] model: Device Model
+        :param pulumi.Input['ApMeshArgs'] mesh: Wireless mesh role and band settings for this access point
+        :param pulumi.Input[_builtins.str] model: Hardware model reported for the access point
+        :param pulumi.Input['ApMqttConfigArgs'] mqtt_config: MQTT broker publishing settings for this access point
+        :param pulumi.Input[_builtins.str] name: Configured hostname assigned to the access point
         :param pulumi.Input[_builtins.str] notes: Any notes about this AP
-        :param pulumi.Input[_builtins.int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this access point
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this access point
+        :param pulumi.Input[_builtins.int] orientation: AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         :param pulumi.Input[Mapping[str, pulumi.Input['ApPortConfigArgs']]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
-        :param pulumi.Input['ApPwrConfigArgs'] pwr_config: Power related configs
-        :param pulumi.Input['ApRadioConfigArgs'] radio_config: Radio AP settings
-        :param pulumi.Input[_builtins.str] serial: Device Serial
-        :param pulumi.Input[_builtins.str] type: Device Type. enum: `ap`
-        :param pulumi.Input['ApUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input['ApUsbConfigArgs'] usb_config: USB AP settings
-                 - Note: if native imagotag is enabled, BLE will be disabled automatically
-                 - Note: legacy, new config moved to ESL Config.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[_builtins.float] x: X in pixel
-        :param pulumi.Input[_builtins.float] y: Y in pixel
-        :param pulumi.Input['ApZigbeeConfigArgs'] zigbee_config: Zigbee AP settings
+        :param pulumi.Input['ApPwrConfigArgs'] pwr_config: Power negotiation and peripheral power settings for this access point
+        :param pulumi.Input['ApRadioConfigArgs'] radio_config: Radio configuration overrides for this access point
+        :param pulumi.Input[_builtins.str] serial: Manufacturer serial number for the access point
+        :param pulumi.Input[_builtins.str] site_id: Site where this access point is assigned
+        :param pulumi.Input[_builtins.str] type: Device type discriminator for access point records
+        :param pulumi.Input['ApUplinkPortConfigArgs'] uplink_port_config: Authentication and failover behavior for AP uplink ports
+        :param pulumi.Input['ApUsbConfigArgs'] usb_config: Legacy USB integration settings for this access point
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this access point
+        :param pulumi.Input[_builtins.float] x: Horizontal map position of the AP, in pixels
+        :param pulumi.Input[_builtins.float] y: Vertical map position of the AP, in pixels
+        :param pulumi.Input['ApZigbeeConfigArgs'] zigbee_config: Zigbee radio and network settings for this access point
         """
         if aeroscout is not None:
             pulumi.set(__self__, "aeroscout", aeroscout)
@@ -665,6 +721,8 @@ class _ApState:
             pulumi.set(__self__, "mesh", mesh)
         if model is not None:
             pulumi.set(__self__, "model", model)
+        if mqtt_config is not None:
+            pulumi.set(__self__, "mqtt_config", mqtt_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notes is not None:
@@ -706,7 +764,7 @@ class _ApState:
     @pulumi.getter
     def aeroscout(self) -> pulumi.Input[Optional['ApAeroscoutArgs']]:
         """
-        Aeroscout AP settings
+        Location integration settings for AeroScout on this access point
         """
         return pulumi.get(self, "aeroscout")
 
@@ -717,6 +775,9 @@ class _ApState:
     @_builtins.property
     @pulumi.getter
     def airista(self) -> pulumi.Input[Optional['ApAiristaArgs']]:
+        """
+        Location integration settings for Airista on this access point
+        """
         return pulumi.get(self, "airista")
 
     @airista.setter
@@ -727,7 +788,7 @@ class _ApState:
     @pulumi.getter(name="bleConfig")
     def ble_config(self) -> pulumi.Input[Optional['ApBleConfigArgs']]:
         """
-        BLE AP settings
+        Bluetooth Low Energy beacon and asset settings for this access point
         """
         return pulumi.get(self, "ble_config")
 
@@ -738,6 +799,9 @@ class _ApState:
     @_builtins.property
     @pulumi.getter
     def centrak(self) -> pulumi.Input[Optional['ApCentrakArgs']]:
+        """
+        Location integration settings for Centrak on this access point
+        """
         return pulumi.get(self, "centrak")
 
     @centrak.setter
@@ -747,6 +811,9 @@ class _ApState:
     @_builtins.property
     @pulumi.getter(name="clientBridge")
     def client_bridge(self) -> pulumi.Input[Optional['ApClientBridgeArgs']]:
+        """
+        Wireless client bridge settings for this access point
+        """
         return pulumi.get(self, "client_bridge")
 
     @client_bridge.setter
@@ -813,6 +880,9 @@ class _ApState:
     @_builtins.property
     @pulumi.getter(name="eslConfig")
     def esl_config(self) -> pulumi.Input[Optional['ApEslConfigArgs']]:
+        """
+        Electronic shelf label integration settings for this access point
+        """
         return pulumi.get(self, "esl_config")
 
     @esl_config.setter
@@ -835,7 +905,7 @@ class _ApState:
     @pulumi.getter
     def height(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Height, in meters, optional
+        Installation height of the AP, in meters
         """
         return pulumi.get(self, "height")
 
@@ -846,6 +916,9 @@ class _ApState:
     @_builtins.property
     @pulumi.getter(name="image1Url")
     def image1_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        First custom image URL associated with the access point
+        """
         return pulumi.get(self, "image1_url")
 
     @image1_url.setter
@@ -855,6 +928,9 @@ class _ApState:
     @_builtins.property
     @pulumi.getter(name="image2Url")
     def image2_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Second custom image URL associated with the access point
+        """
         return pulumi.get(self, "image2_url")
 
     @image2_url.setter
@@ -864,6 +940,9 @@ class _ApState:
     @_builtins.property
     @pulumi.getter(name="image3Url")
     def image3_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Third custom image URL associated with the access point
+        """
         return pulumi.get(self, "image3_url")
 
     @image3_url.setter
@@ -874,7 +953,7 @@ class _ApState:
     @pulumi.getter(name="ipConfig")
     def ip_config(self) -> pulumi.Input[Optional['ApIpConfigArgs']]:
         """
-        IP AP settings
+        Management IP addressing settings for this access point
         """
         return pulumi.get(self, "ip_config")
 
@@ -885,6 +964,9 @@ class _ApState:
     @_builtins.property
     @pulumi.getter(name="lacpConfig")
     def lacp_config(self) -> pulumi.Input[Optional['ApLacpConfigArgs']]:
+        """
+        Link aggregation settings for supported AP Ethernet uplinks
+        """
         return pulumi.get(self, "lacp_config")
 
     @lacp_config.setter
@@ -895,7 +977,7 @@ class _ApState:
     @pulumi.getter
     def led(self) -> pulumi.Input[Optional['ApLedArgs']]:
         """
-        LED AP settings
+        Indicator light behavior settings for this access point
         """
         return pulumi.get(self, "led")
 
@@ -919,7 +1001,7 @@ class _ApState:
     @pulumi.getter
     def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device MAC address
+        Access point MAC address used to identify the device
         """
         return pulumi.get(self, "mac")
 
@@ -943,7 +1025,7 @@ class _ApState:
     @pulumi.getter
     def mesh(self) -> pulumi.Input[Optional['ApMeshArgs']]:
         """
-        Mesh AP settings
+        Wireless mesh role and band settings for this access point
         """
         return pulumi.get(self, "mesh")
 
@@ -955,7 +1037,7 @@ class _ApState:
     @pulumi.getter
     def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device Model
+        Hardware model reported for the access point
         """
         return pulumi.get(self, "model")
 
@@ -964,8 +1046,23 @@ class _ApState:
         pulumi.set(self, "model", value)
 
     @_builtins.property
+    @pulumi.getter(name="mqttConfig")
+    def mqtt_config(self) -> pulumi.Input[Optional['ApMqttConfigArgs']]:
+        """
+        MQTT broker publishing settings for this access point
+        """
+        return pulumi.get(self, "mqtt_config")
+
+    @mqtt_config.setter
+    def mqtt_config(self, value: pulumi.Input[Optional['ApMqttConfigArgs']]):
+        pulumi.set(self, "mqtt_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Configured hostname assigned to the access point
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -987,6 +1084,9 @@ class _ApState:
     @_builtins.property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        NTP servers used by this access point
+        """
         return pulumi.get(self, "ntp_servers")
 
     @ntp_servers.setter
@@ -996,6 +1096,9 @@ class _ApState:
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Organization that owns this access point
+        """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
@@ -1006,7 +1109,7 @@ class _ApState:
     @pulumi.getter
     def orientation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Orientation, 0-359, in degrees, up is 0, right is 90.
+        AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
         """
         return pulumi.get(self, "orientation")
 
@@ -1042,7 +1145,7 @@ class _ApState:
     @pulumi.getter(name="pwrConfig")
     def pwr_config(self) -> pulumi.Input[Optional['ApPwrConfigArgs']]:
         """
-        Power related configs
+        Power negotiation and peripheral power settings for this access point
         """
         return pulumi.get(self, "pwr_config")
 
@@ -1054,7 +1157,7 @@ class _ApState:
     @pulumi.getter(name="radioConfig")
     def radio_config(self) -> pulumi.Input[Optional['ApRadioConfigArgs']]:
         """
-        Radio AP settings
+        Radio configuration overrides for this access point
         """
         return pulumi.get(self, "radio_config")
 
@@ -1066,7 +1169,7 @@ class _ApState:
     @pulumi.getter
     def serial(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device Serial
+        Manufacturer serial number for the access point
         """
         return pulumi.get(self, "serial")
 
@@ -1077,6 +1180,9 @@ class _ApState:
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Site where this access point is assigned
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
@@ -1087,7 +1193,7 @@ class _ApState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Device Type. enum: `ap`
+        Device type discriminator for access point records
         """
         return pulumi.get(self, "type")
 
@@ -1099,7 +1205,7 @@ class _ApState:
     @pulumi.getter(name="uplinkPortConfig")
     def uplink_port_config(self) -> pulumi.Input[Optional['ApUplinkPortConfigArgs']]:
         """
-        AP Uplink port configuration
+        Authentication and failover behavior for AP uplink ports
         """
         return pulumi.get(self, "uplink_port_config")
 
@@ -1111,9 +1217,7 @@ class _ApState:
     @pulumi.getter(name="usbConfig")
     def usb_config(self) -> pulumi.Input[Optional['ApUsbConfigArgs']]:
         """
-        USB AP settings
-          - Note: if native imagotag is enabled, BLE will be disabled automatically
-          - Note: legacy, new config moved to ESL Config.
+        Legacy USB integration settings for this access point
         """
         return pulumi.get(self, "usb_config")
 
@@ -1125,7 +1229,7 @@ class _ApState:
     @pulumi.getter
     def vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Variable values that override site variables for this access point
         """
         return pulumi.get(self, "vars")
 
@@ -1137,7 +1241,7 @@ class _ApState:
     @pulumi.getter
     def x(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        X in pixel
+        Horizontal map position of the AP, in pixels
         """
         return pulumi.get(self, "x")
 
@@ -1149,7 +1253,7 @@ class _ApState:
     @pulumi.getter
     def y(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Y in pixel
+        Vertical map position of the AP, in pixels
         """
         return pulumi.get(self, "y")
 
@@ -1161,7 +1265,7 @@ class _ApState:
     @pulumi.getter(name="zigbeeConfig")
     def zigbee_config(self) -> pulumi.Input[Optional['ApZigbeeConfigArgs']]:
         """
-        Zigbee AP settings
+        Zigbee radio and network settings for this access point
         """
         return pulumi.get(self, "zigbee_config")
 
@@ -1195,6 +1299,7 @@ class Ap(pulumi.CustomResource):
                  locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  map_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mesh: pulumi.Input[Optional[Union['ApMeshArgs', 'ApMeshArgsDict']]] = None,
+                 mqtt_config: pulumi.Input[Optional[Union['ApMqttConfigArgs', 'ApMqttConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1228,33 +1333,40 @@ class Ap(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']] aeroscout: Aeroscout AP settings
-        :param pulumi.Input[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']] ble_config: BLE AP settings
+        :param pulumi.Input[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']] aeroscout: Location integration settings for AeroScout on this access point
+        :param pulumi.Input[Union['ApAiristaArgs', 'ApAiristaArgsDict']] airista: Location integration settings for Airista on this access point
+        :param pulumi.Input[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']] ble_config: Bluetooth Low Energy beacon and asset settings for this access point
+        :param pulumi.Input[Union['ApCentrakArgs', 'ApCentrakArgsDict']] centrak: Location integration settings for Centrak on this access point
+        :param pulumi.Input[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict']] client_bridge: Wireless client bridge settings for this access point
         :param pulumi.Input[_builtins.bool] disable_eth1: Whether to disable eth1 port
         :param pulumi.Input[_builtins.bool] disable_eth2: Whether to disable eth2 port
         :param pulumi.Input[_builtins.bool] disable_eth3: Whether to disable eth3 port
         :param pulumi.Input[_builtins.bool] disable_module: Whether to disable module port
+        :param pulumi.Input[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']] esl_config: Electronic shelf label integration settings for this access point
         :param pulumi.Input[_builtins.bool] flow_control: For some AP models, flow_control can be enabled to address some switch compatibility issue
-        :param pulumi.Input[_builtins.float] height: Height, in meters, optional
-        :param pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']] ip_config: IP AP settings
-        :param pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']] led: LED AP settings
+        :param pulumi.Input[_builtins.float] height: Installation height of the AP, in meters
+        :param pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']] ip_config: Management IP addressing settings for this access point
+        :param pulumi.Input[Union['ApLacpConfigArgs', 'ApLacpConfigArgsDict']] lacp_config: Link aggregation settings for supported AP Ethernet uplinks
+        :param pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']] led: Indicator light behavior settings for this access point
         :param pulumi.Input[_builtins.bool] locked: Whether this map is considered locked down
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
-        :param pulumi.Input[Union['ApMeshArgs', 'ApMeshArgsDict']] mesh: Mesh AP settings
+        :param pulumi.Input[Union['ApMeshArgs', 'ApMeshArgsDict']] mesh: Wireless mesh role and band settings for this access point
+        :param pulumi.Input[Union['ApMqttConfigArgs', 'ApMqttConfigArgsDict']] mqtt_config: MQTT broker publishing settings for this access point
+        :param pulumi.Input[_builtins.str] name: Configured hostname assigned to the access point
         :param pulumi.Input[_builtins.str] notes: Any notes about this AP
-        :param pulumi.Input[_builtins.int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this access point
+        :param pulumi.Input[_builtins.int] orientation: AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
-        :param pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']] pwr_config: Power related configs
-        :param pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']] radio_config: Radio AP settings
-        :param pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']] usb_config: USB AP settings
-                 - Note: if native imagotag is enabled, BLE will be disabled automatically
-                 - Note: legacy, new config moved to ESL Config.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[_builtins.float] x: X in pixel
-        :param pulumi.Input[_builtins.float] y: Y in pixel
-        :param pulumi.Input[Union['ApZigbeeConfigArgs', 'ApZigbeeConfigArgsDict']] zigbee_config: Zigbee AP settings
+        :param pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']] pwr_config: Power negotiation and peripheral power settings for this access point
+        :param pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']] radio_config: Radio configuration overrides for this access point
+        :param pulumi.Input[_builtins.str] site_id: Site where this access point is assigned
+        :param pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']] uplink_port_config: Authentication and failover behavior for AP uplink ports
+        :param pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']] usb_config: Legacy USB integration settings for this access point
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this access point
+        :param pulumi.Input[_builtins.float] x: Horizontal map position of the AP, in pixels
+        :param pulumi.Input[_builtins.float] y: Vertical map position of the AP, in pixels
+        :param pulumi.Input[Union['ApZigbeeConfigArgs', 'ApZigbeeConfigArgsDict']] zigbee_config: Zigbee radio and network settings for this access point
         """
         ...
     @overload
@@ -1311,6 +1423,7 @@ class Ap(pulumi.CustomResource):
                  locked: pulumi.Input[Optional[_builtins.bool]] = None,
                  map_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mesh: pulumi.Input[Optional[Union['ApMeshArgs', 'ApMeshArgsDict']]] = None,
+                 mqtt_config: pulumi.Input[Optional[Union['ApMqttConfigArgs', 'ApMqttConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notes: pulumi.Input[Optional[_builtins.str]] = None,
                  ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1356,6 +1469,7 @@ class Ap(pulumi.CustomResource):
             __props__.__dict__["locked"] = locked
             __props__.__dict__["map_id"] = map_id
             __props__.__dict__["mesh"] = mesh
+            __props__.__dict__["mqtt_config"] = mqtt_config
             __props__.__dict__["name"] = name
             __props__.__dict__["notes"] = notes
             __props__.__dict__["ntp_servers"] = ntp_servers
@@ -1415,6 +1529,7 @@ class Ap(pulumi.CustomResource):
             map_id: pulumi.Input[Optional[_builtins.str]] = None,
             mesh: pulumi.Input[Optional[Union['ApMeshArgs', 'ApMeshArgsDict']]] = None,
             model: pulumi.Input[Optional[_builtins.str]] = None,
+            mqtt_config: pulumi.Input[Optional[Union['ApMqttConfigArgs', 'ApMqttConfigArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             notes: pulumi.Input[Optional[_builtins.str]] = None,
             ntp_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1440,37 +1555,48 @@ class Ap(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']] aeroscout: Aeroscout AP settings
-        :param pulumi.Input[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']] ble_config: BLE AP settings
+        :param pulumi.Input[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']] aeroscout: Location integration settings for AeroScout on this access point
+        :param pulumi.Input[Union['ApAiristaArgs', 'ApAiristaArgsDict']] airista: Location integration settings for Airista on this access point
+        :param pulumi.Input[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']] ble_config: Bluetooth Low Energy beacon and asset settings for this access point
+        :param pulumi.Input[Union['ApCentrakArgs', 'ApCentrakArgsDict']] centrak: Location integration settings for Centrak on this access point
+        :param pulumi.Input[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict']] client_bridge: Wireless client bridge settings for this access point
         :param pulumi.Input[_builtins.bool] disable_eth1: Whether to disable eth1 port
         :param pulumi.Input[_builtins.bool] disable_eth2: Whether to disable eth2 port
         :param pulumi.Input[_builtins.bool] disable_eth3: Whether to disable eth3 port
         :param pulumi.Input[_builtins.bool] disable_module: Whether to disable module port
+        :param pulumi.Input[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']] esl_config: Electronic shelf label integration settings for this access point
         :param pulumi.Input[_builtins.bool] flow_control: For some AP models, flow_control can be enabled to address some switch compatibility issue
-        :param pulumi.Input[_builtins.float] height: Height, in meters, optional
-        :param pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']] ip_config: IP AP settings
-        :param pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']] led: LED AP settings
+        :param pulumi.Input[_builtins.float] height: Installation height of the AP, in meters
+        :param pulumi.Input[_builtins.str] image1_url: First custom image URL associated with the access point
+        :param pulumi.Input[_builtins.str] image2_url: Second custom image URL associated with the access point
+        :param pulumi.Input[_builtins.str] image3_url: Third custom image URL associated with the access point
+        :param pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']] ip_config: Management IP addressing settings for this access point
+        :param pulumi.Input[Union['ApLacpConfigArgs', 'ApLacpConfigArgsDict']] lacp_config: Link aggregation settings for supported AP Ethernet uplinks
+        :param pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']] led: Indicator light behavior settings for this access point
         :param pulumi.Input[_builtins.bool] locked: Whether this map is considered locked down
-        :param pulumi.Input[_builtins.str] mac: Device MAC address
+        :param pulumi.Input[_builtins.str] mac: Access point MAC address used to identify the device
         :param pulumi.Input[_builtins.str] map_id: Map where the device belongs to
-        :param pulumi.Input[Union['ApMeshArgs', 'ApMeshArgsDict']] mesh: Mesh AP settings
-        :param pulumi.Input[_builtins.str] model: Device Model
+        :param pulumi.Input[Union['ApMeshArgs', 'ApMeshArgsDict']] mesh: Wireless mesh role and band settings for this access point
+        :param pulumi.Input[_builtins.str] model: Hardware model reported for the access point
+        :param pulumi.Input[Union['ApMqttConfigArgs', 'ApMqttConfigArgsDict']] mqtt_config: MQTT broker publishing settings for this access point
+        :param pulumi.Input[_builtins.str] name: Configured hostname assigned to the access point
         :param pulumi.Input[_builtins.str] notes: Any notes about this AP
-        :param pulumi.Input[_builtins.int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ntp_servers: NTP servers used by this access point
+        :param pulumi.Input[_builtins.str] org_id: Organization that owns this access point
+        :param pulumi.Input[_builtins.int] orientation: AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
         :param pulumi.Input[_builtins.bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ApPortConfigArgs', 'ApPortConfigArgsDict']]]] port_config: eth0 is not allowed here. Property key is the interface(s) name (e.g. `eth1` or `eth1,eth2`). If spcified, this takes predecence over switch_config (switch_config requires user to configure all vlans manually, which is error-prone. thus deprecated)
-        :param pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']] pwr_config: Power related configs
-        :param pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']] radio_config: Radio AP settings
-        :param pulumi.Input[_builtins.str] serial: Device Serial
-        :param pulumi.Input[_builtins.str] type: Device Type. enum: `ap`
-        :param pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']] usb_config: USB AP settings
-                 - Note: if native imagotag is enabled, BLE will be disabled automatically
-                 - Note: legacy, new config moved to ESL Config.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[_builtins.float] x: X in pixel
-        :param pulumi.Input[_builtins.float] y: Y in pixel
-        :param pulumi.Input[Union['ApZigbeeConfigArgs', 'ApZigbeeConfigArgsDict']] zigbee_config: Zigbee AP settings
+        :param pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']] pwr_config: Power negotiation and peripheral power settings for this access point
+        :param pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']] radio_config: Radio configuration overrides for this access point
+        :param pulumi.Input[_builtins.str] serial: Manufacturer serial number for the access point
+        :param pulumi.Input[_builtins.str] site_id: Site where this access point is assigned
+        :param pulumi.Input[_builtins.str] type: Device type discriminator for access point records
+        :param pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']] uplink_port_config: Authentication and failover behavior for AP uplink ports
+        :param pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']] usb_config: Legacy USB integration settings for this access point
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] vars: Variable values that override site variables for this access point
+        :param pulumi.Input[_builtins.float] x: Horizontal map position of the AP, in pixels
+        :param pulumi.Input[_builtins.float] y: Vertical map position of the AP, in pixels
+        :param pulumi.Input[Union['ApZigbeeConfigArgs', 'ApZigbeeConfigArgsDict']] zigbee_config: Zigbee radio and network settings for this access point
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1500,6 +1626,7 @@ class Ap(pulumi.CustomResource):
         __props__.__dict__["map_id"] = map_id
         __props__.__dict__["mesh"] = mesh
         __props__.__dict__["model"] = model
+        __props__.__dict__["mqtt_config"] = mqtt_config
         __props__.__dict__["name"] = name
         __props__.__dict__["notes"] = notes
         __props__.__dict__["ntp_servers"] = ntp_servers
@@ -1524,31 +1651,40 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def aeroscout(self) -> pulumi.Output[Optional['outputs.ApAeroscout']]:
         """
-        Aeroscout AP settings
+        Location integration settings for AeroScout on this access point
         """
         return pulumi.get(self, "aeroscout")
 
     @_builtins.property
     @pulumi.getter
     def airista(self) -> pulumi.Output[Optional['outputs.ApAirista']]:
+        """
+        Location integration settings for Airista on this access point
+        """
         return pulumi.get(self, "airista")
 
     @_builtins.property
     @pulumi.getter(name="bleConfig")
     def ble_config(self) -> pulumi.Output[Optional['outputs.ApBleConfig']]:
         """
-        BLE AP settings
+        Bluetooth Low Energy beacon and asset settings for this access point
         """
         return pulumi.get(self, "ble_config")
 
     @_builtins.property
     @pulumi.getter
     def centrak(self) -> pulumi.Output[Optional['outputs.ApCentrak']]:
+        """
+        Location integration settings for Centrak on this access point
+        """
         return pulumi.get(self, "centrak")
 
     @_builtins.property
     @pulumi.getter(name="clientBridge")
     def client_bridge(self) -> pulumi.Output[Optional['outputs.ApClientBridge']]:
+        """
+        Wireless client bridge settings for this access point
+        """
         return pulumi.get(self, "client_bridge")
 
     @_builtins.property
@@ -1591,6 +1727,9 @@ class Ap(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="eslConfig")
     def esl_config(self) -> pulumi.Output[Optional['outputs.ApEslConfig']]:
+        """
+        Electronic shelf label integration settings for this access point
+        """
         return pulumi.get(self, "esl_config")
 
     @_builtins.property
@@ -1605,43 +1744,55 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def height(self) -> pulumi.Output[Optional[_builtins.float]]:
         """
-        Height, in meters, optional
+        Installation height of the AP, in meters
         """
         return pulumi.get(self, "height")
 
     @_builtins.property
     @pulumi.getter(name="image1Url")
     def image1_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        First custom image URL associated with the access point
+        """
         return pulumi.get(self, "image1_url")
 
     @_builtins.property
     @pulumi.getter(name="image2Url")
     def image2_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Second custom image URL associated with the access point
+        """
         return pulumi.get(self, "image2_url")
 
     @_builtins.property
     @pulumi.getter(name="image3Url")
     def image3_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Third custom image URL associated with the access point
+        """
         return pulumi.get(self, "image3_url")
 
     @_builtins.property
     @pulumi.getter(name="ipConfig")
     def ip_config(self) -> pulumi.Output[Optional['outputs.ApIpConfig']]:
         """
-        IP AP settings
+        Management IP addressing settings for this access point
         """
         return pulumi.get(self, "ip_config")
 
     @_builtins.property
     @pulumi.getter(name="lacpConfig")
     def lacp_config(self) -> pulumi.Output[Optional['outputs.ApLacpConfig']]:
+        """
+        Link aggregation settings for supported AP Ethernet uplinks
+        """
         return pulumi.get(self, "lacp_config")
 
     @_builtins.property
     @pulumi.getter
     def led(self) -> pulumi.Output[Optional['outputs.ApLed']]:
         """
-        LED AP settings
+        Indicator light behavior settings for this access point
         """
         return pulumi.get(self, "led")
 
@@ -1657,7 +1808,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def mac(self) -> pulumi.Output[_builtins.str]:
         """
-        Device MAC address
+        Access point MAC address used to identify the device
         """
         return pulumi.get(self, "mac")
 
@@ -1673,7 +1824,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def mesh(self) -> pulumi.Output[Optional['outputs.ApMesh']]:
         """
-        Mesh AP settings
+        Wireless mesh role and band settings for this access point
         """
         return pulumi.get(self, "mesh")
 
@@ -1681,13 +1832,24 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def model(self) -> pulumi.Output[_builtins.str]:
         """
-        Device Model
+        Hardware model reported for the access point
         """
         return pulumi.get(self, "model")
 
     @_builtins.property
+    @pulumi.getter(name="mqttConfig")
+    def mqtt_config(self) -> pulumi.Output[Optional['outputs.ApMqttConfig']]:
+        """
+        MQTT broker publishing settings for this access point
+        """
+        return pulumi.get(self, "mqtt_config")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Configured hostname assigned to the access point
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -1701,18 +1863,24 @@ class Ap(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="ntpServers")
     def ntp_servers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        NTP servers used by this access point
+        """
         return pulumi.get(self, "ntp_servers")
 
     @_builtins.property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Organization that owns this access point
+        """
         return pulumi.get(self, "org_id")
 
     @_builtins.property
     @pulumi.getter
     def orientation(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Orientation, 0-359, in degrees, up is 0, right is 90.
+        AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
         """
         return pulumi.get(self, "orientation")
 
@@ -1736,7 +1904,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="pwrConfig")
     def pwr_config(self) -> pulumi.Output[Optional['outputs.ApPwrConfig']]:
         """
-        Power related configs
+        Power negotiation and peripheral power settings for this access point
         """
         return pulumi.get(self, "pwr_config")
 
@@ -1744,7 +1912,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="radioConfig")
     def radio_config(self) -> pulumi.Output[Optional['outputs.ApRadioConfig']]:
         """
-        Radio AP settings
+        Radio configuration overrides for this access point
         """
         return pulumi.get(self, "radio_config")
 
@@ -1752,20 +1920,23 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def serial(self) -> pulumi.Output[_builtins.str]:
         """
-        Device Serial
+        Manufacturer serial number for the access point
         """
         return pulumi.get(self, "serial")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Site where this access point is assigned
+        """
         return pulumi.get(self, "site_id")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Device Type. enum: `ap`
+        Device type discriminator for access point records
         """
         return pulumi.get(self, "type")
 
@@ -1773,7 +1944,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="uplinkPortConfig")
     def uplink_port_config(self) -> pulumi.Output[Optional['outputs.ApUplinkPortConfig']]:
         """
-        AP Uplink port configuration
+        Authentication and failover behavior for AP uplink ports
         """
         return pulumi.get(self, "uplink_port_config")
 
@@ -1781,9 +1952,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="usbConfig")
     def usb_config(self) -> pulumi.Output[Optional['outputs.ApUsbConfig']]:
         """
-        USB AP settings
-          - Note: if native imagotag is enabled, BLE will be disabled automatically
-          - Note: legacy, new config moved to ESL Config.
+        Legacy USB integration settings for this access point
         """
         return pulumi.get(self, "usb_config")
 
@@ -1791,7 +1960,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def vars(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Variable values that override site variables for this access point
         """
         return pulumi.get(self, "vars")
 
@@ -1799,7 +1968,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def x(self) -> pulumi.Output[Optional[_builtins.float]]:
         """
-        X in pixel
+        Horizontal map position of the AP, in pixels
         """
         return pulumi.get(self, "x")
 
@@ -1807,7 +1976,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def y(self) -> pulumi.Output[Optional[_builtins.float]]:
         """
-        Y in pixel
+        Vertical map position of the AP, in pixels
         """
         return pulumi.get(self, "y")
 
@@ -1815,7 +1984,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="zigbeeConfig")
     def zigbee_config(self) -> pulumi.Output[Optional['outputs.ApZigbeeConfig']]:
         """
-        Zigbee AP settings
+        Zigbee radio and network settings for this access point
         """
         return pulumi.get(self, "zigbee_config")
 

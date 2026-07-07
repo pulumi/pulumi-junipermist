@@ -18,37 +18,61 @@ public final class DeviceprofileGatewayIdpProfilesArgs extends com.pulumi.resour
     public static final DeviceprofileGatewayIdpProfilesArgs Empty = new DeviceprofileGatewayIdpProfilesArgs();
 
     /**
-     * enum: `critical`, `standard`, `strict`
+     * Built-in IDP baseline profile inherited before applying overwrites
      * 
      */
     @Import(name="baseProfile")
     private @Nullable Output<String> baseProfile;
 
     /**
-     * @return enum: `critical`, `standard`, `strict`
+     * @return Built-in IDP baseline profile inherited before applying overwrites
      * 
      */
     public Optional<Output<String>> baseProfile() {
         return Optional.ofNullable(this.baseProfile);
     }
 
+    /**
+     * Display name of the IDP profile
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the IDP profile
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Owning organization for the IDP profile
+     * 
+     */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
+    /**
+     * @return Owning organization for the IDP profile
+     * 
+     */
     public Optional<Output<String>> orgId() {
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * IDP signature override rules applied on top of the base profile
+     * 
+     */
     @Import(name="overwrites")
     private @Nullable Output<List<DeviceprofileGatewayIdpProfilesOverwriteArgs>> overwrites;
 
+    /**
+     * @return IDP signature override rules applied on top of the base profile
+     * 
+     */
     public Optional<Output<List<DeviceprofileGatewayIdpProfilesOverwriteArgs>>> overwrites() {
         return Optional.ofNullable(this.overwrites);
     }
@@ -81,7 +105,7 @@ public final class DeviceprofileGatewayIdpProfilesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param baseProfile enum: `critical`, `standard`, `strict`
+         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites
          * 
          * @return builder
          * 
@@ -92,7 +116,7 @@ public final class DeviceprofileGatewayIdpProfilesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param baseProfile enum: `critical`, `standard`, `strict`
+         * @param baseProfile Built-in IDP baseline profile inherited before applying overwrites
          * 
          * @return builder
          * 
@@ -101,33 +125,75 @@ public final class DeviceprofileGatewayIdpProfilesArgs extends com.pulumi.resour
             return baseProfile(Output.of(baseProfile));
         }
 
+        /**
+         * @param name Display name of the IDP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the IDP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param orgId Owning organization for the IDP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
 
+        /**
+         * @param orgId Owning organization for the IDP profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
         }
 
+        /**
+         * @param overwrites IDP signature override rules applied on top of the base profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder overwrites(@Nullable Output<List<DeviceprofileGatewayIdpProfilesOverwriteArgs>> overwrites) {
             $.overwrites = overwrites;
             return this;
         }
 
+        /**
+         * @param overwrites IDP signature override rules applied on top of the base profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder overwrites(List<DeviceprofileGatewayIdpProfilesOverwriteArgs> overwrites) {
             return overwrites(Output.of(overwrites));
         }
 
+        /**
+         * @param overwrites IDP signature override rules applied on top of the base profile
+         * 
+         * @return builder
+         * 
+         */
         public Builder overwrites(DeviceprofileGatewayIdpProfilesOverwriteArgs... overwrites) {
             return overwrites(List.of(overwrites));
         }

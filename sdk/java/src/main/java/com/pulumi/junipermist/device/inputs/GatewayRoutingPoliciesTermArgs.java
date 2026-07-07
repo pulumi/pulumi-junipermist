@@ -17,14 +17,14 @@ public final class GatewayRoutingPoliciesTermArgs extends com.pulumi.resources.R
     public static final GatewayRoutingPoliciesTermArgs Empty = new GatewayRoutingPoliciesTermArgs();
 
     /**
-     * When used as import policy
+     * Policy actions applied when this routing policy term matches
      * 
      */
     @Import(name="actions")
     private @Nullable Output<GatewayRoutingPoliciesTermActionsArgs> actions;
 
     /**
-     * @return When used as import policy
+     * @return Policy actions applied when this routing policy term matches
      * 
      */
     public Optional<Output<GatewayRoutingPoliciesTermActionsArgs>> actions() {
@@ -32,14 +32,14 @@ public final class GatewayRoutingPoliciesTermArgs extends com.pulumi.resources.R
     }
 
     /**
-     * zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * Route match criteria that must be satisfied before actions are applied
      * 
      */
     @Import(name="matching")
     private @Nullable Output<GatewayRoutingPoliciesTermMatchingArgs> matching;
 
     /**
-     * @return zero or more criteria/filter can be specified to match the term, all criteria have to be met
+     * @return Route match criteria that must be satisfied before actions are applied
      * 
      */
     public Optional<Output<GatewayRoutingPoliciesTermMatchingArgs>> matching() {
@@ -72,7 +72,7 @@ public final class GatewayRoutingPoliciesTermArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param actions When used as import policy
+         * @param actions Policy actions applied when this routing policy term matches
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GatewayRoutingPoliciesTermArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param actions When used as import policy
+         * @param actions Policy actions applied when this routing policy term matches
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GatewayRoutingPoliciesTermArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param matching zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param matching Route match criteria that must be satisfied before actions are applied
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GatewayRoutingPoliciesTermArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param matching zero or more criteria/filter can be specified to match the term, all criteria have to be met
+         * @param matching Route match criteria that must be satisfied before actions are applied
          * 
          * @return builder
          * 

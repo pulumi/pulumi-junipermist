@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchSwitchMgmtLocalAccounts
     {
+        /// <summary>
+        /// Local password for the switch user account
+        /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// enum: `Admin`, `Helpdesk`, `None`, `Read`
+        /// Access role granted to the local switch user account
         /// </summary>
         public readonly string? Role;
 

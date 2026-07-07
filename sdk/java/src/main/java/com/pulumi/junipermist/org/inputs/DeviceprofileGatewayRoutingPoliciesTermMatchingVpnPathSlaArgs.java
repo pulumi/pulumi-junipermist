@@ -15,23 +15,47 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSlaArgs
 
     public static final DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSlaArgs Empty = new DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSlaArgs();
 
+    /**
+     * Maximum jitter threshold allowed for the VPN path
+     * 
+     */
     @Import(name="maxJitter")
     private @Nullable Output<Integer> maxJitter;
 
+    /**
+     * @return Maximum jitter threshold allowed for the VPN path
+     * 
+     */
     public Optional<Output<Integer>> maxJitter() {
         return Optional.ofNullable(this.maxJitter);
     }
 
+    /**
+     * Maximum latency threshold allowed for the VPN path
+     * 
+     */
     @Import(name="maxLatency")
     private @Nullable Output<Integer> maxLatency;
 
+    /**
+     * @return Maximum latency threshold allowed for the VPN path
+     * 
+     */
     public Optional<Output<Integer>> maxLatency() {
         return Optional.ofNullable(this.maxLatency);
     }
 
+    /**
+     * Maximum packet-loss threshold allowed for the VPN path
+     * 
+     */
     @Import(name="maxLoss")
     private @Nullable Output<Integer> maxLoss;
 
+    /**
+     * @return Maximum packet-loss threshold allowed for the VPN path
+     * 
+     */
     public Optional<Output<Integer>> maxLoss() {
         return Optional.ofNullable(this.maxLoss);
     }
@@ -62,29 +86,65 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSlaArgs
             $ = new DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSlaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maxJitter Maximum jitter threshold allowed for the VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxJitter(@Nullable Output<Integer> maxJitter) {
             $.maxJitter = maxJitter;
             return this;
         }
 
+        /**
+         * @param maxJitter Maximum jitter threshold allowed for the VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxJitter(Integer maxJitter) {
             return maxJitter(Output.of(maxJitter));
         }
 
+        /**
+         * @param maxLatency Maximum latency threshold allowed for the VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxLatency(@Nullable Output<Integer> maxLatency) {
             $.maxLatency = maxLatency;
             return this;
         }
 
+        /**
+         * @param maxLatency Maximum latency threshold allowed for the VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxLatency(Integer maxLatency) {
             return maxLatency(Output.of(maxLatency));
         }
 
+        /**
+         * @param maxLoss Maximum packet-loss threshold allowed for the VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxLoss(@Nullable Output<Integer> maxLoss) {
             $.maxLoss = maxLoss;
             return this;
         }
 
+        /**
+         * @param maxLoss Maximum packet-loss threshold allowed for the VPN path
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxLoss(Integer maxLoss) {
             return maxLoss(Output.of(maxLoss));
         }

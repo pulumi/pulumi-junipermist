@@ -27,23 +27,32 @@ namespace Pulumi.JuniperMist.Device
     public partial class Ap : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Aeroscout AP settings
+        /// Location integration settings for AeroScout on this access point
         /// </summary>
         [Output("aeroscout")]
         public Output<Outputs.ApAeroscout?> Aeroscout { get; private set; } = null!;
 
+        /// <summary>
+        /// Location integration settings for Airista on this access point
+        /// </summary>
         [Output("airista")]
         public Output<Outputs.ApAirista?> Airista { get; private set; } = null!;
 
         /// <summary>
-        /// BLE AP settings
+        /// Bluetooth Low Energy beacon and asset settings for this access point
         /// </summary>
         [Output("bleConfig")]
         public Output<Outputs.ApBleConfig?> BleConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Location integration settings for Centrak on this access point
+        /// </summary>
         [Output("centrak")]
         public Output<Outputs.ApCentrak?> Centrak { get; private set; } = null!;
 
+        /// <summary>
+        /// Wireless client bridge settings for this access point
+        /// </summary>
         [Output("clientBridge")]
         public Output<Outputs.ApClientBridge?> ClientBridge { get; private set; } = null!;
 
@@ -74,6 +83,9 @@ namespace Pulumi.JuniperMist.Device
         [Output("disableModule")]
         public Output<bool> DisableModule { get; private set; } = null!;
 
+        /// <summary>
+        /// Electronic shelf label integration settings for this access point
+        /// </summary>
         [Output("eslConfig")]
         public Output<Outputs.ApEslConfig?> EslConfig { get; private set; } = null!;
 
@@ -84,31 +96,43 @@ namespace Pulumi.JuniperMist.Device
         public Output<bool> FlowControl { get; private set; } = null!;
 
         /// <summary>
-        /// Height, in meters, optional
+        /// Installation height of the AP, in meters
         /// </summary>
         [Output("height")]
         public Output<double?> Height { get; private set; } = null!;
 
+        /// <summary>
+        /// First custom image URL associated with the access point
+        /// </summary>
         [Output("image1Url")]
         public Output<string> Image1Url { get; private set; } = null!;
 
+        /// <summary>
+        /// Second custom image URL associated with the access point
+        /// </summary>
         [Output("image2Url")]
         public Output<string> Image2Url { get; private set; } = null!;
 
+        /// <summary>
+        /// Third custom image URL associated with the access point
+        /// </summary>
         [Output("image3Url")]
         public Output<string> Image3Url { get; private set; } = null!;
 
         /// <summary>
-        /// IP AP settings
+        /// Management IP addressing settings for this access point
         /// </summary>
         [Output("ipConfig")]
         public Output<Outputs.ApIpConfig?> IpConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Link aggregation settings for supported AP Ethernet uplinks
+        /// </summary>
         [Output("lacpConfig")]
         public Output<Outputs.ApLacpConfig?> LacpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// LED AP settings
+        /// Indicator light behavior settings for this access point
         /// </summary>
         [Output("led")]
         public Output<Outputs.ApLed?> Led { get; private set; } = null!;
@@ -120,7 +144,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<bool?> Locked { get; private set; } = null!;
 
         /// <summary>
-        /// Device MAC address
+        /// Access point MAC address used to identify the device
         /// </summary>
         [Output("mac")]
         public Output<string> Mac { get; private set; } = null!;
@@ -132,17 +156,26 @@ namespace Pulumi.JuniperMist.Device
         public Output<string?> MapId { get; private set; } = null!;
 
         /// <summary>
-        /// Mesh AP settings
+        /// Wireless mesh role and band settings for this access point
         /// </summary>
         [Output("mesh")]
         public Output<Outputs.ApMesh?> Mesh { get; private set; } = null!;
 
         /// <summary>
-        /// Device Model
+        /// Hardware model reported for the access point
         /// </summary>
         [Output("model")]
         public Output<string> Model { get; private set; } = null!;
 
+        /// <summary>
+        /// MQTT broker publishing settings for this access point
+        /// </summary>
+        [Output("mqttConfig")]
+        public Output<Outputs.ApMqttConfig?> MqttConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Configured hostname assigned to the access point
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -152,14 +185,20 @@ namespace Pulumi.JuniperMist.Device
         [Output("notes")]
         public Output<string?> Notes { get; private set; } = null!;
 
+        /// <summary>
+        /// NTP servers used by this access point
+        /// </summary>
         [Output("ntpServers")]
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
+        /// <summary>
+        /// Organization that owns this access point
+        /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Orientation, 0-359, in degrees, up is 0, right is 90.
+        /// AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
         /// </summary>
         [Output("orientation")]
         public Output<int?> Orientation { get; private set; } = null!;
@@ -177,66 +216,67 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.ApPortConfig>?> PortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Power related configs
+        /// Power negotiation and peripheral power settings for this access point
         /// </summary>
         [Output("pwrConfig")]
         public Output<Outputs.ApPwrConfig?> PwrConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Radio AP settings
+        /// Radio configuration overrides for this access point
         /// </summary>
         [Output("radioConfig")]
         public Output<Outputs.ApRadioConfig?> RadioConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Device Serial
+        /// Manufacturer serial number for the access point
         /// </summary>
         [Output("serial")]
         public Output<string> Serial { get; private set; } = null!;
 
+        /// <summary>
+        /// Site where this access point is assigned
+        /// </summary>
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Device Type. enum: `Ap`
+        /// Device type discriminator for access point records
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// AP Uplink port configuration
+        /// Authentication and failover behavior for AP uplink ports
         /// </summary>
         [Output("uplinkPortConfig")]
         public Output<Outputs.ApUplinkPortConfig?> UplinkPortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// USB AP settings
-        ///   - Note: if native imagotag is enabled, BLE will be disabled automatically
-        ///   - Note: legacy, new config moved to ESL Config.
+        /// Legacy USB integration settings for this access point
         /// </summary>
         [Output("usbConfig")]
         public Output<Outputs.ApUsbConfig?> UsbConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Variable values that override site variables for this access point
         /// </summary>
         [Output("vars")]
         public Output<ImmutableDictionary<string, string>?> Vars { get; private set; } = null!;
 
         /// <summary>
-        /// X in pixel
+        /// Horizontal map position of the AP, in pixels
         /// </summary>
         [Output("x")]
         public Output<double?> X { get; private set; } = null!;
 
         /// <summary>
-        /// Y in pixel
+        /// Vertical map position of the AP, in pixels
         /// </summary>
         [Output("y")]
         public Output<double?> Y { get; private set; } = null!;
 
         /// <summary>
-        /// Zigbee AP settings
+        /// Zigbee radio and network settings for this access point
         /// </summary>
         [Output("zigbeeConfig")]
         public Output<Outputs.ApZigbeeConfig?> ZigbeeConfig { get; private set; } = null!;
@@ -289,23 +329,32 @@ namespace Pulumi.JuniperMist.Device
     public sealed class ApArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Aeroscout AP settings
+        /// Location integration settings for AeroScout on this access point
         /// </summary>
         [Input("aeroscout")]
         public Input<Inputs.ApAeroscoutArgs>? Aeroscout { get; set; }
 
+        /// <summary>
+        /// Location integration settings for Airista on this access point
+        /// </summary>
         [Input("airista")]
         public Input<Inputs.ApAiristaArgs>? Airista { get; set; }
 
         /// <summary>
-        /// BLE AP settings
+        /// Bluetooth Low Energy beacon and asset settings for this access point
         /// </summary>
         [Input("bleConfig")]
         public Input<Inputs.ApBleConfigArgs>? BleConfig { get; set; }
 
+        /// <summary>
+        /// Location integration settings for Centrak on this access point
+        /// </summary>
         [Input("centrak")]
         public Input<Inputs.ApCentrakArgs>? Centrak { get; set; }
 
+        /// <summary>
+        /// Wireless client bridge settings for this access point
+        /// </summary>
         [Input("clientBridge")]
         public Input<Inputs.ApClientBridgeArgs>? ClientBridge { get; set; }
 
@@ -336,6 +385,9 @@ namespace Pulumi.JuniperMist.Device
         [Input("disableModule")]
         public Input<bool>? DisableModule { get; set; }
 
+        /// <summary>
+        /// Electronic shelf label integration settings for this access point
+        /// </summary>
         [Input("eslConfig")]
         public Input<Inputs.ApEslConfigArgs>? EslConfig { get; set; }
 
@@ -346,22 +398,25 @@ namespace Pulumi.JuniperMist.Device
         public Input<bool>? FlowControl { get; set; }
 
         /// <summary>
-        /// Height, in meters, optional
+        /// Installation height of the AP, in meters
         /// </summary>
         [Input("height")]
         public Input<double>? Height { get; set; }
 
         /// <summary>
-        /// IP AP settings
+        /// Management IP addressing settings for this access point
         /// </summary>
         [Input("ipConfig")]
         public Input<Inputs.ApIpConfigArgs>? IpConfig { get; set; }
 
+        /// <summary>
+        /// Link aggregation settings for supported AP Ethernet uplinks
+        /// </summary>
         [Input("lacpConfig")]
         public Input<Inputs.ApLacpConfigArgs>? LacpConfig { get; set; }
 
         /// <summary>
-        /// LED AP settings
+        /// Indicator light behavior settings for this access point
         /// </summary>
         [Input("led")]
         public Input<Inputs.ApLedArgs>? Led { get; set; }
@@ -379,11 +434,20 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? MapId { get; set; }
 
         /// <summary>
-        /// Mesh AP settings
+        /// Wireless mesh role and band settings for this access point
         /// </summary>
         [Input("mesh")]
         public Input<Inputs.ApMeshArgs>? Mesh { get; set; }
 
+        /// <summary>
+        /// MQTT broker publishing settings for this access point
+        /// </summary>
+        [Input("mqttConfig")]
+        public Input<Inputs.ApMqttConfigArgs>? MqttConfig { get; set; }
+
+        /// <summary>
+        /// Configured hostname assigned to the access point
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -395,6 +459,10 @@ namespace Pulumi.JuniperMist.Device
 
         [Input("ntpServers")]
         private InputList<string>? _ntpServers;
+
+        /// <summary>
+        /// NTP servers used by this access point
+        /// </summary>
         public InputList<string> NtpServers
         {
             get => _ntpServers ?? (_ntpServers = new InputList<string>());
@@ -402,7 +470,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Orientation, 0-359, in degrees, up is 0, right is 90.
+        /// AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
         /// </summary>
         [Input("orientation")]
         public Input<int>? Orientation { get; set; }
@@ -426,30 +494,31 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Power related configs
+        /// Power negotiation and peripheral power settings for this access point
         /// </summary>
         [Input("pwrConfig")]
         public Input<Inputs.ApPwrConfigArgs>? PwrConfig { get; set; }
 
         /// <summary>
-        /// Radio AP settings
+        /// Radio configuration overrides for this access point
         /// </summary>
         [Input("radioConfig")]
         public Input<Inputs.ApRadioConfigArgs>? RadioConfig { get; set; }
 
+        /// <summary>
+        /// Site where this access point is assigned
+        /// </summary>
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// AP Uplink port configuration
+        /// Authentication and failover behavior for AP uplink ports
         /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.ApUplinkPortConfigArgs>? UplinkPortConfig { get; set; }
 
         /// <summary>
-        /// USB AP settings
-        ///   - Note: if native imagotag is enabled, BLE will be disabled automatically
-        ///   - Note: legacy, new config moved to ESL Config.
+        /// Legacy USB integration settings for this access point
         /// </summary>
         [Input("usbConfig")]
         public Input<Inputs.ApUsbConfigArgs>? UsbConfig { get; set; }
@@ -458,7 +527,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Variable values that override site variables for this access point
         /// </summary>
         public InputMap<string> Vars
         {
@@ -467,19 +536,19 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// X in pixel
+        /// Horizontal map position of the AP, in pixels
         /// </summary>
         [Input("x")]
         public Input<double>? X { get; set; }
 
         /// <summary>
-        /// Y in pixel
+        /// Vertical map position of the AP, in pixels
         /// </summary>
         [Input("y")]
         public Input<double>? Y { get; set; }
 
         /// <summary>
-        /// Zigbee AP settings
+        /// Zigbee radio and network settings for this access point
         /// </summary>
         [Input("zigbeeConfig")]
         public Input<Inputs.ApZigbeeConfigArgs>? ZigbeeConfig { get; set; }
@@ -493,23 +562,32 @@ namespace Pulumi.JuniperMist.Device
     public sealed class ApState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Aeroscout AP settings
+        /// Location integration settings for AeroScout on this access point
         /// </summary>
         [Input("aeroscout")]
         public Input<Inputs.ApAeroscoutGetArgs>? Aeroscout { get; set; }
 
+        /// <summary>
+        /// Location integration settings for Airista on this access point
+        /// </summary>
         [Input("airista")]
         public Input<Inputs.ApAiristaGetArgs>? Airista { get; set; }
 
         /// <summary>
-        /// BLE AP settings
+        /// Bluetooth Low Energy beacon and asset settings for this access point
         /// </summary>
         [Input("bleConfig")]
         public Input<Inputs.ApBleConfigGetArgs>? BleConfig { get; set; }
 
+        /// <summary>
+        /// Location integration settings for Centrak on this access point
+        /// </summary>
         [Input("centrak")]
         public Input<Inputs.ApCentrakGetArgs>? Centrak { get; set; }
 
+        /// <summary>
+        /// Wireless client bridge settings for this access point
+        /// </summary>
         [Input("clientBridge")]
         public Input<Inputs.ApClientBridgeGetArgs>? ClientBridge { get; set; }
 
@@ -540,6 +618,9 @@ namespace Pulumi.JuniperMist.Device
         [Input("disableModule")]
         public Input<bool>? DisableModule { get; set; }
 
+        /// <summary>
+        /// Electronic shelf label integration settings for this access point
+        /// </summary>
         [Input("eslConfig")]
         public Input<Inputs.ApEslConfigGetArgs>? EslConfig { get; set; }
 
@@ -550,31 +631,43 @@ namespace Pulumi.JuniperMist.Device
         public Input<bool>? FlowControl { get; set; }
 
         /// <summary>
-        /// Height, in meters, optional
+        /// Installation height of the AP, in meters
         /// </summary>
         [Input("height")]
         public Input<double>? Height { get; set; }
 
+        /// <summary>
+        /// First custom image URL associated with the access point
+        /// </summary>
         [Input("image1Url")]
         public Input<string>? Image1Url { get; set; }
 
+        /// <summary>
+        /// Second custom image URL associated with the access point
+        /// </summary>
         [Input("image2Url")]
         public Input<string>? Image2Url { get; set; }
 
+        /// <summary>
+        /// Third custom image URL associated with the access point
+        /// </summary>
         [Input("image3Url")]
         public Input<string>? Image3Url { get; set; }
 
         /// <summary>
-        /// IP AP settings
+        /// Management IP addressing settings for this access point
         /// </summary>
         [Input("ipConfig")]
         public Input<Inputs.ApIpConfigGetArgs>? IpConfig { get; set; }
 
+        /// <summary>
+        /// Link aggregation settings for supported AP Ethernet uplinks
+        /// </summary>
         [Input("lacpConfig")]
         public Input<Inputs.ApLacpConfigGetArgs>? LacpConfig { get; set; }
 
         /// <summary>
-        /// LED AP settings
+        /// Indicator light behavior settings for this access point
         /// </summary>
         [Input("led")]
         public Input<Inputs.ApLedGetArgs>? Led { get; set; }
@@ -586,7 +679,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<bool>? Locked { get; set; }
 
         /// <summary>
-        /// Device MAC address
+        /// Access point MAC address used to identify the device
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -598,17 +691,26 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? MapId { get; set; }
 
         /// <summary>
-        /// Mesh AP settings
+        /// Wireless mesh role and band settings for this access point
         /// </summary>
         [Input("mesh")]
         public Input<Inputs.ApMeshGetArgs>? Mesh { get; set; }
 
         /// <summary>
-        /// Device Model
+        /// Hardware model reported for the access point
         /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
 
+        /// <summary>
+        /// MQTT broker publishing settings for this access point
+        /// </summary>
+        [Input("mqttConfig")]
+        public Input<Inputs.ApMqttConfigGetArgs>? MqttConfig { get; set; }
+
+        /// <summary>
+        /// Configured hostname assigned to the access point
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -620,17 +722,24 @@ namespace Pulumi.JuniperMist.Device
 
         [Input("ntpServers")]
         private InputList<string>? _ntpServers;
+
+        /// <summary>
+        /// NTP servers used by this access point
+        /// </summary>
         public InputList<string> NtpServers
         {
             get => _ntpServers ?? (_ntpServers = new InputList<string>());
             set => _ntpServers = value;
         }
 
+        /// <summary>
+        /// Organization that owns this access point
+        /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Orientation, 0-359, in degrees, up is 0, right is 90.
+        /// AP orientation in degrees from 0 to 359, where 0 is up and 90 is right
         /// </summary>
         [Input("orientation")]
         public Input<int>? Orientation { get; set; }
@@ -654,42 +763,43 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// Power related configs
+        /// Power negotiation and peripheral power settings for this access point
         /// </summary>
         [Input("pwrConfig")]
         public Input<Inputs.ApPwrConfigGetArgs>? PwrConfig { get; set; }
 
         /// <summary>
-        /// Radio AP settings
+        /// Radio configuration overrides for this access point
         /// </summary>
         [Input("radioConfig")]
         public Input<Inputs.ApRadioConfigGetArgs>? RadioConfig { get; set; }
 
         /// <summary>
-        /// Device Serial
+        /// Manufacturer serial number for the access point
         /// </summary>
         [Input("serial")]
         public Input<string>? Serial { get; set; }
 
+        /// <summary>
+        /// Site where this access point is assigned
+        /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// Device Type. enum: `Ap`
+        /// Device type discriminator for access point records
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// AP Uplink port configuration
+        /// Authentication and failover behavior for AP uplink ports
         /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.ApUplinkPortConfigGetArgs>? UplinkPortConfig { get; set; }
 
         /// <summary>
-        /// USB AP settings
-        ///   - Note: if native imagotag is enabled, BLE will be disabled automatically
-        ///   - Note: legacy, new config moved to ESL Config.
+        /// Legacy USB integration settings for this access point
         /// </summary>
         [Input("usbConfig")]
         public Input<Inputs.ApUsbConfigGetArgs>? UsbConfig { get; set; }
@@ -698,7 +808,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Variable values that override site variables for this access point
         /// </summary>
         public InputMap<string> Vars
         {
@@ -707,19 +817,19 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// X in pixel
+        /// Horizontal map position of the AP, in pixels
         /// </summary>
         [Input("x")]
         public Input<double>? X { get; set; }
 
         /// <summary>
-        /// Y in pixel
+        /// Vertical map position of the AP, in pixels
         /// </summary>
         [Input("y")]
         public Input<double>? Y { get; set; }
 
         /// <summary>
-        /// Zigbee AP settings
+        /// Zigbee radio and network settings for this access point
         /// </summary>
         [Input("zigbeeConfig")]
         public Input<Inputs.ApZigbeeConfigGetArgs>? ZigbeeConfig { get; set; }

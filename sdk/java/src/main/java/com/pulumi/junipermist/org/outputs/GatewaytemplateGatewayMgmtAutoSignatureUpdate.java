@@ -13,10 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateGatewayMgmtAutoSignatureUpdate {
     /**
-     * @return enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+     * @return Scheduled weekday for automatic signature updates
      * 
      */
     private @Nullable String dayOfWeek;
+    /**
+     * @return Whether automatic security signature updates are enabled
+     * 
+     */
     private @Nullable Boolean enable;
     /**
      * @return Optional, Mist will decide the timing
@@ -26,12 +30,16 @@ public final class GatewaytemplateGatewayMgmtAutoSignatureUpdate {
 
     private GatewaytemplateGatewayMgmtAutoSignatureUpdate() {}
     /**
-     * @return enum: `any`, `fri`, `mon`, `sat`, `sun`, `thu`, `tue`, `wed`
+     * @return Scheduled weekday for automatic signature updates
      * 
      */
     public Optional<String> dayOfWeek() {
         return Optional.ofNullable(this.dayOfWeek);
     }
+    /**
+     * @return Whether automatic security signature updates are enabled
+     * 
+     */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }

@@ -18,14 +18,14 @@ public final class SwitchVirtualChassisArgs extends com.pulumi.resources.Resourc
     public static final SwitchVirtualChassisArgs Empty = new SwitchVirtualChassisArgs();
 
     /**
-     * List of Virtual Chassis members
+     * Virtual Chassis members and their expected roles
      * 
      */
     @Import(name="members")
     private @Nullable Output<List<SwitchVirtualChassisMemberArgs>> members;
 
     /**
-     * @return List of Virtual Chassis members
+     * @return Virtual Chassis members and their expected roles
      * 
      */
     public Optional<Output<List<SwitchVirtualChassisMemberArgs>>> members() {
@@ -73,7 +73,7 @@ public final class SwitchVirtualChassisArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param members List of Virtual Chassis members
+         * @param members Virtual Chassis members and their expected roles
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class SwitchVirtualChassisArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param members List of Virtual Chassis members
+         * @param members Virtual Chassis members and their expected roles
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class SwitchVirtualChassisArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param members List of Virtual Chassis members
+         * @param members Virtual Chassis members and their expected roles
          * 
          * @return builder
          * 

@@ -98,14 +98,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/alarmtemplate:Alarmtemplate")
 public class Alarmtemplate extends com.pulumi.resources.CustomResource {
     /**
-     * Delivery object to configure the alarm delivery
+     * Default alarm delivery settings for rules in this template
      * 
      */
     @Export(name="delivery", refs={AlarmtemplateDelivery.class}, tree="[0]")
     private Output<AlarmtemplateDelivery> delivery;
 
     /**
-     * @return Delivery object to configure the alarm delivery
+     * @return Default alarm delivery settings for rules in this template
      * 
      */
     public Output<AlarmtemplateDelivery> delivery() {
@@ -125,9 +125,17 @@ public class Alarmtemplate extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Organization that owns this alarm template
+     * 
+     */
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
+    /**
+     * @return Organization that owns this alarm template
+     * 
+     */
     public Output<String> orgId() {
         return this.orgId;
     }

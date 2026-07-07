@@ -76,20 +76,32 @@ export class Avprofile extends pulumi.CustomResource {
     }
 
     /**
-     * enum: `block`, `log-and-permit`, `permit`
+     * Action to take when antivirus scanning cannot complete
      */
     declare public readonly fallbackAction: pulumi.Output<string | undefined>;
     /**
-     * In KB
+     * Maximum file size scanned by this antivirus profile, in KB
      */
     declare public readonly maxFilesize: pulumi.Output<number>;
+    /**
+     * Content MIME types exempted from antivirus scanning
+     */
     declare public readonly mimeWhitelists: pulumi.Output<string[]>;
+    /**
+     * Display name of the antivirus profile
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Owning organization identifier for this antivirus profile
+     */
     declare public readonly orgId: pulumi.Output<string>;
     /**
-     * List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+     * Network protocols inspected by this antivirus profile
      */
     declare public readonly protocols: pulumi.Output<string[]>;
+    /**
+     * Allowed URL entries exempted from antivirus scanning
+     */
     declare public readonly urlWhitelists: pulumi.Output<string[]>;
 
     /**
@@ -138,20 +150,32 @@ export class Avprofile extends pulumi.CustomResource {
  */
 export interface AvprofileState {
     /**
-     * enum: `block`, `log-and-permit`, `permit`
+     * Action to take when antivirus scanning cannot complete
      */
     fallbackAction?: pulumi.Input<string | undefined>;
     /**
-     * In KB
+     * Maximum file size scanned by this antivirus profile, in KB
      */
     maxFilesize?: pulumi.Input<number | undefined>;
+    /**
+     * Content MIME types exempted from antivirus scanning
+     */
     mimeWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Display name of the antivirus profile
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Owning organization identifier for this antivirus profile
+     */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+     * Network protocols inspected by this antivirus profile
      */
     protocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Allowed URL entries exempted from antivirus scanning
+     */
     urlWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
@@ -160,19 +184,31 @@ export interface AvprofileState {
  */
 export interface AvprofileArgs {
     /**
-     * enum: `block`, `log-and-permit`, `permit`
+     * Action to take when antivirus scanning cannot complete
      */
     fallbackAction?: pulumi.Input<string | undefined>;
     /**
-     * In KB
+     * Maximum file size scanned by this antivirus profile, in KB
      */
     maxFilesize?: pulumi.Input<number | undefined>;
+    /**
+     * Content MIME types exempted from antivirus scanning
+     */
     mimeWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Display name of the antivirus profile
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Owning organization identifier for this antivirus profile
+     */
     orgId: pulumi.Input<string>;
     /**
-     * List of protocols to monitor. enum: `ftp`, `http`, `imap`, `pop3`, `smtp`
+     * Network protocols inspected by this antivirus profile
      */
     protocols: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allowed URL entries exempted from antivirus scanning
+     */
     urlWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

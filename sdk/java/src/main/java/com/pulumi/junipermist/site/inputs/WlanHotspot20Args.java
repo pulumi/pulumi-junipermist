@@ -17,9 +17,17 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
 
     public static final WlanHotspot20Args Empty = new WlanHotspot20Args();
 
+    /**
+     * Advertised domain names for Hotspot 2.0 clients
+     * 
+     */
     @Import(name="domainNames")
     private @Nullable Output<List<String>> domainNames;
 
+    /**
+     * @return Advertised domain names for Hotspot 2.0 clients
+     * 
+     */
     public Optional<Output<List<String>>> domainNames() {
         return Optional.ofNullable(this.domainNames);
     }
@@ -39,31 +47,47 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * NAI realms advertised for Hotspot 2.0 authentication
+     * 
+     */
     @Import(name="naiRealms")
     private @Nullable Output<List<String>> naiRealms;
 
+    /**
+     * @return NAI realms advertised for Hotspot 2.0 authentication
+     * 
+     */
     public Optional<Output<List<String>>> naiRealms() {
         return Optional.ofNullable(this.naiRealms);
     }
 
     /**
-     * List of operators to support
+     * Operator profiles supported by this Hotspot 2.0 configuration
      * 
      */
     @Import(name="operators")
     private @Nullable Output<List<String>> operators;
 
     /**
-     * @return List of operators to support
+     * @return Operator profiles supported by this Hotspot 2.0 configuration
      * 
      */
     public Optional<Output<List<String>>> operators() {
         return Optional.ofNullable(this.operators);
     }
 
+    /**
+     * Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
+     * 
+     */
     @Import(name="rcois")
     private @Nullable Output<List<String>> rcois;
 
+    /**
+     * @return Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
+     * 
+     */
     public Optional<Output<List<String>>> rcois() {
         return Optional.ofNullable(this.rcois);
     }
@@ -112,15 +136,33 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
             $ = new WlanHotspot20Args(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param domainNames Advertised domain names for Hotspot 2.0 clients
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainNames(@Nullable Output<List<String>> domainNames) {
             $.domainNames = domainNames;
             return this;
         }
 
+        /**
+         * @param domainNames Advertised domain names for Hotspot 2.0 clients
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainNames(List<String> domainNames) {
             return domainNames(Output.of(domainNames));
         }
 
+        /**
+         * @param domainNames Advertised domain names for Hotspot 2.0 clients
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainNames(String... domainNames) {
             return domainNames(List.of(domainNames));
         }
@@ -146,21 +188,39 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param naiRealms NAI realms advertised for Hotspot 2.0 authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder naiRealms(@Nullable Output<List<String>> naiRealms) {
             $.naiRealms = naiRealms;
             return this;
         }
 
+        /**
+         * @param naiRealms NAI realms advertised for Hotspot 2.0 authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder naiRealms(List<String> naiRealms) {
             return naiRealms(Output.of(naiRealms));
         }
 
+        /**
+         * @param naiRealms NAI realms advertised for Hotspot 2.0 authentication
+         * 
+         * @return builder
+         * 
+         */
         public Builder naiRealms(String... naiRealms) {
             return naiRealms(List.of(naiRealms));
         }
 
         /**
-         * @param operators List of operators to support
+         * @param operators Operator profiles supported by this Hotspot 2.0 configuration
          * 
          * @return builder
          * 
@@ -171,7 +231,7 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operators List of operators to support
+         * @param operators Operator profiles supported by this Hotspot 2.0 configuration
          * 
          * @return builder
          * 
@@ -181,7 +241,7 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operators List of operators to support
+         * @param operators Operator profiles supported by this Hotspot 2.0 configuration
          * 
          * @return builder
          * 
@@ -190,15 +250,33 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
             return operators(List.of(operators));
         }
 
+        /**
+         * @param rcois Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
+         * 
+         * @return builder
+         * 
+         */
         public Builder rcois(@Nullable Output<List<String>> rcois) {
             $.rcois = rcois;
             return this;
         }
 
+        /**
+         * @param rcois Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
+         * 
+         * @return builder
+         * 
+         */
         public Builder rcois(List<String> rcois) {
             return rcois(Output.of(rcois));
         }
 
+        /**
+         * @param rcois Roaming Consortium Organization Identifiers advertised for Hotspot 2.0
+         * 
+         * @return builder
+         * 
+         */
         public Builder rcois(String... rcois) {
             return rcois(List.of(rcois));
         }

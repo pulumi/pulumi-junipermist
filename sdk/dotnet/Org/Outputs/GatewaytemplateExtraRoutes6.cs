@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class GatewaytemplateExtraRoutes6
     {
+        /// <summary>
+        /// Next-hop IPv6 address for the gateway extra route
+        /// </summary>
         public readonly string Via;
 
         [OutputConstructor]
